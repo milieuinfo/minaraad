@@ -1,4 +1,4 @@
-PRODUCT = Minaraad
+PRODUCT = minaraad
 
 AGX = python ArchGenXML/ArchGenXML.py 
 CONFIG = model/generate.conf
