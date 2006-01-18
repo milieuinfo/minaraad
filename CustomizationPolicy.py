@@ -4,8 +4,8 @@ from config import PROJECTNAME
 from zLOG import LOG, INFO
 
 
-class xxx_name_thisCustomizationPolicy(DefaultCustomizationPolicy):
-    """ Make a custom Plone for xxx_name_this """
+class MinaraadCustomizationPolicy(DefaultCustomizationPolicy):
+    """ Make a custom Plone for minaraad """
 
 
     def customize(self, portal):
@@ -41,4 +41,4 @@ class xxx_name_thisCustomizationPolicy(DefaultCustomizationPolicy):
     # define your own customize_#_name methods after this line:
 
 def register(context):
-    addPolicy('xxx_name_this', xxx_name_thisCustomizationPolicy())
+    addPolicy('minaraad', MinaraadCustomizationPolicy())
