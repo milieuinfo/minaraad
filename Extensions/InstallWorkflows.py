@@ -1,19 +1,45 @@
+# File: minaraad.py
+#
+# Copyright (c) 2006 by Zest Software
+# Generator: ArchGenXML Version 1.4.1 svn/devel
+#            http://plone.org/products/archgenxml
+#
+# GNU General Public License (GPL)
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+# 02110-1301, USA.
+#
+
+__author__ = """Rocky Burt <r.burt@zestsoftware.nl>"""
+__docformat__ = 'plaintext'
+
+
 from Products.CMFCore.utils import getToolByName
 from Products.ExternalMethod.ExternalMethod import ExternalMethod
 
 def installWorkflows(self, package, out):
-    """
-    """
-    
-    productname = 'xxx_name_this'
+    """Install the custom workflows for this product."""
+
+    productname = 'minaraad'
     workflowTool = getToolByName(self, 'portal_workflow')
-    
-    ourProductWorkflow = ExternalMethod('temp',
-                         'temp',
-                         productname+'.'+'milieudefensie_workflow',
-                         'createmilieudefensie_workflow') 
-    workflow = ourProductWorkflow(self, 'milieudefensie_workflow')
-    workflowTool._setObject('milieudefensie_workflow', workflow)
-    workflowTool.setChainForPortalTypes(['WorkflowStub'], workflow.getId())
-    
+
+    ourProductWorkflow = ExternalMethod('temp', 'temp',
+                         productname+'.'+'minaraad_workflow',
+                         'createminaraad_workflow')
+    workflow = ourProductWorkflow(self, 'minaraad_workflow')
+    workflowTool._setObject('minaraad_workflow', workflow)
+    workflowTool.setChainForPortalTypes(['WorkflowStub', 'JoinIn'], workflow.getId())
+
     return workflowTool
