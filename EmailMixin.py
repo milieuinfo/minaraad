@@ -44,8 +44,7 @@ schema = Schema((
 ##code-section after-local-schema #fill in your manual code here
 ##/code-section after-local-schema
 
-EmailMixin_schema = BaseSchema.copy() + \
-    schema.copy()
+EmailMixin_schema = schema.copy()
 
 ##code-section after-schema #fill in your manual code here
 ##/code-section after-schema
@@ -55,22 +54,7 @@ class EmailMixin:
     __implements__ = ()
 
 
-    # This name appears in the 'add' box
-    archetype_name = 'EmailMixin'
-
-    meta_type = 'EmailMixin'
-    portal_type = 'EmailMixin'
     allowed_content_types = []
-    filter_content_types = 0
-    global_allow = 1
-    allow_discussion = False
-    #content_icon = 'EmailMixin.gif'
-    immediate_view = 'base_view'
-    default_view = 'base_view'
-    suppl_views = ()
-    typeDescription = "EmailMixin"
-    typeDescMsgId = 'description_edit_emailmixin'
-
     schema = EmailMixin_schema
 
     ##code-section class-header #fill in your manual code here
@@ -85,7 +69,6 @@ class EmailMixin:
         """
         
         pass
-
 
 # end of class EmailMixin
 

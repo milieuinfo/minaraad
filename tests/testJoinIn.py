@@ -41,7 +41,7 @@ from Products.minaraad.config import *
 from Products.minaraad.tests.MainTestCase import MainTestCase
 
 # Import the tested classes
-from Products.minaraad.JoinIn import JoinIn
+from Products.minaraad.content.JoinIn import JoinIn
 
 ##code-section module-beforeclass #fill in your manual code here
 ##/code-section module-beforeclass

@@ -71,8 +71,8 @@ def initialize(context):
     ##/code-section custom-init-top
 
     # imports packages and types for registration
+    import content
 
-    import JoinIn
     import EmailMixin
 
     # Initialize portal content
