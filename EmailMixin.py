@@ -62,14 +62,6 @@ class EmailMixin:
 
 
     # Methods
-    security.declarePublic('email')
-    def email(self,addresses):
-        """
-        
-        """
-        
-        pass
-
 # end of class EmailMixin
 
 ##code-section module-footer #fill in your manual code here

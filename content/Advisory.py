@@ -89,6 +89,7 @@ Advisory_schema = ATContentTypeSchema.copy() + \
     schema.copy()
 
 ##code-section after-schema #fill in your manual code here
+Advisory_schema['description'].isMetadata = False
 ##/code-section after-schema
 
 class Advisory(EmailMixin,ATCTContent):
