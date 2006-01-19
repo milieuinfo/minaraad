@@ -73,6 +73,7 @@ def initialize(context):
     # imports packages and types for registration
 
     import JoinIn
+    import EmailMixin
 
     # Initialize portal content
     content_types, constructors, ftis = process_types(
