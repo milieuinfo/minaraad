@@ -1,4 +1,4 @@
-# File: EmailMixin.py
+# File: label.py
 # 
 # Copyright (c) 2006 by Zest Software
 # Generator: ArchGenXML Version 1.4.0-final 
@@ -39,25 +39,43 @@ schema=Schema((
 ##code-section after-local-schema #fill in your manual code here
 ##/code-section after-local-schema
 
-EmailMixin_schema = schema
+label_schema = BaseSchema + \
+    schema
 
 ##code-section after-schema #fill in your manual code here
 ##/code-section after-schema
 
-class EmailMixin:
+class label(BaseContent):
     security = ClassSecurityInfo()
-    __implements__ = ()
+    __implements__ = (getattr(BaseContent,'__implements__',()),)
 
 
+    # This name appears in the 'add' box
+    archetype_name             = 'label'
+
+    meta_type                  = 'label'
+    portal_type                = 'label'
     allowed_content_types      = []
-    schema = EmailMixin_schema
+    filter_content_types       = 0
+    global_allow               = 1
+    allow_discussion           = 0
+    #content_icon               = 'label.gif'
+    immediate_view             = 'base_view'
+    default_view               = 'base_view'
+    suppl_views                = ()
+    typeDescription            = "label"
+    typeDescMsgId              = 'description_edit_label'
+
+    schema = label_schema
 
     ##code-section class-header #fill in your manual code here
     ##/code-section class-header
 
 
     #Methods
-# end of class EmailMixin
+
+registerType(label,PROJECTNAME)
+# end of class label
 
 ##code-section module-footer #fill in your manual code here
 ##/code-section module-footer

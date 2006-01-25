@@ -1,4 +1,4 @@
-# File: Advisory.py
+# File: Study.py
 # 
 # Copyright (c) 2006 by Zest Software
 # Generator: ArchGenXML Version 1.4.0-final 
@@ -33,6 +33,15 @@ from Products.minaraad.config import *
 ##/code-section module-header
 
 schema=Schema((
+    StringField('subheader',
+        widget=StringWidget(
+            label='Subheader',
+            label_msgid='minaraad_label_subheader',
+            description_msgid='minaraad_help_subheader',
+            i18n_domain='minaraad',
+        )
+    ),
+
     DateTimeField('date',
         widget=CalendarWidget(
             label='Date',
@@ -42,11 +51,11 @@ schema=Schema((
         )
     ),
 
-    StringField('policy',
-        widget=SelectionWidget(
-            label='Policy',
-            label_msgid='minaraad_label_policy',
-            description_msgid='minaraad_help_policy',
+    LinesField('speakers',
+        widget=LinesWidget(
+            label='Speakers',
+            label_msgid='minaraad_label_speakers',
+            description_msgid='minaraad_help_speakers',
             i18n_domain='minaraad',
         )
     ),
@@ -69,42 +78,38 @@ schema=Schema((
 ##code-section after-local-schema #fill in your manual code here
 ##/code-section after-local-schema
 
-Advisory_schema = BaseSchema + \
+Study_schema = BaseSchema + \
     getattr(MinaBundle,'schema',Schema(())) + \
     getattr(PostMixin,'schema',Schema(())) + \
     schema
 
 ##code-section after-schema #fill in your manual code here
-Advisory_schema['description'].isMetadata = False
 ##/code-section after-schema
 
-class Advisory(MinaBundle,PostMixin,BaseContent):
-    """
-    An advisory
-    """
+class Study(MinaBundle,PostMixin,BaseContent):
     security = ClassSecurityInfo()
     __implements__ = (getattr(MinaBundle,'__implements__',()),) + (getattr(PostMixin,'__implements__',()),) + (getattr(BaseContent,'__implements__',()),)
 
 
     # This name appears in the 'add' box
-    archetype_name             = 'Advisory'
+    archetype_name             = 'Study'
 
-    meta_type                  = 'Advisory'
-    portal_type                = 'Advisory'
+    meta_type                  = 'Study'
+    portal_type                = 'Study'
     allowed_content_types      = [] + list(getattr(MinaBundle, 'allowed_content_types', [])) + list(getattr(PostMixin, 'allowed_content_types', []))
     filter_content_types       = 0
     global_allow               = 1
     allow_discussion           = 0
-    #content_icon               = 'Advisory.gif'
+    #content_icon               = 'Study.gif'
     immediate_view             = 'base_view'
     default_view               = 'base_view'
     suppl_views                = ()
-    typeDescription            = "Advisory"
-    typeDescMsgId              = 'description_edit_advisory'
+    typeDescription            = "Study"
+    typeDescMsgId              = 'description_edit_study'
 
     _at_rename_after_creation  = True
 
-    schema = Advisory_schema
+    schema = Study_schema
 
     ##code-section class-header #fill in your manual code here
     ##/code-section class-header
@@ -112,8 +117,8 @@ class Advisory(MinaBundle,PostMixin,BaseContent):
 
     #Methods
 
-registerType(Advisory,PROJECTNAME)
-# end of class Advisory
+registerType(Study,PROJECTNAME)
+# end of class Study
 
 ##code-section module-footer #fill in your manual code here
 ##/code-section module-footer

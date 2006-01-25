@@ -1,4 +1,4 @@
-# File: Advisory.py
+# File: MinaBundle.py
 # 
 # Copyright (c) 2006 by Zest Software
 # Generator: ArchGenXML Version 1.4.0-final 
@@ -24,8 +24,8 @@ __docformat__ = 'plaintext'
 
 from AccessControl import ClassSecurityInfo
 from Products.Archetypes.atapi import *
-from Products.minaraad.MinaBundle import MinaBundle
-from Products.minaraad.PostMixin import PostMixin
+from EmailMixin import EmailMixin
+from Products.ATContentTypes.content.document import ATDocument
 
 
 from Products.minaraad.config import *
@@ -33,33 +33,26 @@ from Products.minaraad.config import *
 ##/code-section module-header
 
 schema=Schema((
-    DateTimeField('date',
-        widget=CalendarWidget(
-            label='Date',
-            label_msgid='minaraad_label_date',
-            description_msgid='minaraad_help_date',
+    TextField('plaintext',
+        widget=TextAreaWidget(
+            label='Plaintext',
+            label_msgid='minaraad_label_plaintext',
+            description_msgid='minaraad_help_plaintext',
             i18n_domain='minaraad',
         )
     ),
 
-    StringField('policy',
-        widget=SelectionWidget(
-            label='Policy',
-            label_msgid='minaraad_label_policy',
-            description_msgid='minaraad_help_policy',
-            i18n_domain='minaraad',
-        )
-    ),
 
-    FileField('attachment',
-        widget=FileWidget(
-            label='Attachment',
-            label_msgid='minaraad_label_attachment',
-            description_msgid='minaraad_help_attachment',
+    ReferenceField('contactpersons',
+        widget=ReferenceWidget(
+            label='Contactpersons',
+            label_msgid='minaraad_label_contactpersons',
+            description_msgid='minaraad_help_contactpersons',
             i18n_domain='minaraad',
         ),
-        storage=AttributeStorage(),
-        multiValued=True
+        allowed_types=('ContactPerson',),
+        multiValued=0,
+        relationship='minabundles_contactpersons'
     ),
 
 ),
@@ -69,42 +62,35 @@ schema=Schema((
 ##code-section after-local-schema #fill in your manual code here
 ##/code-section after-local-schema
 
-Advisory_schema = BaseSchema + \
-    getattr(MinaBundle,'schema',Schema(())) + \
-    getattr(PostMixin,'schema',Schema(())) + \
+MinaBundle_schema = getattr(EmailMixin,'schema',Schema(())) + \
+    getattr(ATDocument,'schema',Schema(())) + \
     schema
 
 ##code-section after-schema #fill in your manual code here
-Advisory_schema['description'].isMetadata = False
 ##/code-section after-schema
 
-class Advisory(MinaBundle,PostMixin,BaseContent):
-    """
-    An advisory
-    """
+class MinaBundle(EmailMixin,ATDocument):
     security = ClassSecurityInfo()
-    __implements__ = (getattr(MinaBundle,'__implements__',()),) + (getattr(PostMixin,'__implements__',()),) + (getattr(BaseContent,'__implements__',()),)
+    __implements__ = (getattr(EmailMixin,'__implements__',()),) + (getattr(ATDocument,'__implements__',()),)
 
 
     # This name appears in the 'add' box
-    archetype_name             = 'Advisory'
+    archetype_name             = 'MinaBundle'
 
-    meta_type                  = 'Advisory'
-    portal_type                = 'Advisory'
-    allowed_content_types      = [] + list(getattr(MinaBundle, 'allowed_content_types', [])) + list(getattr(PostMixin, 'allowed_content_types', []))
+    meta_type                  = 'MinaBundle'
+    portal_type                = 'MinaBundle'
+    allowed_content_types      = [] + list(getattr(EmailMixin, 'allowed_content_types', [])) + list(getattr(ATDocument, 'allowed_content_types', []))
     filter_content_types       = 0
     global_allow               = 1
     allow_discussion           = 0
-    #content_icon               = 'Advisory.gif'
+    #content_icon               = 'MinaBundle.gif'
     immediate_view             = 'base_view'
     default_view               = 'base_view'
     suppl_views                = ()
-    typeDescription            = "Advisory"
-    typeDescMsgId              = 'description_edit_advisory'
+    typeDescription            = "MinaBundle"
+    typeDescMsgId              = 'description_edit_minabundle'
 
-    _at_rename_after_creation  = True
-
-    schema = Advisory_schema
+    schema = MinaBundle_schema
 
     ##code-section class-header #fill in your manual code here
     ##/code-section class-header
@@ -112,8 +98,7 @@ class Advisory(MinaBundle,PostMixin,BaseContent):
 
     #Methods
 
-registerType(Advisory,PROJECTNAME)
-# end of class Advisory
+# end of class MinaBundle
 
 ##code-section module-footer #fill in your manual code here
 ##/code-section module-footer

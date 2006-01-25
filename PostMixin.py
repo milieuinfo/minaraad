@@ -1,4 +1,4 @@
-# File: EmailMixin.py
+# File: PostMixin.py
 # 
 # Copyright (c) 2006 by Zest Software
 # Generator: ArchGenXML Version 1.4.0-final 
@@ -39,25 +39,42 @@ schema=Schema((
 ##code-section after-local-schema #fill in your manual code here
 ##/code-section after-local-schema
 
-EmailMixin_schema = schema
+PostMixin_schema = BaseSchema + \
+    schema
 
 ##code-section after-schema #fill in your manual code here
 ##/code-section after-schema
 
-class EmailMixin:
+class PostMixin:
     security = ClassSecurityInfo()
     __implements__ = ()
 
 
+    # This name appears in the 'add' box
+    archetype_name             = 'PostMixin'
+
+    meta_type                  = 'PostMixin'
+    portal_type                = 'PostMixin'
     allowed_content_types      = []
-    schema = EmailMixin_schema
+    filter_content_types       = 0
+    global_allow               = 1
+    allow_discussion           = 0
+    #content_icon               = 'PostMixin.gif'
+    immediate_view             = 'base_view'
+    default_view               = 'base_view'
+    suppl_views                = ()
+    typeDescription            = "PostMixin"
+    typeDescMsgId              = 'description_edit_postmixin'
+
+    schema = PostMixin_schema
 
     ##code-section class-header #fill in your manual code here
     ##/code-section class-header
 
 
     #Methods
-# end of class EmailMixin
+
+# end of class PostMixin
 
 ##code-section module-footer #fill in your manual code here
 ##/code-section module-footer

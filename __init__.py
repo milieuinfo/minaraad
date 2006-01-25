@@ -1,40 +1,15 @@
-# File: minaraad.py
 #
-# Copyright (c) 2006 by Zest Software
-# Generator: ArchGenXML Version 1.4.1 svn/devel
-#            http://plone.org/products/archgenxml
+# Initialise the product's module. There are three ways to inject custom code
+# here:
 #
-# GNU General Public License (GPL)
-#
-# This program is free software; you can redistribute it and/or
-# modify it under the terms of the GNU General Public License
-# as published by the Free Software Foundation; either version 2
-# of the License, or (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program; if not, write to the Free Software
-# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
-# 02110-1301, USA.
-#
-
-__author__ = """Rocky Burt <r.burt@zestsoftware.nl>"""
-__docformat__ = 'plaintext'
-
-
-# There are three ways to inject custom code here:
-#
-#   - To set global configuration variables, create a file AppConfig.py.
-#       This will be imported in config.py, which in turn is imported in
-#       each generated class and in this file.
-#   - To perform custom initialisation after types have been registered,
-#       use the protected code section at the bottom of initialize().
+#   - To set global configuration variables, create a file AppConfig.py. This
+#       will be imported in config.py, which in turn is imported in each
+#       generated class and in this file.
+#   - To perform custom initialisation after types have been registered, use
+#       the protected code section at the bottom of initialize().
 #   - To register a customisation policy, create a file CustomizationPolicy.py
-#       with a method register(context) to register the policy.
+#       with a method register(context) to register the policy
+#
 
 from zLOG import LOG, INFO
 
@@ -43,7 +18,7 @@ LOG('minaraad',INFO, 'Installing Product')
 try:
     import CustomizationPolicy
 except ImportError:
-    CustomizationPolicy = None
+    CustomizationPolicy=None
 
 from Globals import package_home
 from Products.CMFCore import utils as cmfutils
@@ -74,8 +49,10 @@ def initialize(context):
     import content
 
     import EmailMixin
+    import PostMixin
+    import MinaBundle
 
-    # Initialize portal content
+    # initialize portal content
     content_types, constructors, ftis = process_types(
         listTypes(PROJECTNAME),
         PROJECTNAME)
@@ -88,7 +65,7 @@ def initialize(context):
         fti                = ftis,
         ).initialize(context)
 
-    # Apply customization-policy, if theres any
+    # apply customization-policy, if theres any
     if CustomizationPolicy and hasattr(CustomizationPolicy, 'register'):
         CustomizationPolicy.register(context)
         print 'Customization policy for minaraad installed'

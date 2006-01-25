@@ -1,4 +1,4 @@
-# File: EmailMixin.py
+# File: AnnualReport.py
 # 
 # Copyright (c) 2006 by Zest Software
 # Generator: ArchGenXML Version 1.4.0-final 
@@ -24,7 +24,8 @@ __docformat__ = 'plaintext'
 
 from AccessControl import ClassSecurityInfo
 from Products.Archetypes.atapi import *
-
+from NewsLetter import NewsLetter
+from Products.minaraad.PostMixin import PostMixin
 
 
 from Products.minaraad.config import *
@@ -39,25 +40,47 @@ schema=Schema((
 ##code-section after-local-schema #fill in your manual code here
 ##/code-section after-local-schema
 
-EmailMixin_schema = schema
+AnnualReport_schema = BaseSchema + \
+    getattr(NewsLetter,'schema',Schema(())) + \
+    getattr(PostMixin,'schema',Schema(())) + \
+    schema
 
 ##code-section after-schema #fill in your manual code here
 ##/code-section after-schema
 
-class EmailMixin:
+class AnnualReport(NewsLetter,PostMixin,BaseContent):
     security = ClassSecurityInfo()
-    __implements__ = ()
+    __implements__ = (getattr(NewsLetter,'__implements__',()),) + (getattr(PostMixin,'__implements__',()),) + (getattr(BaseContent,'__implements__',()),)
 
 
-    allowed_content_types      = []
-    schema = EmailMixin_schema
+    # This name appears in the 'add' box
+    archetype_name             = 'AnnualReport'
+
+    meta_type                  = 'AnnualReport'
+    portal_type                = 'AnnualReport'
+    allowed_content_types      = [] + list(getattr(NewsLetter, 'allowed_content_types', [])) + list(getattr(PostMixin, 'allowed_content_types', []))
+    filter_content_types       = 0
+    global_allow               = 1
+    allow_discussion           = 0
+    #content_icon               = 'AnnualReport.gif'
+    immediate_view             = 'base_view'
+    default_view               = 'base_view'
+    suppl_views                = ()
+    typeDescription            = "AnnualReport"
+    typeDescMsgId              = 'description_edit_annualreport'
+
+    _at_rename_after_creation  = True
+
+    schema = AnnualReport_schema
 
     ##code-section class-header #fill in your manual code here
     ##/code-section class-header
 
 
     #Methods
-# end of class EmailMixin
+
+registerType(AnnualReport,PROJECTNAME)
+# end of class AnnualReport
 
 ##code-section module-footer #fill in your manual code here
 ##/code-section module-footer

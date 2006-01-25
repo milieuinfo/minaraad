@@ -1,4 +1,4 @@
-# File: Advisory.py
+# File: Pressrelease.py
 # 
 # Copyright (c) 2006 by Zest Software
 # Generator: ArchGenXML Version 1.4.0-final 
@@ -25,7 +25,6 @@ __docformat__ = 'plaintext'
 from AccessControl import ClassSecurityInfo
 from Products.Archetypes.atapi import *
 from Products.minaraad.MinaBundle import MinaBundle
-from Products.minaraad.PostMixin import PostMixin
 
 
 from Products.minaraad.config import *
@@ -33,20 +32,11 @@ from Products.minaraad.config import *
 ##/code-section module-header
 
 schema=Schema((
-    DateTimeField('date',
-        widget=CalendarWidget(
-            label='Date',
-            label_msgid='minaraad_label_date',
-            description_msgid='minaraad_help_date',
-            i18n_domain='minaraad',
-        )
-    ),
-
-    StringField('policy',
-        widget=SelectionWidget(
-            label='Policy',
-            label_msgid='minaraad_label_policy',
-            description_msgid='minaraad_help_policy',
+    StringField('subheader',
+        widget=StringWidget(
+            label='Subheader',
+            label_msgid='minaraad_label_subheader',
+            description_msgid='minaraad_help_subheader',
             i18n_domain='minaraad',
         )
     ),
@@ -69,42 +59,37 @@ schema=Schema((
 ##code-section after-local-schema #fill in your manual code here
 ##/code-section after-local-schema
 
-Advisory_schema = BaseSchema + \
+Pressrelease_schema = BaseSchema + \
     getattr(MinaBundle,'schema',Schema(())) + \
-    getattr(PostMixin,'schema',Schema(())) + \
     schema
 
 ##code-section after-schema #fill in your manual code here
-Advisory_schema['description'].isMetadata = False
 ##/code-section after-schema
 
-class Advisory(MinaBundle,PostMixin,BaseContent):
-    """
-    An advisory
-    """
+class Pressrelease(MinaBundle,BaseContent):
     security = ClassSecurityInfo()
-    __implements__ = (getattr(MinaBundle,'__implements__',()),) + (getattr(PostMixin,'__implements__',()),) + (getattr(BaseContent,'__implements__',()),)
+    __implements__ = (getattr(MinaBundle,'__implements__',()),) + (getattr(BaseContent,'__implements__',()),)
 
 
     # This name appears in the 'add' box
-    archetype_name             = 'Advisory'
+    archetype_name             = 'Pressrelease'
 
-    meta_type                  = 'Advisory'
-    portal_type                = 'Advisory'
-    allowed_content_types      = [] + list(getattr(MinaBundle, 'allowed_content_types', [])) + list(getattr(PostMixin, 'allowed_content_types', []))
+    meta_type                  = 'Pressrelease'
+    portal_type                = 'Pressrelease'
+    allowed_content_types      = [] + list(getattr(MinaBundle, 'allowed_content_types', []))
     filter_content_types       = 0
     global_allow               = 1
     allow_discussion           = 0
-    #content_icon               = 'Advisory.gif'
+    #content_icon               = 'Pressrelease.gif'
     immediate_view             = 'base_view'
     default_view               = 'base_view'
     suppl_views                = ()
-    typeDescription            = "Advisory"
-    typeDescMsgId              = 'description_edit_advisory'
+    typeDescription            = "Pressrelease"
+    typeDescMsgId              = 'description_edit_pressrelease'
 
     _at_rename_after_creation  = True
 
-    schema = Advisory_schema
+    schema = Pressrelease_schema
 
     ##code-section class-header #fill in your manual code here
     ##/code-section class-header
@@ -112,8 +97,8 @@ class Advisory(MinaBundle,PostMixin,BaseContent):
 
     #Methods
 
-registerType(Advisory,PROJECTNAME)
-# end of class Advisory
+registerType(Pressrelease,PROJECTNAME)
+# end of class Pressrelease
 
 ##code-section module-footer #fill in your manual code here
 ##/code-section module-footer

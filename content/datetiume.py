@@ -1,4 +1,4 @@
-# File: EmailMixin.py
+# File: datetiume.py
 # 
 # Copyright (c) 2006 by Zest Software
 # Generator: ArchGenXML Version 1.4.0-final 
@@ -39,25 +39,43 @@ schema=Schema((
 ##code-section after-local-schema #fill in your manual code here
 ##/code-section after-local-schema
 
-EmailMixin_schema = schema
+datetiume_schema = BaseSchema + \
+    schema
 
 ##code-section after-schema #fill in your manual code here
 ##/code-section after-schema
 
-class EmailMixin:
+class datetiume(BaseContent):
     security = ClassSecurityInfo()
-    __implements__ = ()
+    __implements__ = (getattr(BaseContent,'__implements__',()),)
 
 
+    # This name appears in the 'add' box
+    archetype_name             = 'datetiume'
+
+    meta_type                  = 'datetiume'
+    portal_type                = 'datetiume'
     allowed_content_types      = []
-    schema = EmailMixin_schema
+    filter_content_types       = 0
+    global_allow               = 1
+    allow_discussion           = 0
+    #content_icon               = 'datetiume.gif'
+    immediate_view             = 'base_view'
+    default_view               = 'base_view'
+    suppl_views                = ()
+    typeDescription            = "datetiume"
+    typeDescMsgId              = 'description_edit_datetiume'
+
+    schema = datetiume_schema
 
     ##code-section class-header #fill in your manual code here
     ##/code-section class-header
 
 
     #Methods
-# end of class EmailMixin
+
+registerType(datetiume,PROJECTNAME)
+# end of class datetiume
 
 ##code-section module-footer #fill in your manual code here
 ##/code-section module-footer

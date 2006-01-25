@@ -1,4 +1,4 @@
-# File: EmailMixin.py
+# File: testPresentation.py
 # 
 # Copyright (c) 2006 by Zest Software
 # Generator: ArchGenXML Version 1.4.0-final 
@@ -21,46 +21,53 @@
 __author__  = '''Rocky Burt <r.burt@zestsoftware.nl>'''
 __docformat__ = 'plaintext'
 
+import os, sys
+if __name__ == '__main__':
+    execfile(os.path.join(sys.path[0], 'framework.py'))
 
-from AccessControl import ClassSecurityInfo
-from Products.Archetypes.atapi import *
-
-
-
-from Products.minaraad.config import *
 ##code-section module-header #fill in your manual code here
 ##/code-section module-header
 
-schema=Schema((
-),
-)
+#
+# test-cases for class(es) Presentation
+#
+import os, sys
+from Testing import ZopeTestCase
+from Products.minaraad.tests.MainTestCase import MainTestCase
+# import the tested classes
+from Products.minaraad.content.Presentation import Presentation
+
+##code-section module-beforeclass #fill in your manual code here
+##/code-section module-beforeclass
 
 
-##code-section after-local-schema #fill in your manual code here
-##/code-section after-local-schema
+class testPresentation(MainTestCase):
+    """ test-cases for class(es) Presentation
+    """
 
-EmailMixin_schema = schema
+    ##code-section class-header_testPresentation #fill in your manual code here
+    ##/code-section class-header_testPresentation
 
-##code-section after-schema #fill in your manual code here
-##/code-section after-schema
-
-class EmailMixin:
-    security = ClassSecurityInfo()
-    __implements__ = ()
-
-
-    allowed_content_types      = []
-    schema = EmailMixin_schema
-
-    ##code-section class-header #fill in your manual code here
-    ##/code-section class-header
+    def afterSetUp(self):
+        """
+        """
+        pass
 
 
-    #Methods
-# end of class EmailMixin
+
+    # Manually created methods
+
+def test_suite():
+    from unittest import TestSuite, makeSuite
+    suite = TestSuite()
+    suite.addTest(makeSuite(testPresentation))
+    return suite
 
 ##code-section module-footer #fill in your manual code here
 ##/code-section module-footer
 
+
+if __name__ == '__main__':
+    framework()
 
 

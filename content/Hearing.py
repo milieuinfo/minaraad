@@ -1,4 +1,4 @@
-# File: Advisory.py
+# File: Hearing.py
 # 
 # Copyright (c) 2006 by Zest Software
 # Generator: ArchGenXML Version 1.4.0-final 
@@ -25,7 +25,6 @@ __docformat__ = 'plaintext'
 from AccessControl import ClassSecurityInfo
 from Products.Archetypes.atapi import *
 from Products.minaraad.MinaBundle import MinaBundle
-from Products.minaraad.PostMixin import PostMixin
 
 
 from Products.minaraad.config import *
@@ -33,33 +32,58 @@ from Products.minaraad.config import *
 ##/code-section module-header
 
 schema=Schema((
-    DateTimeField('date',
+    StringField('subheader',
+        widget=StringWidget(
+            label='Subheader',
+            label_msgid='minaraad_label_subheader',
+            description_msgid='minaraad_help_subheader',
+            i18n_domain='minaraad',
+        )
+    ),
+
+    TextField('goal',
+        widget=TextAreaWidget(
+            label='Goal',
+            label_msgid='minaraad_label_goal',
+            description_msgid='minaraad_help_goal',
+            i18n_domain='minaraad',
+        )
+    ),
+
+    StringField('location',
+        widget=StringWidget(
+            label='Location',
+            label_msgid='minaraad_label_location',
+            description_msgid='minaraad_help_location',
+            i18n_domain='minaraad',
+        )
+    ),
+
+    DateTimeField('start',
         widget=CalendarWidget(
-            label='Date',
-            label_msgid='minaraad_label_date',
-            description_msgid='minaraad_help_date',
+            label='Start',
+            label_msgid='minaraad_label_start',
+            description_msgid='minaraad_help_start',
             i18n_domain='minaraad',
         )
     ),
 
-    StringField('policy',
+    DateTimeField('end',
+        widget=CalendarWidget(
+            label='End',
+            label_msgid='minaraad_label_end',
+            description_msgid='minaraad_help_end',
+            i18n_domain='minaraad',
+        )
+    ),
+
+    StringField('themes',
         widget=SelectionWidget(
-            label='Policy',
-            label_msgid='minaraad_label_policy',
-            description_msgid='minaraad_help_policy',
+            label='Themes',
+            label_msgid='minaraad_label_themes',
+            description_msgid='minaraad_help_themes',
             i18n_domain='minaraad',
         )
-    ),
-
-    FileField('attachment',
-        widget=FileWidget(
-            label='Attachment',
-            label_msgid='minaraad_label_attachment',
-            description_msgid='minaraad_help_attachment',
-            i18n_domain='minaraad',
-        ),
-        storage=AttributeStorage(),
-        multiValued=True
     ),
 
 ),
@@ -69,42 +93,37 @@ schema=Schema((
 ##code-section after-local-schema #fill in your manual code here
 ##/code-section after-local-schema
 
-Advisory_schema = BaseSchema + \
+Hearing_schema = BaseFolderSchema + \
     getattr(MinaBundle,'schema',Schema(())) + \
-    getattr(PostMixin,'schema',Schema(())) + \
     schema
 
 ##code-section after-schema #fill in your manual code here
-Advisory_schema['description'].isMetadata = False
 ##/code-section after-schema
 
-class Advisory(MinaBundle,PostMixin,BaseContent):
-    """
-    An advisory
-    """
+class Hearing(MinaBundle,BaseFolder):
     security = ClassSecurityInfo()
-    __implements__ = (getattr(MinaBundle,'__implements__',()),) + (getattr(PostMixin,'__implements__',()),) + (getattr(BaseContent,'__implements__',()),)
+    __implements__ = (getattr(MinaBundle,'__implements__',()),) + (getattr(BaseFolder,'__implements__',()),)
 
 
     # This name appears in the 'add' box
-    archetype_name             = 'Advisory'
+    archetype_name             = 'Hearing'
 
-    meta_type                  = 'Advisory'
-    portal_type                = 'Advisory'
-    allowed_content_types      = [] + list(getattr(MinaBundle, 'allowed_content_types', [])) + list(getattr(PostMixin, 'allowed_content_types', []))
-    filter_content_types       = 0
+    meta_type                  = 'Hearing'
+    portal_type                = 'Hearing'
+    allowed_content_types      = ['Presentation'] + list(getattr(MinaBundle, 'allowed_content_types', []))
+    filter_content_types       = 1
     global_allow               = 1
     allow_discussion           = 0
-    #content_icon               = 'Advisory.gif'
+    #content_icon               = 'Hearing.gif'
     immediate_view             = 'base_view'
     default_view               = 'base_view'
     suppl_views                = ()
-    typeDescription            = "Advisory"
-    typeDescMsgId              = 'description_edit_advisory'
+    typeDescription            = "Hearing"
+    typeDescMsgId              = 'description_edit_hearing'
 
     _at_rename_after_creation  = True
 
-    schema = Advisory_schema
+    schema = Hearing_schema
 
     ##code-section class-header #fill in your manual code here
     ##/code-section class-header
@@ -112,8 +131,8 @@ class Advisory(MinaBundle,PostMixin,BaseContent):
 
     #Methods
 
-registerType(Advisory,PROJECTNAME)
-# end of class Advisory
+registerType(Hearing,PROJECTNAME)
+# end of class Hearing
 
 ##code-section module-footer #fill in your manual code here
 ##/code-section module-footer

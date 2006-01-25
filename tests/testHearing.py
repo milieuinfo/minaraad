@@ -1,4 +1,4 @@
-# File: MainTestCase.py
+# File: testHearing.py
 # 
 # Copyright (c) 2006 by Zest Software
 # Generator: ArchGenXML Version 1.4.0-final 
@@ -21,9 +21,6 @@
 __author__  = '''Rocky Burt <r.burt@zestsoftware.nl>'''
 __docformat__ = 'plaintext'
 
-#
-# Base TestCase for minaraad
-#
 import os, sys
 if __name__ == '__main__':
     execfile(os.path.join(sys.path[0], 'framework.py'))
@@ -31,52 +28,50 @@ if __name__ == '__main__':
 ##code-section module-header #fill in your manual code here
 ##/code-section module-header
 
+#
+# test-cases for class(es) Hearing
+#
+import os, sys
 from Testing import ZopeTestCase
-from Products.PloneTestCase import PloneTestCase
-from Products.minaraad.config import HAS_PLONE21
-from Products.minaraad.config import PRODUCT_DEPENDENCIES
-from Products.minaraad.config import DEPENDENCIES
+from Products.minaraad.tests.MainTestCase import MainTestCase
+# import the tested classes
+from Products.minaraad.content.Hearing import Hearing
 
-# add common dependencies
-if not HAS_PLONE21:
-    DEPENDENCIES.append('Archetypes')
-    PRODUCT_DEPENDENCIES.append('MimetypesRegistry')
-    PRODUCT_DEPENDENCIES.append('PortalTransforms')
-PRODUCT_DEPENDENCIES.append('minaraad')
-    
-# install all (product-) dependencies, install them too
-for dependency in PRODUCT_DEPENDENCIES + DEPENDENCIES:
-    ZopeTestCase.installProduct(dependency)
-
-ZopeTestCase.installProduct('minaraad')
-
-PRODUCTS = list()
-PRODUCTS += DEPENDENCIES
-PRODUCTS.append('minaraad')
-
-testcase = PloneTestCase.PloneTestCase
-##code-section module-before-plone-site-setup #fill in your manual code here
-##/code-section module-before-plone-site-setup
+##code-section module-beforeclass #fill in your manual code here
+##/code-section module-beforeclass
 
 
-PloneTestCase.setupPloneSite(products=PRODUCTS)
+class testHearing(MainTestCase):
+    """ test-cases for class(es) Hearing
+    """
 
-class MainTestCase(testcase):
-    """ Base TestCase for minaraad"""
-    ##code-section class-header_MainTestCase #fill in your manual code here
-    ##/code-section class-header_MainTestCase
+    ##code-section class-header_testHearing #fill in your manual code here
+    ##/code-section class-header_testHearing
 
-    # Commented out for now, it gets blasted at the moment anyway.
-    # Place it in the protected section if you need it.
-    #def afterSetUp(self):
-    #    """
-    #    """
-    #    pass
+    def afterSetUp(self):
+        """
+        """
+        pass
+
+
+    # from class EmailMixin:
+    def test_email(self):
+        """
+        """
+        #Uncomment one of the following lines as needed
+        ##self.loginAsPortalOwner()
+        ##o=EmailMixin('temp_EmailMixin')
+        ##self.folder._setObject('temp_EmailMixin', o)
+        pass
+
+
+
+    # Manually created methods
 
 def test_suite():
     from unittest import TestSuite, makeSuite
     suite = TestSuite()
-    suite.addTest(makeSuite(MainTestCase))
+    suite.addTest(makeSuite(testHearing))
     return suite
 
 ##code-section module-footer #fill in your manual code here

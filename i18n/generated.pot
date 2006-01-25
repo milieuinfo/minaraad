@@ -15,3 +15,244 @@ msgstr ""
 "Language-Name: English\n"
 "Preferred-Encodings: latin1 utf-8\n"
 "Domain: minaraad\n"
+
+#. Default: "attachment"
+#: content/Advisory.py
+#: content/Presentation.py
+#: content/Pressrelease.py
+msgid "minaraad_help_attachment"
+msgstr ""
+
+#. Default: "contactpersons"
+#: MinaBundle.py
+msgid "minaraad_help_contactpersons"
+msgstr ""
+
+#. Default: "date"
+#: content/Advisory.py
+#: content/Study.py
+msgid "minaraad_help_date"
+msgstr ""
+
+#. Default: "department"
+#: content/ContactPerson.py
+msgid "minaraad_help_department"
+msgstr ""
+
+#. Default: "email"
+#: content/ContactPerson.py
+msgid "minaraad_help_email"
+msgstr ""
+
+#. Default: "end"
+#: content/Hearing.py
+msgid "minaraad_help_end"
+msgstr ""
+
+#. Default: "endhour"
+#: content/Presentation.py
+msgid "minaraad_help_endhour"
+msgstr ""
+
+#. Default: "endminutes"
+#: content/Presentation.py
+msgid "minaraad_help_endminutes"
+msgstr ""
+
+#. Default: "goal"
+#: content/Hearing.py
+msgid "minaraad_help_goal"
+msgstr ""
+
+#. Default: "jobtitle"
+#: content/ContactPerson.py
+msgid "minaraad_help_jobtitle"
+msgstr ""
+
+#. Default: "location"
+#: content/Hearing.py
+msgid "minaraad_help_location"
+msgstr ""
+
+#. Default: "name"
+#: content/ContactPerson.py
+msgid "minaraad_help_name"
+msgstr ""
+
+#. Default: "phonenumber"
+#: content/ContactPerson.py
+msgid "minaraad_help_phonenumber"
+msgstr ""
+
+#. Default: "plaintext"
+#: MinaBundle.py
+msgid "minaraad_help_plaintext"
+msgstr ""
+
+#. Default: "policy"
+#: content/Advisory.py
+msgid "minaraad_help_policy"
+msgstr ""
+
+#. Default: "speaker"
+#: content/Presentation.py
+msgid "minaraad_help_speaker"
+msgstr ""
+
+#. Default: "speakers"
+#: content/Study.py
+msgid "minaraad_help_speakers"
+msgstr ""
+
+#. Default: "start"
+#: content/Hearing.py
+msgid "minaraad_help_start"
+msgstr ""
+
+#. Default: "starthour"
+#: content/Presentation.py
+msgid "minaraad_help_starthour"
+msgstr ""
+
+#. Default: "startminutes"
+#: content/Presentation.py
+msgid "minaraad_help_startminutes"
+msgstr ""
+
+#. Default: "subheader"
+#: content/Hearing.py
+#: content/Pressrelease.py
+#: content/Study.py
+msgid "minaraad_help_subheader"
+msgstr ""
+
+#. Default: "summary"
+#: content/Presentation.py
+msgid "minaraad_help_summary"
+msgstr ""
+
+#. Default: "themes"
+#: content/Hearing.py
+msgid "minaraad_help_themes"
+msgstr ""
+
+#. Default: "Attachment"
+#: content/Advisory.py
+#: content/Presentation.py
+#: content/Pressrelease.py
+msgid "minaraad_label_attachment"
+msgstr ""
+
+#. Default: "Contactpersons"
+#: MinaBundle.py
+msgid "minaraad_label_contactpersons"
+msgstr ""
+
+#. Default: "Date"
+#: content/Advisory.py
+#: content/Study.py
+msgid "minaraad_label_date"
+msgstr ""
+
+#. Default: "Department"
+#: content/ContactPerson.py
+msgid "minaraad_label_department"
+msgstr ""
+
+#. Default: "Email"
+#: content/ContactPerson.py
+msgid "minaraad_label_email"
+msgstr ""
+
+#. Default: "End"
+#: content/Hearing.py
+msgid "minaraad_label_end"
+msgstr ""
+
+#. Default: "Endhour"
+#: content/Presentation.py
+msgid "minaraad_label_endhour"
+msgstr ""
+
+#. Default: "Endminutes"
+#: content/Presentation.py
+msgid "minaraad_label_endminutes"
+msgstr ""
+
+#. Default: "Goal"
+#: content/Hearing.py
+msgid "minaraad_label_goal"
+msgstr ""
+
+#. Default: "Jobtitle"
+#: content/ContactPerson.py
+msgid "minaraad_label_jobtitle"
+msgstr ""
+
+#. Default: "Location"
+#: content/Hearing.py
+msgid "minaraad_label_location"
+msgstr ""
+
+#. Default: "Name"
+#: content/ContactPerson.py
+msgid "minaraad_label_name"
+msgstr ""
+
+#. Default: "Phonenumber"
+#: content/ContactPerson.py
+msgid "minaraad_label_phonenumber"
+msgstr ""
+
+#. Default: "Plaintext"
+#: MinaBundle.py
+msgid "minaraad_label_plaintext"
+msgstr ""
+
+#. Default: "Policy"
+#: content/Advisory.py
+msgid "minaraad_label_policy"
+msgstr ""
+
+#. Default: "Speaker"
+#: content/Presentation.py
+msgid "minaraad_label_speaker"
+msgstr ""
+
+#. Default: "Speakers"
+#: content/Study.py
+msgid "minaraad_label_speakers"
+msgstr ""
+
+#. Default: "Start"
+#: content/Hearing.py
+msgid "minaraad_label_start"
+msgstr ""
+
+#. Default: "Starthour"
+#: content/Presentation.py
+msgid "minaraad_label_starthour"
+msgstr ""
+
+#. Default: "Startminutes"
+#: content/Presentation.py
+msgid "minaraad_label_startminutes"
+msgstr ""
+
+#. Default: "Subheader"
+#: content/Hearing.py
+#: content/Pressrelease.py
+#: content/Study.py
+msgid "minaraad_label_subheader"
+msgstr ""
+
+#. Default: "Summary"
+#: content/Presentation.py
+msgid "minaraad_label_summary"
+msgstr ""
+
+#. Default: "Themes"
+#: content/Hearing.py
+msgid "minaraad_label_themes"
+msgstr ""
+

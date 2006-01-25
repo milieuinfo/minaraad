@@ -1,4 +1,4 @@
-# File: EmailMixin.py
+# File: NewsLetter.py
 # 
 # Copyright (c) 2006 by Zest Software
 # Generator: ArchGenXML Version 1.4.0-final 
@@ -24,7 +24,7 @@ __docformat__ = 'plaintext'
 
 from AccessControl import ClassSecurityInfo
 from Products.Archetypes.atapi import *
-
+from Products.minaraad.MinaBundle import MinaBundle
 
 
 from Products.minaraad.config import *
@@ -32,6 +32,17 @@ from Products.minaraad.config import *
 ##/code-section module-header
 
 schema=Schema((
+    FileField('attachment',
+        widget=FileWidget(
+            label='Attachment',
+            label_msgid='minaraad_label_attachment',
+            description_msgid='minaraad_help_attachment',
+            i18n_domain='minaraad',
+        ),
+        storage=AttributeStorage(),
+        multiValued=True
+    ),
+
 ),
 )
 
@@ -39,25 +50,46 @@ schema=Schema((
 ##code-section after-local-schema #fill in your manual code here
 ##/code-section after-local-schema
 
-EmailMixin_schema = schema
+NewsLetter_schema = BaseSchema + \
+    getattr(MinaBundle,'schema',Schema(())) + \
+    schema
 
 ##code-section after-schema #fill in your manual code here
 ##/code-section after-schema
 
-class EmailMixin:
+class NewsLetter(MinaBundle,BaseContent):
     security = ClassSecurityInfo()
-    __implements__ = ()
+    __implements__ = (getattr(MinaBundle,'__implements__',()),) + (getattr(BaseContent,'__implements__',()),)
 
 
-    allowed_content_types      = []
-    schema = EmailMixin_schema
+    # This name appears in the 'add' box
+    archetype_name             = 'NewsLetter'
+
+    meta_type                  = 'NewsLetter'
+    portal_type                = 'NewsLetter'
+    allowed_content_types      = [] + list(getattr(MinaBundle, 'allowed_content_types', []))
+    filter_content_types       = 0
+    global_allow               = 1
+    allow_discussion           = 0
+    #content_icon               = 'NewsLetter.gif'
+    immediate_view             = 'base_view'
+    default_view               = 'base_view'
+    suppl_views                = ()
+    typeDescription            = "NewsLetter"
+    typeDescMsgId              = 'description_edit_newsletter'
+
+    _at_rename_after_creation  = True
+
+    schema = NewsLetter_schema
 
     ##code-section class-header #fill in your manual code here
     ##/code-section class-header
 
 
     #Methods
-# end of class EmailMixin
+
+registerType(NewsLetter,PROJECTNAME)
+# end of class NewsLetter
 
 ##code-section module-footer #fill in your manual code here
 ##/code-section module-footer

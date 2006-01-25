@@ -1,4 +1,4 @@
-# File: Advisory.py
+# File: Presentation.py
 # 
 # Copyright (c) 2006 by Zest Software
 # Generator: ArchGenXML Version 1.4.0-final 
@@ -24,8 +24,7 @@ __docformat__ = 'plaintext'
 
 from AccessControl import ClassSecurityInfo
 from Products.Archetypes.atapi import *
-from Products.minaraad.MinaBundle import MinaBundle
-from Products.minaraad.PostMixin import PostMixin
+
 
 
 from Products.minaraad.config import *
@@ -33,20 +32,58 @@ from Products.minaraad.config import *
 ##/code-section module-header
 
 schema=Schema((
-    DateTimeField('date',
-        widget=CalendarWidget(
-            label='Date',
-            label_msgid='minaraad_label_date',
-            description_msgid='minaraad_help_date',
+    StringField('speaker',
+        widget=StringWidget(
+            label='Speaker',
+            label_msgid='minaraad_label_speaker',
+            description_msgid='minaraad_help_speaker',
             i18n_domain='minaraad',
         )
     ),
 
-    StringField('policy',
+    StringField('summary',
+        widget=StringWidget(
+            label='Summary',
+            label_msgid='minaraad_label_summary',
+            description_msgid='minaraad_help_summary',
+            i18n_domain='minaraad',
+        )
+    ),
+
+    IntegerField('starthour',
         widget=SelectionWidget(
-            label='Policy',
-            label_msgid='minaraad_label_policy',
-            description_msgid='minaraad_help_policy',
+            label='Starthour',
+            label_msgid='minaraad_label_starthour',
+            description_msgid='minaraad_help_starthour',
+            i18n_domain='minaraad',
+        ),
+        vocabulary=[7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]
+    ),
+
+    IntegerField('startminutes',
+        widget=IntegerWidget(
+            label='Startminutes',
+            label_msgid='minaraad_label_startminutes',
+            description_msgid='minaraad_help_startminutes',
+            i18n_domain='minaraad',
+        )
+    ),
+
+    IntegerField('endhour',
+        widget=SelectionWidget(
+            label='Endhour',
+            label_msgid='minaraad_label_endhour',
+            description_msgid='minaraad_help_endhour',
+            i18n_domain='minaraad',
+        ),
+        vocabulary=[7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]
+    ),
+
+    IntegerField('endminutes',
+        widget=IntegerWidget(
+            label='Endminutes',
+            label_msgid='minaraad_label_endminutes',
+            description_msgid='minaraad_help_endminutes',
             i18n_domain='minaraad',
         )
     ),
@@ -69,42 +106,36 @@ schema=Schema((
 ##code-section after-local-schema #fill in your manual code here
 ##/code-section after-local-schema
 
-Advisory_schema = BaseSchema + \
-    getattr(MinaBundle,'schema',Schema(())) + \
-    getattr(PostMixin,'schema',Schema(())) + \
+Presentation_schema = BaseSchema + \
     schema
 
 ##code-section after-schema #fill in your manual code here
-Advisory_schema['description'].isMetadata = False
 ##/code-section after-schema
 
-class Advisory(MinaBundle,PostMixin,BaseContent):
-    """
-    An advisory
-    """
+class Presentation(BaseContent):
     security = ClassSecurityInfo()
-    __implements__ = (getattr(MinaBundle,'__implements__',()),) + (getattr(PostMixin,'__implements__',()),) + (getattr(BaseContent,'__implements__',()),)
+    __implements__ = (getattr(BaseContent,'__implements__',()),)
 
 
     # This name appears in the 'add' box
-    archetype_name             = 'Advisory'
+    archetype_name             = 'Presentation'
 
-    meta_type                  = 'Advisory'
-    portal_type                = 'Advisory'
-    allowed_content_types      = [] + list(getattr(MinaBundle, 'allowed_content_types', [])) + list(getattr(PostMixin, 'allowed_content_types', []))
+    meta_type                  = 'Presentation'
+    portal_type                = 'Presentation'
+    allowed_content_types      = []
     filter_content_types       = 0
-    global_allow               = 1
+    global_allow               = 0
     allow_discussion           = 0
-    #content_icon               = 'Advisory.gif'
+    #content_icon               = 'Presentation.gif'
     immediate_view             = 'base_view'
     default_view               = 'base_view'
     suppl_views                = ()
-    typeDescription            = "Advisory"
-    typeDescMsgId              = 'description_edit_advisory'
+    typeDescription            = "Presentation"
+    typeDescMsgId              = 'description_edit_presentation'
 
     _at_rename_after_creation  = True
 
-    schema = Advisory_schema
+    schema = Presentation_schema
 
     ##code-section class-header #fill in your manual code here
     ##/code-section class-header
@@ -112,8 +143,8 @@ class Advisory(MinaBundle,PostMixin,BaseContent):
 
     #Methods
 
-registerType(Advisory,PROJECTNAME)
-# end of class Advisory
+registerType(Presentation,PROJECTNAME)
+# end of class Presentation
 
 ##code-section module-footer #fill in your manual code here
 ##/code-section module-footer
