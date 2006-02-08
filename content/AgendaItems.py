@@ -1,4 +1,4 @@
-# File: ContactPerson.py
+# File: AgendaItems.py
 #
 # Copyright (c) 2006 by Zest Software
 # Generator: ArchGenXML Version 1.4.1 svn/devel
@@ -38,48 +38,70 @@ from Products.minaraad.config import *
 schema = Schema((
 
     StringField(
-        name='name',
+        name='speaker',
         widget=StringWidget(
-            label='Name',
-            label_msgid='minaraad_label_name',
+            label='Speaker',
+            label_msgid='minaraad_label_speaker',
             i18n_domain='minaraad',
         )
     ),
 
     StringField(
-        name='jobtitle',
+        name='summary',
         widget=StringWidget(
-            label='Jobtitle',
-            label_msgid='minaraad_label_jobtitle',
+            label='Summary',
+            label_msgid='minaraad_label_summary',
             i18n_domain='minaraad',
         )
     ),
 
-    StringField(
-        name='department',
-        widget=StringWidget(
-            label='Department',
-            label_msgid='minaraad_label_department',
+    IntegerField(
+        name='starthour',
+        widget=SelectionWidget(
+            label='Starthour',
+            label_msgid='minaraad_label_starthour',
+            i18n_domain='minaraad',
+        ),
+        vocabulary=[7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]
+    ),
+
+    IntegerField(
+        name='startminutes',
+        widget=IntegerWidget(
+            label='Startminutes',
+            label_msgid='minaraad_label_startminutes',
             i18n_domain='minaraad',
         )
     ),
 
-    StringField(
-        name='email',
-        widget=StringWidget(
-            label='Email',
-            label_msgid='minaraad_label_email',
+    IntegerField(
+        name='endhour',
+        widget=SelectionWidget(
+            label='Endhour',
+            label_msgid='minaraad_label_endhour',
+            i18n_domain='minaraad',
+        ),
+        vocabulary=[7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]
+    ),
+
+    IntegerField(
+        name='endminutes',
+        widget=IntegerWidget(
+            label='Endminutes',
+            label_msgid='minaraad_label_endminutes',
             i18n_domain='minaraad',
         )
     ),
 
-    StringField(
-        name='phonenumber',
-        widget=StringWidget(
-            label='Phonenumber',
-            label_msgid='minaraad_label_phonenumber',
+    FileField(
+        name='attachment',
+        widget=FileWidget(
+            label='Attachment',
+            label_msgid='minaraad_label_attachment',
             i18n_domain='minaraad',
-        )
+        ),
+        storage=AttributeStorage(),
+        multiValued=True
     ),
 
 ),
@@ -89,36 +111,36 @@ schema = Schema((
 ##code-section after-local-schema #fill in your manual code here
 ##/code-section after-local-schema
 
-ContactPerson_schema = BaseSchema.copy() + \
+AgendaItems_schema = BaseSchema.copy() + \
     schema.copy()
 
 ##code-section after-schema #fill in your manual code here
 ##/code-section after-schema
 
-class ContactPerson(BaseContent):
+class AgendaItems(BaseContent):
     security = ClassSecurityInfo()
     __implements__ = (getattr(BaseContent,'__implements__',()),)
 
 
     # This name appears in the 'add' box
-    archetype_name = 'ContactPerson'
+    archetype_name = 'AgendaItems'
 
-    meta_type = 'ContactPerson'
-    portal_type = 'ContactPerson'
+    meta_type = 'AgendaItems'
+    portal_type = 'AgendaItems'
     allowed_content_types = []
     filter_content_types = 0
-    global_allow = 1
+    global_allow = 0
     allow_discussion = False
-    #content_icon = 'ContactPerson.gif'
+    #content_icon = 'AgendaItems.gif'
     immediate_view = 'base_view'
     default_view = 'base_view'
     suppl_views = ()
-    typeDescription = "ContactPerson"
-    typeDescMsgId = 'description_edit_contactperson'
+    typeDescription = "AgendaItems"
+    typeDescMsgId = 'description_edit_agendaitems'
 
     _at_rename_after_creation = True
 
-    schema = ContactPerson_schema
+    schema = AgendaItems_schema
 
     ##code-section class-header #fill in your manual code here
     ##/code-section class-header
@@ -126,8 +148,8 @@ class ContactPerson(BaseContent):
 
     # Methods
 
-registerType(ContactPerson,PROJECTNAME)
-# end of class ContactPerson
+registerType(AgendaItems,PROJECTNAME)
+# end of class AgendaItems
 
 ##code-section module-footer #fill in your manual code here
 ##/code-section module-footer

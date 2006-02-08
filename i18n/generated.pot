@@ -143,6 +143,11 @@ msgstr ""
 msgid "minaraad_label_attachment"
 msgstr ""
 
+#. Default: "Body"
+#: content/Hearing.py
+msgid "minaraad_label_body"
+msgstr ""
+
 #. Default: "Contactpersons"
 #: MinaBundle.py
 msgid "minaraad_label_contactpersons"
@@ -159,6 +164,11 @@ msgstr ""
 msgid "minaraad_label_department"
 msgstr ""
 
+#. Default: "Description"
+#: content/Hearing.py
+msgid "minaraad_label_description"
+msgstr ""
+
 #. Default: "Email"
 #: content/ContactPerson.py
 msgid "minaraad_label_email"
@@ -171,11 +181,13 @@ msgstr ""
 
 #. Default: "Endhour"
 #: content/Presentation.py
+#: content/AgendaItems.py
 msgid "minaraad_label_endhour"
 msgstr ""
 
 #. Default: "Endminutes"
 #: content/Presentation.py
+#: content/AgendaItems.py
 msgid "minaraad_label_endminutes"
 msgstr ""
 
@@ -206,6 +218,7 @@ msgstr ""
 
 #. Default: "Plaintext"
 #: MinaBundle.py
+#: content/Hearing.py
 msgid "minaraad_label_plaintext"
 msgstr ""
 
@@ -216,6 +229,7 @@ msgstr ""
 
 #. Default: "Speaker"
 #: content/Presentation.py
+#: content/AgendaItems.py
 msgid "minaraad_label_speaker"
 msgstr ""
 
@@ -231,11 +245,13 @@ msgstr ""
 
 #. Default: "Starthour"
 #: content/Presentation.py
+#: content/AgendaItems.py
 msgid "minaraad_label_starthour"
 msgstr ""
 
 #. Default: "Startminutes"
 #: content/Presentation.py
+#: content/AgendaItems.py
 msgid "minaraad_label_startminutes"
 msgstr ""
 
@@ -248,6 +264,7 @@ msgstr ""
 
 #. Default: "Summary"
 #: content/Presentation.py
+#: content/AgendaItems.py
 msgid "minaraad_label_summary"
 msgstr ""
 

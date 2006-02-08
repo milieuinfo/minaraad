@@ -1,28 +1,30 @@
-""" Extensions/Install.py """
-
-# Copyright (c) 2006 by Zest Software
+# File: minaraad.py
 #
-# Generated: 
-# Generator: ArchGenXML Version 1.4.0-final
+# Copyright (c) 2006 by Zest Software
+# Generator: ArchGenXML Version 1.4.1 svn/devel
 #            http://plone.org/products/archgenxml
 #
-# GNU General Public Licence (GPL)
-# 
-# This program is free software; you can redistribute it and/or modify it under
-# the terms of the GNU General Public License as published by the Free Software
-# Foundation; either version 2 of the License, or (at your option) any later
-# version.
-# This program is distributed in the hope that it will be useful, but WITHOUT
-# ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
-# FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
-# details.
-# You should have received a copy of the GNU General Public License along with
-# this program; if not, write to the Free Software Foundation, Inc., 59 Temple
-# Place, Suite 330, Boston, MA  02111-1307  USA
+# GNU General Public License (GPL)
 #
-__author__    = '''Rocky Burt <r.burt@zestsoftware.nl>'''
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+# 02110-1301, USA.
+#
+
+__author__ = """Rocky Burt <r.burt@zestsoftware.nl>"""
 __docformat__ = 'plaintext'
-__version__   = '$ Revision 0.0 $'[11:-2]
+
 
 import os.path
 import sys
@@ -68,6 +70,43 @@ def install(self):
                  PROJECTNAME)
     install_subskin(self, out, GLOBALS)
 
+    #autoinstall tools
+    portal = getToolByName(self,'portal_url').getPortalObject()
+    for t in ['Themes']:
+        try:
+            portal.manage_addProduct[PROJECTNAME].manage_addTool(t)
+        except BadRequest:
+            # if an instance with the same name already exists this error will
+            # be swallowed. Zope raises in an unelegant manner a 'Bad Request' error
+            pass
+        except:
+            e = sys.exc_info()
+            if e[0] != 'Bad Request':
+                raise
+    #hide tools in the navigation
+    portalProperties = getToolByName(self, 'portal_properties', None)
+    if portalProperties is not None:
+        navtreeProperties = getattr(portalProperties, 'navtree_properties', None)
+        if navtreeProperties:
+            navtreeProperties.idsNotToList = list(navtreeProperties.idsNotToList) + \
+                                  [toolname for toolname in ['portal_themes'] \
+                                            if toolname not in navtreeProperties.idsNotToList]
+    # register tools as configlets
+    portal_controlpanel = getToolByName(self,'portal_controlpanel')
+    portal_controlpanel.registerConfiglet(
+        'Themes', #id of your Tool
+        'minaraad', # Title of your Troduct
+        'string:${portal_url}/portal_themes/themes_config/',
+        'python:True', # a condition
+        'Manage Portal', # access permission
+        'Products', # section to which the configlet should be added: (Plone,Products,Members)
+        1, # visibility
+        'ThemesID',
+        'site_icon.gif', # icon in control_panel
+        'Configuration for tool Themes.',
+        None,
+    )
+
 
     # try to call a workflow install method
     # in 'InstallWorkflows.py' method 'installWorkflows'
@@ -89,7 +128,7 @@ def install(self):
     factory_types=[
         "Advisory",
         "Hearing",
-        "Presentation",
+        "AgendaItems",
         ] + factory_tool.getFactoryTypes().keys()
     factory_tool.manage_setPortalFactoryTypes(listOfTypeIds=factory_types)
 
@@ -145,6 +184,22 @@ def install(self):
 def uninstall(self):
     out = StringIO()
 
+    # unhide tools
+    portalProperties = getToolByName(self, 'portal_properties', None)
+    if portalProperties is not None:
+        navtreeProperties = getattr(portalProperties, 'navtree_properties', None)
+        if navtreeProperties:
+            navtreeProperties.idsNotToList = list(navtreeProperties.idsNotToList)
+            for toolname in [toolname for toolname in ['portal_themes'] \
+                                      if toolname not in navtreeProperties.idsNotToList]:
+                if toolname in navtreeProperties.idsNotToList:
+                    navtreeProperties.idsNotToList.remove(toolname)
+
+
+    # unregister tools as configlets
+    portal_control_panel = getToolByName(self,'portal_controlpanel', None)
+    if portal_control_panel is not None:
+        portal_control_panel.unregisterConfiglet('Themes')
     # try to call a workflow uninstall method
     # in 'InstallWorkflows.py' method 'uninstallWorkflows'
     

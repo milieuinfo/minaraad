@@ -1,24 +1,28 @@
 # File: AnnualReport.py
-# 
+#
 # Copyright (c) 2006 by Zest Software
-# Generator: ArchGenXML Version 1.4.0-final 
+# Generator: ArchGenXML Version 1.4.1 svn/devel
 #            http://plone.org/products/archgenxml
 #
-# GNU General Public Licence (GPL)
-# 
-# This program is free software; you can redistribute it and/or modify it under
-# the terms of the GNU General Public License as published by the Free Software
-# Foundation; either version 2 of the License, or (at your option) any later
-# version.
-# This program is distributed in the hope that it will be useful, but WITHOUT
-# ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
-# FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
-# details.
-# You should have received a copy of the GNU General Public License along with
-# this program; if not, write to the Free Software Foundation, Inc., 59 Temple
-# Place, Suite 330, Boston, MA  02111-1307  USA
+# GNU General Public License (GPL)
 #
-__author__  = '''Rocky Burt <r.burt@zestsoftware.nl>'''
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+# 02110-1301, USA.
+#
+
+__author__ = """Rocky Burt <r.burt@zestsoftware.nl>"""
 __docformat__ = 'plaintext'
 
 
@@ -32,7 +36,8 @@ from Products.minaraad.config import *
 ##code-section module-header #fill in your manual code here
 ##/code-section module-header
 
-schema=Schema((
+schema = Schema((
+
 ),
 )
 
@@ -40,10 +45,10 @@ schema=Schema((
 ##code-section after-local-schema #fill in your manual code here
 ##/code-section after-local-schema
 
-AnnualReport_schema = BaseSchema + \
-    getattr(NewsLetter,'schema',Schema(())) + \
-    getattr(PostMixin,'schema',Schema(())) + \
-    schema
+AnnualReport_schema = BaseSchema.copy() + \
+    getattr(NewsLetter,'schema',Schema(())).copy() + \
+    getattr(PostMixin,'schema',Schema(())).copy() + \
+    schema.copy()
 
 ##code-section after-schema #fill in your manual code here
 ##/code-section after-schema
@@ -54,22 +59,22 @@ class AnnualReport(NewsLetter,PostMixin,BaseContent):
 
 
     # This name appears in the 'add' box
-    archetype_name             = 'AnnualReport'
+    archetype_name = 'AnnualReport'
 
-    meta_type                  = 'AnnualReport'
-    portal_type                = 'AnnualReport'
-    allowed_content_types      = [] + list(getattr(NewsLetter, 'allowed_content_types', [])) + list(getattr(PostMixin, 'allowed_content_types', []))
-    filter_content_types       = 0
-    global_allow               = 1
-    allow_discussion           = 0
-    #content_icon               = 'AnnualReport.gif'
-    immediate_view             = 'base_view'
-    default_view               = 'base_view'
-    suppl_views                = ()
-    typeDescription            = "AnnualReport"
-    typeDescMsgId              = 'description_edit_annualreport'
+    meta_type = 'AnnualReport'
+    portal_type = 'AnnualReport'
+    allowed_content_types = [] + list(getattr(NewsLetter, 'allowed_content_types', [])) + list(getattr(PostMixin, 'allowed_content_types', []))
+    filter_content_types = 0
+    global_allow = 1
+    allow_discussion = False
+    #content_icon = 'AnnualReport.gif'
+    immediate_view = 'base_view'
+    default_view = 'base_view'
+    suppl_views = ()
+    typeDescription = "AnnualReport"
+    typeDescMsgId = 'description_edit_annualreport'
 
-    _at_rename_after_creation  = True
+    _at_rename_after_creation = True
 
     schema = AnnualReport_schema
 
@@ -77,7 +82,7 @@ class AnnualReport(NewsLetter,PostMixin,BaseContent):
     ##/code-section class-header
 
 
-    #Methods
+    # Methods
 
 registerType(AnnualReport,PROJECTNAME)
 # end of class AnnualReport

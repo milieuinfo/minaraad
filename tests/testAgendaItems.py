@@ -1,4 +1,4 @@
-# File: testHearing.py
+# File: testAgendaItems.py
 #
 # Copyright (c) 2006 by Zest Software
 # Generator: ArchGenXML Version 1.4.1 svn/devel
@@ -33,7 +33,7 @@ if __name__ == '__main__':
 ##/code-section module-header
 
 #
-# Test-cases for class(es) Hearing
+# Test-cases for class(es) AgendaItems
 #
 
 from Testing import ZopeTestCase
@@ -41,32 +41,21 @@ from Products.minaraad.config import *
 from Products.minaraad.tests.MainTestCase import MainTestCase
 
 # Import the tested classes
-from Products.minaraad.content.Hearing import Hearing
+from Products.minaraad.content.AgendaItems import AgendaItems
 
 ##code-section module-beforeclass #fill in your manual code here
 ##/code-section module-beforeclass
 
 
-class testHearing(MainTestCase):
-    """ test-cases for class(es) Hearing
-    """
+class testAgendaItems(MainTestCase):
+    """Test-cases for class(es) AgendaItems."""
 
-    ##code-section class-header_testHearing #fill in your manual code here
-    ##/code-section class-header_testHearing
+    ##code-section class-header_testAgendaItems #fill in your manual code here
+    ##/code-section class-header_testAgendaItems
 
     def afterSetUp(self):
         """
         """
-        pass
-
-    # from class EmailMixin:
-    def test_email(self):
-        """
-        """
-        #Uncomment one of the following lines as needed
-        ##self.loginAsPortalOwner()
-        ##o=EmailMixin('temp_EmailMixin')
-        ##self.folder._setObject('temp_EmailMixin', o)
         pass
 
     # Manually created methods
@@ -75,7 +64,7 @@ class testHearing(MainTestCase):
 def test_suite():
     from unittest import TestSuite, makeSuite
     suite = TestSuite()
-    suite.addTest(makeSuite(testHearing))
+    suite.addTest(makeSuite(testAgendaItems))
     return suite
 
 ##code-section module-footer #fill in your manual code here

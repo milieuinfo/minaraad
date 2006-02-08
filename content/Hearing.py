@@ -1,87 +1,121 @@
 # File: Hearing.py
-# 
+#
 # Copyright (c) 2006 by Zest Software
-# Generator: ArchGenXML Version 1.4.0-final 
+# Generator: ArchGenXML Version 1.4.1 svn/devel
 #            http://plone.org/products/archgenxml
 #
-# GNU General Public Licence (GPL)
-# 
-# This program is free software; you can redistribute it and/or modify it under
-# the terms of the GNU General Public License as published by the Free Software
-# Foundation; either version 2 of the License, or (at your option) any later
-# version.
-# This program is distributed in the hope that it will be useful, but WITHOUT
-# ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
-# FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
-# details.
-# You should have received a copy of the GNU General Public License along with
-# this program; if not, write to the Free Software Foundation, Inc., 59 Temple
-# Place, Suite 330, Boston, MA  02111-1307  USA
+# GNU General Public License (GPL)
 #
-__author__  = '''Rocky Burt <r.burt@zestsoftware.nl>'''
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+# 02110-1301, USA.
+#
+
+__author__ = """Rocky Burt <r.burt@zestsoftware.nl>"""
 __docformat__ = 'plaintext'
 
 
 from AccessControl import ClassSecurityInfo
 from Products.Archetypes.atapi import *
-from Products.minaraad.MinaBundle import MinaBundle
+from Products.minaraad.EmailMixin import EmailMixin
 
 
 from Products.minaraad.config import *
 ##code-section module-header #fill in your manual code here
 ##/code-section module-header
 
-schema=Schema((
-    StringField('subheader',
+schema = Schema((
+
+    StringField(
+        name='subheader',
         widget=StringWidget(
             label='Subheader',
             label_msgid='minaraad_label_subheader',
-            description_msgid='minaraad_help_subheader',
             i18n_domain='minaraad',
         )
     ),
 
-    TextField('goal',
+    TextField(
+        name='goal',
         widget=TextAreaWidget(
             label='Goal',
             label_msgid='minaraad_label_goal',
-            description_msgid='minaraad_help_goal',
             i18n_domain='minaraad',
         )
     ),
 
-    StringField('location',
+    TextField(
+        name='description',
+        widget=TextAreaWidget(
+            label='Description',
+            label_msgid='minaraad_label_description',
+            i18n_domain='minaraad',
+        )
+    ),
+
+    TextField(
+        name='body',
+        allowable_content_types=('text/plain', 'text/structured', 'text/html', 'application/msword',),
+        widget=RichWidget(
+            label='Body',
+            label_msgid='minaraad_label_body',
+            i18n_domain='minaraad',
+        ),
+        default_output_type='text/html'
+    ),
+
+    StringField(
+        name='location',
         widget=StringWidget(
             label='Location',
             label_msgid='minaraad_label_location',
-            description_msgid='minaraad_help_location',
             i18n_domain='minaraad',
         )
     ),
 
-    DateTimeField('start',
+    DateTimeField(
+        name='start',
         widget=CalendarWidget(
             label='Start',
             label_msgid='minaraad_label_start',
-            description_msgid='minaraad_help_start',
             i18n_domain='minaraad',
         )
     ),
 
-    DateTimeField('end',
+    DateTimeField(
+        name='end',
         widget=CalendarWidget(
             label='End',
             label_msgid='minaraad_label_end',
-            description_msgid='minaraad_help_end',
             i18n_domain='minaraad',
         )
     ),
 
-    StringField('themes',
+    StringField(
+        name='themes',
         widget=SelectionWidget(
             label='Themes',
             label_msgid='minaraad_label_themes',
-            description_msgid='minaraad_help_themes',
+            i18n_domain='minaraad',
+        )
+    ),
+
+    TextField(
+        name='plaintext',
+        widget=TextAreaWidget(
+            label='Plaintext',
+            label_msgid='minaraad_label_plaintext',
             i18n_domain='minaraad',
         )
     ),
@@ -93,35 +127,35 @@ schema=Schema((
 ##code-section after-local-schema #fill in your manual code here
 ##/code-section after-local-schema
 
-Hearing_schema = BaseFolderSchema + \
-    getattr(MinaBundle,'schema',Schema(())) + \
-    schema
+Hearing_schema = BaseFolderSchema.copy() + \
+    getattr(EmailMixin,'schema',Schema(())).copy() + \
+    schema.copy()
 
 ##code-section after-schema #fill in your manual code here
 ##/code-section after-schema
 
-class Hearing(MinaBundle,BaseFolder):
+class Hearing(EmailMixin,BaseFolder):
     security = ClassSecurityInfo()
-    __implements__ = (getattr(MinaBundle,'__implements__',()),) + (getattr(BaseFolder,'__implements__',()),)
+    __implements__ = (getattr(EmailMixin,'__implements__',()),) + (getattr(BaseFolder,'__implements__',()),)
 
 
     # This name appears in the 'add' box
-    archetype_name             = 'Hearing'
+    archetype_name = 'Hearing'
 
-    meta_type                  = 'Hearing'
-    portal_type                = 'Hearing'
-    allowed_content_types      = ['Presentation'] + list(getattr(MinaBundle, 'allowed_content_types', []))
-    filter_content_types       = 1
-    global_allow               = 1
-    allow_discussion           = 0
-    #content_icon               = 'Hearing.gif'
-    immediate_view             = 'base_view'
-    default_view               = 'base_view'
-    suppl_views                = ()
-    typeDescription            = "Hearing"
-    typeDescMsgId              = 'description_edit_hearing'
+    meta_type = 'Hearing'
+    portal_type = 'Hearing'
+    allowed_content_types = ['AgendaItems'] + list(getattr(EmailMixin, 'allowed_content_types', []))
+    filter_content_types = 1
+    global_allow = 1
+    allow_discussion = False
+    #content_icon = 'Hearing.gif'
+    immediate_view = 'base_view'
+    default_view = 'base_view'
+    suppl_views = ()
+    typeDescription = "Hearing"
+    typeDescMsgId = 'description_edit_hearing'
 
-    _at_rename_after_creation  = True
+    _at_rename_after_creation = True
 
     schema = Hearing_schema
 
@@ -129,7 +163,7 @@ class Hearing(MinaBundle,BaseFolder):
     ##/code-section class-header
 
 
-    #Methods
+    # Methods
 
 registerType(Hearing,PROJECTNAME)
 # end of class Hearing

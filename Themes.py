@@ -1,4 +1,4 @@
-# File: ContactPerson.py
+# File: Themes.py
 #
 # Copyright (c) 2006 by Zest Software
 # Generator: ArchGenXML Version 1.4.1 svn/devel
@@ -32,55 +32,14 @@ from Products.Archetypes.atapi import *
 
 
 from Products.minaraad.config import *
+
+from Products.CMFCore.utils import UniqueObject
+
+    
 ##code-section module-header #fill in your manual code here
 ##/code-section module-header
 
 schema = Schema((
-
-    StringField(
-        name='name',
-        widget=StringWidget(
-            label='Name',
-            label_msgid='minaraad_label_name',
-            i18n_domain='minaraad',
-        )
-    ),
-
-    StringField(
-        name='jobtitle',
-        widget=StringWidget(
-            label='Jobtitle',
-            label_msgid='minaraad_label_jobtitle',
-            i18n_domain='minaraad',
-        )
-    ),
-
-    StringField(
-        name='department',
-        widget=StringWidget(
-            label='Department',
-            label_msgid='minaraad_label_department',
-            i18n_domain='minaraad',
-        )
-    ),
-
-    StringField(
-        name='email',
-        widget=StringWidget(
-            label='Email',
-            label_msgid='minaraad_label_email',
-            i18n_domain='minaraad',
-        )
-    ),
-
-    StringField(
-        name='phonenumber',
-        widget=StringWidget(
-            label='Phonenumber',
-            label_msgid='minaraad_label_phonenumber',
-            i18n_domain='minaraad',
-        )
-    ),
 
 ),
 )
@@ -89,45 +48,81 @@ schema = Schema((
 ##code-section after-local-schema #fill in your manual code here
 ##/code-section after-local-schema
 
-ContactPerson_schema = BaseSchema.copy() + \
+Themes_schema = BaseSchema.copy() + \
     schema.copy()
 
 ##code-section after-schema #fill in your manual code here
 ##/code-section after-schema
 
-class ContactPerson(BaseContent):
+class Themes(UniqueObject,BaseContent):
     security = ClassSecurityInfo()
-    __implements__ = (getattr(BaseContent,'__implements__',()),)
+    __implements__ = (getattr(UniqueObject,'__implements__',()),) + (getattr(BaseContent,'__implements__',()),)
 
 
     # This name appears in the 'add' box
-    archetype_name = 'ContactPerson'
+    archetype_name = 'Themes'
 
-    meta_type = 'ContactPerson'
-    portal_type = 'ContactPerson'
+    meta_type = 'Themes'
+    portal_type = 'Themes'
     allowed_content_types = []
     filter_content_types = 0
-    global_allow = 1
+    global_allow = 0
     allow_discussion = False
-    #content_icon = 'ContactPerson.gif'
+    #content_icon = 'Themes.gif'
     immediate_view = 'base_view'
     default_view = 'base_view'
     suppl_views = ()
-    typeDescription = "ContactPerson"
-    typeDescMsgId = 'description_edit_contactperson'
+    typeDescription = "Themes"
+    typeDescMsgId = 'description_edit_themes'
+    #toolicon = 'Themes.gif'
 
-    _at_rename_after_creation = True
-
-    schema = ContactPerson_schema
+    schema = Themes_schema
 
     ##code-section class-header #fill in your manual code here
     ##/code-section class-header
 
 
-    # Methods
+    # tool-constructors have no id argument, the id is fixed
+    def __init__(self, id=None):
+        BaseContent.__init__(self,'portal_themes')
+        
+        ##code-section constructor-footer #fill in your manual code here
+        ##/code-section constructor-footer
 
-registerType(ContactPerson,PROJECTNAME)
-# end of class ContactPerson
+
+
+    # Methods
+    # Manually created methods
+
+    security.declareProtected('View', "getThemesList")
+    def getThemesList(self):
+        themes_list = ['Alles', 'Water', 'Klimaat & energie', 'Afval', 
+        'Bodem', 'Europa & Duurzame ontwikkeling', 'Mobiliteit', 
+        'Ruimtelijke ordening', 'Natuur & landbouw', 'NME', 'Milieubegroting', 
+        'Milieuplanning', 'Milieureglementering', 'Instrumenten',]
+        try:
+            return self.themes
+        except AttributeError:
+            self.themes = themes_list
+            return self.themes
+    
+
+    def configure_themes(self, themes, REQUEST=None, 
+        installBeforeUnload=None):
+        """Delete resource types through the ZMI"""
+        
+        if installBeforeUnload is not None:
+            self.install_beforeunload = bool(installBeforeUnload)
+            
+        self.themes = list(themes)
+        
+        if REQUEST:
+            REQUEST.RESPONSE.redirect(self.absolute_url() + '/themes_config')
+
+
+
+registerType(Themes,PROJECTNAME)
+# end of class Themes
 
 ##code-section module-footer #fill in your manual code here
 ##/code-section module-footer
