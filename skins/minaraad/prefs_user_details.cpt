@@ -85,7 +85,8 @@
                                     gender python:request.get('gender', member.getProperty('gender', ''));
                                     tabindex tabindex/next;">
     
-                            <label i18n:translate="label_gender">Gender</label>
+                            <label i18n:domain="minaraad"
+                                   i18n:translate="label_gender">Gender</label>
                             <br />
                             <select name="gender">
                                 <tal:block tal:repeat="option genders">
@@ -122,7 +123,8 @@
                                                 company python:request.get('company', member.getProperty('company', ''));"
                                     tal:attributes="class python:test(error, 'field error', 'field')">
         
-                                <label for="company" 
+                                <label for="company"
+                                    i18n:domain="minaraad" 
                                     i18n:translate="label_company">Company</label>
         
                                 <div tal:content="error">Validation error output</div>
@@ -142,7 +144,8 @@
                                                 jobtitle python:request.get('jobtitle', member.getProperty('jobtitle', ''));"
                                     tal:attributes="class python:test(error, 'field error', 'field')">
         
-                                <label for="jobtitle" 
+                                <label for="jobtitle"
+                                    i18n:domain="minaraad" 
                                     i18n:translate="label_jobtitle">Job title</label>
         
                                 <div tal:content="error">Validation error output</div>
@@ -164,6 +167,7 @@
                                     tal:attributes="class python:test(error, 'field error', 'field')">
         
                                 <label for="street" 
+                                    i18n:domain="minaraad"
                                     i18n:translate="label_street">Street</label>
                                 <span class="fieldRequired" title="Required"
                                     i18n:attributes="title title_required;"
@@ -187,6 +191,7 @@
                                     tal:attributes="class python:test(error, 'field error', 'field')">
         
                                 <label for="housenumber" 
+                                    i18n:domain="minaraad"
                                     i18n:translate="label_housenumber">House number</label>
                                 <span class="fieldRequired" title="Required"
                                     i18n:attributes="title title_required;"
@@ -210,7 +215,8 @@
                                     tal:attributes="class python:test(error, 'field error', 'field')">
         
                                 <label for="zipcode" 
-                                    i18n:translate="label_zipcode">Zip code</label>
+                                    i18n:domain="minaraad"
+                                    i18n:translate="label_zipcode">Zipcode</label>
                                 <span class="fieldRequired" title="Required"
                                     i18n:attributes="title title_required;"
                                     i18n:translate="label_required">(Required)</span>
@@ -233,6 +239,7 @@
                                     tal:attributes="class python:test(error, 'field error', 'field')">
         
                                 <label for="city" 
+                                    i18n:domain="minaraad"
                                     i18n:translate="label_city">City</label>
                                 <span class="fieldRequired" title="Required"
                                     i18n:attributes="title title_required;"
@@ -256,7 +263,8 @@
                                             country python:request.get('country', member.getProperty('country', ''));
                                             tabindex tabindex/next;">
             
-                                <label i18n:translate="label_country">Country</label>
+                                <label i18n:domain="minaraad"
+                                       i18n:translate="label_country">Country</label>
                                 <br />
                                 <select name="country">
                                     <tal:block tal:repeat="option countries">
@@ -269,11 +277,12 @@
                             
                             <!-- *** other country *** -->
                             <div class="field"
-                                    tal:define="error errors/other_country | nothing;
-                                                other_country python:request.get('other_country', member.getProperty('other_country', ''));"
-                                    tal:attributes="class python:test(error, 'field error', 'field')">
+                                 tal:define="error errors/other_country | nothing;
+                                             other_country python:request.get('other_country', member.getProperty('other_country', ''));"
+                                 tal:attributes="class python:test(error, 'field error', 'field')">
         
-                                <label for="other_country" 
+                                <label for="other_country"
+                                    i18n:domain="minaraad" 
                                     i18n:translate="label_other_country">Other country</label>
         
                                 <div tal:content="error">Validation error output</div>
@@ -294,7 +303,8 @@
                                                 phonenumber python:request.get('phonenumber', member.getProperty('phonenumber', ''));"
                                     tal:attributes="class python:test(error, 'field error', 'field')">
         
-                                <label for="phonenumber" 
+                                <label for="phonenumber"
+                                    i18n:domain="minaraad"
                                     i18n:translate="label_phonenumber">Phone number</label>
         
                                 <div tal:content="error">Validation error output</div>

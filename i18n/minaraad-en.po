@@ -1,0 +1,345 @@
+# minaraad
+# Mirella van Teulingen <m.van.teulingen@zestsoftware.nl>, 2006.
+msgid ""
+msgstr ""
+"Project-Id-Version: minaraad 0.1\n"
+"POT-Creation-Date: 2006-02-09 16:07+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: Mirella van Teulingen <m.van.teulingen@zestsoftware.nl>\n"
+"Language-Team: English <info@zestsoftware.nl>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: minaraad\n"
+
+#. Default: "City"
+#: skins/minaraad/join_form.cpt
+#: skins/minaraad/personalize_form.cpt
+#: skins/minaraad/prefs_user_details.cpt
+msgid "label_city"
+msgstr ""
+
+#. Default: "Company"
+#: skins/minaraad/join_form.cpt
+#: skins/minaraad/personalize_form.cpt
+#: skins/minaraad/prefs_user_details.cpt
+msgid "label_company"
+msgstr ""
+
+#. Default: "Country"
+#: skins/minaraad/join_form.cpt
+#: skins/minaraad/personalize_form.cpt
+#: skins/minaraad/prefs_user_details.cpt
+msgid "label_country"
+msgstr ""
+
+#. Default: "Gender"
+#: skins/minaraad/join_form.cpt
+#: skins/minaraad/personalize_form.cpt
+#: skins/minaraad/prefs_user_details.cpt
+msgid "label_gender"
+msgstr ""
+
+#. Default: "House number"
+#: skins/minaraad/join_form.cpt
+#: skins/minaraad/personalize_form.cpt
+#: skins/minaraad/prefs_user_details.cpt
+msgid "label_housenumber"
+msgstr ""
+
+#. Default: "Job title"
+#: skins/minaraad/join_form.cpt
+#: skins/minaraad/personalize_form.cpt
+#: skins/minaraad/prefs_user_details.cpt
+msgid "label_jobtitle"
+msgstr ""
+
+#. Default: "Other country"
+#: skins/minaraad/join_form.cpt
+#: skins/minaraad/personalize_form.cpt
+#: skins/minaraad/prefs_user_details.cpt
+msgid "label_other_country"
+msgstr ""
+
+#. Default: "Phone number"
+#: skins/minaraad/join_form.cpt
+#: skins/minaraad/personalize_form.cpt
+#: skins/minaraad/prefs_user_details.cpt
+msgid "label_phonenumber"
+msgstr ""
+
+#. Default: "Street"
+#: skins/minaraad/join_form.cpt
+#: skins/minaraad/personalize_form.cpt
+#: skins/minaraad/prefs_user_details.cpt
+msgid "label_street"
+msgstr ""
+
+#. Default: "Zipcode"
+#: skins/minaraad/join_form.cpt
+#: skins/minaraad/personalize_form.cpt
+#: skins/minaraad/prefs_user_details.cpt
+msgid "label_zipcode"
+msgstr ""
+
+#. Default: "attachment"
+#: content/Advisory.py
+#: content/Presentation.py
+#: content/Pressrelease.py
+msgid "minaraad_help_attachment"
+msgstr ""
+
+#. Default: "contactpersons"
+#: MinaBundle.py
+msgid "minaraad_help_contactpersons"
+msgstr ""
+
+#. Default: "date"
+#: content/Advisory.py
+#: content/Study.py
+msgid "minaraad_help_date"
+msgstr ""
+
+#. Default: "department"
+#: content/ContactPerson.py
+msgid "minaraad_help_department"
+msgstr ""
+
+#. Default: "email"
+#: content/ContactPerson.py
+msgid "minaraad_help_email"
+msgstr ""
+
+#. Default: "end"
+#: content/Hearing.py
+msgid "minaraad_help_end"
+msgstr ""
+
+#. Default: "endhour"
+#: content/Presentation.py
+msgid "minaraad_help_endhour"
+msgstr ""
+
+#. Default: "endminutes"
+#: content/Presentation.py
+msgid "minaraad_help_endminutes"
+msgstr ""
+
+#. Default: "goal"
+#: content/Hearing.py
+msgid "minaraad_help_goal"
+msgstr ""
+
+#. Default: "jobtitle"
+#: content/ContactPerson.py
+msgid "minaraad_help_jobtitle"
+msgstr ""
+
+#. Default: "location"
+#: content/Hearing.py
+msgid "minaraad_help_location"
+msgstr ""
+
+#. Default: "name"
+#: content/ContactPerson.py
+msgid "minaraad_help_name"
+msgstr ""
+
+#. Default: "phonenumber"
+#: content/ContactPerson.py
+msgid "minaraad_help_phonenumber"
+msgstr ""
+
+#. Default: "plaintext"
+#: MinaBundle.py
+msgid "minaraad_help_plaintext"
+msgstr ""
+
+#. Default: "policy"
+#: content/Advisory.py
+msgid "minaraad_help_policy"
+msgstr ""
+
+#. Default: "speaker"
+#: content/Presentation.py
+msgid "minaraad_help_speaker"
+msgstr ""
+
+#. Default: "speakers"
+#: content/Study.py
+msgid "minaraad_help_speakers"
+msgstr ""
+
+#. Default: "start"
+#: content/Hearing.py
+msgid "minaraad_help_start"
+msgstr ""
+
+#. Default: "starthour"
+#: content/Presentation.py
+msgid "minaraad_help_starthour"
+msgstr ""
+
+#. Default: "startminutes"
+#: content/Presentation.py
+msgid "minaraad_help_startminutes"
+msgstr ""
+
+#. Default: "subheader"
+#: content/Hearing.py
+#: content/Pressrelease.py
+#: content/Study.py
+msgid "minaraad_help_subheader"
+msgstr ""
+
+#. Default: "summary"
+#: content/Presentation.py
+msgid "minaraad_help_summary"
+msgstr ""
+
+#. Default: "themes"
+#: content/Hearing.py
+msgid "minaraad_help_themes"
+msgstr ""
+
+#. Default: "Attachment"
+#: content/Advisory.py
+#: content/Presentation.py
+#: content/Pressrelease.py
+msgid "minaraad_label_attachment"
+msgstr ""
+
+#. Default: "Body"
+#: content/Hearing.py
+msgid "minaraad_label_body"
+msgstr ""
+
+#. Default: "Contactpersons"
+#: MinaBundle.py
+msgid "minaraad_label_contactpersons"
+msgstr ""
+
+#. Default: "Date"
+#: content/Advisory.py
+#: content/Study.py
+msgid "minaraad_label_date"
+msgstr ""
+
+#. Default: "Department"
+#: content/ContactPerson.py
+msgid "minaraad_label_department"
+msgstr ""
+
+#. Default: "Description"
+#: content/Hearing.py
+msgid "minaraad_label_description"
+msgstr ""
+
+#. Default: "Email"
+#: content/ContactPerson.py
+msgid "minaraad_label_email"
+msgstr ""
+
+#. Default: "End"
+#: content/Hearing.py
+msgid "minaraad_label_end"
+msgstr ""
+
+#. Default: "Endhour"
+#: content/Presentation.py
+#: content/AgendaItems.py
+msgid "minaraad_label_endhour"
+msgstr ""
+
+#. Default: "Endminutes"
+#: content/Presentation.py
+#: content/AgendaItems.py
+msgid "minaraad_label_endminutes"
+msgstr ""
+
+#. Default: "Goal"
+#: content/Hearing.py
+msgid "minaraad_label_goal"
+msgstr ""
+
+#. Default: "Jobtitle"
+#: content/ContactPerson.py
+msgid "minaraad_label_jobtitle"
+msgstr ""
+
+#. Default: "Location"
+#: content/Hearing.py
+msgid "minaraad_label_location"
+msgstr ""
+
+#. Default: "Name"
+#: content/ContactPerson.py
+msgid "minaraad_label_name"
+msgstr ""
+
+#. Default: "Phonenumber"
+#: content/ContactPerson.py
+msgid "minaraad_label_phonenumber"
+msgstr ""
+
+#. Default: "Plaintext"
+#: MinaBundle.py
+#: content/Hearing.py
+msgid "minaraad_label_plaintext"
+msgstr ""
+
+#. Default: "Policy"
+#: content/Advisory.py
+msgid "minaraad_label_policy"
+msgstr ""
+
+#. Default: "Speaker"
+#: content/Presentation.py
+#: content/AgendaItems.py
+msgid "minaraad_label_speaker"
+msgstr ""
+
+#. Default: "Speakers"
+#: content/Study.py
+msgid "minaraad_label_speakers"
+msgstr ""
+
+#. Default: "Start"
+#: content/Hearing.py
+msgid "minaraad_label_start"
+msgstr ""
+
+#. Default: "Starthour"
+#: content/Presentation.py
+#: content/AgendaItems.py
+msgid "minaraad_label_starthour"
+msgstr ""
+
+#. Default: "Startminutes"
+#: content/Presentation.py
+#: content/AgendaItems.py
+msgid "minaraad_label_startminutes"
+msgstr ""
+
+#. Default: "Subheader"
+#: content/Hearing.py
+#: content/Pressrelease.py
+#: content/Study.py
+msgid "minaraad_label_subheader"
+msgstr ""
+
+#. Default: "Summary"
+#: content/Presentation.py
+#: content/AgendaItems.py
+msgid "minaraad_label_summary"
+msgstr ""
+
+#. Default: "Themes"
+#: content/Hearing.py
+msgid "minaraad_label_themes"
+msgstr ""
+
