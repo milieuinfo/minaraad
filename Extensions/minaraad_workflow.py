@@ -44,7 +44,7 @@ def setupminaraad_workflow(self, workflow):
     # Add additional roles to portal
     portal = getToolByName(self,'portal_url').getPortalObject()
     data = list(portal.__ac_roles__)
-    for role in ['Site Admin']:
+    for role in ['Council Member']:
         if not role in data:
             data.append(role)
     portal.__ac_roles__ = tuple(data)
@@ -84,44 +84,134 @@ def setupminaraad_workflow(self, workflow):
     stateDef = workflow.states['pending_private']
     stateDef.setProperties(title="""pending_private""",
                            transitions=['publish', 'restricted_publish', 'reject', 'retract'])
+    stateDef.setPermission('add portal content',
+                           0,
+                           ['Owner', 'Reviewer', 'Manager'])
+    stateDef.setPermission('Access contents information',
+                           0,
+                           ['Owner', 'Reviewer', 'Manager'])
+    stateDef.setPermission('View',
+                           0,
+                           ['Owner', 'Reviewer', 'Manager'])
+    stateDef.setPermission('List folder contents',
+                           0,
+                           ['Owner', 'Reviewer', 'Manager'])
+    stateDef.setPermission('Modify portal content',
+                           0,
+                           ['Reviewer', 'Manager'])
+    stateDef.setPermission('DeleteObject',
+                           0,
+                           ['Owner', 'Reviewer', 'Manager'])
 
     stateDef = workflow.states['published']
     stateDef.setProperties(title="""published""",
                            transitions=['revise', 'reject'])
+    stateDef.setPermission('add portal content',
+                           0,
+                           ['Owner', 'Reviewer', 'Manager'])
+    stateDef.setPermission('Access contents information',
+                           0,
+                           ['Anonymous', 'Member', 'Council Member', 'Reviewer', 'Manager'])
+    stateDef.setPermission('View',
+                           0,
+                           ['Anonymous', 'Member', 'Council Member', 'Reviewer', 'Manager'])
+    stateDef.setPermission('List folder contents',
+                           0,
+                           ['Anonymous', 'Member', 'Council Member', 'Reviewer', 'Manager'])
+    stateDef.setPermission('Modify portal content',
+                           0,
+                           ['Reviewer', 'Manager'])
+    stateDef.setPermission('DeleteObject',
+                           0,
+                           ['Owner', 'Reviewer', 'Manager'])
 
     stateDef = workflow.states['pending_revisioning']
     stateDef.setProperties(title="""pending_revisioning""",
                            transitions=['retract2', 'publish'])
+    stateDef.setPermission('add portal content',
+                           0,
+                           ['Owner', 'Reviewer', 'Manager'])
+    stateDef.setPermission('Access contents information',
+                           0,
+                           ['Anonymous', 'Member', 'Council Member', 'Reviewer', 'Manager'])
+    stateDef.setPermission('View',
+                           0,
+                           ['Anonymous', 'Member', 'Council Member', 'Reviewer', 'Manager'])
+    stateDef.setPermission('List folder contents',
+                           0,
+                           ['Anonymous', 'Member', 'Council Member', 'Reviewer', 'Manager'])
+    stateDef.setPermission('Modify portal content',
+                           0,
+                           ['Reviewer', 'Manager'])
+    stateDef.setPermission('DeleteObject',
+                           0,
+                           ['Owner', 'Reviewer', 'Manager'])
 
     stateDef = workflow.states['revisioning']
     stateDef.setProperties(title="""revisioning""",
                            transitions=['publish', 'submit2'])
+    stateDef.setPermission('add portal content',
+                           0,
+                           ['Owner', 'Reviewer', 'Manager'])
+    stateDef.setPermission('Access contents information',
+                           0,
+                           ['Anonymous', 'Member', 'Council Member', 'Reviewer', 'Manager'])
+    stateDef.setPermission('View',
+                           0,
+                           ['Anonymous', 'Member', 'Council Member', 'Reviewer', 'Manager'])
+    stateDef.setPermission('List folder contents',
+                           0,
+                           ['Anonymous', 'Member', 'Council Member', 'Reviewer', 'Manager'])
+    stateDef.setPermission('Modify portal content',
+                           0,
+                           ['Owner', 'Reviewer', 'Manager'])
+    stateDef.setPermission('DeleteObject',
+                           0,
+                           ['Owner', 'Reviewer', 'Manager'])
 
     stateDef = workflow.states['restricted']
     stateDef.setProperties(title="""restricted""",
                            transitions=[])
+    stateDef.setPermission('add portal content',
+                           0,
+                           ['Owner', 'Reviewer', 'Manager'])
+    stateDef.setPermission('Access contents information',
+                           0,
+                           ['Owner', 'Council Member', 'Reviewer', 'Manager'])
+    stateDef.setPermission('View',
+                           0,
+                           ['Owner', 'Council Member', 'Reviewer', 'Manager'])
+    stateDef.setPermission('List folder contents',
+                           0,
+                           ['Owner', 'Council Member', 'Reviewer', 'Manager'])
+    stateDef.setPermission('Modify portal content',
+                           0,
+                           ['Owner', 'Reviewer', 'Manager'])
+    stateDef.setPermission('DeleteObject',
+                           0,
+                           ['Owner', 'Reviewer', 'Manager'])
 
     stateDef = workflow.states['private']
     stateDef.setProperties(title="""private""",
                            transitions=['submit', 'publish'])
     stateDef.setPermission('add portal content',
                            0,
-                           ['Owner', 'Manager', 'Site Admin'])
+                           ['Owner', 'Reviewer', 'Manager'])
     stateDef.setPermission('Access contents information',
                            0,
-                           ['Owner', 'Manager', 'Site Admin'])
+                           ['Owner', 'Reviewer', 'Manager'])
     stateDef.setPermission('View',
                            0,
-                           ['Owner', 'Manager', 'Site Admin'])
+                           ['Owner', 'Reviewer', 'Manager'])
     stateDef.setPermission('List folder contents',
                            0,
-                           ['Owner', 'Manager', 'Site Admin'])
+                           ['Owner', 'Reviewer', 'Manager'])
     stateDef.setPermission('Modify portal content',
                            0,
-                           ['Owner', 'Manager', 'Site Admin'])
+                           ['Owner', 'Reviewer', 'Manager'])
     stateDef.setPermission('DeleteObject',
                            0,
-                           ['Owner', 'Manager', 'Site Admin'])
+                           ['Owner', 'Reviewer', 'Manager'])
 
     ## Transitions initialization
 
@@ -134,7 +224,7 @@ def setupminaraad_workflow(self, workflow):
                                 actbox_name="""restricted_publish""",
                                 actbox_url="""""",
                                 actbox_category="""workflow""",
-                                props={'guard_permissions': 'Review portal content'},
+                                props={'guard_roles': 'Reviewer;Manager'},
                                 )
 
     transitionDef = workflow.transitions['submit']
@@ -146,7 +236,7 @@ def setupminaraad_workflow(self, workflow):
                                 actbox_name="""submit""",
                                 actbox_url="""""",
                                 actbox_category="""workflow""",
-                                props={'guard_roles': 'Manager;Owner;Site Admin'},
+                                props={'guard_roles': 'Owner'},
                                 )
 
     transitionDef = workflow.transitions['publish']
@@ -158,7 +248,7 @@ def setupminaraad_workflow(self, workflow):
                                 actbox_name="""publish""",
                                 actbox_url="""""",
                                 actbox_category="""workflow""",
-                                props={'guard_permissions': 'Review portal content'},
+                                props={'guard_roles': 'Reviewer;Manager'},
                                 )
 
     transitionDef = workflow.transitions['retract2']
@@ -170,7 +260,7 @@ def setupminaraad_workflow(self, workflow):
                                 actbox_name="""retract2""",
                                 actbox_url="""""",
                                 actbox_category="""workflow""",
-                                props={'guard_roles': 'Manager;Owner;Site Admin'},
+                                props={'guard_roles': 'Reviewer;Manager;Owner'},
                                 )
 
     transitionDef = workflow.transitions['retract']
@@ -182,7 +272,7 @@ def setupminaraad_workflow(self, workflow):
                                 actbox_name="""retract""",
                                 actbox_url="""""",
                                 actbox_category="""workflow""",
-                                props={'guard_roles': 'Manager;Owner;Site Admin'},
+                                props={'guard_roles': 'Reviewer;Owner;Manager'},
                                 )
 
     transitionDef = workflow.transitions['reject']
@@ -194,7 +284,7 @@ def setupminaraad_workflow(self, workflow):
                                 actbox_name="""reject""",
                                 actbox_url="""""",
                                 actbox_category="""workflow""",
-                                props={'guard_permissions': 'Review portal content'},
+                                props={'guard_roles': 'Reviewer;Manager'},
                                 )
 
     transitionDef = workflow.transitions['submit2']
@@ -206,7 +296,7 @@ def setupminaraad_workflow(self, workflow):
                                 actbox_name="""submit2""",
                                 actbox_url="""""",
                                 actbox_category="""workflow""",
-                                props={'guard_roles': 'Manager;Owner;Site Admin'},
+                                props={'guard_roles': 'Reviewer;Manager;Owner'},
                                 )
 
     transitionDef = workflow.transitions['revise']
@@ -218,7 +308,7 @@ def setupminaraad_workflow(self, workflow):
                                 actbox_name="""revise""",
                                 actbox_url="""""",
                                 actbox_category="""workflow""",
-                                props={'guard_roles': 'Manager;Owner;Site Admin'},
+                                props={'guard_roles': 'Reviewer;Manager;Owner'},
                                 )
 
     ## State Variable
