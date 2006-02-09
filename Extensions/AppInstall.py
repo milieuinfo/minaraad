@@ -8,24 +8,7 @@ def install(self):
     out.write("Add member data properties.")
     addMemberDataProperties(self, out)
 
-    out.write("Add member data properties.")
-    addNewRole(self, out)
-
     return out.getvalue()
-
-
-def addNewRole(self, out):
-    """Add newrole Raadslid
-    """
-    portal = getToolByName(self, 'portal_url').getPortalObject()
-    
-    newRoles = ('Raadslid',)
-    for role in newRoles:
-        if not portal._has_user_defined_role(role):
-            portal._addRole(role)
-            print >> out, "Added missing role '%s'" % role
-        else:
-            print >> out, "'%s' role already exists -- skipped" % role
 
 
 def addMemberDataProperties(self, out):
