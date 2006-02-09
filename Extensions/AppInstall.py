@@ -18,7 +18,7 @@ def addMemberDataProperties(self, out):
     
     add_properties = Set(
         ('company', 'jobtitle', 'street', 'housenumber', 
-         'zipcode', 'city', 'country', 'phonenumber',))
+         'zipcode', 'city', 'phonenumber',))
     add_properties -= Set(memberdata.propertyIds())
     for p in add_properties:
         memberdata.manage_addProperty(p, '', 'string')
@@ -31,28 +31,10 @@ def addMemberDataProperties(self, out):
     if 'gender' not in memberdata.propertyIds():
         memberdata.manage_addProperty('gender', 'genders', 'selection')
     
-    # special care for our selection property content types
-    content_types = ['AnnualReport', 'NewsLetter', 'Pressrelease',]
+    # adding Country
+    countries = ['Belgie', 'Nederland', 'Ander land']
     
-    if 'subscriptions' not in memberdata.propertyIds():
-        memberdata.manage_addProperty('subscriptions', content_types, 'lines')
-
-    if 'subscription' not in memberdata.propertyIds():
-        memberdata.manage_addProperty('subscription', 'subscriptions', 'selection')
-    
-    # adding checkboxes for Study and Advisory. Subscribers can choose: email, post or both
-    options_study = ['per e-mail', 'per post', 'beide']
-    options_advisory = options_study
-    
-    if 'Study' not in memberdata.propertyIds():
-        memberdata.manage_addProperty('Study', 0 , 'boolean')
-        memberdata.manage_addProperty('post_study', options_study, 'lines')
-        memberdata.manage_addProperty('option_study', 'post_study', 'selection')
-
-    if 'Advisory' not in memberdata.propertyIds():
-        memberdata.manage_addProperty('Advisory', 0 , 'boolean')
-        memberdata.manage_addProperty('post_advisory', options_advisory, 'lines')
-        memberdata.manage_addProperty('option_advisory', 'post_advisory', 'selection')
-
-    # adding 'Hoorzitting' and it's theme   s
-    # code need to be written
+    if 'country' not in memberdata.propertyIds():
+        memberdata.manage_addProperty('select_country', countries, 'lines')
+        memberdata.manage_addProperty('country', 'select_country', 'selection')
+        memberdata.manage_addProperty('other_country', '', 'string')

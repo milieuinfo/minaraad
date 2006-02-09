@@ -31,7 +31,6 @@ from Products.Archetypes.atapi import *
 
 
 
-
 from Products.minaraad.config import *
 ##code-section module-header #fill in your manual code here
 ##/code-section module-header

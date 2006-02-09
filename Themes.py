@@ -31,7 +31,6 @@ from Products.Archetypes.atapi import *
 
 
 
-
 from Products.minaraad.config import *
 
 from Products.CMFCore.utils import UniqueObject

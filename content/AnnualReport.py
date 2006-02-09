@@ -28,7 +28,6 @@ __docformat__ = 'plaintext'
 
 from AccessControl import ClassSecurityInfo
 from Products.Archetypes.atapi import *
-
 from NewsLetter import NewsLetter
 from Products.minaraad.PostMixin import PostMixin
 

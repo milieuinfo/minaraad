@@ -153,7 +153,7 @@ def install(self):
         portal_javascripts = getToolByName(portal, 'portal_javascripts')
         for javascript in JAVASCRIPTS:
             try:
-                portal_javascripts.unregisterResource(javascript['id'])
+                portal_javascripts.unregisterResource(stylesheet['id'])
             except:
                 pass
             defaults = {'id': ''}
