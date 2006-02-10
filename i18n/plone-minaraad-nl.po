@@ -43,6 +43,9 @@ msgstr "Thema's"
 msgid "AgendaItems"
 msgstr "Agendapunten"
 
+msgid "Subscriptions"
+msgstr "Abonnementen"
+
 msgid "Author"
 msgstr "Auteur"
 

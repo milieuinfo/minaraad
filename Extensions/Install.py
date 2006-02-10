@@ -72,7 +72,7 @@ def install(self):
 
     #autoinstall tools
     portal = getToolByName(self,'portal_url').getPortalObject()
-    for t in ['Themes']:
+    for t in ['Themes', 'Subscriptions']:
         try:
             portal.manage_addProduct[PROJECTNAME].manage_addTool(t)
         except BadRequest:
@@ -89,7 +89,7 @@ def install(self):
         navtreeProperties = getattr(portalProperties, 'navtree_properties', None)
         if navtreeProperties:
             navtreeProperties.idsNotToList = list(navtreeProperties.idsNotToList) + \
-                                  [toolname for toolname in ['portal_themes'] \
+                                  [toolname for toolname in ['portal_themes', 'portal_subscriptions'] \
                                             if toolname not in navtreeProperties.idsNotToList]
     # register tools as configlets
     portal_controlpanel = getToolByName(self,'portal_controlpanel')
@@ -104,6 +104,20 @@ def install(self):
         'ThemesID',
         'site_icon.gif', # icon in control_panel
         'Configuration for tool Themes.',
+        None,
+    )
+
+    portal_controlpanel.registerConfiglet(
+        'Subscriptions', #id of your Tool
+        'Subscriptions', # Title of your Troduct
+        'string:${portal_url}/portal_subscriptions/subscriptions_form/',
+        'python:True', # a condition
+        'View', # access permission
+        'Member', # section to which the configlet should be added: (Plone,Products,Members)
+        1, # visibility
+        'SubscriptionsID',
+        'site_icon.gif', # icon in control_panel
+        'Configuration for tool Subscriptions.',
         None,
     )
 
@@ -190,7 +204,7 @@ def uninstall(self):
         navtreeProperties = getattr(portalProperties, 'navtree_properties', None)
         if navtreeProperties:
             navtreeProperties.idsNotToList = list(navtreeProperties.idsNotToList)
-            for toolname in [toolname for toolname in ['portal_themes'] \
+            for toolname in [toolname for toolname in ['portal_themes', 'portal_subscriptions'] \
                                       if toolname not in navtreeProperties.idsNotToList]:
                 if toolname in navtreeProperties.idsNotToList:
                     navtreeProperties.idsNotToList.remove(toolname)
@@ -200,6 +214,7 @@ def uninstall(self):
     portal_control_panel = getToolByName(self,'portal_controlpanel', None)
     if portal_control_panel is not None:
         portal_control_panel.unregisterConfiglet('Themes')
+        portal_control_panel.unregisterConfiglet('Subscriptions')
     # try to call a workflow uninstall method
     # in 'InstallWorkflows.py' method 'uninstallWorkflows'
     

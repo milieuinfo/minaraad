@@ -77,9 +77,10 @@ def initialize(context):
     import PostMixin
     import MinaBundle
     import Themes
+    import Subscriptions
 
     # Initialize portal tools
-    tools = [Themes.Themes]
+    tools = [Themes.Themes, Subscriptions.Subscriptions]
     ToolInit( PROJECTNAME +' Tools',
                 tools = tools,
                 product_name = PROJECTNAME,
