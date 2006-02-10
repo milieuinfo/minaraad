@@ -43,3 +43,8 @@ msgstr "Thema's"
 msgid "AgendaItems"
 msgstr "Agendapunten"
 
+msgid "Author"
+msgstr "Auteur"
+
+msgid "Council Member"
+msgstr "Raadslid"
