@@ -12,8 +12,14 @@ def install(self):
     out.write("Add member data properties.")
     addMemberDataProperties(self, out)
     deactivateAreaCreations(self, out)
+    changeCookieTimeOut(self, out)
 
     return out.getvalue()
+
+def changeCookieTimeOut(self, out):
+    propsTool = getToolByName(self, 'portal_properties')
+    siteProperties = propsTool.site_properties
+    siteProperties.manage_changeProperties({'auth_cookie_length': 30})
 
 def deactivateAreaCreations(self, out):
     
