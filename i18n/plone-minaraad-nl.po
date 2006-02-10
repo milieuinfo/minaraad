@@ -1,0 +1,45 @@
+# ArchGenXML generated POT File
+# Mirella van Teulingen <m.van.teulingen@zestsoftware.nl>, 2006.
+msgid ""
+msgstr ""
+"Project-Id-Version: minaraad\n"
+"POT-Creation-Date: Fri Feb 10 09:04:01 2006\n"
+"PO-Revision-Date: Fri Feb 10 09:04:01 2006\n"
+"Last-Translator: Mirella van Teulingen <m.van.teulingen@zestsoftware.nl>\n"
+"Language-Team: Zest Software <info@zestsoftware.nl>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ascii\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: nl\n"
+"Language-Name: Nederlands\n"
+"Preferred-Encodings: latin1 utf-8\n"
+"Domain: plone\n"
+
+msgid "Advisory"
+msgstr "Advies"
+
+msgid "Hearing"
+msgstr "Hoorzitting"
+
+msgid "Study"
+msgstr "Studie"
+
+msgid "NewsLetter"
+msgstr "Nieuwsbrief"
+
+msgid "ContactPerson"
+msgstr "Contact persoon"
+
+msgid "AnnualReport"
+msgstr "Jaarverslag"
+
+msgid "Pressrelease"
+msgstr "Persbericht"
+
+msgid "Themes"
+msgstr "Thema's"
+
+msgid "AgendaItems"
+msgstr "Agendapunten"
+
