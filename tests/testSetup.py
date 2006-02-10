@@ -84,7 +84,7 @@ class testSetup(MainTestCase):
         """ 
         """
         getChain = self.portal.portal_workflow.getChainForPortalType
-        self.failUnless('plone_workflow' in getChain('Document'))
+        self.failUnless('minaraad_workflow' in getChain('Document'))
         # ...
 
     # Manually created methods
