@@ -30,6 +30,7 @@ if __name__ == '__main__':
     execfile(os.path.join(sys.path[0], 'framework.py'))
 
 ##code-section module-header #fill in your manual code here
+import sets
 ##/code-section module-header
 
 #
@@ -88,6 +89,36 @@ class testSetup(MainTestCase):
         # ...
 
     # Manually created methods
+    def test_memberDataToolProperties(self):
+        # original memberdata properties
+        baseFields = sets.Set(('visible_ids', 'last_login_time', 'language', 
+                               'home_page', 'description', 'wysiwyg_editor', 
+                               'error_log_update', 'location', 'portal_skin', 
+                               'fullname', 'login_time', 'email', 'ext_editor', 
+                               'listed'))
+        
+        # new properties we add
+        newFields = sets.Set(('company', 'jobtitle', 'street', 'housenumber', 
+                              'zipcode', 'city', 'phonenumber', 'genders', 
+                              'gender', 'country', 'select_country', 
+                              'other_country'))
+    
+        tool = self.portal.portal_memberdata
+
+        # build up a complete set of what properties should now be in the tool
+        fullFields = sets.Set(tuple(baseFields)+tuple(newFields))
+        properties = sets.Set(tool.propertyIds())
+        
+        self.failUnless(fullFields == properties)
+        
+        # make sure if we add an additional value, its not found in the real
+        # properties
+        fullFields.add(1)
+        self.failIf(fullFields == properties)
+
+        
+        
+        
 
 
 def test_suite():
