@@ -44,7 +44,7 @@ def setupminaraad_workflow(self, workflow):
     # Add additional roles to portal
     portal = getToolByName(self,'portal_url').getPortalObject()
     data = list(portal.__ac_roles__)
-    for role in ['Council Member']:
+    for role in ['Author', 'Council Member']:
         if not role in data:
             data.append(role)
     portal.__ac_roles__ = tuple(data)
@@ -86,16 +86,16 @@ def setupminaraad_workflow(self, workflow):
                            transitions=['publish', 'restricted_publish', 'reject', 'retract'])
     stateDef.setPermission('add portal content',
                            0,
-                           ['Owner', 'Reviewer', 'Manager'])
+                           ['Author', 'Owner', 'Reviewer', 'Manager'])
     stateDef.setPermission('Access contents information',
                            0,
-                           ['Owner', 'Reviewer', 'Manager'])
+                           ['Author', 'Owner', 'Reviewer', 'Manager'])
     stateDef.setPermission('View',
                            0,
-                           ['Owner', 'Reviewer', 'Manager'])
+                           ['Author', 'Owner', 'Reviewer', 'Manager'])
     stateDef.setPermission('List folder contents',
                            0,
-                           ['Owner', 'Reviewer', 'Manager'])
+                           ['Author', 'Owner', 'Reviewer', 'Manager'])
     stateDef.setPermission('Modify portal content',
                            0,
                            ['Reviewer', 'Manager'])
@@ -108,16 +108,16 @@ def setupminaraad_workflow(self, workflow):
                            transitions=['revise', 'reject'])
     stateDef.setPermission('add portal content',
                            0,
-                           ['Owner', 'Reviewer', 'Manager'])
+                           ['Author', 'Owner', 'Reviewer', 'Manager'])
     stateDef.setPermission('Access contents information',
                            0,
-                           ['Anonymous', 'Member', 'Council Member', 'Reviewer', 'Manager'])
+                           ['Anonymous', 'Member', 'Author', 'Owner', 'Council Member', 'Reviewer', 'Manager'])
     stateDef.setPermission('View',
                            0,
-                           ['Anonymous', 'Member', 'Council Member', 'Reviewer', 'Manager'])
+                           ['Anonymous', 'Member', 'Author', 'Owner', 'Council Member', 'Reviewer', 'Manager'])
     stateDef.setPermission('List folder contents',
                            0,
-                           ['Anonymous', 'Member', 'Council Member', 'Reviewer', 'Manager'])
+                           ['Anonymous', 'Member', 'Author', 'Owner', 'Council Member', 'Reviewer', 'Manager'])
     stateDef.setPermission('Modify portal content',
                            0,
                            ['Reviewer', 'Manager'])
@@ -130,16 +130,16 @@ def setupminaraad_workflow(self, workflow):
                            transitions=['retract2', 'publish'])
     stateDef.setPermission('add portal content',
                            0,
-                           ['Owner', 'Reviewer', 'Manager'])
+                           ['Author', 'Owner', 'Reviewer', 'Manager'])
     stateDef.setPermission('Access contents information',
                            0,
-                           ['Anonymous', 'Member', 'Council Member', 'Reviewer', 'Manager'])
+                           ['Anonymous', 'Member', 'Author', 'Owner', 'Council Member', 'Reviewer', 'Manager'])
     stateDef.setPermission('View',
                            0,
-                           ['Anonymous', 'Member', 'Council Member', 'Reviewer', 'Manager'])
+                           ['Anonymous', 'Member', 'Author', 'Owner', 'Council Member', 'Reviewer', 'Manager'])
     stateDef.setPermission('List folder contents',
                            0,
-                           ['Anonymous', 'Member', 'Council Member', 'Reviewer', 'Manager'])
+                           ['Anonymous', 'Member', 'Author', 'Owner', 'Council Member', 'Reviewer', 'Manager'])
     stateDef.setPermission('Modify portal content',
                            0,
                            ['Reviewer', 'Manager'])
@@ -152,16 +152,16 @@ def setupminaraad_workflow(self, workflow):
                            transitions=['publish', 'submit2'])
     stateDef.setPermission('add portal content',
                            0,
-                           ['Owner', 'Reviewer', 'Manager'])
+                           ['Author', 'Owner', 'Reviewer', 'Manager'])
     stateDef.setPermission('Access contents information',
                            0,
-                           ['Anonymous', 'Member', 'Council Member', 'Reviewer', 'Manager'])
+                           ['Anonymous', 'Member', 'Author', 'Owner', 'Council Member', 'Reviewer', 'Manager'])
     stateDef.setPermission('View',
                            0,
-                           ['Anonymous', 'Member', 'Council Member', 'Reviewer', 'Manager'])
+                           ['Anonymous', 'Member', 'Author', 'Owner', 'Council Member', 'Reviewer', 'Manager'])
     stateDef.setPermission('List folder contents',
                            0,
-                           ['Anonymous', 'Member', 'Council Member', 'Reviewer', 'Manager'])
+                           ['Anonymous', 'Member', 'Author', 'Owner', 'Council Member', 'Reviewer', 'Manager'])
     stateDef.setPermission('Modify portal content',
                            0,
                            ['Owner', 'Reviewer', 'Manager'])
@@ -174,7 +174,7 @@ def setupminaraad_workflow(self, workflow):
                            transitions=[])
     stateDef.setPermission('add portal content',
                            0,
-                           ['Owner', 'Reviewer', 'Manager'])
+                           ['Author', 'Owner', 'Reviewer', 'Manager'])
     stateDef.setPermission('Access contents information',
                            0,
                            ['Owner', 'Council Member', 'Reviewer', 'Manager'])
@@ -196,16 +196,16 @@ def setupminaraad_workflow(self, workflow):
                            transitions=['submit', 'publish'])
     stateDef.setPermission('add portal content',
                            0,
-                           ['Owner', 'Reviewer', 'Manager'])
+                           ['Author', 'Owner', 'Reviewer', 'Manager'])
     stateDef.setPermission('Access contents information',
                            0,
-                           ['Owner', 'Reviewer', 'Manager'])
+                           ['Author', 'Owner', 'Reviewer', 'Manager'])
     stateDef.setPermission('View',
                            0,
-                           ['Owner', 'Reviewer', 'Manager'])
+                           ['Author', 'Owner', 'Reviewer', 'Manager'])
     stateDef.setPermission('List folder contents',
                            0,
-                           ['Owner', 'Reviewer', 'Manager'])
+                           ['Author', 'Owner', 'Reviewer', 'Manager'])
     stateDef.setPermission('Modify portal content',
                            0,
                            ['Owner', 'Reviewer', 'Manager'])

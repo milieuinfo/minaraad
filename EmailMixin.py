@@ -31,6 +31,7 @@ from Products.Archetypes.atapi import *
 
 
 
+
 from Products.minaraad.config import *
 ##code-section module-header #fill in your manual code here
 ##/code-section module-header
@@ -51,7 +52,6 @@ EmailMixin_schema = schema.copy()
 
 class EmailMixin:
     security = ClassSecurityInfo()
-    __implements__ = ()
 
 
     allowed_content_types = []
