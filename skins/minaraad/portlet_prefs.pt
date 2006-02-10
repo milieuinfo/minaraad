@@ -1,0 +1,44 @@
+<html xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      i18n:domain="plone">
+    <body>
+    <metal:portlet define-macro="portlet"
+                   tal:define="controlPanel python:modules['Products.CMFCore.utils'].getToolByName(here, 'portal_controlpanel');
+                               groups python:controlPanel.getGroups('site');
+                               getIconFor nocall:putils/getIconFor;
+                               admin python:context.portal_membership.getAuthenticatedMember().has_role('Manager')"
+                   tal:condition="admin">
+                
+        <dl class="portlet"
+            id="portlet-prefs">
+            <dt class="portletHeader"
+                i18n:translate="heading_control_panel">Site Setup</dt>
+        
+            <dd class="portletItemSingle"
+                tal:repeat="group groups">
+    
+                <strong tal:content="group/title"
+                        i18n:translate="">
+                    Plone Configlet Group Title
+                </strong>
+                <ul class="configlets" 
+                    tal:define="configlets python:controlPanel.enumConfiglets(group=group['id'])">
+                    
+                    <li tal:repeat="configlet configlets">
+                        <a style="display: block;"
+                           tal:attributes="href configlet/url"
+                           tal:condition="configlet/visible">
+                            <img tal:attributes="src python:getIconFor('controlpanel',configlet['id']);
+                                                alt configlet/description"
+                                 i18n:attributes="alt"
+                                 tal:on-error="string:" />
+                            <tal:configletname tal:content="configlet/name"
+                                               i18n:translate="" />
+                        </a>
+                    </li>
+                </ul>
+            </dd>
+        </dl>
+    </metal:portlet>
+    </body>
+</html>
