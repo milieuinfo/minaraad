@@ -115,8 +115,15 @@ class testSetup(MainTestCase):
         # properties
         fullFields.add(1)
         self.failIf(fullFields == properties)
-
         
+    def test_memberAreaCreation(self):
+        userfolder = self.portal.acl_users
+        userfolder._doAddUser('member', 'secret', ['Member'], [])
+        self.login('member')
+        self.failIf('member' in self.portal.Members.objectIds())
+
+        membership = self.portal.portal_membership
+        self.failIf(membership.getMemberareaCreationFlag())
         
         
 

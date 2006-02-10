@@ -11,9 +11,17 @@ def install(self):
 
     out.write("Add member data properties.")
     addMemberDataProperties(self, out)
+    deactivateAreaCreations(self, out)
 
     return out.getvalue()
 
+def deactivateAreaCreations(self, out):
+    
+    membership = getToolByName(self, 'portal_membership')
+    if membership.getMemberareaCreationFlag():
+        print >> out, "Deactiving automatic membership area creation"
+        membership.setMemberareaCreationFlag()
+    
 
 def _setWorkflow(portal, out):
     print >> out, "Setting internetlayout workflow"
