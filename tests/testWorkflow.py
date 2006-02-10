@@ -68,6 +68,9 @@ class testWorkflow(MainTestCase):
         self.userfolder._doAddUser('manager', 'secret', ['Manager'], [])
         self.userfolder._doAddUser('cmember', 'secret', ['Council Member'], [])
 
+    
+    # Manually created methods
+    def test_private_state(self):
         self.login('manager')
         self.portal.invokeFactory('Folder', id='map')
         self.map = self.folder.map
@@ -79,10 +82,8 @@ class testWorkflow(MainTestCase):
         self.document = self.map.document
         self.logout()
 
-    # Manually created methods
-    def test_private_state(self):
         self.assertEqual(self.workflow.getInfoFor(self.map,'review_state'), 'private')
-
+        self.assertEqual(self.workflow.getInfoFor(self.document,'review_state'), 'private')
 
 
 def test_suite():
