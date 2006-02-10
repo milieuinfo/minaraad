@@ -58,7 +58,7 @@ class testWorkflow(MainTestCase):
         """ Make users for the tests and make a directory to work in
         """
         self.catalog = self.portal.portal_catalog
-	self.workflow = self.portal.portal_workflow
+        self.workflow = self.portal.portal_workflow
         self.userfolder = self.portal.acl_users
         self.default_user = default_user
 
