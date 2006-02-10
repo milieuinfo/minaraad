@@ -71,19 +71,28 @@ class testWorkflow(MainTestCase):
     
     # Manually created methods
     def test_private_state(self):
+        wf = self.workflow
+
         self.login('manager')
         self.portal.invokeFactory('Folder', id='map')
         self.map = self.folder.map
         self.map.manage_addLocalRoles('author',['Author'])
         self.logout()
 
+        self.assertEqual(wf.getInfoFor(self.map,'review_state'), 'private')
+
+        # XXX: fix this test
+        # its impossible for the 'author' user to be able to successfully
+        # create a 'Document' here since the parent folder is in the private
+        # state and was created by the 'manager' user (and the 'author' user
+        # does not have the Manager role)
+        # What was really supposed to happen here?
         self.login('author')
         self.map.invokeFactory('Document', id='document')
         self.document = self.map.document
         self.logout()
 
-        self.assertEqual(self.workflow.getInfoFor(self.map,'review_state'), 'private')
-        self.assertEqual(self.workflow.getInfoFor(self.document,'review_state'), 'private')
+        self.assertEqual(wf.getInfoFor(self.document,'review_state'), 'private')
 
 
 def test_suite():
