@@ -77,17 +77,9 @@ class testWorkflow(MainTestCase):
         self.portal.invokeFactory('Folder', id='map')
         self.map = self.folder.map
         self.map.manage_addLocalRoles('author',['Author'])
-        self.logout()
 
         self.assertEqual(wf.getInfoFor(self.map,'review_state'), 'private')
 
-        # XXX: fix this test
-        # its impossible for the 'author' user to be able to successfully
-        # create a 'Document' here since the parent folder is in the private
-        # state and was created by the 'manager' user (and the 'author' user
-        # does not have the Manager role)
-        # What was really supposed to happen here?
-        self.login('author')
         self.map.invokeFactory('Document', id='document')
         self.document = self.map.document
         self.logout()
