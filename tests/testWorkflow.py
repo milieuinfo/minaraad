@@ -43,6 +43,8 @@ from Products.minaraad.tests.MainTestCase import MainTestCase
 # Import the tested classes
 
 ##code-section module-beforeclass #fill in your manual code here
+from Products.CMFCore.WorkflowCore import WorkflowException
+from Products.PloneTestCase.setup import default_user
 ##/code-section module-beforeclass
 
 
@@ -53,9 +55,22 @@ class testWorkflow(MainTestCase):
     ##/code-section class-header_testWorkflow
 
     def afterSetUp(self):
-        """
-        """
-        pass
+        self.catalog = self.portal.portal_catalog
+	self.workflow = self.portal.portal_workflow
+        self.userfolder = self.portal.acl_users
+        self.default_user = default_user
+
+        self.userfolder._doAddUser('member', 'secret', ['Member'])
+        self.userfolder._doAddUser('reviewer', 'secret', ['Reviewer'])
+        self.userfolder._doAddUser('manager', 'secret', ['Manager'])
+        self.userfolder._doAddUser('author', 'secret', ['Author'])
+        self.userfolder._doAddUser('cmember', 'secret', ['Council Member'])
+
+        self.login('manager')
+        self.portal.invokeFactory('DocumentFolder', id='documents')
+        self.documents = self.folder.documents
+
+        self.logout()
 
     # Manually created methods
 
