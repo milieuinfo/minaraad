@@ -59,9 +59,10 @@
                             <input type="hidden" 
                                    name="themes_class:list:default" 
                                    value=" " />
-                            <textarea name="themes:lines" 
+                            <textarea class="themeslist"
+                                      name="themes:lines" 
                                       id="themes"
-                                      rows="15"
+                                      rows="20"
                                       tal:content="python:'\n'.join(here.getThemesList())">
                             </textarea>
                         </div>
