@@ -136,6 +136,8 @@ def install(self):
     else:
         print >>out,'no workflow install'
 
+    #bind classes to workflows
+    wft = getToolByName(self,'portal_workflow')
 
     # enable portal_factory for given types
     factory_tool = getToolByName(self,'portal_factory')

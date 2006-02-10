@@ -1,3 +1,4 @@
+from Products.minaraad.config import *
 from sets import Set
 from Products.CMFCore.utils import getToolByName
 from StringIO import StringIO
@@ -5,10 +6,39 @@ from StringIO import StringIO
 def install(self):
     out = StringIO()
 
+    out.write("Setting the workflow")
+    _setWorkflow(self, out)
+
     out.write("Add member data properties.")
     addMemberDataProperties(self, out)
 
     return out.getvalue()
+
+
+def _setWorkflow(portal, out):
+    print >> out, "Setting internetlayout workflow"
+    workflowTool = getToolByName(portal, 'portal_workflow')
+    # reset plone site (used to be set to internetworkflow...)
+    currentWorkflow = workflowTool.getChainForPortalType('Plone Site')
+    if currentWorkflow:
+        print >> out, "Resetting workflow for Plone Site object."
+        workflowTool.setChainForPortalTypes(['Plone Site'],
+                                            '')
+    # Now the normal stuff
+    types_tool = getToolByName(portal, 'portal_types')
+    # Normal workflow
+    types = types_tool.listContentTypes()
+    types = [type_ for type_ in types 
+             if type_ not in (NOT_INTERNET_WORFKLOW_TYPES +
+                              INTERNET_FOLDER_WORKFLOW_TYPES)]
+    for type_ in types:
+        currentWorkflow = list(workflowTool.getChainForPortalType(type_))
+        if currentWorkflow != ['minaraad_workflow']:
+            msg = "Setting internetlayout workflow for %s (from %s)"\
+                  % (type_, currentWorkflow)
+            print >> out, msg
+            workflowTool.setChainForPortalTypes([type_],
+                                                'minaraad_workflow')
 
 
 def addMemberDataProperties(self, out):

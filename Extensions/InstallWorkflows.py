@@ -40,6 +40,6 @@ def installWorkflows(self, package, out):
                          'createminaraad_workflow')
     workflow = ourProductWorkflow(self, 'minaraad_workflow')
     workflowTool._setObject('minaraad_workflow', workflow)
-    workflowTool.setChainForPortalTypes(['WorkflowStub'], workflow.getId())
+    workflowTool.setChainForPortalTypes(['WorkflowStub', 'Hearing', 'AgendaItems'], workflow.getId())
 
     return workflowTool

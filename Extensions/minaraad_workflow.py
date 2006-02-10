@@ -64,12 +64,15 @@ def setupminaraad_workflow(self, workflow):
     for v in ['review_history', 'comments', 'time', 'actor', 'action']:
         workflow.variables.addVariable(v)
 
-    workflow.addManagedPermission('add portal content')
+    workflow.addManagedPermission('edit')
     workflow.addManagedPermission('Access contents information')
     workflow.addManagedPermission('View')
     workflow.addManagedPermission('List folder contents')
     workflow.addManagedPermission('Modify portal content')
-    workflow.addManagedPermission('DeleteObject')
+    workflow.addManagedPermission('Delete Object')
+    workflow.addManagedPermission('add portal content')
+    workflow.addManagedPermission('Modify folder contents')
+    workflow.addManagedPermission('Add portal content')
 
     for l in []:
         if not l in workflow.worklists.objectValues():
@@ -84,7 +87,7 @@ def setupminaraad_workflow(self, workflow):
     stateDef = workflow.states['pending_private']
     stateDef.setProperties(title="""pending_private""",
                            transitions=['publish', 'restricted_publish', 'reject', 'retract'])
-    stateDef.setPermission('add portal content',
+    stateDef.setPermission('edit',
                            0,
                            ['Author', 'Owner', 'Reviewer', 'Manager'])
     stateDef.setPermission('Access contents information',
@@ -99,14 +102,14 @@ def setupminaraad_workflow(self, workflow):
     stateDef.setPermission('Modify portal content',
                            0,
                            ['Reviewer', 'Manager'])
-    stateDef.setPermission('DeleteObject',
+    stateDef.setPermission('Delete Object',
                            0,
                            ['Owner', 'Reviewer', 'Manager'])
 
     stateDef = workflow.states['published']
     stateDef.setProperties(title="""published""",
                            transitions=['revise', 'reject'])
-    stateDef.setPermission('add portal content',
+    stateDef.setPermission('edit',
                            0,
                            ['Author', 'Owner', 'Reviewer', 'Manager'])
     stateDef.setPermission('Access contents information',
@@ -121,14 +124,14 @@ def setupminaraad_workflow(self, workflow):
     stateDef.setPermission('Modify portal content',
                            0,
                            ['Reviewer', 'Manager'])
-    stateDef.setPermission('DeleteObject',
+    stateDef.setPermission('Delete Object',
                            0,
                            ['Owner', 'Reviewer', 'Manager'])
 
     stateDef = workflow.states['pending_revisioning']
     stateDef.setProperties(title="""pending_revisioning""",
                            transitions=['retract2', 'publish'])
-    stateDef.setPermission('add portal content',
+    stateDef.setPermission('edit',
                            0,
                            ['Author', 'Owner', 'Reviewer', 'Manager'])
     stateDef.setPermission('Access contents information',
@@ -143,7 +146,7 @@ def setupminaraad_workflow(self, workflow):
     stateDef.setPermission('Modify portal content',
                            0,
                            ['Reviewer', 'Manager'])
-    stateDef.setPermission('DeleteObject',
+    stateDef.setPermission('Delete Object',
                            0,
                            ['Owner', 'Reviewer', 'Manager'])
 
@@ -165,14 +168,14 @@ def setupminaraad_workflow(self, workflow):
     stateDef.setPermission('Modify portal content',
                            0,
                            ['Owner', 'Reviewer', 'Manager'])
-    stateDef.setPermission('DeleteObject',
+    stateDef.setPermission('Delete Object',
                            0,
                            ['Owner', 'Reviewer', 'Manager'])
 
     stateDef = workflow.states['restricted']
     stateDef.setProperties(title="""restricted""",
                            transitions=[])
-    stateDef.setPermission('add portal content',
+    stateDef.setPermission('edit',
                            0,
                            ['Author', 'Owner', 'Reviewer', 'Manager'])
     stateDef.setPermission('Access contents information',
@@ -187,31 +190,34 @@ def setupminaraad_workflow(self, workflow):
     stateDef.setPermission('Modify portal content',
                            0,
                            ['Owner', 'Reviewer', 'Manager'])
-    stateDef.setPermission('DeleteObject',
+    stateDef.setPermission('Delete Object',
                            0,
                            ['Owner', 'Reviewer', 'Manager'])
 
     stateDef = workflow.states['private']
     stateDef.setProperties(title="""private""",
                            transitions=['submit', 'publish'])
-    stateDef.setPermission('add portal content',
-                           0,
-                           ['Author', 'Owner', 'Reviewer', 'Manager'])
     stateDef.setPermission('Access contents information',
                            0,
-                           ['Author', 'Owner', 'Reviewer', 'Manager'])
-    stateDef.setPermission('View',
+                           ['Author', 'Owner', 'Manager'])
+    stateDef.setPermission('Delete Object',
                            0,
-                           ['Author', 'Owner', 'Reviewer', 'Manager'])
+                           ['Author', 'Owner', 'Manager'])
     stateDef.setPermission('List folder contents',
                            0,
-                           ['Author', 'Owner', 'Reviewer', 'Manager'])
-    stateDef.setPermission('Modify portal content',
+                           ['Author', 'Owner', 'Manager'])
+    stateDef.setPermission('Modify folder contents',
                            0,
-                           ['Owner', 'Reviewer', 'Manager'])
-    stateDef.setPermission('DeleteObject',
+                           ['Author', 'Owner', 'Manager'])
+    stateDef.setPermission('View',
                            0,
-                           ['Owner', 'Reviewer', 'Manager'])
+                           ['Author', 'Owner', 'Manager'])
+    stateDef.setPermission('Add portal content',
+                           0,
+                           ['Author', 'Owner', 'Manager'])
+    stateDef.setPermission('edit',
+                           0,
+                           ['Author', 'Owner', 'Manager'])
 
     ## Transitions initialization
 

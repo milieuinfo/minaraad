@@ -55,24 +55,34 @@ class testWorkflow(MainTestCase):
     ##/code-section class-header_testWorkflow
 
     def afterSetUp(self):
+        """ Make users for the tests and make a directory to work in
+        """
         self.catalog = self.portal.portal_catalog
 	self.workflow = self.portal.portal_workflow
         self.userfolder = self.portal.acl_users
         self.default_user = default_user
 
-        self.userfolder._doAddUser('member', 'secret', ['Member'])
-        self.userfolder._doAddUser('reviewer', 'secret', ['Reviewer'])
-        self.userfolder._doAddUser('manager', 'secret', ['Manager'])
-        self.userfolder._doAddUser('author', 'secret', ['Author'])
-        self.userfolder._doAddUser('cmember', 'secret', ['Council Member'])
+        self.userfolder._doAddUser('member', 'secret', ['Member'], [])
+        self.userfolder._doAddUser('author', 'secret', ['Member'], [])
+        self.userfolder._doAddUser('reviewer', 'secret', ['Reviewer'], [])
+        self.userfolder._doAddUser('manager', 'secret', ['Manager'], [])
+        self.userfolder._doAddUser('cmember', 'secret', ['Council Member'], [])
 
         self.login('manager')
-        self.portal.invokeFactory('DocumentFolder', id='documents')
-        self.documents = self.folder.documents
+        self.portal.invokeFactory('Folder', id='map')
+        self.map = self.folder.map
+        self.map.manage_addLocalRoles('author',['Author'])
+        self.logout()
 
+        self.login('author')
+        self.map.invokeFactory('Document', id='document')
+        self.document = self.map.document
         self.logout()
 
     # Manually created methods
+    def test_private_state(self):
+        self.assertEqual(self.workflow.getInfoFor(self.map,'review_state'), 'private')
+
 
 
 def test_suite():
