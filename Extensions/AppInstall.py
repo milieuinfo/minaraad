@@ -92,7 +92,7 @@ def addConfiglets(self, out):
     portal_controlpanel.registerConfiglet(
         'Themes', #id of your Tool
         'minaraad', # Title of your Troduct
-        'string:${portal_url}/themes_config/',
+        'string:${portal_url}/themes_config',
         'python:True', # a condition
         'Manage Portal', # access permission
         'Products', # section to which the configlet should be added: (Plone,Products,Members)
