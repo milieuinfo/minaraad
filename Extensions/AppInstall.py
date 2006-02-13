@@ -3,6 +3,24 @@ from sets import Set
 from Products.CMFCore.utils import getToolByName
 from StringIO import StringIO
 
+MINARAAD_PROPERTIES = 'minaraad_properties'
+THEMES_PROPERTY = [
+    '1/Alles',
+    '2/Water',
+    '3/Klimaat & energie',
+    '4/Afval',
+    '5/Bodem',
+    '6/Europa & Duurzame ontwikkeling',
+    '7/Mobiliteit',
+    '8/Ruimtelijke ordening',
+    '9/Natuur & landbouw',
+    '10/NME',
+    '11/Milieubegroting',
+    '12/Milieuplanning',
+    '13/Milieureglementering',
+    '14/Instrumenten',
+]
+
 def install(self):
     out = StringIO()
 
@@ -14,10 +32,32 @@ def install(self):
     deactivateAreaCreations(self, out)
     changeCookieTimeOut(self, out)
     
+    setupMinaraadProperties(self, out)
+
     out.write("Add configlets")
     addConfiglets(self, out)
 
     return out.getvalue()
+
+def setupMinaraadProperties(self, out):
+    propsTool = getToolByName(self, 'portal_properties')
+    
+    sheet = getattr(propsTool, MINARAAD_PROPERTIES, None)
+    if sheet is None:
+        propsTool.addPropertySheet(MINARAAD_PROPERTIES, 'Minaraad Properties')
+        sheet = getattr(propsTool, MINARAAD_PROPERTIES)
+        sheet._properties = sheet._properties + (
+                {'id':'themes', 'type':'lines', 'mode':'w'},
+            )
+
+        sheet.manage_changeProperties({'themes': THEMES_PROPERTY})
+        print >> out, "Added new '%s' property sheet to " \
+                      "portal_properties" % MINARAAD_PROPERTIES
+    else:
+        print >> out, "Skipped adding '%s' property sheet to " \
+                      "portal_properties since it already " \
+                      "exists" % MINARAAD_PROPERTIES
+
 
 def changeCookieTimeOut(self, out):
     propsTool = getToolByName(self, 'portal_properties')

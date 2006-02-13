@@ -131,6 +131,14 @@ class testSetup(MainTestCase):
         membership = self.portal.portal_membership
         self.failIf(membership.getMemberareaCreationFlag())
         
+    def test_minaraadProperties(self):
+        propsTool = self.portal.portal_properties
+        
+        self.failUnless(hasattr(propsTool, 'minaraad_properties'))
+        
+        props = propsTool.minaraad_properties
+        self.failUnless(props.hasProperty('themes'))
+
 
 
 def test_suite():
