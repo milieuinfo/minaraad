@@ -62,6 +62,8 @@ PRODUCTS.append('minaraad')
 testcase = PloneTestCase.PloneTestCase
 
 ##code-section module-before-plone-site-setup #fill in your manual code here
+from zope.app.tests import placelesssetup
+placelesssetup.setUp()
 ##/code-section module-before-plone-site-setup
 
 PloneTestCase.setupPloneSite(products=PRODUCTS)

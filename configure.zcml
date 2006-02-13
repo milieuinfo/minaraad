@@ -1,10 +1,15 @@
 <configure
-  xmlns="http://namespaces.zope.org/zope"
-  xmlns:browser="http://namespaces.zope.org/browser"
-  xmlns:five="http://namespaces.zope.org/five">
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:five="http://namespaces.zope.org/five">
 
   <five:traversable
-    class="Products.CMFPlone.Portal.PloneSite"
+      class="Products.CMFPlone.Portal.PloneSite"
+    />
+    
+  <five:implements
+      class="Products.CMFPlone.Portal.PloneSite"
+      interface=".interfaces.IPortalPropertyContainer"
     />
 
   <include package=".browser" />

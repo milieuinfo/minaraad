@@ -1,0 +1,114 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/prefs_main_template/macros/master"
+      i18n:domain="minaraad">
+
+<metal:block metal:fill-slot="top_slot"
+             tal:define="dummy python:request.set('disable_border',1)" />
+
+<body>
+
+<div metal:fill-slot="prefs_configlet_main">
+
+    <h1 i18n:translate="heading_themes_setup">Themes Settings</h1>
+
+    <a href=""
+       class="link-parent"
+       tal:attributes="href string: $portal_url/plone_control_panel"
+       i18n:translate="label_up_to_plone_setup">
+    Up to Site Setup
+    </a>
+
+    <p class="documentDescription" 
+       i18n:translate="description_themes_setup">
+       Themes settings for Site.
+    </p>
+
+    <form action=""
+          name="search"
+          method="post"
+          tal:attributes="action string:${request/URL0}">
+
+        <fieldset>
+            <legend i18n:translate="legend_current_themes _details">Current Themes</legend>
+
+            <div class="field" tal:repeat="theme view/themes">
+                <input type="checkbox"
+                       class="noborder"
+                       value=""
+                       id=""
+                       tabindex=""
+                       tal:attributes="tabindex tabindex;
+                                       id string:theme_${theme/id};
+                                       value string:theme_${theme/id};"
+                       /> 
+    
+                <label for="" tal:attributes="for string:theme_${theme/id};"
+                              tal:content="string:${theme/Title}"
+                       ></label>
+    
+            </div>
+
+            <div class="formControls">
+                <input class="context"
+                       tabindex=""
+                       type="submit"
+                       name="form.button.Edit"
+                       value="Edit"
+                       i18n:attributes="value label_edit;"
+                       tal:attributes="tabindex tabindex/next;"
+                       />
+                <input class="context"
+                       tabindex=""
+                       type="submit"
+                       name="form.button.Delete"
+                       value="Delete"
+                       i18n:attributes="value label_delete;"
+                       tal:attributes="tabindex tabindex/next;"
+                       />
+            </div>    
+        </fieldset>
+
+    </form>
+
+    <form action=""
+          name="search"
+          method="post"
+          tal:attributes="action string:${request/URL0}">
+
+        <fieldset>
+            <legend i18n:translate="legend_add_theme_details">Add Theme</legend>
+
+            <div class="field">
+                <label for="theme_name" i18n:translate="label_theme_name">Theme Name</label>
+
+                <div class="formHelp" i18n:translate="help_theme_name">
+                Name of the new theme to create.
+                </div>
+
+                <input type="text"
+                       id="theme_name"
+                       name="theme_name"
+                       size="25"
+                       tabindex=""
+                       tal:attributes="tabindex tabindex/next;"
+                       />
+            </div>
+
+            <div class="formControls">
+                <input class="context"
+                       tabindex=""
+                       type="submit"
+                       name="form.button.Add"
+                       value="Add"
+                       i18n:attributes="value label_add;"
+                       tal:attributes="tabindex tabindex/next;"
+                       />
+        </fieldset>
+
+    </form>
+
+</div>
+
+</body>
+</html>

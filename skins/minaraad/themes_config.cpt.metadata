@@ -1,7 +1,0 @@
-[default]
-title=Themes Configuration
-border=None
-
-[actions]
-action.success = traverse_to:string:
-action.failure = traverse_to:string:
