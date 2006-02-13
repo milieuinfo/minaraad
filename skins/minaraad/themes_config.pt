@@ -56,15 +56,6 @@
 
                         <div class="field">
                             <div class="formHelp">Wijzig de lijst met thema's</div>
-                            <input type="hidden" 
-                                   name="themes_class:list:default" 
-                                   value=" " />
-                            <textarea class="themeslist"
-                                      name="themes:lines" 
-                                      id="themes"
-                                      rows="20"
-                                      tal:content="python:'\n'.join(here.getThemesList())">
-                            </textarea>
                         </div>
 
                         <input class="context"

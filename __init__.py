@@ -76,16 +76,6 @@ def initialize(context):
     import EmailMixin
     import PostMixin
     import MinaBundle
-    import Themes
-    import Subscriptions
-
-    # Initialize portal tools
-    tools = [Themes.Themes, Subscriptions.Subscriptions]
-    ToolInit( PROJECTNAME +' Tools',
-                tools = tools,
-                product_name = PROJECTNAME,
-                icon='tool.gif'
-                ).initialize( context )
 
     # Initialize portal content
     content_types, constructors, ftis = process_types(

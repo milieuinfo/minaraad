@@ -13,6 +13,9 @@ def install(self):
     addMemberDataProperties(self, out)
     deactivateAreaCreations(self, out)
     changeCookieTimeOut(self, out)
+    
+    out.write("Add configlets")
+    addConfiglets(self, out)
 
     return out.getvalue()
 
@@ -82,3 +85,34 @@ def addMemberDataProperties(self, out):
         memberdata.manage_addProperty('select_country', countries, 'lines')
         memberdata.manage_addProperty('country', 'select_country', 'selection')
         memberdata.manage_addProperty('other_country', '', 'string')
+
+def addConfiglets(self, out):
+    # register tools as configlets
+    portal_controlpanel = getToolByName(self,'portal_controlpanel')
+    portal_controlpanel.registerConfiglet(
+        'Themes', #id of your Tool
+        'minaraad', # Title of your Troduct
+        'string:${portal_url}/themes_config/',
+        'python:True', # a condition
+        'Manage Portal', # access permission
+        'Products', # section to which the configlet should be added: (Plone,Products,Members)
+        1, # visibility
+        'ThemesID',
+        'site_icon.gif', # icon in control_panel
+        'Configuration for tool Themes.',
+        None,
+    )
+
+    portal_controlpanel.registerConfiglet(
+        'Subscriptions', #id of your Tool
+        'Subscriptions', # Title of your Troduct
+        'string:${portal_url}/subscriptions_form/',
+        'python:True', # a condition
+        'View', # access permission
+        'Member', # section to which the configlet should be added: (Plone,Products,Members)
+        1, # visibility
+        'SubscriptionsID',
+        'site_icon.gif', # icon in control_panel
+        'Configuration for tool Subscriptions.',
+        None,
+    )

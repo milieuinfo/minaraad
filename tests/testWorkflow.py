@@ -68,7 +68,6 @@ class testWorkflow(MainTestCase):
         self.userfolder._doAddUser('manager', 'secret', ['Manager'], [])
         self.userfolder._doAddUser('cmember', 'secret', ['Council Member'], [])
 
-    
     # Manually created methods
     def test_private_state(self):
         wf = self.workflow
@@ -85,6 +84,7 @@ class testWorkflow(MainTestCase):
         self.logout()
 
         self.assertEqual(wf.getInfoFor(self.document,'review_state'), 'private')
+
 
 
 def test_suite():

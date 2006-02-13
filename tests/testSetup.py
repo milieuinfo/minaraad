@@ -89,6 +89,12 @@ class testSetup(MainTestCase):
         # ...
 
     # Manually created methods
+    def test_cookieTimeOutProperty(self):
+        propsTool = self.portal.portal_properties
+        siteProperties = propsTool.site_properties
+        cookieLength = siteProperties.getProperty('auth_cookie_length', 0)
+        self.failUnless(cookieLength == 30)
+
     def test_memberDataToolProperties(self):
         # original memberdata properties
         baseFields = sets.Set(('visible_ids', 'last_login_time', 'language', 
@@ -125,11 +131,6 @@ class testSetup(MainTestCase):
         membership = self.portal.portal_membership
         self.failIf(membership.getMemberareaCreationFlag())
         
-    def test_cookieTimeOutProperty(self):
-        propsTool = self.portal.portal_properties
-        siteProperties = propsTool.site_properties
-        cookieLength = siteProperties.getProperty('auth_cookie_length', 0)
-        self.failUnless(cookieLength == 30)
 
 
 def test_suite():
