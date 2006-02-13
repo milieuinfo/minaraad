@@ -18,6 +18,10 @@ class MinaraadConfigletView(BrowserView):
             self.saveThemes()
             return response.redirect(self.referring_url+
                                      '?portal_status_message=Themes+saved')
+        elif request.get('form.button.Delete', None):
+            self.deleteThemes()
+            return response.redirect(self.referring_url+
+                                     '?portal_status_message=Themes+deleted')
         
         
         return self.index()
@@ -30,7 +34,6 @@ class MinaraadConfigletView(BrowserView):
         if pos > -1:
             self.referring_url = self.referring_url[:pos]
         
-    
     def themes(self):
         propsTool = getToolByName(self.context, 'portal_properties')
         sheet = propsTool.minaraad_properties
@@ -75,6 +78,20 @@ class MinaraadConfigletView(BrowserView):
             
         sheet.manage_changeProperties({'themes': editedThemes})
         
+    def deleteThemes(self):
+        propsTool = getToolByName(self.context, 'portal_properties')
+        sheet = propsTool.minaraad_properties
+
+        editedThemes = []
+        for x in sheet.getProperty('themes'):
+            pos = x.find('/')
+            id = x[:pos]
+            value = x[pos+1:]
+
+            if not self.request.get('theme_'+id, None):
+                editedThemes.append('%s/%s' % (id, value))
+            
+        sheet.manage_changeProperties({'themes': editedThemes})
         
     def showEditableFields(self):
         return self.request.get('form.button.Edit', None) is not None
