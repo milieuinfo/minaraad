@@ -14,6 +14,11 @@ class MinaraadConfigletView(BrowserView):
             self.addTheme(themeName)
             return response.redirect(self.referring_url+
                                      '?portal_status_message=Theme+added')
+        elif request.get('form.button.Save', None):
+            self.saveThemes()
+            return response.redirect(self.referring_url+
+                                     '?portal_status_message=Themes+saved')
+        
         
         return self.index()
     
@@ -31,10 +36,13 @@ class MinaraadConfigletView(BrowserView):
         sheet = propsTool.minaraad_properties
 
         themes = []
+        isEditing = self.request.get('form.button.Edit', None) is not None
         for x in sheet.getProperty('themes'):
             pos = x.find('/')
-            d = {'id': x[:pos], 'Title': x[pos+1:]}
-            themes.append(d)
+            id = x[:pos]
+            if (not isEditing) or self.request.get('theme_'+id, None):
+                d = {'id': id, 'Title': x[pos+1:]}
+                themes.append(d)
             
         return themes
 
@@ -52,4 +60,22 @@ class MinaraadConfigletView(BrowserView):
         newThemes = sheet.getProperty('themes') + (newLine,)
         sheet.manage_changeProperties({'themes': newThemes})
         
+    def saveThemes(self):
+        propsTool = getToolByName(self.context, 'portal_properties')
+        sheet = propsTool.minaraad_properties
+
+        editedThemes = []
+        for x in sheet.getProperty('themes'):
+            pos = x.find('/')
+            id = x[:pos]
+            value = x[pos+1:]
+
+            value = self.request.get('theme_'+id, value)
+            editedThemes.append('%s/%s' % (id, value))
+            
+        sheet.manage_changeProperties({'themes': editedThemes})
+        
+        
+    def showEditableFields(self):
+        return self.request.get('form.button.Edit', None) is not None
     

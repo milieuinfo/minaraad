@@ -8,7 +8,8 @@
 
 <body>
 
-<div metal:fill-slot="prefs_configlet_main">
+<div metal:fill-slot="prefs_configlet_main"
+     tal:define="showEdit view/showEditableFields">
 
     <h1 i18n:translate="heading_themes_setup">Themes Settings</h1>
 
@@ -32,7 +33,8 @@
         <fieldset>
             <legend i18n:translate="legend_current_themes _details">Current Themes</legend>
 
-            <div class="field" tal:repeat="theme view/themes">
+            <div class="field" tal:repeat="theme view/themes" 
+                 tal:condition="not:showEdit">
                 <input type="checkbox"
                        class="noborder"
                        value=""
@@ -40,6 +42,7 @@
                        tabindex=""
                        tal:attributes="tabindex tabindex;
                                        id string:theme_${theme/id};
+                                       name string:theme_${theme/id};
                                        value string:theme_${theme/id};"
                        /> 
     
@@ -49,7 +52,29 @@
     
             </div>
 
+            <div class="field" tal:repeat="theme view/themes" tal:condition="showEdit">
+                <input type="text"
+                       id="theme_name"
+                       name="theme_name"
+                       size="25"
+                       tabindex=""
+                       tal:attributes="tabindex tabindex/next;
+                                       id string:theme_${theme/id};
+                                       name string:theme_${theme/id};
+                                       value string:${theme/Title}"
+                       />
+            </div>
+
             <div class="formControls">
+                <input class="context"
+                       tabindex=""
+                       type="submit"
+                       name="form.button.Save"
+                       value="Save"
+                       i18n:attributes="value label_save;"
+                       tal:attributes="tabindex tabindex/next;"
+                       tal:condition="showEdit"
+                       />           
                 <input class="context"
                        tabindex=""
                        type="submit"
@@ -57,6 +82,7 @@
                        value="Edit"
                        i18n:attributes="value label_edit;"
                        tal:attributes="tabindex tabindex/next;"
+                       tal:condition="not:showEdit"
                        />
                 <input class="context"
                        tabindex=""
@@ -64,6 +90,7 @@
                        name="form.button.Delete"
                        value="Delete"
                        i18n:attributes="value label_delete;"
+                       tal:condition="not:showEdit"
                        tal:attributes="tabindex tabindex/next;"
                        />
             </div>    
@@ -74,7 +101,8 @@
     <form action=""
           name="search"
           method="post"
-          tal:attributes="action string:${request/ACTUAL_URL}">
+          tal:attributes="action string:${request/ACTUAL_URL}"
+          tal:condition="not:showEdit">
 
         <fieldset>
             <legend i18n:translate="legend_add_theme_details">Add Theme</legend>
