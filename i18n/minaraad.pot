@@ -408,3 +408,7 @@ msgstr ""
 msgid "label_add"
 msgstr ""
 
+#. Default: "Edit Theme"
+#: browser/minaraad_config.pt"
+msgid "legend_edit_theme"
+msgstr ""

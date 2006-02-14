@@ -141,6 +141,11 @@ msgstr ""
 msgid "legend_current_themes _details"
 msgstr ""
 
+#. Default: "Edit Theme"
+#: browser/minaraad_config.pt"
+msgid "legend_edit_theme"
+msgstr ""
+
 #. Default: "attachment"
 #: content/Advisory.py
 #: content/Presentation.py

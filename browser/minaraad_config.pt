@@ -21,7 +21,8 @@
     </a>
 
     <p class="documentDescription" 
-       i18n:translate="description_themes_setup">
+       i18n:translate="description_themes_setup"
+       tal:condition="not:showEdit">
        Themes settings for Site
     </p>
 
@@ -31,9 +32,14 @@
           tal:attributes="action string:${request/ACTUAL_URL}">
 
         <fieldset>
-            <legend i18n:translate="legend_current_themes _details">Current Themes</legend>
+            <legend i18n:translate="legend_current_themes _details"
+                    tal:condition="not:showEdit">Current Themes</legend>
 
-            <div class="field" tal:repeat="theme view/themes" 
+            <legend i18n:translate="legend_edit_theme"
+                    tal:condition="showEdit">Edit Theme</legend>
+
+            <div class="field" 
+                tal:repeat="theme view/themes" 
                  tal:condition="not:showEdit">
                 <input type="checkbox"
                        class="noborder"
@@ -50,7 +56,9 @@
     
             </div>
 
-            <div class="field" tal:repeat="theme view/themes" tal:condition="showEdit">
+            <div class="field" 
+                 tal:repeat="theme view/themes"
+                 tal:condition="showEdit">
                 <input type="text"
                        id="theme_name"
                        name="theme_name"
