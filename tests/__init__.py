@@ -27,6 +27,9 @@ __docformat__ = 'plaintext'
 
 
 ##code-section init-module-header #fill in your manual code here
+
+import patch
+
 ##/code-section init-module-header
 
 

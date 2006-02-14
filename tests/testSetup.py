@@ -101,7 +101,7 @@ class testSetup(MainTestCase):
                                'home_page', 'description', 'wysiwyg_editor', 
                                'error_log_update', 'location', 'portal_skin', 
                                'fullname', 'login_time', 'email', 'ext_editor', 
-                               'listed'))
+                               'listed','must_change_password'))
         
         # new properties we add
         newFields = sets.Set(('company', 'jobtitle', 'street', 'housenumber', 
