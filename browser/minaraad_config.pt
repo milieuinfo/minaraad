@@ -22,7 +22,7 @@
 
     <p class="documentDescription" 
        i18n:translate="description_themes_setup">
-       Themes settings for Site.
+       Themes settings for Site
     </p>
 
     <form action=""
@@ -43,12 +43,10 @@
                        tal:attributes="tabindex tabindex;
                                        id string:theme_${theme/id};
                                        name string:theme_${theme/id};
-                                       value string:theme_${theme/id};"
-                       /> 
+                                       value string:theme_${theme/id};" /> 
     
                 <label for="" tal:attributes="for string:theme_${theme/id};"
-                              tal:content="string:${theme/Title}"
-                       ></label>
+                              tal:content="string:${theme/Title}"></label>
     
             </div>
 
@@ -61,8 +59,7 @@
                        tal:attributes="tabindex tabindex/next;
                                        id string:theme_${theme/id};
                                        name string:theme_${theme/id};
-                                       value string:${theme/Title}"
-                       />
+                                       value string:${theme/Title}" />
             </div>
 
             <div class="formControls">
@@ -73,8 +70,7 @@
                        value="Save"
                        i18n:attributes="value label_save;"
                        tal:attributes="tabindex tabindex/next;"
-                       tal:condition="showEdit"
-                       />           
+                       tal:condition="showEdit" />
                 <input class="context"
                        tabindex=""
                        type="submit"
@@ -82,8 +78,7 @@
                        value="Edit"
                        i18n:attributes="value label_edit;"
                        tal:attributes="tabindex tabindex/next;"
-                       tal:condition="not:showEdit"
-                       />
+                       tal:condition="not:showEdit" />
                 <input class="context"
                        tabindex=""
                        type="submit"
@@ -91,8 +86,7 @@
                        value="Delete"
                        i18n:attributes="value label_delete;"
                        tal:condition="not:showEdit"
-                       tal:attributes="tabindex tabindex/next;"
-                       />
+                       tal:attributes="tabindex tabindex/next;" />
             </div>    
         </fieldset>
 
@@ -119,8 +113,7 @@
                        name="theme_name"
                        size="25"
                        tabindex=""
-                       tal:attributes="tabindex tabindex/next;"
-                       />
+                       tal:attributes="tabindex tabindex/next;" />
             </div>
 
             <div class="formControls">
@@ -130,8 +123,7 @@
                        name="form.button.Add"
                        value="Add"
                        i18n:attributes="value label_add;"
-                       tal:attributes="tabindex tabindex/next;"
-                       />
+                       tal:attributes="tabindex tabindex/next;" />
         </fieldset>
 
     </form>

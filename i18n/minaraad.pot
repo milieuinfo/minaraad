@@ -343,3 +343,68 @@ msgstr ""
 msgid "minaraad_label_themes"
 msgstr ""
 
+#. Default: "Up to Site Setup"
+#: browser/minaraad_config.pt"
+msgid "label_up_to_plone_setup"
+msgstr ""
+
+#. Default: "Themes settings for Site"
+#: browser/minaraad_config.pt"
+msgid "description_themes_setup"
+msgstr ""
+
+#. Default: "Themes Settings"
+#: browser/minaraad_config.pt"
+msgid "heading_themes_setup"
+msgstr ""
+
+#. Default: "Current Themes"
+#: browser/minaraad_config.pt"
+msgid "legend_current_themes _details"
+msgstr ""
+
+#. Default: "Delete"
+#: browser/minaraad_config.pt"
+msgid "label_delete"
+msgstr ""
+
+#. Default: "Edit"
+#: browser/minaraad_config.pt"
+msgid "label_edit"
+msgstr ""
+
+#. Default: "Save"
+#: browser/minaraad_config.pt"
+msgid "label_save"
+msgstr ""
+
+#. Default: "Add"
+#: browser/minaraad_config.pt"
+msgid "label_add"
+msgstr ""
+
+#. Default: "Add Theme"
+#: browser/minaraad_config.pt"
+msgid "legend_add_theme_details"
+msgstr ""
+
+#. Default: "Theme Name"
+#: browser/minaraad_config.pt"
+msgid "label_theme_name"
+msgstr ""
+
+#. Default: "Name of the new theme to create."
+#: browser/minaraad_config.pt"
+msgid "help_theme_name"
+msgstr ""
+
+#. Default: "Add"
+#: browser/minaraad_config.pt"
+msgid "label_add"
+msgstr ""
+
+#. Default: "Add"
+#: browser/minaraad_config.pt"
+msgid "label_add"
+msgstr ""
+

@@ -16,6 +16,26 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: minaraad\n"
 
+#. Default: "Themes settings for Site"
+#: browser/minaraad_config.pt"
+msgid "description_themes_setup"
+msgstr "De gebruikte thema's voor deze site."
+
+#. Default: "Themes Settings"
+#: browser/minaraad_config.pt"
+msgid "heading_themes_setup"
+msgstr "Thema's"
+
+#. Default: "Name of the new theme to create."
+#: browser/minaraad_config.pt"
+msgid "help_theme_name"
+msgstr "Vul de naam in van het nieuwe thema."
+
+#. Default: "Add"
+#: browser/minaraad_config.pt"
+msgid "label_add"
+msgstr "Toevoegen"
+
 #. Default: "City"
 #: skins/minaraad/join_form.cpt
 #: skins/minaraad/personalize_form.cpt
@@ -36,6 +56,16 @@ msgstr "Organisatie"
 #: skins/minaraad/prefs_user_details.cpt
 msgid "label_country"
 msgstr "Land"
+
+#. Default: "Delete"
+#: browser/minaraad_config.pt"
+msgid "label_delete"
+msgstr "Verwijderen"
+
+#. Default: "Edit"
+#: browser/minaraad_config.pt"
+msgid "label_edit"
+msgstr "Wijzigen"
 
 #. Default: "Gender"
 #: skins/minaraad/join_form.cpt
@@ -70,7 +100,12 @@ msgstr "Ander land namelijk:"
 #: skins/minaraad/personalize_form.cpt
 #: skins/minaraad/prefs_user_details.cpt
 msgid "label_phonenumber"
-msgstr ""
+msgstr "Telefoonnummer"
+
+#. Default: "Save"
+#: browser/minaraad_config.pt"
+msgid "label_save"
+msgstr "Opslaan"
 
 #. Default: "Street"
 #: skins/minaraad/join_form.cpt
@@ -79,12 +114,32 @@ msgstr ""
 msgid "label_street"
 msgstr "Straat"
 
+#. Default: "Theme Name"
+#: browser/minaraad_config.pt"
+msgid "label_theme_name"
+msgstr "Thema"
+
+#. Default: "Up to Site Setup"
+#: browser/minaraad_config.pt"
+msgid "label_up_to_plone_setup"
+msgstr "Terug naar Plone configuratie"
+
 #. Default: "Zipcode"
 #: skins/minaraad/join_form.cpt
 #: skins/minaraad/personalize_form.cpt
 #: skins/minaraad/prefs_user_details.cpt
 msgid "label_zipcode"
 msgstr "Postcode"
+
+#. Default: "Add Theme"
+#: browser/minaraad_config.pt"
+msgid "legend_add_theme_details"
+msgstr "Thema toevoegen"
+
+#. Default: "Current Themes"
+#: browser/minaraad_config.pt"
+msgid "legend_current_themes _details"
+msgstr "Huidige thema's"
 
 #. Default: "attachment"
 #: content/Advisory.py

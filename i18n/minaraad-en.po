@@ -16,6 +16,26 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: minaraad\n"
 
+#. Default: "Themes settings for Site"
+#: browser/minaraad_config.pt"
+msgid "description_themes_setup"
+msgstr ""
+
+#. Default: "Themes Settings"
+#: browser/minaraad_config.pt"
+msgid "heading_themes_setup"
+msgstr ""
+
+#. Default: "Name of the new theme to create."
+#: browser/minaraad_config.pt"
+msgid "help_theme_name"
+msgstr ""
+
+#. Default: "Add"
+#: browser/minaraad_config.pt"
+msgid "label_add"
+msgstr ""
+
 #. Default: "City"
 #: skins/minaraad/join_form.cpt
 #: skins/minaraad/personalize_form.cpt
@@ -35,6 +55,16 @@ msgstr ""
 #: skins/minaraad/personalize_form.cpt
 #: skins/minaraad/prefs_user_details.cpt
 msgid "label_country"
+msgstr ""
+
+#. Default: "Delete"
+#: browser/minaraad_config.pt"
+msgid "label_delete"
+msgstr ""
+
+#. Default: "Edit"
+#: browser/minaraad_config.pt"
+msgid "label_edit"
 msgstr ""
 
 #. Default: "Gender"
@@ -72,6 +102,11 @@ msgstr ""
 msgid "label_phonenumber"
 msgstr ""
 
+#. Default: "Save"
+#: browser/minaraad_config.pt"
+msgid "label_save"
+msgstr ""
+
 #. Default: "Street"
 #: skins/minaraad/join_form.cpt
 #: skins/minaraad/personalize_form.cpt
@@ -79,11 +114,31 @@ msgstr ""
 msgid "label_street"
 msgstr ""
 
+#. Default: "Theme Name"
+#: browser/minaraad_config.pt"
+msgid "label_theme_name"
+msgstr ""
+
+#. Default: "Up to Site Setup"
+#: browser/minaraad_config.pt"
+msgid "label_up_to_plone_setup"
+msgstr ""
+
 #. Default: "Zipcode"
 #: skins/minaraad/join_form.cpt
 #: skins/minaraad/personalize_form.cpt
 #: skins/minaraad/prefs_user_details.cpt
 msgid "label_zipcode"
+msgstr ""
+
+#. Default: "Add Theme"
+#: browser/minaraad_config.pt"
+msgid "legend_add_theme_details"
+msgstr ""
+
+#. Default: "Current Themes"
+#: browser/minaraad_config.pt"
+msgid "legend_current_themes _details"
 msgstr ""
 
 #. Default: "attachment"
