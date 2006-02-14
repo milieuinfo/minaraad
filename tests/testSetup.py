@@ -96,13 +96,7 @@ class testSetup(MainTestCase):
         self.failUnless(cookieLength == 30)
 
     def test_memberDataToolProperties(self):
-        # original memberdata properties
-        baseFields = sets.Set(('visible_ids', 'last_login_time', 'language', 
-                               'home_page', 'description', 'wysiwyg_editor', 
-                               'error_log_update', 'location', 'portal_skin', 
-                               'fullname', 'login_time', 'email', 'ext_editor', 
-                               'listed','must_change_password'))
-        
+
         # new properties we add
         newFields = sets.Set(('company', 'jobtitle', 'street', 'housenumber', 
                               'zipcode', 'city', 'phonenumber', 'genders', 
@@ -111,16 +105,14 @@ class testSetup(MainTestCase):
     
         tool = self.portal.portal_memberdata
 
-        # build up a complete set of what properties should now be in the tool
-        fullFields = sets.Set(tuple(baseFields)+tuple(newFields))
         properties = sets.Set(tool.propertyIds())
         
-        self.failUnless(fullFields == properties)
+        self.failUnless(newFields.issubset(properties))
         
         # make sure if we add an additional value, its not found in the real
         # properties
-        fullFields.add(1)
-        self.failIf(fullFields == properties)
+        newFields.add(1)
+        self.failIf(newFields.issubset(properties))
         
     def test_memberAreaCreation(self):
         userfolder = self.portal.acl_users
