@@ -103,12 +103,17 @@ def addMemberDataProperties(self, out):
     """
     memberdata = getToolByName(self, 'portal_memberdata')
     
-    add_properties = Set(
-        ('company', 'jobtitle', 'street', 'housenumber', 
-         'zipcode', 'city', 'phonenumber',))
-    add_properties -= Set(memberdata.propertyIds())
-    for p in add_properties:
-        memberdata.manage_addProperty(p, '', 'string')
+    add_properties = (
+        ('company', 'string'), ('jobtitle', 'string'), 
+        ('street', 'string'), ('housenumber', 'string'),
+        ('zipcode', 'string'), ('city', 'string'), 
+        ('phonenumber','string'), ('subscriptions', 'lines'),
+    )
+    
+    add_properties = [x for x in add_properties 
+                      if x[0] not in memberdata.propertyIds()]
+    for p, pType in add_properties:
+        memberdata.manage_addProperty(p, '', pType)
         print >> out, "Property %r added to memberdata." % p
 
     # special care for our selection property gender

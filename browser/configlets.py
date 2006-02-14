@@ -95,6 +95,27 @@ class MinaraadConfigletView(BrowserView):
         
     def showEditableFields(self):
         return self.request.get('form.button.Edit', None) is not None
-    
+
+AVAILABLE_SUBSCRIPTIONS = ('Advisory', 'Study', 'Hearing', 'Newsletter', 
+                           'Pressrelease', 'AnnualReport')
+
 class SubscriptionsConfigletView(BrowserView):
-    pass
+    
+    def __init__(self, context, request):
+        BrowserView.__init__(self, context, request)
+
+        tool = getToolByName(self.context, 'portal_membership')
+        self.member = tool.getAuthenticatedMember()
+
+    def getSubscriptions(self):
+        prop = self.member.getProperty('subscriptions', [])
+
+        subscriptions = [{'id': x, 'Title': x, 'subscribed': x in prop} 
+                         for x in AVAILABLE_SUBSCRIPTIONS]
+        
+        return subscriptions
+    
+    def setSubscriptions(self, subscriptions):
+        self.member.setProperty('subscriptions', subscriptions)
+    
+    

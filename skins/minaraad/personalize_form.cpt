@@ -198,7 +198,7 @@
 
                         <label for="zipcode"
                                i18n:domain="minaraad" 
-                               i18n:translate="label_zipcode">Zipcode</label>
+                               i18n:translate="label_zipcode">Zip Code</label>
                         <span class="fieldRequired" title="Required"
                               i18n:attributes="title title_required;"
                               i18n:translate="label_required">(Required)</span>

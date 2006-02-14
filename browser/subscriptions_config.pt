@@ -33,6 +33,25 @@
             <legend i18n:translate="legend_current_subscriptions_details"
                 >Subscriptions</legend>
 
+            <div class="field" 
+                tal:repeat="subscription view/getSubscriptions">
+                <input type="checkbox"
+                       class="noborder"
+                       value=""
+                       id=""
+                       tabindex=""
+                       tal:attributes="tabindex tabindex;
+                                       id string:subscription_${subscription/id};
+                                       name string:subscription_${subscription/id};
+                                       value string:subscription_${subscription/id};
+                                       checked python:subscription['subscribed']" /> 
+    
+                <label for="" tal:attributes="for string:subscription_${subscription/id};"
+                              tal:content="string:${subscription/Title}"></label>
+    
+            </div>
+
+
         </fieldset>
 
     </form>
