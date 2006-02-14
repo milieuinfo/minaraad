@@ -74,7 +74,7 @@ class testWorkflow(MainTestCase):
 
         self.login('manager')
         self.portal.invokeFactory('Folder', id='map')
-        self.map = self.folder.map
+        self.map = self.portal.map
         self.map.manage_addLocalRoles('author',['Author'])
 
         self.assertEqual(wf.getInfoFor(self.map,'review_state'), 'private')
