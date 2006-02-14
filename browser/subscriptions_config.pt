@@ -1,0 +1,43 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/prefs_main_template/macros/master"
+      i18n:domain="minaraad">
+
+<metal:block metal:fill-slot="top_slot"
+             tal:define="dummy python:request.set('disable_border',1)" />
+
+<body>
+
+<div metal:fill-slot="prefs_configlet_main">
+
+    <h1 i18n:translate="heading_subscriptions_setup">Subscriptions Settings</h1>
+
+    <a href=""
+       class="link-parent"
+       tal:attributes="href string: $portal_url/plone_control_panel"
+       i18n:translate="label_up_to_plone_setup">
+    Up to Site Setup
+    </a>
+
+    <p class="documentDescription" 
+       i18n:translate="description_subscriptions_setup">
+       Subscriptions settings for this member.
+    </p>
+
+    <form action=""
+          name="search"
+          method="post"
+          tal:attributes="action string:${request/ACTUAL_URL}">
+
+        <fieldset>
+            <legend i18n:translate="legend_current_subscriptions_details"
+                >Subscriptions</legend>
+
+        </fieldset>
+
+    </form>
+
+</div>
+
+</body>
+</html>

@@ -146,7 +146,7 @@ def addConfiglets(self, out):
     portal_controlpanel.registerConfiglet(
         'Subscriptions', #id of your Tool
         'Subscriptions', # Title of your Troduct
-        'string:${portal_url}/subscriptions_form/',
+        'string:${portal_url}/subscriptions_config.html',
         'python:True', # a condition
         'View', # access permission
         'Member', # section to which the configlet should be added: (Plone,Products,Members)

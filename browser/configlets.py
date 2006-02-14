@@ -96,3 +96,5 @@ class MinaraadConfigletView(BrowserView):
     def showEditableFields(self):
         return self.request.get('form.button.Edit', None) is not None
     
+class SubscriptionsConfigletView(BrowserView):
+    pass

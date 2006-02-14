@@ -11,4 +11,12 @@
       template="minaraad_config.pt"
     />
 
+  <browser:page
+      for="Products.minaraad.interfaces.IPortalPropertyContainer"
+      name="subscriptions_config.html"
+      class=".configlets.SubscriptionsConfigletView"
+      permission="zope2.View"
+      template="subscriptions_config.pt"
+    />
+
 </configure>
