@@ -44,7 +44,7 @@
                                        id string:subscription_${subscription/id};
                                        name string:subscription_${subscription/id};
                                        value string:subscription_${subscription/id};
-                                       checked python:subscription['subscribed']" /> 
+                                       checked subscription/subscribed" /> 
     
                 <label for="" tal:attributes="for string:subscription_${subscription/id};"
                               tal:content="string:${subscription/Title}"></label>
