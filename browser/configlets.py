@@ -102,13 +102,18 @@ AVAILABLE_SUBSCRIPTIONS = ('Advisory', 'Study', 'Hearing', 'Newsletter',
 class SubscriptionsConfigletView(BrowserView):
     
     def __init__(self, context, request):
-        BrowserView.__init__(self, context, request)
+        self.request = request
+        self._context = [context]
 
-        tool = getToolByName(self.context, 'portal_membership')
-        self.member = tool.getAuthenticatedMember()
+    def _getContext(self):
+        return self._context[0]
+    context = property(_getContext)
 
     def getSubscriptions(self):
-        prop = self.member.getProperty('subscriptions', [])
+        tool = getToolByName(self.context, 'portal_membership')
+        member = tool.getAuthenticatedMember()
+        
+        prop = member.getProperty('subscriptions', [])
 
         subscriptions = [{'id': x, 'Title': x, 'subscribed': x in prop} 
                          for x in AVAILABLE_SUBSCRIPTIONS]
@@ -116,6 +121,9 @@ class SubscriptionsConfigletView(BrowserView):
         return subscriptions
     
     def setSubscriptions(self, subscriptions):
-        self.member.setProperty('subscriptions', subscriptions)
+        tool = getToolByName(self.context, 'portal_membership')
+        member = tool.getAuthenticatedMember()
+
+        member.manage_changeProperties({'subscriptions': subscriptions})
     
     
