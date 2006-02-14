@@ -36,7 +36,7 @@
                 <!-- *** gender *** -->
                  <div class="field"
                        tal:define="error errors/gender | nothing; 
-                                   genders python:member.getProperty('genders');
+                                   genders python:context.portal_memberdata.genders;
                                    tabindex tabindex/next;">
 
                     <label i18n:domain="minaraad" 
@@ -206,7 +206,7 @@
                 <!--*** country *** -->
                  <div class="field"
                        tal:define="error errors/country | nothing; 
-                                   countries python:member.getProperty('select_country');
+                                   countries python:context.portal_memberdata.select_country;
                                    tabindex tabindex/next;">
 
                     <label i18n:domain="minaraad"
