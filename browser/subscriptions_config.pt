@@ -12,9 +12,9 @@
         <h1 i18n:translate="heading_subscriptions_setup">Subscriptions Settings</h1>
 
         <a class="link-parent"
-           tal:attributes="href string: $portal_url/plone_control_panel"
-           i18n:translate="label_up_to_plone_setup">
-            Up to Site Setup
+           tal:attributes="href string: $portal_url/plone_memberprefs_panel"
+           i18n:translate="label_up_to_my_preferences">
+            Up to My Preferences
         </a>
 
         <p class="documentDescription" 
@@ -39,47 +39,34 @@
                             i18n:translate="title_post">By Mail</th>
                     </tr>
                     <tr class="field" 
-                        tal:repeat="subscription view/getSubscriptions">
+                        tal:repeat="subscription view/subscriptions">
                         <td>
+                            <span tal:content="subscription/category|nothing"
+                                i18n:translate="" 
+                                tal:omit-tag="" /><span tal:condition="subscription/category|nothing">:</span>
                             <span tal:content="string:${subscription/Title}"
-                                i18n:translate=""
+                                i18n:translate="" 
                                 tal:omit-tag="" />
-
-                            <span tal:condition="python:subscription['Title']== 'Hearing'">
-                            <!-- should show the titles of the themes under hearing-->
-                            </span>
                         </td>
                         <td style="text-align:center">
-                            <input type="checkbox"
-                                   class="noborder"
-                                   tal:attributes="tabindex tabindex;
-                                                id string:subscription_${subscription/id};
-                                                name string:subscription_${subscription/id};
-                                                value string:subscription_${subscription/id};
-                                                checked subscription/subscribed" />
-
-                              <!--
-                                <span tal:condition="python:subscription['Title']== 'Hearing'">
-                                    Here should come the checkboxes of the themes,
-                                    a hearing is always connected to a theme. 
-                                    There must also be an option to toggle all the themes 
-                                </span>
-                               -->
-
+                           <input type="checkbox"
+                               class="noborder"
+                               tal:condition="subscription/can_email"
+                               tal:attributes="tabindex tabindex/next;
+                                               id string:email_${subscription/id};
+                                               name string:email_${subscription/id};
+                                               value string:email_${subscription/id};
+                                               checked subscription/subscribed_email" /> 
                         </td>
                         <td style="text-align:center">
-                            <tal:block tal:repeat="post view/getSubscriptionsPost">
-                                <span tal:condition="python:subscription == post"
-                                      tal:omit-tag="">
-                                    <input type="checkbox"
-                                        class="noborder"
-                                        tal:attributes="tabindex tabindex;
-                                                        id string:postsubscription_${post/id};
-                                                        name string:postsubscription_${post/id};
-                                                        value string:postsubscription_${post/id};
-                                                        checked post/subscribed" /> 
-                                </span>
-                            </tal:block>
+                           <input type="checkbox"
+                               class="noborder"
+                               tal:condition="subscription/can_post"
+                               tal:attributes="tabindex tabindex/next;
+                                               id string:post_${subscription/id};
+                                               name string:post_${subscription/id};
+                                               value string:post_${subscription/id};
+                                               checked subscription/subscribed_post" /> 
                         </td>
                     </tr>
                 </table>

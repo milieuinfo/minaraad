@@ -60,13 +60,21 @@ class testSubscriptions(MainTestCase):
                             'subscriptions_config.html', 
                             request)
 
-        view.setSubscriptions(['Advisory'])
+        request.form = {}
+        for x in view.subscriptions():
+            self.failIf(x['subscribed_post'])
+            self.failIf(x['subscribed_email'])
 
-        for x in view.getSubscriptions():
-            if x['id'] == 'Advisory':
-                self.failUnless(x['subscribed'])
+        request.form['email_Advisory'] = True
+        request.form['email_Study'] = True
+        view._saveSubscriptions()
+
+        for x in view.subscriptions():
+            if x['id'] in ('Advisory', 'Study'):
+                self.failUnless(x['subscribed_email'])
             else:
-                self.failIf(x['subscribed'])
+                self.failIf(x['subscribed_email'])
+            self.failIf(x['subscribed_post'])
 
         self.logout()
         
