@@ -1,31 +1,65 @@
 from Products.Five import BrowserView
 from Products.CMFCore.utils import getToolByName
+from Products.minaraad import themes
 
 class MinaraadConfigletView(BrowserView):
     
+    def __init__(self, context, request):
+        BrowserView.__init__(self, context, request)
+        self.themeManager = themes.ThemeManager(context)
+    
     def __call__(self):
         self._buildReferral()
-
+        
         request = self.request
         response = request.response
 
-        themeName = request.get('theme_name', None)
-        if themeName:
-            self.addTheme(themeName)
+        if request.get('form.button.Add', None):
+            self._addTheme()
             return response.redirect(self.referring_url+
                                      '?portal_status_message=Theme+added')
         elif request.get('form.button.Save', None):
-            self.saveThemes()
+            self._saveThemes()
             return response.redirect(self.referring_url+
                                      '?portal_status_message=Themes+saved')
         elif request.get('form.button.Delete', None):
-            self.deleteThemes()
+            self._deleteThemes()
             return response.redirect(self.referring_url+
                                      '?portal_status_message=Themes+deleted')
         
         
         return self.index()
     
+    def themes(self):
+        themes = self.themeManager.themes
+        isEditing = self.request.get('form.button.Edit', None) is not None
+        return [{'id': id, 'Title': title} for id,title in themes 
+                if (not isEditing) or self.request.get('theme_%i'%id, None)]
+                
+    def showEditableFields(self):
+        return self.request.get('form.button.Edit', None) is not None
+
+    def _addTheme(self):
+        themeName = self.request.get('theme_name', None)
+        self.themeManager.addTheme(themeName)
+        
+
+    def _saveThemes(self):
+        editedThemes = []
+        for id, title in self.themeManager.themes:
+            title = self.request.get('theme_%i' % id, title)
+            editedThemes.append((id, title))
+            
+        self.themeManager.themes = editedThemes
+        
+    def _deleteThemes(self):
+        editedThemes = []
+        for id, title in self.themeManager.themes:
+            if not self.request.get('theme_%i' % id, None):
+                editedThemes.append((id, title))
+            
+        self.themeManager.themes = editedThemes
+
     def _buildReferral(self):
         self.referring_url = (self.request.get('referring_url', None) or
                               self.request.get('HTTP_REFERER', None) or
@@ -34,67 +68,6 @@ class MinaraadConfigletView(BrowserView):
         if pos > -1:
             self.referring_url = self.referring_url[:pos]
         
-    def themes(self):
-        propsTool = getToolByName(self.context, 'portal_properties')
-        sheet = propsTool.minaraad_properties
-
-        themes = []
-        isEditing = self.request.get('form.button.Edit', None) is not None
-        for x in sheet.getProperty('themes'):
-            pos = x.find('/')
-            id = x[:pos]
-            if (not isEditing) or self.request.get('theme_'+id, None):
-                d = {'id': id, 'Title': x[pos+1:]}
-                themes.append(d)
-            
-        return themes
-
-    def nextThemeId(self):
-        themes = self.themes()
-        ids = [int(x['id']) for x in themes]
-        return max(ids) + 1
-
-    def addTheme(self, theme):
-        propsTool = getToolByName(self.context, 'portal_properties')
-        sheet = propsTool.minaraad_properties
-        
-        newId = self.nextThemeId()
-        newLine = "%i/%s" % (newId, theme)
-        newThemes = sheet.getProperty('themes') + (newLine,)
-        sheet.manage_changeProperties({'themes': newThemes})
-        
-    def saveThemes(self):
-        propsTool = getToolByName(self.context, 'portal_properties')
-        sheet = propsTool.minaraad_properties
-
-        editedThemes = []
-        for x in sheet.getProperty('themes'):
-            pos = x.find('/')
-            id = x[:pos]
-            value = x[pos+1:]
-
-            value = self.request.get('theme_'+id, value)
-            editedThemes.append('%s/%s' % (id, value))
-            
-        sheet.manage_changeProperties({'themes': editedThemes})
-        
-    def deleteThemes(self):
-        propsTool = getToolByName(self.context, 'portal_properties')
-        sheet = propsTool.minaraad_properties
-
-        editedThemes = []
-        for x in sheet.getProperty('themes'):
-            pos = x.find('/')
-            id = x[:pos]
-            value = x[pos+1:]
-
-            if not self.request.get('theme_'+id, None):
-                editedThemes.append('%s/%s' % (id, value))
-            
-        sheet.manage_changeProperties({'themes': editedThemes})
-        
-    def showEditableFields(self):
-        return self.request.get('form.button.Edit', None) is not None
 
 SUBSCRIPTIONS_EMAIL = ('Advisory', 'Study', 'Hearing', 'Newsletter', 
                        'Pressrelease', 'AnnualReport')

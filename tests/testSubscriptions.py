@@ -29,10 +29,6 @@ import os, sys
 if __name__ == '__main__':
     execfile(os.path.join(sys.path[0], 'framework.py'))
 
-##code-section module-header #fill in your manual code here
-import sets
-##/code-section module-header
-
 #
 # Subscriptions tests
 #
@@ -42,7 +38,6 @@ from Testing import ZopeTestCase
 from Products.minaraad.tests.MainTestCase import MainTestCase
 from zope.app import zapi
 from Products.Five.traversable import FakeRequest
-from Products.minaraad.browser.configlets import AVAILABLE_SUBSCRIPTIONS
 
 class testSubscriptions(MainTestCase):
     """ Test cases for the generic Subscriptions of the product
@@ -64,8 +59,6 @@ class testSubscriptions(MainTestCase):
         view = zapi.getView(self.portal, 
                             'subscriptions_config.html', 
                             request)
-
-        self.failUnless(len(view.getSubscriptions()) == len(AVAILABLE_SUBSCRIPTIONS))
 
         view.setSubscriptions(['Advisory'])
 
