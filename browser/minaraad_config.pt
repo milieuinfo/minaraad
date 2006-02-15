@@ -17,7 +17,7 @@
        class="link-parent"
        tal:attributes="href string: $portal_url/plone_control_panel"
        i18n:translate="label_up_to_plone_setup">
-    Up to Site Setup
+        Up to Site Setup
     </a>
 
     <p class="documentDescription" 
@@ -43,17 +43,13 @@
                  tal:condition="not:showEdit">
                 <input type="checkbox"
                        class="noborder"
-                       value=""
-                       id=""
-                       tabindex=""
                        tal:attributes="tabindex tabindex;
                                        id string:theme_${theme/id};
                                        name string:theme_${theme/id};
                                        value string:theme_${theme/id};" /> 
     
-                <label for="" tal:attributes="for string:theme_${theme/id};"
-                              tal:content="string:${theme/Title}"></label>
-    
+                <label tal:attributes="for string:theme_${theme/id}"
+                       tal:content="string:${theme/Title}"></label>
             </div>
 
             <div class="field" 
@@ -63,7 +59,6 @@
                        id="theme_name"
                        name="theme_name"
                        size="25"
-                       tabindex=""
                        tal:attributes="tabindex tabindex/next;
                                        id string:theme_${theme/id};
                                        name string:theme_${theme/id};
@@ -72,7 +67,6 @@
 
             <div class="formControls">
                 <input class="context"
-                       tabindex=""
                        type="submit"
                        name="form.button.Save"
                        value="Save"
@@ -80,7 +74,6 @@
                        tal:attributes="tabindex tabindex/next;"
                        tal:condition="showEdit" />
                 <input class="context"
-                       tabindex=""
                        type="submit"
                        name="form.button.Edit"
                        value="Edit"
@@ -88,7 +81,6 @@
                        tal:attributes="tabindex tabindex/next;"
                        tal:condition="not:showEdit" />
                 <input class="context"
-                       tabindex=""
                        type="submit"
                        name="form.button.Delete"
                        value="Delete"
@@ -97,7 +89,6 @@
                        tal:attributes="tabindex tabindex/next;" />
             </div>    
         </fieldset>
-
     </form>
 
     <form action=""
@@ -110,33 +101,32 @@
             <legend i18n:translate="legend_add_theme_details">Add Theme</legend>
 
             <div class="field">
-                <label for="theme_name" i18n:translate="label_theme_name">Theme Name</label>
-
-                <div class="formHelp" i18n:translate="help_theme_name">
-                Name of the new theme to create.
+                <label for="theme_name" 
+                       i18n:translate="label_theme_name">
+                    Theme Name
+                </label>
+                <div class="formHelp" 
+                     i18n:translate="help_theme_name">
+                    Name of the new theme to create.
                 </div>
 
                 <input type="text"
                        id="theme_name"
                        name="theme_name"
                        size="25"
-                       tabindex=""
                        tal:attributes="tabindex tabindex/next;" />
             </div>
 
             <div class="formControls">
                 <input class="context"
-                       tabindex=""
                        type="submit"
                        name="form.button.Add"
                        value="Add"
                        i18n:attributes="value label_add;"
                        tal:attributes="tabindex tabindex/next;" />
+            </div>
         </fieldset>
-
     </form>
-
 </div>
-
 </body>
 </html>

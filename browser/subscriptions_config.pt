@@ -6,57 +6,93 @@
 <metal:block metal:fill-slot="top_slot"
              tal:define="dummy python:request.set('disable_border',1)" />
 
-<body>
+    <body>
+    <div metal:fill-slot="prefs_configlet_main">
 
-<div metal:fill-slot="prefs_configlet_main">
+        <h1 i18n:translate="heading_subscriptions_setup">Subscriptions Settings</h1>
 
-    <h1 i18n:translate="heading_subscriptions_setup">Subscriptions Settings</h1>
+        <a class="link-parent"
+           tal:attributes="href string: $portal_url/plone_control_panel"
+           i18n:translate="label_up_to_plone_setup">
+            Up to Site Setup
+        </a>
 
-    <a href=""
-       class="link-parent"
-       tal:attributes="href string: $portal_url/plone_control_panel"
-       i18n:translate="label_up_to_plone_setup">
-    Up to Site Setup
-    </a>
+        <p class="documentDescription" 
+           i18n:translate="description_subscriptions_setup">
+            Subscriptions settings for this member.
+        </p>
+        
+        <form action=""
+              name="search"
+              method="post"
+              tal:attributes="action string:${request/ACTUAL_URL}">
 
-    <p class="documentDescription" 
-       i18n:translate="description_subscriptions_setup">
-       Subscriptions settings for this member.
-    </p>
+            <fieldset>
+                <legend i18n:translate="legend_current_subscriptions_details">Subscriptions</legend>
+                <table>
+                    <tr>
+                        <th style="padding:0px 5px 0px 8px"
+                            i18n:translate="title_subscription">Subscriptions</th>
+                        <th style="padding:0px 5px 0px 5px"
+                            i18n:translate="title_email">By E-mail</th>
+                        <th style="padding:0px 5px 0px 5px"
+                            i18n:translate="title_post">By Mail</th>
+                    </tr>
+                    <tr class="field" 
+                        tal:repeat="subscription view/getSubscriptions">
+                        <td>
+                            <span tal:content="string:${subscription/Title}"
+                                i18n:translate=""
+                                tal:omit-tag="" />
 
-    <form action=""
-          name="search"
-          method="post"
-          tal:attributes="action string:${request/ACTUAL_URL}">
+                            <span tal:condition="python:subscription['Title']== 'Hearing'">
+                            <!-- should show the titles of the themes under hearing-->
+                            </span>
+                        </td>
+                        <td style="text-align:center">
+                            <input type="checkbox"
+                                   class="noborder"
+                                   tal:attributes="tabindex tabindex;
+                                                id string:subscription_${subscription/id};
+                                                name string:subscription_${subscription/id};
+                                                value string:subscription_${subscription/id};
+                                                checked subscription/subscribed" />
 
-        <fieldset>
-            <legend i18n:translate="legend_current_subscriptions_details"
-                >Subscriptions</legend>
+                              <!--
+                                <span tal:condition="python:subscription['Title']== 'Hearing'">
+                                    Here should come the checkboxes of the themes,
+                                    a hearing is always connected to a theme. 
+                                    There must also be an option to toggle all the themes 
+                                </span>
+                               -->
 
-            <div class="field" 
-                tal:repeat="subscription view/getSubscriptions">
-                <input type="checkbox"
-                       class="noborder"
-                       value=""
-                       id=""
-                       tabindex=""
-                       tal:attributes="tabindex tabindex;
-                                       id string:subscription_${subscription/id};
-                                       name string:subscription_${subscription/id};
-                                       value string:subscription_${subscription/id};
-                                       checked subscription/subscribed" /> 
-    
-                <label for="" tal:attributes="for string:subscription_${subscription/id};"
-                              tal:content="string:${subscription/Title}"></label>
-    
-            </div>
-
-
-        </fieldset>
-
-    </form>
-
-</div>
-
-</body>
+                        </td>
+                        <td style="text-align:center">
+                            <tal:block tal:repeat="post view/getSubscriptionsPost">
+                                <span tal:condition="python:subscription == post"
+                                      tal:omit-tag="">
+                                    <input type="checkbox"
+                                        class="noborder"
+                                        tal:attributes="tabindex tabindex;
+                                                        id string:postsubscription_${post/id};
+                                                        name string:postsubscription_${post/id};
+                                                        value string:postsubscription_${post/id};
+                                                        checked post/subscribed" /> 
+                                </span>
+                            </tal:block>
+                        </td>
+                    </tr>
+                </table>
+                <div class="formControls">
+                    <input class="context"
+                           type="submit"
+                           name="form.button.Save"
+                           value="Save"
+                           i18n:attributes="value label_save;"
+                           tal:attributes="tabindex tabindex/next;" />
+                </div>
+            </fieldset>
+        </form>
+    </div>
+    </body>
 </html>

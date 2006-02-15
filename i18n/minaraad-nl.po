@@ -403,3 +403,26 @@ msgstr "Samenvatting"
 msgid "minaraad_label_themes"
 msgstr "Thema's"
 
+#: browser/subscriptions_config.pt
+msgid "Advisory"
+msgstr "Advies"
+
+#: browser/subscriptions_config.pt
+msgid "Hearing"
+msgstr "Hoorzitting"
+
+#: browser/subscriptions_config.pt
+msgid "Study"
+msgstr "Studie"
+
+#: browser/subscriptions_config.pt
+msgid "Newsletter"
+msgstr "Nieuwsbrief"
+
+#: browser/subscriptions_config.pt
+msgid "AnnualReport"
+msgstr "Jaarverslag"
+
+#: browser/subscriptions_config.pt
+msgid "Pressrelease"
+msgstr "Persbericht"

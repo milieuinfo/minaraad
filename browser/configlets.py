@@ -96,8 +96,9 @@ class MinaraadConfigletView(BrowserView):
     def showEditableFields(self):
         return self.request.get('form.button.Edit', None) is not None
 
-AVAILABLE_SUBSCRIPTIONS = ('Advisory', 'Study', 'Hearing', 'Newsletter', 
-                           'Pressrelease', 'AnnualReport')
+SUBSCRIPTIONS_EMAIL = ('Advisory', 'Study', 'Hearing', 'Newsletter', 
+                       'Pressrelease', 'AnnualReport')
+SUBSCRIPTIONS_POST = ('Advisory', 'Study', 'AnnualReport')
 
 class SubscriptionsConfigletView(BrowserView):
     
@@ -116,14 +117,25 @@ class SubscriptionsConfigletView(BrowserView):
         prop = member.getProperty('subscriptions', [])
 
         subscriptions = [{'id': x, 'Title': x, 'subscribed': x in prop} 
-                         for x in AVAILABLE_SUBSCRIPTIONS]
+                         for x in SUBSCRIPTIONS_EMAIL]
         
         return subscriptions
+    
+    def getSubscriptionsPost(self):
+        tool = getToolByName(self.context, 'portal_membership')
+        member = tool.getAuthenticatedMember()
+        
+        prop = member.getProperty('subscriptions_post', [])
+
+        subscriptions_post = [{'id': x, 'Title': x, 'subscribed': x in prop} 
+                         for x in SUBSCRIPTIONS_POST]
+        
+        return subscriptions_post
     
     def setSubscriptions(self, subscriptions):
         tool = getToolByName(self.context, 'portal_membership')
         member = tool.getAuthenticatedMember()
 
         member.manage_changeProperties({'subscriptions': subscriptions})
-    
-    
+        member.manage_changeProperties({'subscriptions_post': subscriptions_post})
+
