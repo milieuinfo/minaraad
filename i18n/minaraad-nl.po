@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minaraad 0.1\n"
-"POT-Creation-Date: 2006-02-09 16:07+0000\n"
+"POT-Creation-Date: 2006-02-15 15:44+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: Mirella van Teulingen <m.van.teulingen@zestsoftware.nl>\n"
 "Language-Team: Nederlands <info@zestsoftware.nl>\n"
@@ -15,6 +15,35 @@ msgstr ""
 "Language-Name: Nederlands\n"
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: minaraad\n"
+
+#: browser/subscriptions_config.pt
+msgid "Advisory"
+msgstr "Advies"
+
+#: browser/subscriptions_config.pt
+msgid "AnnualReport"
+msgstr "Jaarverslag"
+
+#: browser/subscriptions_config.pt
+msgid "Hearing"
+msgstr "Hoorzitting"
+
+#: browser/subscriptions_config.pt
+msgid "Newsletter"
+msgstr "Nieuwsbrief"
+
+#: browser/subscriptions_config.pt
+msgid "Pressrelease"
+msgstr "Persbericht"
+
+#: browser/subscriptions_config.pt
+msgid "Study"
+msgstr "Studie"
+
+#. Default: "For security reasons, we store your password encrypted, and cannot mail it to you. If you would like to reset your password, fill out the form below and we will send you an email at the address you gave when you registered to start the process of resetting your password. <br/> <br/> If this will not work for you (for example, if you forgot your member name or your email address has changed) send an email to the"
+#: skins/minaraad/mail_password_form.pt
+msgid "description_lost_password_mina"
+msgstr "Om veiligheidsredenen kan het wachtwoord niet per e-mail naar u worden verzonden. U kunt uw wachtwoord wijzigen door het onderstaande formulier in te vullen. Wij sturen een e-mailbericht naar het e-mailadres dat u tijdens de registratie heeft opgegeven. Dit bericht bevat een link naar een formulier waar u het wachtwoord kunt wijzigen.<br /> <br />Indien u bijvoorbeeld uw gebruikersnaam niet meer weet of uw e-mailadres is gewijzigd, stuur dan een e-mail naar de"
 
 #. Default: "Themes settings for Site"
 #: browser/minaraad_config.pt"
@@ -124,6 +153,11 @@ msgstr "Thema"
 msgid "label_up_to_plone_setup"
 msgstr "Terug naar Plone configuratie"
 
+#. Default: "Webmaster"
+#: skins/minaraad/mail_password_form.pt
+msgid "label_webmaster"
+msgstr "website beheerder"
+
 #. Default: "Zipcode"
 #: skins/minaraad/join_form.cpt
 #: skins/minaraad/personalize_form.cpt
@@ -145,6 +179,28 @@ msgstr "Huidige thema's"
 #: browser/minaraad_config.pt"
 msgid "legend_edit_theme"
 msgstr "Wijzig thema"
+
+#: skins/mail_password_template.dtml
+msgid "mailtemplate_hours"
+msgstr "uur"
+
+#. Default: "You have been registered as a member of MiNa-Raad website. Please activate your account by visiting ${set_password} You must activate your account within ${expirationtime} hours"
+#: skins/minaraad/registered_notify_template.pt
+msgid "mailtemplate_registered_body"
+msgstr "U bent geregistreerd als lid van de MiNa-Raad website.\n\nGelieve uw account te activeren door op volgende link te klikken:\n\n${set_password}\n\nU dient uw account te activeren binnen de ${expirationtime} uur.\n\n"
+
+#. Default: "Kind regards, MINARAAD"
+#: skins/minaraad/registered_notify_template.pt
+msgid "mailtemplate_signature"
+msgstr "Met vriendelijke groeten,\n\nMINARAAD"
+
+#: skins/mail_password_template.dtml
+msgid "mailtemplate_text_linkreset"
+msgstr "Wij ontvingen een aanvraag om uw wachtwoord op onze website te wijzigen."
+
+#: skins/mail_password_template.dtml
+msgid "mailtemplate_text_linkreset2"
+msgstr "Klik op onderstaande link als u hiermee akkoord gaat en om deze wijziging te bevestigen:"
 
 #. Default: "attachment"
 #: content/Advisory.py
@@ -403,26 +459,3 @@ msgstr "Samenvatting"
 msgid "minaraad_label_themes"
 msgstr "Thema's"
 
-#: browser/subscriptions_config.pt
-msgid "Advisory"
-msgstr "Advies"
-
-#: browser/subscriptions_config.pt
-msgid "Hearing"
-msgstr "Hoorzitting"
-
-#: browser/subscriptions_config.pt
-msgid "Study"
-msgstr "Studie"
-
-#: browser/subscriptions_config.pt
-msgid "Newsletter"
-msgstr "Nieuwsbrief"
-
-#: browser/subscriptions_config.pt
-msgid "AnnualReport"
-msgstr "Jaarverslag"
-
-#: browser/subscriptions_config.pt
-msgid "Pressrelease"
-msgstr "Persbericht"

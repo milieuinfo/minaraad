@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minaraad 0.1\n"
-"POT-Creation-Date: 2006-02-09 16:07+0000\n"
+"POT-Creation-Date: 2006-02-15 15:44+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: Mirella van Teulingen <m.van.teulingen@zestsoftware.nl>\n"
 "Language-Team: English <info@zestsoftware.nl>\n"
@@ -15,6 +15,35 @@ msgstr ""
 "Language-Name: English\n"
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: minaraad\n"
+
+#: browser/subscriptions_config.pt
+msgid "Advisory"
+msgstr ""
+
+#: browser/subscriptions_config.pt
+msgid "AnnualReport"
+msgstr ""
+
+#: browser/subscriptions_config.pt
+msgid "Hearing"
+msgstr ""
+
+#: browser/subscriptions_config.pt
+msgid "Newsletter"
+msgstr ""
+
+#: browser/subscriptions_config.pt
+msgid "Pressrelease"
+msgstr ""
+
+#: browser/subscriptions_config.pt
+msgid "Study"
+msgstr ""
+
+#. Default: "For security reasons, we store your password encrypted, and cannot mail it to you. If you would like to reset your password, fill out the form below and we will send you an email at the address you gave when you registered to start the process of resetting your password. <br/> <br/> If this will not work for you (for example, if you forgot your member name or your email address has changed) send an email to the"
+#: skins/minaraad/mail_password_form.pt
+msgid "description_lost_password_mina"
+msgstr ""
 
 #. Default: "Themes settings for Site"
 #: browser/minaraad_config.pt"
@@ -124,6 +153,11 @@ msgstr ""
 msgid "label_up_to_plone_setup"
 msgstr ""
 
+#. Default: "Webmaster"
+#: skins/minaraad/mail_password_form.pt
+msgid "label_webmaster"
+msgstr ""
+
 #. Default: "Zipcode"
 #: skins/minaraad/join_form.cpt
 #: skins/minaraad/personalize_form.cpt
@@ -144,6 +178,28 @@ msgstr ""
 #. Default: "Edit Theme"
 #: browser/minaraad_config.pt"
 msgid "legend_edit_theme"
+msgstr ""
+
+#: skins/mail_password_template.dtml
+msgid "mailtemplate_hours"
+msgstr ""
+
+#. Default: "You have been registered as a member of MiNa-Raad website. Please activate your account by visiting ${set_password} You must activate your account within ${expirationtime} hours"
+#: skins/minaraad/registered_notify_template.pt
+msgid "mailtemplate_registered_body"
+msgstr ""
+
+#. Default: "Kind regards, MINARAAD"
+#: skins/minaraad/registered_notify_template.pt
+msgid "mailtemplate_signature"
+msgstr ""
+
+#: skins/mail_password_template.dtml
+msgid "mailtemplate_text_linkreset"
+msgstr ""
+
+#: skins/mail_password_template.dtml
+msgid "mailtemplate_text_linkreset2"
 msgstr ""
 
 #. Default: "attachment"
