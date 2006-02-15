@@ -83,6 +83,11 @@ class SubscriptionsConfigletView(BrowserView):
         return self._context[0]
     context = property(_getContext)
 
+    def themes(self):
+        themeManager = themes.ThemeManager(context)
+        themes = themeManager.themes
+        return [{'id': id, 'Title': title} for id,title in themes]
+
     def getSubscriptions(self):
         tool = getToolByName(self.context, 'portal_membership')
         member = tool.getAuthenticatedMember()
