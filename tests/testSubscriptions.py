@@ -105,8 +105,8 @@ class testSubscriptions(MainTestCase):
             self.failIf(x['subscribed_post'])
             self.failIf(x['subscribed_email'])
 
-        request['email_Advisory'] = True
-        request['email_Study'] = True
+        request['email_Advisory'] = 'yes' # string values here mean nothing
+        request['email_Study'] = 'yes'
         view._saveSubscriptions()
 
         for x in sm.subscriptions:

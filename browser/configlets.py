@@ -134,8 +134,8 @@ class SubscriptionsConfigletView(AbstractConfigletView):
 
         subscriptions = self.subscriptionManager.subscriptions
         for sub in subscriptions:
-            sub.post = True and self.request.get('post_'+sub.id, False)
-            sub.email = True and self.request.get('email_'+sub.id, False)
+            sub.post = not not self.request.get('post_'+sub.id, False)
+            sub.email = not not self.request.get('email_'+sub.id, False)
 
         self.subscriptionManager.subscriptions = subscriptions
 
