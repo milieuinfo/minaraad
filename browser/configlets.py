@@ -1,6 +1,8 @@
 from Products.Five import BrowserView
 from Products.CMFCore.utils import getToolByName
 from Products.minaraad.themes import ThemeManager
+from Products.minaraad.subscriptions import SubscriptionManager, \
+                                            Subscription
 
 class AbstractConfigletView(BrowserView):
     def __init__(self, context, request):
@@ -71,16 +73,14 @@ class MinaraadConfigletView(AbstractConfigletView):
         self.themeManager.themes = editedThemes
 
 
-SUBSCRIPTIONS_ALL = ('Advisory', 'Study', 'Newsletter', 
-                     'Pressrelease', 'AnnualReport')
-SUBSCRIPTIONS_POST = ('Advisory', 'Study', 'AnnualReport')
-
 class SubscriptionsConfigletView(AbstractConfigletView):
     
     def __init__(self, context, request):
         self.request = request
         self._context = [context]
         self._buildReferral()
+        self.subscriptionManager = SubscriptionManager(self.context)
+        self.themeManager = ThemeManager(self.context)
 
     def _getContext(self):
         return self._context[0]
@@ -97,75 +97,46 @@ class SubscriptionsConfigletView(AbstractConfigletView):
         
         return self.index()
 
+    def _getThemeTitle(self, id):
+        # get rid of 'theme_' prefix
+        id = id[6:]
+        
+        return self.themeManager.getThemeTitle(id)
+    
     def subscriptions(self):
-        tool = getToolByName(self.context, 'portal_membership')
-        member = tool.getAuthenticatedMember()
         
-        prop = member.getProperty('subscriptions', [])
+        sm = self.subscriptionManager
+        items = sm.subscriptions
+        subscriptions = []
+        for item in items:
+            sub = {'id': item.id,
+                   'subscribed_email': item.email,
+                   'subscribed_post': item.post}
+            subscriptions.append(sub)
+            
+            title = self._getThemeTitle(item.id)
+            if title:
+                sub['level'] = 1
+                sub['category'] = 'Hearing'
+                sub['can_post'] = False
+                sub['can_email'] = True
+            else:
+                sub['level'] = 0
+                sub['category'] = ''
+                sub['can_post'] = sm.canSubscribePost(item.id)
+                sub['can_email'] = sm.canSubscribeEmail(item.id)
 
-        themeManager = ThemeManager(self.context)
-        themeItems = [{'id': 'theme_'+str(id), 
-                       'Title': title,
-                       'level': 1,
-                       'category': 'Hearing',
-                       'can_post': False, 
-                       'can_email': True,
-                       'subscribed_email': False,
-                       'subscribed_post': False}
-                      for id,title in themeManager.themes]
-
-        subscriptions = [{'id': x, 
-                          'Title': x, 
-                          'level': 0,
-                          'subscribed_post': False,
-                          'subscribed_email': False,
-                          'can_post': x in SUBSCRIPTIONS_POST,
-                          'can_email': True} 
-                         for x in SUBSCRIPTIONS_ALL] + themeItems
-
-        subDict = {}
-        
-        for x in prop:
-            id, email, post = x.split('/')
-            subDict[id] = {'subscribed_email': bool(int(email)),
-                           'subscribed_post': bool(int(post))}
-
-        for x in subscriptions:
-            d = subDict.get(x['id'], None)
-            if d:
-                x['subscribed_email'] = d['subscribed_email']
-                x['subscribed_post'] = d['subscribed_post']
+            sub['Title'] = title or item.id
         
         return subscriptions
     
     def _saveSubscriptions(self):
-        subs = {}
-        for x in self.request.form.keys():
-            if x.startswith('post_'):
-                id = x[5:]
-                d = subs.get(id, {})
-                subs[id] = d
-                d['id'] = id
-                d['subscribed_post'] = True
-                d['subscribed_email'] = d.get('subscribed_email', False)
-            elif x.startswith('email_'):
-                id = x[6:]
-                d = subs.get(id, {})
-                subs[id] = d
-                d['id'] = id
-                d['subscribed_email'] = True
-                d['subscribed_post'] = d.get('subscribed_post', False)
 
-        self.setSubscriptions(subs.values())
-    
-    def setSubscriptions(self, subscriptions):
-        tool = getToolByName(self.context, 'portal_membership')
-        member = tool.getAuthenticatedMember()
+        subscriptions = self.subscriptionManager.subscriptions
+        for sub in subscriptions:
+            sub.post = True and self.request.get('post_'+sub.id, False)
+            sub.email = True and self.request.get('email_'+sub.id, False)
 
-        subscriptions = ['%s/%i/%i' % (x['id'], 
-                                       x['subscribed_email'], 
-                                       x['subscribed_post']) 
-                         for x in subscriptions]
+        self.subscriptionManager.subscriptions = subscriptions
 
-        member.setProperties(subscriptions=subscriptions)
 

@@ -41,5 +41,17 @@ class ThemeManager(object):
             
         return themes
     
+    def getThemeTitle(self, id):
+        try:
+            id = int(id)
+            themes = self.themes
+            for curId, curTitle in themes:
+                if curId == id:
+                    return curTitle
+        except ValueError:
+            pass
+        
+        return None
+    
     themes = property(_getThemes, _setThemes)
     
