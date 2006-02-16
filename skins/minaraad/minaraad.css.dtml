@@ -14,7 +14,8 @@
 .listing .subscriptions-title th {
     font-weight: bold;
     padding: 0px 5px 0px 8px;
-    font-size: 110%
+    font-size: 120%;
+    text-transform: capitalize;
 }
 
 .listing .checkbox-centered {
@@ -24,6 +25,7 @@
 .listing .hearingsubscriptiontitle, .listing .checkbox-all {
     padding-top: 15px;
     padding-bottom: 8px;
+    font-size: 120%;
 }
     
 .listing .checkbox-all {
@@ -40,5 +42,10 @@
 
 .listing .subscription-themes {
     padding-left: 18px;
+    font-size: 110%;
+}
+    
+.listing .subscriptiontitles {
+    font-size: 110%;
 }
 /* </dtml-with> */

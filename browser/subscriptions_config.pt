@@ -9,16 +9,16 @@
     <body>
     <div metal:fill-slot="prefs_configlet_main">
        <script type="text/javascript">
-function toggleSelect(triggerInput, namePrefix) {
-    checked = triggerInput.checked;
-    formEl = triggerInput.form;
-    for (x = 0; x < formEl.elements.length; x++) {
-        inputEl = formEl.elements[x];
-        if (inputEl.name.indexOf(namePrefix) == 0) {
-            inputEl.checked = checked;
-        }
-    }
-}
+            function toggleSelect(triggerInput, namePrefix) {
+                checked = triggerInput.checked;
+                formEl = triggerInput.form;
+                for (x = 0; x < formEl.elements.length; x++) {
+                    inputEl = formEl.elements[x];
+                    if (inputEl.name.indexOf(namePrefix) == 0) {
+                        inputEl.checked = checked;
+                    }
+                }
+            }
        </script>
 
         <h1 i18n:translate="title_subscription">Subscriptions   </h1>
@@ -49,7 +49,7 @@ function toggleSelect(triggerInput, namePrefix) {
                 <!-- subscriptions without thema's -->
                 <tal:block tal:repeat="subscription view/subscriptions">
                 <tr class="field" tal:condition="not:subscription/category">
-                    <td>
+                    <td class="subscriptiontitles">
                         <span tal:content="string:${subscription/Title}"
                             i18n:translate="" 
                             tal:omit-tag="" />
@@ -79,17 +79,17 @@ function toggleSelect(triggerInput, namePrefix) {
                 
                 <!-- subscriptions with thema's -->
                 <tr>
-                    <td class="hearingsubscriptiontitle">
-                        <span i18n:translate="toggle_all" 
-                                class="float-right">
-                            Toggle all:
-                        </span>
+                    <td class="hearingsubscriptiontitle" 
+                        valign="top">
                         <span class="bold" 
                                 i18n:translate="">
                             Hearing
                         </span>
                     </td>
                     <td class="checkbox-all">
+                         <div i18n:translate="toggle_all">
+                            Toggle all:
+                        </div>
                         <input type="checkbox"
                                 name="selectButton"
                                 title="Select all themes"
