@@ -8,6 +8,18 @@
 
     <body>
     <div metal:fill-slot="prefs_configlet_main">
+       <script type="text/javascript">
+function toggleSelect(triggerInput, namePrefix) {
+    checked = triggerInput.checked;
+    formEl = triggerInput.form;
+    for (x = 0; x < formEl.elements.length; x++) {
+        inputEl = formEl.elements[x];
+        if (inputEl.name.indexOf(namePrefix) == 0) {
+            inputEl.checked = checked;
+        }
+    }
+}
+       </script>
 
         <h1 i18n:translate="title_subscription">Subscriptions   </h1>
 
@@ -81,7 +93,7 @@
                         <input type="checkbox"
                                 name="selectButton"
                                 title="Select all themes"
-                                onClick="toggleSelect(this, );"
+                                onClick="toggleSelect(this, 'email_theme_');"
                                 i18n:attributes="title label_select_all_themes" />  
                     </td>
                     <td />
