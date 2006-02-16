@@ -74,23 +74,15 @@ class MainTestCase(testcase):
     """Base TestCase for minaraad."""
 
     ##code-section class-header_MainTestCase #fill in your manual code here
-    ##/code-section class-header_MainTestCase
 
-    # Commented out for now, it gets blasted at the moment anyway.
-    # Place it in the protected section if you need it.
-    #def afterSetup(self):
-    #    """
-    #    """
-    #    pass
-    
     def _setup(self):
         testcase._setup(self)
-        
+
         # need to setup some Five stuff to get view lookups working
         zcml.load_config('meta.zcml', Five)
         zcml.load_config('permissions.zcml', Five)
         zcml.load_config('configure.zcml', minaraad)
-        
+
         zcml.load_string('''<configure xmlns="http://namespaces.zope.org/zope"
            xmlns:five="http://namespaces.zope.org/five">
   <!-- basic collection of directives needed for proper traversal and request handling -->
@@ -110,6 +102,15 @@ class MainTestCase(testcase):
                    />
 
 </configure>''')
+
+    ##/code-section class-header_MainTestCase
+
+    # Commented out for now, it gets blasted at the moment anyway.
+    # Place it in the protected section if you need it.
+    #def afterSetup(self):
+    #    """
+    #    """
+    #    pass
 
 
 def test_suite():

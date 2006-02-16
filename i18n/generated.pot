@@ -16,6 +16,30 @@ msgstr ""
 "Preferred-Encodings: latin1 utf-8\n"
 "Domain: minaraad\n"
 
+#: browser/subscriptions_config.pt
+msgid "Advisory"
+msgstr ""
+
+#: browser/subscriptions_config.pt
+msgid "AnnualReport"
+msgstr ""
+
+#: browser/subscriptions_config.pt
+msgid "Hearing"
+msgstr ""
+
+#: browser/subscriptions_config.pt
+msgid "Newsletter"
+msgstr ""
+
+#: browser/subscriptions_config.pt
+msgid "Pressrelease"
+msgstr ""
+
+#: browser/subscriptions_config.pt
+msgid "Study"
+msgstr ""
+
 #. Default: "Themes settings for Site"
 #: browser/minaraad_config.pt"
 msgid "description_themes_setup"
@@ -144,6 +168,18 @@ msgstr ""
 #. Default: "Edit Theme"
 #: browser/minaraad_config.pt"
 msgid "legend_edit_theme"
+msgstr ""
+
+#: skins/mail_password_template.dtml
+msgid "mailtemplate_hours"
+msgstr ""
+
+#: skins/mail_password_template.dtml
+msgid "mailtemplate_text_linkreset"
+msgstr ""
+
+#: skins/mail_password_template.dtml
+msgid "mailtemplate_text_linkreset2"
 msgstr ""
 
 #. Default: "attachment"
@@ -402,42 +438,4 @@ msgstr ""
 #: content/Hearing.py
 msgid "minaraad_label_themes"
 msgstr ""
-
-#: browser/subscriptions_config.pt
-msgid "Advisory"
-msgstr ""
-
-#: browser/subscriptions_config.pt
-msgid "Hearing"
-msgstr ""
-
-#: browser/subscriptions_config.pt
-msgid "Study"
-msgstr ""
-
-#: browser/subscriptions_config.pt
-msgid "Newsletter"
-msgstr ""
-
-#: browser/subscriptions_config.pt
-msgid "AnnualReport"
-msgstr ""
-
-#: browser/subscriptions_config.pt
-msgid "Pressrelease"
-msgstr ""
-
-#: skins/mail_password_template.dtml
-msgid "mailtemplate_text_linkreset"
-msgstr ""
-
-#: skins/mail_password_template.dtml
-msgid "mailtemplate_text_linkreset2"
-msgstr ""
-
-#: skins/mail_password_template.dtml
-msgid "mailtemplate_hours"
-msgstr ""
-
-
 
