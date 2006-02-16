@@ -215,26 +215,35 @@
                     <select name="country">
                         <tal:block tal:repeat="option countries">
                             <option tal:attributes="value option;"
-                                    tal:content="option" />
+                                    tal:condition="python:option != 'Ander land'"
+                                    tal:content="option"
+                                    onClick="hide('othercountry')" />
+                            <option tal:attributes="value option;"
+                                    tal:condition="python:option=='Ander land'"
+                                    tal:content="option"
+                                    onClick="show('othercountry')" />
                         </tal:block>
                     </select>
-                </div>
                 
-                <div class="row"
-                     tal:define="error errors/city | nothing;
-                                other_country request/other_country | nothing;"
-                     tal:attributes="class python:test(error, 'field error', 'field')">
-            
-                    <label i18n:domain="minaraad"
-                           i18n:translate="label_other_country">Other country</label>
-                    <div tal:content="error">Validation error output</div>
-            
-                    <input type="text"
-                           name="other_country"
-                           size="30"
-                           value="other_country"
-                           tal:attributes="value other_country;
-                                        tabindex tabindex/next;" />
+                
+                    <div class="row"
+                        id="othercountry"
+                        tal:define="error errors/city | nothing;
+                                    other_country request/other_country | nothing;
+                                    displayother python:[option for option in countries if option =='Ander land'];"
+                        tal:attributes="class python:test(error, 'field error', 'field');
+                                        style python:test(displayother, 'display:none', '');">
+                
+                        <label i18n:domain="minaraad"
+                            i18n:translate="label_other_country">Other country</label>
+                        <div tal:content="error">Validation error output</div>
+                
+                        <input type="text"
+                            name="other_country"
+                            size="30"
+                            value="other_country"
+                            tal:attributes="value other_country;" />
+                    </div>
                 </div>
                 <br />
                 

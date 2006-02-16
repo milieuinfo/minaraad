@@ -176,22 +176,6 @@ msgstr ""
 msgid "legend_current_subscriptions_details"
 msgstr ""
 
-#: browser/subscriptions_config.pt
-msgid "title_subscription"
-msgstr ""
-
-#: browser/subscriptions_config.pt
-msgid "title_email"
-msgstr ""
-
-#: browser/subscriptions_config.pt
-msgid "title_post"
-msgstr ""
-
-#: browser/subscriptions_config.pt
-msgid "toggle_all"
-msgstr ""
-
 #. Default: "Current Themes"
 #: browser/minaraad_config.pt"
 msgid "legend_current_themes _details"
@@ -469,5 +453,21 @@ msgstr ""
 #. Default: "Themes"
 #: content/Hearing.py
 msgid "minaraad_label_themes"
+msgstr ""
+
+#: browser/subscriptions_config.pt
+msgid "title_email"
+msgstr ""
+
+#: browser/subscriptions_config.pt
+msgid "title_post"
+msgstr ""
+
+#: browser/subscriptions_config.pt
+msgid "title_subscription"
+msgstr ""
+
+#: browser/subscriptions_config.pt
+msgid "toggle_all"
 msgstr ""
 

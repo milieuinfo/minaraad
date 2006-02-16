@@ -86,7 +86,6 @@ class testWorkflow(MainTestCase):
         # self.assertEqual(wf.getInfoFor(self.portal.map.document,'review_state'), 'private')
 
 
-
 def test_suite():
     from unittest import TestSuite, makeSuite
     suite = TestSuite()
