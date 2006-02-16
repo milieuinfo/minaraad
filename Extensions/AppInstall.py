@@ -24,7 +24,7 @@ def install(self):
     out = StringIO()
 
     out.write("Setting the workflow")
-    _setWorkflow(self, out)
+    # _setWorkflow(self, out)
 
     out.write("Add member data properties.")
     addMemberDataProperties(self, out)

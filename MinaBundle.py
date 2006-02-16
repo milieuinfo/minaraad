@@ -29,7 +29,7 @@ __docformat__ = 'plaintext'
 from AccessControl import ClassSecurityInfo
 from Products.Archetypes.atapi import *
 
-from Products.minaraad.EmailMixin import EmailMixin
+from EmailMixin import EmailMixin
 from Products.ATContentTypes.content.document import ATDocument
 
 
