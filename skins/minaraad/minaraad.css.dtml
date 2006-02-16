@@ -11,8 +11,34 @@
 /* <dtml-with base_properties> (do not remove this :) */
 /* <dtml-call "REQUEST.set('portal_url', portal_url())"> (not this either :) */
 
-textarea.themeslist {
-    width: 35%;
+.listing .subscriptions-title th {
+    font-weight: bold;
+    padding: 0px 5px 0px 8px;
+    font-size: 110%
 }
 
+.listing .checkbox-centered {
+    text-align: center;
+}
+
+.listing .hearingsubscriptiontitle, .listing .checkbox-all {
+    padding-top: 15px;
+    padding-bottom: 8px;
+}
+    
+.listing .checkbox-all {
+    text-align: center;
+}
+
+.listing .float-right {
+    float: right;
+}
+    
+.listing .bold {
+    font-weight: bold;
+}
+
+.listing .subscription-themes {
+    padding-left: 18px;
+}
 /* </dtml-with> */

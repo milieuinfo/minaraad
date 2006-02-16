@@ -9,7 +9,7 @@
     <body>
     <div metal:fill-slot="prefs_configlet_main">
 
-        <h1 i18n:translate="heading_subscriptions_setup">Subscriptions Settings</h1>
+        <h1 i18n:translate="title_subscription">Subscriptions   </h1>
 
         <a class="link-parent"
            tal:attributes="href string: $portal_url/plone_memberprefs_panel"
@@ -21,64 +21,101 @@
            i18n:translate="description_subscriptions_setup">
             Subscriptions settings for this member.
         </p>
-        
+        <br />
         <form action=""
               name="search"
               method="post"
               tal:attributes="action string:${request/ACTUAL_URL}">
 
-            <fieldset>
-                <legend i18n:translate="legend_current_subscriptions_details">Subscriptions</legend>
-                <table>
-                    <tr>
-                        <th style="padding:0px 5px 0px 8px"
-                            i18n:translate="title_subscription">Subscriptions</th>
-                        <th style="padding:0px 5px 0px 5px"
-                            i18n:translate="title_email">By E-mail</th>
-                        <th style="padding:0px 5px 0px 5px"
-                            i18n:translate="title_post">By Mail</th>
-                    </tr>
-                    <tr class="field" 
-                        tal:repeat="subscription view/subscriptions">
-                        <td>
-                            <span tal:content="subscription/category|nothing"
-                                i18n:translate="" 
-                                tal:omit-tag="" /><span tal:condition="subscription/category|nothing">:</span>
-                            <span tal:content="string:${subscription/Title}"
-                                i18n:translate="" 
-                                tal:omit-tag="" />
-                        </td>
-                        <td style="text-align:center">
-                           <input type="checkbox"
-                               class="noborder"
-                               tal:condition="subscription/can_email"
-                               tal:attributes="tabindex tabindex/next;
-                                               id string:email_${subscription/id};
-                                               name string:email_${subscription/id};
-                                               value string:email_${subscription/id};
-                                               checked subscription/subscribed_email" /> 
-                        </td>
-                        <td style="text-align:center">
-                           <input type="checkbox"
-                               class="noborder"
-                               tal:condition="subscription/can_post"
-                               tal:attributes="tabindex tabindex/next;
-                                               id string:post_${subscription/id};
-                                               name string:post_${subscription/id};
-                                               value string:post_${subscription/id};
-                                               checked subscription/subscribed_post" /> 
-                        </td>
-                    </tr>
-                </table>
-                <div class="formControls">
-                    <input class="context"
-                           type="submit"
-                           name="form.button.Save"
-                           value="Save"
-                           i18n:attributes="value label_save;"
-                           tal:attributes="tabindex tabindex/next;" />
-                </div>
-            </fieldset>
+            <table class="listing">
+                <tr class="subscriptions-title">
+                    <th
+                        i18n:translate="title_subscription">Subscriptions</th>
+                    <th i18n:translate="title_email">By E-mail</th>
+                    <th i18n:translate="title_post">By Mail</th>
+                </tr>
+                <!-- subscriptions without thema's -->
+                <tal:block tal:repeat="subscription view/subscriptions">
+                <tr class="field" tal:condition="not:subscription/category">
+                    <td>
+                        <span tal:content="string:${subscription/Title}"
+                            i18n:translate="" 
+                            tal:omit-tag="" />
+                    </td>
+                    <td class="checkbox-centered">
+                    <input type="checkbox"
+                        class="noborder"
+                        tal:condition="subscription/can_email"
+                        tal:attributes="tabindex tabindex/next;
+                                        id string:email_${subscription/id};
+                                        name string:email_${subscription/id};
+                                        value string:email_${subscription/id};
+                                        checked subscription/subscribed_email" /> 
+                    </td>
+                    <td class="checkbox-centered">
+                    <input type="checkbox"
+                        class="noborder"
+                        tal:condition="subscription/can_post"
+                        tal:attributes="tabindex tabindex/next;
+                                        id string:post_${subscription/id};
+                                        name string:post_${subscription/id};
+                                        value string:post_${subscription/id};
+                                        checked subscription/subscribed_post" /> 
+                    </td>
+                </tr>
+                </tal:block>
+                
+                <!-- subscriptions with thema's -->
+                <tr>
+                    <td class="hearingsubscriptiontitle">
+                        <span i18n:translate="toggle_all" 
+                                class="float-right">
+                            Toggle all:
+                        </span>
+                        <span class="bold" 
+                                i18n:translate="">
+                            Hearing
+                        </span>
+                    </td>
+                    <td class="checkbox-all">
+                        <input type="checkbox"
+                                name="selectButton"
+                                title="Select all themes"
+                                onClick="toggleSelect(this, );"
+                                i18n:attributes="title label_select_all_themes" />  
+                    </td>
+                    <td />
+                </tr>
+                <tal:block tal:repeat="subscription view/subscriptions">
+                <tr class="field" 
+                    tal:condition="subscription/category">
+                    <td class="subscription-themes">
+                        <span tal:content="string:${subscription/Title}"
+                            i18n:translate="" 
+                            tal:omit-tag="" />
+                    </td>
+                    <td class="checkbox-centered">
+                    <input type="checkbox"
+                        class="noborder"
+                        tal:condition="subscription/can_email"
+                        tal:attributes="tabindex tabindex/next;
+                                        id string:email_${subscription/id};
+                                        name string:email_${subscription/id};
+                                        value string:email_${subscription/id};
+                                        checked subscription/subscribed_email" /> 
+                    </td>
+                    <td />
+                </tr>
+                </tal:block>
+            </table>
+            <div class="formControls">
+                <input class="context"
+                        type="submit"
+                        name="form.button.Save"
+                        value="Save"
+                        i18n:attributes="value label_save;"
+                        tal:attributes="tabindex tabindex/next;" />
+            </div>
         </form>
     </div>
     </body>

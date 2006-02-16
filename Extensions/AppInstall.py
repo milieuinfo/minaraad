@@ -5,20 +5,19 @@ from StringIO import StringIO
 
 MINARAAD_PROPERTIES = 'minaraad_properties'
 THEMES_PROPERTY = [
-    '1/Alles',
-    '2/Water',
-    '3/Klimaat & energie',
-    '4/Afval',
-    '5/Bodem',
-    '6/Europa & Duurzame ontwikkeling',
-    '7/Mobiliteit',
-    '8/Ruimtelijke ordening',
-    '9/Natuur & landbouw',
-    '10/NME',
-    '11/Milieubegroting',
-    '12/Milieuplanning',
-    '13/Milieureglementering',
-    '14/Instrumenten',
+    '1/Water',
+    '2/Klimaat & energie',
+    '3/Afval',
+    '4/Bodem',
+    '5/Europa & Duurzame ontwikkeling',
+    '6/Mobiliteit',
+    '7/Ruimtelijke ordening',
+    '8/Natuur & landbouw',
+    '9/NME',
+    '10/Milieubegroting',
+    '11/Milieuplanning',
+    '12/Milieureglementering',
+    '13/Instrumenten',
 ]
 
 def install(self):
