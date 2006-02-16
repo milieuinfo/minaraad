@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minaraad 0.1\n"
-"POT-Creation-Date: 2006-02-15 15:44+0000\n"
+"POT-Creation-Date: 2006-02-16 11:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: Mirella van Teulingen <m.van.teulingen@zestsoftware.nl>\n"
 "Language-Team: Nederlands <info@zestsoftware.nl>\n"
@@ -44,6 +44,10 @@ msgstr "Studie"
 #: skins/minaraad/mail_password_form.pt
 msgid "description_lost_password_mina"
 msgstr "Om veiligheidsredenen kan het wachtwoord niet per e-mail naar u worden verzonden. U kunt uw wachtwoord wijzigen door het onderstaande formulier in te vullen. Wij sturen een e-mailbericht naar het e-mailadres dat u tijdens de registratie heeft opgegeven. Dit bericht bevat een link naar een formulier waar u het wachtwoord kunt wijzigen.<br /> <br />Indien u bijvoorbeeld uw gebruikersnaam niet meer weet of uw e-mailadres is gewijzigd, stuur dan een e-mail naar de"
+
+#: browser/subscriptions_config.pt
+msgid "description_subscriptions_setup"
+msgstr "Selecteer de abonnementen"
 
 #. Default: "Themes settings for Site"
 #: browser/minaraad_config.pt"
@@ -136,6 +140,10 @@ msgstr "Telefoonnummer"
 msgid "label_save"
 msgstr "Opslaan"
 
+#: browser/subscriptions_config.pt
+msgid "label_select_all_themes"
+msgstr "Selecteer alle thema's"
+
 #. Default: "Street"
 #: skins/minaraad/join_form.cpt
 #: skins/minaraad/personalize_form.cpt
@@ -147,6 +155,10 @@ msgstr "Straat"
 #: browser/minaraad_config.pt"
 msgid "label_theme_name"
 msgstr "Thema"
+
+#: browser/subscriptions_config.pt
+msgid "label_up_to_my_preferences"
+msgstr "Terug naar mijn voorkeuren"
 
 #. Default: "Up to Site Setup"
 #: browser/minaraad_config.pt"
@@ -169,6 +181,10 @@ msgstr "Postcode"
 #: browser/minaraad_config.pt"
 msgid "legend_add_theme_details"
 msgstr "Thema toevoegen"
+
+#: browser/subscriptions_config.pt
+msgid "legend_current_subscriptions_details"
+msgstr ""
 
 #. Default: "Current Themes"
 #: browser/minaraad_config.pt"
@@ -458,4 +474,20 @@ msgstr "Samenvatting"
 #: content/Hearing.py
 msgid "minaraad_label_themes"
 msgstr "Thema's"
+
+#: browser/subscriptions_config.pt
+msgid "title_email"
+msgstr "Per e-mail"
+
+#: browser/subscriptions_config.pt
+msgid "title_post"
+msgstr "Per post"
+
+#: browser/subscriptions_config.pt
+msgid "title_subscription"
+msgstr "Abonnementen"
+
+#: browser/subscriptions_config.pt
+msgid "toggle_all"
+msgstr "Selecteer alles:"
 
