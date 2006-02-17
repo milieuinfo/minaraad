@@ -133,30 +133,36 @@ def addMemberDataProperties(self, out):
 def addConfiglets(self, out):
     # register tools as configlets
     portal_controlpanel = getToolByName(self,'portal_controlpanel')
-    portal_controlpanel.registerConfiglet(
-        'Themes', #id of your Tool
-        'minaraad', # Title of your Troduct
-        'string:${portal_url}/minaraad_config.html',
-        'python:True', # a condition
-        'Manage Portal', # access permission
-        'Products', # section to which the configlet should be added: (Plone,Products,Members)
-        1, # visibility
-        'ThemesID',
-        'site_icon.gif', # icon in control_panel
-        'Configuration for Minaraad properties.',
-        None,
-    )
-
-    portal_controlpanel.registerConfiglet(
-        'Subscriptions', #id of your Tool
-        'Subscriptions', # Title of your Troduct
-        'string:${portal_url}/subscriptions_config.html',
-        'python:True', # a condition
-        'View', # access permission
-        'Member', # section to which the configlet should be added: (Plone,Products,Members)
-        1, # visibility
-        'SubscriptionsID',
-        'site_icon.gif', # icon in control_panel
-        'Configuration for tool Subscriptions.',
-        None,
-    )
+    configlets = portal_controlpanel.enumConfiglets(group='Products')
+    installed = False
+    for configlet in configlets:
+        if configlet['id'] == 'Themes':
+            installed = True
+        
+    if not installed:
+        portal_controlpanel.registerConfiglet(
+            'Themes', #id of your Tool
+            'minaraad', # Title of your Troduct
+            'string:${portal_url}/minaraad_config.html',
+            'python:True', # a condition
+            'Manage Portal', # access permission
+            'Products', # section to which the configlet should be added: (Plone,Products,Members)
+            1, # visibility
+            'ThemesID',
+            'site_icon.gif', # icon in control_panel
+            'Configuration for Minaraad properties.',
+            None,
+        )
+        portal_controlpanel.registerConfiglet(
+            'Subscriptions', #id of your Tool
+            'Subscriptions', # Title of your Troduct
+            'string:${portal_url}/subscriptions_config.html',
+            'python:True', # a condition
+            'View', # access permission
+            'Member', # section to which the configlet should be added: (Plone,Products,Members)
+            1, # visibility
+            'SubscriptionsID',
+            'site_icon.gif', # icon in control_panel
+            'Configuration for tool Subscriptions.',
+            None,
+        )

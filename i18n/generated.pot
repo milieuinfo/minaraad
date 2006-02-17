@@ -330,6 +330,16 @@ msgstr ""
 msgid "minaraad_label_body"
 msgstr ""
 
+#. Default: "Bus"
+#: Organisation.py
+msgid "minaraad_label_bus"
+msgstr ""
+
+#. Default: "City"
+#: Organisation.py
+msgid "minaraad_label_city"
+msgstr ""
+
 #. Default: "Contactpersons"
 #: MinaBundle.py
 msgid "minaraad_label_contactpersons"
@@ -442,6 +452,16 @@ msgstr ""
 msgid "minaraad_label_startminutes"
 msgstr ""
 
+#. Default: "Street"
+#: Organisation.py
+msgid "minaraad_label_street"
+msgstr ""
+
+#. Default: "Streetno"
+#: Organisation.py
+msgid "minaraad_label_streetno"
+msgstr ""
+
 #. Default: "Subheader"
 #: content/Hearing.py
 #: content/Pressrelease.py
@@ -459,6 +479,11 @@ msgstr ""
 #. Default: "Themes"
 #: content/Hearing.py
 msgid "minaraad_label_themes"
+msgstr ""
+
+#. Default: "Zipcode"
+#: Organisation.py
+msgid "minaraad_label_zipcode"
 msgstr ""
 
 #: browser/subscriptions_config.pt

@@ -51,3 +51,6 @@ msgstr "Auteur"
 
 msgid "Council Member"
 msgstr "Raadslid"
+
+msgid "Pending"
+msgstr "In behandeling"

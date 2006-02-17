@@ -48,5 +48,20 @@ def installWorkflows(self, package, out):
     workflow = ourProductWorkflow(self, 'minaraad_folder_workflow')
     workflowTool._setObject('minaraad_folder_workflow', workflow)
     workflowTool.setChainForPortalTypes(['WorkflowStub'], workflow.getId())
+    ##code-section after-workflow-install #fill in your manual code here
+    ##/code-section after-workflow-install
+
 
     return workflowTool
+
+def uninstallWorkflows(self, package, out):
+    """Deinstall the workflows.
+
+    This code doesn't really do anything, but you can place custom
+    code here in the protected section.
+    """
+
+    ##code-section workflow-uninstall #fill in your manual code here
+    ##/code-section workflow-uninstall
+
+    pass
