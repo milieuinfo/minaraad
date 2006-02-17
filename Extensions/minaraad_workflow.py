@@ -106,7 +106,7 @@ def setupminaraad_workflow(self, workflow):
                            ['Anonymous', 'Manager'])
     stateDef.setPermission('Modify portal content',
                            0,
-                           ['Reviewer', 'Manager'])
+                           ['Manager'])
     stateDef.setPermission('List folder contents',
                            1,
                            ['Anonymous', 'Manager'])
@@ -154,7 +154,7 @@ def setupminaraad_workflow(self, workflow):
                            ['Author', 'Owner', 'Council Member', 'Reviewer', 'Manager'])
     stateDef.setPermission('Modify portal content',
                            0,
-                           ['Reviewer', 'Manager'])
+                           ['Manager'])
     stateDef.setPermission('List folder contents',
                            0,
                            ['Author', 'Owner', 'Council Member', 'Reviewer', 'Manager'])

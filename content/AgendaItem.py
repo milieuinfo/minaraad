@@ -1,4 +1,4 @@
-# File: AgendaItems.py
+# File: AgendaItem.py
 #
 # Copyright (c) 2006 by Zest Software
 # Generator: ArchGenXML Version 1.4.1 svn/devel
@@ -112,36 +112,36 @@ schema = Schema((
 ##code-section after-local-schema #fill in your manual code here
 ##/code-section after-local-schema
 
-AgendaItems_schema = BaseSchema.copy() + \
+AgendaItem_schema = BaseSchema.copy() + \
     schema.copy()
 
 ##code-section after-schema #fill in your manual code here
 ##/code-section after-schema
 
-class AgendaItems(BaseContent):
+class AgendaItem(BaseContent):
     security = ClassSecurityInfo()
     __implements__ = (getattr(BaseContent,'__implements__',()),)
 
 
     # This name appears in the 'add' box
-    archetype_name = 'AgendaItems'
+    archetype_name = 'AgendaItem'
 
-    meta_type = 'AgendaItems'
-    portal_type = 'AgendaItems'
+    meta_type = 'AgendaItem'
+    portal_type = 'AgendaItem'
     allowed_content_types = []
     filter_content_types = 0
     global_allow = 0
     allow_discussion = False
-    #content_icon = 'AgendaItems.gif'
+    #content_icon = 'AgendaItem.gif'
     immediate_view = 'base_view'
     default_view = 'base_view'
     suppl_views = ()
-    typeDescription = "AgendaItems"
-    typeDescMsgId = 'description_edit_agendaitems'
+    typeDescription = "AgendaItem"
+    typeDescMsgId = 'description_edit_agendaitem'
 
     _at_rename_after_creation = True
 
-    schema = AgendaItems_schema
+    schema = AgendaItem_schema
 
     ##code-section class-header #fill in your manual code here
     ##/code-section class-header
@@ -149,8 +149,8 @@ class AgendaItems(BaseContent):
 
     # Methods
 
-registerType(AgendaItems,PROJECTNAME)
-# end of class AgendaItems
+registerType(AgendaItem,PROJECTNAME)
+# end of class AgendaItem
 
 ##code-section module-footer #fill in your manual code here
 ##/code-section module-footer

@@ -93,7 +93,7 @@ def install(self):
     factory_types=[
         "Advisory",
         "Hearing",
-        "AgendaItems",
+        "AgendaItem",
         ] + factory_tool.getFactoryTypes().keys()
     factory_tool.manage_setPortalFactoryTypes(listOfTypeIds=factory_types)
 

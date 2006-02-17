@@ -1,28 +1,11 @@
-To use this as a basis for your project, do a
+Minaraad
 
-svn copy https://svn.zestsoftware.nl/svn/skeleton/trunk \
-         https://svn.zestsoftware.nl/svn/yourproject
+    This is the Plone Product for Minaraad. To install this product make sure   
+    all dependencies are installed first and then install it using the quick  
+    installer.
 
-(after mkdir-ing your project dir in svn, of course).
+Dependencies
 
-Then there are some 'xxx_name_this' that need renaming:
-
-* PROJECT at the top of 'main.aap'
-
-* outfile at the top of model/generate.conf (change the author and
-  email while you're at it, if applicable).
-
-* svn mv model/xxx_name_this.zuml model/yourproject.zuml
-
-Comment: please keep those names in lowercase. That seems to be the
-emerging standard in newer projects (including zope 3).
-
-Inside the UML model there are also a few things.
-
-* Change the joinin into something for your project.
-
-* Change (or remove) the tagged value workflow on that class.
-
-* Rename or remove the workflow.
-
-* Rename the project as a whole.
+    * PasswordResetTool (https://svn.plone.org/svn/collective/PasswordResetTool/trunk)
+    
+    * Five 1.2 (http://codespeak.net/z3/five/release/Five-1.2.tgz)

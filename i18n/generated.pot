@@ -364,12 +364,14 @@ msgstr ""
 #. Default: "Endhour"
 #: content/Presentation.py
 #: content/AgendaItems.py
+#: content/AgendaItem.py
 msgid "minaraad_label_endhour"
 msgstr ""
 
 #. Default: "Endminutes"
 #: content/Presentation.py
 #: content/AgendaItems.py
+#: content/AgendaItem.py
 msgid "minaraad_label_endminutes"
 msgstr ""
 
@@ -412,6 +414,7 @@ msgstr ""
 #. Default: "Speaker"
 #: content/Presentation.py
 #: content/AgendaItems.py
+#: content/AgendaItem.py
 msgid "minaraad_label_speaker"
 msgstr ""
 
@@ -428,12 +431,14 @@ msgstr ""
 #. Default: "Starthour"
 #: content/Presentation.py
 #: content/AgendaItems.py
+#: content/AgendaItem.py
 msgid "minaraad_label_starthour"
 msgstr ""
 
 #. Default: "Startminutes"
 #: content/Presentation.py
 #: content/AgendaItems.py
+#: content/AgendaItem.py
 msgid "minaraad_label_startminutes"
 msgstr ""
 
@@ -447,6 +452,7 @@ msgstr ""
 #. Default: "Summary"
 #: content/Presentation.py
 #: content/AgendaItems.py
+#: content/AgendaItem.py
 msgid "minaraad_label_summary"
 msgstr ""
 

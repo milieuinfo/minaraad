@@ -36,7 +36,7 @@ __docformat__ = 'plaintext'
 import Advisory
 import Hearing
 import ContactPerson
-import AgendaItems
+import AgendaItem
 import Pressrelease
 import Study
 import AnnualReport

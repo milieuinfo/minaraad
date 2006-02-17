@@ -1,4 +1,4 @@
-# File: testPresentation.py
+# File: testAgendaItem.py
 #
 # Copyright (c) 2006 by Zest Software
 # Generator: ArchGenXML Version 1.4.1 svn/devel
@@ -33,7 +33,7 @@ if __name__ == '__main__':
 ##/code-section module-header
 
 #
-# Test-cases for class(es) AgendaItems
+# Test-cases for class(es) AgendaItem
 #
 
 from Testing import ZopeTestCase
@@ -41,18 +41,17 @@ from Products.minaraad.config import *
 from Products.minaraad.tests.MainTestCase import MainTestCase
 
 # Import the tested classes
-from Products.minaraad.content.AgendaItems import AgendaItems
+from Products.minaraad.content.AgendaItem import AgendaItem
 
 ##code-section module-beforeclass #fill in your manual code here
 ##/code-section module-beforeclass
 
 
-class testPresentation(MainTestCase):
-    """ test-cases for class(es) Presentation
-    """
+class testAgendaItem(MainTestCase):
+    """Test-cases for class(es) AgendaItem."""
 
-    ##code-section class-header_testPresentation #fill in your manual code here
-    ##/code-section class-header_testPresentation
+    ##code-section class-header_testAgendaItem #fill in your manual code here
+    ##/code-section class-header_testAgendaItem
 
     def afterSetUp(self):
         """
@@ -65,7 +64,7 @@ class testPresentation(MainTestCase):
 def test_suite():
     from unittest import TestSuite, makeSuite
     suite = TestSuite()
-    suite.addTest(makeSuite(testPresentation))
+    suite.addTest(makeSuite(testAgendaItem))
     return suite
 
 ##code-section module-footer #fill in your manual code here

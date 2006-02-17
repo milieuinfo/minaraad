@@ -145,7 +145,7 @@ class Hearing(EmailMixin,BaseFolder):
 
     meta_type = 'Hearing'
     portal_type = 'Hearing'
-    allowed_content_types = ['AgendaItems'] + list(getattr(EmailMixin, 'allowed_content_types', []))
+    allowed_content_types = ['AgendaItem'] + list(getattr(EmailMixin, 'allowed_content_types', []))
     filter_content_types = 1
     global_allow = 1
     allow_discussion = False
