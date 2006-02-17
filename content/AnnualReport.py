@@ -25,15 +25,12 @@
 __author__ = """Rocky Burt <r.burt@zestsoftware.nl>"""
 __docformat__ = 'plaintext'
 
-
 from AccessControl import ClassSecurityInfo
 from Products.Archetypes.atapi import *
-
-from NewsLetter import NewsLetter
+from Products.minaraad.content.NewsLetter import NewsLetter
 from Products.minaraad.PostMixin import PostMixin
-
-
 from Products.minaraad.config import *
+
 ##code-section module-header #fill in your manual code here
 ##/code-section module-header
 
@@ -42,22 +39,20 @@ schema = Schema((
 ),
 )
 
-
 ##code-section after-local-schema #fill in your manual code here
 ##/code-section after-local-schema
 
 AnnualReport_schema = BaseSchema.copy() + \
-    getattr(NewsLetter,'schema',Schema(())).copy() + \
-    getattr(PostMixin,'schema',Schema(())).copy() + \
+    getattr(NewsLetter, 'schema', Schema(())).copy() + \
+    getattr(PostMixin, 'schema', Schema(())).copy() + \
     schema.copy()
 
 ##code-section after-schema #fill in your manual code here
 ##/code-section after-schema
 
-class AnnualReport(NewsLetter,PostMixin,BaseContent):
+class AnnualReport(NewsLetter, PostMixin, BaseContent):
     security = ClassSecurityInfo()
     __implements__ = (getattr(NewsLetter,'__implements__',()),) + (getattr(PostMixin,'__implements__',()),) + (getattr(BaseContent,'__implements__',()),)
-
 
     # This name appears in the 'add' box
     archetype_name = 'AnnualReport'
@@ -82,8 +77,8 @@ class AnnualReport(NewsLetter,PostMixin,BaseContent):
     ##code-section class-header #fill in your manual code here
     ##/code-section class-header
 
-
     # Methods
+
 
 registerType(AnnualReport,PROJECTNAME)
 # end of class AnnualReport

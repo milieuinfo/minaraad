@@ -25,15 +25,12 @@
 __author__ = """Rocky Burt <r.burt@zestsoftware.nl>"""
 __docformat__ = 'plaintext'
 
-
 from AccessControl import ClassSecurityInfo
 from Products.Archetypes.atapi import *
-
-from EmailMixin import EmailMixin
+from Products.minaraad.EmailMixin import EmailMixin
 from Products.ATContentTypes.content.document import ATDocument
-
-
 from Products.minaraad.config import *
+
 ##code-section module-header #fill in your manual code here
 ##/code-section module-header
 
@@ -64,21 +61,19 @@ schema = Schema((
 ),
 )
 
-
 ##code-section after-local-schema #fill in your manual code here
 ##/code-section after-local-schema
 
-MinaBundle_schema = getattr(EmailMixin,'schema',Schema(())).copy() + \
-    getattr(ATDocument,'schema',Schema(())).copy() + \
+MinaBundle_schema = getattr(EmailMixin, 'schema', Schema(())).copy() + \
+    getattr(ATDocument, 'schema', Schema(())).copy() + \
     schema.copy()
 
 ##code-section after-schema #fill in your manual code here
 ##/code-section after-schema
 
-class MinaBundle(EmailMixin,ATDocument):
+class MinaBundle(EmailMixin, ATDocument):
     security = ClassSecurityInfo()
     __implements__ = (getattr(EmailMixin,'__implements__',()),) + (getattr(ATDocument,'__implements__',()),)
-
 
     allowed_content_types = [] + list(getattr(EmailMixin, 'allowed_content_types', [])) + list(getattr(ATDocument, 'allowed_content_types', []))
     schema = MinaBundle_schema
@@ -86,8 +81,8 @@ class MinaBundle(EmailMixin,ATDocument):
     ##code-section class-header #fill in your manual code here
     ##/code-section class-header
 
-
     # Methods
+
 # end of class MinaBundle
 
 ##code-section module-footer #fill in your manual code here

@@ -69,6 +69,7 @@ class testWorkflow(MainTestCase):
         self.userfolder._doAddUser('cmember', 'secret', ['Council Member'], [])
 
     # Manually created methods
+
     def test_private_state(self):
         wf = self.workflow
 
@@ -84,7 +85,6 @@ class testWorkflow(MainTestCase):
 
         self.failUnless(doc)
         # self.assertEqual(wf.getInfoFor(self.portal.map.document,'review_state'), 'private')
-
 
 def test_suite():
     from unittest import TestSuite, makeSuite

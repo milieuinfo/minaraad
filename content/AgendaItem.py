@@ -25,14 +25,10 @@
 __author__ = """Rocky Burt <r.burt@zestsoftware.nl>"""
 __docformat__ = 'plaintext'
 
-
 from AccessControl import ClassSecurityInfo
 from Products.Archetypes.atapi import *
-
-
-
-
 from Products.minaraad.config import *
+
 ##code-section module-header #fill in your manual code here
 ##/code-section module-header
 
@@ -108,7 +104,6 @@ schema = Schema((
 ),
 )
 
-
 ##code-section after-local-schema #fill in your manual code here
 ##/code-section after-local-schema
 
@@ -121,7 +116,6 @@ AgendaItem_schema = BaseSchema.copy() + \
 class AgendaItem(BaseContent):
     security = ClassSecurityInfo()
     __implements__ = (getattr(BaseContent,'__implements__',()),)
-
 
     # This name appears in the 'add' box
     archetype_name = 'AgendaItem'
@@ -146,8 +140,8 @@ class AgendaItem(BaseContent):
     ##code-section class-header #fill in your manual code here
     ##/code-section class-header
 
-
     # Methods
+
 
 registerType(AgendaItem,PROJECTNAME)
 # end of class AgendaItem

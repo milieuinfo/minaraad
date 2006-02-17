@@ -80,7 +80,7 @@ def setupminaraad_workflow(self, workflow):
     ## States initialization
 
     stateDef = workflow.states['pending_private']
-    stateDef.setProperties(title="""Pending""",
+    stateDef.setProperties(title="""Pending from private""",
                            transitions=['publish', 'restricted_publish', 'reject', 'retract'])
     stateDef.setPermission('Access contents information',
                            0,
@@ -96,7 +96,7 @@ def setupminaraad_workflow(self, workflow):
                            ['Author', 'Owner', 'Reviewer', 'Manager'])
 
     stateDef = workflow.states['published']
-    stateDef.setProperties(title="""published""",
+    stateDef.setProperties(title="""Published""",
                            transitions=['revise', 'reject'])
     stateDef.setPermission('Access contents information',
                            1,
@@ -112,7 +112,7 @@ def setupminaraad_workflow(self, workflow):
                            ['Anonymous', 'Manager'])
 
     stateDef = workflow.states['pending_revisioning']
-    stateDef.setProperties(title="""pending_revisioning""",
+    stateDef.setProperties(title="""Pending from revisioning""",
                            transitions=['retract2', 'publish', 'reject2'])
     stateDef.setPermission('Access contents information',
                            1,
@@ -128,7 +128,7 @@ def setupminaraad_workflow(self, workflow):
                            ['Anonymous', 'Manager'])
 
     stateDef = workflow.states['revisioning']
-    stateDef.setProperties(title="""revisioning""",
+    stateDef.setProperties(title="""Revisioning""",
                            transitions=['publish', 'submit2'])
     stateDef.setPermission('Access contents information',
                            1,
@@ -144,7 +144,7 @@ def setupminaraad_workflow(self, workflow):
                            ['Anonymous', 'Manager'])
 
     stateDef = workflow.states['restricted']
-    stateDef.setProperties(title="""restricted""",
+    stateDef.setProperties(title="""Restricted""",
                            transitions=['retract'])
     stateDef.setPermission('Access contents information',
                            0,
@@ -160,7 +160,7 @@ def setupminaraad_workflow(self, workflow):
                            ['Author', 'Owner', 'Council Member', 'Reviewer', 'Manager'])
 
     stateDef = workflow.states['private']
-    stateDef.setProperties(title="""private""",
+    stateDef.setProperties(title="""Private""",
                            transitions=['submit', 'publish'])
     stateDef.setPermission('Access contents information',
                            0,
@@ -282,7 +282,7 @@ def setupminaraad_workflow(self, workflow):
                                 actbox_name="""revise""",
                                 actbox_url="""""",
                                 actbox_category="""workflow""",
-                                props={'guard_permissions': 'Review portal contents', 'guard_roles': 'Author'},
+                                props={'guard_roles': 'Owner;Author;Reviewer;Manager'},
                                 )
 
     ## State Variable

@@ -59,36 +59,32 @@ class testSetup(MainTestCase):
         ids = self.portal.objectIds()
         self.failUnless('archetype_tool' in ids)
         #[]
-
     def test_types(self):
         """ 
         """
         ids = self.portal.portal_types.objectIds()
         self.failUnless('Document' in ids)
         # ...
-
     def test_skins(self):
         """ 
         """
         ids = self.portal.portal_skins.objectIds()
         self.failUnless('plone_templates' in ids)
         # ...
-
     def test_workflows(self):
         """ 
         """
         ids = self.portal.portal_workflow.objectIds()
         self.failUnless('plone_workflow' in ids)
         # ...
-
     def test_workflowChains(self):
         """ 
         """
         getChain = self.portal.portal_workflow.getChainForPortalType
         self.failUnless('minaraad_workflow' in getChain('Hearing'))
         # ...
-
     # Manually created methods
+
     def test_cookieTimeOutProperty(self):
         propsTool = self.portal.portal_properties
         siteProperties = propsTool.site_properties
@@ -130,7 +126,6 @@ class testSetup(MainTestCase):
         
         props = propsTool.minaraad_properties
         self.failUnless(props.hasProperty('themes'))
-
 
 
 def test_suite():

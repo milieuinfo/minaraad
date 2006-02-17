@@ -25,14 +25,10 @@
 __author__ = """Rocky Burt <r.burt@zestsoftware.nl>"""
 __docformat__ = 'plaintext'
 
-
 from AccessControl import ClassSecurityInfo
 from Products.Archetypes.atapi import *
-
-
-
-
 from Products.minaraad.config import *
+
 ##code-section module-header #fill in your manual code here
 ##/code-section module-header
 
@@ -86,7 +82,6 @@ schema = Schema((
 ),
 )
 
-
 ##code-section after-local-schema #fill in your manual code here
 ##/code-section after-local-schema
 
@@ -99,7 +94,6 @@ ContactPerson_schema = BaseSchema.copy() + \
 class ContactPerson(BaseContent):
     security = ClassSecurityInfo()
     __implements__ = (getattr(BaseContent,'__implements__',()),)
-
 
     # This name appears in the 'add' box
     archetype_name = 'ContactPerson'
@@ -124,8 +118,8 @@ class ContactPerson(BaseContent):
     ##code-section class-header #fill in your manual code here
     ##/code-section class-header
 
-
     # Methods
+
 
 registerType(ContactPerson,PROJECTNAME)
 # end of class ContactPerson
