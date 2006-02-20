@@ -50,22 +50,42 @@
                     </select>
                 </div>
                 
-                <!--*** fullname *** -->
+                 <!--*** firstname *** -->
                 <div class="row"
-                     tal:define="error errors/fullname| nothing;
-                                fullname request/fullname | nothing;"
+                     tal:define="error errors/firstname| nothing;
+                                firstname request/firstname | nothing;"
                      tal:attributes="class python:test(error, 'field error', 'field')">
             
-                    <label i18n:translate="label_full_name">Full Name</label>
+                    <label i18n:domain="minaraad"
+                            i18n:translate="label_firstname">First name</label>
                      <span class="fieldRequired" 
                           title="Required"
                           i18n:attributes="title title_required;"
                           i18n:translate="label_required">(Required)</span>
             
-                    <div class="formHelp" 
-                         i18n:translate="help_full_name_creation">
-                        Enter full name, eg. John Smith.
-                    </div>
+                    <div tal:content="error">Validation error output</div>
+            
+                    <input type="text"
+                           name="firstname"
+                           size="30"
+                           value="firstname"
+                           tal:attributes="value firstname;
+                                        tabindex tabindex/next;" />
+                </div>
+                
+                <!--*** lastname *** -->
+                <div class="row"
+                     tal:define="error errors/fullname| nothing;
+                                fullname request/fullname | nothing;"
+                     tal:attributes="class python:test(error, 'field error', 'field')">
+            
+                    <label i18n:domain="minaraad"
+                            i18n:translate="label_lastname">Last name</label>
+                     <span class="fieldRequired" 
+                          title="Required"
+                          i18n:attributes="title title_required;"
+                          i18n:translate="label_required">(Required)</span>
+            
                     <div tal:content="error">Validation error output</div>
             
                     <input type="text"
@@ -156,6 +176,24 @@
                            tal:attributes="value housenumber;
                                         tabindex tabindex/next;" />
                 </div>
+                
+                 <!--*** bus *** -->
+                <div class="row"
+                     tal:define="error errors/bus | nothing;
+                                bus request/bus | nothing;"
+                     tal:attributes="class python:test(error, 'field error', 'field')">
+            
+                    <label i18n:domain="minaraad"
+                           i18n:translate="label_bus">Bus</label>
+
+                    <div tal:content="error">Validation error output</div>
+                    <input type="text"
+                           name="bus"
+                           size="10"
+                           value="bus"
+                           tal:attributes="value bus;
+                                        tabindex tabindex/next;" />
+                </div>
         
         
                 <!--*** zipcode *** -->
@@ -231,8 +269,7 @@
                         tal:define="error errors/city | nothing;
                                     other_country request/other_country | nothing;
                                     displayother python:[option for option in countries if option =='Ander land'];"
-                        tal:attributes="class python:test(error, 'field error', 'field');
-                                        style python:test(displayother, 'display:none', '');">
+                        tal:attributes="style python:test(displayother, 'display:none', '');">
                 
                         <label i18n:domain="minaraad"
                             i18n:translate="label_other_country">Other country</label>

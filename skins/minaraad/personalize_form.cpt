@@ -76,27 +76,51 @@
                             </tal:block>
                         </select>
                     </div>
-
-                    <!-- *** fullname *** -->
-                    <div class="field"
-                            tal:define="error errors/fullname | nothing;
-                                        fullname python:request.get('fullname', member.getProperty('fullname', ''));"
-                            tal:attributes="class python:test(error, 'field error', 'field')">
-
-                        <label for="fullname" i18n:translate="label_full_name">Full Name</label>
-                        <span class="fieldRequired" title="Required"
-                              i18n:attributes="title title_required;"
-                              i18n:translate="label_required">(Required)</span>
-                              
+                    
+                     <!--*** firstname *** -->
+                    <div class="row"
+                        tal:define="error errors/firstname| nothing;
+                                    firstname python:request.get('firstname', member.getProperty('firstname', ''));"
+                        tal:attributes="class python:test(error, 'field error', 'field')">
+                
+                        <label i18n:domain="minaraad"
+                                i18n:translate="label_firstname">First name</label>
+                        <span class="fieldRequired" 
+                            title="Required"
+                            i18n:attributes="title title_required;"
+                            i18n:translate="label_required">(Required)</span>
+                
                         <div tal:content="error">Validation error output</div>
-
+                
                         <input type="text"
-                                id="fullname"
-                                name="fullname"
-                                size="30"
-                                value="member.fullname html_quote"
-                                tal:attributes="value fullname;
-                                                tabindex tabindex/next;" />
+                            name="firstname"
+                            size="30"
+                            value="member.firstname html_quote"
+                            tal:attributes="value firstname;
+                                            tabindex tabindex/next;" />
+                    </div>
+                    
+                    <!--*** lastname *** -->
+                    <div class="row"
+                        tal:define="error errors/fullname | nothing;
+                                    fullname python:request.get('fullname', member.getProperty('fullname', ''));"
+                        tal:attributes="class python:test(error, 'field error', 'field')">
+                
+                        <label i18n:domain="minaraad"
+                                i18n:translate="label_lastname">Last name</label>
+                        <span class="fieldRequired" 
+                            title="Required"
+                            i18n:attributes="title title_required;"
+                            i18n:translate="label_required">(Required)</span>
+                
+                        <div tal:content="error">Validation error output</div>
+                
+                        <input type="text"
+                            name="fullname"
+                            size="30"
+                            value="member.fullname html_quote"
+                            tal:attributes="value fullname;
+                                            tabindex tabindex/next;" />
                     </div>
                     
                     <!-- *** company *** -->
@@ -169,7 +193,7 @@
                     <!-- *** housenumber *** -->
                     <div class="field"
                             tal:define="error errors/housenumber | nothing;
-                                        housenumber python:request.get('street', member.getProperty('housenumber', ''));"
+                                        housenumber python:request.get('housenumber', member.getProperty('housenumber', ''));"
                             tal:attributes="class python:test(error, 'field error', 'field')">
 
                         <label for="housenumber"
@@ -190,6 +214,24 @@
                                                 tabindex tabindex/next;" />
                     </div>
                     
+                    <!--*** bus *** -->
+                    <div class="row"
+                        tal:define="error errors/bus | nothing;
+                                        bus python:request.get('bus', member.getProperty('bus', ''));"
+                        tal:attributes="class python:test(error, 'field error', 'field')">
+                
+                        <label i18n:domain="minaraad"
+                            i18n:translate="label_bus">Bus</label>
+    
+                        <div tal:content="error">Validation error output</div>
+                        <input type="text"
+                            name="bus"
+                            size="10"
+                            value="member.bus html_quote"
+                            tal:attributes="value bus;
+                                            tabindex tabindex/next;" />
+                    </div>
+
                     <!-- *** zipcode *** -->
                     <div class="field"
                             tal:define="error errors/zipcode | nothing;

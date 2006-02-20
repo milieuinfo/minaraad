@@ -28,6 +28,9 @@ __docformat__ = 'plaintext'
 
 from Products.CMFCore.utils import getToolByName
 from Products.ExternalMethod.ExternalMethod import ExternalMethod
+##code-section module-header #fill in your manual code here
+##/code-section module-header
+
 
 def installWorkflows(self, package, out):
     """Install the custom workflows for this product."""

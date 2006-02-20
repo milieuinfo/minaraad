@@ -97,7 +97,7 @@ class testSetup(MainTestCase):
         newFields = sets.Set(('company', 'jobtitle', 'street', 'housenumber', 
                               'zipcode', 'city', 'phonenumber', 'genders', 
                               'gender', 'country', 'select_country', 
-                              'other_country'))
+                              'other_country', 'firstname', 'bus'))
     
         tool = self.portal.portal_memberdata
 

@@ -60,7 +60,21 @@ class testHearing(MainTestCase):
         pass
 
 
-    # from class EmailMixin:
+    # from class Hearing:
+    def test_getThemesList(self):
+        pass
+
+    # Manually created methods
+
+    def test_getThemes(self):
+        """
+        """
+        #Uncomment one of the following lines as needed
+        ##self.loginAsPortalOwner()
+        ##o=Hearing('temp_Hearing')
+        ##self.folder._setObject('temp_Hearing', o)
+        pass
+
     def test_email(self):
         """
         """
@@ -69,8 +83,6 @@ class testHearing(MainTestCase):
         ##o=EmailMixin('temp_EmailMixin')
         ##self.folder._setObject('temp_EmailMixin', o)
         pass
-
-    # Manually created methods
 
 
 def test_suite():

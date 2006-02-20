@@ -27,10 +27,10 @@ __docformat__ = 'plaintext'
 
 from AccessControl import ClassSecurityInfo
 from Products.Archetypes.atapi import *
-from Products.minaraad.EmailMixin import EmailMixin
 from Products.minaraad.config import *
 
 ##code-section module-header #fill in your manual code here
+from Products.minaraad.browser.configlets import *
 ##/code-section module-header
 
 schema = Schema((
@@ -83,10 +83,10 @@ schema = Schema((
     ),
 
     DateTimeField(
-        name='start',
+        name='startdate',
         widget=CalendarWidget(
-            label='Start',
-            label_msgid='minaraad_label_start',
+            label='Startdate',
+            label_msgid='minaraad_label_startdate',
             i18n_domain='minaraad',
         )
     ),
@@ -106,7 +106,8 @@ schema = Schema((
             label='Themes',
             label_msgid='minaraad_label_themes',
             i18n_domain='minaraad',
-        )
+        ),
+        vocabulary='getThemesList'
     ),
 
     TextField(
@@ -125,22 +126,21 @@ schema = Schema((
 ##/code-section after-local-schema
 
 Hearing_schema = BaseFolderSchema.copy() + \
-    getattr(EmailMixin, 'schema', Schema(())).copy() + \
     schema.copy()
 
 ##code-section after-schema #fill in your manual code here
 ##/code-section after-schema
 
-class Hearing(EmailMixin, BaseFolder):
+class Hearing(BaseFolder):
     security = ClassSecurityInfo()
-    __implements__ = (getattr(EmailMixin,'__implements__',()),) + (getattr(BaseFolder,'__implements__',()),)
+    __implements__ = (getattr(BaseFolder,'__implements__',()),)
 
     # This name appears in the 'add' box
     archetype_name = 'Hearing'
 
     meta_type = 'Hearing'
     portal_type = 'Hearing'
-    allowed_content_types = ['AgendaItem'] + list(getattr(EmailMixin, 'allowed_content_types', []))
+    allowed_content_types = ['AgendaItem']
     filter_content_types = 1
     global_allow = 1
     allow_discussion = False
@@ -159,6 +159,14 @@ class Hearing(EmailMixin, BaseFolder):
     ##/code-section class-header
 
     # Methods
+
+    security.declarePublic('getThemesList')
+    def getThemesList(self):
+        """
+        Get the themes from the configlet
+        """
+        #return self.getThemes() 
+        pass
 
 
 registerType(Hearing,PROJECTNAME)

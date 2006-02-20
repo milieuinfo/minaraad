@@ -105,7 +105,8 @@ def addMemberDataProperties(self, out):
     add_properties = (
         ('company', 'string'), ('jobtitle', 'string'), 
         ('street', 'string'), ('housenumber', 'string'),
-        ('zipcode', 'string'), ('city', 'string'), 
+        ('zipcode', 'string'), ('city', 'string'),
+        ('firstname', 'string'), ('bus', 'string'),
         ('phonenumber','string'), ('subscriptions', 'lines'),
     )
     

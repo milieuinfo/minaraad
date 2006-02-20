@@ -52,42 +52,24 @@ schema = Schema((
         )
     ),
 
-    IntegerField(
-        name='starthour',
+    DateTimeField(
+        name='itemstartdate',
         widget=SelectionWidget(
-            label='Starthour',
-            label_msgid='minaraad_label_starthour',
+            label='Itemstartdate',
+            label_msgid='minaraad_label_itemstartdate',
             i18n_domain='minaraad',
         ),
         vocabulary=[7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]
     ),
 
-    IntegerField(
-        name='startminutes',
-        widget=IntegerWidget(
-            label='Startminutes',
-            label_msgid='minaraad_label_startminutes',
-            i18n_domain='minaraad',
-        )
-    ),
-
-    IntegerField(
-        name='endhour',
+    DateTimeField(
+        name='itemenddate',
         widget=SelectionWidget(
-            label='Endhour',
-            label_msgid='minaraad_label_endhour',
+            label='Itemenddate',
+            label_msgid='minaraad_label_itemenddate',
             i18n_domain='minaraad',
         ),
         vocabulary=[7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]
-    ),
-
-    IntegerField(
-        name='endminutes',
-        widget=IntegerWidget(
-            label='Endminutes',
-            label_msgid='minaraad_label_endminutes',
-            i18n_domain='minaraad',
-        )
     ),
 
     FileField(

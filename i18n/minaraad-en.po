@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minaraad 0.1\n"
-"POT-Creation-Date: 2006-02-16 11:21+0000\n"
+"POT-Creation-Date: 2006-02-20 13:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: Mirella van Teulingen <m.van.teulingen@zestsoftware.nl>\n"
 "Language-Team: English <info@zestsoftware.nl>\n"
@@ -69,6 +69,10 @@ msgstr ""
 msgid "label_add"
 msgstr ""
 
+#: skins/join_form.cpt
+msgid "label_bus"
+msgstr ""
+
 #. Default: "City"
 #: skins/minaraad/join_form.cpt
 #: skins/minaraad/personalize_form.cpt
@@ -100,6 +104,10 @@ msgstr ""
 msgid "label_edit"
 msgstr ""
 
+#: skins/join_form.cpt
+msgid "label_firstname"
+msgstr ""
+
 #. Default: "Gender"
 #: skins/minaraad/join_form.cpt
 #: skins/minaraad/personalize_form.cpt
@@ -119,6 +127,10 @@ msgstr ""
 #: skins/minaraad/personalize_form.cpt
 #: skins/minaraad/prefs_user_details.cpt
 msgid "label_jobtitle"
+msgstr ""
+
+#: skins/join_form.cpt
+msgid "label_lastname"
 msgstr ""
 
 #. Default: "Other country"
@@ -350,6 +362,16 @@ msgstr ""
 msgid "minaraad_label_body"
 msgstr ""
 
+#. Default: "Bus"
+#: Organisation.py
+msgid "minaraad_label_bus"
+msgstr ""
+
+#. Default: "City"
+#: Organisation.py
+msgid "minaraad_label_city"
+msgstr ""
+
 #. Default: "Contactpersons"
 #: MinaBundle.py
 msgid "minaraad_label_contactpersons"
@@ -384,12 +406,14 @@ msgstr ""
 #. Default: "Endhour"
 #: content/Presentation.py
 #: content/AgendaItems.py
+#: content/AgendaItem.py
 msgid "minaraad_label_endhour"
 msgstr ""
 
 #. Default: "Endminutes"
 #: content/Presentation.py
 #: content/AgendaItems.py
+#: content/AgendaItem.py
 msgid "minaraad_label_endminutes"
 msgstr ""
 
@@ -432,6 +456,7 @@ msgstr ""
 #. Default: "Speaker"
 #: content/Presentation.py
 #: content/AgendaItems.py
+#: content/AgendaItem.py
 msgid "minaraad_label_speaker"
 msgstr ""
 
@@ -448,13 +473,25 @@ msgstr ""
 #. Default: "Starthour"
 #: content/Presentation.py
 #: content/AgendaItems.py
+#: content/AgendaItem.py
 msgid "minaraad_label_starthour"
 msgstr ""
 
 #. Default: "Startminutes"
 #: content/Presentation.py
 #: content/AgendaItems.py
+#: content/AgendaItem.py
 msgid "minaraad_label_startminutes"
+msgstr ""
+
+#. Default: "Street"
+#: Organisation.py
+msgid "minaraad_label_street"
+msgstr ""
+
+#. Default: "Streetno"
+#: Organisation.py
+msgid "minaraad_label_streetno"
 msgstr ""
 
 #. Default: "Subheader"
@@ -467,12 +504,18 @@ msgstr ""
 #. Default: "Summary"
 #: content/Presentation.py
 #: content/AgendaItems.py
+#: content/AgendaItem.py
 msgid "minaraad_label_summary"
 msgstr ""
 
 #. Default: "Themes"
 #: content/Hearing.py
 msgid "minaraad_label_themes"
+msgstr ""
+
+#. Default: "Zipcode"
+#: Organisation.py
+msgid "minaraad_label_zipcode"
 msgstr ""
 
 #: browser/subscriptions_config.pt

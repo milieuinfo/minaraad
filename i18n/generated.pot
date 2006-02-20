@@ -64,6 +64,10 @@ msgstr ""
 msgid "label_add"
 msgstr ""
 
+#: skins/join_form.cpt
+msgid "label_bus"
+msgstr ""
+
 #. Default: "City"
 #: skins/minaraad/join_form.cpt
 #: skins/minaraad/personalize_form.cpt
@@ -95,6 +99,10 @@ msgstr ""
 msgid "label_edit"
 msgstr ""
 
+#: skins/join_form.cpt
+msgid "label_firstname"
+msgstr ""
+
 #. Default: "Gender"
 #: skins/minaraad/join_form.cpt
 #: skins/minaraad/personalize_form.cpt
@@ -114,6 +122,10 @@ msgstr ""
 #: skins/minaraad/personalize_form.cpt
 #: skins/minaraad/prefs_user_details.cpt
 msgid "label_jobtitle"
+msgstr ""
+
+#: skins/join_form.cpt
+msgid "label_lastname"
 msgstr ""
 
 #. Default: "Other country"
@@ -390,6 +402,16 @@ msgstr ""
 msgid "minaraad_label_goal"
 msgstr ""
 
+#. Default: "Itemenddate"
+#: content/AgendaItem.py
+msgid "minaraad_label_itemenddate"
+msgstr ""
+
+#. Default: "Itemstartdate"
+#: content/AgendaItem.py
+msgid "minaraad_label_itemstartdate"
+msgstr ""
+
 #. Default: "Jobtitle"
 #: content/ContactPerson.py
 msgid "minaraad_label_jobtitle"
@@ -436,6 +458,11 @@ msgstr ""
 #. Default: "Start"
 #: content/Hearing.py
 msgid "minaraad_label_start"
+msgstr ""
+
+#. Default: "Startdate"
+#: content/Hearing.py
+msgid "minaraad_label_startdate"
 msgstr ""
 
 #. Default: "Starthour"

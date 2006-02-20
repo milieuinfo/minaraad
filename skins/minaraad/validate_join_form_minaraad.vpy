@@ -16,7 +16,7 @@ def missing(field):
 
 request = context.REQUEST
 
-required_fields = ('fullname', 'street', 'housenumber', 'zipcode', 'city')
+required_fields = ('firstname','fullname', 'street', 'housenumber', 'zipcode', 'city')
 for field in required_fields:
     if not request.get(field):
         missing(field)
