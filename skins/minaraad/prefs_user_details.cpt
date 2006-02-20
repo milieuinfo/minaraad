@@ -268,32 +268,41 @@
                                 <br />
                                 <select name="country">
                                     <tal:block tal:repeat="option countries">
-                                        <option tal:attributes="selected python:test(option==country, 'selected', '');
-                                                                value option;"
-                                                tal:content="option" />
+                                     <option tal:attributes="selected python:test(option==country, 'selected', '');
+                                                        value option;"
+                                        tal:condition="python:option != 'Ander land'"
+                                        tal:content="option"
+                                        onClick="hide('othercountry')" />
+                                     <option tal:attributes="selected python:test(option==country, 'selected', '');
+                                                            value option;"
+                                        tal:condition="python:option=='Ander land'"
+                                        tal:content="option"
+                                        onClick="show('othercountry')" />
                                     </tal:block>
                                 </select>
-                            </div>
+                           
                             
-                            <!-- *** other country *** -->
-                            <div class="field"
-                                 tal:define="error errors/other_country | nothing;
-                                             other_country python:request.get('other_country', member.getProperty('other_country', ''));"
-                                 tal:attributes="class python:test(error, 'field error', 'field')">
-        
-                                <label for="other_country"
-                                    i18n:domain="minaraad" 
-                                    i18n:translate="label_other_country">Other country</label>
-        
-                                <div tal:content="error">Validation error output</div>
-        
-                                <input type="text"
-                                        id="other_country"
-                                        name="other_country"
-                                        size="30"
-                                        value="member.other_country html_quote"
-                                        tal:attributes="value other_country;
-                                                        tabindex tabindex/next;" />
+                                <!-- *** other country *** -->
+                                <div class="field"
+                                     id="othercountry"
+                                    tal:define="error errors/other_country | nothing;
+                                                other_country python:request.get('other_country', member.getProperty('other_country', ''));"
+                                    tal:attributes="class python:test(error, 'field error', 'field');
+                                                style python:test(country ==('Ander land'), '', 'display:none')">
+            
+                                    <label for="other_country"
+                                        i18n:domain="minaraad" 
+                                        i18n:translate="label_other_country">Other country</label>
+            
+                                    <div tal:content="error">Validation error output</div>
+            
+                                    <input type="text"
+                                            id="other_country"
+                                            name="other_country"
+                                            size="30"
+                                            value="member.other_country html_quote"
+                                            tal:attributes="value other_country" />
+                                </div>
                             </div>
                             <br />
                             

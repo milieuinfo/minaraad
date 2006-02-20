@@ -252,7 +252,14 @@
                             <tal:block tal:repeat="option countries">
                                 <option tal:attributes="selected python:test(option==country, 'selected', '');
                                                         value option;"
-                                        tal:content="option" />
+                                        tal:condition="python:option != 'Ander land'"
+                                        tal:content="option"
+                                        onClick="hide('othercountry')" />
+                                <option tal:attributes="selected python:test(option==country, 'selected', '');
+                                                        value option;"
+                                    tal:condition="python:option=='Ander land'"
+                                    tal:content="option"
+                                    onClick="show('othercountry')" />
                             </tal:block>
                         </select>
                     
@@ -261,7 +268,9 @@
                              id="othercountry"
                              tal:define="error errors/other_country | nothing;
                                          other_country python:request.get('other_country', member.getProperty('other_country', ''));"
-                             tal:attributes="class python:test(error, 'field error', 'field');">
+                             tal:attributes="class python:test(error, 'field error', 'field');
+                                             style python:test(country ==('Ander land'), '', 'display:none')">
+    
     
                             <label for="other_country" 
                                 i18n:domain="minaraad"
@@ -274,7 +283,8 @@
                                     name="other_country"
                                     size="30"
                                     value="member.other_country html_quote"
-                                    tal:attributes="value other_country;" />
+                                    tal:attributes="value other_country;
+                                    " />
                         </div>
                     </div>
                     <br />
