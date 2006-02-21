@@ -238,21 +238,6 @@ msgstr ""
 msgid "minaraad_help_email"
 msgstr ""
 
-#. Default: "end"
-#: content/Hearing.py
-msgid "minaraad_help_end"
-msgstr ""
-
-#. Default: "endhour"
-#: content/Presentation.py
-msgid "minaraad_help_endhour"
-msgstr ""
-
-#. Default: "endminutes"
-#: content/Presentation.py
-msgid "minaraad_help_endminutes"
-msgstr ""
-
 #. Default: "goal"
 #: content/Hearing.py
 msgid "minaraad_help_goal"
@@ -296,21 +281,6 @@ msgstr ""
 #. Default: "speakers"
 #: content/Study.py
 msgid "minaraad_help_speakers"
-msgstr ""
-
-#. Default: "start"
-#: content/Hearing.py
-msgid "minaraad_help_start"
-msgstr ""
-
-#. Default: "starthour"
-#: content/Presentation.py
-msgid "minaraad_help_starthour"
-msgstr ""
-
-#. Default: "startminutes"
-#: content/Presentation.py
-msgid "minaraad_help_startminutes"
 msgstr ""
 
 #. Default: "subheader"
@@ -377,23 +347,9 @@ msgstr ""
 msgid "minaraad_label_email"
 msgstr ""
 
-#. Default: "End"
+#. Default: "Enddate"
 #: content/Hearing.py
-msgid "minaraad_label_end"
-msgstr ""
-
-#. Default: "Endhour"
-#: content/Presentation.py
-#: content/AgendaItems.py
-#: content/AgendaItem.py
-msgid "minaraad_label_endhour"
-msgstr ""
-
-#. Default: "Endminutes"
-#: content/Presentation.py
-#: content/AgendaItems.py
-#: content/AgendaItem.py
-msgid "minaraad_label_endminutes"
+msgid "minaraad_label_enddate"
 msgstr ""
 
 #. Default: "Goal"
@@ -455,28 +411,9 @@ msgstr ""
 msgid "minaraad_label_speakers"
 msgstr ""
 
-#. Default: "Start"
-#: content/Hearing.py
-msgid "minaraad_label_start"
-msgstr ""
-
 #. Default: "Startdate"
 #: content/Hearing.py
 msgid "minaraad_label_startdate"
-msgstr ""
-
-#. Default: "Starthour"
-#: content/Presentation.py
-#: content/AgendaItems.py
-#: content/AgendaItem.py
-msgid "minaraad_label_starthour"
-msgstr ""
-
-#. Default: "Startminutes"
-#: content/Presentation.py
-#: content/AgendaItems.py
-#: content/AgendaItem.py
-msgid "minaraad_label_startminutes"
 msgstr ""
 
 #. Default: "Street"

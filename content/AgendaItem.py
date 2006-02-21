@@ -43,9 +43,9 @@ schema = Schema((
         )
     ),
 
-    StringField(
+    TextField(
         name='summary',
-        widget=StringWidget(
+        widget=TextAreaWidget(
             label='Summary',
             label_msgid='minaraad_label_summary',
             i18n_domain='minaraad',

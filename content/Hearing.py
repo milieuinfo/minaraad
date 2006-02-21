@@ -102,10 +102,10 @@ schema = Schema((
     ),
 
     DateTimeField(
-        name='end',
+        name='enddate',
         widget=CalendarWidget(
-            label='End',
-            label_msgid='minaraad_label_end',
+            label='Enddate',
+            label_msgid='minaraad_label_enddate',
             i18n_domain='minaraad',
         )
     ),
