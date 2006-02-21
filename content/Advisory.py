@@ -29,8 +29,12 @@ from AccessControl import ClassSecurityInfo
 from Products.Archetypes.atapi import *
 from Products.minaraad.PostMixin import PostMixin
 from Products.minaraad.EmailMixin import EmailMixin
-from Products.ATContentTypes.content.document import ATDocument
 from Products.minaraad.config import *
+
+# additional imports from tagged value 'import'
+from Products.ATContentTypes.content.base import ATCTContent
+from Products.ATContentTypes.content.schemata import ATContentTypeSchema
+from Products.AttachmentField.AttachmentField import AttachmentField
 
 ##code-section module-header #fill in your manual code here
 ##/code-section module-header
@@ -46,6 +50,26 @@ schema = Schema((
         )
     ),
 
+    TextField(
+        name='description',
+        widget=TextAreaWidget(
+            label='Description',
+            label_msgid='minaraad_label_description',
+            i18n_domain='minaraad',
+        )
+    ),
+
+    TextField(
+        name='body',
+        allowable_content_types=('text/plain', 'text/structured', 'text/html', 'application/msword',),
+        widget=RichWidget(
+            label='Body',
+            label_msgid='minaraad_label_body',
+            i18n_domain='minaraad',
+        ),
+        default_output_type='text/html'
+    ),
+
     FileField(
         name='attachment',
         widget=FileWidget(
@@ -55,15 +79,6 @@ schema = Schema((
         ),
         storage=AttributeStorage(),
         multiValued=True
-    ),
-
-    TextField(
-        name='plaintext',
-        widget=TextAreaWidget(
-            label='Plaintext',
-            label_msgid='minaraad_label_plaintext',
-            i18n_domain='minaraad',
-        )
     ),
 
 
@@ -85,28 +100,28 @@ schema = Schema((
 ##code-section after-local-schema #fill in your manual code here
 ##/code-section after-local-schema
 
-Advisory_schema = getattr(PostMixin, 'schema', Schema(())).copy() + \
+Advisory_schema = ATContentTypeSchema.copy() + \
+    getattr(PostMixin, 'schema', Schema(())).copy() + \
     getattr(EmailMixin, 'schema', Schema(())).copy() + \
-    getattr(ATDocument, 'schema', Schema(())).copy() + \
     schema.copy()
 
 ##code-section after-schema #fill in your manual code here
 Advisory_schema['description'].isMetadata = False
 ##/code-section after-schema
 
-class Advisory(PostMixin, EmailMixin, ATDocument):
+class Advisory(PostMixin, EmailMixin, ATCTContent):
     """
     An advisory
     """
     security = ClassSecurityInfo()
-    __implements__ = (getattr(PostMixin,'__implements__',()),) + (getattr(EmailMixin,'__implements__',()),) + (getattr(ATDocument,'__implements__',()),)
+    __implements__ = (getattr(PostMixin,'__implements__',()),) + (getattr(EmailMixin,'__implements__',()),) + (getattr(ATCTContent,'__implements__',()),)
 
     # This name appears in the 'add' box
     archetype_name = 'Advisory'
 
     meta_type = 'Advisory'
     portal_type = 'Advisory'
-    allowed_content_types = [] + list(getattr(PostMixin, 'allowed_content_types', [])) + list(getattr(EmailMixin, 'allowed_content_types', [])) + list(getattr(ATDocument, 'allowed_content_types', []))
+    allowed_content_types = [] + list(getattr(PostMixin, 'allowed_content_types', [])) + list(getattr(EmailMixin, 'allowed_content_types', []))
     filter_content_types = 0
     global_allow = 1
     allow_discussion = False
@@ -116,8 +131,6 @@ class Advisory(PostMixin, EmailMixin, ATDocument):
     suppl_views = ()
     typeDescription = "Advisory"
     typeDescMsgId = 'description_edit_advisory'
-
-    _at_rename_after_creation = True
 
     schema = Advisory_schema
 

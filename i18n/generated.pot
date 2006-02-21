@@ -339,6 +339,7 @@ msgstr ""
 
 #. Default: "Body"
 #: content/Hearing.py
+#: content/Advisory.py
 msgid "minaraad_label_body"
 msgstr ""
 
@@ -372,6 +373,7 @@ msgstr ""
 
 #. Default: "Description"
 #: content/Hearing.py
+#: content/Advisory.py
 msgid "minaraad_label_description"
 msgstr ""
 

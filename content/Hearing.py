@@ -103,21 +103,13 @@ schema = Schema((
 
     StringField(
         name='themes',
-        widget=SelectionWidget(
+        widget=StringWidget(
             label='Themes',
             label_msgid='minaraad_label_themes',
             i18n_domain='minaraad',
         ),
+        import_from="SelectionWidget",
         vocabulary='getThemesList'
-    ),
-
-    TextField(
-        name='plaintext',
-        widget=TextAreaWidget(
-            label='Plaintext',
-            label_msgid='minaraad_label_plaintext',
-            i18n_domain='minaraad',
-        )
     ),
 
 

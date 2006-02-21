@@ -54,21 +54,23 @@ schema = Schema((
 
     DateTimeField(
         name='itemstartdate',
-        widget=SelectionWidget(
+        widget=CalendarWidget(
             label='Itemstartdate',
             label_msgid='minaraad_label_itemstartdate',
             i18n_domain='minaraad',
         ),
+        import_from="SelectionWidget",
         vocabulary=[7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]
     ),
 
     DateTimeField(
         name='itemenddate',
-        widget=SelectionWidget(
+        widget=CalendarWidget(
             label='Itemenddate',
             label_msgid='minaraad_label_itemenddate',
             i18n_domain='minaraad',
         ),
+        import_from="SelectionWidget",
         vocabulary=[7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]
     ),
 

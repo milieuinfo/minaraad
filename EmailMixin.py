@@ -34,6 +34,15 @@ from Products.minaraad.config import *
 
 schema = Schema((
 
+    TextField(
+        name='plaintext',
+        widget=TextAreaWidget(
+            label='Plaintext',
+            label_msgid='minaraad_label_plaintext',
+            i18n_domain='minaraad',
+        )
+    ),
+
 ),
 )
 

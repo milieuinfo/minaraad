@@ -47,15 +47,6 @@ schema = Schema((
         storage=AttributeStorage()
     ),
 
-    TextField(
-        name='plaintext',
-        widget=TextAreaWidget(
-            label='Plaintext',
-            label_msgid='minaraad_label_plaintext',
-            i18n_domain='minaraad',
-        )
-    ),
-
 
     ReferenceField(
         name='contactpersons',
