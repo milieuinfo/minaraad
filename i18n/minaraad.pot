@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minaraad\n"
-"POT-Creation-Date: 2006-02-20 13:52+0000\n"
+"POT-Creation-Date: 2006-02-21 15:39+0000\n"
 "PO-Revision-Date: Mon Aug  8 12:16:21 2005\n"
 "Last-Translator: Rocky Burt <r.burt@zestsoftware.nl>\n"
 "Language-Team: Rocky Burt <r.burt@zestsoftware.nl>\n"
@@ -345,11 +345,6 @@ msgstr ""
 msgid "minaraad_help_summary"
 msgstr ""
 
-#. Default: "themes"
-#: content/Hearing.py
-msgid "minaraad_help_themes"
-msgstr ""
-
 #. Default: "Attachment"
 #: content/Advisory.py
 #: content/Presentation.py
@@ -359,6 +354,7 @@ msgstr ""
 
 #. Default: "Body"
 #: content/Hearing.py
+#: content/Advisory.py
 msgid "minaraad_label_body"
 msgstr ""
 
@@ -374,6 +370,8 @@ msgstr ""
 
 #. Default: "Contactpersons"
 #: MinaBundle.py
+#: content/Advisory.py
+#: content/Hearing.py
 msgid "minaraad_label_contactpersons"
 msgstr ""
 
@@ -390,6 +388,7 @@ msgstr ""
 
 #. Default: "Description"
 #: content/Hearing.py
+#: content/Advisory.py
 msgid "minaraad_label_description"
 msgstr ""
 
@@ -422,6 +421,16 @@ msgstr ""
 msgid "minaraad_label_goal"
 msgstr ""
 
+#. Default: "Itemenddate"
+#: content/AgendaItem.py
+msgid "minaraad_label_itemenddate"
+msgstr ""
+
+#. Default: "Itemstartdate"
+#: content/AgendaItem.py
+msgid "minaraad_label_itemstartdate"
+msgstr ""
+
 #. Default: "Jobtitle"
 #: content/ContactPerson.py
 msgid "minaraad_label_jobtitle"
@@ -445,6 +454,7 @@ msgstr ""
 #. Default: "Plaintext"
 #: MinaBundle.py
 #: content/Hearing.py
+#: content/Advisory.py
 msgid "minaraad_label_plaintext"
 msgstr ""
 
@@ -468,6 +478,11 @@ msgstr ""
 #. Default: "Start"
 #: content/Hearing.py
 msgid "minaraad_label_start"
+msgstr ""
+
+#. Default: "Startdate"
+#: content/Hearing.py
+msgid "minaraad_label_startdate"
 msgstr ""
 
 #. Default: "Starthour"
@@ -508,9 +523,9 @@ msgstr ""
 msgid "minaraad_label_summary"
 msgstr ""
 
-#. Default: "Themes"
+#. Default: "Theme"
 #: content/Hearing.py
-msgid "minaraad_label_themes"
+msgid "minaraad_label_theme"
 msgstr ""
 
 #. Default: "Zipcode"

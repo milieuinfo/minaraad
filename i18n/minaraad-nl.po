@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minaraad 0.1\n"
-"POT-Creation-Date: 2006-02-20 13:52+0000\n"
+"POT-Creation-Date: 2006-02-21 15:39+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: Mirella van Teulingen <m.van.teulingen@zestsoftware.nl>\n"
 "Language-Team: Nederlands <info@zestsoftware.nl>\n"
@@ -345,11 +345,6 @@ msgstr ""
 msgid "minaraad_help_summary"
 msgstr ""
 
-#. Default: "themes"
-#: content/Hearing.py
-msgid "minaraad_help_themes"
-msgstr ""
-
 #. Default: "Attachment"
 #: content/Advisory.py
 #: content/Presentation.py
@@ -359,6 +354,7 @@ msgstr "Bijlage"
 
 #. Default: "Body"
 #: content/Hearing.py
+#: content/Advisory.py
 msgid "minaraad_label_body"
 msgstr "Body tekst"
 
@@ -374,6 +370,8 @@ msgstr "Woonplaats"
 
 #. Default: "Contactpersons"
 #: MinaBundle.py
+#: content/Advisory.py
+#: content/Hearing.py
 msgid "minaraad_label_contactpersons"
 msgstr "Contactpersonen"
 
@@ -390,6 +388,7 @@ msgstr "Afdeling"
 
 #. Default: "Description"
 #: content/Hearing.py
+#: content/Advisory.py
 msgid "minaraad_label_description"
 msgstr "Omschrijving"
 
@@ -422,6 +421,16 @@ msgstr "Eindtijd minuten"
 msgid "minaraad_label_goal"
 msgstr "Doelstelling"
 
+#. Default: "Itemenddate"
+#: content/AgendaItem.py
+msgid "minaraad_label_itemenddate"
+msgstr ""
+
+#. Default: "Itemstartdate"
+#: content/AgendaItem.py
+msgid "minaraad_label_itemstartdate"
+msgstr ""
+
 #. Default: "Jobtitle"
 #: content/ContactPerson.py
 msgid "minaraad_label_jobtitle"
@@ -445,6 +454,7 @@ msgstr "Telefoonnummer"
 #. Default: "Plaintext"
 #: MinaBundle.py
 #: content/Hearing.py
+#: content/Advisory.py
 msgid "minaraad_label_plaintext"
 msgstr "Platte tekst"
 
@@ -469,6 +479,11 @@ msgstr "Sprekers"
 #: content/Hearing.py
 msgid "minaraad_label_start"
 msgstr "Startdatum"
+
+#. Default: "Startdate"
+#: content/Hearing.py
+msgid "minaraad_label_startdate"
+msgstr ""
 
 #. Default: "Starthour"
 #: content/Presentation.py
@@ -508,10 +523,10 @@ msgstr "Subkop"
 msgid "minaraad_label_summary"
 msgstr "Samenvatting"
 
-#. Default: "Themes"
+#. Default: "Theme"
 #: content/Hearing.py
-msgid "minaraad_label_themes"
-msgstr "Thema's"
+msgid "minaraad_label_theme"
+msgstr "Thema"
 
 #. Default: "Zipcode"
 #: Organisation.py

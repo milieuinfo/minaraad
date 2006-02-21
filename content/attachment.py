@@ -73,6 +73,7 @@ class attachment(BaseContent):
 
     # Methods
 
+
 registerType(attachment,PROJECTNAME)
 # end of class attachment
 

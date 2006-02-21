@@ -325,11 +325,6 @@ msgstr ""
 msgid "minaraad_help_summary"
 msgstr ""
 
-#. Default: "themes"
-#: content/Hearing.py
-msgid "minaraad_help_themes"
-msgstr ""
-
 #. Default: "Attachment"
 #: content/Advisory.py
 #: content/Presentation.py
@@ -508,9 +503,9 @@ msgstr ""
 msgid "minaraad_label_summary"
 msgstr ""
 
-#. Default: "Themes"
+#. Default: "Theme"
 #: content/Hearing.py
-msgid "minaraad_label_themes"
+msgid "minaraad_label_theme"
 msgstr ""
 
 #. Default: "Zipcode"

@@ -31,7 +31,6 @@ from Products.minaraad.EmailMixin import EmailMixin
 from Products.minaraad.config import *
 
 ##code-section module-header #fill in your manual code here
-from Products.minaraad.browser.configlets import *
 ##/code-section module-header
 
 schema = Schema((
@@ -83,6 +82,16 @@ schema = Schema((
         )
     ),
 
+    IntegerField(
+        name='theme',
+        widget=SelectionWidget(
+            label='Theme',
+            label_msgid='minaraad_label_theme',
+            i18n_domain='minaraad',
+        ),
+        vocabulary='getThemesList'
+    ),
+
     DateTimeField(
         name='startdate',
         widget=CalendarWidget(
@@ -99,17 +108,6 @@ schema = Schema((
             label_msgid='minaraad_label_end',
             i18n_domain='minaraad',
         )
-    ),
-
-    StringField(
-        name='themes',
-        widget=StringWidget(
-            label='Themes',
-            label_msgid='minaraad_label_themes',
-            i18n_domain='minaraad',
-        ),
-        import_from="SelectionWidget",
-        vocabulary='getThemesList'
     ),
 
 
@@ -140,7 +138,7 @@ Hearing_schema = BaseFolderSchema.copy() + \
 
 class Hearing(EmailMixin, BaseFolder):
     """
-    A hearing
+    A Hearing
     """
     security = ClassSecurityInfo()
     __implements__ = (getattr(EmailMixin,'__implements__',()),) + (getattr(BaseFolder,'__implements__',()),)
@@ -173,10 +171,23 @@ class Hearing(EmailMixin, BaseFolder):
     security.declarePublic('getThemesList')
     def getThemesList(self):
         """
-        Get the themes from the configlet
+        Get themes from minaraad properties
         """
-        return self.getThemes() 
+        props = self.portal_properties.minaraad_properties
+        themeProps = props.getProperty('themes')
+        themes = []
+        for x in themeProps:
+            pos = x.find('/')
+            id = x[:pos]
+            title = x[pos+1:]
+            themes.append({'id':id, 'title':title})
         
+        dlist = DisplayList(
+                   tuple([(theme['id'], theme['title']) for theme in themes ])
+                )
+
+        return dlist
+
 
 registerType(Hearing,PROJECTNAME)
 # end of class Hearing

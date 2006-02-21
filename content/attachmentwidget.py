@@ -73,6 +73,7 @@ class attachmentwidget(BaseContent):
 
     # Methods
 
+
 registerType(attachmentwidget,PROJECTNAME)
 # end of class attachmentwidget
 
