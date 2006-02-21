@@ -27,6 +27,7 @@ __docformat__ = 'plaintext'
 
 from AccessControl import ClassSecurityInfo
 from Products.Archetypes.atapi import *
+from Products.minaraad.EmailMixin import EmailMixin
 from Products.minaraad.config import *
 
 ##code-section module-header #fill in your manual code here
@@ -119,6 +120,19 @@ schema = Schema((
         )
     ),
 
+
+    ReferenceField(
+        name='contactpersons',
+        widget=ReferenceWidget(
+            label='Contactpersons',
+            label_msgid='minaraad_label_contactpersons',
+            i18n_domain='minaraad',
+        ),
+        allowed_types=('ContactPerson',),
+        multiValued=0,
+        relationship='hearings_contactpersons'
+    ),
+
 ),
 )
 
@@ -126,21 +140,25 @@ schema = Schema((
 ##/code-section after-local-schema
 
 Hearing_schema = BaseFolderSchema.copy() + \
+    getattr(EmailMixin, 'schema', Schema(())).copy() + \
     schema.copy()
 
 ##code-section after-schema #fill in your manual code here
 ##/code-section after-schema
 
-class Hearing(BaseFolder):
+class Hearing(EmailMixin, BaseFolder):
+    """
+    A hearing
+    """
     security = ClassSecurityInfo()
-    __implements__ = (getattr(BaseFolder,'__implements__',()),)
+    __implements__ = (getattr(EmailMixin,'__implements__',()),) + (getattr(BaseFolder,'__implements__',()),)
 
     # This name appears in the 'add' box
     archetype_name = 'Hearing'
 
     meta_type = 'Hearing'
     portal_type = 'Hearing'
-    allowed_content_types = ['AgendaItem']
+    allowed_content_types = ['AgendaItem'] + list(getattr(EmailMixin, 'allowed_content_types', []))
     filter_content_types = 1
     global_allow = 1
     allow_discussion = False
@@ -165,9 +183,8 @@ class Hearing(BaseFolder):
         """
         Get the themes from the configlet
         """
-        #return self.getThemes() 
-        pass
-
+        return self.getThemes() 
+        
 
 registerType(Hearing,PROJECTNAME)
 # end of class Hearing

@@ -354,6 +354,8 @@ msgstr ""
 
 #. Default: "Contactpersons"
 #: MinaBundle.py
+#: content/Advisory.py
+#: content/Hearing.py
 msgid "minaraad_label_contactpersons"
 msgstr ""
 
@@ -435,6 +437,7 @@ msgstr ""
 #. Default: "Plaintext"
 #: MinaBundle.py
 #: content/Hearing.py
+#: content/Advisory.py
 msgid "minaraad_label_plaintext"
 msgstr ""
 

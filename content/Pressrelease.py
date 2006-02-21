@@ -27,7 +27,8 @@ __docformat__ = 'plaintext'
 
 from AccessControl import ClassSecurityInfo
 from Products.Archetypes.atapi import *
-from Products.minaraad.MinaBundle import MinaBundle
+from Products.minaraad.EmailMixin import EmailMixin
+from Products.ATContentTypes.content.document import ATDocument
 from Products.minaraad.config import *
 
 ##code-section module-header #fill in your manual code here
@@ -55,29 +56,54 @@ schema = Schema((
         multiValued=True
     ),
 
+    TextField(
+        name='plaintext',
+        widget=TextAreaWidget(
+            label='Plaintext',
+            label_msgid='minaraad_label_plaintext',
+            i18n_domain='minaraad',
+        )
+    ),
+
+
+    ReferenceField(
+        name='contactpersons',
+        widget=ReferenceWidget(
+            label='Contactpersons',
+            label_msgid='minaraad_label_contactpersons',
+            i18n_domain='minaraad',
+        ),
+        allowed_types=('ContactPerson',),
+        multiValued=0,
+        relationship='pressreleases_contactpersons'
+    ),
+
 ),
 )
 
 ##code-section after-local-schema #fill in your manual code here
 ##/code-section after-local-schema
 
-Pressrelease_schema = BaseSchema.copy() + \
-    getattr(MinaBundle, 'schema', Schema(())).copy() + \
+Pressrelease_schema = getattr(EmailMixin, 'schema', Schema(())).copy() + \
+    getattr(ATDocument, 'schema', Schema(())).copy() + \
     schema.copy()
 
 ##code-section after-schema #fill in your manual code here
 ##/code-section after-schema
 
-class Pressrelease(MinaBundle, BaseContent):
+class Pressrelease(EmailMixin, ATDocument):
+    """
+    A pressrelease
+    """
     security = ClassSecurityInfo()
-    __implements__ = (getattr(MinaBundle,'__implements__',()),) + (getattr(BaseContent,'__implements__',()),)
+    __implements__ = (getattr(EmailMixin,'__implements__',()),) + (getattr(ATDocument,'__implements__',()),)
 
     # This name appears in the 'add' box
     archetype_name = 'Pressrelease'
 
     meta_type = 'Pressrelease'
     portal_type = 'Pressrelease'
-    allowed_content_types = [] + list(getattr(MinaBundle, 'allowed_content_types', []))
+    allowed_content_types = [] + list(getattr(EmailMixin, 'allowed_content_types', [])) + list(getattr(ATDocument, 'allowed_content_types', []))
     filter_content_types = 0
     global_allow = 1
     allow_discussion = False

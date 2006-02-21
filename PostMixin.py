@@ -40,8 +40,7 @@ schema = Schema((
 ##code-section after-local-schema #fill in your manual code here
 ##/code-section after-local-schema
 
-PostMixin_schema = BaseSchema.copy() + \
-    schema.copy()
+PostMixin_schema = schema.copy()
 
 ##code-section after-schema #fill in your manual code here
 ##/code-section after-schema
@@ -49,29 +48,13 @@ PostMixin_schema = BaseSchema.copy() + \
 class PostMixin:
     security = ClassSecurityInfo()
 
-    # This name appears in the 'add' box
-    archetype_name = 'PostMixin'
-
-    meta_type = 'PostMixin'
-    portal_type = 'PostMixin'
     allowed_content_types = []
-    filter_content_types = 0
-    global_allow = 1
-    allow_discussion = False
-    #content_icon = 'PostMixin.gif'
-    immediate_view = 'base_view'
-    default_view = 'base_view'
-    suppl_views = ()
-    typeDescription = "PostMixin"
-    typeDescMsgId = 'description_edit_postmixin'
-
     schema = PostMixin_schema
 
     ##code-section class-header #fill in your manual code here
     ##/code-section class-header
 
     # Methods
-
 
 # end of class PostMixin
 

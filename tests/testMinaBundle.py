@@ -33,7 +33,7 @@ if __name__ == '__main__':
 ##/code-section module-header
 
 #
-# Test-cases for class(es) MinaBundle
+# Test-cases for class(es) 
 #
 
 from Testing import ZopeTestCase
@@ -41,7 +41,6 @@ from Products.minaraad.config import *
 from Products.minaraad.tests.MainTestCase import MainTestCase
 
 # Import the tested classes
-from Products.minaraad.MinaBundle import MinaBundle
 
 ##code-section module-beforeclass #fill in your manual code here
 ##/code-section module-beforeclass
@@ -60,7 +59,8 @@ class testMinaBundle(MainTestCase):
         pass
 
 
-    # from class EmailMixin:
+    # Manually created methods
+
     def test_email(self):
         """
         """
@@ -69,8 +69,6 @@ class testMinaBundle(MainTestCase):
         ##o=EmailMixin('temp_EmailMixin')
         ##self.folder._setObject('temp_EmailMixin', o)
         pass
-
-    # Manually created methods
 
 
 def test_suite():

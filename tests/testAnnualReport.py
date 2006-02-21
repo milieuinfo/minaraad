@@ -70,16 +70,6 @@ class testAnnualReport(MainTestCase):
         ##self.folder._setObject('temp_EmailMixin', o)
         pass
 
-    # from class EmailMixin:
-    def test_email(self):
-        """
-        """
-        #Uncomment one of the following lines as needed
-        ##self.loginAsPortalOwner()
-        ##o=EmailMixin('temp_EmailMixin')
-        ##self.folder._setObject('temp_EmailMixin', o)
-        pass
-
     # Manually created methods
 
 

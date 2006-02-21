@@ -64,6 +64,16 @@ class testHearing(MainTestCase):
     def test_getThemesList(self):
         pass
 
+    # from class EmailMixin:
+    def test_email(self):
+        """
+        """
+        #Uncomment one of the following lines as needed
+        ##self.loginAsPortalOwner()
+        ##o=EmailMixin('temp_EmailMixin')
+        ##self.folder._setObject('temp_EmailMixin', o)
+        pass
+
     # Manually created methods
 
     def test_getThemes(self):
@@ -73,15 +83,6 @@ class testHearing(MainTestCase):
         ##self.loginAsPortalOwner()
         ##o=Hearing('temp_Hearing')
         ##self.folder._setObject('temp_Hearing', o)
-        pass
-
-    def test_email(self):
-        """
-        """
-        #Uncomment one of the following lines as needed
-        ##self.loginAsPortalOwner()
-        ##o=EmailMixin('temp_EmailMixin')
-        ##self.folder._setObject('temp_EmailMixin', o)
         pass
 
 

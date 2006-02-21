@@ -96,6 +96,9 @@ AgendaItem_schema = BaseSchema.copy() + \
 ##/code-section after-schema
 
 class AgendaItem(BaseContent):
+    """
+    An Agendaitem
+    """
     security = ClassSecurityInfo()
     __implements__ = (getattr(BaseContent,'__implements__',()),)
 

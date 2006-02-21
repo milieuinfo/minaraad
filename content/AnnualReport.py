@@ -27,8 +27,9 @@ __docformat__ = 'plaintext'
 
 from AccessControl import ClassSecurityInfo
 from Products.Archetypes.atapi import *
-from Products.minaraad.content.NewsLetter import NewsLetter
 from Products.minaraad.PostMixin import PostMixin
+from Products.minaraad.EmailMixin import EmailMixin
+from Products.ATContentTypes.content.document import ATDocument
 from Products.minaraad.config import *
 
 ##code-section module-header #fill in your manual code here
@@ -36,30 +37,65 @@ from Products.minaraad.config import *
 
 schema = Schema((
 
+    FileField(
+        name='attachment',
+        widget=FileWidget(
+            label='Attachment',
+            label_msgid='minaraad_label_attachment',
+            i18n_domain='minaraad',
+        ),
+        storage=AttributeStorage()
+    ),
+
+    TextField(
+        name='plaintext',
+        widget=TextAreaWidget(
+            label='Plaintext',
+            label_msgid='minaraad_label_plaintext',
+            i18n_domain='minaraad',
+        )
+    ),
+
+
+    ReferenceField(
+        name='contactpersons',
+        widget=ReferenceWidget(
+            label='Contactpersons',
+            label_msgid='minaraad_label_contactpersons',
+            i18n_domain='minaraad',
+        ),
+        allowed_types=('ContactPerson',),
+        multiValued=0,
+        relationship='annualreports_contactpersons'
+    ),
+
 ),
 )
 
 ##code-section after-local-schema #fill in your manual code here
 ##/code-section after-local-schema
 
-AnnualReport_schema = BaseSchema.copy() + \
-    getattr(NewsLetter, 'schema', Schema(())).copy() + \
-    getattr(PostMixin, 'schema', Schema(())).copy() + \
+AnnualReport_schema = getattr(PostMixin, 'schema', Schema(())).copy() + \
+    getattr(EmailMixin, 'schema', Schema(())).copy() + \
+    getattr(ATDocument, 'schema', Schema(())).copy() + \
     schema.copy()
 
 ##code-section after-schema #fill in your manual code here
 ##/code-section after-schema
 
-class AnnualReport(NewsLetter, PostMixin, BaseContent):
+class AnnualReport(PostMixin, EmailMixin, ATDocument):
+    """
+    An annual report
+    """
     security = ClassSecurityInfo()
-    __implements__ = (getattr(NewsLetter,'__implements__',()),) + (getattr(PostMixin,'__implements__',()),) + (getattr(BaseContent,'__implements__',()),)
+    __implements__ = (getattr(PostMixin,'__implements__',()),) + (getattr(EmailMixin,'__implements__',()),) + (getattr(ATDocument,'__implements__',()),)
 
     # This name appears in the 'add' box
     archetype_name = 'AnnualReport'
 
     meta_type = 'AnnualReport'
     portal_type = 'AnnualReport'
-    allowed_content_types = [] + list(getattr(NewsLetter, 'allowed_content_types', [])) + list(getattr(PostMixin, 'allowed_content_types', []))
+    allowed_content_types = [] + list(getattr(PostMixin, 'allowed_content_types', [])) + list(getattr(EmailMixin, 'allowed_content_types', [])) + list(getattr(ATDocument, 'allowed_content_types', []))
     filter_content_types = 0
     global_allow = 1
     allow_discussion = False
