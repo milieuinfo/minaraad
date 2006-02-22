@@ -476,3 +476,8 @@ msgstr ""
 msgid "toggle_all"
 msgstr ""
 
+#: Field.py
+#. <no reference>
+msgid "label_no_reference"
+msgstr ""
+

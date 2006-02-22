@@ -1,0 +1,103 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
+      lang="en-US"
+      i18n:domain="minaraad">
+    <metal:block use-macro="context/global_defines/macros/defines" />
+    
+    <body>
+    <metal:block metal:define-macro="body">
+        <metal:block metal:define-macro="folderlisting" />
+        
+        <div class="hearingsubheader">
+            <span tal:replace="context/getSubheader" />
+            <span tal:condition="python:context.getMot() == True"
+                  tal:omit-tag="">
+                (MOT)
+            </span>
+        </div>
+         
+         <div class="hearingsubheader2"
+              i18n:translate="Goal:">
+            Goal:
+         </div>
+         
+         <div tal:content="context/getGoal" />
+         
+         <div class="hearingsubheader2">
+            <span i18n:translate="Location:"
+                  tal:omit-tag="">Location:</span> 
+            <span class="normaltext"
+                           tal:content="context/getLocation" />
+         </div>
+
+         <!-- Date and Time -->
+         <div tal:define="startdate python:context.toLocalizedTime(context.startdate);
+                          enddate python:context.toLocalizedTime(context.enddate);
+                          starttime python:context.startdate.TimeMinutes();
+                          endtime python:context.enddate.TimeMinutes()"
+              tal:omit-tag="">
+            <span class="hearingsubheader2"
+                  i18n:translate="Date:">Date:</span>
+
+            <tal:block tal:condition="python:startdate == enddate">
+                <span tal:replace="startdate" />
+                <br />
+                <span class="hearingsubheader2"
+                      i18n:translate="Time">
+                    Time:
+                </span>
+                <span tal:replace="starttime" />
+                
+                <span i18n:translate="till"
+                      tal:omit-tag="">till</span>
+                      
+                <span tal:replace="endtime" />
+            </tal:block>
+            <tal:block tal:condition="python:startdate != enddate">
+                <span i18n:translate="from"
+                      tal:omit-tag="">from</span> 
+                <span tal:replace="startdate" />
+                 
+                <span i18n:translate="up_untill"
+                      tal:omit-tag="">up untill</span> 
+                <span tal:replace="enddate" />
+                
+                <br />
+                <span class="hearingsubheader2"
+                      i18n:translate="Time">
+                    Time:
+                </span>
+                <span tal:replace="starttime" />
+                
+                <span i18n:translate="till"
+                      tal:omit-tag="">till</span>
+                <span tal:replace="endtime" />
+            </tal:block>
+        </div>
+        <!-- end Date and Time -->
+        <br /><br />
+        <!-- contactperson -->
+        <div i18n:translate="moreinfo_contactperson">
+            For more information contact:
+        </div>
+        <span i18n:translate="name"
+              tal:omit-tag="">
+            Name:
+        </span>
+        <br />
+        <span i18n:translate="emailaddress"
+              tal:omit-tag="">
+            E-mailaddress:
+        </span>
+        <br />
+        <span i18n:translate="phonenumber"
+              tal:omit-tag="">
+            Phonenumber:
+        </span>
+        <br /><br />
+        <!-- end contactpersoon -->
+        <div class="bodytext"
+             tal:content="structure context/getBody" />
+
+    </metal:block>
+    </body>
+</html>

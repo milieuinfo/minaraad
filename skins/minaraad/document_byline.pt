@@ -1,0 +1,7 @@
+<div metal:define-macro="byline"
+     i18n:domain="plone"
+     tal:condition="python: site_properties.allowAnonymousViewAbout or not isAnon"
+     tal:define="creator here/Creator;"
+     tal:omit-tag="">
+
+</div>

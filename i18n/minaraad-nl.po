@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minaraad 0.1\n"
-"POT-Creation-Date: 2006-02-22 11:10+0000\n"
+"POT-Creation-Date: 2006-02-22 15:23+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: Mirella van Teulingen <m.van.teulingen@zestsoftware.nl>\n"
 "Language-Team: Nederlands <info@zestsoftware.nl>\n"
@@ -24,9 +24,24 @@ msgstr "Advies"
 msgid "AnnualReport"
 msgstr "Jaarverslag"
 
+#. Default: "Date:"
+#: skins/minaraad/hearing_view.pt
+msgid "Date:"
+msgstr "Datum:"
+
+#. Default: "Goal:"
+#: skins/minaraad/hearing_view.pt
+msgid "Goal:"
+msgstr "Doelstelling:"
+
 #: browser/subscriptions_config.pt
 msgid "Hearing"
 msgstr "Hoorzitting"
+
+#. Default: "Location:"
+#: skins/minaraad/hearing_view.pt
+msgid "Location:"
+msgstr "Locatie:"
 
 #: browser/subscriptions_config.pt
 msgid "Newsletter"
@@ -39,6 +54,11 @@ msgstr "Persbericht"
 #: browser/subscriptions_config.pt
 msgid "Study"
 msgstr "Studie"
+
+#. Default: "Time:"
+#: skins/minaraad/hearing_view.pt
+msgid "Time"
+msgstr "Tijd:"
 
 #. Default: "For security reasons, we store your password encrypted, and cannot mail it to you. If you would like to reset your password, fill out the form below and we will send you an email at the address you gave when you registered to start the process of resetting your password. <br/> <br/> If this will not work for you (for example, if you forgot your member name or your email address has changed) send an email to the"
 #: skins/minaraad/mail_password_form.pt
@@ -53,6 +73,16 @@ msgstr "Selecteer de abonnementen"
 #: browser/minaraad_config.pt"
 msgid "description_themes_setup"
 msgstr "De gebruikte thema's voor deze site."
+
+#. Default: "E-mailaddress:"
+#: skins/minaraad/hearing_view.pt
+msgid "emailaddress"
+msgstr "E-mailadres:"
+
+#. Default: "from"
+#: skins/minaraad/hearing_view.pt
+msgid "from"
+msgstr "van"
 
 #. Default: "Themes Settings"
 #: browser/minaraad_config.pt"
@@ -132,6 +162,11 @@ msgstr "Functie"
 #: skins/join_form.cpt
 msgid "label_lastname"
 msgstr "Achternaam"
+
+#. <no reference>
+#: Field.py
+msgid "label_no_reference"
+msgstr "<geen referentie>"
 
 #. Default: "Other country"
 #: skins/minaraad/join_form.cpt
@@ -480,6 +515,26 @@ msgstr "Thema"
 msgid "minaraad_label_zipcode"
 msgstr "Postcode"
 
+#. Default: "For more information contact:"
+#: skins/minaraad/hearing_view.pt
+msgid "moreinfo_contactperson"
+msgstr "Voor meer informatie kunt u contact opnemen met:"
+
+#. Default: "Name:"
+#: skins/minaraad/hearing_view.pt
+msgid "name"
+msgstr "Naam:"
+
+#. Default: "Phonenumber:"
+#: skins/minaraad/hearing_view.pt
+msgid "phonenumber"
+msgstr "Telefoonnummer:"
+
+#. Default: "till"
+#: skins/minaraad/hearing_view.pt
+msgid "till"
+msgstr "tot"
+
 #: browser/subscriptions_config.pt
 msgid "title_email"
 msgstr "Per e-mail"
@@ -495,4 +550,9 @@ msgstr "Abonnementen"
 #: browser/subscriptions_config.pt
 msgid "toggle_all"
 msgstr "Selecteer alles:"
+
+#. Default: "up untill"
+#: skins/minaraad/hearing_view.pt
+msgid "up_untill"
+msgstr "t/m"
 
