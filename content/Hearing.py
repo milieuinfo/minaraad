@@ -109,7 +109,8 @@ schema = Schema((
             label='Startdate',
             label_msgid='minaraad_label_startdate',
             i18n_domain='minaraad',
-        )
+        ),
+        required=1
     ),
 
     DateTimeField(
@@ -118,7 +119,8 @@ schema = Schema((
             label='Enddate',
             label_msgid='minaraad_label_enddate',
             i18n_domain='minaraad',
-        )
+        ),
+        required=1
     ),
 
 

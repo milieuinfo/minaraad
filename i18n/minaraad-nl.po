@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minaraad 0.1\n"
-"POT-Creation-Date: 2006-02-22 15:23+0000\n"
+"POT-Creation-Date: 2006-02-22 16:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: Mirella van Teulingen <m.van.teulingen@zestsoftware.nl>\n"
 "Language-Team: Nederlands <info@zestsoftware.nl>\n"
@@ -93,6 +93,11 @@ msgstr "Thema's"
 #: browser/minaraad_config.pt"
 msgid "help_theme_name"
 msgstr "Vul de naam in van het nieuwe thema."
+
+#. Default: "hour"
+#: skins/minaraad/hearing_view.pt
+msgid "hour"
+msgstr "uur"
 
 #. Default: "Add"
 #: browser/minaraad_config.pt"

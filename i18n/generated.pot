@@ -128,6 +128,11 @@ msgstr ""
 msgid "label_lastname"
 msgstr ""
 
+#. <no reference>
+#: Field.py
+msgid "label_no_reference"
+msgstr ""
+
 #. Default: "Other country"
 #: skins/minaraad/join_form.cpt
 #: skins/minaraad/personalize_form.cpt
@@ -474,10 +479,5 @@ msgstr ""
 
 #: browser/subscriptions_config.pt
 msgid "toggle_all"
-msgstr ""
-
-#: Field.py
-#. <no reference>
-msgid "label_no_reference"
 msgstr ""
 
