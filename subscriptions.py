@@ -1,8 +1,8 @@
 from Products.CMFCore.utils import getToolByName
 from themes import ThemeManager
 
-SUBSCRIPTIONS_ALL = ('Advisory', 'Study', 'Newsletter', 
-                     'Pressrelease', 'AnnualReport')
+SUBSCRIPTIONS_ALL = ('Advisory', 'AnnualReport', 'Study', 
+                     'Newsletter', 'Pressrelease')
 SUBSCRIPTIONS_POST = ('Advisory', 'Study', 'AnnualReport')
 
 class NotSubscribableError(Exception):

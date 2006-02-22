@@ -40,8 +40,8 @@ msgstr "Persbericht"
 msgid "Themes"
 msgstr "Thema's"
 
-msgid "AgendaItems"
-msgstr "Agendapunten"
+msgid "AgendaItem"
+msgstr "Agendapunt"
 
 msgid "Subscriptions"
 msgstr "Abonnementen"
