@@ -1,6 +1,7 @@
 from Products.minaraad.config import *
 from sets import Set
 from Products.CMFCore.utils import getToolByName
+from Products.CMFCore.DirectoryView import addDirectoryViews
 from StringIO import StringIO
 
 MINARAAD_PROPERTIES = 'minaraad_properties'
@@ -20,12 +21,18 @@ THEMES_PROPERTY = [
     '13/Instrumenten',
 ]
 
-def install(self):
-    out = StringIO()
+out = StringIO()
 
+def install(self):
+    
+    _configurePortalProps(self)
+    
+    out.write("Create folder structure")
+    createFolderStructure(self)
+    
     out.write("Setting the workflow")
     # _setWorkflow(self, out)
-
+    
     out.write("Add member data properties.")
     addMemberDataProperties(self, out)
     deactivateAreaCreations(self, out)
@@ -35,8 +42,67 @@ def install(self):
 
     out.write("Add configlets")
     addConfiglets(self, out)
-
+    
+    print >> out, "Adding extra folder views"
+    _addExtraViews(self)
+    
     return out.getvalue()
+
+def _configurePortalProps(portal):
+    """Customize the portal properties.
+
+    This method changes the right and left slots on the portal folder
+    and customizes the navtree properties by omitting all IDs from
+    IDS_NOT_TO_LIST.
+    """
+
+    print >> out, "Customizing portal properties"
+    # customize slots - add the slots to the portal folder
+    portal._updateProperty('left_slots', LEFT_SLOTS)
+
+    # customize navtree properties - idsNotToList
+    props_tool = getToolByName(portal, 'portal_properties')
+    props_tool.navtree_properties._updateProperty('idsNotToList',
+                                                  tuple(IDS_NOT_TO_LIST))
+
+def createFolderStructure(portal):
+    """Create the initial folders in the root of the portal
+    """
+    # first of all let's remove the object we don't want in the portal root
+    itemsToRemove = ['news', 'events','Members']
+    for item in itemsToRemove:
+        if hasattr( portal, item): 
+            portal._delObject(item)
+    # Now let's create the ones we want
+    for node in ROOT_CHILDREN:
+        if node['id'] not in portal.objectIds():
+            createNode(portal, node)
+
+def createNode(self, item):
+    workflow_tool = getToolByName(self, 'portal_workflow')
+    id = item['id']
+    type = item['type']
+
+    if not id in self.objectIds():
+        self.invokeFactory(type, id = id)
+
+    created_object = self._getOb(id, None)
+    created_object.setTitle(item['title'])
+
+    workflow_tool.doActionFor(created_object, 'publish')
+
+    for child in item['children']:
+        createNode(created_object, child)
+
+def _addExtraViews(portal):
+    ttool = getToolByName(portal, 'portal_types')
+    for portal_type in EXTRA_VIEWS.keys():
+        type_ = ttool._getOb(portal_type)
+        view_methods = list(type_.view_methods)
+        for view in EXTRA_VIEWS[portal_type]:
+            if not view in view_methods:
+                view_methods.append(view)
+        type_.view_methods = tuple(view_methods)
 
 def setupMinaraadProperties(self, out):
     propsTool = getToolByName(self, 'portal_properties')
@@ -167,3 +233,8 @@ def addConfiglets(self, out):
             'Configuration for tool Subscriptions.',
             None,
         )
+
+def uninstall(self):
+    out = StringIO()
+
+    return out.getvalue()
