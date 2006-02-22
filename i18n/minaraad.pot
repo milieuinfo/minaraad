@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minaraad\n"
-"POT-Creation-Date: 2006-02-21 16:03+0000\n"
+"POT-Creation-Date: 2006-02-22 11:10+0000\n"
 "PO-Revision-Date: Mon Aug  8 12:16:21 2005\n"
 "Last-Translator: Rocky Burt <r.burt@zestsoftware.nl>\n"
 "Language-Team: Rocky Burt <r.burt@zestsoftware.nl>\n"
@@ -273,6 +273,11 @@ msgstr ""
 msgid "minaraad_help_location"
 msgstr ""
 
+#. Default: "MOT"
+#: content/Hearing.py
+msgid "minaraad_help_mot"
+msgstr ""
+
 #. Default: "name"
 #: content/ContactPerson.py
 msgid "minaraad_help_name"
@@ -395,6 +400,11 @@ msgstr ""
 #. Default: "Location"
 #: content/Hearing.py
 msgid "minaraad_label_location"
+msgstr ""
+
+#. Default: "Mot"
+#: content/Hearing.py
+msgid "minaraad_label_mot"
 msgstr ""
 
 #. Default: "Name"

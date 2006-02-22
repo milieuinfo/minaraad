@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minaraad 0.1\n"
-"POT-Creation-Date: 2006-02-21 16:03+0000\n"
+"POT-Creation-Date: 2006-02-22 11:10+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: Mirella van Teulingen <m.van.teulingen@zestsoftware.nl>\n"
 "Language-Team: Nederlands <info@zestsoftware.nl>\n"
@@ -273,6 +273,11 @@ msgstr ""
 msgid "minaraad_help_location"
 msgstr ""
 
+#. Default: "MOT"
+#: content/Hearing.py
+msgid "minaraad_help_mot"
+msgstr "Vink deze optie aan als de Hoorzitting een MOT is."
+
 #. Default: "name"
 #: content/ContactPerson.py
 msgid "minaraad_help_name"
@@ -396,6 +401,11 @@ msgstr "Functie"
 #: content/Hearing.py
 msgid "minaraad_label_location"
 msgstr "Lokatie"
+
+#. Default: "Mot"
+#: content/Hearing.py
+msgid "minaraad_label_mot"
+msgstr "MOT's"
 
 #. Default: "Name"
 #: content/ContactPerson.py

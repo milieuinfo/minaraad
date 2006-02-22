@@ -92,6 +92,17 @@ schema = Schema((
         vocabulary='getThemesList'
     ),
 
+    BooleanField(
+        name='mot',
+        widget=BooleanWidget(
+            description="Check this option if the hearing is a MOT.",
+            label='Mot',
+            label_msgid='minaraad_label_mot',
+            description_msgid='minaraad_help_mot',
+            i18n_domain='minaraad',
+        )
+    ),
+
     DateTimeField(
         name='startdate',
         widget=CalendarWidget(
