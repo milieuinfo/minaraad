@@ -1,7 +1,7 @@
 # File: testMinaBundle.py
 #
 # Copyright (c) 2006 by Zest Software
-# Generator: ArchGenXML Version 1.4.1 svn/devel
+# Generator: ArchGenXML Version 1.5.0 svn/devel
 #            http://plone.org/products/archgenxml
 #
 # GNU General Public License (GPL)
@@ -58,18 +58,12 @@ class testMinaBundle(MainTestCase):
         """
         pass
 
-
     # Manually created methods
 
     def test_email(self):
         """
         """
         #Uncomment one of the following lines as needed
-        ##self.loginAsPortalOwner()
-        ##o=EmailMixin('temp_EmailMixin')
-        ##self.folder._setObject('temp_EmailMixin', o)
-        pass
-
 
 def test_suite():
     from unittest import TestSuite, makeSuite

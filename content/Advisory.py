@@ -1,7 +1,7 @@
 # File: Advisory.py
 #
 # Copyright (c) 2006 by Zest Software
-# Generator: ArchGenXML Version 1.4.1 svn/devel
+# Generator: ArchGenXML Version 1.5.0 svn/devel
 #            http://plone.org/products/archgenxml
 #
 # GNU General Public License (GPL)
@@ -140,7 +140,7 @@ class Advisory(PostMixin, EmailMixin, ATCTContent):
     # Methods
 
 
-registerType(Advisory,PROJECTNAME)
+registerType(Advisory, PROJECTNAME)
 # end of class Advisory
 
 ##code-section module-footer #fill in your manual code here

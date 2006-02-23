@@ -1,7 +1,7 @@
 # File: testHearing.py
 #
 # Copyright (c) 2006 by Zest Software
-# Generator: ArchGenXML Version 1.4.1 svn/devel
+# Generator: ArchGenXML Version 1.5.0 svn/devel
 #            http://plone.org/products/archgenxml
 #
 # GNU General Public License (GPL)
@@ -59,7 +59,6 @@ class testHearing(MainTestCase):
         """
         pass
 
-
     # from class Hearing:
     def test_getThemesList(self):
         pass
@@ -69,9 +68,8 @@ class testHearing(MainTestCase):
         """
         """
         #Uncomment one of the following lines as needed
-        ##self.loginAsPortalOwner()
-        ##o=EmailMixin('temp_EmailMixin')
-        ##self.folder._setObject('temp_EmailMixin', o)
+    # from class EmailMixin:
+    def test_getEmailBody(self):
         pass
 
     # Manually created methods
@@ -80,11 +78,6 @@ class testHearing(MainTestCase):
         """
         """
         #Uncomment one of the following lines as needed
-        ##self.loginAsPortalOwner()
-        ##o=Hearing('temp_Hearing')
-        ##self.folder._setObject('temp_Hearing', o)
-        pass
-
 
 def test_suite():
     from unittest import TestSuite, makeSuite

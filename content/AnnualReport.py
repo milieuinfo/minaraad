@@ -1,7 +1,7 @@
 # File: AnnualReport.py
 #
 # Copyright (c) 2006 by Zest Software
-# Generator: ArchGenXML Version 1.4.1 svn/devel
+# Generator: ArchGenXML Version 1.5.0 svn/devel
 #            http://plone.org/products/archgenxml
 #
 # GNU General Public License (GPL)
@@ -107,7 +107,7 @@ class AnnualReport(PostMixin, EmailMixin, ATDocument):
     # Methods
 
 
-registerType(AnnualReport,PROJECTNAME)
+registerType(AnnualReport, PROJECTNAME)
 # end of class AnnualReport
 
 ##code-section module-footer #fill in your manual code here
