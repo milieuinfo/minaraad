@@ -113,7 +113,8 @@ class testSetup(MainTestCase):
         userfolder = self.portal.acl_users
         userfolder._doAddUser('member', 'secret', ['Member'], [])
         self.login('member')
-        self.failIf('member' in self.portal.Members.objectIds())
+        if hasattr(self.portal, 'Members'):
+            self.failIf('member' in self.portal.Members.objectIds())
 
         membership = self.portal.portal_membership
         self.failIf(membership.getMemberareaCreationFlag())
