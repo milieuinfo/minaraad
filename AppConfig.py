@@ -1,7 +1,7 @@
 # The folder structure is in it's own file now.
 from folderstructure import *
 
-DEPENDENCIES = ['PasswordResetTool']
+DEPENDENCIES = ['PasswordResetTool', 'CompoundField']
 
 STYLESHEETS = [{'id': 'minaraad.css'}]
 

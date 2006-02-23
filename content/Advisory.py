@@ -29,12 +29,12 @@ from AccessControl import ClassSecurityInfo
 from Products.Archetypes.atapi import *
 from Products.minaraad.PostMixin import PostMixin
 from Products.minaraad.EmailMixin import EmailMixin
+from Products.CompoundField.ArrayField import ArrayField
 from Products.minaraad.config import *
 
 # additional imports from tagged value 'import'
 from Products.ATContentTypes.content.base import ATCTContent
 from Products.ATContentTypes.content.schemata import ATContentTypeSchema
-from Products.AttachmentField.AttachmentField import AttachmentField
 
 ##code-section module-header #fill in your manual code here
 ##/code-section module-header
@@ -70,17 +70,17 @@ schema = Schema((
         default_output_type='text/html'
     ),
 
-    FileField(
-        name='attachment',
-        widget=FileWidget(
-            label='Attachment',
-            label_msgid='minaraad_label_attachment',
-            i18n_domain='minaraad',
+ArrayField(        FileField(
+            name='attachments',
+            widget=FileWidget(
+                label='Attachments',
+                label_msgid='minaraad_label_attachments',
+                i18n_domain='minaraad',
+            ),
+            storage=AttributeStorage(),
+            size=1
         ),
-        storage=AttributeStorage(),
-        multiValued=True
     ),
-
 
     ReferenceField(
         name='contact',

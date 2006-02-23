@@ -65,12 +65,18 @@ class EmailMixin:
 
     # Methods
 
+    security.declarePublic('email')
+    def email(self,addresses):
+        """
+        
+        """
+        pass
     security.declarePublic('getEmailBody')
     def getEmailBody(self):
         """
         
         """
-        pass
+        raise NotImplementedError
 
 # end of class EmailMixin
 
