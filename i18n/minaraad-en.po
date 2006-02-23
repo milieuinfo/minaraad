@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minaraad 0.1\n"
-"POT-Creation-Date: 2006-02-23 09:04+0000\n"
+"POT-Creation-Date: 2006-02-23 10:42+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: Mirella van Teulingen <m.van.teulingen@zestsoftware.nl>\n"
 "Language-Team: English <info@zestsoftware.nl>\n"
@@ -74,8 +74,9 @@ msgstr ""
 msgid "description_themes_setup"
 msgstr ""
 
-#. Default: "E-mailaddress:"
-#: skins/minaraad/hearing_view.pt
+#. Default: "Emailaddress"
+#: skins/minaraad/contactperson_view.pt
+#, fuzzy
 msgid "emailaddress"
 msgstr ""
 
@@ -97,6 +98,11 @@ msgstr ""
 #. Default: "hour"
 #: skins/minaraad/hearing_view.pt
 msgid "hour"
+msgstr ""
+
+#. Default: "Function"
+#: skins/minaraad/contactperson_view.pt
+msgid "jobtitle"
 msgstr ""
 
 #. Default: "Add"
@@ -161,6 +167,7 @@ msgstr ""
 #: skins/minaraad/join_form.cpt
 #: skins/minaraad/personalize_form.cpt
 #: skins/minaraad/prefs_user_details.cpt
+#, fuzzy
 msgid "label_jobtitle"
 msgstr ""
 
@@ -184,6 +191,7 @@ msgstr ""
 #: skins/minaraad/join_form.cpt
 #: skins/minaraad/personalize_form.cpt
 #: skins/minaraad/prefs_user_details.cpt
+#, fuzzy
 msgid "label_phonenumber"
 msgstr ""
 
@@ -383,6 +391,13 @@ msgstr ""
 msgid "minaraad_label_city"
 msgstr ""
 
+#. Default: "Contact"
+#: content/Hearing.py
+#: content/NewsLetter.py
+#: content/Advisory.py
+msgid "minaraad_label_contact"
+msgstr ""
+
 #. Default: "Contactpersons"
 #: MinaBundle.py
 #: content/Advisory.py
@@ -397,7 +412,7 @@ msgid "minaraad_label_date"
 msgstr ""
 
 #. Default: "Department"
-#: content/ContactPerson.py
+#: skins/minaraad/contactperson_view.pt
 msgid "minaraad_label_department"
 msgstr ""
 
@@ -530,13 +545,14 @@ msgstr ""
 msgid "moreinfo_contactperson"
 msgstr ""
 
-#. Default: "Name:"
-#: skins/minaraad/hearing_view.pt
+#. Default: "Name"
+#: skins/minaraad/contactperson_view.pt
+#, fuzzy
 msgid "name"
 msgstr ""
 
-#. Default: "Phonenumber:"
-#: skins/minaraad/hearing_view.pt
+#. Default: "Phonenumber"
+#: skins/minaraad/contactperson_view.pt
 msgid "phonenumber"
 msgstr ""
 

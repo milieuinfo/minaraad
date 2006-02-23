@@ -1,0 +1,43 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
+      lang="en-US"
+      i18n:domain="minaraad">
+    <metal:block use-macro="context/global_defines/macros/defines" />
+    
+    <body>
+    <metal:block metal:define-macro="body">
+    </metal:block>
+    
+    <tal:block metal:define-macro="contactdetails">
+        <table cellspacing="0">
+            <tr tal:condition="contact/getName">
+                <td i18n:translate="name">Name</td>
+                <td>:</td>
+                <td tal:content="contact/getName" />
+            </tr>
+            <tr tal:condition="contact/getJobtitle">
+                <td i18n:translate="jobtitle">Function</td>
+                <td>:</td>
+                <td tal:content="contact/getJobtitle" />
+            </tr>
+            <tr tal:condition="contact/getDepartment">
+                <td i18n:translate="minaraad_label_department">Department</td>
+                <td>:</td>
+                <td tal:content="contact/getDepartment" />
+            </tr>
+            <tr tal:condition="contact/getEmail">
+                <td i18n:translate="emailaddress">Emailaddress</td>
+                <td>:</td>
+                <td>
+                    <a tal:attributes="href string:mailto:${contact/getEmail}"
+                        tal:content="contact/getEmail" />
+                </td>
+            </tr>
+            <tr tal:condition="contact/getPhonenumber">
+                <td i18n:translate="phonenumber">Phonenumber</td>
+                <td>:</td>
+                <td tal:content="contact/getPhonenumber" />
+            </tr>
+        </table>
+    </tal:block>
+    </body>
+</html>

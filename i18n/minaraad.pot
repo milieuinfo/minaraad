@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minaraad\n"
-"POT-Creation-Date: 2006-02-23 09:04+0000\n"
+"POT-Creation-Date: 2006-02-23 10:42+0000\n"
 "PO-Revision-Date: Mon Aug  8 12:16:21 2005\n"
 "Last-Translator: Rocky Burt <r.burt@zestsoftware.nl>\n"
 "Language-Team: Rocky Burt <r.burt@zestsoftware.nl>\n"
@@ -74,8 +74,8 @@ msgstr ""
 msgid "description_themes_setup"
 msgstr ""
 
-#. Default: "E-mailaddress:"
-#: skins/minaraad/hearing_view.pt
+#. Default: "Emailaddress"
+#: skins/minaraad/contactperson_view.pt
 msgid "emailaddress"
 msgstr ""
 
@@ -97,6 +97,11 @@ msgstr ""
 #. Default: "hour"
 #: skins/minaraad/hearing_view.pt
 msgid "hour"
+msgstr ""
+
+#. Default: "Function"
+#: skins/minaraad/contactperson_view.pt
+msgid "jobtitle"
 msgstr ""
 
 #. Default: "Add"
@@ -383,6 +388,13 @@ msgstr ""
 msgid "minaraad_label_city"
 msgstr ""
 
+#. Default: "Contact"
+#: content/Hearing.py
+#: content/NewsLetter.py
+#: content/Advisory.py
+msgid "minaraad_label_contact"
+msgstr ""
+
 #. Default: "Contactpersons"
 #: MinaBundle.py
 #: content/Advisory.py
@@ -397,7 +409,7 @@ msgid "minaraad_label_date"
 msgstr ""
 
 #. Default: "Department"
-#: content/ContactPerson.py
+#: skins/minaraad/contactperson_view.pt
 msgid "minaraad_label_department"
 msgstr ""
 
@@ -530,13 +542,13 @@ msgstr ""
 msgid "moreinfo_contactperson"
 msgstr ""
 
-#. Default: "Name:"
-#: skins/minaraad/hearing_view.pt
+#. Default: "Name"
+#: skins/minaraad/contactperson_view.pt
 msgid "name"
 msgstr ""
 
-#. Default: "Phonenumber:"
-#: skins/minaraad/hearing_view.pt
+#. Default: "Phonenumber"
+#: skins/minaraad/contactperson_view.pt
 msgid "phonenumber"
 msgstr ""
 

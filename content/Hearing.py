@@ -125,15 +125,15 @@ schema = Schema((
 
 
     ReferenceField(
-        name='contactpersons',
+        name='contact',
         widget=ReferenceWidget(
-            label='Contactpersons',
-            label_msgid='minaraad_label_contactpersons',
+            label='Contact',
+            label_msgid='minaraad_label_contact',
             i18n_domain='minaraad',
         ),
         allowed_types=('ContactPerson',),
-        multiValued=0,
-        relationship='hearings_contactpersons'
+        multiValued=1,
+        relationship='hearings_contact'
     ),
 
 ),

@@ -328,6 +328,13 @@ msgstr ""
 msgid "minaraad_label_city"
 msgstr ""
 
+#. Default: "Contact"
+#: content/Hearing.py
+#: content/NewsLetter.py
+#: content/Advisory.py
+msgid "minaraad_label_contact"
+msgstr ""
+
 #. Default: "Contactpersons"
 #: MinaBundle.py
 #: content/Advisory.py

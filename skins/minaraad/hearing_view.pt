@@ -92,26 +92,21 @@
         </tal:block>
         <!-- end Date and Time -->
         
-        <!-- contactperson -->
-        <div i18n:translate="moreinfo_contactperson">
-            For more information contact:
-        </div>
-        <span i18n:translate="name"
-              tal:omit-tag="">
-            Name:
-        </span>
-        <br />
-        <span i18n:translate="emailaddress"
-              tal:omit-tag="">
-            E-mailaddress:
-        </span>
-        <br />
-        <span i18n:translate="phonenumber"
-              tal:omit-tag="">
-            Phonenumber:
-        </span>
-        <br />
-        <br />
+        <!-- Contactperson -->
+       <tal:block tal:define="contacts python:context.getContact()"
+                 tal:condition="contacts">
+            <br />
+            <div i18n:translate="moreinfo_contactperson">
+                For more information contact:
+            </div>
+            <tal:block tal:repeat="contact contacts">
+                <div metal:use-macro="context/contactperson_view/macros/contactdetails"
+                     tal:omit-tag="" />
+            </tal:block>
+            <br />
+            <br />
+        </tal:block>
+        
         <!-- end contactpersoon -->
         
         <!-- Text -->
