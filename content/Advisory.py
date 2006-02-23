@@ -77,8 +77,7 @@ ArrayField(        FileField(
                 label_msgid='minaraad_label_attachments',
                 i18n_domain='minaraad',
             ),
-            storage=AttributeStorage(),
-            size=1
+            storage=AttributeStorage()
         ),
     ),
 
