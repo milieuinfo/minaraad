@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minaraad 0.1\n"
-"POT-Creation-Date: 2006-02-23 10:42+0000\n"
+"POT-Creation-Date: 2006-02-23 15:12+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: Mirella van Teulingen <m.van.teulingen@zestsoftware.nl>\n"
 "Language-Team: Nederlands <info@zestsoftware.nl>\n"
@@ -82,8 +82,14 @@ msgstr "E-mailadres:"
 
 #. Default: "from"
 #: skins/minaraad/hearing_view.pt
+#: skins/minaraad/mina_listing_view.pt
 msgid "from"
 msgstr "van"
+
+#. Default: "Up one level"
+#: skins/minaraad/mina_listing_view.pt
+msgid "go_to_parent_url"
+msgstr "Eén niveau omhoog"
 
 #. Default: "Themes Settings"
 #: browser/minaraad_config.pt"
@@ -97,6 +103,7 @@ msgstr "Vul de naam in van het nieuwe thema."
 
 #. Default: "hour"
 #: skins/minaraad/hearing_view.pt
+#: skins/minaraad/mina_listing_view.pt
 msgid "hour"
 msgstr "uur"
 
@@ -255,6 +262,11 @@ msgstr "Huidige thema's"
 #: browser/minaraad_config.pt"
 msgid "legend_edit_theme"
 msgstr "Wijzig thema"
+
+#. Default: "More"
+#: skins/minaraad/mina_listing_view.pt
+msgid "linkmoreinfo"
+msgstr "Meer informatie"
 
 #: skins/mail_password_template.dtml
 msgid "mailtemplate_hours"
@@ -558,6 +570,7 @@ msgstr "Telefoonnummer"
 
 #. Default: "till"
 #: skins/minaraad/hearing_view.pt
+#: skins/minaraad/mina_listing_view.pt
 msgid "till"
 msgstr "tot"
 
@@ -579,6 +592,7 @@ msgstr "Selecteer alles:"
 
 #. Default: "up untill"
 #: skins/minaraad/hearing_view.pt
+#: skins/minaraad/mina_listing_view.pt
 msgid "up_untill"
 msgstr "t/m"
 

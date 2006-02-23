@@ -5,8 +5,7 @@
     
     <body>
     <metal:block metal:define-macro="body"
-                 tal:define="daterequired python:context.getStartdate() != None and context.getEnddate() != None;
-                             current_path python:'/'.join(context.aq_parent.getPhysicalPath());
+                 tal:define="current_path python:'/'.join(context.aq_parent.getPhysicalPath());
                              agendaItems python:context.portal_catalog.searchResults(portal_type='AgendaItem',
                                                                                     path=current_path,
                                                                                     sort_on='Date',
@@ -33,11 +32,12 @@
             <span i18n:translate="Location:"
                   tal:omit-tag="">Location:</span> 
             <span class="normaltext"
-                           tal:content="context/getLocation" />
+                  tal:content="context/getLocation" />
          </div>
 
          <!-- Date and Time -->
-         <tal:block tal:condition="daterequired">
+         <tal:block tal:define="daterequired python:context.getStartdate() != None and context.getEnddate() != None;"
+                    tal:condition="daterequired">
             <div tal:define="startdate python:context.toLocalizedTime(context.startdate);
                             enddate python:context.toLocalizedTime(context.enddate);
                             starttime python:context.startdate.TimeMinutes();
