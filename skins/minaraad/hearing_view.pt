@@ -5,7 +5,13 @@
     
     <body>
     <metal:block metal:define-macro="body"
-                 tal:define="daterequired python:context.getStartdate() != None and context.getEnddate() != None">
+                 tal:define="daterequired python:context.getStartdate() != None and context.getEnddate() != None;
+                             current_path python:'/'.join(context.aq_parent.getPhysicalPath());
+                             agendaItems python:context.portal_catalog.searchResults(portal_type='AgendaItem',
+                                                                                    path=current_path,
+                                                                                    sort_on='Date',
+                                                                                    sort_order='reverse',
+                                                                                    review_state='published');">
         <metal:block metal:define-macro="folderlisting" />
         
         <div class="hearingsubheader">
@@ -107,8 +113,42 @@
         <br />
         <br />
         <!-- end contactpersoon -->
+        
+        <!-- Text -->
         <div class="bodytext"
              tal:content="structure context/getBody" />
+        <!-- End text -->
+        <br />
+        <!-- Speakers -->
+        <div class="hearingsubheader2">Agendapunten</div>
+        <ul class="AgendaItems">
+            <li tal:repeat="agendaItem agendaItems">
+            <tal:block tal:define="obj python:agendaItem.getObject()">
+                <span tal:content="agendaItem/Title" />
+                <br />
+                <span class="hearingsubheader2" 
+                      tal:content="obj/speaker" />,
+                <span tal:content="obj/organisation" />
+                <br />
+                <span tal:condition="python:obj.getAttachment().get_size() &gt; 0">
+
+                    <a tal:attributes="href string:${obj/absolute_url}/attachment/at_download"
+                       class="attachment"
+                       tal:content="obj/attachment/filename"> 
+                        Attachment
+                    </a>
+            
+                    <span class="filesize" 
+                          tal:define="size python:obj.getObjSize(obj);"
+                          tal:condition="size" 
+                          tal:content="size">
+                        257 KB
+                    </span>
+                </span>
+            </tal:block>
+            </li>
+        </ul>
+        <!-- End speakers -->
 
     </metal:block>
     </body>

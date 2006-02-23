@@ -11,6 +11,8 @@
 /* <dtml-with base_properties> (do not remove this :) */
 /* <dtml-call "REQUEST.set('portal_url', portal_url())"> (not this either :) */
 
+    
+/* ---- Subscriptionspage --- */
 .listing .subscriptions-title th {
     font-weight: bold;
     padding: 0px 5px 0px 8px;
@@ -49,6 +51,10 @@
     font-size: 110%;
 }
 
+/* ---- End Subscriptionspage --- */
+    
+
+/* ---- Hearing view --- */
 .hearingsubheader {
     margin-top: 10px;
     margin-bottom: 10px;
@@ -67,4 +73,14 @@
 .bodytext {
     margin-top: 10px;
 }
+
+.filesize {
+    color: #808080;
+}
+    
+ul.AgendaItems li {
+    margin-bottom: 15px;
+}
+/* ---- End Hearing view --- */
+
 /* </dtml-with> */

@@ -43,6 +43,15 @@ schema = Schema((
         )
     ),
 
+    StringField(
+        name='organisation',
+        widget=StringWidget(
+            label='Organisation',
+            label_msgid='minaraad_label_organisation',
+            i18n_domain='minaraad',
+        )
+    ),
+
     TextField(
         name='summary',
         widget=TextAreaWidget(

@@ -397,6 +397,11 @@ msgstr ""
 msgid "minaraad_label_name"
 msgstr ""
 
+#. Default: "Organisation"
+#: content/AgendaItem.py
+msgid "minaraad_label_organisation"
+msgstr ""
+
 #. Default: "Phonenumber"
 #: content/ContactPerson.py
 msgid "minaraad_label_phonenumber"

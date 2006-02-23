@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minaraad 0.1\n"
-"POT-Creation-Date: 2006-02-22 16:25+0000\n"
+"POT-Creation-Date: 2006-02-23 09:04+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: Mirella van Teulingen <m.van.teulingen@zestsoftware.nl>\n"
 "Language-Team: English <info@zestsoftware.nl>\n"
@@ -450,6 +450,11 @@ msgstr ""
 #. Default: "Name"
 #: content/ContactPerson.py
 msgid "minaraad_label_name"
+msgstr ""
+
+#. Default: "Organisation"
+#: content/AgendaItem.py
+msgid "minaraad_label_organisation"
 msgstr ""
 
 #. Default: "Phonenumber"
