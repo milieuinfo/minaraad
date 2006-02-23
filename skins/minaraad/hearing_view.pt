@@ -5,7 +5,7 @@
     
     <body>
     <metal:block metal:define-macro="body"
-                 tal:define="current_path python:'/'.join(context.aq_parent.getPhysicalPath());
+                 tal:define="current_path python:'/'.join(context.getPhysicalPath());
                              agendaItems python:context.portal_catalog.searchResults(portal_type='AgendaItem',
                                                                                     path=current_path,
                                                                                     sort_on='Date',
@@ -115,7 +115,8 @@
         <!-- End text -->
         <br />
         <!-- Speakers -->
-        <div class="hearingsubheader2">Agendapunten</div>
+        <div tal:condition ="agendaItems" 
+             class="hearingsubheader2">Agendapunten</div>
         <ul class="AgendaItems">
             <li tal:repeat="agendaItem agendaItems">
             <tal:block tal:define="obj python:agendaItem.getObject()">
