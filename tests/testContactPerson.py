@@ -61,18 +61,19 @@ class testContactPerson(MainTestCase):
         self.portal.portal_membership.addMember('manager','secret',['Manager'],[])
         self.login('manager')
 
-        self.portal.invokeFactory('ContactPerson','mycontactperson')
+        self.portal.contactpersonen.invokeFactory('ContactPerson','mycontactperson')
+        self.contactperson = self.portal.contactpersonen.mycontactperson
 
 
     # Manually created methods
 
     def test_Fields(self):
 
-        self.portal.mycontactperson.getName()        # Naam
-        self.portal.mycontactperson.getJobtitle()    # Functie
-        self.portal.mycontactperson.getDepartment()  # Afdeling
-        self.portal.mycontactperson.getEmail()       # E-mailadres
-        self.portal.mycontactperson.getPhonenumber() # Telefoonnummer
+        self.contactperson.getName()        # Naam
+        self.contactperson.getJobtitle()    # Functie
+        self.contactperson.getDepartment()  # Afdeling
+        self.contactperson.getEmail()       # E-mailadres
+        self.contactperson.getPhonenumber() # Telefoonnummer
 
     def test_Existance(self):
         """ Test if the ContactPerson exists within portal_types
