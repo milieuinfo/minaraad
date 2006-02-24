@@ -58,7 +58,7 @@ ROOT_CHILDREN = [
      'title':'Studies', 
      'type':'Folder',
      'children':[]},
-    {'id':'hoorzitting', 
+    {'id':'hoorzittingen', 
      'title':'Hoorzittingen', 
      'type':'Folder',
      'children':[]},

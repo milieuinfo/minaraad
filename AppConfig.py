@@ -22,6 +22,20 @@ LEFT_SLOTS = ('here/portlet_navigation/macros/portlet',
 # 'Ander land' is selected
 JAVASCRIPTS = [{'id': 'hideShow.js'},]
 
+# GLOBAL_DISALLOW is a list of content types that will be disabled
+# on the portal root and on all subfolders.
+GLOBAL_DISALLOW = [
+    'ContactPerson',
+    'Advisory',
+    'Newsitem',
+    'Event',
+    ]
+
+# In 'folder', restrict addable types to 'restriction'
+LOCAL_ADDITIONS = {
+    'hoorzittingen': ['Hearing'],
+    }
+
 # IDs not to list in the navtree
 IDS_NOT_TO_LIST = ['Members']
 
