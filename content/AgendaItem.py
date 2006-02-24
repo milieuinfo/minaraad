@@ -27,7 +27,13 @@ __docformat__ = 'plaintext'
 
 from AccessControl import ClassSecurityInfo
 from Products.Archetypes.atapi import *
+
+from Products.CompoundField.ArrayField import ArrayField
 from Products.minaraad.config import *
+
+# additional imports from tagged value 'import'
+from Products.ATContentTypes.content.base import ATCTContent
+from Products.ATContentTypes.content.schemata import ATContentTypeSchema
 
 ##code-section module-header #fill in your manual code here
 ##/code-section module-header
@@ -81,35 +87,34 @@ schema = Schema((
         required=1
     ),
 
-    FileField(
-        name='attachment',
-        widget=FileWidget(
-            label='Attachment',
-            label_msgid='minaraad_label_attachment',
-            i18n_domain='minaraad',
+ArrayField(        FileField(
+            name='attachments',
+            widget=FileWidget(
+                label='Attachments',
+                label_msgid='minaraad_label_attachments',
+                i18n_domain='minaraad',
+            ),
+            storage=AttributeStorage()
         ),
-        storage=AttributeStorage(),
-        multiValued=True
     ),
-
 ),
 )
 
 ##code-section after-local-schema #fill in your manual code here
 ##/code-section after-local-schema
 
-AgendaItem_schema = BaseSchema.copy() + \
+AgendaItem_schema = ATContentTypeSchema.copy() + \
     schema.copy()
 
 ##code-section after-schema #fill in your manual code here
 ##/code-section after-schema
 
-class AgendaItem(BaseContent):
+class AgendaItem(ATCTContent):
     """
     An Agendaitem
     """
     security = ClassSecurityInfo()
-    __implements__ = (getattr(BaseContent,'__implements__',()),)
+    __implements__ = (getattr(ATCTContent,'__implements__',()),)
 
     # This name appears in the 'add' box
     archetype_name = 'AgendaItem'

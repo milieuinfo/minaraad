@@ -314,6 +314,7 @@ msgstr ""
 
 #. Default: "Attachments"
 #: content/Advisory.py
+#: content/AgendaItem.py
 msgid "minaraad_label_attachments"
 msgstr ""
 
