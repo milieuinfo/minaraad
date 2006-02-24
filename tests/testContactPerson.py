@@ -55,12 +55,30 @@ class testContactPerson(MainTestCase):
     ##/code-section class-header_testContactPerson
 
     def afterSetUp(self):
+        """ Initialization of user and ContactPerson
         """
-        """
-        pass
+        
+        self.portal.portal_membership.addMember('manager','secret',['Manager'],[])
+        self.login('manager')
 
+        self.portal.invokeFactory('ContactPerson','mycontactperson')
 
     # Manually created methods
+        
+    def test_Existance(self):
+        """ Test if the ContactPerson exists within portal_types
+        """
+
+        types_ = self.portal.portal_types.objectIds()
+        self.failUnless('ContactPerson' in types_)
+
+    def test_Fields(self):
+
+        self.portal.mycontactperson.getName()        # Naam
+        self.portal.mycontactperson.getJobtitle()    # Functie
+        self.portal.mycontactperson.getDepartment()  # Afdeling
+        self.portal.mycontactperson.getEmail()       # E-mailadres
+        self.portal.mycontactperson.getPhonenumber() # Telefoonnummer
 
 
 def test_suite():
