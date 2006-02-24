@@ -63,14 +63,8 @@ class testContactPerson(MainTestCase):
 
         self.portal.invokeFactory('ContactPerson','mycontactperson')
 
-    # Manually created methods
-        
-    def test_Existance(self):
-        """ Test if the ContactPerson exists within portal_types
-        """
 
-        types_ = self.portal.portal_types.objectIds()
-        self.failUnless('ContactPerson' in types_)
+    # Manually created methods
 
     def test_Fields(self):
 
@@ -79,6 +73,13 @@ class testContactPerson(MainTestCase):
         self.portal.mycontactperson.getDepartment()  # Afdeling
         self.portal.mycontactperson.getEmail()       # E-mailadres
         self.portal.mycontactperson.getPhonenumber() # Telefoonnummer
+
+    def test_Existance(self):
+        """ Test if the ContactPerson exists within portal_types
+        """
+
+        types_ = self.portal.portal_types.objectIds()
+        self.failUnless('ContactPerson' in types_)
 
 
 def test_suite():

@@ -64,6 +64,7 @@ class testAdvisory(MainTestCase):
         self.portal.adviezen.adv_2006.invokeFactory('Advisory','myadvisory')
         self.advisory = self.portal.adviezen.adv_2006.myadvisory
 
+
     # from class EmailMixin:
     def test_email(self):
         """
@@ -93,6 +94,7 @@ class testAdvisory(MainTestCase):
         self.advisory.getPlaintext()
         self.advisory.getAttachments()
         self.advisory.getContact()
+
 
 def test_suite():
     from unittest import TestSuite, makeSuite

@@ -64,12 +64,18 @@ class testAgendaItem(MainTestCase):
         self.portal.hoorzittingen.myhoorzitting.invokeFactory('AgendaItem','myagendaitem')
         self.agendaitem = self.portal.hoorzittingen.myhoorzitting.myagendaitem
 
-    def test_Existance(self):
-        """ Test if the AgendaItem exists within portal_types
+
+    # Manually created methods
+
+    def test_IllegalCreation(self):
+        """ Test if you are not allowed to create this content type
+            if you are not inside a Hearing type
         """
 
-        types_ = self.portal.portal_types.objectIds()
-        self.failUnless('AgendaItem' in types_)
+        self.assertRaises(ValueError,
+                          self.portal.invokeFactory,
+                          'AgendaItem',
+                          'error')
 
     def test_Fields(self):
         """ Test if the AgendaItem has all the required fields
@@ -83,15 +89,12 @@ class testAgendaItem(MainTestCase):
         self.agendaitem.getItemenddate()   # Eind tijd
         self.agendaitem.getAttachments()   # Bijlage(n)
 
-    def test_IllegalCreation(self):
-        """ Test if you are not allowed to create this content type
-            if you are not inside a Hearing type
+    def test_Existance(self):
+        """ Test if the AgendaItem exists within portal_types
         """
 
-        self.assertRaises(ValueError,
-                          self.portal.invokeFactory,
-                          'AgendaItem',
-                          'error')
+        types_ = self.portal.portal_types.objectIds()
+        self.failUnless('AgendaItem' in types_)
 
 
 def test_suite():
