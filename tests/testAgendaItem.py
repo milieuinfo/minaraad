@@ -54,12 +54,44 @@ class testAgendaItem(MainTestCase):
     ##/code-section class-header_testAgendaItem
 
     def afterSetUp(self):
+        """ Initialization of user and AgendaItem
         """
+        
+        self.portal.portal_membership.addMember('manager','secret',['Manager'],[])
+        self.login('manager')
+
+	self.portal.hoorzittingen.invokeFactory('Hearing','myhoorzitting')
+        self.portal.hoorzittingen.myhoorzitting.invokeFactory('AgendaItem','myagendaitem')
+        self.agendaitem = self.portal.hoorzittingen.myhoorzitting.myagendaitem
+
+    def test_Existance(self):
+        """ Test if the AgendaItem exists within portal_types
         """
-        pass
 
+        types_ = self.portal.portal_types.objectIds()
+        self.failUnless('AgendaItem' in types_)
 
-    # Manually created methods
+    def test_Fields(self):
+        """ Test if the AgendaItem has all the required fields
+        """
+
+        self.agendaitem.Title()            # Onderwerp
+        self.agendaitem.getSpeaker()       # Spreker
+        self.agendaitem.getOrganisation()  # Organisatie
+        self.agendaitem.getSummary()       # Samenvatting
+        self.agendaitem.getItemstartdate() # Start tijd
+        self.agendaitem.getItemenddate()   # Eind tijd
+        self.agendaitem.getAttachments()   # Bijlage(n)
+
+    def test_IllegalCreation(self):
+        """ Test if you are not allowed to create this content type
+            if you are not inside a Hearing type
+        """
+
+        self.assertRaises(ValueError,
+                          self.portal.invokeFactory,
+                          'AgendaItem',
+                          'error')
 
 
 def test_suite():
