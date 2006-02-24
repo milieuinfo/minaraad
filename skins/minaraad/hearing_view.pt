@@ -13,22 +13,29 @@
                                                                                     review_state='published');">
         <metal:block metal:define-macro="folderlisting" />
         
-        <div class="hearingsubheader">
+        <div class="hearingsubheader"
+             tal:condition="context/getSubheader">
             <span tal:replace="context/getSubheader" />
             <span tal:condition="python:context.getMot() == True"
                   tal:omit-tag="">
                 (MOT)
             </span>
         </div>
-         
+        
+        <span class="hearingsubheader"
+             i18n:translate="label_theme_name">Theme</span>
+        <div tal:content="context/getTheme" />
+
          <div class="hearingsubheader2"
-              i18n:translate="Goal:">
+              i18n:translate="Goal:"
+              tal:condition="context/getGoal">
             Goal:
          </div>
          
          <div tal:content="context/getGoal" />
          
-         <div class="hearingsubheader2">
+         <div class="hearingsubheader2"
+              tal:condition="context/getLocation">
             <span i18n:translate="Location:"
                   tal:omit-tag="">Location:</span> 
             <span class="normaltext"
@@ -114,33 +121,43 @@
              tal:content="structure context/getBody" />
         <!-- End text -->
         <br />
+
         <!-- Speakers -->
         <div tal:condition ="agendaItems" 
-             class="hearingsubheader2">Agendapunten</div>
+             class="hearingsubheader2"
+             i18n:translate="label_agendaitems">Agenda items</div>
+
         <ul class="AgendaItems">
             <li tal:repeat="agendaItem agendaItems">
             <tal:block tal:define="obj python:agendaItem.getObject()">
-                <span tal:content="agendaItem/Title" />
-                <br />
-                <span class="hearingsubheader2" 
-                      tal:content="obj/speaker" />,
-                <span tal:content="obj/organisation" />
-                <br />
-                <span tal:condition="python:obj.getAttachment().get_size() &gt; 0">
+                <div tal:condition="agendaItem/Title" 
+                     tal:replace="agendaItem/Title" />
 
-                    <a tal:attributes="href string:${obj/absolute_url}/attachment/at_download"
-                       class="attachment"
-                       tal:content="obj/attachment/filename"> 
-                        Attachment
-                    </a>
-            
-                    <span class="filesize" 
-                          tal:define="size python:obj.getObjSize(obj);"
-                          tal:condition="size" 
-                          tal:content="size">
-                        257 KB
+                <div tal:condition="obj/speaker"> 
+                    <span class="hearingsubheader2" 
+                          tal:content="obj/speaker" />,
+                    <span tal:replace="obj/organisation" />
+                </div>
+                <div tal:condition="obj/summary"
+                     tal:content="obj/summary" />
+
+                <div tal:repeat="item obj/getAttachments">
+                    <span tal:condition="python:item.get_size() &gt; 0"
+                          tal:omit-tag="">
+                        <br />
+                        <a tal:attributes="href string:${item/absolute_url}/attachment"
+                           class="attachment"
+                           tal:content="item/filename"> 
+                            Attachment
+                        </a>
+                        <span class="filesize" 
+                              tal:define="size python:item.getObjSize(item);"
+                              tal:condition="size"
+                              tal:content="size">
+                            257 KB
+                        </span>
                     </span>
-                </span>
+                </div>
             </tal:block>
             </li>
         </ul>

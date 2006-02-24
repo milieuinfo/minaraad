@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minaraad 0.1\n"
-"POT-Creation-Date: 2006-02-23 15:12+0000\n"
+"POT-Creation-Date: 2006-02-24 11:09+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: Mirella van Teulingen <m.van.teulingen@zestsoftware.nl>\n"
 "Language-Team: English <info@zestsoftware.nl>\n"
@@ -117,6 +117,11 @@ msgstr ""
 msgid "label_add"
 msgstr ""
 
+#. Default: "Agenda items"
+#: skins/minaraad/hearing_view.pt
+msgid "label_agendaitems"
+msgstr ""
+
 #: skins/join_form.cpt
 msgid "label_bus"
 msgstr ""
@@ -218,8 +223,9 @@ msgstr ""
 msgid "label_street"
 msgstr ""
 
-#. Default: "Theme Name"
-#: browser/minaraad_config.pt"
+#. Default: "Theme"
+#: skins/minaraad/hearing_view.pt
+#, fuzzy
 msgid "label_theme_name"
 msgstr ""
 
@@ -288,13 +294,6 @@ msgstr ""
 
 #: skins/mail_password_template.dtml
 msgid "mailtemplate_text_linkreset2"
-msgstr ""
-
-#. Default: "attachment"
-#: content/Advisory.py
-#: content/Presentation.py
-#: content/Pressrelease.py
-msgid "minaraad_help_attachment"
 msgstr ""
 
 #. Default: "contactpersons"
@@ -380,11 +379,10 @@ msgstr ""
 msgid "minaraad_help_summary"
 msgstr ""
 
-#. Default: "Attachment"
+#. Default: "Attachments"
 #: content/Advisory.py
-#: content/Presentation.py
-#: content/Pressrelease.py
-msgid "minaraad_label_attachment"
+#: content/AgendaItem.py
+msgid "minaraad_label_attachments"
 msgstr ""
 
 #. Default: "Body"

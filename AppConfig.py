@@ -25,6 +25,9 @@ JAVASCRIPTS = [{'id': 'hideShow.js'},]
 # IDs not to list in the navtree
 IDS_NOT_TO_LIST = ['Members']
 
+# Types to list in the navtree => the rest won't!
+TYPES_TO_LIST = ['Folder']
+
 # EXTRA_VIEWS is a dictionary, the keys are portal types.
 # The values are a list of templates or page names that are to
 # be added in the view dropdown.

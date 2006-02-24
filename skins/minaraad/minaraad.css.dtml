@@ -79,7 +79,7 @@
 }
     
 ul.AgendaItems li {
-    margin-bottom: 15px;
+    margin-bottom: 30px;
 }
 /* ---- End Hearing view --- */
 

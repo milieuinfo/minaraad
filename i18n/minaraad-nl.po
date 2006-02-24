@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minaraad 0.1\n"
-"POT-Creation-Date: 2006-02-23 15:12+0000\n"
+"POT-Creation-Date: 2006-02-24 11:09+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: Mirella van Teulingen <m.van.teulingen@zestsoftware.nl>\n"
 "Language-Team: Nederlands <info@zestsoftware.nl>\n"
@@ -117,6 +117,11 @@ msgstr "Functie:"
 msgid "label_add"
 msgstr "Toevoegen"
 
+#. Default: "Agenda items"
+#: skins/minaraad/hearing_view.pt
+msgid "label_agendaitems"
+msgstr "Agendapunten"
+
 #: skins/join_form.cpt
 msgid "label_bus"
 msgstr "Bus"
@@ -218,8 +223,9 @@ msgstr "Selecteer alle thema's"
 msgid "label_street"
 msgstr "Straat"
 
-#. Default: "Theme Name"
-#: browser/minaraad_config.pt"
+#. Default: "Theme"
+#: skins/minaraad/hearing_view.pt
+#, fuzzy
 msgid "label_theme_name"
 msgstr "Thema"
 
@@ -289,13 +295,6 @@ msgstr "Wij ontvingen een aanvraag om uw wachtwoord op onze website te wijzigen.
 #: skins/mail_password_template.dtml
 msgid "mailtemplate_text_linkreset2"
 msgstr "Klik op onderstaande link als u hiermee akkoord gaat en om deze wijziging te bevestigen:"
-
-#. Default: "attachment"
-#: content/Advisory.py
-#: content/Presentation.py
-#: content/Pressrelease.py
-msgid "minaraad_help_attachment"
-msgstr ""
 
 #. Default: "contactpersons"
 #: MinaBundle.py
@@ -380,12 +379,11 @@ msgstr ""
 msgid "minaraad_help_summary"
 msgstr ""
 
-#. Default: "Attachment"
+#. Default: "Attachments"
 #: content/Advisory.py
-#: content/Presentation.py
-#: content/Pressrelease.py
-msgid "minaraad_label_attachment"
-msgstr "Bijlage"
+#: content/AgendaItem.py
+msgid "minaraad_label_attachments"
+msgstr "Bijlagen"
 
 #. Default: "Body"
 #: content/Hearing.py

@@ -215,13 +215,6 @@ msgstr ""
 msgid "mailtemplate_text_linkreset2"
 msgstr ""
 
-#. Default: "attachment"
-#: content/Advisory.py
-#: content/Presentation.py
-#: content/Pressrelease.py
-msgid "minaraad_help_attachment"
-msgstr ""
-
 #. Default: "contactpersons"
 #: MinaBundle.py
 msgid "minaraad_help_contactpersons"
@@ -306,9 +299,9 @@ msgid "minaraad_help_summary"
 msgstr ""
 
 #. Default: "Attachment"
-#: content/Advisory.py
-#: content/Presentation.py
 #: content/Pressrelease.py
+#: content/Study.py
+#: content/AnnualReport.py
 msgid "minaraad_label_attachment"
 msgstr ""
 
