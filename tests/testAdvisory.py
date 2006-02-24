@@ -55,10 +55,14 @@ class testAdvisory(MainTestCase):
     ##/code-section class-header_testAdvisory
 
     def afterSetUp(self):
+        """ Initialization of user and Advirosy
         """
-        """
-        pass
 
+        self.portal.portal_membership.addMember('manager','secret',['Manager'],[])
+        self.login('manager')
+
+        self.portal.adviezen.adv_2006.invokeFactory('Advisory','myadvisory')
+        self.advisory = self.portal.adviezen.adv_2006.myadvisory
 
     # from class EmailMixin:
     def test_email(self):
@@ -71,6 +75,24 @@ class testAdvisory(MainTestCase):
 
     # Manually created methods
 
+    def test_Existance(self):
+        """ Test if the Advisory exists within portal_types
+        """
+
+        types_ = self.portal.portal_types.objectIds()
+        self.failUnless('Advisory' in types_)
+
+    def test_Fields(self):
+        """ Test if the Advisory has all the required fields
+        """
+
+        self.advisory.Title()
+        self.advisory.getDescription()
+        self.advisory.getDate()
+        self.advisory.getBody()
+        self.advisory.getPlaintext()
+        self.advisory.getAttachments()
+        self.advisory.getContact()
 
 def test_suite():
     from unittest import TestSuite, makeSuite
