@@ -44,6 +44,12 @@ def install(self):
     out.write("Add configlets")
     addConfiglets(self, out)
     
+    print >> out, "Resetting portal root's allowed types"
+    _resetPloneRootAllowedTypes(self)
+    
+    print >> out, "Disallowing globally disallowed types"
+    _resetAddableTypes(self)
+    
     print >> out, "Restricting locally allowed types"
     _restrictLocallyAllowedTypes(self)
     
@@ -237,6 +243,63 @@ def addConfiglets(self, out):
             'Configuration for tool Subscriptions.',
             None,
         )
+
+def _resetPloneRootAllowedTypes(portal):
+    """Reset the portal root's allowed types to the defaults
+
+    (Before messing with it)
+    """
+
+    types_tool = getToolByName(portal, 'portal_types')
+    portalType = types_tool._getOb('Plone Site')
+    allowedTypes = []
+    for type_ in types_tool.listContentTypes():
+        if types_tool._getOb(type_).global_allow:
+            allowedTypes.append(type_)
+    portalType._setPropValue('filter_content_types', 1)
+    portalType._setPropValue('allowed_content_types',
+                             tuple(allowedTypes))
+
+def _resetAddableTypes(portal):
+    """Disallow certain types and allow others.
+    """
+
+    types_tool = getToolByName(portal, 'portal_types')
+    folderishTypes = MINARAAD_FOLDER_WORKFLOW_TYPES
+    folderishTypes.append('Plone Site')
+
+    # Restrict plone site root
+    for typeName in ['Plone Site']:
+        type_ = types_tool._getOb(typeName)
+        allowedTypes = [item for item in
+                        list(type_.allowed_content_types)
+                        if item not in GLOBAL_DISALLOW]
+        type_._setPropValue('allowed_content_types',
+                            tuple(allowedTypes))
+    # Unrestrict folderish types
+    for typeName in folderishTypes:
+        type_ = types_tool._getOb(typeName)
+        restriction = list(type_.allowed_content_types)
+        for allowThisType in ADD_LIST:
+            if not allowThisType in restriction:
+                restriction.append(allowThisType)
+                out.write("Allowing %s on %s.\n" %
+                          (allowThisType, typeName))
+        type_._setPropValue('allowed_content_types',
+                            tuple(restriction))
+    # Set add list
+    for typeName in folderishTypes:
+        catalog = portal.portal_catalog
+        type_brains = catalog(Type=typeName)
+        for type_brain in type_brains:
+            try:
+                obj = type_brain.getObject()
+                obj.setConstrainTypesMode(1)
+                obj.setLocallyAllowedTypes(tuple(ADD_LIST))
+                obj.setImmediatelyAddableTypes(tuple(ADD_LIST))
+            except:
+                out.write("Error when setting addable types"
+                          " on %s.\n" % typeName)
 
 def _restrictLocallyAllowedTypes(portal):
     """

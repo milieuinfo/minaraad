@@ -31,9 +31,26 @@ GLOBAL_DISALLOW = [
     'Event',
     ]
 
+ADD_LIST = ['Folder',
+            'File',
+            'Document',
+            'Link',
+            'Image',
+            'Event',
+            'Topic',
+            ]
+
 # In 'folder', restrict addable types to 'restriction'
 LOCAL_ADDITIONS = {
     'hoorzittingen': ['Hearing'],
+    'adviezen': ['Advisory'],
+    'nieuwsbrieven': ['NewsLetter'],
+    'persberichten': ['Pressrelease'],
+    'jaarverslag': ['AnnualReport'],
+    'studies': ['Study'],
+    'contactpersonen': ['ContactPerson'],
+    'voorstelling': ADD_LIST,
+    'evenementen': ADD_LIST,
     }
 
 # IDs not to list in the navtree
@@ -54,6 +71,10 @@ EXTRA_VIEWS = {
 SELECT_VIEWS = {
     '/hoorzittingen': 'hearing_listing_view',
     }
+
+# INTERNET_FOLDER_WORKFLOW_TYPES is the list of content types that
+# should get the internet folder workflow
+MINARAAD_FOLDER_WORKFLOW_TYPES = []
 
 # Kupu Configuration LINKABLE is a list of content types to which we
 # can link within the kupu drawer
