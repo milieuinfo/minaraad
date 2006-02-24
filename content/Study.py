@@ -29,7 +29,6 @@ from AccessControl import ClassSecurityInfo
 from Products.Archetypes.atapi import *
 from Products.minaraad.PostMixin import PostMixin
 from Products.minaraad.EmailMixin import EmailMixin
-from Products.ATContentTypes.content.document import ATDocument
 from Products.minaraad.config import *
 
 ##code-section module-header #fill in your manual code here
@@ -94,27 +93,27 @@ schema = Schema((
 ##code-section after-local-schema #fill in your manual code here
 ##/code-section after-local-schema
 
-Study_schema = getattr(PostMixin, 'schema', Schema(())).copy() + \
+Study_schema = BaseSchema.copy() + \
+    getattr(PostMixin, 'schema', Schema(())).copy() + \
     getattr(EmailMixin, 'schema', Schema(())).copy() + \
-    getattr(ATDocument, 'schema', Schema(())).copy() + \
     schema.copy()
 
 ##code-section after-schema #fill in your manual code here
 ##/code-section after-schema
 
-class Study(PostMixin, EmailMixin, ATDocument):
+class Study(PostMixin, EmailMixin, BaseContent):
     """
     A study
     """
     security = ClassSecurityInfo()
-    __implements__ = (getattr(PostMixin,'__implements__',()),) + (getattr(EmailMixin,'__implements__',()),) + (getattr(ATDocument,'__implements__',()),)
+    __implements__ = (getattr(PostMixin,'__implements__',()),) + (getattr(EmailMixin,'__implements__',()),) + (getattr(BaseContent,'__implements__',()),)
 
     # This name appears in the 'add' box
     archetype_name = 'Study'
 
     meta_type = 'Study'
     portal_type = 'Study'
-    allowed_content_types = [] + list(getattr(PostMixin, 'allowed_content_types', [])) + list(getattr(EmailMixin, 'allowed_content_types', [])) + list(getattr(ATDocument, 'allowed_content_types', []))
+    allowed_content_types = [] + list(getattr(PostMixin, 'allowed_content_types', [])) + list(getattr(EmailMixin, 'allowed_content_types', []))
     filter_content_types = 0
     global_allow = 1
     allow_discussion = False

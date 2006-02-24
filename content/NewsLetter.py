@@ -28,7 +28,6 @@ __docformat__ = 'plaintext'
 from AccessControl import ClassSecurityInfo
 from Products.Archetypes.atapi import *
 from Products.minaraad.EmailMixin import EmailMixin
-from Products.ATContentTypes.content.document import ATDocument
 from Products.minaraad.config import *
 
 ##code-section module-header #fill in your manual code here
@@ -66,26 +65,26 @@ schema = Schema((
 ##code-section after-local-schema #fill in your manual code here
 ##/code-section after-local-schema
 
-NewsLetter_schema = getattr(EmailMixin, 'schema', Schema(())).copy() + \
-    getattr(ATDocument, 'schema', Schema(())).copy() + \
+NewsLetter_schema = BaseSchema.copy() + \
+    getattr(EmailMixin, 'schema', Schema(())).copy() + \
     schema.copy()
 
 ##code-section after-schema #fill in your manual code here
 ##/code-section after-schema
 
-class NewsLetter(EmailMixin, ATDocument):
+class NewsLetter(EmailMixin, BaseContent):
     """
     A newsletter
     """
     security = ClassSecurityInfo()
-    __implements__ = (getattr(EmailMixin,'__implements__',()),) + (getattr(ATDocument,'__implements__',()),)
+    __implements__ = (getattr(EmailMixin,'__implements__',()),) + (getattr(BaseContent,'__implements__',()),)
 
     # This name appears in the 'add' box
     archetype_name = 'NewsLetter'
 
     meta_type = 'NewsLetter'
     portal_type = 'NewsLetter'
-    allowed_content_types = [] + list(getattr(EmailMixin, 'allowed_content_types', [])) + list(getattr(ATDocument, 'allowed_content_types', []))
+    allowed_content_types = [] + list(getattr(EmailMixin, 'allowed_content_types', []))
     filter_content_types = 0
     global_allow = 1
     allow_discussion = False

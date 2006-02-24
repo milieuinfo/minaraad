@@ -59,15 +59,13 @@ schema = Schema((
         )
     ),
 
-    TextField(
+    StringField(
         name='body',
-        allowable_content_types=('text/plain', 'text/structured', 'text/html', 'application/msword',),
-        widget=RichWidget(
+        widget=StringWidget(
             label='Body',
             label_msgid='minaraad_label_body',
             i18n_domain='minaraad',
-        ),
-        default_output_type='text/html'
+        )
     ),
 
 ArrayField(        FileField(
