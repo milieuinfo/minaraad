@@ -312,6 +312,11 @@ msgstr ""
 msgid "minaraad_label_attachment"
 msgstr ""
 
+#. Default: "Attachments"
+#: content/Advisory.py
+msgid "minaraad_label_attachments"
+msgstr ""
+
 #. Default: "Body"
 #: content/Hearing.py
 #: content/Advisory.py

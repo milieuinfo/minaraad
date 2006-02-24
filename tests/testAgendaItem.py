@@ -58,6 +58,7 @@ class testAgendaItem(MainTestCase):
         """
         pass
 
+
     # Manually created methods
 
 

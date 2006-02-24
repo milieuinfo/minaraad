@@ -59,6 +59,7 @@ class testHearing(MainTestCase):
         """
         pass
 
+
     # from class Hearing:
     def test_getThemesList(self):
         pass
