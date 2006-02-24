@@ -37,7 +37,7 @@ LOCAL_ADDITIONS = {
     }
 
 # IDs not to list in the navtree
-IDS_NOT_TO_LIST = ['Members']
+IDS_NOT_TO_LIST = ['Members','contactpersonen']
 
 # Types to list in the navtree => the rest won't!
 TYPES_TO_LIST = ['Folder']
@@ -54,3 +54,15 @@ EXTRA_VIEWS = {
 SELECT_VIEWS = {
     '/hoorzittingen': 'hearing_listing_view',
     }
+
+# Kupu Configuration LINKABLE is a list of content types to which we
+# can link within the kupu drawer
+LINKABLE = ['Hearing',
+            'Advisory',
+            'AnnualReport',
+            'Newsitem',
+            'NewsLetter',
+            'Pressrelease',
+            'Study',
+            'Event',
+           ]

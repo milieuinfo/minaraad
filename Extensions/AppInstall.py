@@ -26,6 +26,7 @@ out = StringIO()
 def install(self):
     
     _configurePortalProps(self)
+    _configureKupu(self)
     
     out.write("Create folder structure")
     createFolderStructure(self)
@@ -42,6 +43,9 @@ def install(self):
 
     out.write("Add configlets")
     addConfiglets(self, out)
+    
+    print >> out, "Restricting locally allowed types"
+    _restrictLocallyAllowedTypes(self)
     
     print >> out, "Adding extra folder views"
     _addExtraViews(self)
@@ -233,6 +237,43 @@ def addConfiglets(self, out):
             'Configuration for tool Subscriptions.',
             None,
         )
+
+def _restrictLocallyAllowedTypes(portal):
+    """
+    """
+
+    for foldername in LOCAL_ADDITIONS:
+        try:
+            folder = portal
+            for folderitem in foldername.split('/'):
+                folder = folder[folderitem]
+            localAddition = LOCAL_ADDITIONS[foldername]
+            if localAddition:
+                restriction = ADD_LIST + localAddition
+            else:
+                # Special case, we don't want anything.
+                # Useful for archive folders.
+                restriction = []
+            folder.setConstrainTypesMode(1)
+            folder.setLocallyAllowedTypes(restriction)
+            folder.setImmediatelyAddableTypes(restriction)
+        except:
+            out.write("can't set restriction on %s\n" % foldername)
+
+def _configureKupu(portal):
+    kupuTool = getToolByName(portal, 'kupu_library_tool')
+    linkable = list(kupuTool.getPortalTypesForResourceType('linkable'))
+    for type in LINKABLE:
+        if type not in linkable:
+            linkable.append(type)
+    # kupu_library_tool has an idiotic interface, basically written purely to
+    # work with its configuration page. :-(
+    try:
+        kupuTool.updateResourceTypes(({'resource_type' : 'linkable',
+                                       'old_type'      : 'linkable',
+                                       'portal_types'  :  linkable},))
+    except:
+        out.write("Raargh, kupu error.\n")
 
 def uninstall(self):
     out = StringIO()

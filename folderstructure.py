@@ -65,4 +65,8 @@ ROOT_CHILDREN = [
     {'id':'evenementen', 
      'title':'Evenementen', 
      'type':'Folder',
+     'children':[]},
+    {'id':'contactpersonen', 
+     'title':'Contactpersonen', 
+     'type':'Folder',
      'children':[]},]
