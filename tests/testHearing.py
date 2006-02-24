@@ -55,9 +55,13 @@ class testHearing(MainTestCase):
     ##/code-section class-header_testHearing
 
     def afterSetUp(self):
+        """ Initialization of user and Hearing
         """
-        """
-        pass
+        self.portal.portal_membership.addMember('manager','secret',['Manager'],[])
+        self.login('manager')
+
+        self.portal.hoorzittingen.invokeFactory('Hearing','myhoorzitting')
+        self.hoorzitting = self.portal.hoorzittingen.myhoorzitting
 
 
     # from class Hearing:
@@ -79,6 +83,29 @@ class testHearing(MainTestCase):
         """
         """
         #Uncomment one of the following lines as needed
+    def test_Fields(self):
+        """ Test if the Hearing has all the required fields
+        """
+
+        self.hoorzitting.Title()          # Titel
+        self.hoorzitting.getDescription() # Omschrijving
+        self.hoorzitting.getGoal()        # Doelstelling
+        self.hoorzitting.getSubheader     # Subkop
+        self.hoorzitting.getLocation      # Lokatie
+        self.hoorzitting.getStartdate     # Start tijd
+        self.hoorzitting.getEnddate       # Eind tijd
+        self.hoorzitting.getTheme         # Thema's
+        self.hoorzitting.getBody          # Body
+        self.hoorzitting.getPlaintext     # Platte tekst
+        self.hoorzitting.getContact       # Contactpersoon
+
+    def test_Existance(self):
+        """ Test if the Hearing exists within portal_types
+        """
+
+        types_ = self.portal.portal_types.objectIds()
+        self.failUnless('Hearing' in types_)
+
 
 def test_suite():
     from unittest import TestSuite, makeSuite
