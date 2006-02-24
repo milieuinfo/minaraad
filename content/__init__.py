@@ -41,8 +41,6 @@ import Pressrelease
 import Study
 import AnnualReport
 import NewsLetter
-import attachment
-import attachmentwidget
 
 ##code-section init-module-footer #fill in your manual code here
 ##/code-section init-module-footer

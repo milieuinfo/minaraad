@@ -9,3 +9,5 @@ Dependencies
     * PasswordResetTool (https://svn.plone.org/svn/collective/PasswordResetTool/trunk)
     
     * Five 1.2 (http://codespeak.net/z3/five/release/Five-1.2.tgz)
+
+    * CompoundField (https://svn.plone.org/svn/archetypes/MoreFieldsAndWidgets/CompoundField/trunk)
