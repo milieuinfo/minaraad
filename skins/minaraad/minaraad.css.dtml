@@ -81,6 +81,10 @@
 ul.AgendaItems li {
     margin-bottom: 30px;
 }
+
+.contenttype-agendaitem, .actionMenu .contenttype-agendaitem a:hover {
+    padding-left: 18px;
+}
 /* ---- End Hearing view --- */
 
 /* </dtml-with> */

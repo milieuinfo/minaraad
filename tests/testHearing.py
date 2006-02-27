@@ -79,13 +79,6 @@ class testHearing(MainTestCase):
 
     # Manually created methods
 
-    def test_Existance(self):
-        """ Test if the Hearing exists within portal_types
-        """
-
-        types_ = self.portal.portal_types.objectIds()
-        self.failUnless('Hearing' in types_)
-
     def test_getThemes(self):
         """
         """
@@ -112,6 +105,13 @@ class testHearing(MainTestCase):
         self.hoorzitting.getBody          # Body
         self.hoorzitting.getPlaintext     # Platte tekst
         self.hoorzitting.getContact       # Contactpersoon
+
+    def test_Existance(self):
+        """ Test if the Hearing exists within portal_types
+        """
+
+        types_ = self.portal.portal_types.objectIds()
+        self.failUnless('Hearing' in types_)
 
 
 def test_suite():

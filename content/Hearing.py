@@ -105,6 +105,7 @@ schema = Schema((
 
     DateTimeField(
         name='startdate',
+        index="DateIndex:brains",
         widget=CalendarWidget(
             label='Startdate',
             label_msgid='minaraad_label_startdate',

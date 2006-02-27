@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minaraad 0.1\n"
-"POT-Creation-Date: 2006-02-24 11:09+0000\n"
+"POT-Creation-Date: 2006-02-27 11:03+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: Mirella van Teulingen <m.van.teulingen@zestsoftware.nl>\n"
 "Language-Team: English <info@zestsoftware.nl>\n"
@@ -25,7 +25,7 @@ msgid "AnnualReport"
 msgstr ""
 
 #. Default: "Date:"
-#: skins/minaraad/hearing_view.pt
+#: skins/minaraad/mina_showdatetime.pt
 msgid "Date:"
 msgstr ""
 
@@ -56,7 +56,7 @@ msgid "Study"
 msgstr ""
 
 #. Default: "Time:"
-#: skins/minaraad/hearing_view.pt
+#: skins/minaraad/mina_showdatetime.pt
 msgid "Time"
 msgstr ""
 
@@ -74,15 +74,9 @@ msgstr ""
 msgid "description_themes_setup"
 msgstr ""
 
-#. Default: "Emailaddress"
-#: skins/minaraad/contactperson_view.pt
-#, fuzzy
-msgid "emailaddress"
-msgstr ""
-
 #. Default: "from"
-#: skins/minaraad/hearing_view.pt
 #: skins/minaraad/mina_listing_view.pt
+#: skins/minaraad/mina_showdatetime.pt
 msgid "from"
 msgstr ""
 
@@ -102,14 +96,9 @@ msgid "help_theme_name"
 msgstr ""
 
 #. Default: "hour"
-#: skins/minaraad/hearing_view.pt
 #: skins/minaraad/mina_listing_view.pt
+#: skins/minaraad/mina_showdatetime.pt
 msgid "hour"
-msgstr ""
-
-#. Default: "Function"
-#: skins/minaraad/contactperson_view.pt
-msgid "jobtitle"
 msgstr ""
 
 #. Default: "Add"
@@ -157,6 +146,11 @@ msgstr ""
 msgid "label_edit"
 msgstr ""
 
+#. Default: "Emailaddress"
+#: skins/minaraad/contactperson_view.pt
+msgid "label_emailaddress"
+msgstr ""
+
 #: skins/join_form.cpt
 msgid "label_firstname"
 msgstr ""
@@ -175,16 +169,19 @@ msgstr ""
 msgid "label_housenumber"
 msgstr ""
 
-#. Default: "Job title"
-#: skins/minaraad/join_form.cpt
-#: skins/minaraad/personalize_form.cpt
-#: skins/minaraad/prefs_user_details.cpt
+#. Default: "Function"
+#: skins/minaraad/contactperson_view.pt
 #, fuzzy
 msgid "label_jobtitle"
 msgstr ""
 
 #: skins/join_form.cpt
 msgid "label_lastname"
+msgstr ""
+
+#. Default: "Name"
+#: skins/minaraad/contactperson_view.pt
+msgid "label_name"
 msgstr ""
 
 #. <no reference>
@@ -199,10 +196,8 @@ msgstr ""
 msgid "label_other_country"
 msgstr ""
 
-#. Default: "Phone number"
-#: skins/minaraad/join_form.cpt
-#: skins/minaraad/personalize_form.cpt
-#: skins/minaraad/prefs_user_details.cpt
+#. Default: "Phonenumber"
+#: skins/minaraad/contactperson_view.pt
 #, fuzzy
 msgid "label_phonenumber"
 msgstr ""
@@ -214,6 +209,11 @@ msgstr ""
 
 #: browser/subscriptions_config.pt
 msgid "label_select_all_themes"
+msgstr ""
+
+#. Default: "Speaker:"
+#: skins/minaraad/hearing_view.pt
+msgid "label_speaker"
 msgstr ""
 
 #. Default: "Street"
@@ -377,6 +377,13 @@ msgstr ""
 #. Default: "summary"
 #: content/Presentation.py
 msgid "minaraad_help_summary"
+msgstr ""
+
+#. Default: "Attachment"
+#: content/Pressrelease.py
+#: content/Study.py
+#: content/AnnualReport.py
+msgid "minaraad_label_attachment"
 msgstr ""
 
 #. Default: "Attachments"
@@ -555,20 +562,9 @@ msgstr ""
 msgid "moreinfo_contactperson"
 msgstr ""
 
-#. Default: "Name"
-#: skins/minaraad/contactperson_view.pt
-#, fuzzy
-msgid "name"
-msgstr ""
-
-#. Default: "Phonenumber"
-#: skins/minaraad/contactperson_view.pt
-msgid "phonenumber"
-msgstr ""
-
 #. Default: "till"
-#: skins/minaraad/hearing_view.pt
 #: skins/minaraad/mina_listing_view.pt
+#: skins/minaraad/mina_showdatetime.pt
 msgid "till"
 msgstr ""
 
@@ -589,8 +585,8 @@ msgid "toggle_all"
 msgstr ""
 
 #. Default: "up untill"
-#: skins/minaraad/hearing_view.pt
 #: skins/minaraad/mina_listing_view.pt
+#: skins/minaraad/mina_showdatetime.pt
 msgid "up_untill"
 msgstr ""
 

@@ -10,12 +10,12 @@
     <tal:block metal:define-macro="contactdetails">
         <table cellspacing="0">
             <tr tal:condition="contact/getName">
-                <td i18n:translate="name">Name</td>
+                <td i18n:translate="label_name">Name</td>
                 <td>:</td>
                 <td tal:content="contact/getName" />
             </tr>
             <tr tal:condition="contact/getJobtitle">
-                <td i18n:translate="jobtitle">Function</td>
+                <td i18n:translate="label_jobtitle">Function</td>
                 <td>:</td>
                 <td tal:content="contact/getJobtitle" />
             </tr>
@@ -25,7 +25,7 @@
                 <td tal:content="contact/getDepartment" />
             </tr>
             <tr tal:condition="contact/getEmail">
-                <td i18n:translate="emailaddress">Emailaddress</td>
+                <td i18n:translate="label_emailaddress">Emailaddress</td>
                 <td>:</td>
                 <td>
                     <a tal:attributes="href string:mailto:${contact/getEmail}"
@@ -33,7 +33,7 @@
                 </td>
             </tr>
             <tr tal:condition="contact/getPhonenumber">
-                <td i18n:translate="phonenumber">Phonenumber</td>
+                <td i18n:translate="label_phonenumber">Phonenumber</td>
                 <td>:</td>
                 <td tal:content="contact/getPhonenumber" />
             </tr>

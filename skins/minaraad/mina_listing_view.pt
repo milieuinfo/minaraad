@@ -25,7 +25,6 @@
         <br />
         <metal:listingmacro define-macro="listing">
         <tal:foldercontents define="contentFilter contentFilter|request/contentFilter|nothing;
-                use_english_link use_english_link|nothing;
                 limit_display limit_display|request/limit_display|nothing;
                 more_url more_url|request/more_url|string:folder_contents;
                 contentsMethod python:test(here.portal_type=='Topic', here.queryCatalog, here.getFolderContents);
