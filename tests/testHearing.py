@@ -63,7 +63,6 @@ class testHearing(MainTestCase):
         self.portal.hoorzittingen.invokeFactory('Hearing','myhoorzitting')
         self.hoorzitting = self.portal.hoorzittingen.myhoorzitting
 
-
     # from class Hearing:
     def test_getThemesList(self):
         pass

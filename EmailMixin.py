@@ -71,7 +71,6 @@ class EmailMixin:
         
         """
         pass
-
     security.declarePublic('getEmailBody')
     def getEmailBody(self):
         """

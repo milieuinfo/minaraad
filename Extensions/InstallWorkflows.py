@@ -28,9 +28,9 @@ __docformat__ = 'plaintext'
 
 from Products.CMFCore.utils import getToolByName
 from Products.ExternalMethod.ExternalMethod import ExternalMethod
+
 ##code-section module-header #fill in your manual code here
 ##/code-section module-header
-
 
 def installWorkflows(self, package, out):
     """Install the custom workflows for this product."""
@@ -51,9 +51,9 @@ def installWorkflows(self, package, out):
     workflow = ourProductWorkflow(self, 'minaraad_folder_workflow')
     workflowTool._setObject('minaraad_folder_workflow', workflow)
     workflowTool.setChainForPortalTypes(['WorkflowStub'], workflow.getId())
+
     ##code-section after-workflow-install #fill in your manual code here
     ##/code-section after-workflow-install
-
 
     return workflowTool
 

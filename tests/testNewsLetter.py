@@ -58,8 +58,6 @@ class testNewsLetter(MainTestCase):
         """
         """
         pass
-
-
     # from class EmailMixin:
     def test_email(self):
         """

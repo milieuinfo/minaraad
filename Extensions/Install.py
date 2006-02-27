@@ -69,14 +69,11 @@ def install(self):
     install_subskin(self, out, GLOBALS)
 
 
-
-
     # try to call a workflow install method
     # in 'InstallWorkflows.py' method 'installWorkflows'
     try:
-        installWorkflows = ExternalMethod('temp',
-                                          'temp',
-                                          PROJECTNAME+'.InstallWorkflows', 
+        installWorkflows = ExternalMethod('temp', 'temp',
+                                          PROJECTNAME+'.InstallWorkflows',
                                           'installWorkflows').__of__(self)
     except NotFound:
         installWorkflows = None
@@ -156,7 +153,7 @@ def uninstall(self):
     # in 'InstallWorkflows.py' method 'uninstallWorkflows'
     try:
         uninstallWorkflows = ExternalMethod('temp', 'temp',
-                                            PROJECTNAME+'.InstallWorkflows', 
+                                            PROJECTNAME+'.InstallWorkflows',
                                             'uninstallWorkflows').__of__(self)
     except NotFound:
         uninstallWorkflows = None
@@ -171,7 +168,7 @@ def uninstall(self):
     # try to call a custom uninstall method
     # in 'AppInstall.py' method 'uninstall'
     try:
-        uninstall = ExternalMethod('temp', 'temp', 
+        uninstall = ExternalMethod('temp', 'temp',
                                    PROJECTNAME+'.AppInstall', 'uninstall')
     except:
         uninstall = None

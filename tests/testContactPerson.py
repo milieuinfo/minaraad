@@ -64,7 +64,6 @@ class testContactPerson(MainTestCase):
         self.portal.contactpersonen.invokeFactory('ContactPerson','mycontactperson')
         self.contactperson = self.portal.contactpersonen.mycontactperson
 
-
     # Manually created methods
 
     def test_Fields(self):

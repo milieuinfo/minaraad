@@ -64,7 +64,6 @@ class testAgendaItem(MainTestCase):
         self.portal.hoorzittingen.myhoorzitting.invokeFactory('AgendaItem','myagendaitem')
         self.agendaitem = self.portal.hoorzittingen.myhoorzitting.myagendaitem
 
-
     # Manually created methods
 
     def test_IllegalCreation(self):

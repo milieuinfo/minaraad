@@ -64,7 +64,6 @@ class testAdvisory(MainTestCase):
         self.portal.adviezen.adv_2006.invokeFactory('Advisory','myadvisory')
         self.advisory = self.portal.adviezen.adv_2006.myadvisory
 
-
     # from class EmailMixin:
     def test_email(self):
         """
