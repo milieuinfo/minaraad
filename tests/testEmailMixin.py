@@ -44,7 +44,9 @@ from Products.PloneTestCase.PloneTestCase import PloneTestCase
 from Products.minaraad.EmailMixin import EmailMixin
 
 ##code-section module-beforeclass #fill in your manual code here
+import email
 from Products.Archetypes.atapi import registerType, BaseContent, BaseSchema
+from Products.minaraad.subscriptions import SubscriptionManager
 ##/code-section module-beforeclass
 
 
@@ -55,25 +57,54 @@ class testEmailMixin(PloneTestCase):
     ##/code-section class-header_testEmailMixin
 
     def afterSetUp(self):
-        pass
+        self.portal._original_MailHost = self.portal.MailHost
+        self.portal.MailHost = MockMailHost()
+        self.portal.portal_membership.addMember('member','secret',['Member'],[])
 
     # from class EmailMixin:
     def test_email(self):
-        pass
+        self.login('member')
 
-    # from class EmailMixin:
-    def test_getEmailBody(self):
-        emailMixin = DummyEmailMixin('blah')
+        emailMixin = MockEmailMixin('blah')
         emailMixin = emailMixin.__of__(self.portal)
         emailMixin.setTitle('Blah')
-        emailMixin.setEmailTemplate('<p><span tal:replace="nocall:context/title"/></p>')
+        emailMixin.setEmailTemplate('<p><span tal:replace="context/Title"/></p>')
+
+        emailMixin.email()
+        
+        mailHost = self.portal.MailHost
+        self.assertEqual(len(mailHost.messages), 0)
+        mailHost.reset()
+        
+        sm = SubscriptionManager(self.portal)
+        sm.subscribe(MockEmailMixin.MOCK_NAME)
+        emailMixin.email()
+        self.assertEqual(len(mailHost.messages), 1)
+        
+        self.logout()
+        
+        
+    # from class EmailMixin:
+    def test_getEmailBody(self):
+        emailMixin = MockEmailMixin('blah')
+        emailMixin = emailMixin.__of__(self.portal)
+        emailMixin.setTitle('Blah')
+        emailMixin.setEmailTemplate('<p><span tal:replace="context/Title"/></p>')
         
         email = emailMixin.getEmailBody()
         self.assertEquals(str(email['text/html']).strip(), '<p>Blah</p>')
         self.assertEquals(str(email['text/plain']).strip(), 'Blah')
         
+    # from class EmailMixin:
+    def test_getSubscriptionId(self):
+        pass
+
     # Manually created methods
 
+    def beforeTearDown(self):
+        self.portal.MailHost = self.portal._original_MailHost
+        del self.portal._original_MailHost
+    
 
 def test_suite():
     from unittest import TestSuite, makeSuite
@@ -82,14 +113,44 @@ def test_suite():
     return suite
 
 ##code-section module-footer #fill in your manual code here
-class DummyEmailMixin(EmailMixin, BaseContent):
-    """A dummy class that extends EmailMixin.  Using this class is the only
+class MockEmailMixin(EmailMixin, BaseContent):
+    """A mock class that extends EmailMixin.  Using this class is the only
     way to test with Archetypes auto-generated field accessors/mutators."""
 
     schema = BaseSchema + EmailMixin.schema
+    
+    MOCK_NAME = 'Advisory'
+    
+    def getSubscriptionId(self):
+        return MockEmailMixin.MOCK_NAME
 
+registerType(MockEmailMixin, PROJECTNAME)
 
-registerType(DummyEmailMixin, PROJECTNAME)
+class MockMailHost:
+    
+    def __init__(self):
+        self.reset()
+    
+    def reset(self):
+        self.messages = []
+    
+    def send(self, message, mto=None, mfrom=None, subject=None,
+             encode=None):
+        """
+        Basically construct an email.Message from the given params to make sure
+        everything is ok and store the results in the messages instance var.
+        """
+
+        headers = """To: %s
+From: %s
+Subject: %s
+""" % (mto, mfrom, subject)
+        
+        message = email.message_from_string(headers + "\n\n" + message)
+        
+        self.messages.append(message)
+        
+
 ##/code-section module-footer
 
 if __name__ == '__main__':

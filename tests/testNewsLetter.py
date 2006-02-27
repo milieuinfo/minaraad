@@ -67,6 +67,10 @@ class testNewsLetter(MainTestCase):
     def test_getEmailBody(self):
         pass
 
+    # from class EmailMixin:
+    def test_getSubscriptionId(self):
+        pass
+
     # Manually created methods
 
 

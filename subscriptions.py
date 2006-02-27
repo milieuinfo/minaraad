@@ -29,9 +29,10 @@ class SubscriptionManager(object):
         raise NotSubscribableError(id)
         
 
-    def _getSubscriptions(self):
+    def _getSubscriptions(self, member=None):
         tool = getToolByName(self.portal, 'portal_membership')
-        member = tool.getAuthenticatedMember()
+        if member is None:
+            member = tool.getAuthenticatedMember()
         
         prop = member.getProperty('subscriptions', [])
 
@@ -73,7 +74,45 @@ class SubscriptionManager(object):
     
     def canSubscribePost(self, id):
         return id in SUBSCRIPTIONS_POST
+    
+    def isEmailSubscribed(self, id):
+        for x in self.subscriptions:
+            if x.id == id:
+                if x.email:
+                    return True
+                break
         
+        return False
+        
+    def isPostSubscribed(self, id):
+        for x in self.subscriptions:
+            if x.id == id:
+                if x.post:
+                    return True
+                break
+        
+        return False
+
+    def _subscribers(self, id, type_):
+        tool = getToolByName(self.portal, 'portal_membership')
+        members = tool.listMembers()
+        
+        subscribers = []
+        for member in members:
+            subscriptions = self._getSubscriptions(member)
+            for x in subscriptions:
+                if x.id == id:
+                    if getattr(x, type_, False):
+                        subscribers.append(member)
+                    break
+        
+        return subscribers
+    
+    def emailSubscribers(self, id):
+        return self._subscribers(id, 'email')
+        
+    def postSubscribers(self, id):
+        return self._subscribers(id, 'post')
 
 class Subscription(object):
 

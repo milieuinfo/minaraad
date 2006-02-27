@@ -34,6 +34,10 @@ from Products.TemplateFields import ZPTField
 
 ##code-section module-header #fill in your manual code here
 from Products.CMFCore.utils import getToolByName
+from Products.CMFPlone.utils import log_exc, log
+from Products.minaraad.subscriptions import SubscriptionManager
+from email.MIMEText import MIMEText
+from email.MIMEMultipart import MIMEMultipart
 ##/code-section module-header
 
 schema = Schema((
@@ -75,20 +79,59 @@ class EmailMixin:
     # Methods
 
     security.declarePublic('email')
-    def email(self,addresses):
+    def email(self):
+        """
+        Take the result from getEmailBody (an abstract method) and email
+        to appropriate persons.
         """
         
-        """
-        pass
+        sm = SubscriptionManager(self)
+        addresses = [x.getProperty('email') 
+                     for x in sm.emailSubscribers(self.getSubscriptionId()) 
+                     if x.hasProperty('email')]
+        emailBody = self.getEmailBody()
+        
+        portal = getToolByName(self, 'portal_url').getPortalObject()
+        plone_utils = getToolByName(portal, 'plone_utils')
+        charset = plone_utils.getSiteEncoding()
+        
+        fromAddress = portal.getProperty('email_from_address')
+        
+        subject = '[%s] Automated subscription email' % portal.title_or_id()
+        
+        message = MIMEMultipart('alternative')
+        
+        textPlain = unicode(emailBody['text/plain'], charset)
+        message.attach(MIMEText(textPlain, 'plain', charset))
+        
+        textHtml = unicode(emailBody['text/html'], charset)
+        message.attach(MIMEText(textHtml, 'html', charset))
+        
+        message = str(message)
+        
+        mailHost = getToolByName(portal, 'MailHost')
+        for address in addresses:
+            try:
+                mailHost.send(message = message,
+                              mto = address,
+                              mfrom = fromAddress,
+                              subject = subject)
+            except:
+                log_exc('Could not send email from %s to %s regarding issue ' \
+                        'in tracker %s\ntext is:\n%s\n' \
+                        % (fromAddress, address, self.absolute_url(), emailBody,))
     security.declarePublic('getEmailBody')
     def getEmailBody(self):
         """
-        
+        Return both plain and html versions (a dict with keys
+        'text/plain' and 'text/html') of an appropriate email template. 
+        Default implementation will cook the template from schema field
+        emailTemplate.
         """
-        
+
         cooked = self.getEmailTemplate()
         portal_transforms = getToolByName(self, 'portal_transforms')
-        plain = portal_transforms.convertTo('text/plain', cooked)
+        plain = portal_transforms.convertTo('text/plain', cooked).getData()
         
         body = {
             'text/html': cooked,
@@ -96,6 +139,16 @@ class EmailMixin:
         }
         
         return body
+
+    security.declarePublic('getSubscriptionId')
+    def getSubscriptionId(self):
+        """
+        Returns the subscription id.  By default, this implementation
+        will derive the subscription id from the class name.
+        """
+        
+        return self.__class__.__name__
+        
 
 # end of class EmailMixin
 
