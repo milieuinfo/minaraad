@@ -68,6 +68,10 @@ class testHearing(MainTestCase):
     def test_getThemesList(self):
         pass
 
+    # from class Hearing:
+    def test_getThemeName(self):
+        pass
+
     # from class EmailMixin:
     def test_email(self):
         """

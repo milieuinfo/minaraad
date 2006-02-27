@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minaraad 0.1\n"
-"POT-Creation-Date: 2006-02-27 11:03+0000\n"
+"POT-Creation-Date: 2006-02-27 14:43+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: Mirella van Teulingen <m.van.teulingen@zestsoftware.nl>\n"
 "Language-Team: English <info@zestsoftware.nl>\n"
@@ -223,7 +223,7 @@ msgstr ""
 msgid "label_street"
 msgstr ""
 
-#. Default: "Theme"
+#. Default: "Theme:"
 #: skins/minaraad/hearing_view.pt
 #, fuzzy
 msgid "label_theme_name"

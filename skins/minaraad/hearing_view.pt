@@ -22,8 +22,8 @@
         </div>
         
         <span class="hearingsubheader"
-             i18n:translate="label_theme_name">Theme</span>
-        <div tal:content="context/getTheme" />
+             i18n:translate="label_theme_name">Theme:</span>
+        <span tal:replace="python:context.getThemeName()" />
 
          <div class="hearingsubheader2"
               i18n:translate="Goal:"

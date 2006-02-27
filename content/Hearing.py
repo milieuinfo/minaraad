@@ -202,6 +202,19 @@ class Hearing(EmailMixin, BaseFolder):
 
         return dlist
 
+    security.declarePublic('getThemeName')
+    def getThemeName(self):
+        """
+        Get the theme name when it is set
+        """
+        themeId = self.getTheme()
+        themeProps = self.portal_properties.minaraad_properties.getProperty('themes')
+        theme = themeProps[themeId-1]
+        pos = theme.find('/')
+        title = theme[pos+1:]
+            
+        return title
+
 
 registerType(Hearing, PROJECTNAME)
 # end of class Hearing
