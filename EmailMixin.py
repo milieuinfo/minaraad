@@ -29,7 +29,11 @@ from AccessControl import ClassSecurityInfo
 from Products.Archetypes.atapi import *
 from Products.minaraad.config import *
 
+# additional imports from tagged value 'import'
+from Products.TemplateFields import ZPTField
+
 ##code-section module-header #fill in your manual code here
+from Products.CMFCore.utils import getToolByName
 ##/code-section module-header
 
 schema = Schema((
@@ -41,6 +45,11 @@ schema = Schema((
             label_msgid='minaraad_label_plaintext',
             i18n_domain='minaraad',
         )
+    ),
+
+    ZPTField(
+        name='emailTemplate',
+    
     ),
 
 ),
@@ -76,7 +85,17 @@ class EmailMixin:
         """
         
         """
-        raise NotImplementedError
+        
+        cooked = self.getEmailTemplate()
+        portal_transforms = getToolByName(self, 'portal_transforms')
+        plain = portal_transforms.convertTo('text/plain', cooked)
+        
+        body = {
+            'text/html': cooked,
+            'text/plain': plain,
+        }
+        
+        return body
 
 # end of class EmailMixin
 
