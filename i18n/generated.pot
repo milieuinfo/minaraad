@@ -363,6 +363,11 @@ msgstr ""
 msgid "minaraad_label_email"
 msgstr ""
 
+#. Default: "Emailtemplate"
+#: EmailMixin.py
+msgid "minaraad_label_emailTemplate"
+msgstr ""
+
 #. Default: "Enddate"
 #: content/Hearing.py
 msgid "minaraad_label_enddate"

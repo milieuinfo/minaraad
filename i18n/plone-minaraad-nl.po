@@ -54,3 +54,9 @@ msgstr "Raadslid"
 
 msgid "Pending"
 msgstr "In behandeling"
+
+msgid "advisory_listing_view"
+msgstr "Adviezen overzicht"
+
+msgid "hearing_listing_view"
+msgstr "Hoorzittingen overzicht"

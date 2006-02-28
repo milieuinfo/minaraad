@@ -1,0 +1,65 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
+      lang="en-US"
+      i18n:domain="minaraad">
+    <metal:block use-macro="context/global_defines/macros/defines" />
+    
+    <body>
+    <metal:block metal:define-macro="body">
+        <span class="documentDescription"
+              tal:content="context/getDescription" />
+        
+        <div tal:define="daterequired python:context.getDate() != None;
+                        date python:context.toLocalizedTime(context.date);"
+            class="hearingsubheader2"
+            tal:condition="daterequired">
+            <span i18n:translate="advisory_date">Advisory date:</span>
+            <span class="normaltext"
+                  tal:content="date" />
+        </div>
+    
+
+        <!-- Contactperson -->
+        <tal:block tal:define="contacts python:context.getContact()"
+                    tal:condition="contacts">
+            <br />
+            <div i18n:translate="moreinfo_contactperson">
+                For more information contact:
+            </div>
+            <tal:block tal:repeat="contact contacts">
+                <div metal:use-macro="context/contactperson_view/macros/contactdetails"
+                    tal:omit-tag="" />
+            </tal:block>
+            <br />
+        </tal:block>
+        <!-- end contactpersoon -->
+
+        <!-- Text -->
+        <div class="bodytext"
+            tal:content="structure context/getBody"
+            tal:condition="context/getBody" />
+        <!-- End text -->
+        <br />
+        <div tal:condition="context/getAttachments"
+             i18n:translate="minaraad_label_attachments"
+             class="hearingsubheader2">Attachments</div>
+
+        <div tal:repeat="item context/getAttachments">
+            <span tal:define="item_type_class python:'contenttype-' + normalizeString(context['portal_type'])" 
+                    tal:condition="python:item.get_size() &gt; 0"
+                    tal:omit-tag="">
+                <a tal:attributes="href string:${item/absolute_url};
+                                    class item_type_class"
+                    tal:content="item/filename"> 
+                    Attachment
+                </a>
+                <span class="filesize" 
+                        tal:define="size python:item.getObjSize(item);"
+                        tal:condition="size"
+                        tal:content="size">
+                    257 KB
+                </span>
+            </span>
+        </div>
+    </metal:block>
+    </body>
+</html>

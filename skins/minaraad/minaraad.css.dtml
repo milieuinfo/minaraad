@@ -99,6 +99,7 @@ ul.AgendaItems li {
 }
 .advisory_listdate {
     width: 75px;
+    font-weight: bold;
 }
 
 .advisory_listtitle {

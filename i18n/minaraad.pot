@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minaraad\n"
-"POT-Creation-Date: 2006-02-27 14:43+0000\n"
+"POT-Creation-Date: 2006-02-28 14:26+0000\n"
 "PO-Revision-Date: Mon Aug  8 12:16:21 2005\n"
 "Last-Translator: Rocky Burt <r.burt@zestsoftware.nl>\n"
 "Language-Team: Rocky Burt <r.burt@zestsoftware.nl>\n"
@@ -58,6 +58,11 @@ msgstr ""
 #. Default: "Time:"
 #: skins/minaraad/mina_showdatetime.pt
 msgid "Time"
+msgstr ""
+
+#. Default: "Advisory date:"
+#: skins/minaraad/advisory_view.pt
+msgid "advisory_date"
 msgstr ""
 
 #. Default: "For security reasons, we store your password encrypted, and cannot mail it to you. If you would like to reset your password, fill out the form below and we will send you an email at the address you gave when you registered to start the process of resetting your password. <br/> <br/> If this will not work for you (for example, if you forgot your member name or your email address has changed) send an email to the"
@@ -384,8 +389,7 @@ msgid "minaraad_label_attachment"
 msgstr ""
 
 #. Default: "Attachments"
-#: content/Advisory.py
-#: content/AgendaItem.py
+#: skins/minaraad/advisory_view.pt
 msgid "minaraad_label_attachments"
 msgstr ""
 
@@ -439,6 +443,11 @@ msgstr ""
 #. Default: "Email"
 #: content/ContactPerson.py
 msgid "minaraad_label_email"
+msgstr ""
+
+#. Default: "Emailtemplate"
+#: EmailMixin.py
+msgid "minaraad_label_emailTemplate"
 msgstr ""
 
 #. Default: "Enddate"
@@ -555,6 +564,7 @@ msgid "minaraad_label_zipcode"
 msgstr ""
 
 #. Default: "For more information contact:"
+#: skins/minaraad/advisory_view.pt
 #: skins/minaraad/hearing_view.pt
 msgid "moreinfo_contactperson"
 msgstr ""

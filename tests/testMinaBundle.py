@@ -58,6 +58,7 @@ class testMinaBundle(MainTestCase):
         """
         pass
     # Manually created methods
+    # Manually created methods
 
     def test_email(self):
         """
