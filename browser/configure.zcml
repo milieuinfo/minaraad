@@ -19,4 +19,12 @@
       template="subscriptions_config.pt"
     />
 
+  <browser:page
+      for="*"
+      name="email_out"
+      class=".email.EmailOutView"
+      permission="zope2.View"
+      template="email_out.pt"
+    />
+
 </configure>

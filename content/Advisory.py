@@ -131,6 +131,20 @@ class Advisory(PostMixin, EmailMixin, ATCTContent):
     typeDescription = "Advisory"
     typeDescMsgId = 'description_edit_advisory'
 
+    actions =  (
+
+
+       {'action': "string:${object_url}/email_out",
+        'category': "object",
+        'id': 'email_out',
+        'name': 'E-Mail',
+        'permissions': ("View",),
+        'condition': 'python:1'
+       },
+
+
+    )
+
     schema = Advisory_schema
 
     ##code-section class-header #fill in your manual code here
