@@ -86,11 +86,17 @@ class testEmailMixin(PloneTestCase):
         
         emailMixin.setEmailTemplate('<p><span tal:replace="options/emailText"/></p>')
         text = "Some random additional info"
-        emailMixin.email(text)
-        textParts = [x for x in mailHost.messages[0].walk() 
+        emailMixin.email(text, ['email@someotherguy'])
+        msg = mailHost.messages[0]
+        textParts = [x for x in msg.walk() 
                        if x.get('Content-Type','').find('text/plain') > -1]
         payload = textParts[0].get_payload(decode=True)
         self.failUnless(text in payload)
+        
+        lst1 = [x['To'] for x in mailHost.messages]
+        lst1.sort()
+        
+        self.assertEquals(lst1, ['email@someotherguy', 'someguy@hisplace.com'])
         
         self.logout()
         

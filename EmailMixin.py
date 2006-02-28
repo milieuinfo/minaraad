@@ -89,6 +89,9 @@ class EmailMixin:
         addresses = [x.email
                      for x in sm.emailSubscribers(self.getSubscriptionId()) 
                      if hasattr(x, 'email')]
+        if additionalAddresses:
+            addresses += additionalAddresses
+            
         emailBody = self.getEmailBody(emailText=text)
         
         portal = getToolByName(self, 'portal_url').getPortalObject()
