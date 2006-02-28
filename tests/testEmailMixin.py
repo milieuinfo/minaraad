@@ -86,7 +86,7 @@ class testEmailMixin(PloneTestCase):
         
         emailMixin.setEmailTemplate('<p><span tal:replace="options/emailText"/></p>')
         text = "Some random additional info"
-        emailMixin.email(text, ['email@someotherguy'])
+        emailMixin.email(text, 'email@someotherguy')
         msg = mailHost.messages[0]
         textParts = [x for x in msg.walk() 
                        if x.get('Content-Type','').find('text/plain') > -1]

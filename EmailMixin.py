@@ -90,7 +90,10 @@ class EmailMixin:
                      for x in sm.emailSubscribers(self.getSubscriptionId()) 
                      if hasattr(x, 'email')]
         if additionalAddresses:
-            addresses += additionalAddresses
+            if isinstance(additionalAddresses, basestring):
+                addresses.append(additionalAddresses)
+            else:
+                addresses += additionalAddresses
             
         emailBody = self.getEmailBody(emailText=text)
         
