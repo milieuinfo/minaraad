@@ -4,11 +4,10 @@
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       lang="en"
       metal:use-macro="here/main_template/macros/master"
-      i18n:domain="plone">
+      i18n:domain="minaraad">
 
 <body>
 <div metal:fill-slot="main">
-
 
     <div metal:use-macro="here/document_actions/macros/document_actions">
         Document actions (print, sendto etc)
@@ -17,7 +16,66 @@
     <h1 class="documentFirstHeading">
       <span tal:replace="object_title" /> &mdash; Email Out
     </h1>
+
+  	<form action="email_out"
+          method="get"
+          name="email_out"
+          tal:attributes="action string:${context/absolute_url}/$template_id">
     
+        <fieldset>
+            <legend i18n:translate="legend_email_out">E-Mail Out</legend>
+            
+            <div class="field"
+                 tal:define="to_ request/to|view/defaultTo">
+                <label for="to" i18n:translate="label_email_out_to">To</label>
+
+                <div class="formHelp" i18n:translate="help_email_out_to">
+                Comma-separated list of e-mail addresses to send this out to.
+                </div>
+
+                <input type="text"
+                       id="to"
+                       name="to"
+                       size="80"
+                       tabindex=""
+                       tal:attributes="tabindex tabindex/next;
+                                       value to_"
+                       />
+            </div>            
+
+            <div class="field">
+                <label for="only_to_specified" i18n:translate="label_only_to_specified">Only To Specified</label>
+
+                <div class="formHelp" i18n:translate="help_only_to_specified">
+                Should the e-mail only be sent out to those specified in the
+                above To field?
+                </div>
+    
+                <input type="checkbox"
+                       name="rs_toggle"
+                       value="#"
+                       id="rs_toggle"
+                       class="noborder"
+                       checked="checked"
+                       tabindex=""
+                       tal:attributes="tabindex tabindex;"/>
+            </div>
+
+            <div class="field">
+                <label for="to" i18n:translate="label_email_out_additional">Additional Message</label>
+
+                <div class="formHelp" i18n:translate="help_email_out_additional">
+                Additional message text (text used from emailTemplate field is
+                considered master e-mail text).
+                </div>
+
+                <textarea name="additional" id="additional"
+                          tabindex=""
+                          tal:attributes="tabindex tabindex/next"></textarea>
+            </div>            
+
+        </fieldset>
+    </form>
     
 </div>
 
