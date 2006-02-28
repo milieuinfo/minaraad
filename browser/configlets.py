@@ -139,4 +139,12 @@ class SubscriptionsConfigletView(AbstractConfigletView):
 
         self.subscriptionManager.subscriptions = subscriptions
 
+class SubscribersConfigletView(AbstractConfigletView):
+    
+    def __init__(self, context, request):
+        self.request = request
+        self._context = [context]
+        self._buildReferral()
+        #self.subscriptionManager = SubscriptionManager(self.context)
+        #self.themeManager = ThemeManager(self.context)
 

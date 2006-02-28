@@ -241,7 +241,7 @@ def addConfiglets(self, out):
     if not installed:
         portal_controlpanel.registerConfiglet(
             'Themes', #id of your Tool
-            'minaraad', # Title of your Troduct
+            'minaraad themes', # Title of your Product
             'string:${portal_url}/minaraad_config.html',
             'python:True', # a condition
             'Manage Portal', # access permission
@@ -254,7 +254,7 @@ def addConfiglets(self, out):
         )
         portal_controlpanel.registerConfiglet(
             'Subscriptions', #id of your Tool
-            'Subscriptions', # Title of your Troduct
+            'Subscriptions', # Title of your Product
             'string:${portal_url}/subscriptions_config.html',
             'python:True', # a condition
             'View', # access permission
@@ -265,7 +265,19 @@ def addConfiglets(self, out):
             'Configuration for tool Subscriptions.',
             None,
         )
-
+        portal_controlpanel.registerConfiglet(
+            'Subscribers', #id of your Tool
+            'subscribers overview', # Title of your Product
+            'string:${portal_url}/subscribers_config.html',
+            'python:True', # a condition
+            'Manage Portal', # access permission
+            'Products', # section to which the configlet should be added: (Plone,Products,Members)
+            1, # visibility
+            'SubscribersID',
+            'site_icon.gif', # icon in control_panel
+            'Configuration for tool Subscribers.',
+            None,
+        )
 def _resetPloneRootAllowedTypes(portal):
     """Reset the portal root's allowed types to the defaults
 

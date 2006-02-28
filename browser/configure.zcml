@@ -20,6 +20,14 @@
     />
 
   <browser:page
+      for="Products.minaraad.interfaces.IPortalPropertyContainer"
+      name="subscribers_config.html"
+      class=".configlets.SubscribersConfigletView"
+      permission="zope2.View"
+      template="subscribers_config.pt"
+    />
+
+  <browser:page
       for="*"
       name="email_out"
       class=".email.EmailOutView"

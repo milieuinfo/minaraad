@@ -60,3 +60,9 @@ msgstr "Adviezen overzicht"
 
 msgid "hearing_listing_view"
 msgstr "Hoorzittingen overzicht"
+
+msgid "minaraad themes"
+msgstr "minaraad thema's"
+
+msgid "subscribers overview"
+msgstr "Abonnee overzicht"
