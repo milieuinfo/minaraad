@@ -79,17 +79,17 @@ class EmailMixin:
     # Methods
 
     security.declarePublic('email')
-    def email(self):
+    def email(self, text='', additionalAddresses=None):
         """
         Take the result from getEmailBody (an abstract method) and email
         to appropriate persons.
         """
         
         sm = SubscriptionManager(self)
-        addresses = [x.getProperty('email') 
+        addresses = [x.email
                      for x in sm.emailSubscribers(self.getSubscriptionId()) 
-                     if x.hasProperty('email')]
-        emailBody = self.getEmailBody()
+                     if hasattr(x, 'email')]
+        emailBody = self.getEmailBody(emailText=text)
         
         portal = getToolByName(self, 'portal_url').getPortalObject()
         plone_utils = getToolByName(portal, 'plone_utils')
@@ -121,7 +121,7 @@ class EmailMixin:
                         'in tracker %s\ntext is:\n%s\n' \
                         % (fromAddress, address, self.absolute_url(), emailBody,))
     security.declarePublic('getEmailBody')
-    def getEmailBody(self):
+    def getEmailBody(self, *args, **kwargs):
         """
         Return both plain and html versions (a dict with keys
         'text/plain' and 'text/html') of an appropriate email template. 
@@ -129,7 +129,7 @@ class EmailMixin:
         emailTemplate.
         """
 
-        cooked = self.getEmailTemplate()
+        cooked = self.getEmailTemplate(**kwargs)
         portal_transforms = getToolByName(self, 'portal_transforms')
         plain = portal_transforms.convertTo('text/plain', cooked).getData()
         
@@ -149,7 +149,6 @@ class EmailMixin:
         
         return self.__class__.__name__
         
-
 # end of class EmailMixin
 
 ##code-section module-footer #fill in your manual code here

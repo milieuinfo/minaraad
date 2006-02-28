@@ -59,7 +59,9 @@ class testEmailMixin(PloneTestCase):
     def afterSetUp(self):
         self.portal._original_MailHost = self.portal.MailHost
         self.portal.MailHost = MockMailHost()
-        self.portal.portal_membership.addMember('member','secret',['Member'],[])
+        self.portal.portal_membership.addMember('member', 'secret', 
+                                                ['Member'], [], 
+                                                {'email': 'someguy@hisplace.com'})
 
     # from class EmailMixin:
     def test_email(self):
@@ -80,9 +82,17 @@ class testEmailMixin(PloneTestCase):
         sm.subscribe(MockEmailMixin.MOCK_NAME)
         emailMixin.email()
         self.assertEqual(len(mailHost.messages), 1)
+        mailHost.reset()
+        
+        emailMixin.setEmailTemplate('<p><span tal:replace="options/emailText"/></p>')
+        text = "Some random additional info"
+        emailMixin.email(text)
+        textParts = [x for x in mailHost.messages[0].walk() 
+                       if x.get('Content-Type','').find('text/plain') > -1]
+        payload = textParts[0].get_payload(decode=True)
+        self.failUnless(text in payload)
         
         self.logout()
-        
         
     # from class EmailMixin:
     def test_getEmailBody(self):
@@ -141,12 +151,10 @@ class MockMailHost:
         everything is ok and store the results in the messages instance var.
         """
 
-        headers = """To: %s
-From: %s
-Subject: %s
-""" % (mto, mfrom, subject)
-        
-        message = email.message_from_string(headers + "\n\n" + message)
+        message = email.message_from_string(message)
+        message['To'] = mto
+        message['From'] = mfrom
+        message['Subject'] = subject
         
         self.messages.append(message)
         
