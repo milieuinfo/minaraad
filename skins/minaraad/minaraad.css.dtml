@@ -11,6 +11,13 @@
 /* <dtml-with base_properties> (do not remove this :) */
 /* <dtml-call "REQUEST.set('portal_url', portal_url())"> (not this either :) */
 
+
+/* ---- Start content type textposition from icon --- */
+.contenttype-agendaitem, .actionMenu .contenttype-agendaitem a:hover,
+.contenttype-advisory, .actionMenu .contenttype-advisory a:hover {
+    padding-left: 18px;
+}
+/* ---- End content type textposition from icon --- */
     
 /* ---- Subscriptionspage --- */
 .listing .subscriptions-title th {
@@ -82,9 +89,24 @@ ul.AgendaItems li {
     margin-bottom: 30px;
 }
 
-.contenttype-agendaitem, .actionMenu .contenttype-agendaitem a:hover {
-    padding-left: 18px;
-}
 /* ---- End Hearing view --- */
 
+    
+/* --- Start Advisory View --- */
+
+.advisory_listing {
+    width: 700px;
+}
+.advisory_listdate {
+    width: 75px;
+}
+
+.advisory_listtitle {
+    width: 625px;
+}
+
+.advisory_listdownloads {
+    width: 200px;
+}      
+/* --- End Advisory View --- */
 /* </dtml-with> */

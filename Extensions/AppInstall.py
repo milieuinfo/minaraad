@@ -26,7 +26,6 @@ out = StringIO()
 def install(self):
     
     _configurePortalProps(self)
-    _configureKupu(self)
     
     out.write("Create folder structure")
     createFolderStructure(self)
@@ -56,6 +55,9 @@ def install(self):
     print >> out, "Adding extra folder views"
     _addExtraViews(self)
     
+    print >> out, "Setting specific views on certain folders"
+    _setViews(self)
+    
     return out.getvalue()
 
 def _configurePortalProps(portal):
@@ -69,6 +71,12 @@ def _configurePortalProps(portal):
     print >> out, "Customizing portal properties"
     # customize slots - add the slots to the portal folder
     portal._updateProperty('left_slots', LEFT_SLOTS)
+
+    # portal title
+    portal._updateProperty('title',PORTAL_TITLE)
+    #Email information
+    portal._updateProperty('email_from_address', EMAIL_FROM_ADDRESS)
+    portal._updateProperty('email_from_name', EMAIL_FROM_NAME)
 
     # customize navtree properties - idsNotToList
     props_tool = getToolByName(portal, 'portal_properties')
@@ -113,6 +121,20 @@ def _addExtraViews(portal):
             if not view in view_methods:
                 view_methods.append(view)
         type_.view_methods = tuple(view_methods)
+
+def _setViews(portal):
+    """Select different views for certain folders.
+    """
+    
+    for location in SELECT_VIEWS:
+        try:
+            folder = portal
+            for foldername in location.split('/'):
+                if foldername:
+                    folder = folder[foldername]
+            folder._setPropValue('layout', SELECT_VIEWS[location])
+        except:
+            out.write("can't set view on %s\n" % location)
 
 def setupMinaraadProperties(self, out):
     propsTool = getToolByName(self, 'portal_properties')
@@ -322,21 +344,6 @@ def _restrictLocallyAllowedTypes(portal):
             folder.setImmediatelyAddableTypes(restriction)
         except:
             out.write("can't set restriction on %s\n" % foldername)
-
-def _configureKupu(portal):
-    kupuTool = getToolByName(portal, 'kupu_library_tool')
-    linkable = list(kupuTool.getPortalTypesForResourceType('linkable'))
-    for type in LINKABLE:
-        if type not in linkable:
-            linkable.append(type)
-    # kupu_library_tool has an idiotic interface, basically written purely to
-    # work with its configuration page. :-(
-    try:
-        kupuTool.updateResourceTypes(({'resource_type' : 'linkable',
-                                       'old_type'      : 'linkable',
-                                       'portal_types'  :  linkable},))
-    except:
-        out.write("Raargh, kupu error.\n")
 
 def uninstall(self):
     out = StringIO()

@@ -98,7 +98,7 @@
                           tal:condition="python:item.get_size() &gt; 0"
                           tal:omit-tag="">
                         <br />
-                        <a tal:attributes="href string:${item/absolute_url}/attachment;
+                        <a tal:attributes="href string:${item/absolute_url};
                                            class item_type_class"
                            tal:content="item/filename"> 
                             Attachment

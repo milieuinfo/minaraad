@@ -1,0 +1,25 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
+      lang="en-US"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="minaraad">
+
+    <body>
+    <metal:block metal:fill-slot="main">
+        <div metal:use-macro="here/document_actions/macros/document_actions">
+            Document actions (print, sendto etc)
+        </div>
+        <h1 tal:content="context/Title"
+            class="documentFirstHeading">Title</h1>
+
+        <div class="documentDescription" 
+             tal:content="context/Description" />
+
+        <tal:block tal:define="contentFilter python:{
+                            'sort_on': 'Date',
+                            'sort_order': 'reverse'}">
+            <br />
+            <div metal:use-macro="container/mina_listing_view/macros/listing" />
+        </tal:block>
+   </metal:block>
+   </body>
+</html>

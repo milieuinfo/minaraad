@@ -7,7 +7,7 @@
     <metal:block metal:define-macro="body">
     </metal:block>
     
-    <tal:block metal:define-macro="contactdetails">
+    <metal:block metal:define-macro="contactdetails">
         <table cellspacing="0">
             <tr tal:condition="contact/getName">
                 <td i18n:translate="label_name">Name</td>
@@ -38,6 +38,6 @@
                 <td tal:content="contact/getPhonenumber" />
             </tr>
         </table>
-    </tal:block>
+    </metal:block>
     </body>
 </html>
