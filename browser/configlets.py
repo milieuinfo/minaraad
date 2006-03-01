@@ -145,6 +145,12 @@ class SubscribersConfigletView(AbstractConfigletView):
         self.request = request
         self._context = [context]
         self._buildReferral()
-        #self.subscriptionManager = SubscriptionManager(self.context)
-        #self.themeManager = ThemeManager(self.context)
+        self.subscriptionManager = SubscriptionManager(self.context)
+        self.themeManager = ThemeManager(self.context)
+   
+    def _getThemeTitle(self, id):
+        # get rid of 'theme_' prefix
+        id = id[6:]
+        
+        return self.themeManager.getThemeTitle(id)
 

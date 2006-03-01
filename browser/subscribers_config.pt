@@ -7,8 +7,21 @@
              tal:define="dummy python:request.set('disable_border',1)" />
 
     <body>
-    <div metal:fill-slot="prefs_configlet_main">
-      
-    </div>
+    <div metal:fill-slot="prefs_configlet_main"
+     tal:define="showEdit view/showEditableFields">
+
+        <h1 i18n:translate="heading_subscribers_overview">Subscribers  overview</h1>
+    
+        <a class="link-parent"
+        tal:attributes="href string: $portal_url/plone_control_panel"
+        i18n:translate="label_up_to_plone_setup">
+            Up to Site Setup
+        </a>
+    
+        <p class="documentDescription" 
+        i18n:translate="description_themes_setup"
+        tal:condition="not:showEdit">
+        Themes settings for Site
+        </p>
     </body>
 </html>

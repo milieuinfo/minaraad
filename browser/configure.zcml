@@ -13,18 +13,18 @@
 
   <browser:page
       for="Products.minaraad.interfaces.IPortalPropertyContainer"
-      name="subscriptions_config.html"
-      class=".configlets.SubscriptionsConfigletView"
-      permission="zope2.View"
-      template="subscriptions_config.pt"
+      name="subscribers_config.html"
+      class=".configlets.SubscribersConfigletView"
+      permission="cmf.ManagePortal"
+      template="subscribers_config.pt"
     />
 
   <browser:page
       for="Products.minaraad.interfaces.IPortalPropertyContainer"
-      name="subscribers_config.html"
-      class=".configlets.SubscribersConfigletView"
+      name="subscriptions_config.html"
+      class=".configlets.SubscriptionsConfigletView"
       permission="zope2.View"
-      template="subscribers_config.pt"
+      template="subscriptions_config.pt"
     />
 
   <browser:page
