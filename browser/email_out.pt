@@ -28,7 +28,8 @@
 
             <tal:block tal:condition="not:canSend">
             <div class="formHelp" i18n:translate="help_email_out_already_sent">
-            An e-mail has already been sent out for this content object.
+            An e-mail has already been sent out for this content object on
+            <span tal:replace="view/sentDate" />.
             </div>
             </tal:block>
 
