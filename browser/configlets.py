@@ -4,7 +4,7 @@ from Products.minaraad.themes import ThemeManager
 from Products.minaraad.subscriptions import SubscriptionManager, \
                                             Subscription
 
-class AbstractConfigletView(BrowserView):
+class AbstractView(BrowserView):
     def __init__(self, context, request):
         BrowserView.__init__(self, context, request)
         self._buildReferral()
@@ -17,10 +17,10 @@ class AbstractConfigletView(BrowserView):
         if pos > -1:
             self.referring_url = self.referring_url[:pos]
         
-class MinaraadConfigletView(AbstractConfigletView):
+class MinaraadConfigletView(AbstractView):
     
     def __init__(self, context, request):
-        AbstractConfigletView.__init__(self, context, request)
+        AbstractView.__init__(self, context, request)
         self.themeManager = ThemeManager(context)
     
     def __call__(self):
@@ -73,7 +73,7 @@ class MinaraadConfigletView(AbstractConfigletView):
         self.themeManager.themes = editedThemes
 
 
-class SubscriptionsConfigletView(AbstractConfigletView):
+class SubscriptionsConfigletView(AbstractView):
     
     def __init__(self, context, request):
         self.request = request
@@ -139,7 +139,7 @@ class SubscriptionsConfigletView(AbstractConfigletView):
 
         self.subscriptionManager.subscriptions = subscriptions
 
-class SubscribersConfigletView(AbstractConfigletView):
+class SubscribersConfigletView(AbstractView):
     
     def __init__(self, context, request):
         self.request = request

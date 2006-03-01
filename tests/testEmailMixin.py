@@ -87,7 +87,7 @@ class testEmailMixin(PloneTestCase):
         emailMixin.email(testing=True)
         emailMixin.email(testing=True)
         # and one real email
-        emailMixin.email()
+        emailMixin.email(text='extra')
         self.failUnlessRaises(AlreadySentError, emailMixin.email)
         emailMixin.setEmailSent(None)
         mailHost.reset()
@@ -100,7 +100,7 @@ class testEmailMixin(PloneTestCase):
         self.assertEqual(len(mailHost.messages), 1)
         mailHost.reset()
         
-        emailMixin.setEmailTemplate('<p><span tal:replace="options/emailText"/></p>')
+        emailMixin.setEmailTemplate('<p>boooo</p>')
         text = "Some random additional info"
         emailMixin.email(text, 'email@someotherguy')
         emailMixin.setEmailSent(None)

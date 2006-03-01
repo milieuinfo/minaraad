@@ -20,10 +20,28 @@
   	<form action="email_out"
           method="get"
           name="email_out"
-          tal:attributes="action string:${context/absolute_url}/$template_id">
+          tal:attributes="action string:${context/absolute_url}/$template_id"
+          tal:define="canSend view/canSend">
     
         <fieldset>
             <legend i18n:translate="legend_email_out">E-Mail Out</legend>
+
+            <tal:block tal:condition="not:canSend">
+            <div class="formHelp" i18n:translate="help_email_out_already_sent">
+            An e-mail has already been sent out for this content object.
+            </div>
+            </tal:block>
+
+            <tal:block tal:condition="canSend">
+            <div class="formHelp" i18n:translate="help_email_out">
+            Send out an e-mail to all sbuscribers pertaining to this item.
+            The format of the e-mail can be specified on the 'edit' tab of
+            this content type using the 'emailTemplate' field.  If the
+            'Send As Text' checkbox is checked below, the e-mail is only
+            sent to the people in the 'To' field.  Once a non-test e-mail
+            has been sent out, no further e-mail's can be sent from this
+            particular tab.
+            </div>
             
             <div class="field"
                  tal:define="to_ request/to|view/defaultTo">
@@ -44,17 +62,17 @@
             </div>            
 
             <div class="field">
-                <label for="only_to_specified" i18n:translate="label_only_to_specified">Only To Specified</label>
+                <label for="send_as_test" i18n:translate="label_send_as_test">Send As Test?</label>
 
-                <div class="formHelp" i18n:translate="help_only_to_specified">
-                Should the e-mail only be sent out to those specified in the
-                above To field?
+                <div class="formHelp" i18n:translate="help_send_as_test">
+                Test e-mails can be sent as frequently as needed but only get
+                sent to the email addreses in the above To field.
                 </div>
     
                 <input type="checkbox"
-                       name="rs_toggle"
-                       value="#"
-                       id="rs_toggle"
+                       name="send_as_test"
+                       value="1"
+                       id="send_as_test"
                        class="noborder"
                        checked="checked"
                        tabindex=""
@@ -62,7 +80,7 @@
             </div>
 
             <div class="field">
-                <label for="to" i18n:translate="label_email_out_additional">Additional Message</label>
+                <label for="additional" i18n:translate="label_email_out_additional">Additional Message</label>
 
                 <div class="formHelp" i18n:translate="help_email_out_additional">
                 Additional message text (text used from emailTemplate field is
@@ -74,6 +92,18 @@
                           tal:attributes="tabindex tabindex/next"></textarea>
             </div>            
 
+            <div class="formControls">
+                <input class="context"
+                       tabindex=""
+                       type="submit"
+                       name="send"
+                       value="Send"
+                       i18n:attributes="value label_send;"
+                       tal:attributes="tabindex tabindex/next;"
+                       />
+            </div>
+
+            </tal:block>
         </fieldset>
     </form>
     

@@ -118,7 +118,18 @@ class EmailMixin:
             else:
                 addresses += additionalAddresses
             
-        emailBody = self.getEmailBody(emailText=text)
+        emailBody = self.getEmailBody()
+        if text:
+            emailBody['text/plain'] += '''
+
+Additional Message:
+%s''' % text
+            emailBody['text/html'] += '''
+<dl>
+<dt style="font-weight: bold">Additional Message</dt>
+<dd>%s</dd>
+</dl>
+''' % text
         
         portal = getToolByName(self, 'portal_url').getPortalObject()
         plone_utils = getToolByName(portal, 'plone_utils')
@@ -149,6 +160,7 @@ class EmailMixin:
                 log_exc('Could not send email from %s to %s regarding issue ' \
                         'in tracker %s\ntext is:\n%s\n' \
                         % (fromAddress, address, self.absolute_url(), emailBody,))
+    
     security.declarePublic('getEmailBody')
     def getEmailBody(self, *args, **kwargs):
         """
