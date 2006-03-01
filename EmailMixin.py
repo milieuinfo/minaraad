@@ -38,6 +38,7 @@ from Products.CMFPlone.utils import log_exc, log
 from Products.minaraad.subscriptions import SubscriptionManager
 from email.MIMEText import MIMEText
 from email.MIMEMultipart import MIMEMultipart
+from DateTime import DateTime
 ##/code-section module-header
 
 schema = Schema((
@@ -56,6 +57,16 @@ schema = Schema((
     
     ),
 
+    DateTimeField(
+        name='emailSent',
+        widget=CalendarWidget(
+            visible=-1,
+            label='Emailsent',
+            label_msgid='minaraad_label_emailSent',
+            i18n_domain='minaraad',
+        )
+    ),
+
 ),
 )
 
@@ -65,6 +76,8 @@ schema = Schema((
 EmailMixin_schema = schema.copy()
 
 ##code-section after-schema #fill in your manual code here
+class AlreadySentError(Exception):
+    pass
 ##/code-section after-schema
 
 class EmailMixin:
@@ -79,16 +92,26 @@ class EmailMixin:
     # Methods
 
     security.declarePublic('email')
-    def email(self, text='', additionalAddresses=None):
+    def email(self, text='', additionalAddresses=None, testing=False):
         """
         Take the result from getEmailBody (an abstract method) and email
         to appropriate persons.
         """
         
-        sm = SubscriptionManager(self)
-        addresses = [x.email
-                     for x in sm.emailSubscribers(self.getSubscriptionId()) 
-                     if hasattr(x, 'email')]
+        if self.getEmailSent() is not None:
+            raise AlreadySentError("Content object at '%s' has already had " \
+                                   "an e-mail sent" \
+                                   % '/'.join(self.getPhysicalPath()))
+        
+        if not testing:
+            sm = SubscriptionManager(self)
+            addresses = [x.email
+                         for x in sm.emailSubscribers(self.getSubscriptionId()) 
+                         if hasattr(x, 'email')]
+            self.setEmailSent(DateTime())
+        else:
+            addresses = []
+            
         if additionalAddresses:
             if isinstance(additionalAddresses, basestring):
                 addresses.append(additionalAddresses)

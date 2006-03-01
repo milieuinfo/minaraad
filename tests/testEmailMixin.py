@@ -47,6 +47,7 @@ from Products.minaraad.EmailMixin import EmailMixin
 import email
 from Products.Archetypes.atapi import registerType, BaseContent, BaseSchema
 from Products.minaraad.subscriptions import SubscriptionManager
+from Products.minaraad.EmailMixin import AlreadySentError
 ##/code-section module-beforeclass
 
 
@@ -78,15 +79,31 @@ class testEmailMixin(PloneTestCase):
         self.assertEqual(len(mailHost.messages), 0)
         mailHost.reset()
         
+        # lets test to make sure only-one-email-can-be-sent feature works
+        self.failUnlessRaises(AlreadySentError, emailMixin.email)
+        emailMixin.setEmailSent(None)
+
+        # now lets test that unlimited test emails can be sent
+        emailMixin.email(testing=True)
+        emailMixin.email(testing=True)
+        # and one real email
+        emailMixin.email()
+        self.failUnlessRaises(AlreadySentError, emailMixin.email)
+        emailMixin.setEmailSent(None)
+        mailHost.reset()
+
+        
         sm = SubscriptionManager(self.portal)
         sm.subscribe(MockEmailMixin.MOCK_NAME)
         emailMixin.email()
+        emailMixin.setEmailSent(None)
         self.assertEqual(len(mailHost.messages), 1)
         mailHost.reset()
         
         emailMixin.setEmailTemplate('<p><span tal:replace="options/emailText"/></p>')
         text = "Some random additional info"
         emailMixin.email(text, 'email@someotherguy')
+        emailMixin.setEmailSent(None)
         msg = mailHost.messages[0]
         textParts = [x for x in msg.walk() 
                        if x.get('Content-Type','').find('text/plain') > -1]
