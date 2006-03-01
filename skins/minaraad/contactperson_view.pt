@@ -5,6 +5,36 @@
     
     <body>
     <metal:block metal:define-macro="body">
+        <table cellspacing="0">
+            <tr tal:condition="context/getName">
+                <td i18n:translate="label_name">Name</td>
+                <td>:</td>
+                <td tal:content="context/getName" />
+            </tr>
+            <tr tal:condition="context/getJobtitle">
+                <td i18n:translate="label_jobtitle">Function</td>
+                <td>:</td>
+                <td tal:content="context/getJobtitle" />
+            </tr>
+            <tr tal:condition="context/getDepartment">
+                <td i18n:translate="minaraad_label_department">Department</td>
+                <td>:</td>
+                <td tal:content="context/getDepartment" />
+            </tr>
+            <tr tal:condition="context/getEmail">
+                <td i18n:translate="label_emailaddress">Emailaddress</td>
+                <td>:</td>
+                <td>
+                    <a tal:attributes="href string:mailto:${context/getEmail}"
+                        tal:content="context/getEmail" />
+                </td>
+            </tr>
+            <tr tal:condition="context/getPhonenumber">
+                <td i18n:translate="label_phonenumber">Phonenumber</td>
+                <td>:</td>
+                <td tal:content="context/getPhonenumber" />
+            </tr>
+        </table>
     </metal:block>
     
     <metal:block metal:define-macro="contactdetails">

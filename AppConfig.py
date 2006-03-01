@@ -83,7 +83,13 @@ EXTRA_VIEWS = {
 # is the view to be selected for that folder.
 SELECT_VIEWS = {
     '/hoorzittingen': 'hearing_listing_view',
+    '/adviezen/adv_2006': 'advisory_listing_view',
     '/adviezen/adv_2005': 'advisory_listing_view',
+    '/adviezen/adv_2004': 'advisory_listing_view',
+    '/adviezen/adv_2003': 'advisory_listing_view',
+    '/adviezen/adv_2002': 'advisory_listing_view',
+    '/adviezen/adv_2001': 'advisory_listing_view',
+    '/adviezen/adv_1999': 'advisory_listing_view',
     }
 
 # Kupu Configuration LINKABLE is a list of content types to which we
