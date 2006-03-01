@@ -154,12 +154,12 @@ def setupminaraad_folder_workflow(self, workflow):
                                 )
 
     transitionDef = workflow.transitions['publish_internal']
-    transitionDef.setProperties(title="""Publish internally""",
+    transitionDef.setProperties(title="""publish_internal""",
                                 new_state_id="""restricted""",
                                 trigger_type=1,
                                 script_name="""""",
                                 after_script_name="""""",
-                                actbox_name="""Publish internally""",
+                                actbox_name="""publish_internal""",
                                 actbox_url="""""",
                                 actbox_category="""workflow""",
                                 props={'guard_roles': 'Owner;Reviewer;Manager'},

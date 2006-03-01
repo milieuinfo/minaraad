@@ -117,7 +117,6 @@ class testHearing(MainTestCase):
         self.hoorzitting.getEnddate       # Eind tijd
         self.hoorzitting.getTheme         # Thema's
         self.hoorzitting.getBody          # Body
-        self.hoorzitting.getPlaintext     # Platte tekst
         self.hoorzitting.getContact       # Contactpersoon
 
 

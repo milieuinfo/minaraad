@@ -71,7 +71,7 @@ class testEmailMixin(PloneTestCase):
         emailMixin = MockEmailMixin('blah')
         emailMixin = emailMixin.__of__(self.portal)
         emailMixin.setTitle('Blah')
-        emailMixin.setEmailTemplate('<p><span tal:replace="context/Title"/></p>')
+        emailMixin.setEmailTemplate('<p>Blah</p>')
 
         emailMixin.email()
         
@@ -122,7 +122,7 @@ class testEmailMixin(PloneTestCase):
         emailMixin = MockEmailMixin('blah')
         emailMixin = emailMixin.__of__(self.portal)
         emailMixin.setTitle('Blah')
-        emailMixin.setEmailTemplate('<p><span tal:replace="context/Title"/></p>')
+        emailMixin.setEmailTemplate('<p>Blah</p>')
         
         email = emailMixin.getEmailBody()
         self.assertEquals(str(email['text/html']).strip(), '<p>Blah</p>')

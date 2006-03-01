@@ -10,7 +10,7 @@ EMAIL_FROM_NAME = 'Webmaster MiNa-Raad'
 LOCAL_TIME_FORMAT = '%d-%m-%Y'
 lOCAL_LONG_TIME_FORMAT = '%d-%m-%Y %H:%M'
 
-DEPENDENCIES = ['PasswordResetTool', 'CompoundField']
+DEPENDENCIES = ['PasswordResetTool']
 
 STYLESHEETS = [{'id': 'minaraad.css'}]
 

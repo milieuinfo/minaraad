@@ -44,7 +44,7 @@ def setupminaraad_workflow(self, workflow):
     # Add additional roles to portal
     portal = getToolByName(self,'portal_url').getPortalObject()
     data = list(portal.__ac_roles__)
-    for role in ['Author', 'Council Member']:
+    for role in ['Author', 'Pending', 'Council Member']:
         if not role in data:
             data.append(role)
     portal.__ac_roles__ = tuple(data)
@@ -68,6 +68,7 @@ def setupminaraad_workflow(self, workflow):
     workflow.addManagedPermission('View')
     workflow.addManagedPermission('Modify portal content')
     workflow.addManagedPermission('List folder contents')
+    workflow.addManagedPermission('widget:label')
 
     for l in []:
         if not l in workflow.worklists.objectValues():
@@ -80,7 +81,7 @@ def setupminaraad_workflow(self, workflow):
     ## States initialization
 
     stateDef = workflow.states['pending_private']
-    stateDef.setProperties(title="""Pending""",
+    stateDef.setProperties(title="""pending_private""",
                            transitions=['publish', 'reject', 'retract'])
     stateDef.setPermission('Access contents information',
                            0,
@@ -94,6 +95,9 @@ def setupminaraad_workflow(self, workflow):
     stateDef.setPermission('List folder contents',
                            0,
                            ['Author', 'Owner', 'Reviewer', 'Manager'])
+    stateDef.setPermission('widget:label',
+                           0,
+                           ['Pending'])
 
     stateDef = workflow.states['published']
     stateDef.setProperties(title="""published""",
@@ -178,12 +182,12 @@ def setupminaraad_workflow(self, workflow):
     ## Transitions initialization
 
     transitionDef = workflow.transitions['restricted_publish']
-    transitionDef.setProperties(title="""restricted publish""",
+    transitionDef.setProperties(title="""restricted_publish""",
                                 new_state_id="""restricted""",
                                 trigger_type=1,
                                 script_name="""""",
                                 after_script_name="""""",
-                                actbox_name="""restricted publish""",
+                                actbox_name="""restricted_publish""",
                                 actbox_url="""""",
                                 actbox_category="""workflow""",
                                 props={'guard_roles': 'Owner;Author;Manager'},
@@ -214,12 +218,12 @@ def setupminaraad_workflow(self, workflow):
                                 )
 
     transitionDef = workflow.transitions['reject2']
-    transitionDef.setProperties(title="""Reject""",
+    transitionDef.setProperties(title="""reject2""",
                                 new_state_id="""revisioning""",
                                 trigger_type=1,
                                 script_name="""""",
                                 after_script_name="""""",
-                                actbox_name="""Reject""",
+                                actbox_name="""reject2""",
                                 actbox_url="""""",
                                 actbox_category="""workflow""",
                                 props={'guard_permissions': 'Review portal contents'},
@@ -250,24 +254,24 @@ def setupminaraad_workflow(self, workflow):
                                 )
 
     transitionDef = workflow.transitions['retract2']
-    transitionDef.setProperties(title="""Retract""",
+    transitionDef.setProperties(title="""retract2""",
                                 new_state_id="""revisioning""",
                                 trigger_type=1,
                                 script_name="""""",
                                 after_script_name="""""",
-                                actbox_name="""Retract""",
+                                actbox_name="""retract2""",
                                 actbox_url="""""",
                                 actbox_category="""workflow""",
                                 props={'guard_roles': 'Manager;Owner'},
                                 )
 
     transitionDef = workflow.transitions['submit2']
-    transitionDef.setProperties(title="""Submit""",
+    transitionDef.setProperties(title="""submit2""",
                                 new_state_id="""pending_revisioning""",
                                 trigger_type=1,
                                 script_name="""""",
                                 after_script_name="""""",
-                                actbox_name="""Submit""",
+                                actbox_name="""submit2""",
                                 actbox_url="""""",
                                 actbox_category="""workflow""",
                                 props={'guard_roles': 'Manager;Owner'},

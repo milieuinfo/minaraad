@@ -29,9 +29,6 @@ from AccessControl import ClassSecurityInfo
 from Products.Archetypes.atapi import *
 from Products.minaraad.config import *
 
-# additional imports from tagged value 'import'
-from Products.TemplateFields import ZPTField
-
 ##code-section module-header #fill in your manual code here
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.utils import log_exc, log
@@ -44,17 +41,14 @@ from DateTime import DateTime
 schema = Schema((
 
     TextField(
-        name='plaintext',
-        widget=TextAreaWidget(
-            label='Plaintext',
-            label_msgid='minaraad_label_plaintext',
-            i18n_domain='minaraad',
-        )
-    ),
-
-    ZPTField(
         name='emailTemplate',
-    
+        allowable_content_types=('text/plain', 'text/structured', 'text/html', 'application/msword',),
+        widget=RichWidget(
+            label="E-Mail Template",
+            label_msgid='minaraad_label_emailTemplate',
+            i18n_domain='minaraad',
+        ),
+        default_output_type='text/html'
     ),
 
     DateTimeField(
@@ -160,7 +154,6 @@ Additional Message:
                 log_exc('Could not send email from %s to %s regarding issue ' \
                         'in tracker %s\ntext is:\n%s\n' \
                         % (fromAddress, address, self.absolute_url(), emailBody,))
-    
     security.declarePublic('getEmailBody')
     def getEmailBody(self, *args, **kwargs):
         """
