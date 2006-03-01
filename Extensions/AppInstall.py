@@ -82,6 +82,14 @@ def _configurePortalProps(portal):
     props_tool = getToolByName(portal, 'portal_properties')
     props_tool.navtree_properties._updateProperty('idsNotToList',
                                                   tuple(IDS_NOT_TO_LIST))
+                                                  
+    # customize navtree_properties - metaTypesNotToList
+    types_tool = getToolByName(portal, 'portal_types')
+    types = types_tool.listContentTypes()
+    metaTypesNotToList = [type_ for type_ in types 
+                          if type_ not in TYPES_TO_LIST]
+    props_tool.navtree_properties._updateProperty('metaTypesNotToList',
+                                                  tuple(metaTypesNotToList))
 
 def createFolderStructure(portal):
     """Create the initial folders in the root of the portal

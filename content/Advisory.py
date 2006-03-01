@@ -43,6 +43,7 @@ schema = Schema((
 
     DateTimeField(
         name='date',
+        index="DateIndex:brains",
         widget=CalendarWidget(
             label='Date',
             label_msgid='minaraad_label_date',

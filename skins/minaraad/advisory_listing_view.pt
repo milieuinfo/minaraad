@@ -15,8 +15,7 @@
              tal:content="context/Description" />
 
         <tal:block tal:define="contentFilter python:{
-                            'sort_on': 'Date',
-                            'sort_order': 'reverse'}">
+                            'sort_on': 'getDate'}">
             <br />
             <div metal:use-macro="container/mina_listing_view/macros/listing" />
         </tal:block>

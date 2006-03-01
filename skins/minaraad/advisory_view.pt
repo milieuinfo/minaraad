@@ -39,26 +39,27 @@
             tal:condition="context/getBody" />
         <!-- End text -->
         <br />
-        <div tal:condition="context/getAttachments"
-             i18n:translate="minaraad_label_attachments"
-             class="hearingsubheader2">Attachments</div>
+        <div tal:condition="context/getAttachments">
+            <div i18n:translate="minaraad_label_attachments"
+                 class="hearingsubheader2">Attachments</div>
 
-        <div tal:repeat="item context/getAttachments">
-            <span tal:define="item_type_class python:'contenttype-' + normalizeString(context['portal_type'])" 
-                    tal:condition="python:item.get_size() &gt; 0"
-                    tal:omit-tag="">
-                <a tal:attributes="href string:${item/absolute_url};
-                                    class item_type_class"
-                    tal:content="item/filename"> 
-                    Attachment
-                </a>
-                <span class="filesize" 
-                        tal:define="size python:item.getObjSize(item);"
-                        tal:condition="size"
-                        tal:content="size">
-                    257 KB
+            <div tal:repeat="item context/getAttachments">
+                <span tal:define="item_type_class python:'contenttype-' + normalizeString(context['portal_type'])" 
+                        tal:condition="python:item.get_size() &gt; 0"
+                        tal:omit-tag="">
+                    <a tal:attributes="href string:${item/absolute_url};
+                                        class item_type_class"
+                        tal:content="item/filename"> 
+                        Attachment
+                    </a>
+                    <span class="filesize" 
+                            tal:define="size python:item.getObjSize(item);"
+                            tal:condition="size"
+                            tal:content="size">
+                        257 KB
+                    </span>
                 </span>
-            </span>
+            </div>
         </div>
     </metal:block>
     </body>

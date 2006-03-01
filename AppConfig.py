@@ -6,6 +6,10 @@ PORTAL_TITLE = 'MiNa-Raad'
 EMAIL_FROM_ADDRESS = 'postmaster@zestsoftware.nl'
 EMAIL_FROM_NAME = 'Webmaster MiNa-Raad'
 
+# Site Wide Properties
+LOCAL_TIME_FORMAT = '%d-%m-%Y'
+lOCAL_LONG_TIME_FORMAT = '%d-%m-%Y %H:%M'
+
 DEPENDENCIES = ['PasswordResetTool', 'CompoundField']
 
 STYLESHEETS = [{'id': 'minaraad.css'}]
