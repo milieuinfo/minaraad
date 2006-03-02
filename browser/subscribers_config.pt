@@ -7,8 +7,7 @@
              tal:define="dummy python:request.set('disable_border',1)" />
 
     <body>
-    <div metal:fill-slot="prefs_configlet_main"
-     tal:define="showEdit view/showEditableFields">
+    <div metal:fill-slot="prefs_configlet_main">
 
         <h1 i18n:translate="heading_subscribers_overview">Subscribers  overview</h1>
     
@@ -18,10 +17,6 @@
             Up to Site Setup
         </a>
     
-        <p class="documentDescription" 
-        i18n:translate="description_themes_setup"
-        tal:condition="not:showEdit">
-        Themes settings for Site
-        </p>
+    </div>
     </body>
 </html>

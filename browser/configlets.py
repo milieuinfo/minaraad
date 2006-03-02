@@ -6,8 +6,13 @@ from Products.minaraad.subscriptions import SubscriptionManager, \
 
 class AbstractView(BrowserView):
     def __init__(self, context, request):
-        BrowserView.__init__(self, context, request)
+        self.request = request
+        self._context = [context]
         self._buildReferral()
+
+    def _getContext(self):
+        return self._context[0]
+    context = property(_getContext)
 
     def _buildReferral(self):
         self.referring_url = (self.request.get('referring_url', None) or
@@ -76,15 +81,9 @@ class MinaraadConfigletView(AbstractView):
 class SubscriptionsConfigletView(AbstractView):
     
     def __init__(self, context, request):
-        self.request = request
-        self._context = [context]
-        self._buildReferral()
+        AbstractView.__init__(self, context, request)
         self.subscriptionManager = SubscriptionManager(self.context)
         self.themeManager = ThemeManager(self.context)
-
-    def _getContext(self):
-        return self._context[0]
-    context = property(_getContext)
 
     def __call__(self):
         request = self.request
@@ -140,17 +139,7 @@ class SubscriptionsConfigletView(AbstractView):
         self.subscriptionManager.subscriptions = subscriptions
 
 class SubscribersConfigletView(AbstractView):
-    
+
     def __init__(self, context, request):
-        self.request = request
-        self._context = [context]
-        self._buildReferral()
-        self.subscriptionManager = SubscriptionManager(self.context)
-        self.themeManager = ThemeManager(self.context)
-   
-    def _getThemeTitle(self, id):
-        # get rid of 'theme_' prefix
-        id = id[6:]
-        
-        return self.themeManager.getThemeTitle(id)
+        AbstractView.__init__(self, context, request)
 
