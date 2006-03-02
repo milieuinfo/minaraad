@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minaraad\n"
-"POT-Creation-Date: 2006-02-28 14:26+0000\n"
+"POT-Creation-Date: 2006-03-02 09:06+0000\n"
 "PO-Revision-Date: Mon Aug  8 12:16:21 2005\n"
 "Last-Translator: Rocky Burt <r.burt@zestsoftware.nl>\n"
 "Language-Team: Rocky Burt <r.burt@zestsoftware.nl>\n"
@@ -95,6 +95,30 @@ msgstr ""
 msgid "heading_themes_setup"
 msgstr ""
 
+#. Default: "Send out an e-mail to all sbuscribers pertaining to this item. The format of the e-mail can be specified on the 'edit' tab of this content type using the 'emailTemplate' field.  If the 'Send As Text' checkbox is checked below, the e-mail is only sent to the people in the 'To' field.  Once a non-test e-mail has been sent out, no further e-mail's can be sent from this particular tab."
+msgid "help_email_out"
+msgstr ""
+
+#. Default: "Additional message text (text used from emailTemplate field is considered master e-mail text)."
+#: browser/email_out.pt
+msgid "help_email_out_additional"
+msgstr ""
+
+#. Default: "An e-mail has already been sent out for this content type on"
+#: browser/email_out.pt
+msgid "help_email_out_already_sent"
+msgstr ""
+
+#. Default: "Comma-separated list of e-mail addresses to send this out to."
+#: browser/email_out.pt
+msgid "help_email_out_to"
+msgstr ""
+
+#. Default: " Test e-mails can be sent as frequently as needed but only get sent to the email addresses in the above "To" field."
+#: browser/email_out.pt
+msgid "help_send_as_test"
+msgstr ""
+
 #. Default: "Name of the new theme to create."
 #: browser/minaraad_config.pt"
 msgid "help_theme_name"
@@ -149,6 +173,15 @@ msgstr ""
 #. Default: "Edit"
 #: browser/minaraad_config.pt"
 msgid "label_edit"
+msgstr ""
+
+#. Default: "Additional Message"
+#: browser/email_out.pt
+msgid "label_email_out_additional"
+msgstr ""
+
+#. Default: "to"
+msgid "label_email_out_to"
 msgstr ""
 
 #. Default: "Emailaddress"
@@ -214,6 +247,21 @@ msgstr ""
 msgid "label_select_all_themes"
 msgstr ""
 
+#. Default: "Send"
+#: browser/email_out.pt
+msgid "label_send"
+msgstr ""
+
+#. Default: "Send Test e-mail"
+#: browser/email_out.pt
+msgid "label_send_as_test"
+msgstr ""
+
+#. Default: "Send e-mail"
+#: browser/email_out.pt
+msgid "label_sendemail"
+msgstr ""
+
 #. Default: "Speaker:"
 #: skins/minaraad/hearing_view.pt
 msgid "label_speaker"
@@ -269,6 +317,11 @@ msgstr ""
 #. Default: "Edit Theme"
 #: browser/minaraad_config.pt"
 msgid "legend_edit_theme"
+msgstr ""
+
+#. Default: "Send e-mail to subscribers"
+#: browser/email_out.pt
+msgid "legend_sendemail"
 msgstr ""
 
 #. Default: "More"
@@ -443,6 +496,11 @@ msgstr ""
 #. Default: "Email"
 #: content/ContactPerson.py
 msgid "minaraad_label_email"
+msgstr ""
+
+#. Default: "Emailsent"
+#: EmailMixin.py
+msgid "minaraad_label_emailSent"
 msgstr ""
 
 #. Default: "Emailtemplate"

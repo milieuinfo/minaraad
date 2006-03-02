@@ -65,7 +65,7 @@ schema = Schema((
         ),
         allowed_types=('ContactPerson',),
         multiValued=1,
-        relationship='pressreleases_contact'
+        relationship='pressrelease_contact'
     ),
 
 ),

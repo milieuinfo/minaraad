@@ -134,7 +134,7 @@ schema = Schema((
         ),
         allowed_types=('ContactPerson',),
         multiValued=1,
-        relationship='hearings_contact'
+        relationship='hearing_contact'
     ),
 
 ),

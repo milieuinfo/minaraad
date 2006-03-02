@@ -84,7 +84,7 @@ schema = Schema((
         ),
         allowed_types=('ContactPerson',),
         multiValued=1,
-        relationship='studys_contact'
+        relationship='study_contact'
     ),
 
 ),

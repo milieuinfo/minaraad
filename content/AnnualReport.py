@@ -56,7 +56,7 @@ schema = Schema((
         ),
         allowed_types=('ContactPerson',),
         multiValued=1,
-        relationship='annualreports_contact'
+        relationship='annualreport_contact'
     ),
 
 ),

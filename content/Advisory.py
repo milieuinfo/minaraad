@@ -91,7 +91,7 @@ ArrayField(        FileField(
         ),
         allowed_types=('ContactPerson',),
         multiValued=1,
-        relationship='advisorys_contact'
+        relationship='advisory_contact'
     ),
 
 ),
