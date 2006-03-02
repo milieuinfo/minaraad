@@ -43,8 +43,7 @@ from Products.minaraad.tests.MainTestCase import MainTestCase
 # Import the tested classes
 
 ##code-section module-beforeclass #fill in your manual code here
-from Products.CMFCore.WorkflowCore import WorkflowException
-from Products.PloneTestCase.setup import default_user
+from Products.CMFCore.utils import getToolByName
 ##/code-section module-beforeclass
 
 
@@ -57,20 +56,29 @@ class testWorkflow(MainTestCase):
     def afterSetUp(self):
         """ Make users for the tests and make a directory to work in
         """
-        self.catalog = self.portal.portal_catalog
-        self.workflow = self.portal.portal_workflow
-        self.userfolder = self.portal.acl_users
-        self.default_user = default_user
 
-        self.userfolder._doAddUser('member', 'secret', ['Member'], [])
-        self.userfolder._doAddUser('author', 'secret', ['Member'], [])
-        self.userfolder._doAddUser('reviewer', 'secret', ['Reviewer'], [])
-        self.userfolder._doAddUser('manager', 'secret', ['Manager'], [])
-        self.userfolder._doAddUser('cmember', 'secret', ['Council Member'], [])
+        MEMBERS = (
+            ('member', 'Member'),
+            ('author', 'Member'),
+            ('cmember', 'Council Member'),
+            ('reviewer', 'Reviewer'),
+            ('manager', 'Manager'),
+        )
+        membership = self.portal.portal_membership
+        for memberId, role in MEMBERS:
+            membership.addMember(memberId, 'secret', [role], [])
+
+        self.workflow = self.portal.portal_workflow
+        
+        self.login('manager')
+        self.portal.nieuwsbrieven.newsl_2006.invokeFactory('NewsLetter','newsletter')
+        self.portal.nieuwsbrieven.newsl_2006.newsletter
 
     # Manually created methods
 
     def test_private_state(self):
+        self.assertEqual(self._content_state(), 'private')
+
         wf = self.workflow
 
         self.login('manager')
@@ -85,6 +93,15 @@ class testWorkflow(MainTestCase):
 
         self.failUnless(doc)
         # self.assertEqual(wf.getInfoFor(self.portal.map.document,'review_state'), 'private')
+    def _content_state(self):
+        """Return the current state of the NewsLetter content object.
+        """
+
+        wfTool = getToolByName(self.portal, 'portal_workflow')
+        testletter = self.portal.nieuwsbrieven.newsl_2006.newsletter
+        status = wfTool.getStatusOf('minaraad_workflow', testletter)
+        return status['review_state']
+
 
 def test_suite():
     from unittest import TestSuite, makeSuite
