@@ -138,7 +138,7 @@ def setupminaraad_folder_workflow(self, workflow):
                                 actbox_name="""retract""",
                                 actbox_url="""""",
                                 actbox_category="""workflow""",
-                                props={},
+                                props={'guard_permissions': 'Review portal content'},
                                 )
 
     transitionDef = workflow.transitions['publish']
@@ -150,7 +150,7 @@ def setupminaraad_folder_workflow(self, workflow):
                                 actbox_name="""publish""",
                                 actbox_url="""""",
                                 actbox_category="""workflow""",
-                                props={},
+                                props={'guard_permissions': 'Review portal content'},
                                 )
 
     transitionDef = workflow.transitions['publish_internal']

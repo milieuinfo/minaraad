@@ -168,10 +168,10 @@ def setupminaraad_workflow(self, workflow):
                            transitions=['submit', 'publish', 'restricted_publish'])
     stateDef.setPermission('Access contents information',
                            0,
-                           ['Author', 'Owner', 'Manager'])
+                           ['Author', 'Owner', 'Reviewer', 'Manager'])
     stateDef.setPermission('View',
                            0,
-                           ['Author', 'Owner', 'Manager'])
+                           ['Author', 'Owner', 'Reviewer', 'Manager'])
     stateDef.setPermission('Modify portal content',
                            0,
                            ['Author', 'Owner', 'Manager'])
@@ -214,7 +214,7 @@ def setupminaraad_workflow(self, workflow):
                                 actbox_name="""publish""",
                                 actbox_url="""""",
                                 actbox_category="""workflow""",
-                                props={'guard_permissions': 'Review portal contents'},
+                                props={'guard_permissions': 'Review portal content'},
                                 )
 
     transitionDef = workflow.transitions['reject2']
@@ -226,7 +226,7 @@ def setupminaraad_workflow(self, workflow):
                                 actbox_name="""reject2""",
                                 actbox_url="""""",
                                 actbox_category="""workflow""",
-                                props={'guard_permissions': 'Review portal contents'},
+                                props={'guard_permissions': 'Review portal content'},
                                 )
 
     transitionDef = workflow.transitions['reject']
@@ -238,7 +238,7 @@ def setupminaraad_workflow(self, workflow):
                                 actbox_name="""reject""",
                                 actbox_url="""""",
                                 actbox_category="""workflow""",
-                                props={'guard_permissions': 'Review portal contents'},
+                                props={'guard_permissions': 'Review portal content'},
                                 )
 
     transitionDef = workflow.transitions['retract']

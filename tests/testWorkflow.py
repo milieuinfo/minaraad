@@ -43,6 +43,7 @@ from Products.minaraad.tests.MainTestCase import MainTestCase
 # Import the tested classes
 
 ##code-section module-beforeclass #fill in your manual code here
+from AccessControl import Unauthorized
 from Products.CMFCore.utils import getToolByName
 ##/code-section module-beforeclass
 
@@ -61,7 +62,7 @@ class testWorkflow(MainTestCase):
             ('member', 'Member'),
             ('author', 'Member'),
             ('cmember', 'Council Member'),
-            ('reviewer', 'Reviewer'),
+            ('reviewer', 'Member'),
             ('manager', 'Manager'),
         )
         membership = self.portal.portal_membership
@@ -71,35 +72,85 @@ class testWorkflow(MainTestCase):
         self.workflow = self.portal.portal_workflow
         
         self.login('manager')
-        self.portal.nieuwsbrieven.newsl_2006.invokeFactory('NewsLetter','newsletter')
-        self.portal.nieuwsbrieven.newsl_2006.newsletter
+        self.contentContainer = self.portal.nieuwsbrieven.newsl_2006
+        self.contentContainer.manage_addLocalRoles('author',['Author'])
+        self.contentContainer.manage_addLocalRoles('reviewer',['Reviewer'])
+        self.logout()
 
     # Manually created methods
 
     def test_private_state(self):
+        """ Test if the private state has the correct rights
+        """
         self.assertEqual(self._content_state(), 'private')
+        self.assertCannotCreateContent('member','NewsLetter')
+        self.assertCanCreateContent('author','NewsLetter')
+        self.assertCannotCreateContent('cmember','NewsLetter')
+        self.assertCannotCreateContent('reviewer','NewsLetter')
+        self.assertCanCreateContent('manager','NewsLetter')
+        self.assertHasTransitions('member')
+        self.assertHasTransitions('author', ['restricted_publish'])
+        self.assertHasTransitions('cmember')
+        self.assertHasTransitions('reviewer', ['publish'])
+        self.assertHasTransitions('manager',['restricted_publish','publish','submit'])
 
-        wf = self.workflow
+    def assertHasTransitions(self, memberId, possible=None):
+        """Test the available transitions for a member.  The 'possible'
+        param can be None, a string (for one transition) or a list of
+        strings (multiple transitions).
+        """
+        
+        if possible is None:
+            possible = []
+        elif isinstance(possible, basestring):
+            possible = [possible]
+        else:
+            possible = list(possible)
+            possible.sort()
+        
+        wfTool = getToolByName(self.portal, 'portal_workflow')
+        container = self.contentContainer
+       
+        self.login('manager')
+        container.invokeFactory('NewsLetter', 'someobj')
+        self.logout()
+         
+        self.login(memberId) 
+        transitions = wfTool.getTransitionsFor(container.someobj)
+        transitions = [x['id'] for x in transitions]
+        transitions.sort()
+        self.assertEqual(possible, transitions)
+        self.logout()
 
         self.login('manager')
-        self.portal.invokeFactory('Folder', id='map')
-        self.portal.map.manage_addLocalRoles('author',['Author'])
-        # self.assertEqual(wf.getInfoFor(self.portal.map,'review_state'), 'private')
-        # self.logout()
+        container.someobj.manage_delObjects(['someobj'])
+        self.logout()
 
-        # self.login('author')
-        self.portal.map.invokeFactory('Document', id='document')
-        doc = self.portal.map._getOb('document')
+    def assertCannotCreateContent(self, memberId, type_, err=Unauthorized):
+        container = self.contentContainer
+        self.login(memberId)
+        self.failUnlessRaises(err, container.invokeFactory, 
+                              type_, 'someobj')
+        self.logout()
 
-        self.failUnless(doc)
-        # self.assertEqual(wf.getInfoFor(self.portal.map.document,'review_state'), 'private')
+    def assertCanCreateContent(self, memberId, type_):
+        container = self.contentContainer
+        self.login(memberId)
+        container.invokeFactory(type_, 'someobj')
+        self.failUnless('someobj' in container.contentIds())
+        container.manage_delObjects(['someobj'])
+        self.logout()
+
     def _content_state(self):
         """Return the current state of the NewsLetter content object.
         """
 
         wfTool = getToolByName(self.portal, 'portal_workflow')
-        testletter = self.portal.nieuwsbrieven.newsl_2006.newsletter
+        self.login('manager')
+        self.contentContainer.invokeFactory('NewsLetter','newsletter')
+        testletter = self.contentContainer.newsletter
         status = wfTool.getStatusOf('minaraad_workflow', testletter)
+        self.logout()
         return status['review_state']
 
 
