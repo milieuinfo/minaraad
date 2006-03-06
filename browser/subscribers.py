@@ -33,17 +33,11 @@ class ExportSubscribersView(BrowserView):
         siteProperties = portalProperties.site_properties
         charset = siteProperties.getProperty('default_charset')
         
-        response = self.request.response
-        response['Content-Type'] = \
-            'application/vnd.ms-excel; charset=%s' % charset
-        response['Content-Disposition'] = \
-            'attachment; filename=%s-subscribers.csv' % safeSubscriberId
-        
         out = StringIO()
         
         fields = (('gender', 'Gender'), 
                   ('firstname', 'First Name'),
-                  ('lastname', 'Last Name'),
+                  ('fullname', 'Last Name'),
                   ('company', 'Company'),
                   ('street', 'Street'),
                   ('housenumber', 'House Number'),
@@ -73,12 +67,19 @@ class ExportSubscribersView(BrowserView):
             for pos, field in enumerate(fields):
                 id, title = field
                 
-                value = unicode(subscriber.getProperty(id), charset)
+                value = unicode(subscriber.getProperty(id, ''), charset)
                 value = value.replace(u'"', u'""')
                 out.write(u'"%s"' % value)
         
                 if pos < len(fields)-1:
                     out.write(u',')
-                out.write(u'\n')
+
+            out.write(u'\n')
             
+        response = self.request.response
+        response['Content-Type'] = \
+            'application/vnd.ms-excel; charset=%s' % charset
+        response['Content-Disposition'] = \
+            'attachment; filename=%s-subscribers.csv' % safeSubscriberId
+
         return out.getvalue().encode(charset)

@@ -22,21 +22,19 @@
         <form method="get"
               tal:attributes="action string:${context/absolute_url}/$template_id">
             
-            <div class="formControls">
-                <input class="context"
-                        type="submit"
-                        name="form.button.ExportEmail"
-                        value="Export Email Subscribers"
-                        i18n:attributes="value label_export_email;"
-                        tal:attributes="tabindex tabindex/next;" />
+        <input class="context"
+                type="submit"
+                name="form.button.ExportEmail"
+                value="Export Email Subscribers"
+                i18n:attributes="value label_export_email;"
+                tal:attributes="tabindex tabindex/next;" />
 
-                <input class="context"
-                        type="submit"
-                        name="form.button.ExportPost"
-                        value="Export Post Subscribers"
-                        i18n:attributes="value label_export_post;"
-                        tal:attributes="tabindex tabindex/next;" />
-            </div>
+        <input class="context"
+                type="submit"
+                name="form.button.ExportPost"
+                value="Export Post Subscribers"
+                i18n:attributes="value label_export_post;"
+                tal:attributes="tabindex tabindex/next;" />
         </form>
     </div>
     </body>
