@@ -21,7 +21,9 @@
     
         <form method="get"
               tal:attributes="action string:${context/absolute_url}/$template_id">
-            
+
+            <fieldset>
+                <legend i18n:translate="label_export_as_excel">Export As Excel Spreadsheet</legend>            
         <input class="context"
                 type="submit"
                 name="form.button.ExportEmail"
@@ -35,6 +37,8 @@
                 value="Export Post Subscribers"
                 i18n:attributes="value label_export_post;"
                 tal:attributes="tabindex tabindex/next;" />
+
+            </fieldset>
         </form>
     </div>
     </body>
