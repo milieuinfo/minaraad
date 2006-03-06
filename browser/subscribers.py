@@ -15,12 +15,14 @@ class ExportSubscribersView(BrowserView):
     def __call__(self):
         
         request = self.request
-        if request.get('form.button.Export', None) is not None:
-            return self.buildSubscriberCSV()
-        
+        if request.get('form.button.ExportEmail', None) is not None:
+            return self.buildSubscriberCSV('email')
+        elif request.get('form.button.ExportPost', None) is not None:
+            return self.buildSubscriberCSV('post')
+
         return self.index(template_id='export_subscribers')
 
-    def buildSubscriberCSV(self):
+    def buildSubscriberCSV(self, type_):
         obj = self.context.aq_explicit
         subscriberId = obj.__class__.__name__
         ploneUtils = getToolByName(self.context, 'plone_utils')
@@ -59,7 +61,15 @@ class ExportSubscribersView(BrowserView):
             
         out.write(u'\n')
         
-        for subscriber in self._subManager.postSubscribers(subscriberId):
+        if type_ == 'post':
+            subscribers = self._subManager.postSubscribers(subscriberId)
+        elif type_ == 'email':
+            subscribers = self._subManager.emailSubscribers(subscriberId)
+        else:
+            raise ValueError("The 'type' argument must be either " \
+                             "'post' or 'email'")
+        
+        for subscriber in subscribers:
             for pos, field in enumerate(fields):
                 id, title = field
                 
