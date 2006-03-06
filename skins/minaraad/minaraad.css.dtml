@@ -1,16 +1,5 @@
-/*
- *  This is the file where you put your CSS changes.
- *  You should preferrably use this and override the
- *  relevant properties you want to change here instead
- *  of customizing plone.css to survive upgrades. Writing
- *  your own plone.css only makes sense for very heavy
- *  customizations. Useful variables from Plone are
- *  documented at the bottom of this file.
- */
-
 /* <dtml-with base_properties> (do not remove this :) */
 /* <dtml-call "REQUEST.set('portal_url', portal_url())"> (not this either :) */
-
 
 /* ---- Start content type textposition from icon --- */
 .contenttype-agendaitem, .actionMenu .contenttype-agendaitem a:hover,
@@ -18,7 +7,7 @@
     padding-left: 18px;
 }
 /* ---- End content type textposition from icon --- */
-    
+
 /* ---- Subscriptionspage --- */
 .listing .subscriptions-title th {
     font-weight: bold;
@@ -59,7 +48,6 @@
 }
 
 /* ---- End Subscriptionspage --- */
-    
 
 /* ---- Hearing view --- */
 .hearingsubheader {
@@ -84,14 +72,14 @@
 .filesize {
     color: #808080;
 }
-    
+
 ul.AgendaItems li {
     margin-bottom: 30px;
 }
 
 /* ---- End Hearing view --- */
 
-    
+
 /* --- Start Advisory View --- */
 
 .advisory_listing {
@@ -108,6 +96,18 @@ ul.AgendaItems li {
 
 .advisory_listdownloads {
     width: 200px;
-}      
+}
 /* --- End Advisory View --- */
+
+/* --- Start Subscribers overview --- */
+dl.listsubscriptions dd {
+    margin-left: 0px;
+    line-height: 1em;
+}
+
+dl.listsubscriptions dt {
+    line-height: 1.5em;
+}
+/* --- Start Subscribers overview --- */ 
+
 /* </dtml-with> */

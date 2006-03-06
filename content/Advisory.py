@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+#
 # File: Advisory.py
 #
 # Copyright (c) 2006 by Zest Software
@@ -145,6 +147,8 @@ class Advisory(PostMixin, EmailMixin, ATCTContent):
 
 
     )
+
+    _at_rename_after_creation = True
 
     schema = Advisory_schema
 

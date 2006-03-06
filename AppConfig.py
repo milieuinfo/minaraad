@@ -103,6 +103,11 @@ LINKABLE = ['Advisory',
             'Event',
            ]
 
+#MEDIA is a list of media content types which can be inserted within
+#kupu.  By default only 'Image' is addable
+
+MEDIA = []
+
 # COLLECTION is a list of (folderish) content types which are used by
 # the kupu drawers to browse through the sites folder structure.
 

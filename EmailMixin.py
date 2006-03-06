@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+#
 # File: EmailMixin.py
 #
 # Copyright (c) 2006 by Zest Software
@@ -78,6 +80,8 @@ class EmailMixin:
     security = ClassSecurityInfo()
 
     allowed_content_types = []
+    _at_rename_after_creation = True
+
     schema = EmailMixin_schema
 
     ##code-section class-header #fill in your manual code here

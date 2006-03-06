@@ -3,20 +3,39 @@
       metal:use-macro="here/prefs_main_template/macros/master"
       i18n:domain="minaraad">
 
-<metal:block metal:fill-slot="top_slot"
-             tal:define="dummy python:request.set('disable_border',1)" />
-
-    <body>
-    <div metal:fill-slot="prefs_configlet_main">
-
-        <h1 i18n:translate="heading_subscribers_overview">Subscribers  overview</h1>
+    <metal:block metal:fill-slot="top_slot"
+                tal:define="dummy python:request.set('disable_border',1)" />
     
+    <body>
+    <metal:block metal:fill-slot="prefs_configlet_main">
+        
+        <h1 i18n:translate="heading_subscribers_overview">Subscribers  overview</h1>
+        
         <a class="link-parent"
         tal:attributes="href string: $portal_url/plone_control_panel"
         i18n:translate="label_up_to_plone_setup">
             Up to Site Setup
         </a>
-    
-    </div>
+
+        <dl class="listsubscriptions">
+            <dt i18n:translate="title_subscription">Subscriptions</dt>
+            <dd>
+                <a href="">Subscription name without theme</a>
+            </dd>
+            <dd>
+                <a href="">Subscription name without theme</a>
+            </dd>
+        </dl>
+        <dl>
+            <dt> Hearing</dt>
+            <dd>
+                <a href="">Theme name</a>
+            </dd>
+            <dd>
+                <a href="">Theme name</a>
+            </dd>
+        </dl>
+
+    </metal:block>
     </body>
 </html>

@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+#
 # File: PostMixin.py
 #
 # Copyright (c) 2006 by Zest Software
@@ -49,6 +51,8 @@ class PostMixin:
     security = ClassSecurityInfo()
 
     allowed_content_types = []
+    _at_rename_after_creation = True
+
     schema = PostMixin_schema
 
     ##code-section class-header #fill in your manual code here

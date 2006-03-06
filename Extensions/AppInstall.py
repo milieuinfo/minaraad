@@ -58,6 +58,7 @@ def install(self):
     print >> out, "Setting specific views on certain folders"
     _setViews(self)
     
+    #_configureKupu(self)
     return out.getvalue()
 
 def _configurePortalProps(portal):
@@ -353,6 +354,36 @@ def _restrictLocallyAllowedTypes(portal):
             folder.setImmediatelyAddableTypes(restriction)
         except:
             out.write("can't set restriction on %s\n" % foldername)
+
+def _configureKupu(portal):
+    kupuTool = getToolByName(portal, 'kupu_library_tool')
+    linkable = list(kupuTool.getPortalTypesForResourceType('linkable'))
+    mediaobject = list(kupuTool.getPortalTypesForResourceType('mediaobject'))
+    collection = list(kupuTool.getPortalTypesForResourceType('collection'))
+    for type in LINKABLE:
+        if type not in linkable:
+            linkable.append(type)
+    for type in MEDIA:
+        if type not in mediaobject:
+            mediaobject.append(type)
+    for type in COLLECTION:
+        if type not in collection:
+            collection.append(type)
+    # kupu_library_tool has an idiotic interface, basically written purely to
+    # work with its configuration page. :-(
+    try:
+        kupuTool.updateResourceTypes(({'resource_type' : 'linkable',
+                                       'old_type'      : 'linkable',
+                                       'portal_types'  :  linkable},
+                                      {'resource_type' : 'mediaobject',
+                                       'old_type'      : 'mediaobject',
+                                       'portal_types'  :  mediaobject},
+                                      {'resource_type' : 'collection',
+                                       'old_type'      : 'collection',
+                                       'portal_types'  :  collection},))
+    except:
+        out.write("Raargh, kupu error.\n")
+
 
 def uninstall(self):
     out = StringIO()

@@ -142,4 +142,9 @@ class SubscribersConfigletView(AbstractView):
 
     def __init__(self, context, request):
         AbstractView.__init__(self, context, request)
-
+    
+    def SubscriptionsList(self):
+        pass
+    
+    def getMembersOfSubscriptions():
+        pass

@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+#
 # File: AnnualReport.py
 #
 # Copyright (c) 2006 by Zest Software
