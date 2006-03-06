@@ -70,6 +70,10 @@ class testAdvisory(MainTestCase):
     def test_email_out(self):
         pass
 
+    # from class Advisory:
+    def test_export_subscribers(self):
+        pass
+
     # from class EmailMixin:
     def test_email(self):
         """
@@ -105,6 +109,9 @@ class testAdvisory(MainTestCase):
         self.advisory.getBody()
         self.advisory.getAttachments()
         self.advisory.getContact()
+
+    def test_subscribers_export(self):
+        pass
 
 
 def test_suite():

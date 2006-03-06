@@ -75,6 +75,9 @@ class testAnnualReport(MainTestCase):
 
     # Manually created methods
 
+    def test_subscribers_export(self):
+        pass
+
 
 def test_suite():
     from unittest import TestSuite, makeSuite

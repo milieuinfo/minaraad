@@ -140,6 +140,9 @@ class testEmailMixin(PloneTestCase):
         self.portal.MailHost = self.portal._original_MailHost
         del self.portal._original_MailHost
     
+    def test_subscribers_export(self):
+        pass
+
 
 def test_suite():
     from unittest import TestSuite, makeSuite

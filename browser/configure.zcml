@@ -35,4 +35,12 @@
       template="email_out.pt"
     />
 
+  <browser:page
+      for="*"
+      name="export_subscribers"
+      class=".subscribers.ExportSubscribersView"
+      permission="zope2.View"
+      template="export-subscribers.pt"
+  />
+
 </configure>

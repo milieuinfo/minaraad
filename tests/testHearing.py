@@ -121,6 +121,9 @@ class testHearing(MainTestCase):
         self.hoorzitting.getBody          # Body
         self.hoorzitting.getContact       # Contactpersoon
 
+    def test_subscribers_export(self):
+        pass
+
 
 def test_suite():
     from unittest import TestSuite, makeSuite

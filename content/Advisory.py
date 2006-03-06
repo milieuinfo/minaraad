@@ -146,6 +146,15 @@ class Advisory(PostMixin, EmailMixin, ATCTContent):
        },
 
 
+       {'action': "string:${object_url}/export_subscribers",
+        'category': "object",
+        'id': 'export_subscribers',
+        'name': 'Export Subscribers',
+        'permissions': ("View",),
+        'condition': 'python:1'
+       },
+
+
     )
 
     _at_rename_after_creation = True
