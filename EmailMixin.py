@@ -47,7 +47,9 @@ schema = Schema((
         allowable_content_types=('text/plain', 'text/structured', 'text/html', 'application/msword',),
         widget=RichWidget(
             label="E-Mail Template",
+            description="help_minaraad_emailTemplate",
             label_msgid='minaraad_label_emailTemplate',
+            description_msgid='minaraad_help_emailTemplate',
             i18n_domain='minaraad',
         ),
         default_output_type='text/html'

@@ -35,8 +35,8 @@
 
         <!-- Text -->
         <div class="bodytext"
-            tal:content="structure context/getBody"
-            tal:condition="context/getBody" />
+            tal:content="structure context/getEmailTemplate"
+            tal:condition="context/getEmailTemplate" />
         <!-- End text -->
         <br />
         <div tal:condition="context/getAttachments">

@@ -314,6 +314,11 @@ msgstr ""
 msgid "minaraad_help_email"
 msgstr ""
 
+#. Default: "help_minaraad_emailTemplate"
+#: EmailMixin.py
+msgid "minaraad_help_emailTemplate"
+msgstr ""
+
 #. Default: "goal"
 #: content/Hearing.py
 msgid "minaraad_help_goal"

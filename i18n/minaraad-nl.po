@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minaraad 0.1\n"
-"POT-Creation-Date: 2006-03-07 09:07+0000\n"
+"POT-Creation-Date: 2006-03-07 10:08+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: Mirella van Teulingen <m.van.teulingen@zestsoftware.nl>\n"
 "Language-Team: Nederlands <info@zestsoftware.nl>\n"
@@ -100,7 +100,8 @@ msgstr "Eén niveau omhoog"
 msgid "heading_themes_setup"
 msgstr "Thema's"
 
-#. Default: "Send out an e-mail to all subscribers pertaining to this item. The format of the e-mail can be specified on the 'edit' tab of this content type using the 'emailTemplate' field.  If the 'Send As Test' checkbox is checked below, the e-mail is only sent to the people in the 'To' field.  Once a non-test e-mail has been sent out, no further e-mail's can be sent from this particular tab."
+#. Default: "Send out an e-mail to all sbuscribers pertaining to this item. The format of the e-mail can be specified on the 'edit' tab of this content type using the 'emailTemplate' field.  If the 'Send As Text' checkbox is checked below, the e-mail is only sent to the people in the 'To' field.  Once a non-test e-mail has been sent out, no further e-mail's can be sent from this particular tab."
+#, fuzzy
 msgid "help_email_out"
 msgstr "Verzend een e-mail naar alle abonnees op dit content type. De inhoud van het e-mailbericht wordt opgehaald uit het veld \"emailTemplate\" onder het \"bewerken\" tabblad. Wanneer de checkbox \"Test email versturen\" is aangevinkt, wordt er alleen een e-mail gestuurd naar de e-mailadressen die in het \"Aan\"- veld zijn ingevuld. Wanneer het daadwerkelijke bericht is verstuurd, is het niet mogelijk op deze opnieuw te versturen."
 
@@ -396,6 +397,11 @@ msgstr ""
 #: content/ContactPerson.py
 msgid "minaraad_help_email"
 msgstr ""
+
+#. Default: "help_minaraad_emailTemplate"
+#: EmailMixin.py
+msgid "minaraad_help_emailTemplate"
+msgstr "De tekst in deze editor wordt gebruikt voor zowel de website als e-mailbericht voor de e-mail notificatie."
 
 #. Default: "goal"
 #: content/Hearing.py
