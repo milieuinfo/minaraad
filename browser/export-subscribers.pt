@@ -15,7 +15,7 @@
     
         <h1 class="documentFirstHeading">
             <span tal:replace="object_title" /> &mdash; 
-            <span i18n:translate="label_sendemail" 
+            <span i18n:translate="label_exportsubscribers" 
                   tal:omit-tag="">Export Subscriber List</span>
         </h1>
     
@@ -23,21 +23,24 @@
               tal:attributes="action string:${context/absolute_url}/$template_id">
 
             <fieldset>
-                <legend i18n:translate="label_export_as_excel">Export As Excel Spreadsheet</legend>            
-        <input class="context"
-                type="submit"
-                name="form.button.ExportEmail"
-                value="Export Email Subscribers"
-                i18n:attributes="value label_export_email;"
-                tal:attributes="tabindex tabindex/next;" />
+                <legend i18n:translate="label_export_as_excel">Export As Excel Spreadsheet</legend>
+                <div i18n:translate="export_descriptions">
+                    Click on the buttons below to export the e-mail or post subscribers on this content type as an Excelsheet.
+                </div>
+                <br />
+                <input class="context"
+                        type="submit"
+                        name="form.button.ExportEmail"
+                        value="Export Email Subscribers"
+                        i18n:attributes="value label_export_email;"
+                        tal:attributes="tabindex tabindex/next;" />
 
-        <input class="context"
-                type="submit"
-                name="form.button.ExportPost"
-                value="Export Post Subscribers"
-                i18n:attributes="value label_export_post;"
-                tal:attributes="tabindex tabindex/next;" />
-
+                <input class="context"
+                        type="submit"
+                        name="form.button.ExportPost"
+                        value="Export Post Subscribers"
+                        i18n:attributes="value label_export_post;"
+                        tal:attributes="tabindex tabindex/next;" />
             </fieldset>
         </form>
     </div>

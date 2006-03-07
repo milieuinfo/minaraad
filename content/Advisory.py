@@ -52,7 +52,6 @@ schema = Schema((
             i18n_domain='minaraad',
         )
     ),
-
     TextField(
         name='description',
         widget=TextAreaWidget(
@@ -61,7 +60,6 @@ schema = Schema((
             i18n_domain='minaraad',
         )
     ),
-
     TextField(
         name='body',
         allowable_content_types=('text/plain', 'text/structured', 'text/html', 'application/msword',),
@@ -72,19 +70,16 @@ schema = Schema((
         ),
         default_output_type='text/html'
     ),
-
-ArrayField(        FileField(
-            name='attachments',
-            widget=FileWidget(
-                label='Attachments',
-                label_msgid='minaraad_label_attachments',
-                i18n_domain='minaraad',
+ArrayField(            FileField(
+                name='attachments',
+                widget=FileWidget(
+                    label='Attachments',
+                    label_msgid='minaraad_label_attachments',
+                    i18n_domain='minaraad',
+                ),
+                storage=AttributeStorage()
             ),
-            storage=AttributeStorage()
-        ),
-    ),
-
-    ReferenceField(
+        ),    ReferenceField(
         name='contact',
         widget=ReferenceWidget(
             label='Contact',
@@ -98,7 +93,6 @@ ArrayField(        FileField(
 
 ),
 )
-
 ##code-section after-local-schema #fill in your manual code here
 ##/code-section after-local-schema
 
@@ -106,6 +100,7 @@ Advisory_schema = ATContentTypeSchema.copy() + \
     getattr(PostMixin, 'schema', Schema(())).copy() + \
     getattr(EmailMixin, 'schema', Schema(())).copy() + \
     schema.copy()
+
 
 ##code-section after-schema #fill in your manual code here
 Advisory_schema['description'].isMetadata = False

@@ -49,6 +49,11 @@ msgstr ""
 msgid "description_themes_setup"
 msgstr ""
 
+#. Default: "Click on the buttons below to export the e-mail or post subscribers on this content type as an Excelsheet."
+#: browser/export-subscribers.pt
+msgid "export_descriptions"
+msgstr ""
+
 #. Default: "Themes Settings"
 #: browser/minaraad_config.pt"
 msgid "heading_themes_setup"
@@ -130,6 +135,26 @@ msgstr ""
 
 #. Default: "to"
 msgid "label_email_out_to"
+msgstr ""
+
+#. Default: "Export As Excel Spreadsheet"
+#: browser/export-subscribers.pt
+msgid "label_export_as_excel"
+msgstr ""
+
+#. Default: "Export Email Subscribers"
+#: browser/export-subscribers.pt
+msgid "label_export_email"
+msgstr ""
+
+#. Default: "Export Post Subscribers"
+#: browser/export-subscribers.pt
+msgid "label_export_post"
+msgstr ""
+
+#. Default: "Export Subscriber List"
+#: browser/export-subscribers.pt
+msgid "label_exportsubscribers"
 msgstr ""
 
 #: skins/join_form.cpt

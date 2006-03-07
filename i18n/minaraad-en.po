@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minaraad 0.1\n"
-"POT-Creation-Date: 2006-03-02 09:06+0000\n"
+"POT-Creation-Date: 2006-03-07 09:07+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: Mirella van Teulingen <m.van.teulingen@zestsoftware.nl>\n"
 "Language-Team: English <info@zestsoftware.nl>\n"
@@ -77,6 +77,11 @@ msgstr ""
 #. Default: "Themes settings for Site"
 #: browser/minaraad_config.pt"
 msgid "description_themes_setup"
+msgstr ""
+
+#. Default: "Click on the buttons below to export the e-mail or post subscribers on this content type as an Excelsheet."
+#: browser/export-subscribers.pt
+msgid "export_descriptions"
 msgstr ""
 
 #. Default: "from"
@@ -187,6 +192,26 @@ msgstr ""
 #. Default: "Emailaddress"
 #: skins/minaraad/contactperson_view.pt
 msgid "label_emailaddress"
+msgstr ""
+
+#. Default: "Export As Excel Spreadsheet"
+#: browser/export-subscribers.pt
+msgid "label_export_as_excel"
+msgstr ""
+
+#. Default: "Export Email Subscribers"
+#: browser/export-subscribers.pt
+msgid "label_export_email"
+msgstr ""
+
+#. Default: "Export Post Subscribers"
+#: browser/export-subscribers.pt
+msgid "label_export_post"
+msgstr ""
+
+#. Default: "Export Subscriber List"
+#: browser/export-subscribers.pt
+msgid "label_exportsubscribers"
 msgstr ""
 
 #: skins/join_form.cpt

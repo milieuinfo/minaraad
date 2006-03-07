@@ -47,8 +47,6 @@ schema = Schema((
         storage=AttributeStorage(),
         multiValued=True
     ),
-
-
     ReferenceField(
         name='contact',
         widget=ReferenceWidget(
@@ -63,13 +61,13 @@ schema = Schema((
 
 ),
 )
-
 ##code-section after-local-schema #fill in your manual code here
 ##/code-section after-local-schema
 
 NewsLetter_schema = BaseSchema.copy() + \
     getattr(EmailMixin, 'schema', Schema(())).copy() + \
     schema.copy()
+
 
 ##code-section after-schema #fill in your manual code here
 ##/code-section after-schema

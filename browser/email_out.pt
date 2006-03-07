@@ -39,10 +39,10 @@
                 <tal:block tal:condition="canSend">
                 <div class="formHelp" 
                      i18n:translate="help_email_out">
-                    Send out an e-mail to all sbuscribers pertaining to this item.
+                    Send out an e-mail to all subscribers pertaining to this item.
                     The format of the e-mail can be specified on the 'edit' tab of
                     this content type using the 'emailTemplate' field.  If the
-                    'Send As Text' checkbox is checked below, the e-mail is only
+                    'Send As Test' checkbox is checked below, the e-mail is only
                     sent to the people in the 'To' field.  Once a non-test e-mail
                     has been sent out, no further e-mail's can be sent from this
                     particular tab.

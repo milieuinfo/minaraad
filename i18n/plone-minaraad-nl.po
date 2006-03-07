@@ -66,3 +66,6 @@ msgstr "minaraad thema's"
 
 msgid "subscribers overview"
 msgstr "Abonnee overzicht"
+
+msgid "Export Subscribers"
+msgstr "Exporteer naar Excel"

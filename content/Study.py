@@ -46,7 +46,6 @@ schema = Schema((
             i18n_domain='minaraad',
         )
     ),
-
     DateTimeField(
         name='date',
         widget=CalendarWidget(
@@ -55,7 +54,6 @@ schema = Schema((
             i18n_domain='minaraad',
         )
     ),
-
     LinesField(
         name='speakers',
         widget=LinesWidget(
@@ -64,7 +62,6 @@ schema = Schema((
             i18n_domain='minaraad',
         )
     ),
-
     FileField(
         name='attachment',
         widget=FileWidget(
@@ -75,8 +72,6 @@ schema = Schema((
         storage=AttributeStorage(),
         multiValued=True
     ),
-
-
     ReferenceField(
         name='contact',
         widget=ReferenceWidget(
@@ -91,7 +86,6 @@ schema = Schema((
 
 ),
 )
-
 ##code-section after-local-schema #fill in your manual code here
 ##/code-section after-local-schema
 
@@ -99,6 +93,7 @@ Study_schema = BaseSchema.copy() + \
     getattr(PostMixin, 'schema', Schema(())).copy() + \
     getattr(EmailMixin, 'schema', Schema(())).copy() + \
     schema.copy()
+
 
 ##code-section after-schema #fill in your manual code here
 ##/code-section after-schema
