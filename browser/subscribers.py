@@ -1,7 +1,7 @@
 from StringIO import StringIO
 from Products.Five import BrowserView
 from Products.CMFCore.utils import getToolByName
-from Products.minaraad.subscribers import SubscriptionManager
+from Products.minaraad.subscriptions import SubscriptionManager
 
 class ExportSubscribersView(BrowserView):
     
