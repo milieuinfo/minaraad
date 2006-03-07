@@ -106,7 +106,6 @@ class testAdvisory(MainTestCase):
         self.advisory.Title()
         self.advisory.getDescription()
         self.advisory.getDate()
-        self.advisory.getBody()
         self.advisory.getAttachments()
         self.advisory.getContact()
 

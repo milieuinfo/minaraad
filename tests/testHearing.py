@@ -118,7 +118,6 @@ class testHearing(MainTestCase):
         self.hoorzitting.getStartdate     # Start tijd
         self.hoorzitting.getEnddate       # Eind tijd
         self.hoorzitting.getTheme         # Thema's
-        self.hoorzitting.getBody          # Body
         self.hoorzitting.getContact       # Contactpersoon
 
     def test_subscribers_export(self):
