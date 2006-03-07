@@ -77,7 +77,7 @@
                 </tr>
                 </tal:block>
                 
-                <!-- subscriptions with thema's -->
+                <!-- subscriptions with themes -->
                 <tr>
                     <td class="hearingsubscriptiontitle" 
                         valign="top">

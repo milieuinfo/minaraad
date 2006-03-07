@@ -16,26 +16,112 @@
         i18n:translate="label_up_to_plone_setup">
             Up to Site Setup
         </a>
-
-        <dl class="listsubscriptions">
-            <dt i18n:translate="title_subscription">Subscriptions</dt>
-            <dd>
-                <a href="">Subscription name without theme</a>
-            </dd>
-            <dd>
-                <a href="">Subscription name without theme</a>
-            </dd>
-        </dl>
-        <dl>
-            <dt> Hearing</dt>
-            <dd>
-                <a href="">Theme name</a>
-            </dd>
-            <dd>
-                <a href="">Theme name</a>
-            </dd>
-        </dl>
-
+        <tal:block tal:define="subscriptions view/subscriptions">
+            <div i18n:translate="title_subscription" 
+                 style="font-weight:bold">Subscriptions</div>
+            
+            <tal:block tal:repeat="subscription subscriptions">
+            <span tal:condition="not:subscription/category" 
+                tal:omit-tag="">
+                <a tal:attributes="href string:${context/absolute_url}/subscribers_config.html?sub=${subscription/id}"
+                tal:content="subscription/id" /> &nbsp; | &nbsp;
+            </span>
+            </tal:block>
+            <br />
+            <br />
+            <div i18n:translate="" 
+                 style="font-weight:bold">Hearing</div>
+            
+            <tal:block tal:repeat="theme view/subscriptions">
+            <span tal:condition="theme/category" 
+                  tal:omit-tag="">
+            <span tal:condition="repeat/theme/odd" 
+                  tal:omit-tag="">
+                <a tal:content="theme/Title"
+                   i18n:translate="" 
+                   tal:attributes="href string:${context/absolute_url}/subscribers_config.html?sub=${theme/id}" /> 
+                &nbsp; | &nbsp;
+            </span>
+            </span>
+            </tal:block>
+            <div style="height: 8px">&nbsp;</div>
+            <tal:block tal:repeat="theme view/subscriptions">
+            <span tal:condition="theme/category" 
+                  tal:omit-tag="">
+            <span tal:condition="repeat/theme/even" 
+                  tal:omit-tag="">
+                <a tal:content="theme/Title"
+                   i18n:translate="" 
+                   tal:attributes="href string:${context/absolute_url}/subscribers_config.html?sub=${theme/id}" /> 
+                &nbsp; | &nbsp;
+            </span>
+            </span>
+            </tal:block>
+        </tal:block>
+        <br />
+        <br />
+        <br />
+        
+        <table class="listing"
+                tal:define="subscription request/sub|nothing"
+                tal:condition="subscription">
+            <tr>
+                <th i18n:translate="label_gender">
+                    Gender
+                </th>
+                <th i18n:translate="label_firstname">
+                    First name
+                </th>
+                <th i18n:translate="label_lastname">
+                    Last name
+                </th>
+                <th i18n:translate="label_company">
+                    Company
+                </th>
+                <th i18n:translate="label_jobtitle">
+                    Job title
+                </th>
+                <th i18n:translate="label_street">
+                    Street
+                </th>
+                <th i18n:translate="label_housenumber">
+                    House number
+                </th>
+                <th i18n:translate="label_bus">
+                    Bus
+                </th>
+                <th i18n:translate="label_zipcode">
+                    Zipcode
+                </th>
+                <th i18n:translate="label_city">
+                    City
+                </th>
+                <th i18n:translate="label_country">
+                    Country
+                </th>
+                <th i18n:translate="label_phonenumber">
+                    Phone number
+                </th>
+                <th i18n:translate="label_email">
+                    E-mail
+                </th>
+            </tr>
+            <tr tal:repeat="member python:view.getMembersOfSubscriptions(subscription)">
+                <td tal:content="member/gender" />
+                <td tal:content="member/firstname" />
+                <td tal:content="member/fullname" />
+                <td tal:content="member/company" />
+                <td tal:content="member/jobtitle" />
+                <td tal:content="member/street" />
+                <td tal:content="member/housenumber" />
+                <td tal:content="member/bus" />
+                <td tal:content="member/zipcode" />
+                <td tal:content="member/city" />
+                <td tal:content="member/country" />
+                <td tal:content="member/phonenumber" />
+                <td tal:content="member/email" />
+            </tr>
+        </table>
     </metal:block>
     </body>
 </html>

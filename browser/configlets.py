@@ -142,9 +142,45 @@ class SubscribersConfigletView(AbstractView):
 
     def __init__(self, context, request):
         AbstractView.__init__(self, context, request)
+        self.subscriptionManager = SubscriptionManager(self.context)
+        self.themeManager = ThemeManager(self.context)
     
-    def SubscriptionsList(self):
-        pass
+    def __call__(self):
+        return self.index()
     
-    def getMembersOfSubscriptions():
-        pass
+    def _getThemeTitle(self, id):
+        # get rid of 'theme_' prefix
+        id = id[6:]
+        
+        return self.themeManager.getThemeTitle(id)
+    
+    def subscriptions(self):
+        
+        sm = self.subscriptionManager
+        items = sm.subscriptions
+        subscriptions = []
+        for item in items:
+            sub = {'id': item.id,
+                   'subscribed_email': item.email,
+                   'subscribed_post': item.post}
+            subscriptions.append(sub)
+            
+            title = self._getThemeTitle(item.id)
+            if title:
+                sub['level'] = 1
+                sub['category'] = 'Hearing'
+                sub['can_post'] = False
+                sub['can_email'] = True
+            else:
+                sub['level'] = 0
+                sub['category'] = ''
+                sub['can_post'] = sm.canSubscribePost(item.id)
+                sub['can_email'] = sm.canSubscribeEmail(item.id)
+
+            sub['Title'] = title or item.id
+        
+        return subscriptions
+    
+    def getMembersOfSubscriptions(self, id):
+        sm = self.subscriptionManager
+        return sm.emailSubscribers(id)

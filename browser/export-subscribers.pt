@@ -28,13 +28,14 @@
                     Click on the buttons below to export the e-mail or post subscribers on this content type as an Excelsheet.
                 </div>
                 <br />
+<!--
                 <input class="context"
                         type="submit"
                         name="form.button.ExportEmail"
                         value="Export Email Subscribers"
                         i18n:attributes="value label_export_email;"
                         tal:attributes="tabindex tabindex/next;" />
-
+-->
                 <input class="context"
                         type="submit"
                         name="form.button.ExportPost"
