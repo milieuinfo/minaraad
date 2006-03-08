@@ -173,9 +173,11 @@ class testSubscriptions(MainTestCase):
                             'export_subscribers', 
                             request)
 
-        self.assertEquals(view(), '"Gender","First Name","Last Name",'
-                          '"Company","Street","House Number","Bus",'
-                          '"Zip Code","City","Country"\n')
+
+        HEADING = ('"Gender","First Name","Last Name",'
+                   '"Company","Street","House Number","Bus",'
+                   '"Zip Code","City","Country"\n')
+        self.assertEquals(view(), HEADING)
 
         # let's do the actual subscription of our member
         sm.subscribe('Advisory', email=True, post=False)
@@ -195,7 +197,15 @@ class testSubscriptions(MainTestCase):
             request.response['Content-Disposition'],
             'attachment; filename=advisory-subscribers.csv'
             )
+
+        request['form.button.ExportEmail'] = None
+        request['form.button.ExportPost'] = True
         
+        view = zapi.getView(advisory, 
+                            'export_subscribers', 
+                            request)
+
+        self.assertEquals(view(), HEADING)
 
 def test_suite():
     from unittest import TestSuite, makeSuite
