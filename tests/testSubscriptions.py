@@ -139,9 +139,63 @@ class testSubscriptions(MainTestCase):
             self.failUnless(subDict.has_key(x.id))
 
         self.logout()
+
+
+    def test_exportSubscribers(self):
+        self.loginAsPortalOwner()
+        self.portal.adviezen.adv_2006.invokeFactory('Advisory','myadvisory')
+        advisory = self.portal.adviezen.adv_2006.myadvisory
+
+        self.login('member')
+        member = self.portal.portal_membership.getAuthenticatedMember()
+        props = dict(
+            gender="Yes",
+            firstname="John",
+            fullname="Doe",
+            company="Doe Enterprises",
+            street="Doe Street",
+            housenumber="23",
+            bus="What's a bus?",
+            zipcode="007",
+            city="Rotterdam",
+            country="The Netherlands",
+            )
         
+        member.setProperties(**props)
 
+        sm = SubscriptionManager(self.portal)
+        request = FakeRequest()
+        request.response = {}
 
+        request['form.button.ExportEmail'] = True
+
+        view = zapi.getView(advisory, 
+                            'export_subscribers', 
+                            request)
+
+        self.assertEquals(view(), '"Gender","First Name","Last Name",'
+                          '"Company","Street","House Number","Bus",'
+                          '"Zip Code","City","Country"\n')
+
+        # let's do the actual subscription of our member
+        sm.subscribe('Advisory', email=True, post=False)
+
+        lines = view().split('\n')
+        self.assertEquals(lines[1], '"Yes","John","Doe","Doe Enterprises",'
+                          '"Doe Street","23","What\'s a bus?","007",'
+                          '"Rotterdam","The Netherlands"')
+
+        # let's make some assertions about the response
+        self.assertEquals(
+            request.response['Content-Type'],
+            'application/vnd.ms-excel; charset=utf-8'
+            )
+
+        self.assertEquals(
+            request.response['Content-Disposition'],
+            'attachment; filename=advisory-subscribers.csv'
+            )
+        
 
 def test_suite():
     from unittest import TestSuite, makeSuite
