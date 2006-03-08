@@ -33,6 +33,7 @@ from Products.minaraad.EmailMixin import EmailMixin
 from Products.minaraad.config import *
 
 ##code-section module-header #fill in your manual code here
+from zope.interface import implements, Interface
 ##/code-section module-header
 
 schema = Schema((
@@ -130,6 +131,11 @@ Hearing_schema = BaseFolderSchema.copy() + \
 
 
 ##code-section after-schema #fill in your manual code here
+class IHearing(Interface):
+    def getThemesList():
+        pass
+    def getThemeName():
+        pass
 ##/code-section after-schema
 
 class Hearing(EmailMixin, BaseFolder):
@@ -160,6 +166,7 @@ class Hearing(EmailMixin, BaseFolder):
     schema = Hearing_schema
 
     ##code-section class-header #fill in your manual code here
+    implements(IHearing)
     ##/code-section class-header
 
     # Methods
@@ -203,6 +210,3 @@ registerType(Hearing, PROJECTNAME)
 
 ##code-section module-footer #fill in your manual code here
 ##/code-section module-footer
-
-
-
