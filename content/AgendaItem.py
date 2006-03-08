@@ -50,6 +50,7 @@ schema = Schema((
             i18n_domain='minaraad',
         )
     ),
+
     StringField(
         name='organisation',
         widget=StringWidget(
@@ -58,6 +59,7 @@ schema = Schema((
             i18n_domain='minaraad',
         )
     ),
+
     TextField(
         name='summary',
         widget=TextAreaWidget(
@@ -66,6 +68,7 @@ schema = Schema((
             i18n_domain='minaraad',
         )
     ),
+
     DateTimeField(
         name='itemstartdate',
         index="DateIndex:brains",
@@ -76,6 +79,7 @@ schema = Schema((
         ),
         required=1
     ),
+
     DateTimeField(
         name='itemenddate',
         widget=CalendarWidget(
@@ -85,24 +89,25 @@ schema = Schema((
         ),
         required=1
     ),
-ArrayField(            FileField(
-                name='attachments',
-                widget=FileWidget(
-                    label='Attachments',
-                    label_msgid='minaraad_label_attachments',
-                    i18n_domain='minaraad',
-                ),
-                storage=AttributeStorage()
+
+ArrayField(        FileField(
+            name='attachments',
+            widget=FileWidget(
+                label='Attachments',
+                label_msgid='minaraad_label_attachments',
+                i18n_domain='minaraad',
             ),
+            storage=AttributeStorage()
         ),
+    ),
 ),
 )
+
 ##code-section after-local-schema #fill in your manual code here
 ##/code-section after-local-schema
 
 AgendaItem_schema = ATContentTypeSchema.copy() + \
     schema.copy()
-
 
 ##code-section after-schema #fill in your manual code here
 ##/code-section after-schema

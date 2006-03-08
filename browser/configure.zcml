@@ -5,7 +5,7 @@
 
   <browser:page
       for="Products.minaraad.content.Hearing.IHearing"
-      name="attendees.html"
+      name="attendees"
       class=".attendees.AttendeesManagerView"
       permission="cmf.ModifyPortalContent"
       template="attendees.pt"

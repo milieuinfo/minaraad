@@ -199,6 +199,13 @@ class testWorkflow(MainTestCase):
         wfTool.doActionFor(self.contentContainer.someobj,'reject')
         self.logout()
 
+    def assertCannotCreateContent(self, memberId, type_, err=Unauthorized):
+        container = self.contentContainer
+        self.login(memberId)
+        self.failUnlessRaises(err, container.invokeFactory, 
+                              type_, 'someotherobj')
+        self.logout()
+
     def test_pending_revisioning_state(self):
         """ Test if the pending_revisioning state has the correct rights
         """
@@ -219,13 +226,6 @@ class testWorkflow(MainTestCase):
         self.login('manager')
         wfTool.doActionFor(self.contentContainer.someobj,'publish')
         wfTool.doActionFor(self.contentContainer.someobj,'reject')
-        self.logout()
-
-    def assertCannotCreateContent(self, memberId, type_, err=Unauthorized):
-        container = self.contentContainer
-        self.login(memberId)
-        self.failUnlessRaises(err, container.invokeFactory, 
-                              type_, 'someotherobj')
         self.logout()
 
     def assertCanCreateContent(self, memberId, type_):
