@@ -97,6 +97,44 @@ class testWorkflow(MainTestCase):
         self.assertHasTransitions('reviewer', ['publish'])
         self.assertHasTransitions('manager',['restricted_publish','publish','submit'])
 
+    def test_restricted_state(self):
+        """ Test if the restricted state has the correct rights
+        """
+        self.login('manager')
+        wfTool = getToolByName(self.portal, 'portal_workflow')
+        wfTool.doActionFor(self.contentContainer.someobj,'restricted_publish')
+        self.logout()
+
+        self.assertEqual(self._content_state(),'restricted') 
+        self.assertHasTransitions('member')
+        self.assertHasTransitions('author', ['retract'])
+        self.assertHasTransitions('cmember')
+        self.assertHasTransitions('reviewer')
+        self.assertHasTransitions('manager',['retract'])
+
+        self.login('manager')
+        wfTool.doActionFor(self.contentContainer.someobj,'retract')
+        self.logout()
+   
+    def test_pending_private_state(self):
+        """ Test if the pending_private state has the correct rights
+        """
+        self.login('manager')
+        wfTool = getToolByName(self.portal, 'portal_workflow')
+        wfTool.doActionFor(self.contentContainer.someobj,'submit')
+        self.logout()
+
+        self.assertEqual(self._content_state(),'pending_private') 
+        self.assertHasTransitions('member')
+        self.assertHasTransitions('author', ['retract'])
+        self.assertHasTransitions('cmember')
+        self.assertHasTransitions('reviewer', ['publish','reject'])
+        self.assertHasTransitions('manager',['publish','reject','retract'])
+
+        self.login('manager')
+        wfTool.doActionFor(self.contentContainer.someobj,'retract')
+        self.logout() 
+ 
     def assertHasTransitions(self, memberId, possible=None):
         """Test the available transitions for a member.  The 'possible'
         param can be None, a string (for one transition) or a list of
@@ -120,21 +158,6 @@ class testWorkflow(MainTestCase):
         transitions.sort()
         self.assertEqual(possible, transitions)
         self.logout()
-
-    def test_restricted_state(self):
-        """ Test if the restricted state has the correct rights
-        """
-        self.login('manager')
-        wfTool = getToolByName(self.portal, 'portal_workflow')
-        wfTool.doActionFor(self.contentContainer.someobj,'restricted_publish')
-        self.logout()
-
-        self.assertEqual(self._content_state(),'restricted') 
-        self.assertHasTransitions('member')
-        self.assertHasTransitions('author', ['retract'])
-        self.assertHasTransitions('cmember')
-        self.assertHasTransitions('reviewer')
-        self.assertHasTransitions('manager',['retract'])
 
     def assertCannotCreateContent(self, memberId, type_, err=Unauthorized):
         container = self.contentContainer
