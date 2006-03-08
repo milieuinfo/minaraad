@@ -25,6 +25,12 @@ class AttendeeManager(object):
         if not isinstance(member, basestring):
             memberId = member.getMemberId()
 
+        try:
+            attendees.remove(memberId)
+        except ValueError:
+            # this is ok
+            pass
+        
         self.context._attendees = attendees
         
     def attendees(self):

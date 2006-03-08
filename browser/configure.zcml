@@ -5,10 +5,10 @@
 
   <browser:page
       for="Products.minaraad.content.Hearing.IHearing"
-      name="attendees"
+      name="attendees_view"
       class=".attendees.AttendeesManagerView"
-      permission="cmf.ModifyPortalContent"
-      template="attendees.pt"
+      permission="zope2.View"
+      allowed_interface=".attendees.IAttendeesManagerView"
     />
 
   <browser:page

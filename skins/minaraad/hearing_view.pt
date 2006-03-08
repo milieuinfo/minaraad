@@ -5,7 +5,8 @@
     
     <body>
     <metal:block metal:define-macro="body"
-                 tal:define="current_path python:'/'.join(context.getPhysicalPath());
+                 tal:define="view nocall:context/@@attendees_view;
+                             current_path python:'/'.join(context.getPhysicalPath());
                              agendaItems python:context.portal_catalog.searchResults(portal_type='AgendaItem',
                                                                                     path=current_path,
                                                                                     sort_on='getItemstartdate',
@@ -116,6 +117,16 @@
             </li>
         </ul>
         <!-- End speakers -->
+        
+        <form tal:condition="view/isRegistered"
+              tal:attributes="action string:${context/absolute_url}/@@attendees_view">
+          <input class="context" type="submit" name="form.button.Submit" value="unregister" />
+        </form>
+
+        <form tal:condition="not:view/isRegistered"
+              tal:attributes="action string:${context/absolute_url}/@@attendees_view">
+          <input class="context" type="submit" name="form.button.Submit" value="register" />
+        </form>
 
     </metal:block>
     </body>
