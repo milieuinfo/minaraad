@@ -176,7 +176,7 @@ class testSubscriptions(MainTestCase):
 
         HEADING = ('"Gender","First Name","Last Name",'
                    '"Company","Street","House Number","Bus",'
-                   '"Zip Code","City","Country"\n')
+                   '"Zip Code","City","Country","Other country"\n')
         self.assertEquals(view(), HEADING)
 
         # let's do the actual subscription of our member
@@ -185,7 +185,7 @@ class testSubscriptions(MainTestCase):
         lines = view().split('\n')
         self.assertEquals(lines[1], '"Yes","John","Doe","Doe Enterprises",'
                           '"Doe Street","23","What\'s a bus?","007",'
-                          '"Rotterdam","The Netherlands"')
+                          '"Rotterdam","The Netherlands",""')
 
         # let's make some assertions about the response
         self.assertEquals(
