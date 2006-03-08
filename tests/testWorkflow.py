@@ -77,6 +77,7 @@ class testWorkflow(MainTestCase):
         self.contentContainer = self.portal.nieuwsbrieven.newsl_2006
         self.contentContainer.manage_addLocalRoles('author',['Author'])
         self.contentContainer.manage_addLocalRoles('reviewer',['Reviewer'])
+        self.contentContainer.invokeFactory('NewsLetter', 'someobj')
         self.logout()
 
     # Manually created methods
@@ -91,7 +92,7 @@ class testWorkflow(MainTestCase):
         self.assertCannotCreateContent('reviewer','NewsLetter')
         self.assertCanCreateContent('manager','NewsLetter')
         self.assertHasTransitions('member')
-        self.assertHasTransitions('author', ['restricted_publish'])
+        self.assertHasTransitions('author', ['restricted_publish','submit'])
         self.assertHasTransitions('cmember')
         self.assertHasTransitions('reviewer', ['publish'])
         self.assertHasTransitions('manager',['restricted_publish','publish','submit'])
@@ -113,10 +114,6 @@ class testWorkflow(MainTestCase):
         wfTool = getToolByName(self.portal, 'portal_workflow')
         container = self.contentContainer
        
-        self.login('manager')
-        container.invokeFactory('NewsLetter', 'someobj')
-        self.logout()
-         
         self.login(memberId) 
         transitions = wfTool.getTransitionsFor(container.someobj)
         transitions = [x['id'] for x in transitions]
@@ -124,23 +121,34 @@ class testWorkflow(MainTestCase):
         self.assertEqual(possible, transitions)
         self.logout()
 
+    def test_restricted_state(self):
+        """ Test if the restricted state has the correct rights
+        """
         self.login('manager')
-        container.someobj.manage_delObjects(['someobj'])
+        wfTool = getToolByName(self.portal, 'portal_workflow')
+        wfTool.doActionFor(self.contentContainer.someobj,'restricted_publish')
         self.logout()
+
+        self.assertEqual(self._content_state(),'restricted') 
+        self.assertHasTransitions('member')
+        self.assertHasTransitions('author', ['retract'])
+        self.assertHasTransitions('cmember')
+        self.assertHasTransitions('reviewer')
+        self.assertHasTransitions('manager',['retract'])
 
     def assertCannotCreateContent(self, memberId, type_, err=Unauthorized):
         container = self.contentContainer
         self.login(memberId)
         self.failUnlessRaises(err, container.invokeFactory, 
-                              type_, 'someobj')
+                              type_, 'someotherobj')
         self.logout()
 
     def assertCanCreateContent(self, memberId, type_):
         container = self.contentContainer
         self.login(memberId)
-        container.invokeFactory(type_, 'someobj')
-        self.failUnless('someobj' in container.contentIds())
-        container.manage_delObjects(['someobj'])
+        container.invokeFactory(type_, 'someotherobj')
+        self.failUnless('someotherobj' in container.contentIds())
+        container.manage_delObjects(['someotherobj'])
         self.logout()
 
     def _content_state(self):
@@ -149,8 +157,7 @@ class testWorkflow(MainTestCase):
 
         wfTool = getToolByName(self.portal, 'portal_workflow')
         self.login('manager')
-        self.contentContainer.invokeFactory('NewsLetter','newsletter')
-        testletter = self.contentContainer.newsletter
+        testletter = self.contentContainer.someobj
         status = wfTool.getStatusOf('minaraad_workflow', testletter)
         self.logout()
         return status['review_state']

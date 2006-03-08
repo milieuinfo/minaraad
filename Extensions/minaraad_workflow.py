@@ -204,7 +204,7 @@ def setupminaraad_workflow(self, workflow):
                                 actbox_name="""submit""",
                                 actbox_url="""""",
                                 actbox_category="""workflow""",
-                                props={'guard_roles': 'Owner;Manager'},
+                                props={'guard_roles': 'Owner;Author;Manager'},
                                 )
 
     transitionDef = workflow.transitions['publish']
@@ -252,7 +252,7 @@ def setupminaraad_workflow(self, workflow):
                                 actbox_name="""retract""",
                                 actbox_url="""""",
                                 actbox_category="""workflow""",
-                                props={'guard_roles': 'Owner;Manager'},
+                                props={'guard_roles': 'Owner;Author;Manager'},
                                 )
 
     transitionDef = workflow.transitions['retract2']
