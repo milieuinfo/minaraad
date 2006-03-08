@@ -134,7 +134,69 @@ class testWorkflow(MainTestCase):
         self.login('manager')
         wfTool.doActionFor(self.contentContainer.someobj,'retract')
         self.logout() 
+
+    def test_published_state(self):
+        """ Test if the published state has the correct rights
+        """
+        self.login('manager')
+        wfTool = getToolByName(self.portal, 'portal_workflow')
+        wfTool.doActionFor(self.contentContainer.someobj,'publish')
+        self.logout()
+
+        self.assertEqual(self._content_state(),'published') 
+        self.assertHasTransitions('member')
+        self.assertHasTransitions('author')
+        self.assertHasTransitions('cmember')
+        self.assertHasTransitions('reviewer', ['reject'])
+        self.assertHasTransitions('manager',['reject','revise'])
+
+        self.login('manager')
+        wfTool.doActionFor(self.contentContainer.someobj,'reject')
+        self.logout()
  
+    def test_revisioning_state(self):
+        """ Test if the revisioning state has the correct rights
+        """
+        self.login('manager')
+        wfTool = getToolByName(self.portal, 'portal_workflow')
+        wfTool.doActionFor(self.contentContainer.someobj,'publish')
+        wfTool.doActionFor(self.contentContainer.someobj,'revise')
+        self.logout()
+
+        self.assertEqual(self._content_state(),'revisioning') 
+        self.assertHasTransitions('member')
+        self.assertHasTransitions('author')
+        self.assertHasTransitions('cmember')
+        self.assertHasTransitions('reviewer', ['publish'])
+        self.assertHasTransitions('manager',['publish','submit2'])
+
+        self.login('manager')
+        wfTool.doActionFor(self.contentContainer.someobj,'publish')
+        wfTool.doActionFor(self.contentContainer.someobj,'reject')
+        self.logout()
+
+    def test_pending_revisioning_state(self):
+        """ Test if the pending_revisioning state has the correct rights
+        """
+        self.login('manager')
+        wfTool = getToolByName(self.portal, 'portal_workflow')
+        wfTool.doActionFor(self.contentContainer.someobj,'publish')
+        wfTool.doActionFor(self.contentContainer.someobj,'revise')
+        wfTool.doActionFor(self.contentContainer.someobj,'submit2')
+        self.logout()
+
+        self.assertEqual(self._content_state(),'pending_revisioning') 
+        self.assertHasTransitions('member')
+        self.assertHasTransitions('author')
+        self.assertHasTransitions('cmember')
+        self.assertHasTransitions('reviewer', ['publish','reject2'])
+        self.assertHasTransitions('manager',['publish','reject2','retract2'])
+
+        self.login('manager')
+        wfTool.doActionFor(self.contentContainer.someobj,'publish')
+        wfTool.doActionFor(self.contentContainer.someobj,'reject')
+        self.logout()
+
     def assertHasTransitions(self, memberId, possible=None):
         """Test the available transitions for a member.  The 'possible'
         param can be None, a string (for one transition) or a list of
