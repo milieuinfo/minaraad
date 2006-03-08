@@ -73,10 +73,6 @@ class testHearing(MainTestCase):
     def test_getThemeName(self):
         pass
 
-    # from class Hearing:
-    def test_attendees(self):
-        pass
-
     # from class EmailMixin:
     def test_email(self):
         """
@@ -103,6 +99,9 @@ class testHearing(MainTestCase):
         """
         """
         #Uncomment one of the following lines as needed
+    def test_attendees(self):
+        pass
+
     def test_themeslist(self):
         """ Test the theme list function in the Hearing content type
         """

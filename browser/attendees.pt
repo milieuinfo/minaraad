@@ -23,8 +23,13 @@
               tal:attributes="action string:${context/absolute_url}/$template_id">
 
             <fieldset>
-                <legend i18n:translate="label_manage_attendees">Manage Attendees</legend>
-                <div i18n:translate="attendees_description">
+                <legend i18n:translate="label_add_attendee">Add Attendee</legend>
+
+                <div class="field">
+                  <label>Member Id</label>
+                  <div class="formHelp">
+                  </div>                
+                  <input type="text" name="memberId"/>
                 </div>
             </fieldset>
         </form>

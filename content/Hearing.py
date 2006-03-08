@@ -161,20 +161,6 @@ class Hearing(EmailMixin, BaseFolder):
     typeDescription = "Hearing"
     typeDescMsgId = 'description_edit_hearing'
 
-    actions =  (
-
-
-       {'action': "string:${object_url}/attendees",
-        'category': "object",
-        'id': 'attendees',
-        'name': 'Attendees',
-        'permissions': ("View",),
-        'condition': 'python:1'
-       },
-
-
-    )
-
     _at_rename_after_creation = True
 
     schema = Hearing_schema
