@@ -54,7 +54,6 @@ schema = Schema((
         ),
         default_output_type='text/html'
     ),
-
     DateTimeField(
         name='emailSent',
         widget=CalendarWidget(
@@ -67,11 +66,11 @@ schema = Schema((
 
 ),
 )
-
 ##code-section after-local-schema #fill in your manual code here
 ##/code-section after-local-schema
 
 EmailMixin_schema = schema.copy()
+
 
 ##code-section after-schema #fill in your manual code here
 class AlreadySentError(Exception):

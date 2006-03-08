@@ -192,7 +192,7 @@ def setupminaraad_workflow(self, workflow):
                                 actbox_name="""restricted_publish""",
                                 actbox_url="""""",
                                 actbox_category="""workflow""",
-                                props={'guard_roles': 'Owner;Reviewer;Author;Manager'},
+                                props={'guard_roles': 'Owner;Author;Manager'},
                                 )
 
     transitionDef = workflow.transitions['submit']
@@ -288,7 +288,7 @@ def setupminaraad_workflow(self, workflow):
                                 actbox_name="""revise""",
                                 actbox_url="""""",
                                 actbox_category="""workflow""",
-                                props={'guard_roles': 'Owner;Author;Reviewer;Manager'},
+                                props={'guard_roles': 'Owner;Manager'},
                                 )
 
     ## State Variable

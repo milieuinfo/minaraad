@@ -47,8 +47,6 @@ schema = Schema((
         ),
         storage=AttributeStorage()
     ),
-
-
     ReferenceField(
         name='contact',
         widget=ReferenceWidget(
@@ -63,7 +61,6 @@ schema = Schema((
 
 ),
 )
-
 ##code-section after-local-schema #fill in your manual code here
 ##/code-section after-local-schema
 
@@ -71,6 +68,7 @@ AnnualReport_schema = BaseSchema.copy() + \
     getattr(PostMixin, 'schema', Schema(())).copy() + \
     getattr(EmailMixin, 'schema', Schema(())).copy() + \
     schema.copy()
+
 
 ##code-section after-schema #fill in your manual code here
 ##/code-section after-schema

@@ -44,7 +44,6 @@ schema = Schema((
             i18n_domain='minaraad',
         )
     ),
-
     StringField(
         name='jobtitle',
         widget=StringWidget(
@@ -53,7 +52,6 @@ schema = Schema((
             i18n_domain='minaraad',
         )
     ),
-
     StringField(
         name='department',
         widget=StringWidget(
@@ -62,7 +60,6 @@ schema = Schema((
             i18n_domain='minaraad',
         )
     ),
-
     StringField(
         name='email',
         widget=StringWidget(
@@ -71,7 +68,6 @@ schema = Schema((
             i18n_domain='minaraad',
         )
     ),
-
     StringField(
         name='phonenumber',
         widget=StringWidget(
@@ -83,12 +79,12 @@ schema = Schema((
 
 ),
 )
-
 ##code-section after-local-schema #fill in your manual code here
 ##/code-section after-local-schema
 
 ContactPerson_schema = BaseSchema.copy() + \
     schema.copy()
+
 
 ##code-section after-schema #fill in your manual code here
 ##/code-section after-schema
