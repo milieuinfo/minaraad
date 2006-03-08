@@ -15,16 +15,16 @@
     
         <h1 class="documentFirstHeading">
             <span tal:replace="object_title" /> &mdash; 
-            <span i18n:translate="label_exportsubscribers" 
-                  tal:omit-tag="">Export Subscriber List</span>
+            <span i18n:translate="label_attendees" 
+                  tal:omit-tag="">Attendees</span>
         </h1>
     
         <form method="get"
               tal:attributes="action string:${context/absolute_url}/$template_id">
 
             <fieldset>
-                <legend i18n:translate="label_export_as_excel">Export As Excel Spreadsheet</legend>
-                <div i18n:translate="export_descriptions">
+                <legend i18n:translate="label_manage_attendees">Manage Attendees</legend>
+                <div i18n:translate="attendees_description">
                 </div>
             </fieldset>
         </form>
