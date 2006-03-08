@@ -24,7 +24,8 @@
             <span tal:condition="not:subscription/category" 
                 tal:omit-tag="">
                 <a tal:attributes="href string:${context/absolute_url}/subscribers_config.html?sub=${subscription/id}"
-                tal:content="subscription/id" /> &nbsp; | &nbsp;
+                tal:content="subscription/id"
+                i18n:translate="" /> &nbsp; | &nbsp;
             </span>
             </tal:block>
             <br />
@@ -61,76 +62,103 @@
         <br />
         <br />
         <br />
+        <tal:block tal:define="subscription request/sub|nothing"
+                   tal:condition="subscription">
         
-        <table class="listing"
-                tal:define="subscription request/sub|nothing"
-                tal:condition="subscription">
-            <tr>
-                <th i18n:translate="label_gender">
-                    Gender
-                </th>
-                <th i18n:translate="label_firstname">
-                    First name
-                </th>
-                <th i18n:translate="label_lastname">
-                    Last name
-                </th>
-                <th i18n:translate="label_company">
-                    Company
-                </th>
-                <th i18n:translate="label_jobtitle">
-                    Job title
-                </th>
-                <th i18n:translate="label_street">
-                    Street
-                </th>
-                <th i18n:translate="label_housenumber">
-                    House number
-                </th>
-                <th i18n:translate="label_bus">
-                    Bus
-                </th>
-                <th i18n:translate="label_zipcode">
-                    Zipcode
-                </th>
-                <th i18n:translate="label_city">
-                    City
-                </th>
-                <th i18n:translate="label_country">
-                    Country
-                </th>
-                <th i18n:translate="label_phonenumber">
-                    Phone number
-                </th>
-                <th i18n:translate="label_email">
-                    E-mail
-                </th>
-                <th />
-            </tr>
-            <tr tal:repeat="member python:view.getMembersOfSubscriptions(subscription)">
-                <td tal:content="member/gender" />
-                <td tal:content="member/firstname" />
-                <td tal:content="member/fullname" />
-                <td tal:content="member/company" />
-                <td tal:content="member/jobtitle" />
-                <td tal:content="member/street" />
-                <td tal:content="member/housenumber" />
-                <td tal:content="member/bus" />
-                <td tal:content="member/zipcode" />
-                <td tal:content="member/city" />
-                <td tal:condition="python:member.country != 'Ander land'">
-                    <span tal:replace ="member/country" />
-                </td>
-                <td tal:condition="python:member.country == 'Ander land'">
-                    <span tal:replace ="member/other_country" />
-                </td>
-                <td tal:content="member/phonenumber" />
-                <td tal:content="member/email" />
-                <td>
-                    <span tal:content="python:view.getSubscriptionType(member, subscription)" />
-                </td>
-            </tr>
+        <form method="get"
+              tal:attributes="action string:${context/absolute_url}/$template_id">
+            <input class="context"
+                   type="hidden"
+                   name="sub"
+                   tal:attributes="value subscription" />
+
+            <input class="context"
+                    type="submit"
+                    name="form.button.ExportEmail"
+                    value="Export Email Subscribers"
+                    i18n:attributes="value label_export_email;"
+                    tal:attributes="tabindex tabindex/next;" />
+
+            <input class="context"
+                    type="submit"
+                    name="form.button.ExportPost"
+                    value="Export Post Subscribers"
+                    i18n:attributes="value label_export_post;"
+                    tal:attributes="tabindex tabindex/next;" />
+        </form>
+
+        <table class="listing">
+            <thead>
+                <tr>
+                    <th i18n:translate="label_gender">
+                        Gender
+                    </th>
+                    <th i18n:translate="label_firstname">
+                        First name
+                    </th>
+                    <th i18n:translate="label_lastname">
+                        Last name
+                    </th>
+                    <th i18n:translate="label_company">
+                        Company
+                    </th>
+                    <th i18n:translate="label_jobtitle">
+                        Job title
+                    </th>
+                    <th i18n:translate="label_street">
+                        Street
+                    </th>
+                    <th i18n:translate="label_housenumber">
+                        House number
+                    </th>
+                    <th i18n:translate="label_bus">
+                        Bus
+                    </th>
+                    <th i18n:translate="label_zipcode">
+                        Zipcode
+                    </th>
+                    <th i18n:translate="label_city">
+                        City
+                    </th>
+                    <th i18n:translate="label_country">
+                        Country
+                    </th>
+                    <th i18n:translate="label_phonenumber">
+                        Phone number
+                    </th>
+                    <th i18n:translate="label_email">
+                        E-mail
+                    </th>
+                    <th />
+                </tr>
+            </thead>
+            <tbody>
+                <tr tal:repeat="member python:view.getMembersOfSubscriptions(subscription)">
+                    <td tal:content="member/gender" />
+                    <td tal:content="member/firstname" />
+                    <td tal:content="member/fullname" />
+                    <td tal:content="member/company" />
+                    <td tal:content="member/jobtitle" />
+                    <td tal:content="member/street" />
+                    <td tal:content="member/housenumber" />
+                    <td tal:content="member/bus" />
+                    <td tal:content="member/zipcode" />
+                    <td tal:content="member/city" />
+                    <td tal:condition="python:member.country != 'Ander land'">
+                        <span tal:replace ="member/country" />
+                    </td>
+                    <td tal:condition="python:member.country == 'Ander land'">
+                        <span tal:replace ="member/other_country" />
+                    </td>
+                    <td tal:content="member/phonenumber" />
+                    <td tal:content="member/email" />
+                    <td>
+                        <span tal:content="python:view.getSubscriptionType(member, subscription)" />
+                    </td>
+                </tr>
+            </tbody>
         </table>
+        </tal:block>
     </metal:block>
     </body>
 </html>

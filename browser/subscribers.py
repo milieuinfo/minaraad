@@ -44,7 +44,8 @@ class ExportSubscribersView(BrowserView):
                   ('bus', 'Bus'),
                   ('zipcode', 'Zip Code'),
                   ('city', 'City'),
-                  ('country', 'Country'))
+                  ('country', 'Country'),
+                  ('other_country', 'Other country'))
         
         for pos, field in enumerate(fields):
             id, title = field

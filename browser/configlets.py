@@ -3,6 +3,9 @@ from Products.CMFCore.utils import getToolByName
 from Products.minaraad.themes import ThemeManager
 from Products.minaraad.subscriptions import SubscriptionManager, \
                                             Subscription
+from StringIO import StringIO
+#from Products.minaraad.browser.subscribers import ExportSubscribersView
+
 
 class AbstractView(BrowserView):
     def __init__(self, context, request):
@@ -142,20 +145,29 @@ class SubscribersConfigletView(AbstractView):
 
     def __init__(self, context, request):
         AbstractView.__init__(self, context, request)
-        self.subscriptionManager = SubscriptionManager(self.context)
-        self.themeManager = ThemeManager(self.context)
-    
+        tool = getToolByName(self.context, 'portal_url')
+        portal = tool.getPortalObject()
+        self.subscriptionManager = SubscriptionManager(portal)
+        self._subManager = self.subscriptionManager
+        self.themeManager = ThemeManager(portal)
+
     def __call__(self):
-        return self.index()
-    
+        request = self.request
+        subject = request.get('sub', None)
+        if request.get('form.button.ExportEmail', None) is not None:
+            return self.buildSubscriberCSV('email', subject)
+        elif request.get('form.button.ExportPost', None) is not None:
+            return self.buildSubscriberCSV('post', subject)
+        else:
+            return self.index(template_id='subscribers_config.html')
+
     def _getThemeTitle(self, id):
-        # get rid of 'theme_' prefix
         id = id[6:]
         
         return self.themeManager.getThemeTitle(id)
     
+    #Get subscriptions
     def subscriptions(self):
-        
         sm = self.subscriptionManager
         items = sm.subscriptions
         subscriptions = []
@@ -181,6 +193,7 @@ class SubscribersConfigletView(AbstractView):
         
         return subscriptions
 
+    #get Members of the subscriptions
     def getMembersOfSubscriptions(self, id):
         sm = self.subscriptionManager
         subscribers = sm.emailSubscribers(id)
@@ -201,3 +214,64 @@ class SubscribersConfigletView(AbstractView):
                 returnString += 'post'
         return returnString
 
+    def buildSubscriberCSV(self, type_, subject):
+        subscriberId = subject
+        ploneUtils = getToolByName(self.context, 'plone_utils')
+        safeSubscriberId = ploneUtils.normalizeString(subscriberId).lower()
+        
+        portalProperties = getToolByName(self.context, 
+                                         'portal_properties')
+        siteProperties = portalProperties.site_properties
+        charset = siteProperties.getProperty('default_charset')
+        
+        out = StringIO()
+        
+        fields = (('gender', 'Gender'), 
+                  ('firstname', 'First Name'),
+                  ('fullname', 'Last Name'),
+                  ('company', 'Company'),
+                  ('street', 'Street'),
+                  ('housenumber', 'House Number'),
+                  ('bus', 'Bus'),
+                  ('zipcode', 'Zip Code'),
+                  ('city', 'City'),
+                  ('country', 'Country'),
+                  ('other_country', 'Other country'))
+        
+        for pos, field in enumerate(fields):
+            id, title = field
+            
+            out.write(u'"%s"' % title)
+            if pos < len(fields)-1:
+                out.write(u',')
+            
+        out.write(u'\n')
+        
+        if type_ == 'post':
+            subscribers = self._subManager.postSubscribers(subscriberId)
+        elif type_ == 'email':
+            subscribers = self._subManager.emailSubscribers(subscriberId)
+        else:
+            raise ValueError("The 'type' argument must be either " \
+                             "'post' or 'email'")
+        
+        for subscriber in subscribers:
+            for pos, field in enumerate(fields):
+                id, title = field
+                
+                value = unicode(subscriber.getProperty(id, ''), charset)
+                value = value.replace(u'"', u'""')
+                out.write(u'"%s"' % value)
+        
+                if pos < len(fields)-1:
+                    out.write(u',')
+
+            out.write(u'\n')
+            
+        response = self.request.response
+        response['Content-Type'] = \
+            'application/vnd.ms-excel; charset=%s' % charset
+        response['Content-Disposition'] = \
+            'attachment; filename=%s-subscribers.csv' % safeSubscriberId
+
+        return out.getvalue().encode(charset)
