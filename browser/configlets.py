@@ -180,7 +180,24 @@ class SubscribersConfigletView(AbstractView):
             sub['Title'] = title or item.id
         
         return subscriptions
-    
+
     def getMembersOfSubscriptions(self, id):
         sm = self.subscriptionManager
-        return sm.emailSubscribers(id)
+        subscribers = sm.emailSubscribers(id)
+        for subscriber in sm.postSubscribers(id):
+            if subscriber not in subscribers:
+                subscribers.append(subscriber)
+        return subscribers
+
+    def getSubscriptionType(self, memberid, subscriptionid):
+        sm = self.subscriptionManager
+        returnString = ''
+        if memberid in sm.emailSubscribers(subscriptionid):
+            returnString += 'email'
+        if memberid in sm.postSubscribers(subscriptionid):
+            if returnString != '':
+                returnString += ', post'
+            else:
+                returnString += 'post'
+        return returnString
+

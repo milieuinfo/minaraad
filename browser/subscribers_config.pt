@@ -105,6 +105,7 @@
                 <th i18n:translate="label_email">
                     E-mail
                 </th>
+                <th />
             </tr>
             <tr tal:repeat="member python:view.getMembersOfSubscriptions(subscription)">
                 <td tal:content="member/gender" />
@@ -117,9 +118,17 @@
                 <td tal:content="member/bus" />
                 <td tal:content="member/zipcode" />
                 <td tal:content="member/city" />
-                <td tal:content="member/country" />
+                <td tal:condition="python:member.country != 'Ander land'">
+                    <span tal:replace ="member/country" />
+                </td>
+                <td tal:condition="python:member.country == 'Ander land'">
+                    <span tal:replace ="member/other_country" />
+                </td>
                 <td tal:content="member/phonenumber" />
                 <td tal:content="member/email" />
+                <td>
+                    <span tal:content="python:view.getSubscriptionType(member, subscription)" />
+                </td>
             </tr>
         </table>
     </metal:block>
