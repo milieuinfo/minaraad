@@ -31,6 +31,9 @@ from AccessControl import ClassSecurityInfo
 from Products.Archetypes.atapi import *
 from Products.minaraad.config import *
 
+# additional imports from tagged value 'import'
+from Products.TemplateFields import ZPTField
+
 ##code-section module-header #fill in your manual code here
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.utils import log_exc, log
@@ -42,17 +45,15 @@ from DateTime import DateTime
 
 schema = Schema((
 
-    TextField(
+    ZPTField(
         name='emailTemplate',
-        allowable_content_types=('text/plain', 'text/structured', 'text/html', 'application/msword',),
-        widget=RichWidget(
+        widget=TextAreaWidget(
             label="E-Mail Template",
             description="help_minaraad_emailTemplate",
             label_msgid='minaraad_label_emailTemplate',
             description_msgid='minaraad_help_emailTemplate',
             i18n_domain='minaraad',
-        ),
-        default_output_type='text/html'
+        )
     ),
     DateTimeField(
         name='emailSent',
@@ -93,7 +94,7 @@ class EmailMixin:
     # Methods
 
     security.declarePublic('email')
-    def email(self, text='', additionalAddresses=None, testing=False):
+    def email(self, text='', additionalMembers=(), testing=False):
         """
         Take the result from getEmailBody (an abstract method) and email
         to appropriate persons.
@@ -103,34 +104,18 @@ class EmailMixin:
             raise AlreadySentError("Content object at '%s' has already had " \
                                    "an e-mail sent" \
                                    % '/'.join(self.getPhysicalPath()))
-        
+
+        tool = getToolByName(self, 'portal_membership')
+        members = [tool.getMemberById(memberid)
+                   for memberid in additionalMembers]
+
         if not testing:
             sm = SubscriptionManager(self)
-            addresses = [x.email
-                         for x in sm.emailSubscribers(self.getSubscriptionId()) 
-                         if hasattr(x, 'email')]
+            members = [member for member in
+                       sm.emailSubscribers(self.getSubscriptionId())] + \
+                       members
             self.setEmailSent(DateTime())
-        else:
-            addresses = []
             
-        if additionalAddresses:
-            if isinstance(additionalAddresses, basestring):
-                addresses.append(additionalAddresses)
-            else:
-                addresses += additionalAddresses
-            
-        emailBody = self.getEmailBody()
-        if text:
-            emailBody['text/plain'] += '''
-
-Additional Message:
-%s''' % text
-            emailBody['text/html'] += '''
-<dl>
-<dt style="font-weight: bold">Additional Message</dt>
-<dd>%s</dd>
-</dl>
-''' % text
         
         portal = getToolByName(self, 'portal_url').getPortalObject()
         plone_utils = getToolByName(portal, 'plone_utils')
@@ -140,27 +125,42 @@ Additional Message:
         
         subject = '[%s] Automated subscription email' % portal.title_or_id()
         
-        message = MIMEMultipart('alternative')
-        
-        textPlain = unicode(emailBody['text/plain'], charset)
-        message.attach(MIMEText(textPlain, 'plain', charset))
-        
-        textHtml = unicode(emailBody['text/html'], charset)
-        message.attach(MIMEText(textHtml, 'html', charset))
-        
-        message = str(message)
-        
         mailHost = getToolByName(portal, 'MailHost')
-        for address in addresses:
+        for member in members:
+            emailBody = self.getEmailBody(member=member)
+
+            if text:
+                emailBody['text/plain'] += '''
+
+                Additional Message:
+                %s''' % text
+                
+                emailBody['text/html'] += '''
+                <dl>
+                <dt style="font-weight: bold">Additional Message</dt>
+                <dd>%s</dd>
+                </dl>
+                ''' % text
+            
+            message = MIMEMultipart('alternative')
+        
+            textPlain = unicode(emailBody['text/plain'], charset)
+            message.attach(MIMEText(textPlain, 'plain', charset))
+        
+            textHtml = unicode(emailBody['text/html'], charset)
+            message.attach(MIMEText(textHtml, 'html', charset))
+        
+            message = str(message)
+        
             try:
                 mailHost.send(message = message,
-                              mto = address,
+                              mto = member.email,
                               mfrom = fromAddress,
                               subject = subject)
             except:
                 log_exc('Could not send email from %s to %s regarding issue ' \
                         'in tracker %s\ntext is:\n%s\n' \
-                        % (fromAddress, address, self.absolute_url(), emailBody,))
+                        % (fromAddress, member.address, self.absolute_url(), emailBody,))
     security.declarePublic('getEmailBody')
     def getEmailBody(self, *args, **kwargs):
         """

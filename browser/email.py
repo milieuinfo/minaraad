@@ -8,14 +8,15 @@ class EmailOutView(AbstractView):
         response = request.response
         
         if request.get('send', None) is not None:
-            additionalAddresses = self.request.get('to', '').split(',') \
-                                  or None
+            additionalMembers = [mem for mem in
+                                 self.request.get('to', '').split(',')
+                                 if mem]
             testing = bool(int(self.request.get('send_as_test', "0")))
             text = self.request.get('additional', None)
             
             self.context.email(text=text, 
                                testing=testing, 
-                               additionalAddresses=additionalAddresses)
+                               additionalMembers=additionalMembers)
             
             return response.redirect(self.referring_url+
                                      '?portal_status_message=E-mail+Sent')

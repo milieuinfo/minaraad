@@ -65,6 +65,9 @@ class testEmailMixin(PloneTestCase):
         self.portal.portal_membership.addMember('member', 'secret', 
                                                 ['Member'], [], 
                                                 {'email': 'someguy@hisplace.com'})
+        self.portal.portal_membership.addMember('member2', 'secret', 
+                                                ['Member'], [], 
+                                                {'email': 'anotherguy@hisplace.com'})
 
     # from class EmailMixin:
     def test_email(self):
@@ -102,20 +105,21 @@ class testEmailMixin(PloneTestCase):
         self.assertEqual(len(mailHost.messages), 1)
         mailHost.reset()
         
-        emailMixin.setEmailTemplate('<p>boooo</p>')
+        emailMixin.setEmailTemplate('Your e-mail: <p tal:content="options/member/email">boooo</p>')
         text = "Some random additional info"
-        emailMixin.email(text, 'email@someotherguy')
+        emailMixin.email(text, ('member2',))
         emailMixin.setEmailSent(None)
         msg = mailHost.messages[0]
         textParts = [x for x in msg.walk() 
                        if x.get('Content-Type','').find('text/plain') > -1]
         payload = textParts[0].get_payload(decode=True)
         self.failUnless(text in payload)
+        self.failUnless('@hisplace.com' in payload)
         
         lst1 = [x['To'] for x in mailHost.messages]
         lst1.sort()
         
-        self.assertEquals(lst1, ['email@someotherguy', 'someguy@hisplace.com'])
+        self.assertEquals(lst1, ['anotherguy@hisplace.com', 'someguy@hisplace.com'])
         
         self.logout()
         
