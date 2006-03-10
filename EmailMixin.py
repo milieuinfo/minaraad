@@ -55,6 +55,7 @@ schema = Schema((
         ),
         default_output_type='text/html'
     ),
+
     ZPTField(
         name='emailTemplate',
         default="""<div tal:define="member options/member">Dear <span tal:replace="member/firstname">John</span> <span tal:replace="member/fullname">Doe</span></div>""",

@@ -99,6 +99,7 @@ def install(self):
         "Study",
         "AnnualReport",
         "NewsLetter",
+        "NewsItem",
         ] + factory_tool.getFactoryTypes().keys()
     factory_tool.manage_setPortalFactoryTypes(listOfTypeIds=factory_types)
 
