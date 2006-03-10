@@ -82,6 +82,18 @@ class testNewsItem(MainTestCase):
         types_ = self.portal.portal_types.objectIds()
         self.failUnless('NewsItem' in types_)
 
+    def testProperties(self):
+        """ Test if the Newsletter has the correct properties
+        """
+
+        self.setRoles(['Manager'])
+        self.portal.nieuwsbrieven.newsl_2006.invokeFactory('NewsLetter', id='testnewsletter2')
+        self.portal.nieuwsbrieven.newsl_2006.testnewsletter2.invokeFactory('NewsItem', id='testnewsitem')
+        testnewsitem = self.portal.nieuwsbrieven.newsl_2006.testnewsletter2.testnewsitem
+
+        testnewsitem.setTitle("Do I have a Title?")
+
+
 def test_suite():
     from unittest import TestSuite, makeSuite
     suite = TestSuite()

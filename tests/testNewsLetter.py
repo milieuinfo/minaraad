@@ -46,6 +46,7 @@ from Products.minaraad.tests.MainTestCase import MainTestCase
 from Products.minaraad.content.NewsLetter import NewsLetter
 
 ##code-section module-beforeclass #fill in your manual code here
+from DateTime import DateTime
 ##/code-section module-beforeclass
 
 
@@ -86,6 +87,20 @@ class testNewsLetter(MainTestCase):
         """
         types_ = self.portal.portal_types.objectIds()
         self.failUnless('NewsLetter' in types_)
+
+    def testProperties(self):
+        """ Test if the Newsletter has the correct properties
+        """
+
+        self.setRoles(['Manager'])
+        self.portal.nieuwsbrieven.newsl_2006.invokeFactory('NewsLetter', id='testnewsletter')
+        testnewsletter = self.portal.nieuwsbrieven.newsl_2006.testnewsletter
+
+        testnewsletter.setTitle("Do I have a Title?")
+        testnewsletter.setDescription("Can I describe?")
+        testnewsletter.setDate(DateTime())
+        # testnewsletter.setBody()
+        # testnewsletter.setContactPerson()
 
     def test_getEmailContents(self):
         pass
