@@ -99,9 +99,6 @@ class testHearing(MainTestCase):
         """
         """
         #Uncomment one of the following lines as needed
-    def test_attendees(self):
-        pass
-
     def test_themeslist(self):
         """ Test the theme list function in the Hearing content type
         """
@@ -124,6 +121,9 @@ class testHearing(MainTestCase):
         self.hoorzitting.getContact       # Contactpersoon
 
     def test_subscribers_export(self):
+        pass
+
+    def test_attendees(self):
         pass
 
 

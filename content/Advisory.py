@@ -52,6 +52,7 @@ schema = Schema((
             i18n_domain='minaraad',
         )
     ),
+
     TextField(
         name='description',
         widget=TextAreaWidget(
@@ -60,6 +61,7 @@ schema = Schema((
             i18n_domain='minaraad',
         )
     ),
+
 ArrayField(            FileField(
                 name='attachments',
                 widget=FileWidget(
@@ -69,6 +71,7 @@ ArrayField(            FileField(
                 ),
                 storage=AttributeStorage()
             ),
+        
         ),    ReferenceField(
         name='contact',
         widget=ReferenceWidget(
@@ -83,6 +86,7 @@ ArrayField(            FileField(
 
 ),
 )
+
 ##code-section after-local-schema #fill in your manual code here
 ##/code-section after-local-schema
 
@@ -91,14 +95,12 @@ Advisory_schema = ATContentTypeSchema.copy() + \
     getattr(EmailMixin, 'schema', Schema(())).copy() + \
     schema.copy()
 
-
 ##code-section after-schema #fill in your manual code here
 Advisory_schema['description'].isMetadata = False
 ##/code-section after-schema
 
 class Advisory(PostMixin, EmailMixin, ATCTContent):
-    """
-    An advisory
+    """An advisory
     """
     security = ClassSecurityInfo()
     __implements__ = (getattr(PostMixin,'__implements__',()),) + (getattr(EmailMixin,'__implements__',()),) + (getattr(ATCTContent,'__implements__',()),)

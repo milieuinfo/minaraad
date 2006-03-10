@@ -36,14 +36,13 @@ from Products.minaraad.config import *
 
 schema = Schema((
 
-
 ),
 )
+
 ##code-section after-local-schema #fill in your manual code here
 ##/code-section after-local-schema
 
 PostMixin_schema = schema.copy()
-
 
 ##code-section after-schema #fill in your manual code here
 ##/code-section after-schema

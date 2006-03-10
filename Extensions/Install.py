@@ -91,20 +91,6 @@ def install(self):
     # enable portal_factory for given types
     factory_tool = getToolByName(self,'portal_factory')
     factory_types=[
-        "EmailMixin",
-        "PostMixin",
-        "MainTestCase",
-        "testSetup",
-        "testAdvisory",
-        "testHearing",
-        "testAgendaItem",
-        "testContactPerson",
-        "testPressrelease",
-        "testStudy",
-        "testAnnualReport",
-        "testNewsLetter",
-        "testWorkflow",
-        "testEmailMixin",
         "Advisory",
         "Hearing",
         "ContactPerson",

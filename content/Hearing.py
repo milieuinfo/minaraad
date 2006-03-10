@@ -46,6 +46,7 @@ schema = Schema((
             i18n_domain='minaraad',
         )
     ),
+
     TextField(
         name='goal',
         widget=TextAreaWidget(
@@ -54,6 +55,7 @@ schema = Schema((
             i18n_domain='minaraad',
         )
     ),
+
     TextField(
         name='description',
         widget=TextAreaWidget(
@@ -62,6 +64,7 @@ schema = Schema((
             i18n_domain='minaraad',
         )
     ),
+
     StringField(
         name='location',
         widget=StringWidget(
@@ -70,6 +73,7 @@ schema = Schema((
             i18n_domain='minaraad',
         )
     ),
+
     IntegerField(
         name='theme',
         widget=SelectionWidget(
@@ -79,6 +83,7 @@ schema = Schema((
         ),
         vocabulary='getThemesList'
     ),
+
     BooleanField(
         name='mot',
         widget=BooleanWidget(
@@ -89,6 +94,7 @@ schema = Schema((
             i18n_domain='minaraad',
         )
     ),
+
     DateTimeField(
         name='startdate',
         index="DateIndex:brains",
@@ -99,6 +105,7 @@ schema = Schema((
         ),
         required=1
     ),
+
     DateTimeField(
         name='enddate',
         widget=CalendarWidget(
@@ -108,6 +115,7 @@ schema = Schema((
         ),
         required=1
     ),
+
     ReferenceField(
         name='contact',
         widget=ReferenceWidget(
@@ -122,13 +130,13 @@ schema = Schema((
 
 ),
 )
+
 ##code-section after-local-schema #fill in your manual code here
 ##/code-section after-local-schema
 
 Hearing_schema = BaseFolderSchema.copy() + \
     getattr(EmailMixin, 'schema', Schema(())).copy() + \
     schema.copy()
-
 
 ##code-section after-schema #fill in your manual code here
 class IHearing(Interface):
