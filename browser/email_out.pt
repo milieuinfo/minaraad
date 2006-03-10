@@ -55,7 +55,11 @@
     
                     <div class="formHelp" 
                          i18n:translate="help_email_out_to">
-                        Comma-separated list of e-mail addresses to send this out to.
+                        Comma-separated list of member ids this mail
+                        is sent out to.  This is only for testing
+                        purposes and for members that you want the
+                        mail to be sent to in addition to the ones
+                        that subscribed.
                     </div>
     
                     <input type="text"
@@ -73,8 +77,9 @@
     
                     <div class="formHelp" 
                          i18n:translate="help_send_as_test">
-                        Test e-mails can be sent as frequently as needed but only get
-                        sent to the email addresses in the above "To" field.
+                        Test e-mails can be sent as frequently as
+                        needed but only get sent to the members in the
+                        above "To" field.
                     </div>
         
                     <input type="checkbox"
