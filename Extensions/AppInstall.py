@@ -57,6 +57,9 @@ def install(self):
     
     print >> out, "Setting specific views on certain folders"
     _setViews(self)
+
+    print >> out, "Make FCKeditor the default for all members"
+    _configureFCKeditor(self)
     
     #_configureKupu(self)
     return out.getvalue()
@@ -384,6 +387,9 @@ def _configureKupu(portal):
     except:
         out.write("Raargh, kupu error.\n")
 
+def _configureFCKeditor(portal):
+    memberdata = getToolByName(portal, 'portal_memberdata')
+    memberdata._updateProperty('wysiwyg_editor', 'FCKeditor')
 
 def uninstall(self):
     out = StringIO()

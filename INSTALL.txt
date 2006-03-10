@@ -13,3 +13,5 @@ Dependencies
     * CompoundField (https://svn.plone.org/svn/archetypes/MoreFieldsAndWidgets/CompoundField/trunk/CompoundField)
 
     * TemplateFields (https://svn.plone.org/svn/archetypes/MoreFieldsAndWidgets/TemplateFields/trunk/)
+
+    * FCKeditor 2.2 (http://prdownloads.sourceforge.net/fckeditor/FCKeditor.Plone2.2.zip?download)
