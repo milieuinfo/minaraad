@@ -86,6 +86,10 @@ class testHearing(MainTestCase):
     def test_getSubscriptionId(self):
         pass
 
+    # from class EmailMixin:
+    def test_getEmailContentsFromContent(self):
+        pass
+
     # Manually created methods
 
     def test_Existance(self):
@@ -99,6 +103,9 @@ class testHearing(MainTestCase):
         """
         """
         #Uncomment one of the following lines as needed
+    def test_getEmailContents(self):
+        pass
+
     def test_themeslist(self):
         """ Test the theme list function in the Hearing content type
         """

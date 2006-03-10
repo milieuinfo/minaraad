@@ -138,12 +138,19 @@ class testEmailMixin(PloneTestCase):
     def test_getSubscriptionId(self):
         pass
 
+    # from class EmailMixin:
+    def test_getEmailContentsFromContent(self):
+        pass
+
     # Manually created methods
 
     def beforeTearDown(self):
         self.portal.MailHost = self.portal._original_MailHost
         del self.portal._original_MailHost
     
+    def test_getEmailContents(self):
+        pass
+
     def test_subscribers_export(self):
         pass
 

@@ -45,11 +45,23 @@ from DateTime import DateTime
 
 schema = Schema((
 
+    TextField(
+        name='body',
+        allowable_content_types=('text/plain', 'text/structured', 'text/html', 'application/msword',),
+        widget=RichWidget(
+            label='Body',
+            label_msgid='minaraad_label_body',
+            i18n_domain='minaraad',
+        ),
+        default_output_type='text/html'
+    ),
     ZPTField(
         name='emailTemplate',
+        default="""<div tal:define="member options/member">Dear <span tal:replace="member/firstname">John</span> <span tal:replace="member/fullname">Doe</span></div>""",
         widget=TextAreaWidget(
             label="E-Mail Template",
-            description="help_minaraad_emailTemplate",
+            description="",
+            visible=0,
             label_msgid='minaraad_label_emailTemplate',
             description_msgid='minaraad_help_emailTemplate',
             i18n_domain='minaraad',
@@ -172,6 +184,7 @@ class EmailMixin:
         """
 
         cooked = self.getEmailTemplate(**kwargs)
+        cooked += self.getEmailContentsFromContent()
         portal_transforms = getToolByName(self, 'portal_transforms')
         plain = portal_transforms.convertTo('text/plain', cooked).getData()
         
@@ -191,6 +204,13 @@ class EmailMixin:
         
         return self.__class__.__name__
         
+    security.declarePublic('getEmailContentsFromContent')
+    def getEmailContentsFromContent(self):
+        """Override this in your Content Types to add HTML to the
+        outgoing e-mail.
+        """
+        return self.getBody()
+
 # end of class EmailMixin
 
 ##code-section module-footer #fill in your manual code here

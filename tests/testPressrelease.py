@@ -74,7 +74,14 @@ class testPressrelease(MainTestCase):
     def test_getSubscriptionId(self):
         pass
 
+    # from class EmailMixin:
+    def test_getEmailContentsFromContent(self):
+        pass
+
     # Manually created methods
+
+    def test_getEmailContents(self):
+        pass
 
     def test_subscribers_export(self):
         pass

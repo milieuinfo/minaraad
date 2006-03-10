@@ -34,10 +34,6 @@ from Products.minaraad.EmailMixin import EmailMixin
 from Products.CompoundField.ArrayField import ArrayField
 from Products.minaraad.config import *
 
-# additional imports from tagged value 'import'
-from Products.ATContentTypes.content.base import ATCTContent
-from Products.ATContentTypes.content.schemata import ATContentTypeSchema
-
 ##code-section module-header #fill in your manual code here
 ##/code-section module-header
 
@@ -90,7 +86,7 @@ ArrayField(            FileField(
 ##code-section after-local-schema #fill in your manual code here
 ##/code-section after-local-schema
 
-Advisory_schema = ATContentTypeSchema.copy() + \
+Advisory_schema = BaseSchema.copy() + \
     getattr(PostMixin, 'schema', Schema(())).copy() + \
     getattr(EmailMixin, 'schema', Schema(())).copy() + \
     schema.copy()
@@ -99,11 +95,11 @@ Advisory_schema = ATContentTypeSchema.copy() + \
 Advisory_schema['description'].isMetadata = False
 ##/code-section after-schema
 
-class Advisory(PostMixin, EmailMixin, ATCTContent):
+class Advisory(PostMixin, EmailMixin, BaseContent):
     """An advisory
     """
     security = ClassSecurityInfo()
-    __implements__ = (getattr(PostMixin,'__implements__',()),) + (getattr(EmailMixin,'__implements__',()),) + (getattr(ATCTContent,'__implements__',()),)
+    __implements__ = (getattr(PostMixin,'__implements__',()),) + (getattr(EmailMixin,'__implements__',()),) + (getattr(BaseContent,'__implements__',()),)
 
     # This name appears in the 'add' box
     archetype_name = 'Advisory'
