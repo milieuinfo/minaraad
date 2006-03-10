@@ -60,12 +60,13 @@ class testNewsLetter(MainTestCase):
         """
         """
         pass
-    # from class EmailMixin:
+
     # from class EmailMixin:
     def test_email(self):
         """
         """
         #Uncomment one of the following lines as needed
+
     # from class EmailMixin:
     def test_getEmailBody(self):
         pass
@@ -79,6 +80,12 @@ class testNewsLetter(MainTestCase):
         pass
 
     # Manually created methods
+
+    def testNewsLetter(self):
+        """ Test if the Newsletter is in the portal_types
+        """
+        types_ = self.portal.portal_types.objectIds()
+        self.failUnless('NewsLetter' in types_)
 
     def test_getEmailContents(self):
         pass

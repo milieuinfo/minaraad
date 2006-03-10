@@ -75,7 +75,12 @@ class testNewsItem(MainTestCase):
         pass
 
     # Manually created methods
+    def testNewsItem(self):
+        """ Test to see if NewsItem is in the portal_types
+        """
 
+        types_ = self.portal.portal_types.objectIds()
+        self.failUnless('NewsItem' in types_)
 
 def test_suite():
     from unittest import TestSuite, makeSuite
