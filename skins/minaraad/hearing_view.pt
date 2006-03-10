@@ -65,8 +65,8 @@
         
         <!-- Text -->
         <div class="bodytext"
-             tal:condition="context/getEmailTemplate"
-             tal:content="structure context/getEmailTemplate" />
+             tal:condition="context/getBody"
+             tal:content="structure context/getBody" />
         <!-- End text -->
         <br />
 
