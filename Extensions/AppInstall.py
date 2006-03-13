@@ -358,38 +358,26 @@ def _restrictLocallyAllowedTypes(portal):
         except:
             out.write("can't set restriction on %s\n" % foldername)
 
-def _configureKupu(portal):
-    kupuTool = getToolByName(portal, 'kupu_library_tool')
-    linkable = list(kupuTool.getPortalTypesForResourceType('linkable'))
-    mediaobject = list(kupuTool.getPortalTypesForResourceType('mediaobject'))
-    collection = list(kupuTool.getPortalTypesForResourceType('collection'))
-    for type in LINKABLE:
-        if type not in linkable:
-            linkable.append(type)
-    for type in MEDIA:
-        if type not in mediaobject:
-            mediaobject.append(type)
-    for type in COLLECTION:
-        if type not in collection:
-            collection.append(type)
-    # kupu_library_tool has an idiotic interface, basically written purely to
-    # work with its configuration page. :-(
-    try:
-        kupuTool.updateResourceTypes(({'resource_type' : 'linkable',
-                                       'old_type'      : 'linkable',
-                                       'portal_types'  :  linkable},
-                                      {'resource_type' : 'mediaobject',
-                                       'old_type'      : 'mediaobject',
-                                       'portal_types'  :  mediaobject},
-                                      {'resource_type' : 'collection',
-                                       'old_type'      : 'collection',
-                                       'portal_types'  :  collection},))
-    except:
-        out.write("Raargh, kupu error.\n")
 
 def _configureFCKeditor(portal):
+    """Update FCKEditor settings
+    """
     memberdata = getToolByName(portal, 'portal_memberdata')
+    props = getToolByName(portal, 'portal_properties')
+    fckprops = props.fckeditor_properties
+
     memberdata._updateProperty('wysiwyg_editor', 'FCKeditor')
+    fckprops._updateProperty('fck_default_skin', 'office2003')
+    fckprops._updateProperty('fck_force_height', FCK_FORCE_HEIGHT)
+    
+    # disable the member prefs, has bugs
+    control = getToolByName(portal, 'portal_controlpanel')
+    actions = control._cloneActions()
+    for action in actions:
+        if action.id == 'fckeditor_member_prefs':
+            action.visible = 0
+            print >> out, "Switching off unwanted action %s." % action.id
+    control._actions = actions
 
 def uninstall(self):
     out = StringIO()

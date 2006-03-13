@@ -92,23 +92,5 @@ SELECT_VIEWS = {
     '/adviezen/adv_1999': 'advisory_listing_view',
     }
 
-# Kupu Configuration LINKABLE is a list of content types to which we
-# can link within the kupu drawer
-LINKABLE = ['Advisory',
-            'AnnualReport',
-            'Newsitem',
-            'NewsLetter',
-            'Pressrelease',
-            'Study',
-            'Event',
-           ]
-
-#MEDIA is a list of media content types which can be inserted within
-#kupu.  By default only 'Image' is addable
-
-MEDIA = []
-
-# COLLECTION is a list of (folderish) content types which are used by
-# the kupu drawers to browse through the sites folder structure.
-
-COLLECTION = ['Hearing',]
+#FCKeditor set height
+FCK_FORCE_HEIGHT = '500px'
