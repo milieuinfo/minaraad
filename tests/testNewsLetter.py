@@ -47,6 +47,13 @@ from Products.minaraad.content.NewsLetter import NewsLetter
 
 ##code-section module-beforeclass #fill in your manual code here
 from DateTime import DateTime
+from StructuredText.StructuredText import HTML
+
+TITLE = "title"
+DESCRIPTION = "my description"
+DATE = DateTime()
+HTMLBODY = "<p>blablabla blablabla bladibladi bla</p>"
+PLAINBODY = "blablabla blablabla bladibladi bla"
 ##/code-section module-beforeclass
 
 
@@ -60,6 +67,14 @@ class testNewsLetter(MainTestCase):
     def afterSetUp(self):
         """
         """
+
+        self.setRoles(['Manager'])
+        self.portal.nieuwsbrieven.newsl_2006.invokeFactory('NewsLetter', id='testnewsletter')
+        self.testnewsletter = self.portal.nieuwsbrieven.newsl_2006.testnewsletter
+        
+        self.portal.contactpersonen.invokeFactory('ContactPerson', id='Joris')
+        self.contactperson = self.portal.contactpersonen.Joris
+
         pass
 
     # from class EmailMixin:
@@ -92,16 +107,27 @@ class testNewsLetter(MainTestCase):
         """ Test if the Newsletter has the correct properties
         """
 
-        self.setRoles(['Manager'])
-        self.portal.nieuwsbrieven.newsl_2006.invokeFactory('NewsLetter', id='testnewsletter')
-        testnewsletter = self.portal.nieuwsbrieven.newsl_2006.testnewsletter
+        self.testnewsletter.setTitle(TITLE)
+        self.testnewsletter.setDescription(DESCRIPTION)
+        self.testnewsletter.setDate(DATE)
+        self.testnewsletter.setBody(HTMLBODY,text_format="text/html")
+        self.testnewsletter.setContact(self.contactperson.UID())
 
-        testnewsletter.setTitle("Do I have a Title?")
-        testnewsletter.setDescription("Can I describe?")
-        testnewsletter.setDate(DateTime())
-        # testnewsletter.setBody()
-        # testnewsletter.setContactPerson()
-
+        self.failUnless(self.testnewsletter.Title()==TITLE, 
+                        'Value is %s' % self.testnewsletter.Title())
+        self.failUnless(self.testnewsletter.getDescription()==DESCRIPTION, 
+                        'Value is %s' % self.testnewsletter.getDescription())
+        self.failUnless(self.testnewsletter.getDate()==DATE, 
+                        'Value is %s' % self.testnewsletter.getDate())
+        self.failUnless(self.testnewsletter.getBody()==HTMLBODY, 
+                        'Value %s is not %s' % (self.testnewsletter.getBody(),HTMLBODY))
+        self.failUnless(self.testnewsletter.getContact()==[self.contactperson], 
+                        'Value %s is not %s' % (self.testnewsletter.getContact(),self.contactperson))
+        
+        self.testnewsletter.setBody(PLAINBODY,text_format="text/plain")
+        self.failUnless(self.testnewsletter.getBody()==HTMLBODY, 
+                        'Value %s is not %s' % (self.testnewsletter.getBody(),HTMLBODY))
+    
     def test_getEmailContents(self):
         pass
 
