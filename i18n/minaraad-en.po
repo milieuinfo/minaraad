@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minaraad 0.1\n"
-"POT-Creation-Date: 2006-03-07 10:08+0000\n"
+"POT-Creation-Date: 2006-03-13 10:11+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: Mirella van Teulingen <m.van.teulingen@zestsoftware.nl>\n"
 "Language-Team: English <info@zestsoftware.nl>\n"
@@ -100,7 +100,8 @@ msgstr ""
 msgid "heading_themes_setup"
 msgstr ""
 
-#. Default: "Send out an e-mail to all sbuscribers pertaining to this item. The format of the e-mail can be specified on the 'edit' tab of this content type using the 'emailTemplate' field.  If the 'Send As Text' checkbox is checked below, the e-mail is only sent to the people in the 'To' field.  Once a non-test e-mail has been sent out, no further e-mail's can be sent from this particular tab."
+#. Default: "Send out an e-mail to all subscribers pertaining to this item. If the 'Send As Test' checkbox is checked below, the e-mail is only sent to the people in the 'To' field. Fill in the username which should receive the test email. Once a non-test e-mail has been sent out,no further e-mail's can be sent from this particular tab."
+#, fuzzy
 msgid "help_email_out"
 msgstr ""
 
