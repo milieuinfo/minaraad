@@ -23,71 +23,111 @@
             <tal:block tal:repeat="subscription subscriptions">
             <span tal:condition="not:subscription/category" 
                 tal:omit-tag="">
-                <a tal:attributes="href string:${context/absolute_url}/subscribers_config.html?sub=${subscription/id}"
+                <a tal:attributes="href string:${context/absolute_url}/subscribers_config.html?${subscription/id}=${subscription/id}"
                 tal:content="subscription/id"
                 i18n:translate="" /> &nbsp; | &nbsp;
             </span>
             </tal:block>
+            <a tal:attributes="href string:${context/absolute_url}/subscribers_config.html?Hearing=Hearing"
+               i18n:translate="">Hearing</a>
             <br />
             <br />
-            <div i18n:translate="" 
-                 style="font-weight:bold">Hearing</div>
-            
-            <tal:block tal:repeat="theme view/subscriptions">
-            <span tal:condition="theme/category" 
-                  tal:omit-tag="">
-            <span tal:condition="repeat/theme/odd" 
-                  tal:omit-tag="">
-                <a tal:content="theme/Title"
-                   i18n:translate="" 
-                   tal:attributes="href string:${context/absolute_url}/subscribers_config.html?sub=${theme/id}" /> 
-                &nbsp; | &nbsp;
-            </span>
-            </span>
-            </tal:block>
-            <div style="height: 8px">&nbsp;</div>
-            <tal:block tal:repeat="theme view/subscriptions">
-            <span tal:condition="theme/category" 
-                  tal:omit-tag="">
-            <span tal:condition="repeat/theme/even" 
-                  tal:omit-tag="">
-                <a tal:content="theme/Title"
-                   i18n:translate="" 
-                   tal:attributes="href string:${context/absolute_url}/subscribers_config.html?sub=${theme/id}" /> 
-                &nbsp; | &nbsp;
-            </span>
-            </span>
-            </tal:block>
+<!--
+            <form method="get"
+                  tal:attributes="action string:${context/absolute_url}/$template_id">
+
+                <tal:block tal:repeat="theme view/subscriptions">
+                <tal:block tal:condition="theme/category">
+                    <input type="checkbox"
+                          class="noborder"
+                          tal:attributes="tabindex tabindex/next;
+                                          id string:${theme/id};
+                                          name string:${theme/id};
+                                          checked theme/checked;
+                                          value string:${theme/id};" /> 
+                    <span tal:content="theme/Title"
+                    i18n:translate="" /> 
+                    <br />
+                </tal:block>
+                </tal:block>
+                <br />
+
+                <input class="context"
+                       type="submit"
+                       name=""
+                       value="Theme subscribers"
+                       i18n:attributes="value label_subscribersoverview;"
+                       tal:attributes="tabindex tabindex/next;" />
+            </form> 
+-->
         </tal:block>
         <br />
-        <br />
-        <br />
-        <tal:block tal:define="subscription request/sub|nothing"
-                   tal:condition="subscription">
+        <tal:block tal:define="subscription request/sub|nothing;
+                               members view/getMembersOfSubscriptions">
         
         <form method="get"
-              tal:attributes="action string:${context/absolute_url}/$template_id">
-            <input class="context"
-                   type="hidden"
-                   name="sub"
-                   tal:attributes="value subscription" />
+                tal:define="isHearing request/Hearing|nothing"
+                tal:attributes="action string:${context/absolute_url}/$template_id">
 
+            <tal:block tal:condition="isHearing">
+                <input class="context"
+                        type="hidden"
+                        name="Hearing"
+                        tal:attributes="value string:Hearing" />
+                <div i18n:translate="" 
+                     style="font-weight:bold">Hearing Themes</div>
+                <tal:block tal:repeat="theme view/subscriptions">
+                <tal:block tal:condition="theme/category">
+                    <input type="checkbox"
+                            class="noborder"
+                            tal:attributes="tabindex tabindex/next;
+                                            id string:${theme/id};
+                                            name string:${theme/id};
+                                            checked theme/checked;
+                                            value string:${theme/id};" /> 
+                    <span tal:content="theme/Title"
+                    i18n:translate="" /> 
+                    <br />
+                </tal:block>
+                </tal:block>
+                <br />
+                <input class="context"
+                            type="submit"
+                            name="form.button.ShowThemeSubscribers"
+                            value="Theme subscribers"
+                            i18n:attributes="value label_subscribersoverview;"
+                            tal:attributes="tabindex tabindex/next;" />
+            </tal:block>
+                <input class="context"
+                        type="hidden"
+                        name="Hearing"
+                        tal:attributes="value string:Hearing" />
+
+
+            <tal:block tal:condition="members">
             <input class="context"
                     type="submit"
                     name="form.button.ExportEmail"
                     value="Export Email Subscribers"
                     i18n:attributes="value label_export_email;"
                     tal:attributes="tabindex tabindex/next;" />
-
+        
             <input class="context"
                     type="submit"
                     name="form.button.ExportPost"
                     value="Export Post Subscribers"
                     i18n:attributes="value label_export_post;"
                     tal:attributes="tabindex tabindex/next;" />
+
+            <input class="context"
+                    type="hidden"
+                    name=""
+                    tal:attributes="value subscription" />
+            </tal:block>
         </form>
 
-        <table class="listing">
+        <table class="listing"
+               tal:condition="members">
             <thead>
                 <tr>
                     <th i18n:translate="label_gender">
@@ -133,7 +173,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr tal:repeat="member python:view.getMembersOfSubscriptions(subscription)">
+                <tr tal:repeat="member members">
                     <td tal:content="member/gender" />
                     <td tal:content="member/firstname" />
                     <td tal:content="member/fullname" />

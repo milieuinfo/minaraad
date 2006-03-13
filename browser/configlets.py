@@ -153,11 +153,16 @@ class SubscribersConfigletView(AbstractView):
 
     def __call__(self):
         request = self.request
+        #session = request.SESSION
+        #session.set({'category':'Advisory'})
+        #session['category']
         subject = request.get('sub', None)
         if request.get('form.button.ExportEmail', None) is not None:
             return self.buildSubscriberCSV('email', subject)
         elif request.get('form.button.ExportPost', None) is not None:
             return self.buildSubscriberCSV('post', subject)
+        #elif request.get('form.button.ShowThemeSubscribers', None) is not None:
+        #    return self.index(template_id='subscribers_config.html')
         else:
             return self.index(template_id='subscribers_config.html')
 
@@ -172,9 +177,13 @@ class SubscribersConfigletView(AbstractView):
         items = sm.subscriptions
         subscriptions = []
         for item in items:
+            checked = False
+            if self.request.get(item.id, None) == item.id:
+                checked = True
             sub = {'id': item.id,
                    'subscribed_email': item.email,
-                   'subscribed_post': item.post}
+                   'subscribed_post': item.post,
+                   'checked': checked}
             subscriptions.append(sub)
             
             title = self._getThemeTitle(item.id)
@@ -194,12 +203,28 @@ class SubscribersConfigletView(AbstractView):
         return subscriptions
 
     #get Members of the subscriptions
-    def getMembersOfSubscriptions(self, id):
+    def getMembersOfSubscriptions(self, id=None, type_=None):
+        """
+        id can now be a list of ids.  Well, it is totally unused now. May be removed in future.
+        """
         sm = self.subscriptionManager
-        subscribers = sm.emailSubscribers(id)
-        for subscriber in sm.postSubscribers(id):
-            if subscriber not in subscribers:
-                subscribers.append(subscriber)
+        items = sm.subscriptions
+        subscribers = []
+        if type_ is None:
+            types = ['post', 'email']
+        else:
+            types = [type_]
+        for item in items:
+            if self.request.get(item.id, None) == item.id or \
+               self.request.get('sub', None) == item.id:
+                if 'post' in types:
+                    for subscriber in sm.postSubscribers(item.id):
+                        if subscriber not in subscribers:
+                            subscribers.append(subscriber)
+                if 'email' in types:
+                    for subscriber in sm.emailSubscribers(item.id):
+                        if subscriber not in subscribers:
+                            subscribers.append(subscriber)
         return subscribers
 
     def getSubscriptionType(self, memberid, subscriptionid):
@@ -236,8 +261,9 @@ class SubscribersConfigletView(AbstractView):
                   ('zipcode', 'Zip Code'),
                   ('city', 'City'),
                   ('country', 'Country'),
-                  ('other_country', 'Other country'))
-        
+                  ('other_country', 'Other country'),
+                  ('type_', 'Type'))
+
         for pos, field in enumerate(fields):
             id, title = field
             
@@ -247,10 +273,8 @@ class SubscribersConfigletView(AbstractView):
             
         out.write(u'\n')
         
-        if type_ == 'post':
-            subscribers = self._subManager.postSubscribers(subscriberId)
-        elif type_ == 'email':
-            subscribers = self._subManager.emailSubscribers(subscriberId)
+        if type_ == 'post' or type_ == 'email':
+            subscribers = self.getMembersOfSubscriptions(id=subject, type_=type_)
         else:
             raise ValueError("The 'type' argument must be either " \
                              "'post' or 'email'")
@@ -260,6 +284,8 @@ class SubscribersConfigletView(AbstractView):
                 id, title = field
                 
                 value = unicode(subscriber.getProperty(id, ''), charset)
+                if id == 'type_':
+                    value = type_
                 value = value.replace(u'"', u'""')
                 out.write(u'"%s"' % value)
         

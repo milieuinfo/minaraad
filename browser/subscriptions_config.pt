@@ -76,7 +76,6 @@
                     </td>
                 </tr>
                 </tal:block>
-                
                 <!-- subscriptions with themes -->
                 <tr>
                     <td class="hearingsubscriptiontitle" 
