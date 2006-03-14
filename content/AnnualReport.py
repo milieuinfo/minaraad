@@ -97,6 +97,29 @@ class AnnualReport(PostMixin, EmailMixin, BaseContent):
     typeDescription = "AnnualReport"
     typeDescMsgId = 'description_edit_annualreport'
 
+    actions =  (
+
+
+       {'action': "string:${object_url}/email_out",
+        'category': "object",
+        'id': 'email_out',
+        'name': 'E-mail',
+        'permissions': ("View",),
+        'condition': 'python:1'
+       },
+
+
+       {'action': "string:${object_url}/export_subscribers",
+        'category': "object",
+        'id': 'export_subscribers',
+        'name': 'Export Subscriberes',
+        'permissions': ("View",),
+        'condition': 'python:1'
+       },
+
+
+    )
+
     _at_rename_after_creation = True
 
     schema = AnnualReport_schema

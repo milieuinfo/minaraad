@@ -32,6 +32,7 @@ if __name__ == '__main__':
     execfile(os.path.join(sys.path[0], 'framework.py'))
 
 ##code-section module-header #fill in your manual code here
+from Products.PageTemplates.ZopePageTemplate import ZopePageTemplate
 ##/code-section module-header
 
 #
@@ -76,7 +77,6 @@ class testEmailMixin(PloneTestCase):
         emailMixin = MockEmailMixin('blah')
         emailMixin = emailMixin.__of__(self.portal)
         emailMixin.setTitle('Blah')
-        emailMixin.setEmailTemplate('<p>Blah</p>')
 
         emailMixin.email()
         
@@ -100,12 +100,20 @@ class testEmailMixin(PloneTestCase):
         
         sm = SubscriptionManager(self.portal)
         sm.subscribe(MockEmailMixin.MOCK_NAME)
+        
+        # we want the mixin to be able to acquire a template
+        template = ZopePageTemplate("some id")
+        template.write("""
+        <span tal:replace='context/Title' />
+        <span tal:replace='member/email' />
+        """)
+        setattr(emailMixin, "EmailTemplate-Default", template)
+
         emailMixin.email()
         emailMixin.setEmailSent(None)
         self.assertEqual(len(mailHost.messages), 1)
         mailHost.reset()
         
-        emailMixin.setEmailTemplate('Your e-mail: <p tal:content="options/member/email">boooo</p>')
         text = "Some random additional info"
         emailMixin.email(text, ('member2',))
         emailMixin.setEmailSent(None)
@@ -115,6 +123,7 @@ class testEmailMixin(PloneTestCase):
         payload = textParts[0].get_payload(decode=True)
         self.failUnless(text in payload)
         self.failUnless('@hisplace.com' in payload)
+        self.failUnless(emailMixin.Title() in payload)
         
         lst1 = [x['To'] for x in mailHost.messages]
         lst1.sort()
@@ -122,24 +131,9 @@ class testEmailMixin(PloneTestCase):
         self.assertEquals(lst1, ['anotherguy@hisplace.com', 'someguy@hisplace.com'])
         
         self.logout()
-        
-    # from class EmailMixin:
-    def test_getEmailBody(self):
-        emailMixin = MockEmailMixin('blah')
-        emailMixin = emailMixin.__of__(self.portal)
-        emailMixin.setTitle('Blah')
-        emailMixin.setEmailTemplate('<p>Blah</p>')
-        
-        email = emailMixin.getEmailBody()
-        self.assertEquals(str(email['text/html']).strip(), '<p>Blah</p>')
-        self.assertEquals(str(email['text/plain']).strip(), 'Blah')
-        
-    # from class EmailMixin:
-    def test_getSubscriptionId(self):
-        pass
 
     # from class EmailMixin:
-    def test_getEmailContentsFromContent(self):
+    def test_getSubscriptionId(self):
         pass
 
     # Manually created methods
@@ -148,7 +142,13 @@ class testEmailMixin(PloneTestCase):
         self.portal.MailHost = self.portal._original_MailHost
         del self.portal._original_MailHost
     
+    def test_getEmailContentsFromContent(self):
+        pass
+
     def test_getEmailContents(self):
+        pass
+
+    def test_email_out(self):
         pass
 
     def test_subscribers_export(self):

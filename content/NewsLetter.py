@@ -103,6 +103,20 @@ class NewsLetter(EmailMixin, BaseFolder):
     typeDescription = "NewsLetter"
     typeDescMsgId = 'description_edit_newsletter'
 
+    actions =  (
+
+
+       {'action': "string:${object_url}/email_out",
+        'category': "object",
+        'id': 'email_out',
+        'name': 'E-mail',
+        'permissions': ("View",),
+        'condition': 'python:1'
+       },
+
+
+    )
+
     _at_rename_after_creation = True
 
     schema = NewsLetter_schema
@@ -111,6 +125,15 @@ class NewsLetter(EmailMixin, BaseFolder):
     ##/code-section class-header
 
     # Methods
+
+    # Manually created methods
+
+    security.declarePublic('getEmailContentsFromContent')
+    def getEmailContentsFromContent(self):
+        """
+        """
+        pass
+
 
 
 registerType(NewsLetter, PROJECTNAME)

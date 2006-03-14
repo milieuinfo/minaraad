@@ -105,6 +105,20 @@ class Pressrelease(EmailMixin, BaseContent):
     typeDescription = "Pressrelease"
     typeDescMsgId = 'description_edit_pressrelease'
 
+    actions =  (
+
+
+       {'action': "string:${object_url}/email_out",
+        'category': "object",
+        'id': 'email_out',
+        'name': 'E-mail',
+        'permissions': ("View",),
+        'condition': 'python:1'
+       },
+
+
+    )
+
     _at_rename_after_creation = True
 
     schema = Pressrelease_schema

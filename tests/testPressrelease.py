@@ -61,6 +61,10 @@ class testPressrelease(MainTestCase):
         """
         pass
     # from class EmailMixin:
+    # from class Pressrelease:
+    def test_email_out(self):
+        pass
+
     # from class EmailMixin:
     def test_email(self):
         """
@@ -74,11 +78,10 @@ class testPressrelease(MainTestCase):
     def test_getSubscriptionId(self):
         pass
 
-    # from class EmailMixin:
+    # Manually created methods
+
     def test_getEmailContentsFromContent(self):
         pass
-
-    # Manually created methods
 
     def test_getEmailContents(self):
         pass

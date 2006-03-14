@@ -70,17 +70,20 @@ class testNewsItem(MainTestCase):
     def test_getSubscriptionId(self):
         pass
 
-    # from class EmailMixin:
-    def test_getEmailContentsFromContent(self):
-        pass
-
     # Manually created methods
+
     def testNewsItem(self):
         """ Test to see if NewsItem is in the portal_types
         """
 
         types_ = self.portal.portal_types.objectIds()
         self.failUnless('NewsItem' in types_)
+
+    def test_getEmailContentsFromContent(self):
+        pass
+
+    def test_email_out(self):
+        pass
 
     def testProperties(self):
         """ Test if the Newsletter has the correct properties

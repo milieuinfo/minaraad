@@ -87,10 +87,6 @@ class testAdvisory(MainTestCase):
     def test_getSubscriptionId(self):
         pass
 
-    # from class EmailMixin:
-    def test_getEmailContentsFromContent(self):
-        pass
-
     # Manually created methods
 
     def test_email_out_html(self):
@@ -102,6 +98,9 @@ class testAdvisory(MainTestCase):
 
         types_ = self.portal.portal_types.objectIds()
         self.failUnless('Advisory' in types_)
+
+    def test_getEmailContentsFromContent(self):
+        pass
 
     def test_getEmailContents(self):
         pass

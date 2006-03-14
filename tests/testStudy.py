@@ -61,6 +61,14 @@ class testStudy(MainTestCase):
         """
         pass
     # from class EmailMixin:
+    # from class Study:
+    def test_email_out(self):
+        pass
+
+    # from class Study:
+    def test_export_subscribers(self):
+        pass
+
     # from class EmailMixin:
     def test_email(self):
         """
@@ -74,11 +82,10 @@ class testStudy(MainTestCase):
     def test_getSubscriptionId(self):
         pass
 
-    # from class EmailMixin:
+    # Manually created methods
+
     def test_getEmailContentsFromContent(self):
         pass
-
-    # Manually created methods
 
     def test_getEmailContents(self):
         pass

@@ -397,12 +397,18 @@ msgstr ""
 #. Default: "Body"
 #: content/Hearing.py
 #: content/Advisory.py
+#: EmailMixin.py
 msgid "minaraad_label_body"
 msgstr ""
 
 #. Default: "Bus"
 #: Organisation.py
 msgid "minaraad_label_bus"
+msgstr ""
+
+#. Default: "Category"
+#: content/NewsItem.py
+msgid "minaraad_label_category"
 msgstr ""
 
 #. Default: "City"
@@ -427,6 +433,7 @@ msgstr ""
 #. Default: "Date"
 #: content/Advisory.py
 #: content/Study.py
+#: content/NewsLetter.py
 msgid "minaraad_label_date"
 msgstr ""
 
@@ -438,6 +445,7 @@ msgstr ""
 #. Default: "Description"
 #: content/Hearing.py
 #: content/Advisory.py
+#: content/NewsLetter.py
 msgid "minaraad_label_description"
 msgstr ""
 

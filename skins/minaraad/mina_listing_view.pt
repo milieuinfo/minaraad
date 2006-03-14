@@ -137,7 +137,7 @@
                                     <tbody valign="top">
                                         <tr>
                                             <td tal:define="daterequired python:item_object.getDate() != None;
-                                                            date python:item_object.toLocalizedTime(item_object.date);"
+                                                            date python:item_object.toLocalizedTime(item_object.date)[:-5];"
                                                 class="advisory_listdate"> 
                                                 <span tal:condition="daterequired"
                                                     tal:replace="date" />

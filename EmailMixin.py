@@ -31,9 +31,6 @@ from AccessControl import ClassSecurityInfo
 from Products.Archetypes.atapi import *
 from Products.minaraad.config import *
 
-# additional imports from tagged value 'import'
-from Products.TemplateFields import ZPTField
-
 ##code-section module-header #fill in your manual code here
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.utils import log_exc, log
@@ -54,19 +51,6 @@ schema = Schema((
             i18n_domain='minaraad',
         ),
         default_output_type='text/html'
-    ),
-
-    ZPTField(
-        name='emailTemplate',
-        default="""<div tal:define="member options/member">Dear <span tal:replace="member/firstname">John</span> <span tal:replace="member/fullname">Doe</span></div>""",
-        widget=TextAreaWidget(
-            label="E-Mail Template",
-            description="",
-            visible=0,
-            label_msgid='minaraad_label_emailTemplate',
-            description_msgid='minaraad_help_emailTemplate',
-            i18n_domain='minaraad',
-        )
     ),
 
     DateTimeField(
@@ -137,17 +121,14 @@ class EmailMixin:
         
         fromAddress = portal.getProperty('email_from_address')
         
-        subject = '[%s] Automated subscription email' % portal.title_or_id()
+        subject = '[%s] %s' % (portal.title_or_id(), self.Title())
         
         mailHost = getToolByName(portal, 'MailHost')
         for member in members:
-            emailBody = self.getEmailBody(member=member)
+            emailBody = self.getEmailBody(member=member, context=self)
 
             if text:
-                emailBody['text/plain'] += '''
-
-                Additional Message:
-                %s''' % text
+                emailBody['text/plain'] += "Additional Message: %s" % text
                 
                 emailBody['text/html'] += '''
                 <dl>
@@ -183,9 +164,10 @@ class EmailMixin:
         Default implementation will cook the template from schema field
         emailTemplate.
         """
-
-        cooked = self.getEmailTemplate(**kwargs)
-        cooked += self.getEmailContentsFromContent()
+        template = getattr(self, self.getTemplateName(), None)
+        if template is None:
+            template = getattr(self, "EmailTemplate-Default", None)
+        cooked = template.pt_render(extra_context=kwargs)
         portal_transforms = getToolByName(self, 'portal_transforms')
         plain = portal_transforms.convertTo('text/plain', cooked).getData()
         
@@ -205,12 +187,17 @@ class EmailMixin:
         
         return self.__class__.__name__
         
+    # Manually created methods
+    def getTemplateName(self):
+        return "EmailTemplate-%s" % self.getPortalTypeName()
+    
     security.declarePublic('getEmailContentsFromContent')
     def getEmailContentsFromContent(self):
         """Override this in your Content Types to add HTML to the
         outgoing e-mail.
         """
         return self.getBody()
+
 
 # end of class EmailMixin
 

@@ -77,12 +77,15 @@ class testNewsLetter(MainTestCase):
 
         pass
 
+    # from class NewsLetter:
+    def test_email_out(self):
+        pass
+
     # from class EmailMixin:
     def test_email(self):
         """
         """
         #Uncomment one of the following lines as needed
-
     # from class EmailMixin:
     def test_getEmailBody(self):
         pass
@@ -91,17 +94,22 @@ class testNewsLetter(MainTestCase):
     def test_getSubscriptionId(self):
         pass
 
-    # from class EmailMixin:
+    # Manually created methods
+
     def test_getEmailContentsFromContent(self):
         pass
 
-    # Manually created methods
+    def test_getEmailContents(self):
+        pass
 
     def testNewsLetter(self):
         """ Test if the Newsletter is in the portal_types
         """
         types_ = self.portal.portal_types.objectIds()
         self.failUnless('NewsLetter' in types_)
+
+    def test_subscribers_export(self):
+        pass
 
     def testProperties(self):
         """ Test if the Newsletter has the correct properties
@@ -128,12 +136,6 @@ class testNewsLetter(MainTestCase):
         self.failUnless(self.testnewsletter.getBody()==HTMLBODY, 
                         'Value %s is not %s' % (self.testnewsletter.getBody(),HTMLBODY))
     
-    def test_getEmailContents(self):
-        pass
-
-    def test_subscribers_export(self):
-        pass
-
 
 def test_suite():
     from unittest import TestSuite, makeSuite

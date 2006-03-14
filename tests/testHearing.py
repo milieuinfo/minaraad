@@ -73,6 +73,10 @@ class testHearing(MainTestCase):
     def test_getThemeName(self):
         pass
 
+    # from class Hearing:
+    def test_email_out(self):
+        pass
+
     # from class EmailMixin:
     def test_email(self):
         """
@@ -84,10 +88,6 @@ class testHearing(MainTestCase):
 
     # from class EmailMixin:
     def test_getSubscriptionId(self):
-        pass
-
-    # from class EmailMixin:
-    def test_getEmailContentsFromContent(self):
         pass
 
     # Manually created methods
@@ -103,6 +103,9 @@ class testHearing(MainTestCase):
         """
         """
         #Uncomment one of the following lines as needed
+    def test_getEmailContentsFromContent(self):
+        pass
+
     def test_getEmailContents(self):
         pass
 

@@ -81,6 +81,10 @@ def _configurePortalProps(portal):
     #Email information
     portal._updateProperty('email_from_address', EMAIL_FROM_ADDRESS)
     portal._updateProperty('email_from_name', EMAIL_FROM_NAME)
+    #Setting dateformat
+    props = portal.portal_properties.site_properties
+    props._updateProperty('localTimeFormat', LOCAL_TIME_FORMAT)
+    props._updateProperty('localLongTimeFormat', LOCAL_LONG_TIME_FORMAT)
 
     # customize navtree properties - idsNotToList
     props_tool = getToolByName(portal, 'portal_properties')
