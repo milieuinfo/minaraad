@@ -128,6 +128,46 @@
           <input class="context" type="submit" name="form.button.Submit" value="register" />
         </form>
 
+        <div tal:define="attendees view/groupedAttendees" class="groupedAttendees">
+        <fieldset>
+          <legend>Speakers</legend>
+          <ul>
+            <tal:block tal:repeat="agendaItem agendaItems">
+            <li tal:define="obj agendaItem/getObject"
+                tal:condition="obj/getSpeaker">
+              <span tal:replace="obj/getSpeaker" />
+            </li>
+            </tal:block>
+            <li tal:condition="not:agendaItems" class="discreet">
+              (none currently)
+            </li>
+          </ul>
+        </fieldset>
+
+        <fieldset>
+          <legend>Attendees</legend>
+          <dl>
+            <dt>Council Members</dt>
+            <dd tal:repeat="attendee attendees/council_members">
+              <span tal:replace="attendee/niceName" />
+            </dd>
+            <dd tal:condition="not:attendees/council_members" class="discreet">
+              (none currently)
+            </dd>
+
+            <dt>Members</dt>
+            <dd tal:repeat="attendee attendees/members">
+              <span tal:replace="attendee/niceName" />
+            </dd>
+            <dd tal:condition="not:attendees/members" class="discreet">
+              (none currently)
+            </dd>
+          </dl>
+        </fieldset>
+
+        <br style="clear: both"/>
+        </div>
+
     </metal:block>
     </body>
 </html>

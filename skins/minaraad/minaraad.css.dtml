@@ -108,6 +108,19 @@ dl.listsubscriptions dd {
 dl.listsubscriptions dt {
     line-height: 1.5em;
 }
+
+.groupedAttendees FIELDSET {
+    float: left;
+    margin-right: 2em;
+    width: 40%;
+}
+
+.groupedAttendees LI {
+    list-style-image: none;
+    list-style-type: none;
+}
+
+
 /* --- Start Subscribers overview --- */ 
 
 /* </dtml-with> */
