@@ -30,6 +30,7 @@ __docformat__ = 'plaintext'
 from AccessControl import ClassSecurityInfo
 from Products.Archetypes.atapi import *
 from Products.minaraad.EmailMixin import EmailMixin
+from Products.minaraad.Attachmentsmixin import Attachmentsmixin
 from Products.minaraad.config import *
 
 ##code-section module-header #fill in your manual code here
@@ -44,17 +45,6 @@ schema = Schema((
             label_msgid='minaraad_label_subheader',
             i18n_domain='minaraad',
         )
-    ),
-
-    FileField(
-        name='attachment',
-        widget=FileWidget(
-            label='Attachment',
-            label_msgid='minaraad_label_attachment',
-            i18n_domain='minaraad',
-        ),
-        storage=AttributeStorage(),
-        multiValued=True
     ),
 
     ReferenceField(
@@ -75,26 +65,26 @@ schema = Schema((
 ##code-section after-local-schema #fill in your manual code here
 ##/code-section after-local-schema
 
-Pressrelease_schema = BaseSchema.copy() + \
-    getattr(EmailMixin, 'schema', Schema(())).copy() + \
+Pressrelease_schema = getattr(EmailMixin, 'schema', Schema(())).copy() + \
+    getattr(Attachmentsmixin, 'schema', Schema(())).copy() + \
     schema.copy()
 
 ##code-section after-schema #fill in your manual code here
 ##/code-section after-schema
 
-class Pressrelease(EmailMixin, BaseContent):
+class Pressrelease(EmailMixin, Attachmentsmixin):
     """
     A pressrelease
     """
     security = ClassSecurityInfo()
-    __implements__ = (getattr(EmailMixin,'__implements__',()),) + (getattr(BaseContent,'__implements__',()),)
+    __implements__ = (getattr(EmailMixin,'__implements__',()),) + (getattr(Attachmentsmixin,'__implements__',()),)
 
     # This name appears in the 'add' box
     archetype_name = 'Pressrelease'
 
     meta_type = 'Pressrelease'
     portal_type = 'Pressrelease'
-    allowed_content_types = [] + list(getattr(EmailMixin, 'allowed_content_types', []))
+    allowed_content_types = [] + list(getattr(EmailMixin, 'allowed_content_types', [])) + list(getattr(Attachmentsmixin, 'allowed_content_types', []))
     filter_content_types = 0
     global_allow = 1
     allow_discussion = False
@@ -104,6 +94,7 @@ class Pressrelease(EmailMixin, BaseContent):
     suppl_views = ()
     typeDescription = "Pressrelease"
     typeDescMsgId = 'description_edit_pressrelease'
+
 
     actions =  (
 

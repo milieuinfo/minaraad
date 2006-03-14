@@ -188,6 +188,7 @@ class EmailMixin:
         return self.__class__.__name__
         
     # Manually created methods
+
     def getTemplateName(self):
         return "EmailTemplate-%s" % self.getPortalTypeName()
     

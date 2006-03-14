@@ -449,6 +449,11 @@ msgstr ""
 msgid "minaraad_label_description"
 msgstr ""
 
+#. Default: "Displayattachments"
+#: Attachmentsmixin.py
+msgid "minaraad_label_displayAttachments"
+msgstr ""
+
 #. Default: "Email"
 #: content/ContactPerson.py
 msgid "minaraad_label_email"

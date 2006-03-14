@@ -29,8 +29,7 @@ __docformat__ = 'plaintext'
 
 from AccessControl import ClassSecurityInfo
 from Products.Archetypes.atapi import *
-
-from Products.CompoundField.ArrayField import ArrayField
+from Products.minaraad.Attachmentsmixin import Attachmentsmixin
 from Products.minaraad.config import *
 
 ##code-section module-header #fill in your manual code here
@@ -86,41 +85,31 @@ schema = Schema((
         required=1
     ),
 
-ArrayField(            FileField(
-                name='attachments',
-                widget=FileWidget(
-                    label='Attachments',
-                    label_msgid='minaraad_label_attachments',
-                    i18n_domain='minaraad',
-                ),
-                storage=AttributeStorage()
-            ),
-        
-        ),),
+),
 )
 
 ##code-section after-local-schema #fill in your manual code here
 ##/code-section after-local-schema
 
-AgendaItem_schema = BaseSchema.copy() + \
+AgendaItem_schema = getattr(Attachmentsmixin, 'schema', Schema(())).copy() + \
     schema.copy()
 
 ##code-section after-schema #fill in your manual code here
 ##/code-section after-schema
 
-class AgendaItem(BaseContent):
+class AgendaItem(Attachmentsmixin):
     """
     An Agendaitem
     """
     security = ClassSecurityInfo()
-    __implements__ = (getattr(BaseContent,'__implements__',()),)
+    __implements__ = (getattr(Attachmentsmixin,'__implements__',()),)
 
     # This name appears in the 'add' box
     archetype_name = 'AgendaItem'
 
     meta_type = 'AgendaItem'
     portal_type = 'AgendaItem'
-    allowed_content_types = []
+    allowed_content_types = [] + list(getattr(Attachmentsmixin, 'allowed_content_types', []))
     filter_content_types = 0
     global_allow = 0
     allow_discussion = False

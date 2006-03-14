@@ -39,6 +39,7 @@
             tal:condition="context/getBody" />
         <!-- End text -->
         <br />
+<!--
         <div tal:condition="context/getAttachments">
             <div i18n:translate="minaraad_label_attachments"
                  class="hearingsubheader2">Attachments</div>
@@ -61,6 +62,8 @@
                 </span>
             </div>
         </div>
+context.getFolderContents() for getting the catalog information.
+-->
     </metal:block>
     </body>
 </html>

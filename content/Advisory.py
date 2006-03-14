@@ -31,7 +31,7 @@ from AccessControl import ClassSecurityInfo
 from Products.Archetypes.atapi import *
 from Products.minaraad.PostMixin import PostMixin
 from Products.minaraad.EmailMixin import EmailMixin
-from Products.CompoundField.ArrayField import ArrayField
+from Products.minaraad.Attachmentsmixin import Attachmentsmixin
 from Products.minaraad.config import *
 
 ##code-section module-header #fill in your manual code here
@@ -58,17 +58,7 @@ schema = Schema((
         )
     ),
 
-ArrayField(            FileField(
-                name='attachments',
-                widget=FileWidget(
-                    label='Attachments',
-                    label_msgid='minaraad_label_attachments',
-                    i18n_domain='minaraad',
-                ),
-                storage=AttributeStorage()
-            ),
-        
-        ),    ReferenceField(
+    ReferenceField(
         name='contact',
         widget=ReferenceWidget(
             label='Contact',
@@ -86,27 +76,27 @@ ArrayField(            FileField(
 ##code-section after-local-schema #fill in your manual code here
 ##/code-section after-local-schema
 
-Advisory_schema = BaseSchema.copy() + \
-    getattr(PostMixin, 'schema', Schema(())).copy() + \
+Advisory_schema = getattr(PostMixin, 'schema', Schema(())).copy() + \
     getattr(EmailMixin, 'schema', Schema(())).copy() + \
+    getattr(Attachmentsmixin, 'schema', Schema(())).copy() + \
     schema.copy()
 
 ##code-section after-schema #fill in your manual code here
 Advisory_schema['description'].isMetadata = False
 ##/code-section after-schema
 
-class Advisory(PostMixin, EmailMixin, BaseContent):
+class Advisory(PostMixin, EmailMixin, Attachmentsmixin):
     """An advisory
     """
     security = ClassSecurityInfo()
-    __implements__ = (getattr(PostMixin,'__implements__',()),) + (getattr(EmailMixin,'__implements__',()),) + (getattr(BaseContent,'__implements__',()),)
+    __implements__ = (getattr(PostMixin,'__implements__',()),) + (getattr(EmailMixin,'__implements__',()),) + (getattr(Attachmentsmixin,'__implements__',()),)
 
     # This name appears in the 'add' box
     archetype_name = 'Advisory'
 
     meta_type = 'Advisory'
     portal_type = 'Advisory'
-    allowed_content_types = [] + list(getattr(PostMixin, 'allowed_content_types', [])) + list(getattr(EmailMixin, 'allowed_content_types', []))
+    allowed_content_types = [] + list(getattr(PostMixin, 'allowed_content_types', [])) + list(getattr(EmailMixin, 'allowed_content_types', [])) + list(getattr(Attachmentsmixin, 'allowed_content_types', []))
     filter_content_types = 0
     global_allow = 1
     allow_discussion = False
@@ -116,6 +106,7 @@ class Advisory(PostMixin, EmailMixin, BaseContent):
     suppl_views = ()
     typeDescription = "Advisory"
     typeDescMsgId = 'description_edit_advisory'
+
 
     actions =  (
 

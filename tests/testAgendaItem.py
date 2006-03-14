@@ -88,7 +88,6 @@ class testAgendaItem(MainTestCase):
         self.agendaitem.getSummary()       # Samenvatting
         self.agendaitem.getItemstartdate() # Start tijd
         self.agendaitem.getItemenddate()   # Eind tijd
-        self.agendaitem.getAttachments()   # Bijlage(n)
 
     def test_Existance(self):
         """ Test if the AgendaItem exists within portal_types

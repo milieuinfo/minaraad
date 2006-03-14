@@ -77,6 +77,7 @@ def initialize(context):
 
     import EmailMixin
     import PostMixin
+    import Attachmentsmixin
 
     # Initialize portal content
     content_types, constructors, ftis = process_types(

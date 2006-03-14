@@ -112,7 +112,6 @@ class testAdvisory(MainTestCase):
         self.advisory.Title()
         self.advisory.getDescription()
         self.advisory.getDate()
-        self.advisory.getAttachments()
         self.advisory.getContact()
 
     def test_subscribers_export(self):

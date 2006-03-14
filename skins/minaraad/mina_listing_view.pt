@@ -153,6 +153,7 @@
                                                     tal:content="contact/getEmail" />
                                                 </tal:block>
                                                 </div>
+                                            <!--
                                                   <div tal:repeat="item item_object/getAttachments">
                                                     <span tal:define="item_type_class python:'contenttype-' + normalizeString(item_object['portal_type'])" 
                                                         tal:condition="python:item.get_size() &gt; 0"
@@ -172,6 +173,7 @@
                                                         <br />
                                                     </span>
                                                 </div>
+                                            -->
                                             </td>
                                         </tr>
                                     </tbody>

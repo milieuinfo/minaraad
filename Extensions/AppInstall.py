@@ -2,6 +2,7 @@ from Products.minaraad.config import *
 from sets import Set
 from Products.CMFCore.utils import getToolByName
 from Products.CMFCore.DirectoryView import addDirectoryViews
+from Products.RichDocument.Extensions.Install import registerAttachmentsFormControllerActions
 from StringIO import StringIO
 
 MINARAAD_PROPERTIES = 'minaraad_properties'
@@ -61,7 +62,10 @@ def install(self):
     print >> out, "Make FCKeditor the default for all members"
     _configureFCKeditor(self)
     
-    #_configureKupu(self)
+    # Set up form controller actions for the widgets to work
+    registerAttachmentsFormControllerActions(self)
+    print >> out, "Added actions for the attachment controls to the base_edit form controller."
+    
     return out.getvalue()
 
 def _configurePortalProps(portal):

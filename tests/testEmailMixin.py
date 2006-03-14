@@ -133,6 +133,10 @@ class testEmailMixin(PloneTestCase):
         self.logout()
 
     # from class EmailMixin:
+    def test_getEmailBody(self):
+        pass
+
+    # from class EmailMixin:
     def test_getSubscriptionId(self):
         pass
 

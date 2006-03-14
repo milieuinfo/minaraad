@@ -103,6 +103,7 @@ class NewsLetter(EmailMixin, BaseFolder):
     typeDescription = "NewsLetter"
     typeDescMsgId = 'description_edit_newsletter'
 
+
     actions =  (
 
 

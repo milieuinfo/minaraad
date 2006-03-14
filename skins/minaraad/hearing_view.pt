@@ -94,7 +94,7 @@
                 </div>
                 <div tal:condition="obj/summary"
                      tal:content="obj/summary" />
-
+<!--
                 <div tal:repeat="item obj/getAttachments">
                     <span tal:define="item_type_class python:'contenttype-' + normalizeString(obj['portal_type'])" 
                           tal:condition="python:item.get_size() &gt; 0"
@@ -113,6 +113,7 @@
                         </span>
                     </span>
                 </div>
+-->
             </tal:block>
             </li>
         </ul>

@@ -169,6 +169,7 @@ class Hearing(EmailMixin, BaseFolder):
     typeDescription = "Hearing"
     typeDescMsgId = 'description_edit_hearing'
 
+
     actions =  (
 
 

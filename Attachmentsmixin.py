@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# File: NewsItem.py
+# File: Attachmentsmixin.py
 #
 # Copyright (c) 2006 by Zest Software
 # Generator: ArchGenXML Version 1.5.0 svn/devel
@@ -29,35 +29,24 @@ __docformat__ = 'plaintext'
 
 from AccessControl import ClassSecurityInfo
 from Products.Archetypes.atapi import *
-from Products.minaraad.EmailMixin import EmailMixin
-from Products.minaraad.Attachmentsmixin import Attachmentsmixin
+from Products.CMFPlone.interfaces.NonStructuralFolder import INonStructuralFolder
 from Products.minaraad.config import *
+
+# additional imports from tagged value 'import'
+from Products.RichDocument.widget import AttachmentsManagerWidget
 
 ##code-section module-header #fill in your manual code here
 ##/code-section module-header
 
 schema = Schema((
 
-    StringField(
-        name='category',
-        widget=SelectionWidget(
-            label='Category',
-            label_msgid='minaraad_label_category',
+    BooleanField(
+        name='displayAttachments',
+        widget=AttachmentsManagerWidget(
+            label='Displayattachments',
+            label_msgid='minaraad_label_displayAttachments',
             i18n_domain='minaraad',
-        ),
-        vocabulary=["Vastgestelde adviezen","Adviezen in wording","Mededelingen","Europese ontwikkelingen"]
-    ),
-
-    ReferenceField(
-        name='contactpersons',
-        widget=ReferenceWidget(
-            label='Contactpersons',
-            label_msgid='minaraad_label_contactpersons',
-            i18n_domain='minaraad',
-        ),
-        allowed_types=('ContactPerson',),
-        multiValued=0,
-        relationship='newsitem_contactperson'
+        )
     ),
 
 ),
@@ -66,38 +55,37 @@ schema = Schema((
 ##code-section after-local-schema #fill in your manual code here
 ##/code-section after-local-schema
 
-NewsItem_schema = getattr(EmailMixin, 'schema', Schema(())).copy() + \
-    getattr(Attachmentsmixin, 'schema', Schema(())).copy() + \
+Attachmentsmixin_schema = BaseFolderSchema.copy() + \
     schema.copy()
 
 ##code-section after-schema #fill in your manual code here
 ##/code-section after-schema
 
-class NewsItem(EmailMixin, Attachmentsmixin):
+class Attachmentsmixin(BaseFolder):
     """
     """
     security = ClassSecurityInfo()
-    __implements__ = (getattr(EmailMixin,'__implements__',()),) + (getattr(Attachmentsmixin,'__implements__',()),)
+    __implements__ = (getattr(BaseFolder,'__implements__',()),) + (INonStructuralFolder,)
 
     # This name appears in the 'add' box
-    archetype_name = 'NewsItem'
+    archetype_name = 'Attachmentsmixin'
 
-    meta_type = 'NewsItem'
-    portal_type = 'NewsItem'
-    allowed_content_types = [] + list(getattr(EmailMixin, 'allowed_content_types', [])) + list(getattr(Attachmentsmixin, 'allowed_content_types', []))
-    filter_content_types = 0
+    meta_type = 'Attachmentsmixin'
+    portal_type = 'Attachmentsmixin'
+    allowed_content_types = ['FileAttachment']
+    filter_content_types = 1
     global_allow = 0
     allow_discussion = False
-    #content_icon = 'NewsItem.gif'
+    #content_icon = 'Attachmentsmixin.gif'
     immediate_view = 'base_view'
     default_view = 'base_view'
     suppl_views = ()
-    typeDescription = "NewsItem"
-    typeDescMsgId = 'description_edit_newsitem'
+    typeDescription = "Attachmentsmixin"
+    typeDescMsgId = 'description_edit_attachmentsmixin'
 
     _at_rename_after_creation = True
 
-    schema = NewsItem_schema
+    schema = Attachmentsmixin_schema
 
     ##code-section class-header #fill in your manual code here
     ##/code-section class-header
@@ -105,8 +93,8 @@ class NewsItem(EmailMixin, Attachmentsmixin):
     # Methods
 
 
-registerType(NewsItem, PROJECTNAME)
-# end of class NewsItem
+registerType(Attachmentsmixin, PROJECTNAME)
+# end of class Attachmentsmixin
 
 ##code-section module-footer #fill in your manual code here
 ##/code-section module-footer

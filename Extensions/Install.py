@@ -91,6 +91,7 @@ def install(self):
     # enable portal_factory for given types
     factory_tool = getToolByName(self,'portal_factory')
     factory_types=[
+        "Attachmentsmixin",
         "Advisory",
         "Hearing",
         "ContactPerson",
