@@ -105,7 +105,7 @@ class testWorkflow(MainTestCase):
         wfTool.doActionFor(self.contentContainer,'submit')
         self.logout()
 
-        # self.assertEqual(self._folder_state(),'pending')
+        self.assertEqual(self._folder_state(),'pending')
         self.assertFolderTransitions('member')
         self.assertFolderTransitions('author',['retract2'])
         self.assertFolderTransitions('cmember')
@@ -141,10 +141,10 @@ class testWorkflow(MainTestCase):
 
         wfTool = getToolByName(self.portal, 'portal_workflow')
         self.login('manager')
-        testfolder = self.portal.nieuwsbrieven
-        status = wfTool.getStatusOf('minaraad_folder_workflow', testfolder)
+        testfolder = self.contentContainer
+        status = wfTool.getInfoFor(testfolder,'review_state','')
         self.logout()
-        return status['review_state']
+        return status
 
     def test_published_state(self):
         """ Test if the published state has the correct rights
@@ -269,7 +269,7 @@ class testWorkflow(MainTestCase):
     def test_folder_private_state(self):
         """ Test if the folder private state has the correct rights
         """
-        # self.assertEqual(self._folder_state(),'private')
+        self.assertEqual(self._folder_state(),'private')
         self.assertFolderTransitions('member')
         self.assertFolderTransitions('author','submit')
         self.assertFolderTransitions('cmember')
@@ -284,7 +284,7 @@ class testWorkflow(MainTestCase):
         wfTool.doActionFor(self.contentContainer,'publish_internal')
         self.logout()
 
-        # self.assertEqual(self._folder_state(),'restricted')
+        self.assertEqual(self._folder_state(),'restricted')
         self.assertFolderTransitions('member')
         self.assertFolderTransitions('author')
         self.assertFolderTransitions('cmember')
@@ -303,7 +303,7 @@ class testWorkflow(MainTestCase):
         wfTool.doActionFor(self.contentContainer,'publish')
         self.logout()
 
-        # self.assertEqual(self._folder_state(),'published')
+        self.assertEqual(self._folder_state(),'published')
         self.assertFolderTransitions('member')
         self.assertFolderTransitions('author')
         self.assertFolderTransitions('cmember')
