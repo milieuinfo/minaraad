@@ -46,6 +46,11 @@ from Products.minaraad.tests.MainTestCase import MainTestCase
 from Products.minaraad.content.NewsItem import NewsItem
 
 ##code-section module-beforeclass #fill in your manual code here
+TITLE = "title"
+HTMLBODY = "<p>dit is mijn body</p>"
+PLAINBODY = "dit is mijn body"
+CATEGORY = "Vastgestelde adviezen"
+
 ##/code-section module-beforeclass
 
 
@@ -56,6 +61,16 @@ class testNewsItem(MainTestCase):
     ##/code-section class-header_testNewsItem
 
     def afterSetUp(self):
+        """
+        """
+
+        self.setRoles(['Manager'])
+        self.portal.nieuwsbrieven.newsl_2006.invokeFactory('NewsLetter', id='testnews')
+        self.testnews = self.portal.nieuwsbrieven.newsl_2006.testnews
+
+        self.testnews.invokeFactory('NewsItem', id='testitem')
+        self.testitem = self.testnews.testitem
+
         pass
 
     # from class EmailMixin:
@@ -89,12 +104,16 @@ class testNewsItem(MainTestCase):
         """ Test if the Newsletter has the correct properties
         """
 
-        self.setRoles(['Manager'])
-        self.portal.nieuwsbrieven.newsl_2006.invokeFactory('NewsLetter', id='testnewsletter2')
-        self.portal.nieuwsbrieven.newsl_2006.testnewsletter2.invokeFactory('NewsItem', id='testnewsitem')
-        testnewsitem = self.portal.nieuwsbrieven.newsl_2006.testnewsletter2.testnewsitem
-
-        testnewsitem.setTitle("Do I have a Title?")
+        self.testitem.setTitle(TITLE)
+        self.testitem.setBody(HTMLBODY,text_format="text/html")
+        self.testitem.setCategory(CATEGORY)
+        
+        self.failUnless(self.testitem.Title()==TITLE,
+                        'Value is %s' % self.testitem.Title())
+        self.failUnless(self.testitem.getBody()==HTMLBODY,
+                        'Value is %s' % self.testitem.getBody())
+        self.failUnless(self.testitem.getCategory()==CATEGORY,
+                        'Value is %s' % self.testitem.getCategory())
 
 
 def test_suite():
