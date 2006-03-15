@@ -77,6 +77,18 @@ ul.AgendaItems li {
     margin-bottom: 30px;
 }
 
+.groupedAttendees {
+    float:right
+}
+
+.groupedAttendees fieldset {
+    
+}
+
+dl.Attendees dd{
+    margin-left: 0px !important;
+}
+
 /* ---- End Hearing view --- */
 
 
@@ -109,18 +121,6 @@ dl.listsubscriptions dt {
     line-height: 1.5em;
 }
 
-.groupedAttendees FIELDSET {
-    float: left;
-    margin-right: 2em;
-    width: 40%;
-}
-
-.groupedAttendees LI {
-    list-style-image: none;
-    list-style-type: none;
-}
-
-
-/* --- Start Subscribers overview --- */ 
+/* --- End Subscribers overview --- */ 
 
 /* </dtml-with> */

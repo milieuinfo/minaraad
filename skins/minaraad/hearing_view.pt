@@ -12,7 +12,73 @@
                                                                                     sort_on='getItemstartdate',
                                                                                     review_state='published');">
         <metal:block metal:define-macro="folderlisting" />
-        
+
+        <div tal:define="attendees view/groupedAttendees" 
+             class="groupedAttendees">
+
+            <fieldset>
+                <legend i18n:translate="title_speakers">Speakers</legend>
+
+                <tal:block tal:repeat="agendaItem agendaItems">
+                <span tal:define="obj agendaItem/getObject"
+                      tal:condition="obj/getSpeaker"
+                      tal:replace="obj/getSpeaker" />
+                </tal:block>
+                <span tal:condition="not:agendaItems" 
+                      class="discreet"
+                      i18n:translate="no_attendees">
+                    (none currently)
+                </span>
+            </fieldset>
+
+            <fieldset>
+                <legend i18n:translate="title_attendees">Attendees</legend>
+                <dl class="Attendees">
+                    <dt i18n:translate="title_counsilmembers">
+                        Council Members
+                    </dt>
+                    <dd tal:repeat="attendee attendees/council_members">
+                    <span tal:replace="attendee/niceName" />
+                    </dd>
+                    <dd tal:condition="not:attendees/council_members" 
+                        class="discreet"
+                        i18n:translate="no_attendees">
+                    (none currently)
+                    </dd>
+                    <dt i18n:translate="title_members">
+                        Members
+                    </dt>
+                    <dd tal:repeat="attendee attendees/members">
+                    <span tal:replace="attendee/niceName" />
+                    </dd>
+                    <dd tal:condition="not:attendees/members" 
+                        class="discreet"
+                        i18n:translate="no_attendees">
+                    (none currently)
+                    </dd>
+                </dl>
+            </fieldset>
+
+            <form tal:condition="view/isRegistered"
+                tal:attributes="action string:${context/absolute_url}/@@attendees_view">
+                <input class="context" 
+                    type="submit" 
+                    name="form.button.Submit" 
+                    value="Unsubscribe"
+                    i18n:attributes="value label_unsubscribe;" />
+            </form>
+    
+            <form tal:condition="not:view/isRegistered"
+                tal:attributes="action string:${context/absolute_url}/@@attendees_view">
+            <input class="context" 
+                    type="submit" 
+                    name="form.button.Submit" 
+                    value="Subscribe"
+                    i18n:attributes="value label_subscribe;" />
+            </form>
+        </div>
+       
+
         <div class="hearingsubheader"
              tal:condition="context/getSubheader">
             <span tal:replace="context/getSubheader" />
@@ -79,21 +145,24 @@
         <ul class="AgendaItems">
             <li tal:repeat="agendaItem agendaItems">
             <tal:block tal:define="obj python:agendaItem.getObject()">
-                <div tal:condition="agendaItem/Title" 
-                     tal:replace="agendaItem/Title" />
-                <br />
+                 <div tal:condition="obj/summary"
+                     tal:content="obj/summary" />
+
                 <!-- Date and Time -->
                 <div metal:use-macro="context/mina_showdatetime/macros/datetime_agenda" />
                 <!-- end Date and Time -->
-                
+                <br />
+                <div tal:condition="agendaItem/Title" 
+                     tal:replace="agendaItem/Title" />
+                <br />
+
                 <div tal:condition="obj/speaker"> 
                     <span class="hearingsubheader2"
                           i18n:translate="label_speaker">Speaker:</span>
                     <span tal:replace="obj/speaker" />,
                     <span tal:replace="obj/organisation" />
                 </div>
-                <div tal:condition="obj/summary"
-                     tal:content="obj/summary" />
+               
 <!--
                 <div tal:repeat="item obj/getAttachments">
                     <span tal:define="item_type_class python:'contenttype-' + normalizeString(obj['portal_type'])" 
@@ -118,57 +187,6 @@
             </li>
         </ul>
         <!-- End speakers -->
-        
-        <form tal:condition="view/isRegistered"
-              tal:attributes="action string:${context/absolute_url}/@@attendees_view">
-          <input class="context" type="submit" name="form.button.Submit" value="unregister" />
-        </form>
-
-        <form tal:condition="not:view/isRegistered"
-              tal:attributes="action string:${context/absolute_url}/@@attendees_view">
-          <input class="context" type="submit" name="form.button.Submit" value="register" />
-        </form>
-
-        <div tal:define="attendees view/groupedAttendees" class="groupedAttendees">
-        <fieldset>
-          <legend>Speakers</legend>
-          <ul>
-            <tal:block tal:repeat="agendaItem agendaItems">
-            <li tal:define="obj agendaItem/getObject"
-                tal:condition="obj/getSpeaker">
-              <span tal:replace="obj/getSpeaker" />
-            </li>
-            </tal:block>
-            <li tal:condition="not:agendaItems" class="discreet">
-              (none currently)
-            </li>
-          </ul>
-        </fieldset>
-
-        <fieldset>
-          <legend>Attendees</legend>
-          <dl>
-            <dt>Council Members</dt>
-            <dd tal:repeat="attendee attendees/council_members">
-              <span tal:replace="attendee/niceName" />
-            </dd>
-            <dd tal:condition="not:attendees/council_members" class="discreet">
-              (none currently)
-            </dd>
-
-            <dt>Members</dt>
-            <dd tal:repeat="attendee attendees/members">
-              <span tal:replace="attendee/niceName" />
-            </dd>
-            <dd tal:condition="not:attendees/members" class="discreet">
-              (none currently)
-            </dd>
-          </dl>
-        </fieldset>
-
-        <br style="clear: both"/>
-        </div>
-
     </metal:block>
     </body>
 </html>

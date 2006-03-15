@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minaraad 0.1\n"
-"POT-Creation-Date: 2006-03-15 10:58+0000\n"
+"POT-Creation-Date: 2006-03-15 12:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: Mirella van Teulingen <m.van.teulingen@zestsoftware.nl>\n"
 "Language-Team: Nederlands <info@zestsoftware.nl>\n"
@@ -309,10 +309,20 @@ msgstr "Spreker:"
 msgid "label_street"
 msgstr "Straat"
 
+#. Default: "Subscribe"
+#: skins/minaraad/hearing_view.pt
+msgid "label_subscribe"
+msgstr "Aanmelden"
+
 #. Default: "Theme:"
 #: skins/minaraad/hearing_view.pt
 msgid "label_theme_name"
 msgstr "Thema:"
+
+#. Default: "Unsubscribe"
+#: skins/minaraad/hearing_view.pt
+msgid "label_unsubscribe"
+msgstr "Afmelden"
 
 #: browser/subscriptions_config.pt
 msgid "label_up_to_my_preferences"
@@ -681,19 +691,44 @@ msgstr "Postcode"
 msgid "moreinfo_contactperson"
 msgstr "Voor meer informatie kunt u contact opnemen met:"
 
+#. Default: "(none currently)"
+#: skins/minaraad/hearing_view.pt
+msgid "no_attendees"
+msgstr "Er zijn nog geen deelnemers"
+
 #. Default: "till"
 #: skins/minaraad/mina_listing_view.pt
 #: skins/minaraad/mina_showdatetime.pt
 msgid "till"
 msgstr "tot"
 
+#. Default: "Attendees"
+#: skins/minaraad/hearing_view.pt
+msgid "title_attendees"
+msgstr "Deelnemers"
+
+#. Default: "Council Members"
+#: skins/minaraad/hearing_view.pt
+msgid "title_counsilmembers"
+msgstr "Raadsleden"
+
 #: browser/subscriptions_config.pt
 msgid "title_email"
 msgstr "Per e-mail"
 
+#. Default: "Members"
+#: skins/minaraad/hearing_view.pt
+msgid "title_members"
+msgstr "Leden"
+
 #: browser/subscriptions_config.pt
 msgid "title_post"
 msgstr "Per post"
+
+#. Default: "Speakers"
+#: skins/minaraad/hearing_view.pt
+msgid "title_speakers"
+msgstr "Sprekers"
 
 #: browser/subscriptions_config.pt
 msgid "title_subscription"

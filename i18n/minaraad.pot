@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minaraad\n"
-"POT-Creation-Date: 2006-03-15 10:58+0000\n"
+"POT-Creation-Date: 2006-03-15 12:52+0000\n"
 "PO-Revision-Date: Mon Aug  8 12:16:21 2005\n"
 "Last-Translator: Rocky Burt <r.burt@zestsoftware.nl>\n"
 "Language-Team: Rocky Burt <r.burt@zestsoftware.nl>\n"
@@ -309,9 +309,19 @@ msgstr ""
 msgid "label_street"
 msgstr ""
 
+#. Default: "Subscribe"
+#: skins/minaraad/hearing_view.pt
+msgid "label_subscribe"
+msgstr ""
+
 #. Default: "Theme:"
 #: skins/minaraad/hearing_view.pt
 msgid "label_theme_name"
+msgstr ""
+
+#. Default: "Unsubscribe"
+#: skins/minaraad/hearing_view.pt
+msgid "label_unsubscribe"
 msgstr ""
 
 #: browser/subscriptions_config.pt
@@ -681,18 +691,43 @@ msgstr ""
 msgid "moreinfo_contactperson"
 msgstr ""
 
+#. Default: "(none currently)"
+#: skins/minaraad/hearing_view.pt
+msgid "no_attendees"
+msgstr ""
+
 #. Default: "till"
 #: skins/minaraad/mina_listing_view.pt
 #: skins/minaraad/mina_showdatetime.pt
 msgid "till"
 msgstr ""
 
+#. Default: "Attendees"
+#: skins/minaraad/hearing_view.pt
+msgid "title_attendees"
+msgstr ""
+
+#. Default: "Council Members"
+#: skins/minaraad/hearing_view.pt
+msgid "title_counsilmembers"
+msgstr ""
+
 #: browser/subscriptions_config.pt
 msgid "title_email"
 msgstr ""
 
+#. Default: "Members"
+#: skins/minaraad/hearing_view.pt
+msgid "title_members"
+msgstr ""
+
 #: browser/subscriptions_config.pt
 msgid "title_post"
+msgstr ""
+
+#. Default: "Speakers"
+#: skins/minaraad/hearing_view.pt
+msgid "title_speakers"
 msgstr ""
 
 #: browser/subscriptions_config.pt
