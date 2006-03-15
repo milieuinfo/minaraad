@@ -106,6 +106,7 @@ class testEmailMixin(PloneTestCase):
         template.write("""
         <span tal:replace='context/Title' />
         <span tal:replace='member/email' />
+        <a href="http://boo.com">hello</a>
         """)
         setattr(emailMixin, "EmailTemplate-Default", template)
 
@@ -125,10 +126,15 @@ class testEmailMixin(PloneTestCase):
         self.failUnless('@hisplace.com' in payload)
         self.failUnless(emailMixin.Title() in payload)
         
+        # make sure generateSafe() did its thing
+        self.failUnless('hello (http://boo.com)' in payload)
+        
         lst1 = [x['To'] for x in mailHost.messages]
         lst1.sort()
         
         self.assertEquals(lst1, ['anotherguy@hisplace.com', 'someguy@hisplace.com'])
+        
+        
         
         self.logout()
         
