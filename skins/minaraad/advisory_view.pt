@@ -40,36 +40,10 @@
             tal:condition="context/getBody" />
         <!-- End text -->
         <br />
-    
-
-        <div tal:define="widget_view python:context.widget('displayAttachments', mode='view', use_label=1)">
-            <metal:block use-macro="widget_view" />
-        </div>
-<!--
-        <div tal:condition="context/getAttachments">
-            <div i18n:translate="minaraad_label_attachments"
-                 class="hearingsubheader2">Attachments</div>
-
-            <div tal:repeat="item context/getAttachments">
-                <span tal:define="item_type_class python:'contenttype-' + normalizeString(context['portal_type'])" 
-                        tal:condition="python:item.get_size() &gt; 0"
-                        tal:omit-tag="">
-                    <a tal:attributes="href string:${item/absolute_url};
-                                        class item_type_class"
-                        tal:content="item/filename"> 
-                        Attachment
-                    </a>
-                    <span class="filesize" 
-                            tal:define="size python:item.getObjSize(item);"
-                            tal:condition="size"
-                            tal:content="size">
-                        257 KB
-                    </span>
-                </span>
-            </div>
-        </div>
-context.getFolderContents() for getting the catalog information.
--->
+   
+        <!-- Start Attachments-->
+        <div metal:use-macro="context/mina_attachments/macros/agenda_attachments" />
+        <!-- end Attachments -->
     </metal:block>
     <metal:block metal:define-macro="folderlisting" />
     </body>
