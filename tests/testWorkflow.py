@@ -295,6 +295,25 @@ class testWorkflow(MainTestCase):
         wfTool.doActionFor(self.contentContainer,'retract')
         self.logout()
 
+    def test_folder_published_state(self):
+        """ Test if the folder published state has the correct rights
+        """
+        self.login('manager')
+        wfTool = getToolByName(self.portal, 'portal_workflow')
+        wfTool.doActionFor(self.contentContainer,'publish')
+        self.logout()
+
+        # self.assertEqual(self._folder_state(),'published')
+        self.assertFolderTransitions('member')
+        self.assertFolderTransitions('author')
+        self.assertFolderTransitions('cmember')
+        self.assertFolderTransitions('reviewer',['retract'])
+        self.assertFolderTransitions('manager',['retract'])
+
+        self.login('manager')
+        wfTool.doActionFor(self.contentContainer,'retract')
+        self.logout()
+
     def assertFolderTransitions(self, memberId, possible=None):
         """Test the available transitions for a member. The 'possible'
            param can be None, a string (for one transition) or a list
