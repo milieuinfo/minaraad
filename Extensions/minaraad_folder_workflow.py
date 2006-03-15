@@ -57,10 +57,10 @@ def setupminaraad_folder_workflow(self, workflow):
     ##/code-section create-workflow-setup-method-header
 
 
-    for s in ['restricted', 'published', 'private']:
+    for s in ['restricted', 'published', 'pending', 'private']:
         workflow.states.addState(s)
 
-    for t in ['retract', 'publish', 'publish_internal']:
+    for t in ['retract', 'retract2', 'submit', 'publish', 'publish_internal']:
         workflow.transitions.addTransition(t)
 
     for v in ['review_history', 'comments', 'time', 'actor', 'action']:
@@ -113,9 +113,25 @@ def setupminaraad_folder_workflow(self, workflow):
                            1,
                            ['Anonymous', 'Reviewer', 'Manager'])
 
+    stateDef = workflow.states['pending']
+    stateDef.setProperties(title="""pending""",
+                           transitions=['retract2', 'publish'])
+    stateDef.setPermission('Access contents information',
+                           0,
+                           ['Owner', 'Author', 'Reviewer', 'Manager'])
+    stateDef.setPermission('View',
+                           0,
+                           ['Owner', 'Author', 'Reviewer', 'Manager'])
+    stateDef.setPermission('Modify portal content',
+                           0,
+                           ['Reviewer', 'Manager'])
+    stateDef.setPermission('List folder contents',
+                           0,
+                           ['Owner', 'Author', 'Reviewer', 'Manager'])
+
     stateDef = workflow.states['private']
     stateDef.setProperties(title="""private""",
-                           transitions=['publish_internal', 'publish'])
+                           transitions=['publish_internal', 'publish', 'submit'])
     stateDef.setPermission('Access contents information',
                            0,
                            ['Owner', 'Author', 'Manager'])
@@ -141,6 +157,30 @@ def setupminaraad_folder_workflow(self, workflow):
                                 actbox_url="""""",
                                 actbox_category="""workflow""",
                                 props={'guard_permissions': 'Review portal content'},
+                                )
+
+    transitionDef = workflow.transitions['retract2']
+    transitionDef.setProperties(title="""retract2""",
+                                new_state_id="""private""",
+                                trigger_type=1,
+                                script_name="""""",
+                                after_script_name="""""",
+                                actbox_name="""retract2""",
+                                actbox_url="""""",
+                                actbox_category="""workflow""",
+                                props={'guard_roles': 'Owner;Author;Manager'},
+                                )
+
+    transitionDef = workflow.transitions['submit']
+    transitionDef.setProperties(title="""submit""",
+                                new_state_id="""pending""",
+                                trigger_type=1,
+                                script_name="""""",
+                                after_script_name="""""",
+                                actbox_name="""submit""",
+                                actbox_url="""""",
+                                actbox_category="""workflow""",
+                                props={'guard_roles': 'Owner;Author;Manager'},
                                 )
 
     transitionDef = workflow.transitions['publish']
