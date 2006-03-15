@@ -47,6 +47,26 @@ schema = Schema((
         )
     ),
 
+    TextField(
+        name='description',
+        widget=TextAreaWidget(
+            label='Description',
+            label_msgid='minaraad_label_description',
+            i18n_domain='minaraad',
+        )
+    ),
+
+    DateTimeField(
+        name='date',
+        index="DateIndex:brains",
+        widget=CalendarWidget(
+            label='Date',
+            label_msgid='minaraad_label_date',
+            i18n_domain='minaraad',
+        ),
+        required=1
+    ),
+
     ReferenceField(
         name='contact',
         widget=ReferenceWidget(

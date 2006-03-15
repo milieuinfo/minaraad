@@ -46,6 +46,15 @@ from Products.minaraad.tests.MainTestCase import MainTestCase
 from Products.minaraad.content.Pressrelease import Pressrelease
 
 ##code-section module-beforeclass #fill in your manual code here
+from DateTime import DateTime
+
+TITLE = "title"
+SUBHEADER = "ondertitel"
+DESCRIPTION = "jaja, een omschrijving"
+DATE = DateTime()
+HTMLBODY = "<p>HTML op zijn best</p>"
+PLAINBODY = "HTML op zijn best"
+
 ##/code-section module-beforeclass
 
 
@@ -59,8 +68,16 @@ class testPressrelease(MainTestCase):
     def afterSetUp(self):
         """
         """
+
+        self.setRoles(['Manager'])
+        self.portal.persberichten.pressr_2006.invokeFactory('Pressrelease',id='testpers')
+        self.testpers = self.portal.persberichten.pressr_2006.testpers
+
+        self.portal.contactpersonen.invokeFactory('ContactPerson', id='Jslob')
+        self.contactperson = self.portal.contactpersonen.Jslob
+
         pass
-    # from class EmailMixin:
+
     # from class Pressrelease:
     def test_email_out(self):
         pass
@@ -80,6 +97,12 @@ class testPressrelease(MainTestCase):
 
     # Manually created methods
 
+    def testPressrelease(self):
+        """ Test if the Pressrelease is in the portal_types
+        """
+        types_ = self.portal.portal_types.objectIds()
+        self.failUnless('Pressrelease' in types_)
+
     def test_getEmailContentsFromContent(self):
         pass
 
@@ -88,6 +111,30 @@ class testPressrelease(MainTestCase):
 
     def test_subscribers_export(self):
         pass
+
+    def testProperties(self):
+        """ Test if the Pressrelease has the correct properties
+        """
+
+        self.testpers.setTitle(TITLE)
+        self.testpers.setSubheader(SUBHEADER)
+        self.testpers.setDescription(DESCRIPTION)
+        self.testpers.setDate(DATE)
+        self.testpers.setBody(HTMLBODY,text_format="text/html")
+        self.testpers.setContact(self.contactperson.UID())
+
+        self.failUnless(self.testpers.Title()==TITLE,
+                         'Value is %s' % self.testpers.Title())
+        self.failUnless(self.testpers.getSubheader()==SUBHEADER,
+                         'Value is %s' % self.testpers.getSubheader())
+        self.failUnless(self.testpers.getDescription()==DESCRIPTION,
+                         'Value is %s' % self.testpers.getDescription())
+        self.failUnless(self.testpers.getDate()==DATE,
+                         'Value is %s' % self.testpers.getDate())
+        self.failUnless(self.testpers.getBody()==HTMLBODY,
+                         'Value is %s' % self.testpers.getBody())
+        self.failUnless(self.testpers.getContact()==[self.contactperson],
+                         'Value is %s' % self.testpers.getContact())
 
 
 def test_suite():
