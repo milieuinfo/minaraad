@@ -60,7 +60,7 @@ def setupminaraad_folder_workflow(self, workflow):
     for s in ['restricted', 'published', 'pending', 'private']:
         workflow.states.addState(s)
 
-    for t in ['retract', 'retract2', 'submit', 'publish', 'publish_internal']:
+    for t in ['publish', 'reject', 'retract2', 'retract', 'publish_internal', 'submit']:
         workflow.transitions.addTransition(t)
 
     for v in ['review_history', 'comments', 'time', 'actor', 'action']:
@@ -115,7 +115,7 @@ def setupminaraad_folder_workflow(self, workflow):
 
     stateDef = workflow.states['pending']
     stateDef.setProperties(title="""pending""",
-                           transitions=['retract2', 'publish'])
+                           transitions=['retract2', 'publish', 'reject'])
     stateDef.setPermission('Access contents information',
                            0,
                            ['Owner', 'Author', 'Reviewer', 'Manager'])
@@ -147,13 +147,25 @@ def setupminaraad_folder_workflow(self, workflow):
 
     ## Transitions initialization
 
-    transitionDef = workflow.transitions['retract']
-    transitionDef.setProperties(title="""retract""",
+    transitionDef = workflow.transitions['publish']
+    transitionDef.setProperties(title="""publish""",
+                                new_state_id="""published""",
+                                trigger_type=1,
+                                script_name="""""",
+                                after_script_name="""""",
+                                actbox_name="""publish""",
+                                actbox_url="""""",
+                                actbox_category="""workflow""",
+                                props={'guard_permissions': 'Review portal content'},
+                                )
+
+    transitionDef = workflow.transitions['reject']
+    transitionDef.setProperties(title="""reject""",
                                 new_state_id="""private""",
                                 trigger_type=1,
                                 script_name="""""",
                                 after_script_name="""""",
-                                actbox_name="""retract""",
+                                actbox_name="""reject""",
                                 actbox_url="""""",
                                 actbox_category="""workflow""",
                                 props={'guard_permissions': 'Review portal content'},
@@ -171,25 +183,13 @@ def setupminaraad_folder_workflow(self, workflow):
                                 props={'guard_roles': 'Owner;Author;Manager'},
                                 )
 
-    transitionDef = workflow.transitions['submit']
-    transitionDef.setProperties(title="""submit""",
-                                new_state_id="""pending""",
+    transitionDef = workflow.transitions['retract']
+    transitionDef.setProperties(title="""retract""",
+                                new_state_id="""private""",
                                 trigger_type=1,
                                 script_name="""""",
                                 after_script_name="""""",
-                                actbox_name="""submit""",
-                                actbox_url="""""",
-                                actbox_category="""workflow""",
-                                props={'guard_roles': 'Owner;Author;Manager'},
-                                )
-
-    transitionDef = workflow.transitions['publish']
-    transitionDef.setProperties(title="""publish""",
-                                new_state_id="""published""",
-                                trigger_type=1,
-                                script_name="""""",
-                                after_script_name="""""",
-                                actbox_name="""publish""",
+                                actbox_name="""retract""",
                                 actbox_url="""""",
                                 actbox_category="""workflow""",
                                 props={'guard_permissions': 'Review portal content'},
@@ -205,6 +205,18 @@ def setupminaraad_folder_workflow(self, workflow):
                                 actbox_url="""""",
                                 actbox_category="""workflow""",
                                 props={'guard_roles': 'Owner;Reviewer;Manager'},
+                                )
+
+    transitionDef = workflow.transitions['submit']
+    transitionDef.setProperties(title="""submit""",
+                                new_state_id="""pending""",
+                                trigger_type=1,
+                                script_name="""""",
+                                after_script_name="""""",
+                                actbox_name="""submit""",
+                                actbox_url="""""",
+                                actbox_category="""workflow""",
+                                props={'guard_roles': 'Owner;Author;Manager'},
                                 )
 
     ## State Variable
