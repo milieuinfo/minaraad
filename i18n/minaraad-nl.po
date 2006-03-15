@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minaraad 0.1\n"
-"POT-Creation-Date: 2006-03-13 10:11+0000\n"
+"POT-Creation-Date: 2006-03-15 10:58+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: Mirella van Teulingen <m.van.teulingen@zestsoftware.nl>\n"
 "Language-Team: Nederlands <info@zestsoftware.nl>\n"
@@ -107,7 +107,7 @@ msgstr "Verzend een e-mail naar alle abonnees op dit content type. Wanneer de ch
 #. Default: "Additional message text (text used from emailTemplate field is considered master e-mail text)."
 #: browser/email_out.pt
 msgid "help_email_out_additional"
-msgstr "Extra tekst toevoegen aan het bericht (De tekst van het e-mailTemplate veld is de hoofdtekst.)"
+msgstr "Extra tekst toevoegen aan het bericht (De body tekst is de hoofdtekst.)"
 
 #. Default: "An e-mail has already been sent out for this content type on"
 #: browser/email_out.pt
@@ -117,7 +117,7 @@ msgstr "Er is al een e-mail verzonden voor dit content type op:"
 #. Default: "Comma-separated list of e-mail addresses to send this out to."
 #: browser/email_out.pt
 msgid "help_email_out_to"
-msgstr "Extra e-mailadressen waarnaar dit bericht gestuurd kan worden. gebruik , tussen de e-mailadressen"
+msgstr "Voeg hier de gebruikersnamen in van de personen die ook het bericht mogen ontvangen. Gebruik een ',' tussen de gebruikersnamen"
 
 #. Default: " Test e-mails can be sent as frequently as needed but only get sent to the email addresses in the above "To" field."
 #: browser/email_out.pt
@@ -169,6 +169,11 @@ msgstr "Organisatie"
 #: skins/minaraad/prefs_user_details.cpt
 msgid "label_country"
 msgstr "Land"
+
+#. Default: "Dear"
+#: skins/minaraad/EmailTemplate-Default.pt
+msgid "label_dear"
+msgstr "Beste"
 
 #. Default: "Delete"
 #: browser/minaraad_config.pt"
@@ -240,6 +245,11 @@ msgstr "Functie"
 #: skins/join_form.cpt
 msgid "label_lastname"
 msgstr "Achternaam"
+
+#. Default: "For more info, go to:"
+#: skins/minaraad/EmailTemplate-Default.pt
+msgid "label_moreinfo"
+msgstr "Voor meer informatie, ga naar:"
 
 #. Default: "Name"
 #: skins/minaraad/contactperson_view.pt
@@ -472,13 +482,15 @@ msgid "minaraad_label_attachment"
 msgstr ""
 
 #. Default: "Attachments"
-#: skins/minaraad/advisory_view.pt
+#: content/Advisory.py
+#: content/AgendaItem.py
 msgid "minaraad_label_attachments"
 msgstr "Bijlagen"
 
 #. Default: "Body"
 #: content/Hearing.py
 #: content/Advisory.py
+#: EmailMixin.py
 msgid "minaraad_label_body"
 msgstr "Body tekst"
 
@@ -486,6 +498,11 @@ msgstr "Body tekst"
 #: Organisation.py
 msgid "minaraad_label_bus"
 msgstr "Bus"
+
+#. Default: "Category"
+#: content/NewsItem.py
+msgid "minaraad_label_category"
+msgstr ""
 
 #. Default: "City"
 #: Organisation.py
@@ -509,6 +526,7 @@ msgstr "Contactpersonen"
 #. Default: "Date"
 #: content/Advisory.py
 #: content/Study.py
+#: content/NewsLetter.py
 msgid "minaraad_label_date"
 msgstr "Datum"
 
@@ -520,8 +538,14 @@ msgstr "Afdeling"
 #. Default: "Description"
 #: content/Hearing.py
 #: content/Advisory.py
+#: content/NewsLetter.py
 msgid "minaraad_label_description"
 msgstr "Omschrijving"
+
+#. Default: "Displayattachments"
+#: Attachmentsmixin.py
+msgid "minaraad_label_displayAttachments"
+msgstr ""
 
 #. Default: "Email"
 #: content/ContactPerson.py

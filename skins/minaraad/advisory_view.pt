@@ -5,6 +5,7 @@
     
     <body>
     <metal:block metal:define-macro="body">
+
         <span class="documentDescription"
               tal:content="context/getDescription" />
         
@@ -39,6 +40,11 @@
             tal:condition="context/getBody" />
         <!-- End text -->
         <br />
+    
+
+        <div tal:define="widget_view python:context.widget('displayAttachments', mode='view', use_label=1)">
+            <metal:block use-macro="widget_view" />
+        </div>
 <!--
         <div tal:condition="context/getAttachments">
             <div i18n:translate="minaraad_label_attachments"
@@ -65,5 +71,6 @@
 context.getFolderContents() for getting the catalog information.
 -->
     </metal:block>
+    <metal:block metal:define-macro="folderlisting" />
     </body>
 </html>

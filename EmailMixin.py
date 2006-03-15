@@ -128,13 +128,13 @@ class EmailMixin:
             emailBody = self.getEmailBody(member=member, context=self)
 
             if text:
-                emailBody['text/plain'] += "Additional Message: %s" % text
+                emailBody['text/plain'] += "%s" % text
                 
                 emailBody['text/html'] += '''
-                <dl>
-                <dt style="font-weight: bold">Additional Message</dt>
-                <dd>%s</dd>
-                </dl>
+                <br />
+                <br />
+                <br />
+                %s
                 ''' % text
             
             message = MIMEMultipart('alternative')

@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minaraad 0.1\n"
-"POT-Creation-Date: 2006-03-13 10:11+0000\n"
+"POT-Creation-Date: 2006-03-15 10:58+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: Mirella van Teulingen <m.van.teulingen@zestsoftware.nl>\n"
 "Language-Team: English <info@zestsoftware.nl>\n"
@@ -171,6 +171,11 @@ msgstr ""
 msgid "label_country"
 msgstr ""
 
+#. Default: "Dear"
+#: skins/minaraad/EmailTemplate-Default.pt
+msgid "label_dear"
+msgstr ""
+
 #. Default: "Delete"
 #: browser/minaraad_config.pt"
 msgid "label_delete"
@@ -241,6 +246,11 @@ msgstr ""
 
 #: skins/join_form.cpt
 msgid "label_lastname"
+msgstr ""
+
+#. Default: "For more info, go to:"
+#: skins/minaraad/EmailTemplate-Default.pt
+msgid "label_moreinfo"
 msgstr ""
 
 #. Default: "Name"
@@ -476,19 +486,26 @@ msgid "minaraad_label_attachment"
 msgstr ""
 
 #. Default: "Attachments"
-#: skins/minaraad/advisory_view.pt
+#: content/Advisory.py
+#: content/AgendaItem.py
 msgid "minaraad_label_attachments"
 msgstr ""
 
 #. Default: "Body"
 #: content/Hearing.py
 #: content/Advisory.py
+#: EmailMixin.py
 msgid "minaraad_label_body"
 msgstr ""
 
 #. Default: "Bus"
 #: Organisation.py
 msgid "minaraad_label_bus"
+msgstr ""
+
+#. Default: "Category"
+#: content/NewsItem.py
+msgid "minaraad_label_category"
 msgstr ""
 
 #. Default: "City"
@@ -513,6 +530,7 @@ msgstr ""
 #. Default: "Date"
 #: content/Advisory.py
 #: content/Study.py
+#: content/NewsLetter.py
 msgid "minaraad_label_date"
 msgstr ""
 
@@ -524,7 +542,13 @@ msgstr ""
 #. Default: "Description"
 #: content/Hearing.py
 #: content/Advisory.py
+#: content/NewsLetter.py
 msgid "minaraad_label_description"
+msgstr ""
+
+#. Default: "Displayattachments"
+#: Attachmentsmixin.py
+msgid "minaraad_label_displayAttachments"
 msgstr ""
 
 #. Default: "Email"

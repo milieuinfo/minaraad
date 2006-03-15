@@ -16,6 +16,12 @@ msgstr ""
 "Preferred-Encodings: latin1 utf-8\n"
 "Domain: plone\n"
 
+msgid "date_format_long"
+msgstr "${d}-${b}-${Y} ${H}:${M}"
+
+msgid "date_format_short"
+msgstr "${d}-${b}-${Y}"
+
 msgid "Advisory"
 msgstr "Advies"
 
