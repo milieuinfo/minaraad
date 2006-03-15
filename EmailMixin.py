@@ -32,9 +32,11 @@ from Products.Archetypes.atapi import *
 from Products.minaraad.config import *
 
 ##code-section module-header #fill in your manual code here
+import types
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.utils import log_exc, log
 from Products.minaraad.subscriptions import SubscriptionManager
+from Products.minaraad import BeautifulSoup
 from email.MIMEText import MIMEText
 from email.MIMEMultipart import MIMEMultipart
 from DateTime import DateTime
@@ -169,12 +171,14 @@ class EmailMixin:
             template = getattr(self, "EmailTemplate-Default", None)
         cooked = template.pt_render(extra_context=kwargs)
         portal_transforms = getToolByName(self, 'portal_transforms')
-        plain = portal_transforms.convertTo('text/plain', cooked).getData()
         
         body = {
             'text/html': cooked,
-            'text/plain': plain,
         }
+
+        plain = portal_transforms.convertTo('text/plain', 
+                                            generateSafe(cooked)).getData()
+        body['text/plain'] = plain
         
         return body
 
@@ -203,7 +207,39 @@ class EmailMixin:
 # end of class EmailMixin
 
 ##code-section module-footer #fill in your manual code here
+
+def generateSafe(html):
+    soup = BeautifulSoup.BeautifulSoup(html)
+    
+    return str(soup).strip()
+
+# monkey-patch BeautifulSoup
+def renderContents(self, showStructureIndent=None, needUnicode=None):
+    """Renders the contents of this tag as a (possibly Unicode) 
+    string."""
+    s=[]
+    for c in self:
+        text = None
+        if isinstance(c, BeautifulSoup.NavigableUnicodeString) \
+                or type(c) == types.UnicodeType:
+            text = unicode(c)
+        elif isinstance(c, BeautifulSoup.Tag):
+            s.append(c.__str__(needUnicode, showStructureIndent))
+            if c.name == 'a':
+                href = c.get('href', None)
+                if href:
+                    s.append(' (%s)' % href)
+        elif needUnicode:
+            text = unicode(c)
+        else:
+            text = str(c)
+        if text:
+            if showStructureIndent != None:
+                if text[-1] == '\n':
+                    text = text[:-1]
+            s.append(text)
+    return ''.join(s)  
+
+BeautifulSoup.Tag.renderContents = renderContents
 ##/code-section module-footer
-
-
 

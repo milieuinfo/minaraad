@@ -50,7 +50,7 @@ from Products.minaraad.EmailMixin import EmailMixin
 import email
 from Products.Archetypes.atapi import registerType, BaseContent, BaseSchema
 from Products.minaraad.subscriptions import SubscriptionManager
-from Products.minaraad.EmailMixin import AlreadySentError
+from Products.minaraad.EmailMixin import AlreadySentError, generateSafe
 ##/code-section module-beforeclass
 
 
@@ -131,6 +131,13 @@ class testEmailMixin(PloneTestCase):
         self.assertEquals(lst1, ['anotherguy@hisplace.com', 'someguy@hisplace.com'])
         
         self.logout()
+        
+    def test_generatingSafe(self):
+        html = '<a href="http://blah.com">Some Blah</a>'
+
+        result = generateSafe(html)
+        self.assertEquals(result, '<a href="http://blah.com">Some Blah</a> (http://blah.com)')
+
 
     # from class EmailMixin:
     def test_getEmailBody(self):
