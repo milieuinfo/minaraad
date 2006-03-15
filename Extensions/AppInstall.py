@@ -377,6 +377,8 @@ def _configureFCKeditor(portal):
     memberdata._updateProperty('wysiwyg_editor', 'FCKeditor')
     fckprops._updateProperty('fck_default_skin', 'office2003')
     fckprops._updateProperty('fck_force_height', FCK_FORCE_HEIGHT)
+    fckprops._updateProperty('fck_toolbar', FCK_TOOLBAR)
+    fckprops._updateProperty('fck_custom_toolbar', FCK_CUSTOM_TOOLBAR)
     
     # disable the member prefs, has bugs
     control = getToolByName(portal, 'portal_controlpanel')

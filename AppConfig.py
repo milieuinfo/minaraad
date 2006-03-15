@@ -96,3 +96,16 @@ SELECT_VIEWS = {
 
 #FCKeditor set height
 FCK_FORCE_HEIGHT = '500px'
+
+
+#FCKeditor Toolbar
+FCK_TOOLBAR = 'Custom'
+
+FCK_CUSTOM_TOOLBAR = """[['Source', 'DocProps', 'Save', 'NewPage','Preview','Templates', 
+    'Cut', 'Copy', 'Paste', 'PasteText','Print', 'PasteWord', 'SpellCheck', 'Undo', 'Redo', 'Find', 'Replace', 'SelectAll', 
+    'RemoveFormat', 'Bold', 'Italic', 'Underline', 'StrikeThrough', 'Subscript', 
+    'Superscript', 'OrderedList', 'UnorderedList', 'Outdent', 'Indent'],
+                         ['Style','FontFormat', 'FontName','FontSize','TextColor','BGColor', 'JustifyLeft', 'JustifyCenter', 
+    'JustifyRight', 'JustifyFull'],
+                         ['Link','Unlink','Anchor', 'Image', 'Flash', 'Table', 'Rule', 'Smiley', 'SpecialChar', 
+    'UniversalKey','About']]"""
