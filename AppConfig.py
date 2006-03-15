@@ -10,8 +10,8 @@ EMAIL_FROM_NAME = 'Webmaster MiNa-Raad'
 LOCAL_TIME_FORMAT = '%d-%b-%Y'
 LOCAL_LONG_TIME_FORMAT = '%d-%b-%Y %H:%M'
 
-DEPENDENCIES = ['kupu','PasswordResetTool', 'CompoundField', 
-                'FCKeditor', 'RichDocument']
+DEPENDENCIES = ['kupu','PasswordResetTool','FCKeditor',
+                'RichDocument']
 
 STYLESHEETS = [{'id': 'minaraad.css'}]
 
