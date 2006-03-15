@@ -1,8 +1,7 @@
 <h3 tal:content="context/Title" />
+<br />
 <span i18n:domain="minaraad" 
-      i18n:translate="label_dear">Dear</span>
-<span tal:replace="member/firstname" />
-<span tal:replace="member/fullname" />,
+      i18n:translate="label_dear">Dear</span> <span tal:replace="member/firstname" /> <span tal:replace="member/fullname" />,
 <br />
 <br />
 <div tal:replace="context/Description" />
@@ -14,4 +13,4 @@
       i18n:translate="label_moreinfo">For more info, go to:</span>
 
 <a tal:attributes="href context/absolute_url" 
-   tal:content="context/absolute_url" />
+   tal:content="context/Title" />

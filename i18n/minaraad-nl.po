@@ -122,7 +122,7 @@ msgstr "Voeg hier de gebruikersnamen in van de personen die ook het bericht moge
 #. Default: " Test e-mails can be sent as frequently as needed but only get sent to the email addresses in the above "To" field."
 #: browser/email_out.pt
 msgid "help_send_as_test"
-msgstr "Test e-mails kunnen zo vaak als nodig worden verstuurd. De test e-mail wordt verstuurd naar het e-mailadres dat hierboven in het \"Aan\" veld is ingevuld."
+msgstr "Test e-mails kunnen zo vaak als nodig worden verstuurd. De test e-mail wordt verstuurd naar de gebruiker dat hierboven in het \"Aan\" veld is ingevuld."
 
 #. Default: "Name of the new theme to create."
 #: browser/minaraad_config.pt"
