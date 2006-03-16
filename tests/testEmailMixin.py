@@ -138,13 +138,6 @@ class testEmailMixin(PloneTestCase):
         
         self.logout()
         
-    def test_generatingSafe(self):
-        html = '<a href="http://blah.com">Some Blah</a>'
-
-        result = generateSafe(html)
-        self.assertEquals(result, '<a href="http://blah.com">Some Blah</a> (http://blah.com)')
-
-
     # from class EmailMixin:
     def test_getEmailBody(self):
         pass
@@ -159,6 +152,12 @@ class testEmailMixin(PloneTestCase):
         self.portal.MailHost = self.portal._original_MailHost
         del self.portal._original_MailHost
     
+    def test_generatingSafe(self):
+        html = '<a href="http://blah.com">Some Blah</a>'
+
+        result = generateSafe(html)
+        self.assertEquals(result, '<a href="http://blah.com">Some Blah</a> (http://blah.com)')
+
     def test_getEmailContentsFromContent(self):
         pass
 

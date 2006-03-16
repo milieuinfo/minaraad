@@ -48,11 +48,23 @@ schema = Schema((
 
     DateTimeField(
         name='date',
+        index="DateIndex:brains",
         widget=CalendarWidget(
             label='Date',
             label_msgid='minaraad_label_date',
             i18n_domain='minaraad',
         )
+    ),
+
+    TextField(
+        name='body',
+        allowable_content_types=('text/plain', 'text/structured', 'text/html', 'application/msword',),
+        widget=RichWidget(
+            label='Body',
+            label_msgid='minaraad_label_body',
+            i18n_domain='minaraad',
+        ),
+        default_output_type='text/html'
     ),
 
     ReferenceField(

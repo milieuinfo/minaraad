@@ -44,17 +44,6 @@ from DateTime import DateTime
 
 schema = Schema((
 
-    TextField(
-        name='body',
-        allowable_content_types=('text/plain', 'text/structured', 'text/html', 'application/msword',),
-        widget=RichWidget(
-            label='Body',
-            label_msgid='minaraad_label_body',
-            i18n_domain='minaraad',
-        ),
-        default_output_type='text/html'
-    ),
-
     DateTimeField(
         name='emailSent',
         widget=CalendarWidget(
@@ -242,4 +231,6 @@ def renderContents(self, showStructureIndent=None, needUnicode=None):
 
 BeautifulSoup.Tag.renderContents = renderContents
 ##/code-section module-footer
+
+
 
