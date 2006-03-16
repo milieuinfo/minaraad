@@ -10,6 +10,8 @@ EMAIL_FROM_NAME = 'Webmaster MiNa-Raad'
 LOCAL_TIME_FORMAT = '%d-%b-%Y'
 LOCAL_LONG_TIME_FORMAT = '%d-%b-%Y %H:%M'
 
+DEFAULT_LANGUAGE = 'nl'
+
 DEPENDENCIES = ['kupu','PasswordResetTool','FCKeditor',
                 'RichDocument']
 
@@ -34,15 +36,8 @@ JAVASCRIPTS = [{'id': 'hideShow.js'},]
 # on the portal root and on all subfolders.
 GLOBAL_DISALLOW = [
     'ContactPerson',
-    'Advisory',
     'Newsitem',
     'Event',
-    'ArrayFieldTest',
-    'Hearing',
-    'NewsLetter',
-    'Pressrelease',
-    'AnnualReport',
-    'Study',
     'RichDocument',
     ]
 

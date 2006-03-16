@@ -89,6 +89,7 @@ def _configurePortalProps(portal):
     props = portal.portal_properties.site_properties
     props._updateProperty('localTimeFormat', LOCAL_TIME_FORMAT)
     props._updateProperty('localLongTimeFormat', LOCAL_LONG_TIME_FORMAT)
+    props._updateProperty('default_language', DEFAULT_LANGUAGE)
 
     # customize navtree properties - idsNotToList
     props_tool = getToolByName(portal, 'portal_properties')
@@ -311,15 +312,11 @@ def _resetAddableTypes(portal):
     folderishTypes = MINARAAD_FOLDER_WORKFLOW_TYPES
     folderishTypes.append('Plone Site')
 
-    # Restrict plone site root
-    for typeName in ['Plone Site']:
-        type_ = types_tool._getOb(typeName)
-        allowedTypes = [item for item in
-                        list(type_.allowed_content_types)
-                        if item not in GLOBAL_DISALLOW]
-        type_._setPropValue('allowed_content_types',
-                            tuple(allowedTypes))
-    # Unrestrict folderish types
+    for type_ in types_tool.listContentTypes():
+        if type_ in GLOBAL_DISALLOW:
+            typeObj = types_tool[type_]
+            typeObj._setPropValue('global_allow', 0)
+
     for typeName in folderishTypes:
         type_ = types_tool._getOb(typeName)
         restriction = list(type_.allowed_content_types)
