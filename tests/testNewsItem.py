@@ -73,18 +73,6 @@ class testNewsItem(MainTestCase):
 
         pass
 
-    # from class EmailMixin:
-    def test_email(self):
-        pass
-
-    # from class EmailMixin:
-    def test_getEmailBody(self):
-        pass
-
-    # from class EmailMixin:
-    def test_getSubscriptionId(self):
-        pass
-
     # Manually created methods
 
     def testNewsItem(self):
@@ -93,6 +81,12 @@ class testNewsItem(MainTestCase):
 
         types_ = self.portal.portal_types.objectIds()
         self.failUnless('NewsItem' in types_)
+
+    def test_getEmailBody(self):
+        pass
+
+    def test_email(self):
+        pass
 
     def test_getEmailContentsFromContent(self):
         pass
@@ -114,6 +108,9 @@ class testNewsItem(MainTestCase):
                         'Value is %s' % self.testitem.getBody())
         self.failUnless(self.testitem.getCategory()==CATEGORY,
                         'Value is %s' % self.testitem.getCategory())
+
+    def test_getSubscriptionId(self):
+        pass
 
 
 def test_suite():
