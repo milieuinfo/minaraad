@@ -35,7 +35,6 @@ JAVASCRIPTS = [{'id': 'hideShow.js'},]
 # GLOBAL_DISALLOW is a list of content types that will be disabled
 # on the portal root and on all subfolders.
 GLOBAL_DISALLOW = [
-    'ContactPerson',
     'Newsitem',
     'Event',
     'RichDocument',
@@ -73,13 +72,17 @@ TYPES_TO_LIST = ['Folder']
 # The values are a list of templates or page names that are to
 # be added in the view dropdown.
 EXTRA_VIEWS = {
-    'Folder': ['hearing_listing_view', 'advisory_listing_view'],
+    'Folder': ['hearing_listing_view', 'advisory_listing_view', 'newsletter_listing_view'],
     }
 
 # SELECT_VIEWS is a dictionary, the keys are folder names. The value
 # is the view to be selected for that folder.
 SELECT_VIEWS = {
     '/hoorzittingen': 'hearing_listing_view',
+    '/nieuwsbrieven/newsl_2006': 'newsletter_listing_view',
+    '/nieuwsbrieven/newsl_2005': 'newsletter_listing_view',
+    '/nieuwsbrieven/newsl_2004': 'newsletter_listing_view',
+    '/nieuwsbrieven/newsl_2003': 'newsletter_listing_view',
     '/adviezen/adv_2006': 'advisory_listing_view',
     '/adviezen/adv_2005': 'advisory_listing_view',
     '/adviezen/adv_2004': 'advisory_listing_view',

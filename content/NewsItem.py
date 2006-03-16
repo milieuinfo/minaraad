@@ -48,16 +48,27 @@ schema = Schema((
         vocabulary=["Vastgestelde adviezen","Adviezen in wording","Mededelingen","Europese ontwikkelingen"]
     ),
 
+    TextField(
+        name='body',
+        allowable_content_types=('text/plain', 'text/structured', 'text/html', 'application/msword',),
+        widget=RichWidget(
+            label='Body',
+            label_msgid='minaraad_label_body',
+            i18n_domain='minaraad',
+        ),
+        default_output_type='text/html'
+    ),
+
     ReferenceField(
-        name='contactpersons',
+        name='contact',
         widget=ReferenceWidget(
-            label='Contactpersons',
-            label_msgid='minaraad_label_contactpersons',
+            label='Contact',
+            label_msgid='minaraad_label_contact',
             i18n_domain='minaraad',
         ),
         allowed_types=('ContactPerson',),
         multiValued=0,
-        relationship='newsitem_contactperson'
+        relationship='newsitem_contact'
     ),
 
 ),

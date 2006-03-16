@@ -123,4 +123,10 @@ dl.listsubscriptions dt {
 
 /* --- End Subscribers overview --- */ 
 
+/* --- Start Newsletter --- */ 
+.newsletter_listtitle {
+    font-weight:bold;
+}
+/* --- End Newsletter --- */ 
+
 /* </dtml-with> */

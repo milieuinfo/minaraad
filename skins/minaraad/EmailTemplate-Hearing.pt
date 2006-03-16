@@ -27,17 +27,6 @@
 <br />
 <div metal:use-macro="context/mina_showdatetime/macros/datetime_email" tal:omit-tag=""/>
 <br />
-<tal:block tal:define="contacts python:context.getContact()"
-           tal:condition="contacts">
-<br />
-<div i18n:translate="moreinfo_contactperson" 
-     tal:omit-tag="">For more information contact:</div>
-<br />
-<tal:block tal:repeat="contact contacts">
-<div metal:use-macro="context/contactperson_view/macros/contactdetails"
-     tal:omit-tag="" />
-</tal:block>
-<br />
 <br />
 </tal:block>
 <div tal:condition="context/getBody" tal:content="structure context/getBody" />

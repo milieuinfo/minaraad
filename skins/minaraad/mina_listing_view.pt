@@ -152,28 +152,12 @@
                                                     <a tal:attributes="href string:mailto:${contact/getEmail}"
                                                     tal:content="contact/getEmail" />
                                                 </tal:block>
+                                                 <a tal:attributes="href python:test(item_type in use_view_action, item_url+'/view', item_url+'/');"
+                                                    i18n:translate="linkmoreinfo">More</a>
                                                 </div>
-                                            <!--
-                                                  <div tal:repeat="item item_object/getAttachments">
-                                                    <span tal:define="item_type_class python:'contenttype-' + normalizeString(item_object['portal_type'])" 
-                                                        tal:condition="python:item.get_size() &gt; 0"
-                                                        tal:omit-tag="">
-                                                        <br />
-                                                        <a tal:attributes="href string:${item/absolute_url};
-                                                                        class item_type_class"
-                                                        tal:content="item/filename"> 
-                                                            Attachment
-                                                        </a>
-                                                        <span class="filesize" 
-                                                            tal:define="size python:item.getObjSize(item);"
-                                                            tal:condition="size"
-                                                            tal:content="size">
-                                                            257 KB
-                                                        </span>
-                                                        <br />
-                                                    </span>
-                                                </div>
-                                            -->
+                                                <!-- Start Attachments-->
+                                                <div metal:use-macro="context/mina_attachments/macros/agenda_attachments" />
+                                                <!-- end Attachments -->
                                             </td>
                                         </tr>
                                     </tbody>
@@ -181,7 +165,6 @@
                             </td>
                         </tr>
                         <!-- END ADVISORY LISTING -->
-
                         </tal:block>
                         <tr>
                             <td height="10" />

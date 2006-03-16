@@ -67,6 +67,9 @@ msgstr "Adviezen overzicht"
 msgid "hearing_listing_view"
 msgstr "Hoorzittingen overzicht"
 
+msgid "newsletter_listing_view"
+msgstr "Nieuwsbrieven overzicht"
+
 msgid "minaraad themes"
 msgstr "minaraad thema's"
 
