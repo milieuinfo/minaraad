@@ -72,7 +72,8 @@ TYPES_TO_LIST = ['Folder']
 # The values are a list of templates or page names that are to
 # be added in the view dropdown.
 EXTRA_VIEWS = {
-    'Folder': ['hearing_listing_view', 'advisory_listing_view', 'newsletter_listing_view'],
+    'Folder': ['hearing_listing_view', 'advisory_listing_view', 
+               'newsletter_listing_view', 'pressrelease_listing_view'],
     }
 
 # SELECT_VIEWS is a dictionary, the keys are folder names. The value
@@ -90,6 +91,11 @@ SELECT_VIEWS = {
     '/adviezen/adv_2002': 'advisory_listing_view',
     '/adviezen/adv_2001': 'advisory_listing_view',
     '/adviezen/adv_1999': 'advisory_listing_view',
+    '/persberichten/pressr_2006' : 'pressrelease_listing_view',
+    '/persberichten/pressr_2005' : 'pressrelease_listing_view',
+    '/persberichten/pressr_2004' : 'pressrelease_listing_view',
+    '/persberichten/pressr_2003' : 'pressrelease_listing_view',
+    '/persberichten/pressr_2002' : 'pressrelease_listing_view',
     }
 
 #FCKeditor set height

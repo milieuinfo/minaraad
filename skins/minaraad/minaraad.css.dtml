@@ -129,4 +129,14 @@ dl.listsubscriptions dt {
 }
 /* --- End Newsletter --- */ 
 
+/* --- Start Pressrelease --- */
+.pressrelease_listtitle {
+    font-weight:bold;
+}
+
+.pressrelease_listsub {
+    font-style:italic;
+}
+/* --- End Pressrelease --- */
+
 /* </dtml-with> */
