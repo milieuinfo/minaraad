@@ -80,11 +80,11 @@
           </select>
 
           <input type="button" value="Up" title="Up"
-                 tal:attributes="onclick string:up('${fieldName}')"
+                 tal:attributes="onclick string:oref_up('${fieldName}')"
                  />
 
           <input type="button" value="Down" title="Down"
-                 tal:attributes="onclick string:down('${fieldName}')"
+                 tal:attributes="onclick string:oref_down('${fieldName}')"
                  />
 
         </div>

@@ -1,4 +1,4 @@
-function selectall(obj) {
+function oref_selectall(obj) {
 	obj = (typeof obj == "string") ? document.getElementById(obj) : obj;
 	if (obj.tagName.toLowerCase() != "select")
 		return;
@@ -7,7 +7,7 @@ function selectall(obj) {
 	}
 }
 
-function selectnone(obj) { /* NEW added from version 1.1 */
+function oref_selectnone(obj) { /* NEW added from version 1.1 */
 	obj = (typeof obj == "string") ? document.getElementById(obj) : obj;
 	if (obj.tagName.toLowerCase() != "select")
 		return;
@@ -16,7 +16,7 @@ function selectnone(obj) { /* NEW added from version 1.1 */
 	}
 }
 
-function swap(obj) { /*updated from version 1.3*/
+function oref_swap(obj) { /*updated from version 1.3*/
 	obj = (typeof obj == "string") ? document.getElementById(obj) : obj;
 	if (obj.tagName.toLowerCase() != "select" && obj.length < 2)
 		return false;
@@ -54,7 +54,7 @@ function swap(obj) { /*updated from version 1.3*/
 	obj[last_element].selected = tmp[6];
 }
 
-function additem(obj, text, value, index, id, classname, color, bg, selected) { /* NEW added from version 1.1 updated from version 1.2*/
+function oref_additem(obj, text, value, index, id, classname, color, bg, selected) { /* NEW added from version 1.1 updated from version 1.2*/
 	obj = (typeof obj == "string") ? document.getElementById(obj) : obj;
 	if (obj.tagName.toLowerCase() != "select" || text == "")
 		return;
@@ -85,7 +85,7 @@ function additem(obj, text, value, index, id, classname, color, bg, selected) { 
 	obj.selected = selected
 }
 
-function removeitem(obj, index) { /* NEW added from version 1.1 */
+function oref_removeitem(obj, index) { /* NEW added from version 1.1 */
 	obj = (typeof obj == "string") ? document.getElementById(obj) : obj;
 	if (obj.tagName.toLowerCase() != "select" || obj.length == 0)
 		return;
@@ -100,7 +100,7 @@ function removeitem(obj, index) { /* NEW added from version 1.1 */
 	}
 }
 
-function mousewheel(obj) {
+function oref_mousewheel(obj) {
 	obj = (typeof obj == "string") ? document.getElementById(obj) : obj;
 	if (obj.tagName.toLowerCase() != "select")
 		return;
@@ -114,7 +114,7 @@ function mousewheel(obj) {
 	}
 }
 
-function sort2d(arrayName, element, num, cs) {
+function oref_sort2d(arrayName, element, num, cs) {
 	if (num) {
 		for (var i=0; i<(arrayName.length-1); i++) {
 			for (var j=i+1; j<arrayName.length; j++) {
@@ -155,7 +155,7 @@ by = 4 - order by class name
 by = 5 - order by id
 num = if true sorts numbers e.g. 2 before 10
 cs = casesensitive e.g. a before Z*/
-function listsort(obj, by, num, cs) { /*updated from version 1.2*/
+function oref_listsort(obj, by, num, cs) { /*updated from version 1.2*/
 	obj = (typeof obj == "string") ? document.getElementById(obj) : obj;
 	by = (parseInt("0" + by) > 5) ? 0 : parseInt("0" + by);
 	if (obj.tagName.toLowerCase() != "select" && obj.length < 2)
@@ -164,7 +164,7 @@ function listsort(obj, by, num, cs) { /*updated from version 1.2*/
 	for (var i=0; i<obj.length; i++) {
 		elements[elements.length] = new Array((document.body.innerHTML ? obj[i].innerHTML : obj[i].text), obj[i].value, (obj[i].currentStyle ? obj[i].currentStyle.color : obj[i].style.color), (obj[i].currentStyle ? obj[i].currentStyle.backgroundColor : obj[i].style.backgroundColor), obj[i].className, obj[i].id, obj[i].selected);
 	}
-	sort2d(elements, by, num, cs);
+	oref_sort2d(elements, by, num, cs);
 	for (i=0; i<obj.length; i++) {
 		if (document.body.innerHTML) obj[i].innerHTML = elements[i][0];
 		else obj[i].text = elements[i][0];
@@ -177,7 +177,7 @@ function listsort(obj, by, num, cs) { /*updated from version 1.2*/
 	}
 }
 
-function viceversa(obj, onlyselected) { /*updated from version 1.3*/
+function oref_viceversa(obj, onlyselected) { /*updated from version 1.3*/
 	obj = (typeof obj == "string") ? document.getElementById(obj) : obj;
 	if (obj.tagName.toLowerCase() != "select" && obj.length < 2)
 		return false;
@@ -203,7 +203,7 @@ function viceversa(obj, onlyselected) { /*updated from version 1.3*/
 	}
 }
 
-function top(obj) { /*updated from version 1.2*/
+function oref_top(obj) { /*updated from version 1.2*/
 	obj = (typeof obj == "string") ? document.getElementById(obj) : obj;
 	if (obj.tagName.toLowerCase() != "select" && obj.length < 2)
 		return false;
@@ -230,7 +230,7 @@ function top(obj) { /*updated from version 1.2*/
 	}
 }
 
-function bottom(obj) { /*updated from version 1.2*/
+function oref_bottom(obj) { /*updated from version 1.2*/
 	obj = (typeof obj == "string") ? document.getElementById(obj) : obj;
 	if (obj.tagName.toLowerCase() != "select" && obj.length < 2)
 		return false;
@@ -257,7 +257,7 @@ function bottom(obj) { /*updated from version 1.2*/
 	}
 }
 
-function up(obj) { /*updated from version 1.2*/
+function oref_up(obj) { /*updated from version 1.2*/
 	obj = (typeof obj == "string") ? document.getElementById(obj) : obj;
 	if (obj.tagName.toLowerCase() != "select" && obj.length < 2)
 		return false;
@@ -290,7 +290,7 @@ function up(obj) { /*updated from version 1.2*/
 	}
 }
 
-function down(obj) {
+function oref_down(obj) {
 	obj = (typeof obj == "string") ? document.getElementById(obj) : obj;
 	if (obj.tagName.toLowerCase() != "select" && obj.length < 2)
 		return false;
@@ -323,7 +323,7 @@ function down(obj) {
 	}
 }
 
-function inarray(v,a) {
+function oref_inarray(v,a) {
 	for (var i in a) {
 		if (a[i] == v) {
 			return true;
