@@ -37,3 +37,8 @@ class OrderableReferenceField(atapi.ReferenceField):
         for ref in refs:
             index = uids.index(ref.targetUID)
             ref.order = index
+
+    def get(self, instance, **kwargs):
+        refs = instance.getReferenceImpl(self.relationship)
+        refs.sort(lambda a,b:cmp(a.order, b.order))
+        return refs
