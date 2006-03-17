@@ -109,5 +109,4 @@ FCK_CUSTOM_TOOLBAR = """[['Source', 'DocProps', 'Save', 'NewPage','Preview','Tem
     'UniversalKey','About']]"""
 
 # let's cheat a bit and make this available to everyone
-from Products.minaraad.field import (
-    OrderableReferenceField, OrderableReferenceWidget)
+from Products.minaraad.field import OrderableReferenceField, OrderableReferenceWidget
