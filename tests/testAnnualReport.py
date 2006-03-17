@@ -60,7 +60,6 @@ class testAnnualReport(MainTestCase):
         """
         """
         pass
-    # from class EmailMixin:
     # from class AnnualReport:
     def test_email_out(self):
         pass

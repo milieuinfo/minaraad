@@ -127,9 +127,9 @@ schema = Schema((
         required=1
     ),
 
-    ReferenceField(
+    OrderableReferenceField(
         name='contact',
-        widget=ReferenceWidget(
+        widget=OrderableReferenceWidget(
             label='Contact',
             label_msgid='minaraad_label_contact',
             i18n_domain='minaraad',

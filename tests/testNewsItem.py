@@ -71,8 +71,6 @@ class testNewsItem(MainTestCase):
         self.testnews.invokeFactory('NewsItem', id='testitem')
         self.testitem = self.testnews.testitem
 
-        pass
-
     # Manually created methods
 
     def testNewsItem(self):

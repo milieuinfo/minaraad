@@ -60,7 +60,6 @@ class testStudy(MainTestCase):
         """
         """
         pass
-    # from class EmailMixin:
     # from class Study:
     def test_email_out(self):
         pass

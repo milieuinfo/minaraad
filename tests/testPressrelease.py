@@ -76,8 +76,6 @@ class testPressrelease(MainTestCase):
         self.portal.contactpersonen.invokeFactory('ContactPerson', id='Jslob')
         self.contactperson = self.portal.contactpersonen.Jslob
 
-        pass
-
     # from class Pressrelease:
     def test_email_out(self):
         pass
