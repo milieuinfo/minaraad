@@ -1,0 +1,72 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
+      lang="en-US"
+      i18n:domain="minaraad">
+    <metal:block use-macro="context/global_defines/macros/defines" />
+    
+    <body>
+    <metal:block metal:define-macro="body"
+                 tal:define="current_path python:'/'.join(context.getPhysicalPath());
+                             categories python:['Vastgestelde adviezen',
+                                          'Adviezen in wording',
+                                          'Mededelingen',
+                                          'Europese ontwikkelingen'];">
+
+        <metal:block metal:define-macro="folderlisting" />
+        
+        <div tal:define="daterequired python:context.getDate() != None;
+                         date python:context.toLocalizedTime(context.date)[:-5];"
+             class="advisory_listdate" 
+             tal:condition="daterequired"> 
+
+            <span class="hearingsubheader2"
+                  i18n:translate="Date:">Date:</span><span tal:replace="date" />
+        </div>
+
+        <div class="bodytext"
+             tal:condition="context/getBody"
+             tal:content="structure context/getBody" />
+        <br />
+
+        <div tal:repeat="category categories">
+
+              <h2 tal:content="category">
+                  Category
+              </h2>
+
+              <div tal:omit-tag=""
+                   tal:define="newsitems python:context.portal_catalog.searchResults(portal_type='NewsItem',
+                                                                                    path=current_path,
+                                                                                    getCategory=category,
+                                                                                    review_state='published');"
+                   tal:repeat="newsitem newsitems">
+                  <a tal:attributes="href string:#${newsitem/id}"
+                     tal:content="newsitem/Title" />
+              </div>
+        </div>
+
+
+        <div tal:repeat="category categories">
+
+              <h2 tal:content="category">
+                  Category
+              </h2>
+
+              <div tal:omit-tag=""
+                   tal:define="newsitems python:context.portal_catalog.searchResults(portal_type='NewsItem',
+                                                                                    path=current_path,
+                                                                                    getCategory=category,
+                                                                                    review_state='published');"
+                   tal:repeat="newsitem newsitems">
+
+                   <a tal:attributes="name newsitem/id">
+                       <h3 tal:content="newsitem/Title" />
+                   </a>
+
+                   <div tal:content="newsitem/getBody">Content here</div>
+
+              </div>
+        </div>
+
+    </metal:block>
+    </body>
+</html>
