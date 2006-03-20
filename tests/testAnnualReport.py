@@ -61,6 +61,7 @@ class testAnnualReport(MainTestCase):
         """
         pass
     # from class AnnualReport:
+    # from class AnnualReport:
     def test_email_out(self):
         pass
 

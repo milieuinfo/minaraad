@@ -29,7 +29,6 @@ __docformat__ = 'plaintext'
 
 from AccessControl import ClassSecurityInfo
 from Products.Archetypes.atapi import *
-from Products.minaraad.Attachmentsmixin import Attachmentsmixin
 from Products.minaraad.config import *
 
 ##code-section module-header #fill in your manual code here
@@ -39,6 +38,7 @@ schema = Schema((
 
     StringField(
         name='category',
+        index="FieldIndex:brains",
         widget=SelectionWidget(
             label='Category',
             label_msgid='minaraad_label_category',
@@ -66,7 +66,7 @@ schema = Schema((
             i18n_domain='minaraad',
         ),
         allowed_types=('ContactPerson',),
-        multiValued=0,
+        multiValued=1,
         relationship='newsitem_contact'
     ),
 
@@ -76,24 +76,24 @@ schema = Schema((
 ##code-section after-local-schema #fill in your manual code here
 ##/code-section after-local-schema
 
-NewsItem_schema = getattr(Attachmentsmixin, 'schema', Schema(())).copy() + \
+NewsItem_schema = BaseSchema.copy() + \
     schema.copy()
 
 ##code-section after-schema #fill in your manual code here
 ##/code-section after-schema
 
-class NewsItem(Attachmentsmixin):
+class NewsItem(BaseContent):
     """
     """
     security = ClassSecurityInfo()
-    __implements__ = (getattr(Attachmentsmixin,'__implements__',()),)
+    __implements__ = (getattr(BaseContent,'__implements__',()),)
 
     # This name appears in the 'add' box
     archetype_name = 'NewsItem'
 
     meta_type = 'NewsItem'
     portal_type = 'NewsItem'
-    allowed_content_types = [] + list(getattr(Attachmentsmixin, 'allowed_content_types', []))
+    allowed_content_types = []
     filter_content_types = 0
     global_allow = 0
     allow_discussion = False

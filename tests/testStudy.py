@@ -61,6 +61,7 @@ class testStudy(MainTestCase):
         """
         pass
     # from class Study:
+    # from class Study:
     def test_email_out(self):
         pass
 

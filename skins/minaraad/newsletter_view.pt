@@ -12,7 +12,7 @@
                                           'Europese ontwikkelingen'];">
 
         <metal:block metal:define-macro="folderlisting" />
-        
+
         <div tal:define="daterequired python:context.getDate() != None;
                          date python:context.toLocalizedTime(context.date)[:-5];"
              class="advisory_listdate" 
@@ -26,45 +26,49 @@
              tal:condition="context/getBody"
              tal:content="structure context/getBody" />
         <br />
-
+        <!-- Index -->
         <div tal:repeat="category categories">
+            <h3 tal:content="category">
+                Category
+            </h3>
+            <div tal:omit-tag=""
+                tal:define="newsitems python:context.portal_catalog.searchResults(portal_type='NewsItem',
+                                                                                path=current_path,
+                                                                                getCategory=category,
+                                                                                review_state='published');"
+                tal:repeat="newsitem newsitems">
 
-              <h2 tal:content="category">
-                  Category
-              </h2>
-
-              <div tal:omit-tag=""
-                   tal:define="newsitems python:context.portal_catalog.searchResults(portal_type='NewsItem',
-                                                                                    path=current_path,
-                                                                                    getCategory=category,
-                                                                                    review_state='published');"
-                   tal:repeat="newsitem newsitems">
-                  <a tal:attributes="href string:#${newsitem/id}"
-                     tal:content="newsitem/Title" />
-              </div>
+                <a tal:attributes="href string:#${newsitem/id}"
+                    tal:content="newsitem/Title" />
+                <br />
+            </div>
+            <br />
         </div>
-
-
+        <br />
+        <br />
+        <!-- Content of newsitems -->
         <div tal:repeat="category categories">
+            <h3 tal:content="category">
+                Category
+            </h3>
 
-              <h2 tal:content="category">
-                  Category
-              </h2>
+            <div tal:omit-tag=""
+                tal:define="newsitems python:context.portal_catalog.searchResults(portal_type='NewsItem',
+                                                                                path=current_path,
+                                                                                getCategory=category,
+                                                                                review_state='published');"
+                tal:repeat="newsitem newsitems">
 
-              <div tal:omit-tag=""
-                   tal:define="newsitems python:context.portal_catalog.searchResults(portal_type='NewsItem',
-                                                                                    path=current_path,
-                                                                                    getCategory=category,
-                                                                                    review_state='published');"
-                   tal:repeat="newsitem newsitems">
+                <a tal:attributes="name newsitem/id">
+                    <h4 tal:content="newsitem/Title" />
+                </a>
+                <div tal:content="newsitem/getBody">Content here</div>
+                <br />
+                <!-- Contactperson -->
+                <!--<div metal:use-macro="context/contactperson_view/macros/newsitemcontacts" />-->
 
-                   <a tal:attributes="name newsitem/id">
-                       <h3 tal:content="newsitem/Title" />
-                   </a>
-
-                   <div tal:content="newsitem/getBody">Content here</div>
-
-              </div>
+            </div>
+            <br />
         </div>
 
     </metal:block>

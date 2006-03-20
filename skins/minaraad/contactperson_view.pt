@@ -69,5 +69,15 @@
             </tr>
         </table>
     </metal:block>
+    
+    <metal:block metal:define-macro="newsitemcontacts">
+        <tal:block tal:define="contacts python:newsitem.getContact()"
+                   tal:condition="contacts">
+        <div tal:repeat="contact contacts" tal:omit-tag="">
+            <a tal:attributes="href string:mailto:${contact/getEmail}"
+               tal:content="contact/getName" />,
+        </div>
+    </tal:block>
+    </metal:block>
     </body>
 </html>

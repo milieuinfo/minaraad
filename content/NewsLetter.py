@@ -67,18 +67,6 @@ schema = Schema((
         default_output_type='text/html'
     ),
 
-    ReferenceField(
-        name='contact',
-        widget=OrderableReferenceWidget(
-            label='Contact',
-            label_msgid='minaraad_label_contact',
-            i18n_domain='minaraad',
-        ),
-        allowed_types=('ContactPerson',),
-        multiValued=1,
-        relationship='newsletter_contact'
-    ),
-
 ),
 )
 
@@ -146,6 +134,7 @@ class NewsLetter(EmailMixin, BaseFolder):
         """
         """
         pass
+
 
 
 registerType(NewsLetter, PROJECTNAME)
