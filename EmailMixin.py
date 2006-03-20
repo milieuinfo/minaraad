@@ -119,7 +119,7 @@ class EmailMixin:
             emailBody = self.getEmailBody(member=member, context=self)
 
             if text:
-                emailBody['text/plain'] += "%s" % text
+                emailBody['text/plain'] += "\n%s" % text
                 
                 emailBody['text/html'] += '''
                 <br />
@@ -162,6 +162,7 @@ class EmailMixin:
         cooked = template.pt_render(extra_context=kwargs)
         portal_transforms = getToolByName(self, 'portal_transforms')
         
+        import pdb; pdb.set_trace()
         cooked = generateSafe(cooked, self)
         body = {
             'text/html': cooked,
@@ -214,7 +215,12 @@ def replace_attribute(tag, key, new_value):
 def renderContents(self, showStructureIndent=None, needUnicode=None):
     """Renders the contents of this tag as a (possibly Unicode) 
     string."""
-    context = getattr(self, 'context', None)
+
+    # first find the parent 'soup'
+    current = self
+    while not isinstance(current, BeautifulSoup.BeautifulSoup) and current.parent:
+        current = current.parent
+    context = getattr(current, 'context', None)
     object_url = None
     if context:
         object_url = context.absolute_url()
@@ -231,14 +237,14 @@ def renderContents(self, showStructureIndent=None, needUnicode=None):
             if c.name == 'a':
                 href = c.get('href', None)
                 if href:
-                    if object_url and href.startswith('./'):
-                        href = object_url + href[1:]
+                    if object_url and href.startswith('.'):
+                        href = object_url + '/' + href
                         replace_attribute(c, 'href', href)
             elif c.name == 'img':
                 src = c.get('src', None)
                 if src:
-                    if object_url and src.startswith('./'):
-                        src = object_url + src[1:]
+                    if object_url and src.startswith('.'):
+                        src = object_url + '/' + src
                         replace_attribute(c, 'src', src)
             
             s.append(c.__str__(needUnicode, showStructureIndent))

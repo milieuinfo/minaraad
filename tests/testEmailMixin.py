@@ -106,7 +106,7 @@ class testEmailMixin(PloneTestCase):
         template.write("""
         <span tal:replace='context/Title' />
         <span tal:replace='member/email' />
-        <a href="http://boo.com">hello</a>
+        <a href="./resolveUID?foo=bar">hello</a>
         """)
         setattr(emailMixin, "EmailTemplate-Default", template)
 
@@ -127,7 +127,9 @@ class testEmailMixin(PloneTestCase):
         self.failUnless(emailMixin.Title() in payload)
         
         # make sure generateSafe() did its thing
-        self.failUnless('hello (http://boo.com)' in payload)
+        line = payload.split('\n')[2].strip()
+        self.assertEqual('hello (http://nohost/plone/blah/./resolveUID?foo=bar)', 
+                         line)
         
         lst1 = [x['To'] for x in mailHost.messages]
         lst1.sort()
@@ -159,11 +161,16 @@ class testEmailMixin(PloneTestCase):
 
         html = '<a href="./abc/def">Some Blah</a>'
         result = generateSafe(html, self.portal)
-        self.assertEquals(result, '<a href="http://nohost/plone/abc/def">Some Blah</a> (http://nohost/plone/abc/def)')
+        self.assertEquals(result, '<a href="http://nohost/plone/./abc/def">Some Blah</a> (http://nohost/plone/./abc/def)')
 
-        html = '<img src="./foo/bar.gif" />'
+        # ran into a bug where if A tags are nested, they don't get converted properly
+        html = '<div><p><a href="./abc/def">Some Blah</a></p></div>'
         result = generateSafe(html, self.portal)
-        self.assertEquals(result, '<img src="http://nohost/plone/foo/bar.gif" />')
+        self.assertEquals(result, '<div><p><a href="http://nohost/plone/./abc/def">Some Blah</a> (http://nohost/plone/./abc/def)</p></div>')
+
+        html = '<img src="../foo/bar.gif" />'
+        result = generateSafe(html, self.portal)
+        self.assertEquals(result, '<img src="http://nohost/plone/../foo/bar.gif" />')
 
     def test_getEmailContentsFromContent(self):
         pass
