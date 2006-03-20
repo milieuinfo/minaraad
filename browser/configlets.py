@@ -4,6 +4,8 @@ from Products.minaraad.themes import ThemeManager
 from Products.minaraad.subscriptions import SubscriptionManager, \
                                             Subscription
 from StringIO import StringIO
+from types import StringTypes
+
 #from Products.minaraad.browser.subscribers import ExportSubscribersView
 
 
@@ -153,16 +155,18 @@ class SubscribersConfigletView(AbstractView):
 
     def __call__(self):
         request = self.request
-        #session = request.SESSION
-        #session.set({'category':'Advisory'})
-        #session['category']
-        subject = request.get('sub', None)
+        session = request.SESSION
+        for key in ('category', 'theme',):
+            value = request.get(key)
+            if value:
+                session[key] = value
+        if session.get('category') != 'Hearing':
+            session['theme'] = None
+
         if request.get('form.button.ExportEmail', None) is not None:
-            return self.buildSubscriberCSV('email', subject)
+            return self.buildSubscriberCSV('email')
         elif request.get('form.button.ExportPost', None) is not None:
-            return self.buildSubscriberCSV('post', subject)
-        #elif request.get('form.button.ShowThemeSubscribers', None) is not None:
-        #    return self.index(template_id='subscribers_config.html')
+            return self.buildSubscriberCSV('post')
         else:
             return self.index(template_id='subscribers_config.html')
 
@@ -171,14 +175,36 @@ class SubscribersConfigletView(AbstractView):
         
         return self.themeManager.getThemeTitle(id)
     
+    def getSelectedSubjects(self):
+        # Get a list of categories and themes in the session variables.
+        request = self.request
+        session = request.SESSION
+        subjectlist = []
+        # There is always just one category
+        categories = session.get('category', None)
+        themes = session.get('theme', None)
+        if categories is not None:
+            if isinstance(categories, StringTypes):
+                subjectlist.append(categories)
+            else:
+                subjectlist = subjectlist + categories
+        if themes is not None:
+            if isinstance(themes, StringTypes):
+                subjectlist.append(themes)
+            else:
+                subjectlist = subjectlist + themes
+        return subjectlist
+
+
     #Get subscriptions
     def subscriptions(self):
         sm = self.subscriptionManager
         items = sm.subscriptions
         subscriptions = []
+        subjectlist = self.getSelectedSubjects()
         for item in items:
             checked = False
-            if self.request.get(item.id, None) == item.id:
+            if item.id in subjectlist:
                 checked = True
             sub = {'id': item.id,
                    'subscribed_email': item.email,
@@ -207,6 +233,8 @@ class SubscribersConfigletView(AbstractView):
         """
         id can now be a list of ids.  Well, it is totally unused now. May be removed in future.
         """
+        request = self.request
+        session = request.SESSION
         sm = self.subscriptionManager
         items = sm.subscriptions
         subscribers = []
@@ -214,9 +242,10 @@ class SubscribersConfigletView(AbstractView):
             types = ['post', 'email']
         else:
             types = [type_]
+
+        subjectlist = self.getSelectedSubjects()
         for item in items:
-            if self.request.get(item.id, None) == item.id or \
-               self.request.get('sub', None) == item.id:
+            if item.id in subjectlist:
                 if 'post' in types:
                     for subscriber in sm.postSubscribers(item.id):
                         if subscriber not in subscribers:
@@ -239,8 +268,15 @@ class SubscribersConfigletView(AbstractView):
                 returnString += 'post'
         return returnString
 
-    def buildSubscriberCSV(self, type_, subject):
-        subscriberId = subject
+    def buildSubscriberCSV(self, type_):
+        request = self.request
+        session = request.SESSION
+        theme = session.get('theme', None)
+        category = session.get('category', None)
+        if theme is not None:
+            subscriberId = theme
+        else:
+            subscriberId = category
         ploneUtils = getToolByName(self.context, 'plone_utils')
         safeSubscriberId = ploneUtils.normalizeString(subscriberId).lower()
         
@@ -274,7 +310,7 @@ class SubscribersConfigletView(AbstractView):
         out.write(u'\n')
         
         if type_ == 'post' or type_ == 'email':
-            subscribers = self.getMembersOfSubscriptions(id=subject, type_=type_)
+            subscribers = self.getMembersOfSubscriptions(type_=type_)
         else:
             raise ValueError("The 'type' argument must be either " \
                              "'post' or 'email'")

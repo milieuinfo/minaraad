@@ -44,7 +44,7 @@ class ExportSubscribersView(BrowserView):
                   ('housenumber', 'Huisnummer'),
                   ('bus', 'Bus'),
                   ('zipcode', 'Postcode'),
-                  ('city', 'Woonbplaats'),
+                  ('city', 'Woonplaats'),
                   ('country', 'Land'),
                   ('other_country', 'Ander land'),
                   ('phonenumber', 'Telefoonnummer'),

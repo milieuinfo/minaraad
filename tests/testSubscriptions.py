@@ -155,7 +155,7 @@ class testSubscriptions(MainTestCase):
             company="Doe Enterprises",
             street="Doe Street",
             housenumber="23",
-            bus="What's a bus?",
+            bus="Bus C",
             zipcode="007",
             city="Rotterdam",
             country="The Netherlands",
@@ -176,7 +176,7 @@ class testSubscriptions(MainTestCase):
 
         HEADER_FIELDS = ("Title","Voornaam","Achternaam","Organisatie",
                          "Functie","Straat","Huisnummer","Bus","Postcode",
-                         "Woonbplaats","Land","Ander land","Telefoonnummer",
+                         "Woonplaats","Land","Ander land","Telefoonnummer",
                          "E-mail")
         headingLine = ''
         for x in HEADER_FIELDS:
@@ -189,7 +189,7 @@ class testSubscriptions(MainTestCase):
 
         lines = view().split('\n')
         self.assertEquals(lines[1], '"Yes","John","Doe","Doe Enterprises",'
-                          '"","Doe Street","23","What\'s a bus?","007",'
+                          '"","Doe Street","23","Bus C","007",'
                           '"Rotterdam","The Netherlands","","",""')
 
         # let's make some assertions about the response
@@ -211,6 +211,49 @@ class testSubscriptions(MainTestCase):
                             request)
 
         self.assertEquals(view(), headingLine)
+
+    def test_getSelectedSubjects(self):
+        self.setRoles('Manager')
+        sm = SubscriptionManager(self.portal)
+        request = FakeRequest()
+        request['SESSION'] = request.SESSION = {}
+        view = zapi.getView(self.portal, 
+                            'subscribers_config.html', 
+                            request)
+        # Overwrite the index, as we don't need to view the actual
+        # html
+        view.index = lambda **kw:None
+        view()
+
+        selectedSubjects = view.getSelectedSubjects()
+        self.assertEqual(len(selectedSubjects), 0)
+
+        request['category'] = 'Advisory'
+        view()
+        selectedSubjects = view.getSelectedSubjects()
+        self.assertEqual(selectedSubjects, ['Advisory'])
+        self.assertEqual(request.SESSION['category'], 'Advisory')
+
+        request['category'] = 'Hearing'
+        view()
+        selectedSubjects = view.getSelectedSubjects()
+        self.assertEqual(selectedSubjects, ['Hearing'])
+        self.assertEqual(request.SESSION['category'], 'Hearing')
+
+        request['theme'] = ['theme_1', 'theme_2']
+        view()
+        selectedSubjects = view.getSelectedSubjects()
+        self.assertEqual(selectedSubjects, ['Hearing', 'theme_1', 'theme_2'])
+        self.assertEqual(request.SESSION['category'], 'Hearing')
+        self.assertEqual(request.SESSION['theme'], ['theme_1', 'theme_2'])
+
+        request['category'] = 'Advisory'
+        view()
+        selectedSubjects = view.getSelectedSubjects()
+        self.assertEqual(selectedSubjects, ['Advisory'])
+        self.assertEqual(request.SESSION['category'], 'Advisory')
+        self.assertEqual(request.SESSION['theme'], None)
+
 
 def test_suite():
     from unittest import TestSuite, makeSuite

@@ -7,28 +7,30 @@
                 tal:define="dummy python:request.set('disable_border',1)" />
     
     <body>
-    <metal:block metal:fill-slot="prefs_configlet_main">
+    <metal:block metal:fill-slot="prefs_configlet_main"
+                 tal:define="session request/SESSION;">
         
-        <h1 i18n:translate="heading_subscribers_overview">Subscribers  overview</h1>
+        <h1 i18n:translate="heading_subscribers_overview">Subscribers overview</h1>
         
         <a class="link-parent"
         tal:attributes="href string: $portal_url/plone_control_panel"
         i18n:translate="label_up_to_plone_setup">
             Up to Site Setup
         </a>
-        <tal:block tal:define="subscriptions view/subscriptions">
+        <tal:block tal:define="subscriptions view/subscriptions;">
             <div i18n:translate="title_subscription" 
                  style="font-weight:bold">Subscriptions</div>
             
             <tal:block tal:repeat="subscription subscriptions">
             <span tal:condition="not:subscription/category" 
-                tal:omit-tag="">
-                <a tal:attributes="href string:${context/absolute_url}/subscribers_config.html?${subscription/id}=${subscription/id}"
-                tal:content="subscription/id"
-                i18n:translate="" /> &nbsp; | &nbsp;
+                tal:omit-tag=""
+                tal:define="extra_request string:category=${subscription/id}">
+                <a tal:attributes="href string:${context/absolute_url}/subscribers_config.html?${extra_request}"
+                   tal:content="subscription/id"
+                   i18n:translate="" /> &nbsp; | &nbsp;
             </span>
             </tal:block>
-            <a tal:attributes="href string:${context/absolute_url}/subscribers_config.html?Hearing=Hearing"
+            <a tal:attributes="href string:${context/absolute_url}/subscribers_config.html?category=Hearing"
                i18n:translate="">Hearing</a>
             <br />
             <br />
@@ -62,14 +64,14 @@
 -->
         </tal:block>
         <br />
-        <tal:block tal:define="subscription request/sub|nothing;
+
+        <tal:block tal:define="subscription session/category|nothing;
                                members view/getMembersOfSubscriptions">
         
         <form method="get"
-                tal:define="isHearing request/Hearing|nothing"
-                tal:attributes="action string:${context/absolute_url}/$template_id">
+              tal:attributes="action string:${context/absolute_url}/$template_id">
 
-            <tal:block tal:condition="isHearing">
+            <tal:block tal:condition="python:subscription == 'Hearing'">
                 <input class="context"
                         type="hidden"
                         name="Hearing"
@@ -81,8 +83,8 @@
                     <input type="checkbox"
                             class="noborder"
                             tal:attributes="tabindex tabindex/next;
-                                            id string:${theme/id};
-                                            name string:${theme/id};
+                                            id string:theme;
+                                            name string:theme;
                                             checked theme/checked;
                                             value string:${theme/id};" /> 
                     <span tal:content="theme/Title"
