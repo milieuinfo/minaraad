@@ -202,6 +202,14 @@ def generateSafe(html, context=None):
     
     return str(soup).strip()
 
+def replace_attribute(tag, key, new_value):
+    for pos, x in enumerate(tag.attrs):
+        if x[0] == key:
+            found = pos
+            break
+    if found is not None:
+        tag.attrs[pos] = (key, new_value)
+
 # monkey-patch BeautifulSoup
 def renderContents(self, showStructureIndent=None, needUnicode=None):
     """Renders the contents of this tag as a (possibly Unicode) 
@@ -221,14 +229,15 @@ def renderContents(self, showStructureIndent=None, needUnicode=None):
                 or type(c) == types.UnicodeType:
             text = unicode(c)
         elif isinstance(c, BeautifulSoup.Tag):
-            s.append(c.__str__(needUnicode, showStructureIndent))
             if c.name == 'a':
                 href = c.get('href', None)
                 if href:
                     if portal_url and href.startswith('./'):
                         href = portal_url + href[1:]
-                        c.set('href', href)
-                    s.append(' (%s)' % href)
+                        replace_attribute(c, 'href', href)
+            s.append(c.__str__(needUnicode, showStructureIndent))
+            if c.name == 'a' and href:
+                s.append(' (%s)' % href)
         elif needUnicode:
             text = unicode(c)
         else:
