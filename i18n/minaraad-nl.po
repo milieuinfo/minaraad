@@ -590,7 +590,7 @@ msgstr ""
 #. Default: "Enddate"
 #: content/Hearing.py
 msgid "minaraad_label_enddate"
-msgstr "Einddatum Hoorzitting"
+msgstr "Einddatum"
 
 #. Default: "Goal"
 #: content/Hearing.py
@@ -664,7 +664,7 @@ msgstr "Sprekers"
 #. Default: "Startdate"
 #: content/Hearing.py
 msgid "minaraad_label_startdate"
-msgstr "Startdatum Hoorzitting"
+msgstr "Startdatum"
 
 #. Default: "Street"
 #: Organisation.py

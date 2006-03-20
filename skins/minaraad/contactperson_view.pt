@@ -78,5 +78,31 @@
         <span tal:condition="not:repeat/contact/end" 
               tal:omit-tag="">,</span>
     </metal:block>
+
+
+<!-- contactdetails for e-mailmessage -->
+<metal:block metal:define-macro="contactdetails_email">
+<table cellspacing="0" 
+       style="font-size:13px">
+<tr tal:condition="contact/getName">
+<td i18n:translate="label_name">Name</td><td>:</td><td tal:content="contact/getName" />
+</tr>
+<tr tal:condition="contact/getJobtitle">
+<td i18n:translate="label_jobtitle">Function</td><td>:</td><td tal:content="contact/getJobtitle" />
+</tr>
+<tr tal:condition="contact/getDepartment"><td i18n:translate="minaraad_label_department">Department</td><td>:</td><td tal:content="contact/getDepartment" />
+</tr>
+<tr tal:condition="contact/getEmail">
+<td i18n:translate="label_emailaddress">Emailaddress</td><td>:</td><td>
+<a tal:attributes="href string:mailto:${contact/getEmail}"
+    tal:content="contact/getEmail" />
+</td>
+</tr>
+<tr tal:condition="contact/getPhonenumber">
+<td i18n:translate="label_phonenumber">Phonenumber</td><td>:</td><td tal:content="contact/getPhonenumber" />
+</tr>
+</table>
+<br />
+</metal:block>
     </body>
 </html>

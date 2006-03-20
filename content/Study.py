@@ -49,10 +49,19 @@ schema = Schema((
     ),
 
     DateTimeField(
-        name='date',
+        name='startdate',
         widget=CalendarWidget(
-            label='Date',
-            label_msgid='minaraad_label_date',
+            label='Startdate',
+            label_msgid='minaraad_label_startdate',
+            i18n_domain='minaraad',
+        )
+    ),
+
+    DateTimeField(
+        name='enddate',
+        widget=CalendarWidget(
+            label='Enddate',
+            label_msgid='minaraad_label_enddate',
             i18n_domain='minaraad',
         )
     ),

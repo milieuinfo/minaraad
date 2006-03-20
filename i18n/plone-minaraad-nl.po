@@ -70,6 +70,9 @@ msgstr "Hoorzittingen overzicht"
 msgid "newsletter_listing_view"
 msgstr "Nieuwsbrieven overzicht"
 
+msgid "pressrelease_listing_view"
+msgstr "Persberichten overzicht"
+
 msgid "minaraad themes"
 msgstr "minaraad thema's"
 

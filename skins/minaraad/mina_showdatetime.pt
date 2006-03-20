@@ -3,7 +3,8 @@
       i18n:domain="minaraad">
     <body>
         <metal:block metal:define-macro="datetime">
-        <tal:block tal:define="daterequired python:context.getStartdate() != None and context.getEnddate() != None;"
+        <tal:block tal:define="daterequired python:context.getStartdate() != None and context.getEnddate() != None;
+                               item_type context/portal_type;"
                    tal:condition="daterequired">
             <div tal:define="startdate python:context.toLocalizedTime(context.startdate);
                             enddate python:context.toLocalizedTime(context.enddate);
@@ -13,7 +14,8 @@
                             noEndTime python:test(endtime == '00:00', 0, 1);"
                 tal:omit-tag="">
                 <span class="hearingsubheader2"
-                    i18n:translate="Date:">Date:</span>
+                      i18n:translate="Date:"
+                      tal:condition="python:item_type=='Hearing'">Date:</span>
     
                 <tal:block tal:condition="python:startdate == enddate">
                     <span tal:replace="startdate" />
@@ -54,11 +56,15 @@
                     </tal:block>
                 </tal:block>
             </div>
+            <span tal:condition="python:item_type=='Hearing'"
+                  tal:omit-tag="">
             <br />
             <br />
+            </span>
         </tal:block>
         </metal:block>
 
+       
         <!-- datetime Agendaitem -->
         <metal:block metal:define-macro="datetime_agenda">
         <tal:block tal:define="daterequired python:obj.getItemstartdate() != None and obj.getItemenddate() != None;"

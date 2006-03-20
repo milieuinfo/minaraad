@@ -471,6 +471,7 @@ msgstr ""
 
 #. Default: "Enddate"
 #: content/Hearing.py
+#: content/Study.py
 msgid "minaraad_label_enddate"
 msgstr ""
 
@@ -545,6 +546,7 @@ msgstr ""
 
 #. Default: "Startdate"
 #: content/Hearing.py
+#: content/Study.py
 msgid "minaraad_label_startdate"
 msgstr ""
 

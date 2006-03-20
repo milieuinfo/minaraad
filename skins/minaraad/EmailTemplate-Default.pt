@@ -4,7 +4,12 @@
 
 <body style="font-size:13px">
 
-<h3 tal:content="context/Title" />
+<span style="font-weight:bold" 
+      tal:content="context/Title" />
+<br />
+<span tal:condition="context/subheader" 
+      tal:content="context/subheader" />
+<br />
 <br />
 <span i18n:translate="label_dear">Dear</span> <span tal:replace="member/firstname" /> <span tal:replace="member/fullname" />,
 <br />
@@ -14,6 +19,18 @@
 <span tal:replace='structure context/getBody' />
 </p>
 <br />
+<tal:block tal:define="contacts python:context.getContact()"
+            tal:condition="contacts">
+<br />
+<div i18n:translate="moreinfo_contactperson">For more information contact:</div>
+<br />
+<tal:block tal:repeat="contact contacts">
+<div metal:use-macro="context/contactperson_view/macros/contactdetails_email"
+     tal:omit-tag="" />
+</tal:block>
+<br />
+<br />
+</tal:block>
 <span i18n:translate="label_moreinfo">For more info, go to:</span>
 
 <a tal:attributes="href context/absolute_url" 
