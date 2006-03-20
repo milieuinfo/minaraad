@@ -161,6 +161,10 @@ class testEmailMixin(PloneTestCase):
         result = generateSafe(html, self.portal)
         self.assertEquals(result, '<a href="http://nohost/plone/abc/def">Some Blah</a> (http://nohost/plone/abc/def)')
 
+        html = '<img src="./foo/bar.gif" />'
+        result = generateSafe(html, self.portal)
+        self.assertEquals(result, '<img src="http://nohost/plone/foo/bar.gif" />')
+
     def test_getEmailContentsFromContent(self):
         pass
 

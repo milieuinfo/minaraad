@@ -215,12 +215,11 @@ def renderContents(self, showStructureIndent=None, needUnicode=None):
     """Renders the contents of this tag as a (possibly Unicode) 
     string."""
     context = getattr(self, 'context', None)
-    portal_url = None
+    object_url = None
     if context:
-        tool = getToolByName(context, 'portal_url')
-        portal_url = tool.getPortalObject().absolute_url()
-        if portal_url.endswith('/'):
-            portal_url = portal_url[:-1]
+        object_url = context.absolute_url()
+        if object_url.endswith('/'):
+            object_url = object_url[:-1]
         
     s=[]
     for c in self:
@@ -232,10 +231,18 @@ def renderContents(self, showStructureIndent=None, needUnicode=None):
             if c.name == 'a':
                 href = c.get('href', None)
                 if href:
-                    if portal_url and href.startswith('./'):
-                        href = portal_url + href[1:]
+                    if object_url and href.startswith('./'):
+                        href = object_url + href[1:]
                         replace_attribute(c, 'href', href)
+            elif c.name == 'img':
+                src = c.get('src', None)
+                if src:
+                    if object_url and src.startswith('./'):
+                        src = object_url + src[1:]
+                        replace_attribute(c, 'src', src)
+            
             s.append(c.__str__(needUnicode, showStructureIndent))
+            
             if c.name == 'a' and href:
                 s.append(' (%s)' % href)
         elif needUnicode:
