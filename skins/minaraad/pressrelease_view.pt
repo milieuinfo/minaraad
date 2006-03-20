@@ -27,8 +27,8 @@
                 For more information contact:
             </div>
             <tal:block tal:repeat="contact contacts">
-           <!--     <div metal:use-macro="context/contactperson_view/macros/contactdetails"
-                    tal:omit-tag="" />-->
+           <div metal:use-macro="context/contactperson_view/macros/contactdetails"
+                tal:omit-tag="" />
             </tal:block>
             <br />
         </tal:block>
@@ -42,7 +42,7 @@
         <br />
    
         <!-- Start Attachments-->
-        <div metal:use-macro="context/mina_attachments/macros/agenda_attachments" />
+        <div metal:use-macro="context/mina_attachments/macros/listattachments" />
         <!-- end Attachments -->
     </metal:block>
     <metal:block metal:define-macro="folderlisting" />

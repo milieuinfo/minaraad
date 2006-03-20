@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minaraad\n"
-"POT-Creation-Date: 2006-03-20 10:52+0000\n"
+"POT-Creation-Date: 2006-03-20 11:17+0000\n"
 "PO-Revision-Date: Mon Aug  8 12:16:21 2005\n"
 "Last-Translator: Rocky Burt <r.burt@zestsoftware.nl>\n"
 "Language-Team: Rocky Burt <r.burt@zestsoftware.nl>\n"
@@ -721,6 +721,11 @@ msgstr ""
 #: skins/minaraad/mina_listing_view.pt
 #: skins/minaraad/mina_showdatetime.pt
 msgid "till"
+msgstr ""
+
+#. Default: "Attachments"
+#: skins/minaraad/mina_attachments.pt
+msgid "title_attachments"
 msgstr ""
 
 #. Default: "Attendees"

@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minaraad 0.1\n"
-"POT-Creation-Date: 2006-03-20 10:52+0000\n"
+"POT-Creation-Date: 2006-03-20 11:17+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: Mirella van Teulingen <m.van.teulingen@zestsoftware.nl>\n"
 "Language-Team: Nederlands <info@zestsoftware.nl>\n"
@@ -722,6 +722,11 @@ msgstr "Datum persbericht:"
 #: skins/minaraad/mina_showdatetime.pt
 msgid "till"
 msgstr "tot"
+
+#. Default: "Attachments"
+#: skins/minaraad/mina_attachments.pt
+msgid "title_attachments"
+msgstr "Bijlagen:"
 
 #. Default: "Attendees"
 #: skins/minaraad/hearing_view.pt
