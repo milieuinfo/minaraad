@@ -154,9 +154,12 @@ class testEmailMixin(PloneTestCase):
     
     def test_generatingSafe(self):
         html = '<a href="http://blah.com">Some Blah</a>'
-
-        result = generateSafe(html)
+        result = generateSafe(html, self.portal)
         self.assertEquals(result, '<a href="http://blah.com">Some Blah</a> (http://blah.com)')
+
+        html = '<a href="./abc/def">Some Blah</a>'
+        result = generateSafe(html, self.portal)
+        self.assertEquals(result, '<a href="http://nohost/plone/abc/def">Some Blah</a> (http://nohost/plone/abc/def)')
 
     def test_getEmailContentsFromContent(self):
         pass

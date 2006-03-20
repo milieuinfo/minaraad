@@ -56,11 +56,11 @@ schema = Schema((
 
 ),
 )
-
 ##code-section after-local-schema #fill in your manual code here
 ##/code-section after-local-schema
 
 EmailMixin_schema = schema.copy()
+
 
 ##code-section after-schema #fill in your manual code here
 class AlreadySentError(Exception):
@@ -144,11 +144,10 @@ class EmailMixin:
                               mfrom = fromAddress,
                               subject = subject)
             except:
+                args = (fromAddress, getattr(member, 'address', 'N/A'), 
+                        self.absolute_url(), emailBody)
                 log_exc('Could not send email from %s to %s regarding issue ' \
-                        'in tracker %s\ntext is:\n%s\n' \
-                        % (fromAddress, getattr(member, 'address', 'N/A'), 
-                           self.absolute_url(), emailBody,))
-    
+                        'in tracker %s\ntext is:\n%s\n' % args)
     security.declarePublic('getEmailBody')
     def getEmailBody(self, *args, **kwargs):
         """
@@ -163,14 +162,12 @@ class EmailMixin:
         cooked = template.pt_render(extra_context=kwargs)
         portal_transforms = getToolByName(self, 'portal_transforms')
         
+        cooked = generateSafe(cooked, self)
         body = {
             'text/html': cooked,
+            'text/plain': portal_transforms.convertTo('text/plain', cooked).getData()
         }
 
-        plain = portal_transforms.convertTo('text/plain', 
-                                            generateSafe(cooked)).getData()
-        body['text/plain'] = plain
-        
         return body
 
     security.declarePublic('getSubscriptionId')
@@ -199,8 +196,9 @@ class EmailMixin:
 
 ##code-section module-footer #fill in your manual code here
 
-def generateSafe(html):
+def generateSafe(html, context=None):
     soup = BeautifulSoup.BeautifulSoup(html)
+    soup.context = context
     
     return str(soup).strip()
 
@@ -208,6 +206,14 @@ def generateSafe(html):
 def renderContents(self, showStructureIndent=None, needUnicode=None):
     """Renders the contents of this tag as a (possibly Unicode) 
     string."""
+    context = getattr(self, 'context', None)
+    portal_url = None
+    if context:
+        tool = getToolByName(context, 'portal_url')
+        portal_url = tool.getPortalObject().absolute_url()
+        if portal_url.endswith('/'):
+            portal_url = portal_url[:-1]
+        
     s=[]
     for c in self:
         text = None
@@ -219,6 +225,9 @@ def renderContents(self, showStructureIndent=None, needUnicode=None):
             if c.name == 'a':
                 href = c.get('href', None)
                 if href:
+                    if portal_url and href.startswith('./'):
+                        href = portal_url + href[1:]
+                        c.set('href', href)
                     s.append(' (%s)' % href)
         elif needUnicode:
             text = unicode(c)
@@ -229,7 +238,7 @@ def renderContents(self, showStructureIndent=None, needUnicode=None):
                 if text[-1] == '\n':
                     text = text[:-1]
             s.append(text)
-    return ''.join(s)  
+    return ''.join(s)
 
 BeautifulSoup.Tag.renderContents = renderContents
 ##/code-section module-footer
