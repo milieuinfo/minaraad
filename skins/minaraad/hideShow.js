@@ -26,3 +26,12 @@ function hide(div,nest){
 	obj=bw.dom?document.getElementById(div).style:bw.ie4?document.all[div].style:bw.ns4?nest?document[nest].document[div]:document[div]:0;
 	obj.display='none'
 }
+
+function showOtherCountry(selBox){
+ // Hide othercountry field
+ document.getElementById('othercountry').style.display="none"
+ 
+ if(selBox.selectedIndex==2){
+   document.getElementById('othercountry').style.display="block"
+ } 
+}

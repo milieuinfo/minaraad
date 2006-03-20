@@ -249,28 +249,20 @@
                     <label i18n:domain="minaraad"
                            i18n:translate="label_country">Country</label>
                     <br />
-                    <select name="country"
+                    <select name="country" onchange="showOtherCountry(this)"
                             tal:attributes="tabindex tabindex/next">
                         <tal:block tal:repeat="option countries">
                             <option tal:attributes="value option;"
-                                    tal:condition="python:option != 'Ander land'"
-                                    tal:content="option"
-                                    onClick="hide('othercountry')" />
-                            <option tal:attributes="value option;"
-                                    tal:condition="python:option=='Ander land'"
-                                    tal:content="option"
-                                    onClick="show('othercountry')" />
+                                    tal:content="option" />
                         </tal:block>
                     </select>
-                
-                
                     <div class="row"
                         id="othercountry"
                         tal:define="error errors/city | nothing;
                                     other_country request/other_country | nothing;
                                     displayother python:[option for option in countries if option =='Ander land'];"
                         tal:attributes="style python:test(displayother, 'display:none', '');">
-                
+                        <br />
                         <label i18n:domain="minaraad"
                             i18n:translate="label_other_country">Other country</label>
                         <div tal:content="error">Validation error output</div>

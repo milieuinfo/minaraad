@@ -119,9 +119,10 @@
             <div i18n:translate="moreinfo_contactperson">
                 For more information contact:
             </div>
+            
             <tal:block tal:repeat="contact contacts">
-                <!--<div metal:use-macro="context/contactperson_view/macros/contactdetails"
-                     tal:omit-tag="" />-->
+                <div metal:use-macro="context/contactperson_view/macros/contactdetails"
+                     tal:omit-tag="" />
             </tal:block>
             <br />
             <br />

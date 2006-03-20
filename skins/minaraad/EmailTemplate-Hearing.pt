@@ -28,7 +28,6 @@
 <div metal:use-macro="context/mina_showdatetime/macros/datetime_email" tal:omit-tag=""/>
 <br />
 <br />
-</tal:block>
 <div tal:condition="context/getBody" tal:content="structure context/getBody" />
 <br />
 <br />
