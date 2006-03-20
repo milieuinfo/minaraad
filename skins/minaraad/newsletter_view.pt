@@ -45,6 +45,7 @@
             <br />
         </div>
         <br />
+        <hr />
         <br />
         <!-- Content of newsitems -->
         <div tal:repeat="category categories">
@@ -65,10 +66,21 @@
                 <div tal:content="newsitem/getBody">Content here</div>
                 <br />
                 <!-- Contactperson -->
-                <!--<div metal:use-macro="context/contactperson_view/macros/newsitemcontacts" />-->
+                <tal:block tal:define="obj python:newsitem.getObject();
+                                      contacts python:obj.getContact()"
+                           tal:condition="contacts">
+                    <span i18n:translate="label_contactpersons" 
+                          tal-omit-tag=""> Contact persons:</span>
 
+                    <div tal:repeat="contact contacts" 
+                        tal:omit-tag="">
+                    <div metal:use-macro="context/contactperson_view/macros/newsitemcontacts"
+                         tal:omit-tag="" />
+                    </div>
+                    <br /><br />
+                </tal:block>
             </div>
-            <br />
+            <br /><br />
         </div>
 
     </metal:block>

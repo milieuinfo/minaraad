@@ -68,16 +68,15 @@
                 <td tal:content="contact/getPhonenumber" />
             </tr>
         </table>
+        <br />
     </metal:block>
     
+    <!-- only e-mailadres is shown in newsitems -->
     <metal:block metal:define-macro="newsitemcontacts">
-        <tal:block tal:define="contacts python:newsitem.getContact()"
-                   tal:condition="contacts">
-        <div tal:repeat="contact contacts" tal:omit-tag="">
-            <a tal:attributes="href string:mailto:${contact/getEmail}"
-               tal:content="contact/getName" />,
-        </div>
-    </tal:block>
+        <a tal:attributes="href string:mailto:${contact/getEmail}"
+           tal:content="contact/getName" />
+        <span tal:condition="not:repeat/contact/end" 
+              tal:omit-tag="">,</span>
     </metal:block>
     </body>
 </html>
