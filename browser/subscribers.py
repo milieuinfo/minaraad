@@ -35,17 +35,20 @@ class ExportSubscribersView(BrowserView):
         
         out = StringIO()
         
-        fields = (('gender', 'Gender'), 
-                  ('firstname', 'First Name'),
-                  ('fullname', 'Last Name'),
-                  ('company', 'Company'),
-                  ('street', 'Street'),
-                  ('housenumber', 'House Number'),
+        fields = (('gender', 'Title'), 
+                  ('firstname', 'Voornaam'),
+                  ('fullname', 'Achternaam'),
+                  ('company', 'Organisatie'),
+                  ('jobtitle', 'Functie'),
+                  ('street', 'Straat'),
+                  ('housenumber', 'Huisnummer'),
                   ('bus', 'Bus'),
-                  ('zipcode', 'Zip Code'),
-                  ('city', 'City'),
-                  ('country', 'Country'),
-                  ('other_country', 'Other country'))
+                  ('zipcode', 'Postcode'),
+                  ('city', 'Woonbplaats'),
+                  ('country', 'Land'),
+                  ('other_country', 'Ander land'),
+                  ('phonenumber', 'Telefoonnummer'),
+                  ('email', 'E-mail'))
         
         for pos, field in enumerate(fields):
             id, title = field
