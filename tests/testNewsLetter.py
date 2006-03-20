@@ -117,8 +117,7 @@ class testNewsLetter(MainTestCase):
         self.testnewsletter.setDescription(DESCRIPTION)
         self.testnewsletter.setDate(DATE)
         self.testnewsletter.setBody(HTMLBODY,text_format="text/html")
-        self.testnewsletter.setContact(self.contactperson.UID())
-
+        
         self.failUnless(self.testnewsletter.Title()==TITLE, 
                         'Value is %s' % self.testnewsletter.Title())
         self.failUnless(self.testnewsletter.getDescription()==DESCRIPTION, 
@@ -127,8 +126,6 @@ class testNewsLetter(MainTestCase):
                         'Value is %s' % self.testnewsletter.getDate())
         self.failUnless(self.testnewsletter.getBody()==HTMLBODY, 
                         'Value %s is not %s' % (self.testnewsletter.getBody(),HTMLBODY))
-        self.failUnless(self.testnewsletter.getContact()==[self.contactperson], 
-                        'Value %s is not %s' % (self.testnewsletter.getContact(),self.contactperson))
         
         self.testnewsletter.setBody(PLAINBODY,text_format="text/plain")
         self.failUnless(self.testnewsletter.getBody()==HTMLBODY, 
