@@ -163,7 +163,6 @@ class EmailMixin:
         portal_transforms = getToolByName(self, 'portal_transforms')
         
         import pdb; pdb.set_trace()
-        cooked = generateSafe(cooked, self)
         body = {
             'text/html': cooked,
             'text/plain': portal_transforms.convertTo('text/plain', cooked).getData()
