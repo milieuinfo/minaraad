@@ -1,0 +1,53 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
+      lang="en-US"
+      i18n:domain="minaraad">
+
+<body style="font-size:13px"
+      tal:define="current_path python:'/'.join(context.getPhysicalPath());
+                             categories python:['Vastgestelde adviezen',
+                                          'Adviezen in wording',
+                                          'Mededelingen',
+                                          'Europese ontwikkelingen'];">
+
+<span style="font-weight:bold" tal:content="context/Title" />
+<br />
+<div tal:define="daterequired python:context.getDate() != None;
+                         date python:context.toLocalizedTime(context.date)[:-5];"
+     tal:condition="daterequired"> 
+<span style="font-weight:bold"
+      i18n:translate="Date:">Date:</span><span tal:replace="date" />
+</div>
+<br />
+<span i18n:translate="label_dear">Dear</span> <span tal:replace="member/firstname" /> <span tal:replace="member/fullname" />,
+<br />
+<br />
+<div tal:replace="context/Description" />
+<br />
+<br />
+<div tal:condition="context/getBody" tal:content="structure context/getBody" />
+<br />
+<br />
+ <!-- Index -->
+<div tal:repeat="category categories">
+<span style="font-weight:bold" tal:content="category" />
+<br />
+<div tal:omit-tag=""
+     tal:define="newsitems python:context.portal_catalog.searchResults(portal_type='NewsItem',
+                                                                    path=current_path,
+                                                                    getCategory=category,
+                                                                    review_state='published');"
+     tal:repeat="newsitem newsitems">
+
+<a tal:attributes="href string:${context/absolute_url}#${newsitem/id}"
+   tal:content="newsitem/Title" />
+<br />
+</div>
+<br />
+</div>
+
+<br />
+<span i18n:domain="minaraad"
+      i18n:translate="label_moreinfo">For more info, go to:</span> <a tal:attributes="href context/absolute_url" tal:content="context/Title" />
+
+</body>
+</html>
