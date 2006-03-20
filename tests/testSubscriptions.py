@@ -174,18 +174,23 @@ class testSubscriptions(MainTestCase):
                             request)
 
 
-        HEADING = ('"Gender","First Name","Last Name",'
-                   '"Company","Street","House Number","Bus",'
-                   '"Zip Code","City","Country","Other country"\n')
-        self.assertEquals(view(), HEADING)
+        HEADER_FIELDS = ("Title","Voornaam","Achternaam","Organisatie",
+                         "Functie","Straat","Huisnummer","Bus","Postcode",
+                         "Woonbplaats","Land","Ander land","Telefoonnummer",
+                         "E-mail")
+        headingLine = ''
+        for x in HEADER_FIELDS:
+            headingLine += '"%s",' % x
+        headingLine = headingLine[:-1] + '\n'
+        self.assertEquals(view(), headingLine)
 
         # let's do the actual subscription of our member
         sm.subscribe('Advisory', email=True, post=False)
 
         lines = view().split('\n')
         self.assertEquals(lines[1], '"Yes","John","Doe","Doe Enterprises",'
-                          '"Doe Street","23","What\'s a bus?","007",'
-                          '"Rotterdam","The Netherlands",""')
+                          '"","Doe Street","23","What\'s a bus?","007",'
+                          '"Rotterdam","The Netherlands","","",""')
 
         # let's make some assertions about the response
         self.assertEquals(
@@ -205,7 +210,7 @@ class testSubscriptions(MainTestCase):
                             'export_subscribers', 
                             request)
 
-        self.assertEquals(view(), HEADING)
+        self.assertEquals(view(), headingLine)
 
 def test_suite():
     from unittest import TestSuite, makeSuite
