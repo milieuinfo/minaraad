@@ -26,8 +26,7 @@ class EmailOutView(AbstractView):
     def defaultTo(self):
         portal_membership = getToolByName(self, 'portal_membership')
         member = portal_membership.getAuthenticatedMember()
-        
-        return getattr(member, 'email', '')
+        return str(member)
 
     def canSend(self):
         return self.context.getEmailSent() is None
