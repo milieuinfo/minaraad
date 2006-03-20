@@ -41,4 +41,4 @@ class OrderableReferenceField(atapi.ReferenceField):
     def get(self, instance, **kwargs):
         refs = instance.getReferenceImpl(self.relationship)
         refs.sort(lambda a,b:cmp(a.order, b.order))
-        return refs
+        return [refs.getTargetObject() for ref in refs]
