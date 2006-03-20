@@ -304,13 +304,13 @@
                         <div class="field"
                             tal:define="error errors/country | nothing; 
                                         countries python:member.getProperty('select_country');
-                                        country python:request.get('country', member.getProperty('country', ''));
-                                        tabindex tabindex/next;">
+                                        country python:request.get('country', member.getProperty('country', ''));">
         
                             <label i18n:domain="minaraad"
                                     i18n:translate="label_country">Country</label>
                             <br />
-                            <select name="country">
+                            <select name="country"
+                                tal:attributes="tabindex tabindex/next">
                                 <tal:block tal:repeat="option countries">
                                     <option tal:attributes="selected python:test(option==country, 'selected', '');
                                                     value option;"
@@ -345,7 +345,8 @@
                                         name="other_country"
                                         size="30"
                                         value="member.other_country html_quote"
-                                        tal:attributes="value other_country" />
+                                        tal:attributes="value other_country;
+                                                        tabindex tabindex/next;" />
                             </div>
                         </div>
                         <br />
