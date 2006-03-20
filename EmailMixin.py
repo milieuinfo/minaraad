@@ -146,7 +146,9 @@ class EmailMixin:
             except:
                 log_exc('Could not send email from %s to %s regarding issue ' \
                         'in tracker %s\ntext is:\n%s\n' \
-                        % (fromAddress, member.address, self.absolute_url(), emailBody,))
+                        % (fromAddress, getattr(member, 'address', 'N/A'), 
+                           self.absolute_url(), emailBody,))
+    
     security.declarePublic('getEmailBody')
     def getEmailBody(self, *args, **kwargs):
         """
