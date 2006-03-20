@@ -13,3 +13,5 @@ Dependencies
     * FCKeditor 2.2 (http://prdownloads.sourceforge.net/fckeditor/FCKeditor.Plone2.2.zip?download)
 
     * RichDocument2.0rc1 (http://plone.org/products/richdocument/releases/2.0/RichDocument-2.0rc1.tar.gz)
+
+    * OrderabelReferenceField (https://svn.plone.org/svn/archetypes/MoreFieldsAndWidgets/OrderableReferenceField/trunk)
