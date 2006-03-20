@@ -32,4 +32,5 @@ class EmailOutView(AbstractView):
         return self.context.getEmailSent() is None
     
     def sentDate(self):
-        return self.context.toLocalizedTime(long_format=True)
+        localize = self.context.toLocalizedTime
+        return localize(time=self.context.getEmailSent(), long_format=True)
