@@ -147,6 +147,7 @@ class EmailMixin:
                         self.absolute_url(), emailBody)
                 log_exc('Could not send email from %s to %s regarding issue ' \
                         'in tracker %s\ntext is:\n%s\n' % args)
+
     security.declarePublic('getEmailBody')
     def getEmailBody(self, *args, **kwargs):
         """
@@ -160,9 +161,9 @@ class EmailMixin:
             template = getattr(self, "EmailTemplate-Default", None)
 
         cooked = template.pt_render(extra_context=kwargs)
+        cooked = fixRelativeUrls(cooked, getToolByName(self, 'portal_url')())
         portal_transforms = getToolByName(self, 'portal_transforms')
         
-        cooked = generateSafe(cooked, self)
         body = {
             'text/html': cooked,
             'text/plain': portal_transforms('lynx_dump', cooked),
@@ -195,6 +196,17 @@ class EmailMixin:
 # end of class EmailMixin
 
 ##code-section module-footer #fill in your manual code here
+import elementtree.ElementTree
+
+def fixRelativeUrls(xml, portal_url):
+    root = elementtree.ElementTree.XML(xml)
+    for anchor in root.findall('a'):
+        url = anchor.attrib['href']
+        if url.startswith('.'):
+            anchor.attrib['href'] = portal_url + '/' + url
+    return elementtree.ElementTree.tostring(root)
+
+    
 ##/code-section module-footer
 
 

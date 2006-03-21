@@ -15,3 +15,5 @@ Dependencies
     * RichDocument2.0rc1 (http://plone.org/products/richdocument/releases/2.0/RichDocument-2.0rc1.tar.gz)
 
     * OrderabelReferenceField (https://svn.plone.org/svn/archetypes/MoreFieldsAndWidgets/OrderableReferenceField/trunk)
+
+    * elementtree

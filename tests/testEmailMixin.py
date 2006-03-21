@@ -103,10 +103,11 @@ class testEmailMixin(PloneTestCase):
         
         # we want the mixin to be able to acquire a template
         template = ZopePageTemplate("some id")
-        template.write("""
+        template.write("""<div>
         <span tal:replace='context/Title' />
         <span tal:replace='member/email' />
         <a href="./resolveUID?foo=bar">hello</a>
+        </div>
         """)
         setattr(emailMixin, "EmailTemplate-Default", template)
 
@@ -126,8 +127,7 @@ class testEmailMixin(PloneTestCase):
         self.failUnless('@hisplace.com' in payload)
 
         self.failUnless(emailMixin.Title() in payload)
-        
-        self.failUnless('http://boo.com' in payload)
+        self.failUnless('http://nohost/plone/./resolveUID?foo=bar' in payload)
         
         lst1 = [x['To'] for x in mailHost.messages]
         lst1.sort()
