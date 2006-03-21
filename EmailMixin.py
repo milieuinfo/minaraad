@@ -190,23 +190,14 @@ class EmailMixin:
         """Override this in your Content Types to add HTML to the
         outgoing e-mail.
         """
-        return self.getBody()
+        return "<div>%s</div>" % self.getBody()
 
 
 # end of class EmailMixin
 
 ##code-section module-footer #fill in your manual code here
-import elementtree.ElementTree
-
 def fixRelativeUrls(xml, portal_url):
-    root = elementtree.ElementTree.XML(xml)
-    for anchor in root.findall('a'):
-        url = anchor.attrib['href']
-        if url.startswith('.'):
-            anchor.attrib['href'] = portal_url + '/' + url
-    return elementtree.ElementTree.tostring(root)
-
-    
+    return xml.replace('./resolveUid', portal_url + '/resolveUid')
 ##/code-section module-footer
 
 
