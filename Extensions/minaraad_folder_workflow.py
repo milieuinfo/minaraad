@@ -172,12 +172,12 @@ def setupminaraad_folder_workflow(self, workflow):
                                 )
 
     transitionDef = workflow.transitions['retract2']
-    transitionDef.setProperties(title="""retract2""",
+    transitionDef.setProperties(title="""Retract""",
                                 new_state_id="""private""",
                                 trigger_type=1,
                                 script_name="""""",
                                 after_script_name="""""",
-                                actbox_name="""retract2""",
+                                actbox_name="""Retract""",
                                 actbox_url="""""",
                                 actbox_category="""workflow""",
                                 props={'guard_roles': 'Owner;Author;Manager'},
@@ -196,12 +196,12 @@ def setupminaraad_folder_workflow(self, workflow):
                                 )
 
     transitionDef = workflow.transitions['publish_internal']
-    transitionDef.setProperties(title="""publish_internal""",
+    transitionDef.setProperties(title="""Publish internally""",
                                 new_state_id="""restricted""",
                                 trigger_type=1,
                                 script_name="""""",
                                 after_script_name="""""",
-                                actbox_name="""publish_internal""",
+                                actbox_name="""Publish internally""",
                                 actbox_url="""""",
                                 actbox_category="""workflow""",
                                 props={'guard_roles': 'Owner;Reviewer;Manager'},
