@@ -28,10 +28,10 @@
         <table>
             <tbody valign="top">
                 <tal:block tal:repeat="item_object newsletters">
+                <tal:block tal:define="obj python:item_object.getObject();">
                 <tr>
-                    <td tal:define="obj python:item_object.getObject();
-                                    daterequired python:obj.getDate() != None;
-                                    date python:item_object.toLocalizedTime(obj.date)[:-5];"
+                    <td tal:define="daterequired python:obj.getDate() != None;
+                                    date python:obj.toLocalizedTime(obj.date)[:-5];"
                         class="advisory_listdate"> 
         
                         <span tal:condition="daterequired"
@@ -49,19 +49,26 @@
                     <td height="5" />
                 </tr>
                 </tal:block>
+                </tal:block>
+
                 <tal:block tal:repeat="item_object files">
                 <tr>
-                    <td tal:define="filedate python:item_object.toLocalizedTime(item_object.effective)[:-5];"
-                        tal:content="filedate"
-                        class="advisory_listdate" />
+                    <td tal:define="effDate item_object/effective;"
+                        class="advisory_listdate">
+
+                        <span tal:condition="python:DateTime.year(effDate) > 1000"
+                              tal:replace="python:item_object.toLocalizedTime(effDate)[:-5]" />
+                    </td>
                     <td>
                         <div class="newsletter_listtitle"
                              tal:content="item_object/Title" />
-                        <span tal:content="item_object/Description" />
+                        
                         <a tal:attributes="href item_object/getURL">Download</a>
                     </td>
                 </tr>
-                <td height="5" />
+                 <tr>
+                    <td height="5" />
+                </tr>
                 </tal:block>
             </tbody>
         </table>
