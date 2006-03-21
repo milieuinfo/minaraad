@@ -16,4 +16,7 @@ Dependencies
 
     * OrderabelReferenceField (https://svn.plone.org/svn/archetypes/MoreFieldsAndWidgets/OrderableReferenceField/trunk)
 
-    * elementtree
+    * PortalTransforms from this branch: https://svn.plone.org/svn/archetypes/PortalTransforms/branches/1.3
+
+    * elementtree http://effbot.org/downloads/index.cgi#elementtree
+
