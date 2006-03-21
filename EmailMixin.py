@@ -36,7 +36,6 @@ import types
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.utils import log_exc, log
 from Products.minaraad.subscriptions import SubscriptionManager
-from Products.minaraad import BeautifulSoup
 from email.MIMEText import MIMEText
 from email.MIMEMultipart import MIMEMultipart
 from DateTime import DateTime
@@ -159,13 +158,14 @@ class EmailMixin:
         template = getattr(self, self.getTemplateName(), None)
         if template is None:
             template = getattr(self, "EmailTemplate-Default", None)
+
         cooked = template.pt_render(extra_context=kwargs)
         portal_transforms = getToolByName(self, 'portal_transforms')
         
         cooked = generateSafe(cooked, self)
         body = {
             'text/html': cooked,
-            'text/plain': portal_transforms.convertTo('text/plain', cooked).getData()
+            'text/plain': portal_transforms('lynx_dump', cooked),
         }
 
         return body
@@ -195,73 +195,6 @@ class EmailMixin:
 # end of class EmailMixin
 
 ##code-section module-footer #fill in your manual code here
-
-def generateSafe(html, context=None):
-    soup = BeautifulSoup.BeautifulSoup(html)
-    soup.context = context
-    
-    return str(soup).strip()
-
-def replace_attribute(tag, key, new_value):
-    for pos, x in enumerate(tag.attrs):
-        if x[0] == key:
-            found = pos
-            break
-    if found is not None:
-        tag.attrs[pos] = (key, new_value)
-
-# monkey-patch BeautifulSoup
-def renderContents(self, showStructureIndent=None, needUnicode=None):
-    """Renders the contents of this tag as a (possibly Unicode) 
-    string."""
-
-    # first find the parent 'soup'
-    current = self
-    while not isinstance(current, BeautifulSoup.BeautifulSoup) and current.parent:
-        current = current.parent
-    context = getattr(current, 'context', None)
-    object_url = None
-    if context:
-        object_url = context.absolute_url()
-        if object_url.endswith('/'):
-            object_url = object_url[:-1]
-        
-    s=[]
-    for c in self:
-        text = None
-        if isinstance(c, BeautifulSoup.NavigableUnicodeString) \
-                or type(c) == types.UnicodeType:
-            text = unicode(c)
-        elif isinstance(c, BeautifulSoup.Tag):
-            if c.name == 'a':
-                href = c.get('href', None)
-                if href:
-                    if object_url and href.startswith('.'):
-                        href = object_url + '/' + href
-                        replace_attribute(c, 'href', href)
-            elif c.name == 'img':
-                src = c.get('src', None)
-                if src:
-                    if object_url and src.startswith('.'):
-                        src = object_url + '/' + src
-                        replace_attribute(c, 'src', src)
-            
-            s.append(c.__str__(needUnicode, showStructureIndent))
-            
-            if c.name == 'a' and href:
-                s.append(' (%s)' % href)
-        elif needUnicode:
-            text = unicode(c)
-        else:
-            text = str(c)
-        if text:
-            if showStructureIndent != None:
-                if text[-1] == '\n':
-                    text = text[:-1]
-            s.append(text)
-    return ''.join(s)
-
-BeautifulSoup.Tag.renderContents = renderContents
 ##/code-section module-footer
 
 

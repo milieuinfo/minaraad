@@ -50,7 +50,7 @@ from Products.minaraad.EmailMixin import EmailMixin
 import email
 from Products.Archetypes.atapi import registerType, BaseContent, BaseSchema
 from Products.minaraad.subscriptions import SubscriptionManager
-from Products.minaraad.EmailMixin import AlreadySentError, generateSafe
+from Products.minaraad.EmailMixin import AlreadySentError
 ##/code-section module-beforeclass
 
 
@@ -124,12 +124,10 @@ class testEmailMixin(PloneTestCase):
         payload = textParts[0].get_payload(decode=True)
         self.failUnless(text in payload)
         self.failUnless('@hisplace.com' in payload)
+
         self.failUnless(emailMixin.Title() in payload)
         
-        # make sure generateSafe() did its thing
-        line = payload.split('\n')[2].strip()
-        self.assertEqual('hello (http://nohost/plone/blah/./resolveUID?foo=bar)', 
-                         line)
+        self.failUnless('http://boo.com' in payload)
         
         lst1 = [x['To'] for x in mailHost.messages]
         lst1.sort()
@@ -154,24 +152,6 @@ class testEmailMixin(PloneTestCase):
         self.portal.MailHost = self.portal._original_MailHost
         del self.portal._original_MailHost
     
-    def test_generatingSafe(self):
-        html = '<a href="http://blah.com">Some Blah</a>'
-        result = generateSafe(html, self.portal)
-        self.assertEquals(result, '<a href="http://blah.com">Some Blah</a> (http://blah.com)')
-
-        html = '<a href="./abc/def">Some Blah</a>'
-        result = generateSafe(html, self.portal)
-        self.assertEquals(result, '<a href="http://nohost/plone/./abc/def">Some Blah</a> (http://nohost/plone/./abc/def)')
-
-        # ran into a bug where if A tags are nested, they don't get converted properly
-        html = '<div><p><a href="./abc/def">Some Blah</a></p></div>'
-        result = generateSafe(html, self.portal)
-        self.assertEquals(result, '<div><p><a href="http://nohost/plone/./abc/def">Some Blah</a> (http://nohost/plone/./abc/def)</p></div>')
-
-        html = '<img src="../foo/bar.gif" />'
-        result = generateSafe(html, self.portal)
-        self.assertEquals(result, '<img src="http://nohost/plone/../foo/bar.gif" />')
-
     def test_getEmailContentsFromContent(self):
         pass
 
