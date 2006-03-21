@@ -4,7 +4,14 @@
       i18n:domain="minaraad">
 
     <body>
-    <metal:block metal:fill-slot="main">
+    <metal:block metal:fill-slot="main" 
+                   tal:define="current_path python:'/'.join(context.getPhysicalPath());
+                              advisories python:context.portal_catalog.searchResults(portal_type='Advisory',
+                                                                                    path=current_path,
+                                                                                    sort_on='getDate',
+                                                                                    sort_order='reverse');">
+        <metal:block metal:define-macro="folderlisting" />
+
         <div metal:use-macro="here/document_actions/macros/document_actions">
             Document actions (print, sendto etc)
         </div>
@@ -14,11 +21,42 @@
         <div class="documentDescription" 
              tal:content="context/Description" />
 
-        <tal:block tal:define="contentFilter python:{
-                            'sort_on': 'getDate'}">
-            <br />
-            <div metal:use-macro="container/mina_listing_view/macros/listing" />
-        </tal:block>
+        <table class="advisory_listing">
+            <tbody valign="top">
+                <tr tal:repeat="item_object advisories">
+                    <tal:block tal:define="obj python:item_object.getObject()">
+                    <td tal:define="daterequired python:obj.getDate() != None;
+                                    date python:obj.toLocalizedTime(obj.date)[:-5];"
+                        class="advisory_listdate"> 
+                        <span tal:condition="daterequired"
+                            tal:replace="date" />
+                    </td>
+                    <td class="advisory_listtitle">
+                        <span tal:content="item_object/description" />
+
+                        <div tal:define="contacts python:obj.getContact()"
+                             tal:condition="contacts"
+                             tal:omit-tag="">
+                            
+                        <tal:block tal:repeat="contact contacts">
+                        <a tal:attributes="href string:mailto:${contact/getEmail}"
+                           tal:content="contact/getEmail" />
+                        </tal:block>
+
+                        <span tal:content="item_object/Description" />
+
+                        <a tal:attributes="href item_object/getURL"
+                           i18n:translate="linkmoreinfo">More</a>
+                        </div>
+                        <!-- Start Attachments-->
+                        <div metal:use-macro="context/mina_attachments/macros/agenda_attachments" />
+                        <!-- end Attachments -->
+                        <br />
+                    </td>
+                    </tal:block>
+                </tr>
+            </tbody>
+        </table>
    </metal:block>
    </body>
 </html>
