@@ -55,6 +55,11 @@ class testSetup(MainTestCase):
         """
         pass
     
+    def test_reinstall(self):
+        qi = self.portal.portal_quickinstaller
+        qi.reinstallProducts(('minaraad',))
+        
+
     def test_tools(self):
         """ 
         """

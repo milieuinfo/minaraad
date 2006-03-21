@@ -2,6 +2,7 @@ from Products.minaraad.config import *
 from sets import Set
 from Products.CMFCore.utils import getToolByName
 from Products.CMFCore.DirectoryView import addDirectoryViews
+from Products.PortalTransforms.transforms.lynx_dump import lynx_dump
 from Products.RichDocument.Extensions.Install import registerAttachmentsFormControllerActions
 from StringIO import StringIO
 
@@ -65,6 +66,9 @@ def install(self):
     # Set up form controller actions for the widgets to work
     registerAttachmentsFormControllerActions(self)
     print >> out, "Added actions for the attachment controls to the base_edit form controller."
+
+    _addLynxDumpTransform(self)
+    print >> out, "added lynx_dump transform"
     
     return out.getvalue()
 
@@ -386,6 +390,10 @@ def _configureFCKeditor(portal):
             action.visible = 0
             print >> out, "Switching off unwanted action %s." % action.id
     control._actions = actions
+
+def _addLynxDumpTransform(portal):
+    transforms = portal.portal_transforms
+    transforms.registerTransform(lynx_dump())
 
 def uninstall(self):
     out = StringIO()
