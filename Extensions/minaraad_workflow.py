@@ -72,7 +72,7 @@ def setupminaraad_workflow(self, workflow):
     workflow.addManagedPermission('List folder contents')
     workflow.addManagedPermission('widget:label')
 
-    for l in []:
+    for l in ['my_worklist']:
         if not l in workflow.worklists.objectValues():
             workflow.worklists.addWorklist(l)
 
@@ -342,6 +342,16 @@ def setupminaraad_workflow(self, workflow):
 
     ## Worklists Initialization
 
+    worklistDef = workflow.worklists['my_worklist']
+    worklistStates = ['pending_private', 'pending_revisioning']
+    actbox_url = "%(portal_url)s/search?review_state=" + "&review_state=".join(worklistStates)
+    worklistDef.setProperties(description="Reviewer tasks",
+                              actbox_name="Pending (%(count)d)",
+                              actbox_url=actbox_url,
+                              actbox_category="global",
+                              props={'guard_permissions': 'Review portal content',
+                                     'guard_roles': '',
+                                     'var_match_review_state': ';'.join(worklistStates)})
 
     # WARNING: below protected section is deprecated.
     # Add a tagged value 'worklist' with the worklist name to your state(s) instead.
