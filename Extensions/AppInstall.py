@@ -79,7 +79,8 @@ def _configurePortalProps(portal):
     print >> out, "Customizing portal properties"
     # customize slots - add the slots to the portal folder
     portal._updateProperty('left_slots', LEFT_SLOTS)
-
+    portal._updateProperty('right_slots', RIGHT_SLOTS)
+    
     # portal title
     portal._updateProperty('title',PORTAL_TITLE)
     #Email information

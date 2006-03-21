@@ -26,7 +26,9 @@ LEFT_SLOTS = ('here/portlet_navigation/macros/portlet',
               'here/portlet_login/macros/portlet',
               ) 
 
-RIGHT_SLOTS = ('') 
+RIGHT_SLOTS = ('here/portlet_review/macros/portlet',
+               'here/portlet_events/macros/portlet',
+              ) 
 
 # Used to show the stringfield 'other country' when in the selectionbox
 # 'Ander land' is selected
@@ -36,7 +38,6 @@ JAVASCRIPTS = [{'id': 'hideShow.js'},]
 # on the portal root and on all subfolders.
 GLOBAL_DISALLOW = [
     'Newsitem',
-    'Event',
     'RichDocument',
     ]
 
