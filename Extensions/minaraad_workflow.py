@@ -149,16 +149,16 @@ def setupminaraad_workflow(self, workflow):
     stateDef.setProperties(title="""restricted""",
                            transitions=['retract'])
     stateDef.setPermission('Access contents information',
-                           0,
+                           1,
                            ['Author', 'Owner', 'Council Member', 'Reviewer', 'Manager'])
     stateDef.setPermission('View',
-                           0,
+                           1,
                            ['Author', 'Owner', 'Council Member', 'Reviewer', 'Manager'])
     stateDef.setPermission('Modify portal content',
                            0,
                            ['Manager'])
     stateDef.setPermission('List folder contents',
-                           0,
+                           1,
                            ['Author', 'Owner', 'Council Member', 'Reviewer', 'Manager'])
 
     stateDef = workflow.states['private']
@@ -260,7 +260,7 @@ def setupminaraad_workflow(self, workflow):
                                 actbox_name="""Retract""",
                                 actbox_url="""""",
                                 actbox_category="""workflow""",
-                                props={'guard_roles': 'Manager;Owner'},
+                                props={'guard_roles': 'Manager;Owner;Author'},
                                 )
 
     transitionDef = workflow.transitions['submit2']
@@ -272,7 +272,7 @@ def setupminaraad_workflow(self, workflow):
                                 actbox_name="""Submit""",
                                 actbox_url="""""",
                                 actbox_category="""workflow""",
-                                props={'guard_roles': 'Manager;Owner'},
+                                props={'guard_roles': 'Manager;Owner;Author'},
                                 )
 
     transitionDef = workflow.transitions['revise']

@@ -97,25 +97,23 @@ class testWorkflow(MainTestCase):
         self.assertHasTransitions('reviewer', ['restricted_publish','publish'])
         self.assertHasTransitions('manager',['restricted_publish','publish','submit'])
 
-    def test_revisioning_state(self):
-        """ Test if the revisioning state has the correct rights
+    def test_folder_pending_state(self):
+        """ Test if the folder restricted state has the correct rights
         """
         self.login('manager')
         wfTool = getToolByName(self.portal, 'portal_workflow')
-        wfTool.doActionFor(self.contentContainer.someobj,'publish')
-        wfTool.doActionFor(self.contentContainer.someobj,'revise')
+        wfTool.doActionFor(self.contentContainer,'submit')
         self.logout()
 
-        self.assertEqual(self._content_state(),'revisioning') 
-        self.assertHasTransitions('member')
-        self.assertHasTransitions('author')
-        self.assertHasTransitions('cmember')
-        self.assertHasTransitions('reviewer', ['publish'])
-        self.assertHasTransitions('manager',['publish','submit2'])
+        self.assertEqual(self._folder_state(),'pending')
+        self.assertFolderTransitions('member')
+        self.assertFolderTransitions('author',['retract2'])
+        self.assertFolderTransitions('cmember')
+        self.assertFolderTransitions('reviewer',['publish','reject'])
+        self.assertFolderTransitions('manager',['publish','reject','retract2'])
 
         self.login('manager')
-        wfTool.doActionFor(self.contentContainer.someobj,'publish')
-        wfTool.doActionFor(self.contentContainer.someobj,'reject')
+        wfTool.doActionFor(self.contentContainer,'retract2')
         self.logout()
 
     def test_pending_private_state(self):
@@ -229,23 +227,25 @@ class testWorkflow(MainTestCase):
         wfTool.doActionFor(self.contentContainer.someobj,'retract')
         self.logout()
    
-    def test_folder_pending_state(self):
-        """ Test if the folder restricted state has the correct rights
+    def test_revisioning_state(self):
+        """ Test if the revisioning state has the correct rights
         """
         self.login('manager')
         wfTool = getToolByName(self.portal, 'portal_workflow')
-        wfTool.doActionFor(self.contentContainer,'submit')
+        wfTool.doActionFor(self.contentContainer.someobj,'publish')
+        wfTool.doActionFor(self.contentContainer.someobj,'revise')
         self.logout()
 
-        self.assertEqual(self._folder_state(),'pending')
-        self.assertFolderTransitions('member')
-        self.assertFolderTransitions('author',['retract2'])
-        self.assertFolderTransitions('cmember')
-        self.assertFolderTransitions('reviewer',['publish','reject'])
-        self.assertFolderTransitions('manager',['publish','reject','retract2'])
+        self.assertEqual(self._content_state(),'revisioning') 
+        self.assertHasTransitions('member')
+        self.assertHasTransitions('author',['submit2'])
+        self.assertHasTransitions('cmember')
+        self.assertHasTransitions('reviewer', ['publish'])
+        self.assertHasTransitions('manager',['publish','submit2'])
 
         self.login('manager')
-        wfTool.doActionFor(self.contentContainer,'retract2')
+        wfTool.doActionFor(self.contentContainer.someobj,'publish')
+        wfTool.doActionFor(self.contentContainer.someobj,'reject')
         self.logout()
 
     def assertCannotCreateContent(self, memberId, type_, err=Unauthorized):
@@ -267,7 +267,7 @@ class testWorkflow(MainTestCase):
 
         self.assertEqual(self._content_state(),'pending_revisioning') 
         self.assertHasTransitions('member')
-        self.assertHasTransitions('author')
+        self.assertHasTransitions('author', ['retract2'])
         self.assertHasTransitions('cmember')
         self.assertHasTransitions('reviewer', ['publish','reject2'])
         self.assertHasTransitions('manager',['publish','reject2','retract2'])
@@ -292,15 +292,15 @@ class testWorkflow(MainTestCase):
         self.assertFolderTransitions('member')
         self.assertFolderTransitions('author','submit')
         self.assertFolderTransitions('cmember')
-        self.assertFolderTransitions('reviewer',['publish','publish_internal'])
-        self.assertFolderTransitions('manager',['publish','publish_internal','submit'])
+        self.assertFolderTransitions('reviewer',['publish','restricted_publish'])
+        self.assertFolderTransitions('manager',['publish','restricted_publish','submit'])
         
     def test_folder_restricted_state(self):
         """ Test if the folder restricted state has the correct rights
         """
         self.login('manager')
         wfTool = getToolByName(self.portal, 'portal_workflow')
-        wfTool.doActionFor(self.contentContainer,'publish_internal')
+        wfTool.doActionFor(self.contentContainer,'restricted_publish')
         self.logout()
 
         self.assertEqual(self._folder_state(),'restricted')
