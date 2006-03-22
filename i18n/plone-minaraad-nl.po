@@ -85,7 +85,5 @@ msgstr "Exporteer naar Excel"
 msgid "revise"
 msgstr "Reviseren"
 
-msgid "publish_internal"
-msgstr "Intern publiceren"
 
 

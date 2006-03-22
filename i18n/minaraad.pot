@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minaraad\n"
-"POT-Creation-Date: 2006-03-20 11:17+0000\n"
+"POT-Creation-Date: 2006-03-22 08:56+0000\n"
 "PO-Revision-Date: Mon Aug  8 12:16:21 2005\n"
 "Last-Translator: Rocky Burt <r.burt@zestsoftware.nl>\n"
 "Language-Team: Rocky Burt <r.burt@zestsoftware.nl>\n"
@@ -25,6 +25,7 @@ msgid "AnnualReport"
 msgstr ""
 
 #. Default: "Date:"
+#: skins/minaraad/EmailTemplate-NewsLetter.pt
 #: skins/minaraad/mina_showdatetime.pt
 #: skins/minaraad/newsletter_view.pt
 msgid "Date:"
@@ -73,6 +74,11 @@ msgstr ""
 msgid "description_lost_password_mina"
 msgstr ""
 
+#. Default: "You can now subscribe on one or more of our subscriptions. Go to \"my preferences\" and choose \"Subscriptions\". Or click directly on the following link: ${setup_subscriptions}."
+#: skins/minaraad/login_success.pt
+msgid "description_newbie_pointers_mina"
+msgstr ""
+
 #: browser/subscriptions_config.pt
 msgid "description_subscriptions_setup"
 msgstr ""
@@ -88,14 +94,9 @@ msgid "export_descriptions"
 msgstr ""
 
 #. Default: "from"
-#: skins/minaraad/mina_listing_view.pt
+#: skins/minaraad/hearing_listing_view.pt
 #: skins/minaraad/mina_showdatetime.pt
 msgid "from"
-msgstr ""
-
-#. Default: "Up one level"
-#: skins/minaraad/mina_listing_view.pt
-msgid "go_to_parent_url"
 msgstr ""
 
 #. Default: "Themes Settings"
@@ -133,7 +134,7 @@ msgid "help_theme_name"
 msgstr ""
 
 #. Default: "hour"
-#: skins/minaraad/mina_listing_view.pt
+#: skins/minaraad/hearing_listing_view.pt
 #: skins/minaraad/mina_showdatetime.pt
 msgid "hour"
 msgstr ""
@@ -182,6 +183,7 @@ msgstr ""
 #. Default: "Dear"
 #: skins/minaraad/EmailTemplate-Default.pt
 #: skins/minaraad/EmailTemplate-Hearing.pt
+#: skins/minaraad/EmailTemplate-NewsLetter.pt
 msgid "label_dear"
 msgstr ""
 
@@ -256,9 +258,15 @@ msgstr ""
 msgid "label_lastname"
 msgstr ""
 
+#. Default: "Continue to the ${portal_title} home page"
+#: skins/minaraad/login_success.pt
+msgid "label_login_continue_to_home_page"
+msgstr ""
+
 #. Default: "For more info, go to:"
 #: skins/minaraad/EmailTemplate-Default.pt
 #: skins/minaraad/EmailTemplate-Hearing.pt
+#: skins/minaraad/EmailTemplate-NewsLetter.pt
 msgid "label_moreinfo"
 msgstr ""
 
@@ -383,9 +391,9 @@ msgid "legend_sendemail"
 msgstr ""
 
 #. Default: "More"
-#: skins/minaraad/mina_listing_view.pt
+#: skins/minaraad/advisory_listing_view.pt
+#: skins/minaraad/hearing_listing_view.pt
 #: skins/minaraad/newsletter_listing_view.pt
-#: skins/minaraad/pressrelease_listing_view.pt
 msgid "linkmoreinfo"
 msgstr ""
 
@@ -589,6 +597,7 @@ msgstr ""
 
 #. Default: "Enddate"
 #: content/Hearing.py
+#: content/Study.py
 msgid "minaraad_label_enddate"
 msgstr ""
 
@@ -657,12 +666,13 @@ msgid "minaraad_label_speaker"
 msgstr ""
 
 #. Default: "Speakers"
-#: content/Study.py
+#: skins/minaraad/study_view.pt
 msgid "minaraad_label_speakers"
 msgstr ""
 
 #. Default: "Startdate"
 #: content/Hearing.py
+#: content/Study.py
 msgid "minaraad_label_startdate"
 msgstr ""
 
@@ -702,8 +712,8 @@ msgstr ""
 
 #. Default: "For more information contact:"
 #: skins/minaraad/advisory_view.pt
+#: skins/minaraad/EmailTemplate-Default.pt
 #: skins/minaraad/hearing_view.pt
-#: skins/minaraad/pressrelease_view.pt
 msgid "moreinfo_contactperson"
 msgstr ""
 
@@ -717,8 +727,13 @@ msgstr ""
 msgid "pressrelease_date"
 msgstr ""
 
+#. Default: "Subscriptions"
+#: skins/minaraad/login_success.pt
+msgid "subscriptions_link"
+msgstr ""
+
 #. Default: "till"
-#: skins/minaraad/mina_listing_view.pt
+#: skins/minaraad/hearing_listing_view.pt
 #: skins/minaraad/mina_showdatetime.pt
 msgid "till"
 msgstr ""
@@ -765,7 +780,7 @@ msgid "toggle_all"
 msgstr ""
 
 #. Default: "up untill"
-#: skins/minaraad/mina_listing_view.pt
+#: skins/minaraad/hearing_listing_view.pt
 #: skins/minaraad/mina_showdatetime.pt
 msgid "up_untill"
 msgstr ""

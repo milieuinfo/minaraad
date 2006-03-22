@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minaraad 0.1\n"
-"POT-Creation-Date: 2006-03-20 11:17+0000\n"
+"POT-Creation-Date: 2006-03-22 08:56+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: Mirella van Teulingen <m.van.teulingen@zestsoftware.nl>\n"
 "Language-Team: Nederlands <info@zestsoftware.nl>\n"
@@ -25,6 +25,7 @@ msgid "AnnualReport"
 msgstr "Jaarverslag"
 
 #. Default: "Date:"
+#: skins/minaraad/EmailTemplate-NewsLetter.pt
 #: skins/minaraad/mina_showdatetime.pt
 #: skins/minaraad/newsletter_view.pt
 msgid "Date:"
@@ -73,6 +74,11 @@ msgstr "Adviesdatum:"
 msgid "description_lost_password_mina"
 msgstr "Om veiligheidsredenen kan het wachtwoord niet per e-mail naar u worden verzonden. U kunt uw wachtwoord wijzigen door het onderstaande formulier in te vullen. Wij sturen een e-mailbericht naar het e-mailadres dat u tijdens de registratie heeft opgegeven. Dit bericht bevat een link naar een formulier waar u het wachtwoord kunt wijzigen.<br /> <br />Indien u bijvoorbeeld uw gebruikersnaam niet meer weet of uw e-mailadres is gewijzigd, stuur dan een e-mail naar de"
 
+#. Default: "You can now subscribe on one or more of our subscriptions. Go to \"my preferences\" and choose \"Subscriptions\". Or click directly on the following link: ${setup_subscriptions}."
+#: skins/minaraad/login_success.pt
+msgid "description_newbie_pointers_mina"
+msgstr "U kunt zich nu inschrijven op een van onze gratis abonnementen. Ga naar \"voorkeuren\" en kies \"Abonnementen\". Of klik direct op de volgende link: ${setup_subscriptions}."
+
 #: browser/subscriptions_config.pt
 msgid "description_subscriptions_setup"
 msgstr "Selecteer de abonnementen"
@@ -88,15 +94,10 @@ msgid "export_descriptions"
 msgstr "Klik op de onderstaande button om abonnees van dit content type te exporteren naar Excelsheet."
 
 #. Default: "from"
-#: skins/minaraad/mina_listing_view.pt
+#: skins/minaraad/hearing_listing_view.pt
 #: skins/minaraad/mina_showdatetime.pt
 msgid "from"
 msgstr "van"
-
-#. Default: "Up one level"
-#: skins/minaraad/mina_listing_view.pt
-msgid "go_to_parent_url"
-msgstr "Eén niveau omhoog"
 
 #. Default: "Themes Settings"
 #: browser/minaraad_config.pt"
@@ -133,7 +134,7 @@ msgid "help_theme_name"
 msgstr "Vul de naam in van het nieuwe thema."
 
 #. Default: "hour"
-#: skins/minaraad/mina_listing_view.pt
+#: skins/minaraad/hearing_listing_view.pt
 #: skins/minaraad/mina_showdatetime.pt
 msgid "hour"
 msgstr "uur"
@@ -182,6 +183,7 @@ msgstr "Land"
 #. Default: "Dear"
 #: skins/minaraad/EmailTemplate-Default.pt
 #: skins/minaraad/EmailTemplate-Hearing.pt
+#: skins/minaraad/EmailTemplate-NewsLetter.pt
 msgid "label_dear"
 msgstr "Beste"
 
@@ -256,9 +258,15 @@ msgstr "Functie"
 msgid "label_lastname"
 msgstr "Achternaam"
 
+#. Default: "Continue to the ${portal_title} home page"
+#: skins/minaraad/login_success.pt
+msgid "label_login_continue_to_home_page"
+msgstr "Ga naar de ${portal_title} homepage."
+
 #. Default: "For more info, go to:"
 #: skins/minaraad/EmailTemplate-Default.pt
 #: skins/minaraad/EmailTemplate-Hearing.pt
+#: skins/minaraad/EmailTemplate-NewsLetter.pt
 msgid "label_moreinfo"
 msgstr "Voor meer informatie, ga naar:"
 
@@ -383,9 +391,9 @@ msgid "legend_sendemail"
 msgstr "E-mail verzenden naar abonnees"
 
 #. Default: "More"
-#: skins/minaraad/mina_listing_view.pt
+#: skins/minaraad/advisory_listing_view.pt
+#: skins/minaraad/hearing_listing_view.pt
 #: skins/minaraad/newsletter_listing_view.pt
-#: skins/minaraad/pressrelease_listing_view.pt
 msgid "linkmoreinfo"
 msgstr "Meer informatie"
 
@@ -589,6 +597,7 @@ msgstr ""
 
 #. Default: "Enddate"
 #: content/Hearing.py
+#: content/Study.py
 msgid "minaraad_label_enddate"
 msgstr "Einddatum"
 
@@ -657,12 +666,13 @@ msgid "minaraad_label_speaker"
 msgstr "Spreker"
 
 #. Default: "Speakers"
-#: content/Study.py
+#: skins/minaraad/study_view.pt
 msgid "minaraad_label_speakers"
 msgstr "Sprekers"
 
 #. Default: "Startdate"
 #: content/Hearing.py
+#: content/Study.py
 msgid "minaraad_label_startdate"
 msgstr "Startdatum"
 
@@ -702,8 +712,8 @@ msgstr "Postcode"
 
 #. Default: "For more information contact:"
 #: skins/minaraad/advisory_view.pt
+#: skins/minaraad/EmailTemplate-Default.pt
 #: skins/minaraad/hearing_view.pt
-#: skins/minaraad/pressrelease_view.pt
 msgid "moreinfo_contactperson"
 msgstr "Voor meer informatie kunt u contact opnemen met:"
 
@@ -717,8 +727,13 @@ msgstr "Er zijn nog geen deelnemers"
 msgid "pressrelease_date"
 msgstr "Datum persbericht:"
 
+#. Default: "Subscriptions"
+#: skins/minaraad/login_success.pt
+msgid "subscriptions_link"
+msgstr "Abonnementen"
+
 #. Default: "till"
-#: skins/minaraad/mina_listing_view.pt
+#: skins/minaraad/hearing_listing_view.pt
 #: skins/minaraad/mina_showdatetime.pt
 msgid "till"
 msgstr "tot"
@@ -765,7 +780,7 @@ msgid "toggle_all"
 msgstr "Selecteer alles:"
 
 #. Default: "up untill"
-#: skins/minaraad/mina_listing_view.pt
+#: skins/minaraad/hearing_listing_view.pt
 #: skins/minaraad/mina_showdatetime.pt
 msgid "up_untill"
 msgstr "t/m"
