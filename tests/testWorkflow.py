@@ -47,6 +47,7 @@ from Products.minaraad.tests.MainTestCase import MainTestCase
 ##code-section module-beforeclass #fill in your manual code here
 from AccessControl import Unauthorized
 from Products.CMFCore.utils import getToolByName
+from Products.CMFCore import permissions
 ##/code-section module-beforeclass
 
 
@@ -78,9 +79,186 @@ class testWorkflow(MainTestCase):
         self.contentContainer.manage_addLocalRoles('author',['Author'])
         self.contentContainer.manage_addLocalRoles('reviewer',['Reviewer'])
         self.contentContainer.invokeFactory('NewsLetter', 'someobj')
+        
+        self.contentContainer.invokeFactory('NewsLetter', 'private')
+        self.contentContainer.invokeFactory('NewsLetter', 'restricted')
+        wfTool = getToolByName(self.portal, 'portal_workflow')
+        wfTool.doActionFor(self.contentContainer.restricted,'restricted_publish')
+        self.contentContainer.invokeFactory('NewsLetter', 'pending_private')
+        wfTool.doActionFor(self.contentContainer.pending_private,'submit')
+        self.contentContainer.invokeFactory('NewsLetter', 'published')
+        wfTool.doActionFor(self.contentContainer.published,'publish')
+        self.contentContainer.invokeFactory('NewsLetter', 'revisioning')
+        wfTool.doActionFor(self.contentContainer.revisioning,'publish')
+        wfTool.doActionFor(self.contentContainer.revisioning,'revise')
+        self.contentContainer.invokeFactory('NewsLetter', 'pending_revisioning')
+        wfTool.doActionFor(self.contentContainer.pending_revisioning,'publish')
+        wfTool.doActionFor(self.contentContainer.pending_revisioning,'revise')
+        wfTool.doActionFor(self.contentContainer.pending_revisioning,'submit2')
+
         self.logout()
 
     # Manually created methods
+
+    def test_member_permissions(self):
+        """ Test if the member has the correct permissions on CTs
+        """
+        self.login('member')
+        checkPermission = self.portal.portal_membership.checkPermission
+
+        obj = self.contentContainer.private
+        self.failIf(checkPermission(permissions.View, obj))
+        self.failIf(checkPermission(permissions.ModifyPortalContent, obj))
+
+        obj = self.contentContainer.restricted
+        self.failIf(checkPermission(permissions.View, obj))
+        self.failIf(checkPermission(permissions.ModifyPortalContent, obj))
+
+        obj = self.contentContainer.pending_private
+        self.failIf(checkPermission(permissions.View, obj))
+        self.failIf(checkPermission(permissions.ModifyPortalContent, obj))
+
+        obj = self.contentContainer.published
+        self.failUnless(checkPermission(permissions.View, obj))
+        self.failIf(checkPermission(permissions.ModifyPortalContent, obj))
+
+        obj = self.contentContainer.revisioning
+        self.failUnless(checkPermission(permissions.View, obj))
+        self.failIf(checkPermission(permissions.ModifyPortalContent, obj))
+
+        obj = self.contentContainer.pending_revisioning
+        self.failUnless(checkPermission(permissions.View, obj))
+        self.failIf(checkPermission(permissions.ModifyPortalContent, obj))
+
+        self.logout()
+
+    def test_cmember_permissions(self):
+        """ Test if the council member has the correct permissions on CTs
+        """
+        self.login('cmember')
+        checkPermission = self.portal.portal_membership.checkPermission
+
+        obj = self.contentContainer.private
+        self.failIf(checkPermission(permissions.View, obj))
+        self.failIf(checkPermission(permissions.ModifyPortalContent, obj))
+
+        obj = self.contentContainer.restricted
+        self.failUnless(checkPermission(permissions.View, obj))
+        self.failIf(checkPermission(permissions.ModifyPortalContent, obj))
+
+        obj = self.contentContainer.pending_private
+        self.failIf(checkPermission(permissions.View, obj))
+        self.failIf(checkPermission(permissions.ModifyPortalContent, obj))
+
+        obj = self.contentContainer.published
+        self.failUnless(checkPermission(permissions.View, obj))
+        self.failIf(checkPermission(permissions.ModifyPortalContent, obj))
+
+        obj = self.contentContainer.revisioning
+        self.failUnless(checkPermission(permissions.View, obj))
+        self.failIf(checkPermission(permissions.ModifyPortalContent, obj))
+
+        obj = self.contentContainer.pending_revisioning
+        self.failUnless(checkPermission(permissions.View, obj))
+        self.failIf(checkPermission(permissions.ModifyPortalContent, obj))
+
+        self.logout()
+
+    def test_author_permissions(self):
+        """ Test if the author has the correct permissions on CTs
+        """
+        self.login('author')
+        checkPermission = self.portal.portal_membership.checkPermission
+
+        obj = self.contentContainer.private
+        self.failUnless(checkPermission(permissions.View, obj))
+        self.failUnless(checkPermission(permissions.ModifyPortalContent, obj))
+
+        obj = self.contentContainer.restricted
+        self.failUnless(checkPermission(permissions.View, obj))
+        self.failIf(checkPermission(permissions.ModifyPortalContent, obj))
+
+        obj = self.contentContainer.pending_private
+        self.failUnless(checkPermission(permissions.View, obj))
+        self.failIf(checkPermission(permissions.ModifyPortalContent, obj))
+
+        obj = self.contentContainer.published
+        self.failUnless(checkPermission(permissions.View, obj))
+        self.failIf(checkPermission(permissions.ModifyPortalContent, obj))
+
+        obj = self.contentContainer.revisioning
+        self.failUnless(checkPermission(permissions.View, obj))
+        self.failUnless(checkPermission(permissions.ModifyPortalContent, obj))
+
+        obj = self.contentContainer.pending_revisioning
+        self.failUnless(checkPermission(permissions.View, obj))
+        self.failIf(checkPermission(permissions.ModifyPortalContent, obj))
+
+        self.logout()
+
+    def test_reviewer_permissions(self):
+        """ Test if the reviewer has the correct permissions on CTs
+        """
+        self.login('reviewer')
+        checkPermission = self.portal.portal_membership.checkPermission
+
+        obj = self.contentContainer.private
+        self.failUnless(checkPermission(permissions.View, obj))
+        self.failIf(checkPermission(permissions.ModifyPortalContent, obj))
+
+        obj = self.contentContainer.restricted
+        self.failUnless(checkPermission(permissions.View, obj))
+        self.failIf(checkPermission(permissions.ModifyPortalContent, obj))
+
+        obj = self.contentContainer.pending_private
+        self.failUnless(checkPermission(permissions.View, obj))
+        self.failUnless(checkPermission(permissions.ModifyPortalContent, obj))
+
+        obj = self.contentContainer.published
+        self.failUnless(checkPermission(permissions.View, obj))
+        self.failIf(checkPermission(permissions.ModifyPortalContent, obj))
+
+        obj = self.contentContainer.revisioning
+        self.failUnless(checkPermission(permissions.View, obj))
+        self.failUnless(checkPermission(permissions.ModifyPortalContent, obj))
+
+        obj = self.contentContainer.pending_revisioning
+        self.failUnless(checkPermission(permissions.View, obj))
+        self.failUnless(checkPermission(permissions.ModifyPortalContent, obj))
+
+        self.logout()
+
+    def test_manager_permissions(self):
+        """ Test if the manager has the correct permissions on CTs
+        """
+        self.login('manager')
+        checkPermission = self.portal.portal_membership.checkPermission
+
+        obj = self.contentContainer.private
+        self.failUnless(checkPermission(permissions.View, obj))
+        self.failUnless(checkPermission(permissions.ModifyPortalContent, obj))
+
+        obj = self.contentContainer.restricted
+        self.failUnless(checkPermission(permissions.View, obj))
+        self.failUnless(checkPermission(permissions.ModifyPortalContent, obj))
+
+        obj = self.contentContainer.pending_private
+        self.failUnless(checkPermission(permissions.View, obj))
+        self.failUnless(checkPermission(permissions.ModifyPortalContent, obj))
+
+        obj = self.contentContainer.published
+        self.failUnless(checkPermission(permissions.View, obj))
+        self.failUnless(checkPermission(permissions.ModifyPortalContent, obj))
+
+        obj = self.contentContainer.revisioning
+        self.failUnless(checkPermission(permissions.View, obj))
+        self.failUnless(checkPermission(permissions.ModifyPortalContent, obj))
+
+        obj = self.contentContainer.pending_revisioning
+        self.failUnless(checkPermission(permissions.View, obj))
+        self.failUnless(checkPermission(permissions.ModifyPortalContent, obj))
+
+        self.logout()
 
     def test_private_state(self):
         """ Test if the private state has the correct rights
