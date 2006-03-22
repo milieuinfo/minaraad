@@ -41,7 +41,7 @@
         </tal:block>
         <!-- end contactpersoon -->
         
-        <!-- Contactperson -->
+        <!-- Speakers -->
         <tal:block tal:define="speakers context/getSpeakers"
                    tal:condition="speakers">
             <br />
@@ -58,7 +58,7 @@
             <br />
             <br />
         </tal:block>
-        <!-- end contactpersoon -->
+        <!-- end Speakers -->
         
         
         <!-- Start Attachments-->
