@@ -91,7 +91,6 @@ class AnnualReport(PostMixin, EmailMixin, Attachmentsmixin):
     allowed_content_types = [] + list(getattr(PostMixin, 'allowed_content_types', [])) + list(getattr(EmailMixin, 'allowed_content_types', [])) + list(getattr(Attachmentsmixin, 'allowed_content_types', []))
     filter_content_types = 0
     global_allow = 1
-    allow_discussion = False
     #content_icon = 'AnnualReport.gif'
     immediate_view = 'base_view'
     default_view = 'base_view'

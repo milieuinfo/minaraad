@@ -75,7 +75,6 @@ class Attachmentsmixin(BaseFolder):
     allowed_content_types = ['FileAttachment']
     filter_content_types = 1
     global_allow = 0
-    allow_discussion = False
     #content_icon = 'Attachmentsmixin.gif'
     immediate_view = 'base_view'
     default_view = 'base_view'

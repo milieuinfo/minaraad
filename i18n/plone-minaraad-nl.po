@@ -82,6 +82,18 @@ msgstr "Abonnee overzicht"
 msgid "Export Subscribers"
 msgstr "Exporteer naar Excel"
 
+msgid "restricted publish"
+msgstr "Besloten publiceren"
+
+msgid "restricted"
+msgstr "Besloten"
+
+msgid "Pending from private"
+msgstr "In behandeling"
+
+msgid "Pending from revisioning"
+msgstr "In behandeling van revisie"
+
 msgid "revise"
 msgstr "Reviseren"
 

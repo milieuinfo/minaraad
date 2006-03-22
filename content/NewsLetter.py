@@ -95,7 +95,6 @@ class NewsLetter(EmailMixin, BaseFolder):
     allowed_content_types = ['NewsItem'] + list(getattr(EmailMixin, 'allowed_content_types', []))
     filter_content_types = 1
     global_allow = 1
-    allow_discussion = False
     #content_icon = 'NewsLetter.gif'
     immediate_view = 'base_view'
     default_view = 'base_view'

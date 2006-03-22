@@ -148,12 +148,12 @@ def setupminaraad_folder_workflow(self, workflow):
     ## Transitions initialization
 
     transitionDef = workflow.transitions['restricted_publish']
-    transitionDef.setProperties(title="""Restricted publish""",
+    transitionDef.setProperties(title="""restricted publish""",
                                 new_state_id="""restricted""",
                                 trigger_type=1,
                                 script_name="""""",
                                 after_script_name="""""",
-                                actbox_name="""Restricted publish""",
+                                actbox_name="""restricted publish""",
                                 actbox_url="""""",
                                 actbox_category="""workflow""",
                                 props={'guard_roles': 'Owner;Reviewer;Manager'},

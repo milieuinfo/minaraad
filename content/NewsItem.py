@@ -96,7 +96,6 @@ class NewsItem(BaseContent):
     allowed_content_types = []
     filter_content_types = 0
     global_allow = 0
-    allow_discussion = False
     #content_icon = 'NewsItem.gif'
     immediate_view = 'base_view'
     default_view = 'base_view'
