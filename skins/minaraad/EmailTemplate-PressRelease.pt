@@ -7,6 +7,9 @@
 <span style="font-weight:bold" 
       tal:content="context/Title" />
 <br />
+<span tal:condition="context/subheader" 
+      tal:content="context/subheader" />
+<br />
 <br />
 <span i18n:translate="label_dear">Dear</span> <span tal:replace="member/firstname" /> <span tal:replace="member/fullname" />,
 <br />

@@ -4,20 +4,24 @@
     <metal:block use-macro="context/global_defines/macros/defines" />
 
     <body>
+     <metal:block metal:define-macro="header">
+        <h1>
+            <span tal:define="daterequired python:context.getDate() != None;
+                        date python:context.toLocalizedTime(context.date);"
+                  tal:condition="daterequired">
+            <span class="normaltext"
+                  tal:content="date" />
+            </span>
+            <span tal:replace="context/Title" />
+        </h1>
+        <span class="documentDescription"
+            tal:content="context/getSubheader" />
+    </metal:block>
+
     <metal:block metal:define-macro="body">
 
         <span class="documentDescription"
               tal:content="context/getDescription" />
-
-        <div tal:define="daterequired python:context.getDate() != None;
-                        date python:context.toLocalizedTime(context.date);"
-            class="pressrelease_date"
-            tal:condition="daterequired">
-            <span i18n:translate="pressrelease_date">Pressrelease date:</span>
-            <span class="normaltext"
-                  tal:content="date" />
-        </div>
-
 
         <!-- Contactperson -->
         <tal:block tal:define="contacts python:context.getContact()"

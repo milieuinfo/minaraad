@@ -1,0 +1,86 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
+      lang="en-US"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="minaraad">
+
+    <body>
+    <metal:block metal:fill-slot="main" 
+                   tal:define="current_path python:'/'.join(context.getPhysicalPath());
+                              studies python:context.portal_catalog.searchResults(portal_type='Study',
+                                                                                    path=current_path,
+                                                                                    sort_on='getStartdate',
+                                                                                    sort_order='reverse');">
+        <metal:block metal:define-macro="folderlisting" />
+
+        <div metal:use-macro="here/document_actions/macros/document_actions">
+            Document actions (print, sendto etc)
+        </div>
+        <h1 tal:content="context/Title"
+            class="documentFirstHeading">Title</h1>
+
+        <div class="documentDescription" 
+             tal:content="context/Description" />
+
+        <div tal:repeat="item_object studies">
+            <tal:block tal:define="obj python:item_object.getObject()">
+             <div class="pressrelease_listtitle"
+                tal:content="item_object/Title" />
+
+            <div class="pressrelease_listsub"
+                tal:content="obj/getSubheader" />
+            <!-- DATES -->
+            <tal:block tal:define="daterequired python:obj.getStartdate() != None and obj.getEnddate() != None;"
+                        tal:condition="daterequired">
+    
+            <div tal:define="startdate python:obj.toLocalizedTime(obj.startdate);
+                            enddate python:obj.toLocalizedTime(obj.enddate);
+                            starttime python:obj.startdate.TimeMinutes();
+                            endtime python:obj.enddate.TimeMinutes();
+                            noStartTime python:test(starttime == '00:00', 0, 1);
+                            noEndTime python:test(endtime == '00:00', 0, 1);"
+                    tal:omit-tag="">
+                
+                Datum:
+                <tal:block tal:condition="python:startdate == enddate">
+                <span tal:replace="startdate" />
+                &nbsp;-&nbsp;
+                <tal:block tal:condition="python: noStartTime and noEndTime">
+                    <span tal:replace="starttime" />
+                    <span i18n:translate="till"
+                        tal:omit-tag="">till</span>
+                    <span tal:replace="endtime" />
+                    <span i18n:translate="hour">hour</span>
+                </tal:block>
+                </tal:block>
+                <tal:block tal:condition="python:startdate != enddate">
+                    <span i18n:translate="from"
+                        tal:omit-tag="">from</span> 
+                    <span tal:replace="startdate" />
+                    
+                    <span i18n:translate="up_untill"
+                        tal:omit-tag="">up untill</span> 
+                    <span tal:replace="enddate" />
+    
+                    <tal:block tal:condition="python: noStartTime and noEndTime">
+                        &nbsp;-&nbsp;
+                        <span tal:replace="starttime" />
+                        
+                        <span i18n:translate="till"
+                            tal:omit-tag="">till</span>
+                        <span tal:replace="endtime" />
+                        <span i18n:translate="hour">hour</span>
+                    </tal:block>
+                </tal:block>
+                </div>
+            </tal:block>
+            <!-- end Date and Time -->
+            <br />
+            <span tal:content="item_object/Description" />
+            <a tal:attributes="href item_object/getURL"
+               i18n:translate="linkmoreinfo">More</a>
+            </tal:block>
+        </div>
+
+   </metal:block>
+   </body>
+</html>

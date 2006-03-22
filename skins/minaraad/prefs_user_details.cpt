@@ -300,34 +300,35 @@
                                                     tabindex tabindex/next;" />
                         </div>
 
-                        <!-- *** country *** -->
+                         <!-- *** country *** -->
                         <div class="field"
                             tal:define="error errors/country | nothing; 
                                         countries python:member.getProperty('select_country');
-                                        country python:request.get('country', member.getProperty('country', ''));">
+                                        country python:request.get('country', member.getProperty('country', ''));
+                                        tabindex tabindex/next;">
         
                             <label i18n:domain="minaraad"
-                                    i18n:translate="label_country">Country</label>
+                                i18n:translate="label_country">Country</label>
                             <br />
-                            <select name="country" onchange="showOtherCountry(this)"
-                                tal:attributes="tabindex tabindex/next">
+                            <select name="country" onchange="showOtherCountry(this)">
                                 <tal:block tal:repeat="option countries">
                                     <option tal:attributes="selected python:test(option==country, 'selected', '');
-                                                            value option;" />
+                                                            value option;"
+                                            tal:content="option" />
                                 </tal:block>
                             </select>
-                           
-                            
+                        
                             <!-- *** other country *** -->
                             <div class="field"
-                                    id="othercountry"
+                                id="othercountry"
                                 tal:define="error errors/other_country | nothing;
                                             other_country python:request.get('other_country', member.getProperty('other_country', ''));"
                                 tal:attributes="class python:test(error, 'field error', 'field');
-                                            style python:test(country ==('Ander land'), '', 'display:none')">
+                                                style python:test(country ==('Ander land'), '', 'display:none')">
         
-                                <label for="other_country"
-                                    i18n:domain="minaraad" 
+        
+                                <label for="other_country" 
+                                    i18n:domain="minaraad"
                                     i18n:translate="label_other_country">Other country</label>
         
                                 <div tal:content="error">Validation error output</div>
@@ -338,7 +339,7 @@
                                         size="30"
                                         value="member.other_country html_quote"
                                         tal:attributes="value other_country;
-                                                        tabindex tabindex/next;" />
+                                        " />
                             </div>
                         </div>
                         <br />

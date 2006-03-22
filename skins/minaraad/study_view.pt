@@ -7,13 +7,15 @@
     <metal:block metal:define-macro="header">
         <h1>
             <span tal:replace="context/Title" />
-            <!-- Date and Time -->
-            <span metal:use-macro="context/mina_showdatetime/macros/datetime"
-                  tal:omit-tag="" />
-            <!-- end Date and Time -->
         </h1>
         <span class="documentDescription"
             tal:content="context/getSubheader" />
+        
+        Datum:
+        <!-- Date and Time -->
+        <span metal:use-macro="context/mina_showdatetime/macros/datetime"
+                tal:omit-tag="" />
+        <!-- end Date and Time -->
     </metal:block>
 
     <metal:block metal:define-macro="body">
