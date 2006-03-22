@@ -287,18 +287,20 @@ class SubscribersConfigletView(AbstractView):
         
         out = StringIO()
         
-        fields = (('gender', 'Gender'), 
-                  ('firstname', 'First Name'),
-                  ('fullname', 'Last Name'),
-                  ('company', 'Company'),
-                  ('street', 'Street'),
-                  ('housenumber', 'House Number'),
+        fields = (('gender', 'Aanhef'), 
+                  ('firstname', 'Voornaam'),
+                  ('fullname', 'Achternaam'),
+                  ('company', 'Organisatie'),
+                  ('jobtitle', 'Functie'),
+                  ('street', 'Straat'),
+                  ('housenumber', 'Huisnummer'),
                   ('bus', 'Bus'),
-                  ('zipcode', 'Zip Code'),
-                  ('city', 'City'),
-                  ('country', 'Country'),
-                  ('other_country', 'Other country'),
-                  ('type_', 'Type'))
+                  ('zipcode', 'Postcode'),
+                  ('city', 'Woonplaats'),
+                  ('country', 'Land'),
+                  ('other_country', 'Ander land'),
+                  ('phonenumber', 'Telefoonnummer'),
+                  ('email', 'E-mail'))
 
         for pos, field in enumerate(fields):
             id, title = field

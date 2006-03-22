@@ -35,7 +35,7 @@ class ExportSubscribersView(BrowserView):
         
         out = StringIO()
         
-        fields = (('gender', 'Title'), 
+        fields = (('gender', 'Aanhef'), 
                   ('firstname', 'Voornaam'),
                   ('fullname', 'Achternaam'),
                   ('company', 'Organisatie'),
