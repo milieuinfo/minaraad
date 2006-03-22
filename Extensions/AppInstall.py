@@ -397,5 +397,8 @@ def _addLynxDumpTransform(portal):
 
 def uninstall(self):
     out = StringIO()
-
+    portal_controlpanel = getToolByName(self,'portal_controlpanel')
+    portal_controlpanel.unregisterConfiglet('Themes')
+    portal_controlpanel.unregisterConfiglet('Subscriptions')
+    portal_controlpanel.unregisterConfiglet('Subscribers')
     return out.getvalue()
