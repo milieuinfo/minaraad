@@ -1,0 +1,39 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
+      lang="en-US"
+      i18n:domain="minaraad">
+    <metal:block use-macro="context/global_defines/macros/defines" />
+
+    <body>
+    <metal:block metal:define-macro="body">
+        <div class="documentDescription"
+            tal:content="context/Description" />
+
+        <!-- Text -->
+        <div class="bodytext"
+            tal:content="structure context/getBody"
+            tal:condition="context/getBody" />
+        <!-- End text -->
+        <br />
+
+        <!-- Contactperson -->
+        <tal:block tal:define="contacts python:context.getContact()"
+                   tal:condition="contacts">
+            <br />
+            <div i18n:translate="moreinfo_contactperson">
+                For more information contact:
+            </div>
+            <tal:block tal:repeat="contact contacts">
+           <div metal:use-macro="context/contactperson_view/macros/contactdetails"
+                tal:omit-tag="" />
+            </tal:block>
+            <br />
+        </tal:block>
+        <!-- end contactpersoon -->
+
+        <!-- Start Attachments-->
+        <div metal:use-macro="context/mina_attachments/macros/listattachments" />
+        <!-- end Attachments -->
+    </metal:block>
+    <metal:block metal:define-macro="folderlisting" />
+    </body>
+</html>

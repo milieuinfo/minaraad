@@ -75,7 +75,7 @@ TYPES_TO_LIST = ['Folder']
 EXTRA_VIEWS = {
     'Folder': ['hearing_listing_view', 'advisory_listing_view', 
                'newsletter_listing_view', 'pressrelease_listing_view',
-               'study_listing_view'],
+               'study_listing_view','annualreport_listing_view'],
     }
 
 # SELECT_VIEWS is a dictionary, the keys are folder names. The value
@@ -99,6 +99,7 @@ SELECT_VIEWS = {
     '/persberichten/pressr_2003' : 'pressrelease_listing_view',
     '/persberichten/pressr_2002' : 'pressrelease_listing_view',
     '/studies': 'study_listing_view',
+    '/jaarverslag': 'annualreport_listing_view',
     }
 
 #FCKeditor set height

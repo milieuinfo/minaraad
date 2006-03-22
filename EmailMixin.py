@@ -147,7 +147,6 @@ class EmailMixin:
                         self.absolute_url(), emailBody)
                 log_exc('Could not send email from %s to %s regarding issue ' \
                         'in tracker %s\ntext is:\n%s\n' % args)
-
     security.declarePublic('getEmailBody')
     def getEmailBody(self, *args, **kwargs):
         """

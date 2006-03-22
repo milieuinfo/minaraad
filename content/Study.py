@@ -48,6 +48,15 @@ schema = Schema((
         )
     ),
 
+    TextField(
+        name='description',
+        widget=TextAreaWidget(
+            label='Description',
+            label_msgid='minaraad_label_description',
+            i18n_domain='minaraad',
+        )
+    ),
+
     DateTimeField(
         name='startdate',
         widget=CalendarWidget(
@@ -62,6 +71,15 @@ schema = Schema((
         widget=CalendarWidget(
             label='Enddate',
             label_msgid='minaraad_label_enddate',
+            i18n_domain='minaraad',
+        )
+    ),
+
+    StringField(
+        name='location',
+        widget=StringWidget(
+            label='Location',
+            label_msgid='minaraad_label_location',
             i18n_domain='minaraad',
         )
     ),

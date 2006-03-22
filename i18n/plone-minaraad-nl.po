@@ -97,5 +97,10 @@ msgstr "In behandeling van revisie"
 msgid "revise"
 msgstr "Reviseren"
 
+msgid "study_listing_view"
+msgstr "Studies overzicht"
+
+msgid "annualreport_listing_view"
+msgstr "Jaarverslagen overzicht"
 
 

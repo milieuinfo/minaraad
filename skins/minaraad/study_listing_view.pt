@@ -43,7 +43,7 @@
                 Datum:
                 <tal:block tal:condition="python:startdate == enddate">
                 <span tal:replace="startdate" />
-                &nbsp;-&nbsp;
+                
                 <tal:block tal:condition="python: noStartTime and noEndTime">
                     <span tal:replace="starttime" />
                     <span i18n:translate="till"
@@ -75,9 +75,19 @@
             </tal:block>
             <!-- end Date and Time -->
             <br />
-            <span tal:content="item_object/Description" />
+            <div tal:define="obj python:item_object.getObject()" 
+                 tal:condition="obj/getLocation"
+                 tal:omit-tag="">
+                <span i18n:translate="minaraad_label_location"
+                    tal:omit-tag="">Location</span>:
+                <span tal:replace="obj/getLocation" />
+                <br /> 
+            </div>
+            <span tal:replace="item_object/Description" />
             <a tal:attributes="href item_object/getURL"
                i18n:translate="linkmoreinfo">More</a>
+            <br />
+            <br />
             </tal:block>
         </div>
 

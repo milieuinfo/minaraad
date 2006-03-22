@@ -40,6 +40,15 @@ from Products.minaraad.config import *
 schema = Schema((
 
     TextField(
+        name='description',
+        widget=TextAreaWidget(
+            label='Description',
+            label_msgid='minaraad_label_description',
+            i18n_domain='minaraad',
+        )
+    ),
+
+    TextField(
         name='body',
         allowable_content_types=('text/plain', 'text/structured', 'text/html', 'application/msword',),
         widget=RichWidget(

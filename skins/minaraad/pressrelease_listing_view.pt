@@ -38,8 +38,8 @@
                         <div class="pressrelease_listsub"
                                 tal:content="obj/getSubheader" />
                         <span tal:content="item_object/Description" />
-                            <a tal:attributes="href item_object/getURL"
-                            i18n:translate="linkmoreinfo">More</a>
+                        <a tal:attributes="href item_object/getURL"
+                        i18n:translate="linkmoreinfo">More</a>
                     </td>
                 </tr>
                 <tr>

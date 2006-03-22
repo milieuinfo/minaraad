@@ -497,6 +497,7 @@ msgstr ""
 
 #. Default: "Location"
 #: content/Hearing.py
+#: content/Study.py
 msgid "minaraad_label_location"
 msgstr ""
 
