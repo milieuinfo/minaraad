@@ -32,22 +32,23 @@
                             tal:replace="date" />
                     </td>
                     <td class="advisory_listtitle">
-                        <span tal:content="item_object/description" />
+                        <span tal:content="item_object/Title" />
 
                         <div tal:define="contacts python:obj.getContact()"
                              tal:condition="contacts"
                              tal:omit-tag="">
                             
-                        <tal:block tal:repeat="contact contacts">
-                        <a tal:attributes="href string:mailto:${contact/getEmail}"
-                           tal:content="contact/getEmail" />
-                        </tal:block>
-
+                            <tal:block tal:repeat="contact contacts">
+                            <a tal:attributes="href string:mailto:${contact/getEmail}"
+                               tal:content="contact/getEmail" />
+                            </tal:block>
+                        </div>
+                        <br />
                         <span tal:content="item_object/Description" />
 
                         <a tal:attributes="href item_object/getURL"
                            i18n:translate="linkmoreinfo">More</a>
-                        </div>
+
                         <!-- Start Attachments-->
                         <div metal:use-macro="context/mina_attachments/macros/agenda_attachments" />
                         <!-- end Attachments -->
