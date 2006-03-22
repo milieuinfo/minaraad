@@ -46,6 +46,11 @@ from Products.minaraad.tests.MainTestCase import MainTestCase
 from Products.minaraad.content.AnnualReport import AnnualReport
 
 ##code-section module-beforeclass #fill in your manual code here
+
+TITLE = "title"
+DESCRIPTION = "een omschrijving"
+HTMLBODY = "<p>HTML Body boodschap</p>"
+
 ##/code-section module-beforeclass
 
 
@@ -59,9 +64,17 @@ class testAnnualReport(MainTestCase):
     def afterSetUp(self):
         """
         """
+        self.setRoles(['Manager'])
+        self.portal.jaarverslag.invokeFactory('AnnualReport',id='testar')
+        self.testar = self.portal.jaarverslag.testar
+
+        self.portal.contactpersonen.invokeFactory('ContactPerson', id='Jslob')
+        self.contactperson = self.portal.contactpersonen.Jslob
+
         pass
     # from class AnnualReport:
     # from class AnnualReport:
+
     def test_email_out(self):
         pass
 
@@ -93,6 +106,29 @@ class testAnnualReport(MainTestCase):
     def test_subscribers_export(self):
         pass
 
+    def testAnnualReport(self):
+        """ Test if the AnnualReport is in the portal_types
+        """
+        types_ = self.portal.portal_types.objectIds()
+        self.failUnless('AnnualReport' in types_)
+
+    def testProperties(self):
+        """ Test if the AnnualReport has the correct properties
+        """
+
+        self.testar.setTitle(TITLE)
+        self.testar.setDescription(DESCRIPTION)
+        self.testar.setBody(HTMLBODY,text_format="text/html")
+        self.testar.setContact(self.contactperson.UID())
+
+        self.failUnless(self.testar.Title()==TITLE,
+                         'Value is %s' % self.testar.Title())
+        self.failUnless(self.testar.getDescription()==DESCRIPTION,
+                         'Value is %s' % self.testar.getDescription())
+        self.failUnless(self.testar.getBody()==HTMLBODY,
+                         'Value is %s' % self.testar.getBody())
+        self.failUnless(self.testar.getContact()==[self.contactperson],
+                         'Value is %s' % self.testar.getContact())
 
 def test_suite():
     from unittest import TestSuite, makeSuite

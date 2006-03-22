@@ -174,7 +174,7 @@ class testSubscriptions(MainTestCase):
                             request)
 
 
-        HEADER_FIELDS = ("Title","Voornaam","Achternaam","Organisatie",
+        HEADER_FIELDS = ("Aanhef","Voornaam","Achternaam","Organisatie",
                          "Functie","Straat","Huisnummer","Bus","Postcode",
                          "Woonplaats","Land","Ander land","Telefoonnummer",
                          "E-mail")
