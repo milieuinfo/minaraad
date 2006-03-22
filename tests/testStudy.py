@@ -46,6 +46,17 @@ from Products.minaraad.tests.MainTestCase import MainTestCase
 from Products.minaraad.content.Study import Study
 
 ##code-section module-beforeclass #fill in your manual code here
+from DateTime import DateTime
+
+TITLE = "title"
+SUBHEADER = "ondertitel"
+DESCRIPTION = "een omschrijving"
+LOCATION = "een plaats"
+STARTDATE = DateTime()
+ENDDATE = DateTime()
+SPEAKERS = ("Joris","Slob")
+HTMLBODY = "<p>HTML Body boodschap</p>"
+
 ##/code-section module-beforeclass
 
 
@@ -59,6 +70,13 @@ class testStudy(MainTestCase):
     def afterSetUp(self):
         """
         """
+        self.setRoles(['Manager'])
+        self.portal.studies.invokeFactory('Study',id='teststudy')
+        self.teststudy = self.portal.studies.teststudy
+
+        self.portal.contactpersonen.invokeFactory('ContactPerson', id='Jslob')
+        self.contactperson = self.portal.contactpersonen.Jslob
+
         pass
     # from class Study:
     # from class Study:
@@ -93,6 +111,44 @@ class testStudy(MainTestCase):
     def test_subscribers_export(self):
         pass
 
+    def testStudy(self):
+        """ Test if the Study is in the portal_types
+        """
+        types_ = self.portal.portal_types.objectIds()
+        self.failUnless('Study' in types_)
+
+    def testProperties(self):
+        """ Test if the Study has the correct properties
+        """
+
+        self.teststudy.setTitle(TITLE)
+        self.teststudy.setSubheader(SUBHEADER)
+        self.teststudy.setDescription(DESCRIPTION)
+        self.teststudy.setLocation(LOCATION)
+        self.teststudy.setStartdate(STARTDATE)
+        self.teststudy.setEnddate(ENDDATE)
+        self.teststudy.setSpeakers(SPEAKERS)
+        self.teststudy.setBody(HTMLBODY,text_format="text/html")
+        self.teststudy.setContact(self.contactperson.UID())
+
+        self.failUnless(self.teststudy.Title()==TITLE,
+                         'Value is %s' % self.teststudy.Title())
+        self.failUnless(self.teststudy.getSubheader()==SUBHEADER,
+                         'Value is %s' % self.teststudy.getSubheader())
+        self.failUnless(self.teststudy.getDescription()==DESCRIPTION,
+                         'Value is %s' % self.teststudy.getDescription())
+        self.failUnless(self.teststudy.getLocation()==LOCATION,
+                         'Value is %s' % self.teststudy.getLocation())
+        self.failUnless(self.teststudy.getStartdate()==STARTDATE,
+                         'Value is %s' % self.teststudy.getStartdate())
+        self.failUnless(self.teststudy.getEnddate()==ENDDATE,
+                         'Value is %s' % self.teststudy.getEnddate())
+        self.failUnless(self.teststudy.getSpeakers()==SPEAKERS,
+                         'Value is %s' % str(self.teststudy.getSpeakers()))
+        self.failUnless(self.teststudy.getBody()==HTMLBODY,
+                         'Value is %s' % self.teststudy.getBody())
+        self.failUnless(self.teststudy.getContact()==[self.contactperson],
+                         'Value is %s' % self.teststudy.getContact())
 
 def test_suite():
     from unittest import TestSuite, makeSuite
