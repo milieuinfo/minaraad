@@ -55,11 +55,6 @@ class testSetup(MainTestCase):
         """
         pass
     
-    def test_reinstall(self):
-        qi = self.portal.portal_quickinstaller
-        qi.reinstallProducts(('minaraad',))
-        
-
     def test_tools(self):
         """ 
         """
@@ -135,6 +130,10 @@ class testSetup(MainTestCase):
         props = propsTool.minaraad_properties
         self.failUnless(props.hasProperty('themes'))
 
+    def test_reinstall(self):
+        qi = self.portal.portal_quickinstaller
+        qi.reinstallProducts(('minaraad',))
+        
 
 def test_suite():
     from unittest import TestSuite, makeSuite

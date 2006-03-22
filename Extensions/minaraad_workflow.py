@@ -149,16 +149,16 @@ def setupminaraad_workflow(self, workflow):
     stateDef.setProperties(title="""restricted""",
                            transitions=['retract'])
     stateDef.setPermission('Access contents information',
-                           1,
+                           0,
                            ['Author', 'Owner', 'Council Member', 'Reviewer', 'Manager'])
     stateDef.setPermission('View',
-                           1,
+                           0,
                            ['Author', 'Owner', 'Council Member', 'Reviewer', 'Manager'])
     stateDef.setPermission('Modify portal content',
                            0,
                            ['Manager'])
     stateDef.setPermission('List folder contents',
-                           1,
+                           0,
                            ['Author', 'Owner', 'Council Member', 'Reviewer', 'Manager'])
 
     stateDef = workflow.states['private']
