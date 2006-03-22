@@ -785,3 +785,6 @@ msgstr ""
 msgid "up_untill"
 msgstr ""
 
+#: browser/subscribers_config.pt
+msgid "label_subscribersoverview"
+msgstr ""

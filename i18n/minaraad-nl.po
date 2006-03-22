@@ -785,3 +785,6 @@ msgstr "Selecteer alles:"
 msgid "up_untill"
 msgstr "t/m"
 
+#: browser/subscribers_config.pt
+msgid "label_subscribersoverview"
+msgstr "Thema abonnees"
