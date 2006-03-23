@@ -1,6 +1,44 @@
 /* <dtml-with base_properties> (do not remove this :) */
 /* <dtml-call "REQUEST.set('portal_url', portal_url())"> (not this either :) */
 
+body {
+    margin: 0px;
+}
+
+#portal-columns{
+    width: 1001px !important;
+}
+
+#portal-column-one {
+    width: 152px;
+}
+
+#portal-column-two {
+    width: 197px;
+    border-left: #D98F81;
+}
+
+.documentContent {
+    margin: 0px !important;
+    padding: 0px !important;
+}
+
+.portal-header {
+    background: url(&dtml-portal_url;/header.jpg) no-repeat right top;
+    height: 155px;
+    margin: 0px
+    float: right;
+}
+
+#visual-portal-wrapper {
+    width: 1001px;
+    background: url('&dtml-portal_url;/sitelayout_bg.gif') no-repeat top left !important;
+    border: none;
+    border-right: 1px solid #A4CF4D;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 /* ---- Start content type textposition from icon --- */
 .contenttype-agendaitem, .actionMenu .contenttype-agendaitem a:hover,
 .contenttype-advisory, .actionMenu .contenttype-advisory a:hover {
