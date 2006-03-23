@@ -38,7 +38,8 @@
         <br />
 
         <tal:block tal:define="subscription session/category|nothing;
-                               members view/getMembersOfSubscriptions">
+                               members view/getMembersOfSubscriptions;
+                               postsubscriptions python:subscription == 'AnnualReport' or subscription == 'Advisory' or subscription == 'Study'">
         
         <form method="get"
               tal:attributes="action string:${context/absolute_url}/$template_id">
@@ -91,7 +92,8 @@
                     name="form.button.ExportPost"
                     value="Export Post Subscribers"
                     i18n:attributes="value label_export_post;"
-                    tal:attributes="tabindex tabindex/next;" />
+                    tal:attributes="tabindex tabindex/next;"
+                    tal:condition="postsubscriptions" />
 
             <input class="context"
                     type="hidden"

@@ -32,7 +32,8 @@
                 <div class="formHelp" 
                      i18n:translate="help_email_out_already_sent">
                     An e-mail has already been sent out for this content type on
-                    <span tal:replace="view/sentDate" />.
+                    <span i18n:name="email_sentdate"
+                          tal:replace="view/sentDate" />.
                 </div>
                 </tal:block>
     

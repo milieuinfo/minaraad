@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minaraad 0.1\n"
-"POT-Creation-Date: 2006-03-22 08:56+0000\n"
+"POT-Creation-Date: 2006-03-23 07:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: Mirella van Teulingen <m.van.teulingen@zestsoftware.nl>\n"
 "Language-Team: English <info@zestsoftware.nl>\n"
@@ -96,6 +96,7 @@ msgstr ""
 #. Default: "from"
 #: skins/minaraad/hearing_listing_view.pt
 #: skins/minaraad/mina_showdatetime.pt
+#: skins/minaraad/study_listing_view.pt
 msgid "from"
 msgstr ""
 
@@ -137,6 +138,7 @@ msgstr ""
 #. Default: "hour"
 #: skins/minaraad/hearing_listing_view.pt
 #: skins/minaraad/mina_showdatetime.pt
+#: skins/minaraad/study_listing_view.pt
 msgid "hour"
 msgstr ""
 
@@ -337,6 +339,10 @@ msgstr ""
 msgid "label_subscribe"
 msgstr ""
 
+#: browser/subscribers_config.pt
+msgid "label_subscribersoverview"
+msgstr ""
+
 #. Default: "Theme:"
 #: skins/minaraad/EmailTemplate-Hearing.pt
 #: skins/minaraad/hearing_view.pt
@@ -396,8 +402,8 @@ msgstr ""
 
 #. Default: "More"
 #: skins/minaraad/advisory_listing_view.pt
+#: skins/minaraad/annualreport_listing_view.pt
 #: skins/minaraad/hearing_listing_view.pt
-#: skins/minaraad/newsletter_listing_view.pt
 msgid "linkmoreinfo"
 msgstr ""
 
@@ -626,7 +632,8 @@ msgid "minaraad_label_jobtitle"
 msgstr ""
 
 #. Default: "Location"
-#: content/Hearing.py
+#: skins/minaraad/study_listing_view.pt
+#: skins/minaraad/study_view.pt
 msgid "minaraad_label_location"
 msgstr ""
 
@@ -670,6 +677,7 @@ msgid "minaraad_label_speaker"
 msgstr ""
 
 #. Default: "Speakers"
+#: skins/minaraad/EmailTemplate-Study.pt
 #: skins/minaraad/study_view.pt
 msgid "minaraad_label_speakers"
 msgstr ""
@@ -716,8 +724,8 @@ msgstr ""
 
 #. Default: "For more information contact:"
 #: skins/minaraad/advisory_view.pt
+#: skins/minaraad/annualreport_view.pt
 #: skins/minaraad/EmailTemplate-Default.pt
-#: skins/minaraad/hearing_view.pt
 msgid "moreinfo_contactperson"
 msgstr ""
 
@@ -726,9 +734,9 @@ msgstr ""
 msgid "no_attendees"
 msgstr ""
 
-#. Default: "Pressrelease date:"
-#: skins/minaraad/pressrelease_view.pt
-msgid "pressrelease_date"
+#. Default: "No newsitems available"
+#: skins/minaraad/newsletter_view.pt
+msgid "no_newsitems_available"
 msgstr ""
 
 #. Default: "Subscriptions"
@@ -739,6 +747,7 @@ msgstr ""
 #. Default: "till"
 #: skins/minaraad/hearing_listing_view.pt
 #: skins/minaraad/mina_showdatetime.pt
+#: skins/minaraad/study_listing_view.pt
 msgid "till"
 msgstr ""
 
@@ -786,6 +795,7 @@ msgstr ""
 #. Default: "up untill"
 #: skins/minaraad/hearing_listing_view.pt
 #: skins/minaraad/mina_showdatetime.pt
+#: skins/minaraad/study_listing_view.pt
 msgid "up_untill"
 msgstr ""
 

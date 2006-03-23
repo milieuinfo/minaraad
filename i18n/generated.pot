@@ -68,7 +68,7 @@ msgstr ""
 msgid "help_email_out_additional"
 msgstr ""
 
-#. Default: "An e-mail has already been sent out for this content type on"
+#. Default: "An e-mail has already been sent out for this content type on ${email_sentdate}"
 #: browser/email_out.pt
 msgid "help_email_out_already_sent"
 msgstr ""

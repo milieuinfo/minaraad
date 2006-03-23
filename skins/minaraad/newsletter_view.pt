@@ -31,18 +31,22 @@
             <h3 tal:content="category">
                 Category
             </h3>
-            <div tal:omit-tag=""
-                tal:define="newsitems python:context.portal_catalog.searchResults(portal_type='NewsItem',
-                                                                                path=current_path,
-                                                                                getCategory=category,
-                                                                                review_state='published');"
-                tal:repeat="newsitem newsitems">
-
+            
+            <div tal:define="newsitems python:context.portal_catalog.searchResults(portal_type='NewsItem',
+                                                                               path=current_path,
+                                                                               getCategory=category,
+                                                                               review_state='published');"
+                 tal:omit-tag="">
+            <div tal:repeat="newsitem newsitems"
+                  tal:omit-tag="">
                 <a tal:attributes="href string:#${newsitem/id}"
                     tal:content="newsitem/Title" />
                 <br />
             </div>
+            <div tal:condition="not:newsitems"
+                 i18n:translate="no_newsitems_available">No newsitems available</div>
             <br />
+            </div>
         </div>
         <br />
         <hr />
@@ -57,8 +61,10 @@
                 tal:define="newsitems python:context.portal_catalog.searchResults(portal_type='NewsItem',
                                                                                 path=current_path,
                                                                                 getCategory=category,
-                                                                                review_state='published');"
-                tal:repeat="newsitem newsitems">
+                                                                                review_state='published');">
+
+            <div tal:repeat="newsitem newsitems"
+                 tal:omit-tag="">
 
                 <a tal:attributes="name newsitem/id">
                     <h4 tal:content="newsitem/Title" />
@@ -79,6 +85,9 @@
                     </div>
                     <br /><br />
                 </tal:block>
+            </div>
+            <div tal:condition="not:newsitems"
+                 i18n:translate="no_newsitems_available">No newsitems available</div>
             </div>
             <br /><br />
         </div>
