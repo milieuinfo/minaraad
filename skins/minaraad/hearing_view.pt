@@ -9,8 +9,7 @@
                              current_path python:'/'.join(context.getPhysicalPath());
                              agendaItems python:context.portal_catalog.searchResults(portal_type='AgendaItem',
                                                                                     path=current_path,
-                                                                                    sort_on='getItemstartdate',
-                                                                                    review_state='published');">
+                                                                                    sort_on='getItemstartdate');">
         <metal:block metal:define-macro="folderlisting" />
 
         <div tal:define="attendees view/groupedAttendees" 
@@ -23,6 +22,7 @@
                 <span tal:define="obj agendaItem/getObject"
                       tal:condition="obj/getSpeaker"
                       tal:replace="obj/getSpeaker" />
+                <br />
                 </tal:block>
                 <span tal:condition="not:agendaItems" 
                       class="discreet"
@@ -163,8 +163,7 @@
                     <span tal:replace="obj/speaker" />,
                     <span tal:replace="obj/organisation" />
                 </div>
-
-                <!-- Start Attachments-->
+				<!-- Start Attachments-->
                 <div metal:use-macro="context/mina_attachments/macros/agenda_attachments" />
                 <!-- end Attachments -->
             </tal:block>
