@@ -9,8 +9,10 @@ body {
     width: 1001px !important;
 }
 
-#portal-column-one {
-    width: 152px;
+#portal-column-one-mina {
+	background-color: #A4CF4D;
+	margin: 0px;
+	padding: 0px;
 }
 
 #portal-column-two {
@@ -38,6 +40,17 @@ body {
     margin-left: auto;
     margin-right: auto;
 }
+
+/*--- Start portlet personal bar --- */
+
+dl.portlet-personalbar, .portlet-personal-bar dt {
+	margin: 0px;
+	border:1px solid black;
+	
+
+}
+
+/*--- Start portlet personal bar --- */
 
 /* ---- Start content type textposition from icon --- */
 .contenttype-agendaitem, .actionMenu .contenttype-agendaitem a:hover,

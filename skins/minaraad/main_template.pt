@@ -65,10 +65,6 @@
                The global sections tabs. (Welcome, News etc)
              </div>
           </div>
-
-          <div metal:use-macro="here/global_personalbar/macros/personal_bar">
-             The personal bar. (log in, logout etc...)
-           </div>
 -->
       </div>
 
@@ -81,7 +77,7 @@
       </tal:comment>
 
       <table id="portal-columns" border="0">
-        <tbody>
+        <tbody valign="top">
           <tr>
               <td colspan="5"
                   class="portal-header">
@@ -95,13 +91,14 @@
                 Site-wide actions (Contact, Sitemap, Help, Style Switcher etc)
               </div>
             -->
-            </td>
+           </td>
           </tr>
           <tr>
             <tal:comment replace="nothing"> Start of the left column </tal:comment>
-            <td id="portal-column-one"
+            <td id="portal-column-one-mina"
                 metal:define-slot="column_one_slot"
-                tal:condition="sl">
+                tal:condition="sl"
+                width="155">
 
               <div class="visualPadding">
                 <metal:portlets define-slot="portlets_one_slot">
@@ -115,7 +112,7 @@
             </td>
             <tal:comment replace="nothing"> End of the left column </tal:comment>
 
-            <td width="61">&nbsp;</td>
+            <td width="58">&nbsp;</td>
 
             <tal:comment replace="nothing"> Start of main content block </tal:comment>
             <td id="portal-column-content"
@@ -172,7 +169,8 @@
             <tal:comment replace="nothing"> Start of right column </tal:comment>
             <td id="portal-column-two"
                 metal:define-slot="column_two_slot"
-                tal:condition="sr">
+                tal:condition="sr"
+                width="197">
 <!--
              <div metal:use-macro="here/global_searchbox/macros/quick_search">
                The quicksearch box, normally placed at the top right

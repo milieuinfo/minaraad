@@ -1,0 +1,37 @@
+<html xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      i18n:domain="plone">
+    <body>
+    <metal:portlet define-macro="portlet"
+                   tal:define="display_actions python:user_actions[:-1]+global_actions+user_actions[-1:];
+				                  getIconFor nocall:putils/getIconFor;">
+                
+    <dl class="portlet-personalbar">
+        <dt i18n:translate="heading_personal_tools">Personal tools</dt>
+            <dd class="portalUser"
+				tal:condition="not: isAnon">
+                <a id="user-name"
+				   tal:omit-tag="not: mtool/getHomeFolder"
+				   tal:attributes="href string:${mtool/getHomeUrl}">
+				    <span class="visualCaseSensitive"
+				          tal:replace="user/getUserName">
+				        John
+				    </span>
+				</a>
+		    </dd>
+		    <tal:actions tal:repeat="action python:here.getOrderedUserActions(keyed_actions=keyed_actions)">
+            <dd tal:define="icon python:getIconFor(action['category'], action['id'], None);
+                            class_name string:actionicon-${action/category}-${action/id};
+                            class_name python:test(icon, class_name, nothing);"
+                tal:attributes="class class_name">
+                <a tal:attributes="href action/url;
+                                   class python:test(icon, 'visualIconPadding', nothing);"
+                   i18n:translate="" 
+                   tal:content="action/name">
+                </a>
+            </dd>
+            </tal:actions>
+        </dl>
+    </metal:portlet>
+    </body>
+</html>
