@@ -4,6 +4,17 @@
     <metal:block use-macro="context/global_defines/macros/defines" />
     
     <body>
+	<metal:block metal:define-macro="header">
+    <h1>
+	<span tal:define="daterequired python:context.getDate() != None;
+                     date python:context.toLocalizedTime(context.date)[:-5];" 
+         tal:condition="daterequired"> 
+        <span tal:replace="date" />
+    </span>
+	<span tal:replace="context/Title" />
+	</h1>
+	</metal:block>
+
     <metal:block metal:define-macro="body"
                  tal:define="current_path python:'/'.join(context.getPhysicalPath());
                              categories python:['Vastgestelde adviezen',
@@ -12,15 +23,6 @@
                                           'Europese ontwikkelingen'];">
 
         <metal:block metal:define-macro="folderlisting" />
-
-        <div tal:define="daterequired python:context.getDate() != None;
-                         date python:context.toLocalizedTime(context.date)[:-5];"
-             class="advisory_listdate" 
-             tal:condition="daterequired"> 
-
-            <span class="hearingsubheader2"
-                  i18n:translate="Date:">Date:</span><span tal:replace="date" />
-        </div>
 
         <div class="bodytext"
              tal:condition="context/getBody"

@@ -231,7 +231,7 @@ def addMemberDataProperties(self, out):
 
     # special care for our selection property gender
     if 'genders' not in memberdata.propertyIds():
-        memberdata.manage_addProperty('genders', ['Heer','Mevrouw'], 'lines')
+        memberdata.manage_addProperty('genders', ['de Heer','Mevrouw'], 'lines')
 
     if 'gender' not in memberdata.propertyIds():
         memberdata.manage_addProperty('gender', 'genders', 'selection')

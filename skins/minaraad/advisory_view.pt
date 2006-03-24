@@ -17,7 +17,17 @@
             <span class="normaltext"
                   tal:content="date" />
         </div>
-    
+
+        <!-- Text -->
+        <div class="bodytext"
+            tal:content="structure context/getBody"
+            tal:condition="context/getBody" />
+        <!-- End text -->
+        <br />
+   
+        <!-- Start Attachments-->
+        <div metal:use-macro="context/mina_attachments/macros/agenda_attachments" />
+        <!-- end Attachments -->
 
         <!-- Contactperson -->
         <tal:block tal:define="contacts python:context.getContact()"
@@ -34,16 +44,6 @@
         </tal:block>
         <!-- end contactpersoon -->
 
-        <!-- Text -->
-        <div class="bodytext"
-            tal:content="structure context/getBody"
-            tal:condition="context/getBody" />
-        <!-- End text -->
-        <br />
-   
-        <!-- Start Attachments-->
-        <div metal:use-macro="context/mina_attachments/macros/agenda_attachments" />
-        <!-- end Attachments -->
     </metal:block>
     <metal:block metal:define-macro="folderlisting" />
     </body>

@@ -23,12 +23,8 @@
         
         <div tal:repeat="item_object annualreports">
             <tal:block tal:define="obj python:item_object.getObject()">
-             <div class="pressrelease_listtitle"
+             <a href="#" class="annualreport_listtitle"
                 tal:content="item_object/Title" />
-            
-            <span tal:content="item_object/Description" />
-            <a tal:attributes="href item_object/getURL"
-                i18n:translate="linkmoreinfo">More</a>
             </tal:block>
             <br />
             <br />

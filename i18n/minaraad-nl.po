@@ -211,7 +211,7 @@ msgstr "Aan"
 #. Default: "Emailaddress"
 #: skins/minaraad/contactperson_view.pt
 msgid "label_emailaddress"
-msgstr "Emailadres"
+msgstr "E-mailadres"
 
 #. Default: "Export As Excel Spreadsheet"
 #: browser/export-subscribers.pt
@@ -572,7 +572,7 @@ msgstr "Datum"
 #. Default: "Department"
 #: skins/minaraad/contactperson_view.pt
 msgid "minaraad_label_department"
-msgstr "Afdeling"
+msgstr "Organisatie"
 
 #. Default: "Description"
 #: content/Hearing.py
@@ -625,7 +625,7 @@ msgstr "Agendapunt start datum/tijd"
 #. Default: "Jobtitle"
 #: content/ContactPerson.py
 msgid "minaraad_label_jobtitle"
-msgstr ""
+msgstr "Functie"
 
 #. Default: "Location"
 #: skins/minaraad/study_listing_view.pt
@@ -651,7 +651,7 @@ msgstr "Organisatie"
 #. Default: "Phonenumber"
 #: content/ContactPerson.py
 msgid "minaraad_label_phonenumber"
-msgstr "Telefoonnummer"
+msgstr "Telefoon"
 
 #. Default: "Plaintext"
 #: MinaBundle.py

@@ -3,8 +3,8 @@ from folderstructure import *
 
 # Portal Properties
 PORTAL_TITLE = 'MiNa-Raad'
-EMAIL_FROM_ADDRESS = 'postmaster@zestsoftware.nl'
-EMAIL_FROM_NAME = 'Webmaster MiNa-Raad'
+EMAIL_FROM_ADDRESS = 'communicatie@minaraad.be'
+EMAIL_FROM_NAME = 'Communicatie MiNa-Raad'
 
 # Site Wide Properties
 LOCAL_TIME_FORMAT = '%d-%b-%Y'

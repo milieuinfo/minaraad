@@ -35,21 +35,6 @@
             tal:content="structure context/getBody"
             tal:condition="context/getBody" />
         <!-- End text -->
-       
-        <!-- Contactperson -->
-        <tal:block tal:define="contacts python:context.getContact()"
-                   tal:condition="contacts">
-            <br />
-            <div i18n:translate="moreinfo_contactperson">
-                For more information contact:
-            </div>
-            <tal:block tal:repeat="contact contacts">
-           <div metal:use-macro="context/contactperson_view/macros/contactdetails"
-                tal:omit-tag="" />
-            </tal:block>
-            <br />
-        </tal:block>
-        <!-- end contactpersoon -->
         
         <!-- Speakers -->
         <tal:block tal:define="speakers context/getSpeakers"
@@ -69,10 +54,25 @@
         </tal:block>
         <!-- end Speakers -->
         
-        
         <!-- Start Attachments-->
         <div metal:use-macro="context/mina_attachments/macros/listattachments" />
         <!-- end Attachments -->
+    
+		<!-- Contactperson -->
+        <tal:block tal:define="contacts python:context.getContact()"
+                   tal:condition="contacts">
+            <br />
+            <div i18n:translate="moreinfo_contactperson">
+                For more information contact:
+            </div>
+            <tal:block tal:repeat="contact contacts">
+           <div metal:use-macro="context/contactperson_view/macros/contactdetails"
+                tal:omit-tag="" />
+            </tal:block>
+            <br />
+        </tal:block>
+        <!-- end contactpersoon -->
+
     </metal:block>
     <metal:block metal:define-macro="folderlisting" />
     </body>

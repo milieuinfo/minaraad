@@ -86,11 +86,9 @@
           </tr>
           <tr>
             <td colspan="5">
-            <!--
               <div metal:use-macro="here/global_siteactions/macros/site_actions">
                 Site-wide actions (Contact, Sitemap, Help, Style Switcher etc)
               </div>
-            -->
            </td>
           </tr>
           <tr>
@@ -203,9 +201,7 @@
         </metal:colophon>
 -->
       </metal:block>
-
     </div>
-
 </body>
 </html>
 </metal:page>

@@ -112,24 +112,6 @@
          <div metal:use-macro="context/mina_showdatetime/macros/datetime" />
         <!-- end Date and Time -->
         
-        <!-- Contactperson -->
-       <tal:block tal:define="contacts python:context.getContact()"
-                 tal:condition="contacts">
-            <br />
-            <div i18n:translate="moreinfo_contactperson">
-                For more information contact:
-            </div>
-            
-            <tal:block tal:repeat="contact contacts">
-                <div metal:use-macro="context/contactperson_view/macros/contactdetails"
-                     tal:omit-tag="" />
-            </tal:block>
-            <br />
-            <br />
-        </tal:block>
-        
-        <!-- end contactpersoon -->
-        
         <!-- Text -->
         <div class="bodytext"
              tal:condition="context/getBody"
@@ -170,6 +152,24 @@
             </li>
         </ul>
         <!-- End speakers -->
+
+		<!-- Contactperson -->
+       <tal:block tal:define="contacts python:context.getContact()"
+                 tal:condition="contacts">
+            <br />
+            <div i18n:translate="moreinfo_contactperson">
+                For more information contact:
+            </div>
+            
+            <tal:block tal:repeat="contact contacts">
+                <div metal:use-macro="context/contactperson_view/macros/contactdetails"
+                     tal:omit-tag="" />
+            </tal:block>
+            <br />
+            <br />
+        </tal:block>        
+        <!-- end contactpersoon -->
+
     </metal:block>
     </body>
 </html>

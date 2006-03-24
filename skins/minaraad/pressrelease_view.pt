@@ -23,7 +23,18 @@
         <span class="documentDescription"
               tal:content="context/getDescription" />
 
-        <!-- Contactperson -->
+        <!-- Text -->
+        <div class="bodytext"
+            tal:content="structure context/getBody"
+            tal:condition="context/getBody" />
+        <!-- End text -->
+        <br />
+   
+        <!-- Start Attachments-->
+        <div metal:use-macro="context/mina_attachments/macros/listattachments" />
+        <!-- end Attachments -->
+
+		<!-- Contactperson -->
         <tal:block tal:define="contacts python:context.getContact()"
                    tal:condition="contacts">
             <br />
@@ -37,17 +48,6 @@
             <br />
         </tal:block>
         <!-- end contactpersoon -->
-
-        <!-- Text -->
-        <div class="bodytext"
-            tal:content="structure context/getBody"
-            tal:condition="context/getBody" />
-        <!-- End text -->
-        <br />
-   
-        <!-- Start Attachments-->
-        <div metal:use-macro="context/mina_attachments/macros/listattachments" />
-        <!-- end Attachments -->
     </metal:block>
     <metal:block metal:define-macro="folderlisting" />
     </body>
