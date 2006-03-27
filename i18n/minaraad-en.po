@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minaraad 0.1\n"
-"POT-Creation-Date: 2006-03-23 07:54+0000\n"
+"POT-Creation-Date: 2006-03-27 13:59+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: Mirella van Teulingen <m.van.teulingen@zestsoftware.nl>\n"
 "Language-Team: English <info@zestsoftware.nl>\n"
@@ -25,9 +25,7 @@ msgid "AnnualReport"
 msgstr ""
 
 #. Default: "Date:"
-#: skins/minaraad/EmailTemplate-NewsLetter.pt
 #: skins/minaraad/mina_showdatetime.pt
-#: skins/minaraad/newsletter_view.pt
 msgid "Date:"
 msgstr ""
 
@@ -115,8 +113,9 @@ msgstr ""
 msgid "help_email_out_additional"
 msgstr ""
 
-#. Default: "An e-mail has already been sent out for this content type on"
+#. Default: "An e-mail has already been sent out for this content type on ${email_sentdate}"
 #: browser/email_out.pt
+#, fuzzy
 msgid "help_email_out_already_sent"
 msgstr ""
 
@@ -402,8 +401,8 @@ msgstr ""
 
 #. Default: "More"
 #: skins/minaraad/advisory_listing_view.pt
-#: skins/minaraad/annualreport_listing_view.pt
 #: skins/minaraad/hearing_listing_view.pt
+#: skins/minaraad/newsletter_listing_view.pt
 msgid "linkmoreinfo"
 msgstr ""
 
@@ -611,6 +610,12 @@ msgstr ""
 msgid "minaraad_label_enddate"
 msgstr ""
 
+#. Default: "Foto"
+#: content/Hearing.py
+#: content/Pressrelease.py
+msgid "minaraad_label_foto"
+msgstr ""
+
 #. Default: "Goal"
 #: content/Hearing.py
 msgid "minaraad_label_goal"
@@ -635,6 +640,16 @@ msgstr ""
 #: skins/minaraad/study_listing_view.pt
 #: skins/minaraad/study_view.pt
 msgid "minaraad_label_location"
+msgstr ""
+
+#. Default: "Logo_1"
+#: content/Pressrelease.py
+msgid "minaraad_label_logo_1"
+msgstr ""
+
+#. Default: "Logo_2"
+#: content/Pressrelease.py
+msgid "minaraad_label_logo_2"
 msgstr ""
 
 #. Default: "Mot"
@@ -724,8 +739,8 @@ msgstr ""
 
 #. Default: "For more information contact:"
 #: skins/minaraad/advisory_view.pt
-#: skins/minaraad/annualreport_view.pt
 #: skins/minaraad/EmailTemplate-Default.pt
+#: skins/minaraad/EmailTemplate-PressRelease.pt
 msgid "moreinfo_contactperson"
 msgstr ""
 

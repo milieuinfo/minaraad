@@ -78,6 +78,39 @@ schema = Schema((
         default_output_type='text/html'
     ),
 
+    ImageField(
+        name='logo_1',
+        widget=ImageWidget(
+            label="Logo 1",
+            label_msgid='minaraad_label_logo_1',
+            i18n_domain='minaraad',
+        ),
+        storage=AttributeStorage(),
+        sizes={'logo':(125,125)}
+    ),
+
+    ImageField(
+        name='logo_2',
+        widget=ImageWidget(
+            label="Logo 2",
+            label_msgid='minaraad_label_logo_2',
+            i18n_domain='minaraad',
+        ),
+        storage=AttributeStorage(),
+        sizes={'logo':(125,125)}
+    ),
+
+    ImageField(
+        name='foto',
+        widget=ImageWidget(
+            label="Photo",
+            label_msgid='minaraad_label_foto',
+            i18n_domain='minaraad',
+        ),
+        storage=AttributeStorage(),
+        sizes={'foto':(300,300)}
+    ),
+
     OrderableReferenceField(
         name='contact',
         widget=OrderableReferenceWidget(

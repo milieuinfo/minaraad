@@ -31,7 +31,6 @@ from AccessControl import ClassSecurityInfo
 from Products.Archetypes.atapi import *
 from Products.minaraad.PostMixin import PostMixin
 from Products.minaraad.EmailMixin import EmailMixin
-from Products.minaraad.Attachmentsmixin import Attachmentsmixin
 from Products.minaraad.config import *
 
 ##code-section module-header #fill in your manual code here
@@ -39,36 +38,14 @@ from Products.minaraad.config import *
 
 schema = Schema((
 
-    TextField(
-        name='description',
-        widget=TextAreaWidget(
-            label='Description',
-            label_msgid='minaraad_label_description',
-            i18n_domain='minaraad',
-        )
-    ),
-
-    TextField(
-        name='body',
-        allowable_content_types=('text/plain', 'text/structured', 'text/html', 'application/msword',),
-        widget=RichWidget(
-            label='Body',
-            label_msgid='minaraad_label_body',
+    FileField(
+        name='attachment',
+        widget=FileWidget(
+            label='Attachment',
+            label_msgid='minaraad_label_attachment',
             i18n_domain='minaraad',
         ),
-        default_output_type='text/html'
-    ),
-
-    OrderableReferenceField(
-        name='contact',
-        widget=OrderableReferenceWidget(
-            label='Contact',
-            label_msgid='minaraad_label_contact',
-            i18n_domain='minaraad',
-        ),
-        allowed_types=('ContactPerson',),
-        multiValued=1,
-        relationship='annualreport_contact'
+        storage=AttributeStorage()
     ),
 
 ),
@@ -77,27 +54,27 @@ schema = Schema((
 ##code-section after-local-schema #fill in your manual code here
 ##/code-section after-local-schema
 
-AnnualReport_schema = getattr(PostMixin, 'schema', Schema(())).copy() + \
+AnnualReport_schema = BaseSchema.copy() + \
+    getattr(PostMixin, 'schema', Schema(())).copy() + \
     getattr(EmailMixin, 'schema', Schema(())).copy() + \
-    getattr(Attachmentsmixin, 'schema', Schema(())).copy() + \
     schema.copy()
 
 ##code-section after-schema #fill in your manual code here
 ##/code-section after-schema
 
-class AnnualReport(PostMixin, EmailMixin, Attachmentsmixin):
+class AnnualReport(PostMixin, EmailMixin, BaseContent):
     """
     An annual report
     """
     security = ClassSecurityInfo()
-    __implements__ = (getattr(PostMixin,'__implements__',()),) + (getattr(EmailMixin,'__implements__',()),) + (getattr(Attachmentsmixin,'__implements__',()),)
+    __implements__ = (getattr(PostMixin,'__implements__',()),) + (getattr(EmailMixin,'__implements__',()),) + (getattr(BaseContent,'__implements__',()),)
 
     # This name appears in the 'add' box
     archetype_name = 'AnnualReport'
 
     meta_type = 'AnnualReport'
     portal_type = 'AnnualReport'
-    allowed_content_types = [] + list(getattr(PostMixin, 'allowed_content_types', [])) + list(getattr(EmailMixin, 'allowed_content_types', [])) + list(getattr(Attachmentsmixin, 'allowed_content_types', []))
+    allowed_content_types = [] + list(getattr(PostMixin, 'allowed_content_types', [])) + list(getattr(EmailMixin, 'allowed_content_types', []))
     filter_content_types = 0
     global_allow = 1
     #content_icon = 'AnnualReport.gif'

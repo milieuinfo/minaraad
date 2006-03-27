@@ -105,17 +105,17 @@ class testStudy(MainTestCase):
     def test_getEmailContentsFromContent(self):
         pass
 
-    def test_getEmailContents(self):
-        pass
-
-    def test_subscribers_export(self):
-        pass
-
     def testStudy(self):
         """ Test if the Study is in the portal_types
         """
         types_ = self.portal.portal_types.objectIds()
         self.failUnless('Study' in types_)
+
+    def test_getEmailContents(self):
+        pass
+
+    def test_subscribers_export(self):
+        pass
 
     def testProperties(self):
         """ Test if the Study has the correct properties
@@ -149,6 +149,7 @@ class testStudy(MainTestCase):
                          'Value is %s' % self.teststudy.getBody())
         self.failUnless(self.teststudy.getContact()==[self.contactperson],
                          'Value is %s' % self.teststudy.getContact())
+
 
 def test_suite():
     from unittest import TestSuite, makeSuite

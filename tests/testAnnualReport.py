@@ -74,7 +74,6 @@ class testAnnualReport(MainTestCase):
         pass
     # from class AnnualReport:
     # from class AnnualReport:
-
     def test_email_out(self):
         pass
 
@@ -103,14 +102,14 @@ class testAnnualReport(MainTestCase):
     def test_getEmailContents(self):
         pass
 
-    def test_subscribers_export(self):
-        pass
-
     def testAnnualReport(self):
         """ Test if the AnnualReport is in the portal_types
         """
         types_ = self.portal.portal_types.objectIds()
         self.failUnless('AnnualReport' in types_)
+
+    def test_subscribers_export(self):
+        pass
 
     def testProperties(self):
         """ Test if the AnnualReport has the correct properties
@@ -118,17 +117,10 @@ class testAnnualReport(MainTestCase):
 
         self.testar.setTitle(TITLE)
         self.testar.setDescription(DESCRIPTION)
-        self.testar.setBody(HTMLBODY,text_format="text/html")
-        self.testar.setContact(self.contactperson.UID())
 
         self.failUnless(self.testar.Title()==TITLE,
                          'Value is %s' % self.testar.Title())
-        self.failUnless(self.testar.getDescription()==DESCRIPTION,
-                         'Value is %s' % self.testar.getDescription())
-        self.failUnless(self.testar.getBody()==HTMLBODY,
-                         'Value is %s' % self.testar.getBody())
-        self.failUnless(self.testar.getContact()==[self.contactperson],
-                         'Value is %s' % self.testar.getContact())
+
 
 def test_suite():
     from unittest import TestSuite, makeSuite

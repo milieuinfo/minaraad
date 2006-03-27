@@ -5,10 +5,16 @@
 
     <body>
     <metal:block metal:define-macro="body">
-        <!-- Start Attachments-->
-        <div metal:use-macro="context/mina_attachments/macros/listattachments" />
-        <!-- end Attachments -->
+        <br />
+        <a tal:attributes="href string:${context/absolute_url}/attachment">
+            <img tal:attributes="src string:${portal_url}/file_icon.gif;
+                                 alt context/attachment/filename" />
+            <span tal:content="context/attachment/filename" />
+        </a>
+        <span class="filesize"
+              tal:define="size python:context.getObjSize(context)"
+              tal:condition="size" 
+              tal:content="size">257 KB</span>
     </metal:block>
-    <metal:block metal:define-macro="folderlisting" />
     </body>
 </html>

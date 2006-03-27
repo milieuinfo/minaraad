@@ -127,6 +127,17 @@ schema = Schema((
         required=1
     ),
 
+    ImageField(
+        name='foto',
+        widget=ImageWidget(
+            label="Photo",
+            label_msgid='minaraad_label_foto',
+            i18n_domain='minaraad',
+        ),
+        storage=AttributeStorage(),
+        sizes={'foto':(300,300)}
+    ),
+
     OrderableReferenceField(
         name='contact',
         widget=OrderableReferenceWidget(

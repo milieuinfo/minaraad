@@ -64,8 +64,8 @@
              <div metal:use-macro="here/global_sections/macros/portal_tabs">
                The global sections tabs. (Welcome, News etc)
              </div>
-          </div>
 -->
+          </div>
       </div>
 
       <div class="visualClear"><!-- --></div>

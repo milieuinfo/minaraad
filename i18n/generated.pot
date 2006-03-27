@@ -236,6 +236,10 @@ msgstr ""
 msgid "label_street"
 msgstr ""
 
+#: browser/subscribers_config.pt
+msgid "label_subscribersoverview"
+msgstr ""
+
 #. Default: "Theme Name"
 #: browser/minaraad_config.pt"
 msgid "label_theme_name"
@@ -475,6 +479,12 @@ msgstr ""
 msgid "minaraad_label_enddate"
 msgstr ""
 
+#. Default: "Foto"
+#: content/Hearing.py
+#: content/Pressrelease.py
+msgid "minaraad_label_foto"
+msgstr ""
+
 #. Default: "Goal"
 #: content/Hearing.py
 msgid "minaraad_label_goal"
@@ -499,6 +509,16 @@ msgstr ""
 #: content/Hearing.py
 #: content/Study.py
 msgid "minaraad_label_location"
+msgstr ""
+
+#. Default: "Logo_1"
+#: content/Pressrelease.py
+msgid "minaraad_label_logo_1"
+msgstr ""
+
+#. Default: "Logo_2"
+#: content/Pressrelease.py
+msgid "minaraad_label_logo_2"
 msgstr ""
 
 #. Default: "Mot"
@@ -600,9 +620,4 @@ msgstr ""
 #: browser/subscriptions_config.pt
 msgid "toggle_all"
 msgstr ""
-
-#: browser/subscribers_config.pt
-msgid "label_subscribersoverview"
-msgstr ""
-
 
