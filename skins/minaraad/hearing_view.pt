@@ -145,7 +145,8 @@
                     <span tal:replace="obj/speaker" />,
                     <span tal:replace="obj/organisation" />
                 </div>
-				<!-- Start Attachments-->
+
+                <!-- Start Attachments-->
                 <div metal:use-macro="context/mina_attachments/macros/agenda_attachments" />
                 <!-- end Attachments -->
             </tal:block>
@@ -153,7 +154,7 @@
         </ul>
         <!-- End speakers -->
 
-		<!-- Contactperson -->
+	      <!-- Contactperson -->
        <tal:block tal:define="contacts python:context.getContact()"
                  tal:condition="contacts">
             <br />
