@@ -41,6 +41,12 @@ body {
     margin-right: auto;
 }
 
+#mina_events th {
+    font-weight:bold;
+    text-align: left;
+    text-transform: capitalize;
+}
+
 /*--- Start portlet personal bar --- */
 
 dl.portlet-personalbar, .portlet-personal-bar dt {
