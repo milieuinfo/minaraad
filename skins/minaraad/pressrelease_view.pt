@@ -7,7 +7,7 @@
      <metal:block metal:define-macro="header">
         <h1>
             <span tal:define="daterequired python:context.getDate() != None;
-                        date python:context.toLocalizedTime(context.date);"
+                        date python:context.toLocalizedTime(context.date)[:-5];"
                   tal:condition="daterequired">
             <span class="normaltext"
                   tal:content="date" />
