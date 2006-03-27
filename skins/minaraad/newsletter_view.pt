@@ -71,7 +71,8 @@
                 <a tal:attributes="name newsitem/id">
                     <h4 tal:content="newsitem/Title" />
                 </a>
-                <div tal:content="newsitem/getBody">Content here</div>
+                <div tal:define="obj python:newsitem.getObject()"
+                     tal:content="structure obj/getBody">Content here</div>
                 <br />
                 <!-- Contactperson -->
                 <tal:block tal:define="obj python:newsitem.getObject();
