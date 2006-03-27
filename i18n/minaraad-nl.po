@@ -290,7 +290,7 @@ msgstr "Ander land namelijk:"
 #. Default: "Phonenumber"
 #: skins/minaraad/contactperson_view.pt
 msgid "label_phonenumber"
-msgstr "Telefoonnummer"
+msgstr "Telefoon"
 
 #. Default: "Save"
 #: browser/minaraad_config.pt"
