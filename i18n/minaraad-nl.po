@@ -516,7 +516,7 @@ msgstr ""
 #: content/Study.py
 #: content/AnnualReport.py
 msgid "minaraad_label_attachment"
-msgstr ""
+msgstr "Bijlage"
 
 #. Default: "Attachments"
 #: content/Advisory.py
@@ -551,7 +551,7 @@ msgstr "Woonplaats"
 #: content/NewsLetter.py
 #: content/Advisory.py
 msgid "minaraad_label_contact"
-msgstr ""
+msgstr "Contactpersonen"
 
 #. Default: "Contactpersons"
 #: MinaBundle.py
@@ -582,7 +582,7 @@ msgstr "Omschrijving"
 #. Default: "Displayattachments"
 #: Attachmentsmixin.py
 msgid "minaraad_label_displayAttachments"
-msgstr ""
+msgstr "Bijlagen tonen"
 
 #. Default: "Email"
 #: content/ContactPerson.py
@@ -592,12 +592,12 @@ msgstr "E-mailadres contactpersoon"
 #. Default: "Emailsent"
 #: EmailMixin.py
 msgid "minaraad_label_emailSent"
-msgstr ""
+msgstr "Email verzonden"
 
 #. Default: "Emailtemplate"
 #: EmailMixin.py
 msgid "minaraad_label_emailTemplate"
-msgstr ""
+msgstr "E-mail template"
 
 #. Default: "Enddate"
 #: content/Hearing.py
