@@ -236,6 +236,38 @@ dl.listsubscriptions dt {
 .pressrelease_listsub {
     font-style:italic;
 }
+
+.pressrelease_largetable {
+    width:100%;
+}
+
+.pressrelease_left {
+    float:left;
+}
+
+.pressrelease_right {
+    float:right;
+}
+
+.pressrelease_center {
+    text-align:center;
+}
+
+.pressrelease_date {
+    color:#A13826;
+    font-style:italic;
+}
+
+.pressrelease_title {
+    color:#A13826;
+    font-weight:bold;
+    font-size:120%;
+}
+
+.pressrelease_subhead {
+    color:#A13826;
+    font-weight:bold;
+}
 /* --- End Pressrelease --- */
 
 /* --- Start FCKEditor Styles --- */
