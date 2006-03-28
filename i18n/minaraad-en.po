@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minaraad 0.1\n"
-"POT-Creation-Date: 2006-03-27 13:59+0000\n"
+"POT-Creation-Date: 2006-03-28 13:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: Mirella van Teulingen <m.van.teulingen@zestsoftware.nl>\n"
 "Language-Team: English <info@zestsoftware.nl>\n"
@@ -171,6 +171,7 @@ msgid "label_company"
 msgstr ""
 
 #. Default: "Contact persons:"
+#: skins/minaraad/newsitem_view.pt
 #: skins/minaraad/newsletter_view.pt
 msgid "label_contactpersons"
 msgstr ""
@@ -255,6 +256,11 @@ msgstr ""
 #: skins/minaraad/contactperson_view.pt
 #, fuzzy
 msgid "label_jobtitle"
+msgstr ""
+
+#. Default: "Join in"
+#: skins/minaraad/portlet_login.pt
+msgid "label_join_in"
 msgstr ""
 
 #: skins/join_form.cpt

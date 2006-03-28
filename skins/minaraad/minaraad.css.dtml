@@ -91,14 +91,51 @@ td.portal-siteactions {
 
 /*--- Start portlet personal bar --- */
 
-dl.portlet-personalbar, .portlet-personal-bar dt {
-	margin: 0px;
-	border:1px solid black;
-	
-
+.personalbar, .portlet-personalbar-mina {
+    background-color: #8FBA37;
+    border-top: 1px solid  #E0FAAC;
+    padding: 10px  3px 5px 3px;
+    width: 155px;
+    font-size: 11px;
+    font-weight: bold;
+    margin: 0px;
 }
 
-/*--- Start portlet personal bar --- */
+.personalbar_bordertop {
+    border-top: 1px solid  #8FBA37;
+}
+
+ul.portlet-personalbar-mina {
+    list-style-type: none;
+    list-style-image: none;
+}
+
+a.link-personalbar {
+    font-size: 11px;
+    text-decoration: none !important;
+    font-weight: bold;
+}
+
+.portalUser {
+    font-weight:bold;
+    font-size: 11px;
+}
+
+.login_button  {
+    font-size: 100% !important;
+    background: none;
+    border: 0px;
+    color: #A13826;
+    font-weight: bold;
+    padding: 2px;
+    cursor: hand;
+}
+
+.input_login {
+    border: 1px solid black;
+}
+
+/*--- End portlet personal bar --- */
 
 /* ---- Start content type textposition from icon --- */
 .contenttype-agendaitem, .actionMenu .contenttype-agendaitem a:hover,

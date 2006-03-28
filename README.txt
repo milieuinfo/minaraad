@@ -6,7 +6,7 @@ Navbarmenubg, toprightmenu: #C8ED7E
 Navbarbordertop and bottom: #8FBA37
 Navbarmenuborderall, Navbartoprightborder2: #E0FAAC
 
-SubmenuBG: # E7FBBF
+SubmenuBG: #E7FBBF
 Lightborder: #FFFFFF
 
 MinaRed: #A13826
