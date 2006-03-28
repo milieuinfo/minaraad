@@ -1,0 +1,86 @@
+import zope.component
+from path import path
+
+import CipraSync.write
+
+import minaraad.sync.transform
+import minaraad.sync.read
+
+# resolvers
+def resolver():
+    pass
+
+# transforms
+def transforms():
+    zope.component.provideUtility(
+        minaraad.sync.transform.DontWriteTransform(),
+        name='mina-transform-dontwrite',
+        )
+
+    zope.component.provideUtility(
+        minaraad.sync.transform.StreetAndHouseNumberTransform(),
+        name='mina-transform-streetandhousenumber',
+        )
+
+    zope.component.provideUtility(
+        minaraad.sync.transform.ZipCodeAndCityTransform(default_country='BE'),
+        name='mina-transform-zipcodeandcity',
+        )
+
+    zope.component.provideUtility(
+        minaraad.sync.transform.FullNameTransform(),
+        name='mina-transform-fullname',
+        )
+
+    zope.component.provideUtility(
+        minaraad.sync.transform.streetTransform,
+        name='mina-transform-street',
+        )
+
+    zope.component.provideUtility(
+        minaraad.sync.transform.housenumberTransform,
+        name='mina-transform-housenumber',
+        )
+    
+    zope.component.provideUtility(
+        minaraad.sync.transform.busTransform,
+        name='mina-transform-bus',
+        )
+    
+    zope.component.provideUtility(
+        minaraad.sync.transform.zipcodeTransform,
+        name='mina-transform-zipcode',
+        )
+    
+    zope.component.provideUtility(
+        minaraad.sync.transform.cityTransform,
+        name='mina-transform-city',
+        )
+    
+    zope.component.provideUtility(
+        minaraad.sync.transform.countryTransform,
+        name='mina-transform-country',
+        )
+    
+
+# reader and writer
+def reader():
+    configuration = path(__file__).parent / 'etc' / 'reader.ini'
+    zope.component.provideUtility(
+        minaraad.sync.read.Reader(configuration=configuration))
+    
+def writer():
+    Writer = CipraSync.write.Writer
+    Writer.configuration = path(__file__).parent / 'etc' / 'writer.ini'
+    zope.component.provideAdapter(CipraSync.write.Writer)
+
+def writehandlers():
+    pass
+
+def all():
+    resolver()
+    transforms()
+    reader()
+    writer()
+    writehandlers()
+    
