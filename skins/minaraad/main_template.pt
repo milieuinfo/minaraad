@@ -42,7 +42,6 @@
   <body tal:attributes="class here/getSectionFromURL;
                         dir python:test(isRTL, 'rtl', 'ltr')">
     <div id="visual-portal-wrapper">
-
       <div id="portal-top" i18n:domain="plone">
 
         <div id="portal-header">
@@ -76,17 +75,23 @@
       prefer layouts that don't use tables.
       </tal:comment>
 
-      <table id="portal-columns" border="1">
+      <table id="portal-columns" border="0"
+             cellspacing="0" 
+             cellpadding="0" 
+             class="site-bg">
         <tbody valign="top">
           <tr>
-              <td colspan="5"
-                  class="portal-header">
-                &nbsp;
+             <td colspan="5"
+                  class="portal-header-mina"
+                  valign="bottom"
+                  height="155">
+                    <div class="header-borderbottom " />
               </td>
           </tr>
           <tr>
             <td colspan="5">
-              <div metal:use-macro="here/global_siteactions/macros/site_actions">
+              <div metal:use-macro="here/global_siteactions/macros/site_actions"
+                   tal:omit-tag="">
                 Site-wide actions (Contact, Sitemap, Help, Style Switcher etc)
               </div>
            </td>
@@ -171,13 +176,13 @@
             <td id="portal-column-two"
                 metal:define-slot="column_two_slot"
                 tal:condition="sr"
-                width="197"
+                width="200"
                 rowspan="2">
 <!--
              <div metal:use-macro="here/global_searchbox/macros/quick_search">
                The quicksearch box, normally placed at the top right
              </div>   
--->
+
               <div class="visualPadding">
                 <metal:portlets define-slot="portlets_two_slot">
                   <metal:rightportlets use-macro="here/portlets_fetcher/macros/right_column">
@@ -185,14 +190,14 @@
                   </metal:rightportlets>
                 </metal:portlets>
                 &nbsp;
-              </div>
+              </div>-->
             </td>
             <tal:comment replace="nothing"> End of the right column </tal:comment>
           </tr>
           <tr>
             <td class="personalbar"
                 valign="bottom">
-                <metal:block metal:use-macro="here/portlet_personalbar/macros/portlet_personal" />
+              <metal:block metal:use-macro="here/portlet_personalbar/macros/portlet_personal" />
             </td>
           </tr>
         </tbody>
