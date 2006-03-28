@@ -66,6 +66,10 @@
                     name="form.button.Submit" 
                     value="Unsubscribe"
                     i18n:attributes="value label_unsubscribe;" />
+
+                <input type="hidden" 
+                   name="form.submitted" 
+                   value="unregister" />
             </form>
     
             <form tal:condition="not:view/isRegistered"
@@ -75,6 +79,10 @@
                     name="form.button.Submit" 
                     value="Subscribe"
                     i18n:attributes="value label_subscribe;" />
+
+            <input type="hidden" 
+                   name="form.submitted" 
+                   value="register" />
             </form>
         </div>
        

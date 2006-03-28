@@ -33,7 +33,7 @@ class AttendeesManagerView(AbstractView):
                    +"/login_form?came_from=" \
                    +urllib.quote(self.referring_url))
 
-        action = getattr(self.request, 'form.button.Submit', None)
+        action = getattr(self.request, 'form.submitted', None)
         member = memberTool.getAuthenticatedMember()
         if action == 'register':
             self.manager.addMember(member)
