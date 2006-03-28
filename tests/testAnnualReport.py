@@ -47,9 +47,16 @@ from Products.minaraad.content.AnnualReport import AnnualReport
 
 ##code-section module-beforeclass #fill in your manual code here
 
+def loadPDF(name):
+    """ Load PDF from testing directory
+    """
+    fd = open(name, 'rb')
+    data = fd.read()
+    fd.close()
+    return data
+
 TITLE = "title"
-DESCRIPTION = "een omschrijving"
-HTMLBODY = "<p>HTML Body boodschap</p>"
+ATTACHMENT = loadPDF('test.pdf')
 
 ##/code-section module-beforeclass
 
@@ -67,10 +74,6 @@ class testAnnualReport(MainTestCase):
         self.setRoles(['Manager'])
         self.portal.jaarverslag.invokeFactory('AnnualReport',id='testar')
         self.testar = self.portal.jaarverslag.testar
-
-        self.portal.contactpersonen.invokeFactory('ContactPerson', id='Jslob')
-        self.contactperson = self.portal.contactpersonen.Jslob
-
         pass
     # from class AnnualReport:
     # from class AnnualReport:
@@ -116,11 +119,13 @@ class testAnnualReport(MainTestCase):
         """
 
         self.testar.setTitle(TITLE)
-        self.testar.setDescription(DESCRIPTION)
+        self.testar.setAttachment(ATTACHMENT, content_type="application/pdf")
 
         self.failUnless(self.testar.Title()==TITLE,
                          'Value is %s' % self.testar.Title())
-
+        myclass = str(self.testar.getAttachment().__class__)
+        correct = "<class 'OFS.Image.File'>"
+        self.failUnless(myclass==correct, 'Value is %s and not %s' % (myclass, correct))
 
 def test_suite():
     from unittest import TestSuite, makeSuite

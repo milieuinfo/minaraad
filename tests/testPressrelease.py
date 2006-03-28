@@ -48,12 +48,21 @@ from Products.minaraad.content.Pressrelease import Pressrelease
 ##code-section module-beforeclass #fill in your manual code here
 from DateTime import DateTime
 
+def loadImage(name, size=0):
+    """Load image from testing directory
+    """
+    fd = open(name, 'rb')
+    data = fd.read()
+    fd.close()
+    return data
+
 TITLE = "title"
 SUBHEADER = "ondertitel"
 DESCRIPTION = "jaja, een omschrijving"
 DATE = DateTime()
 HTMLBODY = "<p>HTML op zijn best</p>"
 PLAINBODY = "HTML op zijn best"
+TESTIMAGE = loadImage('test.gif')
 
 ##/code-section module-beforeclass
 
@@ -120,6 +129,9 @@ class testPressrelease(MainTestCase):
         self.testpers.setDate(DATE)
         self.testpers.setBody(HTMLBODY,text_format="text/html")
         self.testpers.setContact(self.contactperson.UID())
+        self.testpers.setLogo_1(TESTIMAGE, content_type="image/gif")
+        self.testpers.setLogo_2(TESTIMAGE, content_type="image/gif")
+        self.testpers.setFoto(TESTIMAGE, content_type="image/gif")
 
         self.failUnless(self.testpers.Title()==TITLE,
                          'Value is %s' % self.testpers.Title())
@@ -133,7 +145,13 @@ class testPressrelease(MainTestCase):
                          'Value is %s' % self.testpers.getBody())
         self.failUnless(self.testpers.getContact()==[self.contactperson],
                          'Value is %s' % self.testpers.getContact())
-
+        myclass = str(self.testpers.getLogo_1().__class__)
+        correct = "<class 'Products.Archetypes.Field.Image'>"
+        self.failUnless(myclass==correct, 'Value is %s and not %s' % (myclass,correct))
+        myclass = str(self.testpers.getLogo_2().__class__)
+        self.failUnless(myclass==correct, 'Value is %s and not %s' % (myclass,correct))
+        myclass = str(self.testpers.getFoto().__class__)
+        self.failUnless(myclass==correct, 'Value is %s and not %s' % (myclass,correct))
 
 def test_suite():
     from unittest import TestSuite, makeSuite

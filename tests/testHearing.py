@@ -46,6 +46,17 @@ from Products.minaraad.tests.MainTestCase import MainTestCase
 from Products.minaraad.content.Hearing import Hearing
 
 ##code-section module-beforeclass #fill in your manual code here
+
+def loadImage(name, size=0):
+    """ Load image from testing directory
+    """
+    fd = open(name, 'rb')
+    data = fd.read()
+    fd.close()
+    return data
+
+TESTIMAGE = loadImage('test.gif')
+
 ##/code-section module-beforeclass
 
 
@@ -123,12 +134,19 @@ class testHearing(MainTestCase):
         self.hoorzitting.Title()          # Titel
         self.hoorzitting.getDescription() # Omschrijving
         self.hoorzitting.getGoal()        # Doelstelling
-        self.hoorzitting.getSubheader     # Subkop
-        self.hoorzitting.getLocation      # Lokatie
-        self.hoorzitting.getStartdate     # Start tijd
-        self.hoorzitting.getEnddate       # Eind tijd
-        self.hoorzitting.getTheme         # Thema's
-        self.hoorzitting.getContact       # Contactpersoon
+        self.hoorzitting.getSubheader()   # Subkop
+        self.hoorzitting.getLocation()    # Lokatie
+        self.hoorzitting.getStartdate()   # Start tijd
+        self.hoorzitting.getEnddate()     # Eind tijd
+        self.hoorzitting.getTheme()       # Thema's
+        self.hoorzitting.getContact()     # Contactpersoon
+
+        self.hoorzitting.setFoto(TESTIMAGE, content_type="image/gif")
+
+        myclass = str(self.hoorzitting.getFoto().__class__)
+        correct = "<class 'Products.Archetypes.Field.Image'>"
+        self.failUnless(myclass==correct, 'Value is %s and not %s' % (myclass,correct))
+
 
     def test_subscribers_export(self):
         pass
