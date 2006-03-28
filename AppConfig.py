@@ -34,6 +34,10 @@ RIGHT_SLOTS = ('here/portlet_review/macros/portlet',
 # 'Ander land' is selected
 JAVASCRIPTS = [{'id': 'hideShow.js'},]
 
+# These actions can be found in portal_actions
+# and will be disabled
+INVISIBLE_ACTIONS = ['rss', 'accessibility', 'plone_setup']
+
 # GLOBAL_DISALLOW is a list of content types that will be disabled
 # on the portal root and on all subfolders.
 GLOBAL_DISALLOW = [
@@ -102,8 +106,9 @@ SELECT_VIEWS = {
     '/jaarverslag': 'annualreport_listing_view',
     }
 
-#FCKeditor set height
+#FCKeditor set height and width
 FCK_FORCE_HEIGHT = '500px'
+FCK_FORCE_WIDTH = '568px'
 
 
 #FCKeditor Toolbar
@@ -111,12 +116,10 @@ FCK_TOOLBAR = 'Custom'
 
 FCK_CUSTOM_TOOLBAR = """[['Source', 'DocProps', 'Save', 'NewPage','Preview','Templates', 
     'Cut', 'Copy', 'Paste', 'PasteText','Print', 'PasteWord', 'SpellCheck', 'Undo', 'Redo', 'Find', 'Replace', 'SelectAll', 
-    'RemoveFormat', 'Bold', 'Italic', 'Underline', 'StrikeThrough', 'Subscript', 
-    'Superscript', 'OrderedList', 'UnorderedList', 'Outdent', 'Indent'],
-                         ['Style','FontFormat', 'FontName','FontSize','TextColor','BGColor', 'JustifyLeft', 'JustifyCenter', 
-    'JustifyRight', 'JustifyFull'],
-                         ['Link','Unlink','Anchor', 'Image', 'Flash', 'Table', 'Rule', 'Smiley', 'SpecialChar', 
-    'UniversalKey','About']]"""
+    'RemoveFormat', 'Subscript', 'Superscript'],
+                         ['Bold', 'Italic','Underline', 'StrikeThrough', 'OrderedList', 'UnorderedList', 'Outdent', 'Indent', 'TextColor','BGColor', 'JustifyLeft', 'JustifyCenter', 'JustifyRight',  'JustifyFull','Link','Unlink','Anchor', 'Image', 'Flash', 'Table', 'Rule', 'Smiley', 'SpecialChar'],
+                         ['Style','FontFormat', 'FontName','FontSize'],
+                         ['UniversalKey','About']]"""
 
 # let's cheat a bit and make this available to everyone
 from Products.OrderableReferenceField import \

@@ -10,9 +10,13 @@ body {
 }
 
 #portal-column-one-mina {
-	background-color: #A4CF4D;
-	margin: 0px;
-	padding: 0px;
+    background-color: #A4CF4D;
+    margin: 0px;
+    padding: 0px;
+}
+
+.personalbar {
+    background-color: #A4CF4D;
 }
 
 #portal-column-two {
@@ -23,6 +27,7 @@ body {
 .documentContent {
     margin: 0px !important;
     padding: 0px !important;
+    width: 586px !important;
 }
 
 .portal-header {

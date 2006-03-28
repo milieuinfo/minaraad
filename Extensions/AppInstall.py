@@ -70,6 +70,12 @@ def install(self):
     _addLynxDumpTransform(self)
     print >> out, "added lynx_dump transform"
     
+    _switchOffUnwantedActions(self)
+    print >> out, "Switched off unwanted actions"
+    
+    _switchOnActions(self)
+    print >> out, "Switch on our actions"
+    
     return out.getvalue()
 
 def _configurePortalProps(portal):
@@ -137,6 +143,45 @@ def createNode(self, item):
 
     for child in item['children']:
         createNode(created_object, child)
+
+def _switchOffUnwantedActions(portal):
+    """Switch off unwanted actions (portal_actions)
+
+    This method switchs off some unwanted actions
+    in a standard out-of-the-box Plone site
+    (these actions can be found in portal_actions).
+    """
+
+    st = getToolByName(portal, 'portal_actions')
+    st_actions = st._cloneActions()
+    for action in st_actions:
+        if action.id in INVISIBLE_ACTIONS:
+            if action.visible:
+                print >> out, "Switching off unwanted action %s." % action.id
+                action.visible = 0
+    st._actions = st_actions
+
+def _switchOnActions(portal):
+    """Switch on wanted actions(portal_actions)
+    """
+    tab = getToolByName(portal, 'portal_actions')
+    tab_actions = tab._cloneActions()
+    actionDefined = 0
+    for a in tab_actions:
+        if a.id == 'sitemap':
+            a.title = 'Sitemap'
+            a.visible = 1
+        if a.id in ['mina_library']:
+            a.visible = 1
+            actionDefined = 1
+        tab._actions = tab_actions
+    if actionDefined == 0:
+        tab.addAction('mina_library',
+                      'Bibliotheek',
+                      'string:$portal_url/mina_library',
+                      '',
+                      'View',
+                      'site_actions')
 
 def _addExtraViews(portal):
     ttool = getToolByName(portal, 'portal_types')
@@ -379,6 +424,7 @@ def _configureFCKeditor(portal):
     memberdata._updateProperty('wysiwyg_editor', 'FCKeditor')
     fckprops._updateProperty('fck_default_skin', 'office2003')
     fckprops._updateProperty('fck_force_height', FCK_FORCE_HEIGHT)
+    fckprops._updateProperty('fck_force_width', FCK_FORCE_WIDTH)
     fckprops._updateProperty('fck_toolbar', FCK_TOOLBAR)
     fckprops._updateProperty('fck_custom_toolbar', FCK_CUSTOM_TOOLBAR)
     

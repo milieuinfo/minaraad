@@ -2,7 +2,7 @@
       xmlns:metal="http://xml.zope.org/namespaces/metal"
       i18n:domain="plone">
     <body>
-    <metal:portlet define-macro="portlet"
+    <metal:portlet define-macro="portlet_personal"
                    tal:define="display_actions python:user_actions[:-1]+global_actions+user_actions[-1:];
 				                  getIconFor nocall:putils/getIconFor;">
                 
