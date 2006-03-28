@@ -157,6 +157,7 @@ class ZipCodeAndCityTransform:
         tokens = list(source.split())
         if len(tokens) != 0:
             value['zipcode'] = tokens[0]
+        if len(tokens) > 1:
             if len(tokens[1]) == 2 and self._allUpperCase(tokens[1]):
                 value['zipcode'] += tokens[1]
                 tokens[1] = ''

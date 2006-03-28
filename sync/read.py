@@ -8,17 +8,17 @@ class Field(CipraSync.read.Field):
     line.
 
     >>> field = Field('somefield')
-    >>> data = '"Abts","Hugo","De heer"'
+    >>> data = ['Abts', 'Hugo', 'De heer']
     >>> value, line = field.eat(data)
     >>> value
     'Abts'
-    >>> line.strip()
-    'Hugo,De heer'
+    >>> line
+    ['Hugo', 'De heer']
     >>> value, line = field.eat(line)
     >>> value
     'Hugo'
-    >>> line.strip()
-    'De heer'
+    >>> line
+    ['De heer']
 
     Let's try out the consume argument to see if it works for our
     subclass:
@@ -27,8 +27,8 @@ class Field(CipraSync.read.Field):
     >>> value, line = field.eat(data)
     >>> value
     ['Abts', 'Hugo']
-    >>> line.strip()
-    'De heer'
+    >>> line
+    ['De heer']
 
     Now we want to try out transforms.  For that, we first create our
     own transform:
@@ -44,33 +44,21 @@ class Field(CipraSync.read.Field):
     >>> value, line = field.eat(data)
     >>> value
     'abts'
-    >>> line.strip()
-    'Hugo,De heer'
+    >>> line
+    ['Hugo', 'De heer']
     """
 
-    dialect = 'excel'
-
     def eat(self, line):
-        reader = csv.reader([line], dialect=self.dialect)
-        try:
-            [row] = list(reader)
-        except csv.Error, e:
-            import pdb;pdb.set_trace()
-
-        data = row[:self.consume]
-        line = row[self.consume:]
+        data = line[:self.consume]
+        line = line[self.consume:]
 
         if len(data) == 1:
             data = data[0]
 
-        out = StringIO()
-        writer = csv.writer(out, dialect=self.dialect)
-        writer.writerows([line])
-
         for transform in self.transforms:
             data = transform(data)
 
-        return data, out.getvalue()
+        return data, line
 
 
 class Reader(CipraSync.read.Reader):
@@ -93,10 +81,19 @@ class Reader(CipraSync.read.Reader):
     >>> records = list(reader)
     >>> dontcare = [r._doTransforms() for r in records]
     >>> len(records)
-    2692
+    2688
     >>> first = records[0]
     >>> 
     """
     
+    dialect = 'excel'
+
     def fieldFactory(self, *args, **kwargs):
         return Field(*args, **kwargs)
+
+    def _tokenize(self, f):
+        reader = csv.reader(f, dialect=self.dialect)        
+        for line in reader:
+            yield line
+
+        raise StopIteration
