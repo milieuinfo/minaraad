@@ -9,6 +9,19 @@ table.site-bg {
     background: url('&dtml-portal_url;/sitelayout_bg.gif') top left no-repeat;
 }
 
+#portal-logo {
+  margin: 0px;
+  padding: 0pt;
+  background: url(&dtml-portal_url;/logo.gif) no-repeat;
+  width: 170px;
+  height: 150px;
+}
+
+#portal-logo a {
+  padding: 150px 0pt 0pt 170px;
+  width: 170px;
+}
+
 .header-borderbottom {
     border-bottom: 1px solid white;
     font-size: 1px;

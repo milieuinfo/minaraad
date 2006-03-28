@@ -54,12 +54,7 @@
              accesskey="6"
              tal:attributes="href string:${request/ACTUAL_URL}#portlet-navigation-tree"
              i18n:translate="label_skiptonavigation">Skip to navigation</a>
-
 <!--
-             <a metal:use-macro="here/global_logo/macros/portal_logo">
-               The portal logo, linked to the portal root
-             </a>
-
              <div metal:use-macro="here/global_sections/macros/portal_tabs">
                The global sections tabs. (Welcome, News etc)
              </div>
@@ -85,6 +80,10 @@
                   class="portal-header-mina"
                   valign="bottom"
                   height="155">
+                  <a metal:use-macro="here/global_logo/macros/portal_logo">
+                   The portal logo, linked to the portal root
+                 </a>
+             
                     <div class="header-borderbottom " />
               </td>
           </tr>
