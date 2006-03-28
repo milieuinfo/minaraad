@@ -427,6 +427,8 @@ def _configureFCKeditor(portal):
     fckprops._updateProperty('fck_force_width', FCK_FORCE_WIDTH)
     fckprops._updateProperty('fck_toolbar', FCK_TOOLBAR)
     fckprops._updateProperty('fck_custom_toolbar', FCK_CUSTOM_TOOLBAR)
+    fckprops._updateProperty('fck_area_style', FCK_AREA_STYLE)
+    fckprops._updateProperty('fck_menu_styles', FCK_MENU_STYLES)
     
     # disable the member prefs, has bugs
     control = getToolByName(portal, 'portal_controlpanel')

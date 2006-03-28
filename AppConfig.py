@@ -121,6 +121,34 @@ FCK_CUSTOM_TOOLBAR = """[['Source', 'DocProps', 'Save', 'NewPage','Preview','Tem
                          ['Style','FontFormat', 'FontName','FontSize'],
                          ['UniversalKey','About']]"""
 
+FCK_MENU_STYLES = '''<Style name="Image on Left" element="img">
+            <Attribute name="class" value="img_left" />
+        </Style>
+        <Style name="Subheader 1" element="span">
+            <Attribute name="class" value="subheader1" />
+        </Style>
+        <Style name="Subheader 2" element="span">
+            <Attribute name="class" value="subheader2" />
+        </Style>
+        <Style name="Subheader 3" element="span">
+            <Attribute name="class" value="subheader3" />
+        </Style>
+        <Style name="Image on Right" element="img">
+            <Attribute name="class" value="img_right" />
+        </Style>
+        <Style name="Image on Top" element="img">
+            <Attribute name="class" value="img_top" />
+        </Style>
+        <Style name="Link Plain" element="a">
+            <Attribute name="class" value="link-plain" />
+        </Style>
+        <Style name="Custom Ruler" element="hr">
+            <Attribute name="size" value="1" />
+            <Attribute name="color" value="#ff0000" />
+        </Style>'''
+
+FCK_AREA_STYLE = 'minaraad.css'
+
 # let's cheat a bit and make this available to everyone
 from Products.OrderableReferenceField import \
      OrderableReferenceField, OrderableReferenceWidget
