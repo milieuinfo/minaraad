@@ -26,7 +26,7 @@
         <br />
    
         <!-- Start Attachments-->
-        <div metal:use-macro="context/mina_attachments/macros/agenda_attachments" />
+        <div metal:use-macro="context/mina_attachments/macros/listattachments" />
         <!-- end Attachments -->
 
         <!-- Contactperson -->

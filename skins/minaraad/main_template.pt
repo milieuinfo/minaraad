@@ -83,8 +83,7 @@
                   <a metal:use-macro="here/global_logo/macros/portal_logo">
                    The portal logo, linked to the portal root
                  </a>
-             
-                    <div class="header-borderbottom " />
+                 <div class="header-borderbottom " />
               </td>
           </tr>
           <tr>
