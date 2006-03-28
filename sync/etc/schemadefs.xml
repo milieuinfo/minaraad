@@ -70,8 +70,8 @@ Until we have a proper definition of what this XML does, here's an overview:
     <field name="company" />
 
     <field name="streetandhousenumber"
-           transform="mina-transform-streetandhousenumber
-                      mina-transform-dontwrite"
+           transform="mina-transform-dontwrite
+                      mina-transform-streetandhousenumber"
            description="'mina-transform-streetandhousenumber' is the
                         transform that does the parsing." />
 
@@ -91,8 +91,8 @@ Until we have a proper definition of what this XML does, here's an overview:
            description="Gets its value from 'streetandhousenumber'." />
 
     <field name="zipcodeandcity"
-           transform="mina-transform-zipcodeandcity
-                      mina-transform-dontwrite"
+           transform="mina-transform-dontwrite
+                      mina-transform-zipcodeandcity"
            description="Again 'mina-transform-zipcodeandcity' parses the value
                         and lets the others consume." />
 

@@ -52,7 +52,10 @@ class Field(CipraSync.read.Field):
 
     def eat(self, line):
         reader = csv.reader([line], dialect=self.dialect)
-        [row] = list(reader)
+        try:
+            [row] = list(reader)
+        except csv.Error, e:
+            import pdb;pdb.set_trace()
 
         data = row[:self.consume]
         line = row[self.consume:]
@@ -74,7 +77,25 @@ class Reader(CipraSync.read.Reader):
     """A reader that extends ``CipraSync.read.Field`` and adds its own
     field factory.
 
-    
+    >>> from path import path
+    >>> from minaraad.sync import configure
+    >>> from minaraad.sync.read import Reader
+
+    >>> configure.transforms()
+
+    >>> parent = path(__file__).parent
+    >>> configuration = parent / 'etc' / 'reader.ini'
+    >>> reader = Reader(configuration=configuration)
+    >>> reader # doctest: +ELLIPSIS
+    <minaraad.sync.read.Reader instance ...>
+
+    >>> reader.feed((parent / 'input' / 'Nieuwbriefbestand.csv',))
+    >>> records = list(reader)
+    >>> dontcare = [r._doTransforms() for r in records]
+    >>> len(records)
+    2692
+    >>> first = records[0]
+    >>> 
     """
     
     def fieldFactory(self, *args, **kwargs):
