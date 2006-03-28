@@ -10,14 +10,10 @@
                              agendaItems python:context.portal_catalog.searchResults(portal_type='AgendaItem',
                                                                                     path=current_path,
                                                                                     sort_on='getItemstartdate');">
-        <metal:block metal:define-macro="folderlisting" />
-
-        <div tal:define="attendees view/groupedAttendees" 
-             class="groupedAttendees">
-
+        <div class="groupedAttendees">
             <fieldset>
                 <legend i18n:translate="title_speakers">Speakers</legend>
-
+    
                 <tal:block tal:repeat="agendaItem agendaItems">
                 <span tal:define="obj agendaItem/getObject"
                       tal:condition="obj/getSpeaker"
@@ -31,61 +27,11 @@
                 </span>
             </fieldset>
 
-            <fieldset>
-                <legend i18n:translate="title_attendees">Attendees</legend>
-                <dl class="Attendees">
-                    <dt i18n:translate="title_counsilmembers">
-                        Council Members
-                    </dt>
-                    <dd tal:repeat="attendee attendees/council_members">
-                    <span tal:replace="attendee/niceName" />
-                    </dd>
-                    <dd tal:condition="not:attendees/council_members" 
-                        class="discreet"
-                        i18n:translate="no_attendees">
-                    (none currently)
-                    </dd>
-                    <dt i18n:translate="title_members">
-                        Members
-                    </dt>
-                    <dd tal:repeat="attendee attendees/members">
-                    <span tal:replace="attendee/niceName" />
-                    </dd>
-                    <dd tal:condition="not:attendees/members" 
-                        class="discreet"
-                        i18n:translate="no_attendees">
-                    (none currently)
-                    </dd>
-                </dl>
-            </fieldset>
-
-            <form tal:condition="view/isRegistered"
-                tal:attributes="action string:${context/absolute_url}/@@attendees_view">
-                <input class="context" 
-                    type="submit" 
-                    name="form.button.Submit" 
-                    value="Unsubscribe"
-                    i18n:attributes="value label_unsubscribe;" />
-
-                <input type="hidden" 
-                   name="form.submitted" 
-                   value="unregister" />
-            </form>
-    
-            <form tal:condition="not:view/isRegistered"
-                tal:attributes="action string:${context/absolute_url}/@@attendees_view">
-            <input class="context" 
-                    type="submit" 
-                    name="form.button.Submit" 
-                    value="Subscribe"
-                    i18n:attributes="value label_subscribe;" />
-
-            <input type="hidden" 
-                   name="form.submitted" 
-                   value="register" />
-            </form>
+            <br />
+            <div tal:replace="structure context/foto_foto"
+                 tal:condition="context/getFoto" />
         </div>
-       
+        <metal:block metal:define-macro="folderlisting" />
 
         <div class="hearingsubheader"
              tal:condition="context/getSubheader">
@@ -119,7 +65,7 @@
          <!-- Date and Time -->
          <div metal:use-macro="context/mina_showdatetime/macros/datetime" />
         <!-- end Date and Time -->
-        
+
         <!-- Text -->
         <div class="bodytext"
              tal:condition="context/getBody"
@@ -179,6 +125,59 @@
         </tal:block>        
         <!-- end contactpersoon -->
 
+        <fieldset tal:define="attendees view/groupedAttendees">
+            <legend i18n:translate="title_attendees">Attendees</legend>
+            <dl class="Attendees">
+                <dt i18n:translate="title_counsilmembers">
+                    Council Members
+                </dt>
+                <dd tal:repeat="attendee attendees/council_members">
+                <span tal:replace="attendee/niceName" />
+                </dd>
+                <dd tal:condition="not:attendees/council_members" 
+                    class="discreet"
+                    i18n:translate="no_attendees">
+                (none currently)
+                </dd>
+                <dt i18n:translate="title_members">
+                    Members
+                </dt>
+                <dd tal:repeat="attendee attendees/members">
+                <span tal:replace="attendee/niceName" />
+                </dd>
+                <dd tal:condition="not:attendees/members" 
+                    class="discreet"
+                    i18n:translate="no_attendees">
+                (none currently)
+                </dd>
+            </dl>
+        </fieldset>
+
+        <form tal:condition="view/isRegistered"
+              tal:attributes="action string:${context/absolute_url}/@@attendees_view">
+            <input class="context" 
+                   type="submit" 
+                   name="form.button.Submit" 
+                   value="Unsubscribe"
+                   i18n:attributes="value label_unsubscribe;" />
+
+            <input type="hidden" 
+                   name="form.submitted" 
+                   value="unregister" />
+        </form>
+    
+        <form tal:condition="not:view/isRegistered"
+              tal:attributes="action string:${context/absolute_url}/@@attendees_view">
+        <input class="context" 
+               type="submit" 
+               name="form.button.Submit" 
+               value="Subscribe"
+               i18n:attributes="value label_subscribe;" />
+
+        <input type="hidden" 
+               name="form.submitted" 
+               value="register" />
+        </form>
     </metal:block>
     </body>
 </html>
