@@ -83,7 +83,6 @@ class Reader(CipraSync.read.Reader):
     >>> len(records)
     2688
     >>> first = records[0]
-    >>> 
     """
     
     dialect = 'excel'

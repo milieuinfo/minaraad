@@ -33,26 +33,14 @@ class StreetAndHouseNumberTransform:
     values.
 
     >>> t = StreetAndHouseNumberTransform()
-    >>> t("") # doctest: +ELLIPSIS
-    Traceback (most recent call last):
-    ...
-    AttributeError: 'str' object has no attribute 'value'
-
-    >>> DontWrite = DontWriteTransform.DontWrite
-
-    >>> data = DontWrite('')
-    >>> value = t(data)
-    >>> verifyObject(IDontWrite, value)
-    True
-    >>> value = value.value
+    >>> value = t("")
     >>> value['street'], value['housenumber'], value['bus']
     ('', '', '')
     >>> len(value)
     3
 
     >>> def printValues(string):
-    ...     data = DontWrite(string)
-    ...     value = t(data).value
+    ...     value = t(string)
     ...     print (value['street'], value['housenumber'], value['bus'])
 
     >>> printValues('Hoogstraat 42')
@@ -71,55 +59,39 @@ class StreetAndHouseNumberTransform:
     interface.implements(ITransform)
 
     def __call__(self, data):
-        # Actual value is always contained in the ``value`` attribute
-        # of the passed in data object:
-        source = data.value
         value = {} # return value
 
         idx = 0
-        for idx, char in enumerate(source):
+        for idx, char in enumerate(data):
             if ord(char) in range(ord('0'), ord('9')+1):
                 break
 
-        value['street'] = source[:idx].strip().strip('-,')
+        value['street'] = data[:idx].strip().strip('-,')
 
-        busidx = source[idx:].lower().find('bus')
+        busidx = data[idx:].lower().find('bus')
         if busidx == -1:
-            busidx = len(source)
+            busidx = len(data)
         else:
             busidx = busidx + idx
 
-        value['housenumber'] = source[idx:busidx].strip().strip('-,')
-        value['bus'] = source[busidx+3:].strip().strip('-,')
+        value['housenumber'] = data[idx:busidx].strip().strip('-,')
+        value['bus'] = data[busidx+3:].strip().strip('-,')
 
-        data.value = value
-        return data
+        return value
 
 class ZipCodeAndCityTransform:
     """A transform from a string that contains zipcode, city and maybe
     a ``ISO 3166-1 alpha-2`` country code.
 
     >>> t = ZipCodeAndCityTransform(default_country='BE')
-    >>> t("") # doctest: +ELLIPSIS
-    Traceback (most recent call last):
-    ...
-    AttributeError: 'str' object has no attribute 'value'
-
-    >>> DontWrite = DontWriteTransform.DontWrite
-
-    >>> data = DontWrite('')
-    >>> value = t(data)
-    >>> verifyObject(IDontWrite, value)
-    True
-    >>> value = value.value
+    >>> value = t("")
     >>> value['zipcode'], value['city'], value['country']
     ('', '', '')
     >>> len(value)
     3
     
     >>> def printValues(string):
-    ...     data = DontWrite(string)
-    ...     value = t(data).value
+    ...     value = t(string)
     ...     print (value['country'], value['zipcode'], value['city'])
 
     >>> printValues('1000 Brussel')
@@ -140,21 +112,18 @@ class ZipCodeAndCityTransform:
         self.default_country = default_country
 
     def __call__(self, data):
-        # Actual value is always contained in the ``value`` attribute
-        # of the passed in data object:
-        source = data.value
         value = dict(country=self.default_country, zipcode='', city='')
 
-        country_code = source[:2]
+        country_code = data[:2]
         if self._allUpperCase(country_code):
             # We have a country code at the beginning, which we want to
             # strip off.
             value['country'] = country_code
-            source = source[3:]
+            data = data[3:]
 
         # We want to check if there is an extra two letter code behind
         # the zipcode that needs to be included.
-        tokens = list(source.split())
+        tokens = list(data.split())
         if len(tokens) != 0:
             value['zipcode'] = tokens[0]
         if len(tokens) > 1:
@@ -165,8 +134,7 @@ class ZipCodeAndCityTransform:
             city = ' '.join([token.capitalize() for token in tokens[1:]])
             value['city'] = city
 
-        data.value = value
-        return data
+        return value
 
     def _allUpperCase(self, data):
         UPPERCASE = range(ord('A'), ord('Z') + 1)
@@ -177,24 +145,27 @@ class ZipCodeAndCityTransform:
 
         return True
 
-
-class FullNameTransform:
+def fullNameTransform(data, record):
     """A deferred transform that uses the 'title' field to add to its
     value.
 
-    >>> t = FullNameTransform()
-    >>> t('van Huis', {})
+    >>> fullNameTransform('van Huis', {})
     Traceback (most recent call last):
     ...
     KeyError: 'title'
+
+    Since 'title' is a DontWrite value, we have to make that up:
+
+    >>> class TitleValue:
+    ...    pass
+    >>> title = TitleValue()
+    >>> title.value = 'Mr.'
     
-    >>> t('van Huis', dict(title='Mr.'))
+    >>> fullNameTransform('van Huis', dict(title=title))
     'Mr. van Huis'
     """
-    interface.implements(IDeferredTransform)
-
-    def __call__(self, data, record):
-        return '%s %s' % (record['title'], data)
+    return '%s %s' % (record['title'].value, data)
+interface.directlyProvides(fullNameTransform, IDeferredTransform)
 
 def streetTransform(data, record):
     return record['streetandhousenumber'].value['street']

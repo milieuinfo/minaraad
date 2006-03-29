@@ -28,7 +28,7 @@ def transforms():
         )
 
     zope.component.provideUtility(
-        minaraad.sync.transform.FullNameTransform(),
+        minaraad.sync.transform.fullNameTransform,
         name='mina-transform-fullname',
         )
 
