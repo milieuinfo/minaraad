@@ -71,7 +71,7 @@ class testThemes(MainTestCase):
         
         lastId = max([x[0] for x in view.themeManager.themes])
         
-        request.form['theme_name'] = 'blah'
+        request['theme_name'] = 'blah'
         view._addTheme()
         
         self.failUnless(view.themeManager.themes[-1] == (lastId+1, 'blah'))
@@ -85,8 +85,8 @@ class testThemes(MainTestCase):
 
         view.themeManager.themes = [(1, 'a'), (2, 'b'), (3, 'c')]
         
-        request.form['theme_1'] = 'x'
-        request.form['theme_3'] = 'z'
+        request['theme_1'] = 'x'
+        request['theme_3'] = 'z'
         
         view._saveThemes()
         
@@ -103,12 +103,12 @@ class testThemes(MainTestCase):
 
         view.themeManager.themes = [(1, 'a'), (2, 'b'), (3, 'c')]
         
-        request.form['theme_1'] = True
-        request.form['theme_3'] = True
+        request['theme_1'] = True
+        request['theme_3'] = True
         view._deleteThemes()
         self.failUnless(view.themeManager.themes == [(2, 'b')])
                                                      
-        request.form['theme_2'] = True
+        request['theme_2'] = True
         view._deleteThemes()
         self.failUnless(view.themeManager.themes == [])
 
@@ -125,8 +125,8 @@ class testThemes(MainTestCase):
 
         self.failUnless(view.themes() == themesDict)
         
-        request.form['form.button.Edit'] = True
-        request.form['theme_2'] = 'b'
+        request['form.button.Edit'] = True
+        request['theme_2'] = 'b'
         
         self.failUnless(view.themes() == [{'id': 2, 'Title': 'b'}])
 
