@@ -3,12 +3,15 @@ from path import path
 
 import CipraSync.write
 
-import minaraad.sync.transform
 import minaraad.sync.read
+import minaraad.sync.write
+import minaraad.sync.transform
+
 
 # resolvers
 def resolver():
-    pass
+    zope.component.provideUtility(minaraad.sync.write.MinaResolver())
+
 
 # transforms
 def transforms():
