@@ -350,28 +350,31 @@ dl.listsubscriptions dt {
 
 .navmenu_bordertop_bottom {
     font-size: 1px;
-    border-top:1px solid #8FBA37;
+    border-top: 1px solid #8FBA37;
     width: 154px;
 }
 
 div.portal-tabs ul {
     margin: 0px;
     list-style: none;
+    list-style-image: none;
     width: 153px;
     background-color: #C8ED7E;
     border:1px solid #E0FAAC;
     font-size: 11px;
-    line-height: 20px;
-    position:relative;
+    line-height: 25px;
 }
 div.portal-tabs ul li {
     padding-left: 10px;
     position:relative;
+	margin-bottom: 0px;
 }
 
 div.portal-tabs li ul {
     display: none;
-    position: absolute; 
+    position: absolute;
+	left: 154px; 
+    top: 0px;
 }
 
 div.portal-tabs li > ul {
@@ -383,7 +386,6 @@ div.portal-tabs a {
     text-decoration: none;
     color: #313131;
     font-weight: bold;
-    display:block;
 }
 
 #portal-tabs-nav li:hover, 
@@ -420,5 +422,6 @@ div.portal-tabs a.portal-tabs-subitem-link {
 li.portal-tabs-subitem-listitem {
     background: none !important;
 }
+
 /* --- End Dropdownmenu --- */
 /* </dtml-with> */
