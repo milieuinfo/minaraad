@@ -37,8 +37,12 @@ import os, sys
 from Testing import ZopeTestCase
 from Products.minaraad.tests.MainTestCase import MainTestCase
 from zope.app import zapi
-from Products.Five.traversable import FakeRequest
 from Products.minaraad.subscriptions import SubscriptionManager, Subscription
+
+from Products.Five.traversable import FakeRequest
+from zope.app.publication.browser import setDefaultSkin
+
+
 
 class testSubscriptions(MainTestCase):
     """ Test cases for the generic Subscriptions of the product
@@ -96,6 +100,7 @@ class testSubscriptions(MainTestCase):
         sm = SubscriptionManager(self.portal)
 
         request = FakeRequest()
+        setDefaultSkin(request)
         view = zapi.getView(self.portal, 
                             'subscriptions_config.html', 
                             request)
@@ -105,8 +110,8 @@ class testSubscriptions(MainTestCase):
             self.failIf(x['subscribed_post'])
             self.failIf(x['subscribed_email'])
 
-        request['email_Advisory'] = 'yes' # string values here mean nothing
-        request['email_Study'] = 'yes'
+        request.form['email_Advisory'] = 'yes' # string values here mean nothing
+        request.form['email_Study'] = 'yes'
         view._saveSubscriptions()
 
         for x in sm.subscriptions:
@@ -122,6 +127,7 @@ class testSubscriptions(MainTestCase):
         self.login('member')
 
         request = FakeRequest()
+        setDefaultSkin(request)
         view = zapi.getView(self.portal, 
                             'subscriptions_config.html', 
                             request)
@@ -165,6 +171,7 @@ class testSubscriptions(MainTestCase):
 
         sm = SubscriptionManager(self.portal)
         request = FakeRequest()
+        setDefaultSkin(request)
         request.response = {}
 
         request['form.button.ExportEmail'] = True
@@ -216,6 +223,7 @@ class testSubscriptions(MainTestCase):
         self.setRoles('Manager')
         sm = SubscriptionManager(self.portal)
         request = FakeRequest()
+        setDefaultSkin(request)
         request['SESSION'] = request.SESSION = {}
         view = zapi.getView(self.portal, 
                             'subscribers_config.html', 

@@ -35,7 +35,10 @@ from Products.minaraad.tests.MainTestCase import MainTestCase
 from Products.minaraad.themes import ThemeManager
 from Products.minaraad.Extensions import AppInstall
 from zope.app import zapi
+
 from Products.Five.traversable import FakeRequest
+from zope.app.publication.browser import setDefaultSkin
+
 
 class testThemes(MainTestCase):
     """ test-cases for themes
@@ -61,27 +64,29 @@ class testThemes(MainTestCase):
 
     def test_browserAddTheme(self):
         request = FakeRequest()
+        setDefaultSkin(request)
         view = zapi.getView(self.portal, 
                             'minaraad_config.html', 
                             request)
         
         lastId = max([x[0] for x in view.themeManager.themes])
         
-        request['theme_name'] = 'blah'
+        request.form['theme_name'] = 'blah'
         view._addTheme()
         
         self.failUnless(view.themeManager.themes[-1] == (lastId+1, 'blah'))
 
     def test_browserSaveThemes(self):
         request = FakeRequest()
+        setDefaultSkin(request)
         view = zapi.getView(self.portal, 
                             'minaraad_config.html', 
                             request)
 
         view.themeManager.themes = [(1, 'a'), (2, 'b'), (3, 'c')]
         
-        request['theme_1'] = 'x'
-        request['theme_3'] = 'z'
+        request.form['theme_1'] = 'x'
+        request.form['theme_3'] = 'z'
         
         view._saveThemes()
         
@@ -91,23 +96,25 @@ class testThemes(MainTestCase):
 
     def test_browserDeleteThemes(self):
         request = FakeRequest()
+        setDefaultSkin(request)
         view = zapi.getView(self.portal, 
                             'minaraad_config.html', 
                             request)
 
         view.themeManager.themes = [(1, 'a'), (2, 'b'), (3, 'c')]
         
-        request['theme_1'] = True
-        request['theme_3'] = True
+        request.form['theme_1'] = True
+        request.form['theme_3'] = True
         view._deleteThemes()
         self.failUnless(view.themeManager.themes == [(2, 'b')])
                                                      
-        request['theme_2'] = True
+        request.form['theme_2'] = True
         view._deleteThemes()
         self.failUnless(view.themeManager.themes == [])
 
     def test_browserThemes(self):
         request = FakeRequest()
+        setDefaultSkin(request)
         view = zapi.getView(self.portal, 
                             'minaraad_config.html', 
                             request)
@@ -118,8 +125,8 @@ class testThemes(MainTestCase):
 
         self.failUnless(view.themes() == themesDict)
         
-        request['form.button.Edit'] = True
-        request['theme_2'] = 'b'
+        request.form['form.button.Edit'] = True
+        request.form['theme_2'] = 'b'
         
         self.failUnless(view.themes() == [{'id': 2, 'Title': 'b'}])
 

@@ -64,10 +64,9 @@ PRODUCTS.append('minaraad')
 testcase = PloneTestCase.PloneTestCase
 
 ##code-section module-before-plone-site-setup #fill in your manual code here
-from zope.app.tests import placelesssetup
-placelesssetup.setUp()
 from Products.Five import zcml
 from Products import minaraad, Five
+from zope.app.testing import setup
 ##/code-section module-before-plone-site-setup
 
 PloneTestCase.setupPloneSite(products=PRODUCTS)
@@ -80,9 +79,12 @@ class MainTestCase(testcase):
     def _setup(self):
         testcase._setup(self)
 
+        setup.placefulSetUp()
         # need to setup some Five stuff to get view lookups working
         zcml.load_config('meta.zcml', Five)
         zcml.load_config('permissions.zcml', Five)
+        zcml.load_config('configure.zcml', Five.site)
+
         zcml.load_config('configure.zcml', minaraad)
 
         zcml.load_string('''<configure xmlns="http://namespaces.zope.org/zope"
