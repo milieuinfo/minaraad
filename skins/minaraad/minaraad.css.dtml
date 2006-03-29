@@ -295,12 +295,12 @@ dl.listsubscriptions dt {
     float:left;
 }
 
-.pressrelease_right {
-    float:right;
+.pressrelease_textleft {
+    text-align:left;
 }
 
-.pressrelease_center {
-    text-align:center;
+.pressrelease_right {
+    float:right;
 }
 
 .pressrelease_date {
@@ -315,8 +315,7 @@ dl.listsubscriptions dt {
 }
 
 .pressrelease_subhead {
-    color:#A13826;
-    font-weight:bold;
+    font-style:italic;
 }
 /* --- End Pressrelease --- */
 
