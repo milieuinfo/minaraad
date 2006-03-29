@@ -364,8 +364,8 @@ div.portal-tabs ul {
     font-size: 11px;
     line-height: 25px;
 }
+
 div.portal-tabs ul li {
-    padding-left: 10px;
     position:relative;
 	margin-bottom: 0px;
 }
@@ -377,21 +377,18 @@ div.portal-tabs li ul {
     top: 0px;
 }
 
-div.portal-tabs li > ul {
-    left: 154px; 
-    top: 0px;
-}
-
 div.portal-tabs a {
     text-decoration: none;
     color: #313131;
     font-weight: bold;
+    padding-left: 10px;
 }
 
 #portal-tabs-nav li:hover, 
 #portal-tabs-nav li.over {
   background: url('menu_arrow.gif') no-repeat right;
   cursor: pointer;
+  color: #A13826;
 }
 
 div.portal-tabs a:hover {
@@ -409,18 +406,15 @@ div.portal-tabs a:hover {
     width: 170px;
 }
 
-.portal-tabs-subitem-listitem {
-    border-bottom: 1px solid #A4CF4D;
-    border-top: 1px solid #FFFFFF;
-    margin: 0px;
-}
-
 div.portal-tabs a.portal-tabs-subitem-link {
     font-weight: normal;
 }
 
 li.portal-tabs-subitem-listitem {
     background: none !important;
+	border-bottom: 1px solid #A4CF4D;
+    border-top: 1px solid #FFFFFF;
+    position:static !important;
 }
 
 /* --- End Dropdownmenu --- */
