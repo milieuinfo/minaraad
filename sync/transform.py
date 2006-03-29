@@ -145,28 +145,6 @@ class ZipCodeAndCityTransform:
 
         return True
 
-def fullNameTransform(data, record):
-    """A deferred transform that uses the 'title' field to add to its
-    value.
-
-    >>> fullNameTransform('van Huis', {})
-    Traceback (most recent call last):
-    ...
-    KeyError: 'title'
-
-    Since 'title' is a DontWrite value, we have to make that up:
-
-    >>> class TitleValue:
-    ...    pass
-    >>> title = TitleValue()
-    >>> title.value = 'Mr.'
-    
-    >>> fullNameTransform('van Huis', dict(title=title))
-    'Mr. van Huis'
-    """
-    return '%s %s' % (record['title'].value, data)
-interface.directlyProvides(fullNameTransform, IDeferredTransform)
-
 def streetTransform(data, record):
     return record['streetandhousenumber'].value['street']
 interface.directlyProvides(streetTransform, IDeferredTransform)

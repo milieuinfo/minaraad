@@ -28,11 +28,6 @@ def transforms():
         )
 
     zope.component.provideUtility(
-        minaraad.sync.transform.fullNameTransform,
-        name='mina-transform-fullname',
-        )
-
-    zope.component.provideUtility(
         minaraad.sync.transform.streetTransform,
         name='mina-transform-street',
         )

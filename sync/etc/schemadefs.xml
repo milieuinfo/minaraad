@@ -56,14 +56,11 @@ Until we have a proper definition of what this XML does, here's an overview:
   
     <file name="Nieuwbriefbestand.csv" />
     
-    <field name="fullname"
-           transform="mina-transform-fullname" />
+    <field name="fullname" />
 
     <field name="firstname" />
 
-    <field name="title"
-           transform="mina-transform-dontwrite"
-           description="The title is handled by 'mina-transform-fullname'." />
+    <field name="gender" />
     
     <field name="jobtitle" />
 
