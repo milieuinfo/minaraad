@@ -14,8 +14,7 @@
                                newest python:news[:10]">
             <tal:block tal:repeat="item newest">
                 <div tal:replace="item/Title">BLAAA</div>  
-                <a tal:attributes="href item/getURL">more information</a>
-                <div tal:replace="item/Date">huh</div><br>
+                <a tal:attributes="href item/getURL">more information</a><br>
             </tal:block>
         </tal:block>
   </body>

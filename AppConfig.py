@@ -86,7 +86,8 @@ EXTRA_VIEWS = {
 # SELECT_VIEWS is a dictionary, the keys are folder names. The value
 # is the view to be selected for that folder.
 SELECT_VIEWS = {
-    '/hoorzittingen': 'hearing_listing_view',
+    '/hoorzittingen/hrz_2005': 'hearing_listing_view',
+    '/hoorzittingen/hrz_2006': 'hearing_listing_view',
     '/nieuwsbrieven/newsl_2006': 'newsletter_listing_view',
     '/nieuwsbrieven/newsl_2005': 'newsletter_listing_view',
     '/nieuwsbrieven/newsl_2004': 'newsletter_listing_view',
@@ -103,7 +104,13 @@ SELECT_VIEWS = {
     '/persberichten/pressr_2004' : 'pressrelease_listing_view',
     '/persberichten/pressr_2003' : 'pressrelease_listing_view',
     '/persberichten/pressr_2002' : 'pressrelease_listing_view',
-    '/studies': 'study_listing_view',
+    '/studies/std_1999': 'study_listing_view',
+    '/studies/std_2000': 'study_listing_view',
+    '/studies/std_2001': 'study_listing_view',
+    '/studies/std_2002': 'study_listing_view',
+    '/studies/std_2003': 'study_listing_view',
+    '/studies/std_2005': 'study_listing_view',
+    '/studies/std_2006': 'study_listing_view',
     '/jaarverslag': 'annualreport_listing_view',
     }
 
