@@ -57,7 +57,7 @@ class testAdvisory(MainTestCase):
     ##/code-section class-header_testAdvisory
 
     def afterSetUp(self):
-        """ Initialization of user and Advirosy
+        """ Initialization of user and Advisory
         """
 
         self.portal.portal_membership.addMember('manager','secret',['Manager'],[])
