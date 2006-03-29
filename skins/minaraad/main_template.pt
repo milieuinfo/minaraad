@@ -54,11 +54,6 @@
              accesskey="6"
              tal:attributes="href string:${request/ACTUAL_URL}#portlet-navigation-tree"
              i18n:translate="label_skiptonavigation">Skip to navigation</a>
-<!--
-             <div metal:use-macro="here/global_sections/macros/portal_tabs">
-               The global sections tabs. (Welcome, News etc)
-             </div>
--->
           </div>
       </div>
 
@@ -96,11 +91,15 @@
           </tr>
           <tr>
             <tal:comment replace="nothing"> Start of the left column </tal:comment>
-            <td id="portal-column-one-mina"
+            <td class="portal-column-one-mina"
                 metal:define-slot="column_one_slot"
                 tal:condition="sl"
                 width="155">
 
+              <div metal:use-macro="here/global_sections/macros/portal_tabs">
+               The global sections tabs. (Welcome, News etc)
+             </div>
+<!--
               <div class="visualPadding">
                 <metal:portlets define-slot="portlets_one_slot">
                   <metal:leftportlets use-macro="here/portlets_fetcher/macros/left_column">
@@ -109,7 +108,7 @@
                 </metal:portlets>
                 &nbsp;
               </div>
-
+-->
             </td>
             <tal:comment replace="nothing"> End of the left column </tal:comment>
 
@@ -193,7 +192,7 @@
           </tr>
           <tr>
             <td valign="bottom"
-                id="portal-column-one-mina">
+                class="portal-column-one-mina">
               <metal:block metal:use-macro="here/portlet_login/macros/portlet-login" />
               <metal:block metal:use-macro="here/portlet_personalbar/macros/portlet_personal" />
             </td>

@@ -32,7 +32,8 @@ RIGHT_SLOTS = ('here/portlet_review/macros/portlet',
 
 # Used to show the stringfield 'other country' when in the selectionbox
 # 'Ander land' is selected
-JAVASCRIPTS = [{'id': 'hideShow.js'},]
+# And a script for dropdownmenu
+JAVASCRIPTS = [{'id': 'hideShow.js'},{'id': 'tabsDropDown.js'}]
 
 # These actions can be found in portal_actions
 # and will be disabled
