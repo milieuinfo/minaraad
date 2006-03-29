@@ -1,0 +1,22 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
+      lang="en-US"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="minaraad">
+
+  <body metal:fill-slot="main">
+        <div metal:use-macro="here/document_actions/macros/document_actions">
+            Document actions (print, sendto etc)
+        </div>
+        <h1> WELKOM OP DE MINARAAD SITE !!! </h1>
+        <tal:block tal:define="news python:context.portal_catalog.searchResults(review_state='published',
+                                                                                sort_on='Date',
+                                                                                sort_order='reverse');
+                               newest python:news[:10]">
+            <tal:block tal:repeat="item newest">
+                <div tal:replace="item/Title">BLAAA</div>  
+                <a tal:attributes="href item/getURL">more information</a>
+                <div tal:replace="item/Date">huh</div><br>
+            </tal:block>
+        </tal:block>
+  </body>
+</html>
