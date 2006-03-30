@@ -193,6 +193,7 @@
           <tr>
             <td valign="bottom"
                 class="portal-column-one-mina">
+              <br /><br />
               <metal:block metal:use-macro="here/portlet_login/macros/portlet-login" />
               <metal:block metal:use-macro="here/portlet_personalbar/macros/portlet_personal" />
             </td>
