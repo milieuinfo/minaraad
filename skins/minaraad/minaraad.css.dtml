@@ -54,7 +54,6 @@ table.site-bg {
 }
 
 .portal-header-mina {
-    background: url(&dtml-portal_url;/header.jpg) no-repeat right;
     height: 156px;
     margin: 0px;
 }
@@ -377,7 +376,7 @@ div.portal-tabs li ul {
     top: 0px;
 }
 
-span .IEFix_paddingmenu {
+span.IEFix_paddingmenu {
     padding-left: 10px;
 }
 
@@ -389,25 +388,22 @@ div.portal-tabs a {
 
 #portal-tabs-nav li:hover, 
 #portal-tabs-nav li.over {
-  background: url('menu_arrow.gif') no-repeat right;
-  cursor: pointer;
-  color: #A13826;
+    background: url('menu_arrow.gif') no-repeat right;
+    cursor: pointer;
+    color: #A13826;
 }
 
 div.portal-tabs a:hover {
     color: #A13826;
 }
 
-
 #portal-tabs-nav li.selected {
     background: url('menu_arrow.gif') no-repeat right;
-    xpadding-left: 10px;
 }
 
 #portal-tabs-nav a.selected {
     color: #A13826;
 }
-
 
 #portal-tabs-nav li:hover ul, 
 #portal-tabs-nav li.over ul {

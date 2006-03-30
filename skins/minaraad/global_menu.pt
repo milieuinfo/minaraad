@@ -7,13 +7,14 @@
     <li tal:define="selected_tab python:tab['absolute_url'] in context.absolute_url()"
         tal:attributes="class python:test(selected_tab, 'selected', 'portal-tabs-nav-toplevel')"
         tal:condition="not:tab/no_display">
-		<span class="IEFix_paddingmenu">
-        <a tal:attributes="class python:test(selected_tab, 'selected', 'plain');
-                           href tab/absolute_url"
-            tal:content="tab/Title">
-            Title
-        </a>
-		</span>
+
+		      <span class="IEFix_paddingmenu">
+            <a tal:attributes="class python:test(selected_tab, 'selected', 'plain');
+                            href tab/absolute_url"
+                tal:content="tab/Title">
+                Title
+            </a>
+		      </span>
         <ul class="portal-tabs-nav-items"
             tal:define="subitems tab/children|nothing"
             tal:condition="tab/children">
