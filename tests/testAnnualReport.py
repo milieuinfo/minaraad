@@ -47,16 +47,10 @@ from Products.minaraad.content.AnnualReport import AnnualReport
 
 ##code-section module-beforeclass #fill in your manual code here
 
-def loadPDF(name):
-    """ Load PDF from testing directory
-    """
-    fd = open(name, 'rb')
-    data = fd.read()
-    fd.close()
-    return data
+from Products.minaraad.tests.utils import load_file
 
 TITLE = "title"
-ATTACHMENT = loadPDF('test.pdf')
+ATTACHMENT = load_file('test.pdf')
 
 ##/code-section module-beforeclass
 

@@ -47,14 +47,7 @@ from Products.minaraad.content.Pressrelease import Pressrelease
 
 ##code-section module-beforeclass #fill in your manual code here
 from DateTime import DateTime
-
-def loadImage(name, size=0):
-    """Load image from testing directory
-    """
-    fd = open(name, 'rb')
-    data = fd.read()
-    fd.close()
-    return data
+from Products.minaraad.tests.utils import load_file
 
 TITLE = "title"
 SUBHEADER = "ondertitel"
@@ -62,7 +55,7 @@ DESCRIPTION = "jaja, een omschrijving"
 DATE = DateTime()
 HTMLBODY = "<p>HTML op zijn best</p>"
 PLAINBODY = "HTML op zijn best"
-TESTIMAGE = loadImage('test.gif')
+TESTIMAGE = load_file('test.gif')
 
 ##/code-section module-beforeclass
 
