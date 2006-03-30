@@ -74,11 +74,15 @@
              <td colspan="5"
                   class="portal-header-mina"
                   valign="bottom"
-                  height="155">
+                  height="155"
+                  tal:define="abs_url python:context.absolute_url; 
+                              urlheader string:$abs_url/header.jpg"
+                  tal:attributes="style string:background:url($urlheader) no-repeat right;">
+
                   <a metal:use-macro="here/global_logo/macros/portal_logo">
                    The portal logo, linked to the portal root
                  </a>
-                 <div class="header-borderbottom " />
+                <div class="header-borderbottom " />
               </td>
           </tr>
           <tr>
@@ -193,6 +197,7 @@
           <tr>
             <td valign="bottom"
                 class="portal-column-one-mina">
+              <br /><br />
               <metal:block metal:use-macro="here/portlet_login/macros/portlet-login" />
               <metal:block metal:use-macro="here/portlet_personalbar/macros/portlet_personal" />
             </td>

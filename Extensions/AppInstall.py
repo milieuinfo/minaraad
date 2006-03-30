@@ -5,6 +5,7 @@ from Products.CMFCore.DirectoryView import addDirectoryViews
 from Products.PortalTransforms.transforms.lynx_dump import lynx_dump
 from Products.RichDocument.Extensions.Install import registerAttachmentsFormControllerActions
 from StringIO import StringIO
+from Products.DCWorkflow.DCWorkflow import WorkflowException
 
 MINARAAD_PROPERTIES = 'minaraad_properties'
 THEMES_PROPERTY = [
@@ -125,8 +126,8 @@ def createFolderStructure(portal):
             portal._delObject(item)
     # Now let's create the ones we want
     for node in ROOT_CHILDREN:
-        if node['id'] not in portal.objectIds():
-            createNode(portal, node)
+        #if node['id'] not in portal.objectIds():
+        createNode(portal, node)
 
 def createNode(self, item):
     workflow_tool = getToolByName(self, 'portal_workflow')
@@ -139,7 +140,10 @@ def createNode(self, item):
     created_object = self._getOb(id, None)
     created_object.setTitle(item['title'])
 
-    workflow_tool.doActionFor(created_object, 'publish')
+    try:
+        workflow_tool.doActionFor(created_object, 'publish')
+    except WorkflowException, e:
+        pass
 
     for child in item['children']:
         createNode(created_object, child)

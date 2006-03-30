@@ -47,15 +47,9 @@ from Products.minaraad.content.Hearing import Hearing
 
 ##code-section module-beforeclass #fill in your manual code here
 
-def loadImage(name, size=0):
-    """ Load image from testing directory
-    """
-    fd = open(name, 'rb')
-    data = fd.read()
-    fd.close()
-    return data
+from Products.minaraad.tests.utils import load_file
 
-TESTIMAGE = loadImage('test.gif')
+TESTIMAGE = load_file('test.gif')
 
 ##/code-section module-beforeclass
 
