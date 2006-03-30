@@ -367,18 +367,17 @@ div.portal-tabs ul {
 
 div.portal-tabs ul li {
     position:relative;
-	   margin-bottom: 0px;
-    padding-left: 10px;
+    margin-bottom: 0px;
 }
 
 div.portal-tabs li ul {
     display: none;
     position: absolute;
-	   left: 154px; 
+    left: 154px; 
     top: 0px;
 }
 
-ul li.portal-tabs-nav-toplevel{
+span .IEFix_paddingmenu {
     padding-left: 10px;
 }
 
