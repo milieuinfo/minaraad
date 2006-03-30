@@ -1,0 +1,818 @@
+# minaraad
+# Mirella van Teulingen <m.van.teulingen@zestsoftware.nl>, 2006.
+msgid ""
+msgstr ""
+"Project-Id-Version: minaraad 0.1\n"
+"POT-Creation-Date: 2006-03-28 13:18+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: Mirella van Teulingen <m.van.teulingen@zestsoftware.nl>\n"
+"Language-Team: Nederlands <info@zestsoftware.nl>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: nl-be\n"
+"Language-Name: Nederlands Belgisch\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: minaraad\n"
+
+
+#: browser/subscriptions_config.pt
+msgid "Advisory"
+msgstr "Advies"
+
+#: browser/subscriptions_config.pt
+msgid "AnnualReport"
+msgstr "Jaarverslag"
+
+#. Default: "Date:"
+#: skins/minaraad/mina_showdatetime.pt
+msgid "Date:"
+msgstr "Datum:"
+
+#. Default: "Goal:"
+#: skins/minaraad/EmailTemplate-Hearing.pt
+#: skins/minaraad/hearing_view.pt
+msgid "Goal:"
+msgstr "Doelstelling:"
+
+#: browser/subscriptions_config.pt
+msgid "Hearing"
+msgstr "Hoorzitting"
+
+#. Default: "Location:"
+#: skins/minaraad/EmailTemplate-Hearing.pt
+#: skins/minaraad/hearing_view.pt
+msgid "Location:"
+msgstr "Locatie:"
+
+#: browser/subscriptions_config.pt
+msgid "Newsletter"
+msgstr "Nieuwsbrief"
+
+#: browser/subscriptions_config.pt
+msgid "Pressrelease"
+msgstr "Persbericht"
+
+#: browser/subscriptions_config.pt
+msgid "Study"
+msgstr "Studie"
+
+#. Default: "Time:"
+#: skins/minaraad/mina_showdatetime.pt
+msgid "Time"
+msgstr "Tijd:"
+
+#. Default: "Advisory date:"
+#: skins/minaraad/advisory_view.pt
+msgid "advisory_date"
+msgstr "Adviesdatum:"
+
+#. Default: "For security reasons, we store your password encrypted, and cannot mail it to you. If you would like to reset your password, fill out the form below and we will send you an email at the address you gave when you registered to start the process of resetting your password. <br/> <br/> If this will not work for you (for example, if you forgot your member name or your email address has changed) send an email to the"
+#: skins/minaraad/mail_password_form.pt
+msgid "description_lost_password_mina"
+msgstr "Om veiligheidsredenen kan het wachtwoord niet per e-mail naar u worden verzonden. U kunt uw wachtwoord wijzigen door het onderstaande formulier in te vullen. Wij sturen een e-mailbericht naar het e-mailadres dat u tijdens de registratie heeft opgegeven. Dit bericht bevat een link naar een formulier waar u het wachtwoord kunt wijzigen.<br /> <br />Indien u bijvoorbeeld uw gebruikersnaam niet meer weet of uw e-mailadres is gewijzigd, stuur dan een e-mail naar de"
+
+#. Default: "You can now subscribe on one or more of our subscriptions. Go to \"my preferences\" and choose \"Subscriptions\". Or click directly on the following link: ${setup_subscriptions}."
+#: skins/minaraad/login_success.pt
+msgid "description_newbie_pointers_mina"
+msgstr "U kunt zich nu inschrijven op een van onze gratis abonnementen. Ga naar \"voorkeuren\" en kies \"Abonnementen\". Of klik direct op de volgende link: ${setup_subscriptions}."
+
+#: browser/subscriptions_config.pt
+msgid "description_subscriptions_setup"
+msgstr "Selecteer de abonnementen"
+
+#. Default: "Themes settings for Site"
+#: browser/minaraad_config.pt"
+msgid "description_themes_setup"
+msgstr "De gebruikte thema's voor deze site."
+
+#. Default: "Click on the buttons below to export the e-mail or post subscribers on this content type as an Excelsheet."
+#: browser/export-subscribers.pt
+msgid "export_descriptions"
+msgstr "Klik op de onderstaande button om abonnees van dit content type te exporteren naar Excelsheet."
+
+#. Default: "from"
+#: skins/minaraad/hearing_listing_view.pt
+#: skins/minaraad/mina_showdatetime.pt
+#: skins/minaraad/study_listing_view.pt
+msgid "from"
+msgstr "van"
+
+#. Default: "Themes Settings"
+#: browser/minaraad_config.pt"
+msgid "heading_themes_setup"
+msgstr "Thema's"
+
+#. Default: "Send out an e-mail to all subscribers pertaining to this item. If the 'Send As Test' checkbox is checked below, the e-mail is only sent to the people in the 'To' field. Fill in the username which should receive the test email. Once a non-test e-mail has been sent out,no further e-mail's can be sent from this particular tab."
+msgid "help_email_out"
+msgstr "Verzend een e-mail naar alle abonnees op dit content type. Wanneer de checkbox \"Test email versturen\" is aangevinkt, wordt er alleen een e-mail gestuurd naar de e-mailadressen die in het \"Aan\"- veld zijn ingevuld. Vul in het \"Aan\"- veld de gebruikersnaam van de persoon die het test bericht mag ontvangen. Wanneer het daadwerkelijke bericht is verstuurd, is het niet mogelijk op deze opnieuw te versturen."
+
+#. Default: "Additional message text (text used from emailTemplate field is considered master e-mail text)."
+#: browser/email_out.pt
+msgid "help_email_out_additional"
+msgstr "Extra tekst toevoegen aan het bericht (De body tekst is de hoofdtekst.)"
+
+#. Default: "An e-mail has already been sent out for this content type on ${email_sentdate}"
+#: browser/email_out.pt
+msgid "help_email_out_already_sent"
+msgstr "Er is een e-mail verzonden voor dit content type op: ${email_sentdate}"
+
+#. Default: "Comma-separated list of e-mail addresses to send this out to."
+#: browser/email_out.pt
+msgid "help_email_out_to"
+msgstr "Voeg hier de gebruikersnamen in van de personen die ook het bericht mogen ontvangen. Gebruik een ',' tussen de gebruikersnamen"
+
+#. Default: " Test e-mails can be sent as frequently as needed but only get sent to the email addresses in the above "To" field."
+#: browser/email_out.pt
+msgid "help_send_as_test"
+msgstr "Test e-mails kunnen zo vaak als nodig worden verstuurd. De test e-mail wordt verstuurd naar de gebruiker dat hierboven in het \"Aan\" veld is ingevuld."
+
+#. Default: "Name of the new theme to create."
+#: browser/minaraad_config.pt"
+msgid "help_theme_name"
+msgstr "Vul de naam in van het nieuwe thema."
+
+#. Default: "hour"
+#: skins/minaraad/hearing_listing_view.pt
+#: skins/minaraad/mina_showdatetime.pt
+#: skins/minaraad/study_listing_view.pt
+msgid "hour"
+msgstr "uur"
+
+#. Default: "Add"
+#: browser/minaraad_config.pt"
+msgid "label_add"
+msgstr "Toevoegen"
+
+#. Default: "Agenda items"
+#: skins/minaraad/EmailTemplate-Hearing.pt
+#: skins/minaraad/hearing_view.pt
+msgid "label_agendaitems"
+msgstr "Agendapunten"
+
+#: skins/join_form.cpt
+msgid "label_bus"
+msgstr "Bus"
+
+#. Default: "City"
+#: skins/minaraad/join_form.cpt
+#: skins/minaraad/personalize_form.cpt
+#: skins/minaraad/prefs_user_details.cpt
+msgid "label_city"
+msgstr "Woonplaats"
+
+#. Default: "Company"
+#: skins/minaraad/join_form.cpt
+#: skins/minaraad/personalize_form.cpt
+#: skins/minaraad/prefs_user_details.cpt
+msgid "label_company"
+msgstr "Organisatie"
+
+#. Default: "Contact persons:"
+#: skins/minaraad/newsitem_view.pt
+#: skins/minaraad/newsletter_view.pt
+msgid "label_contactpersons"
+msgstr "Contactpersonen:"
+
+#. Default: "Country"
+#: skins/minaraad/join_form.cpt
+#: skins/minaraad/personalize_form.cpt
+#: skins/minaraad/prefs_user_details.cpt
+msgid "label_country"
+msgstr "Land"
+
+#. Default: "Dear"
+#: skins/minaraad/EmailTemplate-Default.pt
+#: skins/minaraad/EmailTemplate-Hearing.pt
+#: skins/minaraad/EmailTemplate-NewsLetter.pt
+msgid "label_dear"
+msgstr "Beste"
+
+#. Default: "Delete"
+#: browser/minaraad_config.pt"
+msgid "label_delete"
+msgstr "Verwijderen"
+
+#. Default: "Edit"
+#: browser/minaraad_config.pt"
+msgid "label_edit"
+msgstr "Wijzigen"
+
+#. Default: "Additional Message"
+#: browser/email_out.pt
+msgid "label_email_out_additional"
+msgstr "Extra Bericht"
+
+#. Default: "to"
+msgid "label_email_out_to"
+msgstr "Aan"
+
+#. Default: "Emailaddress"
+#: skins/minaraad/contactperson_view.pt
+msgid "label_emailaddress"
+msgstr "E-mailadres"
+
+#. Default: "Export As Excel Spreadsheet"
+#: browser/export-subscribers.pt
+msgid "label_export_as_excel"
+msgstr "Exporteer naar Excel"
+
+#. Default: "Export Email Subscribers"
+#: browser/export-subscribers.pt
+msgid "label_export_email"
+msgstr "Exporteer e-mail abbonnees"
+
+#. Default: "Export Post Subscribers"
+#: browser/export-subscribers.pt
+msgid "label_export_post"
+msgstr "Exporteer post abbonnees"
+
+#. Default: "Export Subscriber List"
+#: browser/export-subscribers.pt
+msgid "label_exportsubscribers"
+msgstr "Exporteer abonneelijst"
+
+#: skins/join_form.cpt
+msgid "label_firstname"
+msgstr "Voornaam"
+
+#. Default: "Gender"
+#: skins/minaraad/join_form.cpt
+#: skins/minaraad/personalize_form.cpt
+#: skins/minaraad/prefs_user_details.cpt
+msgid "label_gender"
+msgstr "Aanhef"
+
+#. Default: "House number"
+#: skins/minaraad/join_form.cpt
+#: skins/minaraad/personalize_form.cpt
+#: skins/minaraad/prefs_user_details.cpt
+msgid "label_housenumber"
+msgstr "Huisnummer"
+
+#. Default: "Function"
+#: skins/minaraad/contactperson_view.pt
+msgid "label_jobtitle"
+msgstr "Functie"
+
+#. Default: "Join in"
+#: skins/minaraad/portlet_login.pt
+msgid "label_join_in"
+msgstr "Abonneren"
+
+#: skins/join_form.cpt
+msgid "label_lastname"
+msgstr "Achternaam"
+
+#. Default: "Continue to the ${portal_title} home page"
+#: skins/minaraad/login_success.pt
+msgid "label_login_continue_to_home_page"
+msgstr "Ga naar de ${portal_title} homepage."
+
+#. Default: "For more info, go to:"
+#: skins/minaraad/EmailTemplate-Default.pt
+#: skins/minaraad/EmailTemplate-Hearing.pt
+#: skins/minaraad/EmailTemplate-NewsLetter.pt
+msgid "label_moreinfo"
+msgstr "Voor meer informatie, ga naar:"
+
+#. Default: "Name"
+#: skins/minaraad/contactperson_view.pt
+msgid "label_name"
+msgstr "Naam"
+
+#. <no reference>
+#: Field.py
+msgid "label_no_reference"
+msgstr "<geen referentie>"
+
+#. Default: "Other country"
+#: skins/minaraad/join_form.cpt
+#: skins/minaraad/personalize_form.cpt
+#: skins/minaraad/prefs_user_details.cpt
+msgid "label_other_country"
+msgstr "Ander land namelijk:"
+
+#. Default: "Phonenumber"
+#: skins/minaraad/contactperson_view.pt
+msgid "label_phonenumber"
+msgstr "Telefoon"
+
+#. Default: "Save"
+#: browser/minaraad_config.pt"
+msgid "label_save"
+msgstr "Opslaan"
+
+#: browser/subscriptions_config.pt
+msgid "label_select_all_themes"
+msgstr "Selecteer alle thema's"
+
+#. Default: "Send"
+#: browser/email_out.pt
+msgid "label_send"
+msgstr "Verzenden"
+
+#. Default: "Send Test e-mail"
+#: browser/email_out.pt
+msgid "label_send_as_test"
+msgstr "Test e-mail versturen"
+
+#. Default: "Send e-mail"
+#: browser/email_out.pt
+msgid "label_sendemail"
+msgstr "E-mail verzenden"
+
+#. Default: "Speaker:"
+#: skins/minaraad/EmailTemplate-Hearing.pt
+#: skins/minaraad/hearing_view.pt
+msgid "label_speaker"
+msgstr "Spreker:"
+
+#. Default: "Street"
+#: skins/minaraad/join_form.cpt
+#: skins/minaraad/personalize_form.cpt
+#: skins/minaraad/prefs_user_details.cpt
+msgid "label_street"
+msgstr "Straat"
+
+#. Default: "Subscribe"
+#: skins/minaraad/hearing_view.pt
+msgid "label_subscribe"
+msgstr "Aanmelden"
+
+#: browser/subscribers_config.pt
+msgid "label_subscribersoverview"
+msgstr "Thema abonnees"
+
+#. Default: "Theme:"
+#: skins/minaraad/EmailTemplate-Hearing.pt
+#: skins/minaraad/hearing_view.pt
+msgid "label_theme_name"
+msgstr "Thema:"
+
+#. Default: "Unsubscribe"
+#: skins/minaraad/hearing_view.pt
+msgid "label_unsubscribe"
+msgstr "Afmelden"
+
+#: browser/subscriptions_config.pt
+msgid "label_up_to_my_preferences"
+msgstr "Terug naar mijn voorkeuren"
+
+#. Default: "Up to Site Setup"
+#: browser/minaraad_config.pt"
+msgid "label_up_to_plone_setup"
+msgstr "Terug naar Plone configuratie"
+
+#. Default: "Webmaster"
+#: skins/minaraad/mail_password_form.pt
+msgid "label_webmaster"
+msgstr "website beheerder"
+
+#. Default: "Zipcode"
+#: skins/minaraad/join_form.cpt
+#: skins/minaraad/personalize_form.cpt
+#: skins/minaraad/prefs_user_details.cpt
+msgid "label_zipcode"
+msgstr "Postcode"
+
+#. Default: "Add Theme"
+#: browser/minaraad_config.pt"
+msgid "legend_add_theme_details"
+msgstr "Thema toevoegen"
+
+#: browser/subscriptions_config.pt
+msgid "legend_current_subscriptions_details"
+msgstr ""
+
+#. Default: "Current Themes"
+#: browser/minaraad_config.pt"
+msgid "legend_current_themes _details"
+msgstr "Huidige thema's"
+
+#. Default: "Edit Theme"
+#: browser/minaraad_config.pt"
+msgid "legend_edit_theme"
+msgstr "Wijzig thema"
+
+#. Default: "Send e-mail to subscribers"
+#: browser/email_out.pt
+msgid "legend_sendemail"
+msgstr "E-mail verzenden naar abonnees"
+
+#. Default: "More"
+#: skins/minaraad/advisory_listing_view.pt
+#: skins/minaraad/hearing_listing_view.pt
+#: skins/minaraad/newsletter_listing_view.pt
+msgid "linkmoreinfo"
+msgstr "Meer informatie"
+
+#: skins/mail_password_template.dtml
+msgid "mailtemplate_hours"
+msgstr "uur"
+
+#. Default: "You have been registered as a member of MiNa-Raad website. Please activate your account by visiting ${set_password} You must activate your account within ${expirationtime} hours"
+#: skins/minaraad/registered_notify_template.pt
+msgid "mailtemplate_registered_body"
+msgstr "U bent geregistreerd als lid van de MiNa-Raad website.\n\nGelieve uw account te activeren door op volgende link te klikken:\n\n${set_password}\n\nU dient uw account te activeren binnen de ${expirationtime} uur.\n\n"
+
+#. Default: "Kind regards, MINARAAD"
+#: skins/minaraad/registered_notify_template.pt
+msgid "mailtemplate_signature"
+msgstr "Met vriendelijke groeten,\n\nMINARAAD"
+
+#: skins/mail_password_template.dtml
+msgid "mailtemplate_text_linkreset"
+msgstr "Wij ontvingen een aanvraag om uw wachtwoord op onze website te wijzigen."
+
+#: skins/mail_password_template.dtml
+msgid "mailtemplate_text_linkreset2"
+msgstr "Klik op onderstaande link als u hiermee akkoord gaat en om deze wijziging te bevestigen:"
+
+#. Default: "contactpersons"
+#: MinaBundle.py
+msgid "minaraad_help_contactpersons"
+msgstr ""
+
+#. Default: "date"
+#: content/Advisory.py
+#: content/Study.py
+msgid "minaraad_help_date"
+msgstr ""
+
+#. Default: "department"
+#: content/ContactPerson.py
+msgid "minaraad_help_department"
+msgstr ""
+
+#. Default: "email"
+#: content/ContactPerson.py
+msgid "minaraad_help_email"
+msgstr ""
+
+#. Default: "help_minaraad_emailTemplate"
+#: EmailMixin.py
+msgid "minaraad_help_emailTemplate"
+msgstr "De tekst in deze editor wordt gebruikt voor zowel de website als e-mailbericht voor de e-mail notificatie."
+
+#. Default: "goal"
+#: content/Hearing.py
+msgid "minaraad_help_goal"
+msgstr ""
+
+#. Default: "jobtitle"
+#: content/ContactPerson.py
+msgid "minaraad_help_jobtitle"
+msgstr ""
+
+#. Default: "location"
+#: content/Hearing.py
+msgid "minaraad_help_location"
+msgstr ""
+
+#. Default: "MOT"
+#: content/Hearing.py
+msgid "minaraad_help_mot"
+msgstr "Vink deze optie aan als de Hoorzitting een MOT is."
+
+#. Default: "name"
+#: content/ContactPerson.py
+msgid "minaraad_help_name"
+msgstr ""
+
+#. Default: "phonenumber"
+#: content/ContactPerson.py
+msgid "minaraad_help_phonenumber"
+msgstr ""
+
+#. Default: "plaintext"
+#: MinaBundle.py
+msgid "minaraad_help_plaintext"
+msgstr ""
+
+#. Default: "policy"
+#: content/Advisory.py
+msgid "minaraad_help_policy"
+msgstr ""
+
+#. Default: "speaker"
+#: content/Presentation.py
+msgid "minaraad_help_speaker"
+msgstr ""
+
+#. Default: "speakers"
+#: content/Study.py
+msgid "minaraad_help_speakers"
+msgstr ""
+
+#. Default: "subheader"
+#: content/Hearing.py
+#: content/Pressrelease.py
+#: content/Study.py
+msgid "minaraad_help_subheader"
+msgstr ""
+
+#. Default: "summary"
+#: content/Presentation.py
+msgid "minaraad_help_summary"
+msgstr ""
+
+#. Default: "Attachment"
+#: content/Pressrelease.py
+#: content/Study.py
+#: content/AnnualReport.py
+msgid "minaraad_label_attachment"
+msgstr "Bijlage"
+
+#. Default: "Attachments"
+#: content/Advisory.py
+#: content/AgendaItem.py
+msgid "minaraad_label_attachments"
+msgstr "Bijlagen"
+
+#. Default: "Body"
+#: content/Hearing.py
+#: content/Advisory.py
+#: EmailMixin.py
+msgid "minaraad_label_body"
+msgstr "Body tekst"
+
+#. Default: "Bus"
+#: Organisation.py
+msgid "minaraad_label_bus"
+msgstr "Bus"
+
+#. Default: "Category"
+#: content/NewsItem.py
+msgid "minaraad_label_category"
+msgstr ""
+
+#. Default: "City"
+#: Organisation.py
+msgid "minaraad_label_city"
+msgstr "Woonplaats"
+
+#. Default: "Contact"
+#: content/Hearing.py
+#: content/NewsLetter.py
+#: content/Advisory.py
+msgid "minaraad_label_contact"
+msgstr "Contactpersonen"
+
+#. Default: "Contactpersons"
+#: MinaBundle.py
+#: content/Advisory.py
+#: content/Hearing.py
+msgid "minaraad_label_contactpersons"
+msgstr "Contactpersonen"
+
+#. Default: "Date"
+#: content/Advisory.py
+#: content/Study.py
+#: content/NewsLetter.py
+msgid "minaraad_label_date"
+msgstr "Datum"
+
+#. Default: "Department"
+#: skins/minaraad/contactperson_view.pt
+msgid "minaraad_label_department"
+msgstr "Organisatie"
+
+#. Default: "Description"
+#: content/Hearing.py
+#: content/Advisory.py
+#: content/NewsLetter.py
+msgid "minaraad_label_description"
+msgstr "Omschrijving"
+
+#. Default: "Displayattachments"
+#: Attachmentsmixin.py
+msgid "minaraad_label_displayAttachments"
+msgstr "Bijlagen tonen"
+
+#. Default: "Email"
+#: content/ContactPerson.py
+msgid "minaraad_label_email"
+msgstr "E-mailadres contactpersoon"
+
+#. Default: "Emailsent"
+#: EmailMixin.py
+msgid "minaraad_label_emailSent"
+msgstr "Email verzonden"
+
+#. Default: "Emailtemplate"
+#: EmailMixin.py
+msgid "minaraad_label_emailTemplate"
+msgstr "E-mail template"
+
+#. Default: "Enddate"
+#: content/Hearing.py
+#: content/Study.py
+msgid "minaraad_label_enddate"
+msgstr "Einddatum"
+
+#. Default: "Foto"
+#: content/Hearing.py
+#: content/Pressrelease.py
+msgid "minaraad_label_foto"
+msgstr "Foto"
+
+#. Default: "Goal"
+#: content/Hearing.py
+msgid "minaraad_label_goal"
+msgstr "Doelstelling"
+
+#. Default: "Itemenddate"
+#: content/AgendaItem.py
+msgid "minaraad_label_itemenddate"
+msgstr "Agendapunt eind datum/tijd"
+
+#. Default: "Itemstartdate"
+#: content/AgendaItem.py
+msgid "minaraad_label_itemstartdate"
+msgstr "Agendapunt start datum/tijd"
+
+#. Default: "Jobtitle"
+#: content/ContactPerson.py
+msgid "minaraad_label_jobtitle"
+msgstr "Functie"
+
+#. Default: "Location"
+#: skins/minaraad/study_listing_view.pt
+#: skins/minaraad/study_view.pt
+msgid "minaraad_label_location"
+msgstr "Lokatie"
+
+#. Default: "Logo_1"
+#: content/Pressrelease.py
+msgid "minaraad_label_logo_1"
+msgstr "Logo 1"
+
+#. Default: "Logo_2"
+#: content/Pressrelease.py
+msgid "minaraad_label_logo_2"
+msgstr "Logo 2"
+
+#. Default: "Mot"
+#: content/Hearing.py
+msgid "minaraad_label_mot"
+msgstr "MOT's"
+
+#. Default: "Name"
+#: content/ContactPerson.py
+msgid "minaraad_label_name"
+msgstr "Naam contactpersoon"
+
+#. Default: "Organisation"
+#: content/AgendaItem.py
+msgid "minaraad_label_organisation"
+msgstr "Organisatie"
+
+#. Default: "Phonenumber"
+#: content/ContactPerson.py
+msgid "minaraad_label_phonenumber"
+msgstr "Telefoon"
+
+#. Default: "Plaintext"
+#: MinaBundle.py
+#: content/Hearing.py
+#: content/Advisory.py
+msgid "minaraad_label_plaintext"
+msgstr "Platte tekst"
+
+#. Default: "Policy"
+#: content/Advisory.py
+msgid "minaraad_label_policy"
+msgstr "Beleid"
+
+#. Default: "Speaker"
+#: content/Presentation.py
+#: content/AgendaItems.py
+#: content/AgendaItem.py
+msgid "minaraad_label_speaker"
+msgstr "Spreker"
+
+#. Default: "Speakers"
+#: skins/minaraad/EmailTemplate-Study.pt
+#: skins/minaraad/study_view.pt
+msgid "minaraad_label_speakers"
+msgstr "Sprekers"
+
+#. Default: "Startdate"
+#: content/Hearing.py
+#: content/Study.py
+msgid "minaraad_label_startdate"
+msgstr "Startdatum"
+
+#. Default: "Street"
+#: Organisation.py
+msgid "minaraad_label_street"
+msgstr "Straat"
+
+#. Default: "Streetno"
+#: Organisation.py
+msgid "minaraad_label_streetno"
+msgstr "Huisnummer"
+
+#. Default: "Subheader"
+#: content/Hearing.py
+#: content/Pressrelease.py
+#: content/Study.py
+msgid "minaraad_label_subheader"
+msgstr "Subkop"
+
+#. Default: "Summary"
+#: content/Presentation.py
+#: content/AgendaItems.py
+#: content/AgendaItem.py
+msgid "minaraad_label_summary"
+msgstr "Samenvatting"
+
+#. Default: "Theme"
+#: content/Hearing.py
+msgid "minaraad_label_theme"
+msgstr "Thema"
+
+#. Default: "Zipcode"
+#: Organisation.py
+msgid "minaraad_label_zipcode"
+msgstr "Postcode"
+
+#. Default: "For more information contact:"
+#: skins/minaraad/advisory_view.pt
+#: skins/minaraad/EmailTemplate-Default.pt
+#: skins/minaraad/EmailTemplate-PressRelease.pt
+msgid "moreinfo_contactperson"
+msgstr "Voor meer informatie kunt u contact opnemen met:"
+
+#. Default: "(none currently)"
+#: skins/minaraad/hearing_view.pt
+msgid "no_attendees"
+msgstr "Er zijn nog geen deelnemers"
+
+#. Default: "No newsitems available"
+#: skins/minaraad/newsletter_view.pt
+msgid "no_newsitems_available"
+msgstr "Er is nog geen informatie beschikbaar"
+
+#. Default: "Subscriptions"
+#: skins/minaraad/login_success.pt
+msgid "subscriptions_link"
+msgstr "Abonnementen"
+
+#. Default: "till"
+#: skins/minaraad/hearing_listing_view.pt
+#: skins/minaraad/mina_showdatetime.pt
+#: skins/minaraad/study_listing_view.pt
+msgid "till"
+msgstr "tot"
+
+#. Default: "Attachments"
+#: skins/minaraad/mina_attachments.pt
+msgid "title_attachments"
+msgstr "Bijlagen:"
+
+#. Default: "Attendees"
+#: skins/minaraad/hearing_view.pt
+msgid "title_attendees"
+msgstr "Deelnemers"
+
+#. Default: "Council Members"
+#: skins/minaraad/hearing_view.pt
+msgid "title_counsilmembers"
+msgstr "Raadsleden"
+
+#: browser/subscriptions_config.pt
+msgid "title_email"
+msgstr "Per e-mail"
+
+#. Default: "Members"
+#: skins/minaraad/hearing_view.pt
+msgid "title_members"
+msgstr "Leden"
+
+#: browser/subscriptions_config.pt
+msgid "title_post"
+msgstr "Per post"
+
+#. Default: "Speakers"
+#: skins/minaraad/hearing_view.pt
+msgid "title_speakers"
+msgstr "Sprekers"
+
+#: browser/subscriptions_config.pt
+msgid "title_subscription"
+msgstr "Abonnementen"
+
+#: browser/subscriptions_config.pt
+msgid "toggle_all"
+msgstr "Selecteer alles:"
+
+#. Default: "up untill"
+#: skins/minaraad/hearing_listing_view.pt
+#: skins/minaraad/mina_showdatetime.pt
+#: skins/minaraad/study_listing_view.pt
+msgid "up_untill"
+msgstr "t/m"
+
