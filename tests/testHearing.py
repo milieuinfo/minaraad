@@ -141,7 +141,6 @@ class testHearing(MainTestCase):
         correct = "<class 'Products.Archetypes.Field.Image'>"
         self.failUnless(myclass==correct, 'Value is %s and not %s' % (myclass,correct))
 
-
     def test_subscribers_export(self):
         pass
 

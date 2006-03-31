@@ -52,8 +52,7 @@ TITLE = "title"
 SUBHEADER = "ondertitel"
 DESCRIPTION = "een omschrijving"
 LOCATION = "een plaats"
-STARTDATE = DateTime()
-ENDDATE = DateTime()
+DATE = DateTime()
 SPEAKERS = ("Joris","Slob")
 HTMLBODY = "<p>HTML Body boodschap</p>"
 
@@ -77,8 +76,6 @@ class testStudy(MainTestCase):
         self.portal.contactpersonen.invokeFactory('ContactPerson', id='Jslob')
         self.contactperson = self.portal.contactpersonen.Jslob
 
-        pass
-    # from class Study:
     # from class Study:
     def test_email_out(self):
         pass
@@ -122,31 +119,16 @@ class testStudy(MainTestCase):
         """
 
         self.teststudy.setTitle(TITLE)
-        self.teststudy.setSubheader(SUBHEADER)
         self.teststudy.setDescription(DESCRIPTION)
-        self.teststudy.setLocation(LOCATION)
-        self.teststudy.setStartdate(STARTDATE)
-        self.teststudy.setEnddate(ENDDATE)
-        self.teststudy.setSpeakers(SPEAKERS)
-        self.teststudy.setBody(HTMLBODY,text_format="text/html")
+        self.teststudy.setDate(DATE)
         self.teststudy.setContact(self.contactperson.UID())
 
         self.failUnless(self.teststudy.Title()==TITLE,
                          'Value is %s' % self.teststudy.Title())
-        self.failUnless(self.teststudy.getSubheader()==SUBHEADER,
-                         'Value is %s' % self.teststudy.getSubheader())
         self.failUnless(self.teststudy.getDescription()==DESCRIPTION,
                          'Value is %s' % self.teststudy.getDescription())
-        self.failUnless(self.teststudy.getLocation()==LOCATION,
-                         'Value is %s' % self.teststudy.getLocation())
-        self.failUnless(self.teststudy.getStartdate()==STARTDATE,
-                         'Value is %s' % self.teststudy.getStartdate())
-        self.failUnless(self.teststudy.getEnddate()==ENDDATE,
-                         'Value is %s' % self.teststudy.getEnddate())
-        self.failUnless(self.teststudy.getSpeakers()==SPEAKERS,
-                         'Value is %s' % str(self.teststudy.getSpeakers()))
-        self.failUnless(self.teststudy.getBody()==HTMLBODY,
-                         'Value is %s' % self.teststudy.getBody())
+        self.failUnless(self.teststudy.getDate()==DATE,
+                         'Value is %s' % self.teststudy.getDate())
         self.failUnless(self.teststudy.getContact()==[self.contactperson],
                          'Value is %s' % self.teststudy.getContact())
 

@@ -146,6 +146,7 @@ class testPressrelease(MainTestCase):
         myclass = str(self.testpers.getFoto().__class__)
         self.failUnless(myclass==correct, 'Value is %s and not %s' % (myclass,correct))
 
+
 def test_suite():
     from unittest import TestSuite, makeSuite
     suite = TestSuite()

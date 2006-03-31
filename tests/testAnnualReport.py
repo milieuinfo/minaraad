@@ -70,7 +70,6 @@ class testAnnualReport(MainTestCase):
         self.testar = self.portal.jaarverslag.testar
         pass
     # from class AnnualReport:
-    # from class AnnualReport:
     def test_email_out(self):
         pass
 
@@ -120,6 +119,7 @@ class testAnnualReport(MainTestCase):
         myclass = str(self.testar.getAttachment().__class__)
         correct = "<class 'OFS.Image.File'>"
         self.failUnless(myclass==correct, 'Value is %s and not %s' % (myclass, correct))
+
 
 def test_suite():
     from unittest import TestSuite, makeSuite

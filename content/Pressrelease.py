@@ -113,6 +113,7 @@ schema = Schema((
 
     OrderableReferenceField(
         name='contact',
+        vocabulary_display_path_bound="-1",
         widget=OrderableReferenceWidget(
             label='Contact',
             label_msgid='minaraad_label_contact',

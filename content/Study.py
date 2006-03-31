@@ -39,15 +39,6 @@ from Products.minaraad.config import *
 
 schema = Schema((
 
-    StringField(
-        name='subheader',
-        widget=StringWidget(
-            label='Subheader',
-            label_msgid='minaraad_label_subheader',
-            i18n_domain='minaraad',
-        )
-    ),
-
     TextField(
         name='description',
         widget=TextAreaWidget(
@@ -58,54 +49,17 @@ schema = Schema((
     ),
 
     DateTimeField(
-        name='startdate',
+        name='date',
         widget=CalendarWidget(
-            label='Startdate',
-            label_msgid='minaraad_label_startdate',
+            label='Date',
+            label_msgid='minaraad_label_date',
             i18n_domain='minaraad',
         )
-    ),
-
-    DateTimeField(
-        name='enddate',
-        widget=CalendarWidget(
-            label='Enddate',
-            label_msgid='minaraad_label_enddate',
-            i18n_domain='minaraad',
-        )
-    ),
-
-    StringField(
-        name='location',
-        widget=StringWidget(
-            label='Location',
-            label_msgid='minaraad_label_location',
-            i18n_domain='minaraad',
-        )
-    ),
-
-    LinesField(
-        name='speakers',
-        widget=LinesWidget(
-            label='Speakers',
-            label_msgid='minaraad_label_speakers',
-            i18n_domain='minaraad',
-        )
-    ),
-
-    TextField(
-        name='body',
-        allowable_content_types=('text/plain', 'text/structured', 'text/html', 'application/msword',),
-        widget=RichWidget(
-            label='Body',
-            label_msgid='minaraad_label_body',
-            i18n_domain='minaraad',
-        ),
-        default_output_type='text/html'
     ),
 
     OrderableReferenceField(
         name='contact',
+        vocabulary_display_path_bound="-1",
         widget=OrderableReferenceWidget(
             label='Contact',
             label_msgid='minaraad_label_contact',

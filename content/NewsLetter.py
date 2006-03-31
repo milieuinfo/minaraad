@@ -135,7 +135,6 @@ class NewsLetter(EmailMixin, BaseFolder):
         pass
 
 
-
 registerType(NewsLetter, PROJECTNAME)
 # end of class NewsLetter
 
