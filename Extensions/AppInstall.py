@@ -6,6 +6,9 @@ from Products.PortalTransforms.transforms.lynx_dump import lynx_dump
 from Products.RichDocument.Extensions.Install import registerAttachmentsFormControllerActions
 from StringIO import StringIO
 from Products.DCWorkflow.DCWorkflow import WorkflowException
+from Products.PageTemplates.ZopePageTemplate import ZopePageTemplate
+import os
+from Globals import package_home
 
 MINARAAD_PROPERTIES = 'minaraad_properties'
 THEMES_PROPERTY = [
@@ -63,6 +66,9 @@ def install(self):
 
     print >> out, "Make FCKeditor the default for all members"
     _configureFCKeditor(self)
+
+    print >> out, "Changing the default view"
+    _default_view(self)
     
     # Set up form controller actions for the widgets to work
     registerAttachmentsFormControllerActions(self)
@@ -449,6 +455,17 @@ def _configureFCKeditor(portal):
             action.visible = 0
             print >> out, "Switching off unwanted action %s." % action.id
     control._actions = actions
+
+def _default_view(self):
+    zpt = ZopePageTemplate('index_html')
+
+    SkinsPath = os.path.join(package_home(GLOBALS), 'skins', 'minaraad')
+    full_path = os.path.join(SkinsPath, 'index_view.pt')
+    fd = open(full_path)
+    data = fd.read()
+    fd.close()
+    zpt.write(data)
+    self.index_html = zpt
 
 def _addLynxDumpTransform(portal):
     transforms = portal.portal_transforms

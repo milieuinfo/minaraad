@@ -1,6 +1,8 @@
 # The folder structure is in it's own file now.
 from folderstructure import *
 
+GLOBALS = globals()
+
 # Portal Properties
 PORTAL_TITLE = 'MiNa-Raad'
 EMAIL_FROM_ADDRESS = 'communicatie@minaraad.be'
