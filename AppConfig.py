@@ -73,6 +73,9 @@ IDS_NOT_TO_LIST = ['Members','contactpersonen']
 # Types to list in the navtree => the rest won't!
 TYPES_TO_LIST = ['Folder']
 
+# Titles that shouldn't appear in the navtree even though they are folders
+TITLES_NOT_IN_TABS = []
+
 # EXTRA_VIEWS is a dictionary, the keys are portal types.
 # The values are a list of templates or page names that are to
 # be added in the view dropdown.

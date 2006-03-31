@@ -116,6 +116,11 @@ def _configurePortalProps(portal):
     props_tool.navtree_properties._updateProperty('metaTypesNotToList',
                                                   tuple(metaTypesNotToList))
 
+    # New navtree_property - titlesNotInTabs
+    navtree_props = props_tool.navtree_properties
+    if not navtree_props.hasProperty('titlesNotInTabs'):
+        navtree_props.manage_addProperty('titlesNotInTabs', TITLES_NOT_IN_TABS, 'lines')
+
 def createFolderStructure(portal):
     """Create the initial folders in the root of the portal
     """
