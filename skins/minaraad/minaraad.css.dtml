@@ -44,7 +44,7 @@ table.site-bg {
 }
 
 #portal-column-two {
-    border-left: #D98F81;
+    border-left: 1px solid #D98F81;
 }
 
 .documentContent {
@@ -429,4 +429,31 @@ li.portal-tabs-subitem-listitem {
 }
 
 /* --- End Dropdownmenu --- */
+
+/* -- plone configuratie portlet -- */
+#portlet-prefs {
+    border: 0px;
+    width: 155px;
+}
+
+.portletHeader {
+    padding: 0px 0px 0px 5px;
+}
+/* -- End plone configuratie portlet -- */
+
+/* --- Searchbox ---*/
+
+input.searchButton {
+    font-size: 11px;
+    background-color: #F4CFC8;
+}
+
+.LSBox input {
+    border: 1px solid #D98F81;
+}
+
+#portal-searchbox {
+    padding: 0px;
+}
+/* --- End Searchbox ---*/
 /* </dtml-with> */

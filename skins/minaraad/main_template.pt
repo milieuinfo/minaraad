@@ -103,16 +103,14 @@
               <div metal:use-macro="here/global_sections/macros/portal_tabs">
                The global sections tabs. (Welcome, News etc)
              </div>
-<!--
-              <div class="visualPadding">
-                <metal:portlets define-slot="portlets_one_slot">
-                  <metal:leftportlets use-macro="here/portlets_fetcher/macros/left_column">
-                    This instruction gets the portlets (boxes) for the left column.
-                  </metal:leftportlets>
-                </metal:portlets>
-                &nbsp;
-              </div>
--->
+             <br />
+             <br />
+             
+            <metal:portlets define-slot="portlets_one_slot">
+                <metal:leftportlets use-macro="here/portlets_fetcher/macros/left_column">
+                This instruction gets the portlets (boxes) for the left column.
+                </metal:leftportlets>
+            </metal:portlets>
             </td>
             <tal:comment replace="nothing"> End of the left column </tal:comment>
 
@@ -178,11 +176,11 @@
                 tal:condition="sr"
                 width="200"
                 rowspan="2">
-<!--
+
              <div metal:use-macro="here/global_searchbox/macros/quick_search">
                The quicksearch box, normally placed at the top right
              </div>   
-
+<!--
               <div class="visualPadding">
                 <metal:portlets define-slot="portlets_two_slot">
                   <metal:rightportlets use-macro="here/portlets_fetcher/macros/right_column">
