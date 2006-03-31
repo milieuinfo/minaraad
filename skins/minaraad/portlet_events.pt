@@ -14,7 +14,6 @@
     
     <dl id="portlet-events-mina"
         tal:define="eventsfolder python:'events' in portal.contentIds()">
-    
         <dt>
             <a tal:condition="eventsfolder"
                tal:attributes="href string:${utool}/events"
@@ -30,7 +29,6 @@
                 Events
             </a>
         </dt>
-    
         <tal:events tal:repeat="obj results">
         <dd>
             <span class="portlet_date">
@@ -52,18 +50,18 @@
             </a>
         </dd>
     
-        <dd class="portletFooter">
+        <dd class="portlet_more">
             <a tal:condition="eventsfolder"
                tal:attributes="href string:${utool}/events"
                i18n:domain="minaraad"
                i18n:translate="box_upcoming_events_mina">
                 More...
             </a>
-    
             <a tal:condition="not: eventsfolder"
                tal:attributes="href string:${utool}/events_listing"
                i18n:domain="minaraad"
-               i18n:translate="box_upcoming_events_mina">
+               i18n:translate="box_upcoming_events_mina"
+               class="portlet_more_link">
                 More...
             </a>
         </dd>

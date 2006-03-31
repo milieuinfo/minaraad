@@ -174,7 +174,8 @@
 
              <div metal:use-macro="here/global_searchbox/macros/quick_search">
                The quicksearch box, normally placed at the top right
-             </div>   
+             </div>
+
              <metal:portlets define-slot="portlets_two_slot">
                <metal:rightportlets use-macro="here/portlets_fetcher/macros/right_column">
                This instruction gets the portlets (boxes) for the right column.

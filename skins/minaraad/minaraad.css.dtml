@@ -484,12 +484,32 @@ input.searchButton {
 
 #portlet-events-mina dd {
     margin-left: 0px;
-    padding-left: 2px;
-    padding-right: 2px;
+    padding: 13px 2px 0px 2px;
+    line-height: normal;
+    margin: 0px !important;
+}
+
+#portlet-events-mina dd a {
+    color: #313131;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#portlet-events-mina dd a:hover {
+    color: #A13826;
 }
 
 .portlet_date {
     color: #7d7d7b;
 }
+
+#portlet-events-mina dd.portlet_more {
+    text-align: right;
+}
+
+#portlet-events-mina dd a.portlet_more_link {
+    color: #A13826;
+}
+
 /* --- End Portlet Events --- */
 /* </dtml-with> */
