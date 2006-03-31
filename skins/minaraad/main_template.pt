@@ -154,17 +154,14 @@
                             </metal:header>
         
                             <metal:bodytext metal:define-slot="main" tal:content="nothing">
-                            Page body text
+                                Page body text
                             </metal:bodytext>
         
                             <metal:sub metal:define-slot="sub">
                             <metal:discussion use-macro="here/viewThreadsAtBottom/macros/discussionView" />
                             </metal:sub>
-        
                         </div>
-        
                         </div>
-        
                     </metal:block>
             </td>
             <tal:comment replace="nothing"> End of main content block </tal:comment>
@@ -180,15 +177,11 @@
              <div metal:use-macro="here/global_searchbox/macros/quick_search">
                The quicksearch box, normally placed at the top right
              </div>   
-<!--
-              <div class="visualPadding">
-                <metal:portlets define-slot="portlets_two_slot">
-                  <metal:rightportlets use-macro="here/portlets_fetcher/macros/right_column">
-                    This instruction gets the portlets (boxes) for the right column.
-                  </metal:rightportlets>
-                </metal:portlets>
-                &nbsp;
-              </div>-->
+             <metal:portlets define-slot="portlets_two_slot">
+               <metal:rightportlets use-macro="here/portlets_fetcher/macros/right_column">
+               This instruction gets the portlets (boxes) for the right column.
+               </metal:rightportlets>
+             </metal:portlets>
             </td>
             <tal:comment replace="nothing"> End of the right column </tal:comment>
           </tr>

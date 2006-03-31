@@ -31,7 +31,7 @@ i18n/${PRODUCT}-nl.po: skins/$PRODUCT/*.pt i18n/generated.pot
     :sys i18ndude rebuild-pot --pot i18n/${PRODUCT}.pot --create ${PRODUCT} --merge i18n/generated.pot skins/$PRODUCT/*.pt
 
 i18n-sync:
-    :sys i18ndude sync --pot i18n/${PRODUCT}.pot i18n/${PRODUCT}-nl.po i18n/${PRODUCT}-en.po
+    :sys i18ndude sync --pot i18n/${PRODUCT}.pot i18n/${PRODUCT}-nl.po i18n/${PRODUCT}-en.po i18n/${PRODUCT}-nl-be.po
 
 gen:
     # No questions, just run AGX again

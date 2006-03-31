@@ -4,7 +4,8 @@
 <body>
 
 <!-- THE SEARCHBOX DEFINITION -->
-<div id="portal-searchbox" metal:define-macro="quick_search">
+<div id="portal-searchbox-mina"
+     metal:define-macro="quick_search">
     <form name="searchform"
           action="search"
           tal:define="livesearch site_properties/enable_livesearch|nothing"
@@ -20,7 +21,7 @@
                tabindex=""
                name="SearchableText"
                type="text"
-               size="18"
+               size="19"
                title="Search Site"
                accesskey="4"
                i18n:attributes="title title_search_site;"

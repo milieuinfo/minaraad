@@ -25,8 +25,8 @@ LEFT_SLOTS = ('here/portlet_personalbar/macros/portlet',
               'here/portlet_login/macros/portlet',
               ) 
 
-RIGHT_SLOTS = ('here/portlet_review/macros/portlet',
-               'here/portlet_events/macros/portlet',
+RIGHT_SLOTS = ('here/portlet_events/macros/portlet',
+               'here/portlet_review/macros/portlet',
               ) 
 
 # Used to show the stringfield 'other country' when in the selectionbox
