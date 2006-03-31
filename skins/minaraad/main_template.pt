@@ -97,13 +97,11 @@
             <tal:comment replace="nothing"> Start of the left column </tal:comment>
             <td class="portal-column-one-mina"
                 metal:define-slot="column_one_slot"
-                tal:condition="sl"
                 width="155">
-
               <div metal:use-macro="here/global_sections/macros/portal_tabs">
                The global sections tabs. (Welcome, News etc)
              </div>
-             <br />
+            <br />
              <br />
              
             <metal:portlets define-slot="portlets_one_slot">
@@ -189,8 +187,8 @@
             <td valign="bottom"
                 class="portal-column-one-mina">
               <br /><br />
-              <metal:block metal:use-macro="here/portlet_login/macros/portlet-login" />
-              <metal:block metal:use-macro="here/portlet_personalbar/macros/portlet_personal" />
+              <metal:block metal:use-macro="here/portlet_login/macros/portlet" />
+              <metal:block metal:use-macro="here/portlet_personalbar/macros/portlet" />
             </td>
           </tr>
         </tbody>

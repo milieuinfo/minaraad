@@ -21,9 +21,7 @@ STYLESHEETS = [{'id': 'minaraad.css'}]
 # should get the minaraad folder workflow
 MINARAAD_FOLDER_WORKFLOW_TYPES = []
 
-LEFT_SLOTS = ('here/portlet_personalbar/macros/portlet',
-              'here/portlet_login/macros/portlet',
-              ) 
+LEFT_SLOTS = ( ) 
 
 RIGHT_SLOTS = ('here/portlet_events/macros/portlet',
                'here/portlet_review/macros/portlet',

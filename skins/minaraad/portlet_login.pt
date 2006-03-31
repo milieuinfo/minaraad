@@ -5,7 +5,7 @@
                   tabindex python:Iterator()">
 
 
-<div metal:define-macro="portlet-login"
+<div metal:define-macro="portlet"
      tal:define="pageloc python: request.URL.split('/')[-1];
                  okToShowHere python: not pageloc in ('login_form', 'join_form');
                  auth nocall:here/cookie_authentication|nothing"
