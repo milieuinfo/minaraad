@@ -279,8 +279,10 @@ def addMemberDataProperties(self, out):
         print >> out, "Property %r added to memberdata." % p
 
     # special care for our selection property gender
+    titles = ['De heer','Mevrouw','Monsieur','Madame','Ing.','Ir.','Dr.',
+              'Dr. Ir.','Prof.','Prof. Dr.','Prof. Dr. Ir.','Em. Prof.']
     if 'genders' not in memberdata.propertyIds():
-        memberdata.manage_addProperty('genders', ['de Heer','Mevrouw'], 'lines')
+        memberdata.manage_addProperty('genders', titles, 'lines')
 
     if 'gender' not in memberdata.propertyIds():
         memberdata.manage_addProperty('gender', 'genders', 'selection')
