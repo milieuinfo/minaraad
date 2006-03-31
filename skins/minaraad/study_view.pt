@@ -17,8 +17,8 @@
         
         Datum:
         <!-- Date and Time -->
-        <span metal:use-macro="context/mina_showdatetime/macros/datetime"
-                tal:omit-tag="" />
+        <span metal:use-macro="context/mina_showdatetime/macros/study_datetime"
+              tal:omit-tag="" />
         <!-- end Date and Time -->
     </metal:block>
 

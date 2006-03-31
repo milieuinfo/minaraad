@@ -64,7 +64,64 @@
         </tal:block>
         </metal:block>
 
-       
+
+        <metal:block metal:define-macro="study_datetime">
+        <tal:block tal:define="daterequired python:context.getStartdate() != None;
+                               item_type context/portal_type;"
+                   tal:condition="daterequired">
+            <div tal:define="startdate python:context.toLocalizedTime(context.startdate);
+                            enddate python:context.toLocalizedTime(context.enddate);
+                            starttime python:context.startdate.TimeMinutes();
+                            noStartTime python:test(starttime == '00:00', 0, 1);"
+                tal:omit-tag="">
+                <span class="hearingsubheader2"
+                      i18n:translate="Date:"
+                      tal:condition="python:item_type=='Hearing'">Date:</span>
+<!-- divert time when there is an end time and when there is not -->    
+<!--
+                <tal:block tal:condition="python:startdate == enddate">
+                    <span tal:replace="startdate" />
+                    <br />
+                    <tal:block tal:condition="python: noStartTime and noEndTime">
+                        <span class="hearingsubheader2"
+                            i18n:translate="Time">
+                            Time:
+                        </span>
+                        <span tal:replace="starttime" />
+                        <span i18n:translate="till"
+                            tal:omit-tag="">till</span>
+                        <span tal:replace="endtime" />
+                        <span i18n:translate="hour">hour</span>
+                    </tal:block>
+                </tal:block>
+                <tal:block tal:condition="python:startdate != enddate">
+                    <span i18n:translate="from"
+                        tal:omit-tag="">from</span> 
+                    <span tal:replace="startdate" />
+                    
+                    <span i18n:translate="up_untill"
+                        tal:omit-tag="">up untill</span> 
+                    <span tal:replace="enddate" />
+
+                    <tal:block tal:condition="python: noStartTime and noEndTime">
+                        <br />
+                        <span class="hearingsubheader2"
+                            i18n:translate="Time">
+                            Time:
+                        </span>
+                        <span tal:replace="starttime" />
+                        
+                        <span i18n:translate="till"
+                            tal:omit-tag="">till</span>
+                        <span tal:replace="endtime" />
+                        <span i18n:translate="hour">hour</span>
+                    </tal:block>
+                </tal:block>-->
+            </div>
+        </tal:block>
+        </metal:block>
+
+
         <!-- datetime Agendaitem -->
         <metal:block metal:define-macro="datetime_agenda">
         <tal:block tal:define="daterequired python:obj.getItemstartdate() != None and obj.getItemenddate() != None;"

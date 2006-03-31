@@ -26,7 +26,6 @@
                     (none currently)
                 </span>
             </fieldset>
-
             <br />
             <div tal:replace="structure context/foto_foto"
                  tal:condition="context/getFoto" />

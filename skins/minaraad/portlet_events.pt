@@ -1,0 +1,73 @@
+<html xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      i18n:domain="plone">
+    <body>
+    <div metal:define-macro="portlet"
+        tal:define="results python:here.portal_catalog.searchResults(
+                    portal_type='Event',
+                    end={'query': here.ZopeTime(),
+                        'range': 'min'},
+                    sort_on='start',
+                    review_state='published')[:5];"
+        tal:condition="results"
+        tal:omit-tag="">
+    
+    <dl id="portlet-events-mina"
+        tal:define="eventsfolder python:'events' in portal.contentIds()">
+    
+        <dt>
+            <a tal:condition="eventsfolder"
+               tal:attributes="href string:${utool}/events"
+               i18n:domain="minaraad"
+               i18n:translate="box_events_mina">
+                Events
+            </a>
+    
+            <a tal:condition="not: eventsfolder"
+               tal:attributes="href string:${utool}/events_listing"
+               i18n:domain="minaraad"
+               i18n:translate="box_events_mina">
+                Events
+            </a>
+        </dt>
+    
+        <tal:events tal:repeat="obj results">
+        <dd>
+            <span class="portlet_date">
+                <tal:date content="python:context.toLocalizedTime(obj.start)" />
+            </span>
+            <br />
+            <a tal:attributes="href obj/getURL;
+                               title obj/Description"
+               tal:content="obj/pretty_title_or_id" />
+        </dd>
+        </tal:events>
+
+        <dd class="portletFooter"
+            tal:condition="python:eventsfolder and 'previous' in portal.events.contentIds()">
+            <a tal:attributes="href string:${utool}/events/previous">
+                <span i18n:translate="box_previous_events">
+                    Previous events&hellip;
+                </span>
+            </a>
+        </dd>
+    
+        <dd class="portletFooter">
+            <a tal:condition="eventsfolder"
+               tal:attributes="href string:${utool}/events"
+               i18n:domain="minaraad"
+               i18n:translate="box_upcoming_events_mina">
+                More...
+            </a>
+    
+            <a tal:condition="not: eventsfolder"
+               tal:attributes="href string:${utool}/events_listing"
+               i18n:domain="minaraad"
+               i18n:translate="box_upcoming_events_mina">
+                More...
+            </a>
+        </dd>
+    </dl>
+    </div>
+    </body>
+</html>

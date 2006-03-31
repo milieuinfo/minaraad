@@ -44,7 +44,8 @@ table.site-bg {
 }
 
 #portal-column-two {
-    border-left: #D98F81;
+    border-left: 1px solid #D98F81;
+    background-color: #F6F6F5;
 }
 
 .documentContent {
@@ -431,4 +432,66 @@ li.portal-tabs-subitem-listitem {
 }
 
 /* --- End Dropdownmenu --- */
+
+/* -- plone configuratie portlet -- */
+#portlet-prefs {
+    border: 0px;
+    width: 155px;
+}
+
+.portletHeader {
+    padding: 0px 0px 0px 5px;
+}
+/* -- End plone configuratie portlet -- */
+
+/* --- Searchbox ---*/
+
+input.searchButton {
+    font-size: 11px;
+    background-color: #F4CFC8;
+}
+
+.LSBox input {
+    border: 1px solid #D98F81;
+}
+
+#portal-searchbox-mina {
+    padding-top: 30px;
+    background-color: #ffffff;
+    padding-bottom: 30px;
+ 
+}
+/* --- End Searchbox ---*/
+
+.listing, .stx table {
+    font-size: 100%;
+}
+
+
+/* --- Portlet Events --- */
+
+#portlet-events-mina {
+    margin-top: 0px;
+}
+
+#portlet-events-mina dt {
+    background-color: #A13826;
+    padding: 3px 2px 3px 5px;
+}
+
+#portlet-events-mina dt a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+#portlet-events-mina dd {
+    margin-left: 0px;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+.portlet_date {
+    color: #7d7d7b;
+}
+/* --- End Portlet Events --- */
 /* </dtml-with> */

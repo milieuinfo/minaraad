@@ -21,13 +21,12 @@ STYLESHEETS = [{'id': 'minaraad.css'}]
 # should get the minaraad folder workflow
 MINARAAD_FOLDER_WORKFLOW_TYPES = []
 
-LEFT_SLOTS = ('here/portlet_navigation/macros/portlet',
-              'here/portlet_personalbar/macros/portlet',
+LEFT_SLOTS = ('here/portlet_personalbar/macros/portlet',
               'here/portlet_login/macros/portlet',
               ) 
 
-RIGHT_SLOTS = ('here/portlet_review/macros/portlet',
-               'here/portlet_events/macros/portlet',
+RIGHT_SLOTS = ('here/portlet_events/macros/portlet',
+               'here/portlet_review/macros/portlet',
               ) 
 
 # Used to show the stringfield 'other country' when in the selectionbox
@@ -73,6 +72,9 @@ IDS_NOT_TO_LIST = ['Members','contactpersonen']
 
 # Types to list in the navtree => the rest won't!
 TYPES_TO_LIST = ['Folder']
+
+# Titles that shouldn't appear in the navtree even though they are folders
+TITLES_NOT_IN_TABS = []
 
 # EXTRA_VIEWS is a dictionary, the keys are portal types.
 # The values are a list of templates or page names that are to

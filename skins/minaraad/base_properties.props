@@ -12,8 +12,8 @@ logoName:string=logo.jpg
 fontFamily:string=Verdana, Arial, Lucida, Helvetica, sans-serif
 
 fontBaseSize:string=70%
-fontColor:string=Black
-fontSmallSize:string=65%
+fontColor:string= #313131
+fontSmallSize:string=70%
 
 backgroundColor:string=White
 

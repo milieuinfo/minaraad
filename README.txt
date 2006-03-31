@@ -16,7 +16,7 @@ Searchbuttonbg: #F4CFC8
 Navbartoprightborder1: #94C13A
 
 GrayBG: #F6F6F5
-DateGray: #F7F7F7
+DateGray: #7d7d7b
 
 Text, menuleft, breadcrumbs color: #313131
 

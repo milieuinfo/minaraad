@@ -116,6 +116,11 @@ def _configurePortalProps(portal):
     props_tool.navtree_properties._updateProperty('metaTypesNotToList',
                                                   tuple(metaTypesNotToList))
 
+    # New navtree_property - titlesNotInTabs
+    navtree_props = props_tool.navtree_properties
+    if not navtree_props.hasProperty('titlesNotInTabs'):
+        navtree_props.manage_addProperty('titlesNotInTabs', TITLES_NOT_IN_TABS, 'lines')
+
 def createFolderStructure(portal):
     """Create the initial folders in the root of the portal
     """
@@ -279,8 +284,10 @@ def addMemberDataProperties(self, out):
         print >> out, "Property %r added to memberdata." % p
 
     # special care for our selection property gender
+    titles = ['De heer','Mevrouw','Monsieur','Madame','Ing.','Ir.','Dr.',
+              'Dr. Ir.','Prof.','Prof. Dr.','Prof. Dr. Ir.','Em. Prof.']
     if 'genders' not in memberdata.propertyIds():
-        memberdata.manage_addProperty('genders', ['de Heer','Mevrouw'], 'lines')
+        memberdata.manage_addProperty('genders', titles, 'lines')
 
     if 'gender' not in memberdata.propertyIds():
         memberdata.manage_addProperty('gender', 'genders', 'selection')
