@@ -54,7 +54,8 @@ schema = Schema((
             label='Date',
             label_msgid='minaraad_label_date',
             i18n_domain='minaraad',
-        )
+        ),
+        required=1
     ),
 
     OrderableReferenceField(

@@ -42,7 +42,8 @@ schema = Schema((
             label='Name',
             label_msgid='minaraad_label_name',
             i18n_domain='minaraad',
-        )
+        ),
+        required=1
     ),
 
     StringField(
