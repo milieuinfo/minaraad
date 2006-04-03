@@ -12,10 +12,13 @@
     <tal:block tal:define="news python:context.portal_catalog.searchResults(review_state='published',
                                                                             sort_on='Date',
                                                                             sort_order='reverse');
-                            newest python:news[:10]">
+                           newest python:news[:10]">
         <div tal:repeat="item newest">
-            <div tal:replace="item/Title">BLAAA</div>  
-            <a tal:attributes="href item/getURL">more information</a>
+            <div class="hearingsubheader2">
+                <span tal:replace="item/Title" />
+                <a tal:attributes="href item/getURL"
+                    i18n:translate="linkmoreinfo" style="font-weight: normal">More</a>
+            </div>
             <br />
         </div>
     </tal:block>

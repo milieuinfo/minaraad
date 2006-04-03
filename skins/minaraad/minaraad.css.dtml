@@ -14,6 +14,31 @@ table.site-bg {
     padding: 0px !important;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  border-bottom: 0px;
+  margin: 0pt 0pt 0.25em;
+  color: #A13826;
+  background-color: transparent;
+  font-family: Verdana,Lucida,Helvetica,Arial,sans-serif;
+  font-weight: normal;
+}
+
+h1, h2 {
+    font-size: 150%;
+}
+
+h3, h4 {
+    font-size: 140%;
+}
+
+
+h5, h6 {
+    font-size: 100%;
+    color: #A13826 !important;
+    font-weight: bold;
+}
+
+
 #portal-logo {
   margin: 0px;
   padding: 0pt;
@@ -87,7 +112,11 @@ table.site-bg {
 
 #portal-breadcrumbs {
     border: 0px;
-    padding: 0px;
+    padding: 4px 0px 20px 0px;
+}
+
+#portal-breadcrumbs a {
+    color: #313131;
 }
 
 /* --- End portal breadcrumbs ---*/
