@@ -443,17 +443,40 @@ li.portal-tabs-subitem-listitem {
 /* --- End Dropdownmenu --- */
 
 /* -- plone configuratie portlet -- */
+
 #portlet-prefs {
-    border: 0px;
     width: 155px;
 }
 
-.portletItemSingle {
-    padding: 0px;
+dl.portlet, dl.portlet dt, dl.portlet dd {
+    border: 0px;
 }
+
+.portletItemSingle {
+    padding: 5px 0px 0px 0px;
+    line-height: normal;
+    margin-bottom: 0px !important;
+}
+
 .portletHeader {
     padding: 0px 0px 0px 5px;
+    display: none;
 }
+
+.configlets {
+    background-color: #C8ED7E;
+    margin: 3px 0px 0px 0px !important;
+}
+
+#region-content .configlets {
+    background-color: white;
+}
+
+.configlets li {
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
 /* -- End plone configuratie portlet -- */
 
 /* --- Searchbox ---*/
