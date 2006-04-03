@@ -25,7 +25,7 @@ borderWidth:string=1px
 borderStyle:string=solid
 borderStyleAnnotations:string=dashed
 
-globalBorderColor:string=#ffffff
+globalBorderColor:string=#D98F81
 globalBackgroundColor:string=#ffffff
 globalFontColor:string=#436976
 
