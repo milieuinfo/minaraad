@@ -21,7 +21,6 @@
                tabindex=""
                name="SearchableText"
                type="text"
-               size="19"
                title="Search Site"
                accesskey="4"
                i18n:attributes="title title_search_site;"

@@ -25,8 +25,8 @@ borderWidth:string=1px
 borderStyle:string=solid
 borderStyleAnnotations:string=dashed
 
-globalBorderColor:string=#74ae0b
-globalBackgroundColor:string=#ace00a
+globalBorderColor:string=#ffffff
+globalBackgroundColor:string=#ffffff
 globalFontColor:string=#436976
 
 headingFontFamily:string= Verdana, Lucida, Helvetica, Arial, sans-serif

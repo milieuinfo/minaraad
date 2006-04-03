@@ -8,7 +8,8 @@
                                getIconFor nocall:putils/getIconFor;
                                admin python:context.portal_membership.getAuthenticatedMember().has_role('Manager')"
                    tal:condition="admin">
-                
+
+
         <dl class="portlet"
             id="portlet-prefs">
             <dt class="portletHeader"

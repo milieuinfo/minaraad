@@ -48,6 +48,17 @@ table.site-bg {
     background-color: #F6F6F5;
 }
 
+.colophon-center {
+    text-align: center;
+}
+
+.colophon-center a {
+    padding-left: 5px;
+    padding-right: 5px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
 .documentContent {
     margin: 0px !important;
     padding: 0px !important;
@@ -437,6 +448,9 @@ li.portal-tabs-subitem-listitem {
     width: 155px;
 }
 
+.portletItemSingle {
+    padding: 0px;
+}
 .portletHeader {
     padding: 0px 0px 0px 5px;
 }
@@ -444,9 +458,14 @@ li.portal-tabs-subitem-listitem {
 
 /* --- Searchbox ---*/
 
+#searchGadget {
+    width: 110px;
+}
+
 input.searchButton {
     font-size: 11px;
     background-color: #F4CFC8;
+    width: 70px;
 }
 
 .LSBox input {
@@ -457,6 +476,7 @@ input.searchButton {
     padding-top: 30px;
     background-color: #ffffff;
     padding-bottom: 30px;
+    padding-left: 3px;
  
 }
 /* --- End Searchbox ---*/
@@ -512,4 +532,13 @@ input.searchButton {
 }
 
 /* --- End Portlet Events --- */
+
+/* --- Start Sitemap --- */
+
+#portal-sitemap {
+    font-size: 100%;
+}
+
+/* --- End Sitemap --- */
+
 /* </dtml-with> */
