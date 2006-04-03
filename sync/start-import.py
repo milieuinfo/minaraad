@@ -10,6 +10,10 @@ from CipraSync import interfaces
 import minaraad.sync.configure
 
 def main():
+    print
+    print "Starting the actual writing process..."
+    print
+    
     minaraad.sync.configure.all()
     reader = zope.component.getUtility(interfaces.IReader)
     input_dir = path(__file__).parent / 'input'
@@ -18,6 +22,9 @@ def main():
     writer.write()
     writer.commit()
 
+    print
+    print "Writing successful :)"
+    print
 
 if __name__ == '__main__':
     main()
