@@ -57,6 +57,28 @@ class TestConfigure:
         <CipraSync.write.Writer instance ...>
         """
 
+    def test_writehandler(self):
+        """
+        Because writehandlers adapt writers, we need a Writer before
+        we can start:
+
+        >>> from minaraad.sync import configure
+        >>> configure.transforms() # required for the reader to work
+        >>> configure.reader()
+        >>> configure.writer()
+        >>> reader = component.getUtility(interfaces.IReader)
+        >>> writer = interfaces.IWriter(reader)
+        >>> writer
+        <CipraSync.write.Writer instance ...>
+
+        Now we can actually create our handlers:
+
+        >>> names = ('mina-memberpropertyhandler',)
+        >>> configure.writehandlers()
+        >>> for n in names:
+        ...     t = component.getAdapter(writer, interfaces.IWriteHandler, n)
+        """
+
 
 def test_suite():
     return DocTestSuite(setUp=setUp, tearDown=tearDown, optionflags=ELLIPSIS)

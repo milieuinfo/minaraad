@@ -47,6 +47,8 @@ class MemberPropertyHandler(BaseHandler):
     """An IWriteHandler that stores memberdata and creates members if
     necessary.
 
+    Be warned that this doctest uses your actual Data.fs!
+
     An IRecord implementation:
 
     >>> from zope import interface
@@ -65,8 +67,11 @@ class MemberPropertyHandler(BaseHandler):
 
     >>> reader = [
     ...     MyRecord(fullname='Doe', firstname='John'),
-    ...     MyRecord(fullnam='Ahadi', firstname='Ahmad'),
+    ...     MyRecord(fullname='Ahadi', firstname='Ahmad'),
     ... ]
+
+    >>> for record in reader:
+    ...     record.category = 'mina-members'
 
     A resolver:
 
@@ -75,7 +80,7 @@ class MemberPropertyHandler(BaseHandler):
     >>> class Resolver:
     ...     interface.implements(IPathResolver)
     ...     def resolve(self, record):
-    ...         return ('/mina')
+    ...         return ('/portal')
 
     Register the resolver with the CA:
 
@@ -87,7 +92,7 @@ class MemberPropertyHandler(BaseHandler):
     >>> import CipraSync.writehandler
     >>> zope.component.provideAdapter(
     ...     MemberPropertyHandler,
-    ...     name='mina-memberhandler')
+    ...     name='mina-memberpropertyhandler')
 
     >>> from path import path
     >>> from CipraSync.write import Writer
@@ -98,15 +103,23 @@ class MemberPropertyHandler(BaseHandler):
     the database:
 
     >>> app = writer._getDatabase()
-    DEBUG: Configuring Zope2 with '.../zope.conf'.
-    >>> app
+    Customization policy for minaraad installed
+    >>> app # doctest: +ELLIPSIS
     <Application at ...>
 
     Note that there's already a Plone site in our database:
 
-    >>> plone = app.restrictedTraverse('mina')
+    >>> plone = app.restrictedTraverse('portal')
     >>> plone
-    <PloneSite at /mina>
+    <PloneSite at /portal>
+
+    >>> plone.portal_membership.listMembers()
+    []
+
+    >>> writer.write()
+    >>> members = plone.portal_membership.listMembers()
+    >>> members
+    [<MemberData at /portal/portal_memberdata/ahmad.ahadi used for /portal/acl_users>, <MemberData at /portal/portal_memberdata/john.doe used for /portal/acl_users>]
     """
 
     def write(self, record):
@@ -114,17 +127,18 @@ class MemberPropertyHandler(BaseHandler):
         portal = self.context.app.restrictedTraverse(portal_path)
 
         plone_utils = portal.plone_utils
-        membership = portal.porta_membership
+        membership = portal.portal_membership
 
         props = {}
-        for key, value in record:
+        for key, value in record.items():
             if not IDontWrite.providedBy(value):
                 props[key] = plone_utils.utf8_portal(value)
         
         # This should really be a transform, but since we need the
         # tool to do normalizeString, we'll just do it the dirty way.
-        memberid = '%s.%s' % (props['firstname'], props['fullname'])
-        memberid = plone_utils.normalizeString(memberid)
+        normalize = plone_utils.normalizeString
+        memberid = '%s.%s' % (normalize(props['firstname']),
+                              normalize(props['fullname']))
         memberid = memberid.replace('-', '')
 
         if membership.getMemberById(memberid) is None:
@@ -136,4 +150,4 @@ class MemberPropertyHandler(BaseHandler):
                                  roles=['Member'],
                                  domains=[])
 
-        plone_utils.setMemberProperties(member_id, **props)
+        plone_utils.setMemberProperties(memberid, **props)

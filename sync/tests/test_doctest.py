@@ -6,6 +6,7 @@ import utils
 MODULENAMES = (
     'minaraad.sync.read',
     'minaraad.sync.transform',
+    'minaraad.sync.write',
     )
 
 def test_suite():

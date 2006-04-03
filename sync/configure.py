@@ -10,7 +10,9 @@ import minaraad.sync.transform
 
 # resolvers
 def resolver():
-    zope.component.provideUtility(minaraad.sync.write.MinaResolver())
+    zope.component.provideUtility(
+        minaraad.sync.write.MinaResolver(),
+        name='cipra-resolver')
 
 
 # transforms
@@ -73,7 +75,8 @@ def writer():
     zope.component.provideAdapter(CipraSync.write.Writer)
 
 def writehandlers():
-    pass
+    zope.component.provideAdapter(minaraad.sync.write.MemberPropertyHandler,
+                                  name='mina-memberpropertyhandler')
 
 def all():
     resolver()
