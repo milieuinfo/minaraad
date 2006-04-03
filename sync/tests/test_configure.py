@@ -21,8 +21,9 @@ class TestConfigure:
     def test_resolver(self):
         """
         >>> from minaraad.sync import configure
-        >>> configure.resolver()
-        >>> #component.getUtility(interfaces.IPathResolver, 'mina-resolver')
+        >>> configure.resolver() # doctest: +ELLIPSIS
+        >>> component.getUtility(interfaces.IPathResolver, 'mina-resolver')
+        <minaraad.sync.write.MinaResolver instance ...>
         """
 
     def test_transforms(self):

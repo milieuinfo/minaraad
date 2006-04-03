@@ -47,7 +47,8 @@ class MemberPropertyHandler(BaseHandler):
     """An IWriteHandler that stores memberdata and creates members if
     necessary.
 
-    Be warned that this doctest uses your actual Data.fs!
+    Be warned that this doctest uses your actual Data.fs!  (You need a
+    Plone Site called /mina for this test to work.)
 
     An IRecord implementation:
 
@@ -80,7 +81,7 @@ class MemberPropertyHandler(BaseHandler):
     >>> class Resolver:
     ...     interface.implements(IPathResolver)
     ...     def resolve(self, record):
-    ...         return ('/portal')
+    ...         return ('/mina')
 
     Register the resolver with the CA:
 
@@ -109,9 +110,9 @@ class MemberPropertyHandler(BaseHandler):
 
     Note that there's already a Plone site in our database:
 
-    >>> plone = app.restrictedTraverse('portal')
+    >>> plone = app.restrictedTraverse(Resolver().resolve(None))
     >>> plone
-    <PloneSite at /portal>
+    <PloneSite at /mina>
 
     >>> plone.portal_membership.listMembers()
     []
@@ -119,7 +120,7 @@ class MemberPropertyHandler(BaseHandler):
     >>> writer.write()
     >>> members = plone.portal_membership.listMembers()
     >>> members
-    [<MemberData at /portal/portal_memberdata/ahmad.ahadi used for /portal/acl_users>, <MemberData at /portal/portal_memberdata/john.doe used for /portal/acl_users>]
+    [<MemberData at /mina/portal_memberdata/ahmad.ahadi used for /mina/acl_users>, <MemberData at /mina/portal_memberdata/john.doe used for /mina/acl_users>]
     """
 
     def write(self, record):

@@ -12,7 +12,7 @@ import minaraad.sync.transform
 def resolver():
     zope.component.provideUtility(
         minaraad.sync.write.MinaResolver(),
-        name='cipra-resolver')
+        name='mina-resolver')
 
 
 # transforms
