@@ -9,6 +9,11 @@ table.site-bg {
     background: url('&dtml-portal_url;/sitelayout_bg.gif') top left no-repeat;
 }
 
+
+#content {
+    padding: 0px !important;
+}
+
 #portal-logo {
   margin: 0px;
   padding: 0pt;
@@ -77,6 +82,15 @@ table.site-bg {
     margin-left: auto;
     margin-right: auto;
 }
+
+/* --- Start portal breadcrumbs ---*/
+
+#portal-breadcrumbs {
+    border: 0px;
+    padding: 0px;
+}
+
+/* --- End portal breadcrumbs ---*/
 
 /* --- Start Siteactions (toprightmenu) ---*/
 

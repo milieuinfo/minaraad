@@ -112,8 +112,9 @@
             </td>
             <tal:comment replace="nothing"> End of the left column </tal:comment>
 
-            <td width="58"
-                rowspan="3">&nbsp;</td>
+            <td width="50"
+                rowspan="3">
+                <div style="width:50px" /></td>
 
             <tal:comment replace="nothing"> Start of main content block </tal:comment>
             <td id="portal-column-content"
@@ -164,7 +165,9 @@
             </td>
             <tal:comment replace="nothing"> End of main content block </tal:comment>
             <td width="20"
-                rowspan="3">&nbsp;</td>
+                rowspan="3">
+                <div style="width: 20px" />
+            </td>
             <tal:comment replace="nothing"> Start of right column </tal:comment>
             <td id="portal-column-two"
                 width="200"
