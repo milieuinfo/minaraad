@@ -56,7 +56,9 @@ Until we have a proper definition of what this XML does, here's an overview:
   
     <file name="Nieuwbriefbestand.csv" />
     
-    <field name="fullname" />
+    <field name="fullname" 
+           description="Note that fullname is deliberately being misused as
+                        the last name!" />
 
     <field name="firstname" />
 
@@ -104,6 +106,7 @@ Until we have a proper definition of what this XML does, here's an overview:
            description="Gets its value from 'zipcodeandcity'." />
 
     <field name="country"
+           consume="0"
            transform="mina-transform-country"
            description="Gets its value from 'zipcodeandcity'." />
 

@@ -135,20 +135,39 @@ class MemberPropertyHandler(BaseHandler):
             if not IDontWrite.providedBy(value):
                 props[key] = plone_utils.utf8_portal(value)
         
-        # This should really be a transform, but since we need the
-        # tool to do normalizeString, we'll just do it the dirty way.
-        normalize = plone_utils.normalizeString
-        memberid = '%s.%s' % (normalize(props['firstname']),
-                              normalize(props['fullname']))
-        memberid = memberid.replace('-', '')
+        memberid = self._suitableId(props, portal)
 
+        # A policy for updating members?
         if membership.getMemberById(memberid) is None:
             password = list(memberid)
             password.reverse()
-            password = ''.join(password)
+            password = ''.join(password[3:])
             membership.addMember(id=memberid,
                                  password=password,
                                  roles=['Member'],
                                  domains=[])
 
         plone_utils.setMemberProperties(memberid, **props)
+
+    def _suitableId(self, props, portal):
+        # This should really be a transform, but since we need the
+        # tool to do normalizeString, we'll just do it the dirty way.
+        normalize = portal.plone_utils.normalizeString
+
+        if props['fullname']:
+            memberid = normalize(props['fullname'])
+            if props['firstname']:
+                memberid = '%s.%s' % (normalize(props['firstname']), memberid)
+
+        elif props['company']: # we don't have a fullname, use company
+            memberid = normalize(props['company'])
+
+        else:
+            raise ValueError("Couldn't find a suitable memberid for %s" %
+                             props)
+
+        return memberid.replace('-', '')
+
+        
+
+        

@@ -1,4 +1,3 @@
-import os, sys
 import glob
 from path import path
 
