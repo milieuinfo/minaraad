@@ -21,6 +21,22 @@ legend {
     display: none;
 }
 
+.vertical th {
+    background-color: #F4CFC8;
+}
+
+.listing th {
+    background-color: #F4CFC8;
+}
+
+#user_overview {
+    font-size: 90%;
+}
+
+#user_overview th,  #user_overview td{
+    padding: 2px;
+}
+
 #content {
     padding: 0px !important;
 }

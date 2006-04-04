@@ -621,3 +621,6 @@ msgstr ""
 msgid "toggle_all"
 msgstr ""
 
+#: browser/subscribers_config.pt
+msgid "label_hearingthemes"
+msgstr ""

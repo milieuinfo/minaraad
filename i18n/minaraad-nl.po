@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minaraad 0.1\n"
-"POT-Creation-Date: 2006-03-31 08:34+0000\n"
+"POT-Creation-Date: 2006-04-04 13:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: Mirella van Teulingen <m.van.teulingen@zestsoftware.nl>\n"
 "Language-Team: Nederlands <info@zestsoftware.nl>\n"
@@ -106,7 +106,6 @@ msgstr "Klik op de onderstaande button om abonnees van dit content type te expor
 #. Default: "from"
 #: skins/minaraad/hearing_listing_view.pt
 #: skins/minaraad/mina_showdatetime.pt
-#: skins/minaraad/study_listing_view.pt
 msgid "from"
 msgstr "van"
 
@@ -147,7 +146,6 @@ msgstr "Vul de naam in van het nieuwe thema."
 #. Default: "hour"
 #: skins/minaraad/hearing_listing_view.pt
 #: skins/minaraad/mina_showdatetime.pt
-#: skins/minaraad/study_listing_view.pt
 msgid "hour"
 msgstr "uur"
 
@@ -254,6 +252,10 @@ msgstr "Voornaam"
 #: skins/minaraad/prefs_user_details.cpt
 msgid "label_gender"
 msgstr "Aanhef"
+
+#: browser/subscribers_config.pt
+msgid "label_hearingthemes"
+msgstr "Hoorzitting thema\'s"
 
 #. Default: "House number"
 #: skins/minaraad/join_form.cpt
@@ -414,8 +416,8 @@ msgstr "E-mail verzenden naar abonnees"
 
 #. Default: "More"
 #: skins/minaraad/advisory_listing_view.pt
+#: skins/minaraad/events_listing.pt
 #: skins/minaraad/hearing_listing_view.pt
-#: skins/minaraad/newsletter_listing_view.pt
 msgid "linkmoreinfo"
 msgstr "Meer informatie"
 
@@ -650,8 +652,8 @@ msgid "minaraad_label_jobtitle"
 msgstr "Functie"
 
 #. Default: "Location"
-#: skins/minaraad/study_listing_view.pt
-#: skins/minaraad/study_view.pt
+#: content/Hearing.py
+#: content/Study.py
 msgid "minaraad_label_location"
 msgstr "Lokatie"
 
@@ -706,7 +708,6 @@ msgstr "Spreker"
 
 #. Default: "Speakers"
 #: skins/minaraad/EmailTemplate-Study.pt
-#: skins/minaraad/study_view.pt
 msgid "minaraad_label_speakers"
 msgstr "Sprekers"
 
@@ -775,7 +776,6 @@ msgstr "Abonnementen"
 #. Default: "till"
 #: skins/minaraad/hearing_listing_view.pt
 #: skins/minaraad/mina_showdatetime.pt
-#: skins/minaraad/study_listing_view.pt
 msgid "till"
 msgstr "tot"
 
@@ -823,7 +823,6 @@ msgstr "Selecteer alles:"
 #. Default: "up untill"
 #: skins/minaraad/hearing_listing_view.pt
 #: skins/minaraad/mina_showdatetime.pt
-#: skins/minaraad/study_listing_view.pt
 msgid "up_untill"
 msgstr "t/m"
 

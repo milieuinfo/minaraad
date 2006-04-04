@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minaraad 0.1\n"
-"POT-Creation-Date: 2006-03-31 08:34+0000\n"
+"POT-Creation-Date: 2006-04-04 13:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: Mirella van Teulingen <m.van.teulingen@zestsoftware.nl>\n"
 "Language-Team: English <info@zestsoftware.nl>\n"
@@ -104,7 +104,6 @@ msgstr ""
 #. Default: "from"
 #: skins/minaraad/hearing_listing_view.pt
 #: skins/minaraad/mina_showdatetime.pt
-#: skins/minaraad/study_listing_view.pt
 msgid "from"
 msgstr ""
 
@@ -147,7 +146,6 @@ msgstr ""
 #. Default: "hour"
 #: skins/minaraad/hearing_listing_view.pt
 #: skins/minaraad/mina_showdatetime.pt
-#: skins/minaraad/study_listing_view.pt
 msgid "hour"
 msgstr ""
 
@@ -253,6 +251,10 @@ msgstr ""
 #: skins/minaraad/personalize_form.cpt
 #: skins/minaraad/prefs_user_details.cpt
 msgid "label_gender"
+msgstr ""
+
+#: browser/subscribers_config.pt
+msgid "label_hearingthemes"
 msgstr ""
 
 #. Default: "House number"
@@ -417,8 +419,8 @@ msgstr ""
 
 #. Default: "More"
 #: skins/minaraad/advisory_listing_view.pt
+#: skins/minaraad/events_listing.pt
 #: skins/minaraad/hearing_listing_view.pt
-#: skins/minaraad/newsletter_listing_view.pt
 msgid "linkmoreinfo"
 msgstr ""
 
@@ -653,8 +655,8 @@ msgid "minaraad_label_jobtitle"
 msgstr ""
 
 #. Default: "Location"
-#: skins/minaraad/study_listing_view.pt
-#: skins/minaraad/study_view.pt
+#: content/Hearing.py
+#: content/Study.py
 msgid "minaraad_label_location"
 msgstr ""
 
@@ -709,7 +711,6 @@ msgstr ""
 
 #. Default: "Speakers"
 #: skins/minaraad/EmailTemplate-Study.pt
-#: skins/minaraad/study_view.pt
 msgid "minaraad_label_speakers"
 msgstr ""
 
@@ -778,7 +779,6 @@ msgstr ""
 #. Default: "till"
 #: skins/minaraad/hearing_listing_view.pt
 #: skins/minaraad/mina_showdatetime.pt
-#: skins/minaraad/study_listing_view.pt
 msgid "till"
 msgstr ""
 
@@ -826,7 +826,6 @@ msgstr ""
 #. Default: "up untill"
 #: skins/minaraad/hearing_listing_view.pt
 #: skins/minaraad/mina_showdatetime.pt
-#: skins/minaraad/study_listing_view.pt
 msgid "up_untill"
 msgstr ""
 
