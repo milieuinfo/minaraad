@@ -15,7 +15,8 @@ LOCAL_LONG_TIME_FORMAT = '%d-%b-%Y %H:%M'
 DEFAULT_LANGUAGE = 'nl'
 
 DEPENDENCIES = ['kupu','PasswordResetTool','FCKeditor',
-                'RichDocument', 'OrderableReferenceField']
+                'RichDocument', 'OrderableReferenceField',
+                'TextIndexNG3']
 
 STYLESHEETS = [{'id': 'minaraad.css'}]
 

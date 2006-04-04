@@ -98,13 +98,15 @@ class testSetup(MainTestCase):
         newFields = sets.Set(('company', 'jobtitle', 'street', 'housenumber', 
                               'zipcode', 'city', 'phonenumber', 'genders', 
                               'gender', 'country', 'select_country', 
-                              'other_country', 'firstname', 'bus'))
+                              'firstname', 'bus'))
     
         tool = self.portal.portal_memberdata
 
         properties = sets.Set(tool.propertyIds())
         
-        self.failUnless(newFields.issubset(properties))
+        self.failUnless(newFields.issubset(properties),
+                        "%r missing from portal_memberdata." %
+                        list(newFields - properties))
         
         # make sure if we add an additional value, its not found in the real
         # properties
