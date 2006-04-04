@@ -575,6 +575,7 @@ input.searchButton {
     background-color: #ffffff;
     padding-bottom: 30px;
     padding-left: 3px;
+    border-bottom: 1px solid #A13826;
  
 }
 /* --- End Searchbox ---*/
