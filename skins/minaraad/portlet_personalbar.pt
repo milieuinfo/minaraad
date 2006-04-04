@@ -23,6 +23,10 @@
                tal:content="action/name"
                class="link-personalbar" />
         </li>
+        <li>
+         <a class="link-personalbar" 
+            tal:attributes="href string:${context/absolute_url}/uitschrijven">Uitschrijven</a>
+        </li>
     </ul>
     </div>
     </metal:portlet>

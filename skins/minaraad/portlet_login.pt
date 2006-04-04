@@ -92,6 +92,10 @@
             i18n:translate="label_join_in"
             tal:condition="canRegister"
             class="link-personalbar">Join in</a>
+        
+        <a class="link-personalbar" 
+           tal:attributes="href string:${context/absolute_url}/uitschrijven">Uitschrijven</a>
+        
     </div>
 </div>
 </body>

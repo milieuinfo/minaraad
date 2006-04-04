@@ -20,12 +20,14 @@
     
             <ul id="portal-tabs-nav">
     
-                <li class="portal-tabs-nav-toplevel">
-                   <span class="IEFix_paddingmenu">
-                        <a tal:define="selected_tab context/isHomePage" 
-                            tal:attributes="class python:test(selected_tab, 'selected', 'plain');
+                <li tal:define="selected_tab context/isHomePage"
+                    tal:attributes="class python:test(selected_tab, 'selected', 'plain');
                                             href string:${portal_url};
                                             title portal/Description;">
+                   <span class="IEFix_paddingmenu">
+                        <a tal:attributes="class python:test(selected_tab, 'selected', 'plain');
+                                       href string:${portal_url};
+                                       title portal/Description;">
                             Home 
                         </a>
                     </span>
