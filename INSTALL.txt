@@ -36,4 +36,7 @@ Dependencies
         zopyx/txng3/{normalizer,splitter,stemmer}``.
 
       - In ``$INSTANCE_HOME/lib/python`` do ``ln -s
-        ../../Products/TextIndexNG3/extension_modules/zopyx``
+        ../../Products/TextIndexNG3/extension_modules/zopyx``.
+
+      - Remove the comments in
+        ``$INSTANCE_HOME/Products/TextIndexNG3/adapters/configure.zcml``.

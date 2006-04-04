@@ -26,5 +26,9 @@
 
   <include package=".browser" />
   <include package=".content" />
+
+  <!-- Although we're not supposed to do this, we put this in here or
+       else the ``NG stuff`` won't work. -->
+  <include package="textindexng" file="configure.zcml"/>
   
 </configure>

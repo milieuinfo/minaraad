@@ -82,6 +82,8 @@ def install(self):
     
     _switchOnActions(self)
     print >> out, "Switch on our actions"
+
+    _addTextIndexNG3Index(self, out)
     
     return out.getvalue()
 
@@ -469,6 +471,20 @@ def _default_view(self):
 def _addLynxDumpTransform(portal):
     transforms = portal.portal_transforms
     transforms.registerTransform(lynx_dump())
+
+def _addTextIndexNG3Index(portal, out):
+    """Remove the standard SearchableText index
+    """
+    catalog_tool = getToolByName(portal, 'portal_catalog')
+    print >> out, "Removing SearchableText index"
+    catalog_tool._removeIndex('SearchableText')
+
+    print >> out, "Adding new index for TextIndexNG3"
+    catalog_tool.manage_addIndex('SearchableText', 
+                                 'TextIndexNG3', 
+                                 extra={'default_encoding':'utf-8',
+                                        'use_converters':1,})
+    catalog_tool.manage_reindexIndex('SearchableText')
 
 def uninstall(self):
     out = StringIO()
