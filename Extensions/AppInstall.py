@@ -304,7 +304,6 @@ def addMemberDataProperties(self, out):
     if 'country' not in memberdata.propertyIds():
         memberdata.manage_addProperty('select_country', countries, 'lines')
         memberdata.manage_addProperty('country', 'select_country', 'selection')
-        memberdata.manage_addProperty('other_country', '', 'string')
 
 def addConfiglets(self, out):
     # register tools as configlets
