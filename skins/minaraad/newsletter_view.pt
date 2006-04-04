@@ -30,35 +30,31 @@
         <br />
         <!-- Index -->
         <div tal:repeat="category categories">
-            <h3 tal:content="category">
+            <h5 tal:content="category">
                 Category
-            </h3>
+            </h5>
             
-            <div tal:define="newsitems python:context.portal_catalog.searchResults(portal_type='NewsItem',
+            <ul tal:define="newsitems python:context.portal_catalog.searchResults(portal_type='NewsItem',
                                                                                path=current_path,
                                                                                getCategory=category,
-                                                                               review_state='published');"
-                 tal:omit-tag="">
-            <div tal:repeat="newsitem newsitems"
-                  tal:omit-tag="">
-                <a tal:attributes="href string:#${newsitem/id}"
-                    tal:content="newsitem/Title" />
-                <br />
-            </div>
-            <div tal:condition="not:newsitems"
-                 i18n:translate="no_newsitems_available">No newsitems available</div>
-            <br />
-            </div>
+                                                                                review_state='published');">
+                <li tal:repeat="newsitem newsitems">
+                    <a tal:attributes="href string:#${newsitem/id}"
+                        tal:content="newsitem/Title" />
+                </li>
+                <li tal:condition="not:newsitems"
+                    i18n:translate="no_newsitems_available">No newsitems available</li>
+            </ul>
         </div>
         <br />
-        <hr />
+        <br />
         <br />
         <!-- Content of newsitems -->
         <div tal:repeat="category categories">
-            <h3 tal:content="category">
+            <h5 tal:content="category">
                 Category
-            </h3>
-
+            </h5>
+            <hr />
             <div tal:omit-tag=""
                 tal:define="newsitems python:context.portal_catalog.searchResults(portal_type='NewsItem',
                                                                                 path=current_path,
@@ -69,7 +65,7 @@
                  tal:omit-tag="">
 
                 <a tal:attributes="name newsitem/id">
-                    <h4 tal:content="newsitem/Title" />
+                    <span class="newsItemTitle" tal:content="newsitem/Title" />
                 </a>
                 <div tal:define="obj python:newsitem.getObject()"
                      tal:content="structure obj/getBody">Content here</div>
@@ -79,7 +75,7 @@
                                       contacts python:obj.getContact()"
                            tal:condition="contacts">
                     <span i18n:translate="label_contactpersons" 
-                          tal-omit-tag=""> Contact persons:</span>
+                          tal:omit-tag=""> Contact persons:</span>
 
                     <div tal:repeat="contact contacts" 
                         tal:omit-tag="">

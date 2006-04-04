@@ -31,13 +31,15 @@ h3, h4 {
     font-size: 140%;
 }
 
-
 h5, h6 {
     font-size: 100%;
     color: #A13826 !important;
     font-weight: bold;
 }
 
+.documentContent li a {
+    border: 0px;
+}
 
 #portal-logo {
   margin: 0px;
@@ -154,6 +156,7 @@ td.portal-siteactions {
     font-weight:bold;
     text-align: left;
     text-transform: capitalize;
+    width: 15%;
 }
 
 /*--- Start portlet personal bar --- */
@@ -329,8 +332,14 @@ dl.listsubscriptions dt {
 /* --- End Subscribers overview --- */ 
 
 /* --- Start Newsletter --- */ 
+
 .newsletter_listtitle {
     font-weight:bold;
+}
+
+.newsItemTitle {
+    color: #A13826;
+    font-weight: bold;
 }
 /* --- End Newsletter --- */ 
 
@@ -525,7 +534,7 @@ dl.portlet, dl.portlet dt, dl.portlet dd {
 /* --- Searchbox ---*/
 
 #searchGadget {
-    width: 110px;
+    width: 105px;
 }
 
 input.searchButton {

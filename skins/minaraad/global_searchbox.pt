@@ -10,8 +10,7 @@
           action="search"
           tal:define="livesearch site_properties/enable_livesearch|nothing"
           tal:attributes="action string:${portal_url}/search;
-                          onsubmit python:test(livesearch==True,'return liveSearchSubmit()','')"
-          style="white-space:nowrap">
+                          onsubmit python:test(livesearch==True,'return liveSearchSubmit()','')">
 
         <label for="searchGadget" class="hiddenStructure"
                i18n:translate="text_search">Search Site</label>

@@ -65,7 +65,7 @@
       prefer layouts that don't use tables.
       </tal:comment>
 
-      <table id="portal-columns" border="0"
+      <table id="portal-columns"
              cellspacing="0" 
              cellpadding="0" 
              class="site-bg">
@@ -173,7 +173,8 @@
                 width="200"
                 rowspan="3">
 
-             <div metal:use-macro="here/global_searchbox/macros/quick_search">
+             <div metal:use-macro="here/global_searchbox/macros/quick_search"
+                  tal:omit-tag="">
                The quicksearch box, normally placed at the top right
              </div>
 

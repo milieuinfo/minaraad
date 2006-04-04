@@ -10,10 +10,10 @@
             <span tal:content="python:context.toLocalizedTime(context.date)"
                   tal:omit-tag="" />
         </h1>
-        
-        <div class="documentDescription"
-            tal:content="context/Description" />
 
+        <div class="documentDescription"
+             tal:condition="context/Description"
+            tal:content="context/Description" />
     </metal:block>
 
     <metal:block metal:define-macro="body">
@@ -21,7 +21,7 @@
         <div metal:use-macro="context/mina_attachments/macros/listattachments" />
         <!-- end Attachments -->
     
-		<!-- Contactperson -->
+		      <!-- Contactperson -->
         <tal:block tal:define="contacts python:context.getContact()"
                    tal:condition="contacts">
             <br />
