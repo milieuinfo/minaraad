@@ -33,7 +33,7 @@ legend {
     font-size: 90%;
 }
 
-#user_overview th,  #user_overview td{
+#user_overview th,  #user_overview td {
     padding: 2px;
 }
 
