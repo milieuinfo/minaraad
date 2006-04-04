@@ -10,7 +10,5 @@
 
 portalroot = context.portal_url.getPortalObject()
 defaultpage = portalroot.restrictedTraverse(portalroot.getDefaultPage())
-indexpage = portalroot.restrictedTraverse('index_html')
-# ^^^ This might need a safety mechanism for when index_html doesn't exist
-return context == defaultpage or context == indexpage
+return context == defaultpage or context == portalroot
 
