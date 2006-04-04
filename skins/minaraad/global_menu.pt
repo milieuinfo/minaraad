@@ -2,7 +2,7 @@
       i18n:domain="plone">
     <body>
     <metal:menubarmacro define-macro="menu">
-    
+
     <tal:repeat repeat="tab tabs">
     <li tal:define="selected_tab python:tab['absolute_url'] in context.absolute_url()"
         tal:attributes="class python:test(selected_tab, 'selected', 'portal-tabs-nav-toplevel')"

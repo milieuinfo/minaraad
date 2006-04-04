@@ -19,6 +19,17 @@
             class="portal-tabs">
     
             <ul id="portal-tabs-nav">
+    
+                <li class="portal-tabs-nav-toplevel">
+                   <span class="IEFix_paddingmenu">
+                        <a tal:define="selected_tab context/isHomePage" 
+                            tal:attributes="class python:test(selected_tab, 'selected', 'plain');
+                                            href string:${portal_url};
+                                            title portal/Description;">
+                            Home 
+                        </a>
+                    </span>
+                </li>
                 <tal:items metal:use-macro="here/global_menu/macros/menu">
                     Insert Add Content and Publishing pulldown.
                 </tal:items>
