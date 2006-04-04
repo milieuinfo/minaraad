@@ -19,6 +19,7 @@
             class="documentFirstHeading">Title</h1>
 
         <div class="documentDescription" 
+             tal:condition="context/Description"
              tal:content="context/Description" />
 
         <div tal:repeat="item_object hearings">
@@ -28,7 +29,8 @@
             <div class="hearingsubheader2"
                     tal:content="item_object/Title" />
     
-            <div tal:condition="obj/getSubheader">
+            <div tal:condition="obj/getSubheader"
+                 class="pressrelease_listsub">
                 <span tal:replace="obj/getSubheader" />
                 <span tal:condition="python:obj.getMot() == True"
                         tal:omit-tag="">

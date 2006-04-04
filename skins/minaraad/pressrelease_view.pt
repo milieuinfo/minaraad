@@ -32,14 +32,13 @@
     <metal:block metal:define-macro="body">
         <hr />
         <div class="pressrelease_textleft"
-              tal:content="context/getDescription" />
-
+             tal:content="context/getDescription" />
         <!-- Text -->
         <hr />
-        <div tal:replace="structure context/foto_foto"
-             tal:condition="context/getFoto"
-             tal:attributes="align python:'right'" />
-        <div class="bodytext"
+        <img tal:attributes="src string:${context/absolute_url}/foto_foto;
+                            alt context/Title"
+              class="img_right" />
+        <span class="bodytext"
             tal:content="structure context/getBody"
             tal:condition="context/getBody" />
         <!-- End text -->

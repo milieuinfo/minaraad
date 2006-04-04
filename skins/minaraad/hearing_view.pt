@@ -10,26 +10,6 @@
                              agendaItems python:context.portal_catalog.searchResults(portal_type='AgendaItem',
                                                                                     path=current_path,
                                                                                     sort_on='getItemstartdate');">
-        <div class="groupedAttendees">
-            <fieldset>
-                <legend i18n:translate="title_speakers">Speakers</legend>
-    
-                <tal:block tal:repeat="agendaItem agendaItems">
-                <span tal:define="obj agendaItem/getObject"
-                      tal:condition="obj/getSpeaker"
-                      tal:replace="obj/getSpeaker" />
-                <br />
-                </tal:block>
-                <span tal:condition="not:agendaItems" 
-                      class="discreet"
-                      i18n:translate="no_attendees">
-                    (none currently)
-                </span>
-            </fieldset>
-            <br />
-            <div tal:replace="structure context/foto_foto"
-                 tal:condition="context/getFoto" />
-        </div>
         <metal:block metal:define-macro="folderlisting" />
 
         <div class="hearingsubheader"
@@ -64,11 +44,20 @@
          <!-- Date and Time -->
          <div metal:use-macro="context/mina_showdatetime/macros/datetime" />
         <!-- end Date and Time -->
-
         <!-- Text -->
-        <div class="bodytext"
-             tal:condition="context/getBody"
-             tal:content="structure context/getBody" />
+        <table cellspacing="0">
+            <tr>
+                <td valign="top">
+                    <div class="bodytext"
+                         tal:condition="context/getBody"
+                         tal:content="structure context/getBody" />
+                </td>
+                <td>
+                    <div tal:replace="structure context/foto_foto"
+                         tal:condition="context/getFoto" />
+                </td>
+            </tr>
+        </table>
         <!-- End text -->
         <br />
 
@@ -82,10 +71,13 @@
             <li tal:repeat="agendaItem agendaItems">
             <tal:block tal:define="obj python:agendaItem.getObject()">
                  <div tal:condition="obj/summary"
-                     tal:content="obj/summary" />
-
+                      tal:omit-tag="">
+                    <span tal:replace="obj/summary" />
+                    <br />
+                </div>
                 <!-- Date and Time -->
-                <div metal:use-macro="context/mina_showdatetime/macros/datetime_agenda" />
+                <div metal:use-macro="context/mina_showdatetime/macros/datetime_agenda" 
+                     tal:omit-tag="" />
                 <!-- end Date and Time -->
                 <br />
                 <div tal:condition="agendaItem/Title" 
@@ -123,6 +115,22 @@
             <br />
         </tal:block>        
         <!-- end contactpersoon -->
+
+        <fieldset>
+            <legend i18n:translate="title_speakers">Speakers</legend>
+
+            <tal:block tal:repeat="agendaItem agendaItems">
+            <span tal:define="obj agendaItem/getObject"
+                    tal:condition="obj/getSpeaker"
+                    tal:replace="obj/getSpeaker" />
+            <br />
+            </tal:block>
+            <span tal:condition="not:agendaItems" 
+                    class="discreet"
+                    i18n:translate="no_attendees">
+                (none currently)
+            </span>
+        </fieldset>
 
         <fieldset tal:define="attendees view/groupedAttendees">
             <legend i18n:translate="title_attendees">Attendees</legend>

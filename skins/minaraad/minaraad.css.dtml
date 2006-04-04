@@ -9,6 +9,17 @@ table.site-bg {
     background: url('&dtml-portal_url;/sitelayout_bg.gif') top left no-repeat;
 }
 
+legend {
+    font-size: 100%;
+}
+
+.img_right {
+    float: right;
+}
+
+.documentByLine {
+    display: none;
+}
 
 #content {
     padding: 0px !important;
@@ -283,10 +294,6 @@ a.link-personalbar {
 
 ul.AgendaItems li {
     margin-bottom: 30px;
-}
-
-.groupedAttendees {
-    float:right
 }
 
 .groupedAttendees fieldset {
