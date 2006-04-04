@@ -410,19 +410,18 @@ dl.listsubscriptions dt {
 /* --- Start FCKEditor Styles --- */
 .subheader1 {
     font-weight:bold;
-    font-size:large;
+    font-size: 135%;
     color:#A13826;
 }
 
 .subheader2 {
     font-weight:bold;
-    font-size:medium;
+    font-size: 120%;
     color:#A13826;
 }
 
 .subheader3 {
     font-weight:bold;
-    font-size:small;
     color:#A13826;
 }
 
