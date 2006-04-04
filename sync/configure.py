@@ -28,7 +28,8 @@ def transforms():
         )
 
     zope.component.provideUtility(
-        minaraad.sync.transform.ZipCodeAndCityTransform(default_country='BE'),
+        minaraad.sync.transform.ZipCodeAndCityTransform(
+        default_country='Belgie'),
         name='mina-transform-zipcodeandcity',
         )
 

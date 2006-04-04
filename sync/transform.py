@@ -83,7 +83,7 @@ class ZipCodeAndCityTransform:
     """A transform from a string that contains zipcode, city and maybe
     a ``ISO 3166-1 alpha-2`` country code.
 
-    >>> t = ZipCodeAndCityTransform(default_country='BE')
+    >>> t = ZipCodeAndCityTransform(default_country='Belgie')
     >>> value = t("")
     >>> value['zipcode'], value['city'], value['country']
     ('', '', '')
@@ -95,18 +95,23 @@ class ZipCodeAndCityTransform:
     ...     print (value['country'], value['zipcode'], value['city'])
 
     >>> printValues('1000 Brussel')
-    ('BE', '1000', 'Brussel')
+    ('Belgie', '1000', 'Brussel')
     
     >>> printValues('9920     LOVENDEGEM')
-    ('BE', '9920', 'Lovendegem')
+    ('Belgie', '9920', 'Lovendegem')
     
     >>> printValues('NL-8000GB Zwolle')
-    ('NL', '8000GB', 'Zwolle')
+    ('Nederland', '8000GB', 'Zwolle')
 
     >>> printValues('NL 8000 GB Zwolle wolle')
-    ('NL', '8000GB', ' Zwolle Wolle')
+    ('Nederland', '8000GB', ' Zwolle Wolle')
     """
     interface.implements(ITransform)
+
+    country_map = {
+        'BE': 'Belgie',
+        'NL': 'Nederland',
+        }
 
     def __init__(self, default_country=''):
         self.default_country = default_country
@@ -118,7 +123,8 @@ class ZipCodeAndCityTransform:
         if self._allUpperCase(country_code):
             # We have a country code at the beginning, which we want to
             # strip off.
-            value['country'] = country_code
+            value['country'] = self.country_map.get(country_code,
+                                                    country_code)
             data = data[3:]
 
         # We want to check if there is an extra two letter code behind
