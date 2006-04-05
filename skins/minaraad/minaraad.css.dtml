@@ -121,7 +121,7 @@ h5, h6 {
 .documentContent {
     margin: 0px !important;
     padding: 0px !important;
-    width: 586px !important;
+    width: 586px;
 }
 
 .portal-header-mina {
