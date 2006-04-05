@@ -17,6 +17,10 @@ legend {
     float: right;
 }
 
+.img_left {
+    float: left;
+}
+
 .documentByLine {
     display: none;
 }

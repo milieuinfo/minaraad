@@ -147,6 +147,9 @@ FCK_MENU_STYLES = '''<Style name="Image on Left" element="img">
         <Style name="Image on Right" element="img">
             <Attribute name="class" value="img_right" />
         </Style>
+        <Style name="Image on Left" element="img">
+            <Attribute name="class" value="img_left" />
+        </Style>
         <Style name="Image on Top" element="img">
             <Attribute name="class" value="img_top" />
         </Style>
