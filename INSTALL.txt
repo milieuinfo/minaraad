@@ -6,6 +6,10 @@ Minaraad
 
 Dependencies
 
+    * path (http://www.jorendorff.com/articles/python/path/src/path.py)
+
+      - Put this into your ``$INSTANCE_HOME/lib/python`` directory.
+
     * PasswordResetTool (https://svn.plone.org/svn/collective/PasswordResetTool/trunk)
     
     * Five 1.2 (http://codespeak.net/z3/five/release/Five-1.2.tgz)
@@ -38,3 +42,6 @@ Dependencies
 
       - Remove the comments in
         ``$INSTANCE_HOME/Products/TextIndexNG3/adapters/configure.zcml``.
+
+      - Install ``xpdf`` (on Debian: ``apt-get install xpdf``) so that
+        pdftotext is available.
