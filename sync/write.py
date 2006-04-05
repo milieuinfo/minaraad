@@ -6,7 +6,7 @@ from CipraSync.writehandler import BaseHandler
 
 from minaraad.sync.interfaces import IDontWrite
 
-SITEROOT = '/mina'
+SITEROOT = '/minaraad'
 
 class MinaResolver:
     """Resolver for all mina types.
@@ -21,7 +21,7 @@ class MinaResolver:
     >>> r = Record()
     >>> r.category = 'mina-members'
     >>> resolve(r)
-    '/mina'
+    '/minaraad'
 
     >>> r = Record()
     >>> resolve(r) # doctest: +ELLIPSIS
@@ -120,7 +120,7 @@ class MemberPropertyHandler(BaseHandler):
     >>> writer.write()
     >>> members = plone.portal_membership.listMembers()
     >>> members
-    [<MemberData at /mina/portal_memberdata/ahmad.ahadi used for /mina/acl_users>, <MemberData at /mina/portal_memberdata/john.doe used for /mina/acl_users>]
+    [<MemberData at /minaraad/portal_memberdata/ahmad.ahadi used for /minaraad/acl_users>, <MemberData at /minaraad/portal_memberdata/john.doe used for /minaraad/acl_users>]
     """
 
     def write(self, record):
