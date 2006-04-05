@@ -29,11 +29,9 @@ Dependencies
         directory.
 
       - In ``$INSTANCE_HOME/Products/TextIndexNG3/extension_modules``
-        directory of TextIndexNG3 do ``python setup.py build_ext
-        --inplace``.
+        directory of TextIndexNG3 do ``python setup.py build_ext --inplace``.
 
-      - In the same directory, do ``rm -rf
-        zopyx/txng3/{normalizer,splitter,stemmer}``.
+      - In the same directory, do ``rm -rf zopyx/txng3/{normalizer,splitter,stemmer}``.
 
       - In ``$INSTANCE_HOME/lib/python`` do ``ln -s
         ../../Products/TextIndexNG3/extension_modules/zopyx``.

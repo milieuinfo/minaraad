@@ -129,6 +129,13 @@ h5, h6 {
     margin: 0px;
 }
 
+td.empty-left, .empty-left div {
+    width: 50px;
+}
+
+td.empty-right, .empty-right div {
+    width: 20px
+}
 #visual-portal-wrapper {
     width: 1001px;
     border: none;

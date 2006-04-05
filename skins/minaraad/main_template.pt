@@ -112,10 +112,10 @@
             </td>
             <tal:comment replace="nothing"> End of the left column </tal:comment>
 
-            <td width="50"
-                rowspan="3">
-                <div style="width:50px" /></td>
-
+            <td rowspan="3"
+                class="empty-left">
+                <div />
+            </td>
             <tal:comment replace="nothing"> Start of main content block </tal:comment>
             <td id="portal-column-content"
                 tal:define="tabindex python:Iterator(pos=0)"
@@ -164,9 +164,9 @@
                 </metal:block>
             </td>
             <tal:comment replace="nothing"> End of main content block </tal:comment>
-            <td width="20"
-                rowspan="3">
-                <div style="width: 20px" />
+            <td rowspan="3"
+                class="empty-right">
+                <div />
             </td>
             <tal:comment replace="nothing"> Start of right column </tal:comment>
             <td id="portal-column-two"
