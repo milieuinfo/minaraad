@@ -480,10 +480,15 @@ def _addTextIndexNG3Index(portal, out):
     catalog_tool._removeIndex('SearchableText')
 
     print >> out, "Adding new index for TextIndexNG3"
-    catalog_tool.manage_addIndex('SearchableText', 
-                                 'TextIndexNG3', 
-                                 extra={'default_encoding':'utf-8',
-                                        'use_converters':1,})
+    catalog_tool.manage_addIndex(
+        'SearchableText', 
+        'TextIndexNG3', 
+        extra=dict(default_encoding='utf-8',
+                   use_converters=1,
+##                    query_parser='txng.parsers.dumb_and',
+                   languages=('en', 'nl', ''),
+                   )
+        )
     catalog_tool.manage_reindexIndex('SearchableText')
 
 def uninstall(self):
