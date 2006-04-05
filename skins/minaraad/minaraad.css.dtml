@@ -350,6 +350,15 @@ dl.Attendees dd{
 /* --- End Advisory View --- */
 
 /* --- Start Subscribers overview --- */
+
+#subscriberslist {
+    font-size: 90%;
+}
+
+#subscriberslist th {
+    padding: 5px;
+}
+
 dl.listsubscriptions dd {
     margin-left: 0px;
     line-height: 1em;

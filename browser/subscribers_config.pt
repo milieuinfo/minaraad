@@ -103,20 +103,15 @@
         </form>
 
         <table class="listing"
-               tal:condition="members">
+               tal:condition="members"
+               id="subscriberslist">
             <thead>
                 <tr>
-                    <th i18n:translate="label_gender">
-                        Gender
-                    </th>
                     <th i18n:translate="label_firstname">
                         First name
                     </th>
                     <th i18n:translate="label_lastname">
                         Last name
-                    </th>
-                    <th i18n:translate="label_company">
-                        Company
                     </th>
                     <th i18n:translate="label_jobtitle">
                         Job title
@@ -139,21 +134,12 @@
                     <th i18n:translate="label_country">
                         Country
                     </th>
-                    <th i18n:translate="label_phonenumber">
-                        Phone number
-                    </th>
-                    <th i18n:translate="label_email">
-                        E-mail
-                    </th>
-                    <th />
                 </tr>
             </thead>
             <tbody>
                 <tr tal:repeat="member members">
-                    <td tal:content="member/gender" />
                     <td tal:content="member/firstname" />
                     <td tal:content="member/fullname" />
-                    <td tal:content="member/company" />
                     <td tal:content="member/jobtitle" />
                     <td tal:content="member/street" />
                     <td tal:content="member/housenumber" />
@@ -165,11 +151,6 @@
                     </td>
                     <td tal:condition="python:member.country == 'Ander land'">
                         <span tal:replace ="member/other_country" />
-                    </td>
-                    <td tal:content="member/phonenumber" />
-                    <td tal:content="member/email" />
-                    <td>
-                        <span tal:content="python:view.getSubscriptionType(member, subscription)" />
                     </td>
                 </tr>
             </tbody>
