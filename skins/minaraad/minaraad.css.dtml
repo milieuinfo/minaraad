@@ -47,7 +47,7 @@ legend {
 
 h1, h2, h3, h4, h5, h6 {
   border-bottom: 0px;
-  margin: 0pt 0pt 0.25em;
+  margin: 0pt 0pt 0.25em 0pt;
   color: #A13826;
   background-color: transparent;
   font-family: Verdana,Lucida,Helvetica,Arial,sans-serif;
