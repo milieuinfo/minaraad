@@ -68,7 +68,7 @@ h5, h6 {
     font-weight: bold;
 }
 
-.documentContent li a {
+.documentContent li a, documentContent p a {
     border: 0px;
 }
 
