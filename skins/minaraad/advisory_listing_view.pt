@@ -32,7 +32,8 @@
                             tal:replace="date" />
                     </td>
                     <td class="advisory_listtitle">
-                        <span tal:content="item_object/Title" />
+                        <span class="advisory_title" 
+                              tal:content="item_object/Title" />
 
                         <div tal:define="contacts python:obj.getContact()"
                              tal:condition="contacts"

@@ -72,6 +72,10 @@ h5, h6 {
     border: 0px;
 }
 
+li.newsitemslist a {
+    text-decoration: underline !important;
+}
+
 #portal-logo {
   margin: 0px;
   padding: 0pt;
@@ -348,6 +352,10 @@ dl.Attendees dd{
     width: 510px;
 }
 
+.advisory_title {
+    font-weight: bold;
+}
+
 .advisory_listdownloads {
     width: 200px;
 }
@@ -384,6 +392,11 @@ dl.listsubscriptions dt {
     color: #A13826;
     font-weight: bold;
 }
+
+h5.black {
+    color: #000000 !important;
+}
+
 /* --- End Newsletter --- */ 
 
 /* --- Start Pressrelease --- */

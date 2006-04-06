@@ -30,7 +30,7 @@
         <br />
         <!-- Index -->
         <div tal:repeat="category categories">
-            <h5 tal:content="category">
+            <h5 tal:content="category" class="black">
                 Category
             </h5>
             
@@ -39,9 +39,10 @@
                                                                                   getCategory=category,
                                                                                   sort_on = 'getObjPositionInParent',
                                                                                   review_state='published');">
-                <li tal:repeat="newsitem newsitems">
+                <li tal:repeat="newsitem newsitems"
+                    class="newsitemslist">
                     <a tal:attributes="href string:#${newsitem/id}"
-                        tal:content="newsitem/Title" />
+                       tal:content="newsitem/Title" />
                 </li>
                 <li tal:condition="not:newsitems"
                     i18n:translate="no_newsitems_available">No newsitems available</li>
