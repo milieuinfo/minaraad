@@ -35,9 +35,10 @@
             </h5>
             
             <ul tal:define="newsitems python:context.portal_catalog.searchResults(portal_type='NewsItem',
-                                                                               path=current_path,
-                                                                               getCategory=category,
-                                                                                review_state='published');">
+                                                                                  path=current_path,
+                                                                                  getCategory=category,
+                                                                                  sort_on = 'getObjPositionInParent',
+                                                                                  review_state='published');">
                 <li tal:repeat="newsitem newsitems">
                     <a tal:attributes="href string:#${newsitem/id}"
                         tal:content="newsitem/Title" />
@@ -59,6 +60,7 @@
                 tal:define="newsitems python:context.portal_catalog.searchResults(portal_type='NewsItem',
                                                                                 path=current_path,
                                                                                 getCategory=category,
+                                                                                sort_on = 'getObjPositionInParent',
                                                                                 review_state='published');">
 
             <div tal:repeat="newsitem newsitems"

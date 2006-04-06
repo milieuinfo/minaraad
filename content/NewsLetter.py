@@ -73,19 +73,19 @@ schema = Schema((
 ##code-section after-local-schema #fill in your manual code here
 ##/code-section after-local-schema
 
-NewsLetter_schema = BaseFolderSchema.copy() + \
+NewsLetter_schema = OrderedBaseFolderSchema.copy() + \
     getattr(EmailMixin, 'schema', Schema(())).copy() + \
     schema.copy()
 
 ##code-section after-schema #fill in your manual code here
 ##/code-section after-schema
 
-class NewsLetter(EmailMixin, BaseFolder):
+class NewsLetter(EmailMixin, OrderedBaseFolder):
     """
     A newsletter
     """
     security = ClassSecurityInfo()
-    __implements__ = (getattr(EmailMixin,'__implements__',()),) + (getattr(BaseFolder,'__implements__',()),)
+    __implements__ = (getattr(EmailMixin,'__implements__',()),) + (getattr(OrderedBaseFolder,'__implements__',()),)
 
     # This name appears in the 'add' box
     archetype_name = 'NewsLetter'

@@ -157,7 +157,7 @@ schema = Schema((
 ##code-section after-local-schema #fill in your manual code here
 ##/code-section after-local-schema
 
-Hearing_schema = BaseFolderSchema.copy() + \
+Hearing_schema = OrderedBaseFolderSchema.copy() + \
     getattr(EmailMixin, 'schema', Schema(())).copy() + \
     schema.copy()
 
@@ -169,12 +169,12 @@ class IHearing(Interface):
         pass
 ##/code-section after-schema
 
-class Hearing(EmailMixin, BaseFolder):
+class Hearing(EmailMixin, OrderedBaseFolder):
     """
     A Hearing
     """
     security = ClassSecurityInfo()
-    __implements__ = (getattr(EmailMixin,'__implements__',()),) + (getattr(BaseFolder,'__implements__',()),)
+    __implements__ = (getattr(EmailMixin,'__implements__',()),) + (getattr(OrderedBaseFolder,'__implements__',()),)
 
     # This name appears in the 'add' box
     archetype_name = 'Hearing'
