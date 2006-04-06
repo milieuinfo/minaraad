@@ -337,7 +337,7 @@ dl.Attendees dd{
 /* --- Start Advisory View --- */
 
 .advisory_listing {
-    width: 700px;
+    width: 585px;
 }
 .advisory_listdate {
     width: 75px;
@@ -345,7 +345,7 @@ dl.Attendees dd{
 }
 
 .advisory_listtitle {
-    width: 625px;
+    width: 510px;
 }
 
 .advisory_listdownloads {
@@ -395,31 +395,32 @@ dl.listsubscriptions dt {
     font-style:italic;
 }
 
-.pressrelease_largetable {
+table.pressrelease {
     width:100%;
 }
 
-.pressrelease_left {
-    float:left;
+.pressrelease_img_left {
+    float: left;
+    padding-right: 3px;
 }
 
-.pressrelease_textleft {
-    text-align:left;
+.pressrelease_img_right {
+    float: right;
+    padding-left: 3px;
 }
-
-.pressrelease_right {
-    float:right;
+.clear {
+    clear: right;
 }
 
 .pressrelease_date {
-    color:#A13826;
-    font-style:italic;
+    color: #A13826;
+    font-style: italic;
 }
 
 .pressrelease_title {
-    color:#A13826;
-    font-weight:bold;
-    font-size:120%;
+    color: #A13826;
+    font-weight: bold;
+    font-size: 120%;
 }
 
 .pressrelease_subhead {
