@@ -545,7 +545,8 @@ li.portal-tabs-subitem-listitem {
     border-bottom: 1px solid #A4CF4D;
     border-top: 1px solid #FFFFFF;
     position:static !important;
-    padding-left: 10px;
+    padding: 4px 2px 4px 10px;
+    line-height: 1.3em;
 }
 
 /* --- End Dropdownmenu --- */

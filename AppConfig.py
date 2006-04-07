@@ -84,6 +84,7 @@ EXTRA_VIEWS = {
     'Folder': ['hearing_listing_view', 'advisory_listing_view', 
                'newsletter_listing_view', 'pressrelease_listing_view',
                'study_listing_view','annualreport_listing_view'],
+    'Plone Site': ['index_view'],
     }
 
 # SELECT_VIEWS is a dictionary, the keys are folder names. The value

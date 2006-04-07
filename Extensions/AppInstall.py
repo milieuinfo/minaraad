@@ -66,9 +66,6 @@ def install(self):
 
     print >> out, "Make FCKeditor the default for all members"
     _configureFCKeditor(self)
-
-    print >> out, "Changing the default view"
-    _default_view(self)
     
     # Set up form controller actions for the widgets to work
     registerAttachmentsFormControllerActions(self)
@@ -184,6 +181,7 @@ def _switchOnActions(portal):
     tab = getToolByName(portal, 'portal_actions')
     tab_actions = tab._cloneActions()
     actionDefined = 0
+    actionContactDefined = 0
     for a in tab_actions:
         if a.id == 'sitemap':
             a.title = 'Sitemap'
@@ -191,6 +189,9 @@ def _switchOnActions(portal):
         if a.id in ['mina_library']:
             a.visible = 1
             actionDefined = 1
+        if a.id == 'contactpersonen':
+            a.visible = 1
+            actionContactDefined = 1
         tab._actions = tab_actions
     if actionDefined == 0:
         tab.addAction('mina_library',
@@ -199,6 +200,14 @@ def _switchOnActions(portal):
                       '',
                       'View',
                       'site_actions')
+    if actionContactDefined == 0:
+        tab.addAction('contactpersonen',
+                      'Contactpersonen',
+                      'string:$portal_url/contactpersonen',
+                      '',
+                      'Manage portal',
+                      'user')
+
 
 def _addExtraViews(portal):
     ttool = getToolByName(portal, 'portal_types')
@@ -456,17 +465,6 @@ def _configureFCKeditor(portal):
             action.visible = 0
             print >> out, "Switching off unwanted action %s." % action.id
     control._actions = actions
-
-def _default_view(self):
-    zpt = ZopePageTemplate('index_html')
-
-    SkinsPath = os.path.join(package_home(GLOBALS), 'skins', 'minaraad')
-    full_path = os.path.join(SkinsPath, 'index_view.pt')
-    fd = open(full_path)
-    data = fd.read()
-    fd.close()
-    zpt.write(data)
-    self.index_html = zpt
 
 def _addLynxDumpTransform(portal):
     transforms = portal.portal_transforms
