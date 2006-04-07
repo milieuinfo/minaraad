@@ -32,13 +32,8 @@ Dependencies
       - Copy (!) the ``TextIndexNG3`` directory to your ``Products``
         directory.
 
-      - In ``$INSTANCE_HOME/Products/TextIndexNG3/extension_modules``
-        directory of TextIndexNG3 do ``python setup.py build_ext --inplace``.
-
-      - In the same directory, do ``rm -rf zopyx/txng3/{normalizer,splitter,stemmer}``.
-
-      - In ``$INSTANCE_HOME/lib/python`` do ``ln -s
-        ../../Products/TextIndexNG3/extension_modules/zopyx``.
+      - In ``$INSTANCE_HOME/Products/TextIndexNG3`` do ``python
+        setup.py install --home=$INSTANCE_HOME``.
 
       - Remove the comments in
         ``$INSTANCE_HOME/Products/TextIndexNG3/adapters/configure.zcml``.
