@@ -27,6 +27,10 @@ __docformat__ = 'plaintext'
 
 import os
 import Products.minaraad.tests
+from zope.app.testing import setup
+from Products.Five import zcml
+from Products import minaraad, Five
+from Products import TextIndexNG3
 
 def load_file(name, size=0):
     """Load file from testing directory
@@ -40,3 +44,33 @@ def load_file(name, size=0):
     data = fd.read()
     fd.close()
     return data
+
+def setup_CA():
+    setup.placefulSetUp()
+    # need to setup some Five stuff to get view lookups working
+    zcml.load_config('meta.zcml', Five)
+    zcml.load_config('permissions.zcml', Five)
+    zcml.load_config('configure.zcml', Five.site)
+
+    zcml.load_config('configure.zcml', TextIndexNG3)
+    zcml.load_config('configure.zcml', minaraad)
+
+    zcml.load_string('''<configure xmlns="http://namespaces.zope.org/zope"
+           xmlns:five="http://namespaces.zope.org/five">
+  <!-- basic collection of directives needed for proper traversal and request handling -->
+  <include package="zope.app.traversing" />
+  <adapter
+      for="*"
+      factory="Products.Five.traversable.FiveTraversable"
+      provides="zope.app.traversing.interfaces.ITraversable"
+      />
+  <adapter
+      for="*"
+      factory="zope.app.traversing.adapters.Traverser"
+      provides="zope.app.traversing.interfaces.ITraverser"
+      />
+  <five:implements class="ZPublisher.HTTPRequest.HTTPRequest"
+                   interface="zope.publisher.interfaces.browser.IBrowserRequest"
+                   />
+
+</configure>''')
