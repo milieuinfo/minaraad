@@ -223,7 +223,7 @@ ul.portlet-personalbar-mina {
 }
 
 a.link-personalbar {
-    font-size: 11px;
+    font-size: 10px;
     text-decoration: none !important;
     font-weight: bold;
 }

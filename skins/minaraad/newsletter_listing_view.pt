@@ -35,14 +35,11 @@
                         class="advisory_listdate"> 
         
                         <span tal:condition="daterequired"
-                            tal:replace="date" />
+                              tal:replace="date" />
                     </td>
                     <td>
-                        <div class="newsletter_listtitle"
-                                tal:content="item_object/Title" />
-                        <span tal:content="item_object/Description" />
-                            <a tal:attributes="href item_object/getURL"
-                            i18n:translate="linkmoreinfo">More</a>
+                        <a tal:attributes="href item_object/getURL"
+                           tal:content="item_object/Title" />
                     </td>
                 </tr>
                 <tr>

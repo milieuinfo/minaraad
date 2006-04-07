@@ -26,7 +26,7 @@ MINARAAD_FOLDER_WORKFLOW_TYPES = []
 
 LEFT_SLOTS = ( ) 
 
-RIGHT_SLOTS = ('here/portlet_events/macros/portlet',
+RIGHT_SLOTS = ('here/portlet_recent/macros/portlet',
                'here/portlet_review/macros/portlet',
               ) 
 

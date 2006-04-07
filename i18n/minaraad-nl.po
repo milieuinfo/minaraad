@@ -352,7 +352,7 @@ msgstr "Straat"
 #. Default: "Subscribe"
 #: skins/minaraad/hearing_view.pt
 msgid "label_subscribe"
-msgstr "Aanmelden"
+msgstr "Inschrijven"
 
 #: browser/subscribers_config.pt
 msgid "label_subscribersoverview"
@@ -367,7 +367,7 @@ msgstr "Thema:"
 #. Default: "Unsubscribe"
 #: skins/minaraad/hearing_view.pt
 msgid "label_unsubscribe"
-msgstr "Afmelden"
+msgstr "Uitschrijven"
 
 #: browser/subscriptions_config.pt
 msgid "label_up_to_my_preferences"

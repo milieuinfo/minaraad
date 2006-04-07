@@ -3,6 +3,8 @@ from zope.interface import Interface, implements, Attribute
 from configlets import AbstractView
 from Products.CMFCore.utils import getToolByName
 from Products.minaraad.interfaces import IAttendeeManager
+from Products.CMFCore.permissions import ManagePortal
+from AccessControl import ClassSecurityInfo
 
 class IAttendeesManagerView(Interface):
 
@@ -17,6 +19,8 @@ import logging
 class AttendeesManagerView(AbstractView):
     implements(IAttendeesManagerView)
 
+    security = ClassSecurityInfo()
+    
     def __init__(self, *args, **kwargs):
         AbstractView.__init__(self, *args, **kwargs)
 
@@ -52,6 +56,7 @@ class AttendeesManagerView(AbstractView):
         member = memberTool.getAuthenticatedMember()
         return (not isAnonymous) and member.getMemberId() in self.manager.attendees()
     
+    security.declareProtected(ManagePortal,'groupedAttendees')
     def groupedAttendees(self):
         attendees = {'council_members': [],
                      'members': []}
