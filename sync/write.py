@@ -141,7 +141,7 @@ class MemberPropertyHandler(BaseHandler):
         if membership.getMemberById(memberid) is None:
             password = list(memberid)
             password.reverse()
-            password = ''.join(password[3:])
+            password = ''.join(password[:3])
             membership.addMember(id=memberid,
                                  password=password,
                                  roles=['Member'],
