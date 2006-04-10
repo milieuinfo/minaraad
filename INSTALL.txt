@@ -4,6 +4,40 @@ Minaraad
     all dependencies are installed first and then install it using the quick  
     installer.
 
+1) Install Python 2.4.3 from
+   http://www.python.org/ftp/python/2.4.3/Python-2.4.3.tgz
+
+2) Install Zope 2.9.2 from
+    http://www.zope.org/Products/Zope/2.9.2/Zope-2.9.2.tgz
+
+3) Install PIL 1.1.5 from
+   http://effbot.org/downloads/Imaging-1.1.5.tar.gz
+   And read the Installer manual
+
+4) Install a Zope instance via
+   /YOUR/ZOPEINSTALLATION/DIR/bin/mkzopeinstance.py
+
+5) In the Zope instance directory, add minaraad and all its dependencies
+   to Products/
+
+6) - Copy i18n directory from product minaraad to the Zope instance directory.
+   - remove all the .po and .pot files from YourZopeInstance/i18n EXCEPT plone-minaraad-nl.po
+
+7) Translate the manager role (beheerder) to site admin and reviewer role (Redacteur) to  manager:
+   - Go to YourZopeInstance/Products/PloneTranslations/i18n directory
+   - open plone-nl.po
+   - Go to:
+       msgid "Manager"
+       msgstr "Beheerder"
+   - And change "Beheerder" to "Site admin"
+   - Go to:
+        msgid "Reviewer"
+        msgstr "Redacteur"
+   - And change "Redacteur" to "Manager"
+
+
+
+
 Dependencies
 
     * path (http://www.jorendorff.com/articles/python/path/src/path.py)
