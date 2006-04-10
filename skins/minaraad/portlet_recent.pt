@@ -3,7 +3,7 @@
       i18n:domain="plone">
     <body>
     <div metal:define-macro="portlet"
-        tal:condition="python:not isAnon and template.getId()!='recently_published'"
+        tal:condition="python:template.getId()!='recently_published'"
         tal:omit-tag="">
         
     
@@ -18,8 +18,10 @@
     
     <dl id="portlet-events-mina">
         <dt>
-            <a tal:attributes="href string:${portal_url}/recently_modified">
-                Agenda
+            <a tal:attributes="href string:${portal_url}/recently_modified"
+               i18n:domain="minaraad"
+               i18n:translate="label_new">
+                New
             </a>
         </dt>
 

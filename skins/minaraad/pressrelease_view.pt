@@ -5,6 +5,11 @@
 
     <body>
      <metal:block metal:define-macro="header">
+        <div metal:use-macro="here/document_actions/macros/document_actions">
+            Document actions (print, sendto etc)
+        </div>
+        <br />
+        <br />
         <div class="pressrelease_img_left">
             <span tal:replace="structure context/logo_1_logo"
             tal:condition="context/getLogo_1" />

@@ -5,6 +5,9 @@
 
     <body>
     <metal:block metal:define-macro="header">
+        <div metal:use-macro="here/document_actions/macros/document_actions">
+            Document actions (print, sendto etc)
+        </div>
         <h1>
             <span tal:replace="context/Title" />
             <span tal:content="python:context.toLocalizedTime(context.date)"

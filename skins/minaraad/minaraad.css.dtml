@@ -33,6 +33,10 @@ legend {
     background-color: #F4CFC8;
 }
 
+.listspacing {
+    padding-bottom: 10px;
+}
+
 #user_overview {
     font-size: 90%;
 }

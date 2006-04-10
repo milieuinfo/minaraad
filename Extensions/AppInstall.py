@@ -81,9 +81,7 @@ def install(self):
     print >> out, "Switch on our actions"
 
     _addTextIndexNG3Index(self, out)
-    
-    _fix_default_view(self)
-    
+
     return out.getvalue()
 
 def _configurePortalProps(portal):
@@ -159,13 +157,6 @@ def createNode(self, item):
 
     for child in item['children']:
         createNode(created_object, child)
-
-def _fix_default_view(self):
-    if hasattr(self, 'index_html'):
-        if not 'index_html' in self.objectIds():
-            # Bloody hack, killing the attribute :-)
-            del self.index_html
-
 
 def _switchOffUnwantedActions(portal):
     """Switch off unwanted actions (portal_actions)

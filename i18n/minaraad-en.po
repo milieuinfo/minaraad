@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minaraad 0.1\n"
-"POT-Creation-Date: 2006-04-04 13:24+0000\n"
+"POT-Creation-Date: 2006-04-10 13:07+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: Mirella van Teulingen <m.van.teulingen@zestsoftware.nl>\n"
 "Language-Team: English <info@zestsoftware.nl>\n"
@@ -65,16 +65,6 @@ msgstr ""
 #. Default: "Advisory date:"
 #: skins/minaraad/advisory_view.pt
 msgid "advisory_date"
-msgstr ""
-
-#. Default: "Events"
-#: skins/minaraad/portlet_events.pt
-msgid "box_events_mina"
-msgstr ""
-
-#. Default: "More..."
-#: skins/minaraad/portlet_events.pt
-msgid "box_upcoming_events_mina"
 msgstr ""
 
 #. Default: "For security reasons, we store your password encrypted, and cannot mail it to you. If you would like to reset your password, fill out the form below and we will send you an email at the address you gave when you registered to start the process of resetting your password. <br/> <br/> If this will not work for you (for example, if you forgot your member name or your email address has changed) send an email to the"
@@ -296,6 +286,11 @@ msgstr ""
 msgid "label_name"
 msgstr ""
 
+#. Default: "New"
+#: skins/minaraad/portlet_recent.pt
+msgid "label_new"
+msgstr ""
+
 #. <no reference>
 #: Field.py
 msgid "label_no_reference"
@@ -418,9 +413,9 @@ msgid "legend_sendemail"
 msgstr ""
 
 #. Default: "More"
-#: skins/minaraad/advisory_listing_view.pt
 #: skins/minaraad/events_listing.pt
 #: skins/minaraad/hearing_listing_view.pt
+#: skins/minaraad/pressrelease_listing_view.pt
 msgid "linkmoreinfo"
 msgstr ""
 
@@ -808,11 +803,6 @@ msgstr ""
 
 #: browser/subscriptions_config.pt
 msgid "title_post"
-msgstr ""
-
-#. Default: "Speakers"
-#: skins/minaraad/hearing_view.pt
-msgid "title_speakers"
 msgstr ""
 
 #: browser/subscriptions_config.pt

@@ -45,8 +45,6 @@ Dependencies
       - Put this into your ``$INSTANCE_HOME/lib/python`` directory.
 
     * PasswordResetTool (https://svn.plone.org/svn/collective/PasswordResetTool/trunk)
-    
-    * Five 1.2 (http://codespeak.net/z3/five/release/Five-1.2.tgz)
 
     * FCKeditor 2.2
       (http://prdownloads.sourceforge.net/fckeditor/FCKeditor.Plone2.2.zip?download)
@@ -66,7 +64,7 @@ Dependencies
       - Copy (!) the ``TextIndexNG3`` directory to your ``Products``
         directory.
 
-      - In ``$INSTANCE_HOME/Products/TextIndexNG3`` do ``python
+      - In ``$INSTANCE_HOME/Products/TextIndexNG3/extension_modules`` do ``python
         setup.py install --home=$INSTANCE_HOME``.
 
       - Remove the comments in

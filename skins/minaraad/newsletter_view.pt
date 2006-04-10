@@ -6,6 +6,9 @@
     <body>
     <metal:block metal:define-macro="header">
     <a name="top">
+         <div metal:use-macro="here/document_actions/macros/document_actions">
+            Document actions (print, sendto etc)
+        </div>
         <h1><span tal:omit-tag=""
                   tal:define="daterequired python:context.getDate() != None;
                               date python:context.toLocalizedTime(context.date)[:-5];" 

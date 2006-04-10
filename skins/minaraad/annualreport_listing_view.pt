@@ -5,13 +5,10 @@
 
     <body>
     <metal:block metal:fill-slot="main" 
-                   tal:define="current_path python:'/'.join(context.getPhysicalPath());
-                              annualreports python:context.portal_catalog.searchResults(portal_type='AnnualReport',
-                                                                                    path=current_path,
-                                                                                    sort_on='Date',
-                                                                                    sort_order='reverse');">
+                 tal:define="annualreports python:context.listFolderContents('AnnualReport')">
         <metal:block metal:define-macro="folderlisting" />
-
+        
+        
         <div metal:use-macro="here/document_actions/macros/document_actions">
             Document actions (print, sendto etc)
         </div>
@@ -21,19 +18,16 @@
         <div class="documentDescription" 
              tal:content="context/Description" />
         
-        <div tal:repeat="item_object annualreports">
-            <tal:block tal:define="obj python:item_object.getObject()">
+        <div tal:repeat="item_object annualreports"
+             class="listspacing">
             <a class="annualreport_listtitle"
                tal:attributes="href string:${context/absolute_url}/${item_object/id}/attachment"
                tal:content="item_object/Title" />
 
             <span class="filesize"
-                  tal:define="size python:obj.getObjSize(obj)"
+                  tal:define="size python:item_object.getObjSize(item_object)"
                   tal:condition="size" 
                   tal:content="size">257 KB</span>
-            </tal:block>
-            <br />
-            <br />
         </div>
 
    </metal:block>
