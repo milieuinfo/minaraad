@@ -21,7 +21,7 @@
             }
        </script>
 
-        <h1 i18n:translate="title_subscription">Subscriptions   </h1>
+        <h1 i18n:translate="title_subscription">Subscriptions</h1>
 
         <a class="link-parent"
            tal:attributes="href string: $portal_url/plone_memberprefs_panel"
@@ -55,24 +55,24 @@
                             tal:omit-tag="" />
                     </td>
                     <td class="checkbox-centered">
-                    <input type="checkbox"
-                        class="noborder"
-                        tal:condition="subscription/can_email"
-                        tal:attributes="tabindex tabindex/next;
-                                        id string:email_${subscription/id};
-                                        name string:email_${subscription/id};
-                                        value string:email_${subscription/id};
-                                        checked subscription/subscribed_email" /> 
+                        <input type="checkbox"
+                            class="noborder"
+                            tal:condition="subscription/can_email"
+                            tal:attributes="tabindex tabindex/next;
+                                            id string:email_${subscription/id};
+                                            name string:email_${subscription/id};
+                                            value string:email_${subscription/id};
+                                            checked subscription/subscribed_email" /> 
                     </td>
                     <td class="checkbox-centered">
-                    <input type="checkbox"
-                        class="noborder"
-                        tal:condition="subscription/can_post"
-                        tal:attributes="tabindex tabindex/next;
-                                        id string:post_${subscription/id};
-                                        name string:post_${subscription/id};
-                                        value string:post_${subscription/id};
-                                        checked subscription/subscribed_post" /> 
+                        <input type="checkbox"
+                            class="noborder"
+                            tal:condition="subscription/can_post"
+                            tal:attributes="tabindex tabindex/next;
+                                            id string:post_${subscription/id};
+                                            name string:post_${subscription/id};
+                                            value string:post_${subscription/id};
+                                            checked subscription/subscribed_post" /> 
                     </td>
                 </tr>
                 </tal:block>

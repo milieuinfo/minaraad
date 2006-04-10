@@ -29,12 +29,14 @@
                 </div>
                 <br />
 
+
                 <input class="context"
                         type="submit"
                         name="form.button.ExportEmail"
                         value="Export Email Subscribers"
                         i18n:attributes="value label_export_email;"
-                        tal:attributes="tabindex tabindex/next;" />
+                        tal:attributes="tabindex tabindex/next;"
+                        tal:condition="python:context.portal_type != 'Advisory'" />
 
                 <input class="context"
                         type="submit"

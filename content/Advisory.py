@@ -30,7 +30,6 @@ __docformat__ = 'plaintext'
 from AccessControl import ClassSecurityInfo
 from Products.Archetypes.atapi import *
 from Products.minaraad.PostMixin import PostMixin
-from Products.minaraad.EmailMixin import EmailMixin
 from Products.minaraad.Attachmentsmixin import Attachmentsmixin
 from Products.minaraad.config import *
 
@@ -89,7 +88,6 @@ schema = Schema((
 ##/code-section after-local-schema
 
 Advisory_schema = getattr(PostMixin, 'schema', Schema(())).copy() + \
-    getattr(EmailMixin, 'schema', Schema(())).copy() + \
     getattr(Attachmentsmixin, 'schema', Schema(())).copy() + \
     schema.copy()
 
@@ -97,18 +95,18 @@ Advisory_schema = getattr(PostMixin, 'schema', Schema(())).copy() + \
 Advisory_schema['description'].isMetadata = False
 ##/code-section after-schema
 
-class Advisory(PostMixin, EmailMixin, Attachmentsmixin):
+class Advisory(PostMixin, Attachmentsmixin):
     """An advisory
     """
     security = ClassSecurityInfo()
-    __implements__ = (getattr(PostMixin,'__implements__',()),) + (getattr(EmailMixin,'__implements__',()),) + (getattr(Attachmentsmixin,'__implements__',()),)
+    __implements__ = (getattr(PostMixin,'__implements__',()),) + (getattr(Attachmentsmixin,'__implements__',()),)
 
     # This name appears in the 'add' box
     archetype_name = 'Advisory'
 
     meta_type = 'Advisory'
     portal_type = 'Advisory'
-    allowed_content_types = [] + list(getattr(PostMixin, 'allowed_content_types', [])) + list(getattr(EmailMixin, 'allowed_content_types', [])) + list(getattr(Attachmentsmixin, 'allowed_content_types', []))
+    allowed_content_types = [] + list(getattr(PostMixin, 'allowed_content_types', [])) + list(getattr(Attachmentsmixin, 'allowed_content_types', []))
     filter_content_types = 0
     global_allow = 1
     #content_icon = 'Advisory.gif'
@@ -120,15 +118,6 @@ class Advisory(PostMixin, EmailMixin, Attachmentsmixin):
 
 
     actions =  (
-
-
-       {'action': "string:${object_url}/email_out",
-        'category': "object",
-        'id': 'email_out',
-        'name': 'E-Mail',
-        'permissions': ("View",),
-        'condition': 'python:1'
-       },
 
 
        {'action': "string:${object_url}/export_subscribers",

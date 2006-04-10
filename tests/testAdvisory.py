@@ -67,30 +67,10 @@ class testAdvisory(MainTestCase):
         self.advisory = self.portal.adviezen.adv_2006.myadvisory
 
     # from class Advisory:
-    def test_email_out(self):
-        pass
-
-    # from class Advisory:
     def test_export_subscribers(self):
         pass
 
-    # from class EmailMixin:
-    def test_email(self):
-        """
-        """
-        #Uncomment one of the following lines as needed
-    # from class EmailMixin:
-    def test_getEmailBody(self):
-        pass
-
-    # from class EmailMixin:
-    def test_getSubscriptionId(self):
-        pass
-
     # Manually created methods
-
-    def test_email_out_html(self):
-        pass
 
     def test_Existance(self):
         """ Test if the Advisory exists within portal_types
@@ -99,10 +79,7 @@ class testAdvisory(MainTestCase):
         types_ = self.portal.portal_types.objectIds()
         self.failUnless('Advisory' in types_)
 
-    def test_getEmailContentsFromContent(self):
-        pass
-
-    def test_getEmailContents(self):
+    def test_getEmailBody(self):
         pass
 
     def test_Fields(self):
@@ -115,6 +92,9 @@ class testAdvisory(MainTestCase):
         self.advisory.getContact()
 
     def test_subscribers_export(self):
+        pass
+
+    def test_getSubscriptionId(self):
         pass
 
 
