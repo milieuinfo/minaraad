@@ -31,23 +31,30 @@
                         <span tal:condition="daterequired"
                             tal:replace="date" />
                     </td>
-                    <td class="advisory_listtitle">
-                        <span class="advisory_title" 
-                              tal:content="item_object/Title" />
+                    <td class="advisory_listtitle"
+                        tal:define="current_path python:'/'.join(obj.getPhysicalPath());
+                                    attachments python:context.portal_catalog.searchResults(portal_type='FileAttachment',
+                                                                                            path=current_path,)">
+                        <tal:block tal:repeat="attachment attachments">
+                            <div tal:define="desc attachment/Description;
+                                            item_type attachment/portal_type;"
+                                 tal:omit-tag="">
+                                <a tal:attributes="href attachment/getURL;
+                                                   title desc;"
+                                   tal:content="attachment/Title" />
+                                <br />
+                            </div>
+                        </tal:block>
 
                         <div tal:define="contacts python:obj.getContact()"
                              tal:condition="contacts"
                              tal:omit-tag="">
-                            
+
                             <tal:block tal:repeat="contact contacts">
                             <a tal:attributes="href string:mailto:${contact/getEmail}"
                                tal:content="contact/getEmail" />
                             </tal:block>
                         </div>
-                        <!-- Start Attachments-->
-                        <div metal:use-macro="context/mina_attachments/macros/agenda_attachments" />
-                        <!-- end Attachments -->
-                        <br />
                     </td>
                     </tal:block>
                 </tr>

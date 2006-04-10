@@ -354,6 +354,7 @@ dl.Attendees dd{
 
 .advisory_listtitle {
     width: 510px;
+    padding-bottom: 10px;
 }
 
 .advisory_title {
