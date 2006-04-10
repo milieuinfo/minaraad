@@ -37,7 +37,7 @@ JAVASCRIPTS = [{'id': 'hideShow.js'},{'id': 'tabsDropDown.js'}]
 
 # These actions can be found in portal_actions
 # and will be disabled
-INVISIBLE_ACTIONS = ['rss', 'accessibility', 'plone_setup']
+INVISIBLE_ACTIONS = ['rss', 'accessibility', 'plone_setup', 'full_screen']
 
 # GLOBAL_DISALLOW is a list of content types that will be disabled
 # on the portal root and on all subfolders.
