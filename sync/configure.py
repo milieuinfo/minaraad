@@ -11,7 +11,7 @@ import minaraad.sync.transform
 # resolvers
 def resolver():
     zope.component.provideUtility(
-        minaraad.sync.write.MinaResolver(),
+        minaraad.sync.write.MinaResolver('/minaraad'),
         name='mina-resolver')
 
 

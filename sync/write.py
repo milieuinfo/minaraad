@@ -6,8 +6,6 @@ from CipraSync.writehandler import BaseHandler
 
 from minaraad.sync.interfaces import IDontWrite
 
-SITEROOT = '/minaraad'
-
 class MinaResolver:
     """Resolver for all mina types.
 
@@ -15,13 +13,13 @@ class MinaResolver:
     belongs.  Currently only supports memberdata and returns the site
     root.
 
-    >>> resolve = MinaResolver().resolve
+    >>> resolve = MinaResolver('/foo-raad').resolve
     >>> class Record(dict):
     ...     pass
     >>> r = Record()
     >>> r.category = 'mina-members'
     >>> resolve(r)
-    '/minaraad'
+    '/foo-raad'
 
     >>> r = Record()
     >>> resolve(r) # doctest: +ELLIPSIS
@@ -37,9 +35,12 @@ class MinaResolver:
     """
     interface.implements(IPathResolver)
 
+    def __init__(self, siteroot):
+        self.siteroot = siteroot
+
     def resolve(self, record):
         if record.category == 'mina-members':
-            return SITEROOT
+            return self.siteroot
         raise ValueError("Unable to find a path for '%s'." % record)
 
 
@@ -81,7 +82,7 @@ class MemberPropertyHandler(BaseHandler):
     >>> class Resolver:
     ...     interface.implements(IPathResolver)
     ...     def resolve(self, record):
-    ...         return ('/mina')
+    ...         return ('/minaraad')
 
     Register the resolver with the CA:
 
@@ -104,8 +105,6 @@ class MemberPropertyHandler(BaseHandler):
     the database:
 
     >>> app = writer._getDatabase()
-    Customization policy for CompoundField installed
-    Customizationpolicy for PloneSelenium installed
     Customization policy for minaraad installed
     >>> app # doctest: +ELLIPSIS
     <Application at ...>
@@ -114,7 +113,7 @@ class MemberPropertyHandler(BaseHandler):
 
     >>> plone = app.restrictedTraverse(Resolver().resolve(None))
     >>> plone
-    <PloneSite at /mina>
+    <PloneSite at /minaraad>
 
     >>> plone.portal_membership.listMembers()
     []
@@ -122,7 +121,7 @@ class MemberPropertyHandler(BaseHandler):
     >>> writer.write()
     >>> members = plone.portal_membership.listMembers()
     >>> members
-    [<MemberData at /mina/portal_memberdata/ahmad.ahadi used for /mina/acl_users>, <MemberData at /mina/portal_memberdata/john.doe used for /mina/acl_users>]
+    [<MemberData at /minaraad/portal_memberdata/ahmad.ahadi used for /minaraad/acl_users>, <MemberData at /minaraad/portal_memberdata/john.doe used for /minaraad/acl_users>]
     """
 
     def write(self, record):

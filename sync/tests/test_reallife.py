@@ -39,7 +39,7 @@ class TestRealLife:
     >>> writer.write()
     Customization policy for minaraad installed
     >>> app = writer._getDatabase()
-    >>> membership = app.mina.portal_membership
+    >>> membership = app.minaraad.portal_membership
     >>> memberdata = membership.listMembers()
     >>> len(memberdata)
     2660
