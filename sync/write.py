@@ -104,6 +104,8 @@ class MemberPropertyHandler(BaseHandler):
     the database:
 
     >>> app = writer._getDatabase()
+    Customization policy for CompoundField installed
+    Customizationpolicy for PloneSelenium installed
     Customization policy for minaraad installed
     >>> app # doctest: +ELLIPSIS
     <Application at ...>
@@ -120,7 +122,7 @@ class MemberPropertyHandler(BaseHandler):
     >>> writer.write()
     >>> members = plone.portal_membership.listMembers()
     >>> members
-    [<MemberData at /minaraad/portal_memberdata/ahmad.ahadi used for /minaraad/acl_users>, <MemberData at /minaraad/portal_memberdata/john.doe used for /minaraad/acl_users>]
+    [<MemberData at /mina/portal_memberdata/ahmad.ahadi used for /mina/acl_users>, <MemberData at /mina/portal_memberdata/john.doe used for /mina/acl_users>]
     """
 
     def write(self, record):

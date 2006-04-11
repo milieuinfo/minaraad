@@ -81,7 +81,7 @@ class Reader(CipraSync.read.Reader):
     >>> records = list(reader)
     >>> dontcare = [r._doTransforms() for r in records]
     >>> len(records)
-    2688
+    2685
     >>> first = records[0]
     """
     
