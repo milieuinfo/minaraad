@@ -11,7 +11,11 @@
                                                                                     path=current_path,
                                                                                     sort_on='getItemstartdate');">
         <metal:block metal:define-macro="folderlisting" />
-        <br /> <!-- set condition using hearing enddate and localdate to show button -->
+        <br />
+        <tal:block tal:define="start python:context.getStartdate();
+                               current python:DateTime()"
+                   tal:condition="python:current &lt; start">
+        <!-- set condition using hearing enddate and localdate to show button -->
         <div class="img_right">
             <form tal:condition="view/isRegistered"
                   tal:attributes="action string:${context/absolute_url}/@@attendees_view">
@@ -38,7 +42,8 @@
                    name="form.submitted" 
                    value="register" />
            </form>
-       </div>
+        </div>
+        </tal:block>
 
         <div class="hearingsubheader"
              tal:condition="context/getSubheader">
@@ -161,17 +166,21 @@
         </tal:block>        
         <!-- end contactpersoon -->
 
-        <fieldset tal:define="attendees view/groupedAttendees" 
-                  tal:condition="python:checkPermission('Manage portal', here)">
+        <tal:block tal:define="attendees view/groupedAttendees;
+                               attended_members attendees/members;
+                               attended_c_members attendees/council_members" 
+                   tal:condition="python:attended_members != [] or attended_c_members != []">
+
+        <fieldset tal:condition="python:checkPermission('Manage portal', here)">
             <legend i18n:translate="title_attendees">Attendees</legend>
             <dl class="Attendees">
                 <dt i18n:translate="title_counsilmembers">
                     Council Members
                 </dt>
-                <dd tal:repeat="attendee attendees/council_members">
-                <span tal:replace="attendee/niceName" />
+                <dd tal:repeat="attendee attended_c_members">
+                    <span tal:replace="attendee/niceName" />
                 </dd>
-                <dd tal:condition="not:attendees/council_members" 
+                <dd tal:condition="not:attended_c_members" 
                     class="discreet"
                     i18n:translate="no_attendees">
                 (none currently)
@@ -179,16 +188,17 @@
                 <dt i18n:translate="title_members">
                     Members
                 </dt>
-                <dd tal:repeat="attendee attendees/members">
-                <span tal:replace="attendee/niceName" />
+                <dd tal:repeat="attendee attended_members">
+                    <span tal:replace="attendee/niceName" />
                 </dd>
-                <dd tal:condition="not:attendees/members" 
+                <dd tal:condition="not:attended_members" 
                     class="discreet"
                     i18n:translate="no_attendees">
                 (none currently)
                 </dd>
             </dl>
         </fieldset>
+        </tal:block>
 
         </metal:block>
     </body>
