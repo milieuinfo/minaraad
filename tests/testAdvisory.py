@@ -72,13 +72,6 @@ class testAdvisory(MainTestCase):
 
     # Manually created methods
 
-    def test_Existance(self):
-        """ Test if the Advisory exists within portal_types
-        """
-
-        types_ = self.portal.portal_types.objectIds()
-        self.failUnless('Advisory' in types_)
-
     def test_getEmailBody(self):
         pass
 
@@ -90,6 +83,13 @@ class testAdvisory(MainTestCase):
         self.advisory.getDescription()
         self.advisory.getDate()
         self.advisory.getContact()
+
+    def test_Existance(self):
+        """ Test if the Advisory exists within portal_types
+        """
+
+        types_ = self.portal.portal_types.objectIds()
+        self.failUnless('Advisory' in types_)
 
     def test_subscribers_export(self):
         pass

@@ -89,8 +89,26 @@
         <!-- End text -->
         <br />
 
-        <!-- Speakers -->
+        <!-- Hearing Files -->
+        <tal:block tal:define="files python:context.portal_catalog.searchResults(portal_type='File',
+                                                                           path=current_path);"
+                   tal:condition="files">
 
+        <div tal:repeat="file files">
+            <a tal:attributes="href file/getURL"
+               tal:content="file/Title" />
+
+            <span tal:define="obj python:file.getObject();
+                              size python:obj.getObjSize(obj);"
+                  tal:condition="size"
+                  tal:content="size"
+                  class="discreet" />
+        </div>
+        <br />
+        </tal:block>
+        <!-- Hearing Files -->
+
+        <!-- Speakers -->
         <div tal:condition ="agendaItems" 
              class="hearingsubheader2"
              i18n:translate="label_agendaitems">Agenda items</div>

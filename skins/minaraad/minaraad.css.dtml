@@ -25,6 +25,10 @@ legend {
     display: none;
 }
 
+.discreet {
+    font-size: 100%;
+}
+
 .vertical th {
     background-color: #F4CFC8;
 }
