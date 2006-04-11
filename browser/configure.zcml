@@ -10,6 +10,14 @@
       permission="zope2.View"
       allowed_interface=".attendees.IAttendeesManagerView"
     />
+    
+  <browser:page
+      for="Products.minaraad.content.MREvent.IMREvent"
+      name="attendees_view"
+      class=".attendees.AttendeesManagerView"
+      permission="zope2.View"
+      allowed_interface=".attendees.IAttendeesManagerView"
+  />
 
   <browser:page
       for="Products.minaraad.interfaces.IPortalPropertyContainer"

@@ -51,7 +51,6 @@ ADD_LIST = ['Folder',
             'Document',
             'Link',
             'Image',
-            'Event',
             'Topic',
             ]
 
@@ -65,7 +64,7 @@ LOCAL_ADDITIONS = {
     'studies': ['Study'],
     'contactpersonen': ['ContactPerson'],
     'voorstelling': ADD_LIST,
-    'evenementen': ADD_LIST,
+    'evenementen': ['MREvent'],
     }
 
 # IDs not to list in the navtree
@@ -83,7 +82,8 @@ TITLES_NOT_IN_TABS = []
 EXTRA_VIEWS = {
     'Folder': ['hearing_listing_view', 'advisory_listing_view', 
                'newsletter_listing_view', 'pressrelease_listing_view',
-               'study_listing_view','annualreport_listing_view'],
+               'study_listing_view','annualreport_listing_view',
+               'mrevent_listing_view'],
     }
 
 # SELECT_VIEWS is a dictionary, the keys are folder names. The value
@@ -115,6 +115,7 @@ SELECT_VIEWS = {
     '/studies/std_2005': 'study_listing_view',
     '/studies/std_2006': 'study_listing_view',
     '/jaarverslag': 'annualreport_listing_view',
+    '/evenementen': 'mrevent_listing_view',
     }
 
 #FCKeditor set height and width

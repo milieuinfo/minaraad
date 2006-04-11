@@ -93,7 +93,7 @@ def install(self):
     factory_types=[
         "Attachmentsmixin",
         "Advisory",
-        "Hearing",
+        "MREvent",
         "ContactPerson",
         "AgendaItem",
         "Pressrelease",
@@ -101,6 +101,7 @@ def install(self):
         "AnnualReport",
         "NewsLetter",
         "NewsItem",
+        "Hearing",
         ] + factory_tool.getFactoryTypes().keys()
     factory_tool.manage_setPortalFactoryTypes(listOfTypeIds=factory_types)
 

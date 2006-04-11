@@ -29,6 +29,7 @@ __docformat__ = 'plaintext'
 
 from AccessControl import ClassSecurityInfo
 from Products.Archetypes.atapi import *
+from Products.minaraad.content.MREvent import MREvent
 from Products.minaraad.EmailMixin import EmailMixin
 from Products.minaraad.config import *
 
@@ -37,42 +38,6 @@ from zope.interface import implements, Interface
 ##/code-section module-header
 
 schema = Schema((
-
-    StringField(
-        name='subheader',
-        widget=StringWidget(
-            label='Subheader',
-            label_msgid='minaraad_label_subheader',
-            i18n_domain='minaraad',
-        )
-    ),
-
-    TextField(
-        name='goal',
-        widget=TextAreaWidget(
-            label='Goal',
-            label_msgid='minaraad_label_goal',
-            i18n_domain='minaraad',
-        )
-    ),
-
-    TextField(
-        name='description',
-        widget=TextAreaWidget(
-            label='Description',
-            label_msgid='minaraad_label_description',
-            i18n_domain='minaraad',
-        )
-    ),
-
-    StringField(
-        name='location',
-        widget=StringWidget(
-            label='Location',
-            label_msgid='minaraad_label_location',
-            i18n_domain='minaraad',
-        )
-    ),
 
     IntegerField(
         name='theme',
@@ -95,71 +60,18 @@ schema = Schema((
         )
     ),
 
-    TextField(
-        name='body',
-        allowable_content_types=('text/plain', 'text/structured', 'text/html', 'application/msword',),
-        widget=RichWidget(
-            label='Body',
-            label_msgid='minaraad_label_body',
-            i18n_domain='minaraad',
-        ),
-        default_output_type='text/html'
-    ),
-
-    DateTimeField(
-        name='startdate',
-        index="DateIndex:brains",
-        widget=CalendarWidget(
-            label='Startdate',
-            label_msgid='minaraad_label_startdate',
-            i18n_domain='minaraad',
-        ),
-        required=1
-    ),
-
-    DateTimeField(
-        name='enddate',
-        widget=CalendarWidget(
-            label='Enddate',
-            label_msgid='minaraad_label_enddate',
-            i18n_domain='minaraad',
-        ),
-        required=1
-    ),
-
-    ImageField(
-        name='foto',
-        widget=ImageWidget(
-            label="Photo",
-            label_msgid='minaraad_label_foto',
-            i18n_domain='minaraad',
-        ),
-        storage=AttributeStorage(),
-        sizes={'foto':(300,300)}
-    ),
-
-    OrderableReferenceField(
-        name='contact',
-        vocabulary_display_path_bound="-1",
-        widget=OrderableReferenceWidget(
-            label='Contact',
-            label_msgid='minaraad_label_contact',
-            i18n_domain='minaraad',
-        ),
-        allowed_types=('ContactPerson',),
-        multiValued=1,
-        relationship='hearing_contact'
-    ),
-
 ),
 )
 
 ##code-section after-local-schema #fill in your manual code here
 ##/code-section after-local-schema
 
-Hearing_schema = OrderedBaseFolderSchema.copy() + \
+Hearing_schema = BaseFolderSchema.copy() + \
+    getattr(MREvent, 'schema', Schema(())).copy() + \
     getattr(EmailMixin, 'schema', Schema(())).copy() + \
     schema.copy()
+Hearing_schema.moveField('theme', after="goal")
+Hearing_schema.moveField('mot', after="theme")
 
 ##code-section after-schema #fill in your manual code here
 class IHearing(Interface):
@@ -169,19 +81,19 @@ class IHearing(Interface):
         pass
 ##/code-section after-schema
 
-class Hearing(EmailMixin, OrderedBaseFolder):
+class Hearing(MREvent, EmailMixin, BaseFolder):
     """
     A Hearing
     """
     security = ClassSecurityInfo()
-    __implements__ = (getattr(EmailMixin,'__implements__',()),) + (getattr(OrderedBaseFolder,'__implements__',()),)
+    __implements__ = (getattr(MREvent,'__implements__',()),) + (getattr(EmailMixin,'__implements__',()),) + (getattr(BaseFolder,'__implements__',()),)
 
     # This name appears in the 'add' box
     archetype_name = 'Hearing'
 
     meta_type = 'Hearing'
     portal_type = 'Hearing'
-    allowed_content_types = ['AgendaItem', 'File'] + list(getattr(EmailMixin, 'allowed_content_types', []))
+    allowed_content_types = [] + list(getattr(MREvent, 'allowed_content_types', [])) + list(getattr(EmailMixin, 'allowed_content_types', []))
     filter_content_types = 1
     global_allow = 1
     #content_icon = 'Hearing.gif'

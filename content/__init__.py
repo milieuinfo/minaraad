@@ -36,7 +36,7 @@ __docformat__ = 'plaintext'
 
 # Classes
 import Advisory
-import Hearing
+import MREvent
 import ContactPerson
 import AgendaItem
 import Pressrelease
@@ -44,6 +44,7 @@ import Study
 import AnnualReport
 import NewsLetter
 import NewsItem
+import Hearing
 
 ##code-section init-module-footer #fill in your manual code here
 ##/code-section init-module-footer

@@ -45,6 +45,9 @@ msgstr "Jaarverslag"
 msgid "Pressrelease"
 msgstr "Persbericht"
 
+msgid "MREvent"
+msgstr "Evenement"
+
 msgid "Themes"
 msgstr "Thema's"
 

@@ -8,5 +8,11 @@
     provides="Products.minaraad.interfaces.IAttendeeManager"
     factory="Products.minaraad.attendees.AttendeeManager"
     />
+
+  <adapter 
+    for=".MREvent.IMREvent"
+    provides="Products.minaraad.interfaces.IAttendeeManager"
+    factory="Products.minaraad.attendees.AttendeeManager"
+    />
   
 </configure>
