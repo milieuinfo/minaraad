@@ -339,3 +339,11 @@ class SubscribersConfigletView(AbstractView):
             'attachment; filename=%s-subscribers.csv' % safeSubscriberId
 
         return out.getvalue().encode(charset)
+
+    def canSubscribeEmail(self, subscriptionid):
+        sm = self.subscriptionManager
+        return sm.canSubscribeEmail(subscriptionid)
+
+    def canSubscribePost(self, subscriptionid):
+        sm = self.subscriptionManager
+        return sm.canSubscribePost(subscriptionid)

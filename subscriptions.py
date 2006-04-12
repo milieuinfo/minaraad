@@ -4,6 +4,7 @@ from themes import ThemeManager
 SUBSCRIPTIONS_EMAIL = ('AnnualReport', 'Study', 
                      'Newsletter', 'Pressrelease')
 SUBSCRIPTIONS_POST = ('Advisory', 'Study', 'AnnualReport')
+THEME_PARENT = 'Hearing'
 
 class NotSubscribableError(Exception):
     
@@ -76,7 +77,7 @@ class SubscriptionManager(object):
     subscriptions = property(_getSubscriptions, _setSubscriptions)
 
     def canSubscribeEmail(self, id):
-        return id in SUBSCRIPTIONS_EMAIL
+        return id in SUBSCRIPTIONS_EMAIL or id == THEME_PARENT
     
     def canSubscribePost(self, id):
         return id in SUBSCRIPTIONS_POST

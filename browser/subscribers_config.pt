@@ -39,7 +39,8 @@
 
         <tal:block tal:define="subscription session/category|nothing;
                                members view/getMembersOfSubscriptions;
-                               postsubscriptions python:subscription == 'AnnualReport' or subscription == 'Advisory' or subscription == 'Study'">
+                               emailsubscriptions python:view.canSubscribeEmail(subscription);
+                               postsubscriptions python:view.canSubscribePost(subscription)">
         
         <form method="get"
               tal:attributes="action string:${context/absolute_url}/$template_id">
@@ -72,12 +73,13 @@
                             value="Theme subscribers"
                             i18n:attributes="value label_subscribersoverview;"
                             tal:attributes="tabindex tabindex/next;" />
-            </tal:block>
-                <input class="context"
-                        type="hidden"
-                        name="Hearing"
-                        tal:attributes="value string:Hearing" />
 
+                <!-- Remember that 'Hearing' was selected. -->
+                <input class="context"
+                       type="hidden"
+                       name="Hearing"
+                       tal:attributes="value string:Hearing" />
+            </tal:block>
 
             <tal:block tal:condition="members">
             <input class="context"
@@ -85,7 +87,8 @@
                     name="form.button.ExportEmail"
                     value="Export Email Subscribers"
                     i18n:attributes="value label_export_email;"
-                    tal:attributes="tabindex tabindex/next;" />
+                    tal:attributes="tabindex tabindex/next;"
+                    tal:condition="emailsubscriptions" />
         
             <input class="context"
                     type="submit"
@@ -95,6 +98,7 @@
                     tal:attributes="tabindex tabindex/next;"
                     tal:condition="postsubscriptions" />
 
+            <!-- Remember the value of subscription. -->
             <input class="context"
                     type="hidden"
                     name=""
@@ -102,59 +106,6 @@
             </tal:block>
         </form>
 
-        <table class="listing"
-               tal:condition="members"
-               id="subscriberslist">
-            <thead>
-                <tr>
-                    <th i18n:translate="label_firstname">
-                        First name
-                    </th>
-                    <th i18n:translate="label_lastname">
-                        Last name
-                    </th>
-                    <th i18n:translate="label_jobtitle">
-                        Job title
-                    </th>
-                    <th i18n:translate="label_street">
-                        Street
-                    </th>
-                    <th i18n:translate="label_housenumber">
-                        House number
-                    </th>
-                    <th i18n:translate="label_bus">
-                        Bus
-                    </th>
-                    <th i18n:translate="label_zipcode">
-                        Zipcode
-                    </th>
-                    <th i18n:translate="label_city">
-                        City
-                    </th>
-                    <th i18n:translate="label_country">
-                        Country
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr tal:repeat="member members">
-                    <td tal:content="member/firstname" />
-                    <td tal:content="member/fullname" />
-                    <td tal:content="member/jobtitle" />
-                    <td tal:content="member/street" />
-                    <td tal:content="member/housenumber" />
-                    <td tal:content="member/bus" />
-                    <td tal:content="member/zipcode" />
-                    <td tal:content="member/city" />
-                    <td tal:condition="python:member.country != 'Ander land'">
-                        <span tal:replace ="member/country" />
-                    </td>
-                    <td tal:condition="python:member.country == 'Ander land'">
-                        <span tal:replace ="member/other_country" />
-                    </td>
-                </tr>
-            </tbody>
-        </table>
         </tal:block>
     </metal:block>
     </body>
