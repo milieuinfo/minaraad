@@ -15,7 +15,6 @@
         <tal:block tal:define="start python:context.getStartdate();
                                current python:DateTime()"
                    tal:condition="python:current &lt; start">
-        <!-- set condition using hearing enddate and localdate to show button -->
         <div class="img_right">
             <form tal:condition="view/isRegistered"
                   tal:attributes="action string:${context/absolute_url}/@@attendees_view">

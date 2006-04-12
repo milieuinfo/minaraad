@@ -108,4 +108,7 @@ msgstr "Studies overzicht"
 msgid "annualreport_listing_view"
 msgstr "Jaarverslagen overzicht"
 
+msgid "mrevent_listing_view"
+msgstr "Evenementen overzicht"
+
 
