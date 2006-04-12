@@ -61,21 +61,20 @@ class Field(CipraSync.read.Field):
         return data, line
 
 
-class Reader(CipraSync.read.Reader):
+class MemberReader(CipraSync.read.Reader):
     """A reader that extends ``CipraSync.read.Field`` and adds its own
     field factory.
 
     >>> from path import path
     >>> from minaraad.sync import configure
-    >>> from minaraad.sync.read import Reader
 
     >>> configure.transforms()
 
     >>> parent = path(__file__).parent
     >>> configuration = parent / 'etc' / 'reader.ini'
-    >>> reader = Reader(configuration=configuration)
+    >>> reader = MemberReader(configuration=configuration)
     >>> reader # doctest: +ELLIPSIS
-    <minaraad.sync.read.Reader instance ...>
+    <minaraad.sync.read.MemberReader instance ...>
 
     >>> reader.feed((parent / 'input' / 'Nieuwbriefbestand.csv',))
     >>> records = list(reader)

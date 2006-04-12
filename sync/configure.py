@@ -65,10 +65,10 @@ def transforms():
     
 
 # reader and writer
-def reader():
+def memberreader():
     configuration = path(__file__).parent / 'etc' / 'reader.ini'
     zope.component.provideUtility(
-        minaraad.sync.read.Reader(configuration=configuration))
+        minaraad.sync.read.MemberReader(configuration=configuration))
     
 def writer():
     Writer = CipraSync.write.Writer
@@ -78,11 +78,3 @@ def writer():
 def writehandlers():
     zope.component.provideAdapter(minaraad.sync.write.MemberPropertyHandler,
                                   name='mina-memberpropertyhandler')
-
-def all():
-    resolver()
-    transforms()
-    reader()
-    writer()
-    writehandlers()
-    

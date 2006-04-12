@@ -15,7 +15,7 @@ def setUp(test):
 def tearDown(test):
     utils.tearDownEnviron()
 
-class TestRealLife:
+class TestRealLifeMembers:
     """A test that actually reads in data from a source and writes
     data to a ZODB.
 
@@ -26,8 +26,12 @@ class TestRealLife:
 
     >>> from CipraSync import interfaces
     >>> import minaraad.sync.configure
-    >>> 
-    >>> minaraad.sync.configure.all()
+
+    >>> minaraad.sync.configure.resolver()
+    >>> minaraad.sync.configure.transforms()
+    >>> minaraad.sync.configure.memberreader()
+    >>> minaraad.sync.configure.writer()
+    >>> minaraad.sync.configure.writehandlers()    
 
     Let's try to import the members data:
 

@@ -42,16 +42,16 @@ class TestConfigure:
         """
         >>> from minaraad.sync import configure
         >>> configure.transforms() # required for the reader to work
-        >>> configure.reader()
+        >>> configure.memberreader()
         >>> component.getUtility(interfaces.IReader)
-        <minaraad.sync.read.Reader instance ...>
+        <minaraad.sync.read.MemberReader instance ...>
         """
 
     def test_writer(self):
         """
         >>> from minaraad.sync import configure
         >>> configure.transforms() # required for the reader to work
-        >>> configure.reader()
+        >>> configure.memberreader()
         >>> configure.writer()
         >>> reader = component.getUtility(interfaces.IReader)
         >>> interfaces.IWriter(reader)
@@ -65,7 +65,7 @@ class TestConfigure:
 
         >>> from minaraad.sync import configure
         >>> configure.transforms() # required for the reader to work
-        >>> configure.reader()
+        >>> configure.memberreader()
         >>> configure.writer()
         >>> reader = component.getUtility(interfaces.IReader)
         >>> writer = interfaces.IWriter(reader)

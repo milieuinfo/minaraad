@@ -1,4 +1,4 @@
-<!-- Configuration file for minaraad.sync.read.Reader
+<!-- Configuration file for minaraad.sync.read.MemberReader
 
 Defines mapping between CSV file and Archetype objects.
 
