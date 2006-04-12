@@ -1,8 +1,15 @@
+import locale
+import time
+import urllib2
+import HTMLParser
+
 from zope import interface
 from zope.interface.verify import verifyObject
 
 from CipraSync.interfaces import ITransform, IDeferredTransform
 from interfaces import IDontWrite
+
+from minaraad import BeautifulSoup
 
 class DontWriteTransform:
     """A transformer for data that shouldn't be written.  See
@@ -176,3 +183,63 @@ def countryTransform(data, record):
 interface.directlyProvides(countryTransform, IDeferredTransform)
 
 
+class SimpleRecord(dict):
+    def __init__(self, category, **kwargs):
+        self.category = category
+        super(SimpleRecord, self).__init__(**kwargs)
+
+
+class AdviezenScrapeTransform:
+    """A transform that takes a URL and returns a list of records.
+
+    >>> transform = AdviezenScrapeTransform()
+    >>> transform('http://www.minaraad.be/tablad%202005.htm')
+    
+
+    """
+    interface.implements(ITransform)
+
+    def __call__(self, url):
+        records = []
+
+        locale.setlocale(locale.LC_ALL, 'nl_NL.utf8')
+
+        html = urllib2.urlopen(url).read()
+        html = html.replace('<center>', '').replace('</center>', '')        
+        soup = BeautifulSoup.BeautifulSoup(html)
+
+        year = soup.html.head.title.string.split()[1]
+        content = soup('table')[5]
+        records = [self._makeRecord(year, tr) for tr in content('tr')]
+
+        locale.resetlocale()
+        return records
+
+
+    def _makeRecord(self, year, tr):
+        record = SimpleRecord('adviezen')
+
+        datestr = tr('td')[0].font.font.string
+        if datestr == BeautifulSoup.Null:
+            datestr = tr('td')[0].font.span.string
+        
+        datestr = ' '.join(datestr.replace('&nbsp;', '').split()) + ' ' + year
+        datetuple = time.strptime(datestr, '%d %B %Y')
+        record['date'] = datetuple
+
+        title = ' '.join(tr('td')[1].font.font.string.split()[:-1])
+        record['title'] = unicode(title, 'iso-8859-1')
+
+        emailstr = tr('td')[1].font('font')[1].string
+        if len(emailstr) < 3:
+            emailstr = tr('td')[1].font('font')[2].string
+
+        charrefs = HTMLParser.charref.findall(emailstr)
+        if charrefs:
+            email = ''.join([chr(int(ref[2:-1])) for ref in charrefs])
+        else:
+            email = emailstr.strip()
+
+        record['email'] = email
+
+        return record
