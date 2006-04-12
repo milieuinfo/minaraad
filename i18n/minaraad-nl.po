@@ -335,7 +335,7 @@ msgstr "E-mail verzenden"
 #: skins/minaraad/EmailTemplate-Hearing.pt
 #: skins/minaraad/hearing_view.pt
 msgid "label_speaker"
-msgstr "Spreker:"
+msgstr "Spreker(s):"
 
 #. Default: "Street"
 #: skins/minaraad/join_form.cpt
