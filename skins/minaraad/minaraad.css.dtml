@@ -358,7 +358,7 @@ dl.Attendees dd{
 
 .advisory_listtitle {
     width: 510px;
-    padding-bottom: 10px;
+    padding-bottom: 20px;
 }
 
 .advisory_title {
@@ -367,6 +367,10 @@ dl.Attendees dd{
 
 .advisory_listdownloads {
     width: 200px;
+}
+
+.advisory_listing_contacts {
+    padding-top: 10px;
 }
 /* --- End Advisory View --- */
 

@@ -48,7 +48,7 @@
 
                         <div tal:define="contacts python:obj.getContact()"
                              tal:condition="contacts"
-                             tal:omit-tag="">
+                             class="advisory_listing_contacts">
 
                             <tal:block tal:repeat="contact contacts">
                             <a tal:attributes="href string:mailto:${contact/getEmail}"
