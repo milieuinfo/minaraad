@@ -40,6 +40,9 @@ Minaraad
 
 Dependencies
 
+    * Plone 2.1.2
+      (http://prdownloads.sourceforge.net/plone/Plone-2.1.2.tar.gz?download)
+
     * path (http://www.jorendorff.com/articles/python/path/src/path.py)
 
       - Put this into your ``$INSTANCE_HOME/lib/python`` directory.
@@ -52,11 +55,12 @@ Dependencies
     * RichDocument2.0rc1
       (http://plone.org/products/richdocument/releases/2.0/RichDocument-2.0rc1.tar.gz)
 
-    * OrderabelReferenceField
+    * OrderableReferenceField
       (https://svn.plone.org/svn/archetypes/MoreFieldsAndWidgets/OrderableReferenceField/trunk)
 
     * PortalTransforms from this branch:
       (https://svn.plone.org/svn/archetypes/PortalTransforms/branches/1.3)
+      This should overwrite the PortalTransforms from Plone.
 
     * TextIndexNG3 from
       (http://surfnet.dl.sourceforge.net/sourceforge/textindexng/TextIndexNG3-3.1.8.tar.gz)
@@ -70,5 +74,9 @@ Dependencies
       - Remove the comments in
         ``$INSTANCE_HOME/Products/TextIndexNG3/adapters/configure.zcml``.
 
-      - Install ``xpdf`` (on Debian: ``apt-get install xpdf``) so that
-        pdftotext is available.
+      - Make sure that pdftotext is available.  Installing xpdf takes
+        care of that.  On Debian/Ubuntu try ``apt-get install xpdf``.
+        An install of just the poppler-utils or xpdf-utils package
+        works as well.
+
+    * For running the test, make sure that PloneTestCase is installed.
