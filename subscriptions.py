@@ -1,7 +1,7 @@
 from Products.CMFCore.utils import getToolByName
 from themes import ThemeManager
 
-SUBSCRIPTIONS_ALL = ('Advisory', 'AnnualReport', 'Study', 
+SUBSCRIPTIONS_EMAIL = ('AnnualReport', 'Study', 
                      'Newsletter', 'Pressrelease')
 SUBSCRIPTIONS_POST = ('Advisory', 'Study', 'AnnualReport')
 
@@ -40,8 +40,14 @@ class SubscriptionManager(object):
         themeItems = [Subscription('theme_'+str(id)) 
                       for id,title in themeManager.themes]
 
+        # Combine the lists of email and post subscribers
+        allSubscriptionNames = [x for x in SUBSCRIPTIONS_EMAIL]
+        for sub in SUBSCRIPTIONS_POST:
+            if sub not in SUBSCRIPTIONS_EMAIL:
+                allSubscriptionNames.append(sub)
+
         subscriptions = [Subscription(x)
-                         for x in SUBSCRIPTIONS_ALL] + themeItems
+                         for x in allSubscriptionNames] + themeItems
 
         subDict = {}
         
@@ -70,7 +76,7 @@ class SubscriptionManager(object):
     subscriptions = property(_getSubscriptions, _setSubscriptions)
 
     def canSubscribeEmail(self, id):
-        return id in SUBSCRIPTIONS_ALL
+        return id in SUBSCRIPTIONS_EMAIL
     
     def canSubscribePost(self, id):
         return id in SUBSCRIPTIONS_POST
