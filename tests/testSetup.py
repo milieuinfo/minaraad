@@ -34,6 +34,7 @@ if __name__ == '__main__':
 ##code-section module-header #fill in your manual code here
 import sets
 from path import path
+from Products.minaraad.config import *
 ##/code-section module-header
 
 #
@@ -152,6 +153,13 @@ class testSetup(MainTestCase):
         qi = self.portal.portal_quickinstaller
         qi.reinstallProducts(('minaraad',))
 
+    def test_controlPanel(self):
+        from Products.CMFCore.utils import getToolByName
+        controlPanel = getToolByName(self.portal, 'portal_controlpanel')
+        actions = controlPanel.listActions()
+        for action in actions:
+            if action.id in INVISIBLE_CONTROLPANEL_ACTIONS:
+                self.assertEqual(action.visible, 0)
 
 def test_suite():
     from unittest import TestSuite, makeSuite

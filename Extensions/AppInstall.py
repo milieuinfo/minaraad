@@ -48,7 +48,9 @@ def install(self):
 
     out.write("Add configlets")
     addConfiglets(self, out)
-    
+
+    _disableControlPanelActions(self)
+
     print >> out, "Resetting portal root's allowed types"
     _resetPloneRootAllowedTypes(self)
     
@@ -490,6 +492,19 @@ def _addTextIndexNG3Index(portal, out):
                    )
         )
     catalog_tool.manage_reindexIndex('SearchableText')
+
+def _disableControlPanelActions(portal):
+    """Disable some actions defined in portal_controlpanel
+    """
+
+    cpanel = getToolByName(portal, 'portal_controlpanel')
+    actions = cpanel._cloneActions()
+    for action in actions:
+        if action.id in INVISIBLE_CONTROLPANEL_ACTIONS:
+            action.visible = 0
+            print >> out, "Switching off unwanted action %s." % action.id
+    cpanel._actions = actions
+
 
 def uninstall(self):
     out = StringIO()
