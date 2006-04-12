@@ -64,12 +64,18 @@ def transforms():
         )
     
 
-# reader and writer
+# Our two readers
 def memberreader():
-    configuration = path(__file__).parent / 'etc' / 'reader.ini'
+    configuration = path(__file__).parent / 'etc' / 'memberreader.ini'
     zope.component.provideUtility(
         minaraad.sync.read.MemberReader(configuration=configuration))
     
+def stupidreader():
+    configuration = path(__file__).parent / 'etc' / 'stupidreader.ini'
+    zope.component.provideUtility(
+        minaraad.sync.read.MemberReader(configuration=configuration))
+    
+# writer and writehandlers
 def writer():
     Writer = CipraSync.write.Writer
     Writer.configuration = path(__file__).parent / 'etc' / 'writer.ini'

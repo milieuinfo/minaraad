@@ -12,9 +12,13 @@ import minaraad.sync.configure
 def main():
     print
     print "Starting the actual writing process..."
-    print
-    
-    minaraad.sync.configure.all()
+
+    minaraad.sync.configure.resolver()
+    minaraad.sync.configure.transforms()
+    minaraad.sync.configure.memberreader()
+    minaraad.sync.configure.writer()
+    minaraad.sync.configure.writehandlers()    
+
     reader = zope.component.getUtility(interfaces.IReader)
     input_dir = path(__file__).parent / 'input'
     reader.feed(glob.glob(input_dir / '*'))
