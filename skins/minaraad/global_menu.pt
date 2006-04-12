@@ -9,11 +9,20 @@
         tal:condition="not:tab/no_display">
 
 		      <span class="IEFix_paddingmenu">
-            <a tal:attributes="class python:test(selected_tab, 'selected', 'plain');
-                            href tab/absolute_url"
-                tal:content="tab/Title">
-                Title
-            </a>
+            <span tal:condition="not:tab/children">
+                <a tal:attributes="class python:test(selected_tab, 'selected', 'plain');
+                                href tab/absolute_url"
+                    tal:content="tab/Title">
+                    Title
+                </a>
+            </span>
+            <span tal:condition="tab/children">
+                <a tal:attributes="class python:test(selected_tab, 'selected', 'plain');"
+                    tal:content="tab/Title"
+                    href="#">
+                    Title
+                </a>
+            </span>
 		      </span>
         <ul class="portal-tabs-nav-items"
             tal:define="subitems tab/children|nothing"
