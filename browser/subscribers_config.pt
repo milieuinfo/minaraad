@@ -24,25 +24,72 @@
             <tal:block tal:repeat="subscription subscriptions">
             <span tal:condition="not:subscription/category" 
                 tal:omit-tag=""
-                tal:define="extra_request string:category=${subscription/id}">
-                <a tal:attributes="href string:${context/absolute_url}/subscribers_config.html?${extra_request}"
-                   tal:content="subscription/id"
-                   i18n:translate="" /> &nbsp; | &nbsp;
+                tal:define="subscription_id subscription/id;
+                            extra_request
+                            string:category=${subscription_id}">
+
+
+
+        <form method="post"
+              tal:attributes="action string:${context/absolute_url}/$template_id">
+
+
+
+            <input class="context"
+                    type="hidden"
+                    name="category"
+                    tal:attributes="value subscription_id" />
+              <p>
+                <span tal:omit-tag=""
+                      tal:content="subscription/Title"
+                      i18n:translate="" /> &nbsp; | &nbsp;
+
+                <tal:block
+                 tal:define="emailsubscriptions
+                             python:view.canSubscribeEmail(subscription_id);
+                             postsubscriptions
+                             python:view.canSubscribePost(subscription_id)">
+                    <input class="context"
+                            type="submit"
+                            name="form.button.ExportEmail"
+                            value="Export Email Subscribers"
+                            i18n:attributes="value label_export_email;"
+                            tal:attributes="tabindex tabindex/next;"
+                            tal:condition="emailsubscriptions" />
+                    &nbsp; | &nbsp;
+                    <input class="context"
+                            type="submit"
+                            name="form.button.ExportPost"
+                            value="Export Post Subscribers"
+                            i18n:attributes="value label_export_post;"
+                            tal:attributes="tabindex tabindex/next;"
+                            tal:condition="postsubscriptions" />
+                </tal:block>
+              </p>
+
+
+        </form>
+
+
+
             </span>
             </tal:block>
+
+
+
+
+
             <a tal:attributes="href string:${context/absolute_url}/subscribers_config.html?category=Hearing"
                i18n:translate="">Hearing</a>
             <br />
             <br />
         </tal:block>
         <br />
-
         <tal:block tal:define="subscription session/category|nothing;
-                               members view/getMembersOfSubscriptions;
                                emailsubscriptions python:view.canSubscribeEmail(subscription);
                                postsubscriptions python:view.canSubscribePost(subscription)">
         
-        <form method="get"
+        <form method="post"
               tal:attributes="action string:${context/absolute_url}/$template_id">
 
             <tal:block tal:condition="python:subscription == 'Hearing'">
@@ -67,43 +114,35 @@
                 </tal:block>
                 </tal:block>
                 <br />
-                <input class="context"
-                            type="submit"
-                            name="form.button.ShowThemeSubscribers"
-                            value="Theme subscribers"
-                            i18n:attributes="value label_subscribersoverview;"
-                            tal:attributes="tabindex tabindex/next;" />
+
 
                 <!-- Remember that 'Hearing' was selected. -->
                 <input class="context"
-                       type="hidden"
-                       name="Hearing"
-                       tal:attributes="value string:Hearing" />
+                        type="hidden"
+                        name="category"
+                        tal:attributes="value string:Hearing" />
+                <input class="context"
+                        type="submit"
+                        name="form.button.ExportEmail"
+                        value="Export Email Subscribers"
+                        i18n:attributes="value label_export_email;"
+                        tal:attributes="tabindex tabindex/next;"
+                        tal:condition="emailsubscriptions" />
+                <input class="context"
+                        type="submit"
+                        name="form.button.ExportPost"
+                        value="Export Post Subscribers"
+                        i18n:attributes="value label_export_post;"
+                        tal:attributes="tabindex tabindex/next;"
+                        tal:condition="postsubscriptions" />
             </tal:block>
 
-            <tal:block tal:condition="members">
-            <input class="context"
-                    type="submit"
-                    name="form.button.ExportEmail"
-                    value="Export Email Subscribers"
-                    i18n:attributes="value label_export_email;"
-                    tal:attributes="tabindex tabindex/next;"
-                    tal:condition="emailsubscriptions" />
-        
-            <input class="context"
-                    type="submit"
-                    name="form.button.ExportPost"
-                    value="Export Post Subscribers"
-                    i18n:attributes="value label_export_post;"
-                    tal:attributes="tabindex tabindex/next;"
-                    tal:condition="postsubscriptions" />
 
             <!-- Remember the value of subscription. -->
             <input class="context"
                     type="hidden"
                     name=""
                     tal:attributes="value subscription" />
-            </tal:block>
         </form>
 
         </tal:block>

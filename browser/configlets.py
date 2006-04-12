@@ -156,6 +156,7 @@ class SubscribersConfigletView(AbstractView):
     def __call__(self):
         request = self.request
         session = request.SESSION
+
         for key in ('category', 'theme',):
             value = request.get(key)
             if value:
@@ -277,6 +278,7 @@ class SubscribersConfigletView(AbstractView):
             subscriberId = theme
         else:
             subscriberId = category
+
         ploneUtils = getToolByName(self.context, 'plone_utils')
         safeSubscriberId = ploneUtils.normalizeString(subscriberId).lower()
         
