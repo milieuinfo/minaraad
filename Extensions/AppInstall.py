@@ -96,6 +96,8 @@ def _configurePortalProps(portal):
     # customize slots - add the slots to the portal folder
     portal._updateProperty('left_slots', LEFT_SLOTS)
     portal._updateProperty('right_slots', RIGHT_SLOTS)
+    # Set validate_email on so always an e-mail is sent when a new member registrates
+    portal._updateProperty('validate_email', 1)
     
     # portal title
     portal._updateProperty('title',PORTAL_TITLE)
