@@ -46,9 +46,19 @@ from Products.minaraad.tests.MainTestCase import MainTestCase
 from Products.minaraad.content.Hearing import Hearing
 
 ##code-section module-beforeclass #fill in your manual code here
-
+from DateTime import DateTime
 from Products.minaraad.tests.utils import load_file
 
+TITLE = "title"
+SUBHEADER = "ondertitel"
+DESCRIPTION = "jaja, een ondertitel"
+GOAL = "Doel"
+LOCATION = "Hoogvliet"
+THEME = 0
+MOT = bool(1)
+STARTDATE = DateTime()
+ENDDATE = DateTime()
+HTMLBODY = "<p>HTML op zijn best</p>"
 TESTIMAGE = load_file('test.gif')
 
 ##/code-section module-beforeclass
@@ -69,6 +79,9 @@ class testHearing(MainTestCase):
 
         self.portal.hoorzittingen.invokeFactory('Hearing','myhoorzitting')
         self.hoorzitting = self.portal.hoorzittingen.myhoorzitting
+
+        self.portal.contactpersonen.invokeFactory('ContactPerson', id='Jslob')
+        self.contactperson = self.portal.contactpersonen.Jslob
 
     # from class Hearing:
     def test_getThemesList(self):
@@ -100,7 +113,6 @@ class testHearing(MainTestCase):
     def test_Existance(self):
         """ Test if the Hearing exists within portal_types
         """
-
         types_ = self.portal.portal_types.objectIds()
         self.failUnless('Hearing' in types_)
 
@@ -125,18 +137,41 @@ class testHearing(MainTestCase):
         """ Test if the Hearing has all the required fields
         """
 
-        self.hoorzitting.Title()          # Titel
-        self.hoorzitting.getDescription() # Omschrijving
-        self.hoorzitting.getGoal()        # Doelstelling
-        self.hoorzitting.getSubheader()   # Subkop
-        self.hoorzitting.getLocation()    # Lokatie
-        self.hoorzitting.getStartdate()   # Start tijd
-        self.hoorzitting.getEnddate()     # Eind tijd
-        self.hoorzitting.getTheme()       # Thema's
-        self.hoorzitting.getContact()     # Contactpersoon
-
+        self.hoorzitting.setTitle(TITLE)
+        self.hoorzitting.setDescription(DESCRIPTION)
+        self.hoorzitting.setGoal(GOAL)
+        self.hoorzitting.setSubheader(SUBHEADER)
+        self.hoorzitting.setLocation(LOCATION)
+        self.hoorzitting.setStartdate(STARTDATE)
+        self.hoorzitting.setEnddate(ENDDATE)
+        self.hoorzitting.setTheme(THEME)
+        self.hoorzitting.setMot(MOT)
+        self.hoorzitting.setContact(self.contactperson.UID())
+        self.hoorzitting.setBody(HTMLBODY,text_format="text/html")
         self.hoorzitting.setFoto(TESTIMAGE, content_type="image/gif")
 
+        self.failUnless(self.hoorzitting.Title()==TITLE,
+                         'Value is %s' % self.hoorzitting.Title())
+        self.failUnless(self.hoorzitting.getSubheader()==SUBHEADER,
+                         'Value is %s' % self.hoorzitting.getSubheader())
+        self.failUnless(self.hoorzitting.getDescription()==DESCRIPTION,
+                         'Value is %s' % self.hoorzitting.getDescription())
+        self.failUnless(self.hoorzitting.getGoal()==GOAL,
+                         'Value is %s' % self.hoorzitting.getGoal())
+        self.failUnless(self.hoorzitting.getLocation()==LOCATION,
+                         'Value is %s' % self.hoorzitting.getLocation())
+        self.failUnless(self.hoorzitting.getStartdate()==STARTDATE,
+                         'Value is %s' % self.hoorzitting.getStartdate())
+        self.failUnless(self.hoorzitting.getEnddate()==ENDDATE,
+                         'Value is %s' % self.hoorzitting.getEnddate())
+        self.failUnless(self.hoorzitting.getTheme()==THEME,
+                         'Value is %s' % self.hoorzitting.getTheme())
+        self.failUnless(self.hoorzitting.getMot()==MOT,
+                         'Value is %s' % self.hoorzitting.getMot())
+        self.failUnless(self.hoorzitting.getBody()==HTMLBODY,
+                         'Value is %s' % self.hoorzitting.getBody())
+        self.failUnless(self.hoorzitting.getContact()==[self.contactperson],
+                         'Value is %s' % self.hoorzitting.getContact())
         myclass = str(self.hoorzitting.getFoto().__class__)
         correct = "<class 'Products.Archetypes.Field.Image'>"
         self.failUnless(myclass==correct, 'Value is %s and not %s' % (myclass,correct))
@@ -159,5 +194,3 @@ def test_suite():
 
 if __name__ == '__main__':
     framework()
-
-
