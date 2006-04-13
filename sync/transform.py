@@ -10,6 +10,7 @@ from CipraSync.interfaces import ITransform, IDeferredTransform
 from interfaces import IDontWrite
 
 from minaraad import BeautifulSoup
+from Products.PortalTransforms.transforms import safe_html
 
 class DontWriteTransform:
     """A transformer for data that shouldn't be written.  See
@@ -183,6 +184,26 @@ def countryTransform(data, record):
 interface.directlyProvides(countryTransform, IDeferredTransform)
 
 
+def removeHTMLWhiteSpace(html):
+    html = html.replace('&nbsp;', '')
+    return ' '.join(html.split())
+
+def fixEmail(string):
+    charrefs = HTMLParser.charref.findall(string)
+    if charrefs:
+        email = ''.join([chr(int(ref[2:-1])) for ref in charrefs])
+    else:
+        email = string
+    return email.strip()
+    
+
+def scrubHTML(html):
+    valid = safe_html.VALID_TAGS.copy()
+    wedontwant = ('span', 'p', 'br', 'sub', 'sup')
+    for tag in wedontwant:
+        del valid[tag]
+    return safe_html.scrubHTML(html, valid=valid)
+
 class SimpleRecord(dict):
     def __init__(self, category, **kwargs):
         self.category = category
@@ -193,53 +214,108 @@ class AdviezenScrapeTransform:
     """A transform that takes a URL and returns a list of records.
 
     >>> transform = AdviezenScrapeTransform()
-    >>> transform('http://www.minaraad.be/tablad%202005.htm')
-    
+    >>> records = transform('http://www.minaraad.be/tablad%202003.htm')
+    >>> len(records)
+    74
 
+    
     """
     interface.implements(ITransform)
 
     def __call__(self, url):
         records = []
 
+        self.base = url[:url.rfind('/') + 1]
+
         locale.setlocale(locale.LC_ALL, 'nl_NL.utf8')
 
         html = urllib2.urlopen(url).read()
-        html = html.replace('<center>', '').replace('</center>', '')        
+        html = html.replace('<center>', '').replace('</center>', '')
+        html = scrubHTML(html)
+
         soup = BeautifulSoup.BeautifulSoup(html)
 
         year = soup.html.head.title.string.split()[1]
         content = soup('table')[5]
-        records = [self._makeRecord(year, tr) for tr in content('tr')]
+        for tr in content('tr'):
+            records.extend(self._extractRecords(tr, year))
 
         locale.resetlocale()
         return records
 
 
-    def _makeRecord(self, year, tr):
-        record = SimpleRecord('adviezen')
+    def _extractRecords(self, tr, year):
+        # This corresponds to one <tr>
+        records = []
+        datetuple = self._extractDate(tr('td')[0], year)
 
-        datestr = tr('td')[0].font.font.string
-        if datestr == BeautifulSoup.Null:
-            datestr = tr('td')[0].font.span.string
-        
-        datestr = ' '.join(datestr.replace('&nbsp;', '').split()) + ' ' + year
+        # the second <td> has title and e-mail, maybe multiple times
+        titles, emails = self._extractTitlesAndEmails(tr('td')[1])
+
+        # there can also be multiple pdfs
+        pdfs = self._extractFiles(tr('td')[2])
+
+        for idx in range(len(titles)):
+            record = SimpleRecord('adviezen')
+            record['date'] = datetuple
+            record['title'] = titles[idx]
+            record['emails'] = emails[idx]
+            try:
+                record['pdfs'] = [pdfs[idx]]
+            except IndexError:
+                import pdb;pdb.set_trace()
+            records.append(record)
+
+        if len(titles) == 1:
+            # If we have only one title, we may have more than one PDF
+            # belonging to it
+            records[-1]['pdfs'] = pdfs
+
+        return records
+
+    def _extractDate(self, td, year):
+        datestr = td.string
+        datestr = '%s %s' % (removeHTMLWhiteSpace(datestr), year)
         datetuple = time.strptime(datestr, '%d %B %Y')
-        record['date'] = datetuple
+        return datetuple
 
-        title = ' '.join(tr('td')[1].font.font.string.split()[:-1])
-        record['title'] = unicode(title, 'iso-8859-1')
+    def _extractTitlesAndEmails(self, td): # butt-ugly
+        titles = []
+        emails = []
 
-        emailstr = tr('td')[1].font('font')[1].string
-        if len(emailstr) < 3:
-            emailstr = tr('td')[1].font('font')[2].string
+        # This is for 1 record (one record may have mutltiple emails)
+        title = ''
+        emailz = []
 
-        charrefs = HTMLParser.charref.findall(emailstr)
-        if charrefs:
-            email = ''.join([chr(int(ref[2:-1])) for ref in charrefs])
-        else:
-            email = emailstr.strip()
+        for el in td.contents:
+            if getattr(el, 'name', None) == 'a':
+                emailz.append(fixEmail(el.string))
+            else:
+                string = removeHTMLWhiteSpace(el.string)
+                if len(string) > 5: # We want to skip junk like '&' and 'en'
+                    
+                    # Have we already found a title?  If so, let's put
+                    # the previously found title and e-mails into the
+                    # record and move on with a new record:
+                    if title:
+                        titles.append(title)
+                        emails.append(emailz)
+                        title = ''
+                        emailz = []
 
-        record['email'] = email
+                    # Titles most often have a ' -' at the end which
+                    # we want to get rid of
+                    title = unicode(string, 'iso-8859-1')
+                    if title[-2:] == u' -':
+                        title = title[:-2]
 
-        return record
+        # We don't forget about the last ones
+        titles.append(title)
+        emails.append(emailz)
+        return titles, emails
+
+    def _extractFiles(self, td):
+        urls = [el['href'] for el in td('a')]
+        #return [urllib2.urlopen(self.base + url).read() for url in urls]
+        return urls
+
