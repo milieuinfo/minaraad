@@ -8,47 +8,38 @@
     
     <body>
     <metal:block metal:fill-slot="prefs_configlet_main"
-                 tal:define="session request/SESSION;">
+                 tal:define="session request/SESSION;
+                             subscriptions view/subscriptions;">
         
         <h1 i18n:translate="heading_subscribers_overview">Subscribers overview</h1>
         
         <a class="link-parent"
-        tal:attributes="href string: $portal_url/plone_control_panel"
-        i18n:translate="label_up_to_plone_setup">
+           tal:attributes="href string: $portal_url/plone_control_panel"
+           i18n:translate="label_up_to_plone_setup">
             Up to Site Setup
         </a>
-        <tal:block tal:define="subscriptions view/subscriptions;">
-            <div i18n:translate="title_subscription" 
-                 style="font-weight:bold">Subscriptions</div>
-            
-            <tal:block tal:repeat="subscription subscriptions">
-            <span tal:condition="not:subscription/category" 
-                tal:omit-tag=""
-                tal:define="subscription_id subscription/id;
-                            extra_request
-                            string:category=${subscription_id}">
 
+        <tal:block tal:repeat="subscription subscriptions">
+        <span tal:condition="not:subscription/category" 
+               tal:omit-tag=""
+               tal:define="subscription_id subscription/id;
+                           extra_request
+                           string:category=${subscription_id}">
 
+            <form method="post"
+                  tal:attributes="action string:${context/absolute_url}/$template_id">
+                <input class="context"
+                        type="hidden"
+                        name="category"
+                        tal:attributes="value subscription_id" />
+                
+                <h6 class="hearingsubheader2"
+                        tal:content="subscription/Title"
+                        i18n:translate="" />
 
-        <form method="post"
-              tal:attributes="action string:${context/absolute_url}/$template_id">
-
-
-
-            <input class="context"
-                    type="hidden"
-                    name="category"
-                    tal:attributes="value subscription_id" />
-              <p>
-                <span tal:omit-tag=""
-                      tal:content="subscription/Title"
-                      i18n:translate="" /> &nbsp; | &nbsp;
-
-                <tal:block
-                 tal:define="emailsubscriptions
-                             python:view.canSubscribeEmail(subscription_id);
-                             postsubscriptions
-                             python:view.canSubscribePost(subscription_id)">
+                <tal:block tal:define="emailsubscriptions
+                                        python:view.canSubscribeEmail(subscription_id);
+                                        postsubscriptions python:view.canSubscribePost(subscription_id)">
                     <input class="context"
                             type="submit"
                             name="form.button.ExportEmail"
@@ -56,7 +47,7 @@
                             i18n:attributes="value label_export_email;"
                             tal:attributes="tabindex tabindex/next;"
                             tal:condition="emailsubscriptions" />
-                    &nbsp; | &nbsp;
+
                     <input class="context"
                             type="submit"
                             name="form.button.ExportPost"
@@ -65,25 +56,11 @@
                             tal:attributes="tabindex tabindex/next;"
                             tal:condition="postsubscriptions" />
                 </tal:block>
-              </p>
-
-
-        </form>
-
-
-
-            </span>
-            </tal:block>
-
-
-
-
-
-            <a tal:attributes="href string:${context/absolute_url}/subscribers_config.html?category=Hearing"
-               i18n:translate="">Hearing</a>
+            </form>
             <br />
-            <br />
+        </span>
         </tal:block>
+
         <br />
         <tal:block tal:define="subscription session/category|nothing;
                                emailsubscriptions python:view.canSubscribeEmail(subscription);
@@ -92,15 +69,15 @@
         <form method="post"
               tal:attributes="action string:${context/absolute_url}/$template_id">
 
-            <tal:block tal:condition="python:subscription == 'Hearing'">
                 <input class="context"
                         type="hidden"
                         name="Hearing"
                         tal:attributes="value string:Hearing" />
-                <div i18n:translate="label_hearingthemes" 
-                     style="font-weight:bold">Hearing Themes</div>
-                <tal:block tal:repeat="theme view/subscriptions">
-                <tal:block tal:condition="theme/category">
+
+                <h6 i18n:translate="label_hearingthemes">Hearing Themes</h6>
+
+                <div tal:repeat="theme view/subscriptions">
+                    <tal:block tal:condition="theme/category">
                     <input type="checkbox"
                             class="noborder"
                             tal:attributes="tabindex tabindex/next;
@@ -110,12 +87,9 @@
                                             value string:${theme/id};" /> 
                     <span tal:content="theme/Title"
                     i18n:translate="" /> 
-                    <br />
-                </tal:block>
-                </tal:block>
+                    </tal:block>
+                </div>
                 <br />
-
-
                 <!-- Remember that 'Hearing' was selected. -->
                 <input class="context"
                         type="hidden"
@@ -135,8 +109,6 @@
                         i18n:attributes="value label_export_post;"
                         tal:attributes="tabindex tabindex/next;"
                         tal:condition="postsubscriptions" />
-            </tal:block>
-
 
             <!-- Remember the value of subscription. -->
             <input class="context"
@@ -144,7 +116,6 @@
                     name=""
                     tal:attributes="value subscription" />
         </form>
-
         </tal:block>
     </metal:block>
     </body>

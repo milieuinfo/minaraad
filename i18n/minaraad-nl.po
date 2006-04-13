@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minaraad 0.1\n"
-"POT-Creation-Date: 2006-04-10 13:07+0000\n"
+"POT-Creation-Date: 2006-04-13 07:34+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: Mirella van Teulingen <m.van.teulingen@zestsoftware.nl>\n"
 "Language-Team: Nederlands <info@zestsoftware.nl>\n"
@@ -34,6 +34,7 @@ msgstr "Datum:"
 #. Default: "Goal:"
 #: skins/minaraad/EmailTemplate-Hearing.pt
 #: skins/minaraad/hearing_view.pt
+#: skins/minaraad/mrevent_view.pt
 msgid "Goal:"
 msgstr "Doelstelling:"
 
@@ -44,6 +45,7 @@ msgstr "Hoorzitting"
 #. Default: "Location:"
 #: skins/minaraad/EmailTemplate-Hearing.pt
 #: skins/minaraad/hearing_view.pt
+#: skins/minaraad/mrevent_view.pt
 msgid "Location:"
 msgstr "Locatie:"
 
@@ -96,8 +98,13 @@ msgstr "Klik op de onderstaande button om abonnees van dit content type te expor
 #. Default: "from"
 #: skins/minaraad/hearing_listing_view.pt
 #: skins/minaraad/mina_showdatetime.pt
+#: skins/minaraad/mrevent_listing_view.pt
 msgid "from"
 msgstr "van"
+
+#: browser/subscriptions_config.pt
+msgid "heading_subscribers_overview"
+msgstr "Abonnee overzicht"
 
 #. Default: "Themes Settings"
 #: browser/minaraad_config.pt"
@@ -136,6 +143,7 @@ msgstr "Vul de naam in van het nieuwe thema."
 #. Default: "hour"
 #: skins/minaraad/hearing_listing_view.pt
 #: skins/minaraad/mina_showdatetime.pt
+#: skins/minaraad/mrevent_listing_view.pt
 msgid "hour"
 msgstr "uur"
 
@@ -147,6 +155,7 @@ msgstr "Toevoegen"
 #. Default: "Agenda items"
 #: skins/minaraad/EmailTemplate-Hearing.pt
 #: skins/minaraad/hearing_view.pt
+#: skins/minaraad/mrevent_view.pt
 msgid "label_agendaitems"
 msgstr "Agendapunten"
 
@@ -334,6 +343,7 @@ msgstr "E-mail verzenden"
 #. Default: "Speaker:"
 #: skins/minaraad/EmailTemplate-Hearing.pt
 #: skins/minaraad/hearing_view.pt
+#: skins/minaraad/mrevent_view.pt
 msgid "label_speaker"
 msgstr "Spreker(s):"
 
@@ -346,6 +356,7 @@ msgstr "Straat"
 
 #. Default: "Subscribe"
 #: skins/minaraad/hearing_view.pt
+#: skins/minaraad/mrevent_view.pt
 msgid "label_subscribe"
 msgstr "Inschrijven"
 
@@ -361,6 +372,7 @@ msgstr "Thema:"
 
 #. Default: "Unsubscribe"
 #: skins/minaraad/hearing_view.pt
+#: skins/minaraad/mrevent_view.pt
 msgid "label_unsubscribe"
 msgstr "Uitschrijven"
 
@@ -410,8 +422,8 @@ msgid "legend_sendemail"
 msgstr "E-mail verzenden naar abonnees"
 
 #. Default: "More"
-#: skins/minaraad/events_listing.pt
 #: skins/minaraad/hearing_listing_view.pt
+#: skins/minaraad/mrevent_listing_view.pt
 #: skins/minaraad/pressrelease_listing_view.pt
 msgid "linkmoreinfo"
 msgstr "Meer informatie"
@@ -755,6 +767,7 @@ msgstr "Voor meer informatie kunt u contact opnemen met:"
 
 #. Default: "(none currently)"
 #: skins/minaraad/hearing_view.pt
+#: skins/minaraad/mrevent_view.pt
 msgid "no_attendees"
 msgstr "Er zijn nog geen deelnemers"
 
@@ -771,6 +784,7 @@ msgstr "Abonnementen"
 #. Default: "till"
 #: skins/minaraad/hearing_listing_view.pt
 #: skins/minaraad/mina_showdatetime.pt
+#: skins/minaraad/mrevent_listing_view.pt
 msgid "till"
 msgstr "tot"
 
@@ -781,11 +795,13 @@ msgstr "Bijlagen:"
 
 #. Default: "Attendees"
 #: skins/minaraad/hearing_view.pt
+#: skins/minaraad/mrevent_view.pt
 msgid "title_attendees"
 msgstr "Deelnemers"
 
 #. Default: "Council Members"
 #: skins/minaraad/hearing_view.pt
+#: skins/minaraad/mrevent_view.pt
 msgid "title_counsilmembers"
 msgstr "Raadsleden"
 
@@ -795,6 +811,7 @@ msgstr "Per e-mail"
 
 #. Default: "Members"
 #: skins/minaraad/hearing_view.pt
+#: skins/minaraad/mrevent_view.pt
 msgid "title_members"
 msgstr "Leden"
 
@@ -813,6 +830,7 @@ msgstr "Selecteer alles:"
 #. Default: "up untill"
 #: skins/minaraad/hearing_listing_view.pt
 #: skins/minaraad/mina_showdatetime.pt
+#: skins/minaraad/mrevent_listing_view.pt
 msgid "up_untill"
 msgstr "t/m"
 

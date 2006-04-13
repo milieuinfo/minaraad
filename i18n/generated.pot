@@ -44,6 +44,10 @@ msgstr ""
 msgid "description_subscriptions_setup"
 msgstr ""
 
+#: browser/subscriptions_config.pt
+msgid "heading_subscribers_overview"
+msgstr ""
+
 #. Default: "Themes settings for Site"
 #: browser/minaraad_config.pt"
 msgid "description_themes_setup"
