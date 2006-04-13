@@ -43,9 +43,16 @@ from Products.minaraad.config import *
 from Products.minaraad.tests.MainTestCase import MainTestCase
 
 # Import the tested classes
+from DateTime import DateTime
 from Products.minaraad.content.Advisory import Advisory
 
 ##code-section module-beforeclass #fill in your manual code here
+
+TITLE = "title"
+DESCRIPTION = "kijk altijd naar beide kanten voor het oversteken"
+DATE = DateTime()
+HTMLBODY = "<p>HTML op zijn best</p>"
+
 ##/code-section module-beforeclass
 
 
@@ -66,6 +73,9 @@ class testAdvisory(MainTestCase):
         self.portal.adviezen.adv_2006.invokeFactory('Advisory','myadvisory')
         self.advisory = self.portal.adviezen.adv_2006.myadvisory
 
+        self.portal.contactpersonen.invokeFactory('ContactPerson', id='Jslob')
+        self.contactperson = self.portal.contactpersonen.Jslob
+
     # from class Advisory:
     def test_export_subscribers(self):
         pass
@@ -79,10 +89,23 @@ class testAdvisory(MainTestCase):
         """ Test if the Advisory has all the required fields
         """
 
-        self.advisory.Title()
-        self.advisory.getDescription()
-        self.advisory.getDate()
-        self.advisory.getContact()
+        self.advisory.setTitle(TITLE)
+        self.advisory.setDescription(DESCRIPTION)
+        self.advisory.setDate(DATE)
+        self.advisory.setContact(self.contactperson.UID())
+        self.advisory.setBody(HTMLBODY, text_format="text/html")
+
+        self.failUnless(self.advisory.Title()==TITLE,
+                            'Value is %s' % self.advisory.Title())
+        self.failUnless(self.advisory.getDescription()==DESCRIPTION,
+                            'Value is %s' % self.advisory.getDescription())
+        self.failUnless(self.advisory.getDate()==DATE,
+                            'Value is %s' % self.advisory.getDate())
+        self.failUnless(self.advisory.getContact()==[self.contactperson],
+                            'Value is %s' % self.advisory.getContact())
+        self.failUnless(self.advisory.getBody()==HTMLBODY,
+                            'Value is %s' % self.advisory.getBody())
+
 
     def test_Existance(self):
         """ Test if the Advisory exists within portal_types
