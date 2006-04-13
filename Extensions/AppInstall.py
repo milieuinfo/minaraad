@@ -277,6 +277,8 @@ def _setWorkflow(portal, out):
     workflowTool.setDefaultChain('minaraad_workflow')
     workflowTool.setChainForPortalTypes(['Folder','Large Plone Folder','Topic'],
                                         'minaraad_folder_workflow')
+    workflowTool.setChainForPortalTypes(['Image','File'],'minaraad_workflow')
+    workflowTool.updateRoleMappings()
 
     portal.manage_permission('Add portal content',['Author','Owner','Manager'],1)
     portal.manage_permission('Delete objects',['Author','Owner','Manager'],1)
