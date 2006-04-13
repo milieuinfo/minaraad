@@ -270,10 +270,6 @@ msgstr ""
 msgid "legend_add_theme_details"
 msgstr ""
 
-#: browser/subscriptions_config.pt
-msgid "legend_current_subscriptions_details"
-msgstr ""
-
 #. Default: "Current Themes"
 #: browser/minaraad_config.pt"
 msgid "legend_current_themes _details"
@@ -299,11 +295,6 @@ msgstr ""
 
 #: skins/mail_password_template.dtml
 msgid "mailtemplate_text_linkreset2"
-msgstr ""
-
-#. Default: "contactpersons"
-#: MinaBundle.py
-msgid "minaraad_help_contactpersons"
 msgstr ""
 
 #. Default: "date"
@@ -355,11 +346,6 @@ msgstr ""
 #. Default: "phonenumber"
 #: content/ContactPerson.py
 msgid "minaraad_help_phonenumber"
-msgstr ""
-
-#. Default: "plaintext"
-#: MinaBundle.py
-msgid "minaraad_help_plaintext"
 msgstr ""
 
 #. Default: "policy"
@@ -432,7 +418,6 @@ msgid "minaraad_label_contact"
 msgstr ""
 
 #. Default: "Contactpersons"
-#: MinaBundle.py
 #: content/Advisory.py
 #: content/Hearing.py
 msgid "minaraad_label_contactpersons"
@@ -546,7 +531,6 @@ msgid "minaraad_label_phonenumber"
 msgstr ""
 
 #. Default: "Plaintext"
-#: MinaBundle.py
 #: content/Hearing.py
 #: content/Advisory.py
 msgid "minaraad_label_plaintext"

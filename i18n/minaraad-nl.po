@@ -3,20 +3,19 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minaraad 0.1\n"
-"POT-Creation-Date: 2006-04-13 07:34+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"POT-Creation-Date: 2006-04-13 11:54+0000\n"
+"PO-Revision-Date: 2006-04-13 13:49+0200\n"
 "Last-Translator: Mirella van Teulingen <m.van.teulingen@zestsoftware.nl>\n"
 "Language-Team: Nederlands <info@zestsoftware.nl>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0\n"
-"Language-Code: nl\n"
-"Language-Name: Nederlands\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
 "Preferred-Encodings: utf-8 latin1\n"
-"Domain: minaraad\n"
-"X-Generator: Emacs PO mode, version 2.01\n"
-"X-Is-Fallback-For: nl-be\n"
+"Domain: DOMAIN\n"
+"Report-Msgid-Bugs-To: \n"
 
 #: browser/subscriptions_config.pt
 msgid "Advisory"
@@ -402,10 +401,6 @@ msgstr "Postcode"
 msgid "legend_add_theme_details"
 msgstr "Thema toevoegen"
 
-#: browser/subscriptions_config.pt
-msgid "legend_current_subscriptions_details"
-msgstr ""
-
 #. Default: "Current Themes"
 #: browser/minaraad_config.pt"
 msgid "legend_current_themes _details"
@@ -449,11 +444,6 @@ msgstr "Wij ontvingen een aanvraag om uw wachtwoord op onze website te wijzigen.
 #: skins/mail_password_template.dtml
 msgid "mailtemplate_text_linkreset2"
 msgstr "Klik op onderstaande link als u hiermee akkoord gaat en om deze wijziging te bevestigen:"
-
-#. Default: "contactpersons"
-#: MinaBundle.py
-msgid "minaraad_help_contactpersons"
-msgstr ""
 
 #. Default: "date"
 #: content/Advisory.py
@@ -504,11 +494,6 @@ msgstr ""
 #. Default: "phonenumber"
 #: content/ContactPerson.py
 msgid "minaraad_help_phonenumber"
-msgstr ""
-
-#. Default: "plaintext"
-#: MinaBundle.py
-msgid "minaraad_help_plaintext"
 msgstr ""
 
 #. Default: "policy"
@@ -566,7 +551,7 @@ msgstr "Bus"
 #. Default: "Category"
 #: content/NewsItem.py
 msgid "minaraad_label_category"
-msgstr ""
+msgstr "Categorie"
 
 #. Default: "City"
 #: Organisation.py
@@ -581,7 +566,6 @@ msgid "minaraad_label_contact"
 msgstr "Contactpersonen"
 
 #. Default: "Contactpersons"
-#: MinaBundle.py
 #: content/Advisory.py
 #: content/Hearing.py
 msgid "minaraad_label_contactpersons"
@@ -695,7 +679,6 @@ msgid "minaraad_label_phonenumber"
 msgstr "Telefoon"
 
 #. Default: "Plaintext"
-#: MinaBundle.py
 #: content/Hearing.py
 #: content/Advisory.py
 msgid "minaraad_label_plaintext"
