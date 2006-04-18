@@ -46,6 +46,7 @@ from Products.minaraad.tests.MainTestCase import MainTestCase
 from Products.minaraad.content.Advisory import Advisory
 
 ##code-section module-beforeclass #fill in your manual code here
+from DateTime import DateTime
 
 TITLE = "title"
 DESCRIPTION = "kijk altijd naar beide kanten voor het oversteken"
