@@ -213,12 +213,44 @@ class SimpleRecord(dict):
 class AdviezenScrapeTransform:
     """A transform that takes a URL and returns a list of records.
 
+    >>> from pprint import pprint
+
     >>> transform = AdviezenScrapeTransform()
     >>> records = transform('http://www.minaraad.be/tablad%202003.htm')
     >>> len(records)
     74
 
+    >>> pprint(records[0])
+    {'date': (2003, 1, 16, 0, 0, 0, 3, 16, -1),
+     'emails': ['francis.noyen@minaraad.be'],
+     'files': ['http://www.minaraad.be/2003/2003-02.pdf'],
+     'title': u'Vlarea &ndash; voorontwerp van besluit van de Vlaamse regering tot vaststelling van het Vlaams reglement inzake afvalvoorkoming en -beheer'}
     
+    >>> pprint(records[-1])
+    {'date': (2003, 12, 18, 0, 0, 0, 3, 352, -1),
+     'emails': ['bea.kayaerts@minaraad.be'],
+     'files': ['http://www.minaraad.be/adviesvragen/adviesvragen%202003/2003-75%20RL%20Meetjesland.pdf',
+               'http://www.minaraad.be/2003/2003-75.pdf'],
+     'title': u'Uitbreiding werkingsgebied regionaal landschap Meetjesland'}
+
+    XXX more tests here
+
+    Some HTML pages don't have a third column:
+
+    >>> records = transform('http://www.minaraad.be/tablad%202000.htm')
+    >>> len(records)
+    31
+
+    >>> pprint(records[0])
+    {'date': (2000, 2, 10, 0, 0, 0, 3, 41, -1),
+     'emails': [],
+     'files': ['http://www.minaraad.be/2000/MiNa200006.pdf'],
+     'title': u'Advies over het ontwerp van decreet houdende wijziging van het decreet van 18 mei 1999 houdende de organisatie van Ruimtelijke Ordening en van het decreet betreffende Ruimtelijke Ordening, geco\\xf6rdineerd op 22 oktober 1996'}
+    >>> pprint(records[-1])
+    {'date': (2000, 12, 7, 0, 0, 0, 3, 342, -1),
+     'emails': [],
+     'files': ['http://www.minaraad.be/2000/MiNa%20200038.pdf'],
+     'title': u'Advies over de opdracht, functie en structuur van de MiNa-Raad'}
     """
     interface.implements(ITransform)
 
@@ -236,7 +268,15 @@ class AdviezenScrapeTransform:
         soup = BeautifulSoup.BeautifulSoup(html)
 
         year = soup.html.head.title.string.split()[1]
-        content = soup('table')[5]
+
+        # We need to fix up the content area, because some pages have
+        # a number of tables:
+        content = ''
+        for table in soup('table')[5:-1]:
+            stringified = ''.join([str(el) for el in table.contents])
+            content += stringified
+        content = BeautifulSoup.BeautifulSoup(content)
+        
         for tr in content('tr'):
             records.extend(self._extractRecords(tr, year))
 
@@ -251,8 +291,10 @@ class AdviezenScrapeTransform:
         # the second <td> has title and e-mail, maybe multiple times
         titles, emails = self._extractTitlesAndEmails(tr('td')[1])
 
-        # there can also be multiple pdfs
-        pdfs = self._extractFiles(tr('td')[2])
+        # there can also be multiple pdfs, maybe in the second or
+        # third td:
+        filesTD = len(tr('td')) == 2 and tr('td')[1] or tr('td')[2]
+        pdfs = self._extractFiles(filesTD)
 
         for idx in range(len(titles)):
             record = SimpleRecord('Advisory')
@@ -287,7 +329,8 @@ class AdviezenScrapeTransform:
         emailz = []
 
         for el in td.contents:
-            if getattr(el, 'name', None) == 'a':
+            if (getattr(el, 'name', None) == 'a' and
+                el['href'].startswith('mailto:')):
                 emailz.append(fixEmail(el.string))
             else:
                 string = removeHTMLWhiteSpace(el.string)
