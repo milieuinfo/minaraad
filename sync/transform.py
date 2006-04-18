@@ -251,6 +251,17 @@ class AdviezenScrapeTransform:
      'emails': [],
      'files': ['http://www.minaraad.be/2000/MiNa%20200038.pdf'],
      'title': u'Advies over de opdracht, functie en structuur van de MiNa-Raad'}
+    
+    Last but not least, 2002:
+
+    >>> records = transform('http://www.minaraad.be/tablad%202002.htm')
+    >>> len(records)
+    51
+    >>> pprint(records[22])
+    {'date': (2002, 6, 26, 0, 0, 0, 2, 177, -1),
+     'emails': ['dirk.uyttendaele@minaraad.be'],
+     'files': ['http://www.minaraad.be/2002/2002-24.pdf'],
+     'title': u'Advies over het kerntakendebat: Naar een kwaliteitsvolle organisatie van het bestuur op alle beleidsniveaus'}
     """
     interface.implements(ITransform)
 
@@ -304,7 +315,8 @@ class AdviezenScrapeTransform:
             try:
                 record['files'] = [pdfs[idx]]
             except IndexError:
-                import pdb;pdb.set_trace()
+                # XXX this is not a record
+                continue
             records.append(record)
 
         if len(titles) == 1:
