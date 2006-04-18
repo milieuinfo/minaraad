@@ -1,8 +1,10 @@
 from zope import interface
 from zope import component
 
+import urllib2
+
 from CipraSync.interfaces import IPathResolver, IWriteHandler
-from CipraSync.writehandler import BaseHandler
+from CipraSync.writehandler import BaseHandler, BasicHandler
 
 from minaraad.sync.interfaces import IDontWrite
 
@@ -31,9 +33,26 @@ class MinaResolver:
     Traceback (most recent call last):
     ...
     ValueError: Unable to find a path for '{}'.
-    
+
+    Then there's the categories 'Advisory', 'File', and
+    'Pressrelease':
+
+    >>> r = Record()
+    >>> r['date'] = (3535,)
+    >>> for category in ('Advisory', 'File', 'Pressrelease'):
+    ...     r.category = category
+    ...     resolve(r)
+    '/foo-raad/adviezen/adv_3535/'
+    '/foo-raad/nieuwsbriefen/newsl_3535/'
+    '/foo-raad/persberichten/pressr_3535/'
     """
     interface.implements(IPathResolver)
+
+    scrapeCategories = {
+        'Advisory': '/adviezen/adv_%s/',
+        'File': '/nieuwsbriefen/newsl_%s/',
+        'Pressrelease': '/persberichten/pressr_%s/',
+        }
 
     def __init__(self, siteroot):
         self.siteroot = siteroot
@@ -41,6 +60,11 @@ class MinaResolver:
     def resolve(self, record):
         if record.category == 'mina-members':
             return self.siteroot
+
+        elif record.category in self.scrapeCategories.keys():
+            path = self.scrapeCategories[record.category]
+            return self.siteroot + (path % record['date'][0])
+            
         raise ValueError("Unable to find a path for '%s'." % record)
 
 
@@ -170,5 +194,72 @@ class MemberPropertyHandler(BaseHandler):
         return memberid.replace('-', '')
 
 
-class ScrapeHandler(BaseHandler):
+class ScrapeHandler(BasicHandler):
+    """A write handler for the scrape transforms."""
+
+    def write(self, record):
+        path = self.resolver.resolve(record)
+        portalType = record.category
+        parent = self._getContainer(path)
+
+        normalize = parent.plone_utils.normalizeString
+
+        suitable_id = normalize(record['type'])
+
+        if suitableId in parent.objectIds():
+            msg = ("Object with id %r already existed in %r." %
+                   (suitableId, parent))
+            self.logger.critical(msg)
+            raise ValueError(msg)
+
+        parent.invokeFactory(portalType, suiteableId)
+        obj = getattr(parent, suitableId)
+
+        self._update(obj, record)
+
+        get_transaction().commit(1)
+
+    def _update(self, obj, record):
+        obj.setTitle(record['title'])
+        self.logger.debug("%s: Updated title." %
+                          ('/'.join(obj.getPhysicalPath())))
+
+
+class FileScrapeHandler(ScrapeHandler):
+    def _update(self, obj, record):
+        super(FileScrapeHandler, self)._update(obj, record)
+        for idx, url in enumerate(record['files']):
+            contents = urllib2.urlopen(url).read()
+            obj.invokeFactory('File', str(idx))
+            fileObj = getattr(obj, str(idx))
+            fileObj.setFile(contents)
+        self.logger.debug("%s: Added %s files." %
+                          ('/'.join(obj.getPhysicalPath()), idx+1))
+
+
+class AdviezenScrapeHandler(FileScrapeHandler):
+    def _update(self, obj, record):
+        super(AdviezenScrapeHandler, self)._update(obj, record)
+
+        persons = self._getContactPersons(obj, record['emails'])
+        obj.setContact(persons)
+        obj.setDate(record['date'])
+
+    def _getContactPersons(self, obj, emails):
+        return [] # XXX
+
+
+class NieuwsbriefScrapeHandler(FileScrapeHandler):
+    def _update(self, obj, record):
+        super(NieuwsbriefScrapeHandler, self)._update(obj, record)
+        obj.setEffectiveDate(record['date'])
+
+
+class PersberichtenScrapeHandler(FileScrapeHandler):
+    def _update(self, obj, record):
+        super(PersberichtenScrapeHandler, self)._update(obj, record)
+        obj.setDate(record['date'])
+
     
+
+        

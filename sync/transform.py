@@ -255,7 +255,7 @@ class AdviezenScrapeTransform:
         pdfs = self._extractFiles(tr('td')[2])
 
         for idx in range(len(titles)):
-            record = SimpleRecord('adviezen')
+            record = SimpleRecord('Advisory')
             record['date'] = datetuple
             record['title'] = titles[idx]
             record['emails'] = emails[idx]
@@ -350,7 +350,7 @@ class PersberichtenScrapeTransform:
 
         links = soup.fetch('a', {'href': lambda s:s and s.endswith('pdf')})
         for link in links:
-            record = SimpleRecord('persberichten')
+            record = SimpleRecord('Pressrelease')
             record['date'] = self._makeDate(link.string)
             record['title'] = self._extractTitle(link)
             record['files'] = [self.base + link['href']]
