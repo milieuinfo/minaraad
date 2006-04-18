@@ -68,6 +68,7 @@ schema = Schema((
 
     StringField(
         name='email',
+        index="FieldIndex:brains",
         widget=StringWidget(
             label='Email',
             label_msgid='minaraad_label_email',

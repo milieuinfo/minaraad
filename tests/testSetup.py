@@ -88,22 +88,10 @@ class testSetup(MainTestCase):
         # ...
     # Manually created methods
 
-    def test_txng3(self):
-        self.loginAsPortalOwner()
-        catalog = self.portal.portal_catalog
-        results = catalog(SearchableText='Zest')
-        self.assertEquals(len(results), 0)
+    def test_reinstall(self):
+        qi = self.portal.portal_quickinstaller
+        qi.reinstallProducts(('minaraad',))
 
-        data = open(path(__file__).parent / 'test.pdf').read()
-        self.portal.invokeFactory('File', 'file')
-        f = self.portal.file
-        f.setFile(data)
-        f.reindexObject()
-
-        results = catalog(SearchableText='Zest')
-        self.assertEquals(len(results), 1)
-        self.assertEquals(results[0].getObject(), f)
-        
     def test_cookieTimeOutProperty(self):
         propsTool = self.portal.portal_properties
         siteProperties = propsTool.site_properties
@@ -149,10 +137,22 @@ class testSetup(MainTestCase):
         props = propsTool.minaraad_properties
         self.failUnless(props.hasProperty('themes'))
 
-    def test_reinstall(self):
-        qi = self.portal.portal_quickinstaller
-        qi.reinstallProducts(('minaraad',))
+    def test_txng3(self):
+        self.loginAsPortalOwner()
+        catalog = self.portal.portal_catalog
+        results = catalog(SearchableText='Zest')
+        self.assertEquals(len(results), 0)
 
+        data = open(path(__file__).parent / 'test.pdf').read()
+        self.portal.invokeFactory('File', 'file')
+        f = self.portal.file
+        f.setFile(data)
+        f.reindexObject()
+
+        results = catalog(SearchableText='Zest')
+        self.assertEquals(len(results), 1)
+        self.assertEquals(results[0].getObject(), f)
+        
     def test_controlPanel(self):
         from Products.CMFCore.utils import getToolByName
         controlPanel = getToolByName(self.portal, 'portal_controlpanel')
