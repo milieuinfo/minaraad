@@ -49,7 +49,7 @@ class MemberPropertyHandler(BaseHandler):
     necessary.
 
     Be warned that this doctest uses your actual Data.fs!  (You need a
-    Plone Site called /mina for this test to work.)
+    Plone Site called /minaraad for this test to work.)
 
     An IRecord implementation:
 
@@ -169,6 +169,6 @@ class MemberPropertyHandler(BaseHandler):
 
         return memberid.replace('-', '')
 
-        
 
-        
+class ScrapeHandler(BaseHandler):
+    

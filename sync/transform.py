@@ -260,7 +260,7 @@ class AdviezenScrapeTransform:
             record['title'] = titles[idx]
             record['emails'] = emails[idx]
             try:
-                record['pdfs'] = [pdfs[idx]]
+                record['files'] = [pdfs[idx]]
             except IndexError:
                 import pdb;pdb.set_trace()
             records.append(record)
@@ -268,7 +268,7 @@ class AdviezenScrapeTransform:
         if len(titles) == 1:
             # If we have only one title, we may have more than one PDF
             # belonging to it
-            records[-1]['pdfs'] = pdfs
+            records[-1]['files'] = pdfs
 
         return records
 
@@ -330,7 +330,7 @@ class PersberichtenScrapeTransform:
     ((2006, 2, 3, 0, 0, 0, 4, 34, -1), 'Uitvoering RSV')
     >>> records[-1]['date'], records[-1]['title']
     ((2005, 12, 1, 0, 0, 0, 3, 335, -1), 'Slimme kilometerheffing')
-    >>> records[-1]['pdfs'] # doctest: +ELLIPSIS
+    >>> records[-1]['files'] # doctest: +ELLIPSIS
     ['http://www.minaraad.be/Persberichten/persberichten%202005/persbericht%20van%2001%20december%202005.pdf']
     """
     interface.implements(ITransform)
@@ -353,7 +353,7 @@ class PersberichtenScrapeTransform:
             record = SimpleRecord('persberichten')
             record['date'] = self._makeDate(link.string)
             record['title'] = self._extractTitle(link)
-            record['pdfs'] = [self.base + link['href']]
+            record['files'] = [self.base + link['href']]
             records.append(record)
         
         locale.resetlocale()
