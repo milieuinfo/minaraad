@@ -314,7 +314,7 @@ class AdviezenScrapeTransform:
         return titles, emails
 
     def _extractFiles(self, td):
-        return [el['href'] for el in td('a')]
+        return ['%s%s' % (self.base, el['href']) for el in td('a')]
 
 
 class PersberichtenScrapeTransform:

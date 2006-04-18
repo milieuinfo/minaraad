@@ -19,7 +19,6 @@ class TestRealLifeMembers:
     """A test that actually reads in data from a source and writes
     data to a ZODB.
 
-    >>> import glob
     >>> from path import path
 
     >>> import zope.component
@@ -114,6 +113,45 @@ class TestRealLifeMembers:
     street: 'Oosteinde'
     zipcode: '2271EE'
     """
+
+
+class TestRealLifeScrape:
+    """A test that actually reads in data from a source and writes
+    data to a ZODB.
+
+    >>> import zope.component
+
+    >>> from CipraSync import interfaces
+    >>> import minaraad.sync.configure
+
+    >>> minaraad.sync.configure.resolver()
+    >>> minaraad.sync.configure.transforms()
+    >>> minaraad.sync.configure.stupidreader()
+    >>> minaraad.sync.configure.writer()
+    >>> minaraad.sync.configure.writehandlers()
+    
+    Let's try to import the members data:
+
+    >>> reader = zope.component.getUtility(interfaces.IReader)
+    >>> urls = ('http://www.minaraad.be/tablad%202006.htm',
+    ...         'http://www.minaraad.be/tablad%202005.htm',
+    ...         'http://www.minaraad.be/tablad%202004.htm',
+    ...         'http://www.minaraad.be/tablad%202003.htm',
+    ...         'http://www.minaraad.be/tablad%202002.htm',
+    ...         'http://www.minaraad.be/tablad%202001.htm',
+    ...         'http://www.minaraad.be/tablad%202000.htm',
+    ...
+    ...         'http://www.minaraad.be/nieuwsbrief/nieuwsbrief.htm',
+    ...
+    ...         'http://www.minaraad.be/Persberichten/persberichten2003.htm')
+    
+    >>> reader.feed(urls)
+    >>> writer = interfaces.IWriter(reader)
+    >>> writer.write()
+    Customization policy for minaraad installed
+    >>> app = writer._getDatabase()
+    """
+
 
 def test_suite():
     return DocTestSuite(setUp=setUp, tearDown=tearDown, optionflags=ELLIPSIS)

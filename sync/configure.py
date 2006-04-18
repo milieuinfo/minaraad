@@ -64,6 +64,22 @@ def transforms():
         )
     
 
+    zope.component.provideUtility(
+        minaraad.sync.transform.AdviezenScrapeTransform(),
+        name='mina-transform-adviezenscrape',
+        )
+    
+##     zope.component.provideUtility(
+##         minaraad.sync.transform.NieuwsbriefenTransform(),
+##         name='mina-transform-nieuwsbriefenscrape',
+##         )
+    
+    zope.component.provideUtility(
+        minaraad.sync.transform.PersberichtenScrapeTransform(),
+        name='mina-transform-persberichtenscrape',
+        )
+    
+
 # Our two readers
 def memberreader():
     configuration = path(__file__).parent / 'etc' / 'memberreader.ini'
@@ -73,7 +89,7 @@ def memberreader():
 def stupidreader():
     configuration = path(__file__).parent / 'etc' / 'stupidreader.ini'
     zope.component.provideUtility(
-        minaraad.sync.read.MemberReader(configuration=configuration))
+        minaraad.sync.read.StupidTransformReader(configuration=configuration))
     
 # writer and writehandlers
 def writer():
@@ -82,5 +98,16 @@ def writer():
     zope.component.provideAdapter(CipraSync.write.Writer)
 
 def writehandlers():
-    zope.component.provideAdapter(minaraad.sync.write.MemberPropertyHandler,
-                                  name='mina-memberpropertyhandler')
+    zope.component.provideAdapter(
+        minaraad.sync.write.MemberPropertyHandler,
+        name='mina-memberpropertyhandler')
+
+    zope.component.provideAdapter(
+        minaraad.sync.write.AdviezenScrapeHandler,
+        name='mina-adviezenscrapehandler')
+    zope.component.provideAdapter(
+        minaraad.sync.write.NieuwsbriefScrapeHandler,
+        name='mina-nieuwsbriefscrapehandler')
+    zope.component.provideAdapter(
+        minaraad.sync.write.PersberichtenScrapeHandler,
+        name='mina-persberichtenscrapehandler')

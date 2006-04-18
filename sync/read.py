@@ -136,7 +136,7 @@ class StupidTransformReader:
     ...     def __call__(self, name):
     ...         return ['%r called with %r' % (self.id, name)]
 
-    >>> for name in ('adviezen', 'newsletter', 'pressrelease'):
+    >>> for name in ('adviezen', 'nieuwsbriefen', 'persberichten'):
     ...     component.provideUtility(
     ...         MyTransform(name),
     ...         name='mina-transform-%sscrape' % name,
@@ -146,7 +146,7 @@ class StupidTransformReader:
 
     >>> reader.feed(('blatabladbla', 'nieuwsbrieffoo', 'hihipersberichten'))
     >>> tuple(reader)
-    ("'adviezen' called with 'blatabladbla'", "'newsletter' called with 'nieuwsbrieffoo'", "'pressrelease' called with 'hihipersberichten'")
+    ("'adviezen' called with 'blatabladbla'", "'nieuwsbriefen' called with 'nieuwsbrieffoo'", "'persberichten' called with 'hihipersberichten'")
 
     Now feed some foobar and see how it fails:
 

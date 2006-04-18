@@ -2,6 +2,8 @@ from zope import interface
 from zope import component
 
 import urllib2
+import time
+from DateTime import DateTime
 
 from CipraSync.interfaces import IPathResolver, IWriteHandler
 from CipraSync.writehandler import BaseHandler, BasicHandler
@@ -204,7 +206,7 @@ class ScrapeHandler(BasicHandler):
 
         normalize = parent.plone_utils.normalizeString
 
-        suitable_id = normalize(record['type'])
+        suitableId = normalize(record['title'])
 
         if suitableId in parent.objectIds():
             msg = ("Object with id %r already existed in %r." %
@@ -212,7 +214,7 @@ class ScrapeHandler(BasicHandler):
             self.logger.critical(msg)
             raise ValueError(msg)
 
-        parent.invokeFactory(portalType, suiteableId)
+        parent.invokeFactory(portalType, suitableId)
         obj = getattr(parent, suitableId)
 
         self._update(obj, record)
@@ -232,7 +234,7 @@ class FileScrapeHandler(ScrapeHandler):
             contents = urllib2.urlopen(url).read()
             obj.invokeFactory('File', str(idx))
             fileObj = getattr(obj, str(idx))
-            fileObj.setFile(contents)
+            fileObj.setFile(contents, mimetype='application/pdf')
         self.logger.debug("%s: Added %s files." %
                           ('/'.join(obj.getPhysicalPath()), idx+1))
 
@@ -243,23 +245,19 @@ class AdviezenScrapeHandler(FileScrapeHandler):
 
         persons = self._getContactPersons(obj, record['emails'])
         obj.setContact(persons)
-        obj.setDate(record['date'])
+        obj.setDate(time.mktime(record['date']))
 
-    def _getContactPersons(self, obj, emails):
+    def _getContactPersons(self, context, emails):
         return [] # XXX
 
 
 class NieuwsbriefScrapeHandler(FileScrapeHandler):
     def _update(self, obj, record):
         super(NieuwsbriefScrapeHandler, self)._update(obj, record)
-        obj.setEffectiveDate(record['date'])
+        obj.setEffectiveDate(time.mktime(record['date']))
 
 
 class PersberichtenScrapeHandler(FileScrapeHandler):
     def _update(self, obj, record):
         super(PersberichtenScrapeHandler, self)._update(obj, record)
-        obj.setDate(record['date'])
-
-    
-
-        
+        obj.setDate(time.mktime(record['date']))
