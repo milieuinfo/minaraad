@@ -43,7 +43,8 @@ schema = Schema((
             label_msgid='minaraad_label_name',
             i18n_domain='minaraad',
         ),
-        required=1
+        required=1,
+        searchable=1
     ),
 
     StringField(
@@ -61,7 +62,8 @@ schema = Schema((
             label='Department',
             label_msgid='minaraad_label_department',
             i18n_domain='minaraad',
-        )
+        ),
+        searchable=1
     ),
 
     StringField(
@@ -70,7 +72,8 @@ schema = Schema((
             label='Email',
             label_msgid='minaraad_label_email',
             i18n_domain='minaraad',
-        )
+        ),
+        searchable=1
     ),
 
     StringField(

@@ -52,7 +52,8 @@ schema = Schema((
             label='Subheader',
             label_msgid='minaraad_label_subheader',
             i18n_domain='minaraad',
-        )
+        ),
+        searchable=1
     ),
 
     TextField(
@@ -61,7 +62,8 @@ schema = Schema((
             label='Goal',
             label_msgid='minaraad_label_goal',
             i18n_domain='minaraad',
-        )
+        ),
+        searchable=1
     ),
 
     StringField(
@@ -70,7 +72,8 @@ schema = Schema((
             label='Location',
             label_msgid='minaraad_label_location',
             i18n_domain='minaraad',
-        )
+        ),
+        searchable=1
     ),
 
     TextField(

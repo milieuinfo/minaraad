@@ -43,7 +43,6 @@ from Products.minaraad.config import *
 from Products.minaraad.tests.MainTestCase import MainTestCase
 
 # Import the tested classes
-from DateTime import DateTime
 from Products.minaraad.content.Advisory import Advisory
 
 ##code-section module-beforeclass #fill in your manual code here
@@ -105,7 +104,6 @@ class testAdvisory(MainTestCase):
                             'Value is %s' % self.advisory.getContact())
         self.failUnless(self.advisory.getBody()==HTMLBODY,
                             'Value is %s' % self.advisory.getBody())
-
 
     def test_Existance(self):
         """ Test if the Advisory exists within portal_types

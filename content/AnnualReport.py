@@ -45,7 +45,8 @@ schema = Schema((
             label_msgid='minaraad_label_attachment',
             i18n_domain='minaraad',
         ),
-        storage=AttributeStorage()
+        storage=AttributeStorage(),
+        searchable=1
     ),
 
 ),

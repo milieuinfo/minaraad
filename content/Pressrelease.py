@@ -44,7 +44,8 @@ schema = Schema((
             label='Subheader',
             label_msgid='minaraad_label_subheader',
             i18n_domain='minaraad',
-        )
+        ),
+        searchable=1
     ),
 
     TextField(

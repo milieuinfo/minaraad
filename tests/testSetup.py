@@ -161,6 +161,7 @@ class testSetup(MainTestCase):
             if action.id in INVISIBLE_CONTROLPANEL_ACTIONS:
                 self.assertEqual(action.visible, 0)
 
+
 def test_suite():
     from unittest import TestSuite, makeSuite
     suite = TestSuite()

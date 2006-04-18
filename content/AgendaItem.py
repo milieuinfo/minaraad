@@ -39,6 +39,7 @@ schema = Schema((
 
     StringField(
         name='speaker',
+        searchabel="1",
         widget=StringWidget(
             label='Speaker',
             label_msgid='minaraad_label_speaker',
@@ -52,7 +53,8 @@ schema = Schema((
             label='Organisation',
             label_msgid='minaraad_label_organisation',
             i18n_domain='minaraad',
-        )
+        ),
+        searchable=1
     ),
 
     TextField(
