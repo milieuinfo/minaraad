@@ -69,10 +69,10 @@ def transforms():
         name='mina-transform-adviezenscrape',
         )
     
-##     zope.component.provideUtility(
-##         minaraad.sync.transform.NieuwsbriefenTransform(),
-##         name='mina-transform-nieuwsbriefenscrape',
-##         )
+    zope.component.provideUtility(
+        minaraad.sync.transform.NieuwsbriefenScrapeTransform(),
+        name='mina-transform-nieuwsbriefenscrape',
+        )
     
     zope.component.provideUtility(
         minaraad.sync.transform.PersberichtenScrapeTransform(),

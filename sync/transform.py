@@ -372,6 +372,52 @@ class AdviezenScrapeTransform:
         return ['%s%s' % (self.base, el['href']) for el in td('a')]
 
 
+class NieuwsbriefenScrapeTransform:
+    """Another transform that takes a URL and returns a list of
+    records.  This time it's Minaraad's Nieuwsbriefen page.
+
+    >>> transform = NieuwsbriefenScrapeTransform()
+    >>> records = transform(
+    ...     'http://www.minaraad.be/nieuwsbrief/nieuwsbrief.htm')
+    >>> len(records)
+    XXX
+    """
+    interface.implements(ITransform)
+
+    def __call__(self, url):
+        records = []
+
+        self.base = url[:url.rfind('/') + 1]
+
+        locale.setlocale(locale.LC_ALL, 'nl_NL.utf8')
+
+        html = urllib2.urlopen(url).read()
+        html = html.replace('<center>', '').replace('</center>', '')
+        html = scrubHTML(html)
+
+        soup = BeautifulSoup.BeautifulSoup(html)
+
+        links = soup.fetch('a', {'href': lambda s:s and s.endswith('pdf')})
+        for link in links:
+            record = SimpleRecord('File')
+            record['date'] = self._makeDate(link.string)
+            record['title'] = removeHTMLWhiteSpace(link.string)
+            record['files'] = [self.base + link['href']]
+            records.append(record)
+        
+        locale.resetlocale()
+        return records
+
+    def _makeDate(self, link):
+        node = link.next.next
+        while True:
+            string = removeHTMLWhiteSpace(node.string)
+            if string:
+                return time.strptime(removeHTMLWhiteSpace(string), '%d %B %Y')
+            else:
+                node = node.next
+        
+
 class PersberichtenScrapeTransform:
     """Another transform that takes a URL and returns a list of
     records.  This time it's Minaraad's Persberichten page.
