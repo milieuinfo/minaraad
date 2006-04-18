@@ -243,7 +243,6 @@ class AdviezenScrapeTransform:
         locale.resetlocale()
         return records
 
-
     def _extractRecords(self, tr, year):
         # This corresponds to one <tr>
         records = []
@@ -315,7 +314,60 @@ class AdviezenScrapeTransform:
         return titles, emails
 
     def _extractFiles(self, td):
-        urls = [el['href'] for el in td('a')]
-        #return [urllib2.urlopen(self.base + url).read() for url in urls]
-        return urls
+        return [el['href'] for el in td('a')]
 
+
+class PersberichtenScrapeTransform:
+    """Another transform that takes a URL and returns a list of
+    records.  This time it's Minaraad's Persberichten page.
+
+    >>> transform = PersberichtenScrapeTransform()
+    >>> records = transform(
+    ...     'http://www.minaraad.be/Persberichten/persberichten2003.htm')
+    >>> len(records)
+    53
+    >>> records[0]['date'], records[0]['title']
+    ((2006, 2, 3, 0, 0, 0, 4, 34, -1), 'Uitvoering RSV')
+    >>> records[-1]['date'], records[-1]['title']
+    ((2005, 12, 1, 0, 0, 0, 3, 335, -1), 'Slimme kilometerheffing')
+    >>> records[-1]['pdfs'] # doctest: +ELLIPSIS
+    ['http://www.minaraad.be/Persberichten/persberichten%202005/persbericht%20van%2001%20december%202005.pdf']
+    """
+    interface.implements(ITransform)
+
+    def __call__(self, url):
+        records = []
+
+        self.base = url[:url.rfind('/') + 1]
+
+        locale.setlocale(locale.LC_ALL, 'nl_NL.utf8')
+
+        html = urllib2.urlopen(url).read()
+        html = html.replace('<center>', '').replace('</center>', '')
+        html = scrubHTML(html)
+
+        soup = BeautifulSoup.BeautifulSoup(html)
+
+        links = soup.fetch('a', {'href': lambda s:s and s.endswith('pdf')})
+        for link in links:
+            record = SimpleRecord('persberichten')
+            record['date'] = self._makeDate(link.string)
+            record['title'] = self._extractTitle(link)
+            record['pdfs'] = [self.base + link['href']]
+            records.append(record)
+        
+        locale.resetlocale()
+        return records
+
+    def _extractTitle(self, link):
+        node = link.next.next
+        while True:
+            string = removeHTMLWhiteSpace(node.string)
+            if string:
+                return string
+            else:
+                node = node.next
+
+    def _makeDate(self, string):
+        return time.strptime(removeHTMLWhiteSpace(string), '%d %B %Y')
+        
