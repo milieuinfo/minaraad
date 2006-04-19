@@ -45,14 +45,14 @@ class MinaResolver:
     ...     r.category = category
     ...     resolve(r)
     '/foo-raad/adviezen/adv_3535/'
-    '/foo-raad/nieuwsbriefen/newsl_3535/'
+    '/foo-raad/nieuwsbrieven/newsl_3535/'
     '/foo-raad/persberichten/pressr_3535/'
     """
     interface.implements(IPathResolver)
 
     scrapeCategories = {
         'Advisory': '/adviezen/adv_%s/',
-        'File': '/nieuwsbriefen/newsl_%s/',
+        'File': '/nieuwsbrieven/newsl_%s/',
         'Pressrelease': '/persberichten/pressr_%s/',
         }
 

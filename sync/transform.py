@@ -372,11 +372,11 @@ class AdviezenScrapeTransform:
         return ['%s%s' % (self.base, el['href']) for el in td('a')]
 
 
-class NieuwsbriefenScrapeTransform:
+class NieuwsbrievenScrapeTransform:
     """Another transform that takes a URL and returns a list of
-    records.  This time it's Minaraad's Nieuwsbriefen page.
+    records.  This time it's Minaraad's Nieuwsbrieven page.
 
-    >>> transform = NieuwsbriefenScrapeTransform()
+    >>> transform = NieuwsbrievenScrapeTransform()
     >>> records = transform(
     ...     'http://www.minaraad.be/nieuwsbrief/nieuwsbrief.htm')
     >>> len(records)
@@ -464,7 +464,7 @@ class PersberichtenScrapeTransform:
     >>> records = transform(
     ...     'http://www.minaraad.be/Persberichten/persberichten2003.htm')
     >>> len(records)
-    53
+    54
     >>> records[0]['date'], records[0]['title']
     ((2006, 2, 3, 0, 0, 0, 4, 34, -1), 'Uitvoering RSV')
     >>> records[-1]['date'], records[-1]['title']

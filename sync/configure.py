@@ -70,8 +70,8 @@ def transforms():
         )
     
     zope.component.provideUtility(
-        minaraad.sync.transform.NieuwsbriefenScrapeTransform(),
-        name='mina-transform-nieuwsbriefenscrape',
+        minaraad.sync.transform.NieuwsbrievenScrapeTransform(),
+        name='mina-transform-nieuwsbrievenscrape',
         )
     
     zope.component.provideUtility(
