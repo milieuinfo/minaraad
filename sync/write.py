@@ -208,11 +208,8 @@ class ScrapeHandler(BasicHandler):
 
         suitableId = normalize(record['title'])
 
-        if suitableId in parent.objectIds():
-            msg = ("Object with id %r already existed in %r." %
-                   (suitableId, parent))
-            self.logger.critical(msg)
-            raise ValueError(msg)
+        while suiteableId in parent.objectIds():
+            suiteableId += '-2'
 
         parent.invokeFactory(portalType, suitableId)
         obj = getattr(parent, suitableId)
