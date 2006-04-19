@@ -133,12 +133,12 @@ class TestRealLifeScrape:
 
     >>> reader = zope.component.getUtility(interfaces.IReader)
     >>> urls = ('http://www.minaraad.be/tablad%202006.htm',
-    ...         'http://www.minaraad.be/tablad%202005.htm',
-    ...         'http://www.minaraad.be/tablad%202004.htm',
-    ...         'http://www.minaraad.be/tablad%202003.htm',
-    ...         'http://www.minaraad.be/tablad%202002.htm',
-    ...         'http://www.minaraad.be/tablad%202001.htm',
-    ...         'http://www.minaraad.be/tablad%202000.htm',
+    ...         #'http://www.minaraad.be/tablad%202005.htm',
+    ...         #'http://www.minaraad.be/tablad%202004.htm',
+    ...         #'http://www.minaraad.be/tablad%202003.htm',
+    ...         #'http://www.minaraad.be/tablad%202002.htm',
+    ...         #'http://www.minaraad.be/tablad%202001.htm',
+    ...         #'http://www.minaraad.be/tablad%202000.htm',
     ...
     ...         'http://www.minaraad.be/nieuwsbrief/nieuwsbrief.htm',
     ...
@@ -146,11 +146,28 @@ class TestRealLifeScrape:
     
     >>> reader.feed(urls)
     >>> writer = interfaces.IWriter(reader)
-    >>> import pdb;pdb.set_trace()
     >>> writer.write()
-    Customization policy for minaraad installed
-    >>> app = writer._getDatabase()
 
+    Now, let's look into our Plone Site and take some random sample:
+    
+    >>> plone = writer._getDatabase().minaraad
+    >>> adviezen06 = plone.adviezen.adv_2006
+    >>> len(adviezen06.objectIds())
+    14
+    >>> adviezen06['het-bodemsaneringsdecreet-samen-met-serv'].objectIds()
+    ['2006-02.pdf']
+
+    >>> from pprint import pprint
+    >>> pprint(plone.nieuwsbrieven.newsl_2003.objectIds())
+    ['03-01-20nieuwsbrief.pdf',
+     '03-02-20nieuwsbrief.pdf',
+     '03-03-20nieuwsbrief.pdf',
+     '03-04-20nieuwsbrief.pdf',
+     '03-05-20nieuwsbrief.pdf',
+     '03-06-20nieuwsbrief.pdf',
+     '03-07-20nieuwsbrief.pdf',
+     '03-08-20nieuwsbrief.pdf',
+     '03-09-20nieuwsbrief.pdf']
     """
 
 

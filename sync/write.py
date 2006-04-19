@@ -204,13 +204,7 @@ class ScrapeHandler(BasicHandler):
         portalType = record.category
         parent = self._getContainer(path)
 
-        normalize = parent.plone_utils.normalizeString
-
-        suitableId = normalize(record['title'])
-
-        while suitableId in parent.objectIds():
-            suitableId += '-2'
-
+        suitableId = self._suitableId(parent, record)
         parent.invokeFactory(portalType, suitableId)
         obj = getattr(parent, suitableId)
 
@@ -219,13 +213,34 @@ class ScrapeHandler(BasicHandler):
 
         get_transaction().commit(1)
 
+    def _suitableId(self, parent, record):
+        normalize = parent.plone_utils.normalizeString
+        suitableId = normalize(record['title'])
+        while suitableId in parent.objectIds():
+            suitableId += '-2'
+        return suitableId
+
     def _update(self, obj, record):
         obj.setTitle(record['title'])
         self.logger.debug("%s: Updated title." %
                           ('/'.join(obj.getPhysicalPath())))
 
 
+class NieuwsbriefScrapeHandler(ScrapeHandler):
+    def _suitableId(self, parent, record):
+        normalize = parent.plone_utils.normalizeString
+        name = normalize(record['files'][0].split('/')[-1])
+        while name in parent.objectIds():
+            name = 'copy_' + name
+        return name
+    
+    def _update(self, obj, record):
+        super(NieuwsbriefScrapeHandler, self)._update(obj, record)
+        obj.setEffectiveDate(time.mktime(record['date']))
+
+
 class FileScrapeHandler(ScrapeHandler):
+    """This handles attachements."""
     def _update(self, obj, record):
         super(FileScrapeHandler, self)._update(obj, record)
         normalize = obj.plone_utils.normalizeString
@@ -254,12 +269,6 @@ class AdviezenScrapeHandler(FileScrapeHandler):
 
     def _getContactPersons(self, context, emails):
         return [] # XXX
-
-
-class NieuwsbriefScrapeHandler(FileScrapeHandler):
-    def _update(self, obj, record):
-        super(NieuwsbriefScrapeHandler, self)._update(obj, record)
-        obj.setEffectiveDate(time.mktime(record['date']))
 
 
 class PersberichtenScrapeHandler(FileScrapeHandler):
