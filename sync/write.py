@@ -257,6 +257,7 @@ class FileScrapeHandler(ScrapeHandler):
             fileObj.setTitle(name)
             fileObj.setFile(urllib2.urlopen(url).read(),
                             mimetype='application/pdf')
+            fileObj.reindexObject()
 
         self.logger.debug("%s: Added %s files." %
                           ('/'.join(obj.getPhysicalPath()), len(files)))
