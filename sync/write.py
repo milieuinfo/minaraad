@@ -231,10 +231,15 @@ class ScrapeHandler(BasicHandler):
 class FileScrapeHandler(ScrapeHandler):
     def _update(self, obj, record):
         super(FileScrapeHandler, self)._update(obj, record)
-        for idx, url in enumerate(record['files']):
+        normalize = parent.plone_utils.normalizeString
+        
+        for url in record['files']:
+            name = normalize(url.split('/')[-1])
+            while name in obj.objectIds():
+                name = 'copy_' + name
             contents = urllib2.urlopen(url).read()
-            obj.invokeFactory('File', str(idx))
-            fileObj = getattr(obj, str(idx))
+            obj.invokeFactory('File', name)
+            fileObj = getattr(obj, name)
             fileObj.setFile(contents, mimetype='application/pdf')
         self.logger.debug("%s: Added %s files." %
                           ('/'.join(obj.getPhysicalPath()), idx+1))
