@@ -59,6 +59,8 @@ def main():
         names = members()
     else:
         usage()
+
+    del sys.argv[1]
     
     print
     print "Starting the actual writing process..."
