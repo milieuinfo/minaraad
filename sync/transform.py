@@ -291,7 +291,10 @@ class AdviezenScrapeTransform:
         for tr in content('tr'):
             records.extend(self._extractRecords(tr, year))
 
-        locale.resetlocale()
+        try:
+            locale.resetlocale()
+        except locale.Error:
+            pass # dontcare
         return records
 
     def _extractRecords(self, tr, year):
@@ -422,7 +425,10 @@ class NieuwsbrievenScrapeTransform:
                                link['href'] or self.base + link['href']]
             records.append(record)
         
-        locale.resetlocale()
+        try:
+            locale.resetlocale()
+        except locale.Error:
+            pass # dontcare
         return records
 
     def _makeDate(self, link):
@@ -496,7 +502,10 @@ class PersberichtenScrapeTransform:
             record['files'] = [self.base + link['href']]
             records.append(record)
         
-        locale.resetlocale()
+        try:
+            locale.resetlocale()
+        except locale.Error:
+            pass # dontcare
         return records
 
     def _extractTitle(self, link):
