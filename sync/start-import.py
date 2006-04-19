@@ -7,11 +7,10 @@ import glob
 import sys
 from path import path
 
-import zope.component
-
 from tests.utils import setUpEnviron
 setUpEnviron()
 
+import zope.component
 from CipraSync import interfaces
 import minaraad.sync.configure
 
