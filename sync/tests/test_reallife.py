@@ -133,12 +133,12 @@ class TestRealLifeScrape:
 
     >>> reader = zope.component.getUtility(interfaces.IReader)
     >>> urls = ('http://www.minaraad.be/tablad%202006.htm',
-    ...         #'http://www.minaraad.be/tablad%202005.htm',
-    ...         #'http://www.minaraad.be/tablad%202004.htm',
-    ...         #'http://www.minaraad.be/tablad%202003.htm',
-    ...         #'http://www.minaraad.be/tablad%202002.htm',
-    ...         #'http://www.minaraad.be/tablad%202001.htm',
-    ...         #'http://www.minaraad.be/tablad%202000.htm',
+    ...         'http://www.minaraad.be/tablad%202005.htm',
+    ...         'http://www.minaraad.be/tablad%202004.htm',
+    ...         'http://www.minaraad.be/tablad%202003.htm',
+    ...         'http://www.minaraad.be/tablad%202002.htm',
+    ...         'http://www.minaraad.be/tablad%202001.htm',
+    ...         'http://www.minaraad.be/tablad%202000.htm',
     ...
     ...         'http://www.minaraad.be/nieuwsbrief/nieuwsbrief.htm',
     ...

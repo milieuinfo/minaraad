@@ -247,9 +247,10 @@ class FileScrapeHandler(ScrapeHandler):
 
         files = record['files']
         for url in files:
-            name = normalize(url.split('/')[-1])
+            name = unicode(url.split('/')[-1], errors='ignore')
+            name = normalize(name.decode('ascii', 'ignore'))
             while name in obj.objectIds():
-                name = 'copy_' + name
+                name += '-2'
             contents = urllib2.urlopen(url).read()
             obj.invokeFactory('File', name)
             fileObj = getattr(obj, name)
