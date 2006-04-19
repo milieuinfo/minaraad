@@ -1,6 +1,6 @@
 import unittest
-from zope.testing.doctestunit import DocTestSuite
-from zope.testing.doctest import ELLIPSIS
+from doctest import DocTestSuite
+from doctest import ELLIPSIS
 
 from zope import component
 
@@ -21,8 +21,8 @@ class TestConfigure:
     def test_resolver(self):
         """
         >>> from minaraad.sync import configure
-        >>> configure.resolver() # doctest: +ELLIPSIS
-        >>> component.getUtility(interfaces.IPathResolver, 'mina-resolver')
+        >>> configure.resolver()
+        >>> component.getUtility(interfaces.IPathResolver, 'mina-resolver') 
         <minaraad.sync.write.MinaResolver instance ...>
         """
 

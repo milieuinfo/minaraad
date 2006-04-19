@@ -218,6 +218,7 @@ class ScrapeHandler(BasicHandler):
         obj = getattr(parent, suitableId)
 
         self._update(obj, record)
+        obj.reindexObject()
 
         get_transaction().commit(1)
 

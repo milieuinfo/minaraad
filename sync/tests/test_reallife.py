@@ -1,6 +1,5 @@
 import unittest
-from zope.testing.doctestunit import DocTestSuite
-from zope.testing.doctest import ELLIPSIS
+from doctest import DocTestSuite
 
 from zope import component
 
@@ -154,7 +153,7 @@ class TestRealLifeScrape:
 
 
 def test_suite():
-    return DocTestSuite(setUp=setUp, tearDown=tearDown, optionflags=ELLIPSIS)
+    return DocTestSuite(setUp=setUp, tearDown=tearDown)
 
 if __name__ == '__main__':
     unittest.main(defaultTest='test_suite')

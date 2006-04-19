@@ -380,7 +380,22 @@ class NieuwsbriefenScrapeTransform:
     >>> records = transform(
     ...     'http://www.minaraad.be/nieuwsbrief/nieuwsbrief.htm')
     >>> len(records)
-    XXX
+    31
+
+    Let's print out the first 3 Nieuwsbrieven of 2003:
+
+    >>> from pprint import pprint
+    >>> twokthree = [r for r in records if r['title'].startswith('2003')]
+    >>> pprint(twokthree[:3])
+    [{'date': (2003, 3, 31, 0, 0, 0, 0, 90, -1),
+      'files': ['http://www.minaraad.be/nieuwsbrief/nieuwsbrieven%202003/03-01%20Nieuwsbrief.pdf'],
+      'title': '2003|01'},
+     {'date': (2003, 4, 25, 0, 0, 0, 4, 115, -1),
+      'files': ['http://www.minaraad.be/nieuwsbrief/nieuwsbrieven%202003/03-02%20Nieuwsbrief.pdf'],
+      'title': '2003|02'},
+     {'date': (2003, 5, 16, 0, 0, 0, 4, 136, -1),
+      'files': ['http://www.minaraad.be/nieuwsbrief/nieuwsbrieven%202003/03-03%20Nieuwsbrief.pdf'],
+      'title': '2003|03'}]
     """
     interface.implements(ITransform)
 
@@ -402,18 +417,41 @@ class NieuwsbriefenScrapeTransform:
             record = SimpleRecord('File')
             record['date'] = self._makeDate(link.string)
             record['title'] = removeHTMLWhiteSpace(link.string)
-            record['files'] = [self.base + link['href']]
+            record['files'] = [link['href'].startswith('http://') and
+                               link['href'] or self.base + link['href']]
             records.append(record)
         
         locale.resetlocale()
         return records
 
     def _makeDate(self, link):
+        # Health warning: very silly code ahead
+        def ttuple(string):
+            try:
+                return time.strptime(string, '%d %B %Y')
+            except ValueError:
+                return None
+        
         node = link.next.next
         while True:
             string = removeHTMLWhiteSpace(node.string)
             if string:
-                return time.strptime(removeHTMLWhiteSpace(string), '%d %B %Y')
+                if ttuple(string):
+                    return ttuple(string)
+                
+                # in one case, the string is only month and year,
+                # and the previous node holds the day:
+                day = node.previous.string[-2:]
+                string = ' '.join((day, string))
+                if ttuple(string):
+                    return ttuple(string)
+
+                # in yet another case the date is somewhere else completely:
+                daymonth = removeHTMLWhiteSpace(link.next.string.split('-')[1])
+                year = removeHTMLWhiteSpace(node.string)
+                string = ' '.join((daymonth, year))
+                if ttuple(string):
+                    return ttuple(string)
             else:
                 node = node.next
         
