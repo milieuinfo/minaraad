@@ -480,7 +480,12 @@ def _addTextIndexNG3Index(portal, out):
     """Remove the standard SearchableText index
     """
     catalog_tool = getToolByName(portal, 'portal_catalog')
+    if (str(type(catalog_tool._catalog.getIndex('SearchableText').aq_base)) ==
+        "<class 'Products.TextIndexNG3.TextIndexNG3.TextIndexNG3'>"):
+        return
+
     print >> out, "Removing SearchableText index"
+    
     catalog_tool._removeIndex('SearchableText')
 
     print >> out, "Adding new index for TextIndexNG3"
