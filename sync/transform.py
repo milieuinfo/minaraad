@@ -389,13 +389,13 @@ class NieuwsbrievenScrapeTransform:
     >>> pprint(twokthree[:3])
     [{'date': (2003, 3, 31, 0, 0, 0, 0, 90, -1),
       'files': ['http://www.minaraad.be/nieuwsbrief/nieuwsbrieven%202003/03-01%20Nieuwsbrief.pdf'],
-      'title': '2003|01'},
+      'title': u'2003|01'},
      {'date': (2003, 4, 25, 0, 0, 0, 4, 115, -1),
       'files': ['http://www.minaraad.be/nieuwsbrief/nieuwsbrieven%202003/03-02%20Nieuwsbrief.pdf'],
-      'title': '2003|02'},
+      'title': u'2003|02'},
      {'date': (2003, 5, 16, 0, 0, 0, 4, 136, -1),
       'files': ['http://www.minaraad.be/nieuwsbrief/nieuwsbrieven%202003/03-03%20Nieuwsbrief.pdf'],
-      'title': '2003|03'}]
+      'title': u'2003|03'}]
     """
     interface.implements(ITransform)
 
@@ -416,7 +416,8 @@ class NieuwsbrievenScrapeTransform:
         for link in links:
             record = SimpleRecord('File')
             record['date'] = self._makeDate(link.string)
-            record['title'] = removeHTMLWhiteSpace(link.string)
+            record['title'] = unicode(removeHTMLWhiteSpace(link.string),
+                                      'iso-8859-1')
             record['files'] = [link['href'].startswith('http://') and
                                link['href'] or self.base + link['href']]
             records.append(record)
@@ -466,9 +467,9 @@ class PersberichtenScrapeTransform:
     >>> len(records)
     54
     >>> records[0]['date'], records[0]['title']
-    ((2006, 2, 3, 0, 0, 0, 4, 34, -1), 'Uitvoering RSV')
+    ((2006, 2, 3, 0, 0, 0, 4, 34, -1), u'Uitvoering RSV')
     >>> records[-1]['date'], records[-1]['title']
-    ((2005, 12, 1, 0, 0, 0, 3, 335, -1), 'Slimme kilometerheffing')
+    ((2005, 12, 1, 0, 0, 0, 3, 335, -1), u'Slimme kilometerheffing')
     >>> records[-1]['files'] # doctest: +ELLIPSIS
     ['http://www.minaraad.be/Persberichten/persberichten%202005/persbericht%20van%2001%20december%202005.pdf']
     """
@@ -491,7 +492,7 @@ class PersberichtenScrapeTransform:
         for link in links:
             record = SimpleRecord('Pressrelease')
             record['date'] = self._makeDate(link.string)
-            record['title'] = self._extractTitle(link)
+            record['title'] = unicode(self._extractTitle(link), 'iso-8859-1')
             record['files'] = [self.base + link['href']]
             records.append(record)
         

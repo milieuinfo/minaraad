@@ -146,9 +146,11 @@ class TestRealLifeScrape:
     
     >>> reader.feed(urls)
     >>> writer = interfaces.IWriter(reader)
+    >>> import pdb;pdb.set_trace()
     >>> writer.write()
     Customization policy for minaraad installed
     >>> app = writer._getDatabase()
+
     """
 
 
