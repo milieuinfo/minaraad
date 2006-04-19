@@ -208,8 +208,8 @@ class ScrapeHandler(BasicHandler):
 
         suitableId = normalize(record['title'])
 
-        while suiteableId in parent.objectIds():
-            suiteableId += '-2'
+        while suitableId in parent.objectIds():
+            suitableId += '-2'
 
         parent.invokeFactory(portalType, suitableId)
         obj = getattr(parent, suitableId)
