@@ -237,6 +237,7 @@ class NieuwsbriefScrapeHandler(ScrapeHandler):
     def _update(self, obj, record):
         super(NieuwsbriefScrapeHandler, self)._update(obj, record)
         obj.setEffectiveDate(time.mktime(record['date']))
+        obj.setFile(urllib2.urlopen(record['files'][0]).read())
 
 
 class FileScrapeHandler(ScrapeHandler):
@@ -251,10 +252,11 @@ class FileScrapeHandler(ScrapeHandler):
             name = normalize(name.decode('ascii', 'ignore'))
             while name in obj.objectIds():
                 name += '-2'
-            contents = urllib2.urlopen(url).read()
-            obj.invokeFactory('File', name)
+            obj.invokeFactory('FileAttachment', name)
             fileObj = getattr(obj, name)
-            fileObj.setFile(contents, mimetype='application/pdf')
+            fileObj.setTitle(name)
+            fileObj.setFile(urllib2.urlopen(url).read(),
+                            mimetype='application/pdf')
 
         self.logger.debug("%s: Added %s files." %
                           ('/'.join(obj.getPhysicalPath()), len(files)))
@@ -269,7 +271,10 @@ class AdviezenScrapeHandler(FileScrapeHandler):
         obj.setDate(time.mktime(record['date']))
 
     def _getContactPersons(self, context, emails):
-        return [] # XXX
+        catalog = context.portal_catalog
+        cts = catalog(portal_type='ContactPerson',
+                      getEmail=emails)
+        return [ct.getObject() for ct in cts]
 
 
 class PersberichtenScrapeHandler(FileScrapeHandler):
