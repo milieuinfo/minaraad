@@ -687,4 +687,8 @@ input.searchButton {
 
 /* --- End Sitemap --- */
 
+.photoAlbumEntryTitle {
+    height: 4em !important;
+}
+
 /* </dtml-with> */
