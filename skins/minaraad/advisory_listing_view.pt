@@ -34,14 +34,20 @@
                     <td class="advisory_listtitle"
                         tal:define="current_path python:'/'.join(obj.getPhysicalPath());
                                     attachments python:context.portal_catalog.searchResults(portal_type='FileAttachment',
-                                                                                            path=current_path,)">
+                                                                                            path=current_path,);">
                         <tal:block tal:repeat="attachment attachments">
                             <div tal:define="desc attachment/Description;
-                                            item_type attachment/portal_type;"
+                                            item_type attachment/portal_type;
+                                            idx repeat/attachment/index"
                                  tal:omit-tag="">
                                 <a tal:attributes="href attachment/getURL;
-                                                   title desc;"
-                                   tal:content="attachment/Title" />
+                                                   title desc;">
+                                   <span tal:condition="python:idx ==0"
+                                         tal:replace="item_object/Title" />
+                                   <span tal:condition="python:idx &gt;0"
+                                         tal:replace="attachment/Title" />
+
+                                </a>
                                 <br />
                             </div>
                         </tal:block>
