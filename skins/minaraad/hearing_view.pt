@@ -12,7 +12,7 @@
                                                                                     sort_on='getItemstartdate');">
         <metal:block metal:define-macro="folderlisting" />
         <br />
-        <tal:block tal:define="start python:context.getStartdate();
+        <tal:block tal:define="start python:context.getStartdate()-4;
                                current python:DateTime()"
                    tal:condition="python:current &lt; start">
         <div class="img_right">
