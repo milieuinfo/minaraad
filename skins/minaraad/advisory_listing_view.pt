@@ -39,16 +39,14 @@
                             <div tal:define="desc attachment/Description;
                                             item_type attachment/portal_type;
                                             idx repeat/attachment/index"
-                                 tal:omit-tag="">
+                                 class="advisory_links">
                                 <a tal:attributes="href attachment/getURL;
                                                    title desc;">
                                    <span tal:condition="python:idx ==0"
                                          tal:replace="item_object/Title" />
                                    <span tal:condition="python:idx &gt;0"
                                          tal:replace="attachment/Title" />
-
                                 </a>
-                                <br />
                             </div>
                         </tal:block>
 

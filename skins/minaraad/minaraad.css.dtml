@@ -372,6 +372,9 @@ dl.Attendees dd{
 .advisory_listing_contacts {
     padding-top: 10px;
 }
+.advisory_links {
+    padding-bottom: 5px;
+}
 /* --- End Advisory View --- */
 
 /* --- Start Subscribers overview --- */
@@ -505,7 +508,7 @@ div.portal-tabs ul li {
 div.portal-tabs li ul {
     display: none;
     position: absolute;
-    left: 154px; 
+    left: 153px; 
     top: 0px;
 }
 
