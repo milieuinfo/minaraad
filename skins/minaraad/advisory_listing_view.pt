@@ -56,7 +56,8 @@
 
                             <tal:block tal:repeat="contact contacts">
                             <a tal:attributes="href string:mailto:${contact/getEmail}"
-                               tal:content="contact/getEmail" />
+                               tal:content="contact/getEmail" 
+                               class="discreet" />
                             </tal:block>
                         </div>
                     </td>

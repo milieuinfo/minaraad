@@ -5,8 +5,7 @@
 
     <body>
     <metal:block metal:fill-slot="main" 
-                 tal:define="folders python:context.getFolderContents(contentFilter={'portal_type':'Folder'});
-                             item_type_class python: 'contenttype-' + normalizeString(folders);">
+                 tal:define="folders python:context.getFolderContents(contentFilter={'portal_type':'Folder'});">
         <metal:block metal:define-macro="folderlisting" />
         
         
@@ -22,10 +21,13 @@
         </div>
         <div tal:repeat="item folders"
              class="listspacing">
-             <span tal:attributes="class item_type_class">
-             <a tal:attributes="href item/getURL"
-                tal:content="item/Title" /> 
+             <span class="contenttype-folder">
+             	<a tal:attributes="href item/getURL"
+                   tal:content="item/Title"
+ 				   class="visualIconPadding" /> 
             </span>
+			<div class="description-padding" 
+				 tal:content="item/Description" />
         </div>
 
    </metal:block>

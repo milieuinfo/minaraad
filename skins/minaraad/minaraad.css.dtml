@@ -17,6 +17,10 @@ legend {
     padding-bottom: 10px;
 }
 
+.description-padding {
+	padding-left: 16px;
+}
+
 .img_right {
     float: right;
 }
@@ -379,7 +383,7 @@ dl.Attendees dd{
 }
 
 .advisory_listing_contacts {
-    padding-top: 10px;
+    padding-top: 5px;
 }
 .advisory_links {
     padding-bottom: 5px;
