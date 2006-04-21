@@ -13,6 +13,10 @@ legend {
     font-size: 100%;
 }
 
+.documentDescription {
+    padding-bottom: 10px;
+}
+
 .img_right {
     float: right;
 }
@@ -209,11 +213,16 @@ td.portal-siteactions {
     width: 15%;
 }
 
+.mina_portlets_spacing{
+    margin-top: 50px;
+}
+
 /*--- Start portlet personal bar --- */
 
 .personalbar, .portlet-personalbar-mina {
     background-color: #8FBA37;
     border-top: 1px solid  #E0FAAC;
+    border-bottom: 1px solid  #E0FAAC; 
     padding: 10px  3px 5px 3px;
     width: 150px;
     font-size: 11px;
