@@ -19,16 +19,13 @@
             class="portal-tabs">
     
             <ul id="portal-tabs-nav">
-    
                 <li tal:define="selected_tab context/isHomePage"
                     tal:attributes="class python:test(selected_tab, 'selected', 'plain');
                                           title portal/Description;">
                    <span class="IEFix_paddingmenu">
-                        <a tal:attributes="class python:test(selected_tab, 'selected', 'plain');
-                                       href string:${portal_url};
-                                       title portal/Description;">
-                            Home 
-                        </a>
+                       <a tal:attributes="class python:test(selected_tab, 'selected', 'plain');
+                                          href string:${portal_url};"
+						  title="Home">Home</a>
                     </span>
                 </li>
                 <tal:items metal:use-macro="here/global_menu/macros/menu">

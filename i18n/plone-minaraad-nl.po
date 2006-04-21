@@ -111,4 +111,7 @@ msgstr "Jaarverslagen overzicht"
 msgid "mrevent_listing_view"
 msgstr "Evenementen overzicht"
 
+msgid "mina_listing"
+msgstr "Map overzicht"
+
 

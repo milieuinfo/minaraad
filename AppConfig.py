@@ -120,6 +120,12 @@ SELECT_VIEWS = {
     '/studies/std_2006': 'study_listing_view',
     '/jaarverslag': 'annualreport_listing_view',
     '/evenementen': 'mrevent_listing_view',
+    '/voorstelling': 'mina_listing',
+    '/adviezen': 'mina_listing',
+    '/nieuwsbrieven': 'mina_listing',
+    '/persberichten': 'mina_listing',
+    '/studies': 'mina_listing',
+    '/hoorzittingen': 'mina_listing',
     }
 
 #FCKeditor set height and width
