@@ -102,13 +102,6 @@
                         i18n:attributes="value label_export_email;"
                         tal:attributes="tabindex tabindex/next;"
                         tal:condition="emailsubscriptions" />
-                <input class="context"
-                        type="submit"
-                        name="form.button.ExportPost"
-                        value="Export Post Subscribers"
-                        i18n:attributes="value label_export_post;"
-                        tal:attributes="tabindex tabindex/next;"
-                        tal:condition="postsubscriptions" />
 
             <!-- Remember the value of subscription. -->
             <input class="context"
