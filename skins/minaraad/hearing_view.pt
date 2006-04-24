@@ -41,19 +41,6 @@
                    name="form.submitted" 
                    value="register" />
            </form>
-
-            <form tal:condition="python:checkPermission('Manage portal', here)"
-                  tal:attributes="action string:${context/absolute_url}/@@attendees_view">
-            <input class="context" 
-                   type="submit" 
-                   name="form.button.Submit" 
-                   value="Export CSV"
-                   i18n:attributes="value label_exportcsv;" />
-
-            <input type="hidden" 
-                   name="form.submitted" 
-                   value="exportCSV" />
-           </form>
         </div>
         </tal:block>
 
@@ -209,6 +196,18 @@
                 (none currently)
                 </dd>
             </dl>
+             <form tal:condition="python:checkPermission('Manage portal', here)"
+                  tal:attributes="action string:${context/absolute_url}/@@attendees_view">
+            <input class="context" 
+                   type="submit" 
+                   name="form.button.Submit" 
+                   value="Export CSV"
+                   i18n:attributes="value label_exportcsv;" />
+
+            <input type="hidden" 
+                   name="form.submitted" 
+                   value="exportCSV" />
+           </form>
         </fieldset>
         </tal:block>
 

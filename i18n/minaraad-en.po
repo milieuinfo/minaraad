@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minaraad 0.1\n"
-"POT-Creation-Date: 2006-04-13 11:54+0000\n"
+"POT-Creation-Date: 2006-04-24 15:01+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: Mirella van Teulingen <m.van.teulingen@zestsoftware.nl>\n"
 "Language-Team: English <info@zestsoftware.nl>\n"
@@ -234,6 +234,11 @@ msgstr ""
 #. Default: "Export Post Subscribers"
 #: browser/export-subscribers.pt
 msgid "label_export_post"
+msgstr ""
+
+#. Default: "Export CSV"
+#: skins/minaraad/hearing_view.pt
+msgid "label_exportcsv"
 msgstr ""
 
 #. Default: "Export Subscriber List"
