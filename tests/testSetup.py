@@ -33,8 +33,9 @@ if __name__ == '__main__':
 
 ##code-section module-header #fill in your manual code here
 import sets
-from path import path
 from Products.minaraad.config import *
+import Globals
+import os.path
 ##/code-section module-header
 
 #
@@ -143,7 +144,9 @@ class testSetup(MainTestCase):
         results = catalog(SearchableText='Zest')
         self.assertEquals(len(results), 0)
 
-        data = open(path(__file__).parent / 'test.pdf').read()
+        product_dir = Globals.package_home(product_globals)
+        pdf_path = os.path.sep.join((product_dir, 'tests', 'test.pdf'))
+        data = open(pdf_path)
         self.portal.invokeFactory('File', 'file')
         f = self.portal.file
         f.setFile(data)

@@ -33,10 +33,6 @@ Once the environment on the server is created you can add minaraad product and a
         * Plone 2.1.2
         (http://prdownloads.sourceforge.net/plone/Plone-2.1.2.tar.gz?download)
     
-        * path (http://www.jorendorff.com/articles/python/path/src/path.py)
-    
-        - Put this into your ``$INSTANCE_HOME/lib/python`` directory.
-    
         * PasswordResetTool (https://svn.plone.org/svn/collective/PasswordResetTool/trunk)
     
         * FCKeditor 2.2
