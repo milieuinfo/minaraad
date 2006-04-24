@@ -170,16 +170,13 @@ class testSubscriptions(MainTestCase):
         member.setProperties(**props)
 
         sm = SubscriptionManager(self.portal)
-        request = FakeRequest()
-        setDefaultSkin(request)
-        request.response = {}
+        request = self.portal.REQUEST
 
         request['form.button.ExportEmail'] = True
 
         view = zapi.getView(advisory, 
                             'export_subscribers', 
                             request)
-
 
         HEADER_FIELDS = ("Aanhef","Voornaam","Achternaam","Organisatie",
                          "Functie","Straat","Huisnummer","Bus","Postcode",
@@ -201,12 +198,12 @@ class testSubscriptions(MainTestCase):
 
         # let's make some assertions about the response
         self.assertEquals(
-            request.response['Content-Type'],
+            request.response['content-type'],
             'application/vnd.ms-excel; charset=utf-8'
             )
 
         self.assertEquals(
-            request.response['Content-Disposition'],
+            request.response['content-disposition'],
             'attachment; filename=advisory-subscribers.csv'
             )
 

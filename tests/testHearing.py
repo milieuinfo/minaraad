@@ -49,6 +49,13 @@ from Products.minaraad.content.Hearing import Hearing
 from DateTime import DateTime
 from Products.minaraad.tests.utils import load_file
 
+from Products.Five.traversable import FakeRequest
+from zope.app.publication.browser import setDefaultSkin
+from zope.app import zapi
+
+from Products.minaraad.attendees import AttendeeManager
+
+
 TITLE = "title"
 SUBHEADER = "ondertitel"
 DESCRIPTION = "jaja, een ondertitel"
@@ -82,6 +89,9 @@ class testHearing(MainTestCase):
 
         self.portal.contactpersonen.invokeFactory('ContactPerson', id='Jslob')
         self.contactperson = self.portal.contactpersonen.Jslob
+
+        membership = self.portal.portal_membership
+        membership.addMember('member', 'secret', ['Member'], [])
 
     # from class Hearing:
     def test_getThemesList(self):
@@ -176,11 +186,68 @@ class testHearing(MainTestCase):
         correct = "<class 'Products.Archetypes.Field.Image'>"
         self.failUnless(myclass==correct, 'Value is %s and not %s' % (myclass,correct))
 
-    def test_subscribers_export(self):
-        pass
+    def test_attendees_export(self):
+        # This is actually a test for the
+        # browser.attendees.AttendeesManagerView class
+        self.loginAsPortalOwner()
+        self.portal.hoorzittingen.hrz_2006.invokeFactory('Hearing', 'hearing')
+        hearing = self.portal.hoorzittingen.hrz_2006.hearing
 
-    def test_attendees(self):
-        pass
+        self.login('member')
+        member = self.portal.portal_membership.getAuthenticatedMember()
+        props = dict(
+            gender="Yes",
+            firstname="John",
+            fullname="Doe",
+            company="Doe Enterprises",
+            street="Doe Street",
+            housenumber="23",
+            bus="Bus C",
+            zipcode="007",
+            city="Rotterdam",
+            country="The Netherlands",
+            )
+
+        member.setProperties(**props)
+        
+        am = AttendeeManager(hearing)
+        request = self.portal.REQUEST
+
+        request['form.submitted'] = 'exportCSV'
+
+        view = zapi.getView(hearing,
+                            'attendees_view', 
+                            request)
+
+
+        HEADER_FIELDS = ("Aanhef","Voornaam","Achternaam","Organisatie",
+                         "Functie","Straat","Huisnummer","Bus","Postcode",
+                         "Woonplaats","Land","Ander land","Telefoonnummer",
+                         "E-mail")
+        headingLine = ''
+        for x in HEADER_FIELDS:
+            headingLine += '"%s",' % x
+        headingLine = headingLine[:-1] + '\n'
+        self.assertEquals(view(), headingLine)
+
+        # let's do the actual subscription of our member
+        am.addMember(member)
+
+        lines = view().split('\n')
+        self.assertEquals(lines[1], '"Yes","John","Doe","Doe Enterprises",'
+                          '"","Doe Street","23","Bus C","007",'
+                          '"Rotterdam","The Netherlands","","",""')
+
+        # let's make some assertions about the response
+        self.assertEquals(
+            request.RESPONSE.getHeader('content-type'),
+            'application/vnd.ms-excel; charset=utf-8'
+            )
+
+        self.assertEquals(
+            request.RESPONSE.getHeader('content-disposition'),
+            'attachment; filename=hearing-attendees.csv'
+            )
 
 
 def test_suite():

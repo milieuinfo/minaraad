@@ -7,7 +7,7 @@ from StringIO import StringIO
 from types import StringTypes
 
 #from Products.minaraad.browser.subscribers import ExportSubscribersView
-
+from Products.minaraad.browser.utils import buildCSV
 
 class AbstractView(BrowserView):
     def __init__(self, context, request):
@@ -282,65 +282,15 @@ class SubscribersConfigletView(AbstractView):
         ploneUtils = getToolByName(self.context, 'plone_utils')
         safeSubscriberId = ploneUtils.normalizeString(subscriberId).lower()
         
-        portalProperties = getToolByName(self.context, 
-                                         'portal_properties')
-        siteProperties = portalProperties.site_properties
-        charset = siteProperties.getProperty('default_charset')
-        
-        out = StringIO()
-        
-        fields = (('gender', 'Aanhef'), 
-                  ('firstname', 'Voornaam'),
-                  ('fullname', 'Achternaam'),
-                  ('company', 'Organisatie'),
-                  ('jobtitle', 'Functie'),
-                  ('street', 'Straat'),
-                  ('housenumber', 'Huisnummer'),
-                  ('bus', 'Bus'),
-                  ('zipcode', 'Postcode'),
-                  ('city', 'Woonplaats'),
-                  ('country', 'Land'),
-                  ('other_country', 'Ander land'),
-                  ('phonenumber', 'Telefoonnummer'),
-                  ('email', 'E-mail'))
-
-        for pos, field in enumerate(fields):
-            id, title = field
-            
-            out.write(u'"%s"' % title)
-            if pos < len(fields)-1:
-                out.write(u',')
-            
-        out.write(u'\n')
-        
         if type_ == 'post' or type_ == 'email':
             subscribers = self.getMembersOfSubscriptions(type_=type_)
         else:
             raise ValueError("The 'type' argument must be either " \
                              "'post' or 'email'")
-        
-        for subscriber in subscribers:
-            for pos, field in enumerate(fields):
-                id, title = field
-                
-                value = unicode(subscriber.getProperty(id, ''), charset)
-                if id == 'type_':
-                    value = type_
-                value = value.replace(u'"', u'""')
-                out.write(u'"%s"' % value)
-        
-                if pos < len(fields)-1:
-                    out.write(u',')
 
-            out.write(u'\n')
-            
-        response = self.request.response
-        response['Content-Type'] = \
-            'application/vnd.ms-excel; charset=%s' % charset
-        response['Content-Disposition'] = \
-            'attachment; filename=%s-subscribers.csv' % safeSubscriberId
-
-        return out.getvalue().encode(charset)
+        return buildCSV(self.context,
+                        subscribers,
+                        filename='%s-subscribers.csv' % safeSubscriberId)
 
     def canSubscribeEmail(self, subscriptionid):
         sm = self.subscriptionManager

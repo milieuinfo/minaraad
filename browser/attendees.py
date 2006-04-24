@@ -5,6 +5,7 @@ from Products.CMFCore.utils import getToolByName
 from Products.minaraad.interfaces import IAttendeeManager
 from Products.CMFCore.permissions import ManagePortal
 from AccessControl import ClassSecurityInfo
+from Products.minaraad.browser.utils import buildCSV
 
 class IAttendeesManagerView(Interface):
 
@@ -37,7 +38,7 @@ class AttendeesManagerView(AbstractView):
                    +"/login_form?came_from=" \
                    +urllib.quote(self.referring_url))
 
-        action = getattr(self.request, 'form.submitted', None)
+        action = self.request.get('form.submitted', None)
         member = memberTool.getAuthenticatedMember()
         if action == 'register':
             self.manager.addMember(member)
@@ -47,6 +48,9 @@ class AttendeesManagerView(AbstractView):
             self.manager.removeMember(member)
             return response.redirect(self.referring_url+"?portal_status_message=" \
                    +urllib.quote("You have successfully unregistered"))
+        elif action == 'exportCSV':
+            return self.buildAttendeesCSV()
+        
         else:
             return "error -- no form.button.Submit specified"
     
@@ -82,3 +86,15 @@ class AttendeesManagerView(AbstractView):
                           'member': member})
         
         return attendees
+
+    security.declareProtected(ManagePortal, 'buildAttendeesCSV')
+    def buildAttendeesCSV(self):
+        memTool = getToolByName(self.context, 'portal_membership')
+        attendees = [memTool.getMemberById(memid)
+                     for memid in self.manager.attendees()]
+
+        ploneUtils = getToolByName(self.context, 'plone_utils')
+        
+        return buildCSV(self.context,
+                        attendees,
+                        filename='%s-attendees.csv' % self.context.getId())
