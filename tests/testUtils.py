@@ -43,8 +43,20 @@ class testUtilsMember(PloneTestCase):
                              'firstname': 'Third',
                              })
 
+        self.portal.portal_membership.addMember(
+            'member4', '4re',
+            ['Member'], [], {'email': '', # this guy has no e-mail!
+                             'fullname': 'Member',
+                             'firstname': 'Fourth',
+                             })
+
     def test_getAllMembers(self):
         members = member.getAllMembersWithThreeLetterPassword(self.portal)
+        self.assertEquals(len(members), 2)
+        self.assertEquals(members[0].id, 'member3')
+
+    def test_getAllMembersWithEmail(self):
+        members = member.getAllMembersWithEmail(self.portal)
         self.assertEquals(len(members), 1)
         self.assertEquals(members[0].id, 'member3')
 
@@ -53,11 +65,18 @@ class testUtilsMember(PloneTestCase):
         self.assertEquals(len(members), 1)
         self.assertEquals(members[0].id, 'member3')
 
+    def test_getAllMembersWithoutEmail(self):
+        members = member.getAllMembersWithoutEmail(self.portal)
+        self.assertEquals(len(members), 1)
+        self.assertEquals(members[0].id, 'member4')
+
     def test_sendEmailForAllMembersWithEmail(self):
         member.sendEmailForAllMembersWithEmail(self.portal)
         mailhost = self.portal.MailHost
-        # XXX Continue here
-        import pdb; pdb.set_trace()
+        messages = mailhost.messages
+        self.assertEquals(len(messages), 1)
+        self.failUnless('Inlognaam: member3' in str(messages[0]))
+        self.failUnless('Paswoord: 3re' in str(messages[0]))
 
 
 def test_suite():
