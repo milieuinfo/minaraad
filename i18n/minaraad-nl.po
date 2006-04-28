@@ -228,12 +228,12 @@ msgstr "Exporteer naar Excel"
 #. Default: "Export Email Subscribers"
 #: browser/export-subscribers.pt
 msgid "label_export_email"
-msgstr "Exporteer e-mail abbonnees"
+msgstr "Exporteer e-mail abonnees"
 
 #. Default: "Export Post Subscribers"
 #: browser/export-subscribers.pt
 msgid "label_export_post"
-msgstr "Exporteer post abbonnees"
+msgstr "Exporteer post abonnees"
 
 #. Default: "Export CSV"
 #: skins/minaraad/hearing_view.pt
