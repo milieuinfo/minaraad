@@ -8,23 +8,19 @@ EMAILCONTENTS = \
 """
 Beste %(gender)s %(fullname)s!
 
-De Minaraad heeft een nieuwe website. Het adres is hetzelfde gebleven
--- http://www.minaraad.be -- maar de vormgeving, de structuur en de
-mogelijkheden van de site zijn grondig veranderd en verbeterd. Zo
-bevat de site voortaan een zoekfunctie (rechtsbovenaan) en kan u op al
-onze producten abonneren. De voorkeuren van uw abonnement kan u zelf
-instellen en wijzigen. Hiertoe dient de inlogfunctie linksonderaan de
-website.
+De Minaraad heeft een nieuwe website. Het adres is hetzelfde gebleven -- http://www.minaraad.be -- 
+maar de vormgeving, de structuur en de mogelijkheden van de site zijn grondig veranderd en verbeterd. 
+Zo bevat de site voortaan een zoekfunctie (rechtsbovenaan) en kan u op al onze producten abonneren. 
+De voorkeuren van uw abonnement kan u zelf instellen en wijzigen. Hiertoe dient de inlogfunctie linksonderaan de website.
 
-U hebt zich in het verleden geabonneerd op onze elektronische
-nieuwsbrief of onze persberichten. Bij deze geven wij u een
-inlognaam en initiele paswoord mee.
+U hebt zich in het verleden geabonneerd op onze elektronische nieuwsbrief of onze persberichten. 
+Bij deze geven wij u een inlognaam en initiele paswoord mee.
 
 Inlognaam: %(id)s
 Paswoord: %(password)s
 
-Als u deze invoert dan kan u uw persoonsgegevens controleren, het
-paswoord wijzigen en nadien uw productvoorkeuren kenbaar maken.
+Als u deze invoert dan kan u uw persoonsgegevens controleren, het paswoord wijzigen en nadien uw productvoorkeuren kenbaar maken. 
+Ga voor het wijzigen van uw gegevens naar -- http://www.minaraad.be/plone_memberprefs_panel --
 
 Op deze wijze kunnen wij u informatie op maat aanbieden.
 
