@@ -40,6 +40,7 @@
                 <tal:block tal:define="emailsubscriptions
                                         python:view.canSubscribeEmail(subscription_id);
                                         postsubscriptions python:view.canSubscribePost(subscription_id)">
+
                     <input class="context"
                             type="submit"
                             name="form.button.ExportEmail"
@@ -62,46 +63,43 @@
         </tal:block>
 
         <br />
-        <tal:block tal:define="subscription session/category|nothing;
-                               emailsubscriptions python:view.canSubscribeEmail(subscription);
-                               postsubscriptions python:view.canSubscribePost(subscription)">
-        
+        <tal:block tal:define="subscription session/category|nothing;">
         <form method="post"
               tal:attributes="action string:${context/absolute_url}/$template_id">
 
-                <input class="context"
-                        type="hidden"
-                        name="Hearing"
-                        tal:attributes="value string:Hearing" />
+            <input class="context"
+                    type="hidden"
+                    name="Hearing"
+                    tal:attributes="value string:Hearing" />
 
-                <h6 i18n:translate="label_hearingthemes">Hearing Themes</h6>
+            <h6 i18n:translate="label_hearingthemes">Hearing Themes</h6>
 
-                <div tal:repeat="theme view/subscriptions">
-                    <tal:block tal:condition="theme/category">
-                    <input type="checkbox"
-                            class="noborder"
-                            tal:attributes="tabindex tabindex/next;
-                                            id string:theme;
-                                            name string:theme;
-                                            checked theme/checked;
-                                            value string:${theme/id};" /> 
-                    <span tal:content="theme/Title"
-                    i18n:translate="" /> 
-                    </tal:block>
-                </div>
-                <br />
-                <!-- Remember that 'Hearing' was selected. -->
-                <input class="context"
-                        type="hidden"
-                        name="category"
-                        tal:attributes="value string:Hearing" />
-                <input class="context"
-                        type="submit"
-                        name="form.button.ExportEmail"
-                        value="Export Email Subscribers"
-                        i18n:attributes="value label_export_email;"
-                        tal:attributes="tabindex tabindex/next;"
-                        tal:condition="emailsubscriptions" />
+            <div tal:repeat="theme view/subscriptions">
+                <tal:block tal:condition="theme/category">
+                <input type="checkbox"
+                        class="noborder"
+                        tal:attributes="tabindex tabindex/next;
+                                        id string:theme;
+                                        name string:theme;
+                                        checked theme/checked;
+                                        value string:${theme/id};" /> 
+                <span tal:content="theme/Title"
+                      i18n:translate="" /> 
+                </tal:block>
+            </div>
+            <br />
+            <input class="context"
+                    type="submit"
+                    name="form.button.ExportEmail"
+                    value="Export Email Subscribers"
+                    i18n:attributes="value label_export_email;"
+                    tal:attributes="tabindex tabindex/next;" />
+
+            <!-- Remember that 'Hearing' was selected. -->
+            <input class="context"
+                    type="hidden"
+                    name="category"
+                    tal:attributes="value string:Hearing" />
 
             <!-- Remember the value of subscription. -->
             <input class="context"
