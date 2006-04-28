@@ -30,6 +30,8 @@ Met vriendelijke groet
 
 Het Minaraadteam
 """
+from AccessControl import ModuleSecurityInfo
+security = ModuleSecurityInfo('Products.minaraad.utils.member')
 
 class fuzzydict(dict):
     DEFAULT = ''
@@ -58,6 +60,7 @@ def getAllMembersWithEmail(context):
     return [m for m in getAllMembersWithThreeLetterPassword(context)
             if m.getProperty('email')]
 
+security.declarePublic('getAllMembersWithoutEmail')
 def getAllMembersWithoutEmail(context):
     return [m for m in getAllMembersWithThreeLetterPassword(context)
             if not m.getProperty('email')]
@@ -67,6 +70,7 @@ def makeMagicPassword(username):
     autopass.reverse()
     return ''.join(autopass)
 
+security.declarePublic('sendEmailForAllMembersWithEmail')
 def sendEmailForAllMembersWithEmail(context):
     failedMembers = []
     mailhost = getToolByName(context, 'MailHost')
@@ -87,6 +91,6 @@ def sendEmailForAllMembersWithEmail(context):
         except ConflictError:
             raise
         except Exception, e:
-            failedMembers.append((member, str(e)))
+            failedMembers.append((member.getProperty('id'), str(e)))
 
     return failedMembers

@@ -65,6 +65,9 @@ DirectoryView.registerDirectory('skins/minaraad',
                                     product_globals)
 
 ##code-section custom-init-head #fill in your manual code here
+
+import Products.minaraad.utils.member
+
 ##/code-section custom-init-head
 
 
