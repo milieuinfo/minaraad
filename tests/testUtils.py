@@ -16,6 +16,7 @@ from Products.minaraad.config import *
 from Products.minaraad.utils import member
 import Products.minaraad.tests.MainTestCase
 import email
+import AccessControl
 
 class testUtilsMemberEmail(PloneTestCase):
 
@@ -120,6 +121,17 @@ class testUtilsMemberNonVocabularyTitles(PloneTestCase):
         self.assertEquals(membersByTitle.keys(), [''])
         member2 = self.portal.portal_membership.getMemberById('member2')
         self.assertEquals(member2.getProperty('gender'), 'Dr. Ir.')
+
+    def testDoConvertGenderToBeVocabularyConform(self):
+        fun = member.doConvertGenderToBeVocabularyConform
+        self.assertRaises(AccessControl.Unauthorized,
+                          fun, self.portal)
+
+        self.loginAsPortalOwner()
+        fun(self.portal)
+        member2 = self.portal.portal_membership.getMemberById('member2')
+        self.assertEquals(member2.getProperty('gender'), 'Dr. Ir.')
+        
 
 def test_suite():
     from unittest import TestSuite, makeSuite

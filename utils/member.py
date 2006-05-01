@@ -1,8 +1,13 @@
 # -*- coding: iso-8859-1 -*-
 
-from Products.CMFCore.utils import getToolByName
 from ZODB.POSException import ConflictError
+import AccessControl
+
+from Products.CMFCore.utils import getToolByName
+from Products.CMFCore import permissions
+
 from Products.minaraad.config import TITLE_VOCAB
+
 
 SUBJECT = "Nieuwe website"
 EMAILCONTENTS = \
@@ -121,3 +126,12 @@ def mapNonVocabularyTitles(membersbytitle):
         if newtitle != title:
             for m in members:
                 m.setMemberProperties({'gender': newtitle})
+
+security.declarePublic('sendEmailForAllMembersWithEmail')
+def doConvertGenderToBeVocabularyConform(context):
+
+    membership = context.portal_membership
+    if not membership.checkPermission(permissions.ManagePortal, context):
+        raise AccessControl.Unauthorized("Go away, will you?")
+    
+    mapNonVocabularyTitles(getAllMembersWithNonVocabularyTitleByTitle(context))
