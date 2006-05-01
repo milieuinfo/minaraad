@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minaraad 0.1\n"
-"POT-Creation-Date: 2006-04-24 15:01+0000\n"
+"POT-Creation-Date: 2006-05-01 12:23+0000\n"
 "PO-Revision-Date: 2006-04-13 13:49+0200\n"
 "Last-Translator: Mirella van Teulingen <m.van.teulingen@zestsoftware.nl>\n"
 "Language-Team: Nederlands <info@zestsoftware.nl>\n"
@@ -55,6 +55,11 @@ msgstr "Nieuwsbrief"
 #: browser/subscriptions_config.pt
 msgid "Pressrelease"
 msgstr "Persbericht"
+
+#. Default: "Set_my_password_mina"
+#: skins/pwreset_form.cpt
+msgid "Set_my_password_mina"
+msgstr "Wachtwoord opslaan"
 
 #: browser/subscriptions_config.pt
 msgid "Study"
@@ -315,6 +320,11 @@ msgstr "<geen referentie>"
 msgid "label_other_country"
 msgstr "Ander land namelijk:"
 
+#. Default: "A password will be generated and e-mailed to you to complete the registration process."
+#: skins/join_form.cpt
+msgid "label_password_will_be_mailed_mina"
+msgstr "Er wordt een e-mail gestuurd met verdere instructies om de registratie te kunnen afronden."
+
 #. Default: "Phonenumber"
 #: skins/minaraad/contactperson_view.pt
 msgid "label_phonenumber"
@@ -432,10 +442,10 @@ msgstr "Meer informatie"
 msgid "mailtemplate_hours"
 msgstr "uur"
 
-#. Default: "You have been registered as a member of MiNa-Raad website. Please activate your account by visiting ${set_password} You must activate your account within ${expirationtime} hours"
+#. Default: "You have been registered as a member of MiNa-Raad website. A password has been generated for you. Please activate your account and set your own password by visiting ${set_password} You must activate your account within ${expirationtime} hours"
 #: skins/minaraad/registered_notify_template.pt
 msgid "mailtemplate_registered_body"
-msgstr "U bent geregistreerd als lid van de MiNa-Raad website.\n\nGelieve uw account te activeren door op volgende link te klikken:\n\n${set_password}\n\nU dient uw account te activeren binnen de ${expirationtime} uur.\n\n"
+msgstr "U bent geregistreerd als lid van de MiNa-Raad website.\nEen 'verborgen' wachtwoord is tijdens de registratie voor u aangemaakt. \n\nGelieve uw account te activeren en uw wachtwoord te wijzigen door op de volgende link te klikken:\n\n${set_password}\n\nU dient uw account te activeren binnen de ${expirationtime} uur.\n\n"
 
 #. Default: "Kind regards, MINARAAD"
 #: skins/minaraad/registered_notify_template.pt

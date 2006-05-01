@@ -429,7 +429,8 @@
                     tal:condition="allowEnterPassword">
             
                     <div class="formHelp" 
-                        i18n:translate="label_password_will_be_mailed">
+                        i18n:domain="minaraad"
+                        i18n:translate="label_password_will_be_mailed_mina">
                         A password will be generated and
                         e-mailed to you to complete the registration process.
                     </div>

@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minaraad\n"
-"POT-Creation-Date: 2006-04-24 15:01+0000\n"
+"POT-Creation-Date: 2006-05-01 12:23+0000\n"
 "PO-Revision-Date: Mon Aug  8 12:16:21 2005\n"
 "Last-Translator: Rocky Burt <r.burt@zestsoftware.nl>\n"
 "Language-Team: Rocky Burt <r.burt@zestsoftware.nl>\n"
@@ -53,6 +53,11 @@ msgstr ""
 
 #: browser/subscriptions_config.pt
 msgid "Pressrelease"
+msgstr ""
+
+#. Default: "Set_my_password_mina"
+#: skins/pwreset_form.cpt
+msgid "Set_my_password_mina"
 msgstr ""
 
 #: browser/subscriptions_config.pt
@@ -314,6 +319,11 @@ msgstr ""
 msgid "label_other_country"
 msgstr ""
 
+#. Default: "A password will be generated and e-mailed to you to complete the registration process."
+#: skins/join_form.cpt
+msgid "label_password_will_be_mailed_mina"
+msgstr ""
+
 #. Default: "Phonenumber"
 #: skins/minaraad/contactperson_view.pt
 msgid "label_phonenumber"
@@ -431,7 +441,7 @@ msgstr ""
 msgid "mailtemplate_hours"
 msgstr ""
 
-#. Default: "You have been registered as a member of MiNa-Raad website. Please activate your account by visiting ${set_password} You must activate your account within ${expirationtime} hours"
+#. Default: "You have been registered as a member of MiNa-Raad website. A password has been generated for you. Please activate your account and set your own password by visiting ${set_password} You must activate your account within ${expirationtime} hours"
 #: skins/minaraad/registered_notify_template.pt
 msgid "mailtemplate_registered_body"
 msgstr ""

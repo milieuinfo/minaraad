@@ -612,3 +612,13 @@ msgstr ""
 #: browser/subscribers_config.pt
 msgid "label_hearingthemes"
 msgstr ""
+
+#. Default: "A password will be generated and e-mailed to you to complete the registration process."
+#: skins/join_form.cpt
+msgid "label_password_will_be_mailed_mina"
+msgstr ""
+
+#. Default: "Set_my_password_mina"
+#: skins/pwreset_form.cpt
+msgid "Set_my_password_mina"
+msgstr ""
