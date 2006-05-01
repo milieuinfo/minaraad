@@ -100,12 +100,8 @@ class testUtilsMemberNonVocabularyTitles(PloneTestCase):
         result = member.getAllMembersWithNonVocabularyTitleByTitle(self.portal)
         keys = result.keys()
         keys.sort()
-        self.assertEquals(keys, ['', 'Dr. ir.'])
-
-        self.assertEquals(result[''][0].id, 'member3')
+        self.assertEquals(keys, ['Dr. ir.'])
         self.assertEquals(result['Dr. ir.'][0].id, 'member2')
-
-        self.assertEquals(len(result['']), 2) # includes the test member
         self.assertEquals(len(result['Dr. ir.']), 1)
 
     def testMapNonVocabularyTitles(self):
@@ -116,9 +112,7 @@ class testUtilsMemberNonVocabularyTitles(PloneTestCase):
         member.mapNonVocabularyTitles(getMembersByTitle(self.portal))
         
         membersByTitle = getMembersByTitle(self.portal)
-
-        # We do not take care of '' genders
-        self.assertEquals(membersByTitle.keys(), [''])
+        self.assertEquals(membersByTitle.keys(), [])
         member2 = self.portal.portal_membership.getMemberById('member2')
         self.assertEquals(member2.getProperty('gender'), 'Dr. Ir.')
 
