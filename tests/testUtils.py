@@ -17,7 +17,7 @@ from Products.minaraad.utils import member
 import Products.minaraad.tests.MainTestCase
 import email
 
-class testUtilsMember(PloneTestCase):
+class testUtilsMemberEmail(PloneTestCase):
 
     def afterSetUp(self):
         self.portal._original_MailHost = self.portal.MailHost
@@ -79,10 +79,53 @@ class testUtilsMember(PloneTestCase):
         self.failUnless('Paswoord: 3re' in str(messages[0]))
 
 
+class testUtilsMemberNonVocabularyTitles(PloneTestCase):
+
+    def afterSetUp(self):
+        self.portal.portal_membership.addMember(
+            'member', 'secret',
+            ['Member'], [], {'gender': 'Dr. Ir.',})
+        
+        self.portal.portal_membership.addMember(
+            'member2', 'secret',
+            ['Member'], [], {'gender': 'Dr. ir.',})
+        
+        self.portal.portal_membership.addMember(
+            'member3', 'secret',
+            ['Member'], [], {'gender': '',})
+        
+
+    def testGetAllMembersWithNonVocabularyTitleByTitle(self):
+        result = member.getAllMembersWithNonVocabularyTitleByTitle(self.portal)
+        keys = result.keys()
+        keys.sort()
+        self.assertEquals(keys, ['', 'Dr. ir.'])
+
+        self.assertEquals(result[''][0].id, 'member3')
+        self.assertEquals(result['Dr. ir.'][0].id, 'member2')
+
+        self.assertEquals(len(result['']), 2) # includes the test member
+        self.assertEquals(len(result['Dr. ir.']), 1)
+
+    def testMapNonVocabularyTitles(self):
+        member2 = self.portal.portal_membership.getMemberById('member2')
+        self.assertEquals(member2.getProperty('gender'), 'Dr. ir.')
+
+        getMembersByTitle = member.getAllMembersWithNonVocabularyTitleByTitle
+        member.mapNonVocabularyTitles(getMembersByTitle(self.portal))
+        
+        membersByTitle = getMembersByTitle(self.portal)
+
+        # We do not take care of '' genders
+        self.assertEquals(membersByTitle.keys(), [''])
+        member2 = self.portal.portal_membership.getMemberById('member2')
+        self.assertEquals(member2.getProperty('gender'), 'Dr. Ir.')
+
 def test_suite():
     from unittest import TestSuite, makeSuite
     suite = TestSuite()
-    suite.addTest(makeSuite(testUtilsMember))
+    suite.addTest(makeSuite(testUtilsMemberEmail))
+    suite.addTest(makeSuite(testUtilsMemberNonVocabularyTitles))
     return suite
 
 class MockMailHost:

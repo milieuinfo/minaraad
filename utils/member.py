@@ -2,6 +2,7 @@
 
 from Products.CMFCore.utils import getToolByName
 from ZODB.POSException import ConflictError
+from Products.minaraad.config import TITLE_VOCAB
 
 SUBJECT = "Nieuwe website"
 EMAILCONTENTS = \
@@ -94,3 +95,29 @@ def sendEmailForAllMembersWithEmail(context):
             failedMembers.append((member.getProperty('id'), str(e)))
 
     return failedMembers
+
+def getAllMembersWithNonVocabularyTitleByTitle(context):
+    result = {}
+    mship = getToolByName(context, 'portal_membership')
+    for member in mship.listMembers():
+        title = member.getProperty('gender')
+        if title not in TITLE_VOCAB:
+            l = result.setdefault(title, [])
+            l.append(member)
+    return result
+
+def mapNonVocabularyTitles(membersbytitle):
+    mapping = {
+        'Dr. ir.': 'Dr. Ir.',
+        'Ir': 'Ir.',
+        'Mevr.': 'Mevrouw',
+        'Dir. Ir': 'Dir. Ir.',
+        'Prof. dr.': 'Prof. Dr.',
+        'Em. Prof. dr.': 'Em. Prof. Dr.',
+        'Prof. dr. ir.': 'Prof. Dr. Ir.',
+        }
+    for title, members in membersbytitle.items():
+        newtitle = mapping.get(title, title)
+        if newtitle != title:
+            for m in members:
+                m.setMemberProperties({'gender': newtitle})
