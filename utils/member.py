@@ -127,7 +127,7 @@ def mapNonVocabularyTitles(membersbytitle):
             for m in members:
                 m.setMemberProperties({'gender': newtitle})
 
-security.declarePublic('sendEmailForAllMembersWithEmail')
+security.declarePublic('doConvertGenderToBeVocabularyConform')
 def doConvertGenderToBeVocabularyConform(context):
 
     membership = context.portal_membership
