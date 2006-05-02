@@ -20,7 +20,7 @@ Zo bevat de site voortaan een zoekfunctie (rechtsbovenaan) en kan u op al onze p
 De voorkeuren van uw abonnement kan u zelf instellen en wijzigen. Hiertoe dient de inlogfunctie linksonderaan de website.
 
 U hebt zich in het verleden geabonneerd op onze elektronische nieuwsbrief of onze persberichten. 
-Bij deze geven wij u een inlognaam en initiele paswoord mee.
+Bij deze geven wij u een inlognaam en initieel paswoord mee.
 
 Inlognaam: %(id)s
 Paswoord: %(password)s
