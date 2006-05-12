@@ -115,7 +115,7 @@ class Study(PostMixin, EmailMixin, Attachmentsmixin):
         'category': "object",
         'id': 'email_out',
         'name': 'E-mail',
-        'permissions': ("View",),
+        'permissions': ("Modify portal content",),
         'condition': 'python:1'
        },
 
@@ -124,7 +124,7 @@ class Study(PostMixin, EmailMixin, Attachmentsmixin):
         'category': "object",
         'id': 'export_subscribers',
         'name': 'Export Subscribers',
-        'permissions': ("View",),
+        'permissions': ("Modify portal content",),
         'condition': 'python:1'
        },
 

@@ -111,7 +111,7 @@ class Hearing(MREvent, EmailMixin, BaseFolder):
         'category': "object",
         'id': 'email_out',
         'name': 'E-mail',
-        'permissions': ("View",),
+        'permissions': ("Modify portal content",),
         'condition': 'python:1'
        },
 

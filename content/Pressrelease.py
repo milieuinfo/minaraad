@@ -168,7 +168,7 @@ class Pressrelease(EmailMixin, Attachmentsmixin):
         'category': "object",
         'id': 'email_out',
         'name': 'E-mail',
-        'permissions': ("View",),
+        'permissions': ("Modify portal content",),
         'condition': 'python:1'
        },
 
