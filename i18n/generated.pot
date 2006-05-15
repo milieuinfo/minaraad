@@ -36,16 +36,17 @@ msgstr ""
 msgid "Pressrelease"
 msgstr ""
 
+#. Default: "Set_my_password_mina"
+#: skins/pwreset_form.cpt
+msgid "Set_my_password_mina"
+msgstr ""
+
 #: browser/subscriptions_config.pt
 msgid "Study"
 msgstr ""
 
 #: browser/subscriptions_config.pt
 msgid "description_subscriptions_setup"
-msgstr ""
-
-#: browser/subscriptions_config.pt
-msgid "heading_subscribers_overview"
 msgstr ""
 
 #. Default: "Themes settings for Site"
@@ -56,6 +57,10 @@ msgstr ""
 #. Default: "Click on the buttons below to export the e-mail or post subscribers on this content type as an Excelsheet."
 #: browser/export-subscribers.pt
 msgid "export_descriptions"
+msgstr ""
+
+#: browser/subscriptions_config.pt
+msgid "heading_subscribers_overview"
 msgstr ""
 
 #. Default: "Themes Settings"
@@ -172,6 +177,10 @@ msgstr ""
 msgid "label_gender"
 msgstr ""
 
+#: browser/subscribers_config.pt
+msgid "label_hearingthemes"
+msgstr ""
+
 #. Default: "House number"
 #: skins/minaraad/join_form.cpt
 #: skins/minaraad/personalize_form.cpt
@@ -200,6 +209,11 @@ msgstr ""
 #: skins/minaraad/personalize_form.cpt
 #: skins/minaraad/prefs_user_details.cpt
 msgid "label_other_country"
+msgstr ""
+
+#. Default: "A password will be generated and e-mailed to you to complete the registration process."
+#: skins/join_form.cpt
+msgid "label_password_will_be_mailed_mina"
 msgstr ""
 
 #. Default: "Phone number"
@@ -465,17 +479,20 @@ msgstr ""
 #. Default: "Enddate"
 #: content/Hearing.py
 #: content/Study.py
+#: content/MREvent.py
 msgid "minaraad_label_enddate"
 msgstr ""
 
 #. Default: "Foto"
 #: content/Hearing.py
 #: content/Pressrelease.py
+#: content/MREvent.py
 msgid "minaraad_label_foto"
 msgstr ""
 
 #. Default: "Goal"
 #: content/Hearing.py
+#: content/MREvent.py
 msgid "minaraad_label_goal"
 msgstr ""
 
@@ -497,6 +514,7 @@ msgstr ""
 #. Default: "Location"
 #: content/Hearing.py
 #: content/Study.py
+#: content/MREvent.py
 msgid "minaraad_label_location"
 msgstr ""
 
@@ -556,6 +574,7 @@ msgstr ""
 #. Default: "Startdate"
 #: content/Hearing.py
 #: content/Study.py
+#: content/MREvent.py
 msgid "minaraad_label_startdate"
 msgstr ""
 
@@ -609,16 +628,3 @@ msgstr ""
 msgid "toggle_all"
 msgstr ""
 
-#: browser/subscribers_config.pt
-msgid "label_hearingthemes"
-msgstr ""
-
-#. Default: "A password will be generated and e-mailed to you to complete the registration process."
-#: skins/join_form.cpt
-msgid "label_password_will_be_mailed_mina"
-msgstr ""
-
-#. Default: "Set_my_password_mina"
-#: skins/pwreset_form.cpt
-msgid "Set_my_password_mina"
-msgstr ""
