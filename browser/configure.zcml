@@ -39,7 +39,7 @@
       for="Products.minaraad.interfaces.IPortalPropertyContainer"
       name="subscriptions_config.html"
       class=".configlets.SubscriptionsConfigletView"
-      permission="zope2.View"
+      permission="cmf.ManagePortal"
       template="subscriptions_config.pt"
     />
 
@@ -47,7 +47,7 @@
       for="*"
       name="email_out"
       class=".email.EmailOutView"
-      permission="zope2.View"
+      permission="cmf.ManagePortal"
       template="email_out.pt"
     />
 
@@ -55,7 +55,7 @@
       for="*"
       name="export_subscribers"
       class=".subscribers.ExportSubscribersView"
-      permission="zope2.View"
+      permission="cmf.ManagePortal"
       template="export-subscribers.pt"
   />
 

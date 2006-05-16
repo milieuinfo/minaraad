@@ -93,7 +93,7 @@ class AnnualReport(PostMixin, EmailMixin, BaseContent):
         'category': "object",
         'id': 'email_out',
         'name': 'E-mail',
-        'permissions': ("View",),
+        'permissions': ("Modify portal content",),
         'condition': 'python:1'
        },
 
@@ -102,7 +102,7 @@ class AnnualReport(PostMixin, EmailMixin, BaseContent):
         'category': "object",
         'id': 'export_subscribers',
         'name': 'Export Subscriberes',
-        'permissions': ("View",),
+        'permissions': ("Modify portal content",),
         'condition': 'python:1'
        },
 

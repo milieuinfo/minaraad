@@ -50,5 +50,5 @@ def buildCSV(context, members, filename='members.csv'):
     response.setHeader('content-disposition',
                        'attachment; filename=%s' % filename)
     
-    return out.getvalue().encode(charset)
+    return out.getvalue().encode('iso-8859-1')
     

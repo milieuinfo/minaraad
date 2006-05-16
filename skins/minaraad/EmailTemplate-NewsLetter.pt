@@ -15,15 +15,23 @@
 <span tal:replace="date" />
 </span><span style="font-weight:bold" tal:content="context/Title" />
 <br />
+<br />
 <span i18n:translate="label_dear">Dear</span> <span tal:replace="member/firstname" /> <span tal:replace="member/fullname" />,
 <br />
 <br />
+Hieronder vindt u de inhoudstafel van de recentste elektronische nieuwsbrief van de Minaraad:
+<br />
+<br />
+<tal:block tal:condition="context/Description">
 <div tal:replace="context/Description" />
 <br />
 <br />
-<div tal:condition="context/getBody" tal:content="structure context/getBody" />
+</tal:block>
+<tal:block tal:condition="context/getBody">
+<div  tal:replace="structure context/getBody" />
 <br />
 <br />
+</tal:block>
  <!-- Index -->
 <div tal:repeat="category categories">
 <span style="font-weight:bold" tal:content="category" />
@@ -44,6 +52,11 @@
 <br />
 <span i18n:domain="minaraad"
       i18n:translate="label_moreinfo">For more info, go to:</span> <a tal:attributes="href context/absolute_url" tal:content="context/Title" />
+<br />
+<br />
+Met vriendelijke groeten,
+<br />
+Ignace Decancq
 
 </body>
 </html>

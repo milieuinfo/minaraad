@@ -124,7 +124,7 @@ class Advisory(PostMixin, Attachmentsmixin):
         'category': "object",
         'id': 'export_subscribers',
         'name': 'Export Subscribers',
-        'permissions': ("View",),
+        'permissions': ("Modify portal content",),
         'condition': 'python:1'
        },
 
