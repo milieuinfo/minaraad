@@ -33,7 +33,7 @@ Once the environment on the server is created you can add minaraad product and a
         * Plone 2.1.2
         (http://prdownloads.sourceforge.net/plone/Plone-2.1.2.tar.gz?download)
     
-        * PasswordResetTool (https://svn.plone.org/svn/collective/PasswordResetTool/trunk)
+        * PasswordResetTool: zest branch! (https://svn.plone.org/svn/collective/PasswordResetTool/branches/zest)
     
         * FCKeditor 2.2
         (http://prdownloads.sourceforge.net/fckeditor/FCKeditor.Plone2.2.zip?download)
