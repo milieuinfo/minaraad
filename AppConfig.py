@@ -4,9 +4,9 @@ from folderstructure import *
 GLOBALS = globals()
 
 # Portal Properties
-PORTAL_TITLE = 'MiNa-Raad'
+PORTAL_TITLE = 'Minaraad'
 EMAIL_FROM_ADDRESS = 'communicatie@minaraad.be'
-EMAIL_FROM_NAME = 'Communicatie MiNa-Raad'
+EMAIL_FROM_NAME = 'Communicatie Minaraad'
 
 # Site Wide Properties
 LOCAL_TIME_FORMAT = '%d-%b-%Y'
