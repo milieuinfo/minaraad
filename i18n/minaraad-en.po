@@ -446,7 +446,7 @@ msgstr ""
 msgid "mailtemplate_hours"
 msgstr ""
 
-#. Default: "You have been registered as a member of MiNa-Raad website. A password has been generated for you. Please activate your account and set your own password by visiting ${set_password} You must activate your account within ${expirationtime} hours"
+#. Default: "You have been registered as a member of Minaraad website. A password has been generated for you. Please activate your account and set your own password by visiting ${set_password} You must activate your account within ${expirationtime} hours"
 #: skins/minaraad/registered_notify_template.pt
 #, fuzzy
 msgid "mailtemplate_registered_body"

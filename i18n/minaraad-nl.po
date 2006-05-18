@@ -442,10 +442,10 @@ msgstr "Meer informatie"
 msgid "mailtemplate_hours"
 msgstr "uur"
 
-#. Default: "You have been registered as a member of MiNa-Raad website. A password has been generated for you. Please activate your account and set your own password by visiting ${set_password} You must activate your account within ${expirationtime} hours"
+#. Default: "You have been registered as a member of Minaraad website. A password has been generated for you. Please activate your account and set your own password by visiting ${set_password} You must activate your account within ${expirationtime} hours"
 #: skins/minaraad/registered_notify_template.pt
 msgid "mailtemplate_registered_body"
-msgstr "U bent geregistreerd als lid van de MiNa-Raad website.\nEen 'verborgen' wachtwoord is tijdens de registratie voor u aangemaakt. \n\nGelieve uw account te activeren en uw wachtwoord te wijzigen door op de volgende link te klikken:\n\n${set_password}\n\nU dient uw account te activeren binnen de ${expirationtime} uur.\n\n"
+msgstr "U bent geregistreerd als lid van de Minaraad website.\nEen 'verborgen' wachtwoord is tijdens de registratie voor u aangemaakt. \n\nGelieve uw account te activeren en uw wachtwoord te wijzigen door op de volgende link te klikken:\n\n${set_password}\n\nU dient uw account te activeren binnen de ${expirationtime} uur.\n\n"
 
 #. Default: "Kind regards, MINARAAD"
 #: skins/minaraad/registered_notify_template.pt

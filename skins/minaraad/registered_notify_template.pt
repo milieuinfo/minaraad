@@ -6,7 +6,7 @@ Subject: <span i18n:domain="plone" i18n:translate="mailtemplate_registered_porta
 Content-Type: text/plain; charset=<span tal:replace="here/portal_properties/site_properties/default_charset" />
 
 <div i18n:domain="minaraad" i18n:translate="mailtemplate_registered_body" tal:omit-tag="">
-    You have been registered as a member of MiNa-Raad website. A password has been generated for you.
+    You have been registered as a member of Minaraad website. A password has been generated for you.
 
     Please activate your account and set your own password by visiting 
 
