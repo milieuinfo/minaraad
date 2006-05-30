@@ -39,7 +39,7 @@
       for="Products.minaraad.interfaces.IPortalPropertyContainer"
       name="subscriptions_config.html"
       class=".configlets.SubscriptionsConfigletView"
-      permission="cmf.ManagePortal"
+      permission="zope2.View"
       template="subscriptions_config.pt"
     />
 
