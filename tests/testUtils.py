@@ -26,45 +26,55 @@ class testUtilsMemberEmail(PloneTestCase):
         self.portal.portal_membership.addMember(
             'member', 'secret',
             ['Member'], [], {'email': 'someguy@hisplace.com',
-                             'fullname': 'Member',
+                             'fullname': 'Member1',
                              'firstname': 'First',
                              })
         
         self.portal.portal_membership.addMember(
             'member2', 'secret',
             ['Member'], [], {'email': '',
-                             'fullname': 'Member',
+                             'fullname': 'Member2',
                              'firstname': 'Second',
                              })
 
         self.portal.portal_membership.addMember(
             'member3', '3re',
             ['Member'], [], {'email': 'automatedguy@zestsoftware.uk',
-                             'fullname': 'Member',
-                             'firstname': 'Third',
+                             'fullname': 'Member3',
+                             'firstname': '', # poor guy doesn't have firstname
                              })
 
         self.portal.portal_membership.addMember(
             'member4', '4re',
             ['Member'], [], {'email': '', # this guy has no e-mail!
-                             'fullname': 'Member',
+                             'fullname': 'Member4',
                              'firstname': 'Fourth',
+                             })
+
+        self.portal.portal_membership.addMember(
+            'member5', '5re',
+            ['Member'], [], {'email': 'automatedape@zestsoftware.uk',
+                             'fullname': 'Member5',
+                             'firstname': 'Fifth',
                              })
 
     def test_getAllMembers(self):
         members = member.getAllMembersWithThreeLetterPassword(self.portal)
+        self.assertEquals(len(members), 3)
+        self.assertEquals(members[0].id, 'member3')
+        self.assertEquals(members[1].id, 'member4')
+        self.assertEquals(members[2].id, 'member5')
+
+    def test_getAllMembersWithEmail(self):
+        members = member.getAllMembersWithEmail(self.portal)
+        self.assertEquals(len(members), 1)
+        self.assertEquals(members[0].id, 'member3')
+
+    def test_getAllMembersWithEmail(self):
+        members = member.getAllMembersWithEmail(self.portal)
         self.assertEquals(len(members), 2)
         self.assertEquals(members[0].id, 'member3')
-
-    def test_getAllMembersWithEmail(self):
-        members = member.getAllMembersWithEmail(self.portal)
-        self.assertEquals(len(members), 1)
-        self.assertEquals(members[0].id, 'member3')
-
-    def test_getAllMembersWithEmail(self):
-        members = member.getAllMembersWithEmail(self.portal)
-        self.assertEquals(len(members), 1)
-        self.assertEquals(members[0].id, 'member3')
+        self.assertEquals(members[1].id, 'member5')
 
     def test_getAllMembersWithoutEmail(self):
         members = member.getAllMembersWithoutEmail(self.portal)
@@ -75,9 +85,17 @@ class testUtilsMemberEmail(PloneTestCase):
         member.sendEmailForAllMembersWithEmail(self.portal)
         mailhost = self.portal.MailHost
         messages = mailhost.messages
-        self.assertEquals(len(messages), 1)
+        self.assertEquals(len(messages), 2)
         self.failUnless('Inlognaam: member3' in str(messages[0]))
         self.failUnless('Paswoord: 3re' in str(messages[0]))
+
+    def test_salutation(self):
+        member.sendEmailForAllMembersWithEmail(self.portal)
+        mailhost = self.portal.MailHost
+        messages = mailhost.messages
+        self.assertEquals(len(messages), 2)
+        self.failUnless('Geachte Meneer/Mevrouw Member3,' in str(messages[0]))
+        self.failUnless('Beste Fifth!' in str(messages[1]))
 
 
 class testUtilsMemberNonVocabularyTitles(PloneTestCase):

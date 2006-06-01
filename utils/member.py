@@ -1,5 +1,3 @@
-# -*- coding: iso-8859-1 -*-
-
 from ZODB.POSException import ConflictError
 import AccessControl
 
@@ -12,19 +10,22 @@ from Products.minaraad.config import TITLE_VOCAB
 SUBJECT = "Nieuwe website"
 EMAILCONTENTS = \
 """
-Beste %(firstname)s !
+%(salutation)s
 
-Zoals we eerder al communiceerden, heeft de Minaraad een nieuwe website. Daar het besturingssysteem 
-van de website gloednieuw is, hadden we gedurende de eerste weken wat last van kinderziektes. 
-Nu zijn deze opgelost..
+Zoals we eerder al communiceerden, heeft de Minaraad een nieuwe
+website. Daar het besturingssysteem van de website gloednieuw is,
+hadden we gedurende de eerste weken wat last van kinderziektes.  Nu
+zijn deze opgelost..
 
 Bij deze geven wij u een inlognaam en initieel paswoord mee.
 
 Inlognaam: %(id)s
 Paswoord: %(password)s
 
-Als u deze invoert dan kan u uw persoonsgegevens controleren, het paswoord wijzigen en nadien uw productvoorkeuren kenbaar maken.
-Ga voor het wijzigen van uw gegevens naar -- http://www.minaraad.be/plone_memberprefs_panel --
+Als u deze invoert dan kan u uw persoonsgegevens controleren, het
+paswoord wijzigen en nadien uw productvoorkeuren kenbaar maken.  Ga
+voor het wijzigen van uw gegevens naar --
+http://www.minaraad.be/plone_memberprefs_panel --
 
 Op deze wijze kunnen wij u informatie op maat aanbieden.
 
@@ -85,6 +86,11 @@ def sendEmailForAllMembersWithEmail(context):
     for member in getAllMembersWithEmail(context):
         props = fuzzydict(member.__dict__.copy())
         props['password'] = makeMagicPassword(member.getProperty('id'))
+        if props['firstname'].strip():
+            props['salutation'] = "Beste %s!" % props['firstname']
+        else:
+            props['salutation'] = ("Geachte Meneer/Mevrouw %s," %
+                                   props['fullname'])
         message = EMAILCONTENTS % (props)
         to = member.getProperty('email')
         try:
