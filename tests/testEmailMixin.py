@@ -116,7 +116,10 @@ class testEmailMixin(PloneTestCase):
         self.assertEqual(len(mailHost.messages), 1)
         mailHost.reset()
         
-        text = "Some random additional info"
+        charset = self.portal.plone_utils.getSiteEncoding()
+        text = (u"Some random additional info, "
+                u"and a non-ascii charact\xebr".encode(charset))
+        emailMixin.setTitle(u"Another non-ascii charact\xebr!".encode(charset))
         emailMixin.email(text, ('member2',))
         emailMixin.setEmailSent(None)
         msg = mailHost.messages[0]

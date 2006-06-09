@@ -128,13 +128,8 @@ class EmailMixin:
                 ''' % text
             
             message = MIMEMultipart('alternative')
-        
-            textPlain = unicode(emailBody['text/plain'], charset)
-            message.attach(MIMEText(textPlain, 'plain', charset))
-        
-            textHtml = unicode(emailBody['text/html'], charset)
-            message.attach(MIMEText(textHtml, 'html', charset))
-        
+            message.attach(MIMEText(emailBody['text/plain'], 'plain', charset))
+            message.attach(MIMEText(emailBody['text/html'], 'html', charset))
             message = str(message)
         
             try:
