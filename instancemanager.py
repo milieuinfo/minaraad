@@ -1,5 +1,6 @@
 python = 'python2.4'
 zope_version = '2.9.3' # INSTALL says 2.9.2, but lets try the latest.
+port = '9280' # That's used on the minaraad.zestsoftware.nl test site
 
 archivebundle_sources = [
     'Plone-2.1.2.tar.gz',
@@ -20,7 +21,7 @@ archive_sources = [
     ]
 plone_site_name = 'minaraad'
 main_products = [
-    'minaraad',
+    #'minaraad', # instancemanager can't yet handle this product :(
     ]
 user = 'admin'
 password = 'MinZope'
