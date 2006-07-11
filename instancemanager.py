@@ -11,10 +11,11 @@ symlink_sources = [
     'PortalTransforms',
     'PloneTranslations',
     'minaraad',
+    'RichDocument',
     ]
 archive_sources = [
     'FCKeditor.Plone2.2.zip',
-    'RichDocument-2.0rc1.tar.gz',
+    #'RichDocument-2.0rc1.tar.gz',
     'TextIndexNG3-3.1.8.tar.gz',
     'DocFinderTab-1.0.0.tar.gz',
     'PloneTestCase-0.8.2.tar.gz',
