@@ -87,7 +87,7 @@ EXTRA_VIEWS = {
     'Folder': ['hearing_listing_view', 'advisory_listing_view', 
                'newsletter_listing_view', 'pressrelease_listing_view',
                'study_listing_view','annualreport_listing_view',
-               'mrevent_listing_view', 'mina_listing'],
+               'mrevent_listing_view', 'mina_listing', 'digibib_listing'],
     }
 
 # SELECT_VIEWS is a dictionary, the keys are folder names. The value
@@ -126,6 +126,7 @@ SELECT_VIEWS = {
     '/persberichten': 'mina_listing',
     '/studies': 'mina_listing',
     '/hoorzittingen': 'mina_listing',
+    '/digibib': 'digibib_listing',
     }
 
 #FCKeditor set height and width
