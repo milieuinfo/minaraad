@@ -281,6 +281,8 @@ def _setWorkflow(portal, out):
     workflowTool.updateRoleMappings()
 
     portal.manage_permission('Add portal content',['Author','Owner','Manager'],1)
+    portal.manage_permission('ATContentTypes: Add File',['Author'],1)
+    portal.manage_permission('ATContentTypes: Add Folder',['Author'],1)
     portal.manage_permission('Delete objects',['Owner','Manager'],1)
     portal.manage_permission('Add portal folders',['Author','Owner','Manager'],1)
     portal.manage_permission('List folder contents',['Author','Owner','Manager'],1)
