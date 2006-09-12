@@ -85,15 +85,16 @@ class testEmailMixin(PloneTestCase):
         mailHost.reset()
         
         # lets test to make sure only-one-email-can-be-sent feature works
-        self.failUnlessRaises(AlreadySentError, emailMixin.email)
+        # Oh, we don't have to raise this failure anymore:
+        #self.failUnlessRaises(AlreadySentError, emailMixin.email)
         emailMixin.setEmailSent(None)
-
+        
         # now lets test that unlimited test emails can be sent
         emailMixin.email(testing=True)
         emailMixin.email(testing=True)
         # and one real email
         emailMixin.email(text='extra')
-        self.failUnlessRaises(AlreadySentError, emailMixin.email)
+        #self.failUnlessRaises(AlreadySentError, emailMixin.email)
         emailMixin.setEmailSent(None)
         mailHost.reset()
 

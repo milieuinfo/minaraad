@@ -29,7 +29,8 @@ class EmailOutView(AbstractView):
         return str(member)
 
     def canSend(self):
-        return self.context.getEmailSent() is None
+       # return self.context.getEmailSent() is None
+       return True
     
     def sentDate(self):
         localize = self.context.toLocalizedTime

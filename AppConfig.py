@@ -8,6 +8,12 @@ PORTAL_TITLE = 'Minaraad'
 EMAIL_FROM_ADDRESS = 'communicatie@minaraad.be'
 EMAIL_FROM_NAME = 'Communicatie Minaraad'
 
+#Mailhost properties
+SMTP_HOST = 'mail.mmis.be'
+SMTP_PORT = 25
+SMTP_USERID = ''
+SMTP_PASS = ''
+
 # Site Wide Properties
 LOCAL_TIME_FORMAT = '%d-%b-%Y'
 LOCAL_LONG_TIME_FORMAT = '%d-%b-%Y %H:%M'

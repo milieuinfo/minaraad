@@ -48,6 +48,9 @@ def install(self):
 
     out.write("Add configlets")
     addConfiglets(self, out)
+    
+    out.write("Mailhost")
+    configureMailHost(self)
 
     _disableControlPanelActions(self)
 
@@ -512,6 +515,13 @@ def _disableControlPanelActions(portal):
             print >> out, "Switching off unwanted action %s." % action.id
     cpanel._actions = actions
 
+def configureMailHost(portal):
+    mh = getToolByName(portal, 'MailHost')
+    mh.manage_makeChanges(title='Mail Host',
+                          smtp_host=SMTP_HOST,
+                          smtp_port=SMTP_PORT,
+                          smtp_userid=SMTP_USERID,
+                          smtp_pass=SMTP_PASS)
 
 def uninstall(self):
     out = StringIO()

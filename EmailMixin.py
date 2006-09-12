@@ -88,11 +88,13 @@ class EmailMixin:
         to appropriate persons.
         """
         
+        """
+        # We don't care anymore if an email has already been sent, so we ignore this check.
         if self.getEmailSent() is not None:
             raise AlreadySentError("Content object at '%s' has already had " \
                                    "an e-mail sent" \
                                    % '/'.join(self.getPhysicalPath()))
-
+        """
         tool = getToolByName(self, 'portal_membership')
         members = [tool.getMemberById(memberid)
                    for memberid in additionalMembers]
