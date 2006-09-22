@@ -1,0 +1,74 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
+      lang="en-US"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="minaraad">
+
+    <body>
+    <metal:block metal:fill-slot="main" 
+                  tal:define="current_path python:'/'.join(context.getPhysicalPath());
+                              newsletters python:context.portal_catalog.searchResults(portal_type='NewsLetter',
+                                                                                    path=current_path,
+                                                                                    sort_on='getDate',
+                                                                                    sort_order='reverse');
+                             files python:context.portal_catalog.searchResults(portal_type='File',
+                                                                                    path=current_path,
+                                                                                    sort_on='effective',
+                                                                                    sort_order='reverse');">
+        <metal:block metal:define-macro="folderlisting" />
+
+        <div metal:use-macro="here/document_actions/macros/document_actions">
+            Document actions (print, sendto etc)
+        </div>
+        <h1 tal:content="context/Title"
+            class="documentFirstHeading">Title</h1>
+
+        <div class="documentDescription" 
+             tal:content="context/Description" />
+
+        <table>
+            <tbody valign="top">
+                <tal:block tal:repeat="item_object newsletters">
+                <tal:block tal:define="obj python:item_object.getObject();">
+                <tr>
+                    <td tal:define="daterequired python:obj.getDate() != None;
+                                    date python:obj.toLocalizedTime(obj.date)[:-5];"
+                        class="advisory_listdate"> 
+        
+                        <span tal:condition="daterequired"
+                              tal:replace="date" />
+                    </td>
+                    <td>
+                        <a tal:attributes="href item_object/getURL"
+                           tal:content="item_object/Title" />
+                    </td>
+                </tr>
+                <tr>
+                    <td height="5" />
+                </tr>
+                </tal:block>
+                </tal:block>
+
+                <tal:block tal:repeat="item_object files">
+                <tr>
+                    <td tal:define="effDate item_object/effective;"
+                        class="advisory_listdate">
+
+                        <span tal:condition="python:DateTime.year(effDate) > 1000"
+                              tal:replace="python:item_object.toLocalizedTime(effDate)[:-5]" />
+                    </td>
+                    <td>
+                        <div class="newsletter_listtitle"
+                             tal:content="item_object/Title" />
+                        
+                        <a tal:attributes="href item_object/getURL">Download</a>
+                    </td>
+                </tr>
+                 <tr>
+                    <td height="5" />
+                </tr>
+                </tal:block>
+            </tbody>
+        </table>
+   </metal:block>
+   </body>
+</html>

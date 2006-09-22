@@ -1,0 +1,35 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
+      lang="en-US"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="minaraad">
+
+    <body>
+    <metal:block metal:fill-slot="main" 
+                 tal:define="folders python:context.getFolderContents(contentFilter={'portal_type':'Folder'});">
+        <metal:block metal:define-macro="folderlisting" />
+        
+        
+        <div metal:use-macro="here/document_actions/macros/document_actions">
+            Document actions (print, sendto etc)
+        </div>
+        <h1 tal:content="context/Title"
+            class="documentFirstHeading">Title</h1>
+
+        <div class="documentDescription"
+             tal:condition="context/Description">
+            <span tal:replace="context/Description" />
+        </div>
+        <div tal:repeat="item folders"
+             class="listspacing">
+             <span class="contenttype-folder">
+             	<a tal:attributes="href item/getURL"
+                   tal:content="item/Title"
+ 				   class="visualIconPadding" /> 
+            </span>
+			<div class="description-padding" 
+				 tal:content="item/Description" />
+        </div>
+
+   </metal:block>
+   </body>
+</html>

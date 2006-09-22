@@ -1,0 +1,51 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="minaraad">
+
+    <body>
+    <div metal:fill-slot="main">
+    
+        <div metal:use-macro="here/document_actions/macros/document_actions">
+            Document actions (print, sendto etc)
+        </div>
+    
+        <h1 class="documentFirstHeading">
+            <span tal:replace="object_title" /> &mdash; 
+            <span i18n:translate="label_exportsubscribers" 
+                  tal:omit-tag="">Export Subscriber List</span>
+        </h1>
+    
+        <form method="get"
+              tal:attributes="action string:${context/absolute_url}/$template_id">
+
+            <fieldset>
+                <legend i18n:translate="label_export_as_excel">Export As Excel Spreadsheet</legend>
+                <div i18n:translate="export_descriptions">
+                    Click on the buttons below to export the e-mail or post subscribers on this content type as an Excelsheet.
+                </div>
+                <br />
+
+
+                <input class="context"
+                        type="submit"
+                        name="form.button.ExportEmail"
+                        value="Export Email Subscribers"
+                        i18n:attributes="value label_export_email;"
+                        tal:attributes="tabindex tabindex/next;"
+                        tal:condition="python:context.portal_type != 'Advisory'" />
+
+                <input class="context"
+                        type="submit"
+                        name="form.button.ExportPost"
+                        value="Export Post Subscribers"
+                        i18n:attributes="value label_export_post;"
+                        tal:attributes="tabindex tabindex/next;" />
+            </fieldset>
+        </form>
+    </div>
+    </body>
+</html>

@@ -1,0 +1,18 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:five="http://namespaces.zope.org/five">
+
+  <adapter 
+    for=".Hearing.IHearing"
+    provides="Products.minaraad.interfaces.IAttendeeManager"
+    factory="Products.minaraad.attendees.AttendeeManager"
+    />
+
+  <adapter 
+    for=".MREvent.IMREvent"
+    provides="Products.minaraad.interfaces.IAttendeeManager"
+    factory="Products.minaraad.attendees.AttendeeManager"
+    />
+  
+</configure>

@@ -1,0 +1,216 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
+      lang="en-US"
+      i18n:domain="minaraad">
+    <metal:block use-macro="context/global_defines/macros/defines" />
+    
+    <body>
+    <metal:block metal:define-macro="body"
+                 tal:define="view nocall:context/@@attendees_view;
+                             current_path python:'/'.join(context.getPhysicalPath());
+                             agendaItems python:context.portal_catalog.searchResults(portal_type='AgendaItem',
+                                                                                    path=current_path,
+                                                                                    sort_on='getItemstartdate');">
+        <metal:block metal:define-macro="folderlisting" />
+        <br />
+        <tal:block tal:define="start python:context.getStartdate()-4;
+                               current python:DateTime()"
+                   tal:condition="python:current &lt; start">
+        <div class="img_right">
+            <form tal:condition="view/isRegistered"
+                  tal:attributes="action string:${context/absolute_url}/@@attendees_view">
+                <input class="context" 
+                       type="submit" 
+                       name="form.button.Submit" 
+                       value="Unsubscribe"
+                       i18n:attributes="value label_unsubscribe;" />
+
+                <input type="hidden" 
+                       name="form.submitted" 
+                       value="unregister" />
+            </form>
+
+            <form tal:condition="not:view/isRegistered"
+                  tal:attributes="action string:${context/absolute_url}/@@attendees_view">
+            <input class="context" 
+                   type="submit" 
+                   name="form.button.Submit" 
+                   value="Subscribe"
+                   i18n:attributes="value label_subscribe;" />
+
+            <input type="hidden" 
+                   name="form.submitted" 
+                   value="register" />
+           </form>
+        </div>
+        </tal:block>
+
+        <div class="hearingsubheader"
+             tal:condition="context/getSubheader">
+            <span tal:replace="context/getSubheader" />
+            <span tal:condition="python:context.getMot() == True"
+                  tal:omit-tag="">
+                (MOT)
+            </span>
+        </div>
+        
+        <span class="hearingsubheader"
+             i18n:translate="label_theme_name">Theme:</span>
+        <span tal:replace="python:context.getThemeName()" />
+
+         <div class="hearingsubheader2"
+              i18n:translate="Goal:"
+              tal:condition="context/getGoal">
+            Goal:
+         </div>
+         
+         <div tal:content="context/getGoal" />
+         
+         <div class="hearingsubheader2"
+              tal:condition="context/getLocation">
+            <span i18n:translate="Location:"
+                  tal:omit-tag="">Location:</span> 
+            <span class="normaltext"
+                  tal:content="context/getLocation" />
+         </div>
+
+         <!-- Date and Time -->
+         <div metal:use-macro="context/mina_showdatetime/macros/datetime" />
+        <!-- end Date and Time -->
+        <!-- Text -->
+        <table cellspacing="0">
+            <tr>
+                <td valign="top">
+                    <div class="bodytext"
+                         tal:condition="context/getBody"
+                         tal:content="structure context/getBody" />
+                </td>
+                <td>
+                    <div tal:replace="structure context/foto_foto"
+                         tal:condition="context/getFoto" />
+                </td>
+            </tr>
+        </table>
+        <!-- End text -->
+        <br />
+
+        <!-- Hearing Files -->
+        <tal:block tal:define="files python:context.portal_catalog.searchResults(portal_type='File',
+                                                                           path=current_path);"
+                   tal:condition="files">
+
+        <div tal:repeat="file files">
+            <a tal:attributes="href file/getURL"
+               tal:content="file/Title" />
+
+            <span tal:define="obj python:file.getObject();
+                              size python:obj.getObjSize(obj);"
+                  tal:condition="size"
+                  tal:content="size"
+                  class="discreet" />
+        </div>
+        <br />
+        </tal:block>
+        <!-- Hearing Files -->
+
+        <!-- Speakers -->
+        <div tal:condition ="agendaItems" 
+             class="hearingsubheader2"
+             i18n:translate="label_agendaitems">Agenda items</div>
+
+        <ul class="AgendaItems">
+            <li tal:repeat="agendaItem agendaItems">
+            <tal:block tal:define="obj python:agendaItem.getObject()">
+                 <div tal:condition="obj/summary"
+                      tal:omit-tag="">
+                    <span tal:replace="obj/summary" />
+                    <br />
+                </div>
+                <b><div tal:condition="agendaItem/Title" 
+                     tal:replace="agendaItem/Title" /></b>
+                <br />
+
+                <div tal:condition="obj/speaker"> 
+                    <span class="hearingsubheader2"
+                          i18n:translate="label_speaker">Speaker:</span>
+                    <span tal:replace="obj/speaker" />,
+                    <span tal:replace="obj/organisation" />
+                </div>
+                <!-- Date and Time -->
+                <div metal:use-macro="context/mina_showdatetime/macros/datetime_agenda" 
+                     tal:omit-tag="" />
+                <!-- end Date and Time -->
+                <br />
+                <!-- Start Attachments-->
+                <div metal:use-macro="context/mina_attachments/macros/agenda_attachments" />
+                <!-- end Attachments -->
+            </tal:block>
+            </li>
+        </ul>
+        <!-- End speakers -->
+
+          <!-- Contactperson -->
+       <tal:block tal:define="contacts python:context.getContact()"
+                 tal:condition="contacts">
+            <br />
+            <div i18n:translate="moreinfo_contactperson">
+                For more information contact:
+            </div>
+            
+            <tal:block tal:repeat="contact contacts">
+                <div metal:use-macro="context/contactperson_view/macros/contactdetails"
+                     tal:omit-tag="" />
+            </tal:block>
+            <br />
+            <br />
+        </tal:block>        
+        <!-- end contactpersoon -->
+
+        <tal:block tal:define="attendees view/groupedAttendees;
+                               attended_members attendees/members;
+                               attended_c_members attendees/council_members" 
+                   tal:condition="python:attended_members != [] or attended_c_members != []">
+
+        <fieldset tal:condition="python:checkPermission('Manage portal', here)">
+            <legend i18n:translate="title_attendees">Attendees</legend>
+            <dl class="Attendees">
+                <dt i18n:translate="title_counsilmembers">
+                    Council Members
+                </dt>
+                <dd tal:repeat="attendee attended_c_members">
+                    <span tal:replace="attendee/niceName" />
+                </dd>
+                <dd tal:condition="not:attended_c_members" 
+                    class="discreet"
+                    i18n:translate="no_attendees">
+                (none currently)
+                </dd>
+                <dt i18n:translate="title_members">
+                    Members
+                </dt>
+                <dd tal:repeat="attendee attended_members">
+                    <span tal:replace="attendee/niceName" />
+                </dd>
+                <dd tal:condition="not:attended_members" 
+                    class="discreet"
+                    i18n:translate="no_attendees">
+                (none currently)
+                </dd>
+            </dl>
+             <form tal:condition="python:checkPermission('Manage portal', here)"
+                  tal:attributes="action string:${context/absolute_url}/@@attendees_view">
+            <input class="context" 
+                   type="submit" 
+                   name="form.button.Submit" 
+                   value="Export CSV"
+                   i18n:attributes="value label_exportcsv;" />
+
+            <input type="hidden" 
+                   name="form.submitted" 
+                   value="exportCSV" />
+           </form>
+        </fieldset>
+        </tal:block>
+
+        </metal:block>
+    </body>
+</html>

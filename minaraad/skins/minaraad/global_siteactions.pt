@@ -1,0 +1,46 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xml:lang="en"
+      lang="en"
+      i18n:domain="plone">
+
+    <body>
+        <table metal:define-macro="site_actions"
+               id="portal-siteactions"
+               tal:define="site_actions actions/site_actions|nothing;
+                           getIconFor nocall:putils/getIconFor;
+                           accesskeys python: {'sitemap' : '3', 'accessibility' : '0', 'contact' : '9'};"
+               tal:condition="site_actions"
+               cellspacing="0">
+            <tr>
+                <tal:block tal:repeat="saction site_actions">
+                <td tal:attributes="id string:siteaction-${saction/id}"
+                    tal:condition="not: repeat/saction/end"
+                    class="portal-siteactions">
+
+                    <a tal:define="title saction/name;
+                                   id saction/id;
+                                   accesskey python: accesskeys.get(id, '');"
+                       i18n:attributes="title"
+                       i18n:translate=""
+                       tal:content="title"
+                       tal:attributes="href saction/url;
+                                       title title;
+                                       accesskey accesskey;">Site action</a>
+                </td>
+                <td class="portal-siteactions-last"
+                    tal:condition="repeat/saction/end">
+                    <a tal:define="title saction/name;
+                                   id saction/id;
+                                   accesskey python: accesskeys.get(id, '');"
+                       i18n:attributes="title"
+                       i18n:translate=""
+                       tal:content="title"
+                       tal:attributes="href saction/url;
+                                       title title;
+                                       accesskey accesskey;">Site action</a>
+                </td>
+                </tal:block>
+            </tr>
+        </table>
+    </body>
+</html>

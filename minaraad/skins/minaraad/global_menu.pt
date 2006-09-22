@@ -1,0 +1,31 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      i18n:domain="plone">
+    <body>
+    <metal:menubarmacro define-macro="menu">
+    <tal:repeat repeat="tab tabs">
+    <li tal:define="selected_tab python:tab['absolute_url'] in context.absolute_url()"
+        tal:attributes="class python:test(selected_tab, 'selected', 'portal-tabs-nav-toplevel')"
+        tal:condition="not:tab/no_display">
+        <span class="IEFix_paddingmenu">
+        	<a tal:attributes="class python:test(selected_tab, 'selected', 'plain');
+                               href tab/absolute_url"
+               tal:content="tab/Title" />
+        </span>
+        <ul class="portal-tabs-nav-items"
+            tal:define="subitems tab/children|nothing"
+            tal:condition="tab/children">
+            
+            <tal:repeat repeat="subitem subitems">
+            <li class="portal-tabs-subitem-listitem" 
+                tal:condition="not:subitem/no_display">            
+                <a class="portal-tabs-subitem-link" 
+                tal:content="subitem/Title"
+                tal:attributes="href subitem/absolute_url" />
+            </li>
+            </tal:repeat>
+        </ul>
+    </li>
+    </tal:repeat>
+    </metal:menubarmacro>
+    </body>
+</html>

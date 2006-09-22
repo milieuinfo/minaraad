@@ -1,0 +1,119 @@
+<!-- Configuration file for minaraad.sync.read.MemberReader
+
+Defines mapping between CSV file and Archetype objects.
+
+Until we have a proper definition of what this XML does, here's an overview:
+
+  o Every element may contain a description attribute to facilitate
+    documentation.  Every element may also contain description elements.
+
+  o The root element may contain 0..n schemas.
+
+  o The schema element must have a name attribute, which defines the
+    Archetypes type that this schema definition is for.  It's allowed to
+    have `abstract' schema defs, see "CipraContent" for an example.
+
+  o The schema element may contain 0..n files for each file that the
+    definition is to be used for.  Files have a single name attribute,
+    which corresponds to the filename.
+
+  o Every schema may contain 0..n fields.  The order of the fields is
+    relevant, as this is the order in which they are read from the CSV
+    file.
+
+  o Every field must have a name attribute, which corresponds to the
+    name of the Archestypes field they're used for.
+
+  o A field may have a transform attribute, which is used for
+    running the value from the CSV file through some transformation.
+
+  o There may be more than one transform per field.  Transforms are
+    called in thei order they appear herein.
+
+  o There is a type of transforms called deferred transforms.  These
+    are transforms that are executed after all other fields have been
+    transformed and a IRecord has been initialized.
+    'cipra-transform-domainreference' is such a deferred transform.
+
+  o A field may have a consume attribute, which defines how many
+    columns it needs to eat up.  (Some fields correspond to more than
+    one column in the CSV file.)
+
+  o The value of the consume attribute may also be 0 to indicate that
+    the field doesn't operate on a particular field in the CSV.
+
+  o Transforms happen after consumation, i.e. ITransforms receive
+    tuples if the consume attribute is set.
+
+  o To skip columns, use an empty field name and use the consume
+    attribute if needed.
+
+-->
+
+<schemas>
+  
+  <schema name="mina-members">
+  
+    <file name="Nieuwbriefbestand.csv" />
+    
+    <field name="fullname" 
+           description="Note that fullname is deliberately being misused as
+                        the last name!" />
+
+    <field name="firstname" />
+
+    <field name="gender" />
+    
+    <field name="jobtitle" />
+
+    <field name="company" />
+
+    <field name="streetandhousenumber"
+           transform="mina-transform-streetandhousenumber
+                      mina-transform-dontwrite"
+           description="'mina-transform-streetandhousenumber' is the
+                        transform that does the parsing." />
+
+    <field name="street"
+           consume="0"
+           transform="mina-transform-street"
+           description="Gets its value from 'streetandhousenumber'." />
+
+    <field name="housenumber"
+           consume="0"
+           transform="mina-transform-housenumber"
+           description="Gets its value from 'streetandhousenumber'." />
+
+    <field name="bus"
+           consume="0"
+           transform="mina-transform-bus"
+           description="Gets its value from 'streetandhousenumber'." />
+
+    <field name="zipcodeandcity"
+           transform="mina-transform-zipcodeandcity
+                      mina-transform-dontwrite"
+           description="Again 'mina-transform-zipcodeandcity' parses the value
+                        and lets the others consume." />
+
+    <field name="zipcode"
+           consume="0"
+           transform="mina-transform-zipcode"
+           description="Gets its value from 'zipcodeandcity'." />
+    
+    <field name="city"
+           consume="0"
+           transform="mina-transform-city"
+           description="Gets its value from 'zipcodeandcity'." />
+
+    <field name="country"
+           consume="0"
+           transform="mina-transform-country"
+           description="Gets its value from 'zipcodeandcity'." />
+
+    <field name="email" />
+
+    <field name="phonenumber" />
+
+  </schema>
+
+</schemas>

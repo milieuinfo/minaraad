@@ -1,0 +1,44 @@
+<html xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      i18n:domain="plone">
+    <body>
+    <div metal:define-macro="portlet"
+        tal:condition="python:template.getId()!='recently_published'"
+        tal:omit-tag="">
+        
+    
+    <tal:recentlist tal:define="last_login_time python:member.getProperty('last_login_time', DateTime());
+                    results python:request.get('items',
+                                                context.portal_catalog.searchResults(portal_type=['Hearing', 'Advisory',
+                                                                                     'Study', 'AnnualReport',
+                                                                                      'Pressrelease', 'NewsLetter',
+                                                                                      'Event'],
+                                                sort_on='Date',
+                                                sort_order='reverse')[:10]);">
+    
+    <dl id="portlet-events-mina">
+        <dt>
+            <a tal:attributes="href string:${portal_url}/recently_modified"
+               i18n:domain="minaraad"
+               i18n:translate="label_new">
+                New
+            </a>
+        </dt>
+
+        <tal:items tal:repeat="obj results">
+        <dd>
+            <span class="portlet_date">
+                <tal:date content="python:context.toLocalizedTime(obj.Date)" />
+            </span>
+            <br />
+            <a tal:attributes="href obj/getURL;
+                               title obj/Description"
+               tal:content="obj/pretty_title_or_id" />
+        </dd>
+        </tal:items>
+    </dl>
+
+    </tal:recentlist>
+    </div>
+    </body>
+</html>

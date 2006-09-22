@@ -1,0 +1,91 @@
+Minaraad
+
+    This is the Plone Product for Minaraad. To install this product make sure   
+    all dependencies are installed first and then install it using the quick  
+    installer.
+
+For the environment on the server:
+
+1) Install Python 2.4.3 from
+   http://www.python.org/ftp/python/2.4.3/Python-2.4.3.tgz
+   And read the Installer manual
+
+2) Install Zope 2.9.2 from
+    http://www.zope.org/Products/Zope/2.9.2/Zope-2.9.2.tgz
+    And read the Installer manual
+
+3) Install PIL 1.1.5 from
+   http://effbot.org/downloads/Imaging-1.1.5.tar.gz
+   And read the Installer manual
+
+4) Install a Zope instance via
+   /YOUR/ZOPEINSTALLATION/DIR/bin/mkzopeinstance.py
+
+
+
+Once the environment on the server is created you can add minaraad product and all its dependencies:
+
+1) In the Zope instance directory, add minaraad and all its dependencies
+   to Products/
+
+    Dependencies:
+
+        * Plone 2.1.2
+        (http://prdownloads.sourceforge.net/plone/Plone-2.1.2.tar.gz?download)
+    
+        * PasswordResetTool: zest branch! (https://svn.plone.org/svn/collective/PasswordResetTool/branches/zest)
+    
+        * FCKeditor 2.2
+        (http://prdownloads.sourceforge.net/fckeditor/FCKeditor.Plone2.2.zip?download)
+    
+        * RichDocument svn trunk
+        (https://svn.plone.org/svn/collective/RichDocument/trunk)
+    
+        * OrderableReferenceField
+        (https://svn.plone.org/svn/archetypes/MoreFieldsAndWidgets/OrderableReferenceField/trunk)
+    
+        * PortalTransforms from this branch:
+        (https://svn.plone.org/svn/archetypes/PortalTransforms/branches/1.3)
+        This should overwrite the PortalTransforms from Plone.
+    
+        * PloneTranslations from trunk:
+        (https://svn.plone.org/svn/collective/PloneTranslations/trunk)
+        This should overwrite the PloneTranslations from Plone.
+    
+        * TextIndexNG3 from
+        (http://surfnet.dl.sourceforge.net/sourceforge/textindexng/TextIndexNG3-3.1.8.tar.gz)
+    
+        - Copy (!) the ``TextIndexNG3`` directory to your ``Products``
+            directory.
+    
+        - In ``$INSTANCE_HOME/Products/TextIndexNG3/extension_modules`` do ``python
+            setup.py install --home=$INSTANCE_HOME``.
+    
+        - Remove the comments in
+            ``$INSTANCE_HOME/Products/TextIndexNG3/adapters/configure.zcml``.
+    
+        - Make sure that pdftotext is available.  Installing xpdf takes
+            care of that.  On Debian/Ubuntu try ``apt-get install xpdf``.
+            An install of just the poppler-utils or xpdf-utils package
+            works as well.
+    
+        * For running the test, make sure that PloneTestCase is installed.
+
+        * Install 'lynx' (http://lynx.isc.org/)
+
+
+2) - Copy i18n directory from product minaraad to the Zope instance directory.
+   - remove all the .po and .pot files from YourZopeInstance/i18n EXCEPT plone-minaraad-nl.po
+
+3) Translate the manager role (beheerder) to site admin and reviewer role (Redacteur) to  manager:
+   - Go to YourZopeInstance/Products/PloneTranslations/i18n directory
+   - open plone-nl.po
+   - Go to:
+       msgid "Manager"
+       msgstr "Beheerder"
+   - And change "Beheerder" to "Site admin"
+   - Go to:
+        msgid "Reviewer"
+        msgstr "Redacteur"
+   - And change "Redacteur" to "Manager"
+

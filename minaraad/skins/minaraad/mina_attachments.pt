@@ -1,0 +1,52 @@
+<html xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      i18n:domain="minaraad">
+    <body>
+
+        <metal:block metal:define-macro="agenda_attachments"
+                     tal:define="current_path python:'/'.join(obj.getPhysicalPath());
+                                 attachments python:context.portal_catalog.searchResults(portal_type='FileAttachment',
+                                                                                         path=current_path,)">
+            
+            <tal:block tal:repeat="attachment attachments">
+            <div tal:define="desc attachment/Description;
+                                item_type attachment/portal_type;
+                                item_type_class python: 'contenttype-' + putils.normalizeString(item_type);">
+    
+                <span tal:attributes="class item_type_class">
+                    <a class="visualIconPadding"
+                       tal:attributes="href attachment/getURL;
+                                       title desc;"
+                       tal:content="attachment/Title">
+                        Related Item
+                    </a>
+                </span>
+            </div>
+            </tal:block>
+      </metal:block>
+
+      <metal:block metal:define-macro="listattachments"
+                   tal:define="current_path python:'/'.join(context.getPhysicalPath());
+                               attachments python:context.portal_catalog.searchResults(portal_type='FileAttachment',
+                                                                                         path=current_path,)">
+            <h5 i18n:translate="title_attachments"
+                tal:condition="attachments">Attachments</h5>
+            <tal:block tal:repeat="attachment attachments">
+            <div tal:define="desc attachment/Description;
+                                item_type attachment/portal_type;
+                                item_type_class python: 'contenttype-' + putils.normalizeString(item_type);">
+    
+                <span tal:attributes="class item_type_class">
+                    <a class="visualIconPadding"
+                       tal:attributes="href attachment/getURL;
+                                       title desc;"
+                       tal:content="attachment/Title">
+                        Related Item
+                    </a>
+                </span>
+            </div>
+            </tal:block>
+      </metal:block>
+
+    </body>
+</html>

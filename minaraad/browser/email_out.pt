@@ -1,0 +1,124 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="minaraad">
+
+    <body>
+    <div metal:fill-slot="main">
+    
+        <div metal:use-macro="here/document_actions/macros/document_actions">
+            Document actions (print, sendto etc)
+        </div>
+    
+        <h1 class="documentFirstHeading">
+            <span tal:replace="object_title" /> &mdash; 
+            <span i18n:translate="label_sendemail" 
+                  tal:omit-tag="">Send e-mail</span>
+        </h1>
+    
+        <form action="email_out"
+              method="get"
+              name="email_out"
+              tal:attributes="action string:${context/absolute_url}/$template_id"
+              tal:define="canSend view/canSend">
+            
+            <fieldset>
+                <legend i18n:translate="legend_sendemail">Send e-mail to subscribers</legend>
+    
+                <tal:block tal:condition="not:canSend">
+                <div class="formHelp" 
+                     i18n:translate="help_email_out_already_sent">
+                    An e-mail has already been sent out for this content type on
+                    <span i18n:name="email_sentdate"
+                          tal:replace="view/sentDate" />.
+                </div>
+                </tal:block>
+    
+                <tal:block tal:condition="canSend">
+                <div class="formHelp" 
+                     i18n:translate="help_email_out">
+                    Send out an e-mail to all subscribers pertaining to this item.
+                    If the 'Send As Test' checkbox is checked below, the e-mail is only
+                    sent to the people in the 'To' field. Fill in the username which should 
+                    receive the test email. Once a non-test e-mail has been sent out,
+                    no further e-mail's can be sent from this particular tab.
+                </div>
+                    
+                <div class="field"
+                     tal:define="to_ request/to|view/defaultTo">
+                    <label for="to" 
+                           i18n:translate="label_email_out_to">To</label>
+    
+                    <div class="formHelp" 
+                         i18n:translate="help_email_out_to">
+                        Comma-separated list of member ids this mail
+                        is sent out to.  This is only for testing
+                        purposes and for members that you want the
+                        mail to be sent to in addition to the ones
+                        that subscribed.
+                    </div>
+    
+                    <input type="text"
+                        id="to"
+                        name="to"
+                        size="80"
+                        tabindex=""
+                        tal:attributes="tabindex tabindex/next;
+                                        value to_" />
+                </div>
+        
+                <div class="field">
+                    <label for="send_as_test" 
+                           i18n:translate="label_send_as_test">Send Test e-mail</label>
+    
+                    <div class="formHelp" 
+                         i18n:translate="help_send_as_test">
+                        Test e-mails can be sent as frequently as
+                        needed but only get sent to the members in the
+                        above "To" field.
+                    </div>
+        
+                    <input type="checkbox"
+                           name="send_as_test"
+                           value="1"
+                           id="send_as_test"
+                           class="noborder"
+                           checked="checked"
+                           tabindex=""
+                           tal:attributes="tabindex tabindex;" />
+                </div>
+        
+                <div class="field">
+                    <label for="additional" 
+                           i18n:translate="label_email_out_additional">Additional Message</label>
+    
+                    <div class="formHelp" 
+                         i18n:translate="help_email_out_additional">
+                        Additional message text (text used from emailTemplate field is
+                        considered master e-mail text).
+                    </div>
+        
+                    <textarea name="additional" 
+                              id="additional"
+                              tabindex=""
+                              tal:attributes="tabindex tabindex/next"></textarea>
+                </div>
+        
+                <div class="formControls">
+                    <input class="context"
+                           tabindex=""
+                           type="submit"
+                           name="send"
+                           value="Send"
+                           i18n:attributes="value label_send;"
+                           tal:attributes="tabindex tabindex/next;" />
+                </div>
+                </tal:block>
+            </fieldset>
+        </form>
+    </div>
+    </body>
+</html>

@@ -39,13 +39,13 @@ class AttendeesManagerView(AbstractView):
                    +urllib.quote(self.referring_url))
 
         action = self.request.get('form.submitted', None)
-        member = memberTool.getAuthenticatedMember()
+        memberId = memberTool.getAuthenticatedMember().getId()
         if action == 'register':
-            self.manager.addMember(member)
+            self.manager.addMember(memberId)
             return response.redirect(self.referring_url+"?portal_status_message=" \
                    +urllib.quote("You have successfully registered"))
         elif action == 'unregister':
-            self.manager.removeMember(member)
+            self.manager.removeMember(memberId)
             return response.redirect(self.referring_url+"?portal_status_message=" \
                    +urllib.quote("You have successfully unregistered"))
         elif action == 'exportCSV':
@@ -69,6 +69,16 @@ class AttendeesManagerView(AbstractView):
         
         for memberId in self.manager.attendees():
             member = memTool.getMemberById(memberId)
+
+            # In case a memberId is None (this happens when a user is deleted)
+            # we remove the member as attendee on this hearing.
+            #
+            # Note: this means we will change history in case the member has
+            # participated in a hearing. But that's the way they want it. 
+            if member is None:
+                self.manager.removeMember(memberId)
+                continue
+
             nice = member.getProperty('firstname', '') + ' ' + \
                    member.getProperty('fullname', '')
             nice = nice.strip()
@@ -82,8 +92,7 @@ class AttendeesManagerView(AbstractView):
                 group = attendees['members']
             
             group.append({'memberId': memberId,
-                          'niceName': nice,
-                          'member': member})
+                          'niceName': nice})
         
         return attendees
 

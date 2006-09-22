@@ -1,0 +1,44 @@
+PRODUCT = minaraad
+
+AGX = python ArchGenXML/ArchGenXML.py 
+CONFIG = model/generate.conf
+MODEL = model/${PRODUCT}.zuml
+PYTHONFILES = `glob('*.py')`
+TESTFILES = `glob('test/*.py')`
+SOFTWARE_HOME = `os.environ.get('SOFTWARE_HOME', '')`
+INSTANCE_HOME = `os.environ.get('INSTANCE_HOME', '')`
+
+all: version.txt i18n/${PRODUCT}-nl.po test
+
+version.txt: $MODEL $CONFIG
+    # Handy hack, regenerating from the model updates version.txt...
+    :sys cd ..; $AGX -c $PRODUCT/$CONFIG $PRODUCT/$MODEL
+
+test: $MODEL $PYTHONFILES $TESTFILES
+    :sys cd $INSTANCE_HOME/Products/${PRODUCT}/tests;\
+	 python runalltests.py
+
+pydoc:
+    :sys cd doc/pydoc;\
+         export PYTHONPATH=$SOFTWARE_HOME:$INSTANCE_HOME/Products;\
+         pydoc -w ../../*py;\
+         cd tests;\
+         pydoc -w ../../../tests/*py
+
+i18n: i18n/${PRODUCT}-nl.po i18n-sync
+
+i18n/${PRODUCT}-nl.po: skins/$PRODUCT/*.pt i18n/generated.pot
+    :sys i18ndude rebuild-pot --pot i18n/${PRODUCT}.pot --create ${PRODUCT} --merge i18n/generated.pot skins/$PRODUCT/*.pt
+
+i18n-sync:
+    :sys i18ndude sync --pot i18n/${PRODUCT}.pot i18n/${PRODUCT}-nl.po i18n/${PRODUCT}-en.po
+
+gen:
+    # No questions, just run AGX again
+    :sys cd ..; $AGX -c $PRODUCT/$CONFIG $PRODUCT/$MODEL
+
+tar: version.txt test
+    :sys rm -f ${PRODUCT}.tgz
+    :sys cd ..;\
+         tar -czvf ${PRODUCT}.tgz ${PRODUCT}
+    

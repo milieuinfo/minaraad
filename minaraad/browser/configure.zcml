@@ -1,0 +1,62 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:five="http://namespaces.zope.org/five">
+
+  <browser:page
+      for="Products.minaraad.content.Hearing.IHearing"
+      name="attendees_view"
+      class=".attendees.AttendeesManagerView"
+      permission="zope2.View"
+      allowed_interface=".attendees.IAttendeesManagerView"
+    />
+    
+  <browser:page
+      for="Products.minaraad.content.MREvent.IMREvent"
+      name="attendees_view"
+      class=".attendees.AttendeesManagerView"
+      permission="zope2.View"
+      allowed_interface=".attendees.IAttendeesManagerView"
+  />
+
+  <browser:page
+      for="Products.minaraad.interfaces.IPortalPropertyContainer"
+      name="minaraad_config.html"
+      class=".configlets.MinaraadConfigletView"
+      permission="cmf.ManagePortal"
+      template="minaraad_config.pt"
+    />
+
+  <browser:page
+      for="Products.minaraad.interfaces.IPortalPropertyContainer"
+      name="subscribers_config.html"
+      class=".configlets.SubscribersConfigletView"
+      permission="cmf.ManagePortal"
+      template="subscribers_config.pt"
+    />
+
+  <browser:page
+      for="Products.minaraad.interfaces.IPortalPropertyContainer"
+      name="subscriptions_config.html"
+      class=".configlets.SubscriptionsConfigletView"
+      permission="zope2.View"
+      template="subscriptions_config.pt"
+    />
+
+  <browser:page
+      for="*"
+      name="email_out"
+      class=".email.EmailOutView"
+      permission="cmf.ManagePortal"
+      template="email_out.pt"
+    />
+
+  <browser:page
+      for="*"
+      name="export_subscribers"
+      class=".subscribers.ExportSubscribersView"
+      permission="cmf.ManagePortal"
+      template="export-subscribers.pt"
+  />
+
+</configure>

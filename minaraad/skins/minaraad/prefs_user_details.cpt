@@ -1,0 +1,412 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/prefs_main_template/macros/master"
+      i18n:domain="plone">
+
+<metal:block fill-slot="top_slot"
+             tal:define="dummy python:request.set('disable_border',1)" />
+
+<body>
+<div metal:fill-slot="prefs_configlet_content"
+     tal:define="userid python:request.get('userid', member.getId());
+                member python:mtool.getMemberById(userid);
+                errors options/state/getErrors;"
+     tal:omit-tag="">
+    
+    <div id="content" 
+         class="documentEditable">
+    <!-- simulating views on the groups/user pages until we have real objects. -->
+        <ul class="contentViews">
+            <li class="selected">
+                <a tal:attributes="href string:${template_id}?userid=${userid}"
+                   i18n:translate="label_user_properties">
+                    User Properties
+                </a>
+            </li>
+            <li>
+                <a tal:attributes="href string: prefs_user_memberships?userid=${userid}"
+                   i18n:translate="label_group_memberships">
+                    Group Memberships
+                </a>
+            </li>
+        </ul>
+        
+        <div class="contentActions">
+            &nbsp;
+        </div>
+        
+        <div id="region-content" 
+             class="documentContent">
+             
+            <a name="documentContent"></a>
+            
+            <div metal:use-macro="here/global_statusmessage/macros/portal_message">
+                Portal status message
+            </div>
+        
+            <div class="configlet">
+                <h1 i18n:translate="heading_prefs_user_details">
+                    User Properties for
+                    <span tal:content="member/getId | default"
+                          tal:omit-tag=""
+                          i18n:name="username">username</span>
+                </h1>
+            
+                <a class="link-parent"
+                   tal:attributes="href string: $portal_url/prefs_users_overview"
+                   i18n:translate="label_up_to_usersoverview">
+                    Up to Users Overview
+                </a>
+        
+                <p i18n:translate="label_change_member_properties">
+                    Change user properties.
+                </p>
+        
+                <form action=""
+                      name="users"
+                      method="post"
+                      enctype="multipart/form-data"
+                      class="enableUnloadProtection"
+                      tal:condition="user | nothing"
+                      tal:attributes="action template_id">
+        
+                    <fieldset>
+                        <legend i18n:translate="legend_member_details">User Details</legend>
+                
+                        <input type="hidden" 
+                               name="userid" 
+                               value="username"
+                               tal:attributes="value member/getId" />
+                               
+                        <!-- *** gender *** -->
+                        <div class="field"
+                        tal:define="error errors/gender | nothing; 
+                                    genders python:member.getProperty('genders');
+                                    gender python:request.get('gender', member.getProperty('gender', ''));
+                                    tabindex tabindex/next;">
+                        
+                            <label i18n:domain="minaraad"
+                                    i18n:translate="label_gender">Gender</label>
+                            <br />
+                            <select name="gender">
+                                <tal:block tal:repeat="option genders">
+                                    <option tal:attributes="selected python:test(option==gender, 'selected', '');
+                                                            value option;"
+                                            tal:content="option" />
+                                </tal:block>
+                            </select>
+                        </div>
+                
+                        <!--*** firstname *** -->
+                        <div class="row"
+                            tal:define="error errors/firstname| nothing;
+                                        firstname python:request.get('firstname', member.getProperty('firstname', ''));"
+                            tal:attributes="class python:test(error, 'field error', 'field')">
+                    
+                            <label i18n:domain="minaraad"
+                                    i18n:translate="label_firstname">First name</label>
+                            <span class="fieldRequired" 
+                                title="Required"
+                                i18n:attributes="title title_required;"
+                                i18n:translate="label_required">(Required)</span>
+                    
+                            <div tal:content="error">Validation error output</div>
+                    
+                            <input type="text"
+                                name="firstname"
+                                size="30"
+                                value="member.firstname html_quote"
+                                tal:attributes="value firstname;
+                                                tabindex tabindex/next;" />
+                        </div>
+                        
+                        <!--*** lastname *** -->
+                        <div class="row"
+                            tal:define="error errors/fullname | nothing;
+                                        fullname python:request.get('fullname', member.getProperty('fullname', ''));"
+                            tal:attributes="class python:test(error, 'field error', 'field')">
+                    
+                            <label i18n:domain="minaraad"
+                                    i18n:translate="label_lastname">Last name</label>
+                            <span class="fieldRequired" 
+                                title="Required"
+                                i18n:attributes="title title_required;"
+                                i18n:translate="label_required">(Required)</span>
+                    
+                            <div tal:content="error">Validation error output</div>
+                    
+                            <input type="text"
+                                name="fullname"
+                                size="30"
+                                value="member.fullname html_quote"
+                                tal:attributes="value fullname;
+                                                tabindex tabindex/next;" />
+                        </div>
+                            
+                        <!-- *** company *** -->
+                        <div class="field"
+                                tal:define="error errors/company | nothing;
+                                            company python:request.get('company', member.getProperty('company', ''));"
+                                tal:attributes="class python:test(error, 'field error', 'field')">
+    
+                            <label for="company"
+                                i18n:domain="minaraad" 
+                                i18n:translate="label_company">Company</label>
+    
+                            <div tal:content="error">Validation error output</div>
+    
+                            <input type="text"
+                                    id="company"
+                                    name="company"
+                                    size="30"
+                                    value="member.company html_quote"
+                                    tal:attributes="value company;
+                                                    tabindex tabindex/next;" />
+                        </div>
+                    
+                        <!-- *** jobtitle *** -->
+                        <div class="field"
+                                tal:define="error errors/jobtitle | nothing;
+                                            jobtitle python:request.get('jobtitle', member.getProperty('jobtitle', ''));"
+                                tal:attributes="class python:test(error, 'field error', 'field')">
+    
+                            <label for="jobtitle"
+                                i18n:domain="minaraad" 
+                                i18n:translate="label_jobtitle">Job title</label>
+    
+                            <div tal:content="error">Validation error output</div>
+    
+                            <input type="text"
+                                    id="jobtitle"
+                                    name="jobtitle"
+                                    size="30"
+                                    value="member.jobtitle html_quote"
+                                    tal:attributes="value jobtitle;
+                                                    tabindex tabindex/next;" />
+                        </div>
+                        <br />
+
+                        <!-- *** street *** -->
+                        <div class="field"
+                                tal:define="error errors/street | nothing;
+                                            street python:request.get('street', member.getProperty('street', ''));"
+                                tal:attributes="class python:test(error, 'field error', 'field')">
+    
+                            <label for="street" 
+                                i18n:domain="minaraad"
+                                i18n:translate="label_street">Street</label>
+                            <span class="fieldRequired" title="Required"
+                                i18n:attributes="title title_required;"
+                                i18n:translate="label_required">(Required)</span>
+    
+                            <div tal:content="error">Validation error output</div>
+    
+                            <input type="text"
+                                    id="street"
+                                    name="street"
+                                    size="30"
+                                    value="member.street html_quote"
+                                    tal:attributes="value street;
+                                                    tabindex tabindex/next;" />
+                        </div>
+                            
+                        <!-- *** housenumber *** -->
+                        <div class="field"
+                                tal:define="error errors/housenumber | nothing;
+                                            housenumber python:request.get('street', member.getProperty('housenumber', ''));"
+                                tal:attributes="class python:test(error, 'field error', 'field')">
+    
+                            <label for="housenumber" 
+                                i18n:domain="minaraad"
+                                i18n:translate="label_housenumber">House number</label>
+                            <span class="fieldRequired" title="Required"
+                                i18n:attributes="title title_required;"
+                                i18n:translate="label_required">(Required)</span>
+                                
+                            <div tal:content="error">Validation error output</div>
+    
+                            <input type="text"
+                                    id="housenumber"
+                                    name="housenumber"
+                                    size="15"
+                                    value="member.housenumber html_quote"
+                                    tal:attributes="value housenumber;
+                                                    tabindex tabindex/next;" />
+                        </div>
+                            
+                        <!-- *** zipcode *** -->
+                        <div class="field"
+                                tal:define="error errors/zipcode | nothing;
+                                            zipcode python:request.get('zipcode', member.getProperty('zipcode', ''));"
+                                tal:attributes="class python:test(error, 'field error', 'field')">
+    
+                            <label for="zipcode" 
+                                i18n:domain="minaraad"
+                                i18n:translate="label_zipcode">Zipcode</label>
+                            <span class="fieldRequired" title="Required"
+                                i18n:attributes="title title_required;"
+                                i18n:translate="label_required">(Required)</span>
+                                
+                            <div tal:content="error">Validation error output</div>
+    
+                            <input type="text"
+                                    id="zipcode"
+                                    name="zipcode"
+                                    size="30"
+                                    value="member.zipcode html_quote"
+                                    tal:attributes="value zipcode;
+                                                    tabindex tabindex/next;" />
+                        </div>
+                            
+                        <!--*** bus *** -->
+                        <div class="row"
+                            tal:define="error errors/bus | nothing;
+                                            bus python:request.get('bus', member.getProperty('bus', ''));"
+                            tal:attributes="class python:test(error, 'field error', 'field')">
+                    
+                            <label i18n:domain="minaraad"
+                                i18n:translate="label_bus">Bus</label>
+        
+                            <div tal:content="error">Validation error output</div>
+                            <input type="text"
+                                name="bus"
+                                size="10"
+                                value="member.bus html_quote"
+                                tal:attributes="value bus;
+                                                tabindex tabindex/next;" />
+                        </div>
+                            
+                        <!-- *** city *** -->
+                        <div class="field"
+                                tal:define="error errors/city| nothing;
+                                            city python:request.get('city', member.getProperty('city', ''));"
+                                tal:attributes="class python:test(error, 'field error', 'field')">
+    
+                            <label for="city" 
+                                i18n:domain="minaraad"
+                                i18n:translate="label_city">City</label>
+                            <span class="fieldRequired" title="Required"
+                                i18n:attributes="title title_required;"
+                                i18n:translate="label_required">(Required)</span>
+                                
+                            <div tal:content="error">Validation error output</div>
+    
+                            <input type="text"
+                                    id="city"
+                                    name="city"
+                                    size="30"
+                                    value="member.city html_quote"
+                                    tal:attributes="value city;
+                                                    tabindex tabindex/next;" />
+                        </div>
+
+                         <!-- *** country *** -->
+                        <div class="field"
+                            tal:define="error errors/country | nothing; 
+                                        countries python:member.getProperty('select_country');
+                                        country python:request.get('country', member.getProperty('country', ''));
+                                        tabindex tabindex/next;">
+        
+                            <label i18n:domain="minaraad"
+                                i18n:translate="label_country">Country</label>
+                            <br />
+                            <select name="country" onchange="showOtherCountry(this)">
+                                <tal:block tal:repeat="option countries">
+                                    <option tal:attributes="selected python:test(option==country, 'selected', '');
+                                                            value option;"
+                                            tal:content="option" />
+                                </tal:block>
+                            </select>
+                        
+                            <!-- *** other country *** -->
+                            <div class="field"
+                                id="othercountry"
+                                tal:define="error errors/other_country | nothing;
+                                            other_country python:request.get('other_country', member.getProperty('other_country', ''));"
+                                tal:attributes="class python:test(error, 'field error', 'field');
+                                                style python:test(country ==('Ander land'), '', 'display:none')">
+        
+        
+                                <label for="other_country" 
+                                    i18n:domain="minaraad"
+                                    i18n:translate="label_other_country">Other country</label>
+        
+                                <div tal:content="error">Validation error output</div>
+        
+                                <input type="text"
+                                        id="other_country"
+                                        name="other_country"
+                                        size="30"
+                                        value="member.other_country html_quote"
+                                        tal:attributes="value other_country;
+                                        " />
+                            </div>
+                        </div>
+                        <br />
+                        
+                        <!-- *** phonenumber *** -->
+                        <div class="field"
+                                tal:define="error errors/phonenumber | nothing;
+                                            phonenumber python:request.get('phonenumber', member.getProperty('phonenumber', ''));"
+                                tal:attributes="class python:test(error, 'field error', 'field')">
+    
+                            <label for="phonenumber"
+                                i18n:domain="minaraad"
+                                i18n:translate="label_phonenumber">Phone number</label>
+    
+                            <div tal:content="error">Validation error output</div>
+    
+                            <input type="text"
+                                    id="phonenumber"
+                                    name="phonenumber"
+                                    size="30"
+                                    value="member.phonenumber html_quote"
+                                    tal:attributes="value phonenumber;
+                                                    tabindex tabindex/next;" />
+                        </div>
+                            
+                        <!-- *** email *** -->
+                        <div class="field" 
+                                tal:define="error errors/email | nothing;
+                                            email python:request.get('email', member.getProperty('email',''));"
+                                tal:attributes="class python:test(error, 'field error', 'field')">
+                
+                            <label i18n:translate="label_email">E-mail</label>
+                
+                            <span class="fieldRequired" title="Required"
+                                    i18n:attributes="title title_required;"
+                                    i18n:translate="label_required">(Required)</span>
+                
+                            <div class="formHelp" 
+                                    i18n:translate="help_email_creation">
+                                Enter an email address. This is necessary in case the password
+                                is lost. We respect your privacy, and will not give the address
+                                away to any third parties or expose it anywhere.
+                            </div>
+            
+                            <div tal:content="error">Validation error output</div>
+            
+                            <input type="text"
+                                    name="email"
+                                    size="30"
+                                    tal:attributes="value email;
+                                                    tabindex tabindex/next;" />
+                        </div>
+
+                        <div class="formControls">
+                            <input class="context"
+                                    type="submit"
+                                    value="Save"
+                                    name="prefs_user_edit:method"
+                                    i18n:attributes="value label_save;"
+                                    tal:attributes="tabindex tabindex/next;" />
+                        </div>
+                    </fieldset>
+                    <input type="hidden" name="form.submitted" value="1" />
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

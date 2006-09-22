@@ -1,0 +1,113 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/prefs_main_template/macros/master"
+      i18n:domain="minaraad">
+
+    <metal:block metal:fill-slot="top_slot"
+                tal:define="dummy python:request.set('disable_border',1)" />
+    
+    <body>
+    <metal:block metal:fill-slot="prefs_configlet_main"
+                 tal:define="session request/SESSION;
+                             subscriptions view/subscriptions;">
+        
+        <h1 i18n:translate="heading_subscribers_overview">Subscribers overview</h1>
+        
+        <a class="link-parent"
+           tal:attributes="href string: $portal_url/plone_control_panel"
+           i18n:translate="label_up_to_plone_setup">
+            Up to Site Setup
+        </a>
+
+        <tal:block tal:repeat="subscription subscriptions">
+        <span tal:condition="not:subscription/category" 
+               tal:omit-tag=""
+               tal:define="subscription_id subscription/id;
+                           extra_request
+                           string:category=${subscription_id}">
+
+            <form method="post"
+                  tal:attributes="action string:${context/absolute_url}/$template_id">
+                <input class="context"
+                        type="hidden"
+                        name="category"
+                        tal:attributes="value subscription_id" />
+                
+                <h6 class="hearingsubheader2"
+                        tal:content="subscription/Title"
+                        i18n:translate="" />
+
+                <tal:block tal:define="emailsubscriptions
+                                        python:view.canSubscribeEmail(subscription_id);
+                                        postsubscriptions python:view.canSubscribePost(subscription_id)">
+
+                    <input class="context"
+                            type="submit"
+                            name="form.button.ExportEmail"
+                            value="Export Email Subscribers"
+                            i18n:attributes="value label_export_email;"
+                            tal:attributes="tabindex tabindex/next;"
+                            tal:condition="emailsubscriptions" />
+
+                    <input class="context"
+                            type="submit"
+                            name="form.button.ExportPost"
+                            value="Export Post Subscribers"
+                            i18n:attributes="value label_export_post;"
+                            tal:attributes="tabindex tabindex/next;"
+                            tal:condition="postsubscriptions" />
+                </tal:block>
+            </form>
+            <br />
+        </span>
+        </tal:block>
+
+        <br />
+        <tal:block tal:define="subscription session/category|nothing;">
+        <form method="post"
+              tal:attributes="action string:${context/absolute_url}/$template_id">
+
+            <input class="context"
+                    type="hidden"
+                    name="Hearing"
+                    tal:attributes="value string:Hearing" />
+
+            <h6 i18n:translate="label_hearingthemes">Hearing Themes</h6>
+
+            <div tal:repeat="theme view/subscriptions">
+                <tal:block tal:condition="theme/category">
+                <input type="checkbox"
+                        class="noborder"
+                        tal:attributes="tabindex tabindex/next;
+                                        id string:theme;
+                                        name string:theme;
+                                        checked theme/checked;
+                                        value string:${theme/id};" /> 
+                <span tal:content="theme/Title"
+                      i18n:translate="" /> 
+                </tal:block>
+            </div>
+            <br />
+            <input class="context"
+                    type="submit"
+                    name="form.button.ExportEmail"
+                    value="Export Email Subscribers"
+                    i18n:attributes="value label_export_email;"
+                    tal:attributes="tabindex tabindex/next;" />
+
+            <!-- Remember that 'Hearing' was selected. -->
+            <input class="context"
+                    type="hidden"
+                    name="category"
+                    tal:attributes="value string:Hearing" />
+
+            <!-- Remember the value of subscription. -->
+            <input class="context"
+                    type="hidden"
+                    name=""
+                    tal:attributes="value subscription" />
+        </form>
+        </tal:block>
+    </metal:block>
+    </body>
+</html>

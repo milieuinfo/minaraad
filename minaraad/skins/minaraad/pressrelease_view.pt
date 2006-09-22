@@ -1,0 +1,73 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
+      lang="en-US"
+      i18n:domain="minaraad">
+    <metal:block use-macro="context/global_defines/macros/defines" />
+
+    <body>
+     <metal:block metal:define-macro="header">
+        <div metal:use-macro="here/document_actions/macros/document_actions">
+            Document actions (print, sendto etc)
+        </div>
+        <br />
+        <br />
+        <div class="pressrelease_img_left">
+            <span tal:replace="structure context/logo_1_logo"
+            tal:condition="context/getLogo_1" />
+        </div>
+
+        <div class="pressrelease_img_right">
+            <span tal:replace="structure context/logo_2_logo"
+                                tal:condition="context/getLogo_2" />
+        </div>
+
+        <div tal:define="daterequired python:context.getDate() != None;
+                        date python:context.toLocalizedTime(context.date)[:-5];"
+            tal:content="date"
+            tal:condition="daterequired"
+            class="pressrelease_date">01-01</div>
+        <div class="pressrelease_title"
+                tal:content="context/Title">Title</div>
+        <div class="pressrelease_subhead"
+            tal:content="context/getSubheader">SubHeader</div>
+
+        <div class="clear" />
+        <br />
+    </metal:block>
+
+    <metal:block metal:define-macro="body">
+        <hr />
+        <div class="pressrelease_textleft"
+             tal:content="context/getDescription" />
+        <!-- Text -->
+        <hr />
+        <img tal:attributes="src string:${context/absolute_url}/foto_foto;
+                            alt context/Title"
+              class="img_right" />
+        <span class="bodytext"
+            tal:content="structure context/getBody"
+            tal:condition="context/getBody" />
+        <!-- End text -->
+        <br />
+   
+        <!-- Start Attachments-->
+        <div metal:use-macro="context/mina_attachments/macros/listattachments" />
+        <!-- end Attachments -->
+
+		      <!-- Contactperson -->
+        <tal:block tal:define="contacts python:context.getContact()"
+                   tal:condition="contacts">
+            <br />
+            <div i18n:translate="moreinfo_contactperson">
+                For more information contact:
+            </div>
+            <tal:block tal:repeat="contact contacts">
+           <div metal:use-macro="context/contactperson_view/macros/contactdetails"
+                tal:omit-tag="" />
+            </tal:block>
+            <br />
+        </tal:block>
+        <!-- end contactpersoon -->
+    </metal:block>
+    <metal:block metal:define-macro="folderlisting" />
+    </body>
+</html>
