@@ -18,13 +18,8 @@ class AttendeeManager(object):
         
         self.context._attendees = attendees
     
-    def removeMember(self, member):
+    def removeMember(self, memberId):
         attendees = self.attendees()
-
-        memberId = member
-        if not isinstance(member, basestring):
-            memberId = member.getMemberId()
-
         try:
             attendees.remove(memberId)
         except ValueError:
