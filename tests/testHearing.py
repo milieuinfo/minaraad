@@ -44,7 +44,9 @@ from Products.minaraad.tests.MainTestCase import MainTestCase
 
 # Import the tested classes
 from Products.minaraad.content.Hearing import Hearing
+from Products.minaraad.browser.attendees import AttendeesManagerView
 
+from zope.publisher.browser import TestRequest
 ##code-section module-beforeclass #fill in your manual code here
 from DateTime import DateTime
 from Products.minaraad.tests.utils import load_file
@@ -70,7 +72,6 @@ TESTIMAGE = load_file('test.gif')
 
 ##/code-section module-beforeclass
 
-
 class testHearing(MainTestCase):
     """ test-cases for class(es) Hearing
     """
@@ -86,12 +87,16 @@ class testHearing(MainTestCase):
 
         self.portal.hoorzittingen.invokeFactory('Hearing','myhoorzitting')
         self.hoorzitting = self.portal.hoorzittingen.myhoorzitting
+        
+        testrequest = TestRequest()
+        self.view = AttendeesManagerView(self.hoorzitting, testrequest)
 
         self.portal.contactpersonen.invokeFactory('ContactPerson', id='Jslob')
         self.contactperson = self.portal.contactpersonen.Jslob
 
         membership = self.portal.portal_membership
         membership.addMember('member', 'secret', ['Member'], [])
+        membership.addMember('member2', 'secret', ['Member'], [])
 
     # from class Hearing:
     def test_getThemesList(self):
@@ -204,7 +209,27 @@ class testHearing(MainTestCase):
 
         themes = self.hoorzitting.getThemesList()
         self.failUnless(len(themes)>0)
+        
+    def test_AttendeeRegistration(self):
+        """ We want to know if members are correctly added and removed as attendees.
+        """
+        self.view.manager.addMember('member')
+        self.assertEqual(['member'], self.view.manager.attendees())
+        self.view.manager.addMember('member2')
+        self.assertEqual(['member','member2'], self.view.manager.attendees())
 
+        self.portal.portal_membership.deleteMembers(['member2'], delete_memberareas=0, delete_localroles=1)
+        self.assertEqual(['member','member2'], self.view.manager.attendees())
+        res = self.view.groupedAttendees()
+        self.assertEqual({'council_members': [],
+                          'members': [{'memberId': 'member', 'niceName': 'member'}]},
+                          res)
+        self.assertEqual(len(res['members']), 1)
+
+        self.assertEqual(['member'], self.view.manager.attendees())
+
+        
+        
     def test_Fields(self):
         """ Test if the Hearing has all the required fields
         """
