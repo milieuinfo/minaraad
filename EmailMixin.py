@@ -162,7 +162,7 @@ class EmailMixin:
                 # XXX traceback is not needed now
                 #log_exc('Could not send email from %(fromAddress)s to %(toAddress)s regarding issue ' \
                 #        'in tracker %(path)s\ntext is:\n%(message)s\n' % send_info.__dict__)
-                logger.log(logging.INFO, 'Template %s email failed sending from %s to %s (%s: %s)' % (
+                logger.log(logging.ERROR, 'Template %s email failed sending from %s to %s (%s: %s)' % (
                         send_info.path, send_info.fromAddress, send_info.toAddress,
                         exc.__class__.__name__, exc
                         ))
