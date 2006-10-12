@@ -41,6 +41,13 @@ from email.MIMEMultipart import MIMEMultipart
 from DateTime import DateTime
 ##/code-section module-header
 
+import logging
+logger = logging.getLogger('minaraad_email')
+
+class DictLike(object):
+    def __init__(self, **kw):
+        self.__dict__.update(kw)
+
 schema = Schema((
 
     DateTimeField(
@@ -116,6 +123,9 @@ class EmailMixin:
         subject = '[%s] %s' % (portal.title_or_id(), self.Title())
         
         mailHost = getToolByName(portal, 'MailHost')
+        
+        failed_postings = []
+
         for member in members:
             emailBody = self.getEmailBody(member=member, context=self)
 
@@ -134,16 +144,37 @@ class EmailMixin:
             message.attach(MIMEText(emailBody['text/html'], 'html', charset))
             message = str(message)
         
+            send_info = DictLike(
+                path = self.absolute_url(),
+                message = emailBody,
+                subject = subject,
+                fromAddress = fromAddress,
+                member = member,
+                toAddress = getattr(member, 'email', 'N/A (%s)' % member.name),
+                )
+
             try:
                 mailHost.send(message = message,
                               mto = member.email,
                               mfrom = fromAddress,
                               subject = subject)
-            except:
-                args = (fromAddress, getattr(member, 'address', 'N/A'), 
-                        self.absolute_url(), emailBody)
-                log_exc('Could not send email from %s to %s regarding issue ' \
-                        'in tracker %s\ntext is:\n%s\n' % args)
+            except Exception, exc:
+                # XXX traceback is not needed now
+                #log_exc('Could not send email from %(fromAddress)s to %(toAddress)s regarding issue ' \
+                #        'in tracker %(path)s\ntext is:\n%(message)s\n' % send_info.__dict__)
+                logger.log(logging.INFO, 'Template %s email failed sending from %s to %s (%s: %s)' % (
+                        send_info.path, send_info.fromAddress, send_info.toAddress,
+                        exc.__class__.__name__, exc
+                        ))
+                failed_postings.append(send_info);
+            else:
+                logger.log(logging.INFO, 'Template %s email succesfully sent from %s to %s' % (
+                        send_info.path, send_info.fromAddress, send_info.toAddress,
+                        ))
+
+        # return failed members
+        return failed_postings
+
     security.declarePublic('getEmailBody')
     def getEmailBody(self, *args, **kwargs):
         """

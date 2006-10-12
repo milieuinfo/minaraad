@@ -1,5 +1,6 @@
 from configlets import AbstractView
 from Products.CMFCore.utils import getToolByName
+import urllib
 
 class EmailOutView(AbstractView):
     
@@ -14,12 +15,18 @@ class EmailOutView(AbstractView):
             testing = bool(int(self.request.get('send_as_test', "0")))
             text = self.request.get('additional', None)
             
-            self.context.email(text=text, 
+            failed_postings = self.context.email(text=text, 
                                testing=testing, 
                                additionalMembers=additionalMembers)
             
-            return response.redirect(self.referring_url+
-                                     '?portal_status_message=E-mail+Sent')
+            if failed_postings:
+                message = "E-Mail failed to following addresses: %s" % (
+                    ', '.join([send_info.toAddress for send_info in failed_postings]),
+                    )
+            else:
+                message = 'E-mail Sent'
+                    
+            return response.redirect('%s?portal_status_message=%s' % (self.referring_url, urllib.quote_plus(message)))
         
         return self.index(template_id='email_out')
     
