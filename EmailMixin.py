@@ -162,16 +162,31 @@ class EmailMixin:
                 # XXX traceback is not needed now
                 #log_exc('Could not send email from %(fromAddress)s to %(toAddress)s regarding issue ' \
                 #        'in tracker %(path)s\ntext is:\n%(message)s\n' % send_info.__dict__)
-                logger.log(logging.ERROR, 'Template %s email failed sending from %s to %s (%s: %s)' % (
-                        send_info.path, send_info.fromAddress, send_info.toAddress,
-                        exc.__class__.__name__, exc
-                        ))
+                send_info.excname = str(exc.__class__.__name__)
+                send_info.exctxt = str(exc)
+                logger.log(logging.ERROR, 'Template %(path)s email failed sending from %(fromAddress)s to %(toAddress)s (%(excname)s: %(exctxt)s)' % send_info.__dict__)
                 failed_postings.append(send_info);
             else:
-                logger.log(logging.INFO, 'Template %s email succesfully sent from %s to %s' % (
-                        send_info.path, send_info.fromAddress, send_info.toAddress,
-                        ))
+                logger.log(logging.INFO, 'Template %(path)s email succesfully sent from %(fromAddress)s to %(toAddress)s' % send_info.__dict__)
 
+        # Post a fake entry to error_log.
+        # this enables to see failed postings from the ZMi, without the need
+        # for an extra tool.
+        # XXX Attention! Zope restart clears content of the error_log.
+        # XXX increase "Number of exceptions to keep" from 20 to like 100
+        if failed_postings:
+            # post an entry to error_log (fake!)
+            info = []
+            info.append('Errors when sending out template %(path)s from %(fromAddress)s' % failed_postings[0].__dict__)
+            info.append('')
+            info.append('To:\t\t\tException:'.expandtabs())
+            for posting in failed_postings:
+                info.append(('%(toAddress)s\t\t%(excname)s: %(exctxt)s' % send_info.__dict__).expandtabs())
+            info.append('')
+            info.append('%d errors in total' % len(failed_postings))
+            # insert it
+            error_log = getToolByName(self, 'error_log')
+            error_log.raising(['EmailSendError', 'This is not a real exception. See information below.', '\n'.join(info)])
         # return failed members
         return failed_postings
 
