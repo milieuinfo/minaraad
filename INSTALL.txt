@@ -10,8 +10,8 @@ For the environment on the server:
    http://www.python.org/ftp/python/2.4.3/Python-2.4.3.tgz
    And read the Installer manual
 
-2) Install Zope 2.9.2 from
-    http://www.zope.org/Products/Zope/2.9.2/Zope-2.9.2.tgz
+2) Install Zope 2.9.5 from
+    http://www.zope.org/Products/Zope/2.9.2/Zope-2.9.5.tgz
     And read the Installer manual
 
 3) Install PIL 1.1.5 from
@@ -30,11 +30,13 @@ Once the environment on the server is created you can add minaraad product and a
 
     Dependencies:
 
-        * Plone 2.1.2
-        (http://prdownloads.sourceforge.net/plone/Plone-2.1.2.tar.gz?download)
+        * Plone 2.5.1
+        (http://prdownloads.sourceforge.net/plone/Plone-2.5.1.tar.gz?download)
     
-        * PasswordResetTool: zest branch! (https://svn.plone.org/svn/collective/PasswordResetTool/branches/zest)
-    
+        * XXX PasswordResetTool: zest branch! (https://svn.plone.org/svn/collective/PasswordResetTool/branches/zest)
+    	XXX Do _not_ use this, use the one distributed with plone.
+		XXX Occasinally this can be merged...
+		
         * FCKeditor 2.2
         (http://prdownloads.sourceforge.net/fckeditor/FCKeditor.Plone2.2.zip?download)
     
@@ -44,9 +46,10 @@ Once the environment on the server is created you can add minaraad product and a
         * OrderableReferenceField
         (https://svn.plone.org/svn/archetypes/MoreFieldsAndWidgets/OrderableReferenceField/trunk)
     
-        * PortalTransforms from this branch:
-        (https://svn.plone.org/svn/archetypes/PortalTransforms/branches/1.3)
-        This should overwrite the PortalTransforms from Plone.
+        * XXX PortalTransforms from this branch:
+		XXX not needed, until proven otherwise...
+        XXX (https://svn.plone.org/svn/archetypes/PortalTransforms/branches/1.4)
+        XXX This should overwrite the PortalTransforms from Plone.
     
         * PloneTranslations from trunk:
         (https://svn.plone.org/svn/collective/PloneTranslations/trunk)
