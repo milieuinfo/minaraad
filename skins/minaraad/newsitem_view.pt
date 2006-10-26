@@ -27,7 +27,7 @@
             <div tal:repeat="contact contacts" 
                 tal:omit-tag="">
             <div metal:use-macro="context/contactperson_view/macros/newsitemcontacts"
-                    tal:omit-tag="" />
+               tal:omit-tag="" />
             </div>
             <br /><br />
         </tal:block>

@@ -13,8 +13,8 @@
                   tal:define="daterequired python:context.getDate() != None;
                               date python:context.toLocalizedTime(context.date)[:-5];" 
                   tal:condition="daterequired"
-                  tal:content="date"
-            /> <span tal:replace="context/Title" /></h1>
+                  tal:content="date"/> <span tal:replace="context/Title" />
+        </h1>
     </a>
     </metal:block>
 
@@ -89,8 +89,8 @@
 
                     <div tal:repeat="contact contacts" 
                         tal:omit-tag="">
-                    <div metal:use-macro="context/contactperson_view/macros/newsitemcontacts"
-                         tal:omit-tag="" />
+                       <div metal:use-macro="context/contactperson_view/macros/newsitemcontacts"
+                            tal:omit-tag="" />
                     </div>
                     <br />
                     <br /><br />
