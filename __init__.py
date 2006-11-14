@@ -101,5 +101,9 @@ def initialize(context):
         print 'Customization policy for minaraad installed'
 
     ##code-section custom-init-bottom #fill in your manual code here
+
+    # apply additional monkey patches
+    import patches
+
     ##/code-section custom-init-bottom
 

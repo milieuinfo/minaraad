@@ -34,9 +34,9 @@ Once the environment on the server is created you can add minaraad product and a
         (http://prdownloads.sourceforge.net/plone/Plone-2.5.1.tar.gz?download)
     
         * XXX PasswordResetTool: zest branch! (https://svn.plone.org/svn/collective/PasswordResetTool/branches/zest)
-    	XXX Do _not_ use this, use the one distributed with plone.
-		XXX Occasinally this can be merged...
-		
+        XXX Do _not_ use this, use the one distributed with plone.
+        XXX Occasinally this can be merged...
+        
         * FCKeditor 2.2
         (http://prdownloads.sourceforge.net/fckeditor/FCKeditor.Plone2.2.zip?download)
     
@@ -47,7 +47,7 @@ Once the environment on the server is created you can add minaraad product and a
         (https://svn.plone.org/svn/archetypes/MoreFieldsAndWidgets/OrderableReferenceField/trunk)
     
         * XXX PortalTransforms from this branch:
-		XXX not needed, until proven otherwise...
+        XXX not needed, until proven otherwise...
         XXX (https://svn.plone.org/svn/archetypes/PortalTransforms/branches/1.4)
         XXX This should overwrite the PortalTransforms from Plone.
     
@@ -55,6 +55,17 @@ Once the environment on the server is created you can add minaraad product and a
         (https://svn.plone.org/svn/collective/PloneTranslations/trunk)
         This should overwrite the PloneTranslations from Plone.
     
+        * PlonePAS from this branch:
+        https://svn.plone.org/svn/collective/PlonePAS/branches/ree-2.1-migration-fixed
+        This should overwrite the PlonePAS from Plone.
+        This is version 2.1 but the migration part is fixed by
+        backporting necessary changes from the trunk.
+
+        * intellitext from this branch:
+        https://svn.plone.org/svn/collective/intelligenttext/trunk
+        XXX I believe this is not needed for production, but it was
+        necessary for the migration of the live site to 2.5 .
+
         * TextIndexNG3 from
         (http://surfnet.dl.sourceforge.net/sourceforge/textindexng/TextIndexNG3-3.1.8.tar.gz)
     
