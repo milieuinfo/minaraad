@@ -15,7 +15,7 @@
         <tal:block tal:define="start python:context.getStartdate();
                                current python:DateTime()"
                    tal:condition="python:current &lt; start">
-        <div class="img_right">
+        <div class="float_right">
             <form tal:condition="view/isRegistered"
                   tal:attributes="action string:${context/absolute_url}/@@attendees_view">
                 <input class="context" 

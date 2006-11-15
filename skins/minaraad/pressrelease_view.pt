@@ -42,7 +42,7 @@
         <hr />
         <img tal:attributes="src string:${context/absolute_url}/foto_foto;
                             alt context/Title"
-              class="img_right" />
+              class="float_right" />
         <span class="bodytext"
             tal:content="structure context/getBody"
             tal:condition="context/getBody" />

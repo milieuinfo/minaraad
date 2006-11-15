@@ -28,36 +28,36 @@
 
                <td tal:define="daterequired python:obj.getDate() != None;
                               date python:obj.toLocalizedTime(obj.date)[:-5];"
-                  class="advisory_listdate">
+                  class="listdate">
                    
                   <span tal:condition="daterequired"
                         tal:replace="date" />
                </td>
-               <td class="advisory_listtitle"
+               <td class="bold"
                   tal:define="current_path python:'/'.join(obj.getPhysicalPath());
                   attachments python:context.portal_catalog.searchResults(portal_type='FileAttachment',
                                                         path=current_path,);">
                
-                  <tal:block tal:repeat="attachment attachments">
+                  <tal:block repeat="attachment attachments">
                      <div tal:define="desc attachment/Description;
                                     item_type attachment/portal_type;
                                     idx repeat/attachment/index"
-                                    class="advisory_links">
+                        class="advisory_links">
                         <a tal:attributes="href attachment/getURL;
                                           title desc;">
-                           <span tal:condition="python:idx ==0"
-                                 tal:replace="item_object/Title" />
-                           <span tal:condition="python:idx &gt;0"
-                                 tal:replace="attachment/Title" />
+                           <span tal:condition="python:idx == 0"
+                              tal:replace="item_object/Title" />
+                           <span tal:condition="python:idx &gt; 0"
+                              tal:replace="attachment/Title" />
                         </a>
                      </div>
                   </tal:block>
 
                   <div tal:define="contacts python:obj.getContact()"
-                        tal:condition="contacts"
-                        class="advisory_listing_contacts">
+                     tal:condition="contacts"
+                     class="advisory_listing_contacts">
 
-                     <tal:block tal:repeat="contact contacts">
+                     <tal:block repeat="contact contacts">
                         <a tal:attributes="href string:mailto:${contact/getEmail}"
                            tal:content="contact/getEmail" 
                            class="discreet" />

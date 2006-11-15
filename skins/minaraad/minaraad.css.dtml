@@ -26,7 +26,7 @@ legend, .discreet, #portal-sitemap,
 	padding-left: 16px;
 }
 
-.img_right, .listing .float-right,
+.float-right, .listing .float-right,
 .pressrelease_img_right {
     float: right;
 }
@@ -148,6 +148,7 @@ td.empty-left, .empty-left div {
 td.empty-right, .empty-right div {
     width: 20px;
 }
+
 #visual-portal-wrapper {
     width: 1001px;
     border: none;
@@ -267,7 +268,7 @@ a.link-personalbar {
 /* ---- Subscriptionspage --- */
 .listing .subscriptions-title th {
     font-weight: bold;
-    padding: 0px 5px 0px 8px;
+    padding: 0 5px 0 8px;
     font-size: 120%;
     text-transform: capitalize;
 }
@@ -278,8 +279,7 @@ a.link-personalbar {
     font-size: 120%;
 }
 
-.listing .bold, .advisory_title, 
-.newsletter_listtitle, .pressrelease_listtitle {
+.listing .bold, .bold {
     font-weight: bold;
 }
 
@@ -301,8 +301,13 @@ a.link-personalbar {
     font-weight: bold;
 }
 
-.hearingsubheader2, .bodytext {
+.hearingsubheader2, .bodytext,
+.cp-moreinfo {
     margin-top: 10px;
+}
+
+.bodytext {
+   margin-bottom: 15px;
 }
 
 .hearingsubheader2 {
@@ -333,7 +338,7 @@ dl.Attendees dd{
 .advisory_listing {
     width: 585px;
 }
-.advisory_listdate {
+.listdate {
     width: 75px;
     font-weight: bold;
 }
@@ -384,11 +389,20 @@ h5.black {
     color: #000000 !important;
 }
 
+#newsletter-list td, #pressrelease-list td {
+   padding-bottom: 5px;
+}
+
+.newsletter-spacing {
+   margin-bottom: 50px;
+}
+
 /* --- End Newsletter --- */ 
 
 /* --- Start Pressrelease --- */
 
-.pressrelease_listsub, .pressrelease_subhead {
+.pressrelease_listsub, .pressrelease_subhead,
+.pressrelease_date {
     font-style: italic;
 }
 
@@ -406,11 +420,6 @@ table.pressrelease {
 
 .clear {
     clear: right;
-}
-
-.pressrelease_listsub, .pressrelease_subhead,
-.pressrelease_date {
-    font-style: italic;
 }
 
 .pressrelease_date {

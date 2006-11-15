@@ -24,7 +24,7 @@
 
         <div tal:repeat="item_object studies">
             <tal:block tal:define="obj python:item_object.getObject()">
-                <div class="pressrelease_listtitle">
+                <div class="bold">
                     <span tal:replace="item_object/Title" />
                     <tal:block tal:condition="python:obj.getDate()">
                         <span tal:replace="python:item_object.toLocalizedTime(item_object.getDate)[3:]" />      

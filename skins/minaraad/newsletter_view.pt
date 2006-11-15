@@ -1,107 +1,99 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
       lang="en-US"
       i18n:domain="minaraad">
-    <metal:block use-macro="context/global_defines/macros/defines" />
+   <metal:block use-macro="context/global_defines/macros/defines" />
     
-    <body>
-    <metal:block metal:define-macro="header">
-    <a name="top">
-         <div metal:use-macro="here/document_actions/macros/document_actions">
-            Document actions (print, sendto etc)
-        </div>
-        <h1><span tal:omit-tag=""
-                  tal:define="daterequired python:context.getDate() != None;
-                              date python:context.toLocalizedTime(context.date)[:-5];" 
-                  tal:condition="daterequired"
-                  tal:content="date"/> <span tal:replace="context/Title" />
-        </h1>
-    </a>
-    </metal:block>
+   <body>
+   <metal:block metal:define-macro="header">
+   <a name="top">
+      <div metal:use-macro="here/document_actions/macros/document_actions">
+         Document actions (print, sendto etc)
+      </div>
+      <h1>
+         <span tal:define="daterequired python:context.getDate() != None;
+                        date python:context.toLocalizedTime(context.date)[:-5];" 
+            tal:condition="daterequired"
+            tal:replace="date"/> 
+         <span tal:replace="context/Title" />
+      </h1>
+   </a>
+   </metal:block>
 
-    <metal:block metal:define-macro="body"
-                 tal:define="current_path python:'/'.join(context.getPhysicalPath());
-                             categories python:['Vastgestelde adviezen',
-                                          'Adviezen in wording',
-                                          'Mededelingen',
-                                          'Europese ontwikkelingen'];">
+   <metal:block define-macro="body"
+      tal:define="current_path python:'/'.join(context.getPhysicalPath());
+                 categories python:['Vastgestelde adviezen',
+                                    'Adviezen in wording',
+                                    'Mededelingen',
+                                    'Europese ontwikkelingen'];">
 
-        <metal:block metal:define-macro="folderlisting" />
+      <metal:block metal:define-macro="folderlisting" />
 
-        <div class="bodytext"
-             tal:condition="context/getBody"
-             tal:content="structure context/getBody" />
-        <br />
-        <!-- Index -->
-        <div tal:repeat="category categories">
-            <h5 tal:content="category" class="black">
-                Category
-            </h5>
+      <div class="bodytext"
+          tal:condition="context/getBody"
+          tal:content="structure context/getBody" />
+          
+      <!-- Index -->
+      <div class="newsletter-spacing">
+      <tal:categories repeat="category categories">
+         <h5 tal:content="category" 
+            class="black">Category</h5>
             
-            <ul tal:define="newsitems python:context.portal_catalog.searchResults(portal_type='NewsItem',
-                                                                                  path=current_path,
-                                                                                  getCategory=category,
-                                                                                  sort_on = 'getObjPositionInParent',
-                                                                                  review_state='published');">
-                <li tal:repeat="newsitem newsitems"
-                    class="newsitemslist">
-                    <a tal:attributes="href string:#${newsitem/id}"
-                       tal:content="newsitem/Title" />
-                </li>
-                <li tal:condition="not:newsitems"
-                    i18n:translate="no_newsitems_available">No newsitems available</li>
-            </ul>
-        </div>
-        <br />
-        <br />
-        <br />
-        <!-- Content of newsitems -->
-        <div tal:repeat="category categories">
-            <h5 tal:content="category">
-                Category
-            </h5>
-            <hr />
-            <div tal:omit-tag=""
-                tal:define="newsitems python:context.portal_catalog.searchResults(portal_type='NewsItem',
-                                                                                path=current_path,
-                                                                                getCategory=category,
-                                                                                sort_on = 'getObjPositionInParent',
-                                                                                review_state='published');">
-
-            <div tal:repeat="newsitem newsitems"
-                 tal:omit-tag="">
-
-                <div class="img_right">
-                    <a tal:attributes="href string:#top">Top ^</a>
-                </div>
-
-                <a tal:attributes="name newsitem/id">
-                    <span class="newsItemTitle" tal:content="newsitem/Title" />
-                </a>
-                <div tal:define="obj python:newsitem.getObject()"
-                     tal:content="structure obj/getBody">Content here</div>
-                <br />
-                <!-- Contactperson -->
-                <tal:block tal:define="obj python:newsitem.getObject();
-                                      contacts python:obj.getContact()"
-                           tal:condition="contacts">
-                    <span i18n:translate="label_contactpersons" 
-                          tal:omit-tag=""> Contact persons:</span>
-
-                    <div tal:repeat="contact contacts" 
-                        tal:omit-tag="">
-                       <div metal:use-macro="context/contactperson_view/macros/newsitemcontacts"
-                            tal:omit-tag="" />
-                    </div>
-                    <br />
-                    <br /><br />
-                </tal:block>
+         <ul tal:define="newsitems python:context.portal_catalog.searchResults(portal_type='NewsItem',
+                                                                               path=current_path,
+                                                                               getCategory=category,
+                                                                               sort_on = 'getObjPositionInParent',
+                                                                               review_state='published');">
+            <li tal:repeat="newsitem newsitems"
+               class="newsitemslist">
+               <a tal:attributes="href string:#${newsitem/id}"
+                  tal:content="newsitem/Title" />
+            </li>
+            <li tal:condition="not:newsitems"
+                 i18n:translate="no_newsitems_available">No newsitems available</li>
+         </ul>
+      </tal:categories>
+      </div>
+      
+      <!-- Content of newsitems -->
+      <div tal:repeat="category categories">
+         <h5 tal:content="category">Category</h5>
+         <hr />
+         <tal:newsitemcontent define="newsitems python:context.portal_catalog.searchResults(portal_type='NewsItem',
+                                                                                          path=current_path,
+                                                                                          getCategory=category,
+                                                                                          sort_on = 'getObjPositionInParent',
+                                                                                          review_state='published');">
+            <tal:itemscontents repeat="newsitem newsitems">
+            <div class="float-right">
+               <a tal:attributes="href string:#top">Top ^</a>
             </div>
+
+            <a tal:attributes="name newsitem/id">
+               <span class="newsItemTitle" 
+                  tal:content="newsitem/Title" />
+            </a>
+            <div tal:define="obj python:newsitem.getObject()"
+               tal:content="structure obj/getBody">Content here</div>
+            <br />
+            
+            <!-- Contactperson -->
+            <div class="newsletter-spacing" 
+               tal:define="obj python:newsitem.getObject();
+                          contacts python:obj.getContact()"
+               tal:condition="contacts">
+               <span i18n:translate="label_contactpersons" 
+                    tal:omit-tag=""> Contact persons:</span>
+
+               <tal:contacts repeat="contact contacts">
+                  <metal:block use-macro="context/contactperson_view/macros/newsitemcontacts" />
+               </tal:contacts>
+            </div>
+            </tal:itemscontents>
+            
             <div tal:condition="not:newsitems"
-                 i18n:translate="no_newsitems_available">No newsitems available</div>
-            </div>
-            <br /><br />
-        </div>
-
-    </metal:block>
-    </body>
+               i18n:translate="no_newsitems_available">No newsitems available</div>
+         </tal:newsitemcontent>
+      </div>
+   </metal:block>
+   </body>
 </html>
