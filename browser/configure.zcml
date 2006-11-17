@@ -59,4 +59,12 @@
       template="export-subscribers.pt"
   />
 
+  <browser:page
+      for="*"
+      name="minaraad_globals"
+      class=".globals.GlobalView"
+      allowed_attributes="isHomePage"
+      permission="zope.Public"
+  />
+
 </configure>

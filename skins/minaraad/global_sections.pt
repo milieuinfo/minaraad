@@ -19,7 +19,7 @@
             class="portal-tabs">
     
             <ul id="portal-tabs-nav">
-                <li tal:define="selected_tab context/isHomePage"
+                <li tal:define="selected_tab context/@@minaraad_globals/isHomePage"
                     tal:attributes="class python:test(selected_tab, 'selected', 'plain');
                                           title portal/Description;">
                    <span class="IEFix_paddingmenu">
