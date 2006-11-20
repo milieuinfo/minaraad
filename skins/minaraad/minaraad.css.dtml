@@ -27,11 +27,11 @@ legend, .discreet, #portal-sitemap,
 }
 
 .float-right, .listing .float-right,
-.pressrelease_img_right {
+.press-img-right {
     float: right;
 }
 
-.img_left, .pressrelease_img_left {
+.float-left, .press-img-left {
     float: left;
 }
 
@@ -338,6 +338,11 @@ dl.Attendees dd{
 .advisory_listing {
     width: 585px;
 }
+
+.advisory_listing td {
+   padding-bottom: 20px;
+}
+
 .listdate {
     width: 75px;
     font-weight: bold;
@@ -358,6 +363,7 @@ dl.Attendees dd{
 .advisory_links {
     padding-bottom: 5px;
 }
+
 /* --- End Advisory View --- */
 
 /* --- Start Subscribers overview --- */
@@ -379,7 +385,7 @@ dl.listsubscriptions dt {
 
 /* --- Start Newsletter --- */ 
 
-.newsItemTitle, .pressrelease_title, 
+.newsItemTitle, .press-title, 
 .subheader1, .subheader2, .subheader3 {
     color: #A13826;
     font-weight: bold;
@@ -401,8 +407,8 @@ h5.black {
 
 /* --- Start Pressrelease --- */
 
-.pressrelease_listsub, .pressrelease_subhead,
-.pressrelease_date {
+.pressrelease_listsub, .press-subhead,
+.press-date {
     font-style: italic;
 }
 
@@ -410,11 +416,11 @@ table.pressrelease {
     width: 100%;
 }
 
-.pressrelease_img_left {
+.press-img-left {
     padding-right: 3px;
 }
 
-.pressrelease_img_right {
+.press-img-right {
     padding-left: 3px;
 }
 
@@ -422,7 +428,7 @@ table.pressrelease {
     clear: right;
 }
 
-.pressrelease_date {
+.press-date {
    color: #A13826;
 }
 
@@ -434,7 +440,7 @@ table.pressrelease {
     font-size: 135%;
 }
 
-.subheader2, .pressrelease_title {
+.subheader2, .press-title {
     font-size: 120%;
 }
 

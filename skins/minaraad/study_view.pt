@@ -1,45 +1,43 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
-      lang="en-US"
-      i18n:domain="minaraad">
-    <metal:block use-macro="context/global_defines/macros/defines" />
+   lang="en-US"
+   i18n:domain="minaraad">
+   <metal:block use-macro="context/global_defines/macros/defines" />
 
-    <body>
-    <metal:block metal:define-macro="header">
-        <div metal:use-macro="here/document_actions/macros/document_actions">
-            Document actions (print, sendto etc)
-        </div>
-        <h1>
-            <span tal:replace="context/Title" />
-            <span tal:content="python:context.toLocalizedTime(context.date)"
-                  tal:omit-tag="" />
-        </h1>
+   <body>
+   <metal:block define-macro="header">
+      <div metal:use-macro="here/document_actions/macros/document_actions">
+         Document actions (print, sendto etc)
+      </div>
+      <h1>
+         <span tal:replace="context/Title" />
+         <span tal:replace="python:context.toLocalizedTime(context.date)" />
+      </h1>
 
-        <div class="documentDescription"
-             tal:condition="context/Description"
-            tal:content="context/Description" />
-    </metal:block>
+     <div class="documentDescription"
+       tal:condition="context/Description"
+      tal:content="context/Description" />
+   </metal:block>
 
-    <metal:block metal:define-macro="body">
-        <!-- Start Attachments-->
-        <div metal:use-macro="context/mina_attachments/macros/listattachments" />
-        <!-- end Attachments -->
-    
-		      <!-- Contactperson -->
-        <tal:block tal:define="contacts python:context.getContact()"
-                   tal:condition="contacts">
-            <br />
-            <div i18n:translate="moreinfo_contactperson">
-                For more information contact:
-            </div>
-            <tal:block tal:repeat="contact contacts">
-           <div metal:use-macro="context/contactperson_view/macros/contactdetails"
-                tal:omit-tag="" />
-            </tal:block>
-            <br />
-        </tal:block>
-        <!-- end contactpersoon -->
+   <metal:block define-macro="body">
+      <!-- Start Attachments-->
+      <div metal:use-macro="context/mina_attachments/macros/listattachments" />
+      <!-- end Attachments -->
 
-    </metal:block>
-    <metal:block metal:define-macro="folderlisting" />
-    </body>
+      <!-- Contactperson -->
+      <tal:block define="contacts python:context.getContact()"
+         condition="contacts">
+         <div i18n:translate="moreinfo_contactperson"
+            class="cp-moreinfo">
+             For more information contact:
+         </div>
+         <tal:listcontacts repeat="contact contacts">
+            <div metal:use-macro="context/contactperson_view/macros/contactdetails"
+               tal:omit-tag="" />
+         </tal:listcontacts>
+      </tal:block>
+      <!-- end contactpersoon -->
+   </metal:block>
+   
+   <metal:block metal:define-macro="folderlisting" />
+   </body>
 </html>

@@ -4,7 +4,7 @@
    <metal:block use-macro="context/global_defines/macros/defines" />
     
    <body>
-   <metal:block metal:define-macro="body">
+   <metal:block define-macro="body">
 
       <span class="documentDescription"
              tal:content="context/getDescription" />
@@ -28,13 +28,13 @@
       <!-- end Attachments -->
 
       <!-- Start contactperson -->
-      <tal:block tal:define="contacts python:context.getContact()"
-              tal:condition="contacts">
+      <tal:block define="contacts python:context.getContact()"
+         condition="contacts">
          <div i18n:translate="moreinfo_contactperson"
             class="cp-moreinfo">
             For more information contact:
          </div>
-         <tal:block tal:repeat="contact contacts">
+         <tal:block repeat="contact contacts">
             <div metal:use-macro="context/contactperson_view/macros/contactdetails"
                  tal:omit-tag="" />
          </tal:block>

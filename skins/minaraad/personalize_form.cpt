@@ -1,40 +1,38 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
-      lang="en"
-      metal:use-macro="here/prefs_main_template/macros/master"
-      i18n:domain="plone">
+   lang="en"
+   metal:use-macro="here/prefs_main_template/macros/master"
+   i18n:domain="plone">
 
-<metal:block fill-slot="top_slot"
-             tal:define="dummy python:request.set('disable_border',1)" />
+   <metal:block fill-slot="top_slot"
+      tal:define="dummy python:request.set('disable_border',1)" />
 
-<body>
+   <body>
 
-<div metal:fill-slot="prefs_configlet_content"
-     tal:define="errors options/state/getErrors;"
-     tal:omit-tag="">
+   <metal:block fill-slot="prefs_configlet_content"
+      tal:define="errors options/state/getErrors;">
 
-    <span tal:define="dummy python:request.response.setHeader('pragma','no-cache')" />
+      <span tal:define="dummy python:request.response.setHeader('pragma','no-cache')" />
 
-    <div id="content" 
+      <div id="content" 
          class="documentEditable">
 
-        <h5 class="hiddenStructure">Views</h5>
+         <h5 class="hiddenStructure">Views</h5>
     
-        <ul class="contentViews">
+         <ul class="contentViews">
             <li>
-            <a tal:attributes="href string: ${portal_url}/author/${member}"
-               i18n:translate="label_view">View</a>
+               <a tal:attributes="href string: ${portal_url}/author/${member}"
+                  i18n:translate="label_view">View</a>
             </li>
             <li class="selected">
-            <a tal:attributes="href string:${portal_url}/personalize_form"
-               i18n:translate="label_edit">Edit</a>
+               <a tal:attributes="href string:${portal_url}/personalize_form"
+                  i18n:translate="label_edit">Edit</a>
             </li>
-        </ul>
+         </ul>
 
-        <div class="contentActions">
-            &nbsp;
-        </div>
+         <div class="contentActions">&nbsp;</div>
 
-        <div class="documentContent" id="region-content">
+         <div class="documentContent" 
+            id="region-content">
             <a name="documentContent"></a>
             <h1 i18n:translate="heading_my_preferences">Personal Preferences</h1>
 
@@ -55,49 +53,49 @@
                   tal:condition="member"
                   tal:attributes="action template_id">
 
-                <fieldset>
-                    <legend i18n:translate="legend_personal_details">Personal Details</legend>
+               <fieldset>
+                  <legend i18n:translate="legend_personal_details">Personal Details</legend>
 
-                    <!-- *** gender *** -->
-                     <div class="field"
-                       tal:define="error errors/gender | nothing; 
-                                   genders python:member.getProperty('genders');
-                                   gender python:request.get('gender', member.getProperty('gender', ''));
-                                   tabindex tabindex/next;">
+                  <!-- *** gender *** -->
+                  <div class="field"
+                     tal:define="error errors/gender | nothing; 
+                                genders python:member.getProperty('genders');
+                                gender python:request.get('gender', member.getProperty('gender', ''));
+                                tabindex tabindex/next;">
 
-                        <label i18n:domain="minaraad"
-                               i18n:translate="label_gender">Gender</label>
-                        <br />
-                        <select name="gender">
-                            <tal:block tal:repeat="option genders">
-                                <option tal:attributes="selected python:test(option==gender, 'selected', '');
-                                                        value option;"
-                                        tal:content="option" />
-                            </tal:block>
-                        </select>
-                    </div>
+                     <label i18n:domain="minaraad"
+                         i18n:translate="label_gender">Gender</label>
+                     <br />
+                     <select name="gender">
+                        <tal:block repeat="option genders">
+                           <option tal:attributes="selected python:test(option==gender, 'selected', '');
+                                                  value option;"
+                              tal:content="option" />
+                        </tal:block>
+                     </select>
+                  </div>
                     
-                     <!--*** firstname *** -->
-                    <div class="row"
-                        tal:define="error errors/firstname| nothing;
-                                    firstname python:request.get('firstname', member.getProperty('firstname', ''));"
-                        tal:attributes="class python:test(error, 'field error', 'field')">
+                  <!--*** firstname *** -->
+                  <div class="row"
+                     tal:define="error errors/firstname| nothing;
+                                 firstname python:request.get('firstname', member.getProperty('firstname', ''));"
+                     tal:attributes="class python:test(error, 'field error', 'field')">
                 
-                        <label i18n:domain="minaraad"
-                                i18n:translate="label_firstname">First name</label>
-                        <span class="fieldRequired" 
-                            title="Required"
-                            i18n:attributes="title title_required;"
-                            i18n:translate="label_required">(Required)</span>
+                     <label i18n:domain="minaraad"
+                          i18n:translate="label_firstname">First name</label>
+                     <span class="fieldRequired" 
+                         title="Required"
+                         i18n:attributes="title title_required;"
+                         i18n:translate="label_required">(Required)</span>
                 
-                        <div tal:content="error">Validation error output</div>
+                     <div tal:content="error">Validation error output</div>
                 
-                        <input type="text"
-                            name="firstname"
-                            size="30"
-                            value="member.firstname html_quote"
-                            tal:attributes="value firstname;
-                                            tabindex tabindex/next;" />
+                     <input type="text"
+                         name="firstname"
+                         size="30"
+                         value="member.firstname html_quote"
+                         tal:attributes="value firstname;
+                                         tabindex tabindex/next;" />
                     </div>
                     
                     <!--*** lastname *** -->
@@ -125,13 +123,13 @@
                     
                     <!-- *** company *** -->
                     <div class="field"
-                            tal:define="error errors/company | nothing;
-                                        company python:request.get('company', member.getProperty('company', ''));"
-                            tal:attributes="class python:test(error, 'field error', 'field')">
+                        tal:define="error errors/company | nothing;
+                                  company python:request.get('company', member.getProperty('company', ''));"
+                        tal:attributes="class python:test(error, 'field error', 'field')">
 
                         <label for="company"
-                               i18n:domain="minaraad" 
-                               i18n:translate="label_company">Company</label>
+                            i18n:domain="minaraad" 
+                            i18n:translate="label_company">Company</label>
 
                         <div tal:content="error">Validation error output</div>
 
@@ -145,14 +143,14 @@
                     </div>
                     
                     <!-- *** jobtitle *** -->
-                    <div class="field"
-                            tal:define="error errors/jobtitle | nothing;
-                                        jobtitle python:request.get('jobtitle', member.getProperty('jobtitle', ''));"
-                            tal:attributes="class python:test(error, 'field error', 'field')">
+                     <div class="field"
+                        tal:define="error errors/jobtitle | nothing;
+                                  jobtitle python:request.get('jobtitle', member.getProperty('jobtitle', ''));"
+                        tal:attributes="class python:test(error, 'field error', 'field')">
 
                         <label for="jobtitle" 
-                               i18n:domain="minaraad" 
-                               i18n:translate="label_jobtitle">Job title</label>
+                            i18n:domain="minaraad" 
+                            i18n:translate="label_jobtitle">Job title</label>
 
                         <div tal:content="error">Validation error output</div>
 
@@ -168,14 +166,14 @@
 
                     <!-- *** street *** -->
                     <div class="field"
-                            tal:define="error errors/street | nothing;
-                                        street python:request.get('street', member.getProperty('street', ''));"
-                            tal:attributes="class python:test(error, 'field error', 'field')">
+                       tal:define="error errors/street | nothing;
+                                  street python:request.get('street', member.getProperty('street', ''));"
+                       tal:attributes="class python:test(error, 'field error', 'field')">
 
-                        <label for="street"
-                               i18n:domain="minaraad" 
-                               i18n:translate="label_street">Street</label>
-                        <span class="fieldRequired" title="Required"
+                       <label for="street"
+                              i18n:domain="minaraad" 
+                              i18n:translate="label_street">Street</label>
+                       <span class="fieldRequired" title="Required"
                               i18n:attributes="title title_required;"
                               i18n:translate="label_required">(Required)</span>
 
@@ -192,9 +190,9 @@
                     
                     <!-- *** housenumber *** -->
                     <div class="field"
-                            tal:define="error errors/housenumber | nothing;
-                                        housenumber python:request.get('housenumber', member.getProperty('housenumber', ''));"
-                            tal:attributes="class python:test(error, 'field error', 'field')">
+                        tal:define="error errors/housenumber | nothing;
+                                    housenumber python:request.get('housenumber', member.getProperty('housenumber', ''));"
+                        tal:attributes="class python:test(error, 'field error', 'field')">
 
                         <label for="housenumber"
                                i18n:domain="minaraad" 
@@ -291,7 +289,7 @@
                                i18n:translate="label_country">Country</label>
                         <br />
                         <select name="country" onchange="showOtherCountry(this)">
-                            <tal:block tal:repeat="option countries">
+                            <tal:block repeat="option countries">
                                 <option tal:attributes="selected python:test(option==country, 'selected', '');
                                                         value option;"
                                         tal:content="option" />
@@ -300,11 +298,11 @@
                     
                         <!-- *** other country *** -->
                         <div class="field"
-                             id="othercountry"
-                             tal:define="error errors/other_country | nothing;
-                                         other_country python:request.get('other_country', member.getProperty('other_country', ''));"
-                             tal:attributes="class python:test(error, 'field error', 'field');
-                                             style python:test(country ==('Ander land'), '', 'display:none')">
+                           id="othercountry"
+                           tal:define="error errors/other_country | nothing;
+                                other_country python:request.get('other_country', member.getProperty('other_country', ''));"
+                           tal:attributes="class python:test(error, 'field error', 'field');
+                                          style python:test(country ==('Ander land'), '', 'display:none')">
     
     
                             <label for="other_country" 
@@ -389,8 +387,6 @@
             </form>
         </div>
         </div>
-    </div>
-    </body>
+   </metal:block>
+   </body>
 </html>
-
-

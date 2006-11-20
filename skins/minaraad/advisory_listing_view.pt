@@ -33,8 +33,7 @@
                   <span tal:condition="daterequired"
                         tal:replace="date" />
                </td>
-               <td class="bold"
-                  tal:define="current_path python:'/'.join(obj.getPhysicalPath());
+               <td tal:define="current_path python:'/'.join(obj.getPhysicalPath());
                   attachments python:context.portal_catalog.searchResults(portal_type='FileAttachment',
                                                         path=current_path,);">
                
