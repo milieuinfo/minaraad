@@ -66,6 +66,8 @@ testcase = PloneTestCase.PloneTestCase
 ##code-section module-before-plone-site-setup #fill in your manual code here
 from Products.minaraad.tests.utils import setup_CA
 setup_CA()
+
+from Products.PluggableAuthService.interfaces.plugins import IRoleAssignerPlugin
 ##/code-section module-before-plone-site-setup
 
 PloneTestCase.setupPloneSite(products=PRODUCTS)
@@ -77,6 +79,23 @@ class MainTestCase(testcase):
 
     def _setup(self):
         testcase._setup(self)
+
+    def assureRoles(self, roles):
+        '''Assure that the given role exists in PAS
+
+        It seems that without this, the addMember will
+        silently fail. Roles must exist in the role manager.
+
+        I don't knoe if this is a bug or not. (ree)
+        '''
+        pas = self.portal.acl_users
+        plugins = pas._getOb('plugins')
+        roleassigners = plugins.listPlugins( IRoleAssignerPlugin )
+        # XXX this will really yield the portal_role_manager.
+        for roleassigner_id, roleassigner in roleassigners:
+            for role in roles:
+                if role not in roleassigner._roles:
+                    roleassigner.addRole(role)
 
     ##/code-section class-header_MainTestCase
 

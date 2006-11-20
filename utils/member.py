@@ -1,3 +1,7 @@
+
+## XXX This whole util seems to be deprecated now,
+## XXX after the 2.5 upgrade. (ree)
+
 from ZODB.POSException import ConflictError
 import AccessControl
 

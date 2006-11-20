@@ -8,6 +8,8 @@
 ##title=Notify members of new website
 ##
 
+raise 'DEPRECATED SCRIPT, DO NOT USE IT ANY MORE.'
+
 from Products.minaraad.utils.member import sendEmailForAllMembersWithEmail, getAllMembersWithoutEmail
 from Products.CMFCore.permissions import ManagePortal
 from AccessControl import Unauthorized

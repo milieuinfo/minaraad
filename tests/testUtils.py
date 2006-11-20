@@ -18,6 +18,7 @@ import Products.minaraad.tests.MainTestCase
 import email
 import AccessControl
 
+## XXX Deprecated tests! since notifyEmail.py is no more in use. (ree)
 class testUtilsMemberEmail(PloneTestCase):
 
     def afterSetUp(self):
@@ -148,7 +149,8 @@ class testUtilsMemberNonVocabularyTitles(PloneTestCase):
 def test_suite():
     from unittest import TestSuite, makeSuite
     suite = TestSuite()
-    suite.addTest(makeSuite(testUtilsMemberEmail))
+    ## XXX (ree) This test is no more.
+    ## suite.addTest(makeSuite(testUtilsMemberEmail))
     suite.addTest(makeSuite(testUtilsMemberNonVocabularyTitles))
     return suite
 
