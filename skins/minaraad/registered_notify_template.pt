@@ -1,5 +1,5 @@
 <tal:block tal:define="member python:options['member'];
-                       reset python:here.portal_password_reset.requestReset(member.getId())">
+                       reset python:options.get('reset', None) or here.portal_password_reset.requestReset(member.getId())">
 To: <span tal:replace="python:member.getProperty('email')" />
 From: "<span tal:replace="here/email_from_name" />" <<span tal:replace="here/email_from_address" />>
 Subject: <span i18n:domain="plone" i18n:translate="mailtemplate_registered_portal_membership_info" tal:omit-tag="">Portal Membership Information</span>
