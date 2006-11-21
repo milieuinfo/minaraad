@@ -35,7 +35,7 @@ def buildCSV(context, members, filename='members.csv'):
     for member in members:
         for pos, field in enumerate(fields):
             id, title = field
-            value = unicode(getattr(member, id, ''), charset)
+            value = unicode(member.getProperty(id, ''), charset)
             value = value.replace(u'"', u'""')
             out.write(u'"%s"' % value)
         

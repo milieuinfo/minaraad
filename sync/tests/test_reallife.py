@@ -55,7 +55,7 @@ class TestRealLifeMembers:
     ...     names = props.keys()
     ...     names.sort()
     ...     for name in names:
-    ...         print '%s: %r' % (name, getattr(member, name))
+    ...         print '%s: %r' % (name, member.getProperty(name))
 
     The last person in the alphabet:
     
