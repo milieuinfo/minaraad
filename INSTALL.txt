@@ -33,9 +33,6 @@ Once the environment on the server is created you can add minaraad product and a
         * Plone 2.5.1
         (http://prdownloads.sourceforge.net/plone/Plone-2.5.1.tar.gz?download)
     
-        * XXX PasswordResetTool: zest branch! (https://svn.plone.org/svn/collective/PasswordResetTool/branches/zest)
-        XXX Do _not_ use this, use the one distributed with plone.
-        XXX Occasinally this can be merged...
         
         * FCKeditor 2.2
         (http://prdownloads.sourceforge.net/fckeditor/FCKeditor.Plone2.2.zip?download)
@@ -45,11 +42,6 @@ Once the environment on the server is created you can add minaraad product and a
     
         * OrderableReferenceField
         (https://svn.plone.org/svn/archetypes/MoreFieldsAndWidgets/OrderableReferenceField/trunk)
-    
-        * XXX PortalTransforms from this branch:
-        XXX not needed, until proven otherwise...
-        XXX (https://svn.plone.org/svn/archetypes/PortalTransforms/branches/1.4)
-        XXX This should overwrite the PortalTransforms from Plone.
     
         * PloneTranslations from trunk:
         (https://svn.plone.org/svn/collective/PloneTranslations/trunk)
