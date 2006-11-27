@@ -15,4 +15,52 @@
     factory="Products.minaraad.attendees.AttendeeManager"
     />
   
+  <!-- Content types that provide indexable content as plain 
+       text through SearchableText(), Description() and Title(),
+       must be marked with this marker interface for TextIndexNG. -->
+
+  <five:implements class=".Advisory.Advisory"
+                   interface="Products.TextIndexNG3.adapters.interfaces.IPlainPlohnContent"
+                   />
+
+  <five:implements class=".AgendaItem.AgendaItem"
+                   interface="Products.TextIndexNG3.adapters.interfaces.IPlainPlohnContent"
+                   />
+
+  <five:implements class=".AnnualReport.AnnualReport"
+                   interface="Products.TextIndexNG3.adapters.interfaces.IPlainPlohnContent"
+                   />
+
+  <five:implements class=".ContactPerson.ContactPerson"
+                   interface="Products.TextIndexNG3.adapters.interfaces.IPlainPlohnContent"
+                   />
+
+  <five:implements class=".Hearing.Hearing"
+                   interface="Products.TextIndexNG3.adapters.interfaces.IPlainPlohnContent"
+                   />
+
+  <five:implements class=".JoinIn.JoinIn"
+                   interface="Products.TextIndexNG3.adapters.interfaces.IPlainPlohnContent"
+                   />
+
+  <five:implements class=".MREvent.MREvent"
+                   interface="Products.TextIndexNG3.adapters.interfaces.IPlainPlohnContent"
+                   />
+
+  <five:implements class=".NewsItem.NewsItem"
+                   interface="Products.TextIndexNG3.adapters.interfaces.IPlainPlohnContent"
+                   />
+
+  <five:implements class=".NewsLetter.NewsLetter"
+                   interface="Products.TextIndexNG3.adapters.interfaces.IPlainPlohnContent"
+                   />
+
+  <five:implements class=".Pressrelease.Pressrelease"
+                   interface="Products.TextIndexNG3.adapters.interfaces.IPlainPlohnContent"
+                   />
+
+  <five:implements class=".Study.Study"
+                   interface="Products.TextIndexNG3.adapters.interfaces.IPlainPlohnContent"
+                   />
+
 </configure>
