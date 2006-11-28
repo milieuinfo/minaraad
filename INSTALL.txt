@@ -74,11 +74,19 @@ Once the environment on the server is created you can add minaraad product and a
             An install of just the poppler-utils or xpdf-utils package
             works as well.
 
-         - Make sure that the wvWare utility is available.
+        - Make sure that the wvWare utility is available.
             On Debian/Ubuntu try ``apt-get install wv``.
             XXX I am not sure this is needed, but I think this takes care
             XXX of indexing Word documents.
-    
+
+		- Replace ``Extensions/Install.py`` with the file
+		  ``http://textindexng.svn.sourceforge.net/viewvc/*checkout*/textindexng/TextIndexNG3/trunk/Extensions/Install.py``
+		  This is necessary for the Quickinstaller Uninstall and Reinstall to work
+		  on Plone 2.5. (If you miss to do this, the reinstall will not work, which
+          is not such a big problem after all.)
+		  At the time of this writing we use TXNG 3.1.13, this requirement may
+		  become obsolate at a later release that includes this patch.
+
         * For running the test, make sure that PloneTestCase is installed.
 
         * Install 'lynx' (http://lynx.isc.org/)
