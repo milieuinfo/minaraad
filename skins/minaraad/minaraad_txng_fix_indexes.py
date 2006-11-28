@@ -2,7 +2,9 @@
 
 # Fix TXNG indexes.
 # XXX before running this script, make sure you have TXNG3 3.1.13 or higher
-# installed.
+# installed, and that you followed the installation instructions (including
+# uncommenting relevant parts of the adapters/configure.zcml, which has
+# a mission critical importance)
 
 encoding = context.portal_properties.site_properties.default_charset
 

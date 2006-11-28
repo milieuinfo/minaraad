@@ -55,8 +55,6 @@ Once the environment on the server is created you can add minaraad product and a
 
         * intellitext from this branch:
         https://svn.plone.org/svn/collective/intelligenttext/trunk
-        XXX I believe this is not needed for production, but it was
-        necessary for the migration of the live site to 2.5 .
 
         * TextIndexNG3 from
         (http://surfnet.dl.sourceforge.net/sourceforge/textindexng/TextIndexNG3-3.1.13.tar.gz)
@@ -69,11 +67,17 @@ Once the environment on the server is created you can add minaraad product and a
     
         - Remove the comments in
             ``$INSTANCE_HOME/Products/TextIndexNG3/adapters/configure.zcml``.
+            XXX THIS IS VERY IMPORTANT, PLEASE DO NOT SKIP THIS STEP. XXX
     
         - Make sure that pdftotext is available.  Installing xpdf takes
             care of that.  On Debian/Ubuntu try ``apt-get install xpdf``.
             An install of just the poppler-utils or xpdf-utils package
             works as well.
+
+         - Make sure that the wvWare utility is available.
+            On Debian/Ubuntu try ``apt-get install wv``.
+            XXX I am not sure this is needed, but I think this takes care
+            XXX of indexing Word documents.
     
         * For running the test, make sure that PloneTestCase is installed.
 
