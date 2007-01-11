@@ -160,12 +160,12 @@ class EmailMixin:
                 subject = subject,
                 fromAddress = fromAddress,
                 member = member,
-                toAddress = getattr(member, 'email', 'N/A (%s)' % member.name),
+                toAddress = member.getProperty('email', 'N/A (%s)' % member.getProperty('id')),
                 )
 
             try:
                 mailHost.send(message = message,
-                              mto = member.email,
+                              mto = member.getProperty('email', ''),
                               mfrom = fromAddress,
                               subject = subject)
             except Exception, exc:
@@ -251,6 +251,3 @@ class EmailMixin:
 def fixRelativeUrls(xml, portal_url):
     return xml.replace('./resolveUid', portal_url + '/resolveUid')
 ##/code-section module-footer
-
-
-
