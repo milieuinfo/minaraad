@@ -157,7 +157,7 @@ class MREvent(OrderedBaseFolder):
 
     meta_type = 'MREvent'
     portal_type = 'MREvent'
-    allowed_content_types = ['AgendaItem', 'File']
+    allowed_content_types = ['AgendaItem', 'File', 'Image']
     filter_content_types = 1
     global_allow = 1
     #content_icon = 'MREvent.gif'
