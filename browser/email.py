@@ -9,7 +9,7 @@ class EmailOutView(AbstractView):
         response = request.response
         
         if request.get('send', None) is not None:
-            additionalMembers = [mem for mem in
+            additionalMembers = [mem.strip() for mem in
                                  self.request.get('to', '').split(',')
                                  if mem]
             testing = bool(int(self.request.get('send_as_test', "0")))
