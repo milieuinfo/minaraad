@@ -2,7 +2,7 @@ from Products.CMFCore.utils import getToolByName
 from themes import ThemeManager
 
 SUBSCRIPTIONS_EMAIL = ('AnnualReport', 'Study', 
-                     'Newsletter', 'Pressrelease')
+                     'NewsLetter', 'Pressrelease')
 SUBSCRIPTIONS_POST = ('Advisory', 'Study', 'AnnualReport')
 THEME_PARENT = 'Hearing'
 
