@@ -51,6 +51,9 @@ msgstr ""
 msgid "Newsletter"
 msgstr ""
 
+msgid "NewsLetter"
+msgstr ""
+
 #: browser/subscriptions_config.pt
 msgid "Pressrelease"
 msgstr ""
