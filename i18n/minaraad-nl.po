@@ -52,6 +52,9 @@ msgstr "Locatie:"
 msgid "Newsletter"
 msgstr "Nieuwsbrief"
 
+msgid "NewsLetter"
+msgstr "Nieuwsbrief"
+
 #: browser/subscriptions_config.pt
 msgid "Pressrelease"
 msgstr "Persbericht"
