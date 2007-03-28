@@ -18,7 +18,7 @@ def fix(self):
             if sub.startswith('Newsletter'):
                 fixed_sub = sub.replace('Newsletter','NewsLetter')
                 subscriptions[idx] = fixed_sub
-                member.setProperties(subscriptions=subscriptions)
+                member.setProperties({'subscriptions':subscriptions})
                 fixed_members.append(member.getId())
             idx += 1
     return fixed_members
