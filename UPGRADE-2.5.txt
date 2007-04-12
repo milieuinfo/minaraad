@@ -42,8 +42,6 @@ Upgrade to Plone 2.5 for Minaraad
 	 an installed version different from the current one. This is a bug in TXNG
 	 but is not important for us.
 
-     XXX RichDocument has no longer a Plone install, it can be uninstalled from here.
-
 5. Upgrade Minaraad content indexes
 
    - Run the script minaraad_txng_fix_indexes (by entering it into the url

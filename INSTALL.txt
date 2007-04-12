@@ -42,10 +42,11 @@ Once the environment on the server is created you can add minaraad product and a
 		XXX upgrade occasionally? this is an old version
 
         * RichDocument svn trunk
-        (https://svn.plone.org/svn/collective/RichDocument/trunk)
+        (https://svn.plone.org/svn/collective/RichDocument/branches/2.0)
+		XXX this dependency has changed branch
 		
         * SimpleAttachment svn trunk
-        (https://svn.plone.org/svn/collective/SimpleAttachment/trunk)
+        (https://svn.plone.org/svn/collective/SimpleAttachment/branches/1.0)
 		XXX this is a new dependency
     
         * OrderableReferenceField
