@@ -3,7 +3,7 @@ from sets import Set
 from Products.CMFCore.utils import getToolByName
 from Products.CMFCore.DirectoryView import addDirectoryViews
 from Products.PortalTransforms.transforms.lynx_dump import lynx_dump
-from Products.RichDocument.Extensions.Install import registerAttachmentsFormControllerActions
+from Products.SimpleAttachment.setuphandlers import registerAttachmentsFormControllerActions0
 from StringIO import StringIO
 from Products.DCWorkflow.DCWorkflow import WorkflowException
 from Products.PageTemplates.ZopePageTemplate import ZopePageTemplate
