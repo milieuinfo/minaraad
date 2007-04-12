@@ -31,14 +31,22 @@ Once the environment on the server is created you can add minaraad product and a
     Dependencies:
 
         * Plone 2.5.1
-        (http://prdownloads.sourceforge.net/plone/Plone-2.5.1.tar.gz?download)
+        ##(http://prdownloads.sourceforge.net/plone/Plone-2.5.1.tar.gz?download)
+		-- put correct link here --
+
+		XXX now: 2.5.2 is needed, but even should upgrade to 2.5.2-1
     
-        
         * FCKeditor 2.2
-        (http://prdownloads.sourceforge.net/fckeditor/FCKeditor.Plone2.2.zip?download)
-    
+		(http://ovh.dl.sourceforge.net/sourceforge/fckeditor/FCKeditor.Plone2.2.zip)
+
+		XXX upgrade occasionally? this is an old version
+
         * RichDocument svn trunk
         (https://svn.plone.org/svn/collective/RichDocument/trunk)
+		
+        * SimpleAttachment svn trunk
+        (https://svn.plone.org/svn/collective/SimpleAttachment/trunk)
+		XXX this is a new dependency
     
         * OrderableReferenceField
         (https://svn.plone.org/svn/archetypes/MoreFieldsAndWidgets/OrderableReferenceField/trunk)
@@ -57,16 +65,17 @@ Once the environment on the server is created you can add minaraad product and a
         https://svn.plone.org/svn/collective/intelligenttext/trunk
 
         * TextIndexNG3 from
-        (http://surfnet.dl.sourceforge.net/sourceforge/textindexng/TextIndexNG3-3.1.13.tar.gz)
+		(http://surfnet.dl.sourceforge.net/sourceforge/textindexng/TextIndexNG3-3.1.14.tar.gz)
     
         - Copy (!) the ``TextIndexNG3`` directory to your ``Products``
             directory.
     
-        - In ``$INSTANCE_HOME/Products/TextIndexNG3/extension_modules`` do ``python
+        - In ``$INSTANCE_HOME/Products/TextIndexNG3/extension_modules`` do ``python2.4
             setup.py install --home=$INSTANCE_HOME``.
     
         - Remove the comments in
             ``$INSTANCE_HOME/Products/TextIndexNG3/adapters/configure.zcml``.
+			except the one with ExtensibleIndexableObjectWrapper, *that must stay in comment*.
             XXX THIS IS VERY IMPORTANT, PLEASE DO NOT SKIP THIS STEP. XXX
     
         - Make sure that pdftotext is available.  Installing xpdf takes
@@ -86,6 +95,8 @@ Once the environment on the server is created you can add minaraad product and a
           is not such a big problem after all.)
 		  At the time of this writing we use TXNG 3.1.13, this requirement may
 		  become obsolate at a later release that includes this patch.
+
+          XXXX This is currently broken, so the reinstall will fail, but it does not matter.
 
         * For running the test, make sure that PloneTestCase is installed.
 
