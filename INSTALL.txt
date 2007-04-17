@@ -30,12 +30,10 @@ Once the environment on the server is created you can add minaraad product and a
 
     Dependencies:
 
-        * Plone 2.5.1
-        ##(http://prdownloads.sourceforge.net/plone/Plone-2.5.1.tar.gz?download)
-        -- put correct link here --
+        * Plone 2.5.2-1
+		(http://plone.googlecode.com/files/Plone-2.5.2-1.tar.gz)
+        XXX this dependency has changed recently
 
-        XXX now: 2.5.2 is needed, but even should upgrade to 2.5.2-1
-    
         * FCKeditor 2.2
         (http://ovh.dl.sourceforge.net/sourceforge/fckeditor/FCKeditor.Plone2.2.zip)
 
@@ -43,7 +41,7 @@ Once the environment on the server is created you can add minaraad product and a
 
         * RichDocument svn trunk
         (https://svn.plone.org/svn/collective/RichDocument/branches/2.0)
-        XXX this dependency has changed branch
+        XXX this dependency has changed its branch recently
         
         * SimpleAttachment svn trunk
         (https://svn.plone.org/svn/collective/SimpleAttachment/branches/1.0)
