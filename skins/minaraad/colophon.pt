@@ -14,7 +14,7 @@
         </a>
 
         <a tal:attributes="href string:${portal_url}/copyright">
-            © Minaraad 2006
+            © Minaraad 2007
         </a>
         <a tal:attributes="href string:${portal_url}/overdewebsite">
             Over deze website

@@ -626,4 +626,8 @@ input.searchButton {
     height: 4em !important;
 }
 
+.documentByLine {
+   display: none;
+}
+
 /* </dtml-with> */
