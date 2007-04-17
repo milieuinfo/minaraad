@@ -32,22 +32,22 @@ Once the environment on the server is created you can add minaraad product and a
 
         * Plone 2.5.1
         ##(http://prdownloads.sourceforge.net/plone/Plone-2.5.1.tar.gz?download)
-		-- put correct link here --
+        -- put correct link here --
 
-		XXX now: 2.5.2 is needed, but even should upgrade to 2.5.2-1
+        XXX now: 2.5.2 is needed, but even should upgrade to 2.5.2-1
     
         * FCKeditor 2.2
-		(http://ovh.dl.sourceforge.net/sourceforge/fckeditor/FCKeditor.Plone2.2.zip)
+        (http://ovh.dl.sourceforge.net/sourceforge/fckeditor/FCKeditor.Plone2.2.zip)
 
-		XXX upgrade occasionally? this is an old version
+        XXX upgrade occasionally? this is an old version
 
         * RichDocument svn trunk
         (https://svn.plone.org/svn/collective/RichDocument/branches/2.0)
-		XXX this dependency has changed branch
-		
+        XXX this dependency has changed branch
+        
         * SimpleAttachment svn trunk
         (https://svn.plone.org/svn/collective/SimpleAttachment/branches/1.0)
-		XXX this is a new dependency
+        XXX this is a new dependency
     
         * OrderableReferenceField
         (https://svn.plone.org/svn/archetypes/MoreFieldsAndWidgets/OrderableReferenceField/trunk)
@@ -66,7 +66,7 @@ Once the environment on the server is created you can add minaraad product and a
         https://svn.plone.org/svn/collective/intelligenttext/trunk
 
         * TextIndexNG3 from
-		(http://surfnet.dl.sourceforge.net/sourceforge/textindexng/TextIndexNG3-3.1.14.tar.gz)
+        (http://surfnet.dl.sourceforge.net/sourceforge/textindexng/TextIndexNG3-3.1.14.tar.gz)
     
         - Copy (!) the ``TextIndexNG3`` directory to your ``Products``
             directory.
@@ -76,7 +76,7 @@ Once the environment on the server is created you can add minaraad product and a
     
         - Remove the comments in
             ``$INSTANCE_HOME/Products/TextIndexNG3/adapters/configure.zcml``.
-			except the one with ExtensibleIndexableObjectWrapper, *that must stay in comment*.
+            except the one with ExtensibleIndexableObjectWrapper, *that must stay in comment*.
             XXX THIS IS VERY IMPORTANT, PLEASE DO NOT SKIP THIS STEP. XXX
     
         - Make sure that pdftotext is available.  Installing xpdf takes
@@ -89,15 +89,25 @@ Once the environment on the server is created you can add minaraad product and a
             XXX I am not sure this is needed, but I think this takes care
             XXX of indexing Word documents.
 
-		- Replace ``Extensions/Install.py`` with the file
-		  ``http://textindexng.svn.sourceforge.net/viewvc/*checkout*/textindexng/TextIndexNG3/trunk/Extensions/Install.py?revision=1682``
-		  This is necessary for the Quickinstaller Uninstall and Reinstall to work
-		  on Plone 2.5. (If you miss to do this, the reinstall will not work, which
+        - Replace ``Extensions/Install.py`` with the file
+          ``http://textindexng.svn.sourceforge.net/viewvc/*checkout*/textindexng/TextIndexNG3/trunk/Extensions/Install.py?revision=1682``
+          This is necessary for the Quickinstaller Uninstall and Reinstall to work
+          on Plone 2.5. (If you miss to do this, the reinstall will not work, which
           is not such a big problem after all.)
-		  At the time of this writing we use TXNG 3.1.13, this requirement may
-		  become obsolate at a later release that includes this patch.
+          At the time of this writing we use TXNG 3.1.13, this requirement may
+          become obsolate at a later release that includes this patch.
 
           XXXX This is currently broken, so the reinstall will fail, but it does not matter.
+
+        - FIX THE PERMISSIONS of the files. TextIndexNG often ships with the wrong permissions. Basically
+          all files must be readable (r) and all directories must be executable (rx) for the
+          process that runs zope. Practically this means:
+
+                 % cd Products/TextIndexNG3
+                 % chmod -R a+r *
+                 % chmod a+x `find -type d`
+
+          or something similar adapted for your situation.
 
         * For running the test, make sure that PloneTestCase is installed.
 
