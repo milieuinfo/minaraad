@@ -176,6 +176,10 @@ class SubscribersConfigletView(AbstractView):
         
         return self.themeManager.getThemeTitle(id)
     
+    def _getAllThemes(self):
+        themes = [sub.id for sub in self.subscriptionManager.subscriptions if self._getThemeTitle(sub.id)]
+        return themes
+
     def getSelectedSubjects(self):
         # Get a list of categories and themes in the session variables.
         request = self.request
@@ -190,6 +194,8 @@ class SubscribersConfigletView(AbstractView):
             else:
                 subjectlist = subjectlist + categories
         if themes is not None:
+            if themes == '[ALL]':
+                themes = self._getAllThemes()
             if isinstance(themes, StringTypes):
                 subjectlist.append(themes)
             else:
@@ -274,7 +280,9 @@ class SubscribersConfigletView(AbstractView):
         session = request.SESSION
         theme = session.get('theme', None)
         category = session.get('category', None)
-        if theme is not None:
+        if theme == '[ALL]':
+            subscriberId = 'all_themes'
+        elif theme is not None:
             subscriberId = theme
         else:
             subscriberId = category
