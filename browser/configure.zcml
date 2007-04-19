@@ -73,7 +73,7 @@
       for="*"
       name="minaraad_service"
       class=".service.ServiceUtils"
-      allowed_attributes="deleteMembersWithEmptyEmail"
+      allowed_attributes="deleteMembersWithEmptyEmail resetMemberDataTitle"
       permission="cmf.ManagePortal"
   />
 

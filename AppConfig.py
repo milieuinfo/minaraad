@@ -182,7 +182,7 @@ FCK_MENU_STYLES = '''<Style name="Image on Left" element="img">
 FCK_AREA_STYLE = 'minaraad.css'
 
 # This is used for the gender field in portal_memberdata
-TITLE_VOCAB = ['', 'De heer','Mevrouw','Monsieur','Madame','Ing.','Ir.','Dr.',
+TITLE_VOCAB = ['', 'De heer', 'Mevrouw', 'Juffrouw', 'Monsieur', 'Madame', 'Madamoiselle' ,'Ing.','Ir.','Dr.',
                'Dr. Ir.','Prof.','Prof. Dr.','Prof. Dr. Ir.','Em. Prof.',
                'Dir. Ir.', 'Em. Prof. Dr.']
 
