@@ -67,4 +67,14 @@
       permission="zope.Public"
   />
 
+  <!-- Service view for admin use only -->
+
+  <browser:page
+      for="*"
+      name="minaraad_service"
+      class=".service.ServiceUtils"
+      allowed_attributes="deleteMembersWithEmptyEmail"
+      permission="cmf.ManagePortal"
+  />
+
 </configure>
