@@ -325,6 +325,10 @@ def addMemberDataProperties(self, out):
         memberdata.manage_addProperty('select_country', countries, 'lines')
         memberdata.manage_addProperty('country', 'select_country', 'selection')
 
+    # adding last_modification_date
+    if 'last_modification_date' not in md.propertyIds():
+        md.manage_addProperty('last_modification_date', '2000/01/01', 'date')
+
 def addConfiglets(self, out):
     # register tools as configlets
     portal_controlpanel = getToolByName(self,'portal_controlpanel')

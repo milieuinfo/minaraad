@@ -78,6 +78,16 @@
                                value="username"
                                tal:attributes="value member/getId" />
                                
+                        <!-- *** last_modification_date (view only) *** -->
+                        <div class="field"
+                        tal:define="last_modification_date python:member.getProperty('last_modification_date', '');
+                                    tabindex tabindex/next;">
+                            <label i18n:domain="minaraad"
+                                    i18n:translate="label_last_modification_date">Last modified</label>
+                            <br />
+                            <tal:block tal:content="last_modification_date" />
+                        </div>
+ 
                         <!-- *** gender *** -->
                         <div class="field"
                         tal:define="error errors/gender | nothing; 

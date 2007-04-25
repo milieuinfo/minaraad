@@ -34,3 +34,11 @@ class ServiceUtils(BrowserView):
         md._updateProperty('genders', TITLE_VOCAB)
         logger.info('"Genders" propertx of memberdata tool is reset.')
         return '"Genders" propertx of memberdata tool is reset.'
+
+    def addMemberDataLastModification(self):
+        'add last_modification_date to the memberdata'
+        md = getToolByName(self, 'portal_memberdata')
+        if 'last_modification_date' not in md.propertyIds():
+            md.manage_addProperty('last_modification_date', '2000/01/01', 'date')
+        logger.info('"last_modification_date" propertx of memberdata tool is added.')
+        return '"last_modification_date" propertx of memberdata tool is added.'
