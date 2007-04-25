@@ -223,7 +223,7 @@
                         <!-- *** housenumber *** -->
                         <div class="field"
                                 tal:define="error errors/housenumber | nothing;
-                                            housenumber python:request.get('street', member.getProperty('housenumber', ''));"
+                                            housenumber python:request.get('housenumber', member.getProperty('housenumber', ''));"
                                 tal:attributes="class python:test(error, 'field error', 'field')">
     
                             <label for="housenumber" 
