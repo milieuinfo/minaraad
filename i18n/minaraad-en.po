@@ -837,3 +837,6 @@ msgstr ""
 msgid "up_untill"
 msgstr ""
 
+#: skins/minaraad/prefs_user_details.cpt
+msgid "label_last_modification_date"
+msgstr ""

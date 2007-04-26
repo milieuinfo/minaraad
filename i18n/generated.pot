@@ -628,3 +628,6 @@ msgstr ""
 msgid "toggle_all"
 msgstr ""
 
+#: skins/minaraad/prefs_user_details.cpt
+msgid "label_last_modification_date"
+msgstr ""

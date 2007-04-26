@@ -832,3 +832,7 @@ msgstr "Selecteer alles:"
 msgid "up_untill"
 msgstr "t/m"
 
+#: skins/minaraad/prefs_user_details.cpt
+msgid "label_last_modification_date"
+msgstr "Laatst gewijzigd op:"
+
