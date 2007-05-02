@@ -20,7 +20,9 @@
   </span>
 </p>
 <span i18n:translate="label_thank">Dank voor uw interesse.</span>
-<span i18n:translate="label_greeting">Met vriendelijke groet</span>
+<p>
+   <span i18n:translate="label_greeting">Met vriendelijke groet</span>
+</p>
 <p>
   <span i18n:translate="label_theteam">Het Minaraad-team</span>
 </p>
