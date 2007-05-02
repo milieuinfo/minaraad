@@ -48,9 +48,8 @@ class AttendeesManagerView(AbstractView):
             return response.redirect(self.referring_url+"?portal_status_message=" + urllib.quote(message))
         elif action == 'unregister':
             self.manager.removeMember(memberId)
-            self.notifyRegistration(memberId, False)
-            if self.notifyRegistration(memberId, True):
-                message =  'You have successfully un registered, but sending email notification failed.'
+            if self.notifyRegistration(memberId, False):
+                message =  'You have successfully unregistered, but sending email notification failed.'
             else:
                 message = 'You have succesfully unregistered. U ontvangt hiervan nog een bevestiging per e-mail.'
             return response.redirect(self.referring_url+"?portal_status_message=" + urllib.quote(message))
