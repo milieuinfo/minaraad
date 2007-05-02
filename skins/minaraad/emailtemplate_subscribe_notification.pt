@@ -14,13 +14,10 @@
   <span style="font-weight:bold" tal:content="context/Title" />
   <span i18n:translate="label_subs3">die plaats vindt in</span>
   <span style="font-weight:bold" tal:content="context/getLocation" />
-  <span i18n:translate="label_subs4"></span>
+  <span i18n:translate="label_subs4">op</span>
+  <metal:block use-macro="context/mina_showdatetime/macros/datetime_email" />
 </p>
-<metal:block use-macro="context/mina_showdatetime/macros/datetime_email" />
-<p>
-  <span i18n:translate="label_thank">Dank voor uw interesse.</span>
-</p>
-<br />
+<span i18n:translate="label_thank">Dank voor uw interesse.</span>
 <p>
   <span i18n:translate="label_greeting">Met vriendelijke groet</span>
 </p>
