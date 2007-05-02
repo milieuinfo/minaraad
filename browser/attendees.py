@@ -42,16 +42,16 @@ class AttendeesManagerView(AbstractView):
         if action == 'register':
             self.manager.addMember(memberId)
             if self.notifyRegistration(memberId, True):
-                message =  'You have successfully registered, but sending email notification failed.'
+                message =  'Uw inschrijving is gelukt, maar het verzenden van de bevestigingse-mail is niet gelukt.'
             else:
-                message = 'You have succesfully registered. U ontvangt hiervan nog een bevestiging per e-mail.'
+                message = 'Uw inschrijving is gelukt. U ontvangt hiervan nog een bevestiging per e-mail.'
             return response.redirect(self.referring_url+"?portal_status_message=" + urllib.quote(message))
         elif action == 'unregister':
             self.manager.removeMember(memberId)
             if self.notifyRegistration(memberId, False):
-                message =  'You have successfully unregistered, but sending email notification failed.'
+                message =  'Het afmelden is gelukt, maar het verzenden van de bevestigingse-mail is niet gelukt.'
             else:
-                message = 'You have succesfully unregistered. U ontvangt hiervan nog een bevestiging per e-mail.'
+                message = 'Het afmelden is gelukt. U ontvangt hiervan nog een bevestiging per e-mail.'
             return response.redirect(self.referring_url+"?portal_status_message=" + urllib.quote(message))
         elif action == 'exportCSV':
             return self.buildAttendeesCSV()
