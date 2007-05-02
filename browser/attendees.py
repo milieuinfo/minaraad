@@ -64,6 +64,7 @@ class AttendeesManagerView(AbstractView):
         member = memberTool.getMemberById(memberId)
         emailview = getMultiAdapter((self.context, self.request), name='notify_registration')
         failed_postings = emailview(member, subscribe)
+        return failed_postings
 
     def isRegistered(self):
         memberTool = getToolByName(self.context, 'portal_membership')
