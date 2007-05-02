@@ -1,11 +1,12 @@
 import urllib
-from zope.interface import Interface, implements, Attribute
+from zope.interface import Interface, implements
 from configlets import AbstractView
 from Products.CMFCore.utils import getToolByName
 from Products.minaraad.interfaces import IAttendeeManager
 from Products.CMFCore.permissions import ManagePortal
 from AccessControl import ClassSecurityInfo
 from Products.minaraad.browser.utils import buildCSV
+from zope.component import getMultiAdapter
 
 class IAttendeesManagerView(Interface):
 
@@ -15,8 +16,6 @@ class IAttendeesManagerView(Interface):
     def groupedAttendees(self):
         pass
 
-
-import logging
 class AttendeesManagerView(AbstractView):
     implements(IAttendeesManagerView)
 
@@ -42,18 +41,31 @@ class AttendeesManagerView(AbstractView):
         memberId = memberTool.getAuthenticatedMember().getId()
         if action == 'register':
             self.manager.addMember(memberId)
-            return response.redirect(self.referring_url+"?portal_status_message=" \
-                   +urllib.quote("You have successfully registered"))
+            if self.notifyRegistration(memberId, True):
+                message =  'You have successfully registered, but sending email notification failed.'
+            else:
+                message = 'You have succesfully registered. U ontvangt hiervan nog een bevestiging per e-mail.'
+            return response.redirect(self.referring_url+"?portal_status_message=" + urllib.quote(message))
         elif action == 'unregister':
             self.manager.removeMember(memberId)
-            return response.redirect(self.referring_url+"?portal_status_message=" \
-                   +urllib.quote("You have successfully unregistered"))
+            self.notifyRegistration(memberId, False)
+            if self.notifyRegistration(memberId, True):
+                message =  'You have successfully un registered, but sending email notification failed.'
+            else:
+                message = 'You have succesfully unregistered. U ontvangt hiervan nog een bevestiging per e-mail.'
+            return response.redirect(self.referring_url+"?portal_status_message=" + urllib.quote(message))
         elif action == 'exportCSV':
             return self.buildAttendeesCSV()
         
         else:
             return "error -- no form.button.Submit specified"
     
+    def notifyRegistration(self, memberId, subscribe):
+        memberTool = getToolByName(self.context, 'portal_membership')
+        member = memberTool.getMemberById(memberId)
+        emailview = getMultiAdapter((self.context, self.request), name='notify_registration')
+        failed_postings = emailview(member, subscribe)
+
     def isRegistered(self):
         memberTool = getToolByName(self.context, 'portal_membership')
         isAnonymous = memberTool.isAnonymousUser()

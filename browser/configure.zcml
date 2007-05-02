@@ -46,10 +46,18 @@
   <browser:page
       for="*"
       name="email_out"
-      class=".email.EmailOutView"
+      class=".email_notification.EmailOutView"
       permission="cmf.ManagePortal"
       template="email_out.pt"
     />
+
+  <browser:page
+      for="*"
+      name="notify_registration"
+      class=".email_notification.SubscriptionNotifyView"
+      permission="cmf.ManagePortal"
+    />
+
 
   <browser:page
       for="*"
