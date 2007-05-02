@@ -44,7 +44,7 @@
     />
 
   <browser:page
-      for="*"
+      for="Products.minaraad.content.Hearing.IHearing"
       name="email_out"
       class=".email_notification.EmailOutView"
       permission="cmf.ManagePortal"
