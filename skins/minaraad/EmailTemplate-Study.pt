@@ -13,7 +13,7 @@
 <span metal:use-macro="context/mina_showdatetime/macros/datetime_email"
       tal:omit-tag="" />
 <br />
-<span i18n:translate="label_dear">Dear</span> <span tal:replace="member/firstname" /> <span tal:replace="member/fullname" />,
+<span i18n:translate="label_dear">Beste</span> <span tal:replace="python: member.getProperty('firstname')" /> <span tal:replace="python: member.getProperty('fullname')" />,
 <br />
 <br />
 <div tal:replace="context/Description" />
