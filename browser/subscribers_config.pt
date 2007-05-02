@@ -117,7 +117,7 @@
                     name="Hearing"
                     tal:attributes="value string:Hearing" />
 
-            <h6 i18n:translate="label_allhearingthemes">All Hearing Themes</h6>
+            <h6 i18n:translate="label_allsubs">All Subscribers</h6>
 
             <br />
             <input class="context"
@@ -132,8 +132,8 @@
                     type="hidden"
                     name="category"
                     tal:attributes="value string:Hearing" />
-
-            <!-- Remember that '[ALL]' themes was selected. -->
+           
+            <!-- Remember that '[ALL]' was selected. -->
             <input class="context"
                     type="hidden"
                     name="theme"

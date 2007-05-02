@@ -1,9 +1,9 @@
 from Products.Five import BrowserView
 from Products.CMFCore.utils import getToolByName
 from Products.minaraad.themes import ThemeManager
-from Products.minaraad.subscriptions import SubscriptionManager, \
-                                            Subscription
-from StringIO import StringIO
+from Products.minaraad.subscriptions import SubscriptionManager #, \
+#                                            Subscription
+#from StringIO import StringIO
 from types import StringTypes
 
 #from Products.minaraad.browser.subscribers import ExportSubscribersView
@@ -180,6 +180,10 @@ class SubscribersConfigletView(AbstractView):
         themes = [sub.id for sub in self.subscriptionManager.subscriptions if self._getThemeTitle(sub.id)]
         return themes
 
+    def _getAllSubs(self):
+        subs = [sub.id for sub in self.subscriptionManager.subscriptions]
+        return subs
+
     def getSelectedSubjects(self):
         # Get a list of categories and themes in the session variables.
         request = self.request
@@ -194,8 +198,10 @@ class SubscribersConfigletView(AbstractView):
             else:
                 subjectlist = subjectlist + categories
         if themes is not None:
+            ##if themes == '[ALLTHEMES]':
+            ##    themes = self._getAllThemes()
             if themes == '[ALL]':
-                themes = self._getAllThemes()
+                themes = self._getAllSubs()
             if isinstance(themes, StringTypes):
                 subjectlist.append(themes)
             else:
@@ -280,8 +286,10 @@ class SubscribersConfigletView(AbstractView):
         session = request.SESSION
         theme = session.get('theme', None)
         category = session.get('category', None)
+        ##if theme == '[ALLTHEMES]':
+        ##    subscriberId = 'all_themes'
         if theme == '[ALL]':
-            subscriberId = 'all_themes'
+            subscriberId = 'all'
         elif theme is not None:
             subscriberId = theme
         else:
