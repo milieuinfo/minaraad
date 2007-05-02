@@ -178,5 +178,38 @@
 </tal:block>
 </metal:block>
 
+<!-- subscription notification in e-mail-->
+ <metal:block metal:define-macro="subscribe_notification_email">
+<tal:block tal:define="daterequired python:context.getStartdate() != None and context.getEnddate() != None;"
+            tal:condition="daterequired">
+<tal:block tal:define="startdate python:context.toLocalizedTime(context.startdate);
+                enddate python:context.toLocalizedTime(context.enddate);
+                starttime python:context.startdate.TimeMinutes();
+                endtime python:context.enddate.TimeMinutes();
+                noStartTime python:test(starttime == '00:00', 0, 1);
+                noEndTime python:test(endtime == '00:00', 0, 1);"
+    tal:omit-tag="">
+
+<tal:block tal:condition="python:startdate == enddate"> <span tal:replace="startdate" />
+<br />
+<tal:block tal:condition="python: noStartTime and noEndTime">
+<span tal:replace="starttime" /> <span i18n:translate="till"   tal:omit-tag="">till</span> <span tal:replace="endtime" /> <span i18n:translate="hour">hour</span>
+</tal:block>
+</tal:block>
+<tal:block tal:condition="python:startdate != enddate">
+<span i18n:translate="from" tal:omit-tag="">from</span> <span tal:replace="startdate" /> <span i18n:translate="up_untill"
+    tal:omit-tag="">up untill</span> <span tal:replace="enddate" />
+<tal:block tal:condition="python: noStartTime and noEndTime">
+<br />
+<span tal:replace="starttime" /> <span i18n:translate="till"
+        tal:omit-tag="">till</span> <span tal:replace="endtime" /> <span i18n:translate="hour">hour</span>
+</tal:block>
+</tal:block>
+</tal:block>
+<br />
+<br />
+</tal:block>
+</metal:block>
+
     </body>
 </html>

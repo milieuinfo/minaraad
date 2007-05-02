@@ -15,7 +15,9 @@
   <span i18n:translate="label_subs3">die plaats vindt in</span>
   <span style="font-weight:bold" tal:content="context/getLocation" />
   <span i18n:translate="label_subs4">op</span>
-  <metal:block use-macro="context/mina_showdatetime/macros/datetime_email" />
+  <span style="font-weight:bold">
+    <metal:block use-macro="context/mina_showdatetime/macros/subscribe_notification_email" />
+  </span>
 </p>
 <span i18n:translate="label_thank">Dank voor uw interesse.</span>
 <span i18n:translate="label_greeting">Met vriendelijke groet</span>
