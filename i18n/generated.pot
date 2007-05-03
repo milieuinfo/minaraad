@@ -181,6 +181,11 @@ msgstr ""
 msgid "label_hearingthemes"
 msgstr ""
 
+#: browser/subscribers_config.pt
+msgid "label_allsubs"
+msgstr ""
+
+
 #. Default: "House number"
 #: skins/minaraad/join_form.cpt
 #: skins/minaraad/personalize_form.cpt

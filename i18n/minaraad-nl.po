@@ -265,6 +265,10 @@ msgstr "Aanhef"
 msgid "label_hearingthemes"
 msgstr "Hoorzitting thema\'s"
 
+#: browser/subscribers_config.pt
+msgid "label_allsubs"
+msgstr "Alle abonnees"
+
 #. Default: "House number"
 #: skins/minaraad/join_form.cpt
 #: skins/minaraad/personalize_form.cpt
