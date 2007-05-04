@@ -1,6 +1,4 @@
-from Products.minaraad.config import *
 from StringIO import StringIO
-from Globals import package_home
 from Products.CMFCore.utils import getToolByName
 
 out = StringIO()
@@ -12,15 +10,17 @@ def fix(self):
     fixed_members = []
     members = getToolByName(self, 'portal_membership').listMembers()
     for member in members:
-        subscriptions = member.getProperty('subscriptions',None)
-        idx = 0
+        subscriptions = member.getProperty('subscriptions', None)
+        fixed_subs = []
+        changed = False
         for sub in subscriptions:
             if sub.startswith('Newsletter'):
-                fixed_sub = sub.replace('Newsletter','NewsLetter')
-                subscriptions[idx] = fixed_sub
-                member.setProperties({'subscriptions':subscriptions})
-                fixed_members.append(member.getId())
-            idx += 1
-    return fixed_members
-    
-
+                fixed_sub = sub.replace('Newsletter', 'NewsLetter')
+                changed = True
+            else:
+                fixed_sub = sub
+            fixed_subs.append(fixed_sub)
+        if changed:
+            member.setMemberProperties(dict(subscriptions = tuple(fixed_subs)))
+            fixed_members.append(member.getId())
+    return 'Fixed: %i %s' % (len(fixed_members), fixed_members)
