@@ -7,9 +7,11 @@
 <span style="font-weight:bold" 
       tal:content="context/Title" />
 <br />
+<div tal:condition="context/getSubheader" tal:omit-tag="">
 <span style="font-style:italic" 
       tal:content="context/getSubheader" />
 <br />
+</div>
 <span metal:use-macro="context/mina_showdatetime/macros/datetime_email"
       tal:omit-tag="" />
 <br />
