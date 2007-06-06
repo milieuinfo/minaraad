@@ -9,7 +9,7 @@ EMAIL_FROM_ADDRESS = 'communicatie@minaraad.be'
 EMAIL_FROM_NAME = 'Communicatie Minaraad'
 
 #Mailhost properties
-SMTP_HOST = 'mail.mmis.be'
+SMTP_HOST = 'smtp.zestsoftware.nl'
 SMTP_PORT = 25
 SMTP_USERID = ''
 SMTP_PASS = ''
