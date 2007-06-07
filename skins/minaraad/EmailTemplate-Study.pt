@@ -19,27 +19,6 @@
 <br />
 <br />
 <div tal:replace="context/Description" />
-<p>
-<span tal:replace='structure context/getBody' />
-</p>
-<br />
-<tal:block tal:define="speakers context/getSpeakers"
-           tal:condition="speakers">
-<br />
-<div style="font-weight:bold" 
-     i18n:translate="minaraad_label_speakers">
-Speakers
-</div>
-<br />
-<tal:block tal:repeat="speaker speakers">
-<div tal:replace="speaker" />
-<div tal:condition="not:repeat/speaker/end" 
-     tal:omit-tag="">
-<br />
-</div>
-</tal:block>
-<br />
-</tal:block>
 <br />
 <tal:block tal:define="contacts python:context.getContact()"
             tal:condition="contacts">
