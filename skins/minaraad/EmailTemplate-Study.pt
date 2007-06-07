@@ -7,7 +7,7 @@
 <span style="font-weight:bold" 
       tal:content="context/Title" />
 <br />
-<div tal:condition="context/getSubheader" tal:omit-tag="">
+<div tal:condition="context/getSubheader|nothing" tal:omit-tag="">
 <span style="font-style:italic" 
       tal:content="context/getSubheader" />
 <br />
