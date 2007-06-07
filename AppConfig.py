@@ -9,7 +9,9 @@ EMAIL_FROM_ADDRESS = 'communicatie@minaraad.be'
 EMAIL_FROM_NAME = 'Communicatie Minaraad'
 
 #Mailhost properties
-SMTP_HOST = 'smtp.zestsoftware.nl'
+#SMTP_HOST = 'smtp.zestsoftware.nl'
+# vulcan has its own mail host, which is better to use.
+SMTP_HOST = 'localhost'
 SMTP_PORT = 25
 SMTP_USERID = ''
 SMTP_PASS = ''
