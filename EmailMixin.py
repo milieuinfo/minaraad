@@ -39,22 +39,6 @@ from Products.minaraad.subscriptions import SubscriptionManager
 from email.MIMEText import MIMEText
 from email.MIMEMultipart import MIMEMultipart
 from DateTime import DateTime
-import logging, os
-
-# Arrange logging
-logger = logging.getLogger('minaraad_email')
-# Also log these messages to a separate file
-# XXX this may be possible through zope.conf too but I can't figure out
-logpath = '%(INSTANCE_HOME)s/log/minaraad_email.log' % os.environ
-hdlr = logging.FileHandler(logpath)
-formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
-hdlr.setFormatter(formatter)
-logger.addHandler(hdlr)
-logger.setLevel(logging.INFO)
-
-class DictLike(object):
-    def __init__(self, **kw):
-        self.__dict__.update(kw)
 
 ##/code-section module-header
 
