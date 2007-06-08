@@ -18,14 +18,16 @@ hdlr = logging.FileHandler(logpath)
 formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
 hdlr.setFormatter(formatter)
 logger.addHandler(hdlr)
-logger.setLevel(logging.INFO)
+
  
 class DictLike(object):
     def __init__(self, **kw):
         self.__dict__.update(kw)
 
+
 def fixRelativeUrls(xml, portal_url):
     return xml.replace('./resolveUid', portal_url + '/resolveUid')
+
 
 class RenderedContent(dict):
 
@@ -38,6 +40,7 @@ class RenderedContent(dict):
         self['text/plain'] += '\n%s' % (other['text/plain'], )
         self['text/html'] += other['text/html']
         return self
+
 
 class EmailRenderer(object):
     'Base for email renderer adapters'
@@ -86,6 +89,7 @@ class EmailRenderer(object):
                                 ''' % text),
             })
         return body
+
 
 class EmailNotify(BrowserView):
     'General email notification'
@@ -138,10 +142,15 @@ class EmailNotify(BrowserView):
                 #        'in tracker %(path)s\ntext is:\n%(message)s\n' % send_info.__dict__)
                 send_info.excname = str(exc.__class__.__name__)
                 send_info.exctxt = str(exc)
-                logger.log(logging.ERROR, 'Template %(path)s email failed sending from %(fromAddress)s to %(toAddress)s (%(excname)s: %(exctxt)s)' % send_info.__dict__)
+                logger.error('Template %(path)s email failed sending from '
+                             '%(fromAddress)s to %(toAddress)s '
+                             '(%(excname)s: %(exctxt)s)',
+                             send_info.__dict__)
                 failed_postings.append(send_info);
             else:
-                logger.log(logging.INFO, 'Template %(path)s email succesfully sent from %(fromAddress)s to %(toAddress)s' % send_info.__dict__)
+                logger.info('Template %(path)s email succesfully sent '
+                            'from %(fromAddress)s to %(toAddress)s',
+                            send_info.__dict__)
 
         # Post a fake entry to error_log.
         # this enables to see failed postings from the ZMi, without the need
@@ -163,6 +172,7 @@ class EmailNotify(BrowserView):
             error_log.raising(['EmailSendError', 'This is not a real exception. See information below.', '\n'.join(info)])
         # return failed members
         return failed_postings
+
 
 class EmailOutView(AbstractView, EmailNotify):
     
@@ -225,7 +235,10 @@ class EmailOutView(AbstractView, EmailNotify):
             logger.info("The referring url is %r.",
                         self.context.referring_url)
                     
-            return response.redirect('%s?portal_status_message=%s' % (self.context.referring_url, urllib.quote_plus(message)))
+            return response.redirect(
+                '%s?portal_status_message=%s' % (
+                self.context.referring_url,
+                urllib.quote_plus(message)))
         else:
             logger.info("No, we should not send email.")
 
@@ -243,7 +256,8 @@ class EmailOutView(AbstractView, EmailNotify):
     
     def sentDate(self):
         localize = self.context.toLocalizedTime
-        return localize(time=self.context.getEmailSent(), long_format=True)
+        return localize(time=self.context.getEmailSent(),
+                        long_format=True)
       
     def getTemplateName(self):
         return "EmailTemplate-%s" % self.context.getPortalTypeName()
@@ -254,6 +268,7 @@ class EmailOutView(AbstractView, EmailNotify):
         will derive the subscription id from the class name.
         """
         return self.context.__class__.__name__
+
 
 class SubscriptionNotifyView(EmailNotify):
     
