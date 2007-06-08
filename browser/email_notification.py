@@ -228,7 +228,9 @@ class EmailOutView(AbstractView, EmailNotify):
             return response.redirect('%s?portal_status_message=%s' % (self.context.referring_url, urllib.quote_plus(message)))
         else:
             logger.info("No, we should not send email.")
-            #return self.context.index(template_id='email_out')
+
+    def __call__(self):
+        return self.context.index(template_id='email_out')
 
     def defaultTo(self):
         portal_membership = getToolByName(self, 'portal_membership')
