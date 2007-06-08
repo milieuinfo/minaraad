@@ -179,13 +179,13 @@ class EmailOutView(AbstractView, EmailNotify):
                 rendered += self.renderFromText(self.text)
             return rendered
 
-    def __call__(self):
-        logger.info("Start of __call__ of the EmailOutView.")
+    def sendEmail(self):
+        logger.info("Start of EmailOutView.sendEmail.")
         request = self.request
         response = request.response
         
         if request.get('send', None) is not None:
-
+            logger.info("Yes, we should send email.")
             additionalMembers = [mem.strip() for mem in
                                  self.request.get('to', '').split(',')
                                  if mem]
@@ -226,8 +226,9 @@ class EmailOutView(AbstractView, EmailNotify):
                         self.context.referring_url)
                     
             return response.redirect('%s?portal_status_message=%s' % (self.context.referring_url, urllib.quote_plus(message)))
-        
-        return self.context.index(template_id='email_out')
+        else:
+            logger.info("No, we should not send email.")
+            #return self.context.index(template_id='email_out')
 
     def defaultTo(self):
         portal_membership = getToolByName(self, 'portal_membership')
