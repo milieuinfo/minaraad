@@ -93,8 +93,11 @@ class EmailNotify(BrowserView):
     EmailRenderer = EmailRenderer
 
     def email(self, renderer, members=()):
-        'Email to members, using renderer'
+        """Email to members, using renderer.
+        """
 
+        logger.info("Starting the EmailNotify.email() method with %r members.",
+                    len(members))
         portal = getToolByName(self.context, 'portal_url').getPortalObject()
         plone_utils = getToolByName(portal, 'plone_utils')
         charset = plone_utils.getSiteEncoding()
@@ -177,6 +180,7 @@ class EmailOutView(AbstractView, EmailNotify):
             return rendered
 
     def __call__(self):
+        logger.info("Start of __call__ of the EmailOutView.")
         request = self.request
         response = request.response
         
@@ -190,13 +194,19 @@ class EmailOutView(AbstractView, EmailNotify):
             tool = getToolByName(self.context, 'portal_membership')
             members = [tool.getMemberById(memberid)
                    for memberid in additionalMembers]
-
+            logger.info("We have %r members (just the 'additionalMembers').",
+                        len(members))
             if not testing:
+                logger.info("We are not in test mode.")
                 sm = SubscriptionManager(self.context)
                 members = [member for member in
                            sm.emailSubscribers(self.getSubscriptionId())] + \
                            members
+                logger.info("Now we have %r members ('additionalMembers' plus subscribers).",
+                            len(members))
                 self.context.setEmailSent(DateTime())
+            else:
+                logger.info("We are in test mode.")
   
             template = getattr(self.context, self.getTemplateName(), None)
             if template is None:
@@ -205,13 +215,15 @@ class EmailOutView(AbstractView, EmailNotify):
             renderer = self.EmailRenderer(self.context, template)
 
             failed_postings = self.email(renderer, members)
-
+            log.info("All the emails ought to be send now.")
             if failed_postings:
                 message = "E-Mail failed to following addresses: %s" % (
                     ', '.join([send_info.toAddress for send_info in failed_postings]),
                     )
             else:
                 message = 'E-mail Sent'
+            logger.info("The referring url is %r.",
+                        self.context.referring_url)
                     
             return response.redirect('%s?portal_status_message=%s' % (self.context.referring_url, urllib.quote_plus(message)))
         
