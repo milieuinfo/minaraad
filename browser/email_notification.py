@@ -215,7 +215,7 @@ class EmailOutView(AbstractView, EmailNotify):
             renderer = self.EmailRenderer(self.context, template)
 
             failed_postings = self.email(renderer, members)
-            log.info("All the emails ought to be send now.")
+            logger.info("All the emails ought to be send now.")
             if failed_postings:
                 message = "E-Mail failed to following addresses: %s" % (
                     ', '.join([send_info.toAddress for send_info in failed_postings]),
