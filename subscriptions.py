@@ -1,5 +1,8 @@
 from Products.CMFCore.utils import getToolByName
 from themes import ThemeManager
+import logging
+logger = logging.getLogger('minaraad_email')
+
 
 SUBSCRIPTIONS_EMAIL = ('AnnualReport', 'Study', 
                      'NewsLetter', 'Pressrelease')
@@ -28,7 +31,6 @@ class SubscriptionManager(object):
                 return
             
         raise NotSubscribableError(id)
-        
 
     def _getSubscriptions(self, member=None):
         tool = getToolByName(self.portal, 'portal_membership')
@@ -101,8 +103,11 @@ class SubscriptionManager(object):
         return False
 
     def _subscribers(self, id, type_):
+        logger.info('Gathering subscribers of type %r.', type_)
         tool = getToolByName(self.portal, 'portal_membership')
         members = tool.listMembers()
+        log.info("portal_membership has %r members in total.",
+                 len(members))
         
         subscribers = []
         for member in members:
@@ -112,7 +117,7 @@ class SubscriptionManager(object):
                     if getattr(x, type_, False):
                         subscribers.append(member)
                     break
-        
+        log.info("%r out of them are subscribed.", len(subscribers))
         return subscribers
     
     def emailSubscribers(self, id):
