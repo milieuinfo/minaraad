@@ -132,7 +132,7 @@ class EmailNotify(BrowserView):
                 )
 
             try:
-                logger.debug("Starting mail to %s.", toAddress)
+                logger.info("Starting mail to %s.", toAddress)
                 mailHost.send(message = message,
                               mto = toAddress,
                               mfrom = fromAddress,
@@ -204,7 +204,7 @@ class EmailOutView(AbstractView, EmailNotify):
             
             tool = getToolByName(self.context, 'portal_membership')
             members = [tool.getMemberById(memberid)
-                   for memberid in additionalMembers]
+                       for memberid in additionalMembers]
             logger.info("We have %r members (just the 'additionalMembers').",
                         len(members))
             if not testing:
