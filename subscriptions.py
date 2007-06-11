@@ -106,7 +106,7 @@ class SubscriptionManager(object):
         logger.info('Gathering subscribers of type %r.', type_)
         tool = getToolByName(self.portal, 'portal_membership')
         members = tool.listMembers()
-        log.info("portal_membership has %r members in total.",
+        logger.info("portal_membership has %r members in total.",
                  len(members))
         
         subscribers = []
@@ -117,7 +117,7 @@ class SubscriptionManager(object):
                     if getattr(x, type_, False):
                         subscribers.append(member)
                     break
-        log.info("%r out of them are subscribed.", len(subscribers))
+        logger.info("%r out of them are subscribed.", len(subscribers))
         return subscribers
     
     def emailSubscribers(self, id):
