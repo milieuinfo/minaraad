@@ -116,7 +116,7 @@ class EmailNotify(BrowserView):
 
         for member in members:
             emailBody = renderer.render(member)
-            
+            toAddress = member.getProperty('email', '')
             message = MIMEMultipart('alternative')
             message.attach(MIMEText(emailBody['text/plain'], 'plain', charset))
             message.attach(MIMEText(emailBody['text/html'], 'html', charset))
@@ -128,12 +128,13 @@ class EmailNotify(BrowserView):
                 subject = subject,
                 fromAddress = fromAddress,
                 member = member,
-                toAddress = member.getProperty('email', 'N/A (%s)' % member.getProperty('id')),
+                toAddress = toAddress or 'N/A (%s)' % member.getProperty('id'),
                 )
 
             try:
+                logger.debug("Starting mail to %s.", toAddress)
                 mailHost.send(message = message,
-                              mto = member.getProperty('email', ''),
+                              mto = toAddress,
                               mfrom = fromAddress,
                               subject = subject)
             except Exception, exc:
