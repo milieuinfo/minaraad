@@ -21,7 +21,7 @@
         </h1>
     
         <form action="email_out"
-              method="get"
+              method="post"
               name="email_out"
               tal:attributes="action string:${context/absolute_url}/$template_id"
               tal:define="canSend view/canSend">
