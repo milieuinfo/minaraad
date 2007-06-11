@@ -133,10 +133,10 @@ class EmailNotify(BrowserView):
 
             try:
                 logger.info("Starting mail to %s.", toAddress)
-                mailHost.send(message = message,
-                              mto = toAddress,
-                              mfrom = fromAddress,
-                              subject = subject)
+                #mailHost.send(message = message,
+                #              mto = toAddress,
+                #              mfrom = fromAddress,
+                #              subject = subject)
             except Exception, exc:
                 # XXX traceback is not needed now
                 #log_exc('Could not send email from %(fromAddress)s to %(toAddress)s regarding issue ' \
