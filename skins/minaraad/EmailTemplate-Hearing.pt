@@ -8,21 +8,22 @@
 <div tal:condition="context/getSubheader" tal:omit-tag="">
 <span tal:replace="context/getSubheader" /><span tal:condition="python:context.getMot() == True" tal:omit-tag="">(MOT)</span>
 </div>
-
+<br />
+<br />
 <span i18n:translate="label_dear">Beste</span> <span tal:replace="python: member.getProperty('firstname')" /> <span tal:replace="python: member.getProperty('fullname')" />,
 <br />
 <br />
 <div tal:replace="context/Description" />
 <br />
 <br />
-<span i18n:translate="label_theme_name" style="font-weight:bold;">Theme:</span><span tal:replace="python:context.getThemeName()" />
+<span i18n:translate="label_theme_name" style="font-weight:bold;">Theme:</span> <span tal:replace="python:context.getThemeName()" />
 <br />
 <span i18n:translate="Goal:"
-     tal:condition="context/getGoal" style="font-weight:bold;">Goal:</span><span tal:replace="context/getGoal" />
+     tal:condition="context/getGoal" style="font-weight:bold;">Goal:</span> <span tal:replace="context/getGoal" />
 <br />
 <div tal:condition="context/getLocation"
      tal:omit-tag="">
-<span i18n:translate="Location:" style="font-weight:bold;">Location:</span><span tal:replace="context/getLocation" />
+<span i18n:translate="Location:" style="font-weight:bold;">Location:</span> <span tal:replace="context/getLocation" />
 </div>
 <br />
 <div metal:use-macro="context/mina_showdatetime/macros/datetime_email" tal:omit-tag=""/>

@@ -147,7 +147,7 @@
 
 <!-- datetime in e-mail-->
  <metal:block metal:define-macro="datetime_email">
-<tal:block tal:define="daterequired python:hasattr(context, 'getStartDate') and hasattr(context, 'getEndDate') and context.getStartdate() != None and context.getEnddate() != None;"
+<tal:block tal:define="daterequired python:hasattr(context, 'getStartdate') and hasattr(context, 'getEnddate') and context.getStartdate() != None and context.getEnddate() != None;"
             tal:condition="daterequired">
 <div tal:define="startdate python:context.toLocalizedTime(context.startdate);
                 enddate python:context.toLocalizedTime(context.enddate);
