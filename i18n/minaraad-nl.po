@@ -458,11 +458,10 @@ msgstr "Met vriendelijke groeten,\n\nMINARAAD"
 
 #: skins/mail_password_template.dtml
 msgid "mailtemplate_text_linkreset"
-msgstr "Wij ontvingen een aanvraag om uw wachtwoord op onze website te wijzigen."
-
-#: skins/mail_password_template.dtml
-msgid "mailtemplate_text_linkreset2"
-msgstr "Klik op onderstaande link als u hiermee akkoord gaat en om deze wijziging te bevestigen:"
+msgstr "Wij ontvingen een aanvraag om uw wachtwoord op onze website te wijzigen.\n"
+"Als u dit niet was, kunt u deze e-mail gerust naast u neerleggen.\n"
+"Klik op onderstaande link als u hiermee akkoord gaat en om deze wijziging te bevestigen:\n"
+"${reset_url}"
 
 #. Default: "date"
 #: content/Advisory.py
