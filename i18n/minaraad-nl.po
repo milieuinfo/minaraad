@@ -49,8 +49,8 @@ msgid "Location:"
 msgstr "Locatie:"
 
 #: browser/subscriptions_config.pt
-msgid "Newsletter"
-msgstr "Nieuwsbrief"
+msgid "NewsLetter"
+msgstr "Elektronische nieuwsbrief"
 
 #: browser/subscriptions_config.pt
 msgid "Pressrelease"
@@ -63,7 +63,7 @@ msgstr "Wachtwoord opslaan"
 
 #: browser/subscriptions_config.pt
 msgid "Study"
-msgstr "Studie"
+msgstr "Studies"
 
 #. Default: "Time:"
 #: skins/minaraad/mina_showdatetime.pt
