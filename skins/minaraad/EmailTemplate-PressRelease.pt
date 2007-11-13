@@ -15,10 +15,12 @@
 <br />
 <br />
 <div tal:replace="context/Description" />
-<p>
-<span tal:replace='structure context/getBody' />
-</p>
 <br />
+<p>
+Wenst u het volledige persbericht te lezen, klik dan op de volgende link:
+<a tal:attributes="href context/absolute_url" 
+     tal:content="context/Title" />
+</p>
 <tal:block tal:define="contacts python:context.getContact()"
             tal:condition="contacts">
 <br />
@@ -31,10 +33,6 @@
 <br />
 <br />
 </tal:block>
-<span i18n:translate="label_moreinfo">For more info, go to:</span>
-
-<a tal:attributes="href context/absolute_url" 
-   tal:content="context/Title" />
 
 </body>
 </html>
