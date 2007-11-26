@@ -1,0 +1,9 @@
+file = open('last_login.txt','w')
+
+for m_id in app.minaraad.acl_users.getUserIds():
+    m_user = app.minaraad.acl_users.getUserById(m_id)
+    m_props = m_user.getPropertysheet('mutable_properties')
+    m_date = m_props.getProperty('last_login_time')
+    print >>file, "%s %s %s" % (m_id, m_date.month(), m_date.year())
+
+file.close()
