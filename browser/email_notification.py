@@ -294,3 +294,32 @@ class SubscriptionNotifyView(EmailNotify):
         failed_postings = self.email(renderer, members)
 
         return failed_postings
+
+
+class EmailTestView(EmailNotify):
+
+    class EmailRenderer(EmailNotify.EmailRenderer):
+
+        def __init__(self, context):
+            super(EmailTestView.EmailRenderer, self).__init__(context)
+            self.template = self.context.emailtemplate_confirm_membership
+
+        def render(self, member):
+            template = self.template
+            rendered = self.renderFromTemplate(template, member=member)
+            return rendered
+
+    def __call__(self):
+        request = self.request
+        response = request.response
+
+        tool = getToolByName(self.context, 'portal_url')
+        portal = tool.getPortalObject()
+
+        members = [portal.portal_membership.getMemberById('zest')]
+        #members = portal.portal_membership.listMembers()
+
+        renderer = self.EmailRenderer(self.context)
+        failed_postings = self.email(renderer, members)
+
+        return failed_postings

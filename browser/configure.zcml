@@ -58,6 +58,12 @@
       permission="cmf.ManagePortal"
     />
 
+  <browser:page
+      for="*"
+      name="test_mail"
+      class=".email_notification.EmailTestView"
+      permission="cmf.ManagePortal"
+    />
 
   <browser:page
       for="*"
