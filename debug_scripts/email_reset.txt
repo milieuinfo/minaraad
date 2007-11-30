@@ -1,0 +1,11 @@
+file = open('email_reset.txt','w')
+
+for m_id in app.minaraad.acl_users.getUserIds():
+    m_user = app.minaraad.acl_users.getUserById(m_id)
+    m_props = m_user.getPropertysheet('mutable_properties')
+    m_email = m_props.getProperty('email')
+    m_gender = m_props.getProperty('gender')
+    m_fullname = m_props.getProperty('fullname')
+    print >>file, "%s %s %s %s" % (m_email, m_gender, m_fullname, m_id)
+
+file.close()

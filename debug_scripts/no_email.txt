@@ -1,0 +1,12 @@
+file = open('no_email.txt','w')
+
+for m_id in app.minaraad.acl_users.getUserIds():
+    m_user = app.minaraad.acl_users.getUserById(m_id)
+    m_props = m_user.getPropertysheet('mutable_properties')
+    m_date = m_props.getProperty('last_login_time')
+    m_email = m_props.getProperty('email')
+    if not m_email or not '@' in m_email:
+        if m_date.year() != 2000:
+            print >>file, "%s %s" % (m_id, m_date.year())
+
+file.close()
