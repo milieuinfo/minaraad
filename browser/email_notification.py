@@ -318,9 +318,9 @@ class EmailTestView(EmailNotify):
 
         #members = [portal.portal_membership.getMemberById('zest')]
         members = portal.portal_membership.listMembers()
-        valid_members = [m for m in members if member.getProperty('email') and
-                                               '@' in member.getProperty('email') ]
-        renderer = self.EmailRenderer(self.context)
+        valid_members = [m for m in members if m.getProperty('email') and
+                                               '@' in m.getProperty('email') ]
+	renderer = self.EmailRenderer(self.context)
         failed_postings = self.email(renderer, valid_members)
 
         return failed_postings
