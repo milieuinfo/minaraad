@@ -7,3 +7,7 @@ for m_id in app.minaraad.acl_users.getUserIds():
     print >>file, "%s %s %s" % (m_id, m_date.month(), m_date.year())
 
 file.close()
+
+# This is a way to delete a whole list of users
+#
+# app.minaraad.acl_users.userFolderDelUsers(dellist)
