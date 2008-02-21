@@ -243,6 +243,24 @@
                                     tal:attributes="value housenumber;
                                                     tabindex tabindex/next;" />
                         </div>
+                       
+                      <!--*** bus *** -->
+                        <div class="row"
+                            tal:define="error errors/bus | nothing;
+                                            bus python:request.get('bus', member.getProperty('bus', ''));"
+                            tal:attributes="class python:test(error, 'field error', 'field')">
+
+                            <label i18n:domain="minaraad"
+                                i18n:translate="label_bus">Bus</label>
+
+                            <div tal:content="error">Validation error output</div>
+                            <input type="text"
+                                name="bus"
+                                size="10"
+                                value="member.bus html_quote"
+                                tal:attributes="value bus;
+                                                tabindex tabindex/next;" />
+                        </div>
                             
                         <!-- *** zipcode *** -->
                         <div class="field"
@@ -266,24 +284,6 @@
                                     value="member.zipcode html_quote"
                                     tal:attributes="value zipcode;
                                                     tabindex tabindex/next;" />
-                        </div>
-                            
-                        <!--*** bus *** -->
-                        <div class="row"
-                            tal:define="error errors/bus | nothing;
-                                            bus python:request.get('bus', member.getProperty('bus', ''));"
-                            tal:attributes="class python:test(error, 'field error', 'field')">
-                    
-                            <label i18n:domain="minaraad"
-                                i18n:translate="label_bus">Bus</label>
-        
-                            <div tal:content="error">Validation error output</div>
-                            <input type="text"
-                                name="bus"
-                                size="10"
-                                value="member.bus html_quote"
-                                tal:attributes="value bus;
-                                                tabindex tabindex/next;" />
                         </div>
                             
                         <!-- *** city *** -->
