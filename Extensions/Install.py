@@ -44,6 +44,8 @@ from Products.Archetypes.config import TOOL_NAME as ARCHETYPETOOLNAME
 from Products.Archetypes.atapi import listTypes
 from Products.minaraad.config import PROJECTNAME
 from Products.minaraad.config import product_globals as GLOBALS
+import transaction
+
 
 def install(self):
     """ External Method to install minaraad """
@@ -62,7 +64,7 @@ def install(self):
     for dependency in DEPENDENCIES:
         print >> out, "Installing dependency %s:" % dependency
         quickinstaller.installProduct(dependency)
-        get_transaction().commit(1)
+        transaction.savepoint()
 
     classes = listTypes(PROJECTNAME)
     installTypes(self, out,
