@@ -196,7 +196,7 @@ class testSubscriptions(MainTestCase):
         # let's make some assertions about the response
         self.assertEquals(
             request.response['content-type'],
-            'application/vnd.ms-excel; charset=utf-8'
+            'application/vnd.ms-excel; charset=iso-8859-1'
             )
 
         self.assertEquals(

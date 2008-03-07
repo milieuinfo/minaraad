@@ -44,11 +44,19 @@ def buildCSV(context, members, filename='members.csv'):
 
         out.write(u'\n')
 
+    # Excel likes iso-8859-1: when you use 'utf-8' as export charset
+    # excel will show wrong characters for names with c-cedille or
+    # other such characters.  So we want to send iso-8859-1 here.
+    export_charset = 'iso-8859-1'
+
     response = context.REQUEST.RESPONSE
     response.setHeader('content-type',
-                       'application/vnd.ms-excel; charset=%s' % charset)
+                       'application/vnd.ms-excel; charset=%s' % export_charset)
     response.setHeader('content-disposition',
                        'attachment; filename=%s' % filename)
     
-    return out.getvalue().encode('iso-8859-1')
+    # Some members have characters that cannot be translated into that
+    # charset, like \u2018 which Microsoft is so fond of...  So
+    # replace faulty characters with a question mark.
+    return out.getvalue().encode(export_charset, 'replace')
     
