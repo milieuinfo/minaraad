@@ -1,0 +1,15 @@
+Note from Maurits.
+------------------
+
+Currently (7 March 2008) TextIndexNG3 is listed in the quick installer
+as installed.  But it does not have an installed version number.  So
+version 3.1.14 is listed as a newer version and wants to be
+reinstalled.
+
+But if you reinstall (or uninstall) it, it throws away the existing
+TextIndexNG3 indexes (like Title) and then complains that they do not
+exist.  Via the undo button you can bring them back.
+
+This looks a bit dangerous to me.  But I have not yet managed to find
+a good series of steps to take to repair this.  Searching works
+though, so for now we need not worry.
