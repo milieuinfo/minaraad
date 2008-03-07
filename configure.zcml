@@ -26,5 +26,6 @@
 
   <include package=".browser" />
   <include package=".content" />
+  <include file="deprecation.zcml" />
 
 </configure>
