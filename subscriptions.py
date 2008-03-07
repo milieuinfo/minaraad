@@ -103,7 +103,7 @@ class SubscriptionManager(object):
         return False
 
     def _subscribers(self, id, type_):
-        logger.info('Gathering subscribers of type %r.', type_)
+        logger.info('Gathering subscribers of type %r for %r.', type_, id)
         tool = getToolByName(self.portal, 'portal_membership')
         members = tool.listMembers()
         logger.info("portal_membership has %r members in total.",
