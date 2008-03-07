@@ -154,9 +154,8 @@ class testHearing(MainTestCase):
 
         request['form.submitted'] = 'exportCSV'
 
-        view = zapi.getView(hearing,
-                            'attendees_view', 
-                            request)
+        view = zapi.getMultiAdapter((hearing, request),
+                                    name='attendees_view')
 
 
         HEADER_FIELDS = ("Aanhef","Voornaam","Achternaam","Organisatie",

@@ -65,9 +65,8 @@ class testThemes(MainTestCase):
     def test_browserAddTheme(self):
         request = FakeRequest()
         setDefaultSkin(request)
-        view = zapi.getView(self.portal, 
-                            'minaraad_config.html', 
-                            request)
+        view = zapi.getMultiAdapter((self.portal, request),
+                                    name='minaraad_config.html')
         
         lastId = max([x[0] for x in view.themeManager.themes])
         
@@ -79,9 +78,8 @@ class testThemes(MainTestCase):
     def test_browserSaveThemes(self):
         request = FakeRequest()
         setDefaultSkin(request)
-        view = zapi.getView(self.portal, 
-                            'minaraad_config.html', 
-                            request)
+        view = zapi.getMultiAdapter((self.portal, request),
+                                    name='minaraad_config.html')
 
         view.themeManager.themes = [(1, 'a'), (2, 'b'), (3, 'c')]
         
@@ -97,9 +95,8 @@ class testThemes(MainTestCase):
     def test_browserDeleteThemes(self):
         request = FakeRequest()
         setDefaultSkin(request)
-        view = zapi.getView(self.portal, 
-                            'minaraad_config.html', 
-                            request)
+        view = zapi.getMultiAdapter((self.portal, request),
+                                    name='minaraad_config.html')
 
         view.themeManager.themes = [(1, 'a'), (2, 'b'), (3, 'c')]
         
@@ -115,9 +112,8 @@ class testThemes(MainTestCase):
     def test_browserThemes(self):
         request = FakeRequest()
         setDefaultSkin(request)
-        view = zapi.getView(self.portal, 
-                            'minaraad_config.html', 
-                            request)
+        view = zapi.getMultiAdapter((self.portal, request),
+                                    name='minaraad_config.html')
 
         themes = [(1, 'a'), (2, 'b'), (3, 'c')]
         themesDict = [{'id': id, 'Title': title} for id,title in themes]

@@ -101,9 +101,8 @@ class testSubscriptions(MainTestCase):
 
         request = FakeRequest()
         setDefaultSkin(request)
-        view = zapi.getView(self.portal, 
-                            'subscriptions_config.html', 
-                            request)
+        view = zapi.getMultiAdapter((self.portal, request),
+                                    name='subscriptions_config.html')
 
         request.form = {}
         for x in view.subscriptions():
@@ -128,9 +127,8 @@ class testSubscriptions(MainTestCase):
 
         request = FakeRequest()
         setDefaultSkin(request)
-        view = zapi.getView(self.portal, 
-                            'subscriptions_config.html', 
-                            request)
+        view = zapi.getMultiAdapter((self.portal, request),
+                                    name='subscriptions_config.html')
 
         sm = SubscriptionManager(self.portal)
         subscriptions = view.subscriptions()
@@ -174,9 +172,8 @@ class testSubscriptions(MainTestCase):
 
         request['form.button.ExportEmail'] = True
 
-        view = zapi.getView(advisory, 
-                            'export_subscribers', 
-                            request)
+        view = zapi.getMultiAdapter((advisory, request),
+                                    name='export_subscribers')
 
         HEADER_FIELDS = ("Aanhef","Voornaam","Achternaam","Organisatie",
                          "Functie","Straat","Huisnummer","Bus","Postcode",
@@ -210,9 +207,8 @@ class testSubscriptions(MainTestCase):
         request['form.button.ExportEmail'] = None
         request['form.button.ExportPost'] = True
         
-        view = zapi.getView(advisory, 
-                            'export_subscribers', 
-                            request)
+        view = zapi.getMultiAdapter((advisory, request),
+                                    name='export_subscribers')
 
         self.assertEquals(view(), headingLine)
 
@@ -222,9 +218,9 @@ class testSubscriptions(MainTestCase):
         request = FakeRequest()
         setDefaultSkin(request)
         request['SESSION'] = request.SESSION = {}
-        view = zapi.getView(self.portal, 
-                            'subscribers_config.html', 
-                            request)
+        view = zapi.getMultiAdapter((self.portal, request),
+                                    name='subscribers_config.html')
+
         # Overwrite the index, as we don't need to view the actual
         # html
         view.index = lambda **kw:None
