@@ -133,7 +133,7 @@ else:
     if len(results)>limit:
         # add a more... row
         write('''<li class="LSRow">''')
-        write( '<a href="%s" style="font-weight:normal">%s</a>' % ('search?SearchableText=' + searchterms, ts.translate(label_show_all)))
+        write( '<a href="%s" style="font-weight:normal">%s</a>' % ('search?SearchableText=' + searchterms + '&sort_on=Date&sort_order=reverse', ts.translate(label_show_all)))
         write('''</li>''')
     write('''</ul>''')
     write('''</div>''')
