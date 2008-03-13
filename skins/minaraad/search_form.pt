@@ -293,6 +293,9 @@
                 </tal:states>
             </div>
 
+            <input type="hidden" name="sort_on" value="Date"/>
+            <input type="hidden" name="sort_order" value="reverse"/>
+
             <div class="visualClear" id="clear-space-before-submit"><!-- --></div>
 
             <div class="formControls">
