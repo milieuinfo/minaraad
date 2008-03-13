@@ -71,15 +71,6 @@
                                      class string:$item_wf_state_class visualIconPadding"
                 tal:content="result/pretty_title_or_id" />
                 </span>
-               <span class="discreet" 
-                     title="Relevance"
-                     tal:condition="result/data_record_normalized_score_"
-                     i18n:translate="label_relevance_percentage"
-                     i18n:attributes="title title_relevance;">
-                    [<span tal:content="result/data_record_normalized_score_"
-                           tal:omit-tag=""
-                           i18n:name="percentage">23%</span>%]
-               </span>
 
             </dt>
             
