@@ -27,6 +27,9 @@
                                tabindex tabindex/next"
                class="visibility:visible" />
 
+        <input type="hidden" name="sort_on" value="Date"/>
+        <input type="hidden" name="sort_order" value="reverse"/>
+
         <input class="searchButton"
                type="submit"
                tabindex=""
