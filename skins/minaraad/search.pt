@@ -81,11 +81,6 @@
                            i18n:name="percentage">23%</span>%]
                </span>
 
-                <span class="discreet" i18n:translate="results_by_author">
-                by <span tal:omit-tag="" tal:content="result/Creator" i18n:name="author">Author</span>,
-                <span tal:omit-tag="" tal:content="python:toLocalizedTime(result.ModificationDate, long_format=1)" i18n:name="date">Modification Date</span>
-                </span>
-
             </dt>
             
             <dd tal:content="python:here.cropText(result.Description, desc_length, desc_ellipsis)"> Description </dd>
