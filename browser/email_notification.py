@@ -241,7 +241,8 @@ class EmailOutView(AbstractView, EmailNotify):
                 self.context.referring_url,
                 urllib.quote_plus(message)))
         else:
-            logger.info("No, we should not send email.")
+            logger.info("No, we should not send email; the template "
+                        "is simply being shown, no form has been submitted.")
 
     def __call__(self):
         return self.context.index(template_id='email_out')
