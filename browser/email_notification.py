@@ -269,7 +269,10 @@ class EmailOutView(AbstractView, EmailNotify):
         Returns the subscription id.  By default, this implementation
         will derive the subscription id from the class name.
         """
-        return self.context.__class__.__name__
+        name = self.context.__class__.__name__
+        if name == 'Hearing':
+            name = 'theme_%d' % self.context.getTheme()
+        return name
 
 
 class SubscriptionNotifyView(EmailNotify):

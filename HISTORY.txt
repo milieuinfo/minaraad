@@ -1,0 +1,12 @@
+History of Products.minaraad
+============================
+
+2.0.7
+-----
+
+- Make sure sending an email to the subscribers of a Hearing works.
+  [maurits]
+
+
+2.0.6 (released 13 March 2008)
+------------------------------
