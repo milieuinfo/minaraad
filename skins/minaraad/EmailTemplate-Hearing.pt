@@ -9,7 +9,7 @@
 <br />
 <br />
 <div tal:condition="context/getSubheader" tal:omit-tag="">
-<span tal:replace="context/getSubheader" /><span tal:condition="python:context.getMot() == True" tal:omit-tag="">(MOT)</span>
+<span style="font-weight:bold;" tal:content="context/getSubheader" /><span tal:condition="python:context.getMot() == True" tal:omit-tag="">(MOT)</span>
 </div>
 <br />
 <div metal:use-macro="context/mina_showdatetime/macros/datetime_email" tal:omit-tag=""/>
