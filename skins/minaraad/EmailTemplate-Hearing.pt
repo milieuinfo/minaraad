@@ -5,58 +5,23 @@
 <body style="font-size:13px">
 
 <h3 tal:content="context/Title" />
+<span i18n:translate="label_dear">Beste</span> <span tal:replace="python: member.getProperty('firstname')" /> <span tal:replace="python: member.getProperty('fullname')" />,
+<br />
+<br />
 <div tal:condition="context/getSubheader" tal:omit-tag="">
 <span tal:replace="context/getSubheader" /><span tal:condition="python:context.getMot() == True" tal:omit-tag="">(MOT)</span>
 </div>
 <br />
-<br />
-<span i18n:translate="label_dear">Beste</span> <span tal:replace="python: member.getProperty('firstname')" /> <span tal:replace="python: member.getProperty('fullname')" />,
-<br />
-<br />
-<div tal:replace="context/Description" />
-<br />
-<br />
-<span i18n:translate="label_theme_name" style="font-weight:bold;">Theme:</span> <span tal:replace="python:context.getThemeName()" />
-<br />
-<span i18n:translate="Goal:"
-     tal:condition="context/getGoal" style="font-weight:bold;">Goal:</span> <span tal:replace="context/getGoal" />
-<br />
+<div metal:use-macro="context/mina_showdatetime/macros/datetime_email" tal:omit-tag=""/>
 <div tal:condition="context/getLocation"
      tal:omit-tag="">
 <span i18n:translate="Location:" style="font-weight:bold;">Location:</span> <span tal:replace="context/getLocation" />
 </div>
 <br />
-<div metal:use-macro="context/mina_showdatetime/macros/datetime_email" tal:omit-tag=""/>
 <br />
+<span i18n:translate="Goal:"
+     tal:condition="context/getGoal" style="font-weight:bold;">Goal:</span> <span tal:replace="context/getGoal" />
 <br />
-<div tal:condition="context/getBody" tal:content="structure context/getBody" />
-<br />
-<br />
-<tal:block tal:define="current_path python:'/'.join(context.getPhysicalPath());
-                       agendaItems python:context.portal_catalog.searchResults(portal_type='AgendaItem',
-                                                                               path=current_path,
-                                                                               sort_on='getItemstartdate',
-                                                                               review_state='published');">
-<div tal:condition ="agendaItems" 
-     i18n:translate="label_agendaitems" style="font-weight:bold;">Agenda items</div>
-
-<tal:block tal:repeat="agendaItem agendaItems">
-<tal:block tal:define="obj python:agendaItem.getObject()">
-<div tal:condition="obj/summary" tal:replace="obj/summary" />
-<br />
-<div metal:use-macro="context/mina_showdatetime/macros/datetime_agenda_email" tal:omit-tag="" />
-<br />
-<div tal:condition="agendaItem/Title" 
-     tal:replace="agendaItem/Title" />
-<br />
-<div tal:condition="obj/speaker" tal:omit-tag=""> 
-    <span i18n:translate="label_speaker">Speaker:</span> <span tal:replace="obj/speaker" />, <span tal:replace="obj/organisation" />
-</div>
-<br />
-<br />
-</tal:block>
-</tal:block>
-</tal:block>
 <br />
 <span i18n:domain="minaraad"
       i18n:translate="label_moreinfo">For more info, go to:</span> <a tal:attributes="href context/absolute_url" tal:content="context/Title" />
