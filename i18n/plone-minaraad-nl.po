@@ -19,10 +19,10 @@ msgstr ""
 "X-Is-Fallback-For: nl-be\n"
 
 msgid "date_format_long"
-msgstr "${d}-${b}-${Y} ${H}:${M}"
+msgstr "${d} ${b} ${Y} ${H}:${M}"
 
 msgid "date_format_short"
-msgstr "${d}-${b}-${Y}"
+msgstr "${d} ${b} ${Y}"
 
 msgid "Advisory"
 msgstr "Advies"
