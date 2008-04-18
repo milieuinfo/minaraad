@@ -40,6 +40,7 @@ Hieronder vindt u de inhoudstafel van de recentste elektronische nieuwsbrief van
      tal:define="newsitems python:context.portal_catalog.searchResults(portal_type='NewsItem',
                                                                     path=current_path,
                                                                     getCategory=category,
+                                                                    sort_on = 'getObjPositionInParent',
                                                                     review_state='published');"
      tal:repeat="newsitem newsitems">
 

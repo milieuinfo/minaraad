@@ -5,6 +5,9 @@ History of Products.minaraad
 2.0.8 (unreleased)
 ------------------
 
+- Sort the news items in the email newsletter, just like in the
+  listing that is shown on the website.  [maurits]
+
 - Make status message of email sending Dutch instead of English.
   [maurits]
 
