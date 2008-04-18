@@ -5,6 +5,9 @@ History of Products.minaraad
 2.0.8 (unreleased)
 ------------------
 
+- In Email template for Study, move the link above the contact
+  information.  [maurits]
+
 - Copy EmailTemplate-Default.pt to EmailTemplate-AnnualReport.pt.
   Change that to fit the info that is available from an AnnualReport.
   [maurits]

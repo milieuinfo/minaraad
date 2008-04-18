@@ -7,6 +7,7 @@
 <span style="font-weight:bold" 
       tal:content="context/Title" />
 <br />
+
 <div tal:condition="context/getSubheader|nothing" tal:omit-tag="">
 <span style="font-style:italic" 
       tal:content="context/getSubheader" />
@@ -20,8 +21,17 @@
 <br />
 <div tal:replace="context/Description" />
 <br />
+<br />
+<span i18n:translate="label_moreinfo">For more info, go to:</span>
+
+<a tal:attributes="href context/absolute_url" 
+   tal:content="context/Title" />
+
+<br />
+<br />
 <tal:block tal:define="contacts python:context.getContact()"
             tal:condition="contacts">
+<br />
 <br />
 <div i18n:translate="moreinfo_contactperson">For more information contact:</div>
 <br />
@@ -32,10 +42,5 @@
 <br />
 <br />
 </tal:block>
-<span i18n:translate="label_moreinfo">For more info, go to:</span>
-
-<a tal:attributes="href context/absolute_url" 
-   tal:content="context/Title" />
-
 </body>
 </html>
