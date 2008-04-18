@@ -10,7 +10,7 @@
                                           'Europese ontwikkelingen'];">
 
 <span tal:define="daterequired python:context.getDate() != None;
-                 date python:context.toLocalizedTime(context.date)[:-5];"
+                 date python:context.restrictedTraverse('@@plone').toLocalizedTime(context.date)[:-5];"
       tal:condition="daterequired"> 
 <span tal:replace="date" />
 </span><span style="font-weight:bold" tal:content="context/Title" />

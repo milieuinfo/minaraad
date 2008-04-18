@@ -27,7 +27,7 @@
          <tal:block define="obj python:item_object.getObject()">
             <div class="bold">
                <span tal:replace="item_object/Title" />
-               <span tal:replace="python:item_object.toLocalizedTime(item_object.getDate)[3:]"
+               <span tal:replace="python:toLocalizedTime(item_object.getDate)[3:]"
                   tal:condition="python:obj.getDate()" />
             </div>
             <span tal:replace="item_object/Description" />

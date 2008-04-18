@@ -257,7 +257,7 @@ class EmailOutView(AbstractView, EmailNotify):
        return True
     
     def sentDate(self):
-        localize = self.context.toLocalizedTime
+        localize = self.context.restrictedTraverse('@@plone').toLocalizedTime
         return localize(time=self.context.getEmailSent(),
                         long_format=True)
       

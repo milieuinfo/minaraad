@@ -27,7 +27,7 @@
             <tal:block tal:define="obj python:item_object.getObject()">
 
                <td tal:define="daterequired python:obj.getDate() != None;
-                              date python:obj.toLocalizedTime(obj.date)[:-5];"
+                              date python:toLocalizedTime(obj.date)[:-5];"
                   class="listdate">
                    
                   <span tal:condition="daterequired"

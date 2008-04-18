@@ -48,8 +48,8 @@
             <tal:block tal:define="daterequired python:obj.getStartdate() != None and obj.getEnddate() != None;"
                         tal:condition="daterequired">
     
-            <div tal:define="startdate python:obj.toLocalizedTime(obj.startdate);
-                            enddate python:obj.toLocalizedTime(obj.enddate);
+            <div tal:define="startdate python:toLocalizedTime(obj.startdate);
+                            enddate python:toLocalizedTime(obj.enddate);
                             starttime python:obj.startdate.TimeMinutes();
                             endtime python:obj.enddate.TimeMinutes();
                             noStartTime python:test(starttime == '00:00', 0, 1);

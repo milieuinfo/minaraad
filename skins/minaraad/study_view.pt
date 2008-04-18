@@ -10,7 +10,7 @@
       </div>
       <h1>
          <span tal:replace="context/Title" />
-         <span tal:replace="python:context.toLocalizedTime(context.date)" />
+         <span tal:replace="python:toLocalizedTime(context.date)" />
       </h1>
 
      <div class="documentDescription"

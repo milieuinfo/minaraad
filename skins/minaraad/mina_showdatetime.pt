@@ -3,11 +3,13 @@
       i18n:domain="minaraad">
     <body>
         <metal:block metal:define-macro="datetime">
-        <tal:block tal:define="daterequired python:context.getStartdate() != None and context.getEnddate() != None;
-                               item_type context/portal_type;"
-                   tal:condition="daterequired">
-            <div tal:define="startdate python:context.toLocalizedTime(context.startdate);
-                            enddate python:context.toLocalizedTime(context.enddate);
+        <tal:block
+            define="daterequired python:context.getStartdate() != None and context.getEnddate() != None;
+                    toLocalizedTime nocall:context/@@plone/toLocalizedTime;
+                    item_type context/portal_type;"
+            condition="daterequired">
+            <div tal:define="startdate python:toLocalizedTime(context.startdate);
+                            enddate python:toLocalizedTime(context.enddate);
                             starttime python:context.startdate.TimeMinutes();
                             endtime python:context.enddate.TimeMinutes();
                             noStartTime python:test(starttime == '00:00', 0, 1);
@@ -66,16 +68,18 @@
 
         <!-- datetime Agendaitem -->
         <metal:block metal:define-macro="datetime_agenda">
-        <tal:block tal:define="daterequired python:obj.getItemstartdate() != None and obj.getItemenddate() != None;"
-                   tal:condition="daterequired">
+        <tal:block
+            define="daterequired python:obj.getItemstartdate() != None and obj.getItemenddate() != None;
+            toLocalizedTime nocall:context/@@plone/toLocalizedTime;"
+            condition="daterequired">
 
-            <div tal:define="startdate python:obj.toLocalizedTime(obj.itemstartdate)[:-5];
-                            enddate python:obj.toLocalizedTime(obj.itemenddate)[:-5];
+            <div tal:define="startdate python:toLocalizedTime(obj.itemstartdate)[:-5];
+                            enddate python:toLocalizedTime(obj.itemenddate)[:-5];
                             starttime python:obj.itemstartdate.TimeMinutes();
                             endtime python:obj.itemenddate.TimeMinutes();
                             noStartTime python:test(starttime == '00:00', 0, 1);
                             noEndTime python:test(endtime == '00:00', 0, 1);
-                            hearingstartdate python:context.toLocalizedTime(context.startdate)[:-5];"
+                            hearingstartdate python:toLocalizedTime(context.startdate)[:-5];"
                 tal:omit-tag="">
 
                 <tal:block tal:condition="python:hearingstartdate == startdate and startdate == enddate">
@@ -116,16 +120,18 @@
 
 <!-- datetime Agendaitem in e-mail-->
 <metal:block metal:define-macro="datetime_agenda_email">
-<tal:block tal:define="daterequired python:obj.getItemstartdate() != None and obj.getItemenddate() != None;"
-            tal:condition="daterequired">
+<tal:block
+    define="daterequired python:obj.getItemstartdate() != None and obj.getItemenddate() != None;
+            toLocalizedTime nocall:context/@@plone/toLocalizedTime;"
+    condition="daterequired">
 
-<div tal:define="startdate python:obj.toLocalizedTime(obj.itemstartdate)[:-5];
-                enddate python:obj.toLocalizedTime(obj.itemenddate)[:-5];
+<div tal:define="startdate python:toLocalizedTime(obj.itemstartdate)[:-5];
+                enddate python:toLocalizedTime(obj.itemenddate)[:-5];
                 starttime python:obj.itemstartdate.TimeMinutes();
                 endtime python:obj.itemenddate.TimeMinutes();
                 noStartTime python:test(starttime == '00:00', 0, 1);
                 noEndTime python:test(endtime == '00:00', 0, 1);
-                hearingstartdate python:context.toLocalizedTime(context.startdate)[:-5];"
+                hearingstartdate python:toLocalizedTime(context.startdate)[:-5];"
     tal:omit-tag="">
 
 <tal:block tal:condition="python:hearingstartdate == startdate and startdate == enddate">
@@ -147,10 +153,12 @@
 
 <!-- datetime in e-mail-->
  <metal:block metal:define-macro="datetime_email">
-<tal:block tal:define="daterequired python:hasattr(context, 'getStartdate') and hasattr(context, 'getEnddate') and context.getStartdate() != None and context.getEnddate() != None;"
-            tal:condition="daterequired">
-<div tal:define="startdate python:context.toLocalizedTime(context.startdate);
-                enddate python:context.toLocalizedTime(context.enddate);
+<tal:block
+    define="daterequired python:hasattr(context, 'getStartdate') and hasattr(context, 'getEnddate') and context.getStartdate() != None and context.getEnddate() != None;
+            toLocalizedTime nocall:context/@@plone/toLocalizedTime;"
+    condition="daterequired">
+<div tal:define="startdate python:toLocalizedTime(context.startdate);
+                enddate python:toLocalizedTime(context.enddate);
                 starttime python:context.startdate.TimeMinutes();
                 endtime python:context.enddate.TimeMinutes();
                 noStartTime python:test(starttime == '00:00', 0, 1);
@@ -180,10 +188,12 @@
 
 <!-- subscription notification in e-mail-->
  <metal:block metal:define-macro="subscribe_notification_email">
-<tal:block tal:define="daterequired python:context.getStartdate() != None and context.getEnddate() != None;"
-            tal:condition="daterequired">
-<tal:block tal:define="startdate python:context.toLocalizedTime(context.startdate);
-                enddate python:context.toLocalizedTime(context.enddate);
+<tal:block
+    define="daterequired python:context.getStartdate() != None and context.getEnddate() != None;
+            toLocalizedTime nocall:context/@@plone/toLocalizedTime;"
+    condition="daterequired">
+<tal:block tal:define="startdate python:toLocalizedTime(context.startdate);
+                enddate python:toLocalizedTime(context.enddate);
                 starttime python:context.startdate.TimeMinutes();
                 endtime python:context.enddate.TimeMinutes();
                 noStartTime python:test(starttime == '00:00', 0, 1);

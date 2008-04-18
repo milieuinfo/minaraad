@@ -10,7 +10,7 @@
              tal:content="context/getDescription" />
         
       <div tal:define="daterequired python:context.getDate() != None;
-                     date python:context.toLocalizedTime(context.date);"
+                     date python:toLocalizedTime(context.date);"
          class="hearingsubheader2"
          tal:condition="daterequired">
          

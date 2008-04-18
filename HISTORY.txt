@@ -5,6 +5,9 @@ History of Products.minaraad
 2.0.8 (unreleased)
 ------------------
 
+- Get rid of the far too spurious deprecation warnings for
+  toLocalizedTime.  [maurits]
+
 - Change word use in email template study.  And just use Dutch.
   [maurits]
 

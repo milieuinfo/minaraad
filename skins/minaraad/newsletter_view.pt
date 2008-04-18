@@ -11,7 +11,7 @@
       </div>
       <h1>
          <span tal:define="daterequired python:context.getDate() != None;
-                        date python:context.toLocalizedTime(context.date)[:-5];" 
+                        date python:toLocalizedTime(context.date)[:-5];" 
             tal:condition="daterequired"
             tal:replace="date"/> 
          <span tal:replace="context/Title" />

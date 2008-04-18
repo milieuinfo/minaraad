@@ -28,7 +28,7 @@
         <tal:items tal:repeat="obj results">
         <dd>
             <span class="portlet_date">
-                <tal:date content="python:context.toLocalizedTime(obj.Date)" />
+                <tal:date content="python:toLocalizedTime(obj.Date)" />
             </span>
             <br />
             <a tal:attributes="href obj/getURL;
