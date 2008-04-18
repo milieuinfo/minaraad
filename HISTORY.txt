@@ -5,6 +5,9 @@ History of Products.minaraad
 2.0.8 (unreleased)
 ------------------
 
+- Make status message of email sending Dutch instead of English.
+  [maurits]
+
 - In email template for Hearing add greetings from Ignace.  [maurits]
 
 - In Email template for Study, move the link above the contact

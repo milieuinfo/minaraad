@@ -228,11 +228,11 @@ class EmailOutView(AbstractView, EmailNotify):
             failed_postings = self.email(renderer, members)
             logger.info("All the emails ought to be send now.")
             if failed_postings:
-                message = "E-Mail failed to following addresses: %s" % (
+                message = "E-Mail versturen is mislukt naar de volgende addressen: %s" % (
                     ', '.join([send_info.toAddress for send_info in failed_postings]),
                     )
             else:
-                message = 'E-mail Sent'
+                message = 'E-mail is verstuurd.'
             logger.info("The referring url is %r.",
                         self.context.referring_url)
                     
