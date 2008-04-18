@@ -5,6 +5,9 @@ History of Products.minaraad
 2.0.8 (unreleased)
 ------------------
 
+- Change word use in email template study.  And just use Dutch.
+  [maurits]
+
 - Sort the news items in the email newsletter, just like in the
   listing that is shown on the website.  [maurits]
 
