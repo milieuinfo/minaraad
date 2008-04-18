@@ -25,6 +25,11 @@
 <br />
 <span i18n:domain="minaraad"
       i18n:translate="label_moreinfo">For more info, go to:</span> <a tal:attributes="href context/absolute_url" tal:content="context/Title" />
+<br />
+<br />
+Met vriendelijke groeten,
+<br />
+Ignace Decancq
 
 </body>
 </html>
