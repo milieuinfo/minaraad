@@ -2,8 +2,8 @@ History of Products.minaraad
 ============================
 
 
-2.0.8 (unreleased)
-------------------
+2.0.8 (released 13 March 2008)
+------------------------------
 
 - Get rid of the far too spurious deprecation warnings for
   toLocalizedTime.  [maurits]
