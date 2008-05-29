@@ -1,8 +1,10 @@
 History of Products.minaraad
 ============================
 
-2.0.9 (unreleased)
-------------------
+2.0.9 (released 29 May 2008)
+----------------------------
+
+- Set copyright year to 2008 in colophon.  [maurits]
 
 
 2.0.8 (released 13 March 2008)
