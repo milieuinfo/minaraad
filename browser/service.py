@@ -4,6 +4,7 @@ Service utilities
 to be used by Manager only
 '''
 
+from Acquisition import aq_inner
 from Products.Five import BrowserView
 from Products.CMFCore.utils import getToolByName
 from Products.minaraad.config import TITLE_VOCAB
@@ -15,12 +16,29 @@ logger = logging.getLogger('Minaraad Service Utilities')
 class ServiceUtils(BrowserView):
 
     members_deleted = None
+    double_emails = None
 
     def __call__(self):
-        if self.request.get('REQUEST_METHOD', 'GET').upper() == 'POST' \
-                and self.request.get('form.button.DeleteMembers'):
-            self.members_deleted = self.deleteMembersWithEmptyEmail()
+        if self.request.get('REQUEST_METHOD', 'GET').upper() == 'POST':
+            if self.request.get('form.button.DeleteMembers'):
+                self.members_deleted = self.deleteMembersWithEmptyEmail()
+            if self.request.get('form.button.FindDoubleEmails'):
+                self.double_emails = self.find_double_emails()
         return self.index()
+
+    def find_double_emails(self):
+        context = aq_inner(self.context)
+        portal_membership = getToolByName(context, 'portal_membership')
+        members = portal_membership.listMembers()
+        emails = {}
+        for member in members:
+            email = member.getProperty('email')
+            if emails.get(email) is None:
+                emails[member.getProperty('email')] = []
+            emails[member.getProperty('email')].append(member.getId())
+
+        return [(email, ids) for (email, ids) in emails.items()
+                if len(ids) > 1]
 
     def deleteMembersWithEmptyEmail(self):
         'Delete all members with no email address'

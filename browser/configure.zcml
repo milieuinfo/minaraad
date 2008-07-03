@@ -87,9 +87,10 @@
       for="*"
       name="minaraad_service"
       class=".service.ServiceUtils"
-      allowed_attributes="deleteMembersWithEmptyEmail resetMemberDataTitle"
+      allowed_attributes="deleteMembersWithEmptyEmail resetMemberDataTitle
+                          find_double_emails"
       permission="cmf.ManagePortal"
       template="service.pt"
-  />
+      />
 
 </configure>

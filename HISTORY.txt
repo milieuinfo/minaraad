@@ -4,6 +4,10 @@ History of Products.minaraad
 2.0.10 (unreleased)
 -------------------
 
+- Gave Managers the possibility to list all email addresses that are
+  registered for more than one member; see @@minaraad_service.
+  [maurits]
+
 - Made form for the apparently already existing @@minaraad_service
   view so members without an email address can be deleted.
   [maurits]

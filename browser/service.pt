@@ -23,18 +23,37 @@
         tal:condition="view/members_deleted"
         tal:content="view/members_deleted" />
 
+    <tal:double_emails
+        condition="view/double_emails">
+      <h2>Er zijn meerdere gebruikers gevonden per e-mailadres.</h2>
+      <dl>
+        <tal:item repeat="item view/double_emails">
+          <dt tal:content="python:item[0]" />
+          <dd tal:content="python:item[1]" />
+        </tal:item>        
+      </dl>
+    </tal:double_emails>
+
     <form action=""
           name="search"
           method="post"
           tal:attributes="action string:${request/ACTUAL_URL}">
       
-            <div class="formControls">
-                <input class="context"
-                       type="submit"
-                       name="form.button.DeleteMembers"
-                       value="Verwijder gebruikers zonder emailadres"
-                       tal:attributes="tabindex tabindex/next;" />
-            </div>    
+      <div class="formControls">
+        <input class="context"
+               type="submit"
+               name="form.button.DeleteMembers"
+               value="Verwijder gebruikers zonder emailadres"
+               tal:attributes="tabindex tabindex/next;" />
+      </div>
+
+      <div class="formControls">
+        <input class="context"
+               type="submit"
+               name="form.button.FindDoubleEmails"
+               value="Vind emailadressen met meerdere gebruikers"
+               tal:attributes="tabindex tabindex/next;" />
+      </div>    
     </form>
 
 </div>
