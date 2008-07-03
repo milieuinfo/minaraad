@@ -93,4 +93,13 @@
       template="service.pt"
       />
 
+  <browser:page
+      for="*"
+      name="email_duplicates"
+      class=".duplicates.Duplication"
+      allowed_attributes="duplicates"
+      permission="zope2.View"
+      template="duplicates.pt"
+      />
+
 </configure>
