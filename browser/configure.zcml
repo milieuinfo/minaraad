@@ -60,7 +60,7 @@
 
   <browser:page
       for="*"
-      name="test_mail"
+      name="send_membership_reminder"
       class=".email_notification.EmailTestView"
       permission="cmf.ManagePortal"
     />
