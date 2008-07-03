@@ -31,12 +31,28 @@ class Duplication(BrowserView):
             return duplicates
         return []
 
-    def deleteMember(self, memberid):
+    def deleteMember(self, member_id):
         context = aq_inner(self.context)
         portal_membership = getToolByName(context, 'portal_membership')
-        member_to_remove = portal_membership.getMemberById(memberid)
+        member_to_remove = portal_membership.getMemberById(member_id)
         if member_to_remove is None:
-            return ("Member %s does not exist." % memberid)
+            return ("Member %s does not exist." % member_id)
         else:
-            return ("We should remove member %s.  Not implemented yet" %
-                    member_to_remove.getId())
+            # Normal users are not allowed to call
+            # portal_membership.deleteMembers as that needs the
+            # "Manage Users" permission.  So we need to duplicate
+            # the relevant lines from that method here.
+
+            # Delete the user:
+            acl = portal_membership.acl_users
+            acl.userFolderDelUsers([member_id])
+
+            # Delete the member's home folder.
+            portal_membership.deleteMemberArea(member_id)
+
+            # Delete the member's local roles.
+            utool = getToolByName(context, 'portal_url', None)
+            portal_membership.deleteLocalRoles(
+                utool.getPortalObject(), [member_id], reindex=1, recursive=1)
+
+            return ("Removed member %s." % member_id)

@@ -6,8 +6,7 @@ History of Products.minaraad
 
 - When a user logs in and there is more than one user with the same
   email address, we redirect to a form where he can compare those
-  users and select one for deletion.  The deletion itself is not
-  implemented yet.
+  users and select one for deletion.
   [maurits]
 
 - Added CMFPlone/skins/plone_login/login_next.cpy* for customizing.
