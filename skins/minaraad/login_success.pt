@@ -36,9 +36,6 @@
           </span>.
         </p>
 
-      <div tal:condition="not:initial_login">
-        <br />
-      </div>
 
       <p tal:condition="came_from">
         <a href=""
