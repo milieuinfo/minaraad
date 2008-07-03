@@ -320,11 +320,14 @@ class EmailTestView(EmailNotify):
         tool = getToolByName(self.context, 'portal_url')
         portal = tool.getPortalObject()
 
-        #members = [portal.portal_membership.getMemberById('zest')]
-        members = portal.portal_membership.listMembers()
+        memberid = request.get('memberid')
+        if memberid is not None:
+            members = [portal.portal_membership.getMemberById(memberid)]
+        else:
+            members = portal.portal_membership.listMembers()
         valid_members = [m for m in members if m.getProperty('email') and
                                                '@' in m.getProperty('email') ]
         renderer = self.EmailRenderer(self.context)
         failed_postings = self.email(renderer, valid_members)
 
-        return failed_postings
+        return u"Failed postings, if any: %r" % failed_postings
