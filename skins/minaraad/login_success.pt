@@ -49,7 +49,7 @@
 
       <p tal:condition="python:not came_from">
         <a href=""
-           tal:attributes="href came_from"
+           tal:attributes="href portal_url"
            i18n:domain="minaraad"
            i18n:translate="label_login_continue_to_home_page">
           Continue to the
