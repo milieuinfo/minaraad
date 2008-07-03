@@ -4,6 +4,10 @@ History of Products.minaraad
 2.0.10 (unreleased)
 -------------------
 
+- Made form for the apparently already existing @@minaraad_service
+  view so members without an email address can be deleted.
+  [maurits]
+
 - Renamed @@test_mail to @@send_membership_reminder as that actually
   gives a clue about what that view does.
   [maurits]
