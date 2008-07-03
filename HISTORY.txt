@@ -4,7 +4,7 @@ History of Products.minaraad
 2.0.10 (unreleased)
 -------------------
 
-- Added CMFPlone/skins/plone_login/logged_in.cpy* for customizing.
+- Added CMFPlone/skins/plone_login/login_next.cpy* for customizing.
   [maurits]
 
 - Gave Managers the possibility to list all email addresses that are
