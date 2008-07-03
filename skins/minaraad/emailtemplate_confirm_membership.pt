@@ -14,33 +14,59 @@
      producten van de Minaraad (nieuwsbrief, persberichten, verslagboeken, 
      uitnodigingen voor hoorzittingen, ...).</p>
  
-  <p>Sinds de Minaraad zijn nieuwe website lanceerde, heeft echter nog niet 
-  iedereen zich geregistreerd of zijn abonnement herbevestigd. Met deze mailing 
-  sporen wij u aan dit alsnog te doen. Doet u dit niet voor 31 december 2007, 
-  dan wordt u definitief verwijderd uit het systeem.</p>
- 
-  <p>Wie zich wel al registreerde vragen we in te loggen en de persoonlijke 
-  gegevens en/of abonnementen bij te werken indien nodig.</p>
- 
+   <p>
+     Om de databank up-to-date houden, vragen we u om uw persoonlijke
+     gegevens en/of abonnementen te controleren en bij te werken
+     indien nodig. Hiertoe dient u zich op <a
+     href="http://www.minaraad.be/">www.minaraad.be</a> aan te melden
+     in het systeem met uw gebruikersnaam en wachtwoord en te klikken
+     op 'voorkeuren'.
+   </p>
+
   <p>Uw gebruikersnaam: <span tal:replace="python: member.getId()"/></p>
 
-  <p>Bent u uw wachtwoord vergeten, dan kan u een nieuw wachtwoord vastleggen 
-  door hier te klikken:  
-    <a tal:attributes="href python: 'http://www.minaraad.be/mail_password?userid='+member.getId()">Nieuw wachtwoord aanvragen</a>.
+  <p>
+    Om veiligheidsredenen kunnen wij uw wachtwoord niet e-mailen.
+    Bent u uw wachtwoord vergeten, dan kan u een nieuw wachtwoord
+    vastleggen door hier te klikken: <a tal:attributes="href python:
+    'http://www.minaraad.be/mail_password?userid='+member.getId()">Nieuw
+    wachtwoord aanvragen</a>.
   </p>
 
-  <p>Wij danken u alvast voor uw medewerking. Voor specifieke vragen kan u 
-  steeds terecht bij Ignace Decancq - 02 558 01 32 - 
-  <a href="mailto:ignace.decancq@minaraad.be">ignace.decancq@minaraad.be</a>.
+  <p>
+    Mocht u deze e-mail tweemaal ontvangen dan wil dit zeggen dat u
+    tweemaal geregistreerd staat in de databank. Neem in dit geval
+    contact op met Ignace Decancq - 02 558 01 32 -
+    <a href="mailto:ignace.decancq@minaraad.be">ignace.decancq@minaraad.be</a>
+    om één gebruikersnaam te schrappen uit de databank.
+  </p>
+
+  <p>
+    Wij danken u alvast voor uw medewerking. Voor specifieke vragen
+    kan u steeds terecht op het onderstaande adres.
+  </p>
+
+  <p>
+    <span>Met vriendelijke groet</span>
+  </p>
+
+  <p>
+    <span>Communicatieteam Minaraad</span>
+  </p>
+
+  <p>
+    <br />
+    Kliniekstraat 25
+    <br />
+    B-1070 Anderlecht
+    <br />
+    Tel. 02 558 01 32
+    <br />
+    Fax: 02 558 01 31
+    <br />
+    E-mail:
+    <a href="mailto:communicatie@minaraad.be">communicatie@minaraad.be</a>
   </p>
  
-<p>
-<span>Met vriendelijke groet</span>
-</p>
-
-<p>
-<span>Communicatieteam Minaraad</span>
-</p>
-
 </body>
 </html>

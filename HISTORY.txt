@@ -4,6 +4,9 @@ History of Products.minaraad
 2.0.10 (unreleased)
 -------------------
 
+- Changed the membership reminder email to fit the new wishes.
+  [maurits]
+
 - Allowed use of @@test_mail?memberid=maurits to test the sending of
   the membership reminder.
   [maurits]
