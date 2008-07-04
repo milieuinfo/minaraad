@@ -4,6 +4,9 @@ History of Products.minaraad
 2.0.10 (unreleased)
 -------------------
 
+- Display the duplicate members next to each other.
+  [maurits]
+
 - When a user logs in and there is more than one user with the same
   email address, we redirect to a form where he can compare those
   users and select one for deletion.

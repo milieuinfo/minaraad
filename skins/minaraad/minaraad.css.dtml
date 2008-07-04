@@ -630,4 +630,18 @@ input.searchButton {
    display: none;
 }
 
+#duplicateforms td {
+  vertical-align: top;
+  width: 50%;
+}
+
+.duplicateform fieldset {
+  border: none;
+}
+
+.first_columns {
+  border-right: 1px solid #D98F81;
+}
+
+
 /* </dtml-with> */

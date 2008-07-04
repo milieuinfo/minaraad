@@ -3,212 +3,221 @@
       metal:use-macro="here/prefs_main_template/macros/master"
       i18n:domain="minaraad">
 
-<metal:block metal:fill-slot="top_slot"
-             tal:define="dummy python:request.set('disable_border',1)" />
+  <metal:block metal:fill-slot="top_slot"
+               tal:define="dummy python:request.set('disable_border',1)" />
 
-<body>
+  <body>
 
-<div metal:fill-slot="prefs_configlet_content">
+  <metal:override metal:fill-slot="column_two_slot" />
 
-
-  <div metal:use-macro="here/global_statusmessage/macros/portal_message">
-    Portal status message
-  </div>
-
-  <div class="portalMessage"
-       tal:condition="view/message"
-       tal:content="view/message" />
-
-  <h1>Dubbele gebruikers</h1>
-  <p>
-    Er zijn meerdere gebruikers gevonden met hetzelfde e-mailadres als
-    u gebruikt.  Waarschijnlijk zijn dit dus door u aangemaakte
-    accounts die niet meer nodig zijn.  Hieronder kunt u een account
-    verwijderen.
-  </p>
-
-  <form
-      tal:repeat="member view/duplicates"
-      action="@@email_duplicates"
-      name="email_duplicates"
-      method="post"
-      enctype="multipart/form-data"
-      class="enableUnloadProtection">
-    
-    <fieldset>
-      
-      <!-- *** user id *** -->
-      <input type="hidden" 
-             name="userid" 
-             value="username"
-             tal:attributes="value member/getId" />
-      <div class="field">
-        
-        <label i18n:domain="plone"
-               i18n:translate="label_login_name">Login name</label>
-        <br />
-        <tal:block content="member/getId" />
-      </div>
-      
-      <!-- *** last_modification_date *** -->
-      <div class="field"
-           tal:define="last_modification_date python:member.getProperty('last_modification_date', '');
-                       tabindex tabindex/next;">
-        <label i18n:domain="minaraad"
-               i18n:translate="label_last_modification_date">Last modified</label>
-        <br />
-        <tal:block tal:content="last_modification_date" />
-      </div>
-      
-      <!-- *** gender *** -->
-      <div class="field"
-           tal:define="gender python:member.getProperty('gender', '');">
-        
-        <label i18n:domain="minaraad"
-               i18n:translate="label_gender">Gender</label>
-        <br />
-        <tal:block content="gender" />
-      </div>
-      
-      <!--*** firstname *** -->
-      <div class="field"
-           tal:define="firstname python:member.getProperty('firstname', '');">
-        
-        <label i18n:domain="minaraad"
-               i18n:translate="label_firstname">First name</label>
-        <br />
-        <tal:block content="firstname" />
-      </div>
-      
-      <!--*** lastname *** -->
-      <div class="field"
-           tal:define="fullname python:member.getProperty('fullname', '');">
-        
-        <label i18n:domain="minaraad"
-               i18n:translate="label_lastname">Last name</label>
-        <br />
-        <tal:block content="fullname" />
-      </div>
-      
-      <!-- *** company *** -->
-      <div class="field"
-           tal:define="company python:member.getProperty('company', '');">
-        
-        <label for="company"
-               i18n:domain="minaraad" 
-               i18n:translate="label_company">Company</label>
-        <br />
-        <tal:block content="company" />
-      </div>
-      
-      <!-- *** jobtitle *** -->
-      <div class="field"
-           tal:define="jobtitle python:member.getProperty('jobtitle', '');">
-        
-        <label for="jobtitle"
-               i18n:domain="minaraad" 
-               i18n:translate="label_jobtitle">Job title</label>
-        <br />
-        <tal:block content="jobtitle" />
-      </div>
-      <br />
-
-      <!-- *** street *** -->
-      <div class="field"
-           tal:define="street python:member.getProperty('street', '');">
-        
-        <label for="street" 
-               i18n:domain="minaraad"
-               i18n:translate="label_street">Street</label>
-        <br />
-        <tal:block content="street" />
-      </div>
-      
-      <!-- *** housenumber *** -->
-      <div class="field"
-           tal:define="housenumber python:member.getProperty('housenumber', '');">
-        
-        <label for="housenumber" 
-               i18n:domain="minaraad"
-               i18n:translate="label_housenumber">House number</label>
-        <br />
-        <tal:block content="housenumber" />
-      </div>
-      
-      <!--*** bus *** -->
-      <div class="row"
-           tal:define="bus python:member.getProperty('bus', '');">
-
-        <label i18n:domain="minaraad"
-               i18n:translate="label_bus">Bus</label>
-        <br />
-        <tal:block content="bus" />
-      </div>
-      
-      <!-- *** zipcode *** -->
-      <div class="field"
-           tal:define="zipcode python:member.getProperty('zipcode', '');">
-        
-        <label for="zipcode" 
-               i18n:domain="minaraad"
-               i18n:translate="label_zipcode">Zipcode</label>
-        <br />
-        <tal:block content="zipcode" />
-      </div>
-      
-      <!-- *** city *** -->
-      <div class="field"
-           tal:define="city python:member.getProperty('city', '');">
-        
-        <label for="city" 
-               i18n:domain="minaraad"
-               i18n:translate="label_city">City</label>
-        <br />
-        <tal:block content="city" />
+      <div metal:use-macro="here/global_statusmessage/macros/portal_message">
+        Portal status message
       </div>
 
-      <!-- *** country *** -->
-      <div class="field"
-           tal:define="country python:member.getProperty('country', '');">
-        
-        <label i18n:domain="minaraad"
-               i18n:translate="label_country">Country</label>
-        <br />
-        <tal:block content="country" />
-      </div>
-      <br />
-      
-      <!-- *** phonenumber *** -->
-      <div class="field"
-           tal:define="phonenumber python:member.getProperty('phonenumber', '');">
-        
-        <label for="phonenumber"
-               i18n:domain="minaraad"
-               i18n:translate="label_phonenumber">Phone number</label>
-        <br />
-        <tal:block content="phonenumber" />
-      </div>
-      
-      <!-- *** email *** -->
-      <div class="field" 
-           tal:define="email python:member.getProperty('email','');">
-        
-        <label i18n:translate="label_email">E-mail</label>
-        <br />
-        <tal:block content="email" />
-      </div>
+      <div class="portalMessage"
+           tal:condition="view/message"
+           tal:content="view/message" />
 
-      <div class="formControls">
-      <input class="context"
-             type="submit"
-             name="form.button.DeleteMember"
-             value="Verwijder deze gebruiker"
-             tal:attributes="tabindex tabindex/next;" />
-      </div>
-    </fieldset>
-    <input type="hidden" name="form.submitted" value="1" />
-  </form>
+      <h1>Dubbele gebruikers</h1>
+      <p>
+        Er zijn meerdere gebruikers gevonden met hetzelfde e-mailadres als
+        u gebruikt.  Waarschijnlijk zijn dit dus door u aangemaakte
+        accounts die niet meer nodig zijn.  Hieronder kunt u een account
+        verwijderen.
+      </p>
 
-</div>
-</body>
+      <table id="duplicateforms">
+        <tr>
+          <tal:duplicates tal:repeat="member view/duplicates">
+            <td
+                tal:define="is_last repeat/member/end"
+                tal:attributes="class python:is_last and ' ' or 'first_columns'">
+              <form
+                  action="@@email_duplicates"
+                  name="email_duplicates"
+                  method="post"
+                  enctype="multipart/form-data"
+                  class="enableUnloadProtection duplicateform">
+                
+                <fieldset>
+                  
+                  <!-- *** user id *** -->
+                  <input type="hidden" 
+                         name="userid" 
+                         value="username"
+                         tal:attributes="value member/getId" />
+                  <div class="field">
+                    
+                    <label i18n:domain="plone"
+                           i18n:translate="label_login_name">Login name</label>
+                    <br />
+                    <tal:block content="member/getId" />
+                  </div>
+                  
+                  <!-- *** last_modification_date *** -->
+                  <div class="field"
+                       tal:define="last_modification_date python:member.getProperty('last_modification_date', '');
+                                   tabindex tabindex/next;">
+                    <label i18n:domain="minaraad"
+                           i18n:translate="label_last_modification_date">Last modified</label>
+                    <br />
+                    <tal:block tal:content="last_modification_date" />
+                  </div>
+                  
+                  <!-- *** gender *** -->
+                  <div class="field"
+                       tal:define="gender python:member.getProperty('gender', '');">
+                    
+                    <label i18n:domain="minaraad"
+                           i18n:translate="label_gender">Gender</label>
+                    <br />
+                    <tal:block content="gender" />
+                  </div>
+                  
+                  <!--*** firstname *** -->
+                  <div class="field"
+                       tal:define="firstname python:member.getProperty('firstname', '');">
+                    
+                    <label i18n:domain="minaraad"
+                           i18n:translate="label_firstname">First name</label>
+                    <br />
+                    <tal:block content="firstname" />
+                  </div>
+                  
+                  <!--*** lastname *** -->
+                  <div class="field"
+                       tal:define="fullname python:member.getProperty('fullname', '');">
+                    
+                    <label i18n:domain="minaraad"
+                           i18n:translate="label_lastname">Last name</label>
+                    <br />
+                    <tal:block content="fullname" />
+                  </div>
+                  
+                  <!-- *** company *** -->
+                  <div class="field"
+                       tal:define="company python:member.getProperty('company', '');">
+                    
+                    <label for="company"
+                           i18n:domain="minaraad" 
+                           i18n:translate="label_company">Company</label>
+                    <br />
+                    <tal:block content="company" />
+                  </div>
+                  
+                  <!-- *** jobtitle *** -->
+                  <div class="field"
+                       tal:define="jobtitle python:member.getProperty('jobtitle', '');">
+                    
+                    <label for="jobtitle"
+                           i18n:domain="minaraad" 
+                           i18n:translate="label_jobtitle">Job title</label>
+                    <br />
+                    <tal:block content="jobtitle" />
+                  </div>
+                  <br />
+
+                  <!-- *** street *** -->
+                  <div class="field"
+                       tal:define="street python:member.getProperty('street', '');">
+                    
+                    <label for="street" 
+                           i18n:domain="minaraad"
+                           i18n:translate="label_street">Street</label>
+                    <br />
+                    <tal:block content="street" />
+                  </div>
+                  
+                  <!-- *** housenumber *** -->
+                  <div class="field"
+                       tal:define="housenumber python:member.getProperty('housenumber', '');">
+                    
+                    <label for="housenumber" 
+                           i18n:domain="minaraad"
+                           i18n:translate="label_housenumber">House number</label>
+                    <br />
+                    <tal:block content="housenumber" />
+                  </div>
+                  
+                  <!--*** bus *** -->
+                  <div class="row"
+                       tal:define="bus python:member.getProperty('bus', '');">
+
+                    <label i18n:domain="minaraad"
+                           i18n:translate="label_bus">Bus</label>
+                    <br />
+                    <tal:block content="bus" />
+                  </div>
+                  
+                  <!-- *** zipcode *** -->
+                  <div class="field"
+                       tal:define="zipcode python:member.getProperty('zipcode', '');">
+                    
+                    <label for="zipcode" 
+                           i18n:domain="minaraad"
+                           i18n:translate="label_zipcode">Zipcode</label>
+                    <br />
+                    <tal:block content="zipcode" />
+                  </div>
+                  
+                  <!-- *** city *** -->
+                  <div class="field"
+                       tal:define="city python:member.getProperty('city', '');">
+                    
+                    <label for="city" 
+                           i18n:domain="minaraad"
+                           i18n:translate="label_city">City</label>
+                    <br />
+                    <tal:block content="city" />
+                  </div>
+
+                  <!-- *** country *** -->
+                  <div class="field"
+                       tal:define="country python:member.getProperty('country', '');">
+                    
+                    <label i18n:domain="minaraad"
+                           i18n:translate="label_country">Country</label>
+                    <br />
+                    <tal:block content="country" />
+                  </div>
+                  <br />
+                  
+                  <!-- *** phonenumber *** -->
+                  <div class="field"
+                       tal:define="phonenumber python:member.getProperty('phonenumber', '');">
+                    
+                    <label for="phonenumber"
+                           i18n:domain="minaraad"
+                           i18n:translate="label_phonenumber">Phone number</label>
+                    <br />
+                    <tal:block content="phonenumber" />
+                  </div>
+                  
+                  <!-- *** email *** -->
+                  <div class="field" 
+                       tal:define="email python:member.getProperty('email','');">
+                    
+                    <label i18n:translate="label_email">E-mail</label>
+                    <br />
+                    <tal:block content="email" />
+                  </div>
+
+                  <div class="formControls">
+                    <input class="context"
+                           type="submit"
+                           name="form.button.DeleteMember"
+                           value="Verwijder deze gebruiker"
+                           tal:attributes="tabindex tabindex/next;" />
+                  </div>
+                </fieldset>
+                <input type="hidden" name="form.submitted" value="1" />
+              </form>
+            </td>
+          </tal:duplicates>
+        </tr>
+      </table>
+    </div>
+
+
+  </body>
 </html>
