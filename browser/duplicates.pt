@@ -110,6 +110,15 @@
                   </div>
               </form>
 
+            </td>
+          </tal:duplicates>
+        </tr>
+        <tr>
+          <tal:duplicates tal:repeat="member view/duplicates">
+            <td
+                tal:define="is_last repeat/member/end"
+                tal:attributes="class python:is_last and ' ' or 'first_columns'">
+
               <table class="listing">
                 <tr class="subscriptions-title">
                     <th
@@ -166,8 +175,14 @@
                 </tr>
                 </tal:block>
             </table>
-
-
+            </td>
+          </tal:duplicates>
+        </tr>
+        <tr>
+          <tal:duplicates tal:repeat="member view/duplicates">
+            <td
+                tal:define="is_last repeat/member/end"
+                tal:attributes="class python:is_last and ' ' or 'first_columns'">
             <form
                 action="@@email_duplicates"
                 name="email_duplicates"
@@ -187,6 +202,7 @@
             </td>
           </tal:duplicates>
         </tr>
+
       </table>
     </div>
 
