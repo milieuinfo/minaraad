@@ -32,6 +32,13 @@ class SubscriptionManager(object):
             
         raise NotSubscribableError(id)
 
+    def getSubscriptionsForMemberId(self, memberid):
+        tool = getToolByName(self.portal, 'portal_membership')
+        member = tool.getMemberById(memberid)
+        if member is None:
+            return []
+        return self._getSubscriptions(member)
+
     def _getSubscriptions(self, member=None):
         tool = getToolByName(self.portal, 'portal_membership')
         if member is None:
