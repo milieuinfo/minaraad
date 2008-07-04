@@ -107,10 +107,13 @@ class SubscriptionsConfigletView(AbstractView):
         
         return self.themeManager.getThemeTitle(id)
     
-    def subscriptions(self):
-        
+    def subscriptions(self, memberid=None):
         sm = self.subscriptionManager
-        items = sm.subscriptions
+        if memberid is not None:
+            items = sm.getSubscriptionsForMemberId(memberid)
+        else:
+            items = sm.subscriptions
+
         subscriptions = []
         for item in items:
             sub = {'id': item.id,

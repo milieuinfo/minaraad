@@ -8,7 +8,7 @@
 
   <body>
 
-  <metal:override metal:fill-slot="column_two_slot" />
+    <div metal:fill-slot="prefs_configlet_main">
 
       <div metal:use-macro="here/global_statusmessage/macros/portal_message">
         Portal status message
@@ -26,7 +26,8 @@
         verwijderen.
       </p>
 
-      <table id="duplicateforms">
+      <table id="duplicateforms"
+             tal:define="subscription_view nocall:context/@@subscriptions_config.html">
         <tr>
           <tal:duplicates tal:repeat="member view/duplicates">
             <td
@@ -212,12 +213,102 @@
                 </fieldset>
                 <input type="hidden" name="form.submitted" value="1" />
               </form>
+
+
+
+              <table class="listing">
+                <tr class="subscriptions-title">
+                    <th
+                        i18n:translate="title_subscription">Subscriptions</th>
+                    <th i18n:translate="title_email">By E-mail</th>
+                    <th i18n:translate="title_post">By Mail</th>
+                </tr>
+                <!-- subscriptions without thema's -->
+                <tal:block tal:repeat="subscription python:subscription_view.subscriptions(member.getId())">
+                <tr class="field" tal:condition="not:subscription/category">
+                    <td class="subscriptiontitles">
+                        <span tal:content="string:${subscription/Title}"
+                            i18n:translate="" 
+                            tal:omit-tag="" />
+                    </td>
+                    <td class="checkbox-centered">
+                        <input type="checkbox"
+                            class="noborder"
+                            tal:condition="subscription/can_email"
+                            tal:attributes="tabindex tabindex/next;
+                                            id string:email_${subscription/id};
+                                            name string:email_${subscription/id};
+                                            value string:email_${subscription/id};
+                                            checked subscription/subscribed_email" /> 
+                    </td>
+                    <td class="checkbox-centered">
+                        <input type="checkbox"
+                            class="noborder"
+                            tal:condition="subscription/can_post"
+                            tal:attributes="tabindex tabindex/next;
+                                            id string:post_${subscription/id};
+                                            name string:post_${subscription/id};
+                                            value string:post_${subscription/id};
+                                            checked subscription/subscribed_post" /> 
+                    </td>
+                </tr>
+                </tal:block>
+                <!-- subscriptions with themes -->
+                <tr>
+                    <td class="hearingsubscriptiontitle" 
+                        valign="top">
+                        <span class="bold" 
+                                i18n:translate="">
+                            Hearing
+                        </span>
+                    </td>
+                    <td class="checkbox-all">
+                         <div i18n:translate="toggle_all">
+                            Toggle all:
+                        </div>
+                        <input type="checkbox"
+                                name="selectButton"
+                                title="Select all themes"
+                                onClick="toggleSelect(this, 'email_theme_');"
+                                i18n:attributes="title label_select_all_themes" />  
+                    </td>
+                    <td />
+                </tr>
+                <tal:block tal:repeat="subscription python:subscription_view.subscriptions(member.getId())">
+                <tr class="field" 
+                    tal:condition="subscription/category">
+                    <td class="subscription-themes">
+                        <span tal:content="string:${subscription/Title}"
+                            i18n:translate="" 
+                            tal:omit-tag="" />
+                    </td>
+                    <td class="checkbox-centered">
+                    <input type="checkbox"
+                        class="noborder"
+                        tal:condition="subscription/can_email"
+                        tal:attributes="tabindex tabindex/next;
+                                        id string:email_${subscription/id};
+                                        name string:email_${subscription/id};
+                                        value string:email_${subscription/id};
+                                        checked subscription/subscribed_email" /> 
+                    </td>
+                    <td />
+                </tr>
+                </tal:block>
+            </table>
+
+
+
+
+
+
+
+
             </td>
           </tal:duplicates>
         </tr>
       </table>
     </div>
-
 
   </body>
 </html>

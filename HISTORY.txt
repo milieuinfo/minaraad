@@ -4,6 +4,10 @@ History of Products.minaraad
 2.0.10 (unreleased)
 -------------------
 
+- Show the subscriptions for each member on the duplicates page.
+  Needs prettifying.
+  [maurits]
+
 - Added method getSubscriptionsForMemberId to the SubscriptionManager.
   [maurits]
 
