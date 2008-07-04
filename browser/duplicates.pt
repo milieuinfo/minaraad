@@ -111,7 +111,7 @@
                 tal:define="is_last repeat/member/end"
                 tal:attributes="class python:is_last and ' ' or 'first_columns'">
 
-              <table class="listing">
+              <table class="subscriptions_in_duplicates">
                 <tr class="subscriptions-title">
                     <th
                         i18n:translate="title_subscription">Subscriptions</th>
@@ -172,9 +172,9 @@
         </tr>
         <tr>
           <tal:duplicates tal:repeat="member view/duplicates">
-            <td
+            <td class="button-centered"
                 tal:define="is_last repeat/member/end"
-                tal:attributes="class python:is_last and ' ' or 'first_columns'">
+                tal:attributes="class python:is_last and 'button-centered' or 'button-centered first_columns'">
             <form
                 action="@@email_duplicates"
                 name="email_duplicates"

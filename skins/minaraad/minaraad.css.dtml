@@ -35,8 +35,21 @@ legend, .discreet, #portal-sitemap,
     float: left;
 }
 
-.vertical th, .listing th {
+.vertical th, .listing th, .subscriptions_in_duplicates th {
     background-color: #F4CFC8;
+}
+
+#duplicateforms .subscriptions_in_duplicates .subscriptiontitles { 
+  width: 50%;
+}
+
+#duplicateforms .subscriptions_in_duplicates td { 
+  width: 25%;
+}
+
+#duplicateforms { 
+  border-collapse: 0;
+  border-spacing: 0;
 }
 
 #user_overview, #subscriberslist {
@@ -119,7 +132,8 @@ li.newsitemslist a {
 }
 
 .colophon-center, .listing .checkbox-centered, 
-.listing .checkbox-all {
+.listing .checkbox-all, .subscriptions_in_duplicates .checkbox-centered,
+.button-centered {
     text-align: center;
 }
 
