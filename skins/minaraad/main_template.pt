@@ -172,6 +172,7 @@
                 <div />
             </td>
             <tal:comment replace="nothing"> Start of right column </tal:comment>
+            <metal:right_slot define-slot="complete_right_slot">
             <td id="portal-column-two"
                 width="200"
                 rowspan="2">
@@ -187,6 +188,7 @@
                </metal:rightportlets>
              </metal:portlets>
             </td>
+            </metal:right_slot>
             <tal:comment replace="nothing"> End of the right column </tal:comment>
           </tr>
           <tr>

@@ -1,6 +1,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
       lang="en"
-      metal:use-macro="here/prefs_main_template/macros/master"
+      metal:use-macro="here/main_template/macros/master"
       i18n:domain="minaraad">
 
   <metal:block metal:fill-slot="top_slot"
@@ -8,7 +8,9 @@
 
   <body>
 
-    <div metal:fill-slot="prefs_configlet_main">
+    <div metal:fill-slot="complete_right_slot" />
+
+    <div metal:fill-slot="content">
 
       <div metal:use-macro="here/global_statusmessage/macros/portal_message">
         Portal status message
@@ -35,13 +37,11 @@
                 tal:attributes="class python:is_last and ' ' or 'first_columns'">
               <form
                   action="@@email_duplicates"
-                  name="email_duplicates"
+                  name="dummy_form"
                   method="post"
                   enctype="multipart/form-data"
                   class="enableUnloadProtection duplicateform">
                 
-                <fieldset>
-                  
                   <!-- *** user id *** -->
                   <input type="hidden" 
                          name="userid" 
@@ -202,16 +202,6 @@
                     <br />
                     <tal:block content="email" />
                   </div>
-
-                  <div class="formControls">
-                    <input class="context"
-                           type="submit"
-                           name="form.button.DeleteMember"
-                           value="Verwijder deze gebruiker"
-                           tal:attributes="tabindex tabindex/next;" />
-                  </div>
-                </fieldset>
-                <input type="hidden" name="form.submitted" value="1" />
               </form>
 
               <table class="listing">
@@ -230,26 +220,14 @@
                             tal:omit-tag="" />
                     </td>
                     <td class="checkbox-centered">
-                        <input type="checkbox"
-                            class="noborder"
-                            disabled="disabled"
-                            tal:condition="subscription/can_email"
-                            tal:attributes="tabindex tabindex/next;
-                                            id string:email_${subscription/id};
-                                            name string:email_${subscription/id};
-                                            value string:email_${subscription/id};
-                                            checked subscription/subscribed_email" /> 
-                    </td>
+                      <img 
+                          tal:condition="python:subscription['can_email'] and subscription['subscribed_email']"
+                          tal:attributes="src string:${portal_url}/confirm_icon.gif" />
+                     </td>
                     <td class="checkbox-centered">
-                        <input type="checkbox"
-                            class="noborder"
-                            disabled="disabled"
-                            tal:condition="subscription/can_post"
-                            tal:attributes="tabindex tabindex/next;
-                                            id string:post_${subscription/id};
-                                            name string:post_${subscription/id};
-                                            value string:post_${subscription/id};
-                                            checked subscription/subscribed_post" /> 
+                      <img 
+                          tal:condition="python:subscription['can_post'] and subscription['subscribed_post']"
+                          tal:attributes="src string:${portal_url}/confirm_icon.gif" />
                     </td>
                 </tr>
                 </tal:block>
@@ -262,17 +240,7 @@
                             Hearing
                         </span>
                     </td>
-                    <td class="checkbox-all">
-                         <div i18n:translate="toggle_all">
-                            Toggle all:
-                        </div>
-                        <input type="checkbox"
-                               disabled="disabled"
-                                name="selectButton"
-                                title="Select all themes"
-                                onClick="toggleSelect(this, 'email_theme_');"
-                                i18n:attributes="title label_select_all_themes" />  
-                    </td>
+                    <td />
                     <td />
                 </tr>
                 <tal:block tal:repeat="subscription python:subscription_view.subscriptions(member.getId())">
@@ -284,20 +252,31 @@
                             tal:omit-tag="" />
                     </td>
                     <td class="checkbox-centered">
-                    <input type="checkbox"
-                        class="noborder"
-                        disabled="disabled"
-                        tal:condition="subscription/can_email"
-                        tal:attributes="tabindex tabindex/next;
-                                        id string:email_${subscription/id};
-                                        name string:email_${subscription/id};
-                                        value string:email_${subscription/id};
-                                        checked subscription/subscribed_email" /> 
+                      <img 
+                          tal:condition="python:subscription['can_email'] and subscription['subscribed_email']"
+                          tal:attributes="src string:${portal_url}/confirm_icon.gif" />
                     </td>
                     <td />
                 </tr>
                 </tal:block>
             </table>
+
+
+            <form
+                action="@@email_duplicates"
+                name="email_duplicates"
+                method="post"
+                enctype="multipart/form-data"
+                class="enableUnloadProtection duplicateform">
+              <div class="formControls">
+                <input class="context"
+                       type="submit"
+                       name="form.button.DeleteMember"
+                       value="Verwijder deze gebruiker"
+                       tal:attributes="tabindex tabindex/next;" />
+              </div>
+              <input type="hidden" name="form.submitted" value="1" />
+            </form>
 
             </td>
           </tal:duplicates>
