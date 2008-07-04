@@ -97,17 +97,15 @@
                   </div>
 
                   
-                  <!-- *** phonenumber *** -->
+                  <!-- *** contact *** -->
                   <div class="field"
-                       tal:define="phonenumber python:member.getProperty('phonenumber', '');">
+                       tal:define="phonenumber python:member.getProperty('phonenumber', '');
+                                   email python:member.getProperty('email','');">
                     <tal:block content="phonenumber" />
-                  </div>
-                  
-                  <!-- *** email *** -->
-                  <div class="field" 
-                       tal:define="email python:member.getProperty('email','');">
+                    <br />
                     <tal:block content="email" />
                   </div>
+                  
               </form>
 
             </td>
