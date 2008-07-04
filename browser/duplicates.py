@@ -16,7 +16,20 @@ class Duplication(BrowserView):
         if self.request.get('REQUEST_METHOD', 'GET').upper() == 'POST':
             if self.request.get('form.button.DeleteMember'):
                 memberid = self.request.get('userid', '')
+                context = aq_inner(self.context)
+                portal_membership = getToolByName(context, 'portal_membership')
+                member = portal_membership.getAuthenticatedMember()
+                redirect = False
+                if member.id == memberid:
+                    # We will delete ourselves.
+                    portal_url = getToolByName(context, 'portal_url').getPortalObject().absolute_url()
+                    # Choose the first other member id as the new id to login as.
+                    new_id = [m.id for m in self.duplicates if m.id != memberid][0]
+                    redirect = portal_url + '/login_form?login_name=' + new_id
                 self.message = self.deleteMember(memberid)
+                if redirect:
+                    self.request.response.redirect(redirect)
+                    return ""
         return self.index()
 
     @Lazy

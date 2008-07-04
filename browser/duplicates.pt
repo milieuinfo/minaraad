@@ -42,13 +42,7 @@
                   enctype="multipart/form-data"
                   class="enableUnloadProtection duplicateform">
                 
-                  <!-- *** user id *** -->
-                  <input type="hidden" 
-                         name="userid" 
-                         value="username"
-                         tal:attributes="value member/getId" />
                   <div class="field">
-                    
                     <label i18n:domain="plone"
                            i18n:translate="label_login_name">Login name</label>
                     <br />
@@ -188,6 +182,10 @@
                 enctype="multipart/form-data"
                 class="enableUnloadProtection duplicateform">
               <div class="formControls">
+                <input type="hidden" 
+                       name="userid" 
+                       value="username"
+                       tal:attributes="value member/getId" />
                 <input class="context"
                        type="submit"
                        name="form.button.DeleteMember"
