@@ -232,6 +232,7 @@
                     <td class="checkbox-centered">
                         <input type="checkbox"
                             class="noborder"
+                            disabled="disabled"
                             tal:condition="subscription/can_email"
                             tal:attributes="tabindex tabindex/next;
                                             id string:email_${subscription/id};
@@ -242,6 +243,7 @@
                     <td class="checkbox-centered">
                         <input type="checkbox"
                             class="noborder"
+                            disabled="disabled"
                             tal:condition="subscription/can_post"
                             tal:attributes="tabindex tabindex/next;
                                             id string:post_${subscription/id};
@@ -265,6 +267,7 @@
                             Toggle all:
                         </div>
                         <input type="checkbox"
+                               disabled="disabled"
                                 name="selectButton"
                                 title="Select all themes"
                                 onClick="toggleSelect(this, 'email_theme_');"
@@ -283,6 +286,7 @@
                     <td class="checkbox-centered">
                     <input type="checkbox"
                         class="noborder"
+                        disabled="disabled"
                         tal:condition="subscription/can_email"
                         tal:attributes="tabindex tabindex/next;
                                         id string:email_${subscription/id};
