@@ -322,7 +322,10 @@ class EmailTestView(EmailNotify):
 
         memberid = request.get('memberid')
         if memberid is not None:
-            members = [portal.portal_membership.getMemberById(memberid)]
+            member = portal.portal_membership.getMemberById(memberid)
+            if member is None:
+                return "Gebruiker %s bestaat niet." % memberid
+            members = [member]
         else:
             members = portal.portal_membership.listMembers()
         valid_members = [m for m in members if m.getProperty('email') and
