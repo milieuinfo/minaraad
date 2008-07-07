@@ -38,6 +38,13 @@
                     Title
                     </a>
                     </span>
+
+                    <span class="discreet">
+                        laatste wijziging:
+                        <span tal:content="python:toLocalizedTime(result.ModificationDate, long_format=0)"
+                              tal:omit-tag="">date</span>
+                    </span>
+
                 </dt>
                 
                 <dd tal:content="result/Description">
