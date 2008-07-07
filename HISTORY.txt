@@ -1,8 +1,11 @@
 History of Products.minaraad
 ============================
 
-2.1.1 (unreleased)
------------------
+2.1.1 (4 July 2008)
+-------------------
+
+- Changed wording of email template to confirm membership.
+  [maurits]
 
 - Do not show author in recently_modified and only show the date
   there, not the time.
