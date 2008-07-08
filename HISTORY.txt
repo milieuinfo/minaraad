@@ -4,6 +4,9 @@ History of Products.minaraad
 2.1.6 (unreleased)
 ------------------
 
+- Removed directory sync and file BeautifulSoup.py as they were only
+  for the import of users, which was handled a few years ago.
+  [maurits]
 
 
 2.1.5 (8 July 2008)
