@@ -4,6 +4,8 @@ History of Products.minaraad
 2.1.4 (unreleased)
 ------------------
 
+- Final change to text after all duplicates have been removed.
+  [maurits]
 
 
 2.1.3 (8 July 2008)

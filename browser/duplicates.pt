@@ -27,16 +27,14 @@
           Er zijn geen gebruikers meer gevonden met hetzelfde
           e-mailadres als u gebruikt.  Bedankt voor uw medewerking.
         </p>
-        <p i18n:domain="minaraad"
-           i18n:translate="description_newbie_pointers_mina">
-          You can now subscribe on one or more of our subscriptions. Go to "my preferences" and choose "Subscriptions". Or click directly on the following link:
-          <span i18n:domain="minaraad"
-                i18n:name="setup_subscriptions">
-             <a href=""
-                i18n:translate="subscriptions_link"
-                tal:attributes="href string:${portal_url}/subscriptions_config.html">Subscriptions</a>
-          </span>.
+
+        <p>
+          Ga nu naar <a href="" tal:attributes="href
+          string:${portal_url}/plone_memberprefs_panel">
+          voorkeuren</a>.  Daar kan u uw persoonlijke gegevens en
+          abonnementen verfijnen.
         </p>
+
       </tal:no_duplicates>
 
       <tal:duplicates condition="view/duplicates">
