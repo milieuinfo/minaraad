@@ -17,10 +17,10 @@
    <p>
      Om de databank up-to-date houden, vragen we u om uw persoonlijke
      gegevens en/of abonnementen te controleren en bij te werken
-     indien nodig. Hiertoe dient u zich op <a
-     href="http://www.minaraad.be/">www.minaraad.be</a> aan te melden
-     in het systeem met uw gebruikersnaam en wachtwoord en te klikken
-     op 'voorkeuren'.
+     indien nodig.  Klik hiertoe op de volgende link: <a
+     href="http://www.minaraad.be/plone_memberprefs_panel">http://www.minaraad.be/plone_memberprefs_panel</a>
+     en meldt u vervolgens aan in het systeem met uw gebruikersnaam en
+     wachtwoord.
    </p>
 
   <p>Uw gebruikersnaam: <span tal:replace="python: member.getId()"/></p>
