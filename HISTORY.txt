@@ -4,7 +4,10 @@ History of Products.minaraad
 2.1.5 (unreleased)
 ------------------
 
-
+- You can apparently come on the subscriptions form sometimes without
+  being logged in.  Do not show the form in that case but show a link
+  to the login form.
+  [maurits]
 
 
 2.1.4 (8 July 2008)

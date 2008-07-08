@@ -8,7 +8,13 @@
 
     <body>
     <div metal:fill-slot="prefs_configlet_main">
-       <script type="text/javascript">
+      <tal:anonymous condition="isAnon">
+        Om uw abonnementen bij te werken moet u ingelogd zijn.  <a
+        href="" tal:attributes="href string: $portal_url/login_form">
+        Klik hier</a> om naar het inlogformulier te gaan.
+      </tal:anonymous>
+      <tal:member condition="not:isAnon">
+        <script type="text/javascript">
             function toggleSelect(triggerInput, namePrefix) {
                 checked = triggerInput.checked;
                 formEl = triggerInput.form;
@@ -19,7 +25,7 @@
                     }
                 }
             }
-       </script>
+        </script>
 
         <h1 i18n:translate="title_subscription">Subscriptions</h1>
 
@@ -128,6 +134,7 @@
                         tal:attributes="tabindex tabindex/next;" />
             </div>
         </form>
+      </tal:member>
     </div>
     </body>
 </html>
