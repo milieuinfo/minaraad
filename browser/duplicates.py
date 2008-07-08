@@ -68,4 +68,4 @@ class Duplication(BrowserView):
             portal_membership.deleteLocalRoles(
                 utool.getPortalObject(), [member_id], reindex=1, recursive=1)
 
-            return ("Removed member %s." % member_id)
+            return ("Gebruiker %s verwijderd." % member_id)

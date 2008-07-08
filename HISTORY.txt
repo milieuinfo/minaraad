@@ -4,7 +4,8 @@ History of Products.minaraad
 2.1.2 (unreleased)
 -------------------
 
-
+- Changed wording in some places.
+  [maurits]
 
 2.1.1 (4 July 2008)
 -------------------
