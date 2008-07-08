@@ -1,8 +1,8 @@
 History of Products.minaraad
 ============================
 
-2.1.5 (unreleased)
-------------------
+2.1.5 (8 July 2008)
+-------------------
 
 - You can apparently come on the subscriptions form sometimes without
   being logged in.  Do not show the form in that case but show a link
