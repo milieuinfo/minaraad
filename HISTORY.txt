@@ -4,6 +4,9 @@ History of Products.minaraad
 2.1.3 (unreleased)
 -------------------
 
+- After resetting the password, also redirect to the duplicate email
+  form if needed.
+  [maurits]
 
 
 2.1.2 (8 July 2008)

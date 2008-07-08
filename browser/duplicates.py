@@ -36,7 +36,15 @@ class Duplication(BrowserView):
     def duplicates(self):
         context = aq_inner(self.context)
         portal_membership = getToolByName(context, 'portal_membership')
-        member = portal_membership.getAuthenticatedMember()
+        if portal_membership.isAnonymousUser():
+            # An anonymous user may be busy with a password reset,
+            # which will land him here with a userid in the request.
+            member_id = self.request.get('userid', '')
+            member = portal_membership.getMemberById(member_id)
+        else:
+            member = portal_membership.getAuthenticatedMember()
+        if member is None:
+            return []
         email = member.getProperty('email')
         members = portal_membership.listMembers()
         duplicates = [m for m in members if m.getProperty('email') == email]
