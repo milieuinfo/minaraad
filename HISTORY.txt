@@ -4,6 +4,12 @@ History of Products.minaraad
 2.1.6 (unreleased)
 ------------------
 
+- Added some sample code from a zopectl debug session for returning a
+  list of members that have (recently) been modified.  Minaraad may
+  want that so I will include it here.  See
+  browser/service.py:modified_members
+  [maurits]
+
 - Removed directory sync and file BeautifulSoup.py as they were only
   for the import of users, which was handled a few years ago.
   [maurits]

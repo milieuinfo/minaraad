@@ -76,3 +76,21 @@ class ServiceUtils(BrowserView):
         msg = '"last_modification_date" property of memberdata tool is added.'
         logger.info(msg)
         return msg
+
+    def modified_members(self):
+        """Return a list of members that have (recently) been modified.
+
+        XXX Not used yet!  An offer has been made to implement this.
+        The current lines are copied from a quick try with a zopectl
+        debug session and will not work.
+        """
+        if True:
+            return "Not implemented yet."
+        from DateTime import DateTime
+        memship = app.minaraad.portal_membership
+        members = memship.listMembers()
+        changed_members = [m for m in members if m.getProperty('last_modification_date') != DateTime('2000/01/01')]
+        len(changed_members)
+
+        info = [(m.getProperty('last_modification_date').strftime('%Y-%m-%d'), m.getId()) for m in changed_members]
+        for d, n in info: print d, n
