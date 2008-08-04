@@ -44,7 +44,8 @@ def install(self):
     setupMinaraadProperties(self, out)
 
     out.write("Add configlets")
-    addConfiglets(self, out)
+    addThemesConfiglets(self, out)
+    addServiceConfiglet(self, out)
 
     out.write("Mailhost")
     configureMailHost(self)
@@ -344,7 +345,7 @@ def addMemberDataProperties(self, out):
                                       'date')
 
 
-def addConfiglets(self, out):
+def addThemesConfiglets(self, out):
     # register tools as configlets
     portal_controlpanel = getToolByName(self, 'portal_controlpanel')
     configlets = portal_controlpanel.enumConfiglets(group='Products')
@@ -356,44 +357,69 @@ def addConfiglets(self, out):
     if not installed:
         portal_controlpanel.registerConfiglet(
             'Themes', #id of your Tool
-            'minaraad themes', # Title of your Product
+            'minaraad themes', # Title of this configlet
             'string:${portal_url}/minaraad_config.html',
             'python:True', # a condition
             'Manage Portal', # access permission
             'Products', # section to which the configlet should be
-                        # added: (Plone,Products,Members)
+                        # added: (Plone, Products, Members)
             1, # visibility
-            'ThemesID',
+            'ThemesID', # Application id
             'site_icon.gif', # icon in control_panel
             'Configuration for Minaraad properties.',
             None,
         )
         portal_controlpanel.registerConfiglet(
             'Subscriptions', #id of your Tool
-            'Subscriptions', # Title of your Product
+            'Subscriptions', # Title of this configlet
             'string:${portal_url}/subscriptions_config.html',
             'python:True', # a condition
             'View', # access permission
             'Member', # section to which the configlet should be
-                      # added: (Plone,Products,Members)
+                      # added: (Plone, Products, Members)
             1, # visibility
-            'SubscriptionsID',
+            'SubscriptionsID', # Application id
             'site_icon.gif', # icon in control_panel
             'Configuration for tool Subscriptions.',
             None,
         )
         portal_controlpanel.registerConfiglet(
             'Subscribers', #id of your Tool
-            'subscribers overview', # Title of your Product
+            'subscribers overview', # Title of this configlet
             'string:${portal_url}/subscribers_config.html',
             'python:True', # a condition
             'Manage Portal', # access permission
             'Products', # section to which the configlet should be
-                        # added: (Plone,Products,Members)
+                        # added: (Plone, Products, Members)
             1, # visibility
-            'SubscribersID',
+            'SubscribersID', # Application id
             'site_icon.gif', # icon in control_panel
             'Configuration for tool Subscribers.',
+            None,
+        )
+
+
+def addServiceConfiglet(self, out):
+    portal_controlpanel = getToolByName(self, 'portal_controlpanel')
+    configlets = portal_controlpanel.enumConfiglets(group='Products')
+    installed = False
+    for configlet in configlets:
+        if configlet['id'] == 'minaraad_service':
+            installed = True
+
+    if not installed:
+        portal_controlpanel.registerConfiglet(
+            'minaraad_service', #id of your Tool
+            'Servicepaneel Minaraad', # Title of this configlet
+            'string:${portal_url}/minaraad_service',
+            'python:True', # a condition
+            'Manage Portal', # access permission
+            'Products', # section to which the configlet should be
+                        # added: (Plone, Products, Members)
+            1, # visibility
+            'minaraad', # Application id
+            'site_icon.gif', # icon in control_panel
+            'Servicepaneel voor Minaraad.',
             None,
         )
 
