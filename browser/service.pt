@@ -42,10 +42,10 @@
     <tal:changed_members
         condition="view/changed_members_called">
       <tal:changes condition="view/changed_members">
-      <h2>Deze gebruikers hebben recentelijk gegevens gewijzigd:</h2>
+      <h2>Deze gebruikers hebben de afgelopen maand gegevens gewijzigd:</h2>
       <table id="minaraad_changed_members_table">
         <tr>
-          <th>Wijzigingsdatum</th>
+          <th>Wijziging</th>
           <th>Naam gebruiker</th>
         </tr>
         <tr tal:repeat="item view/changed_members">
