@@ -1,14 +1,10 @@
 from Products.minaraad.config import *
-from sets import Set
 from Products.CMFCore.utils import getToolByName
-from Products.CMFCore.DirectoryView import addDirectoryViews
 from Products.PortalTransforms.transforms.lynx_dump import lynx_dump
-from Products.RichDocument.Extensions.utils import registerAttachmentsFormControllerActions
+from Products.RichDocument.Extensions.utils import \
+    registerAttachmentsFormControllerActions
 from StringIO import StringIO
 from Products.DCWorkflow.DCWorkflow import WorkflowException
-from Products.PageTemplates.ZopePageTemplate import ZopePageTemplate
-import os
-from Globals import package_home
 
 MINARAAD_PROPERTIES = 'minaraad_properties'
 THEMES_PROPERTY = [
@@ -29,26 +25,27 @@ THEMES_PROPERTY = [
 
 out = StringIO()
 
+
 def install(self):
-    
+
     _configurePortalProps(self)
-    
+
     out.write("Create folder structure")
     createFolderStructure(self)
-    
+
     out.write("Setting the workflow")
     _setWorkflow(self, out)
-    
+
     out.write("Add member data properties.")
     addMemberDataProperties(self, out)
     deactivateAreaCreations(self, out)
     changeCookieTimeOut(self, out)
-    
+
     setupMinaraadProperties(self, out)
 
     out.write("Add configlets")
     addConfiglets(self, out)
-    
+
     out.write("Mailhost")
     configureMailHost(self)
 
@@ -56,38 +53,39 @@ def install(self):
 
     print >> out, "Resetting portal root's allowed types"
     _resetPloneRootAllowedTypes(self)
-    
+
     print >> out, "Disallowing globally disallowed types"
     _resetAddableTypes(self)
-    
+
     print >> out, "Restricting locally allowed types"
     _restrictLocallyAllowedTypes(self)
-    
+
     print >> out, "Adding extra folder views"
     _addExtraViews(self)
-    
+
     print >> out, "Setting specific views on certain folders"
     _setViews(self)
 
     print >> out, "Make FCKeditor the default for all members"
     _configureFCKeditor(self)
-    
+
     # Set up form controller actions for the widgets to work
     registerAttachmentsFormControllerActions(self)
     print >> out, "Added actions for the attachment controls to the base_edit form controller."
 
     _addLynxDumpTransform(self)
     print >> out, "added lynx_dump transform"
-    
+
     _switchOffUnwantedActions(self)
     print >> out, "Switched off unwanted actions"
-    
+
     _switchOnActions(self)
     print >> out, "Switch on our actions"
 
     _addTextIndexNG3Index(self, out)
 
     return out.getvalue()
+
 
 def _configurePortalProps(portal):
     """Customize the portal properties.
@@ -101,11 +99,12 @@ def _configurePortalProps(portal):
     # customize slots - add the slots to the portal folder
     portal._updateProperty('left_slots', LEFT_SLOTS)
     portal._updateProperty('right_slots', RIGHT_SLOTS)
-    # Set validate_email on so always an e-mail is sent when a new member registrates
+    # Set validate_email on so always an e-mail is sent when a new
+    # member registrates
     portal._updateProperty('validate_email', 1)
-    
+
     # portal title
-    portal._updateProperty('title',PORTAL_TITLE)
+    portal._updateProperty('title', PORTAL_TITLE)
     #Email information
     portal._updateProperty('email_from_address', EMAIL_FROM_ADDRESS)
     portal._updateProperty('email_from_name', EMAIL_FROM_NAME)
@@ -119,11 +118,11 @@ def _configurePortalProps(portal):
     props_tool = getToolByName(portal, 'portal_properties')
     props_tool.navtree_properties._updateProperty('idsNotToList',
                                                   tuple(IDS_NOT_TO_LIST))
-                                                  
+
     # customize navtree_properties - metaTypesNotToList
     types_tool = getToolByName(portal, 'portal_types')
     types = types_tool.listContentTypes()
-    metaTypesNotToList = [type_ for type_ in types 
+    metaTypesNotToList = [type_ for type_ in types
                           if type_ not in TYPES_TO_LIST]
     props_tool.navtree_properties._updateProperty('metaTypesNotToList',
                                                   tuple(metaTypesNotToList))
@@ -131,20 +130,23 @@ def _configurePortalProps(portal):
     # New navtree_property - titlesNotInTabs
     navtree_props = props_tool.navtree_properties
     if not navtree_props.hasProperty('titlesNotInTabs'):
-        navtree_props.manage_addProperty('titlesNotInTabs', TITLES_NOT_IN_TABS, 'lines')
+        navtree_props.manage_addProperty('titlesNotInTabs',
+                                         TITLES_NOT_IN_TABS, 'lines')
+
 
 def createFolderStructure(portal):
     """Create the initial folders in the root of the portal
     """
     # first of all let's remove the object we don't want in the portal root
-    itemsToRemove = ['news', 'events','Members']
+    itemsToRemove = ['news', 'events', 'Members']
     for item in itemsToRemove:
-        if hasattr( portal, item): 
+        if hasattr(portal, item):
             portal._delObject(item)
     # Now let's create the ones we want
     for node in ROOT_CHILDREN:
         #if node['id'] not in portal.objectIds():
         createNode(portal, node)
+
 
 def createNode(self, item):
     workflow_tool = getToolByName(self, 'portal_workflow')
@@ -165,6 +167,7 @@ def createNode(self, item):
     for child in item['children']:
         createNode(created_object, child)
 
+
 def _switchOffUnwantedActions(portal):
     """Switch off unwanted actions (portal_actions)
 
@@ -181,6 +184,7 @@ def _switchOffUnwantedActions(portal):
                 print >> out, "Switching off unwanted action %s." % action.id
                 action.visible = 0
     st._actions = st_actions
+
 
 def _switchOnActions(portal):
     """Switch on wanted actions(portal_actions)
@@ -226,10 +230,11 @@ def _addExtraViews(portal):
                 view_methods.append(view)
         type_.view_methods = tuple(view_methods)
 
+
 def _setViews(portal):
     """Select different views for certain folders.
     """
-    
+
     for location in SELECT_VIEWS:
         try:
             folder = portal
@@ -240,15 +245,16 @@ def _setViews(portal):
         except:
             out.write("can't set view on %s\n" % location)
 
+
 def setupMinaraadProperties(self, out):
     propsTool = getToolByName(self, 'portal_properties')
-    
+
     sheet = getattr(propsTool, MINARAAD_PROPERTIES, None)
     if sheet is None:
         propsTool.addPropertySheet(MINARAAD_PROPERTIES, 'Minaraad Properties')
         sheet = getattr(propsTool, MINARAAD_PROPERTIES)
         sheet._properties = sheet._properties + (
-                {'id':'themes', 'type':'lines', 'mode':'w'},
+                {'id': 'themes', 'type': 'lines', 'mode': 'w'},
             )
 
         sheet.manage_changeProperties({'themes': THEMES_PROPERTY})
@@ -265,47 +271,54 @@ def changeCookieTimeOut(self, out):
     siteProperties = propsTool.site_properties
     siteProperties.manage_changeProperties({'auth_cookie_length': 30})
 
+
 def deactivateAreaCreations(self, out):
-    
+
     membership = getToolByName(self, 'portal_membership')
     if membership.getMemberareaCreationFlag():
         print >> out, "Deactiving automatic membership area creation"
         membership.setMemberareaCreationFlag()
-    
+
 
 def _setWorkflow(portal, out):
     print >> out, "Setting MiNa-Raad workflow"
     workflowTool = getToolByName(portal, 'portal_workflow')
 
     workflowTool.setDefaultChain('minaraad_workflow')
-    workflowTool.setChainForPortalTypes(['Folder','Large Plone Folder','Topic'],
-                                        'minaraad_folder_workflow')
-    workflowTool.setChainForPortalTypes(['Image','File'],'minaraad_workflow')
+    workflowTool.setChainForPortalTypes(
+        ['Folder', 'Large Plone Folder', 'Topic'],
+        'minaraad_folder_workflow')
+    workflowTool.setChainForPortalTypes(['Image', 'File'], 'minaraad_workflow')
     workflowTool.updateRoleMappings()
 
-    portal.manage_permission('Add portal content',['Author','Owner','Manager'],1)
-    portal.manage_permission('ATContentTypes: Add File',['Author'],1)
-    portal.manage_permission('ATContentTypes: Add Folder',['Author'],1)
-    portal.manage_permission('Delete objects',['Owner','Manager'],1)
-    portal.manage_permission('Add portal folders',['Author','Owner','Manager'],1)
-    portal.manage_permission('List folder contents',['Author','Owner','Manager'],1)
-    portal.manage_permission('Manage properties',['Author','Owner','Manager'],1)
-    portal.manage_permission('Undo changes',['Owner','Manager'],1)
+    portal.manage_permission('Add portal content',
+                             ['Author', 'Owner', 'Manager'], 1)
+    portal.manage_permission('ATContentTypes: Add File', ['Author'], 1)
+    portal.manage_permission('ATContentTypes: Add Folder', ['Author'], 1)
+    portal.manage_permission('Delete objects', ['Owner', 'Manager'], 1)
+    portal.manage_permission('Add portal folders',
+                             ['Author', 'Owner', 'Manager'], 1)
+    portal.manage_permission('List folder contents',
+                             ['Author', 'Owner', 'Manager'], 1)
+    portal.manage_permission('Manage properties',
+                             ['Author', 'Owner', 'Manager'], 1)
+    portal.manage_permission('Undo changes', ['Owner', 'Manager'], 1)
+
 
 def addMemberDataProperties(self, out):
     """Added extra Memberdata information to the memberdata tool
     """
     memberdata = getToolByName(self, 'portal_memberdata')
-    
+
     add_properties = (
-        ('company', 'string'), ('jobtitle', 'string'), 
+        ('company', 'string'), ('jobtitle', 'string'),
         ('street', 'string'), ('housenumber', 'string'),
         ('zipcode', 'string'), ('city', 'string'),
         ('firstname', 'string'), ('bus', 'string'),
-        ('phonenumber','string'), ('subscriptions', 'lines'),
+        ('phonenumber', 'string'), ('subscriptions', 'lines'),
     )
-    
-    add_properties = [x for x in add_properties 
+
+    add_properties = [x for x in add_properties
                       if x[0] not in memberdata.propertyIds()]
     for p, pType in add_properties:
         memberdata.manage_addProperty(p, '', pType)
@@ -317,27 +330,29 @@ def addMemberDataProperties(self, out):
 
     if 'gender' not in memberdata.propertyIds():
         memberdata.manage_addProperty('gender', 'genders', 'selection')
-    
+
     # adding Country
     countries = ['Belgie', 'Nederland', 'Ander land']
-    
+
     if 'country' not in memberdata.propertyIds():
         memberdata.manage_addProperty('select_country', countries, 'lines')
         memberdata.manage_addProperty('country', 'select_country', 'selection')
 
     # adding last_modification_date
     if 'last_modification_date' not in memberdata.propertyIds():
-        memberdata.manage_addProperty('last_modification_date', '2000/01/01', 'date')
+        memberdata.manage_addProperty('last_modification_date', '2000/01/01',
+                                      'date')
+
 
 def addConfiglets(self, out):
     # register tools as configlets
-    portal_controlpanel = getToolByName(self,'portal_controlpanel')
+    portal_controlpanel = getToolByName(self, 'portal_controlpanel')
     configlets = portal_controlpanel.enumConfiglets(group='Products')
     installed = False
     for configlet in configlets:
         if configlet['id'] == 'Themes':
             installed = True
-        
+
     if not installed:
         portal_controlpanel.registerConfiglet(
             'Themes', #id of your Tool
@@ -345,7 +360,8 @@ def addConfiglets(self, out):
             'string:${portal_url}/minaraad_config.html',
             'python:True', # a condition
             'Manage Portal', # access permission
-            'Products', # section to which the configlet should be added: (Plone,Products,Members)
+            'Products', # section to which the configlet should be
+                        # added: (Plone,Products,Members)
             1, # visibility
             'ThemesID',
             'site_icon.gif', # icon in control_panel
@@ -358,7 +374,8 @@ def addConfiglets(self, out):
             'string:${portal_url}/subscriptions_config.html',
             'python:True', # a condition
             'View', # access permission
-            'Member', # section to which the configlet should be added: (Plone,Products,Members)
+            'Member', # section to which the configlet should be
+                      # added: (Plone,Products,Members)
             1, # visibility
             'SubscriptionsID',
             'site_icon.gif', # icon in control_panel
@@ -371,13 +388,16 @@ def addConfiglets(self, out):
             'string:${portal_url}/subscribers_config.html',
             'python:True', # a condition
             'Manage Portal', # access permission
-            'Products', # section to which the configlet should be added: (Plone,Products,Members)
+            'Products', # section to which the configlet should be
+                        # added: (Plone,Products,Members)
             1, # visibility
             'SubscribersID',
             'site_icon.gif', # icon in control_panel
             'Configuration for tool Subscribers.',
             None,
         )
+
+
 def _resetPloneRootAllowedTypes(portal):
     """Reset the portal root's allowed types to the defaults
 
@@ -393,6 +413,7 @@ def _resetPloneRootAllowedTypes(portal):
     portalType._setPropValue('filter_content_types', 1)
     portalType._setPropValue('allowed_content_types',
                              tuple(allowedTypes))
+
 
 def _resetAddableTypes(portal):
     """Disallow certain types and allow others.
@@ -430,6 +451,7 @@ def _resetAddableTypes(portal):
             except:
                 out.write("Error when setting addable types"
                           " on %s.\n" % typeName)
+
 
 def _restrictLocallyAllowedTypes(portal):
     """
@@ -469,7 +491,7 @@ def _configureFCKeditor(portal):
     fckprops._updateProperty('fck_custom_toolbar', FCK_CUSTOM_TOOLBAR)
     fckprops._updateProperty('fck_area_style', FCK_AREA_STYLE)
     fckprops._updateProperty('fck_menu_styles', FCK_MENU_STYLES)
-    
+
     # disable the member prefs, has bugs
     control = getToolByName(portal, 'portal_controlpanel')
     actions = control._cloneActions()
@@ -479,9 +501,11 @@ def _configureFCKeditor(portal):
             print >> out, "Switching off unwanted action %s." % action.id
     control._actions = actions
 
+
 def _addLynxDumpTransform(portal):
     transforms = portal.portal_transforms
     transforms.registerTransform(lynx_dump())
+
 
 def _addTextIndexNG3Index(portal, out):
     """Remove the standard SearchableText index
@@ -492,13 +516,13 @@ def _addTextIndexNG3Index(portal, out):
         return
 
     print >> out, "Removing SearchableText index"
-    
+
     catalog_tool._removeIndex('SearchableText')
 
     print >> out, "Adding new index for TextIndexNG3"
     catalog_tool.manage_addIndex(
-        'SearchableText', 
-        'TextIndexNG3', 
+        'SearchableText',
+        'TextIndexNG3',
         extra=dict(default_encoding='utf-8',
                    use_converters=1,
 ##                    query_parser='txng.parsers.dumb_and',
@@ -506,6 +530,7 @@ def _addTextIndexNG3Index(portal, out):
                    )
         )
     catalog_tool.manage_reindexIndex('SearchableText')
+
 
 def _disableControlPanelActions(portal):
     """Disable some actions defined in portal_controlpanel
@@ -519,6 +544,7 @@ def _disableControlPanelActions(portal):
             print >> out, "Switching off unwanted action %s." % action.id
     cpanel._actions = actions
 
+
 def configureMailHost(portal):
     mh = getToolByName(portal, 'MailHost')
     mh.manage_makeChanges(title='Mail Host',
@@ -527,9 +553,10 @@ def configureMailHost(portal):
                           smtp_userid=SMTP_USERID,
                           smtp_pass=SMTP_PASS)
 
+
 def uninstall(self):
     out = StringIO()
-    portal_controlpanel = getToolByName(self,'portal_controlpanel')
+    portal_controlpanel = getToolByName(self, 'portal_controlpanel')
     portal_controlpanel.unregisterConfiglet('Themes')
     portal_controlpanel.unregisterConfiglet('Subscriptions')
     portal_controlpanel.unregisterConfiglet('Subscribers')

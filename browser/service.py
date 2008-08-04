@@ -5,6 +5,7 @@ to be used by Manager only
 '''
 
 from Acquisition import aq_inner
+from DateTime import DateTime
 from Products.Five import BrowserView
 from Products.CMFCore.utils import getToolByName
 from Products.minaraad.config import TITLE_VOCAB
@@ -84,13 +85,19 @@ class ServiceUtils(BrowserView):
         The current lines are copied from a quick try with a zopectl
         debug session and will not work.
         """
-        if True:
-            return "Not implemented yet."
-        from DateTime import DateTime
-        memship = app.minaraad.portal_membership
+        context = aq_inner(self.context)
+        memship = getToolByName(context, 'portal_membership')
+        portal = getToolByName(context, 'portal_url').getPortalObject()
         members = memship.listMembers()
         changed_members = [m for m in members if m.getProperty('last_modification_date') != DateTime('2000/01/01')]
-        len(changed_members)
+        #len(changed_members)
 
-        info = [(m.getProperty('last_modification_date').strftime('%Y-%m-%d'), m.getId()) for m in changed_members]
-        for d, n in info: print d, n
+        result = []
+        for member in changed_members:
+            info = dict(
+                modified = member.getProperty('last_modification_date').strftime('%Y-%m-%d'),
+                url = portal.absolute_url + '/prefs_user_details?user=' + member.getId(),
+                fullname = member.getProperty('fullname'),
+                )
+            result.append(info)
+        return result
