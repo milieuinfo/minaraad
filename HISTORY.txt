@@ -1,8 +1,8 @@
 History of Products.minaraad
 ============================
 
-2.1.6 (unreleased)
-------------------
+2.1.6 (4 August 2008)
+---------------------
 
 - Added form in minaraad_service for showing a list of changed
   members.  [maurits]
