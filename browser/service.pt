@@ -42,7 +42,7 @@
     <tal:changed_members
         condition="view/changed_members_called">
       <tal:changes condition="view/changed_members">
-      <h2>Deze gebruikers hebben de afgelopen maand gegevens gewijzigd:</h2>
+      <h2>Deze gebruikers hebben gegevens gewijzigd:</h2>
       <table id="minaraad_changed_members_table">
         <tr>
           <th>Wijziging</th>

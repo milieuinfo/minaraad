@@ -1,10 +1,11 @@
 History of Products.minaraad
 ============================
 
-2.1.7 (unreleased)
-------------------
+2.1.7 (4 August 2008)
+---------------------
 
-- nothing yet
+- Changed heading for changed members as they are not always of the
+  last month.  [maurits]
 
 
 2.1.6 (4 August 2008)
