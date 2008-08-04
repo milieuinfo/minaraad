@@ -408,6 +408,13 @@ def addServiceConfiglet(self, out):
             installed = True
 
     if not installed:
+        try:
+            # While running the tests, somehow the icon is registered
+            # twice, so we try to remove it first.  Real silly.  [maurits]
+            actionicons=getToolByName(self, 'portal_actionicons')
+            actionicons.removeActionIcon('controlpanel', 'minaraad_service')
+        except KeyError:
+            pass
         portal_controlpanel.registerConfiglet(
             'minaraad_service', #id of your Tool
             'Servicepaneel Minaraad', # Title of this configlet
