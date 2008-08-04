@@ -18,6 +18,7 @@ class ServiceUtils(BrowserView):
 
     members_deleted = None
     double_emails = None
+    changed_members = None
 
     def __call__(self):
         if self.request.get('REQUEST_METHOD', 'GET').upper() == 'POST':
@@ -25,6 +26,8 @@ class ServiceUtils(BrowserView):
                 self.members_deleted = self.deleteMembersWithEmptyEmail()
             if self.request.get('form.button.FindDoubleEmails'):
                 self.double_emails = self.find_double_emails()
+            if self.request.get('form.button.ShowChangedMembers'):
+                self.changed_members = self.find_changed_members()
         return self.index()
 
     def find_double_emails(self):
@@ -78,7 +81,7 @@ class ServiceUtils(BrowserView):
         logger.info(msg)
         return msg
 
-    def modified_members(self):
+    def find_changed_members(self):
         """Return a list of members that have (recently) been modified.
 
         XXX Not used yet!  An offer has been made to implement this.
@@ -90,13 +93,12 @@ class ServiceUtils(BrowserView):
         portal = getToolByName(context, 'portal_url').getPortalObject()
         members = memship.listMembers()
         changed_members = [m for m in members if m.getProperty('last_modification_date') != DateTime('2000/01/01')]
-        #len(changed_members)
 
         result = []
         for member in changed_members:
             info = dict(
                 modified = member.getProperty('last_modification_date').strftime('%Y-%m-%d'),
-                url = portal.absolute_url + '/prefs_user_details?user=' + member.getId(),
+                url = portal.absolute_url() + '/prefs_user_details?userid=' + member.getId(),
                 fullname = member.getProperty('fullname'),
                 )
             result.append(info)

@@ -4,6 +4,9 @@ History of Products.minaraad
 2.1.6 (unreleased)
 ------------------
 
+- Added form in minaraad_service for showing a list of changed
+  members.  [maurits]
+
 - Added minaraad_service to the control panel.  [maurits]
 
 - Added some sample code from a zopectl debug session for returning a
