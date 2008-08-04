@@ -10,6 +10,11 @@
 
 <div metal:fill-slot="prefs_configlet_main">
 
+    <form action=""
+          name="search"
+          method="post"
+          tal:attributes="action string:${request/ACTUAL_URL}">
+      
     <h1>Minaraad Service</h1>
 
     <a href=""
@@ -35,9 +40,10 @@
     </tal:double_emails>
 
     <tal:changed_members
-        condition="view/changed_members">
-      <h2>Deze gebruikers hebben recentelijk gegevens gewijzigd.</h2>
-      <table>
+        condition="view/changed_members_called">
+      <tal:changes condition="view/changed_members">
+      <h2>Deze gebruikers hebben recentelijk gegevens gewijzigd:</h2>
+      <table id="minaraad_changed_members_table">
         <tr>
           <th>Wijzigingsdatum</th>
           <th>Naam gebruiker</th>
@@ -50,13 +56,23 @@
           </td>
         </tr>        
       </table>
+      </tal:changes>
+      <tal:nochanges condition="not:view/changed_members">
+        <h2>Er zijn geen gewijzigde gebruikers.</h2>
+        <p></p>
+      </tal:nochanges>
+      <div class="formControls"
+           tal:condition="view/changed_by_date">
+        <input class="context"
+               type="submit"
+               name="form.button.ShowAllChangedMembers"
+               value="Toon alle ooit gewijzigde gebruikers"
+               tal:attributes="tabindex tabindex/next;" />
+      </div>
     </tal:changed_members>
 
-    <form action=""
-          name="search"
-          method="post"
-          tal:attributes="action string:${request/ACTUAL_URL}">
-      
+    <hr />
+
       <div class="formControls">
         <input class="context"
                type="submit"
@@ -77,7 +93,7 @@
         <input class="context"
                type="submit"
                name="form.button.ShowChangedMembers"
-               value="Toon gebruikers met recente wijzigingen"
+               value="Toon gebruikers met wijzigingen in de laatste maand"
                tal:attributes="tabindex tabindex/next;" />
       </div>    
     </form>

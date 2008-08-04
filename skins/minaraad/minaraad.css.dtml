@@ -659,4 +659,12 @@ input.searchButton {
 }
 
 
+/* Start minaraad_service control panel */
+#minaraad_changed_members_table th {
+    text-align: left;
+}
+
+/* End minaraad_service control panel */
+
+
 /* </dtml-with> */

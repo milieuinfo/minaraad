@@ -19,6 +19,8 @@ class ServiceUtils(BrowserView):
     members_deleted = None
     double_emails = None
     changed_members = None
+    changed_members_called = False
+    changed_by_date = DateTime('2000/01/01')
 
     def __call__(self):
         if self.request.get('REQUEST_METHOD', 'GET').upper() == 'POST':
@@ -27,7 +29,14 @@ class ServiceUtils(BrowserView):
             if self.request.get('form.button.FindDoubleEmails'):
                 self.double_emails = self.find_double_emails()
             if self.request.get('form.button.ShowChangedMembers'):
+                # Show members changed since one month
+                today = DateTime().earliestTime()
+                self.changed_by_date = today - 30
                 self.changed_members = self.find_changed_members()
+                self.changed_members_called = True
+            if self.request.get('form.button.ShowAllChangedMembers'):
+                self.changed_members = self.find_changed_members()
+                self.changed_members_called = True
         return self.index()
 
     def find_double_emails(self):
@@ -92,14 +101,24 @@ class ServiceUtils(BrowserView):
         memship = getToolByName(context, 'portal_membership')
         portal = getToolByName(context, 'portal_url').getPortalObject()
         members = memship.listMembers()
-        changed_members = [m for m in members if m.getProperty('last_modification_date') != DateTime('2000/01/01')]
 
+        changed_members = [
+            (m.getProperty('last_modification_date'), m) for m in members
+            if m.getProperty('last_modification_date') > self.changed_by_date]
+        # Sort by modification date:
+        changed_members = sorted(changed_members)
         result = []
-        for member in changed_members:
+        for date, member in changed_members:
+            fullname = "%s %s %s" % (
+                member.getProperty('gender'),
+                member.getProperty('firstname'),
+                member.getProperty('fullname'),
+                )
             info = dict(
-                modified = member.getProperty('last_modification_date').strftime('%Y-%m-%d'),
-                url = portal.absolute_url() + '/prefs_user_details?userid=' + member.getId(),
-                fullname = member.getProperty('fullname'),
+                modified = date.strftime('%Y-%m-%d'),
+                url = portal.absolute_url() + '/prefs_user_details?userid=' \
+                    + member.getId(),
+                fullname = fullname,
                 )
             result.append(info)
         return result
