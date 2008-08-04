@@ -1,6 +1,12 @@
 History of Products.minaraad
 ============================
 
+2.1.7 (unreleased)
+------------------
+
+- nothing yet
+
+
 2.1.6 (4 August 2008)
 ---------------------
 
