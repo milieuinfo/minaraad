@@ -1,11 +1,12 @@
 # minaraad
 # Mirella van Teulingen <m.van.teulingen@zestsoftware.nl>, 2006.
+# Maurits van Rees <m.van.rees@zestsoftware.nl>, 2008.
 msgid ""
 msgstr ""
 "Project-Id-Version: minaraad 0.1\n"
-"POT-Creation-Date: 2008-12-02 17:20+0000\n"
-"PO-Revision-Date: 2006-04-13 13:49+0200\n"
-"Last-Translator: Mirella van Teulingen <m.van.teulingen@zestsoftware.nl>\n"
+"POT-Creation-Date: 2008-12-02 17:34+0000\n"
+"PO-Revision-Date: 2008-12-02 18:36+0100\n"
+"Last-Translator: Maurits van Rees <m.van.rees@zestsoftware.nl>\n"
 "Language-Team: Nederlands <info@zestsoftware.nl>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -495,7 +496,7 @@ msgstr "Thema toevoegen"
 
 #. Default: "Current Themes"
 #: ./browser/minaraad_config.pt:35
-msgid "legend_current_themes _details"
+msgid "legend_current_themes_details"
 msgstr "Huidige thema's"
 
 #. Default: "Edit Theme"

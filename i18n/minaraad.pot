@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minaraad\n"
-"POT-Creation-Date: 2008-12-02 17:20+0000\n"
+"POT-Creation-Date: 2008-12-02 17:34+0000\n"
 "PO-Revision-Date: Mon Aug  8 12:16:21 2005\n"
 "Last-Translator: Rocky Burt <r.burt@zestsoftware.nl>\n"
 "Language-Team: Rocky Burt <r.burt@zestsoftware.nl>\n"
@@ -484,7 +484,7 @@ msgstr ""
 
 #. Default: "Current Themes"
 #: ./browser/minaraad_config.pt:35
-msgid "legend_current_themes _details"
+msgid "legend_current_themes_details"
 msgstr ""
 
 #. Default: "Edit Theme"

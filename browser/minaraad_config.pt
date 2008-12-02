@@ -32,7 +32,7 @@
           tal:attributes="action string:${request/ACTUAL_URL}">
 
         <fieldset>
-            <legend i18n:translate="legend_current_themes _details"
+            <legend i18n:translate="legend_current_themes_details"
                     tal:condition="not:showEdit">Current Themes</legend>
 
             <legend i18n:translate="legend_edit_theme"
