@@ -23,7 +23,8 @@ class Duplication(BrowserView):
                 if member.id == memberid:
                     # We will delete ourselves.
                     portal_url = getToolByName(context, 'portal_url').getPortalObject().absolute_url()
-                    # Choose the first other member id as the new id to login as.
+                    # Choose the first other member id as the new id
+                    # to login as.
                     new_id = [m.id for m in self.duplicates if m.id != memberid][0]
                     redirect = portal_url + '/login_form?login_name=' + new_id
                 self.message = self.deleteMember(memberid)

@@ -9,7 +9,9 @@ from types import StringTypes
 #from Products.minaraad.browser.subscribers import ExportSubscribersView
 from Products.minaraad.browser.utils import buildCSV
 
+
 class AbstractView(BrowserView):
+
     def __init__(self, context, request):
         self.request = request
         self._context = [context]
@@ -26,13 +28,14 @@ class AbstractView(BrowserView):
         pos = self.referring_url.find('?')
         if pos > -1:
             self.referring_url = self.referring_url[:pos]
-        
+
+
 class MinaraadConfigletView(AbstractView):
-    
+
     def __init__(self, context, request):
         AbstractView.__init__(self, context, request)
         self.themeManager = ThemeManager(context)
-    
+
     def __call__(self):
         request = self.request
         response = request.response
@@ -49,42 +52,41 @@ class MinaraadConfigletView(AbstractView):
             self._deleteThemes()
             return response.redirect(self.referring_url+
                                      '?portal_status_message=Themes+deleted')
-        
+
         return self.index()
-    
+
     def themes(self):
         items = self.themeManager.themes
         isEditing = self.request.get('form.button.Edit', None) is not None
-        return [{'id': id, 'Title': title} for id,title in items
+        return [{'id': id, 'Title': title} for id, title in items
                 if (not isEditing) or self.request.get('theme_%i'%id, None)]
-                
+
     def showEditableFields(self):
         return self.request.get('form.button.Edit', None) is not None
 
     def _addTheme(self):
         themeName = self.request.get('theme_name', None)
         self.themeManager.addTheme(themeName)
-        
 
     def _saveThemes(self):
         editedThemes = []
         for id, title in self.themeManager.themes:
             title = self.request.get('theme_%i' % id, title)
             editedThemes.append((id, title))
-            
+
         self.themeManager.themes = editedThemes
-        
+
     def _deleteThemes(self):
         editedThemes = []
         for id, title in self.themeManager.themes:
             if not self.request.get('theme_%i' % id, None):
                 editedThemes.append((id, title))
-            
+
         self.themeManager.themes = editedThemes
 
 
 class SubscriptionsConfigletView(AbstractView):
-    
+
     def __init__(self, context, request):
         AbstractView.__init__(self, context, request)
         self.subscriptionManager = SubscriptionManager(self.context)
@@ -96,17 +98,18 @@ class SubscriptionsConfigletView(AbstractView):
 
         if request.get('form.button.Save', None):
             self._saveSubscriptions()
-            return response.redirect(self.referring_url+
-                                     '?portal_status_message=Subscriptions+saved')
-        
+            return response.redirect(
+                self.referring_url +
+                '?portal_status_message=Subscriptions+saved')
+
         return self.index()
 
     def _getThemeTitle(self, id):
         # get rid of 'theme_' prefix
         id = id[6:]
-        
+
         return self.themeManager.getThemeTitle(id)
-    
+
     def subscriptions(self, memberid=None):
         sm = self.subscriptionManager
         if memberid is not None:
@@ -120,7 +123,7 @@ class SubscriptionsConfigletView(AbstractView):
                    'subscribed_email': item.email,
                    'subscribed_post': item.post}
             subscriptions.append(sub)
-            
+
             title = self._getThemeTitle(item.id)
             if title:
                 sub['level'] = 1
@@ -134,9 +137,9 @@ class SubscriptionsConfigletView(AbstractView):
                 sub['can_email'] = sm.canSubscribeEmail(item.id)
 
             sub['Title'] = title or item.id
-        
+
         return subscriptions
-    
+
     def _saveSubscriptions(self):
 
         subscriptions = self.subscriptionManager.subscriptions
@@ -145,6 +148,7 @@ class SubscriptionsConfigletView(AbstractView):
             sub.email = not not self.request.get('email_'+sub.id, False)
 
         self.subscriptionManager.subscriptions = subscriptions
+
 
 class SubscribersConfigletView(AbstractView):
 
@@ -160,7 +164,7 @@ class SubscribersConfigletView(AbstractView):
         request = self.request
         session = request.SESSION
 
-        for key in ('category', 'theme',):
+        for key in ('category', 'theme'):
             value = request.get(key)
             if value:
                 session[key] = value
@@ -176,9 +180,9 @@ class SubscribersConfigletView(AbstractView):
 
     def _getThemeTitle(self, id):
         id = id[6:]
-        
+
         return self.themeManager.getThemeTitle(id)
-    
+
     def _getAllThemes(self):
         themes = [sub.id for sub in self.subscriptionManager.subscriptions if self._getThemeTitle(sub.id)]
         return themes
@@ -211,9 +215,8 @@ class SubscribersConfigletView(AbstractView):
                 subjectlist = subjectlist + themes
         return subjectlist
 
-
-    #Get subscriptions
     def subscriptions(self):
+        """Get subscriptions"""
         sm = self.subscriptionManager
         items = sm.subscriptions
         subscriptions = []
@@ -227,7 +230,7 @@ class SubscribersConfigletView(AbstractView):
                    'subscribed_post': item.post,
                    'checked': checked}
             subscriptions.append(sub)
-            
+
             title = self._getThemeTitle(item.id)
             if title:
                 sub['level'] = 1
@@ -241,13 +244,14 @@ class SubscribersConfigletView(AbstractView):
                 sub['can_email'] = sm.canSubscribeEmail(item.id)
 
             sub['Title'] = title or item.id
-        
+
         return subscriptions
 
-    #get Members of the subscriptions
     def getMembersOfSubscriptions(self, id=None, type_=None):
-        """
-        id can now be a list of ids.  Well, it is totally unused now. May be removed in future.
+        """get Members of the subscriptions
+
+        id can now be a list of ids.  Well, it is totally unused
+        now. May be removed in future.
         """
         request = self.request
         session = request.SESSION
@@ -300,7 +304,7 @@ class SubscribersConfigletView(AbstractView):
 
         ploneUtils = getToolByName(self.context, 'plone_utils')
         safeSubscriberId = ploneUtils.normalizeString(subscriberId).lower()
-        
+
         if type_ == 'post' or type_ == 'email':
             subscribers = self.getMembersOfSubscriptions(type_=type_)
         else:

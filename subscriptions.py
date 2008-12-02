@@ -4,20 +4,22 @@ import logging
 logger = logging.getLogger('minaraad_email')
 
 
-SUBSCRIPTIONS_EMAIL = ('AnnualReport', 'Study', 
+SUBSCRIPTIONS_EMAIL = ('AnnualReport', 'Study',
                      'NewsLetter', 'Pressrelease')
 SUBSCRIPTIONS_POST = ('Advisory', 'Study', 'AnnualReport')
 THEME_PARENT = 'Hearing'
 
+
 class NotSubscribableError(Exception):
-    
+
     def __init__(self, id, reason='No such subscription'):
         self.__init__("%s: %s" % (id, reason))
         self.id = id
         self.reason = reason
 
+
 class SubscriptionManager(object):
-    
+
     def __init__(self, portal):
         self.portal = portal
 
@@ -29,7 +31,7 @@ class SubscriptionManager(object):
                 subscription.post = post
                 self.subscriptions = subscriptions
                 return
-            
+
         raise NotSubscribableError(id)
 
     def getSubscriptionsForMemberId(self, memberid):
@@ -43,12 +45,12 @@ class SubscriptionManager(object):
         tool = getToolByName(self.portal, 'portal_membership')
         if member is None:
             member = tool.getAuthenticatedMember()
-        
+
         prop = member.getProperty('subscriptions', [])
 
         themeManager = ThemeManager(self.portal)
-        themeItems = [Subscription('theme_'+str(id)) 
-                      for id,title in themeManager.themes]
+        themeItems = [Subscription('theme_'+str(id))
+                      for id, title in themeManager.themes]
 
         # Combine the lists of email and post subscribers
         allSubscriptionNames = [x for x in SUBSCRIPTIONS_EMAIL]
@@ -60,7 +62,7 @@ class SubscriptionManager(object):
                          for x in allSubscriptionNames] + themeItems
 
         subDict = {}
-        
+
         for line in prop:
             id, email, post = line.split('/')
             subDict[id] = {'subscribed_email': bool(int(email)),
@@ -71,7 +73,7 @@ class SubscriptionManager(object):
             if existing:
                 subscription.email = existing['subscribed_email']
                 subscription.post = existing['subscribed_post']
-        
+
         return subscriptions
 
     def _setSubscriptions(self, subscriptions):
@@ -82,31 +84,31 @@ class SubscriptionManager(object):
                  for x in subscriptions]
 
         member.setProperties(subscriptions=lines)
-        
+
     subscriptions = property(_getSubscriptions, _setSubscriptions)
 
     def canSubscribeEmail(self, id):
         return id in SUBSCRIPTIONS_EMAIL or id == THEME_PARENT
-    
+
     def canSubscribePost(self, id):
         return id in SUBSCRIPTIONS_POST
-    
+
     def isEmailSubscribed(self, id):
         for x in self.subscriptions:
             if x.id == id:
                 if x.email:
                     return True
                 break
-        
+
         return False
-        
+
     def isPostSubscribed(self, id):
         for x in self.subscriptions:
             if x.id == id:
                 if x.post:
                     return True
                 break
-        
+
         return False
 
     def _subscribers(self, id, type_):
@@ -115,7 +117,7 @@ class SubscriptionManager(object):
         members = tool.listMembers()
         logger.info("portal_membership has %r members in total.",
                  len(members))
-        
+
         subscribers = []
         for member in members:
             subscriptions = self._getSubscriptions(member)
@@ -126,12 +128,13 @@ class SubscriptionManager(object):
                     break
         logger.info("%r out of them are subscribed.", len(subscribers))
         return subscribers
-    
+
     def emailSubscribers(self, id):
         return self._subscribers(id, 'email')
-        
+
     def postSubscribers(self, id):
         return self._subscribers(id, 'post')
+
 
 class Subscription(object):
 

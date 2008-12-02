@@ -1,14 +1,15 @@
 from StringIO import StringIO
 from Products.CMFCore.utils import getToolByName
 
+
 def buildCSV(context, members, filename='members.csv'):
     portalProperties = getToolByName(context, 'portal_properties')
     siteProperties = portalProperties.site_properties
     charset = siteProperties.getProperty('default_charset')
-    
+
     out = StringIO()
-    
-    fields = (('gender', 'Aanhef'), 
+
+    fields = (('gender', 'Aanhef'),
               ('firstname', 'Voornaam'),
               ('fullname', 'Achternaam'),
               ('company', 'Organisatie'),
@@ -22,14 +23,14 @@ def buildCSV(context, members, filename='members.csv'):
               ('other_country', 'Ander land'),
               ('phonenumber', 'Telefoonnummer'),
               ('email', 'E-mail'))
-        
+
     for pos, field in enumerate(fields):
         id, title = field
-            
+
         out.write(u'"%s"' % title)
         if pos < len(fields)-1:
             out.write(u',')
-            
+
     out.write(u'\n')
 
     for member in members:
@@ -38,7 +39,7 @@ def buildCSV(context, members, filename='members.csv'):
             value = unicode(member.getProperty(id, ''), charset)
             value = value.replace(u'"', u'""')
             out.write(u'"%s"' % value)
-        
+
             if pos < len(fields)-1:
                 out.write(u',')
 
@@ -54,9 +55,8 @@ def buildCSV(context, members, filename='members.csv'):
                        'application/vnd.ms-excel; charset=%s' % export_charset)
     response.setHeader('content-disposition',
                        'attachment; filename=%s' % filename)
-    
+
     # Some members have characters that cannot be translated into that
     # charset, like \u2018 which Microsoft is so fond of...  So
     # replace faulty characters with a question mark.
     return out.getvalue().encode(export_charset, 'replace')
-    

@@ -4,7 +4,8 @@ import urllib
 from Products.Five import BrowserView
 from email.MIMEText import MIMEText
 from email.MIMEMultipart import MIMEMultipart
-import os, logging
+import os
+import logging
 from textwrap import dedent
 from Products.minaraad.subscriptions import SubscriptionManager
 from DateTime import DateTime
@@ -19,8 +20,9 @@ formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
 hdlr.setFormatter(formatter)
 logger.addHandler(hdlr)
 
- 
+
 class DictLike(object):
+
     def __init__(self, **kw):
         self.__dict__.update(kw)
 
@@ -44,7 +46,7 @@ class RenderedContent(dict):
 
 class EmailRenderer(object):
     'Base for email renderer adapters'
-     
+
     # methods to overwrite
 
     def __init__(self, context):
@@ -55,18 +57,19 @@ class EmailRenderer(object):
         raise 'Unimplemented'
 
     # helpers for rendering
-               
+
     def renderFromTemplate(self, email_template, **kwargs):
         """
         Return both plain and html versions (a dict with keys
-        'text/plain' and 'text/html') of an appropriate email template. 
+        'text/plain' and 'text/html') of an appropriate email template.
         Default implementation will cook the template from schema field
         emailTemplate.
         """
         cooked = email_template.pt_render(extra_context=kwargs)
-        cooked = fixRelativeUrls(cooked, getToolByName(self.context, 'portal_url')())
+        cooked = fixRelativeUrls(cooked, getToolByName(self.context,
+                                                       'portal_url')())
         portal_transforms = getToolByName(self.context, 'portal_transforms')
-        
+
         body = RenderedContent({
             'text/html': cooked,
             'text/plain': portal_transforms('lynx_dump', cooked),
@@ -93,7 +96,7 @@ class EmailRenderer(object):
 
 class EmailNotify(BrowserView):
     'General email notification'
-    
+
     EmailRenderer = EmailRenderer
 
     def email(self, renderer, members=()):
@@ -105,13 +108,13 @@ class EmailNotify(BrowserView):
         portal = getToolByName(self.context, 'portal_url').getPortalObject()
         plone_utils = getToolByName(portal, 'plone_utils')
         charset = plone_utils.getSiteEncoding()
-        
+
         fromAddress = portal.getProperty('email_from_address')
-        
+
         subject = '[%s] %s' % (portal.title_or_id(), renderer.context.Title())
-        
+
         mailHost = getToolByName(portal, 'MailHost')
-        
+
         failed_postings = []
 
         for member in members:
@@ -121,7 +124,7 @@ class EmailNotify(BrowserView):
             message.attach(MIMEText(emailBody['text/plain'], 'plain', charset))
             message.attach(MIMEText(emailBody['text/html'], 'html', charset))
             message = str(message)
-        
+
             send_info = DictLike(
                 path = renderer.context.absolute_url(),
                 message = emailBody,   # XXX why emailBody?
@@ -138,16 +141,13 @@ class EmailNotify(BrowserView):
                               mfrom = fromAddress,
                               subject = subject)
             except Exception, exc:
-                # XXX traceback is not needed now
-                #log_exc('Could not send email from %(fromAddress)s to %(toAddress)s regarding issue ' \
-                #        'in tracker %(path)s\ntext is:\n%(message)s\n' % send_info.__dict__)
                 send_info.excname = str(exc.__class__.__name__)
                 send_info.exctxt = str(exc)
                 logger.error('Template %(path)s email failed sending from '
                              '%(fromAddress)s to %(toAddress)s '
                              '(%(excname)s: %(exctxt)s)',
                              send_info.__dict__)
-                failed_postings.append(send_info);
+                failed_postings.append(send_info)
             else:
                 logger.info('Template %(path)s email succesfully sent '
                             'from %(fromAddress)s to %(toAddress)s',
@@ -176,7 +176,7 @@ class EmailNotify(BrowserView):
 
 
 class EmailOutView(AbstractView, EmailNotify):
-    
+
     class EmailRenderer(EmailNotify.EmailRenderer):
 
         def __init__(self, context, template):
@@ -194,14 +194,14 @@ class EmailOutView(AbstractView, EmailNotify):
         logger.info("Start of EmailOutView.sendEmail.")
         request = self.request
         response = request.response
-        
+
         if request.get('send', None) is not None:
             logger.info("Yes, we should send email.")
             additionalMembers = [mem.strip() for mem in
                                  self.request.get('to', '').split(',')
                                  if mem]
             testing = bool(int(self.request.get('send_as_test', "0")))
-            
+
             tool = getToolByName(self.context, 'portal_membership')
             members = [tool.getMemberById(memberid)
                        for memberid in additionalMembers]
@@ -218,7 +218,7 @@ class EmailOutView(AbstractView, EmailNotify):
                 self.context.setEmailSent(DateTime())
             else:
                 logger.info("We are in test mode.")
-  
+
             template = getattr(self.context, self.getTemplateName(), None)
             if template is None:
                 template = getattr(self.context, "EmailTemplate-Default", None)
@@ -235,7 +235,7 @@ class EmailOutView(AbstractView, EmailNotify):
                 message = 'E-mail is verstuurd.'
             logger.info("The referring url is %r.",
                         self.context.referring_url)
-                    
+
             return response.redirect(
                 '%s?portal_status_message=%s' % (
                 self.context.referring_url,
@@ -253,14 +253,14 @@ class EmailOutView(AbstractView, EmailNotify):
         return str(member)
 
     def canSend(self):
-       # return self.context.getEmailSent() is None
-       return True
-    
+        # return self.context.getEmailSent() is None
+        return True
+
     def sentDate(self):
         localize = self.context.restrictedTraverse('@@plone').toLocalizedTime
         return localize(time=self.context.getEmailSent(),
                         long_format=True)
-      
+
     def getTemplateName(self):
         return "EmailTemplate-%s" % self.context.getPortalTypeName()
 
@@ -276,7 +276,7 @@ class EmailOutView(AbstractView, EmailNotify):
 
 
 class SubscriptionNotifyView(EmailNotify):
-    
+
     class EmailRenderer(EmailNotify.EmailRenderer):
 
         def __init__(self, context, subscribe):
@@ -286,7 +286,8 @@ class SubscriptionNotifyView(EmailNotify):
 
         def render(self, member):
             template = self.template
-            rendered = self.renderFromTemplate(template, member=member, subscribe=self.subscribe)
+            rendered = self.renderFromTemplate(template, member=member,
+                                               subscribe=self.subscribe)
             return rendered
 
     def __call__(self, member, subscribe):
@@ -329,7 +330,7 @@ class EmailTestView(EmailNotify):
         else:
             members = portal.portal_membership.listMembers()
         valid_members = [m for m in members if m.getProperty('email') and
-                                               '@' in m.getProperty('email') ]
+                                               '@' in m.getProperty('email')]
         renderer = self.EmailRenderer(self.context)
         failed_postings = self.email(renderer, valid_members)
 
