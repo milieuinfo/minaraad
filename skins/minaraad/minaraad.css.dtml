@@ -244,6 +244,10 @@ ul.portlet-personalbar-mina {
     list-style-image: none;
 }
 
+.portlet-personalbar-mina li {
+    padding-left: 10px;
+}
+
 a.link-personalbar {
     font-size: 10px;
     text-decoration: none !important;
@@ -534,7 +538,8 @@ div.portal-tabs a, #portlet-events-mina dd a {
 
 div.portal-tabs a:hover, #portal-tabs-nav a.selected,
 #portlet-events-mina dd a:hover,
-#portlet-events-mina dd a.portlet_more_link {
+#portlet-events-mina dd a.portlet_more_link,
+.portlet_title {
     color: #A13826;
     padding: 5px 10px;
     display: block;

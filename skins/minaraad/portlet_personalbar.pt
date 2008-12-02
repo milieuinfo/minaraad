@@ -1,6 +1,6 @@
 <html xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:metal="http://xml.zope.org/namespaces/metal"
-      i18n:domain="plone">
+      i18n:domain="minaraad">
   <body>
     <metal:portlet define-macro="portlet"
                    tal:define="display_actions python:user_actions[:-1]+global_actions+user_actions[-1:];
@@ -8,6 +8,10 @@
                    tal:condition="not: isAnon">
       <div class="personalbar_bordertop">
         <ul class="portlet-personalbar-mina">
+          <li class="portlet_title"
+              i18n:translate="title_my_account">
+            My account
+          </li>
           <li class="portalUser">
             <a id="user-name"
                tal:omit-tag="not: mtool/getHomeFolder"
@@ -18,6 +22,7 @@
           </li>
           <li tal:repeat="action python:here.getOrderedUserActions(keyed_actions=keyed_actions)">
             <a tal:attributes="href action/url;"
+               i18n:domain="plone"
                i18n:translate="" 
                tal:content="action/name"
                class="link-personalbar" />

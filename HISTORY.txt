@@ -4,6 +4,9 @@ History of Products.minaraad
 2.1.8 (unreleased)
 ------------------
 
+- Added styling to the personal tools portlet.  Added 'My account' as
+  portlet title. [simon+maurits]
+
 - Added styling to hearing subscribe/unsubscribe. [simon+maurits]
 
 
