@@ -87,7 +87,6 @@ msgstr "Adviesdatum:"
 
 #. Default: "For security reasons, we store your password encrypted, and cannot mail it to you. If you would like to reset your password, fill out the form below and we will send you an email at the address you gave when you registered to start the process of resetting your password. <br /> <br /> If this will not work for you (for example, if you forgot your member name or your email address has changed) send an email to the"
 #: ./skins/minaraad/mail_password_form.pt:14
-#, fuzzy
 msgid "description_lost_password_mina"
 msgstr "Om veiligheidsredenen kan het wachtwoord niet per e-mail naar u worden verzonden. U kunt uw wachtwoord wijzigen door het onderstaande formulier in te vullen. Wij sturen een e-mailbericht naar het e-mailadres dat u tijdens de registratie heeft opgegeven. Dit bericht bevat een link naar een formulier waar u het wachtwoord kunt wijzigen.<br /> <br />Indien u bijvoorbeeld uw gebruikersnaam niet meer weet of uw e-mailadres is gewijzigd, stuur dan een e-mail naar de"
 
@@ -138,9 +137,8 @@ msgstr ""
 
 #. Default: "Send out an e-mail to all subscribers pertaining to this item. If the 'Send As Test' checkbox is checked below, the e-mail is only sent to the people in the 'To' field. Fill in the username which should receive the test email. Once a non-test e-mail has been sent out, no further e-mail's can be sent from this particular tab."
 #: ./browser/email_out.pt:42
-#, fuzzy
 msgid "help_email_out"
-msgstr "Verzend een e-mail naar alle abonnees op dit content type. Wanneer de checkbox \"Test email versturen\" is aangevinkt, wordt er alleen een e-mail gestuurd naar de e-mailadressen die in het \"Aan\"- veld zijn ingevuld. Vul in het \"Aan\"- veld de gebruikersnaam van de persoon die het test bericht mag ontvangen. Wanneer het daadwerkelijke bericht is verstuurd, is het niet mogelijk op deze opnieuw te versturen."
+msgstr "Verzend een e-mail naar alle abonnees op dit content type. Wanneer de checkbox \"Test email versturen\" is aangevinkt, wordt er alleen een e-mail gestuurd naar de e-mailadressen die in het \"Aan\"- veld zijn ingevuld. Vul in het \"Aan\"- veld de gebruikersnaam van de persoon die het test bericht mag ontvangen. Wanneer het daadwerkelijke bericht is verstuurd, is het niet mogelijk op vanuit deze tab opnieuw te versturen."
 
 #. Default: "Additional message text (text used from emailTemplate field is considered master e-mail text)."
 #: ./browser/email_out.pt:99
@@ -149,21 +147,18 @@ msgstr "Extra tekst toevoegen aan het bericht (De body tekst is de hoofdtekst.)"
 
 #. Default: "An e-mail has already been sent out for this content type on ${email_sentdate}."
 #: ./browser/email_out.pt:36
-#, fuzzy
 msgid "help_email_out_already_sent"
 msgstr "Er is een e-mail verzonden voor dit content type op: ${email_sentdate}"
 
 #. Default: "Comma-separated list of member ids this mail is sent out to.  This is only for testing purposes and for members that you want the mail to be sent to in addition to the ones that subscribed."
 #: ./browser/email_out.pt:56
-#, fuzzy
 msgid "help_email_out_to"
-msgstr "Voeg hier de gebruikersnamen in van de personen die ook het bericht mogen ontvangen. Gebruik een ',' tussen de gebruikersnamen"
+msgstr "Voeg hier de gebruikersnamen in van de personen die ook het bericht mogen ontvangen. Gebruik een ',' tussen de gebruikersnamen. Dit is alleen om te testen en voor personen waarvan u wilt dat ze de email ontvangen naast degenen die ingeschreven zijn."
 
 #. Default: "Test e-mails can be sent as frequently as needed but only get sent to the members in the above \"To\" field."
 #: ./browser/email_out.pt:78
-#, fuzzy
 msgid "help_send_as_test"
-msgstr "Test e-mails kunnen zo vaak als nodig worden verstuurd. De test e-mail wordt verstuurd naar de gebruiker dat hierboven in het \"Aan\" veld is ingevuld."
+msgstr "Test e-mails kunnen zo vaak als nodig worden verstuurd. De test e-mail wordt verstuurd naar de gebruikers die hierboven in het \"Aan\" veld zijn ingevuld."
 
 #. Default: "Name of the new theme to create."
 #: ./browser/minaraad_config.pt:108
@@ -222,7 +217,6 @@ msgstr "Land"
 
 #. Default: "Beste"
 #: ./skins/minaraad/EmailTemplate-NewsLetter.pt:19
-#, fuzzy
 msgid "label_dear"
 msgstr "Beste"
 
@@ -243,7 +237,6 @@ msgstr "Extra Bericht"
 
 #. Default: "To"
 #: ./browser/email_out.pt:53
-#, fuzzy
 msgid "label_email_out_to"
 msgstr "Aan"
 
@@ -304,7 +297,6 @@ msgstr "Huisnummer"
 
 #. Default: "Job title"
 #: ./skins/minaraad/join_form.cpt:123
-#, fuzzy
 msgid "label_jobtitle"
 msgstr "Functie"
 
@@ -365,7 +357,6 @@ msgstr "Er wordt een e-mail gestuurd met verdere instructies om de registratie t
 
 #. Default: "Phone number"
 #: ./skins/minaraad/join_form.cpt:286
-#, fuzzy
 msgid "label_phonenumber"
 msgstr "Telefoon"
 
@@ -455,7 +446,6 @@ msgstr ""
 
 #. Default: "Theme Name"
 #: ./browser/minaraad_config.pt:104
-#, fuzzy
 msgid "label_theme_name"
 msgstr "Thema:"
 
