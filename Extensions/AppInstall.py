@@ -205,6 +205,7 @@ def _switchOnActions(portal):
     tab_actions = tab._cloneActions()
     actionDefined = 0
     actionContactDefined = 0
+    actionSubscriptionConfigDefined = 0
     for a in tab_actions:
         if a.id == 'sitemap':
             a.title = 'Sitemap'
@@ -215,6 +216,10 @@ def _switchOnActions(portal):
         if a.id == 'contactpersonen':
             a.visible = 1
             actionContactDefined = 1
+        if a.id == 'subscriptions_config':
+            a.visible = 1
+            actionSubscriptionConfigDefined = 1
+
         tab._actions = tab_actions
     if actionDefined == 0:
         tab.addAction('mina_library',
@@ -229,6 +234,13 @@ def _switchOnActions(portal):
                       'string:$portal_url/contactpersonen',
                       '',
                       'Manage portal',
+                      'user')
+    if actionSubscriptionConfigDefined == 0:
+        tab.addAction('subscriptions_config',
+                      'Mijn abonnementen',
+                      'string:$portal_url/subscriptions_config.html',
+                      'member',
+                      'View',
                       'user')
 
 

@@ -4,6 +4,8 @@ History of Products.minaraad
 2.1.8 (unreleased)
 ------------------
 
+- Added 'Mijn abonnementen' action to personal portlet.  [maurits+simon]
+
 - Made undo action invisible in portal_undo.  [maurits+simon]
 
 - Added styling to the personal tools portlet.  Added 'My account' as
