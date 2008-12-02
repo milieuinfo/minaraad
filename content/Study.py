@@ -1,29 +1,4 @@
 # -*- coding: utf-8 -*-
-#
-# File: Study.py
-#
-# Copyright (c) 2006 by Zest Software
-# Generator: ArchGenXML Version 1.5.0 svn/devel
-#            http://plone.org/products/archgenxml
-#
-# GNU General Public License (GPL)
-#
-# This program is free software; you can redistribute it and/or
-# modify it under the terms of the GNU General Public License
-# as published by the Free Software Foundation; either version 2
-# of the License, or (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program; if not, write to the Free Software
-# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
-# 02110-1301, USA.
-#
-
 __author__ = """Rocky Burt <r.burt@zestsoftware.nl>"""
 __docformat__ = 'plaintext'
 
@@ -33,9 +8,6 @@ from Products.minaraad.PostMixin import PostMixin
 from Products.minaraad.EmailMixin import EmailMixin
 from Products.minaraad.Attachmentsmixin import Attachmentsmixin
 from Products.minaraad.config import *
-
-##code-section module-header #fill in your manual code here
-##/code-section module-header
 
 schema = Schema((
 
@@ -47,6 +19,8 @@ schema = Schema((
             i18n_domain='minaraad',
         )
     ),
+
+    # TODO: add body text
 
     DateTimeField(
         name='date',
@@ -74,16 +48,12 @@ schema = Schema((
 ),
 )
 
-##code-section after-local-schema #fill in your manual code here
-##/code-section after-local-schema
 
 Study_schema = getattr(PostMixin, 'schema', Schema(())).copy() + \
     getattr(EmailMixin, 'schema', Schema(())).copy() + \
     getattr(Attachmentsmixin, 'schema', Schema(())).copy() + \
     schema.copy()
 
-##code-section after-schema #fill in your manual code here
-##/code-section after-schema
 
 class Study(PostMixin, EmailMixin, Attachmentsmixin):
     """
@@ -107,10 +77,7 @@ class Study(PostMixin, EmailMixin, Attachmentsmixin):
     typeDescription = "Study"
     typeDescMsgId = 'description_edit_study'
 
-
     actions =  (
-
-
        {'action': "string:${object_url}/email_out",
         'category': "object",
         'id': 'email_out',
@@ -118,8 +85,6 @@ class Study(PostMixin, EmailMixin, Attachmentsmixin):
         'permissions': ("Modify portal content",),
         'condition': 'python:1'
        },
-
-
        {'action': "string:${object_url}/export_subscribers",
         'category': "object",
         'id': 'export_subscribers',
@@ -127,25 +92,10 @@ class Study(PostMixin, EmailMixin, Attachmentsmixin):
         'permissions': ("Modify portal content",),
         'condition': 'python:1'
        },
-
-
     )
 
     _at_rename_after_creation = True
-
     schema = Study_schema
-
-    ##code-section class-header #fill in your manual code here
-    ##/code-section class-header
-
-    # Methods
 
 
 registerType(Study, PROJECTNAME)
-# end of class Study
-
-##code-section module-footer #fill in your manual code here
-##/code-section module-footer
-
-
-

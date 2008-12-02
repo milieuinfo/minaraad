@@ -1,29 +1,4 @@
 # -*- coding: utf-8 -*-
-#
-# File: Hearing.py
-#
-# Copyright (c) 2006 by Zest Software
-# Generator: ArchGenXML Version 1.5.0 svn/devel
-#            http://plone.org/products/archgenxml
-#
-# GNU General Public License (GPL)
-#
-# This program is free software; you can redistribute it and/or
-# modify it under the terms of the GNU General Public License
-# as published by the Free Software Foundation; either version 2
-# of the License, or (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program; if not, write to the Free Software
-# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
-# 02110-1301, USA.
-#
-
 __author__ = """Rocky Burt <r.burt@zestsoftware.nl>"""
 __docformat__ = 'plaintext'
 
@@ -33,9 +8,7 @@ from Products.minaraad.content.MREvent import MREvent
 from Products.minaraad.EmailMixin import EmailMixin
 from Products.minaraad.config import *
 
-##code-section module-header #fill in your manual code here
 from zope.interface import implements, Interface
-##/code-section module-header
 
 schema = Schema((
 
@@ -63,8 +36,7 @@ schema = Schema((
 ),
 )
 
-##code-section after-local-schema #fill in your manual code here
-##/code-section after-local-schema
+# TODO: add body-like text.
 
 Hearing_schema = BaseFolderSchema.copy() + \
     getattr(MREvent, 'schema', Schema(())).copy() + \
@@ -73,13 +45,13 @@ Hearing_schema = BaseFolderSchema.copy() + \
 Hearing_schema.moveField('theme', after="goal")
 Hearing_schema.moveField('mot', after="theme")
 
-##code-section after-schema #fill in your manual code here
+
 class IHearing(Interface):
     def getThemesList():
         pass
     def getThemeName():
         pass
-##/code-section after-schema
+
 
 class Hearing(MREvent, EmailMixin, BaseFolder):
     """
@@ -103,10 +75,7 @@ class Hearing(MREvent, EmailMixin, BaseFolder):
     typeDescription = "Hearing"
     typeDescMsgId = 'description_edit_hearing'
 
-
     actions =  (
-
-
        {'action': "string:${object_url}/email_out",
         'category': "object",
         'id': 'email_out',
@@ -114,19 +83,11 @@ class Hearing(MREvent, EmailMixin, BaseFolder):
         'permissions': ("Modify portal content",),
         'condition': 'python:1'
        },
-
-
     )
 
     _at_rename_after_creation = True
-
     schema = Hearing_schema
-
-    ##code-section class-header #fill in your manual code here
     implements(IHearing)
-    ##/code-section class-header
-
-    # Methods
 
     security.declarePublic('getThemesList')
     def getThemesList(self):
@@ -141,7 +102,7 @@ class Hearing(MREvent, EmailMixin, BaseFolder):
             id = x[:pos]
             title = x[pos+1:]
             themes.append({'id':id, 'title':title})
-        
+
         dlist = DisplayList(
                    tuple([(theme['id'], theme['title']) for theme in themes ])
                 )
@@ -158,15 +119,8 @@ class Hearing(MREvent, EmailMixin, BaseFolder):
         theme = themeProps[themeId-1]
         pos = theme.find('/')
         title = theme[pos+1:]
-            
+
         return title
 
 
 registerType(Hearing, PROJECTNAME)
-# end of class Hearing
-
-##code-section module-footer #fill in your manual code here
-##/code-section module-footer
-
-
-
