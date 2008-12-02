@@ -309,6 +309,28 @@ a.link-personalbar {
 
 /* ---- Hearing view --- */
 
+.hearing_subscribe {
+    float:right;
+    padding:10px;
+    border: 1px solid &dtml-globalBorderColor;;
+    text-align: right;
+    width: 170px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+.hearing_subscribe div {
+    margin-bottom: 10px;
+}
+
+.hearing_subscribe input.unsubscribe {
+    background-color: #F4CFC8;
+    border: 1px solid &dtml-globalBorderColor;;
+}
+.hearing_subscribe input.subscribe {
+    border: 1px solid #696;
+    background-color: #C8ED7E;
+}
+
 .hearingsubheader {
     margin-top: 10px;
     margin-bottom: 10px;

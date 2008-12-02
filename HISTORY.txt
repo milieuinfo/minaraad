@@ -4,7 +4,7 @@ History of Products.minaraad
 2.1.8 (unreleased)
 ------------------
 
-- nothing yet
+- Added styling to hearing subscribe/unsubscribe. [simon+maurits]
 
 
 2.1.7 (4 August 2008)
