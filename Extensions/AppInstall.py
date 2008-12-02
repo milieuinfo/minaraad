@@ -187,6 +187,17 @@ def _switchOffUnwantedActions(portal):
     st._actions = st_actions
 
 
+    # Switch off undo.
+    st = getToolByName(portal, 'portal_undo')
+    st_actions = st._cloneActions()
+    for action in st_actions:
+        if action.id == 'undo':
+            if action.visible:
+                print >> out, "Switching off unwanted action undo."
+                action.visible = 0
+    st._actions = st_actions
+
+
 def _switchOnActions(portal):
     """Switch on wanted actions(portal_actions)
     """
