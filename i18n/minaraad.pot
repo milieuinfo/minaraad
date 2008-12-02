@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minaraad\n"
-"POT-Creation-Date: 2008-12-02 17:34+0000\n"
+"POT-Creation-Date: 2008-12-02 17:44+0000\n"
 "PO-Revision-Date: Mon Aug  8 12:16:21 2005\n"
 "Last-Translator: Rocky Burt <r.burt@zestsoftware.nl>\n"
 "Language-Team: Rocky Burt <r.burt@zestsoftware.nl>\n"
@@ -48,10 +48,6 @@ msgstr ""
 msgid "Location:"
 msgstr ""
 
-#: ./skins/minaraad/login_next.cpy:28
-msgid "Login failed"
-msgstr ""
-
 #: browser/subscriptions_config.pt
 msgid "Newsletter"
 msgstr ""
@@ -72,10 +68,6 @@ msgstr ""
 #. Default: "Time:"
 #: ./skins/minaraad/mina_showdatetime.pt:26
 msgid "Time"
-msgstr ""
-
-#: ./skins/minaraad/login_next.cpy:60
-msgid "Welcome! You are now logged in."
 msgstr ""
 
 #. Default: "Advisory date:"
@@ -171,11 +163,6 @@ msgstr ""
 #. Default: "Add"
 #: ./browser/minaraad_config.pt:121
 msgid "label_add"
-msgstr ""
-
-#. Default: "Advanced Search…"
-#: ./skins/minaraad/livesearch_reply.py:78
-msgid "label_advanced_search"
 msgstr ""
 
 #. Default: "Agenda items"
@@ -338,11 +325,6 @@ msgstr ""
 msgid "label_no_reference"
 msgstr ""
 
-#. Default: "No matching results found."
-#: ./skins/minaraad/livesearch_reply.py:77
-msgid "label_no_results_found"
-msgstr ""
-
 #. Default: "Other country"
 #: ./skins/minaraad/join_form.cpt:266
 msgid "label_other_country"
@@ -381,11 +363,6 @@ msgstr ""
 #. Default: "Send e-mail"
 #: ./browser/email_out.pt:19
 msgid "label_sendemail"
-msgstr ""
-
-#. Default: "Show all…"
-#: ./skins/minaraad/livesearch_reply.py:79
-msgid "label_show_all"
 msgstr ""
 
 #. Default: "Speaker:"
@@ -490,11 +467,6 @@ msgstr ""
 #. Default: "Edit Theme"
 #: ./browser/minaraad_config.pt:38
 msgid "legend_edit_theme"
-msgstr ""
-
-#. Default: "LiveSearch &#8595;"
-#: ./skins/minaraad/livesearch_reply.py:76
-msgid "legend_livesearch"
 msgstr ""
 
 #. Default: "Send e-mail to subscribers"

@@ -9,7 +9,7 @@
 ##title=Login next actions
 ##
 
-from Products.CMFPlone import PloneMessageFactory as _
+from Products.CMFPlone import PloneMessageFactory as PMF
 from DateTime import DateTime
 import ZTUtils
 
@@ -25,7 +25,7 @@ util = context.plone_utils
 membership_tool=context.portal_membership
 if membership_tool.isAnonymousUser():
     REQUEST.RESPONSE.expireCookie('__ac', path='/')
-    util.addPortalMessage(_(u'Login failed'))
+    util.addPortalMessage(PMF(u'Login failed'))
     return state.set(status='failure')
 
 # Minaraad specific:
@@ -57,7 +57,7 @@ if came_from and js_enabled:
     # If cookies aren't enabled, the redirect will log the user out, and confusion
     # may arise.  Redirect only if we know for sure that cookies are enabled.
 
-    util.addPortalMessage(_(u'Welcome! You are now logged in.'))
+    util.addPortalMessage(PMF(u'Welcome! You are now logged in.'))
     came_from = util.urlunparse((scheme, location, path, parameters, query, fragment))
     REQUEST.RESPONSE.redirect(came_from)
 

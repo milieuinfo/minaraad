@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minaraad 0.1\n"
-"POT-Creation-Date: 2008-12-02 17:34+0000\n"
-"PO-Revision-Date: 2008-12-02 18:36+0100\n"
+"POT-Creation-Date: 2008-12-02 17:44+0000\n"
+"PO-Revision-Date: 2008-12-02 18:53+0100\n"
 "Last-Translator: Maurits van Rees <m.van.rees@zestsoftware.nl>\n"
 "Language-Team: Nederlands <info@zestsoftware.nl>\n"
 "MIME-Version: 1.0\n"
@@ -28,7 +28,7 @@ msgstr "Jaarverslag"
 
 #: ./skins/minaraad/prefs_user_edit.cpy:46
 msgid "Changes made."
-msgstr ""
+msgstr "Wijzigingen opgeslagen."
 
 #. Default: "Date:"
 #: ./skins/minaraad/mina_showdatetime.pt:18
@@ -50,13 +50,9 @@ msgstr "Hoorzitting"
 msgid "Location:"
 msgstr "Locatie:"
 
-#: ./skins/minaraad/login_next.cpy:28
-msgid "Login failed"
-msgstr ""
-
 #: browser/subscriptions_config.pt
 msgid "Newsletter"
-msgstr ""
+msgstr "Nieuwsbrief"
 
 #: browser/subscriptions_config.pt
 msgid "Pressrelease"
@@ -75,10 +71,6 @@ msgstr "Studies"
 #: ./skins/minaraad/mina_showdatetime.pt:26
 msgid "Time"
 msgstr "Tijd:"
-
-#: ./skins/minaraad/login_next.cpy:60
-msgid "Welcome! You are now logged in."
-msgstr ""
 
 #. Default: "Advisory date:"
 #: ./skins/minaraad/advisory_view.pt:17
@@ -128,12 +120,12 @@ msgstr "Thema's"
 #. Default: "You are currently subscribed to this hearing."
 #: ./skins/minaraad/hearing_view.pt:22
 msgid "hearing_registered_label"
-msgstr ""
+msgstr "U bent nu geregistreerd voor deze hoorzitting."
 
 #. Default: "You are not currently subscribed to this hearing."
 #: ./skins/minaraad/hearing_view.pt:38
 msgid "hearing_unregistered_label"
-msgstr ""
+msgstr "U bent nu niet geregistreerd voor deze hoorzitting."
 
 #. Default: "Send out an e-mail to all subscribers pertaining to this item. If the 'Send As Test' checkbox is checked below, the e-mail is only sent to the people in the 'To' field. Fill in the username which should receive the test email. Once a non-test e-mail has been sent out, no further e-mail's can be sent from this particular tab."
 #: ./browser/email_out.pt:42
@@ -174,11 +166,6 @@ msgstr "uur"
 #: ./browser/minaraad_config.pt:121
 msgid "label_add"
 msgstr "Toevoegen"
-
-#. Default: "Advanced Search…"
-#: ./skins/minaraad/livesearch_reply.py:78
-msgid "label_advanced_search"
-msgstr ""
 
 #. Default: "Agenda items"
 #: ./skins/minaraad/hearing_view.pt:123
@@ -283,7 +270,7 @@ msgstr "Aanhef"
 #. Default: "Met vriendelijke groet"
 #: ./skins/minaraad/emailtemplate_subscribe_notification.pt:24
 msgid "label_greeting"
-msgstr ""
+msgstr "Met vriendelijke groet"
 
 #. Default: "Hearing Themes"
 #: ./browser/subscribers_config.pt:75
@@ -340,11 +327,6 @@ msgstr "Nieuw"
 msgid "label_no_reference"
 msgstr "<geen referentie>"
 
-#. Default: "No matching results found."
-#: ./skins/minaraad/livesearch_reply.py:77
-msgid "label_no_results_found"
-msgstr ""
-
 #. Default: "Other country"
 #: ./skins/minaraad/join_form.cpt:266
 msgid "label_other_country"
@@ -385,11 +367,6 @@ msgstr "Test e-mail versturen"
 msgid "label_sendemail"
 msgstr "E-mail verzenden"
 
-#. Default: "Show all…"
-#: ./skins/minaraad/livesearch_reply.py:79
-msgid "label_show_all"
-msgstr ""
-
 #. Default: "Speaker:"
 #: ./skins/minaraad/hearing_view.pt:140
 msgid "label_speaker"
@@ -403,22 +380,22 @@ msgstr "Straat"
 #. Default: "Bij deze bevestigen wij uw"
 #: ./skins/minaraad/emailtemplate_subscribe_notification.pt:10
 msgid "label_subs1"
-msgstr ""
+msgstr "Bij deze bevestigen wij uw"
 
 #. Default: "voor de hoorzitting"
 #: ./skins/minaraad/emailtemplate_subscribe_notification.pt:13
 msgid "label_subs2"
-msgstr ""
+msgstr "voor de hoorzitting"
 
 #. Default: "die plaats vindt in"
 #: ./skins/minaraad/emailtemplate_subscribe_notification.pt:15
 msgid "label_subs3"
-msgstr ""
+msgstr "die plaats vindt in"
 
 #. Default: "op"
 #: ./skins/minaraad/emailtemplate_subscribe_notification.pt:17
 msgid "label_subs4"
-msgstr ""
+msgstr "op"
 
 #. Default: "Subscribe"
 #: ./skins/minaraad/hearing_view.pt:41
@@ -432,17 +409,17 @@ msgstr "Thema abonnees"
 #. Default: "afmelding"
 #: ./skins/minaraad/emailtemplate_subscribe_notification.pt:12
 msgid "label_subsno"
-msgstr ""
+msgstr "afmelding"
 
 #. Default: "inschrijving"
 #: ./skins/minaraad/emailtemplate_subscribe_notification.pt:11
 msgid "label_subsyes"
-msgstr ""
+msgstr "inschrijving"
 
 #. Default: "Dank voor uw interesse."
 #: ./skins/minaraad/emailtemplate_subscribe_notification.pt:22
 msgid "label_thank"
-msgstr ""
+msgstr "Dank voor uw interesse."
 
 #. Default: "Theme Name"
 #: ./browser/minaraad_config.pt:104
@@ -452,7 +429,7 @@ msgstr "Thema:"
 #. Default: "Het Minaraad-team"
 #: ./skins/minaraad/emailtemplate_subscribe_notification.pt:27
 msgid "label_theteam"
-msgstr ""
+msgstr "Het Minaraad-team"
 
 #. Default: "Unsubscribe"
 #: ./skins/minaraad/hearing_view.pt:25
@@ -493,11 +470,6 @@ msgstr "Huidige thema's"
 #: ./browser/minaraad_config.pt:38
 msgid "legend_edit_theme"
 msgstr "Wijzig thema"
-
-#. Default: "LiveSearch &#8595;"
-#: ./skins/minaraad/livesearch_reply.py:76
-msgid "legend_livesearch"
-msgstr ""
 
 #. Default: "Send e-mail to subscribers"
 #: ./browser/email_out.pt:30
@@ -555,17 +527,17 @@ msgstr ""
 #: content/Advisory.py
 #: content/Study.py
 msgid "minaraad_help_date"
-msgstr ""
+msgstr "Datum"
 
 #. Default: "department"
 #: content/ContactPerson.py
 msgid "minaraad_help_department"
-msgstr ""
+msgstr "Organisatie"
 
 #. Default: "email"
 #: content/ContactPerson.py
 msgid "minaraad_help_email"
-msgstr ""
+msgstr "E-mailadres"
 
 #. Default: "help_minaraad_emailTemplate"
 #: EmailMixin.py
@@ -575,17 +547,17 @@ msgstr "De tekst in deze editor wordt gebruikt voor zowel de website als e-mailb
 #. Default: "goal"
 #: content/Hearing.py
 msgid "minaraad_help_goal"
-msgstr ""
+msgstr "Doelstelling"
 
 #. Default: "jobtitle"
 #: content/ContactPerson.py
 msgid "minaraad_help_jobtitle"
-msgstr ""
+msgstr "Functie"
 
 #. Default: "location"
 #: content/Hearing.py
 msgid "minaraad_help_location"
-msgstr ""
+msgstr "Locatie"
 
 #. Default: "MOT"
 #: content/Hearing.py
@@ -595,27 +567,27 @@ msgstr "Vink deze optie aan als de Hoorzitting een MOT is."
 #. Default: "name"
 #: content/ContactPerson.py
 msgid "minaraad_help_name"
-msgstr ""
+msgstr "Naam"
 
 #. Default: "phonenumber"
 #: content/ContactPerson.py
 msgid "minaraad_help_phonenumber"
-msgstr ""
+msgstr "Telefoon"
 
 #. Default: "policy"
 #: content/Advisory.py
 msgid "minaraad_help_policy"
-msgstr ""
+msgstr "Beleid"
 
 #. Default: "speaker"
 #: content/Presentation.py
 msgid "minaraad_help_speaker"
-msgstr ""
+msgstr "Spreker"
 
 #. Default: "speakers"
 #: content/Study.py
 msgid "minaraad_help_speakers"
-msgstr ""
+msgstr "Sprekers"
 
 #. Default: "subheader"
 #: content/Hearing.py
@@ -627,7 +599,7 @@ msgstr ""
 #. Default: "summary"
 #: content/Presentation.py
 msgid "minaraad_help_summary"
-msgstr ""
+msgstr "Samenvatting"
 
 #. Default: "Attachment"
 #: content/Pressrelease.py
@@ -905,7 +877,7 @@ msgstr "Leden"
 #. Default: "My account"
 #: ./skins/minaraad/portlet_personalbar.pt:11
 msgid "title_my_account"
-msgstr ""
+msgstr "Mijn account"
 
 #. Default: "By Mail"
 #: ./browser/subscriptions_config.pt:53
