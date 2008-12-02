@@ -478,9 +478,9 @@ div.portal-tabs ul {
     list-style-image: none;
     width: 153px;
     background-color: #C8ED7E;
-    border:1px solid #E0FAAC;
+    border: 1px solid #E0FAAC;
     font-size: 11px;
-    line-height: 25px;
+    line-height: 13px;
 }
 
 div.portal-tabs ul li {
@@ -491,23 +491,21 @@ div.portal-tabs ul li {
 div.portal-tabs li ul {
     display: none;
     position: absolute;
-    left: 153px; 
+    left: 120px; 
     top: 0;
-}
-
-span.IEFix_paddingmenu {
-    padding-left: 10px;
 }
 
 div.portal-tabs a, #portlet-events-mina dd a {
     color: #313131;
     text-decoration: none;
     font-weight: bold;
+    padding: 5px 10px;
+    display: block;
 }
 
 #portal-tabs-nav li:hover, 
 #portal-tabs-nav li.over {
-    background: url(menu_arrow.gif) no-repeat right;
+    background: #E7FBBF url(menu_arrow.gif) no-repeat right;
     cursor: pointer;
     color: #A13826;
 }
@@ -515,7 +513,9 @@ div.portal-tabs a, #portlet-events-mina dd a {
 div.portal-tabs a:hover, #portal-tabs-nav a.selected,
 #portlet-events-mina dd a:hover,
 #portlet-events-mina dd a.portlet_more_link {
-   color: #A13826;
+    color: #A13826;
+    padding: 5px 10px;
+    display: block;
 }
 
 #portal-tabs-nav li.selected {
@@ -531,6 +531,11 @@ div.portal-tabs a:hover, #portal-tabs-nav a.selected,
     padding: 0; 
     margin: 0;
     width: 170px;
+}
+
+#portal-tabs-nav li:hover ul a, 
+#portal-tabs-nav li.over ul a {
+    display: block;
 }
 
 li.portal-tabs-subitem-listitem {
