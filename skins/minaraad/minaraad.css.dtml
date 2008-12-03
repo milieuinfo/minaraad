@@ -728,11 +728,8 @@ input.searchButton {
 
 /* End minaraad_service control panel */
 
-
-
-#archetypes-fieldname-relatedDocuments {
+#archetypes-fieldname-relatedDocuments select {
   width: 575px;
-  overflow: auto;
 }
 
 /* </dtml-with> */
