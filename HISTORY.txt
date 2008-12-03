@@ -4,6 +4,9 @@ History of Products.minaraad
 2.2.0 (unreleased)
 ------------------
 
+- Added relatedDocuments field to Advisories, where you can select
+  published Pages and Files from the digibib-1 folder.  [maurits]
+
 - Allow workflow transition between the restricted and published state
   and the other way around.  [maurits]
 

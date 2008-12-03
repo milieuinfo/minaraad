@@ -4,6 +4,9 @@ __docformat__ = 'plaintext'
 
 from AccessControl import ClassSecurityInfo
 from Products.Archetypes.atapi import *
+from Products.ATReferenceBrowserWidget.ATReferenceBrowserWidget import \
+    ReferenceBrowserWidget
+
 from Products.minaraad.PostMixin import PostMixin
 from Products.minaraad.Attachmentsmixin import Attachmentsmixin
 from Products.minaraad.config import *
@@ -55,6 +58,30 @@ schema = Schema((
         relationship='advisory_contact'
     ),
 
+    ReferenceField(
+        name='relatedDocuments',
+        vocabulary_display_path_bound="-1",
+        widget=ReferenceBrowserWidget(
+            label='Related Documents',
+            label_msgid='minaraad_label_related_documents',
+            description = "Related and published digibib documents and files",
+            description_msgid = "minaraad_help_related_documents",
+            i18n_domain='minaraad',
+            # ATReferenceBrowser specific additions:
+            startup_directory = 'digibib-1',
+            restrict_browsing_to_startup_directory = 0,
+            only_for_review_states = ('published', ),
+            show_review_state = 1,
+            allow_search = 1,
+            allow_browse = 1,
+            show_indexes = 0,
+            force_close_on_insert = 0,
+        ),
+        index = 'KeywordIndex',
+        allowed_types=('Document', 'File'),
+        multiValued=True,
+        relationship='related_documents'
+    ),
 ),
 )
 
