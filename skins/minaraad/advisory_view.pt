@@ -48,11 +48,12 @@
          <h5 i18n:translate="label_advisory_related_documents">
            Related documents
          </h5>
-         <tal:block repeat="doc docs">
-            <a tal:attributes="href doc/absolute_url"
-               tal:content="doc/title_or_id" />
-         </tal:block>
-         <br />
+         <ul>
+           <li tal:repeat="doc docs">
+             <a tal:attributes="href doc/absolute_url"
+                tal:content="doc/title_or_id" />
+           </li>
+         </ul>
       </tal:related>
       <!-- End related documents -->
    </metal:block>
