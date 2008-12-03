@@ -41,6 +41,20 @@
          <br />
       </tal:block>
       <!-- End contactpersoon -->
+
+      <!-- Start related documents -->
+      <tal:related define="docs python:context.getRelatedDocuments()"
+                   condition="docs">
+         <h5 i18n:translate="label_advisory_related_documents">
+           Related documents
+         </h5>
+         <tal:block repeat="doc docs">
+            <a tal:attributes="href doc/absolute_url"
+               tal:content="doc/title_or_id" />
+         </tal:block>
+         <br />
+      </tal:related>
+      <!-- End related documents -->
    </metal:block>
    
    <metal:block metal:define-macro="folderlisting" />
