@@ -125,7 +125,7 @@ msgstr "U bent nu geregistreerd voor deze hoorzitting."
 #. Default: "You are not currently subscribed to this hearing."
 #: ./skins/minaraad/hearing_view.pt:38
 msgid "hearing_unregistered_label"
-msgstr "Schrijf u in voor deze hoorzitting."
+msgstr "Schrijf u in voor het bijwonen deze hoorzitting."
 
 #. Default: "Send out an e-mail to all subscribers pertaining to this item. If the 'Send As Test' checkbox is checked below, the e-mail is only sent to the people in the 'To' field. Fill in the username which should receive the test email. Once a non-test e-mail has been sent out, no further e-mail's can be sent from this particular tab."
 #: ./browser/email_out.pt:42
