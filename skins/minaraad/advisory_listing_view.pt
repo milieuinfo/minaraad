@@ -21,52 +21,20 @@
       <div class="documentDescription"
            tal:content="context/Description" />
 
-      <table class="advisory_listing">
-        <tbody valign="top">
-          <tr tal:repeat="item_object advisories">
-            <tal:block tal:define="obj python:item_object.getObject()">
-
-              <td tal:define="daterequired python:obj.getDate() != None;
-                              date python:toLocalizedTime(obj.date)[:-5];"
-                  class="listdate">
-
-                <span tal:condition="daterequired"
-                      tal:replace="date" />
-              </td>
-              <td tal:define="current_path python:'/'.join(obj.getPhysicalPath());
-                              attachments python:context.portal_catalog.searchResults(portal_type='FileAttachment',
-                              path=current_path,);">
-
-                <tal:block repeat="attachment attachments">
-                  <div tal:define="desc attachment/Description;
-                                   item_type attachment/portal_type;
-                                   idx repeat/attachment/index"
-                       class="advisory_links">
-                    <a tal:attributes="href attachment/getURL;
-                                       title desc;">
-                      <span tal:condition="python:idx == 0"
-                            tal:replace="item_object/Title" />
-                      <span tal:condition="python:idx &gt; 0"
-                            tal:replace="attachment/Title" />
-                    </a>
-                  </div>
-                </tal:block>
-
-                <div tal:define="contacts python:obj.getContact()"
-                     tal:condition="contacts"
-                     class="advisory_listing_contacts">
-
-                  <tal:block repeat="contact contacts">
-                    <a tal:attributes="href string:mailto:${contact/getEmail}"
-                       tal:content="contact/getEmail"
-                       class="discreet" />
-                  </tal:block>
-                </div>
-              </td>
-            </tal:block>
-          </tr>
-        </tbody>
-      </table>
+      <div tal:repeat="item_object advisories"
+           class="bodytext">
+        <tal:block define="obj python:item_object.getObject()">
+          <div class="bold">
+            <span tal:replace="item_object/Title" />
+            <span tal:replace="python:toLocalizedTime(obj.date)[:-5]"
+                  tal:condition="python:obj.getDate()" />
+            <!-- TODO: study listing uses a different kind of date -->
+          </div>
+          <span tal:replace="item_object/Description" />
+          <a tal:attributes="href item_object/getURL"
+             i18n:translate="linkmoreinfo">More</a>
+        </tal:block>
+      </div>
     </metal:block>
   </body>
 </html>
