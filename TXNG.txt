@@ -1,0 +1,46 @@
+CHANGES to TextIndexNG3 3.1.14 for minaraad
+-------------------------------------------
+
+The minaraad website uses TextIndexNG3 3.1.14 but with a few changes.
+Grab a tarball here:
+http://tgz.zestsoftware.nl/TextIndexNG3-3.1.14-minaraad.tgz
+
+To recreate that one, do the following:
+
+- Download the original tarball:
+  http://surfnet.dl.sourceforge.net/sourceforge/textindexng/TextIndexNG3-3.1.14.tar.gz
+
+- Copy the ``TextIndexNG3`` directory to your ``Products``
+    directory.
+
+- Make sure that the INSTANCE_HOME environment variable has been set
+  (or figure out the correct directories yourself).  I usually look at
+  the bin/runzope script.
+
+- Remove the comments in
+  ``$INSTANCE_HOME/Products/TextIndexNG3/adapters/configure.zcml``.
+  except the one with ExtensibleIndexableObjectWrapper, *that must
+  stay in comment*.
+  XXX THIS IS VERY IMPORTANT, PLEASE DO NOT SKIP THIS STEP. XXX
+
+- Replace ``Extensions/Install.py`` with the file
+  ``http://textindexng.svn.sourceforge.net/viewvc/*checkout*/textindexng/TextIndexNG3/trunk/Extensions/Install.py?revision=1682``
+  This is necessary for the Quickinstaller Uninstall and Reinstall to work
+  on Plone 2.5. (If you miss to do this, the reinstall will not work, which
+  is not such a big problem after all.)
+  At the time of this writing we use TXNG 3.1.13, this requirement may
+  become obsolate at a later release that includes this patch.
+
+  XXXX This is currently broken, so the reinstall will fail, but it
+  does not matter.
+
+- FIX THE PERMISSIONS of the files. TextIndexNG often ships with the
+  wrong permissions. Basically all files must be readable (r) and all
+  directories must be executable (rx) for the process that runs
+  zope. Practically this means:
+
+         % cd Products/TextIndexNG3
+         % chmod -R a+r *
+         % chmod a+x `find -type d`
+
+  or something similar adapted for your situation.

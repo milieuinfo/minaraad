@@ -1,7 +1,7 @@
 Minaraad
 
-    This is the Plone Product for Minaraad. To install this product make sure   
-    all dependencies are installed first and then install it using the quick  
+    This is the Plone Product for Minaraad. To install this product make sure
+    all dependencies are installed first and then install it using the quick
     installer.
 
 For the environment on the server:
@@ -11,8 +11,8 @@ For the environment on the server:
    And read the Installer manual
 
 2) Install Zope 2.9.7 from
-    http://www.zope.org/Products/Zope/2.9.7/Zope-2.9.7-final.tgz
-    And read the Installer manual
+   http://www.zope.org/Products/Zope/2.9.7/Zope-2.9.7-final.tgz
+   And read the Installer manual
 
 3) Install PIL 1.1.5 from
    http://effbot.org/downloads/Imaging-1.1.5.tar.gz
@@ -23,106 +23,70 @@ For the environment on the server:
 
 
 
-Once the environment on the server is created you can add minaraad product and all its dependencies:
+Once the environment on the server is created you can add minaraad
+product and all its dependencies:
 
 1) In the Zope instance directory, add minaraad and all its dependencies
-   to Products/
+   to the Products/ dir.  Dependencies are:
 
-    Dependencies:
+   * Plone 2.5.2-1
+     http://plone.googlecode.com/files/Plone-2.5.2-1.tar.gz
 
-        * Plone 2.5.2-1
-		(http://plone.googlecode.com/files/Plone-2.5.2-1.tar.gz)
-        XXX this dependency has changed recently
+   * FCKeditor 2.2
+     http://ovh.dl.sourceforge.net/sourceforge/fckeditor/FCKeditor.Plone2.2.zip
 
-        * FCKeditor 2.2
-        (http://ovh.dl.sourceforge.net/sourceforge/fckeditor/FCKeditor.Plone2.2.zip)
+   * RichDocument 2.0
+     http://svn.plone.org/svn/collective/RichDocument/tags/2.0
 
-        XXX upgrade occasionally? this is an old version
+   * SimpleAttachment 1.0 svn branch, (revision 39079 - nothing
+     has changed since then and there is no proper tag for that revision)
+     http://svn.plone.org/svn/collective/SimpleAttachment/branches/1.0
 
-        * RichDocument 2.0
-        http://svn.plone.org/svn/collective/RichDocument/tags/2.0
-        
-        * SimpleAttachment 1.0 svn branch, (revision 39079 - nothing
-        has changed since then and there is no proper tag for that revision)
-        (http://svn.plone.org/svn/collective/SimpleAttachment/branches/1.0)
-    
-        * OrderableReferenceField
-        http://svn.plone.org/svn/archetypes/MoreFieldsAndWidgets/OrderableReferenceField/tags/1.1
-    
-        * PloneTranslations:
-        http://svn.plone.org/svn/collective/PloneTranslations/tags/3.0.0
-        This should overwrite the PloneTranslations from Plone.
-    
-        * PlonePAS from this branch:
-        http://svn.plone.org/svn/collective/PlonePAS/branches/ree-2.1-migration-fixed
-        This should overwrite the PlonePAS from Plone.
-        This is version 2.1 but the migration part is fixed by
-        backporting necessary changes from the trunk.
+   * OrderableReferenceField
+     http://svn.plone.org/svn/archetypes/MoreFieldsAndWidgets/OrderableReferenceField/tags/1.1
 
-        * intelligenttext
-        http://svn.plone.org/svn/collective/intelligenttext/tags/1.0.1
+   * PloneTranslations:
+     http://svn.plone.org/svn/collective/PloneTranslations/tags/3.0.0
+     This should overwrite the PloneTranslations from Plone.
 
-        * TextIndexNG3 from
-        (http://surfnet.dl.sourceforge.net/sourceforge/textindexng/TextIndexNG3-3.1.14.tar.gz)
-    
-        - Copy (!) the ``TextIndexNG3`` directory to your ``Products``
-            directory.
-    
-        - In ``$INSTANCE_HOME/Products/TextIndexNG3/extension_modules`` do ``python2.4
-            setup.py install --home=$INSTANCE_HOME``.
-    
-        - Remove the comments in
-            ``$INSTANCE_HOME/Products/TextIndexNG3/adapters/configure.zcml``.
-            except the one with ExtensibleIndexableObjectWrapper, *that must stay in comment*.
-            XXX THIS IS VERY IMPORTANT, PLEASE DO NOT SKIP THIS STEP. XXX
-    
-        - Make sure that pdftotext is available.  Installing xpdf takes
-            care of that.  On Debian/Ubuntu try ``apt-get install xpdf``.
-            An install of just the poppler-utils or xpdf-utils package
-            works as well.
+   * PlonePAS from this branch:
+     http://svn.plone.org/svn/collective/PlonePAS/branches/ree-2.1-migration-fixed
+     This should overwrite the PlonePAS from Plone.
+     This is version 2.1 but the migration part is fixed by
+     backporting necessary changes from the trunk.
 
-        - Make sure that the wvWare utility is available.
-            On Debian/Ubuntu try ``apt-get install wv``.
-            XXX I am not sure this is needed, but I think this takes care
-            XXX of indexing Word documents.
+   * intelligenttext
+     http://svn.plone.org/svn/collective/intelligenttext/tags/1.0.1
 
-        - Replace ``Extensions/Install.py`` with the file
-          ``http://textindexng.svn.sourceforge.net/viewvc/*checkout*/textindexng/TextIndexNG3/trunk/Extensions/Install.py?revision=1682``
-          This is necessary for the Quickinstaller Uninstall and Reinstall to work
-          on Plone 2.5. (If you miss to do this, the reinstall will not work, which
-          is not such a big problem after all.)
-          At the time of this writing we use TXNG 3.1.13, this requirement may
-          become obsolate at a later release that includes this patch.
+   * TextIndexNG3 3.1.14 but with a few changes:
+     http://tgz.zestsoftware.nl/TextIndexNG3-3.1.14-minaraad.tgz
 
-          XXXX This is currently broken, so the reinstall will fail, but it does not matter.
+     For more info see TXNG.txt in the same directory as this INSTALL.txt/
+     Install the extension modules as well (see system dependencies below).
 
-        - FIX THE PERMISSIONS of the files. TextIndexNG often ships with the wrong permissions. Basically
-          all files must be readable (r) and all directories must be executable (rx) for the
-          process that runs zope. Practically this means:
-
-                 % cd Products/TextIndexNG3
-                 % chmod -R a+r *
-                 % chmod a+x `find -type d`
-
-          or something similar adapted for your situation.
-
-        * For running the test, make sure that PloneTestCase is installed.
-
-        * Install 'lynx' (http://lynx.isc.org/)
+   * For running the tests, make sure that PloneTestCase is installed.
 
 
-2) - Copy i18n directory from product minaraad to the Zope instance directory.
-   - remove all the .po and .pot files from YourZopeInstance/i18n EXCEPT plone-minaraad-nl.po
+2) Make the minaraad specific plone domain translations available.
+   Specifically date_format_long/short and the Manager or Reviewer
+   role.  Just do this:
 
-3) Translate the manager role (beheerder) to site admin and reviewer role (Redacteur) to  manager:
-   - Go to YourZopeInstance/Products/PloneTranslations/i18n directory
-   - open plone-nl.po
-   - Go to:
-       msgid "Manager"
-       msgstr "Beheerder"
-   - And change "Beheerder" to "Site admin"
-   - Go to:
-        msgid "Reviewer"
-        msgstr "Redacteur"
-   - And change "Redacteur" to "Manager"
+   * Copy the i18n/plone-minaraad-nl.po file from the minaraad product
+     to the Zope instance directory.  (Or add a symbolic link.)
 
+
+3) Install system dependencies:
+
+   * Install the extension modules from TextIndexNG3.  In
+     ``$INSTANCE_HOME/Products/TextIndexNG3/extension_modules`` do:
+     ``python2.4 setup.py install --home=$INSTANCE_HOME``.
+
+   * Make sure that pdftotext is available to be able to index
+     pdf files.  Installing xpdf takes care of that.  On
+     Debian/Ubuntu try ``apt-get install xpdf``.  An install of
+     just the poppler-utils or xpdf-utils package works as well.
+
+   * Make sure that the wvWare utility is available to be able to
+     word files.  On Debian/Ubuntu try ``apt-get install wv``.
+
+   * Install 'lynx' (http://lynx.isc.org/)
