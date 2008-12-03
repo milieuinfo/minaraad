@@ -3,38 +3,38 @@
       metal:use-macro="context/main_template/macros/master"
       i18n:domain="minaraad">
 
-   <body>
-   <metal:block fill-slot="main" 
-         tal:define="current_path python:'/'.join(context.getPhysicalPath());
-                  studies python:context.portal_catalog.searchResults(portal_type='Study',
-                                                                        path=current_path,
-                                                                        sort_on='getDate',
-                                                                        sort_order='reverse');">
+  <body>
+    <metal:block fill-slot="main"
+                 tal:define="current_path python:'/'.join(context.getPhysicalPath());
+                             studies python:context.portal_catalog.searchResults(portal_type='Study',
+                             path=current_path,
+                             sort_on='getDate',
+                             sort_order='reverse');">
       <metal:block metal:define-macro="folderlisting" />
 
       <div metal:use-macro="here/document_actions/macros/document_actions">
-         Document actions (print, sendto etc)
+        Document actions (print, sendto etc)
       </div>
       <h1 tal:content="context/Title"
-         class="documentFirstHeading">Title</h1>
+          class="documentFirstHeading">Title</h1>
 
-      <div class="documentDescription" 
-          tal:condition="context/Description"
-          tal:content="context/Description" />
+      <div class="documentDescription"
+           tal:condition="context/Description"
+           tal:content="context/Description" />
 
       <div tal:repeat="item_object studies"
-         class="bodytext">
-         <tal:block define="obj python:item_object.getObject()">
-            <div class="bold">
-               <span tal:replace="item_object/Title" />
-               <span tal:replace="python:toLocalizedTime(item_object.getDate)[3:]"
+           class="bodytext">
+        <tal:block define="obj python:item_object.getObject()">
+          <div class="bold">
+            <span tal:replace="item_object/Title" />
+            <span tal:replace="python:toLocalizedTime(item_object.getDate)[3:]"
                   tal:condition="python:obj.getDate()" />
-            </div>
-            <span tal:replace="item_object/Description" />
-            <a tal:attributes="href item_object/getURL"
-                i18n:translate="linkmoreinfo">More</a>
-         </tal:block>
+          </div>
+          <span tal:replace="item_object/Description" />
+          <a tal:attributes="href item_object/getURL"
+             i18n:translate="linkmoreinfo">More</a>
+        </tal:block>
       </div>
-   </metal:block>
-   </body>
+    </metal:block>
+  </body>
 </html>
