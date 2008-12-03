@@ -4,6 +4,9 @@ History of Products.minaraad
 2.2.0 (unreleased)
 ------------------
 
+- Changed goal field of Hearing to a richtext widget with accompagnying
+  template changes.  [reinout]
+
 - Added relatedDocuments field to Advisories, where you can select
   published Pages and Files from the 'digibib-1/dossiers-adviezen'
   path.  [maurits]
