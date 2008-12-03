@@ -68,7 +68,7 @@ schema = Schema((
             description_msgid = "minaraad_help_related_documents",
             i18n_domain='minaraad',
             # ATReferenceBrowser specific additions:
-            startup_directory = 'digibib-1',
+            startup_directory = 'digibib-1/dossiers-adviezen',
             restrict_browsing_to_startup_directory = 0,
             only_for_review_states = ('published', ),
             show_review_state = 1,
