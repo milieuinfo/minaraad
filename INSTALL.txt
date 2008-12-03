@@ -6,12 +6,12 @@ Minaraad
 
 For the environment on the server:
 
-1) Install Python 2.4.3 from
+1) Install Python 2.4.3 (or later) from
    http://www.python.org/ftp/python/2.4.3/Python-2.4.3.tgz
    And read the Installer manual
 
-2) Install Zope 2.9.5 from
-    http://www.zope.org/Products/Zope/2.9.2/Zope-2.9.5.tgz
+2) Install Zope 2.9.7 from
+    http://www.zope.org/Products/Zope/2.9.7/Zope-2.9.7-final.tgz
     And read the Installer manual
 
 3) Install PIL 1.1.5 from
@@ -39,29 +39,28 @@ Once the environment on the server is created you can add minaraad product and a
 
         XXX upgrade occasionally? this is an old version
 
-        * RichDocument svn trunk
-        (https://svn.plone.org/svn/collective/RichDocument/branches/2.0)
-        XXX this dependency has changed its branch recently
+        * RichDocument 2.0
+        http://svn.plone.org/svn/collective/RichDocument/tags/2.0
         
-        * SimpleAttachment svn trunk
-        (https://svn.plone.org/svn/collective/SimpleAttachment/branches/1.0)
-        XXX this is a new dependency
+        * SimpleAttachment 1.0 svn branch, (revision 39079 - nothing
+        has changed since then and there is no proper tag for that revision)
+        (http://svn.plone.org/svn/collective/SimpleAttachment/branches/1.0)
     
         * OrderableReferenceField
-        (https://svn.plone.org/svn/archetypes/MoreFieldsAndWidgets/OrderableReferenceField/trunk)
+        http://svn.plone.org/svn/archetypes/MoreFieldsAndWidgets/OrderableReferenceField/tags/1.1
     
-        * PloneTranslations from trunk:
-        (https://svn.plone.org/svn/collective/PloneTranslations/trunk)
+        * PloneTranslations:
+        http://svn.plone.org/svn/collective/PloneTranslations/tags/3.0.0
         This should overwrite the PloneTranslations from Plone.
     
         * PlonePAS from this branch:
-        https://svn.plone.org/svn/collective/PlonePAS/branches/ree-2.1-migration-fixed
+        http://svn.plone.org/svn/collective/PlonePAS/branches/ree-2.1-migration-fixed
         This should overwrite the PlonePAS from Plone.
         This is version 2.1 but the migration part is fixed by
         backporting necessary changes from the trunk.
 
-        * intellitext from this branch:
-        https://svn.plone.org/svn/collective/intelligenttext/trunk
+        * intelligenttext
+        http://svn.plone.org/svn/collective/intelligenttext/tags/1.0.1
 
         * TextIndexNG3 from
         (http://surfnet.dl.sourceforge.net/sourceforge/textindexng/TextIndexNG3-3.1.14.tar.gz)
