@@ -13,7 +13,7 @@
                                   ['Folder']];"
          class="menumargin_top">
 
-        <div class="navmenu_bordertop_bottom">&nbsp;</div>
+        <div class="navmenu_bordertop">&nbsp;</div>
         <div metal:define-macro="content_actions"
             i18n:domain="plone"
             class="portal-tabs">
@@ -33,7 +33,7 @@
                 </tal:items>
             </ul>
         </div>
-         <div class="navmenu_bordertop_bottom">&nbsp;</div>
+        <div class="navmenu_borderbottom">&nbsp;</div>
     </div>
 
     </body>

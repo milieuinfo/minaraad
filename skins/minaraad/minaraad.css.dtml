@@ -492,7 +492,13 @@ table.pressrelease {
     margin-top: 60px;
 }
 
-.navmenu_bordertop_bottom {
+.navmenu_bordertop {
+    font-size: 1px;
+    border-bottom: 1px solid #8FBA37;
+    width: 154px;
+}
+
+.navmenu_borderbottom {
     font-size: 1px;
     border-top: 1px solid #8FBA37;
     width: 154px;
@@ -507,18 +513,24 @@ div.portal-tabs ul {
     border: 1px solid #E0FAAC;
     font-size: 11px;
     line-height: 13px;
+    z-index: -1;
 }
 
 div.portal-tabs ul li {
     position: relative;
     margin-bottom: 0;
+    z-index: 0;
+    _border-bottom: 1px solid #C8ED7E;
 }
+
+
 
 div.portal-tabs li ul {
     display: none;
     position: absolute;
-    left: 120px; 
+    left: 140px; 
     top: 0;
+    z-index: 3;
 }
 
 div.portal-tabs a, #portlet-events-mina dd a {
@@ -531,9 +543,10 @@ div.portal-tabs a, #portlet-events-mina dd a {
 
 #portal-tabs-nav li:hover, 
 #portal-tabs-nav li.over {
-    background: #E7FBBF url(menu_arrow.gif) no-repeat right;
+    background: #E7FBBF url(menu_arrow.gif) no-repeat 122px 7px;
     cursor: pointer;
     color: #A13826;
+    z-index: 1;
 }
 
 div.portal-tabs a:hover, #portal-tabs-nav a.selected,
@@ -546,7 +559,7 @@ div.portal-tabs a:hover, #portal-tabs-nav a.selected,
 }
 
 #portal-tabs-nav li.selected {
-    background: url(menu_arrow.gif) no-repeat right;
+    background: url(menu_arrow.gif) no-repeat 122px 7px #E7FBBF;
 }
 
 #portal-tabs-nav li:hover ul, 
@@ -554,7 +567,7 @@ div.portal-tabs a:hover, #portal-tabs-nav a.selected,
     display: block;
     background-color: #E7FBBF;
     border: 1px solid #A4CF4D;
-    border-bottom: 0;
+    border-bottom: 0 !important;
     padding: 0; 
     margin: 0;
     width: 170px;
@@ -567,11 +580,12 @@ div.portal-tabs a:hover, #portal-tabs-nav a.selected,
 
 li.portal-tabs-subitem-listitem {
     background: none !important;
-    border-bottom: 1px solid #A4CF4D;
-    border-top: 1px solid #FFFFFF;
+    border-bottom: 1px solid #A4CF4D !important;
+    border-top: 1px solid #FFFFFF !important;
     position: static !important;
-    padding: 4px 2px 4px 10px;
+    padding: 1px 2px 1px 10px;
     line-height: 1.3em;
+    z-index: 3 !important;
 }
 
 /* --- End Dropdownmenu --- */
