@@ -546,13 +546,18 @@ div.portal-tabs a, #portlet-events-mina dd a {
 #portal-tabs-nav li.over {
     background: #E7FBBF url(menu_arrow.gif) no-repeat 122px 7px;
     cursor: pointer;
-    color: #A13826;
+    color: #A13826 !important;
     z-index: 1;
 }
 
-/* IE6, IE7 hover fix */
+#portal-tabs-nav li:hover a,
 #portal-tabs-nav li.over a {
     color: #A13826;
+}
+
+#portal-tabs-nav li:hover a:hover,
+#portal-tabs-nav li.over a:hover {
+    color: #A13826 !important;
 }
 
 div.portal-tabs a:hover, #portal-tabs-nav a.selected,
