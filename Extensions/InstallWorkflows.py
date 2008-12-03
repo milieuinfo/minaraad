@@ -31,8 +31,6 @@ __docformat__ = 'plaintext'
 from Products.CMFCore.utils import getToolByName
 from Products.ExternalMethod.ExternalMethod import ExternalMethod
 
-##code-section module-header #fill in your manual code here
-##/code-section module-header
 
 def installWorkflows(self, package, out):
     """Install the custom workflows for this product."""
@@ -54,9 +52,6 @@ def installWorkflows(self, package, out):
     workflowTool._setObject('minaraad_folder_workflow', workflow)
     workflowTool.setChainForPortalTypes(['WorkflowStub'], workflow.getId())
 
-    ##code-section after-workflow-install #fill in your manual code here
-    ##/code-section after-workflow-install
-
     return workflowTool
 
 def uninstallWorkflows(self, package, out):
@@ -65,8 +60,5 @@ def uninstallWorkflows(self, package, out):
     This code doesn't really do anything, but you can place custom
     code here in the protected section.
     """
-
-    ##code-section workflow-uninstall #fill in your manual code here
-    ##/code-section workflow-uninstall
 
     pass
