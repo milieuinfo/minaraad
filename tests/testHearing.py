@@ -61,7 +61,7 @@ from Products.minaraad.attendees import AttendeeManager
 TITLE = "title"
 SUBHEADER = "ondertitel"
 DESCRIPTION = "jaja, een ondertitel"
-GOAL = "Doel"
+GOAL = "<p>Doel</p>"
 LOCATION = "Hoogvliet"
 THEME = 0
 MOT = bool(1)
@@ -87,7 +87,7 @@ class testHearing(MainTestCase):
 
         self.portal.hoorzittingen.invokeFactory('Hearing','myhoorzitting')
         self.hoorzitting = self.portal.hoorzittingen.myhoorzitting
-        
+
         testrequest = TestRequest()
         self.view = AttendeesManagerView(self.hoorzitting, testrequest)
 
@@ -148,7 +148,7 @@ class testHearing(MainTestCase):
             )
 
         member.setProperties(**props)
-        
+
         am = AttendeeManager(hearing)
         request = self.portal.REQUEST
 
@@ -208,7 +208,7 @@ class testHearing(MainTestCase):
 
         themes = self.hoorzitting.getThemesList()
         self.failUnless(len(themes)>0)
-        
+
     def test_AttendeeRegistration(self):
         """ We want to know if members are correctly added and removed as attendees.
         """
@@ -227,8 +227,8 @@ class testHearing(MainTestCase):
 
         self.assertEqual(['member'], self.view.manager.attendees())
 
-        
-        
+
+
     def test_Fields(self):
         """ Test if the Hearing has all the required fields
         """
@@ -284,5 +284,3 @@ def test_suite():
 
 if __name__ == '__main__':
     framework()
-
-
