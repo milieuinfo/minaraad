@@ -34,11 +34,8 @@ from Products.DCWorkflow.DCWorkflow import DCWorkflowDefinition
 from Products.ExternalMethod.ExternalMethod import ExternalMethod
 from Products.minaraad.config import *
 
-##code-section create-workflow-module-header #fill in your manual code here
-##/code-section create-workflow-module-header
-
-
 productname = 'minaraad'
+
 
 def setupminaraad_workflow(self, workflow):
     """Define the minaraad_workflow workflow.
@@ -52,10 +49,6 @@ def setupminaraad_workflow(self, workflow):
     portal.__ac_roles__ = tuple(data)
 
     workflow.setProperties(title='minaraad_workflow')
-
-    ##code-section create-workflow-setup-method-header #fill in your manual code here
-    ##/code-section create-workflow-setup-method-header
-
 
     for s in ['pending_private', 'published', 'pending_revisioning', 'revisioning', 'restricted', 'private']:
         workflow.states.addState(s)
@@ -183,10 +176,10 @@ def setupminaraad_workflow(self, workflow):
     transitionDef.setProperties(title="""restricted publish""",
                                 new_state_id="""restricted""",
                                 trigger_type=1,
-                                script_name="""""",
-                                after_script_name="""""",
+                                script_name="",
+                                after_script_name="",
                                 actbox_name="""restricted publish""",
-                                actbox_url="""""",
+                                actbox_url="",
                                 actbox_category="""workflow""",
                                 props={'guard_roles': 'Owner;Reviewer;Author;Manager'},
                                 )
@@ -195,10 +188,10 @@ def setupminaraad_workflow(self, workflow):
     transitionDef.setProperties(title="""submit""",
                                 new_state_id="""pending_private""",
                                 trigger_type=1,
-                                script_name="""""",
-                                after_script_name="""""",
+                                script_name="",
+                                after_script_name="",
                                 actbox_name="""submit""",
-                                actbox_url="""""",
+                                actbox_url="",
                                 actbox_category="""workflow""",
                                 props={'guard_roles': 'Owner;Author;Manager'},
                                 )
@@ -207,10 +200,10 @@ def setupminaraad_workflow(self, workflow):
     transitionDef.setProperties(title="""publish""",
                                 new_state_id="""published""",
                                 trigger_type=1,
-                                script_name="""""",
-                                after_script_name="""""",
+                                script_name="",
+                                after_script_name="",
                                 actbox_name="""publish""",
-                                actbox_url="""""",
+                                actbox_url="",
                                 actbox_category="""workflow""",
                                 props={'guard_permissions': 'Review portal content'},
                                 )
@@ -219,10 +212,10 @@ def setupminaraad_workflow(self, workflow):
     transitionDef.setProperties(title="""Reject""",
                                 new_state_id="""revisioning""",
                                 trigger_type=1,
-                                script_name="""""",
-                                after_script_name="""""",
+                                script_name="",
+                                after_script_name="",
                                 actbox_name="""Reject""",
-                                actbox_url="""""",
+                                actbox_url="",
                                 actbox_category="""workflow""",
                                 props={'guard_permissions': 'Review portal content'},
                                 )
@@ -231,10 +224,10 @@ def setupminaraad_workflow(self, workflow):
     transitionDef.setProperties(title="""reject""",
                                 new_state_id="""private""",
                                 trigger_type=1,
-                                script_name="""""",
-                                after_script_name="""""",
+                                script_name="",
+                                after_script_name="",
                                 actbox_name="""reject""",
-                                actbox_url="""""",
+                                actbox_url="",
                                 actbox_category="""workflow""",
                                 props={'guard_permissions': 'Review portal content'},
                                 )
@@ -243,10 +236,10 @@ def setupminaraad_workflow(self, workflow):
     transitionDef.setProperties(title="""retract""",
                                 new_state_id="""private""",
                                 trigger_type=1,
-                                script_name="""""",
-                                after_script_name="""""",
+                                script_name="",
+                                after_script_name="",
                                 actbox_name="""retract""",
-                                actbox_url="""""",
+                                actbox_url="",
                                 actbox_category="""workflow""",
                                 props={'guard_roles': 'Owner;Author;Manager'},
                                 )
@@ -255,10 +248,10 @@ def setupminaraad_workflow(self, workflow):
     transitionDef.setProperties(title="""Retract""",
                                 new_state_id="""revisioning""",
                                 trigger_type=1,
-                                script_name="""""",
-                                after_script_name="""""",
+                                script_name="",
+                                after_script_name="",
                                 actbox_name="""Retract""",
-                                actbox_url="""""",
+                                actbox_url="",
                                 actbox_category="""workflow""",
                                 props={'guard_roles': 'Manager;Owner;Author'},
                                 )
@@ -267,10 +260,10 @@ def setupminaraad_workflow(self, workflow):
     transitionDef.setProperties(title="""Submit""",
                                 new_state_id="""pending_revisioning""",
                                 trigger_type=1,
-                                script_name="""""",
-                                after_script_name="""""",
+                                script_name="",
+                                after_script_name="",
                                 actbox_name="""Submit""",
-                                actbox_url="""""",
+                                actbox_url="",
                                 actbox_category="""workflow""",
                                 props={'guard_roles': 'Manager;Owner;Author'},
                                 )
@@ -279,10 +272,10 @@ def setupminaraad_workflow(self, workflow):
     transitionDef.setProperties(title="""revise""",
                                 new_state_id="""revisioning""",
                                 trigger_type=1,
-                                script_name="""""",
-                                after_script_name="""""",
+                                script_name="",
+                                after_script_name="",
                                 actbox_name="""revise""",
-                                actbox_url="""""",
+                                actbox_url="",
                                 actbox_category="""workflow""",
                                 props={'guard_roles': 'Owner;Author;Reviewer;Manager'},
                                 )
@@ -293,7 +286,7 @@ def setupminaraad_workflow(self, workflow):
     ## Variables initialization
     variableDef = workflow.variables['review_history']
     variableDef.setProperties(description="""Provides access to workflow history""",
-                              default_value="""""",
+                              default_value="",
                               default_expr="""state_change/getHistory""",
                               for_catalog=0,
                               for_status=0,
@@ -302,7 +295,7 @@ def setupminaraad_workflow(self, workflow):
 
     variableDef = workflow.variables['comments']
     variableDef.setProperties(description="""Comments about the last transition""",
-                              default_value="""""",
+                              default_value="",
                               default_expr="""python:state_change.kwargs.get('comment', '')""",
                               for_catalog=0,
                               for_status=1,
@@ -311,7 +304,7 @@ def setupminaraad_workflow(self, workflow):
 
     variableDef = workflow.variables['time']
     variableDef.setProperties(description="""Time of the last transition""",
-                              default_value="""""",
+                              default_value="",
                               default_expr="""state_change/getDateTime""",
                               for_catalog=0,
                               for_status=1,
@@ -320,7 +313,7 @@ def setupminaraad_workflow(self, workflow):
 
     variableDef = workflow.variables['actor']
     variableDef.setProperties(description="""The ID of the user who performed the last transition""",
-                              default_value="""""",
+                              default_value="",
                               default_expr="""user/getId""",
                               for_catalog=0,
                               for_status=1,
@@ -329,7 +322,7 @@ def setupminaraad_workflow(self, workflow):
 
     variableDef = workflow.variables['action']
     variableDef.setProperties(description="""The last transition""",
-                              default_value="""""",
+                              default_value="",
                               default_expr="""transition/getId|nothing""",
                               for_catalog=0,
                               for_status=1,
@@ -349,13 +342,6 @@ def setupminaraad_workflow(self, workflow):
                                      'guard_roles': '',
                                      'var_match_review_state': ';'.join(worklistStates)})
 
-    # WARNING: below protected section is deprecated.
-    # Add a tagged value 'worklist' with the worklist name to your state(s) instead.
-
-    ##code-section create-workflow-setup-method-footer #fill in your manual code here
-    ##/code-section create-workflow-setup-method-footer
-
-
 
 def createminaraad_workflow(self, id):
     """Create the workflow for minaraad.
@@ -368,7 +354,3 @@ def createminaraad_workflow(self, id):
 addWorkflowFactory(createminaraad_workflow,
                    id='minaraad_workflow',
                    title='minaraad_workflow')
-
-##code-section create-workflow-module-footer #fill in your manual code here
-##/code-section create-workflow-module-footer
-
