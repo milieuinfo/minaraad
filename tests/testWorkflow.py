@@ -31,31 +31,17 @@ import os, sys
 if __name__ == '__main__':
     execfile(os.path.join(sys.path[0], 'framework.py'))
 
-##code-section module-header #fill in your manual code here
-##/code-section module-header
-
-#
-# Test-cases for class(es) 
-#
-
 from Testing import ZopeTestCase
 from Products.minaraad.config import *
 from Products.minaraad.tests.MainTestCase import MainTestCase
 
-# Import the tested classes
-
-##code-section module-beforeclass #fill in your manual code here
 from AccessControl import Unauthorized
 from Products.CMFCore.utils import getToolByName
 from Products.CMFCore import permissions
-##/code-section module-beforeclass
 
 
 class testWorkflow(MainTestCase):
     """Test-cases for class(es) ."""
-
-    ##code-section class-header_testWorkflow #fill in your manual code here
-    ##/code-section class-header_testWorkflow
 
     def afterSetUp(self):
         """ Make users for the tests and make a directory to work in
@@ -67,20 +53,20 @@ class testWorkflow(MainTestCase):
             ('cmember', 'Council Member'),
             ('reviewer', 'Member'),
             ('manager', 'Manager'),
-        )
+            )
         membership = self.portal.portal_membership
         for memberId, role in MEMBERS:
             self.assureRoles([role])
             membership.addMember(memberId, 'secret', [role], [])
 
         self.workflow = self.portal.portal_workflow
-        
+
         self.login('manager')
         self.contentContainer = self.portal.nieuwsbrieven.newsl_2006
         self.contentContainer.manage_addLocalRoles('author',['Author'])
         self.contentContainer.manage_addLocalRoles('reviewer',['Reviewer'])
         self.contentContainer.invokeFactory('NewsLetter', 'someobj')
-        
+
         self.contentContainer.invokeFactory('NewsLetter', 'private')
         self.contentContainer.invokeFactory('NewsLetter', 'restricted')
         wfTool = getToolByName(self.portal, 'portal_workflow')
@@ -99,8 +85,6 @@ class testWorkflow(MainTestCase):
 
         self.logout()
 
-    # Manually created methods
-
     def test_pending_private_state(self):
         """ Test if the pending_private state has the correct rights
         """
@@ -109,7 +93,7 @@ class testWorkflow(MainTestCase):
         wfTool.doActionFor(self.contentContainer.someobj,'submit')
         self.logout()
 
-        self.assertEqual(self._content_state(),'pending_private') 
+        self.assertEqual(self._content_state(),'pending_private')
         self.assertHasTransitions('member')
         self.assertHasTransitions('author', ['retract'])
         self.assertHasTransitions('cmember')
@@ -118,7 +102,7 @@ class testWorkflow(MainTestCase):
 
         self.login('manager')
         wfTool.doActionFor(self.contentContainer.someobj,'retract')
-        self.logout() 
+        self.logout()
 
     def _folder_state(self):
         """Return the current state of the nieuwsbrieven folder object.
@@ -136,7 +120,7 @@ class testWorkflow(MainTestCase):
         param can be None, a string (for one transition) or a list of
         strings (multiple transitions).
         """
-        
+
         if possible is None:
             possible = []
         elif isinstance(possible, basestring):
@@ -144,11 +128,11 @@ class testWorkflow(MainTestCase):
         else:
             possible = list(possible)
             possible.sort()
-        
+
         wfTool = getToolByName(self.portal, 'portal_workflow')
         container = self.contentContainer
-       
-        self.login(memberId) 
+
+        self.login(memberId)
         transitions = wfTool.getTransitionsFor(container.someobj)
         transitions = [x['id'] for x in transitions]
         transitions.sort()
@@ -262,7 +246,7 @@ class testWorkflow(MainTestCase):
         self.assertFolderTransitions('cmember')
         self.assertFolderTransitions('reviewer',['publish','restricted_publish'])
         self.assertFolderTransitions('manager',['publish','restricted_publish','submit'])
-        
+
     def assertFolderTransitions(self, memberId, possible=None):
         """Test the available transitions for a member. The 'possible'
            param can be None, a string (for one transition) or a list
@@ -276,11 +260,11 @@ class testWorkflow(MainTestCase):
         else:
             possible = list(possible)
             possible.sort()
-        
+
         wfTool = getToolByName(self.portal, 'portal_workflow')
         container = self.contentContainer
-       
-        self.login(memberId) 
+
+        self.login(memberId)
         transitions = wfTool.getTransitionsFor(container)
         transitions = [x['id'] for x in transitions]
         transitions.sort()
@@ -327,21 +311,21 @@ class testWorkflow(MainTestCase):
         wfTool.doActionFor(self.contentContainer.someobj,'restricted_publish')
         self.logout()
 
-        self.assertEqual(self._content_state(),'restricted') 
+        self.assertEqual(self._content_state(),'restricted')
         self.assertHasTransitions('member')
         self.assertHasTransitions('author', ['retract'])
         self.assertHasTransitions('cmember')
-        self.assertHasTransitions('reviewer')
-        self.assertHasTransitions('manager',['retract'])
+        self.assertHasTransitions('reviewer', 'publish')
+        self.assertHasTransitions('manager', ['retract', 'publish'])
 
         self.login('manager')
         wfTool.doActionFor(self.contentContainer.someobj,'retract')
         self.logout()
-   
+
     def assertCannotCreateContent(self, memberId, type_, err=Unauthorized):
         container = self.contentContainer
         self.login(memberId)
-        self.failUnlessRaises(err, container.invokeFactory, 
+        self.failUnlessRaises(err, container.invokeFactory,
                               type_, 'someotherobj')
         self.logout()
 
@@ -368,8 +352,10 @@ class testWorkflow(MainTestCase):
         self.assertFolderTransitions('member')
         self.assertFolderTransitions('author')
         self.assertFolderTransitions('cmember')
-        self.assertFolderTransitions('reviewer',['retract'])
-        self.assertFolderTransitions('manager',['retract'])
+        self.assertFolderTransitions('reviewer',
+                                     ['retract', 'restricted_publish'])
+        self.assertFolderTransitions('manager',
+                                     ['retract', 'restricted_publish'])
 
         self.login('manager')
         wfTool.doActionFor(self.contentContainer,'retract')
@@ -383,17 +369,19 @@ class testWorkflow(MainTestCase):
         wfTool.doActionFor(self.contentContainer.someobj,'publish')
         self.logout()
 
-        self.assertEqual(self._content_state(),'published') 
+        self.assertEqual(self._content_state(),'published')
         self.assertHasTransitions('member')
-        self.assertHasTransitions('author', ['revise'])
+        self.assertHasTransitions('author', ['revise', 'restricted_publish'])
         self.assertHasTransitions('cmember')
-        self.assertHasTransitions('reviewer', ['reject','revise'])
-        self.assertHasTransitions('manager',['reject','revise'])
+        self.assertHasTransitions('reviewer',
+                                  ['reject','revise', 'restricted_publish'])
+        self.assertHasTransitions('manager',
+                                  ['reject','revise', 'restricted_publish'])
 
         self.login('manager')
         wfTool.doActionFor(self.contentContainer.someobj,'reject')
         self.logout()
- 
+
     def test_reviewer_permissions(self):
         """ Test if the reviewer has the correct permissions on CTs
         """
@@ -438,8 +426,8 @@ class testWorkflow(MainTestCase):
         self.assertFolderTransitions('member')
         self.assertFolderTransitions('author')
         self.assertFolderTransitions('cmember')
-        self.assertFolderTransitions('reviewer',['retract'])
-        self.assertFolderTransitions('manager',['retract'])
+        self.assertFolderTransitions('reviewer', ['publish', 'retract'])
+        self.assertFolderTransitions('manager', ['publish', 'retract'])
 
         self.login('manager')
         wfTool.doActionFor(self.contentContainer,'retract')
@@ -454,7 +442,7 @@ class testWorkflow(MainTestCase):
         wfTool.doActionFor(self.contentContainer.someobj,'revise')
         self.logout()
 
-        self.assertEqual(self._content_state(),'revisioning') 
+        self.assertEqual(self._content_state(),'revisioning')
         self.assertHasTransitions('member')
         self.assertHasTransitions('author',['submit2'])
         self.assertHasTransitions('cmember')
@@ -508,7 +496,7 @@ class testWorkflow(MainTestCase):
         wfTool.doActionFor(self.contentContainer.someobj,'submit2')
         self.logout()
 
-        self.assertEqual(self._content_state(),'pending_revisioning') 
+        self.assertEqual(self._content_state(),'pending_revisioning')
         self.assertHasTransitions('member')
         self.assertHasTransitions('author', ['retract2'])
         self.assertHasTransitions('cmember')
@@ -540,5 +528,3 @@ def test_suite():
 
 if __name__ == '__main__':
     framework()
-
-

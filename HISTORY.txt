@@ -4,6 +4,9 @@ History of Products.minaraad
 2.1.8 (unreleased)
 ------------------
 
+- Allow workflow transition between the restricted and published state
+  and the other way around.  [maurits]
+
 - Added 'Mijn abonnementen' action to personal portlet.  [maurits+simon]
 
 - Made undo action invisible in portal_undo.  [maurits+simon]
