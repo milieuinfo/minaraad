@@ -348,3 +348,13 @@ msgstr ""
 #: Organisation.py
 msgid "minaraad_label_zipcode"
 msgstr ""
+
+#. Default: "Related Documents"
+#: content/Advisory.py
+msgid "minaraad_label_related_documents"
+msgstr ""
+
+#. Default: "Related and published digibib documents and files"
+#: content/Advisory.py
+msgid "minaraad_help_related_documents"
+msgstr ""

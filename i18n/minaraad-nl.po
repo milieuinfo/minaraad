@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minaraad 0.1\n"
-"POT-Creation-Date: 2008-12-02 17:44+0000\n"
-"PO-Revision-Date: 2008-12-02 18:53+0100\n"
+"POT-Creation-Date: 2008-12-03 13:06+0000\n"
+"PO-Revision-Date: 2008-12-03 14:07+0100\n"
 "Last-Translator: Maurits van Rees <m.van.rees@zestsoftware.nl>\n"
 "Language-Team: Nederlands <info@zestsoftware.nl>\n"
 "MIME-Version: 1.0\n"
@@ -166,6 +166,11 @@ msgstr "uur"
 #: ./browser/minaraad_config.pt:121
 msgid "label_add"
 msgstr "Toevoegen"
+
+#. Default: "Related documents"
+#: ./skins/minaraad/advisory_view.pt:48
+msgid "label_advisory_related_documents"
+msgstr "Gerelateerde documenten"
 
 #. Default: "Agenda items"
 #: ./skins/minaraad/hearing_view.pt:123
@@ -579,6 +584,11 @@ msgstr "Telefoon"
 msgid "minaraad_help_policy"
 msgstr "Beleid"
 
+#. Default: "Related and published digibib documents and files"
+#: content/Advisory.py
+msgid "minaraad_help_related_documents"
+msgstr "Gerelateerde en gepubliceerde Digibib pagina's en bestanden"
+
 #. Default: "speaker"
 #: content/Presentation.py
 msgid "minaraad_help_speaker"
@@ -770,6 +780,11 @@ msgstr "Platte tekst"
 #: content/Advisory.py
 msgid "minaraad_label_policy"
 msgstr "Beleid"
+
+#. Default: "Related Documents"
+#: content/Advisory.py
+msgid "minaraad_label_related_documents"
+msgstr "Gerelateerde documenten"
 
 #. Default: "Speaker"
 #: content/Presentation.py

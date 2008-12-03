@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minaraad\n"
-"POT-Creation-Date: 2008-12-02 17:44+0000\n"
+"POT-Creation-Date: 2008-12-03 13:06+0000\n"
 "PO-Revision-Date: Mon Aug  8 12:16:21 2005\n"
 "Last-Translator: Rocky Burt <r.burt@zestsoftware.nl>\n"
 "Language-Team: Rocky Burt <r.burt@zestsoftware.nl>\n"
@@ -163,6 +163,11 @@ msgstr ""
 #. Default: "Add"
 #: ./browser/minaraad_config.pt:121
 msgid "label_add"
+msgstr ""
+
+#. Default: "Related documents"
+#: ./skins/minaraad/advisory_view.pt:48
+msgid "label_advisory_related_documents"
 msgstr ""
 
 #. Default: "Agenda items"
@@ -558,6 +563,11 @@ msgstr ""
 msgid "minaraad_help_policy"
 msgstr ""
 
+#. Default: "Related and published digibib documents and files"
+#: content/Advisory.py
+msgid "minaraad_help_related_documents"
+msgstr ""
+
 #. Default: "speaker"
 #: content/Presentation.py
 msgid "minaraad_help_speaker"
@@ -748,6 +758,11 @@ msgstr ""
 #. Default: "Policy"
 #: content/Advisory.py
 msgid "minaraad_label_policy"
+msgstr ""
+
+#. Default: "Related Documents"
+#: content/Advisory.py
+msgid "minaraad_label_related_documents"
 msgstr ""
 
 #. Default: "Speaker"
