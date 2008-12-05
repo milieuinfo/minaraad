@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minaraad\n"
-"POT-Creation-Date: 2008-12-03 13:06+0000\n"
+"POT-Creation-Date: 2008-12-05 13:22+0000\n"
 "PO-Revision-Date: Mon Aug  8 12:16:21 2005\n"
 "Last-Translator: Rocky Burt <r.burt@zestsoftware.nl>\n"
 "Language-Team: Rocky Burt <r.burt@zestsoftware.nl>\n"
@@ -34,17 +34,17 @@ msgid "Date:"
 msgstr ""
 
 #. Default: "Goal:"
-#: ./skins/minaraad/hearing_view.pt:67
+#: ./skins/minaraad/EmailTemplate-Hearing.pt:22
 msgid "Goal:"
 msgstr ""
 
 #. Default: "Hearing"
-#: ./browser/subscriptions_config.pt:89
+#: ./browser/duplicates.pt:163
 msgid "Hearing"
 msgstr ""
 
 #. Default: "Location:"
-#: ./skins/minaraad/hearing_view.pt:77
+#: ./skins/minaraad/EmailTemplate-Hearing.pt:18
 msgid "Location:"
 msgstr ""
 
@@ -101,7 +101,7 @@ msgid "export_descriptions"
 msgstr ""
 
 #. Default: "from"
-#: ./skins/minaraad/mina_showdatetime.pt:38
+#: ./skins/minaraad/hearing_listing_view.pt:72
 msgid "from"
 msgstr ""
 
@@ -156,7 +156,7 @@ msgid "help_theme_name"
 msgstr ""
 
 #. Default: "hour"
-#: ./skins/minaraad/mina_showdatetime.pt:34
+#: ./skins/minaraad/hearing_listing_view.pt:68
 msgid "hour"
 msgstr ""
 
@@ -196,7 +196,7 @@ msgid "label_company"
 msgstr ""
 
 #. Default: "Contact persons:"
-#: ./skins/minaraad/newsletter_view.pt:84
+#: ./skins/minaraad/newsitem_view.pt:24
 msgid "label_contactpersons"
 msgstr ""
 
@@ -206,7 +206,7 @@ msgid "label_country"
 msgstr ""
 
 #. Default: "Beste"
-#: ./skins/minaraad/EmailTemplate-NewsLetter.pt:19
+#: ./skins/minaraad/EmailTemplate-AnnualReport.pt:11
 msgid "label_dear"
 msgstr ""
 
@@ -285,8 +285,8 @@ msgstr ""
 msgid "label_housenumber"
 msgstr ""
 
-#. Default: "Job title"
-#: ./skins/minaraad/join_form.cpt:123
+#. Default: "Function"
+#: ./skins/minaraad/contactperson_view.pt:15
 msgid "label_jobtitle"
 msgstr ""
 
@@ -311,7 +311,7 @@ msgid "label_login_continue_to_home_page"
 msgstr ""
 
 #. Default: "For more info, go to:"
-#: ./skins/minaraad/EmailTemplate-NewsLetter.pt:54
+#: ./skins/minaraad/EmailTemplate-AnnualReport.pt:20
 msgid "label_moreinfo"
 msgstr ""
 
@@ -340,8 +340,8 @@ msgstr ""
 msgid "label_password_will_be_mailed_mina"
 msgstr ""
 
-#. Default: "Phone number"
-#: ./skins/minaraad/join_form.cpt:286
+#. Default: "Phonenumber"
+#: ./skins/minaraad/contactperson_view.pt:33
 msgid "label_phonenumber"
 msgstr ""
 
@@ -480,7 +480,7 @@ msgid "legend_sendemail"
 msgstr ""
 
 #. Default: "More"
-#: ./skins/minaraad/pressrelease_listing_view.pt:43
+#: ./skins/minaraad/advisory_listing_view.pt:34
 msgid "linkmoreinfo"
 msgstr ""
 
@@ -819,7 +819,7 @@ msgid "minaraad_label_zipcode"
 msgstr ""
 
 #. Default: "For more information contact:"
-#: ./skins/minaraad/study_view.pt:29
+#: ./skins/minaraad/advisory_view.pt:33
 msgid "moreinfo_contactperson"
 msgstr ""
 
@@ -839,7 +839,7 @@ msgid "subscriptions_link"
 msgstr ""
 
 #. Default: "till"
-#: ./skins/minaraad/mina_showdatetime.pt:31
+#: ./skins/minaraad/hearing_listing_view.pt:65
 msgid "till"
 msgstr ""
 
@@ -859,7 +859,7 @@ msgid "title_counsilmembers"
 msgstr ""
 
 #. Default: "By E-mail"
-#: ./browser/subscriptions_config.pt:52
+#: ./browser/duplicates.pt:136
 msgid "title_email"
 msgstr ""
 
@@ -874,12 +874,12 @@ msgid "title_my_account"
 msgstr ""
 
 #. Default: "By Mail"
-#: ./browser/subscriptions_config.pt:53
+#: ./browser/duplicates.pt:137
 msgid "title_post"
 msgstr ""
 
 #. Default: "Subscriptions"
-#: ./browser/subscriptions_config.pt:30
+#: ./browser/duplicates.pt:134
 msgid "title_subscription"
 msgstr ""
 
@@ -889,7 +889,7 @@ msgid "toggle_all"
 msgstr ""
 
 #. Default: "up untill"
-#: ./skins/minaraad/mina_showdatetime.pt:42
+#: ./skins/minaraad/hearing_listing_view.pt:76
 msgid "up_untill"
 msgstr ""
 

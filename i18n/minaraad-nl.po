@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minaraad 0.1\n"
-"POT-Creation-Date: 2008-12-03 13:06+0000\n"
-"PO-Revision-Date: 2008-12-03 14:07+0100\n"
+"POT-Creation-Date: 2008-12-05 13:22+0000\n"
+"PO-Revision-Date: 2008-12-05 14:22+0100\n"
 "Last-Translator: Maurits van Rees <m.van.rees@zestsoftware.nl>\n"
 "Language-Team: Nederlands <info@zestsoftware.nl>\n"
 "MIME-Version: 1.0\n"
@@ -36,17 +36,17 @@ msgid "Date:"
 msgstr "Datum:"
 
 #. Default: "Goal:"
-#: ./skins/minaraad/hearing_view.pt:67
+#: ./skins/minaraad/EmailTemplate-Hearing.pt:22
 msgid "Goal:"
 msgstr "Doelstelling:"
 
 #. Default: "Hearing"
-#: ./browser/subscriptions_config.pt:89
+#: ./browser/duplicates.pt:163
 msgid "Hearing"
 msgstr "Hoorzitting"
 
 #. Default: "Location:"
-#: ./skins/minaraad/hearing_view.pt:77
+#: ./skins/minaraad/EmailTemplate-Hearing.pt:18
 msgid "Location:"
 msgstr "Locatie:"
 
@@ -103,7 +103,7 @@ msgid "export_descriptions"
 msgstr "Klik op de onderstaande button om abonnees van dit content type te exporteren naar Excelsheet."
 
 #. Default: "from"
-#: ./skins/minaraad/mina_showdatetime.pt:38
+#: ./skins/minaraad/hearing_listing_view.pt:72
 msgid "from"
 msgstr "van"
 
@@ -158,7 +158,7 @@ msgid "help_theme_name"
 msgstr "Vul de naam in van het nieuwe thema."
 
 #. Default: "hour"
-#: ./skins/minaraad/mina_showdatetime.pt:34
+#: ./skins/minaraad/hearing_listing_view.pt:68
 msgid "hour"
 msgstr "uur"
 
@@ -198,7 +198,7 @@ msgid "label_company"
 msgstr "Organisatie"
 
 #. Default: "Contact persons:"
-#: ./skins/minaraad/newsletter_view.pt:84
+#: ./skins/minaraad/newsitem_view.pt:24
 msgid "label_contactpersons"
 msgstr "Contactpersonen:"
 
@@ -208,7 +208,7 @@ msgid "label_country"
 msgstr "Land"
 
 #. Default: "Beste"
-#: ./skins/minaraad/EmailTemplate-NewsLetter.pt:19
+#: ./skins/minaraad/EmailTemplate-AnnualReport.pt:11
 msgid "label_dear"
 msgstr "Beste"
 
@@ -287,8 +287,8 @@ msgstr "Hoorzitting thema\'s"
 msgid "label_housenumber"
 msgstr "Huisnummer"
 
-#. Default: "Job title"
-#: ./skins/minaraad/join_form.cpt:123
+#. Default: "Function"
+#: ./skins/minaraad/contactperson_view.pt:15
 msgid "label_jobtitle"
 msgstr "Functie"
 
@@ -313,7 +313,7 @@ msgid "label_login_continue_to_home_page"
 msgstr "Ga naar de ${portal_title} homepage."
 
 #. Default: "For more info, go to:"
-#: ./skins/minaraad/EmailTemplate-NewsLetter.pt:54
+#: ./skins/minaraad/EmailTemplate-AnnualReport.pt:20
 msgid "label_moreinfo"
 msgstr "Voor meer informatie, ga naar:"
 
@@ -342,8 +342,8 @@ msgstr "Ander land namelijk:"
 msgid "label_password_will_be_mailed_mina"
 msgstr "Er wordt een e-mail gestuurd met verdere instructies om de registratie te kunnen afronden."
 
-#. Default: "Phone number"
-#: ./skins/minaraad/join_form.cpt:286
+#. Default: "Phonenumber"
+#: ./skins/minaraad/contactperson_view.pt:33
 msgid "label_phonenumber"
 msgstr "Telefoon"
 
@@ -482,7 +482,7 @@ msgid "legend_sendemail"
 msgstr "E-mail verzenden naar abonnees"
 
 #. Default: "More"
-#: ./skins/minaraad/pressrelease_listing_view.pt:43
+#: ./skins/minaraad/advisory_listing_view.pt:34
 msgid "linkmoreinfo"
 msgstr "Meer informatie"
 
@@ -840,7 +840,7 @@ msgid "minaraad_label_zipcode"
 msgstr "Postcode"
 
 #. Default: "For more information contact:"
-#: ./skins/minaraad/study_view.pt:29
+#: ./skins/minaraad/advisory_view.pt:33
 msgid "moreinfo_contactperson"
 msgstr "Voor meer informatie kunt u contact opnemen met:"
 
@@ -860,7 +860,7 @@ msgid "subscriptions_link"
 msgstr "Abonnementen"
 
 #. Default: "till"
-#: ./skins/minaraad/mina_showdatetime.pt:31
+#: ./skins/minaraad/hearing_listing_view.pt:65
 msgid "till"
 msgstr "tot"
 
@@ -880,7 +880,7 @@ msgid "title_counsilmembers"
 msgstr "Raadsleden"
 
 #. Default: "By E-mail"
-#: ./browser/subscriptions_config.pt:52
+#: ./browser/duplicates.pt:136
 msgid "title_email"
 msgstr "Per e-mail"
 
@@ -895,12 +895,12 @@ msgid "title_my_account"
 msgstr "Mijn account"
 
 #. Default: "By Mail"
-#: ./browser/subscriptions_config.pt:53
+#: ./browser/duplicates.pt:137
 msgid "title_post"
 msgstr "Per post"
 
 #. Default: "Subscriptions"
-#: ./browser/subscriptions_config.pt:30
+#: ./browser/duplicates.pt:134
 msgid "title_subscription"
 msgstr "Abonnementen"
 
@@ -910,7 +910,7 @@ msgid "toggle_all"
 msgstr "Selecteer alles:"
 
 #. Default: "up untill"
-#: ./skins/minaraad/mina_showdatetime.pt:42
+#: ./skins/minaraad/hearing_listing_view.pt:76
 msgid "up_untill"
 msgstr "t/m"
 
