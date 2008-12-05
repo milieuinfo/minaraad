@@ -50,7 +50,7 @@ Hearing_schema['goal'].widget = RichWidget(
     )
 Hearing_schema['goal'].default_output_type = 'text/html'
 Hearing_schema['goal'].allowable_content_types = (
-    'text/plain', 'text/structured', 'text/html', 'application/msword',)
+    'text/html', 'text/plain', 'text/structured', 'application/msword',)
 
 
 class IHearing(Interface):

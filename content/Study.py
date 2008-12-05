@@ -23,7 +23,7 @@ schema = Schema((
     # The summary field is called 'body' to be consistent with Advisory.
     TextField(
         name='body',
-        allowable_content_types=('text/plain', 'text/structured', 'text/html', 'application/msword',),
+        allowable_content_types=('text/html', 'text/plain', 'text/structured' 'application/msword',),
         widget=RichWidget(
             label='Summary',
             label_msgid='minaraad_label_summary',
