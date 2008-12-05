@@ -52,6 +52,9 @@
                   </div>
                 </tal:block>
 
+                <div tal:replace="structure obj/getBody"
+                     tal:condition="obj/getBody"/>
+
                 <div tal:define="contacts python:obj.getContact()"
                      tal:condition="contacts"
                      class="advisory_listing_contacts">
@@ -62,6 +65,12 @@
                        class="discreet" />
                   </tal:block>
                 </div>
+
+                <div>
+                  <a tal:attributes="href item_object/getURL"
+                     i18n:translate="linkmoreinfo">More</a>
+                </div>
+
               </td>
             </tal:block>
           </tr>

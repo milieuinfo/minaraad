@@ -15,7 +15,8 @@ History of Products.minaraad
   description. [reinout]
 
 - Advisory listing shows summary instead of description. Re-labeled Advisory's
-  body text as summary field. [reinout]
+  body text as summary field. Added "more info" to advisory listing, keeping
+  title as direct link to the pdf. [reinout]
 
 - Made the advisory listing similar to the study listing, apart from using the
   different date (day-month) instead of month-year for the study listing.
