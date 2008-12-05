@@ -134,7 +134,7 @@ SELECT_VIEWS = {
     '/persberichten': 'mina_listing',
     '/studies': 'mina_listing',
     '/hoorzittingen': 'mina_listing',
-    '/digibib': 'digibib_listing',
+    '/digibib-1': 'digibib_listing',
     }
 
 #FCKeditor set height and width
