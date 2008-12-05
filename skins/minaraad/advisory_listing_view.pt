@@ -30,7 +30,7 @@
                   tal:condition="python:obj.getDate()" />
             <!-- TODO: study listing uses a different kind of date -->
           </div>
-          <div tal:replace="structure item_object/getBody|nothing" />
+          <div tal:replace="structure obj/getBody|nothing" />
           <a tal:attributes="href item_object/getURL"
              i18n:translate="linkmoreinfo">More</a>
         </tal:block>
