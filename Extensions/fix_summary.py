@@ -31,5 +31,5 @@ def fix(self):
     print >> out, '======== Summary ====================='
     print >> out, '======================================'
     print >> out, 'Empty bodies: %s' % bodycount
-    print >> out, 'Empty descriptions: %s' % desccount
+    print >> out, 'Non-empty descriptions moved to body: %s' % desccount
     return out.getvalue()
