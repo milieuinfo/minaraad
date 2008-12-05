@@ -36,7 +36,7 @@ schema = Schema((
     # summary is shown in the listings).
     TextField(
         name='body',
-        allowable_content_types=('text/html', 'text/plain', 'text/structured' 'application/msword',),
+        allowable_content_types=('text/html', 'text/plain', 'text/structured', 'application/msword',),
         widget=RichWidget(
             label='Summary',
             label_msgid='minaraad_label_summary',
