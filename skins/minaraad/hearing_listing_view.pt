@@ -4,7 +4,7 @@
       i18n:domain="minaraad">
 
     <body>
-    <metal:block metal:fill-slot="main"
+    <metal:block metal:fill-slot="main" 
                    tal:define="current_path python:'/'.join(context.getPhysicalPath());
                               hearings python:context.portal_catalog.searchResults(portal_type='Hearing',
                                                                                     path=current_path,
@@ -18,17 +18,17 @@
         <h1 tal:content="context/Title"
             class="documentFirstHeading">Title</h1>
 
-        <div class="documentDescription"
+        <div class="documentDescription" 
              tal:condition="context/Description"
              tal:content="context/Description" />
 
         <div tal:repeat="item_object hearings">
         <span tal:define="obj python:item_object.getObject()"
                 tal:omit-tag="">
-
+                
             <div class="hearingsubheader2"
                     tal:content="item_object/Title" />
-
+    
             <div tal:condition="obj/getSubheader"
                  class="pressrelease_listsub">
                 <span tal:replace="obj/getSubheader" />
@@ -37,17 +37,17 @@
                     (MOT)
                 </span>
             </div>
-
+    
             <span tal:condition="obj/getLocation"
                     tal:omit-tag="">
-            <span tal:replace="obj/getLocation" />
+            <span tal:replace="obj/getLocation" /> 
             &nbsp;-&nbsp;
             </span>
-
+    
             <!-- DATES -->
             <tal:block tal:define="daterequired python:obj.getStartdate() != None and obj.getEnddate() != None;"
                         tal:condition="daterequired">
-
+    
             <div tal:define="startdate python:toLocalizedTime(obj.startdate);
                             enddate python:toLocalizedTime(obj.enddate);
                             starttime python:obj.startdate.TimeMinutes();
@@ -55,8 +55,8 @@
                             noStartTime python:test(starttime == '00:00', 0, 1);
                             noEndTime python:test(endtime == '00:00', 0, 1);"
                     tal:omit-tag="">
-
-
+                
+    
                 <tal:block tal:condition="python:startdate == enddate">
                 <span tal:replace="startdate" />
                 &nbsp;-&nbsp;
@@ -70,17 +70,17 @@
                 </tal:block>
                 <tal:block tal:condition="python:startdate != enddate">
                     <span i18n:translate="from"
-                        tal:omit-tag="">from</span>
+                        tal:omit-tag="">from</span> 
                     <span tal:replace="startdate" />
-
+                    
                     <span i18n:translate="up_untill"
-                        tal:omit-tag="">up untill</span>
+                        tal:omit-tag="">up untill</span> 
                     <span tal:replace="enddate" />
-
+    
                     <tal:block tal:condition="python: noStartTime and noEndTime">
                         &nbsp;-&nbsp;
                         <span tal:replace="starttime" />
-
+                        
                         <span i18n:translate="till"
                             tal:omit-tag="">till</span>
                         <span tal:replace="endtime" />
@@ -89,13 +89,12 @@
                 </tal:block>
                 </div>
             </tal:block>
-            <div>
-              <div tal:condition="obj/getGoal"
-                   tal:replace="structure obj/getGoal" />
-              <a tal:attributes="href item_object/getURL"
-                 i18n:translate="linkmoreinfo">More</a>
-            </div>
-
+            <br />
+            <span tal:condition="item_object/Description" 
+                    tal:content="item_object/Description" />
+            <a tal:attributes="href item_object/getURL"
+                i18n:translate="linkmoreinfo">More</a>
+    
         </span>
         <br />
         <br />
