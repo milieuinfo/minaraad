@@ -11,18 +11,18 @@ def fix(self):
     bodycount = 0
     desccount = 0
     for brain in self.portal_catalog(portal_type=['Study', 'Advisory']):
-        print >> out, '============================'
-        print >> out, brain.getId
         obj = brain.getObject()
         desc = obj.Description().strip()
         body = obj.getBody().strip()
         if not body:
-            print >> out, 'Empty body'
             bodycount += 1
             if desc:
+                print >> out, '============================'
+                print >> out, 'Empty body'
+                print >> out, brain.getURL()
                 print >> out, 'But we do have a description'
                 desccount += 1
-                obj.setBody(desc)
+                obj.setBody(desc, mimetype='text/html')
                 obj.setDescription('')
                 print >> out, 'Description moved to body'
 
