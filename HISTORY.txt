@@ -4,6 +4,17 @@ History of Products.minaraad
 2.2.0 (unreleased)
 ------------------
 
+- Added body text (label=summary) to Study. Study view shows new body text
+  (=summary) field. Study listing shows summary instead of
+  description. [reinout]
+
+- Advisory listing shows summary instead of description. Re-labeled Advisory's
+  body text as summary field. [reinout]
+
+- Made the advisory listing similar to the study listing, apart from using the
+  different date (day-month) instead of month-year for the study listing.
+  [reinout]
+
 - Changed goal field of Hearing to a richtext widget with accompagnying
   template changes.  [reinout]
 

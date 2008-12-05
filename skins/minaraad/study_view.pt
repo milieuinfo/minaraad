@@ -19,6 +19,9 @@
    </metal:block>
 
    <metal:block define-macro="body">
+     <div class="bodytext"
+          tal:condition="context/getBody"
+          tal:content="structure context/getBody" />
       <!-- Start Attachments-->
       <div metal:use-macro="context/mina_attachments/macros/listattachments" />
       <!-- end Attachments -->
@@ -37,7 +40,7 @@
       </tal:block>
       <!-- end contactpersoon -->
    </metal:block>
-   
+
    <metal:block metal:define-macro="folderlisting" />
    </body>
 </html>

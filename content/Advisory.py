@@ -32,14 +32,14 @@ schema = Schema((
         )
     ),
 
-    # TODO: Add rich text description, but body is already there...
-
+    # Body (which already existed) serves as the summary (of the attachment,
+    # summary is shown in the listings).
     TextField(
         name='body',
         allowable_content_types=('text/plain', 'text/structured', 'text/html', 'application/msword',),
         widget=RichWidget(
-            label='Body',
-            label_msgid='minaraad_label_body',
+            label='Summary',
+            label_msgid='minaraad_label_summary',
             i18n_domain='minaraad',
         ),
         default_output_type='text/html'
