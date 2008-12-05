@@ -29,7 +29,8 @@ schema = Schema((
             label_msgid='minaraad_label_summary',
             i18n_domain='minaraad',
         ),
-        default_output_type='text/html'
+        default_content_type='text/html',
+        default_output_type='text/html',
     ),
 
     DateTimeField(

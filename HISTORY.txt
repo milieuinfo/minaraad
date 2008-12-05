@@ -4,6 +4,9 @@ History of Products.minaraad
 2.2.0 (unreleased)
 ------------------
 
+- Using text/html as the default_content_type for all TextFields.
+  [maurits]
+
 - Added external method for moving description to bodytext for
   study/advisory.  [reinout]
 

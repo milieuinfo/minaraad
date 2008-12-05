@@ -48,6 +48,7 @@ Hearing_schema['goal'].widget = RichWidget(
     label_msgid='minaraad_label_goal',
     i18n_domain='minaraad',
     )
+Hearing_schema['goal'].default_content_type='text/html'
 Hearing_schema['goal'].default_output_type = 'text/html'
 Hearing_schema['goal'].allowable_content_types = (
     'text/html', 'text/plain', 'text/structured', 'application/msword',)
