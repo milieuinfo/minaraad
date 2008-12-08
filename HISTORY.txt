@@ -1,7 +1,7 @@
 History of Products.minaraad
 ============================
 
-2.2.1 (unreleased)
+2.2.1 (2008-12-08)
 ------------------
 
 - Added robots.txt(.dtml) from the custom map.  [maurits]
