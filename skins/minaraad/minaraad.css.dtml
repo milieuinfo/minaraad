@@ -273,7 +273,7 @@ a.link-personalbar {
     color: #A13826;
     font-weight: bold;
     padding: 2px;
-    cursor: hand;
+    cursor: pointer;
 }
 
 .input_login {
@@ -388,6 +388,10 @@ dl.Attendees dd{
 
 .advisory_listing td {
    padding-bottom: 20px;
+}
+
+.advisory_listing p {
+  margin: 0;
 }
 
 .listdate {
