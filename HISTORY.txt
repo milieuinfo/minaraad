@@ -4,6 +4,8 @@ History of Products.minaraad
 2.2.1 (unreleased)
 ------------------
 
+- Added robots.txt(.dtml) from the custom map.  [maurits]
+
 - Added fckblank.html.pt [.metadata] as that is in the custom map.
   [maurits]
 
