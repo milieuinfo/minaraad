@@ -126,6 +126,10 @@ li.newsitemslist a {
     padding: 0;
 }
 
+#portlet-login {
+  padding: 5px 2px 5px 5px;
+}
+
 #portal-column-two {
     border-left: 1px solid #D98F81;
     background-color: #F6F6F5;
