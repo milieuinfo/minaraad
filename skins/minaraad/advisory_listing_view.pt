@@ -24,51 +24,16 @@
       <table class="advisory_listing">
         <tbody valign="top">
           <tr tal:repeat="item_object advisories">
-            <tal:block tal:define="obj python:item_object.getObject()">
-
-              <td tal:define="daterequired python:obj.getDate() != None;
-                              date python:toLocalizedTime(obj.date)[:-5];"
+            <tal:block>
+              <td tal:define="daterequired python:item_object.getDate != None;
+                              date python:toLocalizedTime(item_object.getDate)[:-5];"
                   class="listdate">
-
                 <span tal:condition="daterequired"
                       tal:replace="date" />
               </td>
-              <td tal:define="current_path python:'/'.join(obj.getPhysicalPath());
-                              attachments python:context.portal_catalog.searchResults(portal_type='FileAttachment',
-                              path=current_path,);">
-
-                <tal:block repeat="attachment attachments">
-                  <div tal:define="desc attachment/Description;
-                                   item_type attachment/portal_type;
-                                   idx repeat/attachment/index"
-                       class="advisory_links">
-                    <a tal:attributes="href attachment/getURL;
-                                       title desc;">
-                      <span tal:condition="python:idx == 0"
-                            tal:replace="item_object/Title" />
-                      <span tal:condition="python:idx &gt; 0"
-                            tal:replace="attachment/Title" />
-                    </a>
-                  </div>
-                </tal:block>
-
-                <div tal:replace="structure obj/getBody"
-                     tal:condition="obj/getBody"/>
-               
+              <td>
                  <a tal:attributes="href item_object/getURL"
-                     i18n:translate="linkmoreinfo">More</a>      
-
-                <div tal:define="contacts python:obj.getContact()"
-                     tal:condition="contacts"
-                     class="advisory_listing_contacts">
-
-                  <tal:block repeat="contact contacts">
-                    <a tal:attributes="href string:mailto:${contact/getEmail}"
-                       tal:content="contact/getEmail"
-                       class="discreet" />
-                  </tal:block>
-                </div>
-                
+                    tal:content="item_object/Title" />
               </td>
             </tal:block>
           </tr>

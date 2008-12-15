@@ -4,6 +4,9 @@ History of Products.minaraad
 2.2.2 (unreleased)
 ------------------
 
+- Simplified advisory listing to only show the date and the clickable
+  title.  [maurits]
+
 - Study listing: show description instead of summary/body.  [maurits]
 
 - Changed portal actions, for the 'My account' (Mijn voorkeuren)
