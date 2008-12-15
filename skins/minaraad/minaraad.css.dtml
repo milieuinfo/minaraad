@@ -324,7 +324,7 @@ a.link-personalbar {
     float:right;
     padding:10px;
     border: 1px solid &dtml-globalBorderColor;;
-    text-align: right;
+    text-align: center;
     width: 170px;
     margin-left: 10px;
     margin-bottom: 10px;
