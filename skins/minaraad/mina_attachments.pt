@@ -30,7 +30,9 @@
                                attachments python:context.portal_catalog.searchResults(portal_type='FileAttachment',
                                                                                          path=current_path,)">
             <h5 i18n:translate="title_attachments"
-                tal:condition="attachments">Attachments</h5>
+                tal:condition="python:attachments and context.portal_type != 'Study'">Attachments</h5>
+            <h5 i18n:domain="plone" i18n:translate=""
+                tal:condition="python:attachments and context.portal_type == 'Study'">Study</h5>
             <tal:block tal:repeat="attachment attachments">
             <div tal:define="desc attachment/Description;
                                 item_type attachment/portal_type;
