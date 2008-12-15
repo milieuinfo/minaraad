@@ -29,25 +29,29 @@
                    tal:define="current_path python:'/'.join(context.getPhysicalPath());
                                attachments python:context.portal_catalog.searchResults(portal_type='FileAttachment',
                                                                                          path=current_path,)">
-            <h5 i18n:translate="title_attachments"
-                tal:condition="python:attachments and context.portal_type != 'Study'">Attachments</h5>
-            <h5 i18n:domain="plone" i18n:translate=""
-                tal:condition="python:attachments and context.portal_type == 'Study'">Study</h5>
-            <tal:block tal:repeat="attachment attachments">
+        <tal:attachments condition="attachments">
+          <h5 i18n:translate="title_attachments"
+              tal:condition="python:context.portal_type not in ('Advisory', 'Study')">Attachments</h5>
+          <h5 i18n:domain="plone" i18n:translate=""
+              tal:condition="python:attachments and context.portal_type == 'Advisory'">Advisory</h5>
+          <h5 i18n:domain="plone" i18n:translate=""
+              tal:condition="python:attachments and context.portal_type == 'Study'">Study</h5>
+          <tal:block tal:repeat="attachment attachments">
             <div tal:define="desc attachment/Description;
-                                item_type attachment/portal_type;
-                                item_type_class python: 'contenttype-' + putils.normalizeString(item_type);">
-    
-                <span tal:attributes="class item_type_class">
-                    <a class="visualIconPadding"
-                       tal:attributes="href attachment/getURL;
-                                       title desc;"
-                       tal:content="attachment/Title">
-                        Related Item
-                    </a>
-                </span>
+                             item_type attachment/portal_type;
+                             item_type_class python: 'contenttype-' + putils.normalizeString(item_type);">
+              
+              <span tal:attributes="class item_type_class">
+                <a class="visualIconPadding"
+                   tal:attributes="href attachment/getURL;
+                                   title desc;"
+                   tal:content="attachment/Title">
+                  Related Item
+                </a>
+              </span>
             </div>
-            </tal:block>
+          </tal:block>
+        </tal:attachments>
       </metal:block>
 
     </body>
