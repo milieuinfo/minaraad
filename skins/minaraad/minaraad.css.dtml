@@ -329,6 +329,7 @@ a.link-personalbar {
     margin-left: 10px;
     margin-bottom: 10px;
 }
+
 .hearing_subscribe div {
     margin-bottom: 10px;
 }
@@ -336,12 +337,15 @@ a.link-personalbar {
 .hearing_subscribe input.unsubscribe {
     background-color: #F4CFC8;
     border: 1px solid &dtml-globalBorderColor;;
-    font-size: 140%;
+    font-size: 130%;
+    background:transparent url(&dtml-portal_url;/linkTransparent.gif) no-repeat scroll 9px 5px;
 }
+
 .hearing_subscribe input.subscribe {
     border: 1px solid #696;
     background-color: #C8ED7E;
-    font-size: 140%;
+    font-size: 130%;
+    background:transparent url(&dtml-portal_url;/linkTransparent.gif) no-repeat scroll 9px 5px;
 }
 
 .hearingsubheader {
