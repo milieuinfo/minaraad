@@ -6,7 +6,7 @@ body {
 }
 
 table.site-bg {
-    background: url(sitelayout_bg.gif) top left no-repeat;
+    background: url(&dtml-portal_url;/sitelayout_bg.gif) top left no-repeat;
 }
 
 legend, .discreet, #portal-sitemap,
@@ -99,7 +99,7 @@ li.newsitemslist a {
 #portal-logo {
   margin: 0;
   padding: 0;
-  background: url(logo.gif) no-repeat;
+  background: url(&dtml-portal_url;/logo.gif) no-repeat;
   width: 170px;
   height: 150px;
 }
@@ -558,7 +558,7 @@ div.portal-tabs a, #portlet-events-mina dd a {
 
 #portal-tabs-nav li:hover, 
 #portal-tabs-nav li.over {
-    background: #E7FBBF url(menu_arrow.gif) no-repeat 122px 7px;
+    background: #E7FBBF url(&dtml-portal_url;/menu_arrow.gif) no-repeat 122px 7px;
     cursor: pointer;
     color: #A13826 !important;
     z-index: 1;
@@ -585,7 +585,7 @@ div.portal-tabs a:hover, #portal-tabs-nav a.selected,
 }
 
 #portal-tabs-nav li.selected {
-    background: url(menu_arrow.gif) no-repeat 122px 7px #E7FBBF;
+    background: url(&dtml-portal_url;/menu_arrow.gif) no-repeat 122px 7px #E7FBBF;
 }
 
 #portal-tabs-nav li:hover ul, 
