@@ -336,10 +336,12 @@ a.link-personalbar {
 .hearing_subscribe input.unsubscribe {
     background-color: #F4CFC8;
     border: 1px solid &dtml-globalBorderColor;;
+    font-size: 140%;
 }
 .hearing_subscribe input.subscribe {
     border: 1px solid #696;
     background-color: #C8ED7E;
+    font-size: 140%;
 }
 
 .hearingsubheader {
