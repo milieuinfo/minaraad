@@ -4,7 +4,10 @@ History of Products.minaraad
 2.2.2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Changed portal actions, for the 'My account' (Mijn voorkeuren)
+  portlet.  [maurits]
+
+- Styling changes.  [maurits]
 
 
 2.2.1 (2008-12-08)

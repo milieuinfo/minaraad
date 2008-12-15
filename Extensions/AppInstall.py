@@ -177,71 +177,92 @@ def _switchOffUnwantedActions(portal):
     (these actions can be found in portal_actions).
     """
 
-    st = getToolByName(portal, 'portal_actions')
-    st_actions = st._cloneActions()
-    for action in st_actions:
-        if action.id in INVISIBLE_ACTIONS:
-            if action.visible:
-                print >> out, "Switching off unwanted action %s." % action.id
-                action.visible = 0
-    st._actions = st_actions
-
-
-    # Switch off undo.
-    st = getToolByName(portal, 'portal_undo')
-    st_actions = st._cloneActions()
-    for action in st_actions:
-        if action.id == 'undo':
-            if action.visible:
-                print >> out, "Switching off unwanted action undo."
-                action.visible = 0
-    st._actions = st_actions
+    for tool_name in ('portal_actions', 'portal_membership', 'portal_undo'):
+        st = getToolByName(portal, tool_name)
+        st_actions = st._cloneActions()
+        for action in st_actions:
+            if action.id in INVISIBLE_ACTIONS:
+                if action.visible:
+                    print >> out, "Switching off unwanted action %s." % action.id
+                    action.visible = 0
+        st._actions = st_actions
 
 
 def _switchOnActions(portal):
     """Switch on wanted actions(portal_actions)
+
+    XXX This is a prime candidate for refactoring, but we will want to
+    wait with that until the main upgrade.
     """
     tab = getToolByName(portal, 'portal_actions')
     tab_actions = tab._cloneActions()
-    actionDefined = 0
-    actionContactDefined = 0
-    actionSubscriptionConfigDefined = 0
+    # Start by saying that some actions are not defined.
+    library_defined = 0
+    contact_defined = 0
+    subscription_config_defined = 0
+    personal_prefs_defined = 0
+    password_defined = 0
+    # Make some actions explicitly visible.  Update the previous
+    # definitions.
     for a in tab_actions:
         if a.id == 'sitemap':
             a.title = 'Sitemap'
             a.visible = 1
         if a.id in ['mina_library']:
             a.visible = 1
-            actionDefined = 1
+            library_defined = 1
         if a.id == 'contactpersonen':
             a.visible = 1
-            actionContactDefined = 1
+            contact_defined = 1
         if a.id == 'subscriptions_config':
             a.visible = 1
-            actionSubscriptionConfigDefined = 1
-
+            subscription_config_defined = 1
+        if a.id == 'personal_preferences':
+            a.visible = 1
+            personal_prefs_defined = 1
+        if a.id == 'password':
+            a.visible = 1
+            password_defined = 1
+        # Replace the previous actions with the current actions
         tab._actions = tab_actions
-    if actionDefined == 0:
+
+    # Add actions when they are not defined yet.
+    if library_defined == 0:
         tab.addAction('mina_library',
                       'Bibliotheek',
                       'string:$portal_url/mina_library',
                       '',
                       'View',
                       'site_actions')
-    if actionContactDefined == 0:
+    if contact_defined == 0:
         tab.addAction('contactpersonen',
                       'Contactpersonen',
                       'string:$portal_url/contactpersonen',
                       '',
                       'Manage portal',
                       'user')
-    if actionSubscriptionConfigDefined == 0:
+    if subscription_config_defined == 0:
         tab.addAction('subscriptions_config',
                       'Mijn abonnementen',
                       'string:$portal_url/subscriptions_config.html',
                       'member',
                       'View',
                       'user')
+    if personal_prefs_defined == 0:
+        tab.addAction('personal_preferences',
+                      'Mijn contactgegevens',
+                      'string:$portal_url/personalize_form',
+                      'member',
+                      'View',
+                      'user')
+    if password_defined == 0:
+        tab.addAction('password',
+                      'Wachtwoord wijzigen',
+                      'string:$portal_url/password_form',
+                      'member',
+                      'View',
+                      'user')
+
 
 
 def _addExtraViews(portal):

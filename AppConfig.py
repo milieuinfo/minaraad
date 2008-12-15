@@ -43,9 +43,9 @@ RIGHT_SLOTS = ('here/portlet_recent/macros/portlet',
 # And a script for dropdownmenu
 JAVASCRIPTS = [{'id': 'hideShow.js'},{'id': 'tabsDropDown.js'}]
 
-# These actions can be found in portal_actions
-# and will be disabled
-INVISIBLE_ACTIONS = ['rss', 'accessibility', 'plone_setup', 'full_screen']
+# These actions can be found in portal_actions (or other action
+# providers) and will be disabled/invisible.
+INVISIBLE_ACTIONS = ['rss', 'accessibility', 'plone_setup', 'full_screen', 'preferences', 'undo']
 
 # These actions can be found in portal_controlpanel
 # and will be disabled
