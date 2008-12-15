@@ -87,6 +87,10 @@ h5, h6 {
     font-weight: bold;
 }
 
+h5 {
+    margin-top: 10px;
+}
+
 .documentContent li a, .documentContent p a, 
 dl.portlet, dl.portlet dt, dl.portlet dd {
    border: none;
