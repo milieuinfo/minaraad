@@ -30,7 +30,8 @@
             <span tal:replace="python:toLocalizedTime(item_object.getDate)[3:]"
                   tal:condition="python:obj.getDate()" />
           </div>
-          <div tal:replace="structure obj/getBody|nothing" />
+          <div tal:condition="obj/Description|nothing"
+               tal:content="obj/Description" />
           <a tal:attributes="href item_object/getURL"
              i18n:translate="linkmoreinfo">More</a>
         </tal:block>

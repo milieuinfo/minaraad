@@ -4,6 +4,8 @@ History of Products.minaraad
 2.2.2 (unreleased)
 ------------------
 
+- Study listing: show description instead of summary/body.  [maurits]
+
 - Changed portal actions, for the 'My account' (Mijn voorkeuren)
   portlet.  [maurits]
 
