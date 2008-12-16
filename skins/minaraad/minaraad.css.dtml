@@ -338,18 +338,20 @@ a.link-personalbar {
     margin-bottom: 10px;
 }
 
-.hearing_subscribe input.unsubscribe {
-    background-color: #F4CFC8;
+.hearing_subscribe input.subscribe {
     border: 1px solid &dtml-globalBorderColor;;
-    font-size: 130%;
-    background:transparent url(&dtml-portal_url;/linkTransparent.gif) no-repeat scroll 9px 5px;
+    background-color: #F4CFC8;
+    padding-left: 2px;
+    background-image: none;
+    font-size: 100%;
 }
 
-.hearing_subscribe input.subscribe {
-    border: 1px solid #696;
+.hearing_subscribe input.unsubscribe {
     background-color: #C8ED7E;
-    font-size: 130%;
-    background:transparent url(&dtml-portal_url;/linkTransparent.gif) no-repeat scroll 9px 5px;
+    border: 1px solid #a1cb4e;
+    font-size: 110%;
+    padding-left: 2px;
+    background-image: none;
 }
 
 .hearingsubheader {
