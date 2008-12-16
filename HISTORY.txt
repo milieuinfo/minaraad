@@ -1,7 +1,7 @@
 History of Products.minaraad
 ============================
 
-2.2.2 (unreleased)
+2.2.2 (2008-12-16)
 ------------------
 
 - Simplified advisory listing to only show the date and the clickable
