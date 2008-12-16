@@ -21,8 +21,7 @@
 
       <tal:summary condition="context/getBody|nothing">
         <h5><tal:block i18n:translate="minaraad_label_summary">Summary</tal:block>:</h5>
-        <div class="bodytext"
-             tal:content="structure context/getBody" />
+        <div tal:content="structure context/getBody" />
       </tal:summary>
    
       <!-- Start Attachments-->
