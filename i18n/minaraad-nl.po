@@ -902,7 +902,7 @@ msgstr "Per post"
 #. Default: "Subscriptions"
 #: ./browser/duplicates.pt:134
 msgid "title_subscription"
-msgstr "Abonnementen"
+msgstr " Uw Abonnementen"
 
 #. Default: "Toggle all:"
 #: ./browser/subscriptions_config.pt:95

@@ -27,12 +27,11 @@
             }
         </script>
 
-        <h1 i18n:translate="title_subscription">Subscriptions</h1>
+        <h1>Uw abonnementen</h1>
 
         <a class="link-parent"
-           tal:attributes="href string: $portal_url/plone_memberprefs_panel"
-           i18n:translate="label_up_to_my_preferences">
-            Up to My Preferences
+           tal:attributes="href string: $portal_url">
+            Terug naar homepagina
         </a>
 
         <p class="documentDescription" 
