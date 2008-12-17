@@ -135,7 +135,7 @@ li.newsitemslist a {
 }
 
 #portlet-login {
-  padding: 5px 2px 5px 5px;
+  padding: 5px 0px 5px 5px;
 }
 
 #portal-column-two {
@@ -237,7 +237,7 @@ td.portal-siteactions {
 /*--- Start portlet personal bar --- */
 
 .personalbar, .portlet-personalbar-mina {
-    background-color: #8FBA37;
+    background-color: #C8ED7E;
     border-bottom: 1px solid  #E0FAAC; 
     font-size: 11px;
     font-weight: bold;
@@ -263,8 +263,12 @@ ul.portlet-personalbar-mina {
     background-color: #060;
 }
 
+div.personalbar-links {
+  margin-top: 8px;
+}
+
 a.link-personalbar {
-    font-size: 10px;
+    font-size: 11px;
     text-decoration: none !important;
     font-weight: bold;
 }

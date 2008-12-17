@@ -295,7 +295,7 @@ msgstr "Functie"
 #. Default: "Join in"
 #: ./skins/minaraad/portlet_login.pt:92
 msgid "label_join_in"
-msgstr "Abonneren"
+msgstr "Registreren"
 
 #. Default: "Last modified"
 #: ./skins/minaraad/prefs_user_details.cpt:85
