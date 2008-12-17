@@ -39,7 +39,8 @@
           <tal:block tal:repeat="attachment attachments">
             <div tal:define="desc attachment/Description;
                              item_type attachment/portal_type;
-                             item_type_class python: 'contenttype-' + putils.normalizeString(item_type);">
+                             item_type_class python: 'contenttype-' + putils.normalizeString(item_type);"
+               class="attachment-links">
               
               <span tal:attributes="class item_type_class">
                 <a class="visualIconPadding"
