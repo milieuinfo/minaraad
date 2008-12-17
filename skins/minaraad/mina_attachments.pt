@@ -34,8 +34,8 @@
               tal:condition="python:context.portal_type not in ('Advisory', 'Study')">Attachments</h5>
           <h5 i18n:domain="plone" i18n:translate=""
               tal:condition="python:attachments and context.portal_type == 'Advisory'">Advisory</h5>
-          <h5 i18n:domain="plone" i18n:translate=""
-              tal:condition="python:attachments and context.portal_type == 'Study'">Study</h5>
+          <h5 i18n:domain="plone"
+              tal:condition="python:attachments and context.portal_type == 'Study'">Studiedocument</h5>
           <tal:block tal:repeat="attachment attachments">
             <div tal:define="desc attachment/Description;
                              item_type attachment/portal_type;

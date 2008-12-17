@@ -25,12 +25,11 @@
       <div tal:repeat="item_object studies"
            class="bodytext">
         <tal:block define="obj python:item_object.getObject()">
-          <div class="bold">
-            <span tal:replace="item_object/Title" />
-            <span tal:replace="python:toLocalizedTime(item_object.getDate)[3:]"
-                  tal:condition="python:obj.getDate()" />
-          </div>
-          <div tal:condition="obj/Description|nothing"
+          <div class="bold" tal:content="item_object/Title" />
+         <div tal:content="python:toLocalizedTime(item_object.getDate)[3:]"
+            tal:condition="python:obj.getDate()" />
+
+          <span tal:condition="obj/Description|nothing"
                tal:content="obj/Description" />
           <a tal:attributes="href item_object/getURL"
              i18n:translate="linkmoreinfo">More</a>

@@ -10,17 +10,15 @@
       </div>
       <h1>
          <span tal:replace="context/Title" />
-         <span tal:replace="python:toLocalizedTime(context.date)" />
       </h1>
-
-     <div class="documentDescription"
-       tal:condition="context/Description"
-      tal:content="context/Description" />
+      <span tal:replace="python:toLocalizedTime(context.date)" />
    </metal:block>
 
    <metal:block define-macro="body">
-     <div class="bodytext"
-          tal:condition="context/getBody"
+     <h5>
+        <tal:block i18n:translate="minaraad_label_summary">Summary</tal:block>
+     </h5>   
+     <div tal:condition="context/getBody"
           tal:content="structure context/getBody" />
       <!-- Start Attachments-->
       <div metal:use-macro="context/mina_attachments/macros/listattachments" />
