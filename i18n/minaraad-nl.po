@@ -120,7 +120,7 @@ msgstr "Thema's"
 #. Default: "You are currently subscribed to this hearing."
 #: ./skins/minaraad/hearing_view.pt:22
 msgid "hearing_registered_label"
-msgstr "U bent nu geregistreerd voor deze hoorzitting."
+msgstr "U bent ingeschreven voor de hoorzitting."
 
 #. Default: "You are not currently subscribed to this hearing."
 #: ./skins/minaraad/hearing_view.pt:38

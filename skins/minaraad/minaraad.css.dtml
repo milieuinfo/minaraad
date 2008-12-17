@@ -347,8 +347,8 @@ a.link-personalbar {
 }
 
 .hearing_subscribe input.subscribe {
-    border: 1px solid &dtml-globalBorderColor;;
-    background-color: #F4CFC8;
+    border: 1px solid #587e0b;
+    background-color: #A4CF4D;
     padding-left: 2px;
     background-image: none;
     font-size: 100%;
