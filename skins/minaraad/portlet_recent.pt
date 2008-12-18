@@ -12,7 +12,7 @@
                                                 context.portal_catalog.searchResults(portal_type=['Hearing', 'Advisory',
                                                                                      'Study', 'AnnualReport',
                                                                                       'Pressrelease', 'NewsLetter',
-                                                                                      'Event'],
+                                                                                      'Event', 'Document'],
                                                 sort_on='Date',
                                                 sort_order='reverse')[:10]);">
     
