@@ -4,7 +4,8 @@ History of Products.minaraad
 2.2.3 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Hid description field on advisory CT. (I didn't remove it completely as
+  there's still migration needed from desc text to the body text).  [reinout]
 
 
 2.2.2 (2008-12-16)

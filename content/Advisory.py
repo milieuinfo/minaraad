@@ -90,6 +90,11 @@ Advisory_schema = getattr(PostMixin, 'schema', Schema(())).copy() + \
     getattr(Attachmentsmixin, 'schema', Schema(())).copy() + \
     schema.copy()
 Advisory_schema['description'].isMetadata = False
+# Hide the description field, but keep it intact as the
+# extensions/fix_summary.py script wants to have a go at migrating the
+# description contents to the body field.
+Advisory_schema['description'].widget.visible = {'edit': 'hidden',
+                                                 'view': 'invisible'}
 
 
 class Advisory(PostMixin, Attachmentsmixin):

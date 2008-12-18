@@ -2,18 +2,15 @@
       lang="en-US"
       i18n:domain="minaraad">
    <metal:block use-macro="context/global_defines/macros/defines" />
-    
+
    <body>
    <metal:block define-macro="body">
 
-      <span class="documentDescription"
-             tal:content="context/getDescription" />
-        
       <div tal:define="daterequired python:context.getDate() != None;
                      date python:toLocalizedTime(context.date);"
          class="hearingsubheader2"
          tal:condition="daterequired">
-         
+
          <span i18n:translate="advisory_date">Advisory date:</span>
          <span class="normaltext"
                tal:content="date" />
@@ -23,7 +20,7 @@
         <h5><tal:block i18n:translate="minaraad_label_summary">Summary</tal:block>:</h5>
         <div tal:content="structure context/getBody" />
       </tal:summary>
-   
+
       <!-- Start Attachments-->
       <div metal:use-macro="context/mina_attachments/macros/listattachments" />
       <!-- end Attachments -->
@@ -59,7 +56,7 @@
       <!-- End contactpersoon -->
 
    </metal:block>
-   
+
    <metal:block metal:define-macro="folderlisting" />
    </body>
 </html>
