@@ -42,16 +42,6 @@ Hearing_schema = BaseFolderSchema.copy() + \
     schema.copy()
 Hearing_schema.moveField('theme', after="goal")
 Hearing_schema.moveField('mot', after="theme")
-# 'goal' (from MREvent) should use a rich text editor on this contenttype.
-Hearing_schema['goal'].widget = RichWidget(
-    label='Goal',
-    label_msgid='minaraad_label_goal',
-    i18n_domain='minaraad',
-    )
-Hearing_schema['goal'].default_content_type='text/html'
-Hearing_schema['goal'].default_output_type = 'text/html'
-Hearing_schema['goal'].allowable_content_types = (
-    'text/html', 'text/plain', 'text/structured', 'application/msword',)
 
 
 class IHearing(Interface):

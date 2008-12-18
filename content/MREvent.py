@@ -58,13 +58,17 @@ schema = Schema((
 
     TextField(
         name='goal',
-        widget=TextAreaWidget(
+        allowable_content_types=('text/plain', 'text/structured', 'text/html', 'application/msword',),
+        widget=RichWidget(
             label='Goal',
             label_msgid='minaraad_label_goal',
             i18n_domain='minaraad',
-        ),
-        searchable=1
+            ),
+        searchable=1,
+        default_content_type='text/html',
+        default_output_type='text/html',
     ),
+
 
     StringField(
         name='location',
@@ -84,6 +88,7 @@ schema = Schema((
             label_msgid='minaraad_label_body',
             i18n_domain='minaraad',
         ),
+        searchable=1,
         default_content_type='text/html',
         default_output_type='text/html',
     ),
@@ -184,6 +189,3 @@ registerType(MREvent, PROJECTNAME)
 
 ##code-section module-footer #fill in your manual code here
 ##/code-section module-footer
-
-
-
