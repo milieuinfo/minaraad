@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minaraad\n"
-"POT-Creation-Date: 2008-12-05 13:22+0000\n"
+"POT-Creation-Date: 2008-12-18 21:03+0000\n"
 "PO-Revision-Date: Mon Aug  8 12:16:21 2005\n"
 "Last-Translator: Rocky Burt <r.burt@zestsoftware.nl>\n"
 "Language-Team: Rocky Burt <r.burt@zestsoftware.nl>\n"
@@ -71,7 +71,7 @@ msgid "Time"
 msgstr ""
 
 #. Default: "Advisory date:"
-#: ./skins/minaraad/advisory_view.pt:17
+#: ./skins/minaraad/advisory_view.pt:14
 msgid "advisory_date"
 msgstr ""
 
@@ -86,7 +86,7 @@ msgid "description_newbie_pointers_mina"
 msgstr ""
 
 #. Default: "Subscriptions settings for this member."
-#: ./browser/subscriptions_config.pt:38
+#: ./browser/subscriptions_config.pt:37
 msgid "description_subscriptions_setup"
 msgstr ""
 
@@ -166,7 +166,7 @@ msgid "label_add"
 msgstr ""
 
 #. Default: "Related documents"
-#: ./skins/minaraad/advisory_view.pt:48
+#: ./skins/minaraad/advisory_view.pt:31
 msgid "label_advisory_related_documents"
 msgstr ""
 
@@ -291,7 +291,7 @@ msgid "label_jobtitle"
 msgstr ""
 
 #. Default: "Join in"
-#: ./skins/minaraad/portlet_login.pt:92
+#: ./skins/minaraad/portlet_login.pt:86
 msgid "label_join_in"
 msgstr ""
 
@@ -351,7 +351,7 @@ msgid "label_save"
 msgstr ""
 
 #. Default: "Select all themes"
-#: ./browser/subscriptions_config.pt:98
+#: ./browser/subscriptions_config.pt:97
 msgid "label_select_all_themes"
 msgstr ""
 
@@ -439,11 +439,6 @@ msgstr ""
 msgid "label_unsubscribe"
 msgstr ""
 
-#. Default: "Up to My Preferences"
-#: ./browser/subscriptions_config.pt:32
-msgid "label_up_to_my_preferences"
-msgstr ""
-
 #. Default: "Up to Site Setup"
 #: ./browser/minaraad_config.pt:16
 msgid "label_up_to_plone_setup"
@@ -480,7 +475,7 @@ msgid "legend_sendemail"
 msgstr ""
 
 #. Default: "More"
-#: ./skins/minaraad/advisory_listing_view.pt:34
+#: ./skins/minaraad/hearing_listing_view.pt:95
 msgid "linkmoreinfo"
 msgstr ""
 
@@ -802,9 +797,7 @@ msgid "minaraad_label_subheader"
 msgstr ""
 
 #. Default: "Summary"
-#: content/Presentation.py
-#: content/AgendaItems.py
-#: content/AgendaItem.py
+#: ./skins/minaraad/advisory_view.pt:20
 msgid "minaraad_label_summary"
 msgstr ""
 
@@ -819,7 +812,7 @@ msgid "minaraad_label_zipcode"
 msgstr ""
 
 #. Default: "For more information contact:"
-#: ./skins/minaraad/advisory_view.pt:33
+#: ./skins/minaraad/advisory_view.pt:51
 msgid "moreinfo_contactperson"
 msgstr ""
 
@@ -844,7 +837,7 @@ msgid "till"
 msgstr ""
 
 #. Default: "Attachments"
-#: ./skins/minaraad/mina_attachments.pt:32
+#: ./skins/minaraad/mina_attachments.pt:33
 msgid "title_attachments"
 msgstr ""
 
@@ -884,7 +877,7 @@ msgid "title_subscription"
 msgstr ""
 
 #. Default: "Toggle all:"
-#: ./browser/subscriptions_config.pt:95
+#: ./browser/subscriptions_config.pt:94
 msgid "toggle_all"
 msgstr ""
 
