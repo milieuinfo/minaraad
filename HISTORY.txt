@@ -4,6 +4,9 @@ History of Products.minaraad
 2.2.3 (unreleased)
 ------------------
 
+- Switched MREvent's goal field to RichText, which removed the need for a
+  customization of Hearing (which inherits from MREvent).  [reinout]
+
 - Hid description field on advisory CT. (I didn't remove it completely as
   there's still migration needed from desc text to the body text).  [reinout]
 
