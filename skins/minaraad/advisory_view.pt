@@ -40,6 +40,11 @@
       </tal:related>
       <!-- End related documents -->
 
+      <div>
+        <img tal:replace="structure context/foto_foto"
+             tal:condition="context/getFoto" />
+      </div>
+
       <!-- Start contactperson -->
       <tal:block define="contacts python:context.getContact()"
          condition="contacts">

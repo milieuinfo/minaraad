@@ -4,6 +4,8 @@ History of Products.minaraad
 2.2.3 (unreleased)
 ------------------
 
+- Added image field to Advisory.  [reinout]
+
 - Switched MREvent's goal field to RichText, which removed the need for a
   customization of Hearing (which inherits from MREvent).  [reinout]
 
