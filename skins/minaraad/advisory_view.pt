@@ -40,9 +40,9 @@
       </tal:related>
       <!-- End related documents -->
 
-      <div>
-        <img tal:replace="structure context/foto_foto"
-             tal:condition="context/getFoto" />
+      <div tal:condition="context/getFoto"
+         class="advisory-photo">
+        <img tal:replace="structure context/foto_foto" />
       </div>
 
       <!-- Start contactperson -->

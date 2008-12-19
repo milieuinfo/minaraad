@@ -440,6 +440,10 @@ dl.Attendees dd{
     padding-bottom: 5px;
 }
 
+.advisory-photo {
+  margin: 20px 0;
+}
+
 /* --- End Advisory View --- */
 
 /* --- Start Subscribers overview --- */
