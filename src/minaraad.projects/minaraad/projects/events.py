@@ -29,7 +29,7 @@ def set_agenda_item_order(item, event):
         item.setOrder(0)
 
 
-def save_participants(meeting, event):
+def save_invited(meeting, event):
     """ When a meeting is saved, we store the list
     of participants based on the groups.
     We do so to have a copy of the participants when the meeting

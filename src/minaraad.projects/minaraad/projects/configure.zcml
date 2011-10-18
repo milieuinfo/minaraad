@@ -48,7 +48,7 @@
   <subscriber
       for=".interfaces.IMeeting
            zope.lifecycleevent.interfaces.IObjectModifiedEvent"
-      handler=".events.save_participants"
+      handler=".events.save_invited"
       />
 
   <subscriber

@@ -164,7 +164,7 @@ class Meeting(BaseMeeting):
 
     def _participants_vocabulary(self):
         """ List the participants for a meeting.
-        See projects.minaraad.events.save_participants to see
+        See projects.minaraad.events.save_invited to see
         how the list is generated.
         """
         participants = self.get_invited_people()
