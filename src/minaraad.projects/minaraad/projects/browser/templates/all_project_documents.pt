@@ -1,0 +1,48 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="minaraad.projects">
+  <body>
+    <div metal:fill-slot="main">
+     <h1 class="documentFirstHeading">
+       Project: <span tal:replace="context/getPID" /> - <span tal:replace="context/Title" />
+     </h1>
+
+     <tal:block tal:repeat="data view/get_data">
+       <tal:block tal:define="meeting python: data['meeting'];
+                              items python: data['items']">
+         <div class="widget wide">
+           <div class="title">
+             <span tal:replace="data/meeting/getResponsible_group" />
+             <p tal:define="d data/meeting/getStart_time">
+               <metal:block use-macro="context/display_macros/macros/date" />,
+               <tal:block tal:define="t meeting/getStart_time">
+                 <metal:block use-macro="context/display_macros/macros/time" /> tot
+               </tal:block>
+               <tal:block tal:define="t meeting/get_end_time">
+                 <metal:block use-macro="context/display_macros/macros/time" />u
+               </tal:block>
+             </p>
+           </div>
+           <div class="body">
+             <ul>
+               <tal:block  tal:repeat="obj items">
+                 <li tal:define="oddrow repeat/obj/odd"
+                     tal:attributes="class python: oddrow and 'odd' or 'even'">
+                   <a tal:content="obj/Title"
+                      tal:attributes="href data/meeting/absolute_url" />
+                   <metal:block use-macro="context/display_macros/macros/agenda_attachments" />
+                 </li>
+               </tal:block>
+             </ul>
+           </div>
+         </div>
+       </tal:block>
+     </tal:block>
+
+     <div style="clear: both;">
+       &nbsp;
+     </div>
+    </div>
+  </body>
+</html>

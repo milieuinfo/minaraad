@@ -1,0 +1,101 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:cmf="http://namespaces.zope.org/cmf"
+    i18n_domain="minaraad.projects">
+
+  <include package="collective.autopermission" />
+
+  <!-- Permissions to add our custom content types. -->
+  <permission
+    id="minaraad.projects.addProject"
+    title="minaraad.projects: Add Project" />
+
+  <permission
+    id="minaraad.projects.addMeeting"
+    title="minaraad.projects: Add Meeting" />
+
+  <permission
+    id="minaraad.projects.addDigiBib"
+    title="minaraad.projects: Add DigiBib" />
+
+  <permission
+    id="minaraad.projects.addProjectContainer"
+    title="minaraad.projects: Add ProjectContainer" />
+
+  <permission
+    id="minaraad.projects.addMeetingContainer"
+    title="minaraad.projects: Add MeetingContainer" />
+
+  <permission
+    id="minaraad.projects.addOrganisationContainer"
+    title="minaraad.projects: Add OrganisationContainer" />
+
+  <permission
+    id="minaraad.projects.addAgendaItemProject"
+    title="minaraad.projects: Add AgendaItemProject" />
+
+  <permission
+    id="minaraad.projects.addOrganisation"
+    title="minaraad.projects: Add Organisation" />
+
+  <!-- View permissions for the pages -->
+  <permission
+    id="minaraad.projects.viewDigibib"
+    title="minaraad.projects: view digibib" />
+
+  <permission
+    id="minaraad.projects.viewProjectInDigibib"
+    title="minaraad.projects: view project in digibib" />
+
+  <permission
+    id="minaraad.projects.viewMeetingInDigibib"
+    title="minaraad.projects: view meeting in digibib" />
+
+  <!-- Permissions to manage the fields when editing items. -->
+  <permission
+    id="minaraad.projects.view_project_id"
+    title="minaraad.projects: view project id" />
+
+  <permission
+    id="minaraad.projects.manage_new_project_fields"
+    title="minaraad.projects: manage new project fields" />
+
+  <permission
+    id="minaraad.projects.manage_in_verification_project_fields"
+    title="minaraad.projects: manage in verification project fields" />
+
+  <permission
+    id="minaraad.projects.manage_in_consideration_project_fields"
+    title="minaraad.projects: manage in consideration project fields" />
+
+  <permission
+    id="minaraad.projects.manage_rejected_project_fields"
+    title="minaraad.projects: manage rejected project fields" />
+
+  <permission
+    id="minaraad.projects.manage_active_project_fields"
+    title="minaraad.projects: manage active project fields" />
+
+  <permission
+    id="minaraad.projects.manage_cancelled_project_fields"
+    title="minaraad.projects: manage cancelled project fields" />
+
+  <permission
+    id="minaraad.projects.manage_finished_project_fields"
+    title="minaraad.projects: manage finished project fields" />
+
+  <permission
+    id="minaraad.projects.manage_completed_project_fields"
+    title="minaraad.projects: manage completed project fields" />
+
+  <permission
+    id="minaraad.projects.manage_non_past_meetings_fields"
+    title="minaraad.projects: manage non past meetings fields" />
+
+  <permission
+    id="minaraad.projects.manage_past_meetings_fields"
+    title="minaraad.projects: manage past meetings fields" />
+
+</configure>

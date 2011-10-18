@@ -1,0 +1,81 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/prefs_main_template/macros/master"
+      i18n:domain="minaraad.projects">
+
+  <metal:block metal:fill-slot="top_slot" tal:define="dummy python:request.set('disable_border',1)" />
+
+  <body>
+    <div metal:fill-slot="prefs_configlet_main">
+
+     <h1 class="documentFirstHeading"
+         i18n:translate="label_manage_project_properties">
+       Project properties
+     </h1>
+
+     <form method="POST"
+           tal:define="props view/get_properties"
+           tal:attributes="action string:${portal_url}/project_properties">
+
+       <label>
+         <span i18n:translate="label_secretary_email">Secretary email: </span><br />
+         <input type="text"
+                name="email"
+                tal:attributes="value python: props.get('email', '')" />
+       </label>
+       <p>
+         <span class="error"
+               tal:condition="python: 'email' in view.errors"
+               i18n:translate="label_email_empty_error">
+           You must specify the secretary email.
+         </span>
+       </p>
+
+       <label tal:define="board python: props.get('board', '')">
+         <span i18n:translate="label_governance_board">Daily governance board: </span><br />
+         <select name="board">
+           <tal:block tal:repeat="group view/get_groups">
+             <option tal:define="selected python: group == board"
+                     tal:content="group"
+                     tal:attributes="value group;
+                                     selected python: selected and 'selected' or None" />
+           </tal:block>
+         </select>
+       </label>
+       <p>
+         <span class="error"
+               tal:condition="python: 'board' in view.errors"
+               i18n:translate="label_board_empty_error">
+           You must specify the daily governance board group..
+         </span>
+       </p>
+
+       <label>
+         <span i18n:translate="label_advisory_requesters">Advisory requesters:</span><br />
+         <textarea cols="35" rows="6" name="requesters:lines" class="form-element"
+                   tal:content="python:props.get('requesters', '')"></textarea>
+       </label>
+       <br />
+       <label>
+         <span i18n:translate="label_membership_organizations">Membership organizations:</span><br />
+         <textarea cols="35" rows="6" name="membership_organizations:lines" class="form-element"
+                   tal:content="python:props.get('membership_organizations', '')"></textarea>
+       </label>
+       <br />
+
+       <input type="submit"
+              name="form_submitted"
+              value="Save"
+              i18n:attributes="value label_save" />
+       <input type="submit"
+              name="form_cancelled"
+              value="Cancel"
+              i18n:attributes="value label_cancel" />
+     </form>
+
+     <div style="clear: both;">
+       &nbsp;
+     </div>
+    </div>
+  </body>
+</html>

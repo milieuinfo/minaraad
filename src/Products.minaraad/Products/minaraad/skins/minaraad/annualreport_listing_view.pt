@@ -1,0 +1,28 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
+      lang="en-US"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="minaraad">
+
+  <body>
+    <metal:block metal:fill-slot="main"
+                 tal:define="current_path python:'/'.join(context.getPhysicalPath());
+                             annualreports python:context.portal_catalog.searchResults(
+                             portal_type='AnnualReport',
+                             path=current_path,)">
+      <metal:block metal:define-macro="folderlisting" />
+
+      <h1 tal:content="context/Title"
+          class="documentFirstHeading">Title</h1>
+
+      <div class="documentDescription"
+           tal:condition="context/Description"
+           tal:content="context/Description" />
+
+      <div tal:repeat="annualreport annualreports"
+         class="list-attachments">
+        <metal:block use-macro="context/filemacro/macros/annualreport_view" />
+      </div>
+
+    </metal:block>
+  </body>
+</html>

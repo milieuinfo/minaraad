@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<object name="portal_properties" meta_type="Plone Properties Tool">
+ <!-- See also extend_minaraad_properties in migration.py for
+      only-once additions.  But simply creating an empty non-purging
+      lines property here is fine. -->
+ <object name="minaraad_properties" meta_type="Plone Property Sheet">
+  <property name="requesters" type="lines" purge="False">
+  </property>
+  <property name="membership_organizations" type="lines" purge="False">
+  </property>
+ </object>
+</object>

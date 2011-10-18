@@ -1,0 +1,32 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="minaraad">
+  <body>
+    <div metal:fill-slot="main">
+     <h1 class="documentFirstHeading"
+         i18n:translate="heading_contact_persons">
+       Contact persons
+     </h1>
+
+     <div class="widget">
+       <div class="body">
+         <ul tal:define="contact_persons view/get_contact_persons">
+           <tal:block tal:repeat="contact_person contact_persons">
+             <li tal:define="oddrow repeat/contact_person/odd"
+                 tal:attributes="class python: oddrow and 'odd' or 'even'">
+               <a tal:attributes="href contact_person/getURL">
+                 <span tal:replace="contact_person/Title" />
+               </a>
+             </li>
+           </tal:block>
+         </ul>
+       </div>
+     </div>
+
+     <div style="clear: both;">
+       &nbsp;
+     </div>
+    </div>
+  </body>
+</html>

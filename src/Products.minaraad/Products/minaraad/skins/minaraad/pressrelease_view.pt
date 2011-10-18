@@ -1,0 +1,63 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
+      lang="en-US"
+      i18n:domain="minaraad">
+
+   <metal:block use-macro="context/global_defines/macros/defines" />
+
+   <body>
+   <metal:block define-macro="header">
+      <div class="press-img-left">
+         <span tal:replace="structure context/logo_1_logo"
+            tal:condition="context/getLogo_1" />
+      </div>
+
+      <div class="press-img-right">
+         <span tal:replace="structure context/logo_2_logo"
+            tal:condition="context/getLogo_2" />
+      </div>
+
+      <div tal:define="daterequired python:context.getDate() != None;
+                     date python:toLocalizedTime(context.date)[:-5];"
+         tal:content="date"
+         tal:condition="daterequired"
+         class="press-date">01-01</div>
+
+      <div class="press-title"
+         tal:content="context/Title">Title</div>
+      <div class="press-subhead"
+         tal:content="context/getSubheader">SubHeader</div>
+
+      <div class="clear" />
+      <br />
+   </metal:block>
+
+   <metal:block define-macro="body">
+   <hr />
+   <div tal:content="context/getDescription" />
+
+   <!-- Text -->
+   <hr />
+   <img tal:condition="context/getFoto"
+        tal:attributes="src string:${context/absolute_url}/foto_foto"
+        alt=""
+        class="float-right" />
+   <span class="bodytext"
+      tal:content="structure context/getBody"
+      tal:condition="context/getBody" />
+   <!-- End text -->
+   <br />
+
+   <!-- Start Attachments-->
+   <div metal:use-macro="context/mina_attachments/macros/listattachments" />
+   <!-- end Attachments -->
+
+   <!-- Contactperson -->
+   <tal:block tal:define="obj nocall: context">
+     <div metal:use-macro="context/contactperson_view/macros/show_coord_authors"
+          tal:omit-tag="" />
+   </tal:block>
+   <!-- end contactpersoon -->
+   </metal:block>
+   <metal:block metal:define-macro="folderlisting" />
+   </body>
+</html>

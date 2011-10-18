@@ -1,0 +1,18 @@
+<configure xmlns="http://namespaces.zope.org/five">
+
+  <!-- Most of these do not even have a manage_after*, but Zope complains -->
+  <!-- when starting up anyway, because of base classes that have them. -->
+
+  <deprecatedManageAddDelete
+      class="minaraad.projects.content.agendaitem.AgendaItemProject" />
+
+  <deprecatedManageAddDelete
+      class="minaraad.projects.content.digibib.DigiBib" />
+
+  <deprecatedManageAddDelete
+      class="minaraad.projects.content.meeting.Meeting" />
+
+  <deprecatedManageAddDelete
+      class="minaraad.projects.content.project.Project" />
+
+</configure>

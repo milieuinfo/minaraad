@@ -1,0 +1,101 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
+      lang="en-US"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="minaraad">
+
+    <body>
+    <metal:block metal:fill-slot="main"
+                   tal:define="current_path python:'/'.join(context.getPhysicalPath());
+                              hearings python:context.portal_catalog.searchResults(portal_type='Hearing',
+                                                                                    path=current_path,
+                                                                                    sort_on='getStart_time',
+                                                                                    sort_order='reverse');">
+        <metal:block metal:define-macro="folderlisting" />
+
+        <h1 tal:content="context/Title"
+            class="documentFirstHeading">Title</h1>
+
+        <div class="documentDescription"
+             tal:condition="context/Description"
+             tal:content="context/Description" />
+
+        <div tal:repeat="item_object hearings">
+        <span tal:define="obj python:item_object.getObject()"
+                tal:omit-tag="">
+
+         <h2>
+            <a tal:content="item_object/Title"
+               tal:attributes="href item_object/getURL;
+                              title item_object/Title" />
+         </h2>
+
+            <div tal:condition="obj/getSubheader"
+                 class="pressrelease_listsub">
+                <span tal:replace="obj/getSubheader" />
+                <span tal:condition="python:obj.getMot() == True"
+                        tal:omit-tag="">
+                    (MOT)
+                </span>
+            </div>
+
+            <span tal:condition="obj/getLocation"
+                    tal:omit-tag="">
+            <span tal:replace="obj/getLocation" />
+            &nbsp;-&nbsp;
+            </span>
+
+            <!-- DATES -->
+            <tal:block tal:define="daterequired python:obj.getStart_time() != None and obj.get_end_time() != None;"
+                        tal:condition="daterequired">
+
+            <div tal:define="startdate python:toLocalizedTime(obj.getStart_time());
+                            enddate python:toLocalizedTime(obj.get_end_time());
+                            starttime python: obj.getStart_time().TimeMinutes();
+                            endtime python: obj.get_end_time().TimeMinutes();
+                            noStartTime python:test(starttime == '00:00', 0, 1);
+                            noEndTime python:test(endtime == '00:00', 0, 1);"
+                    tal:omit-tag="">
+
+
+                <tal:block tal:condition="python:startdate == enddate">
+                <span tal:replace="startdate" />
+                &nbsp;-&nbsp;
+                <tal:block tal:condition="python: noStartTime and noEndTime">
+                    <span tal:replace="starttime" />
+                    <span i18n:translate="till"
+                        tal:omit-tag="">till</span>
+                    <span tal:replace="endtime" />
+                    <span i18n:translate="hour">hour</span>
+                </tal:block>
+                </tal:block>
+                <tal:block tal:condition="python:startdate != enddate">
+                    <span i18n:translate="from"
+                        tal:omit-tag="">from</span>
+                    <span tal:replace="startdate" />
+
+                    <span i18n:translate="up_untill"
+                        tal:omit-tag="">up untill</span>
+                    <span tal:replace="enddate" />
+
+                    <tal:block tal:condition="python: noStartTime and noEndTime">
+                        &nbsp;-&nbsp;
+                        <span tal:replace="starttime" />
+
+                        <span i18n:translate="till"
+                            tal:omit-tag="">till</span>
+                        <span tal:replace="endtime" />
+                        <span i18n:translate="hour">hour</span>
+                    </tal:block>
+                </tal:block>
+                </div>
+            </tal:block>
+            <br />
+            <span tal:condition="item_object/Description"
+                    tal:content="item_object/Description" />
+        </span>
+        <br />
+        <br />
+        </div>
+   </metal:block>
+   </body>
+</html>

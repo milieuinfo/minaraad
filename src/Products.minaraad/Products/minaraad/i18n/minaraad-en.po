@@ -1,0 +1,1009 @@
+# minaraad
+# Mirella van Teulingen <m.van.teulingen@zestsoftware.nl>, 2006.
+msgid ""
+msgstr ""
+"Project-Id-Version: minaraad 0.1\n"
+"POT-Creation-Date: 2011-10-10 16:12+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: Mirella van Teulingen <m.van.teulingen@zestsoftware.nl>\n"
+"Language-Team: English <info@zestsoftware.nl>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: minaraad\n"
+
+#: ./profiles/default/types/Hearing.xml
+msgid "A Hearing"
+msgstr ""
+
+#: ./profiles/default/types/NewsLetter.xml
+msgid "A Newsletter"
+msgstr ""
+
+#: ./profiles/default/types/Pressrelease.xml
+msgid "A Press Release"
+msgstr ""
+
+#: ./profiles/default/types/Study.xml
+msgid "A Study"
+msgstr ""
+
+#: ./profiles/default/types/JoinIn.xml
+msgid "A not-so-basic CMF Content implementation with Dublin Core Metadata included"
+msgstr ""
+
+#. Default: "Advisory"
+#: ./profiles/default/types/Advisory.xml
+msgid "Advisory"
+msgstr ""
+
+#: ./profiles/default/types/AgendaItem.xml
+msgid "AgendaItem"
+msgstr ""
+
+#: ./profiles/default/types/AgendaItem.xml
+msgid "An Agendaitem"
+msgstr ""
+
+#: ./profiles/default/types/Advisory.xml
+msgid "An advisory"
+msgstr ""
+
+#: ./profiles/default/types/AnnualReport.xml
+msgid "An annual report"
+msgstr ""
+
+#. Default: "AnnualReport"
+#: ./profiles/default/types/AnnualReport.xml
+msgid "AnnualReport"
+msgstr ""
+
+#: ./skins/minaraad/prefs_user_edit.cpy:46
+msgid "Changes made."
+msgstr ""
+
+#: ./profiles/default/types/ContactPerson.xml
+msgid "ContactPerson"
+msgstr ""
+
+#. Default: "Date:"
+#: ./skins/minaraad/mina_showdatetime.pt:18
+msgid "Date:"
+msgstr ""
+
+#. Default: "Goal:"
+#: ./skins/minaraad/EmailTemplate-Hearing.pt:22
+#: ./skins/minaraad/EmailTemplate-MREvent.pt:22
+#: ./skins/minaraad/hearing_view.pt:73
+msgid "Goal:"
+msgstr ""
+
+#. Default: "Hearing"
+#: ./profiles/default/types/Hearing.xml
+msgid "Hearing"
+msgstr ""
+
+#: ./profiles/default/types/JoinIn.xml
+msgid "JoinIn"
+msgstr ""
+
+#. Default: "Location:"
+#: ./skins/minaraad/EmailTemplate-Hearing.pt:18
+#: ./skins/minaraad/EmailTemplate-MREvent.pt:18
+#: ./skins/minaraad/hearing_view.pt:83
+msgid "Location:"
+msgstr ""
+
+#: ./profiles/default/types/MREvent.xml
+msgid "MREvent"
+msgstr ""
+
+#. Default: "Newsletter"
+#: ./profiles/default/types/NewsLetter.xml
+msgid "NewsLetter"
+msgstr ""
+
+#: browser/subscriptions_config.pt
+msgid "Newsletter"
+msgstr ""
+
+#: ./profiles/default/types/Pressrelease.xml
+msgid "Pressrelease"
+msgstr ""
+
+#. Default: "Set_my_password_mina"
+#: ./skins/minaraad/pwreset_form.cpt:97
+msgid "Set_my_password_mina"
+msgstr "Set my password"
+
+#. Default: "Study"
+#: ./profiles/default/types/Study.xml
+msgid "Study"
+msgstr ""
+
+#. Default: "Time:"
+#: ./skins/minaraad/mina_showdatetime.pt:26
+msgid "Time"
+msgstr ""
+
+#. Default: "Advisory date:"
+#: ./skins/minaraad/advisory_view.pt:14
+msgid "advisory_date"
+msgstr ""
+
+#. Default: "Themes settings for Site"
+#: ./browser/minaraad_config.pt:23
+msgid "description_themes_setup"
+msgstr ""
+
+#. Default: "Click on the buttons below to export the e-mail subscribers on this content type as an Excelsheet."
+#: ./browser/export-subscribers.pt:30
+msgid "export_descriptions"
+msgstr ""
+
+#. Default: "from"
+#: ./skins/minaraad/hearing_listing_view.pt:72
+#: ./skins/minaraad/mina_showdatetime.pt:38
+#: ./skins/minaraad/mrevent_listing_view.pt:68
+msgid "from"
+msgstr ""
+
+#. Default: "Contact persons"
+#: ./browser/list_contact_persons.pt:7
+msgid "heading_contact_persons"
+msgstr ""
+
+#. Default: "Subscribers overview"
+#: ./browser/subscribers_config.pt:13
+msgid "heading_subscribers_overview"
+msgstr ""
+
+#. Default: "Themes Settings"
+#: ./browser/minaraad_config.pt:14
+msgid "heading_themes_setup"
+msgstr ""
+
+#. Default: "You are currently subscribed to this hearing."
+#: ./skins/minaraad/hearing_view.pt:24
+msgid "hearing_registered_label"
+msgstr ""
+
+#. Default: "You are not currently subscribed to this hearing."
+#: ./skins/minaraad/hearing_view.pt:40
+msgid "hearing_unregistered_label"
+msgstr ""
+
+#. Default: "Enter an email address. You will use this to login to the site. This is also necessary in case the password is lost. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
+#: ./skins/minaraad/join_form.cpt:349
+msgid "help_email_creation_mina"
+msgstr ""
+
+#. Default: "Send out an e-mail to all subscribers pertaining to this item. If the 'Send As Test' checkbox is checked below, the e-mail is only sent to the people in the 'To' field. Fill in the username which should receive the test email. Once a non-test e-mail has been sent out, no further e-mail's can be sent from this particular tab."
+#: ./browser/email_out.pt:45
+msgid "help_email_out"
+msgstr ""
+
+#. Default: "Additional message text (text used from emailTemplate field is considered master e-mail text)."
+#: ./browser/email_out.pt:115
+msgid "help_email_out_additional"
+msgstr ""
+
+#. Default: "An e-mail has already been sent out for this content type on ${email_sentdate}."
+#: ./browser/email_out.pt:39
+msgid "help_email_out_already_sent"
+msgstr ""
+
+#. Default: "Comma-separated list of member ids this mail is sent out to. This is only for testing purposes and for members that you want the mail to be sent to in addition to the ones that subscribed."
+#: ./browser/email_out.pt:72
+msgid "help_email_out_to"
+msgstr ""
+
+#. Default: "Test e-mails can be sent as frequently as needed but only get sent to the members in the above \"To\" field."
+#: ./browser/email_out.pt:94
+msgid "help_send_as_test"
+msgstr ""
+
+#. Default: "Name of the new theme to create."
+#: ./browser/minaraad_config.pt:108
+msgid "help_theme_name"
+msgstr ""
+
+#. Default: "hour"
+#: ./skins/minaraad/hearing_listing_view.pt:68
+#: ./skins/minaraad/mina_showdatetime.pt:34
+#: ./skins/minaraad/mrevent_listing_view.pt:64
+msgid "hour"
+msgstr ""
+
+#. Default: "Add"
+#: ./browser/minaraad_config.pt:121
+msgid "label_add"
+msgstr ""
+
+#. Default: "Related documents"
+#: ./skins/minaraad/advisory_view.pt:60
+msgid "label_advisory_related_documents"
+msgstr ""
+
+#. Default: "Agenda items"
+#: ./skins/minaraad/hearing_view.pt:108
+#: ./skins/minaraad/mrevent_view.pt:102
+msgid "label_agendaitems"
+msgstr ""
+
+#. Default: "Is published"
+#: ./schema_extensions/fileAttachment.py:28
+msgid "label_attachment_published"
+msgstr ""
+
+#. Default: "Bus"
+#: ./skins/minaraad/join_form.cpt:208
+#: ./skins/minaraad/personalize_form.cpt:222
+#: ./skins/minaraad/prefs_user_details.cpt:253
+msgid "label_bus"
+msgstr ""
+
+#. Default: "To block spammers, please solve this \"captcha\":"
+#: ./skins/minaraad/join_form.cpt:437
+msgid "label_captcha"
+msgstr ""
+
+#. Default: "City"
+#: ./skins/minaraad/join_form.cpt:260
+#: ./skins/minaraad/personalize_form.cpt:269
+#: ./skins/minaraad/prefs_user_details.cpt:295
+msgid "label_city"
+msgstr ""
+
+#. Default: "Company"
+#: ./skins/minaraad/join_form.cpt:116
+#: ./skins/minaraad/personalize_form.cpt:128
+#: ./skins/minaraad/prefs_user_details.cpt:162
+msgid "label_company"
+msgstr ""
+
+#. Default: "Country"
+#: ./skins/minaraad/join_form.cpt:279
+#: ./skins/minaraad/personalize_form.cpt:294
+#: ./skins/minaraad/prefs_user_details.cpt:320
+msgid "label_country"
+msgstr ""
+
+#. Default: "Beste"
+#: ./skins/minaraad/EmailTemplate-Advisory.pt:8
+#: ./skins/minaraad/EmailTemplate-AnnualReport.pt:11
+#: ./skins/minaraad/EmailTemplate-Default.pt:11
+msgid "label_dear"
+msgstr ""
+
+#. Default: "Delete"
+#: ./browser/minaraad_config.pt:83
+msgid "label_delete"
+msgstr ""
+
+#. Default: "Edit"
+#: ./browser/minaraad_config.pt:76
+msgid "label_edit"
+msgstr ""
+
+#. Default: "Additional Message"
+#: ./browser/email_out.pt:112
+msgid "label_email_out_additional"
+msgstr ""
+
+#. Default: "To"
+#: ./browser/email_out.pt:69
+msgid "label_email_out_to"
+msgstr ""
+
+#. Default: "Email address"
+#: ./skins/minaraad/contactperson_view.pt:37
+msgid "label_emailaddress"
+msgstr ""
+
+#. Default: "Export subscribers"
+#: ./browser/export-subscribers.pt:40
+#: ./browser/subscribers_config.pt:41
+msgid "label_export"
+msgstr ""
+
+#. Default: "Export As Excel Spreadsheet"
+#: ./browser/export-subscribers.pt:39
+msgid "label_export_as_excel"
+msgstr ""
+
+#. Default: "Export CSV"
+#: ./skins/minaraad/hearing_view.pt:172
+#: ./skins/minaraad/mrevent_view.pt:165
+msgid "label_exportcsv"
+msgstr ""
+
+#. Default: "Export Subscriber List"
+#: ./browser/export-subscribers.pt:18
+msgid "label_exportsubscribers"
+msgstr ""
+
+#. Default: "First name"
+#: ./skins/minaraad/join_form.cpt:69
+#: ./skins/minaraad/personalize_form.cpt:79
+#: ./skins/minaraad/prefs_user_details.cpt:116
+msgid "label_firstname"
+msgstr ""
+
+#. Default: "Gender"
+#: ./skins/minaraad/join_form.cpt:43
+#: ./skins/minaraad/personalize_form.cpt:58
+#: ./skins/minaraad/prefs_user_details.cpt:98
+msgid "label_gender"
+msgstr ""
+
+#. Default: "Met vriendelijke groet"
+#: ./skins/minaraad/emailtemplate_subscribe_notification.pt:24
+msgid "label_greeting"
+msgstr ""
+
+#. Default: "House number"
+#: ./skins/minaraad/join_form.cpt:188
+#: ./skins/minaraad/personalize_form.cpt:198
+#: ./skins/minaraad/prefs_user_details.cpt:229
+msgid "label_housenumber"
+msgstr ""
+
+#. Default: "Job title"
+#: ./skins/minaraad/contactperson_view.pt:21
+#: ./skins/minaraad/join_form.cpt:136
+#: ./skins/minaraad/personalize_form.cpt:149
+msgid "label_jobtitle"
+msgstr ""
+
+#. Default: "Join in"
+#: ./skins/minaraad/portlet_login.pt:84
+msgid "label_join_in"
+msgstr ""
+
+#. Default: "Last modified"
+#: ./skins/minaraad/prefs_user_details.cpt:85
+msgid "label_last_modification_date"
+msgstr ""
+
+#. Default: "Last name"
+#: ./skins/minaraad/join_form.cpt:96
+#: ./skins/minaraad/personalize_form.cpt:105
+#: ./skins/minaraad/prefs_user_details.cpt:139
+msgid "label_lastname"
+msgstr ""
+
+#. Default: "LinkedIn"
+#: ./skins/minaraad/contactperson_view.pt:56
+msgid "label_linkedin"
+msgstr ""
+
+#. Default: "For more info, go to:"
+#: ./skins/minaraad/EmailTemplate-Advisory.pt:22
+#: ./skins/minaraad/EmailTemplate-AnnualReport.pt:20
+#: ./skins/minaraad/EmailTemplate-Default.pt:23
+msgid "label_moreinfo"
+msgstr ""
+
+#. Default: "Name"
+#: ./skins/minaraad/contactperson_view.pt:13
+msgid "label_name"
+msgstr ""
+
+#. Default: "New"
+#: ./skins/minaraad/portlet_recent.pt:22
+msgid "label_new"
+msgstr ""
+
+#. <no reference>
+#: Field.py
+msgid "label_no_reference"
+msgstr ""
+
+#. Default: "Other country"
+#: ./skins/minaraad/join_form.cpt:299
+#: ./skins/minaraad/personalize_form.cpt:316
+#: ./skins/minaraad/prefs_user_details.cpt:340
+msgid "label_other_country"
+msgstr ""
+
+#. Default: "A password will be generated and e-mailed to you to complete the registration process."
+#: ./skins/minaraad/join_form.cpt:427
+msgid "label_password_will_be_mailed_mina"
+msgstr ""
+
+#. Default: "Phone number"
+#: ./skins/minaraad/contactperson_view.pt:48
+#: ./skins/minaraad/join_form.cpt:320
+#: ./skins/minaraad/personalize_form.cpt:339
+msgid "label_phonenumber"
+msgstr ""
+
+#. Default: "Product number:"
+#: ./skins/minaraad/advisory_view.pt:27
+msgid "label_product_number"
+msgstr ""
+
+#. Default: "Project:"
+#: ./skins/minaraad/advisory_view.pt:34
+msgid "label_project"
+msgstr ""
+
+#. Default: "(Required)"
+#: ./skins/minaraad/join_form.cpt:64
+#: ./skins/minaraad/personalize_form.cpt:80
+msgid "label_required"
+msgstr ""
+
+#. Default: "Save"
+#: ./browser/minaraad_config.pt:69
+#: ./browser/subscriptions_config.pt:134
+msgid "label_save"
+msgstr ""
+
+#. Default: "Select all themes"
+#: ./browser/subscriptions_config.pt:100
+msgid "label_select_all_themes"
+msgstr ""
+
+#. Default: "Send"
+#: ./browser/email_out.pt:128
+msgid "label_send"
+msgstr ""
+
+#. Default: "Send Test e-mail"
+#: ./browser/email_out.pt:91
+msgid "label_send_as_test"
+msgstr ""
+
+#. Default: "Send e-mail"
+#: ./browser/email_out.pt:15
+msgid "label_sendemail"
+msgstr ""
+
+#. Default: "Street"
+#: ./skins/minaraad/join_form.cpt:163
+#: ./skins/minaraad/personalize_form.cpt:173
+#: ./skins/minaraad/prefs_user_details.cpt:205
+msgid "label_street"
+msgstr ""
+
+#. Default: "Bij deze bevestigen wij uw"
+#: ./skins/minaraad/emailtemplate_subscribe_notification.pt:10
+msgid "label_subs1"
+msgstr ""
+
+#. Default: "voor de hoorzitting"
+#: ./skins/minaraad/emailtemplate_subscribe_notification.pt:13
+msgid "label_subs2"
+msgstr ""
+
+#. Default: "die plaats vindt in"
+#: ./skins/minaraad/emailtemplate_subscribe_notification.pt:15
+msgid "label_subs3"
+msgstr ""
+
+#. Default: "op"
+#: ./skins/minaraad/emailtemplate_subscribe_notification.pt:17
+msgid "label_subs4"
+msgstr ""
+
+#. Default: "Subscribe"
+#: ./skins/minaraad/hearing_view.pt:43
+#: ./skins/minaraad/mrevent_view.pt:44
+msgid "label_subscribe"
+msgstr ""
+
+#: browser/subscribers_config.pt
+msgid "label_subscribersoverview"
+msgstr ""
+
+#. Default: "afmelding"
+#: ./skins/minaraad/emailtemplate_subscribe_notification.pt:12
+msgid "label_subsno"
+msgstr ""
+
+#. Default: "inschrijving"
+#: ./skins/minaraad/emailtemplate_subscribe_notification.pt:11
+msgid "label_subsyes"
+msgstr ""
+
+#. Default: "Dank voor uw interesse."
+#: ./skins/minaraad/emailtemplate_subscribe_notification.pt:22
+msgid "label_thank"
+msgstr ""
+
+#. Default: "Theme:"
+#: ./browser/minaraad_config.pt:104
+#: ./skins/minaraad/advisory_view.pt:21
+#: ./skins/minaraad/hearing_view.pt:65
+msgid "label_theme_name"
+msgstr ""
+
+#. Default: "Het Minaraad-team"
+#: ./skins/minaraad/emailtemplate_subscribe_notification.pt:27
+msgid "label_theteam"
+msgstr ""
+
+#. Default: "Unsubscribe"
+#: ./skins/minaraad/hearing_view.pt:27
+#: ./skins/minaraad/mrevent_view.pt:28
+msgid "label_unsubscribe"
+msgstr ""
+
+#. Default: "Up to Site Setup"
+#: ./browser/minaraad_config.pt:16
+#: ./browser/service.pt:20
+#: ./browser/subscribers_config.pt:15
+msgid "label_up_to_plone_setup"
+msgstr ""
+
+#. Default: "Zipcode"
+#: ./skins/minaraad/join_form.cpt:236
+#: ./skins/minaraad/personalize_form.cpt:244
+#: ./skins/minaraad/prefs_user_details.cpt:271
+msgid "label_zipcode"
+msgstr ""
+
+#. Default: "Check this box if you want this attachment to be publicly available"
+#: ./schema_extensions/fileAttachment.py:31
+msgid "labelattachment_published_desc"
+msgstr ""
+
+#. Default: "Add Theme"
+#: ./browser/minaraad_config.pt:101
+msgid "legend_add_theme_details"
+msgstr ""
+
+#. Default: "Current Themes"
+#: ./browser/minaraad_config.pt:35
+msgid "legend_current_themes_details"
+msgstr ""
+
+#. Default: "Edit Theme"
+#: ./browser/minaraad_config.pt:38
+msgid "legend_edit_theme"
+msgstr ""
+
+#. Default: "Send e-mail to subscribers"
+#: ./browser/email_out.pt:33
+msgid "legend_sendemail"
+msgstr ""
+
+#: skins/mail_password_template.dtml
+msgid "mailtemplate_hours"
+msgstr ""
+
+#. Default: "You have been registered as a member of Minaraad website. A password has been generated for you. Please activate your account and set your own password by visiting ${set_password} You must activate your account within ${expirationtime} hours"
+#: ./skins/minaraad/registered_notify_template.pt:15
+msgid "mailtemplate_registered_body"
+msgstr ""
+
+#. Default: "Kind regards, MINARAAD"
+#: ./skins/minaraad/registered_notify_template.pt:18
+msgid "mailtemplate_signature"
+msgstr ""
+
+#. Default: "Someone requested that the password to your account at '${site_name}' be reset. If this was not you, you may safely ignore this mail. If you wish to proceed and reset your password, please visit this address: ${reset_url}"
+#: ./skins/minaraad/mail_password_template.pt:24
+msgid "mailtemplate_text_linkreset"
+msgstr ""
+
+#: skins/mail_password_template.dtml
+msgid "mailtemplate_text_linkreset2"
+msgstr ""
+
+#. Default "By default, subscription is allowed till one day before start of the event. Uncheck this field to disallow subscription immediately."
+msgid "minaraad_description_subscription_allowed"
+msgstr ""
+
+#. Default: "date"
+#: content/Advisory.py
+#: content/Study.py
+msgid "minaraad_help_date"
+msgstr ""
+
+#. Default: "department"
+#: content/ContactPerson.py
+msgid "minaraad_help_department"
+msgstr ""
+
+#. Default: "email"
+#: content/ContactPerson.py
+msgid "minaraad_help_email"
+msgstr ""
+
+#. Default: "goal"
+#: content/Hearing.py
+msgid "minaraad_help_goal"
+msgstr ""
+
+#. Default: "jobtitle"
+#: content/ContactPerson.py
+msgid "minaraad_help_jobtitle"
+msgstr ""
+
+#. Default: "location"
+#: content/Hearing.py
+msgid "minaraad_help_location"
+msgstr ""
+
+#. Default: "MOT"
+#: content/Hearing.py
+msgid "minaraad_help_mot"
+msgstr ""
+
+#. Default: "name"
+#: content/ContactPerson.py
+msgid "minaraad_help_name"
+msgstr ""
+
+#. Default: "phonenumber"
+#: content/ContactPerson.py
+msgid "minaraad_help_phonenumber"
+msgstr ""
+
+#. Default: "policy"
+#: content/Advisory.py
+msgid "minaraad_help_policy"
+msgstr ""
+
+#. Default: "Related and published digibib documents and files"
+#: content/Advisory.py
+msgid "minaraad_help_related_documents"
+msgstr ""
+
+#. Default: "speaker"
+#: content/Presentation.py
+msgid "minaraad_help_speaker"
+msgstr ""
+
+#. Default: "speakers"
+#: content/Study.py
+msgid "minaraad_help_speakers"
+msgstr ""
+
+#. Default: "summary"
+#: content/Presentation.py
+msgid "minaraad_help_summary"
+msgstr ""
+
+#. Default: "Attachment"
+#: content/AnnualReport.py
+#: content/Pressrelease.py
+#: content/Study.py
+msgid "minaraad_label_attachment"
+msgstr ""
+
+#. Default: "Attachments"
+#: content/Advisory.py
+#: content/AgendaItem.py
+msgid "minaraad_label_attachments"
+msgstr ""
+
+#. Default: "Co-authors"
+#: ./skins/minaraad/contactperson_view.pt:79
+msgid "minaraad_label_authors"
+msgstr ""
+
+#. Default: "Body"
+#: content/Advisory.py
+#: content/Hearing.py
+msgid "minaraad_label_body"
+msgstr ""
+
+#. Default: "Bus"
+#: Organisation.py
+msgid "minaraad_label_bus"
+msgstr ""
+
+#. Default: "Category"
+#: content/NewsItem.py
+msgid "minaraad_label_category"
+msgstr ""
+
+#. Default: "City"
+#: Organisation.py
+msgid "minaraad_label_city"
+msgstr ""
+
+#. Default: "Contact"
+#: content/Advisory.py
+#: content/Hearing.py
+#: content/NewsLetter.py
+msgid "minaraad_label_contact"
+msgstr ""
+
+#. Default: "Contactpersons"
+#: content/Advisory.py
+#: content/Hearing.py
+msgid "minaraad_label_contactpersons"
+msgstr ""
+
+#. Default: "Coordinator"
+#: ./skins/minaraad/contactperson_view.pt:72
+msgid "minaraad_label_coordinator"
+msgstr ""
+
+#. Default: "Date"
+#: content/Advisory.py
+#: content/NewsLetter.py
+#: content/Study.py
+msgid "minaraad_label_date"
+msgstr ""
+
+#. Default: "Department"
+#: ./skins/minaraad/contactperson_view.pt:29
+msgid "minaraad_label_department"
+msgstr ""
+
+#. Default: "Description"
+#: content/Advisory.py
+#: content/Hearing.py
+#: content/NewsLetter.py
+msgid "minaraad_label_description"
+msgstr ""
+
+#. Default: "Displayattachments"
+#: Attachmentsmixin.py
+msgid "minaraad_label_displayAttachments"
+msgstr ""
+
+#. Default: "Email"
+#: content/ContactPerson.py
+msgid "minaraad_label_email"
+msgstr ""
+
+#. Default: "Emailsent"
+#: EmailMixin.py
+msgid "minaraad_label_emailSent"
+msgstr ""
+
+#. Default: "Enddate"
+#: content/Hearing.py
+#: content/MREvent.py
+#: content/Study.py
+msgid "minaraad_label_enddate"
+msgstr ""
+
+#. Default: "Foto"
+#: content/Hearing.py
+#: content/MREvent.py
+#: content/Pressrelease.py
+msgid "minaraad_label_foto"
+msgstr ""
+
+#. Default: "Goal"
+#: content/Hearing.py
+#: content/MREvent.py
+msgid "minaraad_label_goal"
+msgstr ""
+
+#. Default: "Itemenddate"
+#: content/AgendaItem.py
+msgid "minaraad_label_itemenddate"
+msgstr ""
+
+#. Default: "Itemstartdate"
+#: content/AgendaItem.py
+msgid "minaraad_label_itemstartdate"
+msgstr ""
+
+#. Default: "Jobtitle"
+#: content/ContactPerson.py
+msgid "minaraad_label_jobtitle"
+msgstr ""
+
+#. Default: "LinkedIn Profile URL"
+msgid "minaraad_label_linkedin"
+msgstr ""
+
+#. Default: "Location"
+#: content/Hearing.py
+#: content/MREvent.py
+#: content/Study.py
+msgid "minaraad_label_location"
+msgstr ""
+
+#. Default: "Logo_1"
+#: content/Pressrelease.py
+msgid "minaraad_label_logo_1"
+msgstr ""
+
+#. Default: "Logo_2"
+#: content/Pressrelease.py
+msgid "minaraad_label_logo_2"
+msgstr ""
+
+#. Default: "Mot"
+#: content/Hearing.py
+msgid "minaraad_label_mot"
+msgstr ""
+
+#. Default: "Name"
+#: content/ContactPerson.py
+msgid "minaraad_label_name"
+msgstr ""
+
+#. Default: "Organisation"
+#: content/AgendaItem.py
+msgid "minaraad_label_organisation"
+msgstr ""
+
+#. Default: "Phonenumber"
+#: content/ContactPerson.py
+msgid "minaraad_label_phonenumber"
+msgstr ""
+
+#. Default: "Plaintext"
+#: content/Advisory.py
+#: content/Hearing.py
+msgid "minaraad_label_plaintext"
+msgstr ""
+
+#. Default: "Policy"
+#: content/Advisory.py
+msgid "minaraad_label_policy"
+msgstr ""
+
+#. Default: "Related Documents"
+#: content/Advisory.py
+msgid "minaraad_label_related_documents"
+msgstr ""
+
+#. Default: "Speaker"
+#: content/AgendaItem.py
+#: content/AgendaItems.py
+#: content/Presentation.py
+msgid "minaraad_label_speaker"
+msgstr ""
+
+#. Default: "Speakers"
+#: content/Study.py
+msgid "minaraad_label_speakers"
+msgstr ""
+
+#. Default: "Startdate"
+#: content/Hearing.py
+#: content/MREvent.py
+#: content/Study.py
+msgid "minaraad_label_startdate"
+msgstr ""
+
+#. Default: "Street"
+#: Organisation.py
+msgid "minaraad_label_street"
+msgstr ""
+
+#. Default: "Streetno"
+#: Organisation.py
+msgid "minaraad_label_streetno"
+msgstr ""
+
+#. Default: "Subheader"
+#: content/Hearing.py
+#: content/Pressrelease.py
+#: content/Study.py
+msgid "minaraad_label_subheader"
+msgstr ""
+
+#. Default: "Subscription allowed"
+msgid "minaraad_label_subscription_allowed"
+msgstr ""
+
+#. Default: "Summary"
+#: ./skins/minaraad/advisory_view.pt:44
+#: ./skins/minaraad/study_view.pt:23
+msgid "minaraad_label_summary"
+msgstr ""
+
+#. Default: "Theme"
+#: content/Hearing.py
+msgid "minaraad_label_theme"
+msgstr ""
+
+#. Default: "Zipcode"
+#: Organisation.py
+msgid "minaraad_label_zipcode"
+msgstr ""
+
+#. Default: "${count} accounts were switched to using their email address as login name."
+#: ./browser/service.pt:98
+msgid "msg_number_switched_to_email"
+msgstr ""
+
+#. Default: "${count} accounts were switched back to using their user id as login name."
+#: ./browser/service.pt:105
+msgid "msg_number_switched_to_userid"
+msgstr ""
+
+#. Default: "(none currently)"
+#: ./skins/minaraad/hearing_view.pt:154
+#: ./skins/minaraad/mrevent_view.pt:147
+msgid "no_attendees"
+msgstr ""
+
+#. Default: "No newsitems available"
+#: ./skins/minaraad/newsletter_view.pt:48
+msgid "no_newsitems_available"
+msgstr ""
+
+#. Default: "Skip to content."
+#: ./skins/minaraad/main_template.pt:67
+msgid "skip_to_content"
+msgstr ""
+
+#. Default: "till"
+#: ./skins/minaraad/hearing_listing_view.pt:65
+#: ./skins/minaraad/mina_showdatetime.pt:31
+#: ./skins/minaraad/mrevent_listing_view.pt:61
+msgid "till"
+msgstr ""
+
+#. Default: "Attachments"
+#: ./skins/minaraad/mina_attachments.pt:22
+msgid "title_attachments"
+msgstr ""
+
+#. Default: "Attendees"
+#: ./skins/minaraad/hearing_view.pt:146
+#: ./skins/minaraad/mrevent_view.pt:139
+msgid "title_attendees"
+msgstr ""
+
+#. Default: "Council Members"
+#: ./skins/minaraad/hearing_view.pt:148
+#: ./skins/minaraad/mrevent_view.pt:141
+msgid "title_counsilmembers"
+msgstr ""
+
+#. Default: "By E-mail"
+#: ./browser/duplicates.pt:135
+#: ./browser/subscriptions_config.pt:68
+msgid "title_email"
+msgstr ""
+
+#. Default: "Members"
+#: ./skins/minaraad/hearing_view.pt:159
+#: ./skins/minaraad/mrevent_view.pt:152
+msgid "title_members"
+msgstr ""
+
+#. Default: "My account"
+#: ./skins/minaraad/portlet_personalbar.pt:11
+msgid "title_my_account"
+msgstr ""
+
+#. Default: "By Mail"
+#: ./browser/duplicates.pt:136
+msgid "title_post"
+msgstr ""
+
+#. Default: "Required"
+#: ./skins/minaraad/join_form.cpt:64
+#: ./skins/minaraad/personalize_form.cpt:80
+msgid "title_required"
+msgstr ""
+
+#. Default: "Subscriptions"
+#: ./browser/duplicates.pt:133
+#: ./browser/subscriptions_config.pt:49
+msgid "title_subscription"
+msgstr ""
+
+#. Default: "Toggle all:"
+#: ./browser/subscriptions_config.pt:96
+msgid "toggle_all"
+msgstr ""
+
+#. Default: "up untill"
+#: ./skins/minaraad/hearing_listing_view.pt:76
+#: ./skins/minaraad/mina_showdatetime.pt:42
+#: ./skins/minaraad/mrevent_listing_view.pt:72
+msgid "up_untill"
+msgstr ""
+

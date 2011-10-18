@@ -1,0 +1,175 @@
+# Jean-Paul Ladage<j.ladage@zestsoftware.nl>, 2011.
+# Maurits van Rees <m.van.rees@zestsoftware.nl>, 2011.
+msgid ""
+msgstr ""
+"Project-Id-Version: minaraad.projects plone domain 1.0\n"
+"POT-Creation-Date: 2011-10-04 08:17+0000\n"
+"PO-Revision-Date: 2011-10-04 10:00+0200\n"
+"Last-Translator: Maurits van Rees <m.van.rees@zestsoftware.nl>\n"
+"Language-Team: Zest Software <info@zestsoftware.nl>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: nl\n"
+"Language-Name: Nederlands\n"
+"Preferred-Encodings: latin1 utf-8\n"
+"Domain: plone\n"
+"X-Is-Fallback-For: nl-be nl-nl\n"
+
+#: profiles/default/workflows/project_workflow/definition.xml
+msgid "Active"
+msgstr "Lopend"
+
+msgid "AgendaItem"
+msgstr "Agendapunt"
+
+#. Default: "Bijlage"
+msgid "Attached file"
+msgstr "Bijlage"
+
+#: profiles/default/workflows/project_workflow/definition.xml
+msgid "Cancel (back to Active state)"
+msgstr "Terug"
+
+#: profiles/default/workflows/project_workflow/definition.xml
+msgid "Cancel (back to Finished state)"
+msgstr "Terug"
+
+#: profiles/default/workflows/project_workflow/definition.xml
+msgid "Cancel (back to In consideration state)"
+msgstr "Terug"
+
+#: profiles/default/workflows/project_workflow/definition.xml
+msgid "Cancel (back to In verification state)"
+msgstr "Terug"
+
+#: profiles/default/workflows/project_workflow/definition.xml
+msgid "Cancel (back to New state)"
+msgstr "Terug"
+
+#: profiles/default/workflows/meeting_workflow/definition.xml
+msgid "Cancel (back to New)"
+msgstr "Terug"
+
+#: profiles/default/workflows/meeting_workflow/definition.xml
+msgid "Cancel (back to Planned)"
+msgstr "Terug"
+
+#: profiles/default/workflows/project_workflow/definition.xml
+msgid "Cancel (back to active state)"
+msgstr "Terug"
+
+#: profiles/default/workflows/project_workflow/definition.xml
+msgid "Cancel project"
+msgstr "Project afbreken"
+
+#: profiles/default/workflows/project_workflow/definition.xml
+msgid "Cancelled"
+msgstr "Afgebroken"
+
+#: profiles/default/workflows/project_workflow/definition.xml
+msgid "Check"
+msgstr "Laten controleren"
+
+#: profiles/default/workflows/project_workflow/definition.xml
+msgid "Complete"
+msgstr "Beëindigen"
+
+#: profiles/default/workflows/project_workflow/definition.xml
+msgid "Completed"
+msgstr "Afgelopen"
+
+#: profiles/default/workflows/agendaitem_workflow/definition.xml
+#: profiles/default/workflows/digibib_workflow/definition.xml
+msgid "Created"
+msgstr "Aangemaakt"
+
+msgid "DigiBib"
+msgstr "Digibib"
+
+msgid "DigiBibViewer"
+msgstr "Digibib"
+
+#: profiles/default/workflows/project_workflow/definition.xml
+msgid "Finished"
+msgstr "Afgerond"
+
+#: profiles/default/workflows/project_workflow/definition.xml
+msgid "In consideration"
+msgstr "Ter overweging"
+
+#: profiles/default/workflows/project_workflow/definition.xml
+msgid "In verification"
+msgstr "Ter controle"
+
+#: profiles/default/workflows/meeting_workflow/definition.xml
+msgid "Mark as past"
+msgstr "Afronden"
+
+msgid "Meeting"
+msgstr "Vergadering"
+
+msgid "Meeting container"
+msgstr "Vergaderingenmap"
+
+#: profiles/default/workflows/meeting_workflow/definition.xml
+#: profiles/default/workflows/project_workflow/definition.xml
+msgid "New"
+msgstr "Nieuw"
+
+msgid "Organisation"
+msgstr "Adviesraad"
+
+msgid "Organisation container"
+msgstr "Samenwerkingenmap"
+
+#: profiles/default/workflows/meeting_workflow/definition.xml
+msgid "Past"
+msgstr "Afgelopen"
+
+#: profiles/default/workflows/meeting_workflow/definition.xml
+msgid "Plan"
+msgstr "Inplannen"
+
+#: profiles/default/workflows/meeting_workflow/definition.xml
+msgid "Planned"
+msgstr "Gepland"
+
+msgid "Project"
+msgstr "Project"
+
+msgid "Project container"
+msgstr "Projectenmap"
+
+#: profiles/default/controlpanel.xml
+msgid "Project settings"
+msgstr "Projectinstellingen"
+
+msgid "ProjectMember"
+msgstr "Projectlid"
+
+#: profiles/default/workflows/project_workflow/definition.xml
+msgid "Propose"
+msgstr "Ter goedkeuring aanbieden"
+
+#: profiles/default/workflows/project_workflow/definition.xml
+msgid "Reject"
+msgstr "Afwijzen"
+
+#: profiles/default/workflows/project_workflow/definition.xml
+msgid "Rejected"
+msgstr "Afgewezen"
+
+#: profiles/default/workflows/project_workflow/definition.xml
+msgid "Roundup"
+msgstr "Afronden"
+
+#: profiles/default/workflows/project_workflow/definition.xml
+msgid "Start"
+msgstr "Starten"
+
+#: profiles/default/controlpanel.xml
+msgid "Statistics"
+msgstr "Statistieken"
+

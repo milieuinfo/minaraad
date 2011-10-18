@@ -1,0 +1,8 @@
+.installed.cfg
+base.cfg
+bin
+develop-eggs
+parts
+products
+var
+src

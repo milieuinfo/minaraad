@@ -1,0 +1,58 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="minaraad.projects">
+  <body>
+    <div metal:fill-slot="main"
+         tal:define="filtered_and_links view/get_projects;
+                     year_and_projects python:filtered_and_links[0];
+                     links python:filtered_and_links[1]">
+      <h1 class="documentFirstHeading"
+          i18n:translate="heading_digibib_projects">
+        Digibib - Projects
+      </h1>
+
+      <div class="widget wide">
+        <div class="title">
+          <tal:title i18n:translate="label_heading_projects_year">
+            Projects <tal:year i18n:name="year" content="year_and_projects/year" />
+          </tal:title>
+          <div class="right" id="other-years" tal:condition="python:len(links) &gt; 1">
+            <span i18n:translate="label_heading_other_years">
+              Other years
+            </span>
+            <form action="" method="get" style="display:inline">
+              <select name="year" id="select-year">
+                <tal:link repeat="link links">
+                  <option tal:attributes="value link/year;
+                                          selected link/selected">
+                    <tal:year content="link/year" />
+                    (<tal:num content="link/num" />)
+                  </option>
+                </tal:link>
+              </select>
+              <input id="select-year-submit" type="submit" value="Toon" />
+            </form>
+          </div>
+        </div>
+        <div class="body">
+          <ul tal:define="projects year_and_projects/objects">
+            <tal:block tal:repeat="project projects">
+              <li tal:define="oddrow repeat/project/odd"
+                  tal:attributes="class python: oddrow and 'odd' or 'even'">
+                <a tal:attributes="href project/absolute_url">
+                  <strong tal:content="project/getPID" />
+                  <span tal:replace="project/Title" />
+                </a>
+              </li>
+            </tal:block>
+          </ul>
+        </div>
+      </div>
+
+      <div style="clear: both;">
+        &nbsp;
+      </div>
+    </div>
+  </body>
+</html>

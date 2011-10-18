@@ -1,0 +1,42 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
+      lang="en-US"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="minaraad">
+
+  <body>
+    <metal:block metal:fill-slot="main"
+                 tal:define="current_path python:'/'.join(context.getPhysicalPath());
+                             advisories python:context.portal_catalog.searchResults(portal_type='Advisory',
+                             path=current_path,
+                             sort_on='getDate',
+                             sort_order='reverse');">
+      <metal:block metal:define-macro="folderlisting" />
+
+      <h1 tal:content="context/Title"
+          class="documentFirstHeading">Title</h1>
+
+      <div class="documentDescription"
+           tal:content="context/Description"
+           tal:condition="context/Description" />
+
+      <table class="advisory_listing">
+        <tbody valign="top">
+          <tr tal:repeat="item_object advisories">
+            <tal:block>
+              <th tal:define="daterequired python:item_object.getDate != None;
+                              date python:toLocalizedTime(item_object.getDate)[:-5];"
+                  class="listdate">
+                <span tal:condition="daterequired"
+                      tal:replace="date" />
+              </th>
+              <td>
+                 <a tal:attributes="href item_object/getURL"
+                    tal:content="item_object/Title" />
+              </td>
+            </tal:block>
+          </tr>
+        </tbody>
+      </table>
+    </metal:block>
+  </body>
+</html>

@@ -1,0 +1,126 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="minaraad.projects">
+
+  <head><title></title></head>
+  <body>
+
+    <!-- Participants Widgets -->
+
+    <metal:block metal:define-macro="member_fullname">
+      <tal:block tal:define="pas_member context/@@mina_pas_member;">
+        <span tal:replace="python:pas_member.info(p).get('name_or_id')" />
+      </tal:block>
+    </metal:block>
+
+    <metal:block metal:define-macro="member_company">
+      <span tal:define="pas_member context/@@mina_pas_member;
+                        company python:pas_member.info(p).get('company')"
+            tal:condition="company"
+            tal:content="company" />
+    </metal:block>
+
+    <metal:view_macro define-macro="view">
+      <table class="listing"
+             tal:define="vocab python: field.Vocabulary(here);
+                         values python: dict(accessor())">
+        <thead>
+          <tr>
+            <th>Naam</th>
+            <th>Organisatie</th>
+            <th>aanwezig</th>
+            <th>verontschuldigd</th>
+            <th>afwezig</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tal:row repeat="p vocab">
+          <tr tal:define="oddrow repeat/p/odd"
+              tal:attributes="class python: oddrow and 'odd' or 'even'">
+
+            <tal:block tal:define="name python: p;
+                                   status python: values.get(p, '')">
+              <td>
+                <metal:use use-macro="context/participants_widget/macros/member_fullname" />
+              </td>
+              <td>
+                <metal:use use-macro="context/participants_widget/macros/member_company" />
+              </td>
+              <tal:block tal:repeat="index python: range(0, 3)">
+                <td class="center">
+                  <span tal:condition="python: status == index">v</span>
+                </td>
+              </tal:block>
+            </tal:block>
+          </tr>
+          </tal:row>
+        </tbody>
+      </table>
+    </metal:view_macro>
+
+
+    <metal:define define-macro="edit">
+      <metal:use use-macro="field_macro | here/widgets/field/macros/edit">
+        <metal:fill fill-slot="widget_body"
+                    tal:define="vocab python:field.Vocabulary(here);
+                                values python: dict(accessor())">
+          <table class="listing">
+            <thead>
+              <tr>
+                <th>Naam</th>
+                <th>Organisatie</th>
+                <th>aanwezig</th>
+                <th>verontschuldigd</th>
+                <th>afwezig</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tal:row repeat="p vocab">
+              <tr tal:define="oddrow repeat/p/odd"
+                    tal:attributes="class python: oddrow and 'odd' or 'even'">
+
+                <tal:block tal:define="name python: p;
+                                       status python: values.get(p, 0)">
+                  <td>
+                    <metal:use use-macro="context/participants_widget/macros/member_fullname" />
+                  </td>
+                  <td>
+                    <metal:use use-macro="context/participants_widget/macros/member_company" />
+                  </td>
+                  <tal:block tal:repeat="index python: range(0, 3)">
+                    <td class="center">
+                      <input type="radio"
+                             tal:attributes="name python: '%s-%s' % (fieldName, name);
+                                             value index;
+                                             checked python: index == status and 'CHECKED' or None" />
+                    </td>
+                  </tal:block>
+                </tal:block>
+              </tr>
+              </tal:row>
+            </tbody>
+          </table>
+        </metal:fill>
+      </metal:use>
+    </metal:define>
+
+
+    <metal:hidden_macro define-macro="hidden">
+      <input type="hidden"
+             tal:define="value python:test(not not value and value not in ('0', 'False'), 1, 0)"
+             name=""
+             value=""
+             tal:attributes="name fieldName;
+                             value python:value or '';" />
+    </metal:hidden_macro>
+
+    <div metal:define-macro="search">
+      <div metal:use-macro="here/widgets/boolean/macros/edit">
+      </div>
+    </div>
+
+  </body>
+
+</html>

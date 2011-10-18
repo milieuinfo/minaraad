@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<object name="portal_types">
+ <object name="Advisory" meta_type="Factory-based Type Information"/>
+ <object name="AgendaItem" meta_type="Factory-based Type Information"/>
+ <object name="AnnualReport" meta_type="Factory-based Type Information"/>
+ <object name="ContactPerson" meta_type="Factory-based Type Information"/>
+ <object name="Hearing" meta_type="Factory-based Type Information"/>
+ <object name="JoinIn" meta_type="Factory-based Type Information"/>
+ <object name="MREvent" meta_type="Factory-based Type Information"/>
+ <object name="NewsItem" meta_type="Factory-based Type Information"/>
+ <object name="NewsLetter" meta_type="Factory-based Type Information"/>
+ <object name="Pressrelease" meta_type="Factory-based Type Information"/>
+ <object name="Study" meta_type="Factory-based Type Information"/>
+</object>

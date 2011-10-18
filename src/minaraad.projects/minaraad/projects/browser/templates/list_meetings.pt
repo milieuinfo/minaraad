@@ -1,0 +1,99 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="minaraad.projects">
+  <body>
+    <div metal:fill-slot="main"
+         tal:define="filtered_and_links view/get_past_meetings;
+                     year_and_meetings python:filtered_and_links[0];
+                     links python:filtered_and_links[1]">
+      <h1 class="documentFirstHeading"
+          i18n:translate="heading_digibib_meetings">
+        Digibib - Meetings
+      </h1>
+
+      <div class="widget wide"
+           tal:condition="view/show_future_meetings">
+        <div class="title">
+          <span i18n:translate="label_incoming_meetings">
+            Upcoming meetings
+          </span>
+        </div>
+        <div class="body">
+          <ul tal:define="meetings view/get_future_meetings">
+            <tal:block tal:repeat="meeting meetings">
+              <li tal:define="oddrow repeat/meeting/odd"
+                  tal:attributes="class python: oddrow and 'odd' or 'even'">
+                <a tal:attributes="href meeting/absolute_url">
+                  <strong>
+                    <tal:block tal:define="d meeting/getStart_time">
+                      <metal:block use-macro="context/display_macros/macros/date" />
+                      </tal:block>-
+                      <tal:block tal:define="t meeting/getStart_time">
+                        <metal:block use-macro="context/display_macros/macros/time" />
+                        </tal:block> tot
+                        <tal:block tal:define="t meeting/get_end_time">
+                          <metal:block use-macro="context/display_macros/macros/time" />
+                        </tal:block>
+                  </strong>
+                  <span tal:replace="meeting/getResponsible_group" />
+                </a>
+              </li>
+            </tal:block>
+          </ul>
+        </div>
+      </div>
+
+      <div class="widget wide">
+        <div class="title">
+          <span i18n:translate="label_heading_past_meetings_year">
+            Past meetings <tal:year i18n:name="year" content="year_and_meetings/year" />
+          </span>
+          <div class="right" id="other-years" tal:condition="python:len(links) &gt; 1">
+            <span i18n:translate="label_heading_other_years">
+              Other years
+            </span>
+            <form action="" method="get" style="display:inline">
+              <select name="year" id="select-year">
+                <tal:link repeat="link links">
+                  <option tal:attributes="value link/year;
+                                          selected link/selected">
+                    <tal:year content="link/year" />
+                    (<tal:num content="link/num" />)
+                  </option>
+                </tal:link>
+              </select>
+              <input id="select-year-submit" type="submit" value="Toon" />
+            </form>
+          </div>
+        </div>
+        <div class="body">
+          <ul tal:define="meetings year_and_meetings/objects">
+            <tal:block tal:repeat="meeting meetings">
+              <li tal:define="oddrow repeat/meeting/odd"
+                  tal:attributes="class python: oddrow and 'odd' or 'even'">
+                <a tal:attributes="href meeting/absolute_url">
+                  <strong>
+                    <tal:block tal:define="d meeting/getStart_time">
+                      <metal:block use-macro="context/display_macros/macros/date" />
+                      </tal:block>-
+                      <tal:block tal:define="t meeting/getStart_time">
+                        <metal:block use-macro="context/display_macros/macros/time" />
+                        </tal:block> tot
+                        <tal:block tal:define="t meeting/get_end_time">
+                          <metal:block use-macro="context/display_macros/macros/time" />
+                        </tal:block>
+                  </strong>
+                  <span tal:replace="meeting/getResponsible_group" />
+                </a>
+              </li>
+            </tal:block>
+          </ul>
+        </div>
+      </div>
+      <div style="clear: both;">
+        &nbsp;
+      </div>
+    </div>
+  </body>
+</html>

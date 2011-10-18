@@ -1,0 +1,93 @@
+Using RelStorage
+================
+
+Plone can use filestorage (Data.fs) or RelStorage (Postgres database).  You can copy buildout.cfg.in to buildout.cfg and edit it to use RelStorage, for example like this in development::
+
+  [buildout]
+  extends =
+      devel.cfg
+      relstorage.cfg
+
+
+Needed extra software
+---------------------
+
+Some packages may not yet be installed on your system: a postgres client, a postgres server (unless you only use this buildout to connect to an existing postgres server on a different machine) and a development library for postgres bindings.
+
+Postgres version 8.4 or 9.0 should both be fine.  Pick the most recent that is supported on your platform.
+
+On Ubuntu::
+
+  $ sudo aptitude install postgresql  # installs server+client
+  $ sudo aptitude install postgresql-client  # only the client
+  $ sudo aptitude install libpq-dev  # dev library
+
+On Mac OS X with port::
+
+  $ sudo port install libpqxx  # also installs postgresql90
+  $ sudo port install postgresql90-server
+
+Follow any instructions that 'port' prints for setting up the postgres server.
+
+Running the buildout will add a database and user (see the postgresinit part).  On Linux you might need to edit some permissions in /etc/postgresql/8.4/main/pg_hba.conf like setting up 'trust' for authentication (bad for production, handy for development).
+
+
+Compiling the Python Postgres bindings
+--------------------------------------
+
+You may need to set some of the options in the postgresconf part of buildout.cfg to match your environment, especially the password and some directories so psycopg2 (Python Postgres bindings) can be properly compiled.  See the commented out lines in buildout.cfg.in.
+
+
+Instance/zeoclient/zeoserver
+----------------------------
+
+At the moment, a zeoclient/zeoserver combination is still set up, though it is optional.  But relstorage.cfg reconfigures the instance to use RelStorage instead.  So use ``bin/instance`` to connect to the Postgres database.
+
+
+Migrating to/from RelStorage
+----------------------------
+
+To migrate var/filestorage/Data.fs to a fresh Postgres database, do this::
+
+  $ bin/zodbconvert parts/conf/zodbconvert.cfg
+
+To migrate back from relstorage to filestorage (read: to create a backup of the Postgres production database in filestorage form, in backup.fs), do::
+
+  $ bin/zodbconvert parts/conf/zodb-relstorage-to-filestorage.cfg
+
+See also ``bin/zodbconvert --help``.
+
+
+Packing the RelStorage
+----------------------
+
+Relstorages need to be packed regularly, just like the standard file
+storages.  Packing is done by the bin/zodbpack script that is
+installed if you have 'zodbscripts' in your buildout parts.  By
+default zero days are kept, which can be changed with the --days
+option.  But zero days is exactly what you want after you have just
+migrated from filestorage to relstorage.
+
+Doing a pre pack (previously known as dry run) first is recommended, at least on large databases:
+
+$ bin/zodbpack --prepack parts/conf/zodbpack.cfg
+
+This changes nothing, but does some analyzing.  The information on what to pack gets stored in a table; the packing itself is not done.  A second prepack run is therefore much faster and a pack will also be faster.
+
+Afterwards, you should of course run the actual pack, using the
+information stored by the prepack option:
+
+$ bin/zodbpack --use-prepack-state parts/conf/zodbpack.cfg
+
+See also ``bin/zodbpack --help``.
+
+Note that when you have multiple machines that connect to the RelStorage, you only need to pack from one of them.
+
+
+Further reading
+---------------
+
+http://www.vlent.nl/weblog/2010/09/25/relstorage-and-postgresql/
+http://pypi.python.org/pypi/RelStorage
+
+Currently we use relstorage for a few clients in Belgium.  You may want to have a look at their buildout configs.  See LNE and MHHC.

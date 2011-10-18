@@ -1,0 +1,147 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:z3c="http://namespaces.zope.org/z3c"
+    i18n_domain="minaraad.projects">
+
+  <browser:page
+      name="digibib_view"
+      for="minaraad.projects.interfaces.IDigiBib"
+      class=".digibib.DigiBibView"
+      template="templates/digibib.pt"
+      permission="minaraad.projects.viewDigibib"
+      />
+
+  <browser:page
+      name="projects_view"
+      for="minaraad.projects.interfaces.IProjectContainer"
+      class=".digibib.ProjectsListingView"
+      template="templates/list_projects.pt"
+      permission="minaraad.projects.viewDigibib"
+      />
+
+  <browser:page
+      name="meetings_view"
+      for="minaraad.projects.interfaces.IMeetingContainer"
+      class=".digibib.MeetingsListingView"
+      template="templates/list_meetings.pt"
+      permission="minaraad.projects.viewDigibib"
+      />
+
+  <browser:page
+      name="organisations_view"
+      for="minaraad.projects.interfaces.IOrganisationContainer"
+      class=".digibib.OrganisationsListingView"
+      template="templates/list_organisations.pt"
+      permission="minaraad.projects.viewDigibib"
+      />
+
+  <browser:page
+      name="project_view"
+      for="minaraad.projects.interfaces.IProject"
+      class=".project.ProjectView"
+      template="templates/project.pt"
+      permission="zope2.View"
+      />
+
+  <browser:page
+      name="project_documents"
+      for="minaraad.projects.interfaces.IProject"
+      class=".project.ProjectDocumentsView"
+      template="templates/all_project_documents.pt"
+      permission="zope2.View"
+      />
+
+  <browser:page
+      name="can_create_advisory"
+      for="*"
+      class=".project.CanCreateAdvisory"
+      permission="zope2.View"
+      />
+
+  <browser:page
+      name="create_advisory"
+      for="minaraad.projects.interfaces.IProject"
+      class=".project.CreateAdvisory"
+      permission="zope2.CopyOrMove"
+      />
+
+  <browser:page
+      name="migrate_advisories_to_projects"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      class=".project.MigrateAdvisoriesToProjects"
+      permission="cmf.ManagePortal"
+      />
+
+  <browser:page
+      name="meeting_view"
+      for="minaraad.projects.interfaces.IMeeting"
+      class=".meeting.MeetingView"
+      template="templates/meeting.pt"
+      permission="zope2.View"
+      />
+
+  <browser:page
+      name="get_all_pdf"
+      for="minaraad.projects.interfaces.IMeeting"
+      class=".meeting.MeetingPdfView"
+      permission="zope2.View"
+      />
+
+  <browser:page
+      for="minaraad.projects.interfaces.IBaseMeeting"
+      name="jq_meeting_order_changed"
+      class=".meeting.MeetingAjax"
+      attribute="meeting_order_changed"
+      permission="zope2.View"
+     />
+
+  <browser:page
+      for="minaraad.projects.interfaces.IProject"
+      name="jq_attachment_published_changed"
+      class=".project.ProjectAjax"
+      attribute="publish_attachment"
+      permission="zope2.View"
+     />
+
+
+  <browser:page
+      for="*"
+      name="redirect_to_parent"
+      class=".utils.ParentRedirect"
+      permission="zope2.View"
+     />
+
+  <browser:page
+      for="*"
+      name="project_properties"
+      class=".project_properties.ProjectPropertiesView"
+      template="templates/project_properties.pt"
+      permission="cmf.ManagePortal"
+     />
+
+  <browser:page
+      for="*"
+      name="cron_projects_reminder"
+      class=".cron.ProjectsReminder"
+      permission="cmf.ManagePortal"
+     />
+
+  <browser:page
+      for="*"
+      name="export_statistics"
+      class=".export.ExportStatisticsView"
+      template="templates/statistics.pt"
+      permission="cmf.ManagePortal"
+     />
+
+  <browser:page
+      for="*"
+      name="mina_pas_member"
+      class=".utils.PASMemberView"
+      permission="zope2.View"
+      allowed_interface="minaraad.projects.interfaces.IPASMemberView"
+      />
+
+
+</configure>

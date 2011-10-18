@@ -1,0 +1,70 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
+      lang="en-US"
+      i18n:domain="minaraad">
+
+<body style="font-size:13px">
+
+  <span>Beste</span>
+  <span tal:replace="python: member.getProperty('firstname')" />
+  <span tal:replace="python: member.getProperty('fullname')" />,
+  <br />
+
+  <p>U komt voor in de internetdatabank van de Minaraad. Dit wil zeggen dat u
+     zich ooit geabonneerd hebt op &eacute;&eacute;n van de elektronische
+     producten van de Minaraad (nieuwsbrief, persberichten, verslagboeken,
+     uitnodigingen voor hoorzittingen, ...).</p>
+
+   <p>
+     Om de databank up-to-date houden, vragen we u om uw persoonlijke
+     gegevens en/of abonnementen te controleren en bij te werken
+     indien nodig.  Klik hiertoe op de volgende link: <a
+     href="http://www.minaraad.be/plone_memberprefs_panel">http://www.minaraad.be/plone_memberprefs_panel</a>
+     en meldt u vervolgens aan in het systeem met uw gebruikersnaam en
+     wachtwoord.
+   </p>
+
+  <p>Uw gebruikersnaam: <span tal:replace="python: member.getId()"/></p>
+
+  <p>
+    Om veiligheidsredenen kunnen wij uw wachtwoord niet e-mailen.
+    Bent u uw wachtwoord vergeten, dan kan u een nieuw wachtwoord
+    vastleggen door hier te klikken: <a tal:attributes="href python:
+    'http://www.minaraad.be/mail_password?userid='+member.getId()">Nieuw
+    wachtwoord aanvragen</a>.
+  </p>
+
+  <p>
+    Indien u zich meer dan &eacute;&eacute;n keer liet registreren in
+    de databank, zal u doorverwezen worden naar een pagina waarop u
+    kan kiezen welke account u wenst te behouden.
+  </p>
+
+  <p>
+    Wij danken u alvast voor uw medewerking. Voor specifieke vragen
+    kan u steeds terecht op het onderstaande adres.
+  </p>
+
+  <p>
+    <span>Met vriendelijke groet</span>
+  </p>
+
+  <p>
+    <span>Communicatieteam Minaraad</span>
+  </p>
+
+  <p>
+    <br />
+    Kliniekstraat 25
+    <br />
+    B-1070 Anderlecht
+    <br />
+    Tel. 02 558 01 32
+    <br />
+    Fax: 02 558 01 31
+    <br />
+    E-mail:
+    <a href="mailto:communicatie@minaraad.be">communicatie@minaraad.be</a>
+  </p>
+
+</body>
+</html>

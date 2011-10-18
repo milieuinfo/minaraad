@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<object name="portal_factory" meta_type="Plone Factory Tool">
+ <factorytypes>
+  <type portal_type="Advisory"/>
+  <type portal_type="AgendaItem"/>
+  <type portal_type="AnnualReport"/>
+  <type portal_type="ContactPerson"/>
+  <type portal_type="Hearing"/>
+  <type portal_type="MREvent"/>
+  <type portal_type="NewsItem"/>
+  <type portal_type="NewsLetter"/>
+  <type portal_type="Pressrelease"/>
+  <type portal_type="Study"/>
+ </factorytypes>
+</object>

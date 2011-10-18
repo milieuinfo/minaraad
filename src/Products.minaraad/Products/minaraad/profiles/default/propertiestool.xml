@@ -1,0 +1,313 @@
+<?xml version="1.0"?>
+<object name="portal_properties" meta_type="Plone Properties Tool">
+ <object name="fckeditor_properties" meta_type="Plone Property Sheet">
+  <property name="title">FCK Editor properties</property>
+  <property name="allow_link_byuid" type="boolean">True</property>
+  <property name="allow_relative_links" type="boolean">True</property>
+  <property name="allow_latin_entities" type="boolean">False</property>
+  <property name="force_paste_as_text" type="boolean">False</property>
+  <property name="gecko_use_span" type="boolean">True</property>
+  <property name="spellchecker" type="string">ieSpell</property>
+  <property name="fck_force_width" type="string">568px</property>
+  <property name="fck_force_height" type="string">500px</property>
+  <property name="fck_toolbar" type="string">Custom</property>
+  <property name="fck_custom_toolbar"
+     type="text">[['Source', 'DocProps', 'Save', 'NewPage','Preview','Templates',
+       'Cut', 'Copy', 'Paste', 'PasteText','Print', 'PasteWord', 'SpellCheck', 'Undo', 'Redo', 'Find', 'Replace', 'SelectAll',
+       'RemoveFormat', 'Subscript', 'Superscript'],
+                            ['Bold', 'Italic','Underline', 'StrikeThrough', 'OrderedList', 'UnorderedList', 'Outdent', 'Indent', 'TextColor','BGColor', 'JustifyLeft', 'JustifyCenter', 'JustifyRight',  'JustifyFull','Link','Unlink','Anchor', 'Image', 'Flash', 'Table', 'Rule', 'Smiley', 'SpecialChar'],
+                            ['Style','FontFormat', 'FontName','FontSize'],
+                            ['UniversalKey','About']]</property>
+  <property name="allow_server_browsing" type="boolean">True</property>
+  <property name="allow_file_upload" type="boolean">True</property>
+  <property name="allow_image_upload" type="boolean">True</property>
+  <property name="allow_flash_upload" type="boolean">True</property>
+  <property name="file_portal_type" type="string">File</property>
+  <property name="image_portal_type" type="string">Image</property>
+  <property name="flash_portal_type" type="string">File</property>
+  <property name="pa_meta_types" type="lines">
+   <element value="PloneArticle"/>
+   <element value="MyPloneArticleType"/>
+  </property>
+  <property name="fck_area_style" type="string">minaraad.css</property>
+  <property name="fck_force_path" type="boolean">False</property>
+  <property name="fck_force_other_path" type="string"></property>
+  <property name="fck_force_root" type="boolean">False</property>
+  <property name="fck_force_other_root" type="string"></property>
+  <property name="fck_default_skin" type="string">office2003</property>
+  <property name="fck_menu_styles"
+     type="text">&lt;Style name="Image on Left" element="img"&gt;
+               &lt;Attribute name="class" value="img_left" /&gt;
+           &lt;/Style&gt;
+           &lt;Style name="Subheader 1" element="span"&gt;
+               &lt;Attribute name="class" value="subheader1" /&gt;
+           &lt;/Style&gt;
+           &lt;Style name="Subheader 2" element="span"&gt;
+               &lt;Attribute name="class" value="subheader2" /&gt;
+           &lt;/Style&gt;
+           &lt;Style name="Subheader 3" element="span"&gt;
+               &lt;Attribute name="class" value="subheader3" /&gt;
+           &lt;/Style&gt;
+           &lt;Style name="Image on Right" element="img"&gt;
+               &lt;Attribute name="class" value="img_right" /&gt;
+           &lt;/Style&gt;
+           &lt;Style name="Image on Left" element="img"&gt;
+               &lt;Attribute name="class" value="img_left" /&gt;
+           &lt;/Style&gt;
+           &lt;Style name="Image on Top" element="img"&gt;
+               &lt;Attribute name="class" value="img_top" /&gt;
+           &lt;/Style&gt;
+           &lt;Style name="Link Plain" element="a"&gt;
+               &lt;Attribute name="class" value="link-plain" /&gt;
+           &lt;/Style&gt;
+           &lt;Style name="Custom Ruler" element="hr"&gt;
+               &lt;Attribute name="size" value="1" /&gt;
+               &lt;Attribute name="color" value="#ff0000" /&gt;
+           &lt;/Style&gt;</property>
+  <property name="fck_default_r2l" type="boolean">False</property>
+  <property name="fck_unpublished_states" type="lines">
+   <element value="visible"/>
+   <element value="pending"/>
+   <element value="rejected"/>
+   <element value="waitreview"/>
+  </property>
+  <property name="fck_unpublished_view_roles" type="lines">
+   <element value="Manager"/>
+   <element value="Reviewer"/>
+   <element value="Owner"/>
+   <element value="Contributor"/>
+  </property>
+ </object>
+ <object name="minaraad_properties" meta_type="Plone Property Sheet">
+  <property name="title">Minaraad Properties</property>
+  <property name="themes" type="lines">
+   <element value="21/Strategisch milieubeleid"/>
+   <element value="22/Instrumenten"/>
+   <element value="23/Milieuhygi&#x00EB;ne en klimaat"/>
+   <element value="24/Water en zee"/>
+   <element value="25/Open Ruimte"/>
+   <element value="26/Ruimtelijke ordening en mobiliteit"/>
+   <element value="27/Participatie en lokale besturen"/>
+  </property>
+ </object>
+ <object name="navtree_properties" meta_type="Plone Property Sheet">
+  <property name="title">NavigationTree properties</property>
+  <property name="sortAttribute"
+     type="string">getObjPositionInParent</property>
+  <property name="sortOrder" type="string">asc</property>
+  <property name="sitemapDepth" type="int">3</property>
+  <property name="includeTop" type="boolean">True</property>
+  <property name="topLevel" type="int">0</property>
+  <property name="idsNotToList" type="lines">
+   <element value="Members"/>
+   <element value="contactpersonen"/>
+  </property>
+  <property name="showAllParents" type="boolean">True</property>
+  <property name="parentMetaTypesNotToQuery" type="lines">
+   <element value="TempFolder"/>
+   <element value="Large Plone Folder"/>
+  </property>
+  <property name="bottomLevel" type="int">0</property>
+  <property name="metaTypesNotToList" type="lines">
+   <element value="ATBooleanCriterion"/>
+   <element value="ATCurrentAuthorCriterion"/>
+   <element value="ATDateCriteria"/>
+   <element value="ATDateRangeCriterion"/>
+   <element value="ATListCriterion"/>
+   <element value="ATPathCriterion"/>
+   <element value="ATPortalTypeCriterion"/>
+   <element value="ATReferenceCriterion"/>
+   <element value="ATRelativePathCriterion"/>
+   <element value="ATSelectionCriterion"/>
+   <element value="ATSimpleIntCriterion"/>
+   <element value="ATSimpleStringCriterion"/>
+   <element value="ATSortCriterion"/>
+   <element value="Advisory"/>
+   <element value="AgendaItem"/>
+   <element value="AnnualReport"/>
+   <element value="Attachmentsmixin"/>
+   <element value="CMF Document"/>
+   <element value="CMF Event"/>
+   <element value="CMF Favorite"/>
+   <element value="CMF File"/>
+   <element value="CMF Folder"/>
+   <element value="CMF Image"/>
+   <element value="CMF Large Plone Folder"/>
+   <element value="CMF Link"/>
+   <element value="CMF News Item"/>
+   <element value="CMF Topic"/>
+   <element value="CacheTool"/>
+   <element value="ContactPerson"/>
+   <element value="ContentCacheRule"/>
+   <element value="Discussion Item"/>
+   <element value="Document"/>
+   <element value="Event"/>
+   <element value="Favorite"/>
+   <element value="File"/>
+   <element value="FileAttachment"/>
+   <element value="HeaderSet"/>
+   <element value="HeaderSetFolder"/>
+   <element value="Hearing"/>
+   <element value="Image"/>
+   <element value="ImageAttachment"/>
+   <element value="JoinIn"/>
+   <element value="Large Plone Folder"/>
+   <element value="Link"/>
+   <element value="MREvent"/>
+   <element value="MacroCacheRule"/>
+   <element value="MacroFolder"/>
+   <element value="News Item"/>
+   <element value="NewsItem"/>
+   <element value="NewsLetter"/>
+   <element value="Plone Site"/>
+   <element value="PolicyHTTPCacheManagerCacheRule"/>
+   <element value="Pressrelease"/>
+   <element value="RuleFolder"/>
+   <element value="Study"/>
+   <element value="TempFolder"/>
+   <element value="TemplateCacheRule"/>
+   <element value="Topic"/>
+  </property>
+  <property name="enable_wf_state_filtering" type="boolean">False</property>
+  <property name="wf_states_to_show" type="lines"/>
+  <property name="titlesNotInTabs" type="lines"/>
+  <property name="currentFolderOnlyInNavtree" type="boolean">False</property>
+  <property name="root" type="string">/</property>
+  <property name="name" type="string"></property>
+ </object>
+ <object name="site_properties" meta_type="Plone Property Sheet">
+  <property name="title">Site wide properties</property>
+  <property name="allowAnonymousViewAbout" type="boolean">True</property>
+  <property name="localTimeFormat" type="string">%d-%b-%Y</property>
+  <property name="localLongTimeFormat" type="string">%d-%b-%Y %H:%M</property>
+  <property name="default_language" type="string">nl</property>
+  <property name="default_charset" type="string">utf-8</property>
+  <property name="use_folder_tabs" type="lines">
+   <element value="RuleFolder"/>
+   <element value="Advisory"/>
+   <element value="Plone Site"/>
+   <element value="MREvent"/>
+   <element value="Study"/>
+   <element value="MacroFolder"/>
+   <element value="Hearing"/>
+   <element value="AgendaItem"/>
+   <element value="HeaderSetFolder"/>
+   <element value="Attachmentsmixin"/>
+   <element value="Pressrelease"/>
+   <element value="Large Plone Folder"/>
+   <element value="Folder"/>
+   <element value="NewsLetter"/>
+   <element value="AnnualReport"/>
+  </property>
+  <property name="ext_editor" type="boolean">True</property>
+  <property name="available_editors" type="lines">
+   <element value="None"/>
+   <element value="Kupu"/>
+   <element value="FCKeditor"/>
+  </property>
+  <property name="allowRolesToAddKeywords" type="lines">
+   <element value="Manager"/>
+   <element value="Reviewer"/>
+  </property>
+  <property name="auth_cookie_length" type="int">30</property>
+  <property name="calendar_starting_year" type="int">1999</property>
+  <property name="calendar_future_years_available" type="int">5</property>
+  <property name="invalid_ids" type="lines">
+   <element value="actions"/>
+  </property>
+  <property name="default_page" type="lines">
+   <element value="index_html"/>
+   <element value="index.html"/>
+   <element value="index.htm"/>
+   <element value="FrontPage"/>
+  </property>
+  <property name="search_results_description_length" type="int">160</property>
+  <property name="ellipsis" type="string">...</property>
+  <property name="typesLinkToFolderContentsInFC" type="lines">
+   <element value="RuleFolder"/>
+   <element value="Advisory"/>
+   <element value="MREvent"/>
+   <element value="Study"/>
+   <element value="MacroFolder"/>
+   <element value="Hearing"/>
+   <element value="AgendaItem"/>
+   <element value="HeaderSetFolder"/>
+   <element value="CacheTool"/>
+   <element value="Attachmentsmixin"/>
+   <element value="Pressrelease"/>
+   <element value="Large Plone Folder"/>
+   <element value="Folder"/>
+   <element value="NewsLetter"/>
+   <element value="AnnualReport"/>
+  </property>
+  <property name="visible_ids" type="boolean">False</property>
+  <property name="exposeDCMetaTags" type="boolean">False</property>
+  <property name="types_not_searched" type="lines">
+   <element value="ATBooleanCriterion"/>
+   <element value="ATCurrentAuthorCriterion"/>
+   <element value="ATDateCriteria"/>
+   <element value="ATDateRangeCriterion"/>
+   <element value="ATListCriterion"/>
+   <element value="ATPathCriterion"/>
+   <element value="ATPortalTypeCriterion"/>
+   <element value="ATReferenceCriterion"/>
+   <element value="ATRelativePathCriterion"/>
+   <element value="ATSelectionCriterion"/>
+   <element value="ATSimpleIntCriterion"/>
+   <element value="ATSimpleStringCriterion"/>
+   <element value="ATSortCriterion"/>
+   <element value="BaseCacheRule"/>
+   <element value="CachePolicy"/>
+   <element value="ChangeSet"/>
+   <element value="CMF Document"/>
+   <element value="CMF Event"/>
+   <element value="CMF Favorite"/>
+   <element value="CMF File"/>
+   <element value="CMF Folder"/>
+   <element value="CMF Image"/>
+   <element value="CMF Large Plone Folder"/>
+   <element value="CMF Link"/>
+   <element value="CMF News Item"/>
+   <element value="CMF Topic"/>
+   <element value="CacheTool"/>
+   <element value="ContactPerson"/>
+   <element value="ContentCacheRule"/>
+   <element value="Discussion Item"/>
+   <element value="Favorite"/>
+   <element value="FileAttachment"/>
+   <element value="HeaderSet"/>
+   <element value="HeaderSetFolder"/>
+   <element value="Image"/>
+   <element value="ImageAttachment"/>
+   <element value="MacroCacheRule"/>
+   <element value="MacroFolder"/>
+   <element value="News Item"/>
+   <element value="Plone Site"/>
+   <element value="PolicyHTTPCacheManagerCacheRule"/>
+   <element value="RuleFolder"/>
+   <element value="TempFolder"/>
+   <element value="TemplateCacheRule"/>
+   <element value="Topic"/>
+  </property>
+  <property name="disable_folder_sections" type="boolean">False</property>
+  <property name="typesUseViewActionInListings" type="lines">
+   <element value="Image"/>
+   <element value="File"/>
+   <element value="FileAttachment"/>
+   <element value="ImageAttachment"/>
+  </property>
+  <property name="verify_login_name" type="boolean">True</property>
+  <property name="enable_livesearch" type="boolean">True</property>
+  <property name="default_page_types" type="lines">
+   <element value="Document"/>
+   <element value="Event"/>
+   <element value="Link"/>
+   <element value="News Item"/>
+   <element value="Topic"/>
+  </property>
+  <property name="use_folder_contents" type="lines"/>
+  <property name="many_users" type="boolean">False</property>
+  <property name="refwidget_startupdirectories" type="lines"/>
+  <property name="enable_inline_editing" type="boolean">False</property>
+ </object>
+</object>

@@ -1,0 +1,27 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xml:lang="en" lang="en"
+      i18n:domain="plone">
+
+    <body>
+    <div metal:define-macro="colophon"
+         i18n:domain="plone"
+         class="colophon-center">
+
+        <metal:slot define-slot="colophon" />
+
+        <a tal:attributes="href string:${portal_url}/legal-disclaimer">
+            Disclaimer
+        </a>
+
+        <a tal:attributes="href string:${portal_url}/copyright">
+            &copy; Minaraad
+             <span tal:define="DateTime python:modules['DateTime'].DateTime"
+                                  tal:content="python: DateTime().year()" />
+        </a>
+        <a tal:attributes="href string:${portal_url}/overdewebsite">
+            Over deze website
+        </a>
+        <tal:block replace="structure portal/portal_properties/site_properties/webstats_js|nothing" />
+    </div>
+    </body>
+</html>

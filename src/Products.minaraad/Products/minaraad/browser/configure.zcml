@@ -1,0 +1,155 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:five="http://namespaces.zope.org/five">
+
+  <browser:page
+      for="Products.minaraad.content.Hearing.IHearing"
+      name="attendees_view"
+      class=".attendees.AttendeesManagerView"
+      permission="zope2.View"
+      allowed_interface=".attendees.IAttendeesManagerView"
+    />
+
+  <browser:page
+      for="Products.minaraad.content.MREvent.IMREvent"
+      name="attendees_view"
+      class=".attendees.AttendeesManagerView"
+      permission="zope2.View"
+      allowed_interface=".attendees.IAttendeesManagerView"
+  />
+
+  <browser:page
+      for="Products.minaraad.interfaces.IPortalPropertyContainer"
+      name="minaraad_config.html"
+      class=".configlets.MinaraadConfigletView"
+      permission="cmf.ManagePortal"
+      template="minaraad_config.pt"
+    />
+
+  <browser:page
+      for="Products.minaraad.interfaces.IPortalPropertyContainer"
+      name="subscribers_config.html"
+      class=".configlets.SubscribersConfigletView"
+      permission="cmf.ManagePortal"
+      template="subscribers_config.pt"
+    />
+
+  <browser:page
+      for="Products.minaraad.interfaces.IPortalPropertyContainer"
+      name="subscriptions_config.html"
+      class=".configlets.SubscriptionsConfigletView"
+      permission="zope2.View"
+      template="subscriptions_config.pt"
+    />
+
+  <browser:page
+      for="*"
+      name="email_out"
+      class=".email_notification.EmailOutView"
+      permission="cmf.ManagePortal"
+      template="email_out.pt"
+    />
+
+  <browser:page
+      for="Products.minaraad.content.Hearing.IHearing"
+      name="notify_registration"
+      class=".email_notification.SubscriptionNotifyView"
+      permission="cmf.ManagePortal"
+    />
+
+  <browser:page
+      for="Products.minaraad.content.MREvent.IMREvent"
+      name="notify_registration"
+      class=".email_notification.SubscriptionNotifyView"
+      permission="cmf.ManagePortal"
+    />
+
+  <browser:page
+      for="*"
+      name="send_membership_reminder"
+      class=".email_notification.EmailTestView"
+      permission="cmf.ManagePortal"
+    />
+
+  <browser:page
+      for="*"
+      name="export_subscribers"
+      class=".subscribers.ExportSubscribersView"
+      permission="cmf.ManagePortal"
+      template="export-subscribers.pt"
+  />
+
+  <browser:page
+      for="*"
+      name="minaraad_globals"
+      class=".globals.GlobalView"
+      allowed_attributes="isHomePage"
+      permission="zope.Public"
+  />
+
+  <!-- Service view for admin use only -->
+
+  <browser:page
+      for="*"
+      name="minaraad_service"
+      class=".service.ServiceUtils"
+      allowed_attributes="deleteMembersWithEmptyEmail resetMemberDataTitle
+                          find_double_emails"
+      permission="cmf.ManagePortal"
+      template="service.pt"
+      />
+
+  <browser:page
+      for="*"
+      name="email_duplicates"
+      class=".duplicates.Duplication"
+      allowed_attributes="duplicates"
+      permission="zope2.View"
+      template="duplicates.pt"
+      />
+
+  <browser:page
+      for="*"
+      name="email_login_notify"
+      class=".service.SendEmailToAllMembers"
+      permission="cmf.ManagePortal"
+      />
+
+  <!-- html view for regular files -->
+  <browser:page
+      for="Products.ATContentTypes.content.file.ATFile"
+      name="attachment_as_html"
+      class=".attachmenthtml.AttachmentHtmlView"
+      allowed_attributes="extract_html"
+      permission="zope2.View"
+      template="attachmenthtml.pt"
+      />
+  <!-- html view for attachments -->
+  <browser:page
+      for="Products.SimpleAttachment.content.file.FileAttachment"
+      name="attachment_as_html"
+      class=".attachmenthtml.AttachmentHtmlView"
+      allowed_attributes="extract_html"
+      permission="zope2.View"
+      template="attachmenthtml.pt"
+      />
+  <!-- html view for attachment fields -->
+  <browser:page
+      for="Products.minaraad.content.AnnualReport.AnnualReport"
+      name="attachment_as_html"
+      class=".attachmenthtml.AttachmentFieldHtmlView"
+      allowed_attributes="extract_html"
+      permission="zope2.View"
+      template="attachmenthtml.pt"
+      />
+
+  <browser:page
+      name="list_contact_persons"
+      for="*"
+      class=".contactpersons.ContactPersonsListingView"
+      template="list_contact_persons.pt"
+      permission="zope2.View"
+      />
+
+</configure>

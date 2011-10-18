@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<object>
+  <hidden manager="plone.belowcontentbody" skinname="Plone Default">
+    <!--viewlet name="plone.belowcontentbody.workflowhistory" /-->
+    <viewlet name="plone.abovecontenttitle.documentactions" />
+  </hidden>
+  <hidden manager="plone.htmlhead.links" skinname="Plone Default">
+    <viewlet name="plone.links.author" />
+  </hidden>
+  <order manager="plone.contentviews" skinname="Plone Default">
+    <viewlet name="plone.contentviews"/>
+    <viewlet name="plone.contentactions"/>
+  </order>
+</object>

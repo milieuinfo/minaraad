@@ -1,0 +1,99 @@
+{% if parts.conf.redirect_www %}
+server {
+        # Redirect from http://<domain> to http://www.<domain>
+        listen 80;
+        server_name  ${parts.conf.domainname};
+        rewrite ^(.*) http://www.${parts.conf.domainname}$$1 permanent;
+}
+{% end %}
+
+server {
+        listen   80;
+        {% choose %}
+          {% when parts.conf.redirect_www %}
+        server_name  www.${parts.conf.domainname};
+          {% end %}
+          {% otherwise %}
+        server_name  ${parts.conf.domainname};
+          {% end %}
+        {% end %}
+        access_log  /var/log/nginx/${parts.conf.domainname}.access.log;
+        error_log  /var/log/nginx/${parts.conf.domainname}.error.log;
+
+
+        client_max_body_size 20m;
+
+        # if you want awstats and have symlinked the conf/awstats.conf in
+        # /etc/awstats, uncomment the line below statistics will be available
+        # at ${parts.conf.domainname}/awstats.pl
+        #
+        include /etc/nginx/awstats.conf;
+
+        rewrite ^/(.*)$$ /VirtualHostBase/http/$$host:80/${parts.conf.plonesite}/VirtualHostRoot/$$1 last;
+
+        location / {
+                #root   /var/www/nginx-default;
+                #index  index.html index.htm;
+                #
+                # We want to go through varnish, but logged-in and
+                # logged-out pages are somehow cached through one
+                # another, which is not good.
+                #
+                #proxy_pass http://127.0.0.1:${parts.conf.varnish};
+                proxy_pass http://127.0.0.1:${parts.conf.zeoclient};
+                proxy_set_header host $$host;
+                proxy_set_header X-Real-IP $$remote_addr;
+                proxy_set_header X-Forwarded-For $$proxy_add_x_forwarded_for;
+        }
+
+        location ~ ^.+/email_out$ {
+                #proxy_pass http://127.0.0.1:${parts.conf.varnish};
+                proxy_pass http://127.0.0.1:${parts.conf.zeoclient};
+                proxy_set_header host $$host;
+                proxy_set_header X-Real-IP $$remote_addr;
+                proxy_set_header X-Forwarded-For $$proxy_add_x_forwarded_for;
+                # Long timeout as this page can take very long.  With
+                # such a long timeout the browser (at least Firefox)
+                # just keeps waiting; with the default timeout (60)
+                # you get a Not Found error, which is worse.
+                proxy_read_timeout 900;
+        }
+
+        #error_page  404  /404.html;
+
+        # redirect server error pages to the static page /50x.html
+        #
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+                root   /var/www/nginx-default;
+        }
+}
+
+server {
+        listen   80;
+        server_name  zope.${parts.conf.domainname};
+
+        access_log  /var/log/nginx/zope.${parts.conf.domainname}.access.log;
+        error_log  /var/log/nginx/zope.${parts.conf.domainname}.error.log;
+
+        client_max_body_size 10m;
+
+        location / {
+                #root   /var/www/nginx-default;
+                #index  index.html index.htm;
+                proxy_pass http://127.0.0.1:${parts.conf.zeoclient};
+                proxy_set_header host $$host;
+                proxy_set_header X-Real-IP $$remote_addr;
+                proxy_set_header X-Forwarded-For $$proxy_add_x_forwarded_for;
+        }
+
+        #error_page  404  /404.html;
+
+        # redirect server error pages to the static page /50x.html
+        #
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+                root   /var/www/nginx-default;
+        }
+}
+

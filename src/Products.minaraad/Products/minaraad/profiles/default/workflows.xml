@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<object name="portal_workflow" meta_type="Plone Workflow Tool">
+ <property
+    name="title">Contains workflow definitions for your portal</property>
+ <object name="minaraad_folder_workflow" meta_type="Workflow"/>
+ <object name="minaraad_workflow" meta_type="Workflow"/>
+ <object name="file_attachment_workflow" meta_type="Workflow"/>
+ <bindings>
+  <default>
+   <bound-workflow workflow_id="minaraad_workflow"/>
+  </default>
+  <type type_id="ATBooleanCriterion"/>
+  <type type_id="ATCurrentAuthorCriterion"/>
+  <type type_id="ATDateCriteria"/>
+  <type type_id="ATDateRangeCriterion"/>
+  <type type_id="ATListCriterion"/>
+  <type type_id="ATPathCriterion"/>
+  <type type_id="ATPortalTypeCriterion"/>
+  <type type_id="ATReferenceCriterion"/>
+  <type type_id="ATSelectionCriterion"/>
+  <type type_id="ATSimpleIntCriterion"/>
+  <type type_id="ATSimpleStringCriterion"/>
+  <type type_id="ATSortCriterion"/>
+  <type type_id="AgendaItem">
+   <bound-workflow workflow_id="minaraad_workflow"/>
+  </type>
+  <type type_id="CacheTool"/>
+  <type type_id="ContentCacheRule"/>
+  <type type_id="Discussion Item"/>
+  <type type_id="File">
+   <bound-workflow workflow_id="minaraad_workflow"/>
+  </type>
+  <type type_id="FileAttachment">
+  </type>
+  <type type_id="Folder">
+   <bound-workflow workflow_id="minaraad_folder_workflow"/>
+  </type>
+  <type type_id="HeaderSet"/>
+  <type type_id="HeaderSetFolder"/>
+  <type type_id="Hearing">
+   <bound-workflow workflow_id="minaraad_workflow"/>
+  </type>
+  <type type_id="Image">
+   <bound-workflow workflow_id="minaraad_workflow"/>
+  </type>
+  <type type_id="ImageAttachment"/>
+  <type type_id="Large Plone Folder">
+   <bound-workflow workflow_id="minaraad_folder_workflow"/>
+  </type>
+  <type type_id="MacroCacheRule"/>
+  <type type_id="MacroFolder"/>
+  <type type_id="NewsLetter">
+   <bound-workflow workflow_id="minaraad_workflow"/>
+  </type>
+  <type type_id="Plone Site"/>
+  <type type_id="PolicyHTTPCacheManagerCacheRule"/>
+  <type type_id="RuleFolder"/>
+  <type type_id="Study">
+   <bound-workflow workflow_id="minaraad_workflow"/>
+  </type>
+  <type type_id="TemplateCacheRule"/>
+  <type type_id="Topic">
+   <bound-workflow workflow_id="minaraad_folder_workflow"/>
+  </type>
+ </bindings>
+</object>

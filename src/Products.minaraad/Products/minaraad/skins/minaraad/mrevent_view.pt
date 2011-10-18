@@ -1,0 +1,181 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
+      lang="en-US"
+      i18n:domain="minaraad">
+    <metal:block use-macro="context/global_defines/macros/defines" />
+
+    <body>
+    <metal:block metal:define-macro="body"
+                 tal:define="view nocall:context/@@attendees_view;
+                             current_path python:'/'.join(context.getPhysicalPath());
+                             agendaItems context/find_items_and_times;">
+        <metal:block metal:define-macro="folderlisting" />
+        <br />
+
+      <tal:block
+          define="start python:context.getStart_time()-1;
+                  current python:DateTime();
+                  is_subscribed view/isRegistered;
+                  subscription_allowed python:context.getSubscriptionAllowed() and (current &lt; start);
+                  can_subscribe python:subscription_allowed and not is_subscribed;"
+          condition="python:can_subscribe or is_subscribed">
+          <div class="hearing_subscribe">
+            <form tal:condition="is_subscribed"
+                  tal:attributes="action
+                                  string:${context/absolute_url}/@@attendees_view">
+              <span>
+                U bent ingeschreven voor dit evenement.
+              </span>
+              <input class="context unsubscribe"
+                     type="submit"
+                     name="form.button.Submit"
+                     value="Unsubscribe"
+                     i18n:attributes="value label_unsubscribe;" />
+
+              <input type="hidden"
+                     name="form.submitted"
+                     value="unregister" />
+            </form>
+
+            <form tal:condition="can_subscribe"
+                  tal:attributes="action string:${context/absolute_url}/@@attendees_view">
+              <span>
+                Klik hier om u in te schrijven.
+              </span>
+              <input class="context subscribe"
+                     type="submit"
+                     name="form.button.Submit"
+                     value="Subscribe"
+                     i18n:attributes="value label_subscribe;" />
+
+              <input type="hidden"
+                     name="form.submitted"
+                     value="register" />
+            </form>
+          </div>
+        </tal:block>
+
+       <img tal:condition="context/getFoto"
+            tal:attributes="src string:${context/absolute_url}/foto_foto"
+            alt=""
+            class="float-right" />
+        <div class="hearingsubheader"
+             tal:condition="context/getSubheader">
+            <span tal:replace="context/getSubheader" />
+        </div>
+
+         <div class="hearingsubheader2"
+              i18n:translate="Goal:"
+              tal:condition="context/getGoal">
+            Goal:
+         </div>
+
+         <div tal:content="structure context/getGoal" />
+
+         <div class="hearingsubheader2"
+              tal:condition="context/getLocation">
+            <span i18n:translate="Location:"
+                  tal:omit-tag="">Location:</span>
+            <span class="normaltext"
+                  tal:content="context/getLocation" />
+         </div>
+
+         <!-- Date and Time -->
+         <div metal:use-macro="context/mina_showdatetime/macros/datetime" />
+        <!-- end Date and Time -->
+
+        <!-- Text -->
+        <div class="bodytext"
+             tal:condition="context/getBody"
+             tal:content="structure context/getBody" />
+
+        <div class="visualClear"></div>
+        <!-- End text -->
+
+
+        <!-- Hearing Files -->
+        <div>
+          <metal:block metal:use-macro="context/mina_attachments/macros/listattachments"/>
+        </div>
+        <!-- Hearing Files -->
+
+        <!-- Speakers -->
+        <div tal:condition ="agendaItems"
+             class="hearingsubheader2"
+             i18n:translate="label_agendaitems">Agenda items</div>
+
+        <table id="meeting_view"
+               tal:condition="agendaItems">
+          <tbody>
+            <tal:block tal:repeat="item agendaItems">
+              <tr tal:define="obj python: item[0];
+                              obj obj/getObject|nocall:obj;"
+                  tal:attributes="id obj/UID">
+                <td>
+                  <ul class="AgendaItems">
+                    <metal:block use-macro="context/display_macros/macros/agendaItem" />
+                  </ul>
+                </td>
+                <td tal:condition="obj/can_be_edited|nothing"
+                    class="draggable">
+                </td>
+              </tr>
+            </tal:block>
+          </tbody>
+        </table>
+        <!-- End speakers -->
+
+        <!-- Contactperson -->
+        <tal:block tal:define="obj nocall: context">
+          <div metal:use-macro="context/contactperson_view/macros/show_coord_authors"
+               tal:omit-tag="" />
+        </tal:block>
+        <!-- end contactpersoon -->
+
+        <tal:block tal:define="attendees view/groupedAttendees;
+                               attended_members attendees/members;
+                               attended_c_members attendees/council_members"
+                   tal:condition="python:attended_members != [] or attended_c_members != []">
+
+        <fieldset tal:condition="python:checkPermission('Manage portal', here)">
+            <legend i18n:translate="title_attendees">Attendees</legend>
+            <dl class="Attendees">
+                <dt i18n:translate="title_counsilmembers">
+                    Council Members
+                </dt>
+                <dd tal:repeat="attendee attended_c_members">
+                    <span tal:replace="attendee/niceName" />
+                </dd>
+                <dd tal:condition="not:attended_c_members"
+                    class="discreet"
+                    i18n:translate="no_attendees">
+                (none currently)
+                </dd>
+                <dt i18n:translate="title_members">
+                    Members
+                </dt>
+                <dd tal:repeat="attendee attended_members">
+                    <span tal:replace="attendee/niceName" />
+                </dd>
+                <dd tal:condition="not:attended_members"
+                    class="discreet"
+                    i18n:translate="no_attendees">
+                (none currently)
+                </dd>
+            </dl>
+            <form tal:attributes="action string:${context/absolute_url}/@@attendees_view">
+            <input class="context"
+                   type="submit"
+                   name="form.button.Submit"
+                   value="Export CSV"
+                   i18n:attributes="value label_exportcsv;" />
+
+            <input type="hidden"
+                   name="form.submitted"
+                   value="exportCSV" />
+          </form>
+        </fieldset>
+        </tal:block>
+
+        </metal:block>
+    </body>
+</html>

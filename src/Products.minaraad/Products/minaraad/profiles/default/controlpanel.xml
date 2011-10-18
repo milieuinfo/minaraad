@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<object name="portal_controlpanel" meta_type="Plone Control Panel Tool">
+
+ <!-- Our configlets -->
+ <configlet title="Servicepaneel Minaraad" action_id="minaraad_service"
+    appId="minaraad" category="Products" condition_expr="python:True"
+    url_expr="string:${portal_url}/minaraad_service" visible="True">
+  <permission>Manage Portal</permission>
+ </configlet>
+ <configlet title="minaraad themes" action_id="Themes" appId="ThemesID"
+    category="Products" condition_expr="python:True"
+    url_expr="string:${portal_url}/minaraad_config.html" visible="True">
+  <permission>Manage Portal</permission>
+ </configlet>
+ <configlet title="Subscriptions" action_id="Subscriptions"
+    appId="SubscriptionsID" category="Member" condition_expr="python:True"
+    url_expr="string:${portal_url}/subscriptions_config.html" visible="True">
+  <permission>View</permission>
+ </configlet>
+ <configlet title="subscribers overview" action_id="Subscribers"
+    appId="SubscribersID" category="Products" condition_expr="python:True"
+    url_expr="string:${portal_url}/subscribers_config.html" visible="True">
+  <permission>Manage Portal</permission>
+ </configlet>
+ <configlet title="Contactpersonen" action_id="minaraad_contact_persons"
+    appId="minaraad" category="Products" condition_expr="python:True"
+    url_expr="string:${portal_url}/contactpersonen" visible="True">
+  <permission>Manage Portal</permission>
+ </configlet>
+
+ <!-- Don't show the zmi link -->
+ <configlet title="Zope Management Interface" action_id="ZMI" appId="ZMI"
+    category="Plone" condition_expr=""
+    url_expr="string:${portal_url}/manage_main" visible="False">
+  <permission>Manage portal</permission>
+ </configlet>
+
+ <!-- Remove txng3's configlet if still present -->
+ <configlet title="TextIndexNG3" action_id="TextIndexNG3" appId="TextIndexNG3"
+    category="Products" condition_expr=""
+    url_expr="string:${portal_url}/txng_maintenance" visible="False">
+  <permission>Manage portal</permission>
+ </configlet>
+
+</object>

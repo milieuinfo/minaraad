@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<rolemap>
+  <roles>
+    <role name="DigiBibViewer" />
+    <role name="ProjectMember" />
+  </roles>
+
+  <permissions>
+    <permission name="minaraad.projects: view project id" acquire="True">
+      <role name="Manager"/>
+    </permission>
+
+    <permission name="minaraad.projects: Add Project" acquire="True">
+      <role name="Manager"/>
+    </permission>
+
+    <permission name="minaraad.projects: Add Meeting" acquire="True">
+      <role name="Manager"/>
+    </permission>
+
+    <permission name="minaraad.projects: Add DigiBib" acquire="True">
+      <role name="Manager"/>
+    </permission>
+
+    <permission name="minaraad.projects: Add MeetingContainer" acquire="True">
+      <role name="Manager"/>
+    </permission>
+
+    <permission name="minaraad.projects: Add ProjectContainer" acquire="True">
+      <role name="Manager"/>
+    </permission>
+
+    <permission name="minaraad.projects: Add OrganisationContainer" acquire="True">
+      <role name="Manager"/>
+    </permission>
+
+    <permission name="minaraad.projects: Add AgendaItemProject" acquire="True">
+      <role name="Manager"/>
+    </permission>
+
+    <permission name="minaraad.projects: Add Organisation" acquire="True">
+      <role name="Manager"/>
+    </permission>
+
+    <permission name="minaraad.projects: view digibib" acquire="True">
+      <role name="Manager"/>
+      <role name="DigiBibViewer" />
+    </permission>
+
+    <permission name="minaraad.projects: view meeting in digibib" acquire="True">
+      <role name="Manager"/>
+      <role name="ProjectMember" />
+      <role name="Council Member" />
+    </permission>
+
+    <permission name="minaraad.projects: view project in digibib" acquire="True">
+      <role name="Manager"/>
+      <role name="ProjectMember" />
+      <role name="Council Member" />
+    </permission>
+  </permissions>
+</rolemap>

@@ -1,0 +1,31 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
+      lang="en-US"
+      i18n:domain="minaraad">
+
+<body style="font-size:13px">
+
+<span i18n:translate="label_dear">Beste</span> <span tal:replace="python: member.getProperty('firstname')" />,
+<br />
+<p>
+  <span i18n:translate="label_subs1">Bij deze bevestigen wij uw</span>
+  <tal:block i18n:translate="label_subsyes" condition="subscribe">inschrijving</tal:block>
+  <tal:block i18n:translate="label_subsno" condition="not: subscribe">afmelding</tal:block>
+  <span i18n:translate="label_subs2">voor de hoorzitting</span>
+  <span style="font-weight:bold" tal:content="context/Title" />
+  <span i18n:translate="label_subs3">die plaats vindt in</span>
+  <span style="font-weight:bold" tal:content="context/getLocation" />
+  <span i18n:translate="label_subs4">op</span>
+  <span style="font-weight:bold">
+    <metal:block use-macro="context/mina_showdatetime/macros/subscribe_notification_email" />
+  </span>
+</p>
+<span i18n:translate="label_thank">Dank voor uw interesse.</span>
+<p>
+   <span i18n:translate="label_greeting">Met vriendelijke groet</span>
+</p>
+<p>
+  <span i18n:translate="label_theteam">Het Minaraad-team</span>
+</p>
+
+</body>
+</html>

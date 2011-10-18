@@ -1,0 +1,166 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/prefs_main_template/macros/master"
+      i18n:domain="minaraad">
+
+<metal:block metal:fill-slot="top_slot"
+             tal:define="dummy python:request.set('disable_border',1)" />
+
+<body>
+
+<div metal:fill-slot="prefs_configlet_main">
+
+    <form action=""
+          name="search"
+          method="post"
+          tal:attributes="action string:${request/ACTUAL_URL}">
+
+    <h1>Minaraad Service</h1>
+
+    <a href=""
+       class="link-parent"
+       tal:attributes="href string: $portal_url/plone_control_panel"
+       i18n:translate="label_up_to_plone_setup">
+        Up to Site Setup
+    </a>
+
+    <div class="portalMessage"
+        tal:condition="view/members_deleted"
+        tal:content="view/members_deleted" />
+
+    <tal:double_emails
+        condition="view/double_emails">
+      <h2>Er zijn meerdere gebruikers gevonden per e-mailadres.</h2>
+      <dl>
+        <tal:item repeat="item view/double_emails">
+          <dt tal:content="python:item[0]" />
+          <dd>
+            <span tal:content="python:item[1]" />
+            <a tal:define="random_id python:item[1][-1]"
+                tal:attributes="href string:${portal_url}/@@email_duplicates?userid=${random_id}">
+              Meer info
+            </a>
+          </dd>
+        </tal:item>
+      </dl>
+    </tal:double_emails>
+
+    <tal:bad_emails
+        condition="view/bad_emails">
+      <h2>Er zijn ongeldige e-mailadressen gevonden.</h2>
+      <dl>
+        <tal:item repeat="item view/bad_emails">
+          <dt tal:content="python:item[0]" />
+          <dd tal:define="member_id python:item[1]">
+            <a tal:attributes="href string:${portal_url}/prefs_user_details?userid=${member_id}">
+              Bewerk deze gebruiker
+            </a>
+            (<span tal:content="python:member_id" />)
+          </dd>
+        </tal:item>
+      </dl>
+    </tal:bad_emails>
+
+    <tal:changed_members
+        condition="view/changed_members_called">
+      <tal:changes condition="view/changed_members">
+      <h2>Deze gebruikers hebben gegevens gewijzigd:</h2>
+      <table id="minaraad_changed_members_table">
+        <tr>
+          <th>Wijziging</th>
+          <th>Naam gebruiker</th>
+        </tr>
+        <tr tal:repeat="item view/changed_members">
+          <td tal:content="item/modified" />
+          <td>
+            <a tal:attributes="href item/url"
+               tal:content="item/fullname" />
+          </td>
+        </tr>
+      </table>
+      </tal:changes>
+      <tal:nochanges condition="not:view/changed_members">
+        <h2>Er zijn geen gewijzigde gebruikers.</h2>
+        <p></p>
+      </tal:nochanges>
+      <div class="formControls"
+           tal:condition="view/changed_by_date">
+        <input class="context"
+               type="submit"
+               name="form.button.ShowAllChangedMembers"
+               value="Toon alle ooit gewijzigde gebruikers"
+               tal:attributes="tabindex tabindex/next;" />
+      </div>
+    </tal:changed_members>
+
+    <div tal:condition="request/form/switch_to_email|nothing">
+      <p i18n:translate="msg_number_switched_to_email">
+        <span i18n:name="count" tal:content="view/switched_to_email" />
+        accounts were switched to using their email address as login name.
+      </p>
+    </div>
+
+    <div tal:condition="request/form/switch_to_userid|nothing">
+      <p i18n:translate="msg_number_switched_to_userid">
+        <span i18n:name="count" tal:content="view/switched_to_userid" />
+        accounts were switched back to using their user id as login name.
+      </p>
+    </div>
+
+    <p tal:condition="request/form/submitted|nothing">
+      Het logbestand heeft mogelijk meer informatie.
+    </p>
+
+    <hr />
+
+    <input type="hidden" name="submitted" value="submitted" id="submitted" />
+    <div tal:condition="nothing" class="formControls">
+      <input class="context"
+             type="submit"
+             name="form.button.DeleteMembers"
+             value="Verwijder gebruikers zonder emailadres"
+             tal:attributes="tabindex tabindex/next;" />
+    </div>
+    <br />
+    <div tal:condition="nothing" class="formControls">
+      <input class="context"
+             type="submit"
+             name="form.button.FindDoubleEmails"
+             value="Vind emailadressen met meerdere gebruikers"
+             tal:attributes="tabindex tabindex/next;" />
+    </div>
+    <br />
+    <div tal:condition="nothing" class="formControls">
+      <input class="context"
+             type="submit"
+             name="form.button.FindBadEmails"
+             value="Vind ongeldige emailadressen"
+             tal:attributes="tabindex tabindex/next;" />
+    </div>
+    <br />
+    <div class="formControls">
+      <input class="context"
+             type="submit"
+             name="form.button.ShowChangedMembers"
+             value="Toon gebruikers met wijzigingen in de laatste maand"
+             tal:attributes="tabindex tabindex/next;" />
+    </div>
+    <br />
+    <div tal:condition="nothing" class="formControls">
+      <input class="context"
+             type="submit"
+             name="switch_to_email"
+             value="Stel het emailadres in als loginnaam voor alle gebruikers" />
+    </div>
+    <br />
+    <div tal:condition="nothing" class="formControls">
+      <input class="context"
+             type="submit"
+             name="switch_to_userid"
+             value="Draai de loginnaam van alle gebruikers terug naar de userid in plaats van het emailadres" />
+    </div>
+    </form>
+
+</div>
+</body>
+</html>

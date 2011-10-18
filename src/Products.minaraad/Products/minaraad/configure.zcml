@@ -1,0 +1,99 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:five="http://namespaces.zope.org/five"
+    i18n_domain="minaraad">
+
+  <include file="permissions.zcml" />
+  <include package=".browser" />
+  <include package=".content" />
+  <include file="deprecation.zcml" />
+
+  <five:implements
+      class="Products.CMFPlone.Portal.PloneSite"
+      interface=".interfaces.IPortalPropertyContainer"
+    />
+
+  <subscriber
+      for="Products.ATContentTypes.interface.IATFolder
+           Products.Archetypes.interfaces.IObjectInitializedEvent"
+      handler=".events.folder_views" />
+
+  <subscriber
+      for="Products.minaraad.content.interfaces.IThemes
+           zope.lifecycleevent.interfaces.IObjectModifiedEvent"
+      handler=".events.save_theme_name" />
+
+  <subscriber
+      for="minaraad.projects.interfaces.IAttachment
+           zope.lifecycleevent.interfaces.IObjectModifiedEvent"
+      handler=".events.publish_on_save"
+      />
+
+  <include package="archetypes.schemaextender" />
+  <adapter factory=".schema_extensions.fileAttachment.FileAttachmentExtender" />
+
+  <genericsetup:registerProfile
+      name="default"
+      title="Minaraad"
+      directory="profiles/default"
+      description="Profile for the minaraad site."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      />
+
+  <genericsetup:upgradeStep
+      title="Migrate themes"
+      description=""
+      source="1001"
+      destination="1002"
+      handler="Products.minaraad.migration.migrate_themes"
+      sortkey="1"
+      profile="Products.minaraad:default" />
+
+  <genericsetup:upgradeStep
+      title="Save themes"
+      description=""
+      source="1002"
+      destination="1003"
+      handler="Products.minaraad.migration.save_object_themes"
+      sortkey="1"
+      profile="Products.minaraad:default" />
+
+  <genericsetup:upgradeStep
+      title="Migrate contacts"
+      description=""
+      source="1003"
+      destination="1004"
+      handler="Products.minaraad.migration.migrate_contacts"
+      sortkey="1"
+      profile="Products.minaraad:default" />
+
+  <genericsetup:upgradeStep
+      title="Update control panel"
+      description=""
+      source="1004"
+      destination="1005"
+      handler="Products.minaraad.migration.update_controlpanel"
+      sortkey="1"
+      profile="Products.minaraad:default" />
+
+  <genericsetup:upgradeStep
+      title="Update portal_types"
+      description=""
+      source="1005"
+      destination="1006"
+      handler="Products.minaraad.migration.update_portal_types"
+      sortkey="1"
+      profile="Products.minaraad:default" />
+
+  <genericsetup:upgradeStep
+      title="Apply workflow step"
+      description=""
+      source="1006"
+      destination="1007"
+      handler="Products.minaraad.migration.apply_workflow_step"
+      profile="Products.minaraad:default" />
+
+</configure>

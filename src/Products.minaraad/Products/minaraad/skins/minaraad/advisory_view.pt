@@ -1,0 +1,90 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
+      lang="en-US"
+      i18n:domain="minaraad">
+   <metal:block use-macro="context/global_defines/macros/defines" />
+
+   <body>
+   <metal:block define-macro="body">
+
+      <div tal:define="daterequired python:context.getDate() != None;
+                     date python:toLocalizedTime(context.date);"
+         class="hearingsubheader2"
+         tal:condition="daterequired">
+
+         <span i18n:translate="advisory_date">Advisory date:</span>
+         <span class="normaltext"
+               tal:content="date" />
+      </div>
+      <div tal:define="name context/getThemeName|nothing"
+           tal:condition="name"
+           class="themesubheader">
+          <span i18n:translate="label_theme_name">Theme:</span>
+          <span class="normaltext" tal:content="name" />
+      </div>
+      <div tal:define="product_number context/getProduct_number|nothing"
+           tal:condition="product_number"
+           class="themesubheader">
+          <span i18n:translate="label_product_number">Product number:</span>
+          <span class="normaltext"
+                tal:content="python:'%d-%s' % (context.getDate().year(), product_number)" />
+      </div>
+      <div tal:define="project context/getProject|nothing"
+           tal:condition="python:project and checkPermission('View', project)"
+           class="themesubheader">
+          <span i18n:translate="label_project">Project:</span>
+          <a tal:attributes="href project/absolute_url">
+            <tal:project_id
+                tal:content="python:'%d-%s' % (project.getAdvisory_date().year(), project.getProject_number())"
+                tal:on-error="project/getId" />
+          </a>
+      </div>
+
+
+      <tal:summary condition="context/getBody|nothing">
+        <h5><tal:block i18n:translate="minaraad_label_summary">Summary</tal:block>:</h5>
+        <div tal:condition="context/getFoto"
+             class="float-right">
+          <img tal:attributes="src string:${context/absolute_url}/foto_foto"
+               alt="" />
+        </div>
+        <div tal:content="structure context/getBody" />
+      </tal:summary>
+
+      <!-- Start Attachments-->
+      <div metal:use-macro="context/mina_attachments/macros/listattachments" />
+      <!-- end Attachments -->
+
+      <!-- Start related documents -->
+      <tal:related define="docs python:context.getRelatedDocuments()"
+                   condition="docs">
+         <h5 i18n:translate="label_advisory_related_documents">
+           Related documents
+         </h5>
+         <ul>
+           <li tal:repeat="doc docs">
+             <tal:block tal:define="is_file python:doc.portal_type in ('File', 'FileAttachment');">
+               <tal:block tal:condition="python:not is_file and not is_attachment">
+                 <a tal:attributes="href doc/absolute_url"
+                    tal:content="doc/title_or_id" />
+               </tal:block>
+               <tal:block tal:condition="is_file">
+                 <metal:block use-macro="context/filemacro/macros/related_view" />
+               </tal:block>
+             </tal:block>
+           </li>
+         </ul>
+      </tal:related>
+      <!-- End related documents -->
+
+      <!-- Start contactperson -->
+      <tal:block tal:define="obj nocall: context">
+        <div metal:use-macro="context/contactperson_view/macros/show_coord_authors"
+             tal:omit-tag="" />
+      </tal:block>
+      <!-- End contactpersoon -->
+
+   </metal:block>
+
+   <metal:block metal:define-macro="folderlisting" />
+   </body>
+</html>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<action-icons>
+ <action-icon category="controlpanel"
+              action_id="minaraad_project_properties"
+              title="Project settings"
+              priority="0"
+              icon_expr="site_icon.gif"/>
+ <action-icon category="controlpanel"
+              action_id="export_statistics"
+              title="Statistics"
+              priority="0"
+              icon_expr="site_icon.gif"/>
+ <action-icon category="object_buttons"
+              action_id="create_advisory"
+              title="Create Advisory"
+              priority="0"
+              icon_expr="folder_icon.gif"/>
+</action-icons>

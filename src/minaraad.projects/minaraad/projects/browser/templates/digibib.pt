@@ -1,0 +1,102 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="minaraad.projects">
+  <body>
+    <div metal:fill-slot="main">
+     <h1 class="documentFirstHeading">
+       Digibib DashBoard
+     </h1>
+
+     <div id="digibib_view"
+          tal:define="mtool context/portal_membership|nothing">
+       <div class="leftWidget widget"
+            tal:define="projects view/list_projects">
+         <div class="title">
+           Lopende Projecten
+           <a href="projects"
+              title="View all projects"
+              class="right"
+              i18n:attributes="title label_view_all_projects">
+             <img src="folder_icon.gif"
+                  alt="View all projects"
+                  i18n:attributes="alt label_view_all_projects" />
+           </a>
+           <a href="projects/createObject?type_name=Project"
+              title="Add a new project"
+              class="right"
+              tal:condition="python: mtool and mtool.checkPermission('Modify portal content', context)"
+              i18n:attributes="title label_add_project">
+             <img src="add_icon.gif"
+                  alt="Add a new project"
+                  i18n:attributes="alt label_add_project" />
+           </a>
+         </div>
+         <div class="body">
+           <ul tal:condition="projects">
+             <tal:block tal:repeat="project projects">
+               <li tal:define="oddrow repeat/project/odd"
+                   tal:attributes="class python: oddrow and 'odd' or 'even'">
+                 <a tal:attributes="href project/absolute_url">
+                   <strong tal:content="project/getPID" />
+                   <span tal:content="project/Title" />
+                 </a>
+               </li>
+             </tal:block>
+           </ul>
+           <p tal:condition="not: projects"
+              i18n:translate="label_no_projects">
+             There is no incoming projects
+           </p>
+         </div>
+       </div>
+
+       <div class="rightWidget widget"
+            tal:define="meetings view/list_meetings">
+         <div class="title">
+           Geplande vergaderingen
+           <a href="meetings"
+              title="View all meetings"
+              class="right"
+              i18n:attributes="title label_view_all_meetings">
+             <img src="folder_icon.gif"
+                  alt="View all meetings"
+                  i18n:attributes="alt label_view_all_meetings" />
+           </a>
+           <a href="meetings/createObject?type_name=Meeting"
+              title="Add a new meeting"
+              class="right"
+              tal:condition="python: mtool and mtool.checkPermission('Modify portal content', context)"
+              i18n:attributes="title label_add_meeting">
+             <img src="add_icon.gif"
+                  alt="Add a new meeting"
+                  i18n:attributes="alt label_add_meeting" />
+           </a>
+         </div>
+         <div class="body">
+           <ul class="digibibMeetingList"
+               tal:condition="meetings">
+             <tal:block tal:repeat="meeting meetings">
+               <li tal:define="oddrow repeat/meeting/odd"
+                   tal:attributes="class python: oddrow and 'odd' or 'even'">
+                 <a tal:attributes="href meeting/absolute_url">
+                   <strong><metal:block use-macro="context/display_macros/macros/meetingTimes" /></strong>
+                   <p tal:content="meeting/getResponsible_group" />
+                 </a>
+               </li>
+             </tal:block>
+           </ul>
+           <p tal:condition="not: meetings"
+              i18n:translate="label_no_planned_meetings">
+             There is no planned meetings.
+           </p>
+         </div>
+       </div>
+     </div>
+
+     <div style="clear: both;">
+       &nbsp;
+     </div>
+    </div>
+  </body>
+</html>

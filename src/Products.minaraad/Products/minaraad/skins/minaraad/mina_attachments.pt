@@ -1,0 +1,39 @@
+<html xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      i18n:domain="minaraad">
+  <body>
+
+    <metal:block metal:define-macro="agenda_attachments"
+                 tal:define="current_path python:'/'.join(obj.getPhysicalPath());
+                             attachments python:context.portal_catalog.searchResults(portal_type='FileAttachment',
+                             path=current_path,)">
+
+      <div tal:repeat="attachment attachments"
+           class="list-attachments">
+        <metal:block use-macro="context/filemacro/macros/attachment_view" />
+      </div>
+    </metal:block>
+
+    <metal:block metal:define-macro="listattachments"
+                 tal:define="current_path python:'/'.join(context.getPhysicalPath());
+                             attachments python:context.portal_catalog.searchResults(portal_type=['File', 'FileAttachment'],
+                             path={'query': current_path, 'depth':1})">
+      <tal:attachments condition="attachments">
+        <div i18n:translate="title_attachments"
+            tal:condition="python:context.portal_type not in ('Advisory', 'Study')"
+            class="attachment-title">Attachments</div>
+        <div i18n:domain="plone" i18n:translate=""
+            tal:condition="python:attachments and context.portal_type == 'Advisory'"
+            class="attachment-title">Advisory</div>
+        <div i18n:domain="plone"
+            tal:condition="python:attachments and context.portal_type == 'Study'"
+            class="attachment-title">Studiedocument</div>
+        <div tal:repeat="attachment attachments"
+             class="list-attachments">
+          <metal:block use-macro="context/filemacro/macros/attachment_view" />
+        </div>
+      </tal:attachments>
+    </metal:block>
+
+  </body>
+</html>

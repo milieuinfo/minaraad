@@ -1,0 +1,174 @@
+# -*- coding: utf-8 -*-
+from zope.interface import implements
+from AccessControl import ClassSecurityInfo
+from Products.Archetypes import atapi
+from Products.ATReferenceBrowserWidget.ATReferenceBrowserWidget import \
+    ReferenceBrowserWidget
+from Products.OrderableReferenceField import OrderableReferenceField
+from Products.OrderableReferenceField import OrderableReferenceWidget
+
+from Products.minaraad.Attachmentsmixin import Attachmentsmixin
+from Products.minaraad.PostMixin import PostMixin
+from Products.minaraad.EmailMixin import EmailMixin
+from Products.minaraad.config import PROJECTNAME
+from Products.minaraad.content.themes import ThemeMixin
+from Products.minaraad.content.themes import theme_schema
+from Products.minaraad.content.interfaces import IUseContact
+from Products.minaraad.content.contacts import contacts_schema
+
+# Do NOT import this as underscore, as i18ndude will then pick it up
+# for the wrong domain.
+from minaraad.projects import MinaraadProjectMessageFactory
+
+schema = atapi.Schema((
+
+    atapi.DateTimeField(
+        name='date',
+        required=True,
+        widget=atapi.CalendarWidget(
+            label='Date',
+            label_msgid='minaraad_label_date',
+            i18n_domain='minaraad',
+        )
+    ),
+
+    atapi.TextField(
+        name='description',
+        widget=atapi.TextAreaWidget(
+            label='Description',
+            label_msgid='minaraad_label_description',
+            i18n_domain='minaraad',
+        )
+    ),
+
+    atapi.StringField(
+        name='product_number',
+        required=False,
+        validators=('projectNumber3Digits', ),
+        widget=atapi.StringWidget(
+            label=MinaraadProjectMessageFactory(
+                u'label_product_number',
+                default=u'Product number')
+            )
+        ),
+
+    # Body (which already existed) serves as the summary (of the attachment,
+    # summary is shown in the listings).
+    atapi.TextField(
+        name='body',
+        allowable_content_types=('text/html', 'text/plain', 'text/structured',
+                                 'application/msword', ),
+        widget=atapi.RichWidget(
+            label='Summary',
+            label_msgid='minaraad_label_summary',
+            i18n_domain='minaraad',
+        ),
+        default_content_type='text/html',
+        default_output_type='text/html',
+    ),
+
+    atapi.ImageField(
+        name='foto',
+        widget=atapi.ImageWidget(
+            label="Photo",
+            label_msgid='minaraad_label_foto',
+            i18n_domain='minaraad',
+        ),
+        storage=atapi.AttributeStorage(),
+        sizes={'foto': (300, 300)}
+    ),
+
+    OrderableReferenceField(
+        name='contact',
+        vocabulary_display_path_bound="-1",
+        widget=OrderableReferenceWidget(
+            visible=False,
+            label='Contact',
+            label_msgid='minaraad_label_contact',
+            i18n_domain='minaraad',
+        ),
+        allowed_types=('ContactPerson', ),
+        multiValued=1,
+        relationship='advisory_contact'
+    ),
+
+    atapi.ReferenceField(
+        name='relatedDocuments',
+        vocabulary_display_path_bound="-1",
+        widget=ReferenceBrowserWidget(
+            label='Related Documents',
+            label_msgid='minaraad_label_related_documents',
+            description="Related and published digibib documents and files",
+            description_msgid="minaraad_help_related_documents",
+            i18n_domain='minaraad',
+            # ATReferenceBrowser specific additions:
+            startup_directory='digibib/projects',
+            restrict_browsing_to_startup_directory=0,
+            only_for_review_states=('published', ),
+            show_review_state=1,
+            allow_search=1,
+            allow_browse=1,
+            show_indexes=0,
+            force_close_on_insert=0,
+        ),
+        allowed_types=('Document', 'File', 'FileAttachment'),
+        multiValued=True,
+        relationship='related_documents'
+    ),
+
+    atapi.ReferenceField(
+        name='project',
+        allowed_types=('Project'),
+        multiValued=False,
+        relationship='related_project',
+    ),
+),
+)
+
+Advisory_schema = (
+                getattr(PostMixin, 'schema', atapi.Schema(())).copy() +
+                getattr(EmailMixin, 'schema', atapi.Schema(())).copy() +
+                theme_schema.copy() +
+                getattr(Attachmentsmixin, 'schema', atapi.Schema(())).copy() +
+                contacts_schema.copy() +
+                schema.copy())
+Advisory_schema['description'].isMetadata = False
+# Hide the description field, but keep it intact as the
+# extensions/fix_summary.py script wants to have a go at migrating the
+# description contents to the body field.
+Advisory_schema['description'].widget.visible = {'edit': 'hidden',
+                                                 'view': 'invisible'}
+Advisory_schema['project'].widget.visible = {
+    'edit': 'invisible', 'view': 'invisible'}
+
+Advisory_schema.moveField('coordinator', after="foto")
+Advisory_schema.moveField('authors', after="coordinator")
+
+
+class Advisory(PostMixin, ThemeMixin, EmailMixin, Attachmentsmixin):
+    """An advisory
+    """
+    implements(IUseContact)
+    security = ClassSecurityInfo()
+    # This name appears in the 'add' box
+    archetype_name = 'Advisory'
+
+    meta_type = 'Advisory'
+    portal_type = 'Advisory'
+    allowed_content_types = (
+        list(getattr(PostMixin, 'allowed_content_types', [])) +
+        list(getattr(Attachmentsmixin, 'allowed_content_types', [])))
+    filter_content_types = 0
+    global_allow = 1
+    #content_icon = 'Advisory.gif'
+    immediate_view = 'base_view'
+    default_view = 'base_view'
+    suppl_views = ()
+    typeDescription = "Advisory"
+    typeDescMsgId = 'description_edit_advisory'
+
+    _at_rename_after_creation = True
+    schema = Advisory_schema
+
+
+atapi.registerType(Advisory, PROJECTNAME)

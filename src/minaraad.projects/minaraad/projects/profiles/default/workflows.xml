@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<object name="portal_workflow" meta_type="Plone Workflow Tool">
+ <property
+    name="title">Contains workflow definitions for your portal</property>
+ <object name="digibib_workflow" meta_type="Workflow"/>
+ <object name="meeting_workflow" meta_type="Workflow"/>
+ <object name="project_workflow" meta_type="Workflow"/>
+ <object name="agendaitem_workflow" meta_type="Workflow"/>
+ <bindings>
+  <type type_id="DigiBib">
+   <bound-workflow workflow_id="digibib_workflow"/>
+  </type>
+  <type type_id="ProjectContainer">
+   <bound-workflow workflow_id="digibib_workflow"/>
+  </type>
+  <type type_id="MeetingContainer">
+   <bound-workflow workflow_id="digibib_workflow"/>
+  </type>
+  <type type_id="Meeting">
+   <bound-workflow workflow_id="meeting_workflow"/>
+  </type>
+  <type type_id="Project">
+   <bound-workflow workflow_id="project_workflow"/>
+  </type>
+  <type type_id="AgendaItemProject">
+   <bound-workflow workflow_id="agendaitem_workflow"/>
+  </type>
+ </bindings>
+</object>

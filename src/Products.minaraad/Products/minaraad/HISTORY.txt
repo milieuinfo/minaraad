@@ -1,0 +1,60 @@
+History of Products.minaraad
+============================
+
+THIS HISTORY FILE IS NO LONGER USED.  See the HISTORY.txt in the
+buildout directory.
+
+/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+
+No writing beyond this point. :-) [maurits]
+
+3.1.13 (2010-03-15)
+-------------------
+
+- Added recaptcha support on join form.
+  [maurits]
+
+
+3.1.12 (2010-01-25)
+-------------------
+
+- Removed some code from the installer that was no longer necessary as
+  the content is already set up.  Moved part of that code to the test
+  setup as the tests expect some content to be available.
+  [maurits]
+
+- Added extra field on event and hearing to immediately disallow
+  subscribing/registering for that event or hearing.  By default you
+  can subscribe till one day before the start of the event.  And when
+  you are subscribed you can always unsubscribe.
+  [maurits]
+
+
+3.1.11 (2010-01-14)
+-------------------
+
+- Show 'export to excel' button on events as well.
+  [maurits]
+
+
+3.1.10 (2010-01-11)
+-------------------
+
+- Show 'Date:' header in event view, as for hearing.
+  [maurits]
+
+- Use the same notification box for events as for hearings.
+  [maurits]
+
+- Made @@notify_registration available for MREvents.
+  [maurits]
+
+
+3.1.9 (2010-01-11)
+------------------
+
+- Move picture in event view to the top.
+  [maurits]
+
+- Interpret the html structure of the goal in the view of an event.
+  [maurits]

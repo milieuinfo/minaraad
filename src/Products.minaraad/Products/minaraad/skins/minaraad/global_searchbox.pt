@@ -1,0 +1,58 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      i18n:domain="plone">
+
+<body>
+
+<!-- THE SEARCHBOX DEFINITION -->
+<div id="portal-searchbox-mina"
+     metal:define-macro="quick_search">
+    <form name="searchform"
+          action="search"
+          tal:define="livesearch site_properties/enable_livesearch|nothing"
+          tal:attributes="action string:${portal_url}/search;
+                          onsubmit python:test(livesearch==True,'return liveSearchSubmit()','')">
+
+        <label for="searchGadget" class="hiddenStructure"
+               i18n:translate="text_search">Search Site</label>
+
+        <div class="LSBox">
+        <input id="searchGadget"
+               tabindex=""
+               name="SearchableText"
+               type="text"
+               title="Search Site"
+               accesskey="4"
+               i18n:attributes="title title_search_site;"
+               tal:attributes="value request/SearchableText|nothing;
+                               tabindex tabindex/next"
+               class="visibility:visible" />
+
+        <input type="hidden" name="sort_on" value="Date"/>
+        <input type="hidden" name="sort_order" value="reverse"/>
+
+        <input class="searchButton"
+               type="submit"
+               tabindex=""
+               value="Search"
+               tal:attributes="tabindex tabindex/next"
+               i18n:attributes="value label_search;" />
+
+        <div class="LSResult" id="LSResult">
+            <div class="LSShadow" id="LSShadow"></div>
+        </div>
+        </div>
+    </form>
+
+    <div id="portal-advanced-search"
+         class="hiddenStructure">
+        <a tal:attributes="href string:$portal_url/search_form"
+           i18n:translate="label_advanced_search"
+           accesskey="5">
+            Advanced Search&hellip;
+        </a>
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<object name="portal_factory" meta_type="Plone Factory Tool">
+ <factorytypes>
+  <type portal_type="AgendaItemProject"/>
+  <type portal_type="DigiBib"/>
+  <type portal_type="FileAttachment"/>
+  <type portal_type="Meeting"/>
+  <type portal_type="MeetingContainer"/>
+  <type portal_type="Organisation"/>
+  <type portal_type="OrganisationContainer"/>
+  <type portal_type="Project"/>
+  <type portal_type="ProjectContainer"/>
+ </factorytypes>
+</object>

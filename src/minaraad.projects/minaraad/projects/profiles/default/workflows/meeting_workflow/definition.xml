@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<dc-workflow xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+             i18n:domain="plone"
+             workflow_id="meeting_workflow"
+             title="DC Workflow Definition"
+             description="Meeting workflows - manage the permissions on the field and the current status."
+             state_variable="review_state" initial_state="new">
+ <permission>View</permission>
+ <permission>minaraad.projects: manage past meetings fields</permission>
+ <permission>minaraad.projects: manage non past meetings fields</permission>
+ <state state_id="new" title="New" i18n:attributes="title">
+  <exit-transition transition_id="plan"/>
+  <permission-map name="View" acquired="False">
+   <permission-role>Owner</permission-role>
+   <permission-role>Manager</permission-role>
+  </permission-map>
+  <permission-map name="minaraad.projects: manage non past meetings fields" acquired="False">
+   <permission-role>Owner</permission-role>
+   <permission-role>Manager</permission-role>
+  </permission-map>
+  <permission-map name="minaraad.projects: manage past meetings fields" acquired="False">
+  </permission-map>
+ </state>
+ <state state_id="planned" title="Planned" i18n:attributes="title">
+  <exit-transition transition_id="cancel_plan"/>
+  <exit-transition transition_id="mark_past"/>
+  <permission-map name="View" acquired="False">
+   <permission-role>DigiBibViewer</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Manager</permission-role>
+  </permission-map>
+  <permission-map name="minaraad.projects: manage non past meetings fields" acquired="False">
+   <permission-role>Owner</permission-role>
+   <permission-role>Manager</permission-role>
+  </permission-map>
+  <permission-map name="minaraad.projects: manage past meetings fields" acquired="False">
+  </permission-map>
+ </state>
+ <state state_id="past" title="Past" i18n:attributes="title">
+  <exit-transition transition_id="cancel_mark_past"/>
+  <permission-map name="View" acquired="False">
+   <permission-role>Owner</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>DigiBibViewer</permission-role>
+  </permission-map>
+  <permission-map name="minaraad.projects: manage non past meetings fields" acquired="False">
+  </permission-map>
+  <permission-map name="minaraad.projects: manage past meetings fields" acquired="False">
+   <permission-role>Owner</permission-role>
+   <permission-role>Manager</permission-role>
+  </permission-map>
+ </state>
+ <transition transition_id="plan" title="Plan"
+             i18n:attributes="title"
+             new_state="planned" trigger="USER"
+             before_script="" after_script="">
+  <action url="" category="workflow" i18n:translate="">Plan</action>
+  <guard>
+  </guard>
+ </transition>
+ <transition transition_id="mark_past" title="Mark as past"
+             i18n:attributes="title"
+             new_state="past" trigger="USER"
+             before_script="" after_script="">
+  <action url="" category="workflow" i18n:translate="">Mark as past</action>
+  <guard>
+  </guard>
+ </transition>
+ <transition transition_id="cancel_plan" title="Cancel (back to New)"
+             i18n:attributes="title"
+             new_state="new" trigger="USER"
+             before_script="" after_script="">
+  <action url="" category="workflow" i18n:translate="">Cancel (back to New)</action>
+  <guard>
+  </guard>
+ </transition>
+ <transition transition_id="cancel_mark_past" title="Cancel (back to Planned)"
+             i18n:attributes="title"
+             new_state="planned" trigger="USER"
+             before_script="" after_script="">
+  <action url="" category="workflow" i18n:translate="">Cancel (back to Planned)</action>
+  <guard>
+  </guard>
+ </transition>
+</dc-workflow>

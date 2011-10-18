@@ -1,0 +1,8 @@
+<relstorage source>
+  <postgresql>
+    dsn ${parts.postgresconf.dsn}
+  </postgresql>
+</relstorage>
+<filestorage destination>
+  path ${parts.postgresconf.revert_destination}
+</filestorage>

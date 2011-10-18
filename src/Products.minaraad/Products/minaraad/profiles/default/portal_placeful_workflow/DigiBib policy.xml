@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<object name="DigiBib policy" meta_type="WorkflowPolicy">
+ <property name="title">DigiBib policy</property>
+ <bindings>
+  <default>
+   <bound-workflow workflow_id="plone_workflow"/>
+  </default>
+  <type type_id="FileAttachment">
+   <bound-workflow workflow_id="file_attachment_workflow"/>
+  </type>
+ </bindings>
+</object>

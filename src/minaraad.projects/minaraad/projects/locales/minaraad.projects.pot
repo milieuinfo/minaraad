@@ -1,0 +1,479 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2011-10-10 16:11+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: minaraad.projects\n"
+
+#: ./profiles/default/types/AgendaItemProject.xml
+msgid "AgendaItem"
+msgstr ""
+
+#: ./browser/export.py:36
+msgid "Attendance Summary"
+msgstr ""
+
+#: ./browser/templates/statistics.pt:55
+msgid "Choose a statistic:"
+msgstr ""
+
+#: ./profiles/default/actions.xml
+msgid "Create Advisory"
+msgstr ""
+
+#: ./profiles/default/actions.xml
+msgid "Create advisory from information in project"
+msgstr ""
+
+#: ./browser/project.py:145
+msgid "Created Advisory"
+msgstr ""
+
+#: ./browser/project.py:98
+msgid "Created folder for this year."
+msgstr ""
+
+#: ./profiles/default/types/DigiBib.xml
+msgid "DigiBib"
+msgstr ""
+
+#: ./browser/templates/project.pt:159
+msgid "Go to advisory"
+msgstr ""
+
+#: ./profiles/default/types/Meeting.xml
+msgid "Meeting"
+msgstr ""
+
+#: ./profiles/default/types/MeetingContainer.xml
+msgid "Meeting container"
+msgstr ""
+
+#: ./validators.py:72
+msgid "Number must be 3-digits"
+msgstr ""
+
+#: ./profiles/default/types/Organisation.xml
+msgid "Organisation"
+msgstr ""
+
+#: ./profiles/default/types/OrganisationContainer.xml
+msgid "Organisation container"
+msgstr ""
+
+#: ./profiles/default/types/Project.xml
+msgid "Project"
+msgstr ""
+
+#: ./profiles/default/types/ProjectContainer.xml
+msgid "Project container"
+msgstr ""
+
+#: ./validators.py:34
+msgid "Project id must be of the form YYYYMMDD"
+msgstr ""
+
+#: ./browser/templates/project.pt:158
+msgid "Public advisory"
+msgstr ""
+
+#: ./browser/templates/statistics.pt:26
+msgid "Select a period:"
+msgstr ""
+
+#: ./browser/templates/statistics.pt:27
+msgid "Select either quarter or month or leave both empty for the full year."
+msgstr ""
+
+#. Default: "A short description of the contents and the legal background of the advisory request."
+#: ./content/project.py:59
+msgid "desc_description"
+msgstr ""
+
+#. Default: "Fill in the time in number of minutes."
+#: ./content/base_agendaitem.py:16
+msgid "desc_duration"
+msgstr ""
+
+#. Default: "This is the official legal title from the advisory request"
+#: ./content/project.py:197
+msgid "desc_full_title"
+msgstr ""
+
+#. Default: "Internal working title"
+#: ./content/project.py:191
+msgid "desc_short_title"
+msgstr ""
+
+#. Default: "Digibib - Meetings"
+#: ./browser/templates/list_meetings.pt:10
+msgid "heading_digibib_meetings"
+msgstr ""
+
+#. Default: "Digibib - Organisations"
+#: ./browser/templates/list_organisations.pt:7
+msgid "heading_digibib_organisations"
+msgstr ""
+
+#. Default: "Digibib - Projects"
+#: ./browser/templates/list_projects.pt:10
+msgid "heading_digibib_projects"
+msgstr ""
+
+#. Default: "Abstentions"
+#: ./content/project.py:288
+msgid "label_abstention"
+msgstr ""
+
+#. Default: "Add a new meeting"
+#: ./browser/templates/digibib.pt:66
+msgid "label_add_meeting"
+msgstr ""
+
+#. Default: "Add a new project"
+#: ./browser/templates/digibib.pt:25
+msgid "label_add_project"
+msgstr ""
+
+#. Default: "Address"
+#: ./content/organisation.py:14
+msgid "label_address"
+msgstr ""
+
+#. Default: "Advisory date"
+#: ./content/project.py:71
+msgid "label_adv_date"
+msgstr ""
+
+#. Default: "Advisory request"
+#: ./content/project.py:99
+msgid "label_adv_request"
+msgstr ""
+
+#. Default: "Advisory requester"
+#: ./content/project.py:81
+msgid "label_adv_requester"
+msgstr ""
+
+#. Default: "Advisory term"
+#: ./content/project.py:91
+msgid "label_adv_term"
+msgstr ""
+
+#. Default: "Advisory type"
+#: ./content/project.py:152
+msgid "label_adv_type"
+msgstr ""
+
+#. Default: "Advisory requesters:"
+#: ./browser/templates/project_properties.pt:54
+msgid "label_advisory_requesters"
+msgstr ""
+
+#. Default: "Assigned groups"
+#: ./content/meeting.py:80
+#: ./content/project.py:180
+msgid "label_assigned_groups"
+msgstr ""
+
+#. Default: "You must specify the daily governance board group.."
+#: ./browser/templates/project_properties.pt:46
+msgid "label_board_empty_error"
+msgstr ""
+
+#. Default: "Weekly list of proposed projects"
+#: ./browser/cron.py:83
+msgid "label_boardmember_digest_mail_title"
+msgstr ""
+
+#. Default: "Dear ${fullname}, \n\nHere is the list of the projects that have been proposed this week:\n${project_list} \n\nBest regards."
+#: ./browser/cron.py:88
+msgid "label_boardmember_digestmail_content"
+msgstr ""
+
+#. Default: "Dear ${fullname}, \n\nThe project ${project_name} has been proposed to the board. Here is the description of the project: \n\n${project_desc}\n\nMore information can be found here: \n\n${project_url}"
+#: ./events.py:242
+msgid "label_boardmember_mail_content"
+msgstr ""
+
+#. Default: "Project ${project_name} has been proposed"
+#: ./events.py:236
+msgid "label_boardmember_mail_title"
+msgstr ""
+
+#. Default: "Cancel"
+#: ./browser/templates/project_properties.pt:70
+msgid "label_cancel"
+msgstr ""
+
+#. Default: "City"
+#: ./content/organisation.py:30
+msgid "label_city"
+msgstr ""
+
+#. Default: "Delivery date (actual)"
+#: ./content/project.py:141
+msgid "label_delivery_date"
+msgstr ""
+
+#. Default: "Description"
+#: ./content/agendaitem.py:22
+#: ./content/meeting.py:44
+#: ./content/project.py:57
+msgid "label_description"
+msgstr ""
+
+#. Default: "Disagreeing members"
+#: ./content/project.py:161
+msgid "label_disagreeing_members"
+msgstr ""
+
+#. Default: "Documents"
+#: ./browser/templates/meeting.pt:17
+msgid "label_documents"
+msgstr ""
+
+#. Default: "Download full dossier"
+#: ./browser/templates/meeting.pt:74
+msgid "label_download_full_dossier"
+msgstr ""
+
+#. Default: "Duration"
+#: ./content/base_agendaitem.py:14
+msgid "label_duration"
+msgstr ""
+
+#. Default: "You must specify the secretary email."
+#: ./browser/templates/project_properties.pt:27
+msgid "label_email_empty_error"
+msgstr ""
+
+#. Default: "Export"
+#: ./browser/templates/statistics.pt:68
+msgid "label_export"
+msgstr ""
+
+#. Default: "Full title"
+#: ./content/project.py:194
+msgid "label_full_title"
+msgstr ""
+
+#. Default: "Daily governance board:"
+#: ./browser/templates/project_properties.pt:35
+msgid "label_governance_board"
+msgstr ""
+
+#. Default: "Organisations"
+#: ./browser/templates/list_organisations.pt:13
+msgid "label_heading_organisations"
+msgstr ""
+
+#. Default: "Other years"
+#: ./browser/templates/list_meetings.pt:53
+#: ./browser/templates/list_projects.pt:21
+msgid "label_heading_other_years"
+msgstr ""
+
+#. Default: "Past meetings ${year}"
+#: ./browser/templates/list_meetings.pt:50
+msgid "label_heading_past_meetings_year"
+msgstr ""
+
+#. Default: "Projects ${year}"
+#: ./browser/templates/list_projects.pt:18
+msgid "label_heading_projects_year"
+msgstr ""
+
+#. Default: "Upcoming meetings"
+#: ./browser/templates/list_meetings.pt:18
+msgid "label_incoming_meetings"
+msgstr ""
+
+#. Default: "Location"
+#: ./browser/templates/meeting.pt:28
+#: ./content/meeting.py:56
+msgid "label_location"
+msgstr ""
+
+#. Default: "Project properties"
+#: ./browser/templates/project_properties.pt:11
+msgid "label_manage_project_properties"
+msgstr ""
+
+#. Default: "Membership organizations:"
+#: ./browser/templates/project_properties.pt:60
+msgid "label_membership_organizations"
+msgstr ""
+
+#. Default: "There is no agenda item yet for this meeting."
+#: ./browser/templates/meeting.pt:65
+msgid "label_no_agenda_items"
+msgstr ""
+
+#. Default: "There is no planned meetings."
+#: ./browser/templates/digibib.pt:89
+msgid "label_no_planned_meetings"
+msgstr ""
+
+#. Default: "There is no incoming projects"
+#: ./browser/templates/digibib.pt:47
+msgid "label_no_projects"
+msgstr ""
+
+#. Default: "Name"
+#: ./content/organisation.py:35
+msgid "label_organisation_name"
+msgstr ""
+
+#. Default: "Participating organisations"
+#: ./content/project.py:110
+msgid "label_organisations"
+msgstr ""
+
+#. Default: "Participants attendance"
+#: ./content/meeting.py:89
+msgid "label_participants_attendance"
+msgstr ""
+
+#. Default: "Postalcode"
+#: ./content/organisation.py:22
+msgid "label_postalCode"
+msgstr ""
+
+#. Default: "Dealine (postponed)"
+#: ./content/project.py:131
+msgid "label_postpone_date"
+msgstr ""
+
+#. Default: "Preview"
+#: ./browser/templates/statistics.pt:72
+msgid "label_preview"
+msgstr ""
+
+#. Default: "Product number"
+#: ./content/project.py:46
+msgid "label_product_number"
+msgstr ""
+
+#. Default: "Project"
+#: ./content/agendaitem.py:37
+msgid "label_project"
+msgstr ""
+
+#. Default: "Project number"
+#: ./content/project.py:36
+msgid "label_project_number"
+msgstr ""
+
+#. Default: "Changes have been cancelled"
+#: ./browser/project_properties.py:57
+msgid "label_project_props_canceled"
+msgstr ""
+
+#. Default: "Errors have been found while processing the form, please correct them"
+#: ./browser/project_properties.py:82
+msgid "label_project_props_error"
+msgstr ""
+
+#. Default: "Project properties have been saved"
+#: ./browser/project_properties.py:78
+msgid "label_project_props_saved"
+msgstr ""
+
+#. Default: "Reject points"
+#: ./content/project.py:290
+msgid "label_reject_points"
+msgstr ""
+
+#. Default: "Reject reasons"
+#: ./content/project.py:170
+msgid "label_reject_reasons"
+msgstr ""
+
+#. Default: "Responsible group"
+#: ./content/project.py:120
+msgid "label_responsible_group"
+msgstr ""
+
+#. Default: "Room number"
+#: ./content/meeting.py:71
+msgid "label_room_number"
+msgstr ""
+
+#. Default: "Save"
+#: ./browser/templates/project_properties.pt:66
+msgid "label_save"
+msgstr ""
+
+#. Default: "Secretary email:"
+#: ./browser/templates/project_properties.pt:21
+msgid "label_secretary_email"
+msgstr ""
+
+#. Default: "The project ${project_name} has to be verified.\nThe project can be found here: ${project_url}"
+#: ./events.py:187
+msgid "label_secretary_mail_content"
+msgstr ""
+
+#. Default: "Project ${project_name} has been proposed"
+#: ./events.py:181
+msgid "label_secretary_mail_title"
+msgstr ""
+
+#. Default: "Short title"
+#: ./content/project.py:188
+msgid "label_short_title"
+msgstr ""
+
+#. Default: "Start"
+#: ./content/base_meeting.py:24
+msgid "label_start_time"
+msgstr ""
+
+#. Default: "Statistics"
+#: ./browser/templates/statistics.pt:14
+msgid "label_statistics"
+msgstr ""
+
+#. Default: "You must specify a title if you do not select a project"
+#: ./content/agendaitem.py:70
+msgid "label_title_needed"
+msgstr ""
+
+#. Default: "Type"
+#: ./content/meeting.py:33
+msgid "label_type"
+msgstr ""
+
+#. Default: "Unanimous"
+#: ./content/project.py:286
+msgid "label_unanimous"
+msgstr ""
+
+#. Default: "View all meetings"
+#: ./browser/templates/digibib.pt:58
+msgid "label_view_all_meetings"
+msgstr ""
+
+#. Default: "View all projects"
+#: ./browser/templates/digibib.pt:17
+msgid "label_view_all_projects"
+msgstr ""
+
+#. Default: "Quarter ${number}"
+#: ./browser/export.py:151
+msgid "quarter_name"
+msgstr ""
+

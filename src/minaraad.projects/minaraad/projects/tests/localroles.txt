@@ -1,0 +1,346 @@
+Local roles adapter
+===================
+
+Those tests will ensure that Projects and Meetings are correctly
+filtered depending on the groups users belong to.
+The principle is not to block access to members, but to grant an extra
+role (ProjectMember) which is used by the DigiBib view to filter shown
+meetings and projects.
+
+Setup
+-----
+
+    >>> self.setRoles(('Manager'))
+    >>> self.add_digibib()
+    >>> digibib = self.portal.digibib
+
+First, we need some working groups and users:
+
+    >>> self.add_group('group_1')
+    >>> self.add_group('group_2')
+    >>> self.add_group('group_3')
+
+    >>> self.add_user('member_group_1', ['group_1'], ['DigiBibViewer'])
+    >>> self.add_user('member_group_2', ['group_2'], ['DigiBibViewer'])
+    >>> self.add_user('member_group_3', ['group_3'], ['DigiBibViewer'])
+    >>> self.add_user('member_group_1_2', ['group_1', 'group_2'], ['DigiBibViewer'])
+
+    >>> user_ids = ['member_group_1', 'member_group_2',
+    ...             'member_group_3', 'member_group_1_2']
+
+And some projects on which they will work:
+
+    >>> self.add_project('group_1_project',
+    ...                  'Project 1',
+    ...                  'group_1',
+    ...                  ['group_1'])
+
+    >>> self.add_project('group_2_project',
+    ...                  'Project 2',
+    ...                  'group_2',
+    ...                  ['group_2'])
+
+    >>> self.add_project('group_1_2_project',
+    ...                  'Project 3',
+    ...                  'group_1',
+    ...                  ['group_2'])
+
+    >>> project_ids = ['group_1_project',
+    ...                'group_2_project',
+    ...                'group_1_2_project']
+
+We also add some meetings about those projects:
+
+We need to have meetings in the future to be sure they appear in the
+digibib view:
+
+    >>> from DateTime import DateTime
+    >>> year = DateTime().year() + 1
+
+    >>> self.add_meeting('meeting-project-one',
+    ...                  'Meeting project one',
+    ...                  ['group_3'],
+    ...                  ['group_1_project'],
+    ...                  DateTime(year, 1 , 11, 15, 30))
+    >>> self.add_meeting('second-meeting-project-one',
+    ...                  'Second meeting project one',
+    ...                  [],
+    ...                  ['group_1_project'],
+    ...                  DateTime(year, 2 , 11, 15, 30))
+    >>> self.add_meeting('meeting-project-two',
+    ...                  'Meeting project two',
+    ...                  ['group_3'],
+    ...                  ['group_2_project'],
+    ...                  DateTime(year, 8 , 12, 15, 30))
+    >>> self.add_meeting('meeting-project-three-and-two',
+    ...                  'Meeting project three and two',
+    ...                  [],
+    ...                  ['group_2_project', 'group_1_2_project'],
+    ...                  DateTime(year, 10 , 15, 15, 30))
+    >>> self.add_meeting('meeting-project-three',
+    ...                  'Meeting project three',
+    ...                  [],
+    ...                  ['group_1_2_project'],
+    ...                  DateTime(year, 10 , 15, 15, 30))
+
+    >>> meeting_ids = ['meeting-project-one',
+    ...                'second-meeting-project-one',
+    ...                'meeting-project-two',
+    ...                'meeting-project-three-and-two',
+    ...                'meeting-project-three']
+
+
+Unit tests
+----------
+
+We'll first start with the unit tests for our local role adapters.
+
+    >>> from minaraad.projects.adapters.localroles import LocalRoleProvider, ProjectLocalRoleProvider, MeetingLocalRoleProvider
+    >>> adapter = ProjectLocalRoleProvider(digibib.projects['group_1_project'])
+
+Both adapter inherit from LocalRoleProvider, that provides four common
+usefull methods.
+
+The first one, 'get_member_by_id', allows to find the user object from
+its id:
+
+    >>> adapter.get_member_by_id('member_group_1')
+    <MemberData at /plone/portal_memberdata/member_group_1 used for /plone/acl_users>
+
+    >>> adapter.get_member_by_id('an unknown id')
+
+
+The second one allows to find the groups from their ids:
+
+    >>> adapter.get_group_by_id('group_2')
+    <GroupData at /plone/portal_groupdata/group_2 used for /plone/acl_users/source_groups>
+
+    >>> adapter.get_group_by_id('an unknown group id')
+
+
+The third one ensures that a group (based on its id) is working on a
+project. It check for the responsible group or the assigned groups and
+is also able to check a project different from the original context:
+
+    >>> adapter.group_in_project('group_1')
+    True
+
+    >>> adapter.group_in_project('group_2')
+    False
+
+    >>> adapter.group_in_project('group_1', digibib.projects['group_1_2_project'])
+    True
+
+    >>> adapter.group_in_project('group_2', digibib.projects['group_1_2_project'])
+    True
+
+    >>> adapter.group_in_project('group_3', digibib.projects['group_1_2_project'])
+    False
+
+The last one checks that the project is in the correct state (validated):
+
+    >>> adapter.check_state()
+    False
+
+We'll add a validated project to ensure it works:
+
+    >>> self.add_project('20101016',
+    ...                  'Project 4',
+    ...                  'group_1',
+    ...                  ['group_2'])
+
+    >>> self.propose_project('20101016')
+    >>> adapter.check_state(digibib.projects['20101016'])
+    False
+
+    >>> self.start_project('20101016')
+    >>> adapter.check_state(digibib.projects['20101016'])
+    True
+
+    >>> self.complete_project('20101016')
+    >>> adapter.check_state(digibib.projects['20101016'])
+    True
+
+And a rejected one:
+
+    >>> self.add_project('20101017',
+    ...                  'Project 5',
+    ...                  'group_1',
+    ...                  ['group_2'])
+
+    >>> self.reject_project('20101017')
+    >>> adapter.check_state(digibib.projects['20101017'])
+    False
+
+We can delete them now:
+
+    >>> digibib.projects.manage_delObjects(['20101016', '20101017'])
+
+
+Now we will test the methods that are really used by our adapters:
+getRoles() and getAllRoles().
+
+We'll patch a bit to avoid getting problems with workflow states:
+
+    >>> def mock_check_state(self, p_id = None):
+    ...     return True
+    >>> LocalRoleProvider.old_check_state = LocalRoleProvider.check_state
+    >>> LocalRoleProvider.check_state = mock_check_state
+
+'getRoles' takes a user id as a parameter and returns the list of
+roles locally assigned to the user: 'ProjectMember' if he works on the
+project or an empty list.
+We created the adapter with the first project as context, so only
+members of the first group will get accesses:
+
+    >>> [(u_id, adapter.getRoles(u_id)) for u_id in user_ids]
+    [('member_group_1', ('ProjectMember',)),
+     ('member_group_2', ()),
+     ('member_group_3', ()),
+     ('member_group_1_2', ('ProjectMember',))]
+
+'getAllRoles' lists, for all groups, which roles are assigned. Again,
+as only the first group works on the first project, they will be the
+only one to have access granted:
+
+    >>> [x for x in adapter.getAllRoles()]
+    [('group_1', ('ProjectMember',))]
+
+
+As said previously, some project may involve multiple groups. Our
+adapter takes it into account:
+
+    >>> adapter = ProjectLocalRoleProvider(digibib.projects['group_1_2_project'])
+
+    >>> [(u_id, adapter.getRoles(u_id)) for u_id in user_ids]
+    [('member_group_1', ('ProjectMember',)),
+     ('member_group_2', ('ProjectMember',)),
+     ('member_group_3', ()),
+     ('member_group_1_2', ('ProjectMember',))]
+
+    >>> [x for x in adapter.getAllRoles()]
+    [('group_1', ('ProjectMember',)),
+     ('group_2', ('ProjectMember',))]
+
+The Meeting adapter works a bit differently. It has to check two things:
+ - the groups invited to the meeting (from the 'groups' attribute of a meeting)
+ - the groups working on a project discussed during the meeting
+
+The first meeting is about the first project, so people from group 1
+will be able to access it. But the third group has been invited,
+so they'll be able to access it too:
+
+    >>> adapter = MeetingLocalRoleProvider(digibib.meetings['meeting-project-one'])
+    >>> [(u_id, adapter.getRoles(u_id)) for u_id in user_ids]
+    [('member_group_1', ('ProjectMember',)),
+     ('member_group_2', ()),
+     ('member_group_3', ('ProjectMember',)),
+     ('member_group_1_2', ('ProjectMember',))]
+
+    >>> [x for x in adapter.getAllRoles()]
+    [('group_1', ('ProjectMember',)),
+     ('group_3', ('ProjectMember',))]
+
+As group 3 has not been invited to the second meeting, they will not
+be able to see it:
+
+    >>> adapter = MeetingLocalRoleProvider(digibib.meetings['second-meeting-project-one'])
+    >>> [(u_id, adapter.getRoles(u_id)) for u_id in user_ids]
+    [('member_group_1', ('ProjectMember',)),
+     ('member_group_2', ()),
+     ('member_group_3', ()),
+     ('member_group_1_2', ('ProjectMember',))]
+
+    >>> [x for x in adapter.getAllRoles()]
+    [('group_1', ('ProjectMember',))]
+
+Le's undo our ugly patching:
+
+    >>> LocalRoleProvider.check_state = LocalRoleProvider.old_check_state
+
+
+Unvalidated projects
+--------------------
+
+Currently, none of the projects are validated. So our users can not
+see them:
+
+    >>> def show_access(obj_ids, container):
+    ...     for user_id in user_ids:
+    ...         print '%s: ' % user_id
+    ...         shown = self.check_shown_in_digibib(user_id, obj_ids, container)
+    ...         for obj_id in shown:
+    ...             print ' - %s' % obj_id
+
+    >>> def show_projects_access():
+    ...     show_access(project_ids, digibib.projects)
+
+    >>> def show_meetings_access():
+    ...     show_access(meeting_ids, digibib.meetings)
+
+    >>> show_projects_access()
+    member_group_1: 
+    member_group_2: 
+    member_group_3: 
+    member_group_1_2: 
+
+They can neither access the meeting (except for the member of the
+third group, as he belongs to an invited group for some meetings):
+
+    >>> show_meetings_access()
+    member_group_1:
+    member_group_2: 
+    member_group_3: 
+     - meeting-project-one
+     - meeting-project-two
+    member_group_1_2: 
+
+But the board members are able to see them.  Well, this can simply be
+done by giving them the global role DigiBibViewer, so no need to test
+this here.
+
+
+Validated projects access
+-------------------------
+
+We will now validate our project so the users can work on it:
+
+    >>> for pid in project_ids:
+    ...     self.start_project(pid)
+
+Now the users should be able to see the projects:
+
+    >>> show_projects_access()
+    member_group_1: 
+     - group_1_project
+     - group_1_2_project
+    member_group_2: 
+     - group_2_project
+     - group_1_2_project
+    member_group_3: 
+    member_group_1_2: 
+     - group_1_project
+     - group_2_project
+     - group_1_2_project
+
+And they will also see the related meetings:
+
+    >>> show_meetings_access()
+    member_group_1: 
+     - meeting-project-one
+     - second-meeting-project-one
+     - meeting-project-three-and-two
+     - meeting-project-three
+    member_group_2: 
+     - meeting-project-two
+     - meeting-project-three-and-two
+     - meeting-project-three
+    member_group_3: 
+     - meeting-project-one
+     - meeting-project-two
+    member_group_1_2: 
+     - meeting-project-one
+     - second-meeting-project-one
+     - meeting-project-two
+     - meeting-project-three-and-two
+     - meeting-project-three

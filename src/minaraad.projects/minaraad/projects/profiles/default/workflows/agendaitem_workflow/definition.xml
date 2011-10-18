@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<dc-workflow xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+             i18n:domain="plone"
+             workflow_id="agendaitem_workflow"
+             title="DC Workflow Definition"
+             description="Smple one-state workflow for agenda item access"
+             state_variable="review_state" initial_state="created">
+ <permission>View</permission>
+ <permission>List folder contents</permission>
+ <permission>Access contents information</permission>
+ <state state_id="created" title="Created" i18n:attributes="title">
+  <permission-map name="View" acquired="True">
+   <permission-role>DigiBibViewer</permission-role>
+  </permission-map>
+  <permission-map name="List folder contents" acquired="True">
+   <permission-role>DigiBibViewer</permission-role>
+  </permission-map>
+  <permission-map name="Access contents information" acquired="True">
+   <permission-role>DigiBibViewer</permission-role>
+  </permission-map>
+ </state>
+</dc-workflow>

@@ -1,0 +1,37 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
+      lang="en-US"
+      i18n:domain="minaraad">
+
+<body style="font-size:13px">
+
+<span style="font-weight:bold"
+      tal:content="context/Title" />
+<br />
+
+<div tal:condition="context/getSubheader|nothing" tal:omit-tag="">
+<span style="font-style:italic"
+      tal:content="context/getSubheader" />
+<br />
+</div>
+<span metal:use-macro="context/mina_showdatetime/macros/datetime_email"
+      tal:omit-tag="" />
+<br />
+<span i18n:translate="label_dear">Beste</span> <span tal:replace="python: member.getProperty('firstname')" />,
+<br />
+<br />
+<div tal:replace="context/Description" />
+<br />
+<br />
+<span>Meer lezen:</span>
+
+<a tal:attributes="href context/absolute_url"
+   tal:content="context/Title" />
+
+<br />
+<br />
+<tal:block tal:define="obj nocall: context">
+  <div metal:use-macro="context/contactperson_view/macros/show_coord_authors"
+       tal:omit-tag="" />
+</tal:block>
+</body>
+</html>

@@ -1,0 +1,331 @@
+# ArchGenXML generated POT File
+# Rocky Burt <r.burt@zestsoftware.nl>, 2005.
+msgid ""
+msgstr ""
+"Project-Id-Version: minaraad\n"
+"POT-Creation-Date: Mon Aug  8 12:16:21 2005\n"
+"PO-Revision-Date: Mon Aug  8 12:16:21 2005\n"
+"Last-Translator: Rocky Burt <r.burt@zestsoftware.nl>\n"
+"Language-Team: Rocky Burt <r.burt@zestsoftware.nl>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: latin1 utf-8\n"
+"Domain: minaraad\n"
+
+#: browser/subscriptions_config.pt
+msgid "Newsletter"
+msgstr ""
+
+#. <no reference>
+#: Field.py
+msgid "label_no_reference"
+msgstr ""
+
+#: browser/subscribers_config.pt
+msgid "label_subscribersoverview"
+msgstr ""
+
+#: skins/mail_password_template.dtml
+msgid "mailtemplate_hours"
+msgstr ""
+
+#: skins/mail_password_template.dtml
+msgid "mailtemplate_text_linkreset2"
+msgstr ""
+
+#. Default: "date"
+#: content/Advisory.py
+#: content/Study.py
+msgid "minaraad_help_date"
+msgstr ""
+
+#. Default: "department"
+#: content/ContactPerson.py
+msgid "minaraad_help_department"
+msgstr ""
+
+#. Default: "email"
+#: content/ContactPerson.py
+msgid "minaraad_help_email"
+msgstr ""
+
+#. Default: "goal"
+#: content/Hearing.py
+msgid "minaraad_help_goal"
+msgstr ""
+
+#. Default: "jobtitle"
+#: content/ContactPerson.py
+msgid "minaraad_help_jobtitle"
+msgstr ""
+
+#. Default: "location"
+#: content/Hearing.py
+msgid "minaraad_help_location"
+msgstr ""
+
+#. Default: "MOT"
+#: content/Hearing.py
+msgid "minaraad_help_mot"
+msgstr ""
+
+#. Default: "name"
+#: content/ContactPerson.py
+msgid "minaraad_help_name"
+msgstr ""
+
+#. Default: "phonenumber"
+#: content/ContactPerson.py
+msgid "minaraad_help_phonenumber"
+msgstr ""
+
+#. Default: "policy"
+#: content/Advisory.py
+msgid "minaraad_help_policy"
+msgstr ""
+
+#. Default: "speaker"
+#: content/Presentation.py
+msgid "minaraad_help_speaker"
+msgstr ""
+
+#. Default: "speakers"
+#: content/Study.py
+msgid "minaraad_help_speakers"
+msgstr ""
+
+#. Default: "summary"
+#: content/Presentation.py
+msgid "minaraad_help_summary"
+msgstr ""
+
+#. Default: "Attachment"
+#: content/Pressrelease.py
+#: content/Study.py
+#: content/AnnualReport.py
+msgid "minaraad_label_attachment"
+msgstr ""
+
+#. Default: "Attachments"
+#: content/Advisory.py
+#: content/AgendaItem.py
+msgid "minaraad_label_attachments"
+msgstr ""
+
+#. Default: "Body"
+#: content/Hearing.py
+#: content/Advisory.py
+msgid "minaraad_label_body"
+msgstr ""
+
+#. Default: "Bus"
+#: Organisation.py
+msgid "minaraad_label_bus"
+msgstr ""
+
+#. Default: "Category"
+#: content/NewsItem.py
+msgid "minaraad_label_category"
+msgstr ""
+
+#. Default: "City"
+#: Organisation.py
+msgid "minaraad_label_city"
+msgstr ""
+
+#. Default: "Contact"
+#: content/Hearing.py
+#: content/NewsLetter.py
+#: content/Advisory.py
+msgid "minaraad_label_contact"
+msgstr ""
+
+#. Default: "Contactpersons"
+#: content/Advisory.py
+#: content/Hearing.py
+msgid "minaraad_label_contactpersons"
+msgstr ""
+
+#. Default: "Date"
+#: content/Advisory.py
+#: content/Study.py
+#: content/NewsLetter.py
+msgid "minaraad_label_date"
+msgstr ""
+
+#. Default: "Description"
+#: content/Hearing.py
+#: content/Advisory.py
+#: content/NewsLetter.py
+msgid "minaraad_label_description"
+msgstr ""
+
+#. Default: "Displayattachments"
+#: Attachmentsmixin.py
+msgid "minaraad_label_displayAttachments"
+msgstr ""
+
+#. Default: "Email"
+#: content/ContactPerson.py
+msgid "minaraad_label_email"
+msgstr ""
+
+#. Default: "Emailsent"
+#: EmailMixin.py
+msgid "minaraad_label_emailSent"
+msgstr ""
+
+#. Default: "Enddate"
+#: content/Hearing.py
+#: content/Study.py
+#: content/MREvent.py
+msgid "minaraad_label_enddate"
+msgstr ""
+
+#. Default: "Foto"
+#: content/Hearing.py
+#: content/Pressrelease.py
+#: content/MREvent.py
+msgid "minaraad_label_foto"
+msgstr ""
+
+#. Default: "Goal"
+#: content/Hearing.py
+#: content/MREvent.py
+msgid "minaraad_label_goal"
+msgstr ""
+
+#. Default: "Itemenddate"
+#: content/AgendaItem.py
+msgid "minaraad_label_itemenddate"
+msgstr ""
+
+#. Default: "Itemstartdate"
+#: content/AgendaItem.py
+msgid "minaraad_label_itemstartdate"
+msgstr ""
+
+#. Default: "Jobtitle"
+#: content/ContactPerson.py
+msgid "minaraad_label_jobtitle"
+msgstr ""
+
+#. Default: "Location"
+#: content/Hearing.py
+#: content/Study.py
+#: content/MREvent.py
+msgid "minaraad_label_location"
+msgstr ""
+
+#. Default: "Logo_1"
+#: content/Pressrelease.py
+msgid "minaraad_label_logo_1"
+msgstr ""
+
+#. Default: "Logo_2"
+#: content/Pressrelease.py
+msgid "minaraad_label_logo_2"
+msgstr ""
+
+#. Default: "Mot"
+#: content/Hearing.py
+msgid "minaraad_label_mot"
+msgstr ""
+
+#. Default: "Name"
+#: content/ContactPerson.py
+msgid "minaraad_label_name"
+msgstr ""
+
+#. Default: "Organisation"
+#: content/AgendaItem.py
+msgid "minaraad_label_organisation"
+msgstr ""
+
+#. Default: "Phonenumber"
+#: content/ContactPerson.py
+msgid "minaraad_label_phonenumber"
+msgstr ""
+
+#. Default: "Plaintext"
+#: content/Hearing.py
+#: content/Advisory.py
+msgid "minaraad_label_plaintext"
+msgstr ""
+
+#. Default: "Policy"
+#: content/Advisory.py
+msgid "minaraad_label_policy"
+msgstr ""
+
+#. Default: "Speaker"
+#: content/Presentation.py
+#: content/AgendaItems.py
+#: content/AgendaItem.py
+msgid "minaraad_label_speaker"
+msgstr ""
+
+#. Default: "Speakers"
+#: content/Study.py
+msgid "minaraad_label_speakers"
+msgstr ""
+
+#. Default: "Startdate"
+#: content/Hearing.py
+#: content/Study.py
+#: content/MREvent.py
+msgid "minaraad_label_startdate"
+msgstr ""
+
+#. Default: "Street"
+#: Organisation.py
+msgid "minaraad_label_street"
+msgstr ""
+
+#. Default: "Streetno"
+#: Organisation.py
+msgid "minaraad_label_streetno"
+msgstr ""
+
+#. Default: "Subheader"
+#: content/Hearing.py
+#: content/Pressrelease.py
+#: content/Study.py
+msgid "minaraad_label_subheader"
+msgstr ""
+
+#. Default: "Theme"
+#: content/Hearing.py
+msgid "minaraad_label_theme"
+msgstr ""
+
+#. Default: "Zipcode"
+#: Organisation.py
+msgid "minaraad_label_zipcode"
+msgstr ""
+
+#. Default: "Related Documents"
+#: content/Advisory.py
+msgid "minaraad_label_related_documents"
+msgstr ""
+
+#. Default: "Related and published digibib documents and files"
+#: content/Advisory.py
+msgid "minaraad_help_related_documents"
+msgstr ""
+
+#. Default: "Subscription allowed"
+msgid "minaraad_label_subscription_allowed"
+msgstr ""
+
+#. Default "By default, subscription is allowed till one day before start of the event. Uncheck this field to disallow subscription immediately."
+msgid "minaraad_description_subscription_allowed"
+msgstr ""
+
+#. Default: "LinkedIn Profile URL"
+msgid "minaraad_label_linkedin"
+msgstr ""

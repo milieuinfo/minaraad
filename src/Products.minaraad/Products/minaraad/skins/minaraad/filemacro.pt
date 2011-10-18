@@ -1,0 +1,125 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="minaraad">
+
+  <head><title></title></head>
+
+  <body>
+
+    <!-- Modified File view widget.
+         * Alt text for image
+         * Preview link
+    -->
+
+    <!-- Prerequisite: define 'file' as your file field -->
+    <span tal:omit-tag="" metal:define-macro="file_view">
+      <tal:block tal:define="size file/get_size | python:file and len(file) or 0;
+                             icon file/getBestIcon | nothing;
+                             filename file/filename | nothing;
+                             mimetype file/getContentType|nothing;
+                             contenttype python:context.lookupMime(mimetype);"
+                 condition="python:size &gt; 0">
+        <a href="" tal:attributes="href string:${context/absolute_url}/download">
+          <img tal:condition="icon"
+               src=""
+               alt=""
+               tal:attributes="src string:${context/portal_url}/${icon};
+                               alt contenttype"/>
+          <tal:filename tal:replace="filename"/>
+        </a>
+        <span class="discreet">
+          (<span tal:replace="contenttype" i18n:domain="plone">ContentType</span>,
+          <tal:size content="python:'%sKb' % (size / 1024)">0Kb</tal:size>)
+        </span>
+      </tal:block>
+    </span>
+
+
+    <!-- macro for catalog results (File(Attachment) brains).
+         Prerequisite: a variable named 'attachment'. -->
+    <span metal:define-macro="attachment_view"
+      tal:omit-tag="">
+      <tal:block tal:define="size attachment/getObjSize;
+                             icon attachment/getIcon;
+                             title attachment/Title|attachment/getId;
+                             mimetype attachment/content_type|nothing;
+                             contenttype python:test(mimetype, context.lookupMime(mimetype), 'Onbekend');"
+                 condition="python:size &gt; 0">
+        <a href="" tal:attributes="href string:${attachment/getURL}/download">
+          <img tal:condition="icon"
+               src=""
+               alt=""
+               tal:attributes="src string:${context/portal_url}/${icon};
+                               alt contenttype"/>
+          <tal:filename tal:replace="title"/>
+        </a>
+        <span class="discreet">
+          (<span tal:replace="contenttype">ContentType</span>,
+          <tal:size content="size">0Kb</tal:size>
+          <span class="public_attachment"
+                tal:define="published attachment/published|nothing"
+                i18n:domain="plone" i18n:translate=""
+                tal:content="python: published and 'Publiek' or attachment.review_state">
+          </span>
+          )
+        </span>
+      </tal:block>
+    </span>
+
+
+    <!-- macro for AnualReport brains
+         Prerequisite: a variable named annualreport.
+         Note: we hardcode the mimetype to pdf to make sure we don't have to
+         wake up the object as happens in the previous macro.
+-->
+    <span metal:define-macro="annualreport_view"
+      tal:omit-tag="">
+      <tal:block tal:define="size annualreport/getObjSize;
+                             icon annualreport/getIcon;
+                             title annualreport/Title|annualreport/getId;
+                             mimetype string:application/pdf;
+                             contenttype python:context.lookupMime(mimetype);"
+                 condition="python:size &gt; 0">
+        <a href="" tal:attributes="href string:${annualreport/getURL}/download">
+          <img tal:condition="icon"
+               src=""
+               alt=""
+               tal:attributes="src string:${context/portal_url}/${icon};
+                               alt contenttype"/>
+          <tal:title tal:replace="title"/>
+        </a>
+        <span class="discreet">
+          (<span tal:replace="contenttype">ContentType</span>,
+          <tal:size content="size">0Kb</tal:size>)
+        </span>
+      </tal:block>
+    </span>
+
+    <!-- Prerequisite: define 'doc' as your file field -->
+    <span tal:omit-tag="" metal:define-macro="related_view">
+      <tal:block tal:define="size doc/get_size | python:doc and len(doc) or 0;
+                             icon doc/getBestIcon | nothing;
+                             filename doc/Title | doc/filename | nothing;
+                             mimetype doc/getContentType|nothing;
+                             contenttype python:context.lookupMime(mimetype);"
+                 condition="python:size &gt; 0">
+        <a href="" tal:attributes="href string:${doc/absolute_url}/download">
+          <img tal:condition="icon"
+               src=""
+               alt=""
+               tal:attributes="src string:${context/portal_url}/${icon};
+                               alt contenttype"/>
+          <tal:filename tal:replace="filename"/>
+        </a>
+        <span class="discreet">
+          (<span tal:replace="contenttype" i18n:domain="plone">ContentType</span>,
+          <tal:size content="python:'%sKb' % (size / 1024)">0Kb</tal:size>)
+        </span>
+      </tal:block>
+    </span>
+
+
+  </body>
+</html>

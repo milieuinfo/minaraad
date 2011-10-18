@@ -1,0 +1,45 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
+   lang="en-US"
+   i18n:domain="minaraad">
+   <metal:block use-macro="context/global_defines/macros/defines" />
+
+   <body>
+   <metal:block define-macro="header">
+      <h1>
+         <span tal:replace="context/Title" />
+      </h1>
+      <span tal:replace="python:toLocalizedTime(context.date)" />
+   </metal:block>
+
+   <metal:block define-macro="body">
+     <div tal:define="name context/getThemeName|nothing"
+        tal:condition="name"
+        class="hearingsubheader2">
+       <span i18n:translate="label_theme_name">Theme:</span>
+       <span class="normaltext" tal:content="name" />
+     </div>
+
+     <h5>
+        <tal:block i18n:translate="minaraad_label_summary">Summary</tal:block>
+     </h5>
+     <img tal:condition="context/getFoto"
+          tal:attributes="src string:${context/absolute_url}/foto_foto;"
+           alt=""
+           class="hearingphoto" />
+     <div tal:condition="context/getBody"
+          tal:content="structure context/getBody" />
+      <!-- Start Attachments-->
+      <div metal:use-macro="context/mina_attachments/macros/listattachments" />
+      <!-- end Attachments -->
+
+      <!-- Contactperson -->
+      <tal:block tal:define="obj nocall: context">
+        <div metal:use-macro="context/contactperson_view/macros/show_coord_authors"
+             tal:omit-tag="" />
+      </tal:block>
+      <!-- end contactpersoon -->
+   </metal:block>
+
+   <metal:block metal:define-macro="folderlisting" />
+   </body>
+</html>

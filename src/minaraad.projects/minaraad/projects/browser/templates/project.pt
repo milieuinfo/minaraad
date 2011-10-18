@@ -1,0 +1,181 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="minaraad.projects">
+  <body>
+    <div metal:fill-slot="main">
+     <h1 class="documentFirstHeading">
+       Project: <span tal:replace="context/getPID" /> - <span tal:replace="context/Title" />
+     </h1>
+     <p class="discreet" tal:content="structure python: context.Description().replace('\n', '<br />')" />
+
+     <div class="right">
+       <div class="widget meetingWidget"
+            tal:define="meetings context/get_meetings"
+            tal:condition="meetings">
+         <div class="title">Vergaderingen</div>
+         <div class="body">
+           <ul tal:condition="meetings">
+             <li tal:repeat="meeting meetings">
+               <metal:block use-macro="context/display_macros/macros/meetingTimes" />
+               <p>
+                 <a class="meeting_title"
+                    tal:attributes="href meeting/absolute_url"
+                    tal:content="meeting/getResponsible_group" />
+               </p>
+             </li>
+           </ul>
+
+           <a class="attachment"
+              tal:attributes="href python: '%s/project_documents' % context.absolute_url()">
+             <img src="pdf_icon.gif" alt="PDF document" />
+             Toon alle ontwerpdocumenten
+           </a>
+         </div>
+       </div>
+
+       <div class="widget"
+            tal:define="documents context/get_documents"
+            tal:condition="documents">
+         <div class="title">Documenten</div>
+         <div class="body">
+           <tal:block tal:define="obj python: context">
+             <metal:block use-macro="context/display_macros/macros/agenda_attachments" />
+           </tal:block>
+         </div>
+       </div>
+     </div>
+
+     <table class="strong">
+       <tr tal:condition="view/can_see_project_number">
+         <td>
+           Intern projectnummer
+         </td>
+         <td tal:content="python:'%d-%s' % (context.getAdvisory_date().year(), context.getProject_number())"
+             tal:on-error="context/getId" />
+       </tr>
+       <tr tal:define="product_number context/getProduct_number"
+           tal:condition="product_number">
+         <td>
+           Productnummer
+         </td>
+         <td tal:content="python:'%d-%s' % (context.getAdvisory_date().year(), product_number)"
+             tal:on-error="product_number" />
+       </tr>
+       <tr tal:define="d context/getAdvisory_date"
+           tal:condition="d">
+         <td>
+           Datum
+         </td>
+         <td>
+           <metal:block use-macro="context/display_macros/macros/date" />
+         </td>
+       </tr>
+       <tr tal:define="theme context/getThemeName"
+            tal:condition="theme">
+         <td>
+           Werkveld
+         </td>
+         <td tal:content="theme" />
+       </tr>
+       <tr tal:define="resp_grp context/getResponsible_group"
+           tal:condition="resp_grp">
+         <td>
+           In behandeling door
+         </td>
+         <td tal:content="resp_grp" />
+       </tr>
+       <tr tal:define="item python: context.getAdvisory_request();
+                       size item/get_size | python:item and len(item) or 0">
+         <td>
+           Adviesvraag
+         </td>
+         <td>
+           <a tal:condition="python:size &gt; 0"
+              tal:attributes="href string:${context/absolute_url}/at_download/advisory_request">
+              Download
+           </a>
+           <span tal:condition="python:size == 0"
+                 tal:omit-tag="">Eigen initiatief</span>
+         </td>
+       </tr>
+       <tr tal:define="requester context/getAdvisory_requester"
+           tal:condition="requester">
+         <td>
+           Opdrachtgever
+         </td>
+         <td tal:content="requester" />
+       </tr>
+       <tr tal:define="d context/get_deadline"
+           tal:condition="d">
+         <td>
+           Deadline
+         </td>
+         <td>
+           <metal:block use-macro="context/display_macros/macros/date" />
+         </td>
+       </tr>
+       <tr tal:define="status context/getAdvisory_type;
+                       shown_status context/get_advisory_type"
+           tal:condition="status">
+         <td>
+           Status
+         </td>
+         <td>
+           <span i18n:translate="" tal:content="shown_status" />
+
+           <ul tal:define="disagreeing context/getDisagreeing_members"
+               tal:condition="python: disagreeing and status == 'abstention'">
+             <li tal:repeat="org disagreeing">
+               <span tal:replace="org" />
+             </li>
+           </ul>
+
+           <ul tal:define="reasons context/getReject_reasons"
+               tal:condition="python: reasons and status == 'reject_points'">
+             <li tal:repeat="reason reasons">
+               <span tal:replace="reason" />
+             </li>
+           </ul>
+
+         </td>
+       </tr>
+       <tr tal:define="invited context/getOrganisations"
+           tal:condition="invited">
+         <td>
+           Samenwerking
+         </td>
+         <td tal:define="vocab python:context.getField('organisations').Vocabulary(context);">
+           <ul>
+             <li tal:repeat="value invited">
+               <span tal:replace="structure python:context.displayValue(vocab, value)" />
+             </li>
+           </ul>
+         </td>
+       </tr>
+       <tr tal:define="advisory context/get_public_advisory"
+           tal:condition="nocall:advisory">
+         <td i18n:translate="">Public advisory</td>
+         <td><a tal:attributes="href advisory/absolute_url"
+                i18n:translate="">Go to advisory</a>
+                </td>
+       </tr>
+     </table>
+
+     <div class="body" tal:content="structure context/getBody" />
+
+     <div style="clear: both;">
+       &nbsp;
+     </div>
+
+     <tal:block tal:define="obj nocall: context">
+       <div metal:use-macro="context/contactperson_view/macros/show_coord_authors"
+            tal:omit-tag="" />
+     </tal:block>
+
+     <div style="clear: both;">
+       &nbsp;
+     </div>
+    </div>
+  </body>
+</html>

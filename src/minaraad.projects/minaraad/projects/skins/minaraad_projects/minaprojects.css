@@ -1,0 +1,137 @@
+div.leftColumn {
+    float: left;
+    width: 250px;
+}
+
+div.rightWidget {
+    float: right;
+    display: inline-block;
+    margin-left: 10px;
+}
+
+div.leftWidget {
+    float: left;
+    display: inline-block;
+}
+
+div.widget {
+    width: 280px;
+    border: 1px solid #db9792;
+    margin-bottom: 20px;
+    font-size: 90%;
+}
+
+div.wide {
+    width: 100% !important;
+}
+
+div.widget .title {
+    color: #ffffff;
+    background-color: #ae3721;
+    font-weight: bold;
+    padding: 4px 10px;
+}
+
+div.widget #other-years {
+    font-weight: normal;
+    display: inline;
+}
+
+div.widget ul {
+    list-style-type: none  !important;
+    list-style-image: none  !important;
+    margin: 0px !important;
+    padding: 0px !important;
+}
+
+div.widget ul li {
+    padding: 5px;
+}
+
+div.widget ul li.odd {
+    background: #ffcfc9 !important;
+}
+
+div.widget ul li.even {
+    background: #ffffff !important;
+}
+
+
+div.widget a {
+    text-decoration: none;
+    color: #000000 !important;
+}
+
+div.widget a:hover {
+    text-decoration: underline;
+}
+
+.meeting_date, .meeting_times, .meeting_title {
+    display: block;
+}
+
+.meeting_date, .meeting_times {
+    font-weight: bold;
+}
+
+.row_dragged {
+    background: #ccc !important;
+}
+
+td.draggable {
+    background: #ffffff url('drag.gif') no-repeat center center;
+    width: 20px;
+    cursor: move;
+}
+
+.row_dragged td.draggable {
+    background: #ccc url('drag.gif') no-repeat center center;
+}
+
+ul.digibibMeetingList li p {
+    margin: 0px;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+table.strong {
+    font-weight: bold;
+    font-size: 90%;
+}
+
+.body {
+    font-size: 90%;
+}
+
+.widget .body {
+    font-size: 100%;
+}
+
+.meetingWidget .meeting_times {
+    font-weight: bold;
+}
+
+.meetingWidget p {
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+.meetingWidget a.attachment {
+    color: #A13826 !important;
+    text-decoration: underline;
+    margin-left: 0.5em;
+}
+
+td.center {
+    text-align: center;
+}
+
+.body .even {
+   background: none repeat scroll 0 0 #FFCFC9 !important;
+}

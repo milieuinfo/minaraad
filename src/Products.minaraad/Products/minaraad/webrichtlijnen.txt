@@ -1,0 +1,239 @@
+Potential issues found regarding Anysurfer.be and webrichtlijnen.nl
+===================================================================
+
+Note: all requirements that are handled out-of-the-box by plone or that aren't
+relevant for minaraad (flash content and so) are omitted.
+
+
+Anysurfer.be TODO
+-----------------
+
+Minaraad being a Belgian website, we start with the anysurfer guidelines. Note
+that items mentioning "plus" aren't needed for compliance with the core
+anyserver requirements, but just for websites that want to do even better.
+
+
+Anysurfer.be DONE
+-----------------
+
+- Links like "more..." should have a meaningful link text instead of "more". A
+  valid exception is a long list of items, each having a "more..." link.
+
+  Minaraad uses those "more" links in several listing templates. It is a valid
+  exception, but by making the title of the items clickable the situation has
+  been improved.
+
+
+- ``<title>`` must be meaningful.
+
+  Plone handles it great by default. Minaraad's content has a potential
+  problem in one occasion: the folders called "2008" and "2005". When clicking
+  through the site it is pretty clear, though. Just not when bookmarking.
+
+
+- Forms should be editable with the tab key. So the order has to match what
+  you'd expect.
+
+  All our forms have been quickly checked. The login form has been fixed.
+
+
+- Enough contrast between letters and their background.
+
+  The red-on-green used in the menu has just enough contrast. According to the
+  tool advised on anysurfer.be, the contrast is ok, but the color difference
+  not. The anysurfer guidelines seem to only target the contrast, though.
+
+
+- Links to word documents and pdf files should not open inline, but should be
+  downloaded. This is done with the ``Content-Disposition: attachment`` http
+  header. This is required by
+  http://www2.vlaanderen.be/toegankelijkweb/nieuwe_normen.htm.
+
+  In plone, appending ``/download`` to ATFiles sets the header. This has been
+  changed in our custom templates, but not yet in the plone default
+  templates. We don't use them anywhere, so that's not a
+  problem. AnnualReports now also have a ``/download``. Internal links
+  (through FCK) are handled by a modified resolveUID script that opens the
+  ``/view`` of a file instead of downloading it directly.
+
+
+- Pdf and word files need a html version. Note that pdf files themselves can
+  be made accessible. In that case the html version can be omitted. Word needs
+  a html version in every case.
+
+  A "html preview" has been added everywhere, except for internal links and
+  plone's default templates. The layout of especially the converted word files
+  is pretty bad in places.
+
+
+- Show the filesize if a downloadable file is more than 1MB in size.
+
+  Done in all of our own templates.
+
+- Access keys must be numerical only.
+
+  There was one empty accesskey, this has been fixed.
+
+
+- Every image needs an alt tag. For decorative images, the alt tag should be
+  empty.
+
+  All current templates have been checked whether all decorative images have an
+  alt tag. The standard w3c html validator ought to catch an eventual
+  re-occurrence just fine. Also an alt tag has been added to the file icons
+  (which was previously missing).
+
+- All links in the content area must be underlined.
+
+  Done for the content section and for the "html preview" link.
+
+
+- Forms must use the standard html accessibility goodies like fieldsets (when
+  elaborate), lables tied to the input fields (always). When a field is
+  required, it should be indicated in the label, so not just with css or
+  outside the label in some span or so.
+
+  Plone does not place the "required" text inside the label, but in a span
+  outside it. Fixing this means fixing it in a whole lot of places.
+
+  For the rest, Plone's forms are OK. Possible exception is the login form,
+  where the user/password fields aren't marked as required. I doubt anyone has
+  a problem with that.
+
+  I've modified all our (customized) forms to use labels. "Required" is placed
+  inside the label. This should fix this for the forms the user'll see. The
+  admins is a different story.
+
+- Separate css and html. Removed the style attribute from the
+  templates where possible.
+
+- Table on hearing and mrevent where "foto_foto" is shown: the body text
+  is hardly ever used there. The photo will now float on the right.
+
+- Tables must be semantic. So use ``<th>`` and friends. They shouldn't be used
+  for layout purposes. Done as much as possible. Tested using linearize page,
+  to see if the text is still readable.
+
+- The tables used for forms and listings have been changed to be more semantic.
+
+
+Anysurfer PLUS (so not done)
+----------------------------
+
+- Tables used for listings can use a ``<caption>``. This isn't an anysurfer
+  core requirement, though.
+
+
+- Not needed for the basic anysurfer profile, but for the plus version: no
+  bold and italic tags, just strong and emphasis.
+
+  Whoops. Our own templates must be checked. If something is just bold for
+  display purposes, it must be done with css instead of a semantic
+  ``<strong>`` element. And FCK might need a change. Perhaps an extra
+  transform to take care of content? Or change plone's html filtering?
+
+  Note that this is for the plus version: what does minaraad want?
+
+
+- Plus version: no tables for the main site layout. So this *is* still allowed
+  in the basic profile.
+
+  Yeah, plone uses tables. Does this need changing? Perhaps the pareto product
+  already does this.
+
+
+- In the "plus" profile, the title attribute on the input field needs to be
+  the same as the label tied to that input field.
+
+  Do we want/need this? If so, it needs checking.
+
+
+Webrichtlijnen.nl
+-----------------
+
+Note: duplicates with the anysurfer list are omitted. In several cases, the
+webrichtlijnen are a bit more detailed than anysurfer.
+
+
+- Both html 4.01 strict and xhtml 1.0 strict are allowed.
+
+  Plone uses xhtml, but for instance the doc/pdf html export is regular
+  html. That'll need figuring out.
+
+
+- Don't jump heading levels in the content. So no h3 below a h1 without a h2
+  in between.
+
+  Check older portlets for the use of a h5 header. And check our templates.
+
+
+- Use paragraph tags, not linebreaks, for separating paragraphs.
+
+  I think both FCK and kupu allow linebreaks in the content. How do we want to
+  handle this? Is it doable to change the behaviour without big changes in
+  those editors?
+
+- Use ``<abbr>`` for important abbreviations when it can be unclear or when it
+  is not in the Dutch dictionary.
+
+  This deals with content. Does FCK allow editing abbreviations?
+
+
+- ``<ins>`` and ``<del>`` must be used when changes to the content must be
+  visible, for instance for corrections.
+
+  Does FCK allow this?
+
+
+- Decorative images must be placed by css as much as possible. Informative
+  images by html.
+
+  Plone does fine. Our current templates are OK, with the possible exception
+  of the annualreport_view.pt that inserts a file icon.
+
+
+- Links to email addresses must show the actual email address.
+
+  All our current templates show the email address.
+
+
+- No spam protection emailaddress-obfuscation is allowed.
+
+  We don't do it for minaraad.
+
+
+- Add information on how to use downloadable files when offering them for
+  download. ("You can open it with acrobat reader").
+
+  That's a whole lot of places to add such info. And that's especially tricky
+  when there's an inline link to a pdf. Perhaps a "usage instructions" link to
+  a page explaining it?
+
+
+- Add a privacy statement when a visitor has to enter personal data.
+
+  Plone's default "we won't give your email address away" is there.
+
+
+- The 404 page must give the visitor options to continue.
+
+  Check minaraad's current error page and perhaps expand it (link to sitemap,
+  for instance).
+
+
+- Use smart textual search that handles misspelling, synonyms,
+  singular/plural.
+
+  How good is plone's search? It certainly doesn't handle misspelling or
+  synonyms. Food for discussion. Perhaps txng3 should be investigated again?
+
+- Separate css and html.
+
+  In several places, there's a style attribute. That should all be done in
+  external css files.
+
+  Has been removed from all templates which MT could find with a grep and
+  are replaced with a class. The ones with "display:none" are still in place
+  because it is used in Plone javascript.
+  In livesearch.py there are also "style"s defined.
+  What are we going to do with those?

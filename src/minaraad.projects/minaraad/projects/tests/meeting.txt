@@ -1,0 +1,427 @@
+Meetings
+========
+
+This package provides an easy to use meeting/items system. Instead of
+defining start/end date for the Meeting, we just set a start
+date. Items, just have duration and order fields that are used to
+compute the start/end time for each item and the total meeting
+duration.
+
+
+We first need a 'DigiBib' object to store our Meetings:
+
+    >>> self.setRoles(('Manager'))
+    >>> self.add_digibib()
+    >>> digibib = self.portal.digibib
+
+We can now create a meeting to play with:
+
+    >>> from DateTime import DateTime
+    >>> digibib.meetings.invokeFactory('Meeting',
+    ...                       id='meeting',
+    ...                       title='My meeting',
+    ...                       start_time = DateTime(2010, 3, 8, 15, 30))
+    'meeting'
+    >>> meeting = digibib.meetings.meeting
+
+Base principle
+--------------
+
+For the moment, there is no agenda items, so the duration will be
+equal to zero and the end date will be the same than the start date:
+
+    >>> meeting.find_items()
+    []
+
+    >>> meeting.get_duration()
+    0
+
+    >>> meeting.get_end_time()
+    DateTime('2010/03/08 15:30:00 GMT+1')
+
+We'll add an item to the meeting:
+
+    >>> meeting.invokeFactory('AgendaItemProject',
+    ...                       id='first_item',
+    ...                       title='First item',
+    ...                       duration=60)
+    'first_item'
+
+This will change the duration of the meeting and its end date:
+
+    >>> meeting.get_duration()
+    1
+
+    >>> meeting.get_end_time()
+    DateTime('2010/03/08 16:30:00 GMT+1')
+
+We can also get the start/end date of the agenda item itself:
+
+    >>> meeting.first_item.get_start_time()
+    DateTime('2010/03/08 15:30:00 GMT+1')
+
+    >>> meeting.first_item.get_end_time()
+    DateTime('2010/03/08 16:30:00 GMT+1')
+
+We'll add another item:
+
+    >>> meeting.invokeFactory('AgendaItemProject',
+    ...                       id='second_item',
+    ...                       title='Second item',
+    ...                       duration=90)
+    'second_item'
+
+By default, this one appears after the first one:
+
+    >>> [(item.Title, item.getOrder) for item in meeting.find_items()]
+    [('First item', 0),
+     ('Second item', 1)]
+
+The meeting duration is again updated:
+
+    >>> meeting.get_duration()
+    2.5
+
+    >>> meeting.get_end_time()
+    DateTime('2010/03/08 18:00:00 GMT+1')
+
+The second item start/end date are also computed:
+
+    >>> meeting.second_item.get_start_time()
+    DateTime('2010/03/08 16:30:00 GMT+1')
+
+    >>> meeting.second_item.get_end_time()
+    DateTime('2010/03/08 18:00:00 GMT+1')
+
+But the first one did not change:
+
+    >>> meeting.first_item.get_start_time()
+    DateTime('2010/03/08 15:30:00 GMT+1')
+
+    >>> meeting.first_item.get_end_time()
+    DateTime('2010/03/08 16:30:00 GMT+1')
+
+Reordering a meeting
+--------------------
+
+It is of course possible to change the items order in a meeting. To
+test this, we'll first add a few items to our meeting:
+
+    >>> items = [('third', 30),
+    ...          ('fourth', 40),
+    ...          ('fifth', 10),
+    ...          ('sixth', 25)]
+    >>> for item, duration in items:
+    ...     _ = meeting.invokeFactory('AgendaItemProject',
+    ...                               id='%s_item' % item,
+    ...                               title='%s item' % item.capitalize(),
+    ...                               duration=duration)
+
+We'll first check everything worked correctly:
+
+    >>> meeting.get_duration()
+    4.25
+
+    >>> meeting.get_end_time()
+    DateTime('2010/03/08 19:45:00 GMT+1')
+
+
+    >>> def show_meeting(m):
+    ...     for item in m.find_items():
+    ...         item = item.getObject()
+    ...         print (item.getOrder(), item.title, '%s - %s' % (item.get_start_time(), item.get_end_time()))
+
+    >>> show_meeting(meeting)
+    (0, u'First item', '2010/03/08 15:30:00 GMT+1 - 2010/03/08 16:30:00 GMT+1')
+    (1, u'Second item', '2010/03/08 16:30:00 GMT+1 - 2010/03/08 18:00:00 GMT+1')
+    (2, u'Third item', '2010/03/08 18:00:00 GMT+1 - 2010/03/08 18:30:00 GMT+1')
+    (3, u'Fourth item', '2010/03/08 18:30:00 GMT+1 - 2010/03/08 19:10:00 GMT+1')
+    (4, u'Fifth item', '2010/03/08 19:10:00 GMT+1 - 2010/03/08 19:20:00 GMT+1')
+    (5, u'Sixth item', '2010/03/08 19:20:00 GMT+1 - 2010/03/08 19:45:00 GMT+1')
+
+
+When an item order is changed, all items between the initial order
+and the new order have to be changed.
+
+If the first case (when we move an item earlier), we'll have to
+increment the position of the previous items.
+We'll move the Fifth item at the second place:
+
+    >>> meeting.fifth_item.setOrder(1)
+
+Now, if we look at the meeting planning, all times are changed:
+
+    >>> show_meeting(meeting)
+    (0, u'First item', '2010/03/08 15:30:00 GMT+1 - 2010/03/08 16:30:00 GMT+1')
+    (1, u'Fifth item', '2010/03/08 16:30:00 GMT+1 - 2010/03/08 16:40:00 GMT+1')
+    (2, u'Second item', '2010/03/08 16:40:00 GMT+1 - 2010/03/08 18:10:00 GMT+1')
+    (3, u'Third item', '2010/03/08 18:10:00 GMT+1 - 2010/03/08 18:40:00 GMT+1')
+    (4, u'Fourth item', '2010/03/08 18:40:00 GMT+1 - 2010/03/08 19:20:00 GMT+1')
+    (5, u'Sixth item', '2010/03/08 19:20:00 GMT+1 - 2010/03/08 19:45:00 GMT+1')
+
+
+The second case is when we move an item later. In this case, we have
+to decrement the order of the items.
+We'll move the second item at the last place:
+
+    >>> meeting.second_item.setOrder(5)
+    >>> show_meeting(meeting)
+    (0, u'First item', '2010/03/08 15:30:00 GMT+1 - 2010/03/08 16:30:00 GMT+1')
+    (1, u'Fifth item', '2010/03/08 16:30:00 GMT+1 - 2010/03/08 16:40:00 GMT+1')
+    (2, u'Third item', '2010/03/08 16:40:00 GMT+1 - 2010/03/08 17:10:00 GMT+1')
+    (3, u'Fourth item', '2010/03/08 17:10:00 GMT+1 - 2010/03/08 17:50:00 GMT+1')
+    (4, u'Sixth item', '2010/03/08 17:50:00 GMT+1 - 2010/03/08 18:15:00 GMT+1')
+    (5, u'Second item', '2010/03/08 18:15:00 GMT+1 - 2010/03/08 19:45:00 GMT+1')
+
+
+It is also possible to delete an item. In this case, we system will
+reorganize to set the order correctly again:
+
+    >>> meeting.manage_delObjects(['fourth_item'])
+    >>> show_meeting(meeting)
+    (0, u'First item', '2010/03/08 15:30:00 GMT+1 - 2010/03/08 16:30:00 GMT+1')
+    (1, u'Fifth item', '2010/03/08 16:30:00 GMT+1 - 2010/03/08 16:40:00 GMT+1')
+    (2, u'Third item', '2010/03/08 16:40:00 GMT+1 - 2010/03/08 17:10:00 GMT+1')
+    (3, u'Sixth item', '2010/03/08 17:10:00 GMT+1 - 2010/03/08 17:35:00 GMT+1')
+    (4, u'Second item', '2010/03/08 17:35:00 GMT+1 - 2010/03/08 19:05:00 GMT+1')
+
+We'll do another test to ensure the reordering after deletion works fine:
+
+    >>> meeting.manage_delObjects(['first_item', 'third_item', 'sixth_item'])
+    >>> show_meeting(meeting)
+    (0, u'Fifth item', '2010/03/08 15:30:00 GMT+1 - 2010/03/08 15:40:00 GMT+1')
+    (1, u'Second item', '2010/03/08 15:40:00 GMT+1 - 2010/03/08 17:10:00 GMT+1')
+
+
+Really long meetings
+--------------------
+
+This case should not happen, but we test it anyway. If a meeting
+overlap a day, the system should still be able to compute the date correctly.
+
+    >>> digibib.meetings.invokeFactory('Meeting',
+    ...                           id='second_meeting',
+    ...                           title='Second meeting',
+    ...                           start_time=DateTime(2010, 2, 3, 20, 0))
+    'second_meeting'
+
+    >>> meeting2 = digibib.meetings.second_meeting
+    >>> meeting2.invokeFactory('AgendaItemProject',
+    ...                        id='first_item',
+    ...                        title='First item',
+    ...                        duration=120)
+    'first_item'
+    >>> meeting2.invokeFactory('AgendaItemProject',
+    ...                        id='second_item',
+    ...                        title='Second item',
+    ...                        duration=130)
+    'second_item'
+    >>> meeting2.invokeFactory('AgendaItemProject',
+    ...                        id='last_item',
+    ...                        title='last item',
+    ...                        duration=5)
+    'last_item'
+
+We can now check the values computed by the meeting:
+
+    >>> meeting2.get_duration()
+    4.25
+
+    >>> meeting2.get_end_time()
+    DateTime('2010/02/04 00:15:00 GMT+1')
+
+And the one computed by each item:
+
+    >>> show_meeting(meeting2)
+    (0, u'First item', '2010/02/03 20:00:00 GMT+1 - 2010/02/03 22:00:00 GMT+1')
+    (1, u'Second item', '2010/02/03 22:00:00 GMT+1 - 2010/02/04 00:10:00 GMT+1')
+    (2, u'last item', '2010/02/04 00:10:00 GMT+1 - 2010/02/04 00:15:00 GMT+1')
+
+
+Speeding up things
+------------------
+
+Currently, we always computed start/end date by looking at each
+item. What needs to be known is that each item looks at the previous
+items to compute its start date. That is not the quickest method of
+course (O = exp(n) if I count correctly).
+
+Asking start/end time for an item directly should only be used in
+AgendaItem views. When displaying a meeting, is it better to use the
+'find_items_and_times' method of the Meeting object. It provides a
+list of tuples: AgendaItem, start date, end date.
+The main difference is that it only access each item once.
+
+    >>> def show_items_and_times(meeting):
+    ...     return [(item.getObject(), start, end)
+    ...             for item, start, end in meeting.find_items_and_times()]
+
+    >>> show_items_and_times(meeting)
+    [(<AgendaItemProject at .../fifth_item>, DateTime('2010/03/08 15:30:00 GMT+1'), DateTime('2010/03/08 15:40:00 GMT+1')),
+     (<AgendaItemProject at .../second_item>, DateTime('2010/03/08 15:40:00 GMT+1'), DateTime('2010/03/08 17:10:00 GMT+1'))]
+
+    >>> show_items_and_times(meeting2)
+    [(<AgendaItemProject at .../first_item>, DateTime('2010/02/03 20:00:00 GMT+1'), DateTime('2010/02/03 22:00:00 GMT+1')),
+     (<AgendaItemProject at .../second_item>, DateTime('2010/02/03 22:00:00 GMT+1'), DateTime('2010/02/04 00:10:00 GMT+1')),
+     (<AgendaItemProject at .../last_item>, DateTime('2010/02/04 00:10:00 GMT+1'), DateTime('2010/02/04 00:15:00 GMT+1'))]
+
+PDF concatenation
+-----------------
+
+The meetings objects are also able to concatenate all PDF files stored
+in AttachmentFile as one single PDF file.
+
+Currently, no PDF file has been added to any of our meetings, so
+calling the 'get_pdf' method will not return anything:
+
+    >>> meeting.get_pdf() is None
+    True
+
+If we try to directly call the 'pdf' attribute will raise an
+AttributeError exception:
+
+    >>> meeting.pdf
+    Traceback (most recent call last):
+    ...
+    AttributeError: pdf
+
+Now if we call the 'generate_pdf' method, the file is generated, but
+since there are no pdf attachments yet, it has no content:
+
+    >>> meeting.generate_pdf()
+    >>> meeting.get_pdf()
+
+Let's add some PDF files to our meeting. Our test folder contains
+three PDf files: onepage.pdf, multipage.pdf and restricted.pdf.
+
+    >>> def mydir():
+    ...     import os.path, sys
+    ...     if __name__ == '__main__':
+    ...         filename = sys.argv[0]
+    ...     else:
+    ...         filename = __file__
+    ...     return os.path.abspath(os.path.dirname(filename))
+
+    >>> def attach_file(item, id, title, filename):
+    ...     f = open('/'.join([mydir(), filename]))
+    ...     item.invokeFactory('FileAttachment',
+    ...                        id=id,
+    ...                        title=title,
+    ...                        file= f)
+
+    >>> attach_file(meeting.second_item,
+    ...             'first_file',
+    ...             'First file',
+    ...             'onepage.pdf')
+
+Creating one attachment file will automatically update the pdf file of
+the meeting:
+
+    >>> from pyPdf import PdfFileReader
+    >>> pdf = PdfFileReader(meeting.get_pdf())
+    >>> pdf.numPages
+    1
+
+Let's attach another file:
+
+    >>> attach_file(meeting.second_item,
+    ...             'second_file',
+    ...             'Second file',
+    ...             'onepage.pdf')
+
+It might be suprising, but the PDF now has 3 pages:
+
+    >>> pdf = PdfFileReader(meeting.get_pdf())
+    >>> pdf.numPages
+    3
+
+The explanation is quite simple: an empty page is always added so the
+document starts on the right page (when printed both side).
+
+Now if we had an unreadable document, we'll obtain a page with a link
+to download the file:
+
+    >>> attach_file(meeting.fifth_item,
+    ...             'restricted_file',
+    ...             'Ahah, you need a password',
+    ...             'restricted.pdf')
+
+    >>> pdf = PdfFileReader(meeting.get_pdf())
+    >>> pdf.numPages
+    5
+
+    >>> def display_pdf(p):
+    ...     p = PdfFileReader(p)
+    ...     for i in range(0, p.numPages):
+    ...         try:
+    ...             print p.getPage(i).extractText()
+    ...         except:
+    ...             print '---'
+    >>> display_pdf(meeting.get_pdf())
+    Could not integrate file at:
+    http://nohost/plone/digibib/meetings/meeting/fifth_item/restricted_file
+    <BLANKLINE>
+    ---
+    One page pdf.Nothing really interesting here.
+    ---
+    One page pdf.Nothing really interesting here.
+
+As we can see, the restricted appears first. This is due to the fact
+that the fifth item is before the second one:
+
+    >>> meeting.second_item.setOrder(0)
+
+There is four cases when the PDF file is automatically regenerated:
+ - when a PDF attachment is added
+ - when an attachment is deleted
+ - when an agenda item is deleted.
+
+If we delete an item, it will disappear from the complete PDF:
+
+    >>> meeting.second_item.manage_delObjects(['second_file'])
+    >>> display_pdf(meeting.get_pdf())
+    One page pdf.Nothing really interesting here.
+    ---
+    Could not integrate file at:
+    http://nohost/plone/digibib/meetings/meeting/fifth_item/restricted_file
+    <BLANKLINE>
+
+Same thing when deleting a agenda point:
+
+    >>> meeting.invokeFactory('AgendaItemProject',
+    ...                       id='last_item',
+    ...                       title='An item that will disappear',
+    ...                       duration=40)
+    'last_item'
+
+    >>> attach_file(meeting.last_item,
+    ...             'first_file',
+    ...             'First file',
+    ...             'multipage.pdf')
+    >>> attach_file(meeting.last_item,
+    ...             'second_file',
+    ...             'Second file',
+    ...             'onepage.pdf')
+
+    >>> display_pdf(meeting.get_pdf())
+    One page pdf.Nothing really interesting here.
+    ---
+    Could not integrate file at:
+    http://nohost/plone/digibib/meetings/meeting/fifth_item/restricted_file
+    <BLANKLINE>
+    ---
+    Multi page PDF....
+    The second one, with an image:
+    The third one.
+    The fourth and last one.
+    One page pdf.Nothing really interesting here.
+
+Now we delete it:
+
+    >>> meeting.manage_delObjects(['last_item'])
+    >>> display_pdf(meeting.get_pdf())
+    One page pdf.Nothing really interesting here.
+    ---
+    Could not integrate file at:
+    http://nohost/plone/digibib/meetings/meeting/fifth_item/restricted_file
+    <BLANKLINE>

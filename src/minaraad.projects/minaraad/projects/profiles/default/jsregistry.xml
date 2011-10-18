@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<object name="portal_javascripts">
+  <javascript cacheable="True"
+              compression="none"
+              cookable="False"
+              enabled="True"
+              expression=""
+              id="jquery.tablednd_0_5.js"
+              inline="False"
+              insert-after="jquery-integration.js" />
+  <javascript cacheable="True"
+              compression="none"
+              cookable="False"
+              enabled="True"
+              expression=""
+              id="meeting_sort.js"
+              inline="False"
+              insert-after="jquery.tablednd_0_5.js" />
+  <javascript cacheable="True"
+              compression="none"
+              cookable="False"
+              enabled="True"
+              expression=""
+              id="projects_interface.js"
+              inline="False"
+              insert-after="jquery-integration.js" />
+</object>

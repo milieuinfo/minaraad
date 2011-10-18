@@ -1,0 +1,36 @@
+<configure xmlns="http://namespaces.zope.org/five">
+
+  <!-- Most of these do not even have a manage_after*, but Zope complains -->
+  <!-- when starting up anyway. -->
+
+  <deprecatedManageAddDelete
+      class="Products.minaraad.content.Advisory.Advisory" />
+
+  <deprecatedManageAddDelete
+      class="Products.minaraad.content.ContactPerson.ContactPerson" />
+
+  <deprecatedManageAddDelete
+      class="Products.minaraad.content.Hearing.Hearing" />
+
+  <deprecatedManageAddDelete
+      class="Products.minaraad.content.AgendaItem.AgendaItem" />
+
+  <deprecatedManageAddDelete
+      class="Products.minaraad.content.AnnualReport.AnnualReport" />
+
+  <deprecatedManageAddDelete
+      class="Products.minaraad.content.MREvent.MREvent" />
+
+  <deprecatedManageAddDelete
+      class="Products.minaraad.content.NewsLetter.NewsLetter" />
+
+  <deprecatedManageAddDelete
+      class="Products.minaraad.content.NewsItem.NewsItem" />
+
+  <deprecatedManageAddDelete
+      class="Products.minaraad.content.Pressrelease.Pressrelease" />
+
+  <deprecatedManageAddDelete
+      class="Products.minaraad.content.Study.Study" />
+
+</configure>

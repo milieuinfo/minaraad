@@ -1,0 +1,8 @@
+<filestorage source>
+  path ${parts.postgresconf.source}
+</filestorage>
+<relstorage destination>
+  <postgresql>
+    dsn ${parts.postgresconf.dsn}
+  </postgresql>
+</relstorage>

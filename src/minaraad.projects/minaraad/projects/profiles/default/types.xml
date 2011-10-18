@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<object name="portal_types" meta_type="Plone Types Tool">
+  <object name="DigiBib"
+    meta_type="Factory-based Type Information" />
+  <object name="Project"
+    meta_type="Factory-based Type Information" />
+  <object name="Meeting"
+    meta_type="Factory-based Type Information" />
+  <object name="AgendaItemProject"
+    meta_type="Factory-based Type Information with dynamic views" />
+  <object name="FileAttachment"
+    meta_type="Factory-based Type Information with dynamic views" />
+  <object name="Organisation"
+    meta_type="Factory-based Type Information" />
+  <object name="ProjectContainer"
+    meta_type="Factory-based Type Information" />
+  <object name="MeetingContainer"
+    meta_type="Factory-based Type Information" />
+  <object name="OrganisationContainer"
+    meta_type="Factory-based Type Information" />
+</object>

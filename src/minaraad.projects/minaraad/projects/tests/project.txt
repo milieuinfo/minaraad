@@ -1,0 +1,320 @@
+Project content type
+====================
+
+This test suite will ensure project content type works as expected.
+
+    >>> self.setRoles(('Manager'))
+    >>> self.add_digibib()
+    >>> digibib = self.portal.digibib
+
+We first need a project or two:
+
+    >>> digibib.projects.invokeFactory('Project',
+    ...                                'first_project')
+    'first_project'
+    >>> digibib.projects.invokeFactory('Project',
+    ...                                'second_project')
+    'second_project'
+
+
+Finding linked meetings
+-----------------------
+
+There is two ways for a meeting to be linked to a project:
+ - the project is referenced via the 'projects' attribute of a meeting
+ - the project is referenced via the 'project' attribute of an agenda
+ item in the meeting.
+
+We'll first add a meeting without reference:
+    >>> from DateTime import DateTime
+    >>> digibib.meetings.invokeFactory('Meeting',
+    ...                                'meeting',
+    ...                                start_time=DateTime(2012, 5, 5, 12, 0))
+    'meeting'
+
+For the moment, the meeting does not appear in the 'get_meetings'
+attributes of the projects:
+
+    >>> digibib.projects.first_project.get_meetings()
+    []
+
+    >>> digibib.projects.second_project.get_meetings()
+    []
+
+We'll now add AgendaItem to the meeting were the projects are discussed:
+
+    >>> digibib.meetings.meeting.invokeFactory('AgendaItemProject',
+    ...                                        'first_item',
+    ...                                        duration = 10,
+    ...                                        project = digibib.projects.first_project)
+    'first_item'
+    >>> digibib.meetings.meeting.first_item.setDuration(10)
+    >>> digibib.meetings.meeting.invokeFactory('AgendaItemProject',
+    ...                                        'second_item',
+    ...                                        duration = 10,
+    ...                                        project = digibib.projects.second_project)
+    'second_item'
+    >>> digibib.meetings.meeting.second_item.setDuration(10)
+
+    >>> digibib.projects.first_project.get_meetings()
+    [<Meeting at /plone/digibib/meetings/meeting>]
+
+    >>> digibib.projects.second_project.get_meetings()
+    [<Meeting at /plone/digibib/meetings/meeting>]
+
+Now we'll add an agenda item that do not discuss any project:
+
+    >>> digibib.meetings.meeting.invokeFactory('AgendaItemProject',
+    ...                                        'last_item')
+    'last_item'
+
+Nothing changed for the projects:
+
+    >>> digibib.projects.first_project.get_meetings()
+    [<Meeting at /plone/digibib/meetings/meeting>]
+
+    >>> digibib.projects.second_project.get_meetings()
+    [<Meeting at /plone/digibib/meetings/meeting>]
+
+We'll now setx the last point to discuss the second project:
+
+    >>> digibib.meetings.meeting.last_item.setProject(digibib.projects.second_project)
+
+We have to manually call the event. This is not a problem on the site
+as everything is done TTW and the event are automatically called when
+saving an object:
+
+    >>> from Products.Archetypes.event import ObjectEditedEvent
+    >>> from zope.event import notify
+    >>> notify(ObjectEditedEvent(digibib.meetings.meeting.last_item))
+
+    >>> digibib.projects.second_project.get_agenda_items()
+    {<Meeting at .../meeting>: [<AgendaItemProject at ...meeting/second_item>, <AgendaItemProject at ...meeting/last_item>]}
+
+Now if the the reference to the second project is deleted from the
+second item, we still have the reference from the last item:
+
+    >>> digibib.meetings.meeting.second_item.setProject(None)
+    >>> notify(ObjectEditedEvent(digibib.meetings.meeting.second_item))
+
+    >>> digibib.projects.second_project.get_meetings()
+    [<Meeting at /plone/digibib/meetings/meeting>]
+
+    >>> digibib.projects.second_project.get_agenda_items()
+    {<Meeting at .../meeting>: [<AgendaItemProject at ...meeting/last_item>]}
+
+Now if the reference in the last item is also removed, then the
+project will not have anymoire the meeting in its references:
+
+    >>> digibib.meetings.meeting.last_item.setProject(None)
+    >>> notify(ObjectEditedEvent(digibib.meetings.meeting.last_item))
+
+    >>> digibib.projects.second_project.get_meetings()
+    []
+
+    >>> digibib.projects.second_project.get_agenda_items()
+    {}
+
+The reference should also be removed when an event is deleted. To do
+so, we'll update again the last item:
+
+    >>> digibib.meetings.meeting.last_item.setProject(digibib.projects.second_project)
+    >>> notify(ObjectEditedEvent(digibib.meetings.meeting.last_item))
+    >>> digibib.projects.second_project.get_agenda_items()
+    {<Meeting at .../meeting>: [<AgendaItemProject at ...meeting/last_item>]}
+
+And now we'll delete it:
+
+    >>> digibib.meetings.meeting.manage_delObjects(['last_item'])
+    >>> digibib.projects.second_project.get_agenda_items()
+    {}
+
+The same thing happens when a meeting is deleted. Again, we'll update
+an item to reference the second project:
+
+    >>> digibib.meetings.meeting.second_item.setProject(digibib.projects.second_project)
+    >>> notify(ObjectEditedEvent(digibib.meetings.meeting.second_item))
+    >>> digibib.projects.second_project.get_agenda_items()
+    {<Meeting at .../meeting>: [<AgendaItemProject at ...meeting/second_item>]}
+
+Now if the meeting is deleted, no project will reference it:
+
+    >>> digibib.meetings.manage_delObjects(['meeting'])
+
+    >>> digibib.projects.first_project.get_meetings()
+    []
+
+    >>> digibib.projects.second_project.get_meetings()
+    []
+
+    >>> digibib.projects.second_project.get_agenda_items()
+    {}
+
+The last case is when agenda items are copied from one place to
+another. The newly copied events should also be referenced.
+To do so, we'll add another meeting with some points:
+
+    >>> digibib.meetings.invokeFactory('Meeting',
+    ...                                'second_meeting',
+    ...                                start_time=DateTime(2012, 5, 5, 12, 0))
+    'second_meeting'
+    >>> digibib.meetings.second_meeting.invokeFactory(
+    ...     'AgendaItemProject',
+    ...     'item1',
+    ...     project = digibib.projects.first_project)
+    'item1'
+    >>> digibib.meetings.second_meeting.invokeFactory(
+    ...     'AgendaItemProject',
+    ...     'item2',
+    ...     project = digibib.projects.second_project)
+    'item2'
+    >>> digibib.meetings.second_meeting.invokeFactory(
+    ...     'AgendaItemProject',
+    ...     'item3')
+    'item3'
+
+    >>> digibib.projects.first_project.get_meetings()
+    [<Meeting at /plone/digibib/meetings/second_meeting>]
+
+    >>> digibib.projects.first_project.get_agenda_items()
+    {<Meeting at /plone/digibib/meetings/second_meeting>: [<AgendaItemProject at /plone/digibib/meetings/second_meeting/item1>]}
+
+    >>> digibib.projects.second_project.get_meetings()
+    [<Meeting at /plone/digibib/meetings/second_meeting>]
+
+    >>> digibib.projects.second_project.get_agenda_items()
+    {<Meeting at /plone/digibib/meetings/second_meeting>: [<AgendaItemProject at /plone/digibib/meetings/second_meeting/item2>]}
+
+We create a second meeting to copy the items:
+
+    >>> digibib.meetings.invokeFactory('Meeting',
+    ...                                'third_meeting',
+    ...                                start_time=DateTime(2012, 5, 5, 12, 0))
+    'third_meeting'
+
+And we copy them:
+
+    >>> items = digibib.meetings.second_meeting.manage_copyObjects(['item1', 'item2', 'item3'])
+    >>> digibib.meetings.third_meeting.manage_pasteObjects(items)
+    [{'new_id': 'item1', 'id': 'item1'},
+     {'new_id': 'item2', 'id': 'item2'},
+     {'new_id': 'item3', 'id': 'item3'}]
+
+The third meeting is now referenced by the projects:
+
+    >>> sorted(digibib.projects.first_project.get_meetings(), key=lambda x:x.id)
+    [<Meeting at /plone/digibib/meetings/second_meeting>,
+     <Meeting at /plone/digibib/meetings/third_meeting>]
+
+    >>> sorted(digibib.projects.first_project.get_agenda_items().items(), key=lambda x:x[0].id)
+    [(<Meeting at ...second_meeting>, [<AgendaItemProject at .../second_meeting/item1>]),
+     (<Meeting at ...third_meeting>, [<AgendaItemProject at .../third_meeting/item1>])]
+
+    >>> sorted(digibib.projects.second_project.get_meetings(), key=lambda x:x.id)
+    [<Meeting at /plone/digibib/meetings/second_meeting>,
+     <Meeting at /plone/digibib/meetings/third_meeting>]
+
+    >>> sorted(digibib.projects.second_project.get_agenda_items().items(), key=lambda x:x[0].id)
+    [(<Meeting at ...second_meeting>, [<AgendaItemProject at ...second_meeting/item2>]),
+     (<Meeting at ...third_meeting>, [<AgendaItemProject at ...third_meeting/item2>])]
+    
+
+If we clone the whole meeting, it also update references:
+
+    >>> digibib.meetings.manage_clone(digibib.meetings.second_meeting, 'cloned_meeting')
+    <Meeting at /plone/digibib/meetings/cloned_meeting>
+
+    >>> sorted(digibib.projects.first_project.get_meetings(), key=lambda x:x.id)
+    [<Meeting at /plone/digibib/meetings/cloned_meeting>,
+     <Meeting at /plone/digibib/meetings/second_meeting>,
+     <Meeting at /plone/digibib/meetings/third_meeting>]
+
+    >>> sorted(digibib.projects.first_project.get_agenda_items().items(), key=lambda x:x[0].id)
+    [(<Meeting at ...cloned_meeting>, [<AgendaItemProject at ...cloned_meeting/item1>]),
+     (<Meeting at ...second_meeting>, [<AgendaItemProject at ...second_meeting/item1>]),
+     (<Meeting at ...third_meeting>, [<AgendaItemProject at ...third_meeting/item1>])]
+
+    >>> sorted(digibib.projects.second_project.get_meetings(), key=lambda x:x.id)
+    [<Meeting at /plone/digibib/meetings/cloned_meeting>,
+     <Meeting at /plone/digibib/meetings/second_meeting>,
+     <Meeting at /plone/digibib/meetings/third_meeting>]
+
+    >>> sorted(digibib.projects.second_project.get_agenda_items().items(), key=lambda x:x[0].id)
+    [(<Meeting at ...cloned_meeting>, [<AgendaItemProject at ...cloned_meeting/item2>]),
+     (<Meeting at ...second_meeting>, [<AgendaItemProject at ...second_meeting/item2>]),
+     (<Meeting at ...third_meeting>, [<AgendaItemProject at ...third_meeting/item2>])]
+
+
+Mail sending
+------------
+
+When updating a project, some mails are sent at some steps.
+
+There is not yet messages sent as we did not check or propose any project:
+
+    >>> self.portal.MailHost.messages
+    []
+
+
+Now we'll propose the first project. A mail is sent to the secretary
+to check it.
+
+    >>> self.check_project('first_project')
+    >>> self.portal.MailHost.messages[0]['to']
+    'secretary@example.com'
+
+    >>> self.portal.MailHost.messages[0]['title']
+    u'Project  has been proposed'
+
+    >>> print self.portal.MailHost.messages[0]['msg']
+    The project  has to be verified.
+    The project can be found here: http://nohost/plone/digibib/projects/first_project
+
+
+Now when a project reaches to 'proposed' state, another mail is sent
+to the daily governance board to inform them.
+First we have to create and populate the governance board:
+
+    >>> self.add_group('daily_governance')
+    >>> for u_id in ['member1', 'member2', 'member3']:
+    ...     self.add_user(u_id, ['daily_governance'])
+
+
+And to propose the project:
+
+    >>> self.portal.MailHost.reset()
+    >>> self.propose_project('first_project')
+    >>> self.portal.MailHost.messages
+    []
+
+The mail is not sent just after the project is proposed. We have to
+wait for a cronjob to call a page that will list all proposed projects:
+
+    >>> from Products.Five.testbrowser import Browser
+    >>> from Products.PloneTestCase import PloneTestCase as ptc
+    >>> browser = Browser()
+    >>> browser.open('%s/login_form/' % self.portal.absolute_url())
+    >>> browser.getControl(name='__ac_name').value = ptc.portal_owner
+    >>> browser.getControl(name='__ac_password').value = ptc.default_password
+    >>> browser.getControl(name='submit').click()
+    >>> browser.open('http://nohost/plone/cron_projects_reminder')
+
+    >>> self.portal.MailHost.messages
+    [{'msg': u'Geachte heer/mevrouw , \n\nHieronder vindt u de lijst met nieuwe projecten die zijn voorgesteld:\n - : http://nohost/plone/digibib/projects/first_project\n\nMet vriendelijke groeten.',
+      'to': 'member1@example.com',
+      'title': u'Weekoverzicht van voorgestelde projecten'},
+     {'msg': u'Geachte heer/mevrouw , \n\nHieronder vindt u de lijst met nieuwe projecten die zijn voorgesteld:\n - : http://nohost/plone/digibib/projects/first_project\n\nMet vriendelijke groeten.',
+      'to': 'member2@example.com',
+      'title': u'Weekoverzicht van voorgestelde projecten'},
+     {'msg': u'Geachte heer/mevrouw , \n\nHieronder vindt u de lijst met nieuwe projecten die zijn voorgesteld:\n - : http://nohost/plone/digibib/projects/first_project\n\nMet vriendelijke groeten.',
+      'to': 'member3@example.com',
+      'title': u'Weekoverzicht van voorgestelde projecten'}]
+
+A project is present only once in a reminder. If there's no project,
+the mail is not sent:
+
+    >>> self.portal.MailHost.reset()
+    >>> browser.open('http://nohost/plone/cron_projects_reminder')
+
+    >>> self.portal.MailHost.messages
+    []

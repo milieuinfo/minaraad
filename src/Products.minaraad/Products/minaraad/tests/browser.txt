@@ -1,0 +1,163 @@
+Functional browser tests
+========================
+
+Begin by setting up our mock browser.
+
+  >>> from Products.Five.testbrowser import Browser
+  >>> from Products.PloneTestCase import setup
+  >>> from Products.minaraad.tests.utils import print_error_log_on_wrong_browser_status
+  >>> self.portal.error_log._ignored_exceptions = ()
+  >>> browser = Browser()
+  >>> browser.handleErrors = False
+  >>> browser.open(portal.absolute_url() + '/login_form')
+  >>> browser.getControl(name='__ac_name').value = setup.portal_owner
+  >>> browser.getControl(name='__ac_password').value = setup.default_password
+  >>> browser.getControl(name='submit').click()
+
+Most of our custom content types cannot be added in the Plone Site
+root, but only in folders.  The tests set up a folder structure, so we
+will use that to add types in the folders where they are expected.
+
+
+Contact persons
+---------------
+
+  >>> browser.open(portal.absolute_url() + '/contactpersonen')
+  >>> browser.getLink(url='createObject?type_name=ContactPerson').click()
+  >>> browser.getControl(name='title').value = 'Captain Planet'
+  >>> browser.getControl(name='name').value = 'Captain Planet'
+  >>> browser.getControl(name='jobtitle').value = 'Guardian of planet earth'
+  >>> browser.getControl(name='department').value = 'Planeteers'
+  >>> browser.getControl(name='email').value = 'captain.planet@example.org'
+  >>> browser.getControl(name='phonenumber').value = '12345'
+  >>> browser.getControl(name='linkedin').value = 'http://linkedin.com/something'
+  >>> browser.getForm(name='edit_form').submit()
+  >>> 'Please correct the indicated errors.' in browser.contents
+  False
+  >>> browser.url
+  'http://nohost/plone/contactpersonen/captain-planet/base_view'
+  >>> captainplanet_uid = portal.contactpersonen['captain-planet'].UID()
+
+  >>> browser.open(portal.absolute_url() + '/contactpersonen')
+  >>> browser.getLink(url='createObject?type_name=ContactPerson').click()
+  >>> browser.getControl(name='title').value = 'Dark Knight'
+  >>> browser.getControl(name='name').value = 'The Batman'
+  >>> browser.getControl(name='jobtitle').value = 'Hero'
+  >>> browser.getControl(name='department').value = ''
+  >>> browser.getControl(name='email').value = 'the.batman@example.org'
+  >>> browser.getControl(name='phonenumber').value = '12345'
+  >>> browser.getControl(name='linkedin').value = 'http://linkedin.com/something'
+  >>> browser.getForm(name='edit_form').submit()
+  >>> 'Please correct the indicated errors.' in browser.contents
+  False
+  >>> browser.url
+  'http://nohost/plone/contactpersonen/dark-knight/base_view'
+  >>> batman_uid = portal.contactpersonen['dark-knight'].UID()
+
+
+Advisories
+----------
+
+  >>> browser.open(portal.absolute_url() + '/adviezen')
+  >>> browser.getLink(url='createObject?type_name=Advisory').click()
+  >>> browser.getControl(name='theme').value = ['23']
+  >>> browser.getControl(name='title').value = 'My Advisory'
+  >>> browser.getControl(name='date_year').value = ['2010']
+  >>> browser.getControl(name='date_month').value = ['02']
+  >>> browser.getControl(name='date_day').value = ['15']
+
+TODO: Not sure how to get the summary field.  You just see 'FCKeditor
+is loading ...'.
+
+  >>> browser.getControl(name='coordinator').value = batman_uid
+  >>> browser.getControl(name='authors:default:list').value = captainplanet_uid
+  >>> browser.getForm(name='edit_form').submit()
+  >>> 'Please correct the indicated errors.' in browser.contents
+  False
+  >>> browser.url
+  'http://nohost/plone/adviezen/my-advisory/base_view'
+
+Check that the contact person is listed:
+
+  >>> 'Captain Planet' in browser.contents
+  True
+
+Check that editing and immediately saving works, especially for the
+theme as there was an Archetypes bug at some point; this does not seem
+to trigger the error though:
+
+  >>> 'Milieuhygiëne en klimaat' in browser.contents
+  True
+  >>> browser.getLink('Edit').click()
+  >>> browser.getControl(name='theme').value
+  ['23']
+  >>> browser.getForm(name='edit_form').submit()
+  >>> browser.url
+  'http://nohost/plone/adviezen/my-advisory/base_view'
+  >>> 'Milieuhygiëne en klimaat' in browser.contents
+  True
+
+
+AnnualReport
+------------
+
+AnnualReport just has a title and an attachment; the attachment is the
+tricky part in a test browser.
+
+  >>> browser.open(portal.absolute_url() + '/jaarverslag')
+  >>> browser.getLink(url='createObject?type_name=AnnualReport').click()
+  >>> browser.getControl(name='title').value = 'My Annual Report'
+  >>> import os.path
+  >>> import Products.minaraad.tests
+  >>> test_dir = os.path.dirname(Products.minaraad.tests.__file__)
+  >>> test_file_name = 'test.pdf'
+  >>> full_path = os.path.join(test_dir, test_file_name)
+  >>> file_control = browser.getControl(name='attachment_file')
+  >>> file_control.mech_control.add_file(file(full_path), 'application/pdf', test_file_name)
+  >>> browser.getForm(name='edit_form').submit()
+  >>> 'Please correct the indicated errors.' in browser.contents
+  False
+  >>> browser.url
+  'http://nohost/plone/jaarverslag/my-annual-report/base_view'
+  >>> test_file_name in browser.contents
+  True
+
+
+Hearing
+-------
+
+  >>> browser.open(portal.absolute_url() + '/hoorzittingen')
+  >>> browser.getLink(url='createObject?type_name=Hearing').click()
+  >>> browser.getControl(name='title').value = 'My Hearing'
+  >>> browser.getControl(name='theme').value = ['24']
+  >>> browser.getControl(name='mot:boolean').value = 'on'  # Does this work?
+  >>> browser.getControl(name='start_time_year').value = ['2010']
+  >>> browser.getControl(name='start_time_month').value = ['02']
+  >>> browser.getControl(name='start_time_day').value = ['04']
+  >>> browser.getControl(name='coordinator').value = captainplanet_uid
+  >>> browser.getControl(name='authors:default:list').value = batman_uid
+  >>> browser.getForm(name='edit_form').submit()
+  >>> print_error_log_on_wrong_browser_status(browser, portal)
+  >>> 'Please correct the indicated errors.' in browser.contents
+  False
+  >>> browser.url
+  'http://nohost/plone/hoorzittingen/my-hearing/base_view'
+  >>> 'Water en zee' in browser.contents  # theme
+  True
+  >>> 'Captain Planet' in browser.contents  # contact
+  True
+
+
+Let's keep a list of our custom content types that can be added and
+that are not (yet) tested:
+
+* MREvent
+* NewsLetter
+* Pressrelease
+* Study
+
+Look at these as well:
+
+* AgendaItem
+* JoinIn
+* NewsItem

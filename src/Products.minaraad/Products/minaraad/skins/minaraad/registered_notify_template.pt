@@ -1,0 +1,23 @@
+<tal:block tal:define="member python:options['member'];
+                       reset python:options.get('reset', None) or here.portal_password_reset.requestReset(member.getId())">
+To: <span tal:replace="python:member.getProperty('email')" />
+From: "<span tal:replace="here/email_from_name" />" <<span tal:replace="here/email_from_address" />>
+Subject: Website Lidmaatschaps Informatie
+Content-Type: text/plain; charset=<span tal:replace="here/portal_properties/site_properties/default_charset" />
+
+<div i18n:domain="minaraad" i18n:translate="mailtemplate_registered_body" tal:omit-tag="">
+    You have been registered as a member of Minaraad website. A password has been generated for you.
+
+    Please activate your account and set your own password by visiting
+
+    <span i18n:name="set_password" tal:replace="python:here.pwreset_constructURL(reset['randomstring'])+'?userid='+member.getUserName()" />
+
+    You must activate your account within <span i18n:name="expirationtime" tal:replace="here/portal_password_reset/getExpirationTimeout" /> hours
+</div>
+
+<div i18n:domain="minaraad" i18n:translate="mailtemplate_signature" tal:omit-tag="">
+    Kind regards,
+
+    MINARAAD
+</div>
+</tal:block>

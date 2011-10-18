@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<object name="AgendaItemProject"
+        meta_type="Factory-based Type Information with dynamic views"
+        xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+        i18n:domain="minaraad.projects">
+ <property name="title"
+           i18n:translate="">AgendaItem</property>
+ <property name="description">
+ </property>
+ <property name="content_icon">folder.gif</property>
+ <property name="content_meta_type">AgendaItemProject</property>
+ <property name="product">minaraad.projects</property>
+ <property name="factory">addAgendaItemProject</property>
+ <property name="immediate_view">edit</property>
+ <property name="global_allow">False</property>
+ <property name="filter_content_types">True</property>
+ <property name="allowed_content_types">
+  <element value="FileAttachment"/>
+ </property>
+ <property name="allow_discussion">False</property>
+ <alias from="(Default)" to="redirect_to_parent"/>
+ <alias from="edit" to="atct_edit"/>
+ <alias from="sharing" to="@@sharing"/>
+ <alias from="view" to="base_view"/>
+ <action title="View"
+         action_id="view"
+         category="object"
+         condition_expr=""
+         url_expr="string:${object_url}"
+         visible="False">
+  <permission value="View"/>
+ </action>
+ <action title="Edit"
+         action_id="edit"
+         category="object"
+         condition_expr=""
+         url_expr="string:${object_url}/edit"
+         visible="True">
+  <permission value="Modify portal content"/>
+ </action>
+</object>

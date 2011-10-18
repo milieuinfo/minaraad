@@ -1,0 +1,124 @@
+Themes
+======
+
+    >>> self.setRoles(('Manager'))
+
+There is currently some predefined themes:
+
+    >>> from Products.minaraad.themes import ThemeManager
+    >>> tm = ThemeManager(self.portal)
+    >>> tm.themes
+    [(21, 'Strategisch milieubeleid'),
+     (22, 'Instrumenten'),
+     (23, 'Milieuhygi\xc3\xabne en klimaat'),
+     (24, 'Water en zee'),
+     (25, 'Open Ruimte'),
+     (26, 'Ruimtelijke ordening en mobiliteit'),
+     (27, 'Participatie en lokale besturen')]
+
+When an object implementing the IThemes interface is modified, we save
+the theme as a 'private' attribute (at least as private as python
+allows it, so it's prefixed with an underscore).
+
+    >>> self.portal.studies.invokeFactory(
+    ...     'Study',
+    ...     id='my_study',
+    ...     title='Study about water',
+    ...     theme=24)
+    'my_study'
+
+We need to trigger the event manually:
+
+    >>> from Products.minaraad.events import save_theme_name
+    >>> save_theme_name(self.portal.studies.my_study, None)
+
+    >>> self.portal.studies.my_study.getThemeName()
+    'Water en zee'
+
+Now if we delete the theme, we can still view the old name:
+
+    >>> tm.deleteThemes([24])
+    >>> tm.themes
+    [(21, 'Strategisch milieubeleid'),
+     (22, 'Instrumenten'),
+     (23, 'Milieuhygi\xc3\xabne en klimaat'),
+     (25, 'Open Ruimte'),
+     (26, 'Ruimtelijke ordening en mobiliteit'),
+     (27, 'Participatie en lokale besturen')]
+
+    >>> self.portal.studies.my_study.getThemeName()
+    'Water en zee'
+
+Subscriptions and email_themes
+------------------------------
+
+Objects using the theme system have an extra field called
+'email_theme'. This field is used so people who subscribed other
+themes will subscribe this object, even if it's not the principle
+theme.
+
+First we need some subscribers:
+
+    >>> from Products.minaraad import subscriptions
+    >>> sm = subscriptions.SubscriptionManager(self.portal)
+
+    >>> class FakeSubscription(object):
+    ...     pass
+
+    >>> f = FakeSubscription()
+    >>> f.id = 'Study'
+    >>> f.email = 1
+
+    >>> for u_id in ['first', 'second', 'third']:
+    ...     self.portal.portal_membership.addMember(
+    ...         u_id,
+    ...         'secret',
+    ...         [],
+    ...         [],
+    ...         {'email': '%s@example.com' % u_id})
+    ...     member = self.portal.portal_membership.getMemberById(u_id)
+    ...     sm._setSubscriptions([f], member)
+
+We check the subscriptions worked as expected:
+
+    >>> from pprint import pprint
+    >>> for u_id in ['first', 'second']:
+    ...     member = self.portal.portal_membership.getMemberById(u_id)
+    ...     pprint(member.getProperty('subscriptions', []))
+    ('Study/1',)
+    ('Study/1',)
+
+Now we'll set an existing theme to our study:
+
+    >>> self.portal.studies.my_study.setTheme(21)
+
+Currently, none of the user subscribed to this theme, so calling the
+subscriber export should return an empty CSV file:
+
+    >>> view = self.portal.studies.my_study.restrictedTraverse('export_subscribers')
+    >>> view.request['form.button.ExportEmail'] = True
+    >>> print view()
+    "Aanhef","Voornaam","Achternaam","Organisatie","Functie","Straat","Huisnummer","Bus","Postcode","Woonplaats","Land","Ander land","Telefoonnummer","E-mail"
+    <BLANKLINE>
+
+Now, our user will subscribe to some themes:
+
+    >>> sm._setThemes([21, 22], self.portal.portal_membership.getMemberById('first'))
+    >>> sm._setThemes([26, 27], self.portal.portal_membership.getMemberById('second'))
+
+Now the view should show that the first user subscribed to the study:
+
+    >>> print view()
+    "Aanhef","Voornaam","Achternaam","Organisatie","Functie","Straat","Huisnummer","Bus","Postcode","Woonplaats","Land","Ander land","Telefoonnummer","E-mail"
+    "","","","","","","","","","","","","","first@example.com"
+    <BLANKLINE>
+
+Now if we say that the study should also be sended by mail to people
+who subscribed themes 25 and 26, our second user will appear in the export:
+
+    >>> self.portal.studies.my_study.setEmail_themes(['25', '26'])
+    >>> print view()
+    "Aanhef","Voornaam","Achternaam","Organisatie","Functie","Straat","Huisnummer","Bus","Postcode","Woonplaats","Land","Ander land","Telefoonnummer","E-mail"
+    "","","","","","","","","","","","","","first@example.com"
+    "","","","","","","","","","","","","","second@example.com"
+    <BLANKLINE>

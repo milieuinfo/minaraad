@@ -1,0 +1,60 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="minaraad">
+  <body>
+    <div metal:fill-slot="main">
+     <h1 class="documentFirstHeading">
+       <span tal:replace="context/Title" /> <span tal:replace="view/display_date" />
+      </h1>
+
+      <tal:block tal:define="items view/find_items_and_times">
+        <strong>Agendapunten</strong>
+
+        <table class="listing nosort"
+               id="meeting_order"
+               tal:condition="items">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Start</th>
+              <th>End</th>
+              <th />
+              <th />
+            </tr>
+          </thead>
+          <tbody>
+            <tal:block tal:repeat="item items">
+              <tr tal:attributes="id item/obj/UID">
+                <td tal:content="item/obj/Title" />
+                <td tal:content="item/start" />
+                <td tal:content="item/end" />
+                <td>
+                  <a tal:condition="not: repeat/item/end"
+                     tal:attributes="href python: '%s/ordering?uid=%s&down=1' % (context.absolute_url(), item['obj'].UID())">
+                    <img src="down.gif" />
+                  </a>
+                </td>
+                <td>
+                  <a tal:condition="not: repeat/item/start"
+                     tal:attributes="href python: '%s/ordering?uid=%s&up=1' % (context.absolute_url(), item['obj'].UID())">
+                    <img src="up.gif" />
+                  </a>
+                </td>
+              </tr>
+            </tal:block>
+          </tbody>
+        </table>
+
+        <p tal:condition="not: items"
+           i18n:translate="label_no_agenda_items">
+          There is no agenda item yet for this meeting.
+        </p>
+      </tal:block>
+
+      <div style="clear: both;">
+        &nbsp;
+      </div>
+    </div>
+  </body>
+</html>

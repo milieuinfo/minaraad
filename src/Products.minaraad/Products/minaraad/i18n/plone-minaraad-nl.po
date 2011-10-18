@@ -1,0 +1,127 @@
+# ArchGenXML generated POT File
+# Mirella van Teulingen <m.van.teulingen@zestsoftware.nl>, 2006.
+# Maurits van Rees <m.van.rees@zestsoftware.nl>, 2008.
+msgid ""
+msgstr ""
+"Project-Id-Version: minaraad\n"
+"POT-Creation-Date: Fri Feb 10 09:04:01 2006\n"
+"PO-Revision-Date: 2008-12-03 17:07+0100\n"
+"Last-Translator: Maurits van Rees <m.van.rees@zestsoftware.nl>\n"
+"Language-Team: Zest Software <info@zestsoftware.nl>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: nl\n"
+"Language-Name: Nederlands\n"
+"Preferred-Encodings: latin1 utf-8\n"
+"Domain: plone\n"
+"X-Generator: Emacs PO mode, version 2.01\n"
+"X-Is-Fallback-For: nl-be\n"
+
+# START of default PloneTranslations msgids that we want to override.
+msgid "date_format_long"
+msgstr "${d} ${b} ${Y} ${H}:${M}"
+
+msgid "date_format_short"
+msgstr "${d} ${b} ${Y}"
+
+msgid "Manager"
+msgstr "Site admin"
+
+msgid "Reviewer"
+msgstr "Manager"
+# END of default PloneTranslations msgids that we want to override.
+
+msgid "Advisory"
+msgstr "Advies"
+
+msgid "Hearing"
+msgstr "Hoorzitting"
+
+msgid "Study"
+msgstr "Studie"
+
+msgid "NewsLetter"
+msgstr "Nieuwsbrief"
+
+msgid "ContactPerson"
+msgstr "Contact persoon"
+
+msgid "AnnualReport"
+msgstr "Jaarverslag"
+
+msgid "Pressrelease"
+msgstr "Persbericht"
+
+msgid "MREvent"
+msgstr "Evenement"
+
+msgid "Themes"
+msgstr "Werkvelden"
+
+msgid "AgendaItem"
+msgstr "Agendapunt"
+
+msgid "Subscriptions"
+msgstr "Abonnementen"
+
+msgid "Author"
+msgstr "Auteur"
+
+msgid "Council Member"
+msgstr "Raadslid"
+
+msgid "Pending"
+msgstr "In behandeling"
+
+msgid "advisory_listing_view"
+msgstr "Adviezen overzicht"
+
+msgid "hearing_listing_view"
+msgstr "Hoorzittingen overzicht"
+
+msgid "newsletter_listing_view"
+msgstr "Nieuwsbrieven overzicht"
+
+msgid "pressrelease_listing_view"
+msgstr "Persberichten overzicht"
+
+msgid "minaraad themes"
+msgstr "minaraad werkvelden"
+
+msgid "subscribers overview"
+msgstr "Abonnee overzicht"
+
+msgid "Export Subscribers"
+msgstr "Exporteer naar Excel"
+
+msgid "restricted publish"
+msgstr "Besloten publiceren"
+
+msgid "restricted"
+msgstr "Besloten"
+
+msgid "Pending from private"
+msgstr "In behandeling"
+
+msgid "Pending from revisioning"
+msgstr "In behandeling van revisie"
+
+msgid "revise"
+msgstr "Reviseren"
+
+msgid "study_listing_view"
+msgstr "Studies overzicht"
+
+msgid "annualreport_listing_view"
+msgstr "Jaarverslagen overzicht"
+
+msgid "mrevent_listing_view"
+msgstr "Evenementen overzicht"
+
+msgid "mina_listing"
+msgstr "Map overzicht"
+
+msgid "list_contact_persons"
+msgstr "Contactpersonen overzicht"

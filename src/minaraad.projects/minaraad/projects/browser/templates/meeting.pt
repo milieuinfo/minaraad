@@ -1,0 +1,92 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="minaraad.projects">
+  <body>
+    <div metal:fill-slot="main">
+     <h1 class="documentFirstHeading">
+       <span tal:replace="context/getResponsible_group" />
+       <tal:block tal:define="d context/getStart_time">
+          <metal:block use-macro="context/display_macros/macros/date" />
+        </tal:block>
+      </h1>
+
+      <div class="rightWidget widget"
+           tal:define="files context/get_file_brains|nothing"
+           tal:condition="files">
+        <div class="title" i18n:translate="label_documents">Documents</div>
+        <div class="body">
+          <div tal:repeat="attachment files"
+               class="list-attachments">
+            <metal:block use-macro="context/filemacro/macros/attachment_view" />
+          </div>
+        </div>
+      </div>
+
+      <tal:block tal:define="location context/get_saved_location|nothing"
+                 tal:condition="python: location.get('saved', 0)">
+        <strong i18n:translate="label_location">
+          Location
+        </strong>
+        <p>
+          <span tal:replace="location/address" />
+          <span tal:replace="location/postalCode" />
+          <span tal:replace="location/city" />
+          <tal:block tal:define="room_number context/getRoomNumber|nothing"
+             tal:condition="room_number">
+            <br />Lokaal: <span tal:replace="room_number" />
+          </tal:block>
+        </p>
+      </tal:block>
+
+      <p tal:replace="structure context/getBody" />
+
+      <div tal:define="items context/find_items_and_times">
+        <strong>Agendapunten</strong>
+
+        <table id="meeting_view" tal:condition="items">
+          <tbody>
+            <tal:block tal:repeat="item items">
+              <tr tal:attributes="id python: item[0].UID">
+                <td>
+                  <ul class="AgendaItems">
+                    <metal:block use-macro="context/display_macros/macros/agendaItem" />
+                  </ul>
+                </td>
+                <td tal:define="obj python: item[0].getObject()"
+                    tal:condition="obj/can_be_edited|nothing"
+                    class="draggable">
+                </td>
+              </tr>
+            </tal:block>
+          </tbody>
+        </table>
+
+        <p tal:condition="not: items"
+           i18n:translate="label_no_agenda_items">
+          There is no agenda item yet for this meeting.
+        </p>
+      </div>
+
+      <p class="right"
+         tal:define="pdf context/get_pdf|nothing"
+         tal:condition="python: pdf">
+        <a href="get_all_pdf"><strong i18n:translate="label_download_full_dossier"
+                                      >Download full dossier</strong></a>
+      </p>
+      <div style="clear: both;">
+        &nbsp;
+      </div>
+
+      <tal:block tal:define="field python: context.schema['participants'];
+                             accessor python: field.getAccessor(context);
+                             widget nocall: field/widget;">
+        <metal:block use-macro="here/participants_widget/macros/view" />
+      </tal:block>
+
+      <div style="clear: both;">
+        &nbsp;
+      </div>
+    </div>
+  </body>
+</html>

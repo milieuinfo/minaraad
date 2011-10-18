@@ -1,0 +1,78 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="plone">
+
+  <metal:block fill-slot="top_slot"
+               tal:define="dummy python:request.set('disable_border', 1)" />
+
+  <body>
+
+    <div metal:fill-slot="main"
+         tal:define="results python:container.portal_catalog.searchResults(portal_type=['Hearing', 'Advisory',
+                         'Study', 'AnnualReport', 'Pressrelease', 'NewsLetter', 'Event', 'MREvent', 'Document'],
+                         sort_on='effective', sort_order='reverse');
+                     Batch python:modules['Products.CMFPlone'].Batch;
+                     DateTime python:modules['DateTime'].DateTime;
+                     b_start python:request.get('b_start',0);
+                     portal_default_page portal/@@default_page/getDefaultPage;
+                     front_page_url string:${portal_url}/${portal_default_page}">
+
+      <h1 i18n:translate="heading_recently_modified">
+        Modified items
+      </h1>
+
+      <div i18n:translate="description_recently_modified" class="documentDescription">
+        All recently modified items, latest first.
+      </div>
+
+      <form name="searchresults" action="" method="post" tal:condition="results"
+            tal:define="batch python:Batch(results, 20, int(b_start), orphan=1)">
+
+        <tal:results tal:repeat="result batch">
+
+          <dl tal:condition="python:result.getURL() != front_page_url">
+            <dt tal:define="item_wf_state result/review_state;
+                            item_wf_state_class python:'state-' + normalizeString(item_wf_state);">
+              <span tal:attributes="class python: 'visualIcon contenttype-' + normalizeString(result.portal_type) + ' visualIconPadding'">
+                <a href="/view"
+                   tal:content="result/pretty_title_or_id"
+                   tal:attributes="href result/getURL;
+                                   class string:$item_wf_state_class">
+                  Title
+                </a>
+              </span>
+
+              <span class="discreet">
+                laatste wijziging:
+                <span tal:content="python:toLocalizedTime(result.ModificationDate, long_format=0)"
+                      tal:omit-tag="">date</span>
+              </span>
+
+            </dt>
+
+            <dd tal:content="result/Description">
+              Description
+            </dd>
+          </dl>
+
+        </tal:results>
+
+        <div class="spacer">
+          &nbsp;
+        </div>
+
+        <!-- Navigation -->
+        <div metal:use-macro="here/batch_macros/macros/navigation" />
+
+      </form>
+
+      <p tal:condition="not: results" i18n:translate="text_no_new_modified_items">
+        No items have been modified.
+      </p>
+
+    </div>
+
+  </body>
+
+</html>

@@ -1,0 +1,36 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="minaraad.projects">
+  <body>
+    <div metal:fill-slot="main">
+     <h1 class="documentFirstHeading"
+         i18n:translate="heading_digibib_organisations">
+       Digibib - Organisations
+     </h1>
+
+     <div class="widget wide">
+       <div class="title"
+            i18n:translate="label_heading_organisations">
+         Organisations
+       </div>
+       <div class="body">
+         <ul tal:define="organisations view/get_organisations">
+           <tal:block tal:repeat="organisation organisations">
+             <li tal:define="oddrow repeat/organisation/odd"
+                 tal:attributes="class python: oddrow and 'odd' or 'even'">
+               <a tal:attributes="href organisation/absolute_url">
+                 <span tal:replace="organisation/Title" />
+               </a>
+             </li>
+           </tal:block>
+         </ul>
+       </div>
+     </div>
+
+     <div style="clear: both;">
+       &nbsp;
+     </div>
+    </div>
+  </body>
+</html>

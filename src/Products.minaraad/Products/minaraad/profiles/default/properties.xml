@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<site>
+ <property name="selectable_views" type="lines">
+  <element value="folder_listing"/>
+  <element value="news_listing"/>
+ </property>
+ <property name="validate_email" type="boolean">True</property>
+</site>

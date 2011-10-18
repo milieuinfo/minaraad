@@ -1,0 +1,175 @@
+<html xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      i18n:domain="minaraad">
+    <body>
+      <!-- Macro to localize a date.
+           Expects a DateTime variable called 'd'
+           Display: DD-MM-YYYY.
+      -->
+      <metal:block metal:define-macro="date"><tal:block define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;" tal:replace="python:d and toLocalizedTime(d)" /></metal:block>
+
+      <!-- Macro to localize a time.
+           Expects a DateTime variable called 't'
+           Display: XX:XX
+      -->
+      <metal:block metal:define-macro="time"><tal:block tal:replace="python:t and t.TimeMinutes()" /></metal:block>
+
+      <!-- Macro to display start/end time an an agenda item.
+           Expects a tuple (AgendaItem, start, end) called item.
+           Display: XX:XX - XX:XXu
+      -->
+      <metal:block metal:define-macro="agendaItemTimes">
+        <tal:block tal:define="t python: item[1]">
+          <metal:block use-macro="context/display_macros/macros/time" />:
+        </tal:block>
+        <tal:block tal:define="t python: item[2]">
+          <metal:block use-macro="context/display_macros/macros/time" />u
+        </tal:block>
+      </metal:block>
+
+      <!-- Macro to display start/end time an an agenda item.
+           Expects a tuple (AgendaItem, start, end) called item.
+           Display: XX:XX tot XX:XXu
+      -->
+      <metal:block metal:define-macro="agendaItemTimesFull">
+        <tal:block tal:define="t python: item[1]">
+          <metal:block use-macro="context/display_macros/macros/time" /> tot
+        </tal:block>
+        <tal:block tal:define="t python: item[2]">
+          <metal:block use-macro="context/display_macros/macros/time" />u
+        </tal:block>
+      </metal:block>
+
+
+      <!-- Macro to display a meeting times.
+           Expects a baseMeeting variable called 'meeting'
+           Displays:
+           <p>DD/MM/YYYY</p>
+           <p>XX:XX - XX:XXu</p>
+      -->
+      <metal:block metal:define-macro="meetingTimes">
+      <tal:block condition="meeting/getStart_time|nothing">
+        <p class="meeting_times"
+           tal:define="d meeting/getStart_time">
+          <metal:block use-macro="context/display_macros/macros/date" />
+        </p>
+        <p class="meeting_times">
+          <tal:block tal:define="t meeting/getStart_time">
+            <metal:block use-macro="context/display_macros/macros/time" /> :
+          </tal:block>
+          <tal:block tal:define="t meeting/get_end_time|nothing">
+            <metal:block use-macro="context/display_macros/macros/time" />u
+          </tal:block>
+        </p>
+      </tal:block>
+      </metal:block>
+
+      <!-- Display the agenda attachments. -->
+      <metal:block metal:define-macro="agenda_attachments"
+                   tal:define="current_path python:'/'.join(obj.getPhysicalPath());
+                               attachments python:context.portal_catalog.searchResults(portal_type='FileAttachment',
+                               path=current_path,)">
+
+        <tal:attachment repeat="attachment attachments">
+          <div class="list-attachments"
+               tal:define="oddrow repeat/attachment/odd"
+               tal:attributes="class python:'list-attachments %s' % (oddrow and 'odd' or 'even')">
+
+          <metal:block use-macro="context/filemacro/macros/attachment_view" />
+          <tal:block tal:define="mtool attachment/portal_membership|nothing"
+                     tal:condition="python: mtool and mtool.checkPermission('Modify portal content', attachment)">
+            <br />
+            <tal:block tal:define="published attachment/published|nothing"
+                       tal:condition="python: published is not None">
+              <input type="checkbox"
+                     class="attachment_publish_checkbox"
+                     tal:attributes="name python: 'attachment_%s' % attachment.UID;
+                                     checked python: published and 'Checked'" />
+            </tal:block>
+            <a tal:attributes="href python: '%s/edit' % attachment.getURL()">
+              <img src="edit.gif" />
+            </a>
+            <a tal:attributes="href python: '%s/delete_confirmation' % attachment.getURL()">
+              <img src="delete_icon.gif" />
+            </a>
+          </tal:block>
+          </div>
+        </tal:attachment>
+      </metal:block>
+
+      <!-- Macro to display an agendaItem.
+           Expects a tuple (AgendaItem, start, end) called item. -->
+      <metal:block metal:define-macro="agendaItem">
+        <li tal:define="obj python: item[0].getObject()">
+          <p tal:define="project obj/getProject|nothing">
+            <strong>
+              <a tal:attributes="href project/absolute_url"
+                 tal:content="obj/Title"
+                 tal:condition="python: project" />
+              <span tal:condition="python: not project"
+                    tal:replace="obj/Title" />
+              <a tal:condition="obj/can_be_edited|nothing"
+                 tal:attributes="href python: '%s/edit' % obj.absolute_url()">
+                <img src="edit.gif" />
+              </a>
+              <a tal:condition="obj/can_be_edited|nothing"
+                 tal:attributes="href python: '%s/delete_confirmation' % obj.absolute_url()">
+                <img src="delete_icon.gif" />
+              </a>
+            </strong>
+          </p>
+          <p tal:define="organisation obj/getOrganisation|nothing;
+                         speaker obj/getSpeaker|nothing"
+             tal:condition="python: speaker or organisation">
+            <strong>Spreker(s): </strong>
+            <span tal:replace="speaker" /><tal:block tal:condition="python: speaker and organisation">, </tal:block><span tal:replace="organisation" />
+          </p>
+          <p tal:define="summary obj/getSummary|nothing"
+             tal:content="structure summary"
+             tal:condition="summary" />
+          <p>
+            <strong>Tijd:</strong>
+            <span class="agendaItemTimes">
+              <metal:block use-macro="context/display_macros/macros/agendaItemTimesFull" />
+            </span>
+          </p>
+
+          <div metal:use-macro="context/display_macros/macros/agenda_attachments" />
+          <a tal:condition="obj/can_be_edited|nothing"
+             tal:attributes="href python: '%s/createObject?type_name=FileAttachment' % obj.absolute_url()">
+            <img src="add_icon.gif" /> Bijlage toevoegen.
+          </a>
+        </li>
+      </metal:block>
+
+      <!-- Display the contacts.
+           Expects a list of contact brains called contacts.
+           You can also define the labels to replace Projectcoordinator
+           and Co-auteur by defining variables first_label and second_label.
+      -->
+      <metal:block metal:define-macro="contacts">
+        <div tal:repeat="contact contacts">
+          <tal:block tal:define="index repeat/contact/index">
+            <strong tal:condition="python: index == 0"
+                    tal:define="label first_label|nothing">
+              <tal:block tal:condition="not: label">
+                Projectcoordinator
+              </tal:block>
+              <span tal:condition="label"
+                    tal:replace="label" />
+            </strong>
+            <strong tal:condition="python: index == 1"
+                    tal:define="label second_label|nothing">
+              <tal:block tal:condition="not: label">
+                Co-auteur
+              </tal:block>
+              <span tal:condition="label"
+                    tal:replace="label" />
+            </strong>
+          </tal:block>
+          <metal:block use-macro="context/contactperson_view/macros/contactdetails" />
+        </div>
+      </metal:block>
+
+    </body>
+</html>

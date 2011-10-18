@@ -1,0 +1,145 @@
+.. -*-doctest-*-
+
+Email subscription tests
+========================
+
+
+Initial setup
+-------------
+
+First some mock setup stuff::
+
+    >>> from pprint import pprint
+    >>> class Mock(object):
+    ...     pass
+    >>> class MockMembershipTool(object):
+    ...     members = {}
+    ...     authenticated = None
+    ...     def getMemberById(self, id):
+    ...         return self.members[id]
+    ...     def getAuthenticatedMember(self):
+    ...         return self.members[self.authenticated]
+    ...     def listMembers(self):
+    ...         return self.members.values()
+    >>> class MockPropertysheet(object):
+    ...     properties = {}
+    ...     def getProperty(self, id):
+    ...         return self.properties[id]
+    ...     def manage_changeProperties(self, request, **kw):
+    ...         self.properties.update(kw)
+    >>> portal = Mock()
+    >>> portal.portal_membership = MockMembershipTool()
+    >>> portal.portal_properties = Mock()
+    >>> minaraad_properties = MockPropertysheet()
+    >>> minaraad_properties.properties = {'themes': tuple()}
+    >>> portal.portal_properties.minaraad_properties = minaraad_properties
+    >>> class MockMember(object):
+    ...     properties = {}
+    ...     def __init__(self, id):
+    ...         self.id = id
+    ...     def getId(self):
+    ...         return self.id
+    ...     def getProperty(self, id, default=None):
+    ...         prop = self.properties.get(id, default)
+    ...         if isinstance(prop, list):
+    ...             prop = tuple(prop)
+    ...         return prop
+    ...     def setProperties(self, **kw):
+    ...         self.properties.update(kw)
+    ...     def setMemberProperties(self, mapping):
+    ...         self.properties.update(mapping)
+    ...     def __repr__(self):
+    ...         return '<Member %s>' % self.id
+    >>> reinout = MockMember('reinout')
+    >>> portal.portal_membership.members['reinout'] = reinout
+
+Now to test and setup some themes::
+
+    >>> from Products.minaraad.themes import ThemeManager
+    >>> tm = ThemeManager(portal)
+    >>> tm.themes
+    []
+    >>> tm.addTheme('shrubbery')
+    >>> tm.addTheme('oaks')
+    >>> tm.addTheme('herring')
+    >>> tm.themes
+    [(1, 'shrubbery'), (2, 'oaks'), (3, 'herring')]
+
+
+Subscribing and querying
+------------------------
+
+We'll try out the subscription process as user 'reinout'.
+
+    >>> portal.portal_membership.authenticated = 'reinout'
+    >>> from Products.minaraad import subscriptions
+    >>> sm = subscriptions.SubscriptionManager(portal)
+    >>> pprint(sm._getSubscriptions())
+    [<Subscription: id=Advisory; False>,
+     <Subscription: id=AnnualReport; False>,
+     <Subscription: id=Hearing; False>,
+     <Subscription: id=MREvent; False>,
+     <Subscription: id=NewsLetter; False>,
+     <Subscription: id=Pressrelease; False>,
+     <Subscription: id=Study; False>]
+    >>> sm.themes
+    ()
+
+We subscribe to the annual reports by email.
+
+    >>> sm.subscribe('AnnualReport', email=True)
+    >>> pprint(sm._getSubscriptions())
+    [<Subscription: id=Advisory; False>,
+     <Subscription: id=AnnualReport; True>,
+     <Subscription: id=Hearing; False>,
+     <Subscription: id=MREvent; False>,
+     <Subscription: id=NewsLetter; False>,
+     <Subscription: id=Pressrelease; False>,
+     <Subscription: id=Study; False>]
+    >>> pprint(reinout.properties)
+    {'subscriptions': ('Advisory/0',
+                       'AnnualReport/1',
+                       'Hearing/0',
+                       'MREvent/0',
+                       'NewsLetter/0',
+                       'Pressrelease/0',
+                       'Study/0')}
+    >>> sm.themes
+    ()
+
+We check if we're actually subscribed::
+
+    >>> sm.emailSubscribers('AnnualReport')
+    [<Member reinout>]
+
+If we subscribe to something that is filtered by theme, like studies, we won't
+actually be found as a subscriber until our list of subscribed themes matches
+the theme of the item that is requested::
+
+    >>> sm.subscribe('Study', email=True)
+    >>> pprint(sm._getSubscriptions())
+    [<Subscription: id=Advisory; False>,
+     <Subscription: id=AnnualReport; True>,
+     <Subscription: id=Hearing; False>,
+     <Subscription: id=MREvent; False>,
+     <Subscription: id=NewsLetter; False>,
+     <Subscription: id=Pressrelease; False>,
+     <Subscription: id=Study; True>]
+    >>> pprint(reinout.properties)
+    {'subscriptions': ('Advisory/0',
+                       'AnnualReport/1',
+                       'Hearing/0',
+                       'MREvent/0',
+                       'NewsLetter/0',
+                       'Pressrelease/0',
+                       'Study/1')}
+    >>> sm.themes
+    ()
+    >>> sm.emailSubscribers('Study', themes=['3'])
+    []
+
+If we subscribe to the theme, too, we get the study.
+
+    >>> sm.themes = ['3']
+    >>> sm.emailSubscribers('Study', themes=['3'])
+    [<Member reinout>]

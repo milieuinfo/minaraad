@@ -1,0 +1,222 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="minaraad">
+
+  <metal:block metal:fill-slot="top_slot"
+               tal:define="dummy python:request.set('disable_border',1)" />
+  <metal:block fill-slot="complete_right_slot" />
+
+
+  <body>
+
+    <div metal:fill-slot="main">
+
+      <div metal:use-macro="here/global_statusmessage/macros/portal_message">
+        Portal status message
+      </div>
+
+      <div class="portalMessage"
+           tal:condition="view/message"
+           tal:content="view/message" />
+
+
+      <tal:no_duplicates condition="not:view/duplicates">
+        <h1>Geen dubbele gebruikers</h1>
+        <p>
+          Er zijn geen gebruikers meer gevonden met hetzelfde
+          e-mailadres als u gebruikt.  Bedankt voor uw medewerking.
+        </p>
+
+        <p>
+          Ga nu naar <a href="" tal:attributes="href
+          string:${portal_url}/plone_memberprefs_panel">
+          voorkeuren</a>.  Daar kan u uw persoonlijke gegevens en
+          abonnementen verfijnen.
+        </p>
+
+      </tal:no_duplicates>
+
+      <tal:duplicates condition="view/duplicates">
+        <h1>Dubbele gebruikers</h1>
+        <p>
+          Er zijn meerdere gebruikers gevonden met hetzelfde e-mailadres als
+          u gebruikt.  Waarschijnlijk zijn dit dus door u aangemaakte
+          accounts die niet meer nodig zijn.  Hieronder kunt u een account
+          verwijderen.
+        </p>
+
+        <table class="duplicateforms"
+               tal:define="subscription_view nocall:context/@@subscriptions_config.html">
+          <tr>
+            <tal:duplicates tal:repeat="member view/duplicates">
+              <td
+                  tal:define="is_last repeat/member/end"
+                  tal:attributes="class python:is_last and ' ' or 'first_columns'">
+                <h2>
+                  <span tal:omit-tag=""
+                        i18n:domain="plone"
+                        i18n:translate="label_login_name">Login Name</span>:
+                  <tal:block content="member/getId" />
+                </h2>
+
+                <!-- *** dates *** -->
+                <p>
+                  Laatst gewijzigd:
+                  <span tal:content="python:toLocalizedTime(member.getProperty('last_modification_date', ''))" />
+                </p>
+                <p>
+                  Laatst ingelogd:
+                  <span tal:content="python:toLocalizedTime(member.getProperty('login_time', ''))" />
+                </p>
+                  	
+                <!-- *** name *** -->
+                <p tal:define="gender python:member.getProperty('gender', '');
+                               firstname python:member.getProperty('firstname', '');
+                               fullname python:member.getProperty('fullname', '');">
+                  <tal:block content="gender" />
+                  <tal:block content="firstname" />
+                  <tal:block content="fullname" />
+                </p>
+
+                <!-- *** company *** -->
+                <p tal:define="jobtitle python:member.getProperty('jobtitle', '');
+                               company python:member.getProperty('company', '');">
+                  <tal:block
+                      condition="jobtitle">
+                    <tal:block
+                        content="jobtitle" />,
+                  </tal:block>
+                  <tal:block content="company" />
+                </p>
+
+                <!-- *** address *** -->
+                <p
+                    tal:define="street python:member.getProperty('street', '');
+                                housenumber python:member.getProperty('housenumber', '');
+                                bus python:member.getProperty('bus', '');
+                                zipcode python:member.getProperty('zipcode', '');
+                                city python:member.getProperty('city', '');
+                                country python:member.getProperty('country', '');">
+                  <tal:block content="street" />
+                  <tal:block content="housenumber" />
+                  <tal:block content="bus" />
+                  <br />
+                  <tal:block content="zipcode" />
+                  <tal:block content="city" />
+                  <br />
+                  <tal:block content="country" />
+                </p>
+
+
+                <!-- *** contact *** -->
+                <p tal:define="phonenumber python:member.getProperty('phonenumber', '');
+                               email python:member.getProperty('email','');">
+                  <tal:block content="phonenumber" />
+                  <br />
+                  <tal:block content="email" />
+                </p>
+
+
+              </td>
+            </tal:duplicates>
+          </tr>
+          <tr>
+            <tal:duplicates tal:repeat="member view/duplicates">
+              <td
+                  tal:define="is_last repeat/member/end"
+                  tal:attributes="class python:is_last and ' ' or 'first_columns'">
+
+                <h2>Abonnementen</h2>
+                <table class="subscriptions_in_duplicates">
+                  <tr class="subscriptions-title">
+                    <th
+                        i18n:translate="title_subscription">Subscriptions</th>
+                    <th i18n:translate="title_email">By E-mail</th>
+                    <th i18n:translate="title_post">By Mail</th>
+                  </tr>
+                  <tal:block tal:repeat="subscription python:subscription_view.subscriptions(member.getId())">
+                    <tr class="field">
+                      <td class="subscriptiontitles">
+                        <span tal:content="string:${subscription/Title}"
+                              i18n:translate=""
+                              tal:omit-tag="" />
+                      </td>
+                      <td class="checkbox-centered">
+                        <img
+                            alt="Ingeschreven per e-mail"
+                            tal:condition="python:subscription['can_email'] and subscription['subscribed_email']"
+                            tal:attributes="src string:${portal_url}/confirm_icon.gif" />
+                      </td>
+                      <td class="checkbox-centered">
+                        <img
+                            alt="Ingeschreven voor post"
+                            tal:condition="python:subscription['can_post'] and subscription['subscribed_post']"
+                            tal:attributes="src string:${portal_url}/confirm_icon.gif" />
+                      </td>
+                    </tr>
+                  </tal:block>
+
+                </table>
+              </td>
+            </tal:duplicates>
+          </tr>
+           <tr>
+
+             <tal:duplicates tal:repeat="member view/duplicates">
+               <td
+                   tal:define="is_last repeat/member/end"
+                   tal:attributes="class python:is_last and ' ' or 'first_columns'">
+
+                 <h2 class="themeheader">Werkvelden</h2>
+                 <table>
+                   <tr tal:repeat="theme python:subscription_view.themes(member.getId())">
+                     <td class="themeduplicate"
+                        tal:content="theme/title" />
+                     <td>
+                       <img
+                           alt="Ingeschreven"
+                           tal:condition="theme/subscribed"
+                           tal:attributes="src string:${portal_url}/confirm_icon.gif" />
+                       &nbsp;
+                     </td>
+                   </tr>
+                 </table>
+               </td>
+             </tal:duplicates>
+           </tr>
+          <tr>
+            <tal:duplicates tal:repeat="member view/duplicates">
+              <td class="button-centered"
+                  tal:define="is_last repeat/member/end"
+                  tal:attributes="class python:is_last and 'button-centered' or 'button-centered first_columns'">
+                <form
+                    action="@@email_duplicates"
+                    name="email_duplicates"
+                    method="post"
+                    enctype="multipart/form-data"
+                    class="enableUnloadProtection duplicateform">
+                  <div class="formControls">
+                    <input type="hidden"
+                           name="userid"
+                           value="username"
+                           tal:attributes="value member/getId" />
+                    <input class="context"
+                           type="submit"
+                           name="form.button.DeleteMember"
+                           value="Verwijder deze gebruiker"
+                           tal:attributes="tabindex tabindex/next;" />
+                  </div>
+                  <input type="hidden" name="form.submitted" value="1" />
+                </form>
+
+              </td>
+            </tal:duplicates>
+          </tr>
+
+        </table>
+      </tal:duplicates>
+    </div>
+
+  </body>
+</html>

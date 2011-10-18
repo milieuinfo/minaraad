@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<rolemap>
+  <roles>
+    <role name="Author"/>
+    <role name="Council Member"/>
+  </roles>
+  <permissions>
+    <permission name="Add portal content" acquire="True">
+      <role name="Manager"/>
+      <role name="Owner"/>
+      <role name="Contributor"/>
+      <role name="Author"/>
+    </permission>
+    <permission name="ATContentTypes: Add File" acquire="True">
+      <role name="Author"/>
+    </permission>
+    <permission name="ATContentTypes: Add Folder" acquire="True">
+      <role name="Author"/>
+    </permission>
+    <permission name="Delete objects" acquire="True">
+      <role name="Manager"/>
+      <role name="Owner"/>
+      <role name="Editor"/>
+    </permission>
+    <permission name="Add portal folders" acquire="True">
+      <role name="Manager"/>
+      <role name="Owner"/>
+      <role name="Contributor"/>
+      <role name="Author"/>
+    </permission>
+    <permission name="List folder contents" acquire="True">
+      <role name="Manager"/>
+      <role name="Owner"/>
+      <role name="Editor" />
+      <role name="Contributor" />
+      <role name="Author"/>
+    </permission>
+    <permission name="Manage properties" acquire="True">
+      <role name="Manager"/>
+      <role name="Owner"/>
+      <role name="Editor"/>
+      <role name="Author"/>
+    </permission>
+    <permission name="Undo changes" acquire="True">
+      <role name="Manager"/>
+      <role name="Owner"/>
+    </permission>
+    <permission name="Add portal member" acquire="True">
+      <role name="Manager"/>
+      <role name="Anonymous"/>
+    </permission>
+    <permission name="minaraad: View Hearing Attendees" acquire="True">
+      <role name="Author"/>
+      <role name="Manager"/>
+    </permission>
+  </permissions>
+</rolemap>

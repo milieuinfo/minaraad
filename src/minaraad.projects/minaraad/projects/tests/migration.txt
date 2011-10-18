@@ -1,0 +1,424 @@
+Migration to the new style meetings
+===================================
+
+Those tests ensure that the migration to the new style meeting works
+as expected.
+
+Setup old-style site
+--------------------
+
+For the moment, we only install Products.minaraad, not
+minaraad.projects so 'AgendaItem' will correspond to the old-style items:
+
+    >>> from DateTime import DateTime
+    >>> self.setRoles(('Manager'))
+    >>> self.install_minaraad()
+
+First, we'll create some events and hearings that will be migrated:
+
+    >>> hearings_folder = self.portal['hoorzittingen']
+    >>> events_folder = self.portal['evenementen']
+
+    >>> hearings_folder.invokeFactory('Hearing',
+    ...                               id='hearing',
+    ...                               title='A nice hearing',
+    ...                               startdate=DateTime(2011, 3, 15, 15, 0),
+    ...                               enddate=DateTime(2011, 3, 15, 18, 30))
+    'hearing'
+    >>> events_folder.invokeFactory('MREvent',
+    ...                             id='event',
+    ...                             title='A loooong event',
+    ...                             startdate=DateTime(2011, 5, 7, 8, 0),
+    ...                             enddate=DateTime(2011, 5, 8, 18, 0)
+    ...                             )
+    'event'
+
+
+And we need to fill those events:
+
+    >>> def populate_event(event, data):
+    ...     for d in data:
+    ...         event.invokeFactory('AgendaItem', **d)
+    ...     return event.contentIds()
+
+    >>> hearing_items = [{'id': 'opening',
+    ...                   'title': 'Opening',
+    ...                   'speaker': 'Mr. Opener',
+    ...                   'summary': '',
+    ...                   'organisation': '',
+    ...                   'itemstartdate': DateTime(2011, 3, 15, 15, 0),
+    ...                   'itemenddate': DateTime(2011, 3, 15, 15, 15)},
+    ...                  {'id': 'first',
+    ...                   'title': 'First item',
+    ...                   'speaker': 'Presenter 1',
+    ...                   'summary': 'A talk about stuff and other things',
+    ...                   'organisation': 'Plopinours inc.',
+    ...                   'itemstartdate': DateTime(2011, 3, 15, 15, 15),
+    ...                   'itemenddate': DateTime(2011, 3, 15, 16, 15)},
+    ...                  {'id': 'coffe_break',
+    ...                   'title': 'Coffee break',
+    ...                   'speaker': '',
+    ...                   'summary': '',
+    ...                   'organisation': 'Douwe Egberts',
+    ...                   'itemstartdate': DateTime(2011, 3, 15, 16, 15),
+    ...                   'itemenddate': DateTime(2011, 3, 15, 16, 30)},
+    ...                  {'id': 'second',
+    ...                   'title': 'Bla',
+    ...                   'speaker': 'Steve Jobs',
+    ...                   'summary': 'The revolution of the iPhone 6. It is the same than the previous one but people will buy it.',
+    ...                   'organisation': 'Apple',
+    ...                   'itemstartdate': DateTime(2011, 3, 15, 16, 30),
+    ...                   'itemenddate': DateTime(2011, 3, 15, 18, 0)}]
+
+
+    >>> event_items = [{'id': 'opening',
+    ...                 'title': 'Opening',
+    ...                 'speaker': 'Mr. Opener',
+    ...                 'summary': '',
+    ...                 'organisation': '',
+    ...                 'itemstartdate': DateTime(2011, 5, 7, 8, 0),
+    ...                 'itemenddate': DateTime(2011, 5, 7, 8, 30)},
+    ...                {'id': 'talk1',
+    ...                 'title': 'First talk',
+    ...                 'speaker': 'Mr. Talker',
+    ...                 'summary': 'A really interesting talk',
+    ...                 'organisation': 'Plop.',
+    ...                 'itemstartdate': DateTime(2011, 5, 7, 8, 30),
+    ...                 'itemenddate': DateTime(2011, 5, 7, 9, 45)},
+    ...                {'id': 'coffee1',
+    ...                 'title': 'Coffe break',
+    ...                 'speaker': '',
+    ...                 'summary': '',
+    ...                 'organisation': 'Nestle',
+    ...                 'itemstartdate': DateTime(2011, 5, 7, 9, 45),
+    ...                 'itemenddate': DateTime(2011, 5, 7, 10, 0)},
+    ...                {'id': 'talk2',
+    ...                 'title': 'Second talk',
+    ...                 'speaker': 'Second speaker',
+    ...                 'summary': 'This talk present really interesting thing too.',
+    ...                 'organisation': 'Doupidou',
+    ...                 'itemstartdate': DateTime(2011, 5, 7, 10, 0),
+    ...                 'itemenddate': DateTime(2011, 5, 7, 12, 0)},
+    ...                {'id': 'lunch1',
+    ...                 'title': 'Lunch',
+    ...                 'speaker': '',
+    ...                 'summary': '',
+    ...                 'organisation': 'Shabu-Shabu',
+    ...                 'itemstartdate': DateTime(2011, 5, 7, 12, 0),
+    ...                 'itemenddate': DateTime(2011, 5, 7, 13, 55)},
+    ...                {'id': 'talk3',
+    ...                 'title': 'Third talk',
+    ...                 'speaker': 'Second speaker',
+    ...                 'summary': 'This talk present really interesting thing too.',
+    ...                 'organisation': 'Doupidou',
+    ...                 'itemstartdate': DateTime(2011, 5, 7, 13, 55),
+    ...                 'itemenddate': DateTime(2011, 5, 7, 16, 15)},
+    ...                {'id': 'coffee2',
+    ...                 'title': 'Coffee break',
+    ...                 'speaker': '',
+    ...                 'summary': '',
+    ...                 'organisation': 'Jacques Vabre',
+    ...                 'itemstartdate': DateTime(2011, 5, 7, 16, 15),
+    ...                 'itemenddate': DateTime(2011, 5, 7, 16, 45)},
+    ...                {'id': 'talk4',
+    ...                 'title': 'Fourth talk',
+    ...                 'speaker': 'Second speaker',
+    ...                 'summary': 'The second part of the second talk',
+    ...                 'organisation': 'Doupidou',
+    ...                 'itemstartdate': DateTime(2011, 5, 7, 16, 45),
+    ...                 'itemenddate': DateTime(2011, 5, 7, 18, 30)},
+    ...                {'id': 'happy_hour',
+    ...                 'title': 'Happy hours',
+    ...                 'speaker': '',
+    ...                 'summary': 'After all those talks, we will discuss presented stuff around a good Guiness',
+    ...                 'organisation': 'An Irish pub, somewhere',
+    ...                 'itemstartdate': DateTime(2011, 5, 7, 18, 30),
+    ...                 'itemenddate': DateTime(2011, 5, 7, 20, 0)},
+    ...                {'id': 'restaurant',
+    ...                 'title': 'Restaurant',
+    ...                 'speaker': '',
+    ...                 'summary': 'We will continue discussions around a good lunch',
+    ...                 'organisation': '',
+    ...                 'itemstartdate': DateTime(2011, 5, 7, 20, 0),
+    ...                 'itemenddate': DateTime(2011, 5, 7, 22, 30)},
+    ...                {'id': 'night_club',
+    ...                 'title': 'Party time',
+    ...                 'speaker': '',
+    ...                 'summary': 'All night long party, wouhou',
+    ...                 'organisation': '',
+    ...                 'itemstartdate': DateTime(2011, 5, 7, 23, 30),
+    ...                 'itemenddate': DateTime(2011, 5, 8, 8, 30)},
+    ...                {'id': 'breakfeast',
+    ...                 'title': 'Breakfeast',
+    ...                 'speaker': '',
+    ...                 'summary': 'Ibuprofene will be served with the croissants',
+    ...                 'organisation': 'Delifrance - Servier',
+    ...                 'itemstartdate': DateTime(2011, 5, 8, 8, 30),
+    ...                 'itemenddate': DateTime(2011, 5, 8, 9, 30)},
+    ...                {'id': 'talk5',
+    ...                 'title': 'Fifth talk',
+    ...                 'speaker': 'The fifth speaker if he is still awake',
+    ...                 'summary': 'A talk about things',
+    ...                 'organisation': 'Plopi inc.',
+    ...                 'itemstartdate': DateTime(2011, 5, 8, 9, 30),
+    ...                 'itemenddate': DateTime(2011, 5, 8, 10, 30)},
+    ...                {'id': 'coffee3',
+    ...                 'title': 'Coffee break',
+    ...                 'speaker': '',
+    ...                 'summary': '',
+    ...                 'organisation': 'Delifrance',
+    ...                 'itemstartdate': DateTime(2011, 5, 8, 10, 30),
+    ...                 'itemenddate': DateTime(2011, 5, 8, 11, 0)},
+    ...                {'id': 'talk6',
+    ...                 'title': 'Sixth talk',
+    ...                 'speaker': 'The sixth speaker',
+    ...                 'summary': 'Another talk, again ...',
+    ...                 'organisation': '',
+    ...                 'itemstartdate': DateTime(2011, 5, 8, 11, 0),
+    ...                 'itemenddate': DateTime(2011, 5, 8, 11, 55)},
+    ...                {'id': 'lunch',
+    ...                 'title': 'Lunch',
+    ...                 'speaker': '',
+    ...                 'summary': '',
+    ...                 'organisation': '',
+    ...                 'itemstartdate': DateTime(2011, 5, 8, 11, 55),
+    ...                 'itemenddate': DateTime(2011, 5, 8, 13, 30)},
+    ...                {'id': 'last',
+    ...                 'title': 'Last talk (part I)',
+    ...                 'speaker': 'A guy who can speak a lot',
+    ...                 'summary': 'A really long talk',
+    ...                 'organisation': 'Nerulleans',
+    ...                 'itemstartdate': DateTime(2011, 5, 8, 13, 30),
+    ...                 'itemenddate': DateTime(2011, 5, 8, 15, 0)},
+    ...                {'id': 'coffee4',
+    ...                 'title': 'Coffee break',
+    ...                 'speaker': '',
+    ...                 'summary': '',
+    ...                 'organisation': '',
+    ...                 'itemstartdate': DateTime(2011, 5, 8, 15, 0),
+    ...                 'itemenddate': DateTime(2011, 5, 8, 15, 30)},
+    ...                {'id': 'last1',
+    ...                 'title': 'Last talk (part II)',
+    ...                 'speaker': 'A guy who can speak a lot',
+    ...                 'summary': 'A really long talk',
+    ...                 'organisation': 'Nerulleans',
+    ...                 'itemstartdate': DateTime(2011, 5, 8, 15, 30),
+    ...                 'itemenddate': DateTime(2011, 5, 8, 17, 30)},
+    ...                {'id': 'closing',
+    ...                 'title': 'Conference closing',
+    ...                 'speaker': 'Mr. Closer',
+    ...                 'summary': '',
+    ...                 'organisation': '',
+    ...                 'itemstartdate': DateTime(2011, 5, 8, 17, 30),
+    ...                 'itemenddate': DateTime(2011, 5, 8, 18, 0)}]
+
+
+    >>> populate_event(hearings_folder['hearing'], hearing_items)
+    ['opening', 'first', 'coffe_break', 'second']
+
+    >>> populate_event(events_folder['event'], event_items)
+    ['opening', 'talk1', 'coffee1', 'talk2', 'lunch1',
+     'talk3', 'coffee2', 'talk4', 'happy_hour', 'restaurant', 'night_club',
+     'breakfeast', 'talk5', 'coffee3', 'talk6', 'lunch',
+     'last', 'coffee4', 'last1', 'closing']
+
+Ok, our events are populated now. We also need some attached files to
+them:
+
+    >>> def mydir():
+    ...     import os.path, sys
+    ...     if __name__ == '__main__':
+    ...         filename = sys.argv[0]
+    ...     else:
+    ...         filename = __file__
+    ...     return os.path.abspath(os.path.dirname(filename))
+
+    >>> def attach_file(item, id, title, filename):
+    ...     f = open('/'.join([mydir(), filename]))
+    ...     item.invokeFactory('FileAttachment',
+    ...                        id=id,
+    ...                        title=title,
+    ...                        file= f)
+
+    >>> attachments = {hearings_folder['hearing']['first']: [{'id': 'presentation',
+    ...                                                       'title': 'Presentation slides',
+    ...                                                       'filename': 'presentation.ppt'}],
+    ...                hearings_folder['hearing']['second']: [{'id': 'presentation',
+    ...                                                        'title': 'Presentation slides',
+    ...                                                        'filename': 'presentation.ppt'},
+    ...                                                       {'id': 'proof',
+    ...                                                        'title': 'The detailed proof',
+    ...                                                        'filename': 'onepage.pdf'}],
+    ...                events_folder['event']['talk2']: [{'id': 'presentation',
+    ...                                                   'title': 'Presentation slides',
+    ...                                                   'filename': 'presentation.ppt'},
+    ...                                                  {'id': 'proof',
+    ...                                                   'title': 'The detailed proof',
+    ...                                                   'filename': 'onepage.pdf'}],
+    ...                events_folder['event']['talk6']: [{'id': 'presentation',
+    ...                                                   'title': 'Presentation slides',
+    ...                                                   'filename': 'presentation.ppt'}]}
+    >>> for event, attachment_list in attachments.items():
+    ...     for attachment in attachment_list:
+    ...         attach_file(event, **attachment)
+
+
+2 - Migrating data
+------------------
+
+The minaraad.projects package includes a migration step to move
+old-style items to the new style ones.
+
+    >>> self.add_digibib()
+    >>> from minaraad.projects.migration import migrate_agenda_items
+    >>> migrate_agenda_items(self.portal)
+
+We can now check that the migration has be done correctly.
+
+We first check that the new end date corresponds to the old one:
+
+    >>> events_folder['event'].get_end_time()
+    DateTime('2011/05/08 17:00:00 GMT+2')
+
+    >>> hearings_folder['hearing'].get_end_time()
+    DateTime('2011/03/15 18:00:00 GMT+1')
+
+We can also see that the items have been correctly migrated with the
+correct times:
+
+    >>> def display_event(container):
+    ...     for event in container.find_items():
+    ...         event = event.getObject()
+    ...         print '%s (%s)' % (event.Title(), event.id)
+    ...         print '%s to %s' % (event.get_start_time()
+    ...                             ,event.get_end_time())
+    ...         print 'By: %s (%s)' % (event.getSpeaker(),
+    ...                                event.getOrganisation())
+    ...         print event.getSummary()
+    ...         print event.getFiles()
+
+    >>> display_event(events_folder['event'])
+    Opening (opening)
+    2011/05/07 08:00:00 GMT+2 to 2011/05/07 08:30:00 GMT+2
+    By: Mr. Opener ()
+    <BLANKLINE>
+    []
+    First talk (talk1)
+    2011/05/07 08:30:00 GMT+2 to 2011/05/07 09:45:00 GMT+2
+    By: Mr. Talker (Plop.)
+    A really interesting talk
+    []
+    Coffe break (coffee1)
+    2011/05/07 09:45:00 GMT+2 to 2011/05/07 10:00:00 GMT+2
+    By:  (Nestle)
+    <BLANKLINE>
+    []
+    Second talk (talk2)
+    2011/05/07 10:00:00 GMT+2 to 2011/05/07 12:00:00 GMT+2
+    By: Second speaker (Doupidou)
+    This talk present really interesting thing too.
+    [<FileAttachment at /plone/evenementen/event/talk2/presentation>,
+     <FileAttachment at /plone/evenementen/event/talk2/proof>]
+    Lunch (lunch1)
+    2011/05/07 12:00:00 GMT+2 to 2011/05/07 13:55:00 GMT+2
+    By:  (Shabu-Shabu)
+    <BLANKLINE>
+    []
+    Third talk (talk3)
+    2011/05/07 13:55:00 GMT+2 to 2011/05/07 16:15:00 GMT+2
+    By: Second speaker (Doupidou)
+    This talk present really interesting thing too.
+    []
+    Coffee break (coffee2)
+    2011/05/07 16:15:00 GMT+2 to 2011/05/07 16:45:00 GMT+2
+    By:  (Jacques Vabre)
+    <BLANKLINE>
+    []
+    Fourth talk (talk4)
+    2011/05/07 16:45:00 GMT+2 to 2011/05/07 18:30:00 GMT+2
+    By: Second speaker (Doupidou)
+    The second part of the second talk
+    []
+    Happy hours (happy_hour)
+    2011/05/07 18:30:00 GMT+2 to 2011/05/07 20:00:00 GMT+2
+    By:  (An Irish pub, somewhere)
+    After all those talks, we will discuss presented stuff around a good Guiness
+    []
+    Restaurant (restaurant)
+    2011/05/07 20:00:00 GMT+2 to 2011/05/07 22:30:00 GMT+2
+    By:  ()
+    We will continue discussions around a good lunch
+    []
+    Party time (night_club)
+    2011/05/07 22:30:00 GMT+2 to 2011/05/08 07:30:00 GMT+2
+    By:  ()
+    All night long party, wouhou
+    []
+    Breakfeast (breakfeast)
+    2011/05/08 07:30:00 GMT+2 to 2011/05/08 08:30:00 GMT+2
+    By:  (Delifrance - Servier)
+    Ibuprofene will be served with the croissants
+    []
+    Fifth talk (talk5)
+    2011/05/08 08:30:00 GMT+2 to 2011/05/08 09:30:00 GMT+2
+    By: The fifth speaker if he is still awake (Plopi inc.)
+    A talk about things
+    []
+    Coffee break (coffee3)
+    2011/05/08 09:30:00 GMT+2 to 2011/05/08 10:00:00 GMT+2
+    By:  (Delifrance)
+    <BLANKLINE>
+    []
+    Sixth talk (talk6)
+    2011/05/08 10:00:00 GMT+2 to 2011/05/08 10:55:00 GMT+2
+    By: The sixth speaker ()
+    Another talk, again ...
+    [<FileAttachment at /plone/evenementen/event/talk6/presentation>]
+    Lunch (lunch)
+    2011/05/08 10:55:00 GMT+2 to 2011/05/08 12:30:00 GMT+2
+    By:  ()
+    <BLANKLINE>
+    []
+    Last talk (part I) (last)
+    2011/05/08 12:30:00 GMT+2 to 2011/05/08 14:00:00 GMT+2
+    By: A guy who can speak a lot (Nerulleans)
+    A really long talk
+    []
+    Coffee break (coffee4)
+    2011/05/08 14:00:00 GMT+2 to 2011/05/08 14:30:00 GMT+2
+    By:  ()
+    <BLANKLINE>
+    []
+    Last talk (part II) (last1)
+    2011/05/08 14:30:00 GMT+2 to 2011/05/08 16:30:00 GMT+2
+    By: A guy who can speak a lot (Nerulleans)
+    A really long talk
+    []
+    Conference closing (closing)
+    2011/05/08 16:30:00 GMT+2 to 2011/05/08 17:00:00 GMT+2
+    By: Mr. Closer ()
+    <BLANKLINE>
+    []
+
+    >>> display_event(hearings_folder['hearing'])
+    Opening (opening)
+    2011/03/15 15:00:00 GMT+1 to 2011/03/15 15:15:00 GMT+1
+    By: Mr. Opener ()
+    <BLANKLINE>
+    []
+    First item (first)
+    2011/03/15 15:15:00 GMT+1 to 2011/03/15 16:15:00 GMT+1
+    By: Presenter 1 (Plopinours inc.)
+    A talk about stuff and other things
+    [<FileAttachment at /plone/hoorzittingen/hearing/first/presentation>]
+    Coffee break (coffe_break)
+    2011/03/15 16:15:00 GMT+1 to 2011/03/15 16:30:00 GMT+1
+    By:  (Douwe Egberts)
+    <BLANKLINE>
+    []
+    Bla (second)
+    2011/03/15 16:30:00 GMT+1 to 2011/03/15 18:00:00 GMT+1
+    By: Steve Jobs (Apple)
+    The revolution of the iPhone 6. It is the same than the previous one but people will buy it.
+    [<FileAttachment at /plone/hoorzittingen/hearing/second/presentation>,
+     <FileAttachment at /plone/hoorzittingen/hearing/second/proof>]
