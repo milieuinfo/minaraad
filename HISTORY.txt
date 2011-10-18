@@ -4,6 +4,9 @@ History of this buildout
 3.24 (unreleased)
 -----------------
 
+- Make get_file_brains more efficient by not getting objects.
+  [maurits]
+
 - Add Council member to the View meeting in digibib in the rolemap.xml.
   [jladage]
 

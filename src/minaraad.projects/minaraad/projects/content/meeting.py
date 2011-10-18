@@ -208,20 +208,15 @@ class Meeting(BaseMeeting):
     def get_file_brains(self):
         """ Finds attachment brains for the meeting.
 
-        XXX - there is no possibilities to tell the catalog
-        to only get in the folder itself without recursion,
-        so it returns all files (including those in the agenda items)
-        so we filter them on the ids.
-        There is a possiblity that an item appears there if an agenda
-        item as the same id.
+        We only want attachments that are directly in the meeting
+        itself, so not in any children.
         """
         catalog = getToolByName(self, 'portal_catalog')
-        brains = catalog(
-            {'path': '/'.join(self.getPhysicalPath()),
-             'portal_type': 'FileAttachment'})
+        brains = catalog({
+            'path': {'query': '/'.join(self.getPhysicalPath()), 'depth': 1},
+            'portal_type': 'FileAttachment'})
 
-        return sorted(
-            [b for b in brains if b.id in self.contentIds()],
+        return sorted(brains,
             key = lambda x: x.Title)
 
     def _get_annotations(self):
