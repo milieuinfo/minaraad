@@ -1,6 +1,12 @@
 History of this buildout
 ========================
 
+3.25 (unreleased)
+-----------------
+
+- Nothing changed yet.
+
+
 3.24 (2011-10-18)
 -----------------
 
