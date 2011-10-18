@@ -188,4 +188,12 @@
       handler="minaraad.projects.migration.correct_order_agenda_items"
       profile="minaraad.projects:default" />
 
+  <genericsetup:upgradeStep
+      title="Fix double invitees"
+      description=""
+      source="1010"
+      destination="1011"
+      handler="minaraad.projects.migration.fix_double_invitees"
+      profile="minaraad.projects:default" />
+
 </configure>

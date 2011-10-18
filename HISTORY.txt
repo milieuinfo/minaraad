@@ -4,6 +4,9 @@ History of this buildout
 3.24 (unreleased)
 -----------------
 
+- Added migration step to fix double invitees.
+  [maurits]
+
 - Make get_file_brains more efficient by not getting objects.
   [maurits]
 

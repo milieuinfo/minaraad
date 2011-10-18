@@ -269,3 +269,38 @@ def migrate_advisories_to_projects(context):
 
         logger.info("Handled year %s", year)
     logger.info("Done migrating/copying advisories to projects.")
+
+
+def fix_double_invitees(context):
+    """Some people are twice in the invitees of a meeting.  Fix that.
+
+    Especially, /minaraad/digibib/meetings/20111018 has invited both
+    Bert.wierbos@telenet.be and bert.wierbos@telenet.be.  The first
+    one should be removed, and this double user account should also be
+    removed, but we will do that part manually.
+    """
+    portal_url = getToolByName(context, 'portal_url')()
+    catalog = getToolByName(context, 'portal_catalog')
+    brains = catalog(portal_type='Meeting')
+    for brain in brains:
+        meeting = brain.getObject()
+        invited = meeting.get_invited_people()
+        lower_keys = [key.lower() for key in invited.keys()]
+        if len(lower_keys) == len(set(lower_keys)):
+            # No problem here.
+            continue
+        logger.info("Double invitees for %s", meeting.absolute_url())
+        for user_id in set(invited.keys()).difference(set(lower_keys)):
+            logger.info("Checking invitee %s", user_id)
+            # This check missed double items like user ids Joe and
+            # JOE, but that should be fine; reported in the log above
+            # though.
+            if user_id.lower() in invited.keys():
+                # So both user_id and USER_ID or User_Id or something
+                # like that have been invited.
+                logger.info("Removing double user id %s from invitees of %s",
+                            user_id, meeting.absolute_url())
+                logger.warn("You may want to remove "
+                            "%s/prefs_user_details?userid=%s", portal_url,
+                            user_id)
+                del invited[user_id]
