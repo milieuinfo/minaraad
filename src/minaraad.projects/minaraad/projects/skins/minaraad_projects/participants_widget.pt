@@ -22,6 +22,12 @@
             tal:content="company" />
     </metal:block>
 
+    <!-- Note that the vocabulary of the field has the persons who
+         were invited.  The field itself maps invitees to
+         present/excused/absent.  In corner cases participants may
+         already have been set and later some more invitees were
+         added, so value will have been filled in yet for that
+         person. -->
     <metal:view_macro define-macro="view">
       <table class="listing"
              tal:define="vocab python: field.Vocabulary(here);
