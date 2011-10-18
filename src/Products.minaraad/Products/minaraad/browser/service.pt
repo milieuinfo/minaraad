@@ -130,7 +130,7 @@
              tal:attributes="tabindex tabindex/next;" />
     </div>
     <br />
-    <div class="formControls">
+    <div tal:condition="nothing" class="formControls">
       <input class="context"
              type="submit"
              name="form.button.FindBadEmails"
