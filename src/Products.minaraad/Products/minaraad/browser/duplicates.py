@@ -50,9 +50,10 @@ class Duplication(BrowserView):
             member = portal_membership.getAuthenticatedMember()
         if member is None:
             return []
-        email = member.getProperty('email')
+        email = member.getProperty('email').lower()
         members = portal_membership.listMembers()
-        duplicates = [m for m in members if m.getProperty('email') == email]
+        duplicates = [m for m in members
+                      if m.getProperty('email').lower() == email]
         if len(duplicates) > 1:
             return duplicates
         return []

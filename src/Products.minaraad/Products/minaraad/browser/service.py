@@ -57,7 +57,7 @@ class ServiceUtils(BrowserView):
         members = portal_membership.listMembers()
         emails = {}
         for member in members:
-            email = member.getProperty('email')
+            email = member.getProperty('email').lower()
             if emails.get(email) is None:
                 emails[email] = []
             emails[email].append(member.getId())

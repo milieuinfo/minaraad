@@ -133,7 +133,6 @@
                     <th
                         i18n:translate="title_subscription">Subscriptions</th>
                     <th i18n:translate="title_email">By E-mail</th>
-                    <th i18n:translate="title_post">By Mail</th>
                   </tr>
                   <tal:block tal:repeat="subscription python:subscription_view.subscriptions(member.getId())">
                     <tr class="field">
@@ -146,12 +145,6 @@
                         <img
                             alt="Ingeschreven per e-mail"
                             tal:condition="python:subscription['can_email'] and subscription['subscribed_email']"
-                            tal:attributes="src string:${portal_url}/confirm_icon.gif" />
-                      </td>
-                      <td class="checkbox-centered">
-                        <img
-                            alt="Ingeschreven voor post"
-                            tal:condition="python:subscription['can_post'] and subscription['subscribed_post']"
                             tal:attributes="src string:${portal_url}/confirm_icon.gif" />
                       </td>
                     </tr>

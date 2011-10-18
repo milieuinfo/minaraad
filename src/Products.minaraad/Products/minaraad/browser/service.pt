@@ -122,7 +122,7 @@
              tal:attributes="tabindex tabindex/next;" />
     </div>
     <br />
-    <div tal:condition="nothing" class="formControls">
+    <div class="formControls">
       <input class="context"
              type="submit"
              name="form.button.FindDoubleEmails"
@@ -130,7 +130,7 @@
              tal:attributes="tabindex tabindex/next;" />
     </div>
     <br />
-    <div tal:condition="nothing" class="formControls">
+    <div class="formControls">
       <input class="context"
              type="submit"
              name="form.button.FindBadEmails"

@@ -4,7 +4,9 @@ History of this buildout
 3.25 (unreleased)
 -----------------
 
-- Nothing changed yet.
+- Re-enable and improve the duplicate users check from the minaraad
+  service panel.
+  [maurits]
 
 
 3.24 (2011-10-18)
