@@ -1,7 +1,7 @@
 History of this buildout
 ========================
 
-3.25 (unreleased)
+3.25 (2011-10-18)
 -----------------
 
 - Re-enable and improve the duplicate users check from the minaraad
