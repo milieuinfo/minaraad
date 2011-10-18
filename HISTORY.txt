@@ -1,7 +1,7 @@
 History of this buildout
 ========================
 
-3.24 (unreleased)
+3.24 (2011-10-18)
 -----------------
 
 - Added migration step to fix double invitees.
