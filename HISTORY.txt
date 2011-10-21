@@ -4,6 +4,9 @@ History of this buildout
 4.0 (unreleased)
 ----------------
 
+- Removed bin/backup as this is not useful for RelStorage.
+  [maurits]
+
 - Restructure buildout configs to match the setup of LNE and use
   RelStorage.  No more zeoserver and zeoclient.
   [maurits]
