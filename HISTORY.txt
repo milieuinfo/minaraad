@@ -1,6 +1,11 @@
 History of this buildout
 ========================
 
+NOTE: This is now a maintenance branch as long as Minaraad is still
+hosted by Zest.  Trunk (4.x) will be used in Belgium on the LNE
+servers, using RelStorage.
+
+
 3.26 (unreleased)
 -----------------
 
