@@ -2,10 +2,15 @@
 extends =
 # Choose your base config:
 #    devel.cfg
-#    production.cfg
-#    preview.cfg
-# If you want relstorage uncomment this as well:
-#    relstorage.cfg
+#    ontwikkel.cfg
+#    oefen.cfg
+#    productie.cfg
+
+# Some extra parts may be wanted:
+parts +=
+# On one instance each of oefen/productie you want some cronjobs:
+#    crontab-pack
+#    crontab-projects-reminder
 
 
 [munin]

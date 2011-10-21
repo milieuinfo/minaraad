@@ -1,6 +1,0 @@
-Include "/etc/awstats/awstats.conf.local"
-
-LogFile="/var/log/nginx/${parts.conf.domainname}.access.log.1"
-SiteDomain="www.${parts.conf.domainname}"
-HostAliases="${parts.conf.domainname} www.${parts.conf.domainname}"
-
