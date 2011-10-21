@@ -6,9 +6,14 @@ extends =
 #    oefen.cfg
 #    productie.cfg
 
-# Some extra parts may be wanted:
+# Some extra parts may be wanted.
+# On ONE instance each of oefen/productie you want the cronjob to pack
+# the database.
+# On ONE instance of productie you want to send e-mails twice a week
+# reminding about projects.  It is best not to do this on oefen, to
+# avoid confusing users with mails from this system.
+
 parts +=
-# On one instance each of oefen/productie you want some cronjobs:
 #    crontab-pack
 #    crontab-projects-reminder
 
