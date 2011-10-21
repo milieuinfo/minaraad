@@ -28,7 +28,7 @@ Then edit the buildout.cfg file and follow the inline instructions in
 that file.  You should at least make sure you extend devel.cfg,
 ontwikkel.cfg, oefen.cfg or productie.cfg.
 
-Any other .cfg files you see are used by devel/oefen/productie.cfg
+Any other .cfg files you see are used by devel/ontwikkel/oefen/productie.cfg
 and should not be used directly.
 
 For backgrounds, see this weblog entry and the other documentation it
@@ -59,7 +59,8 @@ This should give no errors, and after a while show a message like this::
 
   INFO Zope Ready to handle requests
 
-Quit it with CTRL-C.  Then start it properly in supervisor::
+Quit it with CTRL-C.  Then start it properly in supervisor (at least
+on oefen/productie this is available)::
 
  $ bin/supervisord
 
@@ -81,6 +82,7 @@ Anyway, now we stop the instance with supervisor::
 Now switch the buildout to the tag given by Zest, e.g.::
 
  $ svn switch https://svn.zestsoftware.nl/.../tags/0.1
+ $ svn switch https://svn.milieuinfo.be/.../tags/0.1
 
 Run bin/buildout::
 
@@ -92,7 +94,7 @@ Start the instance again by starting the supervisor daemon::
 
  $ bin/supervisord
 
-Watch for any errors in the instance log file::
+Watch for any errors in the instance logfile::
 
  $ tail -f var/log/instance.log
 

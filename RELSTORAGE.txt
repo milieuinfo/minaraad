@@ -30,8 +30,10 @@ On Mac OS X with port::
 
 Follow any instructions that 'port' prints for setting up the postgres server.
 
-Running the buildout will add a database and user (if the postgresinit
-part is enabled).  On Linux you might need to edit some permissions in
+Running the buildout will add a database and user if the postgresinit
+part is enabled; this is not needed on ontwikkel/oefen/productie, as
+the databases will already have been created by the database admin.
+On Linux you might need to edit some permissions in
 /etc/postgresql/8.4/main/pg_hba.conf like setting up 'trust' for
 authentication (bad for production, handy for development).
 
@@ -58,15 +60,30 @@ relstorage.cfg.
 Migrating to/from RelStorage
 ----------------------------
 
-To migrate var/filestorage/Data.fs to a fresh Postgres database, do this::
+You can migrate a filestorage Data.fs to a fresh Postgres database.
+Make sure var/filestorage/Data.fs has the current ZODB that you want
+to migrate.  Then do this::
 
   $ bin/zodbconvert parts/conf/zodbconvert.cfg
+
+This can take a while, at least when your database is several
+Gigabytes, so you may want to do this within 'screen' in case you
+loose connection to the server.
+
+If there is already data in the target Postgres database the scripts
+will end with an error.  You then need to add the ``--clear`` option
+to first remove the old data.  Note that for this you need to be owner
+of the database, so if you now get permission errors please ask your
+database administrator for more rights.
 
 To migrate back from relstorage to filestorage (read: to create a
 backup of the Postgres production database in filestorage form, in
 backup.fs), do::
 
   $ bin/zodbconvert parts/conf/zodb-relstorage-to-filestorage.cfg
+
+We have set that up to create a ``backup.fs`` file in the current
+directory.
 
 See also ``bin/zodbconvert --help``.
 
@@ -89,7 +106,7 @@ initial migration to RelStorage.  You then start with a pre pack::
 
   $ bin/zodbpack --prepack parts/conf/zodbpack.cfg
  
-This changes nothing, but does some analyzing.  The information on
+This changes nothing, but only does some analyzing.  The information on
 what to pack gets stored in a table; the packing itself is not done.
 A second prepack run is therefore much faster and a pack will also be
 faster.
@@ -104,17 +121,18 @@ See also ``bin/zodbpack --help``.
 Note that when you have multiple machines that connect to the
 RelStorage, you only need to pack from one of them.
 
+
 Initial database creation
 -------------------------
 
-There might be a part called '[postgresinit]' in relstorage.cfg. It
-creates the initial database/roles so the site works correctly.
-You can get it using::
+There might be a part called ``[postgresinit]`` in relstorage.cfg.  It
+creates the initial database and roles so the site works correctly.  You
+can get it manually by using::
 
   bin/buildout install postgresinit
 
-Note that it considers that the currently logged-in user is superuser
-in postgresql. If not, you might have to run the step manually (here
+Note that it expects that the currently logged-in user is superuser
+in postgresql.  If not, you might have to run the step manually (here
 the example of what I did for minaraad)::
 
   sudo su postgres
@@ -127,9 +145,9 @@ the example of what I did for minaraad)::
   postgres=# ALTER DATABASE minaraad_plone OWNER TO minaraad;
   postgres=# GRANT ALL ON DATABASE minaraad_plone TO minaraad;
 
-In my config file, I specified the user and database to be 'minaraad'
-and the password '123'. It still complained about a 'minaraad_plone'
-database so I had to create it too.
+In my config file, I specified the user and database to be
+``minaraad`` and the password ``123``.  It still complained about a
+``minaraad_plone`` database so I had to create it too.
 
 
 Further reading
@@ -138,6 +156,6 @@ Further reading
 http://www.vlent.nl/weblog/2010/09/25/relstorage-and-postgresql/
 http://pypi.python.org/pypi/RelStorage
 
-Currently we use relstorage for a few clients in Belgium.  You may
+Currently we use RelStorage for a few clients in Belgium.  You may
 want to have a look at their buildout configs.  See LNE and MHHC and
 now Minaraad.
