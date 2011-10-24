@@ -4,7 +4,9 @@ History of this buildout
 4.1 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Fixed Unauthorized error when displaying a list of relatedDocuments
+  that the user does not have access to.  (Merged from maintenance branch.)
+  [maurits]
 
 
 4.0 (2011-10-21)

@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
 from zope.interface import implements
+from zExceptions import Unauthorized
 from AccessControl import ClassSecurityInfo
 from Products.Archetypes import atapi
 from Products.ATReferenceBrowserWidget.ATReferenceBrowserWidget import \
     ReferenceBrowserWidget
+from Products.CMFCore.utils import getToolByName
 from Products.OrderableReferenceField import OrderableReferenceField
 from Products.OrderableReferenceField import OrderableReferenceWidget
 
@@ -169,6 +171,29 @@ class Advisory(PostMixin, ThemeMixin, EmailMixin, Attachmentsmixin):
 
     _at_rename_after_creation = True
     schema = Advisory_schema
+
+    def getRelatedDocuments(self):
+        """Get the documents from the relatedDocuments field.
+
+        Only get those that the user is allowed to access.
+
+        Adapted from
+        Products/CMFPlone/skins/plone_scripts/computeRelatedItems.py
+        """
+        res = []
+        docs = self.getField('relatedDocuments').get(self)
+        if not docs:
+            return res
+        mtool = getToolByName(self, 'portal_membership')
+        for d in range(len(docs)):
+            try:
+                obj = docs[d]
+            except Unauthorized:
+                continue
+            if obj not in res:
+                if mtool.checkPermission('View', obj):
+                    res.append(obj)
+        return res
 
 
 atapi.registerType(Advisory, PROJECTNAME)
