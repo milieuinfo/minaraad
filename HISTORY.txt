@@ -3,13 +3,16 @@ History of this buildout
 
 NOTE: This is now a maintenance branch as long as Minaraad is still
 hosted by Zest.  Trunk (4.x) will be used in Belgium on the LNE
-servers, using RelStorage.
+servers, using RelStorage.  Any changes done in this maintenance
+branch must be ported to trunk as well.
 
 
 3.26 (unreleased)
 -----------------
 
-- Nothing changed yet.
+- Fixed Unauthorized error when displaying a list of relatedDocuments
+  that the user does not have access to.
+  [maurits]
 
 
 3.25 (2011-10-18)
