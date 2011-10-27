@@ -1,7 +1,7 @@
 History of this buildout
 ========================
 
-4.1 (unreleased)
+4.1 (2011-10-27)
 ----------------
 
 - Use plone.recipe.plone 3.1.7-zest-1 that knows where to get
