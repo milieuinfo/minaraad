@@ -4,6 +4,12 @@ History of this buildout
 4.1 (unreleased)
 ----------------
 
+- Use plone.recipe.plone 3.1.7-zest-1 that knows where to get
+  ZopeVersionControl-0.3.4.tar.gz.  If you get "Error: Not a
+  recognized archive type" when running bin/buildout then remove that
+  old ZopeVersionControl tarball and try again.
+  [maurits]
+
 - Fixed Unauthorized error when displaying a list of relatedDocuments
   that the user does not have access to.  (Merged from maintenance branch.)
   [maurits]
