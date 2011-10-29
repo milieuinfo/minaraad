@@ -1,0 +1,239 @@
+Notes on Minaraad Plone 4 migration
+===================================
+
+- Currently we have Plone 3.1.7.
+
+- We should move to the latest stable release, currently Plone 4.1.2.
+
+
+Some dangers to think of
+------------------------
+
+- CacheSetup. Should be uninstalled in Plone 3.  Hopefully nothing
+  then breaks when starting up under Plone 4.  So far so good.
+
+- We use collective.emaillogin.  This has been merged into Plone 4.0
+  so we should not ship with the package itself.  We need to check for
+  changes we made to the login machinery.
+
+- Maybe a few fixes are needed for OrderableReferenceField (which we
+  have created ourselves, to order references to contact persons),
+  although 1.2-beta4 at least claims Plone 4 compatibility:
+
+  http://pypi.python.org/pypi/Products.OrderableReferenceField/
+  Have a look at the issue tracker too:
+  http://plone.org/products/orderablereferencefield/issues
+
+- E-mail sending has seen a few changes and needs to be checked.
+  Maybe port our custom code to use collective.watcherlist.  No
+  distinction needs to be made anymore between physical post and
+  e-mail subscribers, so that may simplify things a bit and allow us
+  to get rid of some code.
+
+- Products.FCKeditor has no release that works on Plone 4.  Buildout
+  works fine and the instance can start, but I get an error when
+  running the Plone migration, even after uninstalling FCKeditor in
+  Plone 4::
+
+    TransformException: Invalid transform : ITransform is not
+    implemented by
+    Products.FCKeditor.transforms.fck_ruid_to_url.fck_ruid_to_url
+
+  Manually removing fck_ruid_to_url from portal_transforms in the ZMI
+  could fix that.
+
+  We probably need to uninstall FCKeditor in Plone 3 (which removes
+  that transform automatically).  Then either install
+  collective.ckeditor or use TinyMCE.  We will need to use
+  collective.setdefaulteditor too, and probably update that code a bit
+  to make use of the new option in Plone 4 to just use the system
+  default instead of explicitly setting everyone's preference to the
+  new editor.
+
+
+To do on Plone 3 through the web
+--------------------------------
+
+- Go to the portal_quickinstaller and uninstall CacheSetup.
+
+- Uninstall emaillogin.
+
+- Uninstall FCKeditor.
+
+- You have to manually remove some skin layers from the Plone Default
+  skin selection:
+
+  - cache_setup
+
+  - emaillogin
+
+  - fckeditorplone
+
+  - fckeditor
+
+- You can now remove fckeditor.html from the custom skin layer.
+
+- There is a difference between the minaraad Components registry and a
+  default Plone 3.1.7 registry.  This should be added in minaraad while
+  still using Plone 3.1.7, in the Components tab, otherwise you get a
+  ComponentLookupError on IPortalTransformsTool when upgrading to
+  Plone 4 (probably also fine to do this just before doing the Plone
+  migration TTW)::
+
+    <utility
+       interface="Products.PortalTransforms.interfaces.IPortalTransformsTool"
+       object="portal_transforms"/>
+
+  Add that somewhere in the utilities tag on the Components tab.
+
+  Note that Plone 3.1.7 also has the next few lines, but those objects
+  do not exist in minaraad, so let's not add them; ah, even if you try
+  to add them Zope ignores them and does not actually add them::
+
+    <utility interface="plone.app.i18n.locales.interfaces.IContentLanguages"
+       object="plone_app_content_languages"/>
+    <utility interface="plone.app.i18n.locales.interfaces.ICountries"
+       object="plone_app_countries"/>
+    <utility interface="plone.app.i18n.locales.interfaces.IMetadataLanguages"
+       object="plone_app_metadata_languages"/>
+
+
+To do in the buildout
+---------------------
+
+- Check which versions can be removed from versions.cfg as they are
+  already pinned elsewhere.  Preferably do not remove versions from no
+  longer used recipes though, as the pins are needed for uninstall
+  too.
+
+- Fix the test part.
+
+- Test RelStorage with blobstorage.  TEST IT WELL!!!  There is some
+  confusion (at least for me) between the names of the options and
+  where to put them.  See:
+
+  - http://pypi.python.org/pypi/RelStorage
+  - http://pypi.python.org/pypi/plone.recipe.zope2instance
+
+- The i18noverrides should no longer be used.  The fixes should be
+  done in the code (locales directory).
+
+
+To do in the code
+-----------------
+
+- The i18noverrides buildout part should no longer be used.  The fixes
+  should somehow be done in the code, making sure we override
+  translations properly.  Maurits probably knows how this can be done,
+  but needs to look that up again. :-) See
+  http://maurits.vanrees.org/weblog/archive/2010/10/i18n-plone-4#overriding-translations
+
+- Fix errors during Plone migration, at least this one::
+
+    2011-10-29 03:21:51 INFO plone.app.upgrade Started migration of files to blobs.
+    2011-10-29 03:21:51 INFO plone.app.upgrade Temporarily disabled link integrity checking
+    2011-10-29 03:21:57 ERROR ATCT.migration Failed migration for object /minaraad/evenementen/wat-na-kopenhagen-afscheidscolloquium-hubert-david/100108 Uitnodiging klimaatcolloquium.pdf (File -> File)
+    Traceback (most recent call last):
+      File "/Users/mauritsvanrees/shared-eggs/Products.contentmigration-2.0.3-py2.6.egg/Products/contentmigration/basemigrator/walker.py", line 189, in migrate
+        migrator.migrate()
+      File "/Users/mauritsvanrees/shared-eggs/Products.contentmigration-2.0.3-py2.6.egg/Products/contentmigration/basemigrator/migrator.py", line 198, in migrate
+        self.renameOld()
+      File "/Users/mauritsvanrees/shared-eggs/Products.contentmigration-2.0.3-py2.6.egg/Products/contentmigration/inplace.py", line 275, in renameOld
+        self.parent.manage_delObjects([self.orig_id])
+      File "/Users/mauritsvanrees/clients/mina-plone4/src/minaraad.projects/minaraad/projects/content/base_meeting.py", line 84, in manage_delObjects
+        if self[item_id].contains_pdf():
+    AttributeError: contains_pdf
+    2011-10-29 03:21:57 INFO ATCT.migration Rolling back to last safe point
+    2011-10-29 03:23:24 ERROR plone.app.upgrade Upgrade aborted. Error:
+    Traceback (most recent call last):
+      File "/Users/mauritsvanrees/shared-eggs/Products.CMFPlone-4.1.2-py2.6.egg/Products/CMFPlone/MigrationTool.py", line 175, in upgrade
+        step['step'].doStep(setup)
+      File "/Users/mauritsvanrees/shared-eggs/Products.GenericSetup-1.6.3-py2.6.egg/Products/GenericSetup/upgrade.py", line 142, in doStep
+        self.handler(tool)
+      File "/Users/mauritsvanrees/shared-eggs/plone.app.upgrade-1.1.3-py2.6.egg/plone/app/upgrade/v40/betas.py", line 195, in convertToBlobs
+        output = migrateATBlobFiles(context)
+      File "/Users/mauritsvanrees/shared-eggs/plone.app.blob-1.5.1-py2.6.egg/plone/app/blob/migrations.py", line 124, in migrateATBlobFiles
+        return migrate(self, walker=getATBlobFilesMigrationWalker)
+      File "/Users/mauritsvanrees/shared-eggs/plone.app.blob-1.5.1-py2.6.egg/plone/app/blob/migrations.py", line 33, in migrate
+        walker.go()
+      File "/Users/mauritsvanrees/shared-eggs/Products.contentmigration-2.0.3-py2.6.egg/Products/contentmigration/basemigrator/walker.py", line 146, in go
+        catalog.threshold = threshold
+      File "/Users/mauritsvanrees/shared-eggs/ZODB3-3.10.3-py2.6-macosx-10.6-x86_64.egg/ZODB/Connection.py", line 979, in register
+        self._register(obj)
+      File "/Users/mauritsvanrees/shared-eggs/ZODB3-3.10.3-py2.6-macosx-10.6-x86_64.egg/ZODB/Connection.py", line 989, in _register
+        self.transaction_manager.get().join(self)
+      File "/Users/mauritsvanrees/shared-eggs/transaction-1.1.1-py2.6.egg/transaction/_transaction.py", line 213, in join
+        self._prior_operation_failed() # doesn't return
+      File "/Users/mauritsvanrees/shared-eggs/transaction-1.1.1-py2.6.egg/transaction/_transaction.py", line 209, in _prior_operation_failed
+        self._failure_traceback.getvalue())
+    TransactionFailedError: An operation previously failed, with traceback:
+
+      File "/Users/mauritsvanrees/shared-eggs/Zope2-2.13.10-py2.6.egg/ZServer/PubCore/ZServerPublisher.py", line 31, in __init__
+        response=b)
+      File "/Users/mauritsvanrees/shared-eggs/Zope2-2.13.10-py2.6.egg/ZPublisher/Publish.py", line 443, in publish_module
+        environ, debug, request, response)
+      File "/Users/mauritsvanrees/shared-eggs/Zope2-2.13.10-py2.6.egg/ZPublisher/Publish.py", line 237, in publish_module_standard
+        response = publish(request, module_name, after_list, debug=debug)
+      File "/Users/mauritsvanrees/shared-eggs/Zope2-2.13.10-py2.6.egg/ZPublisher/Publish.py", line 126, in publish
+        request, bind=1)
+      File "/Users/mauritsvanrees/shared-eggs/Zope2-2.13.10-py2.6.egg/ZPublisher/mapply.py", line 77, in mapply
+        if debug is not None: return debug(object,args,context)
+      File "/Users/mauritsvanrees/shared-eggs/Zope2-2.13.10-py2.6.egg/ZPublisher/Publish.py", line 46, in call_object
+        result=apply(object,args) # Type s<cr> to step into published object.
+      File "/Users/mauritsvanrees/shared-eggs/Products.CMFPlone-4.1.2-py2.6.egg/Products/CMFPlone/browser/admin.py", line 237, in __call__
+        dry_run=form.get('dry_run', False),
+      File "<string>", line 3, in upgrade
+      File "/Users/mauritsvanrees/shared-eggs/AccessControl-2.13.4-py2.6-macosx-10.6-x86_64.egg/AccessControl/requestmethod.py", line 70, in _curried
+        return callable(*args, **kw)
+      File "/Users/mauritsvanrees/shared-eggs/Products.CMFPlone-4.1.2-py2.6.egg/Products/CMFPlone/MigrationTool.py", line 175, in upgrade
+        step['step'].doStep(setup)
+      File "/Users/mauritsvanrees/shared-eggs/Products.GenericSetup-1.6.3-py2.6.egg/Products/GenericSetup/upgrade.py", line 142, in doStep
+        self.handler(tool)
+      File "/Users/mauritsvanrees/shared-eggs/plone.app.upgrade-1.1.3-py2.6.egg/plone/app/upgrade/v40/betas.py", line 195, in convertToBlobs
+        output = migrateATBlobFiles(context)
+      File "/Users/mauritsvanrees/shared-eggs/plone.app.blob-1.5.1-py2.6.egg/plone/app/blob/migrations.py", line 124, in migrateATBlobFiles
+        return migrate(self, walker=getATBlobFilesMigrationWalker)
+      File "/Users/mauritsvanrees/shared-eggs/plone.app.blob-1.5.1-py2.6.egg/plone/app/blob/migrations.py", line 33, in migrate
+        walker.go()
+      File "/Users/mauritsvanrees/shared-eggs/Products.contentmigration-2.0.3-py2.6.egg/Products/contentmigration/basemigrator/walker.py", line 141, in go
+        self.migrate(self.walk(), **kwargs)
+      File "/Users/mauritsvanrees/shared-eggs/Products.contentmigration-2.0.3-py2.6.egg/Products/contentmigration/basemigrator/walker.py", line 228, in migrate
+        savepoint = transaction.savepoint()
+      File "/Users/mauritsvanrees/shared-eggs/transaction-1.1.1-py2.6.egg/transaction/_manager.py", line 101, in savepoint
+        return self.get().savepoint(optimistic)
+      File "/Users/mauritsvanrees/shared-eggs/transaction-1.1.1-py2.6.egg/transaction/_transaction.py", line 260, in savepoint
+        self._saveAndRaiseCommitishError() # reraises!
+      File "/Users/mauritsvanrees/shared-eggs/transaction-1.1.1-py2.6.egg/transaction/_transaction.py", line 373, in _saveAndRaiseCommitishError
+        t, v, tb = self._saveAndGetCommitishError()
+      File "/Users/mauritsvanrees/shared-eggs/transaction-1.1.1-py2.6.egg/transaction/_transaction.py", line 257, in savepoint
+        savepoint = Savepoint(self, optimistic, *self._resources)
+      File "/Users/mauritsvanrees/shared-eggs/transaction-1.1.1-py2.6.egg/transaction/_transaction.py", line 690, in __init__
+        savepoint = savepoint()
+      File "/Users/mauritsvanrees/shared-eggs/ZODB3-3.10.3-py2.6-macosx-10.6-x86_64.egg/ZODB/Connection.py", line 1123, in savepoint
+        self._commit(None)
+      File "/Users/mauritsvanrees/shared-eggs/ZODB3-3.10.3-py2.6-macosx-10.6-x86_64.egg/ZODB/Connection.py", line 623, in _commit
+        self._store_objects(ObjectWriter(obj), transaction)
+      File "/Users/mauritsvanrees/shared-eggs/ZODB3-3.10.3-py2.6-macosx-10.6-x86_64.egg/ZODB/Connection.py", line 675, in _store_objects
+        '', transaction)
+      File "/Users/mauritsvanrees/shared-eggs/ZODB3-3.10.3-py2.6-macosx-10.6-x86_64.egg/ZODB/Connection.py", line 1302, in storeBlob
+        targetpath = self._getBlobPath()
+      File "/Users/mauritsvanrees/shared-eggs/ZODB3-3.10.3-py2.6-macosx-10.6-x86_64.egg/ZODB/Connection.py", line 1331, in _getBlobPath
+        blob_dir = tempfile.mkdtemp(dir=self.temporaryDirectory(),
+      File "/Users/mauritsvanrees/shared-eggs/ZODB3-3.10.3-py2.6-macosx-10.6-x86_64.egg/ZODB/Connection.py", line 1344, in temporaryDirectory
+        return self._storage.temporaryDirectory()
+      File "/Users/mauritsvanrees/shared-eggs/RelStorage-1.5.0-py2.6.egg/relstorage/storage.py", line 1283, in temporaryDirectory
+        return self.blobhelper.temporaryDirectory()
+    AttributeError: 'NoneType' object has no attribute 'temporaryDirectory'
+
+    2011-10-29 03:23:25 INFO plone.app.upgrade End of upgrade path, migration has finished
+    2011-10-29 03:23:25 ERROR plone.app.upgrade The upgrade path did NOT reach current version
+    2011-10-29 03:23:25 ERROR plone.app.upgrade Migration has failed
+
+
+To do on Plone 4 through the web
+--------------------------------
+
+- Run the Plone migration.
+
+- Configure plone.app.caching (not much was previously cached in
+  CacheSetup thouch).
