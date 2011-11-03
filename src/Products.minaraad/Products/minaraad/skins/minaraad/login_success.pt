@@ -31,34 +31,12 @@
       <h1 class="documentFirstHeading"
           i18n:translate="heading_you_are_now_logged_in">You are now logged in</h1>
 
-      <p tal:condition="initial_login" class="documentDescription"
-         i18n:translate="description_logged_in_explain">
-         Notice that the top right bar has changed. It now
-         contains several personalized items. Use these items
-         to control your settings and your personal area.
-         They will remain as long as you are logged in.
+      <p>
+        U kan uw <a
+        tal:attributes="href string:${portal_url}/subscriptions_config.html"
+        >abonnement</a> hier verfijnen.
       </p>
-
       <div id="content-core">
-          <p tal:condition="came_from">
-            <a href=""
-               tal:attributes="href came_from"
-               i18n:translate="label_login_continue">
-              Continue</a>
-          </p>
-
-          <p tal:condition="python:not came_from">
-            <a href=""
-               tal:attributes="href portal_state/navigation_root_url"
-               i18n:translate="label_login_continue_to_home_page">
-              Continue to the
-              <span tal:content="portal_state/navigation_root_title" i18n:name="portal_title">
-                  portal title
-              </span>
-              home page
-              </a>
-          </p>
-
           <div tal:condition="not:js_enabled">
              <p i18n:translate="description_enable_cookies_to_stay_logged_in">
                 Note: If you do not remain logged in after leaving this page,
