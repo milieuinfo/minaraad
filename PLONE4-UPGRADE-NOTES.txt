@@ -97,6 +97,8 @@ To do on Plone 3 through the web
     <utility interface="plone.app.i18n.locales.interfaces.IMetadataLanguages"
        object="plone_app_metadata_languages"/>
 
+- Remove the classic portlet_recent from @@manage-portlets in the portal root.
+
 
 To do in the buildout
 ---------------------
@@ -128,7 +130,24 @@ To do in the code
   but needs to look that up again. :-) See
   http://maurits.vanrees.org/weblog/archive/2010/10/i18n-plone-4#overriding-translations
 
-- Fix errors during Plone migration.
+
+Skin jobs
+---------
+
+- Update main_template.pt.  Messy.
+
+- portlet_recent breaks; this is currently using a classic portlet; we
+  should create and use a normal portlet.
+
+- Possibly remove the "not:js_enabled" code in login_success.pt:
+  check if this is triggered wrongly when using the login portlet.
+
+- Move our skins/minaraad/colophon.pt changes to the viewlet in
+  plone/app/layout/viewlets/colophon.pt
+
+- Make sure the viewlet in
+  plone/app/layout/viewlets/document_actions.pt is shown in the correct place.
+
 
 
 To do on Plone 4 through the web
@@ -138,3 +157,6 @@ To do on Plone 4 through the web
 
 - Configure plone.app.caching (not much was previously cached in
   CacheSetup though).
+
+- Add recent_portlet again in @@manage-portlets in the root.  We
+  should recreate that portlet or reuse an existing one.
