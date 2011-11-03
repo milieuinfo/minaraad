@@ -81,7 +81,12 @@ class BaseMeeting(atapi.BaseFolder):
         # We first check if there is some PDF files in the deleted objects.
         pdf_deleted = False
         for item_id in ids:
-            if self[item_id].contains_pdf():
+            try:
+                contains_pdf = self[item_id].contains_pdf()
+            except AttributeError:
+                # Probably a normal file.
+                continue
+            if contains_pdf:
                 pdf_deleted = True
                 break
 

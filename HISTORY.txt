@@ -4,7 +4,9 @@ History of this buildout
 4.2 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Fixed AttributeError when deleting a normal file from a meeting.
+  Normal files do not have a contains_pdf method.
+  [maurits]
 
 
 4.1 (2011-10-27)
