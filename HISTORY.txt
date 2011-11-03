@@ -4,6 +4,10 @@ History of this buildout
 Plone 4 Branch (unreleased)
 ---------------------------
 
+- Fixed AttributeError when deleting a normal file from a meeting.
+  Normal files do not have a contains_pdf method.
+  [maurits]
+
 - Configure blob storage.  Blobs are stored in postgres.  The zope
   instance caches them in var/blobcache.
   [maurits]
