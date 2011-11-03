@@ -1,0 +1,739 @@
+History of this buildout
+========================
+
+Plone 4 Branch (unreleased)
+---------------------------
+
+- Configure blob storage.  Blobs are stored in postgres.  The zope
+  instance caches them in var/blobcache.
+  [maurits]
+
+- Updated buildout config to Plone 4.1.2 and updated the code so the
+  instance starts.  The TTW migration does not work yet.
+  [maurits]
+
+
+4.0 (unreleased)
+----------------
+
+- Restructure buildout configs to match the setup of LNE and use
+  RelStorage.  No more zeoserver and zeoclient.
+  [maurits]
+
+
+3.16 (2011-10-04)
+-----------------
+
+- Fixed cronjob for the projects reminder mail.
+  [maurits]
+
+
+3.15 (2011-10-04)
+-----------------
+
+- Customized getGlobalPortalRoles; change compared to standard Plone:
+  exclude not only Owner, but also ProjectMember.
+  [maurits]
+
+- Removed our local roles DigibibViewer and ProjectMember from the
+  sharing tab: DigibibViewer should be set globally for a group and
+  ProjectMember is handled automatically with borg.localrole.
+  [maurits]
+
+- Translate the DigibibViewer and ProjectMember roles.
+  [maurits]
+
+- Changed cronjob times to 10 o' clock on Tuesday and Thursday.
+  [maurits]
+
+
+3.14 (2011-10-03)
+-----------------
+
+- Configure cron job for notifying of projects.
+  [maurits]
+
+
+3.13 (2011-10-03)
+-----------------
+
+- Fixed javascript for submit button in forms that do not have an
+  attachment field.
+  [maurits]
+
+- Do not show the product number on the project when it has not been
+  set, especially as it cannot actually be set until the last phase of
+  the project.
+  [maurits]
+
+- Actually load Products/minaraad/browser/overrides.zcml correctly so
+  it our patch for the base2 javascript gets picked up.
+  [maurits]
+
+
+3.12 (2011-09-27)
+-----------------
+
+- Display the product number prepended by the year number.
+  [maurits]
+
+- Added javascript to fix using the wrong submit button when pressing
+  Enter in an edit form that first displays a button for uploading an
+  attachment.
+  [vincept]
+
+
+3.11 (2011-09-27)
+-----------------
+
+- Registered an upgrade step for migrating/copying Advisories to
+  Projects; this is now safe to call multiple times because we now
+  check if an Advisory is already linked to a Project.
+  [maurits]
+
+- Added product_number field to Projects and Advisories.
+  [maurits]
+
+
+3.10 (2011-09-20)
+-----------------
+
+- In the install.py of Products.minaraad only install packages that
+  have not yet been installed.
+  [maurits]
+
+- Avoid error in an empty projects container.
+  [Maurits]
+
+
+3.9 (2011-09-19)
+----------------
+
+- Link the project and its advisory.
+  [maurits]
+
+- Added basic migration/copying of Advisories from the years 2009
+  through 2011 to Projects.  Since this *really* must to be done only
+  once, manually go to @@migrate_advisories_to_projects?migrate=1 in
+  the Plone Site root.
+  [maurits]
+
+- Simplified check when determining whether to use the 'published'
+  field for attachments, as the previous check did not work for
+  attachments being created in the portal factory.
+  [maurits]
+
+- Use jquery.pyproxy 0.4.1.
+  [vincent]
+
+- Allowed Folder inside DigiBib objects.
+  [vincent]
+
+- When reinstalling Products.minaraad reinstall minaraad.projects as
+  well, as we need to install that one after SimpleAttachment.
+  [maurits]
+
+- In the relatedDocuments widget of Advisories use digibib/projects as
+  initial folder to search in.
+  [maurits]
+
+- Added two state workflow for FileAttachment objects.
+  Updated schema to add a 'Published' boolean field.
+  Added event to change the workflow state depending on the value of
+  the field.
+  [vincent]
+
+- Removed possibility to subscribe by snail mail.
+  [vincent]
+
+- Added an object_button action for completed projects that will
+  create an advisory from that project (action is shown but has no
+  effect yet).
+  [maurits]
+
+- Do not show links to other years when we only have a link for the
+  current year.
+  [maurits]
+
+
+3.8 (2011-09-09)
+----------------
+
+- Show meeting archive listing by year.
+  [maurits]
+
+- Show project archive listing by year.
+  [maurits]
+
+- Added minaraad_properties/requestors lines property.  We use this as
+  vocabulary for the advisory_requester field of a project.  You can
+  edit it in the project_properties control panel.
+  [maurits]
+
+- Updated to collective.recipe.backup 2.1.
+  [maurits]
+
+- Allow selecting a full year in the statistics export form on the
+  control panel.
+  [maurits]
+
+- When showing the internal project number on a project page, show the
+  year as well.
+  [maurits]
+
+- Make list_contact_persons available as display view on Folders.
+  [maurits]
+
+- In the disagreeing_members field of a project for each member list
+  the organisation that he or she has specified in his personal
+  preferences.
+  [maurits]
+
+- Added view to list contact persons.
+  [maurits]
+
+- Added a description to the Duration field of Agenda Items.
+  [maurits]
+
+- Display the titles or the Organisations in a project, instead of
+  their ids.
+  [maurits]
+
+- Added 'Add Attachment' permission to the project workflow and give
+  this the same settings as 'Modify portal content'.  Otherwise you
+  get an error in a finished project as you could still add an
+  attachment but the add form would give an error as you could not
+  access atct_edit.  Added upgrade step for this.
+  [maurits]
+
+- Unfuzzied and fixed two Dutch translations (Coordinator and Co-authors).
+  [maurits]
+
+
+3.7 (2011-08-30)
+----------------
+
+- Pin threadframe = 0.2 in versions.cfg instead of debugtools.cfg
+  [maurits]
+
+
+3.6 (2011-08-30)
+----------------
+
+- Fixed hearing_view.pt to work with both agendaItems that are objects
+  or brains.
+  [maurits]
+
+- Added munin.zope for monitoring.
+  [maurits]
+
+- Added completely optional relstorage.cfg.  Also added
+  buildout.cfg.in that you can copy to buildout.cfg as a starter.  It
+  has some info on what you may need to configure relstorage too.
+  [maurits]
+
+
+3.5 (2011-08-19)
+----------------
+
+- Use Products.SimpleAttachment 3.8 (internal release 3.8-zest-1) with
+  Dutch translations.  Note that this switches the i18n domain in the
+  types xml from plone to simpleattachment, so it needs a reinstall op
+  minaraad.projects to pick that new domain and translations up, as we
+  override types/FileAttachment.xml.
+  [maurits]
+
+- Added Products.Zope_Hotfix_20110622 [vincent]
+
+- Add patches base2-dom-fp.js in the overrides in Products.minaraad for
+  Firefox 4 support in javascript/kss/wysiwyg editing.
+  [fred]
+
+- Updated MREvent and related views to use the new agenda
+  system. [vincent]
+
+- Figured out which extra indexes and metadata are needed in the
+  portal_catalog.  Added code in the installer and catalog.xml to
+  officially add them.  Added release notes to manually remove items
+  that are not needed.
+  [maurits]
+
+- Removed old migration code for themes and summaries.
+  [maurits]
+
+- Commented out the maildrop parts as they were not working.  Now it iss
+  safe to use a release from trunk for production again and maybe do
+  some more tests with the SecureMailDropHost.
+  [maurits]
+
+- Added Plone security hotfix (merged from maintenance branch).
+  [maurits]
+
+
+3.4.8 (2011-01-14)
+------------------
+
+- Change the order of the fields of aganda items in the hearing view:
+  the summary now comes *after* the speaker(s).
+  [mark]
+
+
+3.4.7 (2011-01-12)
+------------------
+
+- Do not overide the production supervisor part in preview.cfg.
+  [maurits]
+
+
+3.4.6 (2011-01-12)
+------------------
+
+- Added Products.SecureMaildropHost 0.2.
+  [maurits]
+
+- Added maildrop part to base.cfg so devel.cfg and preview.cfg work as
+  well.
+  [maurits]
+
+
+3.4.5 (2011-01-11)
+------------------
+
+- Added maildrop location to instance products setting. [jladage]
+
+
+3.4.4 (2011-01-11)
+------------------
+
+- Added maildrop to the buildout [jladage]
+
+- Set MailHost to localhost [jladage]
+
+
+3.4.3 (2011-01-11)
+------------------
+
+- Added -q option to backup cronjob [jladage]
+
+
+3.4.2 (2011-01-05)
+------------------
+
+- Set a long timeout for the email_out page in the nginx config, as it
+  takes very long to display that page when sending lots of emails.
+  With such a long timeout (900 seconds) the browser (at least
+  Firefox) just keeps waiting; with the default timeout (60) Plone
+  gives you a Not Found error, which is worse.
+  [maurits]
+
+- Made redirection to www optional as we do want it for the production
+  www.minaraad.be but not for the preview minaraad.zestsoftware.nl.
+  [maurits]
+
+- Let preview.cfg inherit from production.cfg, though we remove a few
+  parts.
+  [maurits]
+
+- Use the standard port range for zeoserver and varnish on production.
+  [maurits]
+
+- Do not let nginx connect to varnish but directly to the zeoclient,
+  as there as something amiss with caching logged-in and logged-out
+  pages.
+  [maurits]
+
+
+3.4.1 (2010-12-16)
+------------------
+
+- Added nginx and varnish configuration and related conf variables and
+  included superlance plugin. [jladage]
+
+- New port numbers as we will move this from vulcan to ec2.
+  TODO: add nginx and varnish instead of the current apache and squid.
+  [maurits]
+
+
+3.4.0 (2010-11-26)
+------------------
+
+- When portal/nieuw exists, point to that item from portlet_recent.
+  Otherwise point to recently_modified.
+  [maurits]
+
+- Show the same on the recently_modified page as in portlet_recent.
+  [maurits]
+
+- Added LinkedIn Company Insider javascript plus snippet in the main
+  template.
+  [maurits]
+
+- Added LinkedIn field to ContactPersons and show it where needed.
+  [maurits]
+
+
+3.3.7 (2010-11-17)
+------------------
+
+- Use z3c.recipe.usercrontab = 1.1.
+  [maurits]
+
+- Fixed "KeyError: 'excname'" when trying to get info when there is a
+  problem sending to an email address.  Now the correct info is stored
+  in the error log.
+  [maurits]
+
+
+3.3.6 (2010-09-30)
+------------------
+
+- Fixed TypeError when adding an advice.
+  [maurits]
+
+
+3.3.5 (2010-09-24)
+------------------
+
+- Fix wrong selection widget behaviour for the themes field by using
+  overrides.zcml to take over my fix in newer Products.Archetypes; see
+  http://dev.plone.org/archetypes/changeset/13086
+  The override can be removed once Products.Archetypes 1.5.17 is
+  released with this fix, but maybe we should first upgrade to Plone 3.3.x.
+  [maurits]
+
+- Use security Zope2 release 2.10.12.
+  [maurits]
+
+- Use collective.recipe.backup 1.6 and set
+  enable_snapshotrestore = false on production.
+  [maurits]
+
+- Use a tarball of the hotfix that still exists; original one has been
+  removed apparently...
+  [maurits]
+
+
+3.3.4 (2010-06-25)
+------------------
+
+- Apply PloneHotfix20100612 (see
+  http://plone.org/products/plone/security/advisories/CVE-2010-2422) [mark]
+
+- Fix problem with sending Hearing e-mails. Commented out a suspicious section
+  of code in Products.minaraad.browser.email_notification. [mark]
+
+
+3.3.3 (2010-06-11)
+------------------
+
+- Load the webstats_js site property in the main template footer.
+  [maurits]
+
+
+3.3.2 (2010-06-08)
+------------------
+
+- Show first name of user in the personal portlet.  This avoids making
+  the left column too wide when showing the user name, which is now
+  the email address.
+  [maurits]
+
+
+3.3.1 (2010-06-04)
+------------------
+
+- Do not let svn ignore the src/ directory, as that is where
+  Products.minaraad now is.
+  [maurits]
+
+
+3.3.0 (2010-06-04)
+------------------
+
+- Store the minaraad_email.log file in the buildout directory in var/log.
+  [maurits]
+
+- Added Spartanic browser view to send an email to all members about
+  the change to email-based login.  By default sends only to Ignace
+  and Jurgen as a test.  Usage: @@email_login_notify
+  [maurits]
+
+- Recent Items portlet now shows the type of post, and sorts on 'effective'
+  [thom]
+
+- Join form looks as a table now, changed the required dot and text as well
+  [thom]
+
+- Added collective.emaillogin = 0.8
+  [maurits]
+
+- Automatic Copyright year change
+  [thom]
+
+- Read the version number of Products.minaraad from the version.txt of
+  the buildout (in the QI this does not quite work so we keep a dummy
+  version.txt in the product as well).  Cleanup old history.
+  [maurits]
+
+- Moved Products.minaraad into the buildout src/ directory.
+  [maurits]
+
+- New buildout structure more conforming to current zestskel.
+  [maurits]
+
+
+3.2.5 (2010-03-15)
+------------------
+
+- Use Products.minaraad 3.1.13.  [maurits]
+
+- Added recaptcha support.  [maurits]
+
+- Put all versions in versions.cfg.  [maurits]
+
+
+3.2.4 (2010-01-25)
+------------------
+
+- Use Products.minaraad 3.1.12. [maurits]
+
+
+3.2.3 (2010-01-14)
+------------------
+
+- Use Products.minaraad 3.1.11. [maurits]
+
+- Use latest zc.buildout, setuptools and distribute.  [maurits]
+
+- Use security Zope2 release 2.10.11. [maurits]
+
+
+3.2.2 (2010-01-11)
+------------------
+
+- Use Products.minaraad 3.1.10. [maurits]
+
+
+3.2.1 (2010-01-11)
+------------------
+
+- Use Products.minaraad 3.1.9. [maurits]
+
+
+3.2 (2009-12-21)
+----------------
+
+- Use Products.minaraad 3.1.8. [maurits]
+
+
+3.1.10 (2009-12-16)
+-------------------
+
+- Use Products.minaraad 3.1.7. [mark]
+
+
+3.1.9 (2009-12-07)
+------------------
+
+- Use newer bootstrap.py with --distribute support.
+  [maurits]
+
+- Set zserver-threads to 2 (local change found on production).
+  [maurits]
+
+
+3.1.8 (2009-12-07)
+------------------
+
+- Use Products.minaraad 3.1.6.  [maurits]
+
+
+3.1.7 (2009-11-11)
+------------------
+
+- Use Products.minaraad 3.1.5.  [maurits]
+
+
+3.1.6 (2009-06-22)
+------------------
+
+- Use Products.minaraad 3.1.4.  [maurits]
+
+
+3.1.5 (2009-06-22)
+------------------
+
+- Use Products.minaraad 3.1.3.  [maurits]
+
+- Added collective.autopermission = 1.0b1.  [maurits]
+
+- As an experiment, added extensions = buildout.dumppickedversions in
+  devel.cfg.  This dumps any picked version (so from unpinned
+  packages) at the end of the buildout run.  Pinned plone.reload and
+  roadrunner accordingly.  [maurits]
+
+
+3.1.4 (2009-04-02)
+------------------
+
+- Use plone.session 2.1 in stable too.  [maurits]
+
+
+3.1.3 (2009-04-02)
+------------------
+
+- Use Products.minaraad 3.1.2.  [maurits]
+
+
+3.1.2 (2009-04-02)
+------------------
+
+- Removed RichDocument again and switch to Products.minaraad 3.1.1.
+  Note: you *MUST* have used buildout tag 3.1.1 and done the upgrade
+  steps (see Products.minaraad/UPGRADE.txt) first before using this
+  newer buildout.  [maurits]
+
+
+3.1.1 (2009-04-02)
+------------------
+
+- Added RichDocument again for a short while.  See the UPGRADE.txt in
+  Products.minaraad.  [maurits]
+
+
+3.1.0 (2009-04-02)
+------------------
+
+- Use Products.minaraad 3.1.0.  [maurits]
+
+- Removed Products.RichDocument.  [maurits]
+
+- Use plone.session 2.1 (instead of 2.0) to have login cookies
+  persist.  [maurits]
+
+
+3.0.10 (2009-03-24)
+-------------------
+
+- Use Products.minaraad 3.0.9 [jladage]
+
+
+3.0.9 (2009-03-23)
+------------------
+
+- Use Products.minaraad 3.0.8.  [maurits]
+
+
+3.0.8 (2009-03-23)
+------------------
+
+- Use earlier version of elementtree, a supervisor conflicts with the
+  newer one.  No idea why production complains where preview does not.
+  [maurits]
+
+
+3.0.7 (2009-03-19)
+------------------
+
+- Use Products.minaraad 3.0.7.  [maurits]
+
+
+3.0.6 (2009-03-18)
+------------------
+
+- Use Products.minaraad 3.0.6.  [maurits]
+
+
+3.0.5 (2009-03-18)
+------------------
+
+- Use Products.minaraad 3.0.5.  [maurits]
+
+
+3.0.4 (2009-03-18)
+------------------
+
+- Use Products.minaraad 3.0.4.  [maurits]
+
+
+3.0.3 (2009-03-03)
+------------------
+
+- Use Products.minaraad 3.0.3.  [maurits]
+
+
+3.0.2 (2009-02-11)
+------------------
+
+- Nothing changed yet.
+
+
+3.0.1 (2009-01-26)
+------------------
+
+- New Products.minaraad (3.0.1). [reinout]
+
+
+3.0.0 (2008-12-31)
+------------------
+
+- Stable: using Products.minaraad 3.0.0.  [maurits]
+
+- Limited the PTS languages to English and Dutch.  [maurits]
+
+- Added Products.CacheSetup and pinned versions of packages.
+  [maurits+reinout]
+
+- Switched to Plone 3.1.7.  [rocky]
+
+
+1.0.5 (2008-12-16)
+------------------
+
+- Using Products.minaraad 2.2.2 tag.  [maurits]
+
+
+1.0.4 (2008-12-08)
+------------------
+
+- Using Products.minaraad 2.2.1 tag.  [maurits]
+
+
+1.0.3 (2008-12-05)
+------------------
+
+- Removed unneeded translations from i18n overrides file that are not
+  actually overrides for something in the plone domain.  [maurits]
+
+
+1.0.2 (2008-12-05)
+------------------
+
+- Added i18n-overwrites part.  [maurits]
+
+
+1.0.1 (2008-12-05)
+------------------
+
+- Added eggs and download to the svn ignores.  [maurits]
+
+
+1.0.0 (2008-12-05)
+------------------
+
+- Set ports like they are for the current preview/production.
+  [maurits]
+
+- Preview: added supervisor.  [maurits]
+
+- Stable: use fresh minaraad 2.2.0 tag.  [maurits]
+
+- Added PlonePAS migration branch checkout.  Added all other products
+  as tarball.  [maurits]
+
+- Using PloneTranslations 3.0.0 tarball.  [maurits]
+
+- Use Plone 2.5.2-1, with CacheFu.  No varnish (squid is configured
+  already).  Zope 2.9.7.  [maurits]
+
+- Initial buildout skeleton created by ZestSkel.  [maurits]
