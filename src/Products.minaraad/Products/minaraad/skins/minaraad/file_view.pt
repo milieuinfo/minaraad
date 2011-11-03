@@ -12,9 +12,9 @@
         <metal:block define-macro="content-core"
                      tal:define="content_type context/get_content_type|context/Format">
             <p>
-                <metal:field use-macro="python:context.widget('file', mode='view')">
-                File
-                </metal:field>
+              <tal:block define="file context/getFile;">
+                <metal:block use-macro="context/filemacro/macros/file_view" />
+              </tal:block>
             </p>
             <div tal:condition="python: content_type.startswith('text')">
                 <h2 i18n:translate="heading_file_contents">File contents</h2>
