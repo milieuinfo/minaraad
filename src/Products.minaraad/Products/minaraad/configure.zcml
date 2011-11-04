@@ -16,6 +16,7 @@
   <include file="deprecation.zcml" />
 
   <cmf:registerDirectory name="minaraad"/>
+  <cmf:registerDirectory name="mina_styles"/>
 
   <five:implements
       class="Products.CMFPlone.Portal.PloneSite"

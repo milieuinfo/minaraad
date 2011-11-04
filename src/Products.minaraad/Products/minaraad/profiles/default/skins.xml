@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<object name="portal_skins">
+ <object name="minaraad" meta_type="Filesystem Directory View"
+    directory="Products.minaraad:skins/minaraad"/>
+ <object name="mina_styles" meta_type="Filesystem Directory View"
+    directory="Products.minaraad:skins/mina_styles"/>
+ <skin-path name="*">
+  <layer name="mina_styles" insert-after="custom"/>
+  <layer name="minaraad" insert-after="custom"/>
+ </skin-path>
+</object>
