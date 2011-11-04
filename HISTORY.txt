@@ -1,8 +1,14 @@
 History of this buildout
 ========================
 
-Plone 4 Branch (unreleased)
----------------------------
+5.0 - Plone 4 Branch (unreleased)
+---------------------------------
+
+- Added a plone41 migration profile that is applied during an upgrade
+  step of Products.minaraad.  Here we can put import steps that should
+  be run once for the migration.  Currently just the skins.xml.  We
+  add the new mina_styles layer only to the Minaraad Theme there.
+  [maurits]
 
 - Moved all css from the minaraad to the new mina_styles skin layer.
   [maurits]

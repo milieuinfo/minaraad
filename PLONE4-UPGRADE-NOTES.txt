@@ -73,6 +73,13 @@ To do on Plone 3 through the web
 
 - You can now remove fckeditor.html from the custom skin layer.
 
+- Remove some left-over CacheFu stuff.  On Plone 4 I currently still
+  get this warning in the logs:
+
+    WARNING OFS.Uninstalled Could not import class 'CSCachingPolicyManager' from module 'Products.CacheSetup.content.caching_policy_manager'
+
+  TODO: figure out which item this is.
+
 - There is a difference between the minaraad Components registry and a
   default Plone 3.1.7 registry.  This should be added in minaraad while
   still using Plone 3.1.7, in the Components tab, otherwise you get a
@@ -98,6 +105,11 @@ To do on Plone 3 through the web
        object="plone_app_metadata_languages"/>
 
 - Remove the classic portlet_recent from @@manage-portlets in the portal root.
+
+- In portal_skins there is only the Plone Default theme.  Copy this to
+  a new Minaraad Theme skin selection and use that as the default.
+  Otherwise the standard Plone migration creates a 'Old Plone 3 Custom
+  Theme' skin selection.
 
 
 To do in the buildout
@@ -133,6 +145,12 @@ To do in the code
 
 Skin jobs
 ---------
+
+- Create a Minaraad Theme.  Currently, the default Plone migration
+  renames the default skin selection to 'Old Plone 3 Custom Theme'.
+  We may want to start over based on Sunburst.  Possibly even with
+  plone.app.theming.  Or at least add the new mina_style skin layer
+  only to our theme and not also to Plone Default/Classic/Sunburst.
 
 - Update main_template.pt.  Messy.
 
