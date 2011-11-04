@@ -1,0 +1,60 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:gs="http://namespaces.zope.org/genericsetup"
+    i18n_domain="minaraad">
+
+  <gs:registerProfile
+      name="default"
+      title="Minaraad"
+      directory="profiles/default"
+      description="Profile for the minaraad site."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      />
+
+  <gs:upgradeStep
+      title="Migrate themes"
+      description=""
+      source="1001"
+      destination="1002"
+      handler="Products.minaraad.migration.migrate_themes"
+      sortkey="1"
+      profile="Products.minaraad:default" />
+
+  <gs:upgradeStep
+      title="Save themes"
+      description=""
+      source="1002"
+      destination="1003"
+      handler="Products.minaraad.migration.save_object_themes"
+      sortkey="1"
+      profile="Products.minaraad:default" />
+
+  <gs:upgradeStep
+      title="Migrate contacts"
+      description=""
+      source="1003"
+      destination="1004"
+      handler="Products.minaraad.migration.migrate_contacts"
+      sortkey="1"
+      profile="Products.minaraad:default" />
+
+  <gs:upgradeStep
+      title="Update control panel"
+      description=""
+      source="1004"
+      destination="1005"
+      handler="Products.minaraad.migration.update_controlpanel"
+      sortkey="1"
+      profile="Products.minaraad:default" />
+
+  <gs:upgradeStep
+      title="Update portal_types"
+      description=""
+      source="1005"
+      destination="1006"
+      handler="Products.minaraad.migration.update_portal_types"
+      sortkey="1"
+      profile="Products.minaraad:default" />
+
+</configure>
