@@ -4,6 +4,9 @@ History of this buildout
 Plone 4 Branch (unreleased)
 ---------------------------
 
+- Moved all css from the minaraad to the new mina_styles skin layer.
+  [maurits]
+
 - Fixed AttributeError when deleting a normal file from a meeting.
   Normal files do not have a contains_pdf method.
   [maurits]
