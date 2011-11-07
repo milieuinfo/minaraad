@@ -146,19 +146,25 @@ To do in the code
 Skin jobs
 ---------
 
-- Create a Minaraad Theme.  Currently, the default Plone migration
-  renames the default skin selection to 'Old Plone 3 Custom Theme'.
-  We may want to start over based on Sunburst.  Possibly even with
-  plone.app.theming.  Or at least add the new mina_style skin layer
-  only to our theme and not also to Plone Default/Classic/Sunburst.
+- Maybe create a separate Minaraad Theme package.  At least we should
+  have a 'Minaraad Theme' in portal_skins; this is added manually in
+  Plone 3 when you follow the above instructions.  We may want to
+  start over based on Sunburst.  Possibly even with plone.app.theming.
+  I [maurits] have at least created a new mina_style skin layer and
+  moved all css files there that used to be in the single minaraad
+  skin layer.  We now add this only to our theme and not also to Plone
+  Default/Classic/Sunburst.
 
 - Update main_template.pt.  Messy.
 
 - portlet_recent breaks; this is currently using a classic portlet; we
   should create and use a normal portlet.
 
-- Possibly remove the "not:js_enabled" code in login_success.pt:
-  check if this is triggered wrongly when using the login portlet.
+- Possibly remove the "not:js_enabled" code in login_success.pt as we
+  had this removed in Plone 3 as well, with the remark that apparently
+  this is triggered wrongly when using the login portlet.  So check if
+  something still goes wrong and in that case remove this code (or
+  find a better fix).
 
 - Move our skins/minaraad/colophon.pt changes to the viewlet in
   plone/app/layout/viewlets/colophon.pt
@@ -166,6 +172,10 @@ Skin jobs
 - Make sure the viewlet in
   plone/app/layout/viewlets/document_actions.pt is shown in the correct place.
 
+- Check lots more customized templates by checking in the logs why we
+  customized them in the first place and whether this is still needed.
+
+- Check our own new templates.
 
 
 To do on Plone 4 through the web
@@ -174,7 +184,8 @@ To do on Plone 4 through the web
 - Run the Plone migration.
 
 - Configure plone.app.caching (not much was previously cached in
-  CacheSetup though).
+  CacheSetup though, so not very critical).  I have not tried this
+  yet.
 
 - Add recent_portlet again in @@manage-portlets in the root.  We
   should recreate that portlet or reuse an existing one.
