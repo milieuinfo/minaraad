@@ -1,0 +1,51 @@
+<html xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      i18n:domain="minaraad">
+  <body>
+    <metal:portlet define-macro="portlet"
+                   tal:define="display_actions python:user_actions[:-1]+global_actions+user_actions[-1:];
+                               getIconFor nocall:context/plone_utils/getIconFor;"
+                   tal:condition="not: isAnon">
+      <div class="personalbar_bordertop">
+        <ul class="portlet-personalbar-mina">
+          <li class="portlet_title"
+              i18n:translate="title_my_account">
+            My account
+          </li>
+          <li class="portalUser">
+            <a id="user-name"
+               tal:omit-tag="not: mtool/getHomeFolder"
+               tal:attributes="href string:${mtool/getHomeUrl}">
+              <span class="visualCaseSensitive"
+                    tal:replace="python:user.getProperty('firstname', user.getUserName())" />
+            </a>
+          </li>
+          <li>
+             <a tal:attributes="href string:${portal_url}/personalize_form"
+               class="link-personalbar">Mijn contactgegevens</a>
+          </li>
+          <li>
+             <a tal:attributes="href string:${portal_url}/subscriptions_config.html"
+                class="link-personalbar">Mijn abonnementen</a>
+          </li>
+          <li>
+             <a tal:attributes="href string:${portal_url}/password_form"
+                class="link-personalbar">Wachtwoord wijzigen</a>
+          </li>
+          <li>
+             <a tal:attributes="href string:${portal_url}/logout"
+                class="link-personalbar">Uitloggen</a>
+           </li>
+           <li>
+             <a class="link-personalbar"
+                tal:attributes="href string:${portal_url}/uitschrijven">Uitschrijven</a>
+           </li>
+           <li tal:condition="python:checkPermission('Manage portal', context)">
+              <a tal:attributes="href string:${portal_url}/plone_control_panel"
+                 class="link-personalbar">Website configuratie</a>
+           </li>
+        </ul>
+      </div>
+    </metal:portlet>
+  </body>
+</html>
