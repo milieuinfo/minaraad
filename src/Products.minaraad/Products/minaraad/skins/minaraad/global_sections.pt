@@ -1,0 +1,42 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      i18n:domain="plone">
+
+    <body>
+
+    <!-- THE SECTION TABS DEFINITION -->
+    <div metal:define-macro="portal_tabs"
+         tal:define="portal_properties context/portal_properties;
+                     portal context/@@plone_portal_state/portal;
+                     data python:here.plone_utils.createSitemap(here);
+                     titlesNotInTabs portal_properties/navtree_properties/titlesNotInTabs;
+                     alltabs data/children|nothing;
+                     tabs python:[c for c in alltabs if c['Title'] not in titlesNotInTabs
+                                  and c['portal_type'] in
+                                  ['Folder', 'DigiBib']];"
+         class="menumargin_top">
+
+        <div class="navmenu_bordertop">&nbsp;</div>
+        <div metal:define-macro="content_actions"
+            i18n:domain="plone"
+            class="portal-tabs">
+
+            <ul id="portal-tabs-nav">
+                <li tal:define="selected_tab context/@@minaraad_globals/isHomePage"
+                    tal:attributes="class python:test(selected_tab, 'selected', 'plain');
+                                          title portal/Description;">
+                   <span class="IEFix_paddingmenu">
+                       <a tal:attributes="class python:test(selected_tab, 'selected', 'plain');
+                                          href string:${portal_url};"
+						  title="Home">Home</a>
+                    </span>
+                </li>
+                <tal:items metal:use-macro="here/global_menu/macros/menu">
+                    Insert Add Content and Publishing pulldown.
+                </tal:items>
+            </ul>
+        </div>
+        <div class="navmenu_borderbottom">&nbsp;</div>
+    </div>
+
+    </body>
+</html>

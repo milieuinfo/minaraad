@@ -1,0 +1,53 @@
+<html xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      i18n:domain="plone">
+  <body>
+    <div metal:define-macro="portlet"
+         tal:condition="python:template.getId()!='recently_published'"
+         tal:omit-tag="">
+
+      <!-- UNUSED: last_login_time python:member.getProperty('last_login_time', DateTime()); -->
+      <tal:recentlist tal:define="portal context/@@plone_portal_state/portal;
+                                  toLocalizedTime nocall:context/@@plone/toLocalizedTime;
+                                  results python:request.get('items',
+                                  portal.portal_catalog.searchResults(portal_type=['Hearing', 'Advisory',
+                                  'Study', 'AnnualReport',
+                                  'Pressrelease', 'NewsLetter',
+                                  'Event', 'MREvent', 'Document'],
+                                  sort_on='effective',
+                                  sort_order='reverse')[:10]);
+                                  portal_default_page portal/@@default_page/getDefaultPage;
+                                  front_page_url string:${portal_url}/${portal_default_page}">
+
+        <dl id="portlet-events-mina">
+          <dt>
+            <a tal:define="has_news exists:portal/nieuw;
+                           news_path python:has_news and 'nieuw' or 'recently_modified'"
+               tal:attributes="href string:${portal_url}/${news_path}"
+               i18n:domain="minaraad"
+               i18n:translate="label_new">
+               New
+            </a>
+          </dt>
+          <tal:items tal:repeat="obj results">
+            <dd tal:condition="python:obj.getURL() != front_page_url">
+              <span class="portlet_date">
+                <tal:date content="python:toLocalizedTime(obj.effective)" />
+              </span>
+              <span class="portlet_date"
+                    i18n:domain="plone"
+                    i18n:translate=""
+                    tal:content="obj/portal_type"
+                    /><span class="portlet_date">:</span>
+              <br />
+              <a tal:attributes="href obj/getURL;
+                                 title obj/Description"
+                 tal:content="obj/pretty_title_or_id" />
+            </dd>
+          </tal:items>
+        </dl>
+
+      </tal:recentlist>
+    </div>
+  </body>
+</html>
