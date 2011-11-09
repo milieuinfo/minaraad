@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<object name="portal_skins">
+<object name="portal_skins" default_skin="Minaraad Theme">
  <object name="minaraad" meta_type="Filesystem Directory View"
     directory="Products.minaraad:skins/minaraad"/>
  <object name="mina_styles" meta_type="Filesystem Directory View"
@@ -7,7 +7,47 @@
  <skin-path name="*">
   <layer name="minaraad" insert-after="custom"/>
  </skin-path>
- <skin-path name="Minaraad Theme">
-  <layer name="mina_styles" insert-after="custom"/>
+ <!-- Start clean: -->
+ <skin-path name="Minaraad Theme" remove="True" />
+ <skin-path name="Minaraad Theme" >
+  <layer name="custom" />
+  <layer name="minaraad" />
+  <layer name="mina_projects" />
+  <layer name="mina_styles" />
+  <layer name="tinymce" />
+  <layer name="referencebrowser" />
+  <layer name="CMFPlacefulWorkflow" />
+  <layer name="LanguageTool" />
+  <layer name="sunburst_images" />
+  <layer name="sunburst_templates" />
+  <layer name="sunburst_styles" />
+  <layer name="attachment_widgets" />
+  <layer name="simpleattachment" />
+  <layer name="cmfeditions_views" />
+  <layer name="CMFEditions" />
+  <layer name="kupu_tests" />
+  <layer name="orderablereferencefield" />
+  <layer name="PasswordReset" />
+  <layer name="kupu_plone" />
+  <layer name="kupu" />
+  <layer name="ATContentTypes" />
+  <layer name="archetypes" />
+  <layer name="mimetypes_icons" />
+  <layer name="plone_ecmascript" />
+  <layer name="plone_wysiwyg" />
+  <layer name="plone_prefs" />
+  <layer name="plone_templates" />
+  <layer name="plone_form_scripts" />
+  <layer name="plone_scripts" />
+  <layer name="plone_forms" />
+  <layer name="plone_images" />
+  <layer name="plone_content" />
+  <layer name="plone_login" />
+  <layer name="plone_deprecated" />
+  <layer name="plone_3rdParty" />
+  <layer name="cmf_legacy" />
+  <layer name="plone_kss" />
+  <layer name="archetypes_kss" />
+  <layer name="pyproxy" />
  </skin-path>
 </object>

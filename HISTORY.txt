@@ -4,6 +4,10 @@ History of this buildout
 5.0 - Plone 4 Branch (unreleased)
 ---------------------------------
 
+- Have a canonical list of skin layers for MinaraadTheme in
+  Producst/minaraad/profiles/plone41/skins.xml.
+  [maurits]
+
 - Added a plone41 migration profile that is applied during an upgrade
   step of Products.minaraad.  Here we can put import steps that should
   be run once for the migration.  Currently just the skins.xml.  We
