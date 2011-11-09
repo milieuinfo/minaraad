@@ -7,6 +7,12 @@ servers, using RelStorage.  Any changes done in this maintenance
 branch must be ported to trunk as well.
 
 
+3.28 (unreleased)
+-----------------
+
+- Nothing changed yet.
+
+
 3.27 (2011-11-09)
 -----------------
 
