@@ -187,5 +187,46 @@ To do on Plone 4 through the web
   CacheSetup though, so not very critical).  I have not tried this
   yet.
 
-- Add recent_portlet again in @@manage-portlets in the root.  We
-  should recreate that portlet or reuse an existing one.
+- Create a "Minaraad theme" skin layer with the following layers:
+custom
+minaraad
+mina_projects
+mina_styles
+tinymce
+referencebrowser
+CMFPlacefulWorkflow
+LanguageTool
+sunburst_images
+sunburst_templates
+sunburst_styles
+attachment_widgets
+simpleattachment
+cmfeditions_views
+CMFEditions
+kupu_tests
+orderablereferencefield
+PasswordReset
+kupu_plone
+kupu
+ATContentTypes
+archetypes
+mimetypes_icons
+plone_ecmascript
+plone_wysiwyg
+plone_prefs
+plone_templates
+plone_form_scripts
+plone_scripts
+plone_forms
+plone_images
+plone_content
+plone_login
+plone_deprecated
+plone_3rdParty
+cmf_legacy
+plone_kss
+archetypes_kss
+pyproxy
+
+It is based on SUnburst theme. It still needs a few adjustments. No
+need to define the portlets, they are included by default.

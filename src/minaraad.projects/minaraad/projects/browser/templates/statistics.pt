@@ -1,0 +1,104 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="minaraad.projects">
+
+  <metal:block metal:fill-slot="top_slot" tal:define="dummy python:request.set('disable_border',1)" />
+
+  <body>
+    <div metal:fill-slot="prefs_configlet_main">
+     <tal:comment condition="nothing">
+       We may have more exports later, that warrant a different title,
+       but for now this is fine.
+     </tal:comment>
+     <h1 class="documentFirstHeading"
+         i18n:translate="label_statistics">
+       Statistics
+     </h1>
+     <form method="POST"
+           action=""
+           tal:define="values view/values;
+                       years values/years;
+                       quarters values/quarters;
+                       months values/months;
+                       statistics view/available_statistics;">
+
+       <label i18n:translate="">Select a period:</label>
+       <p class="discreet" i18n:translate="">
+         Select either quarter or month or leave both empty for the full year.
+       </p>
+       <select size="1" id="export_quarter" name="export_quarter">
+         <option value="subj"
+                 tal:repeat="quarter quarters"
+                 tal:attributes="value quarter/value; selected quarter/selected"
+                 tal:content="quarter/title">
+           quarter name
+         </option>
+       </select>
+       <select size="1" id="export_month" name="export_month">
+         <option value="subj"
+                 tal:repeat="month months"
+                 tal:attributes="value month/value; selected month/selected"
+                 tal:content="month/title">
+           month name
+         </option>
+       </select>
+       <select size="1" id="export_year" name="export_year">
+         <option value="year"
+                 tal:repeat="year years"
+                 tal:attributes="value year/value; selected year/selected"
+                 tal:content="year/id">year</option>
+       </select>
+       <div style="clear: both;">
+         &nbsp;
+       </div>
+       <label i18n:translate="">Choose a statistic:</label>
+       <select size="1" id="export_statistic" name="export_statistic">
+         <option value="statistic"
+                 tal:repeat="statistic statistics"
+                 tal:attributes="value statistic/value; selected statistic/selected"
+                 tal:content="statistic/title">statistic</option>
+       </select>
+       <div style="clear: both;">
+         &nbsp;
+       </div>
+       <input type="hidden"
+              name="form_submitted"
+              value="Submit" />
+       <input type="submit"
+              name="export"
+              value="Export"
+              i18n:attributes="value label_export" />
+       <input type="submit"
+              name="preview"
+              value="Preview"
+              i18n:attributes="value label_preview" />
+
+     </form>
+     <div style="clear: both;">
+       &nbsp;
+     </div>
+     <tal:comment condition="nothing">
+       This table is not strictly necessary, as we want a csv export,
+       but it is a small amount of template code and I think it is
+       handy, so let's keep it.  We now show it when the preview
+       button has been clicked.
+     </tal:comment>
+     <table tal:condition="view/preview" class="listing">
+       <thead>
+         <tr>
+           <th tal:repeat="header view/headers" tal:content="header" />
+         </tr>
+       </thead>
+       <tbody>
+         <tal:row repeat="row view/rows">
+           <tr tal:define="oddrow repeat/row/odd"
+               tal:attributes="class python: oddrow and 'odd' or 'even'">
+             <td tal:repeat="col row" tal:content="col" />
+           </tr>
+         </tal:row>
+       </tbody>
+     </table>
+    </div>
+  </body>
+</html>
