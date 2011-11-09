@@ -10,6 +10,9 @@ branch must be ported to trunk as well.
 3.27 (unreleased)
 -----------------
 
+- Avoid UnicodeDecodeError when exporting subscribers.
+  [maurits]
+
 - Fixed AttributeError when deleting a normal file from a meeting.
   Normal files do not have a contains_pdf method.
   [maurits]
