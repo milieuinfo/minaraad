@@ -7,7 +7,7 @@ servers, using RelStorage.  Any changes done in this maintenance
 branch must be ported to trunk as well.
 
 
-3.28 (unreleased)
+3.28 (2011-11-10)
 -----------------
 
 - Completely removed old startdate and enddate fields from Hearing and
