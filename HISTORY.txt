@@ -10,7 +10,8 @@ branch must be ported to trunk as well.
 3.28 (unreleased)
 -----------------
 
-- Nothing changed yet.
+- Replaced remaining getEnddate calls with get_end_time.
+  [maurits]
 
 
 3.27 (2011-11-09)
