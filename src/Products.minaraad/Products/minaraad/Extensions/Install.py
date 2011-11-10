@@ -61,7 +61,6 @@ def install(self, reinstall=False):
     wanted = (('getItemstartdate', 'DateIndex'),
               ('getCategory', 'FieldIndex'),
               ('getDate', 'DateIndex'),
-              ('getStartdate', 'DateIndex'),
               ('getStart_time', 'DateIndex'),
               ('published', 'FieldIndex'),
               )

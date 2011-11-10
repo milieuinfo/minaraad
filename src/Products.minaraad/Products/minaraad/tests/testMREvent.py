@@ -57,7 +57,7 @@ class testMREvent(MainTestCase):
         self.mrevent.getGoal()        # Doelstelling
         self.mrevent.getSubheader()   # Subkop
         self.mrevent.getLocation()    # Lokatie
-        self.mrevent.getStartdate()   # Start tijd
+        self.mrevent.getStart_time()  # Start tijd
         self.mrevent.get_end_time()   # Eind tijd
         self.mrevent.getContact()     # Contactpersoon
 

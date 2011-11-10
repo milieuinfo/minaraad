@@ -1,8 +1,16 @@
 Release notes from Zest
 =======================
 
-Manual fix on production site
------------------------------
+Manual fixes to do on the site.
+
+Upgrade to 3.28
+---------------
+
+- Remove the getStartdate index completely from the catalog.
+
+
+Upgrade to 3.19  [DONE]
+-----------------------
 
 - Remove the get_end_time and getStart_time FieldIndexes and replace
   them with DateIndexes!  And reindex them.
