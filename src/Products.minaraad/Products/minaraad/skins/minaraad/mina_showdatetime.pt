@@ -191,7 +191,7 @@
 <!-- subscription notification in e-mail-->
  <metal:block metal:define-macro="subscribe_notification_email">
 <tal:block
-    define="daterequired python:context.getStart_time() != None and context.get_end_date() != None;
+    define="daterequired python:context.getStart_time() != None and context.get_end_time() != None;
             toLocalizedTime nocall:context/@@plone/toLocalizedTime;"
     condition="daterequired">
 <tal:block tal:define="startdate python:toLocalizedTime(context.getStart_time());

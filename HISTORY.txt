@@ -10,6 +10,11 @@ branch must be ported to trunk as well.
 3.28 (unreleased)
 -----------------
 
+- Completely removed old startdate and enddate fields from Hearing and
+  MREvent, as they were only confusing.  Also removed the migration
+  code and tests related to those fields.
+  [maurits]
+
 - Replaced remaining context.enddate usage with context.get_end_time().
   [maurits]
 
