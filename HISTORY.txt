@@ -10,6 +10,9 @@ branch must be ported to trunk as well.
 3.28 (unreleased)
 -----------------
 
+- Replaced remaining context.startdate usage with context.getStart_time().
+  [maurits]
+
 - Replaced remaining getStartdate calls with getStart_time.
   [maurits]
 
