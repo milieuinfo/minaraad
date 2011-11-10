@@ -96,6 +96,6 @@ class MeetingAjax(MeetingView):
         # We generate the new table content.
         for item in self.context.find_items_and_times():
             jq('#%s span.agendaItemTimes' % item[0].UID).html(
-                '%s tot %s' % (item[1].TimeMinutes(),
-                               item[2].TimeMinutes()))
+                '%s tot %su' % (item[1].TimeMinutes(),
+                                item[2].TimeMinutes()))
         return jq
