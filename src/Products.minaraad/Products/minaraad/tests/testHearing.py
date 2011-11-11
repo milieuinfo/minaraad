@@ -49,7 +49,6 @@ LOCATION = "Hoogvliet"
 THEME = 0
 MOT = bool(1)
 STARTDATE = DateTime()
-ENDDATE = DateTime()
 HTMLBODY = "<p>HTML op zijn best</p>"
 TESTIMAGE = load_file('test.gif')
 
@@ -182,7 +181,6 @@ class testHearing(MainTestCase):
         self.hoorzitting.setSubheader(SUBHEADER)
         self.hoorzitting.setLocation(LOCATION)
         self.hoorzitting.setStart_time(STARTDATE)
-        self.hoorzitting.setEnddate(ENDDATE)
         self.hoorzitting.setTheme(THEME)
         self.hoorzitting.setMot(MOT)
         self.hoorzitting.setContact(self.contactperson.UID())

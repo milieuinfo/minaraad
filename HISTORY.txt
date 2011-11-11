@@ -4,6 +4,12 @@ History of this buildout
 4.2 (unreleased)
 ----------------
 
+- Completely removed old startdate and enddate fields from Hearing and
+  MREvent, as they were only confusing.  Also removed the migration
+  code and tests related to those fields.
+  Merged from 3.28.
+  [maurits]
+
 - Replaced remaining context.enddate usage with context.get_end_time().
   Merged from 3.28.
   [maurits]

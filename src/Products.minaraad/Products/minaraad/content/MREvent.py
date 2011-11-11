@@ -72,28 +72,6 @@ schema = atapi.Schema((
         default_output_type='text/html',
     ),
 
-    atapi.DateTimeField(
-        name='startdate',
-        index="DateIndex:brains",
-        widget=atapi.CalendarWidget(
-            visible = False,
-            label='Startdate',
-            label_msgid='minaraad_label_startdate',
-            i18n_domain='minaraad',
-        ),
-        required=0
-    ),
-
-    atapi.DateTimeField(
-        name='enddate',
-        widget=atapi.CalendarWidget(
-            visible = False,
-            label='Enddate',
-            label_msgid='minaraad_label_enddate',
-            i18n_domain='minaraad',
-        ),
-    ),
-
     atapi.BooleanField(
         name='subscriptionAllowed',
         default=True,
@@ -183,9 +161,6 @@ class MREvent(BaseMeeting, EmailMixin, ThemeMixin):
     schema = MREvent_schema
 
     implements(IMREvent, IUseContact)
-
-    def getEnddate(self):
-        return self.get_end_time()
 
 
 atapi.registerType(MREvent, PROJECTNAME)

@@ -43,7 +43,6 @@ Hearing_schema = (
 Hearing_schema.moveField('theme', after="goal")
 Hearing_schema.moveField('email_themes', after="theme")
 Hearing_schema.moveField('mot', after="email_themes")
-Hearing_schema.moveField('subscriptionAllowed', after="enddate")
 
 
 class IHearing(Interface):
