@@ -81,7 +81,7 @@
                             endtime python:obj.itemenddate.TimeMinutes();
                             noStartTime python:test(starttime == '00:00', 0, 1);
                             noEndTime python:test(endtime == '00:00', 0, 1);
-                            hearingstartdate python:toLocalizedTime(context.startdate)[:-5];"
+                            hearingstartdate python:toLocalizedTime(context.getStart_time())[:-5];"
                 tal:omit-tag="">
 
                 <tal:block tal:condition="python:hearingstartdate == startdate and startdate == enddate">
@@ -133,7 +133,7 @@
                 endtime python:obj.itemenddate.TimeMinutes();
                 noStartTime python:test(starttime == '00:00', 0, 1);
                 noEndTime python:test(endtime == '00:00', 0, 1);
-                hearingstartdate python:toLocalizedTime(context.startdate)[:-5];"
+                hearingstartdate python:toLocalizedTime(context.getStart_time())[:-5];"
     tal:omit-tag="">
 
 <tal:block tal:condition="python:hearingstartdate == startdate and startdate == enddate">
@@ -161,7 +161,7 @@
     condition="daterequired">
 <div tal:define="startdate python:toLocalizedTime(context.getStart_time());
                 enddate python:toLocalizedTime(context.get_end_time);
-                starttime python:context.startdate.TimeMinutes();
+                starttime python:context.getStart_time().TimeMinutes();
                 endtime python:context.enddate.TimeMinutes();
                 noStartTime python:test(starttime == '00:00', 0, 1);
                 noEndTime python:test(endtime == '00:00', 0, 1);"
@@ -194,9 +194,9 @@
     define="daterequired python:context.getStart_time() != None and context.get_end_date() != None;
             toLocalizedTime nocall:context/@@plone/toLocalizedTime;"
     condition="daterequired">
-<tal:block tal:define="startdate python:toLocalizedTime(context.startdate);
+<tal:block tal:define="startdate python:toLocalizedTime(context.getStart_time());
                 enddate python:toLocalizedTime(context.enddate);
-                starttime python:context.startdate.TimeMinutes();
+                starttime python:context.getStart_time().TimeMinutes();
                 endtime python:context.enddate.TimeMinutes();
                 noStartTime python:test(starttime == '00:00', 0, 1);
                 noEndTime python:test(endtime == '00:00', 0, 1);"
