@@ -4,6 +4,10 @@ History of this buildout
 4.2 (unreleased)
 ----------------
 
+- Avoid UnicodeDecodeError when exporting subscribers.
+  Merged from 3.27.
+  [maurits]
+
 - Fixed AttributeError when deleting a normal file from a meeting.
   Normal files do not have a contains_pdf method.
   [maurits]

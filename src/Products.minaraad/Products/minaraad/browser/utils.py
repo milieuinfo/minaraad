@@ -53,7 +53,12 @@ def buildCSV(context, members, filename='members.csv'):
     for member in members:
         for pos, field in enumerate(fields):
             id, title = field
-            value = unicode(member.getProperty(id, ''), charset)
+            try:
+                value = unicode(member.getProperty(id, ''), charset)
+            except UnicodeDecodeError:
+                email_logger.warn("UnicodeDecodeError for %s", member.getId())
+                value = unicode(member.getProperty(id, ''), charset,
+                                errors='replace')
             value = value.replace(u'"', u'""')
             out.write(u'"%s"' % value)
 
