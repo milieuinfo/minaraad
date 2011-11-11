@@ -181,7 +181,7 @@ class testHearing(MainTestCase):
         self.hoorzitting.setGoal(GOAL)
         self.hoorzitting.setSubheader(SUBHEADER)
         self.hoorzitting.setLocation(LOCATION)
-        self.hoorzitting.setStartdate(STARTDATE)
+        self.hoorzitting.setStart_time(STARTDATE)
         self.hoorzitting.setEnddate(ENDDATE)
         self.hoorzitting.setTheme(THEME)
         self.hoorzitting.setMot(MOT)
@@ -199,8 +199,8 @@ class testHearing(MainTestCase):
                          'Value is %s' % self.hoorzitting.getGoal())
         self.failUnless(self.hoorzitting.getLocation()==LOCATION,
                          'Value is %s' % self.hoorzitting.getLocation())
-        self.failUnless(self.hoorzitting.getStartdate()==STARTDATE,
-                         'Value is %s' % self.hoorzitting.getStartdate())
+        self.failUnless(self.hoorzitting.getStart_time()==STARTDATE,
+                         'Value is %s' % self.hoorzitting.getStart_time())
         self.failUnless(self.hoorzitting.getTheme()==THEME,
                          'Value is %s' % self.hoorzitting.getTheme())
         self.failUnless(self.hoorzitting.getMot()==MOT,
