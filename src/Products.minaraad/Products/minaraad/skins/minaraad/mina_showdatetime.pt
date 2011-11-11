@@ -162,7 +162,7 @@
 <div tal:define="startdate python:toLocalizedTime(context.getStart_time());
                 enddate python:toLocalizedTime(context.get_end_time);
                 starttime python:context.getStart_time().TimeMinutes();
-                endtime python:context.enddate.TimeMinutes();
+                endtime python:context.get_end_time().TimeMinutes();
                 noStartTime python:test(starttime == '00:00', 0, 1);
                 noEndTime python:test(endtime == '00:00', 0, 1);"
     tal:omit-tag="">
@@ -195,9 +195,9 @@
             toLocalizedTime nocall:context/@@plone/toLocalizedTime;"
     condition="daterequired">
 <tal:block tal:define="startdate python:toLocalizedTime(context.getStart_time());
-                enddate python:toLocalizedTime(context.enddate);
+                enddate python:toLocalizedTime(context.get_end_time());
                 starttime python:context.getStart_time().TimeMinutes();
-                endtime python:context.enddate.TimeMinutes();
+                endtime python:context.get_end_time().TimeMinutes();
                 noStartTime python:test(starttime == '00:00', 0, 1);
                 noEndTime python:test(endtime == '00:00', 0, 1);"
     tal:omit-tag="">
