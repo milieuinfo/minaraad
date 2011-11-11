@@ -4,6 +4,10 @@ History of this buildout
 4.2 (unreleased)
 ----------------
 
+- Replaced remaining getEnddate calls with get_end_time.
+  Merged from 3.28.
+  [maurits]
+
 - Avoid UnicodeDecodeError when exporting subscribers.
   Merged from 3.27.
   [maurits]

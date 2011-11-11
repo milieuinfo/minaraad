@@ -58,7 +58,7 @@ class testMREvent(MainTestCase):
         self.mrevent.getSubheader()   # Subkop
         self.mrevent.getLocation()    # Lokatie
         self.mrevent.getStartdate()   # Start tijd
-        self.mrevent.getEnddate()     # Eind tijd
+        self.mrevent.get_end_time()   # Eind tijd
         self.mrevent.getContact()     # Contactpersoon
 
         self.mrevent.setFoto(TESTIMAGE, content_type="image/gif")
