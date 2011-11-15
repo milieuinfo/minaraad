@@ -4,6 +4,10 @@ History of this buildout
 4.2 (unreleased)
 ----------------
 
+- Set zserver-threads = 3.
+  Merged from 3.29.
+  [maurits]
+
 - Completely removed old startdate and enddate fields from Hearing and
   MREvent, as they were only confusing.  Also removed the migration
   code and tests related to those fields.
