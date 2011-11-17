@@ -1,7 +1,7 @@
 History of this buildout
 ========================
 
-4.2 (unreleased)
+4.2 (2011-11-17)
 ----------------
 
 - Set zserver-threads = 3.
