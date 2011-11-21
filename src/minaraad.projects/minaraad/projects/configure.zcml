@@ -154,13 +154,7 @@
       handler="minaraad.projects.migration.update_actions"
       profile="minaraad.projects:default" />
 
-  <genericsetup:upgradeStep
-      title="Migrate advisories to projects"
-      description=""
-      source="1007"
-      destination="1008"
-      handler="minaraad.projects.migration.migrate_advisories_to_projects"
-      profile="minaraad.projects:default" />
+  <!-- Old step removed. -->
 
   <!-- Migration steps -->
   <genericsetup:upgradeStep
@@ -177,6 +171,14 @@
       source="1010"
       destination="1011"
       handler="minaraad.projects.migration.fix_double_invitees"
+      profile="minaraad.projects:default" />
+
+  <genericsetup:upgradeStep
+      title="Migrate some advisories from old digibib to projects"
+      description=""
+      source="1011"
+      destination="1012"
+      handler="minaraad.projects.migration.migrate_advisories_to_projects"
       profile="minaraad.projects:default" />
 
 </configure>

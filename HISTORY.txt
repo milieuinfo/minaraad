@@ -10,6 +10,10 @@ branch must be ported to trunk as well.
 3.30 (unreleased)
 -----------------
 
+- Changed the existing advisory migration to now migrate a few
+  specific folders from the old digibib to projects.
+  [maurits]
+
 - When creating an advisory from a project, use the delivery date as
   the main date, instead of the advisory date.
   Fixes http://projects.zestsoftware.nl/mina-raad/issues/21
