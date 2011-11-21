@@ -10,7 +10,10 @@ branch must be ported to trunk as well.
 3.30 (unreleased)
 -----------------
 
-- Nothing changed yet.
+- When creating an advisory from a project, use the delivery date as
+  the main date, instead of the advisory date.
+  Fixes http://projects.zestsoftware.nl/mina-raad/issues/21
+  [maurits]
 
 
 3.29 (2011-11-14)

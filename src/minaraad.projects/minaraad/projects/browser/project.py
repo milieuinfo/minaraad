@@ -123,7 +123,7 @@ class CreateAdvisory(CanCreateAdvisory):
             )
 
         # For some reason the date field needs to be handled separately.
-        advisory.setDate(context.getAdvisory_date())
+        advisory.setDate(context.getDelivery_date())
 
         # For some reason the next processForm call may trigger an
         # exception but it gets ignored and is not harmful:
