@@ -148,7 +148,7 @@ class Meeting(BaseMeeting):
         if not invalid_id:
             # Can't rename without a subtransaction commit when using
             # portal_factory!
-            transaction.commit(1)
+            transaction.savepoint()
             self.setId(new_id)
             return new_id
 
