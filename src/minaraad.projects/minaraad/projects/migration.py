@@ -1,4 +1,5 @@
 import logging
+import re
 
 from DateTime import DateTime
 from Products.CMFCore.utils import getToolByName
@@ -176,3 +177,32 @@ def update_attachment_counts(context):
         meeting._update_agenda_item_attachment_counter()
 
     logger.info("Ran '_update_agenda_item_attachment_counter' on %s meetings." % len(brains))
+
+def rename_attachments(context):
+    """ Rename attachments in meetings that are called 'Billage XX'
+    as this is now automatically generated.
+    """
+    catalog = getToolByName(context, 'portal_catalog')
+    brains = catalog(portal_type='Meeting')
+    att_count = 0
+    exp = re.compile(r'^Billage *(\d+) *:? *(.*)')
+    
+    for brain in brains:
+        meeting = brain.getObject()
+        attachments = catalog.searchResults(
+            portal_type = 'FileAttachment',
+            path = '/'.join(meeting.getPhysicalPath()))
+
+        for att in attachments:
+            match = exp.match(att.Title)
+            if match is None:
+                continue
+
+            attachment = att.getObject()
+            attachment.title = match.groups()[-1]
+            attachment.reindexObject()
+            att_count += 1
+    
+    logger.info("Updated %s attachment title in %s meetings" % (
+        att_count, len(brains)))
+            

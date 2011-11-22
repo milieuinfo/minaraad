@@ -195,4 +195,12 @@
       handler="minaraad.projects.migration.update_attachment_counts"
       profile="minaraad.projects:default" />
 
+  <genericsetup:upgradeStep
+      title="Update attachment titles"
+      description=""
+      source="1013"
+      destination="1014"
+      handler="minaraad.projects.migration.rename_attachments"
+      profile="minaraad.projects:default" />
+
 </configure>
