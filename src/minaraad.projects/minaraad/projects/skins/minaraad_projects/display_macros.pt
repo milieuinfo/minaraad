@@ -70,30 +70,35 @@
                                attachments python:context.portal_catalog.searchResults(portal_type='FileAttachment',
                                path=current_path,)">
 
-        <tal:attachment repeat="attachment attachments">
-          <div class="list-attachments"
-               tal:define="oddrow repeat/attachment/odd"
-               tal:attributes="class python:'list-attachments %s' % (oddrow and 'odd' or 'even')">
+        <tal:attachment repeat="att python: enumerate(attachments)">
+          <tal:block tal:define="counter_start obj/attachment_start|python: 1;
+                                 attachment python: att[1];
+                                 position python: att[0] + counter_start">
 
-          <metal:block use-macro="context/filemacro/macros/attachment_view" />
-          <tal:block tal:define="mtool attachment/portal_membership|nothing"
-                     tal:condition="python: mtool and mtool.checkPermission('Modify portal content', attachment)">
-            <br />
-            <tal:block tal:define="published attachment/published|nothing"
-                       tal:condition="python: published is not None">
-              <input type="checkbox"
-                     class="attachment_publish_checkbox"
-                     tal:attributes="name python: 'attachment_%s' % attachment.UID;
-                                     checked python: published and 'Checked'" />
-            </tal:block>
-            <a tal:attributes="href python: '%s/edit' % attachment.getURL()">
-              <img src="edit.gif" />
-            </a>
-            <a tal:attributes="href python: '%s/delete_confirmation' % attachment.getURL()">
-              <img src="delete_icon.gif" />
-            </a>
+            <div class="list-attachments"
+                 tal:define="oddrow repeat/att/odd"
+                 tal:attributes="class python:'list-attachments %s' % (oddrow and 'odd' or 'even')">
+              
+              <metal:block use-macro="context/filemacro/macros/attachment_view" />
+              <tal:block tal:define="mtool attachment/portal_membership|nothing"
+                         tal:condition="python: mtool and mtool.checkPermission('Modify portal content', attachment)">
+                <br />
+                <tal:block tal:define="published attachment/published|nothing"
+                           tal:condition="python: published is not None">
+                  <input type="checkbox"
+                         class="attachment_publish_checkbox"
+                         tal:attributes="name python: 'attachment_%s' % attachment.UID;
+                                         checked python: published and 'Checked'" />
+                </tal:block>
+                <a tal:attributes="href python: '%s/edit' % attachment.getURL()">
+                  <img src="edit.gif" />
+                </a>
+                <a tal:attributes="href python: '%s/delete_confirmation' % attachment.getURL()">
+                  <img src="delete_icon.gif" />
+                </a>
+              </tal:block>
+            </div>
           </tal:block>
-          </div>
         </tal:attachment>
       </metal:block>
 

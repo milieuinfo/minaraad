@@ -164,3 +164,15 @@ def fix_double_invitees(context):
                             "%s/prefs_user_details?userid=%s", portal_url,
                             user_id)
                 del invited[user_id]
+
+def update_attachment_counts(context):
+    """ Run the '_update_agenda_item_attachment_counter' on each meeting
+    to compute the number of attachments.
+    """
+    catalog = getToolByName(context, 'portal_catalog')
+    brains = catalog(portal_type='Meeting')
+    for brain in brains:
+        meeting = brain.getObject()
+        meeting._update_agenda_item_attachment_counter()
+
+    logger.info("Ran '_update_agenda_item_attachment_counter' on %s meetings." % len(brains))

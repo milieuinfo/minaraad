@@ -142,6 +142,4 @@
       permission="zope2.View"
       allowed_interface="minaraad.projects.interfaces.IPASMemberView"
       />
-
-
 </configure>

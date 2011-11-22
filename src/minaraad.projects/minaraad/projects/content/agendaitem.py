@@ -1,3 +1,4 @@
+from Acquisition import aq_parent
 from zope.app.component.hooks import getSite
 from zope.interface import implements
 from AccessControl import ClassSecurityInfo
@@ -97,5 +98,31 @@ class AgendaItemProject(BaseAgendaItem):
 
         return '/'
 
+    def _update_numbering(self):
+        meeting = aq_parent(self)
+        meeting._update_agenda_item_attachment_counter()
+
+    def manage_delObjects(self, ids, *args, **kwargs):
+        """ When attachments are deleted in the agenda item,
+        we have to update numbering.
+        """
+        base = super(AgendaItemProject, self).manage_delObjects(ids, *args, **kwargs)
+        self._update_numbering()
+        return base
+
+    def manage_pasteObjects(self, *args, **kwargs):
+        """ When attachment items are pasted, we update numbering.
+        """
+        base = super(AgendaItemProject, self).manage_pasteObjects(*args, **kwargs)
+        self._update_numbering()
+        return base
+
+    def manage_clone(self, *args, **kwargs):
+        """ We override manage_clone for the same reason we overriden
+        manage_pasteObjects.
+        """
+        base = super(AgendaItemProject, self).manage_clone(*args, **kwargs)
+        self._update_numbering()
+        return base
 
 atapi.registerType(AgendaItemProject, config.PROJECTNAME)

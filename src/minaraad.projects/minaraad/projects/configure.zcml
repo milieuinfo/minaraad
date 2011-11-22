@@ -75,6 +75,12 @@
       handler=".events.concatenate_pdf"
       />
 
+  <subscriber
+      for=".interfaces.IAttachment
+           zope.lifecycleevent.interfaces.IObjectModifiedEvent"
+      handler=".events.update_attachment_counter"
+      />
+
   <!-- <subscriber -->
   <!--     for=".interfaces.IProject -->
   <!--          Products.CMFCore.interfaces.IActionSucceededEvent" -->
@@ -179,6 +185,14 @@
       source="1011"
       destination="1012"
       handler="minaraad.projects.migration.migrate_advisories_to_projects"
+      profile="minaraad.projects:default" />
+
+  <genericsetup:upgradeStep
+      title="Update attachment counts"
+      description=""
+      source="1012"
+      destination="1013"
+      handler="minaraad.projects.migration.update_attachment_counts"
       profile="minaraad.projects:default" />
 
 </configure>

@@ -263,12 +263,30 @@ class Meeting(BaseMeeting):
                 continue
             project.remove_agendaitem_reference(item)
 
-        return super(Meeting, self).manage_delObjects(ids, *args, **kwargs)
+        base = super(Meeting, self).manage_delObjects(ids, *args, **kwargs)
+        self._update_agenda_item_attachment_counter()
+        return base
 
     def _notify_item_modification(self, item):
         if item and IAgendaItem.providedBy(item):
             item.setProject(item.get_previous_project())
             notify(ObjectEditedEvent(aq_inner(item)))
+
+    def _update_agenda_item_attachment_counter(self):
+        """ Updates the 'attachment_start' attribute on agenda items.
+        """
+        att_count = 1
+        catalog = getToolByName(self, 'portal_catalog')
+        items = self.find_items_and_times()
+        
+        for it in items:
+            item = it[0].getObject()
+            item.attachment_start = att_count
+            item.attachment_count = len(catalog.searchResults(
+                portal_type = 'FileAttachment',
+                path = '/'.join(item.getPhysicalPath())))
+            
+            att_count += item.attachment_count
 
     def manage_pasteObjects(self, *args, **kwargs):
         """ We override the manage_pasteObjects() so we can
@@ -280,6 +298,7 @@ class Meeting(BaseMeeting):
             item = self[obj['new_id']]
             self._notify_item_modification(item)
 
+        self._update_agenda_item_attachment_counter()
         return base
 
     def manage_clone(self, *args, **kwargs):
@@ -288,8 +307,9 @@ class Meeting(BaseMeeting):
         """
         cloned = super(Meeting, self).manage_clone(*args, **kwargs)
         self._notify_item_modification(cloned)
-        return cloned
 
+        self._update_agenda_item_attachment_counter()
+        return cloned
 
     def getParticipants(self):
         """ Returns a list of tuples (participant_name, status).
