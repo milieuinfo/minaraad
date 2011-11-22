@@ -205,4 +205,25 @@ def rename_attachments(context):
     
     logger.info("Updated %s attachment title in %s meetings" % (
         att_count, len(brains)))
-            
+
+def update_project_advisory_type(context):
+    """ The 'absention' and 'reject_points' keys have been removed
+    from the advisory type vocabulary and merged into
+    'abstention_rejection'.
+    We update existing projects to use the new vocabulary.
+    """
+    catalog = getToolByName(context, 'portal_catalog')
+    brains = catalog(portal_type='Project')
+    p_count = 0
+
+    for brain in brains:
+        try:
+            project = brain.getObject()
+        except:
+            logger.info('Unable to wake brain at %s' % brain.getURL())
+
+        if project.getAdvisory_type() in ['abstention', 'reject_points']:
+            project.setAdvisory_type('abstention_rejection')
+            p_count += 1
+
+    logger.info('Updated advisory type for %s projects' % p_count)

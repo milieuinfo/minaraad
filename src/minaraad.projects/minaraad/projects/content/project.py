@@ -285,10 +285,9 @@ class Project(atapi.BaseFolder, ThemeMixin):
         return atapi.DisplayList([
             ('unanimous', _(u'label_unanimous',
                             default=u'Unanimous')),
-            ('abstention', _(u'label_abstention',
-                             default=u'Abstentions')),
-            ('reject_points', _(u'label_reject_points',
-                                default=u'Reject points'))])
+            ('abstention_rejection',
+             _(u'label_abstention_rejection',
+               default=u'Abstention and/or reject points'))])
 
     def _members_vocabulary(self):
         return atapi.DisplayList(
