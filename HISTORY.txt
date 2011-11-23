@@ -10,6 +10,11 @@ branch must be ported to trunk as well.
 3.30 (unreleased)
 -----------------
 
+- Use fresh collective.emaillogin 1.0, which is less case sensitive.
+  Has an upgrade step to migrate existing email logins to all lower
+  case.
+  [maurits]
+
 - The advisory type for a project is now 'Unanimous' or 'Abstention
   and/or reject points'. [vincent]
 

@@ -3,6 +3,13 @@ Release notes from Zest
 
 Manual fixes to do on the site.
 
+Upgrade to 3.30
+---------------
+
+- Run the portal_setup upgrade steps.  There are steps at least for
+  minaraad.projects and collective.emaillogin.
+
+
 Upgrade to 3.28 [DONE]
 ----------------------
 
