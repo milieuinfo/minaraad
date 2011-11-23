@@ -64,6 +64,8 @@ class AgendaItemProject(BaseAgendaItem):
     _at_rename_after_creation = True
     schema = agendaitem_schema
 
+    is_agenda_item_project = True
+
     def post_validate(self, REQUEST, errors):
         if REQUEST.get('title', None) or REQUEST.get('project', None):
             return

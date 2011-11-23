@@ -1,0 +1,64 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="minaraad.projects">
+  <body>
+    <div metal:fill-slot="main"
+         tal:define="item view/get_agenda_item">
+     <h1 class="documentFirstHeading">
+       <tal:block tal:condition="python: view.mode == 'add'">
+         Add agenda item
+       </tal:block>
+
+       <tal:block tal:condition="python: view.mode == 'edit'">
+         Edit agenda item: <span tal:replace="item/title" />
+       </tal:block>
+     </h1>
+
+     <form method="POST"
+           enctype="multipart/form-data"
+           tal:attributes="action view/form_action">
+
+       <tal:block tal:repeat="fieldName view/agenda_fields">
+         <tal:block tal:define="field python: item.schema[fieldName];
+                                accessor python: field.getAccessor(item);
+                                errors view/errors;
+                                widget nocall: field/widget;
+                                mode string: edit;
+                                portal nocall: context;
+                                macro python: path('here/%s/macros/edit' % widget._properties.get('macro'))">
+
+           <metal:block use-macro="macro" />
+        </tal:block>
+      </tal:block>       
+
+      <fieldset>
+        <legend>Attachments</legend>
+
+        <tal:block tal:repeat="attachment python: item.contentValues()">
+          <tal:block tal:repeat="fieldName view/attachment_fields">
+            <tal:block tal:define="here nocall: attachment;
+                                   field python: attachment.schema.get(fieldName);
+                                   accessor python: field.getAccessor(attachment);
+                                   errors view/errors;
+                                   widget nocall: field/widget;
+                                   mode string: edit;
+                                   portal nocall: context;
+                                   fieldName python: 'att_%s_%s' % (attachment.id, fieldName);
+                                   macro python: path('here/%s/macros/edit' % widget._properties.get('macro'))">
+              <metal:block use-macro="macro" />
+            </tal:block>
+          </tal:block>
+        </tal:block>
+      </fieldset>
+
+      <input class="context" type="submit"
+             name="form_submitted" value="Bewaren" />
+      
+      <input class="standalone" type="submit"
+             name="form cancelled"
+             value="Annuleren" />
+     </form>
+    </div>
+  </body>
+</html>

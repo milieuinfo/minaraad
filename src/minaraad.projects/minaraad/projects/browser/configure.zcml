@@ -89,6 +89,22 @@
       />
 
   <browser:page
+      name="add_agenda_item"
+      for="minaraad.projects.interfaces.IMeeting"
+      class=".agenda_item.AddAgendaItemView"
+      template="templates/agenda_item_form.pt"
+      permission="zope2.View"
+      />
+
+  <browser:page
+      name="edit_agenda_item"
+      for="minaraad.projects.interfaces.IAgendaItemProject"
+      class=".agenda_item.EditAgendaItemView"
+      template="templates/agenda_item_form.pt"
+      permission="zope2.View"
+      />
+
+  <browser:page
       for="minaraad.projects.interfaces.IBaseMeeting"
       name="jq_meeting_order_changed"
       class=".meeting.MeetingAjax"

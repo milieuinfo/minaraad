@@ -113,10 +113,17 @@
                  tal:condition="python: project" />
               <span tal:condition="python: not project"
                     tal:replace="obj/Title" />
-              <a tal:condition="obj/can_be_edited|nothing"
-                 tal:attributes="href python: '%s/edit' % obj.absolute_url()">
-                <img src="edit.gif" />
-              </a>
+              <tal:block tal:condition="obj/can_be_edited|nothing">
+                <a tal:condition="obj/is_agenda_item_project|nothing"
+                   tal:attributes="href python: '%s/edit_agenda_item' % obj.absolute_url()">
+                  <img src="edit.gif" />
+                </a>
+                <a tal:condition="not: obj/is_agenda_item_project|nothing"
+                   tal:attributes="href python: '%s/edit' % obj.absolute_url()">
+                  <img src="edit.gif" />
+                </a>
+
+              </tal:block>
               <a tal:condition="obj/can_be_edited|nothing"
                  tal:attributes="href python: '%s/delete_confirmation' % obj.absolute_url()">
                 <img src="delete_icon.gif" />
