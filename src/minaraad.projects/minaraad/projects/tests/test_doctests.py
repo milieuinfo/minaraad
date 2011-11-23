@@ -22,6 +22,10 @@ def test_suite():
             'project.txt',
             test_class=base.MinaraadFunctionalTestCase,
             optionflags=base.OPTIONFLAGS),
+        ztc.FunctionalDocFileSuite(
+            'attachment_numbering.txt',
+            test_class=base.MinaraadFunctionalTestCase,
+            optionflags=base.OPTIONFLAGS),
         ])
 
 if __name__ == '__main__':
