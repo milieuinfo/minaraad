@@ -10,6 +10,11 @@ branch must be ported to trunk as well.
 3.30 (unreleased)
 -----------------
 
+- The advisory type for a project is now 'Unanimous' or 'Abstention
+  and/or reject points'. [vincent]
+
+- Added automatic numbering of attachments in agenda items [vincent]
+
 - Changed the existing advisory migration to now migrate a few
   specific folders from the old digibib to projects.
   [maurits]

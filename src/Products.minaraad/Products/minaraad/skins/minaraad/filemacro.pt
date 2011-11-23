@@ -45,14 +45,21 @@
                              icon attachment/getIcon;
                              title attachment/Title|attachment/getId;
                              mimetype attachment/content_type|nothing;
+                             uid attachment/UID;
                              contenttype python:test(mimetype, context.lookupMime(mimetype), 'Onbekend');"
                  condition="python:size &gt; 0">
-        <a href="" tal:attributes="href string:${attachment/getURL}/download">
-          <img tal:condition="icon"
-               src=""
-               alt=""
-               tal:attributes="src string:${context/portal_url}/${icon};
-                               alt contenttype"/>
+        <img tal:condition="icon"
+             src=""
+             alt=""
+             tal:attributes="src string:${context/portal_url}/${icon};
+                             alt contenttype"/>
+
+        <a href=""
+           tal:attributes="href string:${attachment/getURL}/download;
+                           id python: 'att_%s' % uid">         
+          <span tal:condition="position|nothing">
+            Billage <span tal:replace="position" />:
+          </span>
           <tal:filename tal:replace="title"/>
         </a>
         <span class="discreet">
