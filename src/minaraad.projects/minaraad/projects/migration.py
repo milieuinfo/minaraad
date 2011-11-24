@@ -185,7 +185,7 @@ def rename_attachments(context):
     catalog = getToolByName(context, 'portal_catalog')
     brains = catalog(portal_type='Meeting')
     att_count = 0
-    exp = re.compile(r'^Bijlage *(\d+) *:? *(.*)')
+    exp = re.compile(r'^[Bb]ijlage *(\d+) *:? *(.*)')
 
     for brain in brains:
         meeting = brain.getObject()
