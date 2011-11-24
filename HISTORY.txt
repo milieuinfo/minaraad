@@ -10,6 +10,11 @@ branch must be ported to trunk as well.
 3.30 (unreleased)
 -----------------
 
+- Put the linkedin javascript src right above the div that uses it.
+  This way in case of connection problems the rest of the page until
+  that point is at least rendered.
+  [maurits]
+
 - Use fresh collective.emaillogin 1.0, which is less case sensitive.
   Has an upgrade step to migrate existing email logins to all lower
   case.

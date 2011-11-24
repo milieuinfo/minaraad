@@ -58,7 +58,6 @@
 
     <tal:comment replace="nothing"> A slot where you can insert javascript in the header from a template </tal:comment>
     <metal:javascriptslot define-slot="javascript_head_slot" />
-    <script src="http://www.linkedin.com/companyInsider?script&useBorder=yes" type="text/javascript"></script>
   </head>
 
   <body tal:attributes="class string:${here/getSectionFromURL} template-${template/id};
@@ -196,6 +195,8 @@
                   The quicksearch box, normally placed at the top right
                 </div>
 
+                <script src="http://www.linkedin.com/companyInsider?script&useBorder=yes"
+                        type="text/javascript"></script>
                 <div id="linkedin-company-insider">
                   <tal:comment replace="nothing">
                     This LinkedIn box needs some javascript in the
