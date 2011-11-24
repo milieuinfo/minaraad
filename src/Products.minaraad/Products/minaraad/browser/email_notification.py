@@ -283,8 +283,8 @@ class EmailOutView(AbstractView, EmailNotify):
             IStatusMessage(request).addStatusMessage(message, type="info")
             return response.redirect(self.referring_url)
         else:
-            logger.info("No, we should not send email; the template "
-                        "is simply being shown, no form has been submitted.")
+            logger.debug("No, we should not send email; the template "
+                         "is simply being shown, no form has been submitted.")
 
     def __call__(self):
         return self.index(template_id='email_out')
