@@ -80,14 +80,6 @@
       template="export-subscribers.pt"
   />
 
-  <browser:page
-      for="*"
-      name="minaraad_globals"
-      class=".globals.GlobalView"
-      allowed_attributes="isHomePage"
-      permission="zope.Public"
-  />
-
   <!-- Service view for admin use only -->
 
   <browser:page

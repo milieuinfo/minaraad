@@ -10,6 +10,11 @@ branch must be ported to trunk as well.
 3.30 (unreleased)
 -----------------
 
+- Replaced @@minaraad_globals/isHomePage with
+  @@plone_context_state/is_portal_root.
+  Removed @@minaraad_globals view.
+  [maurits]
+
 - Put the linkedin javascript src right above the div that uses it.
   This way in case of connection problems the rest of the page until
   that point is at least rendered.
