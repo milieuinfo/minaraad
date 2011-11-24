@@ -220,7 +220,8 @@ def update_project_advisory_type(context):
         try:
             project = brain.getObject()
         except:
-            logger.info('Unable to wake brain at %s' % brain.getURL())
+            logger.warn('Unable to wake brain at %s' % brain.getURL())
+            continue
 
         if project.getAdvisory_type() in ['abstention', 'reject_points']:
             project.setAdvisory_type('abstention_rejection')
