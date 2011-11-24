@@ -1,4 +1,4 @@
-from Acquisition import aq_parent
+from Acquisition import aq_parent, aq_inner
 from zope.app.component.hooks import getSite
 from zope.interface import implements
 from AccessControl import ClassSecurityInfo
@@ -101,7 +101,7 @@ class AgendaItemProject(BaseAgendaItem):
         return '/'
 
     def _update_numbering(self):
-        meeting = aq_parent(self)
+        meeting = aq_parent(aq_inner(self))
         meeting._update_agenda_item_attachment_counter()
 
     def manage_delObjects(self, ids, *args, **kwargs):

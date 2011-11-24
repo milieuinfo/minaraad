@@ -6,6 +6,7 @@ from Products.Archetypes.event import ObjectInitializedEvent, ObjectEditedEvent
 
 from archetypes.schemaextender.interfaces import ISchemaExtender
 from Products.SimpleAttachment.content.file import FileAttachment
+from Products.SimpleAttachment.content.file import schema as attachment_schema
 
 from minaraad.projects.interfaces import IMeeting, IAgendaItemProject
 from minaraad.projects.content.agendaitem import agendaitem_schema, AgendaItemProject
@@ -123,6 +124,20 @@ class BaseAgendaItemView(BrowserView):
         return self.request.response.redirect(
             self.redirect_url())
 
+    def get_attachments(self):
+        attachments = self.context.contentValues()
+        return attachments
+
+        # portal_factory = self.context.portal_factory
+        # new_ids = ['new_att_%s_' % i for i in range(0, 3)]
+        # for att_id in new_ids:
+        #     if not att_id in portal_factory.contentIds():
+        #         portal_factory.invokeFactory('FileAttachment', id=att_id)
+
+        #     attachments.append(portal_factory[att_id])
+
+        # return attachments
+
     def _update_attachment(self, agenda_item, attachment, att_id = None):
         """ Update title/publication/file for an attachment.
         """
@@ -141,18 +156,12 @@ class BaseAgendaItemView(BrowserView):
         attachment.update(**form)
         notify(ObjectEditedEvent(attachment))
 
-    def _create_attachment(self, agenda_item, att_id = None):
+    def _create_attachment(self, agenda_item, att_id):
         """ Create a new attachment in the agenda item.
         """
-        if att_id is None:
-            att_id = 'new_att'
-
-        new_id = agenda_item.generateUniqueId('FileAttachment')
-        self.context.invokeFactory('FileAttachment', id = new_id)
-
-        attachment = getattr(agenda_item, new_id)
-        attachmnet.unmarkCreationFlag()
-        attachmnet._renameAfterCreation()
+        attachment = getattr(agenda_item, att_id)
+        attachment.unmarkCreationFlag()
+        attachment._renameAfterCreation()
         notify(ObjectInitializedEvent(attachment))
 
         self._update_attachment(agenda_item, attachment, att_id)
@@ -160,23 +169,28 @@ class BaseAgendaItemView(BrowserView):
     def add_attachments(self, agenda_item):
         """ Adds attachments from the form.
         """
-        catalog = getToolByName(self.context, 'portal_catalog')
-        attachments = catalog.searchResults(
-            portal_type = 'FileAttachment',
-            path = '/'.join(agenda_item.getPhysicalPath()))
+        new_ids = ['new_att_%s_' % i for i in range(0, 3)]
 
-        for att in attachments:
-            attachment = att.getObject()
+        for attachment in self.get_attachments():
+            if attachment.id in new_ids:
+                continue
+
             self._update_attachment(agenda_item, attachment)
 
         form = self.request.form
         new_attachments = False
-        for att_id in ['new_att_%s_' % i for i in range(0, 3)]:
-            if form.get('%s_file' % att_id):
+
+        for att_id in new_ids:
+            if form.get('att_%s_file_file' % att_id):
                 new_attachments = True
                 self._create_attachment(agenda_item, att_id)
-            # We could eventually add a break, but users might set the
-            # second attachment and not the third, so ...
+
+            elif att_id in self.context.contentIds():
+                # We delete the attachment as i is useless now.
+                self.context.manage_delObjects([att_id])
+
+                # We could eventually add a break, but users might set the
+                # second attachment and not the third, so ...
 
         if new_attachments:
             meeting = aq_parent(aq_inner(agenda_item))
@@ -232,12 +246,17 @@ class EditAgendaItemView(BaseAgendaItemView):
     def redirect_url(self):
         return aq_parent(aq_inner(self.context)).absolute_url()
 
+
     def check_form(self):
         self.check_archetype_form(self.request.form,
                              self.context,
                              self.agenda_fields)
 
+        new_ids = ['new_att_%s_' % i for i in range(0, 3)]
         for attachment in self.context.contentValues():
+            if attachment.id in new_ids:
+                continue
+
             self.check_archetype_form(self.get_attachment_form(attachment.id),
                                       attachment,
                                       self.attachment_fields,
@@ -250,4 +269,5 @@ class EditAgendaItemView(BaseAgendaItemView):
         self.context.update(**form)
         self.add_attachments(self.context)
 
+        notify(ObjectEditedEvent(self.context))
         return super(EditAgendaItemView, self).process_form()

@@ -1,6 +1,6 @@
 import logging
 from zope.app.component.hooks import getSite
-from Acquisition import aq_parent
+from Acquisition import aq_parent, aq_inner
 from Products.CMFCore.utils import getToolByName
 from zope.i18n import translate
 from Products.CMFPlone.utils import safe_unicode
@@ -294,4 +294,4 @@ def update_attachment_counter(attachment, event):
         old_att_count = 0
 
     if old_att_count != att_count:
-        aq_parent(agenda_item)._update_agenda_item_attachment_counter()
+        aq_parent(aq_inner(agenda_item))._update_agenda_item_attachment_counter()

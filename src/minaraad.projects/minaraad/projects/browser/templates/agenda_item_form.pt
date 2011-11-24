@@ -35,7 +35,7 @@
       <fieldset>
         <legend>Attachments</legend>
 
-        <tal:block tal:repeat="attachment python: item.contentValues()">
+        <tal:block tal:repeat="attachment view/get_attachments">
           <tal:block tal:define="extra_schema python: view.get_attachment_extra_fields(attachment)">
             <tal:block tal:repeat="fieldName view/attachment_fields">
               <tal:block tal:define="here nocall: attachment;
