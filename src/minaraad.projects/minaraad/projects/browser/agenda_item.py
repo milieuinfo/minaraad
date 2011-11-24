@@ -125,18 +125,15 @@ class BaseAgendaItemView(BrowserView):
             self.redirect_url())
 
     def get_attachments(self):
-        attachments = self.context.contentValues()
-        return attachments
+        new_ids = ['new_att_%s_' % i for i in range(0, 3)]
 
-        # portal_factory = self.context.portal_factory
-        # new_ids = ['new_att_%s_' % i for i in range(0, 3)]
-        # for att_id in new_ids:
-        #     if not att_id in portal_factory.contentIds():
-        #         portal_factory.invokeFactory('FileAttachment', id=att_id)
+        # We create three new attachments.
+        # They will be deleted after if needed.
+        for att_id in new_ids:
+            if not att_id in self.context.contentIds():
+                self.context.invokeFactory('FileAttachment', id=att_id)
 
-        #     attachments.append(portal_factory[att_id])
-
-        # return attachments
+        return self.context.contentValues()
 
     def _update_attachment(self, agenda_item, attachment, att_id = None):
         """ Update title/publication/file for an attachment.
@@ -159,11 +156,14 @@ class BaseAgendaItemView(BrowserView):
     def _create_attachment(self, agenda_item, att_id):
         """ Create a new attachment in the agenda item.
         """
-        attachment = getattr(agenda_item, att_id)
+        new_id = self.context.generateUniqueId('FileAttachment')
+        self.context.invokeFactory('FileAttachment',
+                                   id = new_id)
+
+        attachment = getattr(agenda_item, new_id)
         attachment.unmarkCreationFlag()
         attachment._renameAfterCreation()
         notify(ObjectInitializedEvent(attachment))
-
         self._update_attachment(agenda_item, attachment, att_id)
 
     def add_attachments(self, agenda_item):
@@ -185,12 +185,9 @@ class BaseAgendaItemView(BrowserView):
                 new_attachments = True
                 self._create_attachment(agenda_item, att_id)
 
-            elif att_id in self.context.contentIds():
-                # We delete the attachment as i is useless now.
+            if att_id in self.context.contentIds():
+                # We delete the attachment as it is useless now.
                 self.context.manage_delObjects([att_id])
-
-                # We could eventually add a break, but users might set the
-                # second attachment and not the third, so ...
 
         if new_attachments:
             meeting = aq_parent(aq_inner(agenda_item))
