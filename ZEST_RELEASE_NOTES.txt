@@ -9,6 +9,9 @@ Upgrade to 3.30
 - Run the portal_setup upgrade steps.  There are steps for
   Products.minaraad, minaraad.projects and collective.emaillogin.
 
+- The main_template has temporarily been customized in
+  portal_skins/custom.  Remove it there again.
+
 
 Upgrade to 3.28 [DONE]
 ----------------------
