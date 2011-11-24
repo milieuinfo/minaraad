@@ -78,7 +78,7 @@
             <div class="list-attachments"
                  tal:define="oddrow repeat/att/odd"
                  tal:attributes="class python:'list-attachments %s' % (oddrow and 'odd' or 'even')">
-              
+
               <metal:block use-macro="context/filemacro/macros/attachment_view" />
               <tal:block tal:define="mtool attachment/portal_membership|nothing"
                          tal:condition="python: mtool and mtool.checkPermission('Modify portal content', attachment)">

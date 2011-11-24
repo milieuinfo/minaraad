@@ -56,7 +56,7 @@
 
         <a href=""
            tal:attributes="href string:${attachment/getURL}/download;
-                           id python: 'att_%s' % uid">         
+                           id python: 'att_%s' % uid">
           <span tal:condition="position|nothing">
             Bijlage <span tal:replace="position" />:
           </span>

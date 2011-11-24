@@ -16,7 +16,7 @@ class BaseAgendaItemView(BrowserView):
     """
     agenda_fields = ['title', 'duration', 'summary', 'project']
     attachment_fields = ['title', 'description', 'file', 'published']
-    
+
     def __init__(self, *args, **kwargs):
         super(BaseAgendaItemView, self).__init__(*args, **kwargs)
         self.errors = {}
@@ -190,7 +190,7 @@ class BaseAgendaItemView(BrowserView):
 
             if 'form_cancelled' in form:
                 return self.cancelled_form()
-        
+
         return self.index()
 
 

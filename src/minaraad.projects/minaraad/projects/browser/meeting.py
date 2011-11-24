@@ -62,7 +62,7 @@ class MeetingAjax(MeetingView):
     def meeting_order_changed(self):
         form = self.request.form
         catalog = getToolByName(self.context, 'portal_catalog')
-        
+
         jq = JQueryProxy()
         uid = form.get('uid', None)
         try:
@@ -97,7 +97,7 @@ class MeetingAjax(MeetingView):
 
         # We generate the new table content.
         att_count = 1
-        
+
         for item in self.context.find_items_and_times():
             it_obj = item[0].getObject()
             it_obj.attachment_start = att_count

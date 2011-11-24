@@ -278,14 +278,14 @@ class Meeting(BaseMeeting):
         att_count = 1
         catalog = getToolByName(self, 'portal_catalog')
         items = self.find_items_and_times()
-        
+
         for it in items:
             item = it[0].getObject()
             item.attachment_start = att_count
             item.attachment_count = len(catalog.searchResults(
                 portal_type = 'FileAttachment',
                 path = '/'.join(item.getPhysicalPath())))
-            
+
             att_count += item.attachment_count
 
     def manage_pasteObjects(self, *args, **kwargs):

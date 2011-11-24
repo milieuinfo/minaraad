@@ -186,7 +186,7 @@ def rename_attachments(context):
     brains = catalog(portal_type='Meeting')
     att_count = 0
     exp = re.compile(r'^Bijlage *(\d+) *:? *(.*)')
-    
+
     for brain in brains:
         meeting = brain.getObject()
         attachments = catalog.searchResults(
@@ -202,7 +202,7 @@ def rename_attachments(context):
             attachment.title = match.groups()[-1]
             attachment.reindexObject()
             att_count += 1
-    
+
     logger.info("Updated %s attachment title in %s meetings" % (
         att_count, len(brains)))
 
