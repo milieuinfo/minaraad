@@ -91,10 +91,12 @@
                                          checked python: published and 'Checked'" />
                 </tal:block>
                 <a tal:attributes="href python: '%s/edit' % attachment.getURL()">
-                  <img src="edit.gif" />
+                  <img src="edit.gif"
+                       tal:attributes="src string:${context/portal_url}/edit.gif" />
                 </a>
                 <a tal:attributes="href python: '%s/delete_confirmation' % attachment.getURL()">
-                  <img src="delete_icon.gif" />
+                  <img src="delete_icon.gif"
+                       tal:attributes="src string:${context/portal_url}/delete_icon.gif" />
                 </a>
               </tal:block>
             </div>
@@ -116,17 +118,20 @@
               <tal:block tal:condition="obj/can_be_edited|nothing">
                 <a tal:condition="obj/is_agenda_item_project|nothing"
                    tal:attributes="href python: '%s/edit_agenda_item' % obj.absolute_url()">
-                  <img src="edit.gif" />
+                  <img src="edit.gif"
+                       tal:attributes="src string:${context/portal_url}/edit.gif" />
                 </a>
                 <a tal:condition="not: obj/is_agenda_item_project|nothing"
                    tal:attributes="href python: '%s/edit' % obj.absolute_url()">
-                  <img src="edit.gif" />
+                  <img src="edit.gif"
+                       tal:attributes="src string:${context/portal_url}/edit.gif" />
                 </a>
 
               </tal:block>
               <a tal:condition="obj/can_be_edited|nothing"
                  tal:attributes="href python: '%s/delete_confirmation' % obj.absolute_url()">
-                <img src="delete_icon.gif" />
+                <img src="delete_icon.gif"
+                       tal:attributes="src string:${context/portal_url}/delete_icon.gif" />
               </a>
             </strong>
           </p>
@@ -149,7 +154,8 @@
           <div metal:use-macro="context/display_macros/macros/agenda_attachments" />
           <a tal:condition="obj/can_be_edited|nothing"
              tal:attributes="href python: '%s/createObject?type_name=FileAttachment' % obj.absolute_url()">
-            <img src="add_icon.gif" /> Bijlage toevoegen.
+            <img src="add_icon.gif"
+                 tal:attributes="src string:${context/portal_url}/add_icon.gif" />Bijlage toevoegen.
           </a>
         </li>
       </metal:block>
