@@ -24,7 +24,7 @@
                                 accessor python: field.getAccessor(item);
                                 errors view/errors;
                                 widget nocall: field/widget;
-                                mode string: edit;
+                                mode string:edit;
                                 portal nocall: context;
                                 macro python: path('here/%s/macros/edit' % widget._properties.get('macro'))">
 
@@ -43,7 +43,7 @@
                                      accessor python: field.getAccessor(attachment);
                                      errors view/errors;
                                      widget nocall: field/widget;
-                                     mode string: edit;
+                                     mode string:edit;
                                      portal nocall: context;
                                      fieldName python: 'att_%s_%s' % (attachment.id, fieldName);
                                      macro python: path('here/%s/macros/edit' % widget._properties.get('macro'))">

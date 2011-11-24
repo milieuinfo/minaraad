@@ -307,7 +307,7 @@ three PDf files: onepage.pdf, multipage.pdf and restricted.pdf.
     ...     item.invokeFactory('FileAttachment',
     ...                        id=id,
     ...                        title=title,
-    ...                        file= f)
+    ...                        file=f)
 
     >>> attach_file(meeting.second_item,
     ...             'first_file',

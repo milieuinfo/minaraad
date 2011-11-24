@@ -161,16 +161,19 @@ To do so, we'll add another meeting with some points:
     >>> digibib.meetings.second_meeting.invokeFactory(
     ...     'AgendaItemProject',
     ...     'item1',
-    ...     project = digibib.projects.first_project)
+    ...     project = digibib.projects.first_project,
+    ...     duration = 1)
     'item1'
     >>> digibib.meetings.second_meeting.invokeFactory(
     ...     'AgendaItemProject',
     ...     'item2',
-    ...     project = digibib.projects.second_project)
+    ...     project = digibib.projects.second_project,
+    ...     duration = 1)
     'item2'
     >>> digibib.meetings.second_meeting.invokeFactory(
     ...     'AgendaItemProject',
-    ...     'item3')
+    ...     'item3',
+    ...     duration = 1)
     'item3'
 
     >>> digibib.projects.first_project.get_meetings()
