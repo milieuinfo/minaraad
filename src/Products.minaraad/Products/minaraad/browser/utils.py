@@ -2,6 +2,7 @@ import logging
 import os
 from StringIO import StringIO
 from Products.CMFCore.utils import getToolByName
+from Products.Five import BrowserView
 
 # Arrange logging, for use by other modules.
 email_logger = logging.getLogger('minaraad_email')
@@ -82,3 +83,37 @@ def buildCSV(context, members, filename='members.csv'):
     # charset, like \u2018 which Microsoft is so fond of...  So
     # replace faulty characters with a question mark.
     return out.getvalue().encode(export_charset, 'replace')
+
+
+def tail(f, n, offset=None):
+    """Reads n lines from f with an offset of offset lines.
+
+    From
+    http://stackoverflow.com/questions/136168/get-last-n-lines-of-a-file-with-python-similar-to-tail
+    """
+    avg_line_length = 100
+    to_read = n + (offset or 0)
+
+    while 1:
+        try:
+            f.seek(-(avg_line_length * to_read), 2)
+        except IOError:
+            # woops.  apparently file is smaller than what we want
+            # to step back, go to the beginning instead
+            f.seek(0)
+        pos = f.tell()
+        lines = f.read().splitlines()
+        if len(lines) >= to_read or pos == 0:
+            return lines[-to_read:offset and -offset or None]
+        avg_line_length *= 1.3
+
+
+class SeeEmailLog(BrowserView):
+
+    def __call__(self):
+        try:
+            logfile = open(logpath)
+            lines = tail(logfile, 50)
+        finally:
+            logfile.close()
+        return '\n'.join(lines)

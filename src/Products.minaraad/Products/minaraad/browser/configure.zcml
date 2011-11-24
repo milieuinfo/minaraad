@@ -144,4 +144,11 @@
       permission="zope2.View"
       />
 
+  <browser:page
+      name="see-email-log"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      class=".utils.SeeEmailLog"
+      permission="cmf.ManagePortal"
+      />
+
 </configure>
