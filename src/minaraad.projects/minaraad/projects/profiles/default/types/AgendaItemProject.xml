@@ -20,6 +20,7 @@
  <property name="allow_discussion">False</property>
  <alias from="(Default)" to="redirect_to_parent"/>
  <alias from="sharing" to="@@sharing"/>
+ <alias from="edit" to="atct_edit"/>
  <alias from="view" to="base_view"/>
  <action title="View"
          action_id="view"
@@ -33,7 +34,7 @@
          action_id="edit"
          category="object"
          condition_expr=""
-         url_expr="string:${object_url}/edit_agenda_item"
+         url_expr="string:${object_url}/edit"
          visible="True">
   <permission value="Modify portal content"/>
  </action>

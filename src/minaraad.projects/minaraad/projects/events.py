@@ -294,4 +294,8 @@ def update_attachment_counter(attachment, event):
         old_att_count = 0
 
     if old_att_count != att_count:
-        aq_parent(aq_inner(agenda_item))._update_agenda_item_attachment_counter()
+        try:
+            aq_parent(aq_inner(agenda_item))._update_agenda_item_attachment_counter()
+        except AttributeError:
+            # We might be in the portal factory.
+            pass
