@@ -45,7 +45,7 @@ def buildCSV(context, members, filename='members.csv'):
         id, title = field
 
         out.write(u'"%s"' % title)
-        if pos < len(fields)-1:
+        if pos < len(fields) - 1:
             out.write(u',')
 
     out.write(u'\n')
@@ -62,7 +62,7 @@ def buildCSV(context, members, filename='members.csv'):
             value = value.replace(u'"', u'""')
             out.write(u'"%s"' % value)
 
-            if pos < len(fields)-1:
+            if pos < len(fields) - 1:
                 out.write(u',')
 
         out.write(u'\n')
