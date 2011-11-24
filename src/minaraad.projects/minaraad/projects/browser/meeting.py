@@ -110,7 +110,7 @@ class MeetingAjax(MeetingView):
                                portal_type = 'FileAttachment',
                                path = '/'.join(it_obj.getPhysicalPath()))
             for att in attachments:
-                jq('#att_%s' % att.UID).html('Billage %s: %s' % (att_count,
+                jq('#att_%s' % att.UID).html('Bijlage %s: %s' % (att_count,
                                                                  att.Title))
                 att_count += 1
 

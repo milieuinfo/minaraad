@@ -179,13 +179,13 @@ def update_attachment_counts(context):
     logger.info("Ran '_update_agenda_item_attachment_counter' on %s meetings." % len(brains))
 
 def rename_attachments(context):
-    """ Rename attachments in meetings that are called 'Billage XX'
+    """ Rename attachments in meetings that are called 'Bijlage XX'
     as this is now automatically generated.
     """
     catalog = getToolByName(context, 'portal_catalog')
     brains = catalog(portal_type='Meeting')
     att_count = 0
-    exp = re.compile(r'^Billage *(\d+) *:? *(.*)')
+    exp = re.compile(r'^Bijlage *(\d+) *:? *(.*)')
     
     for brain in brains:
         meeting = brain.getObject()
