@@ -18,6 +18,8 @@ class BaseAgendaItemView(BrowserView):
     agenda_fields = ['title', 'duration', 'summary', 'project']
     attachment_fields = ['title', 'description', 'file', 'published']
 
+    new_ids = ['new_att_%s_' % i for i in range(0, 3)]
+
     def __init__(self, *args, **kwargs):
         super(BaseAgendaItemView, self).__init__(*args, **kwargs)
         self.errors = {}
@@ -125,11 +127,9 @@ class BaseAgendaItemView(BrowserView):
             self.redirect_url())
 
     def get_attachments(self):
-        new_ids = ['new_att_%s_' % i for i in range(0, 3)]
-
         # We create three new attachments.
         # They will be deleted after if needed.
-        for att_id in new_ids:
+        for att_id in self.new_ids:
             if not att_id in self.context.contentIds():
                 self.context.invokeFactory('FileAttachment', id=att_id)
 
@@ -169,10 +169,8 @@ class BaseAgendaItemView(BrowserView):
     def add_attachments(self, agenda_item):
         """ Adds attachments from the form.
         """
-        new_ids = ['new_att_%s_' % i for i in range(0, 3)]
-
         for attachment in self.get_attachments():
-            if attachment.id in new_ids:
+            if attachment.id in self.new_ids:
                 continue
 
             self._update_attachment(agenda_item, attachment)
@@ -180,7 +178,7 @@ class BaseAgendaItemView(BrowserView):
         form = self.request.form
         new_attachments = False
 
-        for att_id in new_ids:
+        for att_id in self.new_ids:
             if form.get('att_%s_file_file' % att_id):
                 new_attachments = True
                 self._create_attachment(agenda_item, att_id)
@@ -249,9 +247,8 @@ class EditAgendaItemView(BaseAgendaItemView):
                              self.context,
                              self.agenda_fields)
 
-        new_ids = ['new_att_%s_' % i for i in range(0, 3)]
         for attachment in self.context.contentValues():
-            if attachment.id in new_ids:
+            if attachment.id in self.new_ids:
                 continue
 
             self.check_archetype_form(self.get_attachment_form(attachment.id),
