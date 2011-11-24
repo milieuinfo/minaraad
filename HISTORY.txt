@@ -10,6 +10,9 @@ branch must be ported to trunk as well.
 3.30 (unreleased)
 -----------------
 
+- Only show the linkedin button when viewing the home page.
+  [maurits]
+
 - Replaced @@minaraad_globals/isHomePage with
   @@plone_context_state/is_portal_root.
   Removed @@minaraad_globals view.

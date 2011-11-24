@@ -195,18 +195,21 @@
                   The quicksearch box, normally placed at the top right
                 </div>
 
-                <script src="http://www.linkedin.com/companyInsider?script&useBorder=yes"
-                        type="text/javascript"></script>
-                <div id="linkedin-company-insider">
-                  <tal:comment replace="nothing">
-                    This LinkedIn box needs some javascript in the
-                    head.  The next ids and tags must not be changed.
-                  </tal:comment>
-                  <span id="minaraad"></span>
-                  <script type="text/javascript">
-                    new LinkedIn.CompanyInsiderPopup("minaraad","Minaraad");
-                  </script>
-                </div>
+                <tal:linkedin define="pcs context/@@plone_context_state"
+                              condition="python:pcs.is_portal_root() and pcs.is_view_template()">
+                  <script src="http://www.linkedin.com/companyInsider?script&useBorder=yes"
+                          type="text/javascript"></script>
+                  <div id="linkedin-company-insider">
+                    <tal:comment replace="nothing">
+                      This LinkedIn box needs some javascript in the
+                      head.  The next ids and tags must not be changed.
+                    </tal:comment>
+                    <span id="minaraad"></span>
+                    <script type="text/javascript">
+                      new LinkedIn.CompanyInsiderPopup("minaraad","Minaraad");
+                    </script>
+                  </div>
+                </tal:linkedin>
 
                 <metal:portlets define-slot="portlets_two_slot">
                   <tal:block replace="structure provider:plone.rightcolumn" />
