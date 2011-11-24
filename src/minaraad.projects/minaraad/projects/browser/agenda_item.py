@@ -2,7 +2,8 @@ from Acquisition import aq_inner, aq_parent
 from Products.Five import BrowserView
 from Products.CMFCore.utils import getToolByName
 
-from Products.SimpleAttachment.content.file import schema as attachemnt_schema
+from archetypes.schemaextender.interfaces import ISchemaExtender
+from Products.SimpleAttachment.content.file import FileAttachment
 
 from minaraad.projects.interfaces import IMeeting, IAgendaItemProject
 from minaraad.projects.content.agendaitem import agendaitem_schema, AgendaItemProject
@@ -12,7 +13,7 @@ class BaseAgendaItemView(BrowserView):
     agenda items.
     """
     agenda_fields = ['title', 'duration', 'summary', 'project']
-    attachment_fields = ['title', 'description', 'file']
+    attachment_fields = ['title', 'description', 'file', 'published']
     
     def __init__(self, *args, **kwargs):
         super(BaseAgendaItemView, self).__init__(*args, **kwargs)
@@ -21,13 +22,17 @@ class BaseAgendaItemView(BrowserView):
     def get_agenda_item(self):
         return self.context
 
+    def get_attachment_extra_fields(self, attachment):
+        extender = ISchemaExtender(attachment)
+        return dict([(f.getName(), f) for f in extender.getFields()])
+
     def redirect_url(self):
         """ URL where the user is redirected after form submission.
         """
         return self.context.absolute_url()
 
     def get_attachment_form(self, att_id):
-        """ Filters the form to keep only the parts descriing
+        """ Filters the form to keep only the parts describing
         an attachment.
         """
         key = 'att_%s_' % att_id
@@ -42,7 +47,13 @@ class BaseAgendaItemView(BrowserView):
         content in the form.
         """
         new_form = {}
-        for field in schema.fields():
+        try:
+            extender = ISchemaExtender(context)
+            extra_fields = extender.getFields()
+        except TypeError:
+            extra_fields = []
+
+        for field in schema.fields() + extra_fields:
             fieldname = field.getName()
             if not fieldname in fields:
                 continue
@@ -121,6 +132,10 @@ class BaseAgendaItemView(BrowserView):
             attachment,
             attachment.schema,
             self.attachment_fields)
+
+        if form.get('file', False) is None:
+            del form['file']
+
         attachment.update(**form)
 
     def _create_attachment(self, agenda_item, att_id = None):

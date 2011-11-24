@@ -36,17 +36,19 @@
         <legend>Attachments</legend>
 
         <tal:block tal:repeat="attachment python: item.contentValues()">
-          <tal:block tal:repeat="fieldName view/attachment_fields">
-            <tal:block tal:define="here nocall: attachment;
-                                   field python: attachment.schema.get(fieldName);
-                                   accessor python: field.getAccessor(attachment);
-                                   errors view/errors;
-                                   widget nocall: field/widget;
-                                   mode string: edit;
-                                   portal nocall: context;
-                                   fieldName python: 'att_%s_%s' % (attachment.id, fieldName);
-                                   macro python: path('here/%s/macros/edit' % widget._properties.get('macro'))">
-              <metal:block use-macro="macro" />
+          <tal:block tal:define="extra_schema python: view.get_attachment_extra_fields(attachment)">
+            <tal:block tal:repeat="fieldName view/attachment_fields">
+              <tal:block tal:define="here nocall: attachment;
+                                     field python: attachment.schema.get(fieldName, None) or extra_schema.get(fieldName);
+                                     accessor python: field.getAccessor(attachment);
+                                     errors view/errors;
+                                     widget nocall: field/widget;
+                                     mode string: edit;
+                                     portal nocall: context;
+                                     fieldName python: 'att_%s_%s' % (attachment.id, fieldName);
+                                     macro python: path('here/%s/macros/edit' % widget._properties.get('macro'))">
+                <metal:block use-macro="macro" />
+              </tal:block>
             </tal:block>
           </tal:block>
         </tal:block>
