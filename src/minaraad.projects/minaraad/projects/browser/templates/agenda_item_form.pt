@@ -58,7 +58,7 @@
              name="form_submitted" value="Bewaren" />
 
       <input class="standalone" type="submit"
-             name="form cancelled"
+             name="form_cancelled"
              value="Annuleren" />
      </form>
     </div>

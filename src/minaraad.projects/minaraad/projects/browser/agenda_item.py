@@ -198,6 +198,11 @@ class BaseAgendaItemView(BrowserView):
                 return self.process_form()
 
             if 'form_cancelled' in form:
+                for att_id in self.new_ids:
+                    if att_id in self.context.contentIds():
+                        # We delete the temporary attachment as it is useless now.
+                        self.context.manage_delObjects([att_id])
+
                 return self.cancelled_form()
 
         return self.index()
