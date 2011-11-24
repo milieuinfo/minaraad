@@ -93,7 +93,7 @@
       for="minaraad.projects.interfaces.IMeeting"
       class=".agenda_item.AddAgendaItemView"
       template="templates/agenda_item_form.pt"
-      permission="zope2.View"
+      permission="cmf.ModifyPortalContent"
       />
 
   <browser:page
@@ -101,7 +101,7 @@
       for="minaraad.projects.interfaces.IAgendaItemProject"
       class=".agenda_item.EditAgendaItemView"
       template="templates/agenda_item_form.pt"
-      permission="zope2.View"
+      permission="cmf.ModifyPortalContent"
       />
 
   <browser:page
