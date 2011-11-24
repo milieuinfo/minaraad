@@ -175,3 +175,7 @@ def apply_workflow_step(context):
     wf_tool = getToolByName(context, 'portal_workflow')
     wf_tool.updateRoleMappings()
     logger.info('Done updating security settings.')
+
+
+def apply_properties_step(context):
+    context.runImportStepFromProfile(PROFILE_ID, 'properties')

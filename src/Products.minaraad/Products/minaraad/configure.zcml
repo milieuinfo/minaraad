@@ -96,4 +96,12 @@
       handler="Products.minaraad.migration.apply_workflow_step"
       profile="Products.minaraad:default" />
 
+  <genericsetup:upgradeStep
+      title="Apply properties step"
+      description=""
+      source="1007"
+      destination="1008"
+      handler="Products.minaraad.migration.apply_properties_step"
+      profile="Products.minaraad:default" />
+
 </configure>
