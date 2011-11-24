@@ -1,6 +1,8 @@
 from Acquisition import aq_inner, aq_parent
 from Products.Five import BrowserView
 from Products.CMFCore.utils import getToolByName
+from zope.event import notify
+from Products.Archetypes.event import ObjectInitializedEvent, ObjectEditedEvent
 
 from archetypes.schemaextender.interfaces import ISchemaExtender
 from Products.SimpleAttachment.content.file import FileAttachment
@@ -137,6 +139,7 @@ class BaseAgendaItemView(BrowserView):
             del form['file']
 
         attachment.update(**form)
+        notify(ObjectEditedEvent(attachment))
 
     def _create_attachment(self, agenda_item, att_id = None):
         """ Create a new attachment in the agenda item.
