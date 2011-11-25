@@ -32,7 +32,7 @@ class AttendeesManagerView(AbstractView):
 
     def __init__(self, *args, **kwargs):
         AbstractView.__init__(self, *args, **kwargs)
-        self.manager = IAttendeeManager(self.context, None)
+        self.manager = IAttendeeManager(args[0], None)
 
     def __call__(self):
         context = aq_inner(self.context)
@@ -102,8 +102,8 @@ class AttendeesManagerView(AbstractView):
                      'members': []}
 
         memTool = getToolByName(context, 'portal_membership')
-
         for memberId in self.manager.attendees():
+            logger.debug('%s is attending', memberId)
             member = memTool.getMemberById(memberId)
 
             # In case a memberId is None (this happens when a user is deleted)
@@ -112,6 +112,8 @@ class AttendeesManagerView(AbstractView):
             # Note: this means we will change history in case the member has
             # participated in a hearing. But that's the way they want it.
             if member is None:
+                logger.warn("Removing non-member %s from attendees of %s",
+                            memberId, context.absolute_url())
                 self.manager.removeMember(memberId)
                 continue
 
@@ -146,4 +148,5 @@ class AttendeesManagerView(AbstractView):
 class SimpleAttendeesView(AttendeesManagerView):
 
     def __call__(self):
+        logger.debug('%s', self.context)
         return self.isRegistered()
