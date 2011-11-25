@@ -5,18 +5,16 @@ from jquery.pyproxy.plone import jquery, JQueryProxy
 
 from minaraad.projects.interfaces import IAgendaItemProject
 
+
 class MeetingView(BrowserView):
     """ Default view of a Meeting.
     """
-
-    def __init__(self, *args, **kwargs):
-        super(MeetingView, self).__init__(*args, **kwargs)
 
     def clean_temporary_objects(self):
         # We delete potentialially left temporary attachments
         # or agenda items.
         to_delete = []
-        for item in self.context.contentValues():           
+        for item in self.context.contentValues():
             if not IAgendaItemProject.providedBy(item):
                 continue
 
@@ -32,6 +30,7 @@ class MeetingView(BrowserView):
     def __call__(self):
         self.clean_temporary_objects()
         return self.index()
+
 
 class MeetingOrderingView(MeetingView):
     """ This view allows to manage order of the agenda items.
@@ -130,12 +129,12 @@ class MeetingAjax(MeetingView):
                 '%s tot %su' % (item[1].TimeMinutes(),
                                 item[2].TimeMinutes()))
 
-            attachments  = catalog.searchResults(
-                               portal_type = 'FileAttachment',
-                               path = '/'.join(it_obj.getPhysicalPath()))
+            attachments = catalog.searchResults(
+                portal_type='FileAttachment',
+                path='/'.join(it_obj.getPhysicalPath()))
             for att in attachments:
-                jq('#att_%s' % att.UID).html('Bijlage %s: %s' % (att_count,
-                                                                 att.Title))
+                jq('#att_%s' % att.UID).html('Bijlage %s: %s' % (
+                    att_count, att.Title))
                 att_count += 1
 
         return jq
