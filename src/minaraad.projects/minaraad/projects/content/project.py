@@ -411,7 +411,7 @@ class Project(atapi.BaseFolder, ThemeMixin):
 
     def add_agendaitem_reference(self, agendaitem):
         items = self._get_agenda_items()
-        meeting_uid = aq_parent(agendaitem).UID()
+        meeting_uid = aq_parent(aq_inner(agendaitem)).UID()
         agendaitem_uid = agendaitem.UID()
 
         if not meeting_uid in items:
@@ -422,7 +422,7 @@ class Project(atapi.BaseFolder, ThemeMixin):
 
     def remove_agendaitem_reference(self, agendaitem):
         items = self._get_agenda_items()
-        meeting_uid = aq_parent(agendaitem).UID()
+        meeting_uid = aq_parent(aq_inner(agendaitem)).UID()
         agendaitem_uid = agendaitem.UID()
 
         if not meeting_uid in items:
