@@ -101,7 +101,7 @@
       name="jq_meeting_order_changed"
       class=".meeting.MeetingAjax"
       attribute="meeting_order_changed"
-      permission="zope2.View"
+      permission="cmf.ModifyPortalContent"
      />
 
   <browser:page
