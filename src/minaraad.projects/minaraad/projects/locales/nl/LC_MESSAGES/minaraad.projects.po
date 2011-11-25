@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: minaraad.projecrts 1.0\n"
 "POT-Creation-Date: 2011-11-25 13:01+0000\n"
-"PO-Revision-Date: 2011-11-25 10:54+0100\n"
+"PO-Revision-Date: 2011-11-25 14:09+0100\n"
 "Last-Translator: Maurits van Rees <m.van.rees@zestsoftware.nl>\n"
 "Language-Team: Zest Software <info@zestsoftware.nl>\n"
 "MIME-Version: 1.0\n"
@@ -137,7 +137,7 @@ msgstr "Digibib - Projecten"
 #. Default: "Abstention and/or reject points"
 #: ./content/project.py:289
 msgid "label_abstention_rejection"
-msgstr ""
+msgstr "Onthoudingen en/of standpunten"
 
 #. Default: "Add a new meeting"
 #: ./browser/templates/digibib.pt:69
@@ -193,7 +193,7 @@ msgstr "Betrokken commissies"
 #. Default: "Attachments"
 #: ./browser/templates/agenda_item_form.pt:37
 msgid "label_attachments"
-msgstr ""
+msgstr "Bijlages"
 
 #. Default: "You must specify the daily governance board group.."
 #: ./browser/templates/project_properties.pt:46
@@ -306,7 +306,7 @@ msgstr "Leden van het dagelijks bestuur"
 #. Default: "Edit agenda item: ${item_title}"
 #: ./browser/templates/agenda_item_form.pt:17
 msgid "label_header_edit_agenda_item"
-msgstr ""
+msgstr "Bewerk agendapunt: ${item_title}"
 
 #. Default: "Organisations"
 #: ./browser/templates/list_organisations.pt:13
