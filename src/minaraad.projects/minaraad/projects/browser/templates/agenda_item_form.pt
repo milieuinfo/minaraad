@@ -84,7 +84,8 @@
                                      mode string:edit;
                                      portal nocall: context;
                                      fieldName python: 'att_%s_%s' % (attachment.id, fieldName);
-                                     macro python: path('here/%s/macros/edit' % widget._properties.get('macro'))">
+                                     macro python: path('here/%s/macros/edit' % widget._properties.get('macro'))"
+                         tal:condition="python:not fieldName.endswith('description')">
                 <metal:block use-macro="macro" />
               </tal:block>
             </tal:block>
