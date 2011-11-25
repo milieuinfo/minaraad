@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minaraad.projecrts 1.0\n"
-"POT-Creation-Date: 2011-11-25 09:54+0000\n"
+"POT-Creation-Date: 2011-11-25 13:01+0000\n"
 "PO-Revision-Date: 2011-11-25 10:54+0100\n"
 "Last-Translator: Maurits van Rees <m.van.rees@zestsoftware.nl>\n"
 "Language-Team: Zest Software <info@zestsoftware.nl>\n"
@@ -39,11 +39,11 @@ msgstr "Maak advies"
 msgid "Create advisory from information in project"
 msgstr "Maak een advies aan de hand van informatie in het project"
 
-#: ./browser/project.py:145
+#: ./browser/project.py:140
 msgid "Created Advisory"
 msgstr "Advies aangemaakt"
 
-#: ./browser/project.py:98
+#: ./browser/project.py:93
 msgid "Created folder for this year."
 msgstr "Map aangemaakt voor dit jaar."
 
@@ -191,7 +191,7 @@ msgid "label_assigned_groups"
 msgstr "Betrokken commissies"
 
 #. Default: "Attachments"
-#: ./browser/templates/agenda_item_form.pt:33
+#: ./browser/templates/agenda_item_form.pt:37
 msgid "label_attachments"
 msgstr ""
 
@@ -304,7 +304,7 @@ msgid "label_governance_board"
 msgstr "Leden van het dagelijks bestuur"
 
 #. Default: "Edit agenda item: ${item_title}"
-#: ./browser/templates/agenda_item_form.pt:13
+#: ./browser/templates/agenda_item_form.pt:17
 msgid "label_header_edit_agenda_item"
 msgstr ""
 

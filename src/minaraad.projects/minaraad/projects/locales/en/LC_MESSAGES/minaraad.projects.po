@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minaraad.projects 1.0\n"
-"POT-Creation-Date: 2011-11-25 09:54+0000\n"
+"POT-Creation-Date: 2011-11-25 13:01+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -38,11 +38,11 @@ msgstr ""
 msgid "Create advisory from information in project"
 msgstr ""
 
-#: ./browser/project.py:145
+#: ./browser/project.py:140
 msgid "Created Advisory"
 msgstr ""
 
-#: ./browser/project.py:98
+#: ./browser/project.py:93
 msgid "Created folder for this year."
 msgstr ""
 
@@ -190,7 +190,7 @@ msgid "label_assigned_groups"
 msgstr ""
 
 #. Default: "Attachments"
-#: ./browser/templates/agenda_item_form.pt:33
+#: ./browser/templates/agenda_item_form.pt:37
 msgid "label_attachments"
 msgstr ""
 
@@ -282,7 +282,7 @@ msgid "label_governance_board"
 msgstr ""
 
 #. Default: "Edit agenda item: ${item_title}"
-#: ./browser/templates/agenda_item_form.pt:13
+#: ./browser/templates/agenda_item_form.pt:17
 msgid "label_header_edit_agenda_item"
 msgstr ""
 
