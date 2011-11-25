@@ -151,6 +151,10 @@ class BaseAgendaItemView(BrowserView):
             del form['file']
 
         attachment.update(**form)
+        if attachment.Title() == '':
+            attachment.title = attachment.getFile().filename
+
+        attachment.reindexObject()
         notify(ObjectEditedEvent(attachment))
 
     def _create_attachment(self, agenda_item, att_id):
