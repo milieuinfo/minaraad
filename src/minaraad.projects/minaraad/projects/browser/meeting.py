@@ -3,11 +3,35 @@ from Products.CMFCore.utils import getToolByName
 
 from jquery.pyproxy.plone import jquery, JQueryProxy
 
+from minaraad.projects.interfaces import IAgendaItemProject
 
 class MeetingView(BrowserView):
     """ Default view of a Meeting.
     """
 
+    def __init__(self, *args, **kwargs):
+        super(MeetingView, self).__init__(*args, **kwargs)
+
+    def clean_temporary_objects(self):
+        # We delete potentialially left temporary attachments
+        # or agenda items.
+        to_delete = []
+        for item in self.context.contentValues():           
+            if not IAgendaItemProject.providedBy(item):
+                continue
+
+            if item.getIn_factory():
+                to_delete.append(item.id)
+                continue
+
+            view = item.restrictedTraverse('@@edit_agenda_item')
+            view.delete_temp_attachments()
+
+        self.context.manage_delObjects(to_delete)
+
+    def __call__(self):
+        self.clean_temporary_objects()
+        return self.index()
 
 class MeetingOrderingView(MeetingView):
     """ This view allows to manage order of the agenda items.

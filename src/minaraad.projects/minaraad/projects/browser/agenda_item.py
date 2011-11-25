@@ -191,6 +191,12 @@ class BaseAgendaItemView(BrowserView):
             meeting = aq_parent(aq_inner(agenda_item))
             meeting._update_agenda_item_attachment_counter()
 
+    def delete_temp_attachments(self):
+        for att_id in self.new_ids:
+            if att_id in self.context.contentIds():
+                # We delete the attachment as it is useless now.
+                self.context.manage_delObjects([att_id])
+
     def __call__(self):
         form = self.request.form
         if self.request.get('REQUEST_METHOD') == 'POST':
@@ -198,11 +204,7 @@ class BaseAgendaItemView(BrowserView):
                 return self.process_form()
 
             if 'form_cancelled' in form:
-                for att_id in self.new_ids:
-                    if att_id in self.context.contentIds():
-                        # We delete the temporary attachment as it is useless now.
-                        self.context.manage_delObjects([att_id])
-
+                self.delete_temp_attachments()
                 return self.cancelled_form()
 
         return self.index()

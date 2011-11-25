@@ -46,6 +46,14 @@ agendaitem_schema = base_agendaitem_schema + atapi.Schema((
             force_close_on_insert=1,
             ),
         ),
+
+    atapi.BooleanField(
+        # This field will be set to false once the object has been saved
+        # with @@edit_eganda_item view.
+        # If set to True, it will be deleted by the default meeting view.
+        name='in_factory',
+        default=False
+        ),
     ))
 
 for schema_key in agendaitem_schema.keys():
