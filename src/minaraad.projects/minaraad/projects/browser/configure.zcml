@@ -107,11 +107,18 @@
   <browser:page
       for="minaraad.projects.interfaces.IProject"
       name="jq_attachment_published_changed"
-      class=".project.ProjectAjax"
+      class=".attachment.AttachmentAjax"
       attribute="publish_attachment"
-      permission="zope2.View"
+      permission="cmf.ModifyPortalContent"
      />
 
+  <browser:page
+      for="minaraad.projects.interfaces.IBaseMeeting"
+      name="jq_attachment_published_changed"
+      class=".attachment.AttachmentAjax"
+      attribute="publish_attachment"
+      permission="cmf.ModifyPortalContent"
+     />
 
   <browser:page
       for="*"
