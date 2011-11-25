@@ -1,6 +1,7 @@
 import logging
 
 from Products.CMFCore.utils import getToolByName
+from persistent.list import PersistentList
 
 from Products.minaraad.themes import ThemeManager
 from Products.minaraad.subscriptions import SubscriptionManager
@@ -182,10 +183,13 @@ def apply_properties_step(context):
     context.runImportStepFromProfile(PROFILE_ID, 'properties')
 
 def remove_double_subscriptions(context):
-    """ Removes double subscription for a object.
+    """ Update _attendees object to use PersistenList
+    and remove double attendees.
     """
     catalog = getToolByName(context, 'portal_catalog')
     brains = catalog.searchResults(portal_type = ['Hearing', 'MREvent'])
+
+    obj_count = 0
     double_count = 0
 
     for brain in brains:
@@ -198,20 +202,23 @@ def remove_double_subscriptions(context):
         adapter = IAttendeeManager(obj)
         attendees = adapter.attendees()
 
-        if len(attendees) == len(set(attendees)):
-            continue
+        new_attendees = PersistentList()
+        double_found = False
 
-        double_count += 1
-
-        new_attendees = []
-        obj._attendees = []
-
-        # We could just do list(set(attendees)), but this way we keep the same order.
         for att in attendees:
             if att in new_attendees:
+                double_found = True
                 continue
-            adapter.addMember(att)
+
             new_attendees.append(att)
 
+        obj._attendees = new_attendees
 
-    logger.info('Found %s objects with double attendees' % double_count)
+        if double_found:
+            double_count += 1
+
+        obj_count += 1
+
+
+    logger.info('Updated %s objects with PersistentList, found %s objects with double attendees' % (
+        obj_count, double_count))

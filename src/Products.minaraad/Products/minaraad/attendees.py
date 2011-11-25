@@ -1,6 +1,6 @@
 from zope.interface import implements
 from Products.minaraad.interfaces import IAttendeeManager
-
+from persistent.list import PersistentList
 
 class AttendeeManager(object):
     implements(IAttendeeManager)
@@ -30,4 +30,4 @@ class AttendeeManager(object):
         self.context._attendees = attendees
 
     def attendees(self):
-        return getattr(self.context, '_attendees', [])
+        return getattr(self.context, '_attendees', PersistentList())
