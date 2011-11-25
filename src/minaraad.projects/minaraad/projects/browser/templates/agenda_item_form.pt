@@ -2,17 +2,19 @@
       lang="en"
       metal:use-macro="here/main_template/macros/master"
       i18n:domain="minaraad.projects">
+
+  <metal:javascript fill-slot="javascript_head_slot">
+    <script type="text/javascript"
+            tal:attributes="src string:${context/portal_url}/referencebrowser.js">
+    </script>
+  </metal:javascript>
+
   <body>
     <div metal:fill-slot="main"
          tal:define="item view/get_agenda_item">
-     <h1 class="documentFirstHeading">
-       <tal:block tal:condition="python: view.mode == 'add'">
-         Add agenda item
-       </tal:block>
-
-       <tal:block tal:condition="python: view.mode == 'edit'">
-         Edit agenda item: <span tal:replace="item/title" />
-       </tal:block>
+     <h1 class="documentFirstHeading"
+         i18n:translate="label_header_edit_agenda_item">
+       Edit agenda item: <span i18n:name="item_title" tal:replace="item/title" />
      </h1>
 
      <form method="POST"
@@ -27,13 +29,14 @@
                                 mode string:edit;
                                 portal nocall: context;
                                 macro python: path('here/%s/macros/edit' % widget._properties.get('macro'))">
-
            <metal:block use-macro="macro" />
         </tal:block>
       </tal:block>
 
       <fieldset>
-        <legend>Attachments</legend>
+        <legend i18n:translate="label_attachments">
+          Attachments
+        </legend>
 
         <tal:block tal:repeat="attachment view/get_attachments">
           <tal:block tal:define="extra_schema python: view.get_attachment_extra_fields(attachment)">
