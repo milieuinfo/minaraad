@@ -1,5 +1,6 @@
 from Products.Five import BrowserView
 from Products.CMFCore.utils import getToolByName
+from zope.component import getMultiAdapter
 
 from jquery.pyproxy.plone import jquery, JQueryProxy
 
@@ -22,7 +23,8 @@ class MeetingView(BrowserView):
                 to_delete.append(item.id)
                 continue
 
-            view = item.restrictedTraverse('@@edit_agenda_item')
+            view = getMultiAdapter((self.context, self.request),
+                                   name='edit_agenda_item')
             view.delete_temp_attachments()
 
         self.context.manage_delObjects(to_delete)
