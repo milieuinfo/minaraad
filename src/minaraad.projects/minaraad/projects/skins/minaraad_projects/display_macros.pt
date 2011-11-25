@@ -76,8 +76,7 @@
                                  position python: att[0] + counter_start">
 
             <div class="list-attachments"
-                 tal:define="oddrow repeat/att/odd"
-                 tal:attributes="class python:'list-attachments %s' % (oddrow and 'odd' or 'even')">
+                 tal:define="oddrow repeat/att/odd">
 
               <metal:block use-macro="context/filemacro/macros/attachment_view" />
               <tal:block tal:define="mtool attachment/portal_membership|nothing"
