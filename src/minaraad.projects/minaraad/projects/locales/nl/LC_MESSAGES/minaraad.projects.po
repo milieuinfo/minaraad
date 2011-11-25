@@ -193,7 +193,7 @@ msgstr "Betrokken commissies"
 #. Default: "Attachments"
 #: ./browser/templates/agenda_item_form.pt:37
 msgid "label_attachments"
-msgstr "Bijlages"
+msgstr "Bijlagen"
 
 #. Default: "You must specify the daily governance board group.."
 #: ./browser/templates/project_properties.pt:46
