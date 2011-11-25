@@ -155,7 +155,12 @@ class BaseAgendaItemView(BrowserView):
     def _create_attachment(self, agenda_item, att_id):
         """ Create a new attachment in the agenda item.
         """
-        new_id = self.context.generateUniqueId('FileAttachment')
+        filename = self.get_attachment_form(att_id)['file_file'].filename
+        if filename in agenda_item.contentIds():
+            new_id = self.context.generateUniqueId(filename)
+        else:
+            new_id = self.context.generateUniqueId('FileAttachment')
+
         self.context.invokeFactory('FileAttachment',
                                    id = new_id)
 
