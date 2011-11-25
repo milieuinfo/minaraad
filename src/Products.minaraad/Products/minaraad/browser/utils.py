@@ -128,10 +128,6 @@ class SeeEmailLog(BrowserView):
         if linefilter:
             # 'Grep' for the filter, for example WARN, ERROR.
             lines = [line for line in lines if linefilter in line]
-            if not lines:
-                lines = [
-                    'Checked %s lines' % (num or 'all'),
-                    'Nothing found for filter']
         lines.insert(0, 'Checked %s lines (?num=%d)' % (num or 'all', num))
         lines.insert(1, 'Filtered on %r (?filter=%s)' % (
             linefilter or 'nothing', linefilter or ''))
