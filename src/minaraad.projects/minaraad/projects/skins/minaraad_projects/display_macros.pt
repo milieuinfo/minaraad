@@ -90,14 +90,11 @@
                          tal:attributes="name python: 'attachment_%s' % attachment.UID;
                                          checked python: published and 'Checked'" />
                 </tal:block>
-                <a tal:attributes="href python: '%s/edit' % attachment.getURL()">
-                  <img src="edit.gif"
-                       tal:attributes="src string:${context/portal_url}/edit.gif" />
-                </a>
-                <a tal:attributes="href python: '%s/delete_confirmation' % attachment.getURL()">
-                  <img src="delete_icon.gif"
-                       tal:attributes="src string:${context/portal_url}/delete_icon.gif" />
-                </a>
+                <a tal:attributes="href python: '%s/edit' % attachment.getURL()"
+                   ><img src="edit.gif" tal:attributes="src string:${context/portal_url}/edit.gif" /></a>
+                <a tal:attributes="href python: '%s/delete_confirmation' % attachment.getURL()"
+                   ><img src="delete_icon.gif"
+                       tal:attributes="src string:${context/portal_url}/delete_icon.gif" /></a>
               </tal:block>
             </div>
           </tal:block>
@@ -117,22 +114,19 @@
                     tal:replace="obj/Title" />
               <tal:block tal:condition="obj/can_be_edited|nothing">
                 <a tal:condition="obj/is_agenda_item_project|nothing"
-                   tal:attributes="href python: '%s/edit_agenda_item' % obj.absolute_url()">
-                  <img src="edit.gif"
-                       tal:attributes="src string:${context/portal_url}/edit.gif" />
-                </a>
+                   tal:attributes="href python: '%s/edit_agenda_item' % obj.absolute_url()"
+                   ><img src="edit.gif"
+                       tal:attributes="src string:${context/portal_url}/edit.gif" /></a>
                 <a tal:condition="not: obj/is_agenda_item_project|nothing"
-                   tal:attributes="href python: '%s/edit' % obj.absolute_url()">
-                  <img src="edit.gif"
-                       tal:attributes="src string:${context/portal_url}/edit.gif" />
-                </a>
+                   tal:attributes="href python: '%s/edit' % obj.absolute_url()"
+                   ><img src="edit.gif"
+                       tal:attributes="src string:${context/portal_url}/edit.gif" /></a>
 
               </tal:block>
               <a tal:condition="obj/can_be_edited|nothing"
-                 tal:attributes="href python: '%s/delete_confirmation' % obj.absolute_url()">
-                <img src="delete_icon.gif"
-                       tal:attributes="src string:${context/portal_url}/delete_icon.gif" />
-              </a>
+                 tal:attributes="href python: '%s/delete_confirmation' % obj.absolute_url()"
+                 ><img src="delete_icon.gif"
+                       tal:attributes="src string:${context/portal_url}/delete_icon.gif" /></a>
             </strong>
           </p>
           <p tal:define="organisation obj/getOrganisation|nothing;
@@ -153,15 +147,15 @@
 
           <div metal:use-macro="context/display_macros/macros/agenda_attachments" />
           <a tal:condition="obj/can_be_edited|nothing"
-             tal:attributes="href python: '%s/createObject?type_name=FileAttachment' % obj.absolute_url()">
-            <img src="add_icon.gif"
-                 tal:attributes="src string:${context/portal_url}/add_icon.gif" />Bijlage toevoegen.
-          </a>
+             tal:attributes="href python: '%s/createObject?type_name=FileAttachment' % obj.absolute_url()"
+             ><img src="add_icon.gif"
+                 tal:attributes="src string:${context/portal_url}/add_icon.gif" />Bijlage toevoegen.</a>
         </li>
       </metal:block>
 
       <!-- Display the contacts.
            Expects a list of contact brains called contacts.
+
            You can also define the labels to replace Projectcoordinator
            and Co-auteur by defining variables first_label and second_label.
       -->
