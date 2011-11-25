@@ -39,8 +39,10 @@
         </legend>
 
         <tal:block tal:repeat="attachment view/get_attachments">
-          <tal:block tal:define="extra_schema python: view.get_attachment_extra_fields(attachment)">
-            <tal:block tal:repeat="fieldName view/attachment_fields">
+          <hr />
+          <h2>Bijlage <span tal:content="repeat/attachment/number" /></h2>
+            <tal:block tal:define="extra_schema python: view.get_attachment_extra_fields(attachment)"
+                       tal:repeat="fieldName view/attachment_fields">
               <tal:block tal:define="here nocall: attachment;
                                      field python: attachment.schema.get(fieldName, None) or extra_schema.get(fieldName);
                                      accessor python: field.getAccessor(attachment);
@@ -53,7 +55,6 @@
                 <metal:block use-macro="macro" />
               </tal:block>
             </tal:block>
-          </tal:block>
         </tal:block>
       </fieldset>
 
