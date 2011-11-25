@@ -7,6 +7,39 @@
     <script type="text/javascript"
             tal:attributes="src string:${context/portal_url}/referencebrowser.js">
     </script>
+    <script type="text/javascript">
+      (function($) {
+        $(document).ready(function() {
+          var context_title = $('#title');
+          var first_att_title = $('#att_new_att_0__title');
+
+          context_title.blur(function() {
+            var current_value = first_att_title.val();
+            var autoset_value = first_att_title.attr('autoset_value');
+
+            if (autoset_value == null) {
+              if (current_value != "") {
+                // User entered something before changing the agenda item title.
+                return
+              }
+
+              // The user edited the title of the agenda item and did not yet
+              // change attachments.
+              first_att_title.val(context_title.val());
+              first_att_title.attr('autoset_value', context_title.val());
+              return;
+            }
+
+            if (current_value == autoset_value) {
+              // The user changed the agenda item title another time but never
+              // changed the attachment title.
+              first_att_title.attr('autoset_value', context_title.val());
+              first_att_title.val(context_title.val());
+            }
+          });
+        })
+      })(jQuery)
+    </script>
   </metal:javascript>
 
   <body>
