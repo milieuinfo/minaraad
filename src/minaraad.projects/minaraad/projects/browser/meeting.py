@@ -12,7 +12,7 @@ class MeetingView(BrowserView):
     """
 
     def clean_temporary_objects(self):
-        # We delete potentialially left temporary attachments
+        # We delete potentially left temporary attachments
         # or agenda items.
         to_delete = []
         for item in self.context.contentValues():
