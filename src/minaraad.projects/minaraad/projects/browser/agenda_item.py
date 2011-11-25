@@ -11,7 +11,7 @@ class BaseAgendaItemView(BrowserView):
     agenda items.
     """
     agenda_fields = ['title', 'duration', 'summary', 'project']
-    attachment_fields = ['title', 'description', 'file', 'published']
+    attachment_fields = ['title', 'file', 'published']
 
     new_ids = ['new_att_%s_' % i for i in range(0, 3)]
 
