@@ -13,6 +13,7 @@ from DateTime import DateTime
 from Products.CMFPlone.utils import transaction_note
 from Products.CMFPlone import PloneMessageFactory as _
 from Products.CMFCore.utils import getToolByName
+
 REQUEST=context.REQUEST
 
 if id is None:
@@ -29,7 +30,20 @@ if not fti.queryMethodID('edit') and \
    not fti.getActionObject('object/edit'):
     state.setStatus('success_no_edit')
 
-if context.portal_factory.getFactoryTypes().has_key(type_name):
+if context.portal_type == 'Meeting' and type_name == 'AgendaItemProject':
+    new_id = context.generateUniqueId('AgendaItemProject')
+    context.invokeFactory('AgendaItemProject', id = new_id)
+    agenda_item = context.get(new_id)
+
+    agenda_item.setDuration(0)
+    agenda_item.setIn_factory(True)
+    state.set(status='factory',
+              next_action='redirect_to:string:%s/edit_agenda_item' %
+                  agenda_item.absolute_url())
+    # If there's an issue with object creation, let the factory handle it
+    return state    
+
+elif context.portal_factory.getFactoryTypes().has_key(type_name):
     new_url = 'portal_factory/' + type_name + '/' + id
     if state.getStatus() != 'success_no_edit':
         new_url = new_url + '/edit'

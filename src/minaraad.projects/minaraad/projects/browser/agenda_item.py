@@ -210,33 +210,6 @@ class BaseAgendaItemView(BrowserView):
         return self.index()
 
 
-class AddAgendaItemView(BaseAgendaItemView):
-    """ View to add an agenda item.
-    """
-    mode = 'add'
-
-    def form_action(self):
-        return '%s/add_agenda_item' % self.context.absolute_url()
-
-    def get_agenda_item(self):
-        return AgendaItemProject(self.context)
-
-    def process_form(self):
-        form = self.request.form
-        new_id = self.context.generateUniqueId('AgendaItem')
-        self.context.invokeFactory(
-            'AgendaItem',
-            id = new_id,
-            title = form['title'])
-
-        agenda_item = getattr(self.context, new_id)
-        agenda_item.unmarkCreationFlag()
-        agenda_item._renameAfterCreation()
-        notify(ObjectInitializedEvent(agenda_item))
-
-        agenda_item.update(**form)
-        self.add_attachments(agenda_item)
-
 class EditAgendaItemView(BaseAgendaItemView):
     """ View to edit an agenda item.
     """
@@ -254,6 +227,8 @@ class EditAgendaItemView(BaseAgendaItemView):
                              self.context,
                              self.agenda_fields)
 
+        self.context.post_validate(self.request, self.errors)
+
         for attachment in self.context.contentValues():
             if attachment.id in self.new_ids:
                 continue
@@ -268,7 +243,12 @@ class EditAgendaItemView(BaseAgendaItemView):
     def process_form(self):
         form = self.request.form
         self.context.update(**form)
-        self.context.setIn_factory(False)
+
+        if self.context.getIn_factory():
+            self.context.setIn_factory(False)
+            agenda_item.unmarkCreationFlag()
+            agenda_item._renameAfterCreation()
+            notify(ObjectInitializedEvent(agenda_item))
 
         self.add_attachments(self.context)
 

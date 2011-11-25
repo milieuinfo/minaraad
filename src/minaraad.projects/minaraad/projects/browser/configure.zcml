@@ -89,14 +89,6 @@
       />
 
   <browser:page
-      name="add_agenda_item"
-      for="minaraad.projects.interfaces.IMeeting"
-      class=".agenda_item.AddAgendaItemView"
-      template="templates/agenda_item_form.pt"
-      permission="cmf.ModifyPortalContent"
-      />
-
-  <browser:page
       name="edit_agenda_item"
       for="minaraad.projects.interfaces.IAgendaItemProject"
       class=".agenda_item.EditAgendaItemView"
