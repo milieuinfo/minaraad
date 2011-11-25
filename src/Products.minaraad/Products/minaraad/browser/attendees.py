@@ -112,7 +112,7 @@ class AttendeesManagerView(AbstractView):
             # Note: this means we will change history in case the member has
             # participated in a hearing. But that's the way they want it.
             if member is None:
-                logger.warn("Removing non-member %s from attendees of %s",
+                logger.info("Removing non-member %s from attendees of %s",
                             memberId, context.absolute_url())
                 self.manager.removeMember(memberId)
                 continue
