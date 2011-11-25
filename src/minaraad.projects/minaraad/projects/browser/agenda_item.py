@@ -1,15 +1,10 @@
 from Acquisition import aq_inner, aq_parent
 from Products.Five import BrowserView
-from Products.CMFCore.utils import getToolByName
 from zope.event import notify
 from Products.Archetypes.event import ObjectInitializedEvent, ObjectEditedEvent
 
 from archetypes.schemaextender.interfaces import ISchemaExtender
-from Products.SimpleAttachment.content.file import FileAttachment
-from Products.SimpleAttachment.content.file import schema as attachment_schema
 
-from minaraad.projects.interfaces import IMeeting, IAgendaItemProject
-from minaraad.projects.content.agendaitem import agendaitem_schema, AgendaItemProject
 
 class BaseAgendaItemView(BrowserView):
     """ Base view for adding/viewing/editing
@@ -250,9 +245,9 @@ class EditAgendaItemView(BaseAgendaItemView):
 
         if self.context.getIn_factory():
             self.context.setIn_factory(False)
-            agenda_item.unmarkCreationFlag()
-            agenda_item._renameAfterCreation()
-            notify(ObjectInitializedEvent(agenda_item))
+            self.context.unmarkCreationFlag()
+            self.context._renameAfterCreation()
+            notify(ObjectInitializedEvent(self.context))
 
         self.add_attachments(self.context)
 
