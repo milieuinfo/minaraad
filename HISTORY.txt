@@ -10,6 +10,12 @@ branch must be ported to trunk as well.
 3.30 (unreleased)
 -----------------
 
+- Added @@is_attending that return True when the current logged-in
+  user has registered as attendee for the context.  Context should be
+  an MREvent or Hearing, but we kindly return False otherwise; also
+  for Anonymous.  Mostly meant to be used in CacheFu rules.
+  [maurits]
+
 - Added @@see-email-log for managers to see var/log/minaraad_email.log.
   Default last 50 lines (override with ?num=X, 0 for all).  Optional
   filtering with '?filter=text', for example WARN.

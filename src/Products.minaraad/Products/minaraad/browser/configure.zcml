@@ -20,6 +20,14 @@
   />
 
   <browser:page
+      for="*"
+      name="is_attending"
+      class=".attendees.SimpleAttendeesView"
+      permission="zope.Public"
+      allowed_interface=".attendees.IAttendeesManagerView"
+      />
+
+  <browser:page
       for="Products.minaraad.interfaces.IPortalPropertyContainer"
       name="minaraad_config.html"
       class=".configlets.MinaraadConfigletView"

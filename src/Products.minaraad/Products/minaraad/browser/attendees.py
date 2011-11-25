@@ -1,3 +1,4 @@
+import logging
 import urllib
 
 from AccessControl import ClassSecurityInfo
@@ -11,6 +12,8 @@ from zope.interface import Interface, implements
 from Products.minaraad.browser.configlets import AbstractView
 from Products.minaraad.browser.utils import buildCSV
 from Products.minaraad.interfaces import IAttendeeManager
+
+logger = logging.getLogger('minaraad')
 
 
 class IAttendeesManagerView(Interface):
@@ -29,8 +32,7 @@ class AttendeesManagerView(AbstractView):
 
     def __init__(self, *args, **kwargs):
         AbstractView.__init__(self, *args, **kwargs)
-
-        self.manager = IAttendeeManager(self.context)
+        self.manager = IAttendeeManager(self.context, None)
 
     def __call__(self):
         context = aq_inner(self.context)
@@ -84,11 +86,14 @@ class AttendeesManagerView(AbstractView):
         return failed_postings
 
     def isRegistered(self):
+        if self.manager is None:
+            return False
         context = aq_inner(self.context)
         memberTool = getToolByName(context, 'portal_membership')
-        isAnonymous = memberTool.isAnonymousUser()
+        if memberTool.isAnonymousUser():
+            return False
         member = memberTool.getAuthenticatedMember()
-        return (not isAnonymous) and member.getMemberId() in self.manager.attendees()
+        return member.getMemberId() in self.manager.attendees()
 
     security.declareProtected(ManagePortal, 'groupedAttendees')
     def groupedAttendees(self):
@@ -136,3 +141,9 @@ class AttendeesManagerView(AbstractView):
         return buildCSV(context,
                         attendees,
                         filename='%s-attendees.csv' % self.context.getId())
+
+
+class SimpleAttendeesView(AttendeesManagerView):
+
+    def __call__(self):
+        return self.isRegistered()
