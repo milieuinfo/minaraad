@@ -112,8 +112,12 @@ class SeeEmailLog(BrowserView):
 
     def __call__(self):
         try:
+            lines = int(self.request.get('lines', 50))
+        except:
+            lines = 50
+        try:
             logfile = open(logpath)
-            lines = tail(logfile, 50)
+            lines = tail(logfile, lines)
         finally:
             logfile.close()
         return '\n'.join(lines)
