@@ -104,4 +104,12 @@
       handler="Products.minaraad.migration.apply_properties_step"
       profile="Products.minaraad:default" />
 
+  <genericsetup:upgradeStep
+      title="Remove double attendees"
+      description=""
+      source="1008"
+      destination="1009"
+      handler="Products.minaraad.migration.remove_double_subscriptions"
+      profile="Products.minaraad:default" />
+
 </configure>

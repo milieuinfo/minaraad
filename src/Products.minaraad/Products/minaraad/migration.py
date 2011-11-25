@@ -5,6 +5,7 @@ from Products.CMFCore.utils import getToolByName
 from Products.minaraad.themes import ThemeManager
 from Products.minaraad.subscriptions import SubscriptionManager
 from Products.minaraad.content.interfaces import IThemes, IUseContact
+from Products.minaraad.interfaces import IAttendeeManager
 from Products.minaraad.events import save_theme_name
 
 logger = logging.getLogger('Products.minaraad.migrations')
@@ -179,3 +180,37 @@ def apply_workflow_step(context):
 
 def apply_properties_step(context):
     context.runImportStepFromProfile(PROFILE_ID, 'properties')
+
+def remove_double_subscriptions(context):
+    """ Removes double subscription for a object.
+    """
+    catalog = getToolByName(context, 'portal_catalog')
+    brains = catalog.searchResults(portal_type = ['Hearing', 'MREvent'])
+    double_count = 0
+
+    for brain in brains:
+        try:
+            obj = brain.getObject()
+        except:
+            logger.warning('Could not wake object at: %s' % brain.getURL())
+            continue
+
+        adapter = IAttendeeManager(obj)
+        attendees = adapter.attendees()
+
+        if len(attendees) == len(set(attendees)):
+            continue
+
+        double_count += 1
+
+        new_attendees = []
+        obj._attendees = []
+
+        # We could just do list(set(attendees)), but this way we keep the same order.
+        for att in attendees:
+            if att in new_attendees:
+                continue
+            adapter.addMember(att)
+
+
+    logger.info('Found %s objects with double attendees' % double_count)
