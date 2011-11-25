@@ -268,6 +268,8 @@ class EditAgendaItemView(BaseAgendaItemView):
     def process_form(self):
         form = self.request.form
         self.context.update(**form)
+        self.context.setIn_factory(False)
+
         self.add_attachments(self.context)
 
         notify(ObjectEditedEvent(self.context))
