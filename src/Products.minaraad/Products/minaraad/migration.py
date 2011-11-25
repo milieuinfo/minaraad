@@ -211,6 +211,7 @@ def remove_double_subscriptions(context):
             if att in new_attendees:
                 continue
             adapter.addMember(att)
+            new_attendees.append(att)
 
 
     logger.info('Found %s objects with double attendees' % double_count)
