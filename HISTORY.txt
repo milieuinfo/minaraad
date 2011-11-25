@@ -10,6 +10,11 @@ branch must be ported to trunk as well.
 3.30 (unreleased)
 -----------------
 
+- Added @@see-email-log for managers to see var/log/minaraad_email.log.
+  Default last 50 lines (override with ?num=X, 0 for all).  Optional
+  filtering with '?filter=text', for example WARN.
+  [maurits]
+
 - Added a property show_linkedin on the portal root.  Also check this
   property when determining if we should show the linkedin button.
   Added upgrade step for this.
