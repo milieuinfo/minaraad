@@ -213,10 +213,10 @@ def remove_double_subscriptions(context):
             new_attendees.append(att)
 
         obj._attendees = new_attendees
-
         if double_found:
             double_count += 1
 
+        obj.restrictedTraverse('@@attendees_view').groupedAttendees()
         obj_count += 1
 
 
