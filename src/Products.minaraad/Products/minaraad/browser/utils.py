@@ -112,12 +112,27 @@ class SeeEmailLog(BrowserView):
 
     def __call__(self):
         try:
-            lines = int(self.request.get('lines', 50))
+            num = int(self.request.get('lines', 50))
         except:
-            lines = 50
+            num = 50
         try:
             logfile = open(logpath)
-            lines = tail(logfile, lines)
+            if num == 0:
+                # Show all.
+                lines = logfile.read().splitlines()
+            else:
+                lines = tail(logfile, num)
         finally:
             logfile.close()
+        linefilter = self.request.get('filter')
+        if linefilter:
+            # 'Grep' for the filter, for example WARN, ERROR.
+            lines = [line for line in lines if linefilter in line]
+            if not lines:
+                lines = [
+                    'Checked %s lines' % (num or 'all'),
+                    'Nothing found for filter']
+        lines.insert(0, 'Checked %s lines (?num=%d)' % (num or 'all', num))
+        lines.insert(1, 'Filtered on %r (?filter=%s)' % (
+            linefilter or 'nothing', linefilter or ''))
         return '\n'.join(lines)
