@@ -23,7 +23,7 @@ class MeetingView(BrowserView):
                 to_delete.append(item.id)
                 continue
 
-            view = getMultiAdapter((self.context, self.request),
+            view = getMultiAdapter((item, self.request),
                                    name='edit_agenda_item')
             view.delete_temp_attachments()
 
