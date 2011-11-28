@@ -7,7 +7,7 @@ servers, using RelStorage.  Any changes done in this maintenance
 branch must be ported to trunk as well.
 
 
-3.30 (unreleased)
+3.30 (2011-11-28)
 -----------------
 
 - Added @@is_attending that return True when the current logged-in
