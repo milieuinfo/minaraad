@@ -12,6 +12,10 @@ Upgrade to 3.30
 - The main_template has temporarily been customized in
   portal_skins/custom.  Remove it there again.
 
+- Use 'object/@@is_attending' as ETag expression for Events and
+  Hearings; the special rule for these two can be merged with the
+  standard Content rule again, as this expression is safe for all types.
+
 
 Upgrade to 3.28 [DONE]
 ----------------------
