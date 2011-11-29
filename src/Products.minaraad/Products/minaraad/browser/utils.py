@@ -112,7 +112,7 @@ class SeeEmailLog(BrowserView):
 
     def __call__(self):
         try:
-            num = int(self.request.get('lines', 50))
+            num = int(self.request.get('num', 50))
         except:
             num = 50
         try:
