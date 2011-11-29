@@ -7,7 +7,7 @@ servers, using RelStorage.  Any changes done in this maintenance
 branch must be ported to trunk as well.
 
 
-3.31 (unreleased)
+3.31 (2011-11-29)
 -----------------
 
 - Rotate the minaraad_email.log and make sure this then gets reopened
