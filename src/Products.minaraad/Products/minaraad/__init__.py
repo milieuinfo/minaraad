@@ -60,3 +60,10 @@ def initialize(context):
         extra_constructors=constructors,
         fti=ftis,
         ).initialize(context)
+
+    from signal import SIGUSR2
+    from Signals.SignalHandler import SignalHandler
+    from Signals.Signals import LogfileReopenHandler
+    from Products.minaraad.browser.utils import email_logger
+    loggers = email_logger.handlers
+    SignalHandler.registerHandler(SIGUSR2, LogfileReopenHandler(loggers))

@@ -3,6 +3,7 @@ import os
 from StringIO import StringIO
 from Products.CMFCore.utils import getToolByName
 from Products.Five import BrowserView
+from ZConfig.components.logger.loghandler import FileHandler as ZopeFileHandler
 
 # Arrange logging, for use by other modules.
 email_logger = logging.getLogger('minaraad_email')
@@ -14,7 +15,10 @@ if not logbase:
 logpath = '%s/minaraad_email.log' % logbase
 # Get rid of any duplicate slashes:
 logpath = os.path.realpath(logpath)
-hdlr = logging.FileHandler(logpath)
+# Use Zope FileHandler, as that supports reopening the log file after
+# a logrote, when triggered by a SIGUSR2 signal.  See also
+# Products/minaraad/__init__.py
+hdlr = ZopeFileHandler(logpath)
 formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
 hdlr.setFormatter(formatter)
 email_logger.addHandler(hdlr)
@@ -117,6 +121,9 @@ class SeeEmailLog(BrowserView):
             num = 50
         try:
             logfile = open(logpath)
+        except IOError, exc:
+            return "Error opening email log file:\n%s" % exc
+        try:
             if num == 0:
                 # Show all.
                 lines = logfile.read().splitlines()

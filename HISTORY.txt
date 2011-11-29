@@ -10,6 +10,10 @@ branch must be ported to trunk as well.
 3.31 (unreleased)
 -----------------
 
+- Rotate the minaraad_email.log and make sure this then gets reopened
+  properly.
+  [maurits]
+
 - Introduce SERVER setting in scripts/passwords.py for the projects
   reminder cron job.  With this, e-mails will have a proper link
   instead of pointing to localhost:8080.
