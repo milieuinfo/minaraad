@@ -10,7 +10,10 @@ branch must be ported to trunk as well.
 3.31 (unreleased)
 -----------------
 
-- Nothing changed yet.
+- Introduce SERVER setting in scripts/passwords.py for the projects
+  reminder cron job.  With this, e-mails will have a proper link
+  instead of pointing to localhost:8080.
+  [maurits]
 
 
 3.30 (2011-11-28)
