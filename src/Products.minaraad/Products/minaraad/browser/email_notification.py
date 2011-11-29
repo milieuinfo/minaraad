@@ -12,7 +12,7 @@ from Products.statusmessages.interfaces import IStatusMessage
 from Products.minaraad.browser.configlets import AbstractView
 from Products.minaraad.subscriptions import SubscriptionManager
 from Products.minaraad.subscriptions import THEME_FILTERED
-from Products.minaraad.browser.utils import email_logger as logger
+from Products.minaraad.utils import email_logger as logger
 
 
 class DictLike(object):

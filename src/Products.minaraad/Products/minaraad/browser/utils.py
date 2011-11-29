@@ -1,27 +1,8 @@
-import logging
-import os
 from StringIO import StringIO
 from Products.CMFCore.utils import getToolByName
 from Products.Five import BrowserView
-from ZConfig.components.logger.loghandler import FileHandler as ZopeFileHandler
 
-# Arrange logging, for use by other modules.
-email_logger = logging.getLogger('minaraad_email')
-# Also log these messages to a separate file
-# XXX this may be possible through zope.conf too but I can't figure out
-logbase = os.environ.get('MINARAAD_LOG_PATH')
-if not logbase:
-    logbase = os.environ.get('INSTANCE_HOME') + '/log'
-logpath = '%s/minaraad_email.log' % logbase
-# Get rid of any duplicate slashes:
-logpath = os.path.realpath(logpath)
-# Use Zope FileHandler, as that supports reopening the log file after
-# a logrote, when triggered by a SIGUSR2 signal.  See also
-# Products/minaraad/__init__.py
-hdlr = ZopeFileHandler(logpath)
-formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
-hdlr.setFormatter(formatter)
-email_logger.addHandler(hdlr)
+from Products.minaraad.utils import email_logger
 
 
 def buildCSV(context, members, filename='members.csv'):
@@ -119,6 +100,7 @@ class SeeEmailLog(BrowserView):
             num = int(self.request.get('num', 50))
         except:
             num = 50
+        logpath = email_logger.handlers[0].baseFilename
         try:
             logfile = open(logpath)
         except IOError, exc:
