@@ -112,4 +112,12 @@
       handler="Products.minaraad.migration.remove_double_subscriptions"
       profile="Products.minaraad:default" />
 
+  <genericsetup:upgradeStep
+      title="Apply workflow step"
+      description=""
+      source="1009"
+      destination="1010"
+      handler="Products.minaraad.migration.apply_workflow_step"
+      profile="Products.minaraad:default" />
+
 </configure>
