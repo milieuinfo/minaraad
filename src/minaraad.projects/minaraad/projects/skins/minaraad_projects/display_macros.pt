@@ -89,39 +89,6 @@
                 <a tal:attributes="href python: '%s/delete_confirmation' % attachment.getURL()"
                    ><img src="delete_icon.gif"
                        tal:attributes="src string:${context/portal_url}/delete_icon.gif" /></a>
-                <dl class="actionMenu deactivated"
-                    tal:define="base_url attachment/getURL;
-                                review_state attachment/review_state;">
-                  <dt class="actionMenuHeader label-state-published">
-                    <a title="Wijzig de status van dit item"
-                       tal:attributes="href string:${base_url}/content_status_history">
-                      <span>Status:</span>
-                      <span tal:content="review_state"
-                            i18n:translate="" i18n:domain="plone"
-                            tal:attributes="class string:state-${review_state}">gepubliceerd</span>
-                      <span class="arrowDownAlternative">&#9660;</span>
-                    </a>
-                  </dt>
-                  <dd class="actionMenuContent">
-                    <ul>
-                      <li tal:condition="python:review_state != 'private'">
-                        <a tal:attributes="href string:${base_url}/content_status_modify?workflow_action=retract">
-                          <span class="subMenuTitle">Terugtrekken</span>
-                        </a>
-                      </li>
-                      <li tal:condition="python:review_state != 'restricted'">
-                        <a tal:attributes="href string:${base_url}/content_status_modify?workflow_action=restricted_publish">
-                          <span class="subMenuTitle">Besloten publiceren</span>
-                        </a>
-                      </li>
-                      <li tal:condition="python:review_state != 'published'">
-                        <a tal:attributes="href string:${base_url}/content_status_modify?workflow_action=publish">
-                          <span class="subMenuTitle">Publiceren</span>
-                        </a>
-                      </li>
-                    </ul>
-                  </dd>
-                </dl>
               </tal:block>
             </div>
           </tal:block>
