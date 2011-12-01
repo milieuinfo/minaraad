@@ -85,11 +85,4 @@
    <guard-role>Manager</guard-role>
   </guard>
  </transition>
- <transition transition_id="unpublish" title="Unpublish"
-             new_state="private" trigger="USER"
-             before_script="" after_script="">
-  <action url="" category="workflow">Unpublish</action>
-  <guard>
-  </guard>
- </transition>
 </dc-workflow>
