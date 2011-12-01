@@ -10,6 +10,10 @@ branch must be ported to trunk as well.
 3.32 (unreleased)
 -----------------
 
+- Show a state dropdown instead of a checkbox for changing the state
+  of an attachment in a list.  Quite ugly still.
+  [maurits]
+
 - Sanitized the file_attachment_workflow.  Added upgrade step.
   [maurits]
 
