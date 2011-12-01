@@ -65,10 +65,11 @@
       </metal:block>
 
       <!-- Display the agenda attachments. -->
-      <metal:block metal:define-macro="agenda_attachments"
-                   tal:define="current_path python:'/'.join(obj.getPhysicalPath());
-                               attachments python:context.portal_catalog.searchResults(portal_type='FileAttachment',
-                               path=current_path,)">
+      <metal:block
+          metal:define-macro="agenda_attachments"
+          tal:define="current_path python:'/'.join(obj.getPhysicalPath());
+                      attachments python:context.portal_catalog.searchResults(portal_type='FileAttachment', path=current_path,);
+                      mtool attachment/portal_membership|nothing">
 
         <tal:attachment repeat="att python: enumerate(attachments)">
           <tal:block tal:define="counter_start obj/attachment_start|python: 1;
@@ -79,8 +80,7 @@
                  tal:define="oddrow repeat/att/odd">
 
               <metal:block use-macro="context/filemacro/macros/attachment_view" />
-              <tal:block tal:define="mtool attachment/portal_membership|nothing"
-                         tal:condition="python: mtool and mtool.checkPermission('Modify portal content', attachment)">
+              <tal:block tal:condition="python: mtool and mtool.checkPermission('Modify portal content', attachment)">
                 <br />
                 <tal:block tal:define="published attachment/published|nothing"
                            tal:condition="python: published is not None">
