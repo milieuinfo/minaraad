@@ -10,7 +10,8 @@ branch must be ported to trunk as well.
 3.32 (unreleased)
 -----------------
 
-- Nothing changed yet.
+- Sanitized the file_attachment_workflow.  Added upgrade step.
+  [maurits]
 
 
 3.31 (2011-11-29)
