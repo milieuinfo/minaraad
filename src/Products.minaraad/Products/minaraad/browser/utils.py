@@ -121,3 +121,25 @@ class SeeEmailLog(BrowserView):
         lines.insert(1, 'Filtered on %r (?filter=%s)' % (
             linefilter or 'nothing', linefilter or ''))
         return '\n'.join(lines)
+
+
+class AttachmentWorkflowHelper(BrowserView):
+
+    def transitions(self, brain):
+        current = brain.review_state
+        transitions = []
+        add = transitions.append
+        if current != 'private':
+            add(dict(id='retract',
+                      name='Terugtrekken'))
+        if current != 'restricted':
+            add(dict(id='restricted_publish',
+                      name='Besloten publiceren'))
+        if current != 'published':
+            add(dict(id='publish', name='Publiceren'))
+        return transitions
+
+    def review_state_title(self, brain):
+        wf_tool = getToolByName(self.context, 'portal_workflow')
+        return wf_tool.getTitleForStateOnType(
+            brain.review_state, brain.portal_type)

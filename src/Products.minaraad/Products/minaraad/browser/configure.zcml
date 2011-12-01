@@ -159,4 +159,12 @@
       permission="cmf.ManagePortal"
       />
 
+  <browser:page
+      for="*"
+      name="attachment_workflow_helper"
+      class=".utils.AttachmentWorkflowHelper"
+      permission="zope2.View"
+      allowed_attributes="transitions review_state_title"
+      />
+
 </configure>
