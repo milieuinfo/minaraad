@@ -1,3 +1,4 @@
+from zExceptions import Unauthorized
 from Acquisition import aq_inner, aq_parent
 from Products.Five import BrowserView
 from zope.event import notify
@@ -126,7 +127,11 @@ class BaseAgendaItemView(BrowserView):
         # They will be deleted after if needed.
         for att_id in self.new_ids:
             if not att_id in self.context.contentIds():
-                self.context.invokeFactory('FileAttachment', id=att_id)
+                try:
+                    self.context.invokeFactory('FileAttachment', id=att_id)
+                except Unauthorized:
+                    # Apparently we can edit, but not add.
+                    break
 
         return self.context.contentValues()
 
