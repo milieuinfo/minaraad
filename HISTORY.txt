@@ -4,40 +4,14 @@ History of this buildout
 4.3 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Merged 3.30-3.33 changes.
+  [maurits]
 
 
 4.2 (2011-11-17)
 ----------------
 
-- Set zserver-threads = 3.
-  Merged from 3.29.
-  [maurits]
-
-- Completely removed old startdate and enddate fields from Hearing and
-  MREvent, as they were only confusing.  Also removed the migration
-  code and tests related to those fields.
-  Merged from 3.28.
-  [maurits]
-
-- Replaced remaining context.enddate usage with context.get_end_time().
-  Merged from 3.28.
-  [maurits]
-
-- Replaced remaining context.startdate usage with context.getStart_time().
-  Merged from 3.28.
-  [maurits]
-
-- Replaced remaining getStartdate calls with getStart_time.
-  Merged from 3.28.
-  [maurits]
-
-- Replaced remaining getEnddate calls with get_end_time.
-  Merged from 3.28.
-  [maurits]
-
-- Avoid UnicodeDecodeError when exporting subscribers.
-  Merged from 3.27.
+- Merged 3.27-3.29 changes.
   [maurits]
 
 - Fixed AttributeError when deleting a normal file from a meeting.
@@ -67,6 +41,142 @@ History of this buildout
 
 - Restructure buildout configs to match the setup of LNE and use
   RelStorage.  No more zeoserver and zeoclient.
+  [maurits]
+
+
+3.33 (2011-12-02)
+-----------------
+
+- Fixed inconsistency in list of projects of other years, as we sorted
+  by advisory date and grouped by the year of the deadline, which
+  could lead to double entries in the year drop down.  We now group by
+  the year of the advisory date.
+  [maurits]
+
+- Some css fixes in the div.widget.
+  [maurits]
+
+
+3.32 (2011-12-02)
+-----------------
+
+- Show a state dropdown instead of a checkbox for changing the state
+  of an attachment in a list.
+  [maurits]
+
+- Sanitized the file_attachment_workflow.  Added upgrade step.
+  [maurits]
+
+
+3.31 (2011-11-29)
+-----------------
+
+- Rotate the minaraad_email.log and make sure this then gets reopened
+  properly.
+  [maurits]
+
+- Introduce SERVER setting in scripts/passwords.py for the projects
+  reminder cron job.  With this, e-mails will have a proper link
+  instead of pointing to localhost:8080.
+  [maurits]
+
+
+3.30 (2011-11-28)
+-----------------
+
+- Added @@is_attending that return True when the current logged-in
+  user has registered as attendee for the context.  Context should be
+  an MREvent or Hearing, but we kindly return False otherwise; also
+  for Anonymous.  Mostly meant to be used in CacheFu rules.
+  [maurits]
+
+- Added @@see-email-log for managers to see var/log/minaraad_email.log.
+  Default last 50 lines (override with ?num=X, 0 for all).  Optional
+  filtering with '?filter=text', for example WARN.
+  [maurits]
+
+- Added a property show_linkedin on the portal root.  Also check this
+  property when determining if we should show the linkedin button.
+  Added upgrade step for this.
+  [maurits]
+
+- Only show the linkedin button when viewing the home page.
+  [maurits]
+
+- Replaced @@minaraad_globals/isHomePage with
+  @@plone_context_state/is_portal_root.
+  Removed @@minaraad_globals view.
+  [maurits]
+
+- Put the linkedin javascript src right above the div that uses it.
+  This way in case of connection problems the rest of the page until
+  that point is at least rendered.
+  [maurits]
+
+- Use fresh collective.emaillogin 1.0, which is less case sensitive.
+  Has an upgrade step to migrate existing email logins to all lower
+  case.
+  [maurits]
+
+- The advisory type for a project is now 'Unanimous' or 'Abstention
+  and/or reject points'. [vincent]
+
+- Added automatic numbering of attachments in agenda items [vincent]
+
+- Changed the existing advisory migration to now migrate a few
+  specific folders from the old digibib to projects.
+  [maurits]
+
+- When creating an advisory from a project, use the delivery date as
+  the main date, instead of the advisory date.
+  Fixes http://projects.zestsoftware.nl/mina-raad/issues/21
+  [maurits]
+
+
+3.29 (2011-11-14)
+-----------------
+
+- zserver-threads = 3
+  [maurits]
+
+
+3.28 (2011-11-10)
+-----------------
+
+- Completely removed old startdate and enddate fields from Hearing and
+  MREvent, as they were only confusing.  Also removed the migration
+  code and tests related to those fields.
+  [maurits]
+
+- Replaced remaining context.enddate usage with context.get_end_time().
+  [maurits]
+
+- Replaced remaining context.startdate usage with context.getStart_time().
+  [maurits]
+
+- Replaced remaining getStartdate calls with getStart_time.
+  [maurits]
+
+- Replaced remaining getEnddate calls with get_end_time.
+  [maurits]
+
+
+3.27 (2011-11-09)
+-----------------
+
+- Avoid UnicodeDecodeError when exporting subscribers.
+  [maurits]
+
+- Fixed AttributeError when deleting a normal file from a meeting.
+  Normal files do not have a contains_pdf method.
+  [maurits]
+
+
+3.26 (2011-10-24)
+-----------------
+
+- Fixed Unauthorized error when displaying a list of relatedDocuments
+  that the user does not have access to.
   [maurits]
 
 
