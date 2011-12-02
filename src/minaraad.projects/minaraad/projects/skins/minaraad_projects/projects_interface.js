@@ -1,24 +1,24 @@
 jq(document).ready(function() {
     function hide_advisory_reasons() {
+	if (!this.checked) {
+	    return;
+	}
+
         var disagreeing = jq('#archetypes-fieldname-disagreeing_members');
         var reasons = jq('#archetypes-fieldname-reject_reasons');
 
-        disagreeing.hide();
-        reasons.hide();
-
-        if (typeof(this.value) == 'undefined') {return;}
-
-        if (this.value == 'abstention') {
+        if (this.value == 'abstention_rejection') {
             disagreeing.show();
-        }
-
-        if (this.value == 'reject_points') {
             reasons.show();
-        }
+        } else {
+            disagreeing.hide();
+            reasons.hide();
+	}
     }
 
     hide_advisory_reasons();
     jq('input[name=advisory_type]').
+	each(hide_advisory_reasons).
 	change(hide_advisory_reasons).
 	click(hide_advisory_reasons);
 

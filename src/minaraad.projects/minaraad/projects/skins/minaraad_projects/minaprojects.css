@@ -57,7 +57,7 @@ div.widget ul li.even {
 }
 
 
-div.widget a {
+div.widget a.standard {
     text-decoration: none;
     color: #000000 !important;
 }
