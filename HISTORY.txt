@@ -7,7 +7,7 @@ servers, using RelStorage.  Any changes done in this maintenance
 branch must be ported to trunk as well.
 
 
-3.32 (unreleased)
+3.32 (2011-12-02)
 -----------------
 
 - Show a state dropdown instead of a checkbox for changing the state
