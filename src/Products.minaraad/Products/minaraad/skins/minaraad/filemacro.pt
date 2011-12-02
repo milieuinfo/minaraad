@@ -100,9 +100,9 @@
                     </li>
                   </ul>
                 </dd>
-                </dl>)
+                </dl>
             </tal:block>
-          </tal:workflow>
+          </tal:workflow>)
         </span>
       </tal:block>
     </span>
