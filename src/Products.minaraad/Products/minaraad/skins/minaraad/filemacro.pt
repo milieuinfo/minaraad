@@ -45,25 +45,65 @@
                              icon attachment/getIcon;
                              title attachment/Title|attachment/getId;
                              mimetype attachment/content_type|nothing;
+                             uid attachment/UID;
                              contenttype python:test(mimetype, context.lookupMime(mimetype), 'Onbekend');"
                  condition="python:size &gt; 0">
-        <a href="" tal:attributes="href string:${attachment/getURL}/download">
-          <img tal:condition="icon"
-               src=""
-               alt=""
-               tal:attributes="src string:${context/portal_url}/${icon};
-                               alt contenttype"/>
+        <img tal:condition="icon"
+             src=""
+             alt=""
+             tal:attributes="src string:${context/portal_url}/${icon};
+                             alt contenttype"/>
+
+        <a href=""
+           class="standard"
+           tal:attributes="href string:${attachment/getURL}/download;
+                           id python: 'att_%s' % uid">
+          <span tal:condition="position|nothing">
+            Bijlage <span tal:replace="position" />:
+          </span>
           <tal:filename tal:replace="title"/>
         </a>
         <span class="discreet">
           (<span tal:replace="contenttype">ContentType</span>,
           <tal:size content="size">0Kb</tal:size>
-          <span class="public_attachment"
-                tal:define="published attachment/published|nothing"
-                i18n:domain="plone" i18n:translate=""
-                tal:content="python: published and 'Publiek' or attachment.review_state">
-          </span>
-          )
+
+          <tal:workflow condition="attachment/review_state|nothing">
+            <tal:block define="mtool context/portal_membership|nothing;
+                               can_edit python:mtool.checkPermission('Modify portal content', context);
+                               wf_helper context/@@attachment_workflow_helper|nothing;">
+
+              <span i18n:domain="plone"
+                    i18n:translate=""
+                    tal:condition="not:can_edit"
+                    tal:content="python:wf_helper.review_state_title(attachment)" />
+
+              <dl class="actionMenu attachmentActionMenu"
+                  i18n:domain="plone"
+                  tal:condition="can_edit"
+                  tal:attributes="id string:id-${attachment/UID}">
+                <dt class="actionMenuHeader">
+                  <a class=""
+                     tal:attributes="class python:'td-center state-' + attachment.review_state;
+                                     href string:${attachment/getURL}/content_status_history;">
+                    <span i18n:translate=""
+                          tal:content="python:wf_helper.review_state_title(attachment)" />
+                    <span tal:condition="python:wf_helper.transitions(attachment)"
+                          class="arrowDownAlternative">&#9660;</span>
+                  </a>
+                </dt>
+                <dd class="actionMenuContent">
+                  <ul>
+                    <li tal:repeat="trans python:wf_helper.transitions(attachment)">
+                      <a i18n:translate=""
+                         tal:content="trans/name"
+                         tal:attributes="href string:${attachment/getURL}/content_status_modify?workflow_action=${trans/id};
+                                         class string:kssattr-uid-${attachment/UID}" />
+                    </li>
+                  </ul>
+                </dd>
+                </dl>
+            </tal:block>
+          </tal:workflow>)
         </span>
       </tal:block>
     </span>

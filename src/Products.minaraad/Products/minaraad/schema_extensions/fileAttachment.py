@@ -1,3 +1,4 @@
+from zope.app.component.hooks import getSite
 from zope.component import adapts
 from zope.interface import implements
 from Products.Archetypes.public import BooleanWidget
@@ -56,7 +57,14 @@ class FileAttachmentExtender(object):
         a simple check to see if we are in the digibib.
 
         """
-        portal_url = getToolByName(self.context, 'portal_url')
+        portal = getSite()
+        if hasattr(portal, 'absolute_url'):
+            portal_url = portal.absolute_url
+        else:
+            # 'portal' can be an instance of
+            # Products.Five.metaclass.ValidationView during kss
+            # validation...  So try something else then.
+            portal_url = getToolByName(self.context, 'portal_url')
         digibib_url = portal_url() + '/digibib'
         if self.context.absolute_url().startswith(digibib_url):
             return self.fields

@@ -12,7 +12,7 @@ from Products.statusmessages.interfaces import IStatusMessage
 from Products.minaraad.browser.configlets import AbstractView
 from Products.minaraad.subscriptions import SubscriptionManager
 from Products.minaraad.subscriptions import THEME_FILTERED
-from Products.minaraad.browser.utils import email_logger as logger
+from Products.minaraad.utils import email_logger as logger
 
 
 class DictLike(object):
@@ -283,8 +283,8 @@ class EmailOutView(AbstractView, EmailNotify):
             IStatusMessage(request).addStatusMessage(message, type="info")
             return response.redirect(self.referring_url)
         else:
-            logger.info("No, we should not send email; the template "
-                        "is simply being shown, no form has been submitted.")
+            logger.debug("No, we should not send email; the template "
+                         "is simply being shown, no form has been submitted.")
 
     def __call__(self):
         return self.index(template_id='email_out')

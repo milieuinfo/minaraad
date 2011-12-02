@@ -1,10 +1,12 @@
 import logging
 
 from Products.CMFCore.utils import getToolByName
+from persistent.list import PersistentList
 
 from Products.minaraad.themes import ThemeManager
 from Products.minaraad.subscriptions import SubscriptionManager
 from Products.minaraad.content.interfaces import IThemes, IUseContact
+from Products.minaraad.interfaces import IAttendeeManager
 from Products.minaraad.events import save_theme_name
 
 logger = logging.getLogger('Products.minaraad.migrations')
@@ -175,3 +177,48 @@ def apply_workflow_step(context):
     wf_tool = getToolByName(context, 'portal_workflow')
     wf_tool.updateRoleMappings()
     logger.info('Done updating security settings.')
+
+
+def apply_properties_step(context):
+    context.runImportStepFromProfile(PROFILE_ID, 'properties')
+
+def remove_double_subscriptions(context):
+    """ Update _attendees object to use PersistenList
+    and remove double attendees.
+    """
+    catalog = getToolByName(context, 'portal_catalog')
+    brains = catalog.searchResults(portal_type = ['Hearing', 'MREvent'])
+
+    obj_count = 0
+    double_count = 0
+
+    for brain in brains:
+        try:
+            obj = brain.getObject()
+        except:
+            logger.warning('Could not wake object at: %s' % brain.getURL())
+            continue
+
+        adapter = IAttendeeManager(obj)
+        attendees = adapter.attendees()
+
+        new_attendees = PersistentList()
+        double_found = False
+
+        for att in attendees:
+            if att in new_attendees:
+                double_found = True
+                continue
+
+            new_attendees.append(att)
+
+        obj._attendees = new_attendees
+        if double_found:
+            double_count += 1
+
+        obj.restrictedTraverse('@@attendees_view').groupedAttendees()
+        obj_count += 1
+
+
+    logger.info('Updated %s objects with PersistentList, found %s objects with double attendees' % (
+        obj_count, double_count))

@@ -46,7 +46,7 @@ def publish_on_save(obj, event):
         # The extra field is not added,
         # so we can not do anything.
         return
-        
+
     try:
         state = wft.getInfoFor(obj, 'review_state')
     except:

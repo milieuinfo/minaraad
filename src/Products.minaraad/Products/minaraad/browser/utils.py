@@ -1,22 +1,8 @@
-import logging
-import os
 from StringIO import StringIO
 from Products.CMFCore.utils import getToolByName
+from Products.Five import BrowserView
 
-# Arrange logging, for use by other modules.
-email_logger = logging.getLogger('minaraad_email')
-# Also log these messages to a separate file
-# XXX this may be possible through zope.conf too but I can't figure out
-logbase = os.environ.get('MINARAAD_LOG_PATH')
-if not logbase:
-    logbase = os.environ.get('INSTANCE_HOME') + '/log'
-logpath = '%s/minaraad_email.log' % logbase
-# Get rid of any duplicate slashes:
-logpath = os.path.realpath(logpath)
-hdlr = logging.FileHandler(logpath)
-formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
-hdlr.setFormatter(formatter)
-email_logger.addHandler(hdlr)
+from Products.minaraad.utils import email_logger
 
 
 def buildCSV(context, members, filename='members.csv'):
@@ -45,7 +31,7 @@ def buildCSV(context, members, filename='members.csv'):
         id, title = field
 
         out.write(u'"%s"' % title)
-        if pos < len(fields)-1:
+        if pos < len(fields) - 1:
             out.write(u',')
 
     out.write(u'\n')
@@ -62,7 +48,7 @@ def buildCSV(context, members, filename='members.csv'):
             value = value.replace(u'"', u'""')
             out.write(u'"%s"' % value)
 
-            if pos < len(fields)-1:
+            if pos < len(fields) - 1:
                 out.write(u',')
 
         out.write(u'\n')
@@ -82,3 +68,78 @@ def buildCSV(context, members, filename='members.csv'):
     # charset, like \u2018 which Microsoft is so fond of...  So
     # replace faulty characters with a question mark.
     return out.getvalue().encode(export_charset, 'replace')
+
+
+def tail(f, n, offset=None):
+    """Reads n lines from f with an offset of offset lines.
+
+    From
+    http://stackoverflow.com/questions/136168/get-last-n-lines-of-a-file-with-python-similar-to-tail
+    """
+    avg_line_length = 100
+    to_read = n + (offset or 0)
+
+    while 1:
+        try:
+            f.seek(-(avg_line_length * to_read), 2)
+        except IOError:
+            # woops.  apparently file is smaller than what we want
+            # to step back, go to the beginning instead
+            f.seek(0)
+        pos = f.tell()
+        lines = f.read().splitlines()
+        if len(lines) >= to_read or pos == 0:
+            return lines[-to_read:offset and -offset or None]
+        avg_line_length *= 1.3
+
+
+class SeeEmailLog(BrowserView):
+
+    def __call__(self):
+        try:
+            num = int(self.request.get('num', 50))
+        except:
+            num = 50
+        logpath = email_logger.handlers[0].baseFilename
+        try:
+            logfile = open(logpath)
+        except IOError, exc:
+            return "Error opening email log file:\n%s" % exc
+        try:
+            if num == 0:
+                # Show all.
+                lines = logfile.read().splitlines()
+            else:
+                lines = tail(logfile, num)
+        finally:
+            logfile.close()
+        linefilter = self.request.get('filter')
+        if linefilter:
+            # 'Grep' for the filter, for example WARN, ERROR.
+            lines = [line for line in lines if linefilter in line]
+        lines.insert(0, 'Checked %s lines (?num=%d)' % (num or 'all', num))
+        lines.insert(1, 'Filtered on %r (?filter=%s)' % (
+            linefilter or 'nothing', linefilter or ''))
+        return '\n'.join(lines)
+
+
+class AttachmentWorkflowHelper(BrowserView):
+
+    def transitions(self, brain):
+        current = brain.review_state
+        transitions = []
+        add = transitions.append
+        if current != 'private':
+            add(dict(id='retract',
+                      name='terugtrekken'))
+        if current != 'restricted':
+            add(dict(id='restricted_publish',
+                      name='besloten publiceren'))
+        if current != 'published':
+            add(dict(id='publish', name='publiceren'))
+        return transitions
+
+    def review_state_title(self, brain):
+        wf_tool = getToolByName(self.context, 'portal_workflow')
+        return wf_tool.getTitleForStateOnType(
+            brain.review_state, brain.portal_type)

@@ -27,14 +27,18 @@
 __author__ = """Rocky Burt <r.burt@zestsoftware.nl>"""
 __docformat__ = 'plaintext'
 
+from signal import SIGUSR2
 
-from zope.i18nmessageid import MessageFactory
-from Products.CMFCore import utils as cmfutils
-from Products.CMFCore import DirectoryView
-from Products.Archetypes import listTypes
 from Products.Archetypes import atapi
+from Products.Archetypes import listTypes
+from Products.CMFCore import DirectoryView
+from Products.CMFCore import utils as cmfutils
+from Signals.SignalHandler import SignalHandler
+from Signals.Signals import LogfileReopenHandler
+from zope.i18nmessageid import MessageFactory
 
 from Products.minaraad import config
+from Products.minaraad.utils import email_logger
 DirectoryView.registerDirectory('skins', config.product_globals)
 DirectoryView.registerDirectory('skins/minaraad', config.product_globals)
 MinaraadMessageFactory = MessageFactory(u'minaraad')
@@ -60,3 +64,6 @@ def initialize(context):
         extra_constructors=constructors,
         fti=ftis,
         ).initialize(context)
+
+    loggers = email_logger.handlers
+    SignalHandler.registerHandler(SIGUSR2, LogfileReopenHandler(loggers))

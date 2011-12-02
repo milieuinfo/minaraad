@@ -5,4 +5,5 @@
   <element value="news_listing"/>
  </property>
  <property name="validate_email" type="boolean">True</property>
+ <property name="show_linkedin" type="boolean">True</property>
 </site>

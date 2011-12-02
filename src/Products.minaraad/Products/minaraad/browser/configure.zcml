@@ -20,6 +20,14 @@
   />
 
   <browser:page
+      for="*"
+      name="is_attending"
+      class=".attendees.SimpleAttendeesView"
+      permission="zope.Public"
+      allowed_interface=".attendees.IAttendeesManagerView"
+      />
+
+  <browser:page
       for="Products.minaraad.interfaces.IPortalPropertyContainer"
       name="minaraad_config.html"
       class=".configlets.MinaraadConfigletView"
@@ -78,14 +86,6 @@
       class=".subscribers.ExportSubscribersView"
       permission="cmf.ManagePortal"
       template="export-subscribers.pt"
-  />
-
-  <browser:page
-      for="*"
-      name="minaraad_globals"
-      class=".globals.GlobalView"
-      allowed_attributes="isHomePage"
-      permission="zope.Public"
   />
 
   <!-- Service view for admin use only -->
@@ -150,6 +150,21 @@
       class=".contactpersons.ContactPersonsListingView"
       template="list_contact_persons.pt"
       permission="zope2.View"
+      />
+
+  <browser:page
+      name="see-email-log"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      class=".utils.SeeEmailLog"
+      permission="cmf.ManagePortal"
+      />
+
+  <browser:page
+      for="*"
+      name="attachment_workflow_helper"
+      class=".utils.AttachmentWorkflowHelper"
+      permission="zope2.View"
+      allowed_attributes="transitions review_state_title"
       />
 
 </configure>

@@ -13,7 +13,7 @@ from zope.cachedescriptors.property import Lazy
 from ZODB.POSException import ConflictError
 
 from Products.minaraad.config import TITLE_VOCAB
-from Products.minaraad.browser.utils import email_logger
+from Products.minaraad.utils import email_logger
 
 import logging
 logger = logging.getLogger('Minaraad Service Utilities')

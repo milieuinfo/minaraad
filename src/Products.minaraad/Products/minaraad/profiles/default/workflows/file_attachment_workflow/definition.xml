@@ -61,6 +61,11 @@
              before_script="" after_script="">
   <action url="" category="workflow">Publish</action>
   <guard>
+   <guard-role>Author</guard-role>
+   <guard-role>Editor</guard-role>
+   <guard-role>Manager</guard-role>
+   <guard-role>Owner</guard-role>
+   <guard-role>Reviewer</guard-role>
   </guard>
  </transition>
  <transition transition_id="restricted_publish"
@@ -69,10 +74,11 @@
              before_script="" after_script="">
   <action url="" category="workflow">restricted publish</action>
   <guard>
+   <guard-role>Author</guard-role>
+   <guard-role>Editor</guard-role>
+   <guard-role>Manager</guard-role>
    <guard-role>Owner</guard-role>
    <guard-role>Reviewer</guard-role>
-   <guard-role>Author</guard-role>
-   <guard-role>Manager</guard-role>
   </guard>
  </transition>
  <transition transition_id="retract" title="retract"
@@ -80,16 +86,11 @@
              before_script="" after_script="">
   <action url="" category="workflow">retract</action>
   <guard>
-   <guard-role>Owner</guard-role>
    <guard-role>Author</guard-role>
+   <guard-role>Editor</guard-role>
    <guard-role>Manager</guard-role>
-  </guard>
- </transition>
- <transition transition_id="unpublish" title="Unpublish"
-             new_state="private" trigger="USER"
-             before_script="" after_script="">
-  <action url="" category="workflow">Unpublish</action>
-  <guard>
+   <guard-role>Owner</guard-role>
+   <guard-role>Reviewer</guard-role>
   </guard>
  </transition>
 </dc-workflow>
