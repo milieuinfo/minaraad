@@ -10,14 +10,15 @@ branch must be ported to trunk as well.
 3.33 (unreleased)
 -----------------
 
-- Nothing changed yet.
+- Some css fixes in the div.widget.
+  [maurits]
 
 
 3.32 (2011-12-02)
 -----------------
 
 - Show a state dropdown instead of a checkbox for changing the state
-  of an attachment in a list.  Quite ugly still.
+  of an attachment in a list.
   [maurits]
 
 - Sanitized the file_attachment_workflow.  Added upgrade step.
