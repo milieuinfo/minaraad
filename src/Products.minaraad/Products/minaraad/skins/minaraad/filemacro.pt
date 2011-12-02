@@ -94,7 +94,7 @@
                   <ul>
                     <li tal:repeat="trans python:wf_helper.transitions(attachment)">
                       <a i18n:translate=""
-                         tal:content="trans/name/lower"
+                         tal:content="trans/name"
                          tal:attributes="href string:${attachment/getURL}/content_status_modify?workflow_action=${trans/id};
                                          class string:kssattr-uid-${attachment/UID}" />
                     </li>
