@@ -55,6 +55,7 @@
                              alt contenttype"/>
 
         <a href=""
+           class="attachment"
            tal:attributes="href string:${attachment/getURL}/download;
                            id python: 'att_%s' % uid">
           <span tal:condition="position|nothing">
