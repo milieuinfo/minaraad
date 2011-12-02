@@ -76,7 +76,7 @@
                     tal:condition="not:can_edit"
                     tal:content="python:wf_helper.review_state_title(attachment)" />
 
-              <dl class="actionMenu"
+              <dl class="actionMenu attachmentActionMenu"
                   i18n:domain="plone"
                   tal:condition="can_edit"
                   tal:attributes="id string:id-${attachment/UID}">

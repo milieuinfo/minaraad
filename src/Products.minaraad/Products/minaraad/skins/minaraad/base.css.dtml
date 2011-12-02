@@ -149,4 +149,28 @@ color: red;
 text-decoration: line-through;
 }
 
+/* Attachment workflow popup */
+dl.attachmentActionMenu,
+dl.attachmentActionMenu dt.actionMenuHeader,
+dl.attachmentActionMenu dt.actionMenuHeader a {
+    display: inline;
+}
+
+dl.attachmentActionMenu dd.actionMenuContent ul {
+    background: #FFF;
+    border: 1px solid #74AE0B;
+}
+
+dl.attachmentActionMenu dd.actionMenuContent ul a {
+    text-decoration: none;
+    color: #000;
+    padding: 3px 7px;
+}
+
+dl.attachmentActionMenu dd.actionMenuContent ul a:hover {
+    text-decoration: underline;
+    color: #000;
+    background-color: #ACE00A !important;
+}
+
 /* </dtml-with> */
