@@ -10,6 +10,12 @@ branch must be ported to trunk as well.
 3.33 (unreleased)
 -----------------
 
+- Fixed inconsistency in list of projects of other years, as we sorted
+  by advisory date and grouped by the year of the deadline, which
+  could lead to double entries in the year drop down.  We now group by
+  the year of the advisory date.
+  [maurits]
+
 - Some css fixes in the div.widget.
   [maurits]
 

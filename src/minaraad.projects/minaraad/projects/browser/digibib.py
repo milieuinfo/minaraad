@@ -80,6 +80,7 @@ class DigiBibView(BrowserView):
         # Turn it into a dict, as that is easier for the template
         results = [dict(year=year, objects=[i for i in objects])
                    for year, objects in grouped]
+
         # Show the current or requested year only.
         try:
             year = int(self.request.get('year'))
@@ -142,8 +143,9 @@ class ProjectsListingView(DigiBibView):
         objects = self._sort_projects(
             self.context.list_all_projects(), reverse=True)
 
-        def get_year(x):
-            return x.get_deadline().year()
+        # Since we sort on advisory date now, we must organize by the
+        # year of that date too, instead of the year of the deadline.
+        get_year = lambda x: x.getAdvisory_date().year()
 
         return self.organize_by_year(objects, get_year)
 

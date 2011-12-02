@@ -3,8 +3,8 @@ Release notes from Zest
 
 Manual fixes to do on the site.
 
-Upgrade to 3.32
----------------
+Upgrade to 3.32 [done on preview]
+---------------------------------
 
 - Upgrade step for Products.minaraad workflows.
 
