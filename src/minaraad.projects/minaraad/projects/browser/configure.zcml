@@ -89,21 +89,36 @@
       />
 
   <browser:page
+      name="edit_agenda_item"
+      for="minaraad.projects.interfaces.IAgendaItemProject"
+      class=".agenda_item.EditAgendaItemView"
+      template="templates/agenda_item_form.pt"
+      permission="cmf.ModifyPortalContent"
+      />
+
+  <browser:page
       for="minaraad.projects.interfaces.IBaseMeeting"
       name="jq_meeting_order_changed"
       class=".meeting.MeetingAjax"
       attribute="meeting_order_changed"
-      permission="zope2.View"
+      permission="cmf.ModifyPortalContent"
      />
 
   <browser:page
       for="minaraad.projects.interfaces.IProject"
       name="jq_attachment_published_changed"
-      class=".project.ProjectAjax"
+      class=".attachment.AttachmentAjax"
       attribute="publish_attachment"
-      permission="zope2.View"
+      permission="cmf.ModifyPortalContent"
      />
 
+  <browser:page
+      for="minaraad.projects.interfaces.IBaseMeeting"
+      name="jq_attachment_published_changed"
+      class=".attachment.AttachmentAjax"
+      attribute="publish_attachment"
+      permission="cmf.ModifyPortalContent"
+     />
 
   <browser:page
       for="*"
@@ -142,6 +157,4 @@
       permission="zope2.View"
       allowed_interface="minaraad.projects.interfaces.IPASMemberView"
       />
-
-
 </configure>

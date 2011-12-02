@@ -1,0 +1,103 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="minaraad.projects">
+
+  <metal:javascript fill-slot="javascript_head_slot">
+    <script type="text/javascript"
+            tal:attributes="src string:${context/portal_url}/referencebrowser.js">
+    </script>
+    <script type="text/javascript">
+      (function($) {
+        $(document).ready(function() {
+          var context_title = $('#title');
+          var first_att_title = $('#att_new_att_0__title');
+
+          context_title.blur(function() {
+            var current_value = first_att_title.val();
+            var autoset_value = first_att_title.attr('autoset_value');
+
+            if (autoset_value == null) {
+              if (current_value != "") {
+                // User entered something before changing the agenda item title.
+                return
+              }
+
+              // The user edited the title of the agenda item and did not yet
+              // change attachments.
+              first_att_title.val(context_title.val());
+              first_att_title.attr('autoset_value', context_title.val());
+              return;
+            }
+
+            if (current_value == autoset_value) {
+              // The user changed the agenda item title another time but never
+              // changed the attachment title.
+              first_att_title.attr('autoset_value', context_title.val());
+              first_att_title.val(context_title.val());
+            }
+          });
+        })
+      })(jQuery)
+    </script>
+  </metal:javascript>
+
+  <body>
+    <div metal:fill-slot="main"
+         tal:define="item view/get_agenda_item">
+     <h1 class="documentFirstHeading"
+         i18n:translate="label_header_edit_agenda_item">
+       Edit agenda item: <span i18n:name="item_title" tal:replace="item/title" />
+     </h1>
+
+     <form method="POST"
+           enctype="multipart/form-data"
+           tal:attributes="action view/form_action">
+
+       <tal:block tal:repeat="fieldName view/agenda_fields">
+         <tal:block tal:define="field python: item.schema[fieldName];
+                                accessor python: field.getAccessor(item);
+                                errors view/errors;
+                                widget nocall: field/widget;
+                                mode string:edit;
+                                portal nocall: context;
+                                macro python: path('here/%s/macros/edit' % widget._properties.get('macro'))">
+           <metal:block use-macro="macro" />
+        </tal:block>
+      </tal:block>
+
+      <fieldset>
+        <legend i18n:translate="label_attachments">
+          Attachments
+        </legend>
+
+        <tal:block tal:repeat="attachment view/get_attachments">
+          <hr />
+          <h2>Bijlage <span tal:content="repeat/attachment/number" /></h2>
+            <tal:block tal:define="extra_schema python: view.get_attachment_extra_fields(attachment)"
+                       tal:repeat="fieldName view/attachment_fields">
+              <tal:block tal:define="here nocall: attachment;
+                                     field python: attachment.schema.get(fieldName, None) or extra_schema.get(fieldName);
+                                     accessor python: field.getAccessor(attachment);
+                                     errors view/errors;
+                                     widget nocall: field/widget;
+                                     mode string:edit;
+                                     portal nocall: context;
+                                     fieldName python: 'att_%s_%s' % (attachment.id, fieldName);
+                                     macro python: path('here/%s/macros/edit' % widget._properties.get('macro'))">
+                <metal:block use-macro="macro" />
+              </tal:block>
+            </tal:block>
+        </tal:block>
+      </fieldset>
+
+      <input class="context" type="submit"
+             name="form_submitted" value="Bewaren" />
+
+      <input class="standalone" type="submit"
+             name="form_cancelled"
+             value="Annuleren" />
+     </form>
+    </div>
+  </body>
+</html>

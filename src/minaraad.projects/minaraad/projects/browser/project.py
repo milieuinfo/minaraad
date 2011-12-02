@@ -1,17 +1,12 @@
 from datetime import date
 import logging
 
-from zope.event import notify
 from Acquisition import aq_inner
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.utils import base_hasattr
 from Products.DCWorkflow.DCWorkflow import WorkflowException
 from Products.Five import BrowserView
 from Products.statusmessages.interfaces import IStatusMessage
-from Products.Archetypes.event import ObjectEditedEvent
-
-from jquery.pyproxy.plone import jquery, JQueryProxy
-from jquery.pyproxy.plone import this
 
 from minaraad.projects import MinaraadProjectMessageFactory as _
 from minaraad.projects.utils import link_project_and_advisory
@@ -123,7 +118,7 @@ class CreateAdvisory(CanCreateAdvisory):
             )
 
         # For some reason the date field needs to be handled separately.
-        advisory.setDate(context.getAdvisory_date())
+        advisory.setDate(context.getDelivery_date())
 
         # For some reason the next processForm call may trigger an
         # exception but it gets ignored and is not harmful:
@@ -205,31 +200,3 @@ class ProjectDocumentsView(BrowserView):
                 res.append({'meeting': meeting,
                             'items': items})
         return res
-
-
-class ProjectAjax(BrowserView):
-    """ Ajax views for project related views.
-    """
-
-    @jquery
-    def publish_attachment(self):
-        attachment_uid = self.request.form.get('att_uid', None)
-        if attachment_uid is None:
-            return
-
-        published = 'published' in self.request.form
-        uid_cat = getToolByName(self.context, 'uid_catalog')
-
-        brains = uid_cat(UID=attachment_uid)
-        if not brains:
-            return
-
-        attachment = brains[0].getObject()
-        attachment.published = published
-        notify(ObjectEditedEvent(attachment))
-
-        jq = JQueryProxy()
-        # Display the review state: Published or Restricted:
-        jq(this).parent().find('.public_attachment').html(
-            published and 'Publiek' or 'Besloten')
-        return jq

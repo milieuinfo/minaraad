@@ -1,12 +1,37 @@
 from Products.Five import BrowserView
 from Products.CMFCore.utils import getToolByName
+from zope.component import getMultiAdapter
 
 from jquery.pyproxy.plone import jquery, JQueryProxy
+
+from minaraad.projects.interfaces import IAgendaItemProject
 
 
 class MeetingView(BrowserView):
     """ Default view of a Meeting.
     """
+
+    def clean_temporary_objects(self):
+        # We delete potentially left temporary attachments
+        # or agenda items.
+        to_delete = []
+        for item in self.context.contentValues():
+            if not IAgendaItemProject.providedBy(item):
+                continue
+
+            if item.getIn_factory():
+                to_delete.append(item.id)
+                continue
+
+            view = getMultiAdapter((item, self.request),
+                                   name='edit_agenda_item')
+            view.delete_temp_attachments()
+
+        self.context.manage_delObjects(to_delete)
+
+    def __call__(self):
+        self.clean_temporary_objects()
+        return self.index()
 
 
 class MeetingOrderingView(MeetingView):
@@ -61,6 +86,8 @@ class MeetingAjax(MeetingView):
     @jquery
     def meeting_order_changed(self):
         form = self.request.form
+        catalog = getToolByName(self.context, 'portal_catalog')
+
         jq = JQueryProxy()
         uid = form.get('uid', None)
         try:
@@ -94,8 +121,22 @@ class MeetingAjax(MeetingView):
         self.context.generate_pdf()
 
         # We generate the new table content.
+        att_count = 1
+
         for item in self.context.find_items_and_times():
+            it_obj = item[0].getObject()
+            it_obj.attachment_start = att_count
+
             jq('#%s span.agendaItemTimes' % item[0].UID).html(
                 '%s tot %su' % (item[1].TimeMinutes(),
                                 item[2].TimeMinutes()))
+
+            attachments = catalog.searchResults(
+                portal_type='FileAttachment',
+                path='/'.join(it_obj.getPhysicalPath()))
+            for att in attachments:
+                jq('#att_%s' % att.UID).html('Bijlage %s: %s' % (
+                    att_count, att.Title))
+                att_count += 1
+
         return jq
