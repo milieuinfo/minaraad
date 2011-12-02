@@ -154,6 +154,7 @@ dl.attachmentActionMenu,
 dl.attachmentActionMenu dt.actionMenuHeader,
 dl.attachmentActionMenu dt.actionMenuHeader a {
     display: inline;
+    text-transform: lowercase;
 }
 
 dl.attachmentActionMenu dd.actionMenuContent ul {
