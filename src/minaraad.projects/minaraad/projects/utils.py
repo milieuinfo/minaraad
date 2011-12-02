@@ -32,7 +32,10 @@ def smart_int(number):
 
 
 def min_to_days(m):
-    return m / 1440
+    try:
+        return m / 1440
+    except TypeError:
+        return 0
 
 
 def prepend_zero(n):

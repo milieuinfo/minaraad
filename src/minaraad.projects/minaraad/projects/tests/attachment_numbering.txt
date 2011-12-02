@@ -1,0 +1,17 @@
+Attachment numbering
+====================
+
+Attachments in meetings are automagically numbered on display. This
+test suite will ensure this works as expected.
+
+We first need a 'DigiBib' object to store our Meetings:
+
+    >>> self.setRoles(('Manager'))
+    >>> self.add_digibib()
+    >>> digibib = self.portal.digibib
+
+We also need a browser as this test will mock user actions:
+
+   >>> from Products.Five.testbrowser import Browser
+   >>> browser = Browser()
+

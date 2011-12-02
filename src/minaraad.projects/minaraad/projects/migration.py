@@ -1,11 +1,10 @@
 import logging
+import re
 
-from Acquisition import aq_parent
+from DateTime import DateTime
 from Products.CMFCore.utils import getToolByName
-from Products.CMFPlone.utils import base_hasattr
 
 from minaraad.projects.utils import create_attachment
-from minaraad.projects.utils import link_project_and_advisory
 from minaraad.projects.utils import is_advisory_request
 
 logger = logging.getLogger('minaraad.projects.migration')
@@ -62,87 +61,74 @@ def apply_propertiestool_step(context):
 
 
 def migrate_advisories_to_projects(context):
+    # This is the second incarnation of this migration.
+    # We have already migrated adviezen/2009-2011.
+    # Now we want to migrate digibib-1/dossiers-adviezen/2009-2011.
     portal = getToolByName(context, 'portal_url').getPortalObject()
-    advisory_folder = portal['adviezen']
+    # advisory_folder = portal['adviezen']
+    advisory_folder = portal['digibib-1']['dossiers-adviezen']['2011']
     target = portal['digibib']['projects']
-    # Only 2009 and younger, so simply take 2009-2011
-    for year in ('2009', '2010', '2011'):
-        if not base_hasattr(advisory_folder, year):
+    # We only want to migrate a few specially selected folders.
+    hardcoded_id_list = [
+        '110519-evaluatie-van-de-werking-2010-van-de-regionale-landschappen'
+        '110719-erkenning-van-een-privaat-natuurreservaat-e-409-gondebeek-te-melle-merelbeke-en-oosterzele-oost-vlaanderen',
+        '110719-uitbreiding-van-een-erkend-natuurreservaat-e-003-blankaart-te-diksmuide-en-houtlhulst-west-vlaanderen',
+        '110823-uitbreiding-van-een-erkend-natuurreservaat-e-111-latemse-meersen-te-sint-martens-latem-oost-vlaanderen',
+        '110823-uitbreiding-van-het-erkend-natuurreservaat-e-216-hof-ten-berg-te-galmaarden-vlaams-brabant-en-geraardsbergen-oost-vlaanderen',
+        '110824-uitbreiding-erkend-natuurreservaat-e-161-duivenbos-te-herzele',
+        '20110930-milieuhandhavingsprogramma-2011',
+        'uitbreiding-van-een-erkend-natuurreservaat-e-016-201ctikkebroeken201d-te-kasterlee-en-oud-turnhout-antwerpen',
+        ]
+    for advisory_id in hardcoded_id_list:
+        try:
+            advisory = advisory_folder[advisory_id]
+        except KeyError:
+            logger.warn("Advisory id %s not found.", advisory_id)
             continue
-        for advisory in advisory_folder[year].contentValues():
-            if advisory.portal_type != 'Advisory':
-                continue
-            if advisory.getProject():
-                # This advisory is already linked to a project.
-                continue
-            # Create a Project.
-            project_id = target.generateUniqueId('Project')
-            target.invokeFactory('Project', id=project_id)
-            project = target[project_id]
+        logger.info("Migrating %s", advisory_id)
 
-            # Determine fields for the Project.
-            fields = dict(
-                title=advisory.Title(),
-                body=advisory.getBody(),
-                coordinator=advisory.getCoordinator(),
-                authors=advisory.getAuthors(),
-                )
-            # Some fields needs to be handled separately instead
-            # of in the processForm call, as we do not have
-            # permission to edit them in a fresh project or the
-            # processForm call messes them up (advisory_date would
-            # get lost).
-            project.setAdvisory_date(advisory.getDate())
-            project.setProduct_number(advisory.getProduct_number())
-            project.setTheme(advisory.getTheme())
-            # Not shown in project, but let's save it anyway:
-            project.setEmail_themes(advisory.getEmail_themes())
+        # Determine fields for the Project.
+        title_parts = advisory.Title().split(' ')
+        date_part = title_parts[0]
+        title_part = ' '.join(title_parts[1:]).strip('-').strip()
+        try:
+            day = int(date_part[-2:])
+            month = int(date_part[-4:-2])
+            year = 2011
+            advisory_date = DateTime(year, month, day)
+        except:
+            # the field is mandatory
+            advisory_date = DateTime()
 
-            # Process the form:
-            project.processForm(values=fields)
+        # Create a Project.
+        project_id = target.generateUniqueId('Project')
+        target.invokeFactory('Project', id=project_id)
+        project = target[project_id]
 
-            # processForm may have caused a rename
-            project_id = project.getId()
-            # The project_id will actually not be nice because it
-            # depends on the internal project id field and we
-            # cannot determine that; so we should enable an
-            # automatic rename when the object gets edited:
-            project.markCreationFlag()
-            # Create link between project and advisory
-            link_project_and_advisory(project, advisory)
-            logger.info("Created a project with id %s.", project_id)
+        # First we must set the date and we cannot do that in the
+        # later processForm call.
+        project.setAdvisory_date(advisory_date)
+        fields = dict(
+            title=title_part,
+            )
+        # Process the form:
+        project.processForm(values=fields)
+        # processForm may have caused a rename
+        project_id = project.getId()
+        # The project_id will actually not be nice because it
+        # depends on the internal project id field and we
+        # cannot determine that; so we should enable an
+        # automatic rename when the object gets edited:
+        project.markCreationFlag()
+        logger.info("Created a project with id %s.", project_id)
 
-            # The files from the relatedDocuments of the Advisory
-            # should become public attachments in the Project.
-            related_docs = advisory.getRelatedDocuments()
-            related_doc_uids = advisory.getRawRelatedDocuments()
-            new_attachments = []
-            parent_folders = set()
-            for doc in related_docs:
-                attachment = create_attachment(project, doc)
-                if attachment:
-                    parent_folders.add(aq_parent(doc))
-                    new_attachments.append(attachment.UID())
-            # In advisory point to the new locations.
-            advisory.setRelatedDocuments(new_attachments)
-
-            # Look in the the parent folders of the above public
-            # documents for any private (or really simply
-            # not-linked) files.  Add those as private
-            # attachments.  We expect only one folder for each
-            # advisory, but do not mind if there are more.
-            for parent_folder in parent_folders:
-                for doc in parent_folder.contentValues():
-                    if doc.UID() in related_doc_uids:
-                        continue
-                    if (is_advisory_request(doc) and
-                        project.getAdvisory_request().getSize() == 0):
-                        project.setAdvisory_request(doc.getFile())
-                        logger.info("Saved advisory request.")
-                    else:
-                        create_attachment(project, doc, published=False)
-
-        logger.info("Handled year %s", year)
+        for doc in advisory.contentValues():
+            if (is_advisory_request(doc) and
+                project.getAdvisory_request().getSize() == 0):
+                project.setAdvisory_request(doc.getFile())
+                logger.info("Saved advisory request.")
+            else:
+                create_attachment(project, doc, published=False)
     logger.info("Done migrating/copying advisories to projects.")
 
 
@@ -179,3 +165,66 @@ def fix_double_invitees(context):
                             "%s/prefs_user_details?userid=%s", portal_url,
                             user_id)
                 del invited[user_id]
+
+def update_attachment_counts(context):
+    """ Run the '_update_agenda_item_attachment_counter' on each meeting
+    to compute the number of attachments.
+    """
+    catalog = getToolByName(context, 'portal_catalog')
+    brains = catalog(portal_type='Meeting')
+    for brain in brains:
+        meeting = brain.getObject()
+        meeting._update_agenda_item_attachment_counter()
+
+    logger.info("Ran '_update_agenda_item_attachment_counter' on %s meetings." % len(brains))
+
+def rename_attachments(context):
+    """ Rename attachments in meetings that are called 'Bijlage XX'
+    as this is now automatically generated.
+    """
+    catalog = getToolByName(context, 'portal_catalog')
+    brains = catalog(portal_type='Meeting')
+    att_count = 0
+    exp = re.compile(r'^[Bb]ijlage *(\d+) *:? *(.*)')
+
+    for brain in brains:
+        meeting = brain.getObject()
+        attachments = catalog.searchResults(
+            portal_type = 'FileAttachment',
+            path = '/'.join(meeting.getPhysicalPath()))
+
+        for att in attachments:
+            match = exp.match(att.Title)
+            if match is None:
+                continue
+
+            attachment = att.getObject()
+            attachment.title = match.groups()[-1]
+            attachment.reindexObject()
+            att_count += 1
+
+    logger.info("Updated %s attachment title in %s meetings" % (
+        att_count, len(brains)))
+
+def update_project_advisory_type(context):
+    """ The 'absention' and 'reject_points' keys have been removed
+    from the advisory type vocabulary and merged into
+    'abstention_rejection'.
+    We update existing projects to use the new vocabulary.
+    """
+    catalog = getToolByName(context, 'portal_catalog')
+    brains = catalog(portal_type='Project')
+    p_count = 0
+
+    for brain in brains:
+        try:
+            project = brain.getObject()
+        except:
+            logger.warn('Unable to wake brain at %s' % brain.getURL())
+            continue
+
+        if project.getAdvisory_type() in ['abstention', 'reject_points']:
+            project.setAdvisory_type('abstention_rejection')
+            p_count += 1
+
+    logger.info('Updated advisory type for %s projects' % p_count)

@@ -19,8 +19,8 @@
  </property>
  <property name="allow_discussion">False</property>
  <alias from="(Default)" to="redirect_to_parent"/>
- <alias from="edit" to="atct_edit"/>
  <alias from="sharing" to="@@sharing"/>
+ <alias from="edit" to="atct_edit"/>
  <alias from="view" to="base_view"/>
  <action title="View"
          action_id="view"

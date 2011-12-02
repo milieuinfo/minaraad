@@ -1,3 +1,4 @@
+from Acquisition import aq_parent, aq_inner
 from zope.app.component.hooks import getSite
 from zope.interface import implements
 from AccessControl import ClassSecurityInfo
@@ -45,6 +46,14 @@ agendaitem_schema = base_agendaitem_schema + atapi.Schema((
             force_close_on_insert=1,
             ),
         ),
+
+    atapi.BooleanField(
+        # This field will be set to false once the object has been saved
+        # with @@edit_eganda_item view.
+        # If set to True, it will be deleted by the default meeting view.
+        name='in_factory',
+        default=False
+        ),
     ))
 
 for schema_key in agendaitem_schema.keys():
@@ -62,6 +71,8 @@ class AgendaItemProject(BaseAgendaItem):
 
     _at_rename_after_creation = True
     schema = agendaitem_schema
+
+    is_agenda_item_project = True
 
     def post_validate(self, REQUEST, errors):
         if REQUEST.get('title', None) or REQUEST.get('project', None):
@@ -97,5 +108,31 @@ class AgendaItemProject(BaseAgendaItem):
 
         return '/'
 
+    def _update_numbering(self):
+        meeting = aq_parent(aq_inner(self))
+        meeting._update_agenda_item_attachment_counter()
+
+    def manage_delObjects(self, ids, *args, **kwargs):
+        """ When attachments are deleted in the agenda item,
+        we have to update numbering.
+        """
+        base = super(AgendaItemProject, self).manage_delObjects(ids, *args, **kwargs)
+        self._update_numbering()
+        return base
+
+    def manage_pasteObjects(self, *args, **kwargs):
+        """ When attachment items are pasted, we update numbering.
+        """
+        base = super(AgendaItemProject, self).manage_pasteObjects(*args, **kwargs)
+        self._update_numbering()
+        return base
+
+    def manage_clone(self, *args, **kwargs):
+        """ We override manage_clone for the same reason we overriden
+        manage_pasteObjects.
+        """
+        base = super(AgendaItemProject, self).manage_clone(*args, **kwargs)
+        self._update_numbering()
+        return base
 
 atapi.registerType(AgendaItemProject, config.PROJECTNAME)

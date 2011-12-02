@@ -1,4 +1,4 @@
-from Acquisition import aq_parent
+from Acquisition import aq_parent, aq_inner
 from Products.Archetypes import atapi
 from Products.CMFCore.utils import getToolByName
 from zope.interface import implements
@@ -40,7 +40,7 @@ class BaseAgendaItem(atapi.BaseFolder):
     def get_start_time(self):
         """ Returns the item start time.
         """
-        meeting = aq_parent(self)
+        meeting = aq_parent(aq_inner(self))
         start_time = meeting.getStart_time()
 
         for item in meeting.find_items():

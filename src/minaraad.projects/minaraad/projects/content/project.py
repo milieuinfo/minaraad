@@ -267,7 +267,7 @@ class Project(atapi.BaseFolder, ThemeMixin):
         if not invalid_id:
             # Can't rename without a subtransaction commit when using
             # portal_factory!
-            transaction.commit(1)
+            transaction.savepoint()
             self.setId(new_id)
             return new_id
 
@@ -285,10 +285,9 @@ class Project(atapi.BaseFolder, ThemeMixin):
         return atapi.DisplayList([
             ('unanimous', _(u'label_unanimous',
                             default=u'Unanimous')),
-            ('abstention', _(u'label_abstention',
-                             default=u'Abstentions')),
-            ('reject_points', _(u'label_reject_points',
-                                default=u'Reject points'))])
+            ('abstention_rejection',
+             _(u'label_abstention_rejection',
+               default=u'Abstention and/or reject points'))])
 
     def _members_vocabulary(self):
         return atapi.DisplayList(
@@ -412,7 +411,7 @@ class Project(atapi.BaseFolder, ThemeMixin):
 
     def add_agendaitem_reference(self, agendaitem):
         items = self._get_agenda_items()
-        meeting_uid = aq_parent(agendaitem).UID()
+        meeting_uid = aq_parent(aq_inner(agendaitem)).UID()
         agendaitem_uid = agendaitem.UID()
 
         if not meeting_uid in items:
@@ -423,7 +422,7 @@ class Project(atapi.BaseFolder, ThemeMixin):
 
     def remove_agendaitem_reference(self, agendaitem):
         items = self._get_agenda_items()
-        meeting_uid = aq_parent(agendaitem).UID()
+        meeting_uid = aq_parent(aq_inner(agendaitem)).UID()
         agendaitem_uid = agendaitem.UID()
 
         if not meeting_uid in items:

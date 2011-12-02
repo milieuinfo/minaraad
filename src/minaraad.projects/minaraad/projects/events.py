@@ -1,6 +1,6 @@
 import logging
 from zope.app.component.hooks import getSite
-from Acquisition import aq_parent
+from Acquisition import aq_parent, aq_inner
 from Products.CMFCore.utils import getToolByName
 from zope.i18n import translate
 from Products.CMFPlone.utils import safe_unicode
@@ -10,6 +10,7 @@ from minaraad.projects.content.base_meeting import BaseMeeting
 from minaraad.projects import MinaraadProjectMessageFactory as _
 from minaraad.projects.utils import send_email
 from minaraad.projects.config import FROM_EMAIL
+from minaraad.projects.interfaces import IAgendaItemProject
 
 logger = logging.getLogger('minaraad.projects.events')
 
@@ -27,7 +28,6 @@ def set_agenda_item_order(item, event):
         item.setOrder(len(items) - 1)
     else:
         item.setOrder(0)
-
 
 def save_invited(meeting, event):
     """ When a meeting is saved, we store the list
@@ -62,7 +62,6 @@ def save_invited(meeting, event):
             invited[member_id]['id'] = member_id
             invited[member_id]['fullname'] = member.getProperty('fullname', '')
             invited[member_id]['email'] = member.getProperty('email', '')
-
 
 def concatenate_pdf(attachment, event):
     """ When a SimpleAttachment file is created, so check if it was created
@@ -272,3 +271,31 @@ def save_meeting_location(meeting, event):
     saved_location['address'] = location.getAddress()
     saved_location['postalCode'] = location.getPostalCode()
     saved_location['city'] = location.getCity()
+
+
+def update_attachment_counter(attachment, event):
+    """ When an attachment is saved in an AgendaItem project,
+    we check if it's a new one.
+    In that case, we update the attachment numbering.
+    """
+    agenda_item = aq_parent(attachment)
+    if agenda_item is None or not IAgendaItemProject.providedBy(agenda_item):
+        # The attachment has not been saved yet, or not in an agenda item.
+        return
+
+    catalog = getToolByName(attachment, 'portal_catalog')
+    att_count = len(catalog.searchResults(
+        portal_type = 'FileAttachment',
+        path = '/'.join(agenda_item.getPhysicalPath())))
+
+    try:
+        old_att_count = agenda_item.attachment_count
+    except AttributeError:
+        old_att_count = 0
+
+    if old_att_count != att_count:
+        try:
+            aq_parent(aq_inner(agenda_item))._update_agenda_item_attachment_counter()
+        except AttributeError:
+            # We might be in the portal factory.
+            pass
