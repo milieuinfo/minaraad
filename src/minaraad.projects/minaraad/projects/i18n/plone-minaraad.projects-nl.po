@@ -70,7 +70,7 @@ msgstr "Afgebroken"
 
 #: profiles/default/workflows/project_workflow/definition.xml
 msgid "Check"
-msgstr "Laten controleren"
+msgstr "Ter nazicht voorstellen"
 
 #: profiles/default/workflows/project_workflow/definition.xml
 msgid "Complete"
