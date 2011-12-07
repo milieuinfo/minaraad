@@ -5,7 +5,7 @@
   <body>
     <div metal:fill-slot="main">
      <h1 class="documentFirstHeading">
-       Digibib DashBoard
+       Digibib Overzicht
      </h1>
 
      <div id="digibib_view"

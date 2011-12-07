@@ -520,5 +520,5 @@ msgstr "Kwartaal ${number}"
 #: ./browser/templates/list_organisations.pt:11
 #: ./browser/templates/list_projects.pt:14
 msgid "to_digibib_dashboard"
-msgstr "Naar Digibib DashBoard"
+msgstr "Naar Digibib Overzicht"
 
