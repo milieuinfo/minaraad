@@ -10,6 +10,10 @@ branch must be ported to trunk as well.
 3.34 (unreleased)
 -----------------
 
+- Show link to Digibib DashBoard in meetings, projects, and lists of
+  meetings, projects and organizations.
+  [maurits]
+
 - Give Reviewers the permission 'minaraad.projects: Add Meeting'.
   [maurits]
 

@@ -7,6 +7,13 @@
      <h1 class="documentFirstHeading">
        Project: <span tal:replace="context/getPID" /> - <span tal:replace="context/Title" />
      </h1>
+     <a href=""
+        class="link-parent"
+        tal:define="digibib_url string:${portal_url}/digibib"
+        tal:attributes="href digibib_url"
+        i18n:translate="to_digibib_dashboard">
+       To Digibib DashBoard
+     </a>
      <p class="discreet" tal:content="structure python: context.Description().replace('\n', '<br />')" />
 
      <div class="right">
