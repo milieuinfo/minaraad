@@ -10,6 +10,9 @@ branch must be ported to trunk as well.
 3.34 (unreleased)
 -----------------
 
+- Make Digibib an orderable folder.
+  [maurits]
+
 - Always exclude the project and meeting containers from navigation.
   [maurits]
 
