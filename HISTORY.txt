@@ -10,7 +10,8 @@ branch must be ported to trunk as well.
 3.35 (unreleased)
 -----------------
 
-- Nothing changed yet.
+- Fixed one more css color issue in the digibib.
+  [maurits]
 
 
 3.34 (2011-12-07)

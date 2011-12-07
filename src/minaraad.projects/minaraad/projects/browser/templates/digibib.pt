@@ -83,7 +83,7 @@
              <tal:block tal:repeat="meeting meetings">
                <li tal:define="oddrow repeat/meeting/odd"
                    tal:attributes="class python: oddrow and 'odd' or 'even'">
-                 <a tal:attributes="href meeting/absolute_url">
+                 <a tal:attributes="href meeting/absolute_url" class="standard">
                    <strong><metal:block use-macro="context/display_macros/macros/meetingTimes" /></strong>
                    <p tal:content="meeting/getResponsible_group" />
                  </a>
