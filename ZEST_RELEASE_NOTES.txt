@@ -3,6 +3,15 @@ Release notes from Zest
 
 Manual fixes to do on the site.
 
+Upgrade to 3.34
+---------------
+
+- Run upgrade steps.
+
+- Add a Folder 'Overzicht' in the digibib; in the ZMI add a property
+  'layout' with value '@@redirect_to_parent'.
+
+
 Upgrade to 3.32 [done on preview]
 ---------------------------------
 
