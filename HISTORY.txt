@@ -10,6 +10,10 @@ branch must be ported to trunk as well.
 3.34 (unreleased)
 -----------------
 
+- Do not show th subscribe or unsubscribe option directly after
+  someone has subscribed.  This seems to confuse people.
+  [maurits]
+
 - Show link to Digibib DashBoard in meetings, projects, and lists of
   meetings, projects and organizations.
   [maurits]

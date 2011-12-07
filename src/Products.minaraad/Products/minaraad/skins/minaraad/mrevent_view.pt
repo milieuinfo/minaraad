@@ -16,8 +16,9 @@
                   current python:DateTime();
                   is_subscribed view/isRegistered;
                   subscription_allowed python:context.getSubscriptionAllowed() and (current &lt; start);
-                  can_subscribe python:subscription_allowed and not is_subscribed;"
-          condition="python:can_subscribe or is_subscribed">
+                  can_subscribe python:subscription_allowed and not is_subscribed;
+                  freshly_submitted request/submitted|nothing"
+          condition="python:(not freshly_submitted) and (can_subscribe or is_subscribed)">
           <div class="hearing_subscribe">
             <form tal:condition="is_subscribed"
                   method="post"
