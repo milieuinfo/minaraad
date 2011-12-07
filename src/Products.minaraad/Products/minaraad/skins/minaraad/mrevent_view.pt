@@ -20,8 +20,8 @@
           condition="python:can_subscribe or is_subscribed">
           <div class="hearing_subscribe">
             <form tal:condition="is_subscribed"
-                  tal:attributes="action
-                                  string:${context/absolute_url}/@@attendees_view">
+                  method="post"
+                  tal:attributes="action string:${context/absolute_url}/@@attendees_view">
               <span>
                 U bent ingeschreven voor dit evenement.
               </span>
