@@ -56,6 +56,8 @@
              before_script="" after_script="">
   <action url="" category="workflow" i18n:translate="">Plan</action>
   <guard>
+   <guard-permission>Request review</guard-permission>
+   <guard-permission>Review portal content</guard-permission>
   </guard>
  </transition>
  <transition transition_id="mark_past" title="Mark as past"
@@ -64,6 +66,8 @@
              before_script="" after_script="">
   <action url="" category="workflow" i18n:translate="">Mark as past</action>
   <guard>
+   <guard-permission>Request review</guard-permission>
+   <guard-permission>Review portal content</guard-permission>
   </guard>
  </transition>
  <transition transition_id="cancel_plan" title="Cancel (back to New)"
@@ -72,6 +76,8 @@
              before_script="" after_script="">
   <action url="" category="workflow" i18n:translate="">Cancel (back to New)</action>
   <guard>
+   <guard-permission>Request review</guard-permission>
+   <guard-permission>Review portal content</guard-permission>
   </guard>
  </transition>
  <transition transition_id="cancel_mark_past" title="Cancel (back to Planned)"
@@ -80,6 +86,8 @@
              before_script="" after_script="">
   <action url="" category="workflow" i18n:translate="">Cancel (back to Planned)</action>
   <guard>
+   <guard-permission>Request review</guard-permission>
+   <guard-permission>Review portal content</guard-permission>
   </guard>
  </transition>
 </dc-workflow>

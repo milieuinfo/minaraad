@@ -227,4 +227,12 @@
       handler="minaraad.projects.migration.reindex_digibib_containers"
       profile="minaraad.projects:default" />
 
+  <genericsetup:upgradeStep
+      title="Apply workflow step"
+      description=""
+      source="1017"
+      destination="1018"
+      handler="minaraad.projects.migration.apply_workflow_step"
+      profile="minaraad.projects:default" />
+
 </configure>

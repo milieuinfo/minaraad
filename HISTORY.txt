@@ -10,6 +10,10 @@ branch must be ported to trunk as well.
 3.34 (2011-12-07)
 -----------------
 
+- Guard the transitions of the project and meeting workflows with the permissions
+  'Request review' and 'Review portal content'
+  [maurits]
+
 - Make Digibib an orderable folder.
   [maurits]
 
