@@ -10,6 +10,9 @@ branch must be ported to trunk as well.
 3.34 (unreleased)
 -----------------
 
+- Always exclude the project and meeting containers from navigation.
+  [maurits]
+
 - Edit the portal types xml to have the View action just point to the
   object url instead of base_view or similar.
   [maurits]

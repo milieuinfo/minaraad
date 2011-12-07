@@ -219,4 +219,12 @@
       handler="minaraad.projects.migration.update_types"
       profile="minaraad.projects:default" />
 
+  <genericsetup:upgradeStep
+      title="Reindex the two project and meeting containers"
+      description=""
+      source="1016"
+      destination="1017"
+      handler="minaraad.projects.migration.reindex_digibib_containers"
+      profile="minaraad.projects:default" />
+
 </configure>
