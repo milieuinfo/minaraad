@@ -211,4 +211,12 @@
       handler="minaraad.projects.migration.update_project_advisory_type"
       profile="minaraad.projects:default" />
 
+  <genericsetup:upgradeStep
+      title="Update the portal types"
+      description=""
+      source="1015"
+      destination="1016"
+      handler="minaraad.projects.migration.update_types"
+      profile="minaraad.projects:default" />
+
 </configure>
