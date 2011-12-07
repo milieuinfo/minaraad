@@ -220,7 +220,7 @@
       profile="minaraad.projects:default" />
 
   <genericsetup:upgradeStep
-      title="Reindex the two project and meeting containers"
+      title="Reindex the content items directly in the main Digibib container"
       description=""
       source="1016"
       destination="1017"

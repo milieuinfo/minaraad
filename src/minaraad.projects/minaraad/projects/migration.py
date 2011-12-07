@@ -237,15 +237,5 @@ def reindex_digibib_containers(context):
     if not digibib:
         logger.warn("No digibib")
         return
-    projects = getattr(digibib, 'projects')
-    if not projects:
-        logger.warn("No digibib projects container")
-    else:
-        projects.reindexObject()
-        logger.info("Digibib projects container reindexed.")
-    meetings = getattr(digibib, 'meetings')
-    if not meetings:
-        logger.warn("No digibib meetings container")
-    else:
-        meetings.reindexObject()
-        logger.info("Digibib meetings container reindexed.")
+    for obj in digibib.contentValues():
+        obj.reindexObject()
