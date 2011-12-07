@@ -10,7 +10,8 @@ branch must be ported to trunk as well.
 3.34 (unreleased)
 -----------------
 
-- Nothing changed yet.
+- Give Reviewers the permission 'minaraad.projects: Add Meeting'.
+  [maurits]
 
 
 3.33 (2011-12-02)
