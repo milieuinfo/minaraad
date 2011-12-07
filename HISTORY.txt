@@ -22,9 +22,6 @@ branch must be ported to trunk as well.
   meetings, projects and organizations.
   [maurits]
 
-- Give Reviewers the permission 'minaraad.projects: Add Meeting'.
-  [maurits]
-
 
 3.33 (2011-12-02)
 -----------------

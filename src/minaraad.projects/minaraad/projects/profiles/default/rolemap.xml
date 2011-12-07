@@ -16,7 +16,6 @@
 
     <permission name="minaraad.projects: Add Meeting" acquire="True">
       <role name="Manager"/>
-      <role name="Reviewer"/>
     </permission>
 
     <permission name="minaraad.projects: Add DigiBib" acquire="True">
