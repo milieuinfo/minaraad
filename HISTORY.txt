@@ -7,7 +7,7 @@ servers, using RelStorage.  Any changes done in this maintenance
 branch must be ported to trunk as well.
 
 
-3.34 (unreleased)
+3.34 (2011-12-07)
 -----------------
 
 - Make Digibib an orderable folder.
