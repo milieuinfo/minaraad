@@ -228,3 +228,14 @@ def update_project_advisory_type(context):
             p_count += 1
 
     logger.info('Updated advisory type for %s projects' % p_count)
+
+
+def reindex_digibib_containers(context):
+    portal_url = getToolByName(context, 'portal_url')
+    portal = portal_url.getPortalObject()
+    digibib = getattr(portal, 'digibib')
+    if not digibib:
+        logger.warn("No digibib")
+        return
+    for obj in digibib.contentValues():
+        obj.reindexObject()

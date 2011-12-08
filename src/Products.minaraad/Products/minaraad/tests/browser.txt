@@ -35,7 +35,7 @@ Contact persons
   >>> 'Please correct the indicated errors.' in browser.contents
   False
   >>> browser.url
-  'http://nohost/plone/contactpersonen/captain-planet/base_view'
+  'http://nohost/plone/contactpersonen/captain-planet'
   >>> captainplanet_uid = portal.contactpersonen['captain-planet'].UID()
 
   >>> browser.open(portal.absolute_url() + '/contactpersonen')
@@ -51,7 +51,7 @@ Contact persons
   >>> 'Please correct the indicated errors.' in browser.contents
   False
   >>> browser.url
-  'http://nohost/plone/contactpersonen/dark-knight/base_view'
+  'http://nohost/plone/contactpersonen/dark-knight'
   >>> batman_uid = portal.contactpersonen['dark-knight'].UID()
 
 
@@ -75,7 +75,7 @@ is loading ...'.
   >>> 'Please correct the indicated errors.' in browser.contents
   False
   >>> browser.url
-  'http://nohost/plone/adviezen/my-advisory/base_view'
+  'http://nohost/plone/adviezen/my-advisory'
 
 Check that the contact person is listed:
 
@@ -93,7 +93,7 @@ to trigger the error though:
   ['23']
   >>> browser.getForm(name='edit_form').submit()
   >>> browser.url
-  'http://nohost/plone/adviezen/my-advisory/base_view'
+  'http://nohost/plone/adviezen/my-advisory'
   >>> 'Milieuhygiëne en klimaat' in browser.contents
   True
 
@@ -118,7 +118,7 @@ tricky part in a test browser.
   >>> 'Please correct the indicated errors.' in browser.contents
   False
   >>> browser.url
-  'http://nohost/plone/jaarverslag/my-annual-report/base_view'
+  'http://nohost/plone/jaarverslag/my-annual-report'
   >>> test_file_name in browser.contents
   True
 
@@ -141,7 +141,7 @@ Hearing
   >>> 'Please correct the indicated errors.' in browser.contents
   False
   >>> browser.url
-  'http://nohost/plone/hoorzittingen/my-hearing/base_view'
+  'http://nohost/plone/hoorzittingen/my-hearing'
   >>> 'Water en zee' in browser.contents  # theme
   True
   >>> 'Captain Planet' in browser.contents  # contact

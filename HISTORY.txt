@@ -4,15 +4,13 @@ History of this buildout
 4.3 (unreleased)
 ----------------
 
-- Merged 3.30-3.33 changes.
+- Merged 3.30-3.35 changes.
   [maurits]
 
 
 4.2 (2011-11-17)
 ----------------
 
-- Merged 3.27-3.29 changes.
-  [maurits]
 
 - Fixed AttributeError when deleting a normal file from a meeting.
   Normal files do not have a contains_pdf method.
@@ -41,6 +39,42 @@ History of this buildout
 
 - Restructure buildout configs to match the setup of LNE and use
   RelStorage.  No more zeoserver and zeoclient.
+  [maurits]
+
+
+3.35 (2011-12-07)
+-----------------
+
+- Fixed one more css color issue in the digibib.
+  [maurits]
+
+- Merged 3.27-3.29 changes.
+  [maurits]
+
+
+3.34 (2011-12-07)
+-----------------
+
+- Guard the transitions of the project and meeting workflows with the permissions
+  'Request review' and 'Review portal content'
+  [maurits]
+
+- Make Digibib an orderable folder.
+  [maurits]
+
+- Always exclude the project and meeting containers from navigation.
+  [maurits]
+
+- Edit the portal types xml to have the View action just point to the
+  object url instead of base_view or similar.
+  [maurits]
+
+- Do not show th subscribe or unsubscribe option directly after
+  someone has subscribed.  This seems to confuse people.
+  [maurits]
+
+- Show link to Digibib DashBoard in meetings, projects, and lists of
+  meetings, projects and organizations.
   [maurits]
 
 

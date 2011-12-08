@@ -211,4 +211,28 @@
       handler="minaraad.projects.migration.update_project_advisory_type"
       profile="minaraad.projects:default" />
 
+  <genericsetup:upgradeStep
+      title="Update the portal types"
+      description=""
+      source="1015"
+      destination="1016"
+      handler="minaraad.projects.migration.update_types"
+      profile="minaraad.projects:default" />
+
+  <genericsetup:upgradeStep
+      title="Reindex the content items directly in the main Digibib container"
+      description=""
+      source="1016"
+      destination="1017"
+      handler="minaraad.projects.migration.reindex_digibib_containers"
+      profile="minaraad.projects:default" />
+
+  <genericsetup:upgradeStep
+      title="Apply workflow step"
+      description=""
+      source="1017"
+      destination="1018"
+      handler="minaraad.projects.migration.apply_workflow_step"
+      profile="minaraad.projects:default" />
+
 </configure>

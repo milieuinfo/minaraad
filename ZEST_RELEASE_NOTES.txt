@@ -3,8 +3,18 @@ Release notes from Zest
 
 Manual fixes to do on the site.
 
-Upgrade to 3.32 [done on preview]
----------------------------------
+Upgrade to 3.34 [DONE]
+----------------------
+
+- Run upgrade steps.
+
+- Add a Folder 'Overzicht' in the digibib; in the ZMI add a property
+  'layout' with value '@@redirect_to_parent'.  Make sure this ends up
+  at the top after the upgrade steps are run.
+
+
+Upgrade to 3.32 [DONE]
+----------------------
 
 - Upgrade step for Products.minaraad workflows.
 
@@ -15,8 +25,8 @@ Upgrade to 3.31 [done on preview/production]
 - Add SERVER to scripts/passwords.py (see scripts/passwords.py.in).
 
 
-Upgrade to 3.30 [done on preview only]
---------------------------------------
+Upgrade to 3.30 [DONE]
+----------------------
 
 - Run the portal_setup upgrade steps.  There are steps for
   Products.minaraad, minaraad.projects and collective.emaillogin.

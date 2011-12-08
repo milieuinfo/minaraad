@@ -8,7 +8,13 @@
          i18n:translate="heading_digibib_organisations">
        Digibib - Organisations
      </h1>
-
+     <a href=""
+        class="link-parent"
+        tal:define="digibib_url string:${portal_url}/digibib"
+        tal:attributes="href digibib_url"
+        i18n:translate="to_digibib_dashboard">
+       To Digibib DashBoard
+     </a>
      <div class="widget wide">
        <div class="title"
             i18n:translate="label_heading_organisations">

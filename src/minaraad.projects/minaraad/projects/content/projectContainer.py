@@ -21,5 +21,9 @@ class ProjectContainer(atapi.BaseFolder):
     def list_projects(self):
         return self.contentValues()
 
+    def exclude_from_nav(self):
+        """Always exclude this folder from navigation.
+        """
+        return True
 
 atapi.registerType(ProjectContainer, config.PROJECTNAME)

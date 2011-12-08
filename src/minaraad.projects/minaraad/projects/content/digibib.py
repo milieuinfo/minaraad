@@ -9,11 +9,11 @@ from minaraad.projects.interfaces import IDigiBib
 digibib_schema = atapi.BaseFolderSchema.copy() + atapi.Schema()
 
 
-class DigiBib(atapi.BaseFolder):
+class DigiBib(atapi.OrderedBaseFolder):
     """
     """
     security = ClassSecurityInfo()
-    __implements__ = (atapi.BaseFolder.__implements__, )
+    __implements__ = (atapi.OrderedBaseFolder.__implements__, )
     implements(IDigiBib)
 
     _at_rename_after_creation = True

@@ -22,6 +22,11 @@ class MeetingContainer(atapi.BaseFolder):
     _at_rename_after_creation = True
     schema = container_schema
 
+    def exclude_from_nav(self):
+        """Always exclude this folder from navigation.
+        """
+        return True
+
     def list_meetings(self):
         # List the meetings we are allowed to View.
         catalog = getToolByName(self, 'portal_catalog')

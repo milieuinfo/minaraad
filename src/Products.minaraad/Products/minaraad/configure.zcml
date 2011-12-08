@@ -120,4 +120,13 @@
       handler="Products.minaraad.migration.apply_workflow_step"
       profile="Products.minaraad:default" />
 
+  <genericsetup:upgradeStep
+      title="Update portal_types"
+      description=""
+      source="1010"
+      destination="1011"
+      handler="Products.minaraad.migration.update_portal_types"
+      sortkey="1"
+      profile="Products.minaraad:default" />
+
 </configure>

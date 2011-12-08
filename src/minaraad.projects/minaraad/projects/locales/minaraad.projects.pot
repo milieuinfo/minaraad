@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-11-25 13:01+0000\n"
+"POT-Creation-Date: 2011-12-07 12:56+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -53,7 +53,7 @@ msgstr ""
 msgid "DigiBib"
 msgstr ""
 
-#: ./browser/templates/project.pt:160
+#: ./browser/templates/project.pt:167
 msgid "Go to advisory"
 msgstr ""
 
@@ -89,7 +89,7 @@ msgstr ""
 msgid "Project id must be of the form YYYYMMDD"
 msgstr ""
 
-#: ./browser/templates/project.pt:159
+#: ./browser/templates/project.pt:166
 msgid "Public advisory"
 msgstr ""
 
@@ -193,7 +193,7 @@ msgid "label_assigned_groups"
 msgstr ""
 
 #. Default: "Attachments"
-#: ./browser/templates/agenda_item_form.pt:37
+#: ./browser/templates/agenda_item_form.pt:70
 msgid "label_attachments"
 msgstr ""
 
@@ -250,12 +250,12 @@ msgid "label_disagreeing_members"
 msgstr ""
 
 #. Default: "Documents"
-#: ./browser/templates/meeting.pt:17
+#: ./browser/templates/meeting.pt:23
 msgid "label_documents"
 msgstr ""
 
 #. Default: "Download full dossier"
-#: ./browser/templates/meeting.pt:74
+#: ./browser/templates/meeting.pt:80
 msgid "label_download_full_dossier"
 msgstr ""
 
@@ -285,38 +285,38 @@ msgid "label_governance_board"
 msgstr ""
 
 #. Default: "Edit agenda item: ${item_title}"
-#: ./browser/templates/agenda_item_form.pt:17
+#: ./browser/templates/agenda_item_form.pt:50
 msgid "label_header_edit_agenda_item"
 msgstr ""
 
 #. Default: "Organisations"
-#: ./browser/templates/list_organisations.pt:13
+#: ./browser/templates/list_organisations.pt:19
 msgid "label_heading_organisations"
 msgstr ""
 
 #. Default: "Other years"
-#: ./browser/templates/list_meetings.pt:53
-#: ./browser/templates/list_projects.pt:21
+#: ./browser/templates/list_meetings.pt:59
+#: ./browser/templates/list_projects.pt:27
 msgid "label_heading_other_years"
 msgstr ""
 
 #. Default: "Past meetings ${year}"
-#: ./browser/templates/list_meetings.pt:50
+#: ./browser/templates/list_meetings.pt:56
 msgid "label_heading_past_meetings_year"
 msgstr ""
 
 #. Default: "Projects ${year}"
-#: ./browser/templates/list_projects.pt:18
+#: ./browser/templates/list_projects.pt:24
 msgid "label_heading_projects_year"
 msgstr ""
 
 #. Default: "Upcoming meetings"
-#: ./browser/templates/list_meetings.pt:18
+#: ./browser/templates/list_meetings.pt:24
 msgid "label_incoming_meetings"
 msgstr ""
 
 #. Default: "Location"
-#: ./browser/templates/meeting.pt:28
+#: ./browser/templates/meeting.pt:34
 #: ./content/meeting.py:60
 msgid "label_location"
 msgstr ""
@@ -332,7 +332,7 @@ msgid "label_membership_organizations"
 msgstr ""
 
 #. Default: "There is no agenda item yet for this meeting."
-#: ./browser/templates/meeting.pt:65
+#: ./browser/templates/meeting.pt:71
 msgid "label_no_agenda_items"
 msgstr ""
 
@@ -484,5 +484,12 @@ msgstr ""
 #. Default: "Quarter ${number}"
 #: ./browser/export.py:151
 msgid "quarter_name"
+msgstr ""
+
+#. Default: "To Digibib DashBoard"
+#: ./browser/templates/list_meetings.pt:14
+#: ./browser/templates/list_organisations.pt:11
+#: ./browser/templates/list_projects.pt:14
+msgid "to_digibib_dashboard"
 msgstr ""
 

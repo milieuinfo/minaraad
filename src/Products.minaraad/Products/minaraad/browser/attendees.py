@@ -59,7 +59,7 @@ class AttendeesManagerView(AbstractView):
                 message = 'Uw inschrijving is gelukt. U ontvangt hiervan nog een bevestiging per e-mail.'
                 status = 'info'
             IStatusMessage(self.request).addStatusMessage(message, type=status)
-            return response.redirect(self.referring_url)
+            return response.redirect(self.referring_url + '?submitted=1')
         elif action == 'unregister':
             self.manager.removeMember(memberId)
             if self.notifyRegistration(memberId, False):
@@ -69,7 +69,7 @@ class AttendeesManagerView(AbstractView):
                 message = 'Het afmelden is gelukt. U ontvangt hiervan nog een bevestiging per e-mail.'
                 status= 'info'
             IStatusMessage(self.request).addStatusMessage(message, type=status)
-            return response.redirect(self.referring_url)
+            return response.redirect(self.referring_url + '?submitted=1')
         elif action == 'exportCSV':
             return self.buildAttendeesCSV()
 

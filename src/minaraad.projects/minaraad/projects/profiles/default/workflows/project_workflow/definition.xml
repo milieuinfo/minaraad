@@ -362,6 +362,8 @@
              before_script="" after_script="">
   <action url="" category="workflow" i18n:translate="">Cancel (back to Active state)</action>
   <guard>
+   <guard-permission>Request review</guard-permission>
+   <guard-permission>Review portal content</guard-permission>
   </guard>
  </transition>
  <transition transition_id="back_to_finish"
@@ -371,6 +373,8 @@
              before_script="" after_script="">
   <action url="" category="workflow" i18n:translate="">Cancel (back to Finished state)</action>
   <guard>
+   <guard-permission>Request review</guard-permission>
+   <guard-permission>Review portal content</guard-permission>
   </guard>
  </transition>
  <transition transition_id="back_to_in_consideration"
@@ -380,6 +384,8 @@
              before_script="" after_script="">
   <action url="" category="workflow" i18n:translate="">Cancel (back to In consideration state)</action>
   <guard>
+   <guard-permission>Request review</guard-permission>
+   <guard-permission>Review portal content</guard-permission>
   </guard>
  </transition>
  <transition transition_id="back_to_in_verification"
@@ -389,6 +395,8 @@
              before_script="" after_script="">
   <action url="" category="workflow" i18n:translate="">Cancel (back to In verification state)</action>
   <guard>
+   <guard-permission>Request review</guard-permission>
+   <guard-permission>Review portal content</guard-permission>
   </guard>
  </transition>
  <transition transition_id="back_to_new"
@@ -398,6 +406,8 @@
              after_script="">
   <action url="" category="workflow" i18n:translate="">Cancel (back to New state)</action>
   <guard>
+   <guard-permission>Request review</guard-permission>
+   <guard-permission>Review portal content</guard-permission>
   </guard>
  </transition>
  <transition transition_id="cancel" title="Cancel project"
@@ -406,6 +416,8 @@
              before_script="" after_script="">
   <action url="" category="workflow" i18n:translate="">Cancel project</action>
   <guard>
+   <guard-permission>Request review</guard-permission>
+   <guard-permission>Review portal content</guard-permission>
   </guard>
  </transition>
  <transition transition_id="check" title="Check"
@@ -414,6 +426,8 @@
              before_script="" after_script="">
   <action url="" category="workflow" i18n:translate="">Check</action>
   <guard>
+   <guard-permission>Request review</guard-permission>
+   <guard-permission>Review portal content</guard-permission>
   </guard>
  </transition>
  <transition transition_id="complete" title="Complete"
@@ -422,6 +436,8 @@
              before_script="" after_script="">
   <action url="" category="workflow" i18n:translate="">Complete</action>
   <guard>
+   <guard-permission>Request review</guard-permission>
+   <guard-permission>Review portal content</guard-permission>
   </guard>
  </transition>
  <transition transition_id="propose" title="Propose"
@@ -430,6 +446,8 @@
              before_script="" after_script="">
   <action url="" category="workflow" i18n:translate="">Propose</action>
   <guard>
+   <guard-permission>Request review</guard-permission>
+   <guard-permission>Review portal content</guard-permission>
   </guard>
  </transition>
  <transition transition_id="reject" title="Reject"
@@ -438,6 +456,8 @@
              before_script="" after_script="">
   <action url="" category="workflow" i18n:translate="">Reject</action>
   <guard>
+   <guard-permission>Request review</guard-permission>
+   <guard-permission>Review portal content</guard-permission>
   </guard>
  </transition>
  <transition transition_id="roundup" title="Roundup"
@@ -446,6 +466,8 @@
              before_script="" after_script="">
   <action url="" category="workflow" i18n:translate="">Roundup</action>
   <guard>
+   <guard-permission>Request review</guard-permission>
+   <guard-permission>Review portal content</guard-permission>
   </guard>
  </transition>
  <transition transition_id="start" title="Start"
@@ -454,6 +476,8 @@
              before_script="" after_script="">
   <action url="" category="workflow" i18n:translate="">Start</action>
   <guard>
+   <guard-permission>Request review</guard-permission>
+   <guard-permission>Review portal content</guard-permission>
   </guard>
  </transition>
 </dc-workflow>
