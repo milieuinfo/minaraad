@@ -10,7 +10,8 @@ branch must be ported to trunk as well.
 3.36 (unreleased)
 -----------------
 
-- Nothing changed yet.
+- Made two more forms use a POST request in hearings and events.
+  [maurits]
 
 
 3.35 (2011-12-07)

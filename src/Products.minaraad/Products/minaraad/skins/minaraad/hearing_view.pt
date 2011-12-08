@@ -37,6 +37,7 @@
           </form>
 
           <form tal:condition="can_subscribe"
+                method="post"
                 tal:attributes="action string:${context/absolute_url}/@@attendees_view">
             <span i18n:translate="hearing_unregistered_label">
               You are not currently subscribed to this hearing.
