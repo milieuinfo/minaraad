@@ -7,7 +7,7 @@ servers, using RelStorage.  Any changes done in this maintenance
 branch must be ported to trunk as well.
 
 
-3.36 (unreleased)
+3.36 (2011-12-08)
 -----------------
 
 - Made two more forms use a POST request in hearings and events.
