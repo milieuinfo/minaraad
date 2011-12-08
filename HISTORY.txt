@@ -10,6 +10,9 @@ branch must be ported to trunk as well.
 3.37 (unreleased)
 -----------------
 
+- Update Products.CMFSquidTool to 1.5.1 and Products.CacheSetup to 1.2.1.
+  [maurits]
+
 - Update varnish to current ZestSkel standards, recipe 1.2.1, varnish 2.1.5.
   [maurits]
 
