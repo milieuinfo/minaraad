@@ -10,7 +10,8 @@ branch must be ported to trunk as well.
 3.37 (unreleased)
 -----------------
 
-- Nothing changed yet.
+- Update varnish to current ZestSkel standards, recipe 1.2.1, varnish 2.1.5.
+  [maurits]
 
 
 3.36 (2011-12-08)
