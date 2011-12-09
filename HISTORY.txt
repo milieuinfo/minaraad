@@ -10,6 +10,10 @@ branch must be ported to trunk as well.
 3.38 (unreleased)
 -----------------
 
+- Removed now superfluous extra check on e-mail duplicates in
+  pwreset_action.cpy.
+  [maurits]
+
 - When subscribing or unsubscribing for a event or hearing, update the
   modification date of the object and reindex so the catalog is
   updated.  This way stale content, like missing attendees in the list
