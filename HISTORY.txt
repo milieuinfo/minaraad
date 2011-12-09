@@ -10,6 +10,10 @@ branch must be ported to trunk as well.
 3.38 (unreleased)
 -----------------
 
+- Completely remove login_next.cpy as it does nothing useful anymore
+  compared to standard Plone.
+  [maurits]
+
 - Removed now superfluous extra check on e-mail duplicates in
   pwreset_action.cpy and login_next.cpy.
   [maurits]
