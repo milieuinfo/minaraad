@@ -10,6 +10,14 @@ branch must be ported to trunk as well.
 3.38 (unreleased)
 -----------------
 
+- When subscribing or unsubscribing for a event or hearing, update the
+  modification date of the object and reindex so the catalog is
+  updated.  This way stale content, like missing attendees in the list
+  when viewing as manager, will not happen.  This should also mean
+  that the ``object/@@is_attending`` line in CacheSetup content rules
+  should not be needed anymore.
+  [maurits]
+
 - Set the environment var PTS_LANGUAGES to only nl, so no longer en as well.
   [maurits]
 
