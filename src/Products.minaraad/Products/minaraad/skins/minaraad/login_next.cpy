@@ -28,11 +28,6 @@ if membership_tool.isAnonymousUser():
     util.addPortalMessage(PMF(u'Login failed'))
     return state.set(status='failure')
 
-# Minaraad specific:
-duplicate_view = context.restrictedTraverse('@@email_duplicates')
-if duplicate_view.duplicates:
-    return state.set(status='duplicates')
-
 came_from = REQUEST.get('came_from', None)
 
 # if we weren't called from something that set 'came_from' or if HTTP_REFERER

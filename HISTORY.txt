@@ -11,7 +11,7 @@ branch must be ported to trunk as well.
 -----------------
 
 - Removed now superfluous extra check on e-mail duplicates in
-  pwreset_action.cpy.
+  pwreset_action.cpy and login_next.cpy.
   [maurits]
 
 - When subscribing or unsubscribing for a event or hearing, update the
