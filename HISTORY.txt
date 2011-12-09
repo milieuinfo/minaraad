@@ -10,7 +10,8 @@ branch must be ported to trunk as well.
 3.38 (unreleased)
 -----------------
 
-- Nothing changed yet.
+- Set the environment var PTS_LANGUAGES to only nl, so no longer en as well.
+  [maurits]
 
 
 3.37 (2011-12-08)
