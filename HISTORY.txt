@@ -10,7 +10,8 @@ branch must be ported to trunk as well.
 3.39 (unreleased)
 -----------------
 
-- Nothing changed yet.
+- Added manually tuned varnish.vcl to make sure authenticated requests are
+  never cached. [jladage]
 
 
 3.38 (2011-12-09)
