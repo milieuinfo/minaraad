@@ -3,6 +3,16 @@ Release notes from Zest
 
 Manual fixes to do on the site.
 
+
+Upgrade to 3.39
+---------------
+
+- Set content and hearing-events rule to "cache in proxy for 1 hour" for
+  anonymous and "cach in memory" for authenticated users.
+
+- Set number of objects in memory to 10000 and set time to cache to 7200.
+
+
 Upgrade to 3.34 [DONE]
 ----------------------
 
