@@ -7,7 +7,7 @@ servers, using RelStorage.  Any changes done in this maintenance
 branch must be ported to trunk as well.
 
 
-3.40 (unreleased)
+3.40 (2011-12-13)
 -----------------
 
 - Use collective.emaillogin 1.1 with fix for change password form.
