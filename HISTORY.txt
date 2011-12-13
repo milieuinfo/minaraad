@@ -10,7 +10,8 @@ branch must be ported to trunk as well.
 3.40 (unreleased)
 -----------------
 
-- Nothing changed yet.
+- Use collective.emaillogin 1.1 with fix for change password form.
+  [maurits]
 
 
 3.39 (2011-12-11)
