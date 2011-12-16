@@ -4,7 +4,7 @@ History of this buildout
 4.3 (unreleased)
 ----------------
 
-- Merged 3.30-3.35 changes.
+- Merged 3.30-3.40 changes.
   [maurits]
 
 
@@ -39,6 +39,66 @@ History of this buildout
 
 - Restructure buildout configs to match the setup of LNE and use
   RelStorage.  No more zeoserver and zeoclient.
+  [maurits]
+
+
+3.41 (unreleased)
+-----------------
+
+- Nothing changed yet.
+
+
+3.40 (2011-12-13)
+-----------------
+
+- Use collective.emaillogin 1.1 with fix for change password form.
+  [maurits]
+
+
+3.39 (2011-12-11)
+-----------------
+
+- Added manually tuned varnish.vcl to make sure authenticated requests are
+  never cached. [jladage]
+
+
+3.38 (2011-12-09)
+-----------------
+
+- Completely remove login_next.cpy as it does nothing useful anymore
+  compared to standard Plone.
+  [maurits]
+
+- Removed now superfluous extra check on e-mail duplicates in
+  pwreset_action.cpy and login_next.cpy.
+  [maurits]
+
+- When subscribing or unsubscribing for a event or hearing, update the
+  modification date of the object and reindex so the catalog is
+  updated.  This way stale content, like missing attendees in the list
+  when viewing as manager, will not happen.  This should also mean
+  that the ``object/@@is_attending`` line in CacheSetup content rules
+  should not be needed anymore.
+  [maurits]
+
+- Set the environment var PTS_LANGUAGES to only nl, so no longer en as well.
+  [maurits]
+
+
+3.37 (2011-12-08)
+-----------------
+
+- Update Products.CMFSquidTool to 1.5.1 and Products.CacheSetup to 1.2.1.
+  [maurits]
+
+- Update varnish to current ZestSkel standards, recipe 1.2.1, varnish 2.1.5.
+  [maurits]
+
+
+3.36 (2011-12-08)
+-----------------
+
+- Made two more forms use a POST request in hearings and events.
   [maurits]
 
 

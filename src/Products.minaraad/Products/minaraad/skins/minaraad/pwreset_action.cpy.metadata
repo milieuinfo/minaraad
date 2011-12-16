@@ -3,4 +3,3 @@ action.success = redirect_to:string:pwreset_finish
 action.invalid = traverse_to:string:pwreset_invalid
 action.expired = traverse_to:string:pwreset_expired
 action.newuser = redirect_to:string:subscriptions_config.html
-action.duplicates = traverse_to:string:email_duplicates

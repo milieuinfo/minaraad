@@ -35,12 +35,5 @@ else:
         acl_users = getToolByName(context, 'acl_users')
         acl_users.updateCredentials(request, request.RESPONSE, userid, password)
 
-    duplicate_view = context.restrictedTraverse('@@email_duplicates')
-    if duplicate_view.duplicates:
-        # Note: this overwrite the 'newuser' status if that has been
-        # set above, which is fine.
-        status = 'duplicates'
-        return state.set(status=status)
-
 return state.set(status=status)
 
