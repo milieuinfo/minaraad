@@ -58,8 +58,9 @@ class DigiBibView(BrowserView):
         meetings = meeting_container.list_meetings()
         initial_filtered = [
             meeting for meeting in meetings
-            if meeting.getStart_time and \
-            not meeting.getStart_time.isPast()]
+            if meeting.review_state == 'planned'
+            or (meeting.getStart_time and not meeting.getStart_time.isPast())
+            ]
         # Now we need the objects for another check and we need those
         # in the template anyway.
         objects = [meeting.getObject() for meeting in initial_filtered]

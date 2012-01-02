@@ -10,6 +10,10 @@ branch must be ported to trunk as well.
 3.41 (unreleased)
 -----------------
 
+- Also show a meeting in the digibib overview when its start date is in
+  the past but it erroneously still is in the planned state.
+  [maurits]
+
 - Fixed displaying year dropdowns in Digibib when the current year has
   no entries.
   [maurits]
