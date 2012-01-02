@@ -7,7 +7,7 @@ servers, using RelStorage.  Any changes done in this maintenance
 branch must be ported to trunk as well.
 
 
-3.42 (unreleased)
+3.42 (2012-01-02)
 -----------------
 
 - Slightly better css for selects in the year dropdown.
