@@ -82,10 +82,11 @@ class DigiBibView(BrowserView):
                    for year, objects in grouped]
 
         # Show the current or requested year only.
+        current_year = DateTime().year()
         try:
             year = int(self.request.get('year'))
         except:
-            year = DateTime().year()
+            year = current_year
         links = []
         this_year = {}  # Should not be needed, but just in case.
         for result in results:
@@ -96,8 +97,16 @@ class DigiBibView(BrowserView):
             links.append(dict(year=result['year'],
                                num=len(result['objects']),
                                selected=selected))
+        years = [link['year'] for link in links]
         if not this_year:
+            # Make a dummy dictionary for this year.  Normally only
+            # happens when this is the current year and there are no
+            # objects for this year.
             this_year = {'year': year, 'objects': []}
+            links.insert(0, {'year': year, 'num': 0, 'selected': True})
+        if year != current_year and current_year not in years:
+            links.insert(0, {'year': current_year, 'num': 0,
+                              'selected': False})
         return this_year, links
 
 
