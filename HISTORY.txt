@@ -10,7 +10,9 @@ branch must be ported to trunk as well.
 3.41 (unreleased)
 -----------------
 
-- Nothing changed yet.
+- Fixed displaying year dropdowns in Digibib when the current year has
+  no entries.
+  [maurits]
 
 
 3.40 (2011-12-13)
