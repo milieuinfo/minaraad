@@ -10,7 +10,8 @@ branch must be ported to trunk as well.
 3.42 (unreleased)
 -----------------
 
-- Nothing changed yet.
+- Slightly better css for selects in the year dropdown.
+  [maurits]
 
 
 3.41 (2012-01-02)

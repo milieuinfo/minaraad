@@ -135,3 +135,7 @@ td.center {
 .body .even {
    background: none repeat scroll 0 0 #FFCFC9 !important;
 }
+
+#other-years select {
+    margin-top: -2px;
+}
