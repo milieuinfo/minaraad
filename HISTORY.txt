@@ -4,7 +4,7 @@ History of this buildout
 4.3 (unreleased)
 ----------------
 
-- Merged 3.30-3.40 changes.
+- Merged 3.30-3.42 changes.
   [maurits]
 
 
@@ -42,10 +42,23 @@ History of this buildout
   [maurits]
 
 
-3.41 (unreleased)
+3.42 (2012-01-02)
 -----------------
 
-- Nothing changed yet.
+- Slightly better css for selects in the year dropdown.
+  [maurits]
+
+
+3.41 (2012-01-02)
+-----------------
+
+- Also show a meeting in the digibib overview when its start date is in
+  the past but it erroneously still is in the planned state.
+  [maurits]
+
+- Fixed displaying year dropdowns in Digibib when the current year has
+  no entries.
+  [maurits]
 
 
 3.40 (2011-12-13)
