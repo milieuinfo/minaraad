@@ -3,7 +3,7 @@
 
 backend backend_0 {
         .host = "127.0.0.1";
-        .port = "8099";
+        .port = "${parts.conf.zeoclient}";
         .connect_timeout = 0.4s;
         .first_byte_timeout = 300s;
         .between_bytes_timeout = 60s;
