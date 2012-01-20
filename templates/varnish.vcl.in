@@ -11,9 +11,7 @@ backend backend_0 {
 
 
 acl purge {
-    "localhost";
-        "127.0.0.1";
-
+    ${parts.conf.varnish_purge_hosts}
 }
 
 sub vcl_recv {

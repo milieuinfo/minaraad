@@ -10,7 +10,8 @@ branch must be ported to trunk as well.
 3.43 (unreleased)
 -----------------
 
-- Nothing changed yet.
+- Add buildout config option varnish_purge_hosts.
+  [maurits]
 
 
 3.42 (2012-01-02)
