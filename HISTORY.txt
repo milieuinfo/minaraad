@@ -4,13 +4,12 @@ History of this buildout
 4.3 (unreleased)
 ----------------
 
-- Merged 3.30-3.42 changes.
+- Merged 3.30-3.43 changes.
   [maurits]
 
 
 4.2 (2011-11-17)
 ----------------
-
 
 - Fixed AttributeError when deleting a normal file from a meeting.
   Normal files do not have a contains_pdf method.
@@ -39,6 +38,13 @@ History of this buildout
 
 - Restructure buildout configs to match the setup of LNE and use
   RelStorage.  No more zeoserver and zeoclient.
+  [maurits]
+
+
+3.43 (2012-01-20)
+-----------------
+
+- Add buildout config option varnish_purge_hosts.
   [maurits]
 
 
