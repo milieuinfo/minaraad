@@ -10,7 +10,8 @@ branch must be ported to trunk as well.
 3.44 (unreleased)
 -----------------
 
-- Nothing changed yet.
+- Newer supervisor, using unix socket.
+  [maurits]
 
 
 3.43 (2012-01-20)
