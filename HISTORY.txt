@@ -4,7 +4,8 @@ History of this buildout
 4.5 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Let varnish simply listen on all IP addresses.
+  [maurits]
 
 
 4.4 (2012-01-23)
