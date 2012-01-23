@@ -18,6 +18,13 @@ parts +=
 #    crontab-projects-reminder
 
 
+[conf]
+# IP or hostname that varnish listens on.  In Belgium this should be
+# the public interface, because the loadbalancer is on a separate
+# machine.
+varnish_host = 127.0.0.1
+
+
 [munin]
 # To be able to log in as the user munin, uncomment the following line
 # and replace "secret" with the actual password of the munin user you

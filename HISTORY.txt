@@ -4,6 +4,10 @@ History of this buildout
 4.4 (unreleased)
 ----------------
 
+- Add conf option varnish_host in buildout to set on which ip or host
+  varnish listens.
+  [maurits]
+
 - Do not fail in the main template when there is not show_linkedin
   property.
   [maurits]
