@@ -197,6 +197,7 @@
 
                 <tal:linkedin
                     define="pcs context/@@plone_context_state"
+                    tal:on-error="string:"
                     condition="python:pcs.is_portal_root() and pcs.is_view_template() and context.show_linkedin">
                   <script src="http://www.linkedin.com/companyInsider?script&useBorder=yes"
                           type="text/javascript"></script>

@@ -4,7 +4,9 @@ History of this buildout
 4.4 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Do not fail in the main template when there is not show_linkedin
+  property.
+  [maurits]
 
 
 4.3 (2012-01-20)
