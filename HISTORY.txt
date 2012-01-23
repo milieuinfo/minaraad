@@ -1,7 +1,7 @@
 History of this buildout
 ========================
 
-4.4 (unreleased)
+4.4 (2012-01-23)
 ----------------
 
 - Add conf option varnish_host in buildout to set on which ip or host
