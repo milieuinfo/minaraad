@@ -1,7 +1,7 @@
 History of this buildout
 ========================
 
-4.6 (unreleased)
+4.6 (2012-02-02)
 ----------------
 
 - Merged 3.45 changes.
