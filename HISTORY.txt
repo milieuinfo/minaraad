@@ -4,7 +4,8 @@ History of this buildout
 4.6 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Merged 3.45 changes.
+  [maurits]
 
 
 4.5 (2012-01-23)
@@ -63,6 +64,14 @@ History of this buildout
 
 - Restructure buildout configs to match the setup of LNE and use
   RelStorage.  No more zeoserver and zeoclient.
+  [maurits]
+
+
+3.45 (2012-02-02)
+-----------------
+
+- Avoid ValueError when filling in wrong email address in the password
+  reset form.
   [maurits]
 
 
