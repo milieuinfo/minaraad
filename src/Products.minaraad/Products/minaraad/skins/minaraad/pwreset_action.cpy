@@ -18,6 +18,8 @@ except 'ExpiredRequestError':
     status = "expired"
 except 'InvalidRequestError':
     status = "invalid"
+except ValueError:
+    status = "invalid"
 else:
     # We need to figure out if a new user, or just resetting
     # If we are an old user, we are not logged in. So we go to "success".

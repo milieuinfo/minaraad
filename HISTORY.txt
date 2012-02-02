@@ -10,7 +10,9 @@ branch must be ported to trunk as well.
 3.45 (unreleased)
 -----------------
 
-- Nothing changed yet.
+- Avoid ValueError when filling in wrong email address in the password
+  reset form.
+  [maurits]
 
 
 3.44 (2012-01-20)
