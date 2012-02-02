@@ -7,7 +7,7 @@ servers, using RelStorage.  Any changes done in this maintenance
 branch must be ported to trunk as well.
 
 
-3.45 (unreleased)
+3.45 (2012-02-02)
 -----------------
 
 - Avoid ValueError when filling in wrong email address in the password
