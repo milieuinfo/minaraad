@@ -10,10 +10,16 @@
 from Products.CMFCore.utils import getToolByName
 request = context.REQUEST
 
+# Make it clear that the userid that is passed in should be used as a
+# login name.
+login_name = userid
 status = "success"
 pw_tool = getToolByName(context, 'portal_password_reset')
 try:
-    pw_tool.resetPassword(userid, randomstring, password)
+    # Note: resetPassword expects a user id, but collective.emaillogin
+    # has a patch that looks for a user id that matches the passed in
+    # login name.
+    pw_tool.resetPassword(login_name, randomstring, password)
 except 'ExpiredRequestError':
     status = "expired"
 except 'InvalidRequestError':
@@ -35,7 +41,8 @@ else:
         status = "newuser"
         # log in as that user (will update cookies)
         acl_users = getToolByName(context, 'acl_users')
-        acl_users.updateCredentials(request, request.RESPONSE, userid, password)
+        acl_users.updateCredentials(
+            request, request.RESPONSE, login_name, password)
 
 return state.set(status=status)
 
