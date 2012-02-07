@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: minaraad 0.1\n"
 "POT-Creation-Date: 2011-10-10 16:12+0000\n"
-"PO-Revision-Date: 2011-09-13 17:25+0200\n"
+"PO-Revision-Date: 2012-02-07 11:15+0100\n"
 "Last-Translator: Maurits van Rees <m.van.rees@zestsoftware.nl>\n"
 "Language-Team: Nederlands <info@zestsoftware.nl>\n"
 "MIME-Version: 1.0\n"
@@ -428,7 +428,7 @@ msgstr "Telefoon"
 #. Default: "Product number:"
 #: ./skins/minaraad/advisory_view.pt:27
 msgid "label_product_number"
-msgstr ""
+msgstr "Productnummer"
 
 #. Default: "Project:"
 #: ./skins/minaraad/advisory_view.pt:34

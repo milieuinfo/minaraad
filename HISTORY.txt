@@ -4,7 +4,8 @@ History of this buildout
 4.7 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Added missing Dutch translation.
+  [maurits]
 
 
 4.6 (2012-02-02)
