@@ -52,7 +52,10 @@ agendaitem_schema = base_agendaitem_schema + atapi.Schema((
         # with @@edit_eganda_item view.
         # If set to True, it will be deleted by the default meeting view.
         name='in_factory',
-        default=False
+        default=False,
+        widget=atapi.BooleanWidget(
+            visible={'edit':'invisible', 'view':'invisible'},
+            ),
         ),
     ))
 

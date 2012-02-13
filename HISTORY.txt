@@ -4,7 +4,9 @@ History of this buildout
 4.8 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Make the in_factory field of agenda item invisible.  It is not meant
+  for end users.
+  [maurits]
 
 
 4.7 (2012-02-07)
