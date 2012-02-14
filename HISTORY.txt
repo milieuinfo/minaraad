@@ -4,6 +4,9 @@ History of this buildout
 4.8 (unreleased)
 ----------------
 
+- Do not update the invitees for meetings in the 'past' state.
+  [maurits]
+
 - When saving a meeting that is still in the initial (new) state,
   reset the list of invitees before rebuilding it.  This way we can
   correct mistakes for new meetings.

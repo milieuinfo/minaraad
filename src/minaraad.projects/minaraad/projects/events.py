@@ -46,8 +46,13 @@ def save_invited(meeting, event):
     we empty the list at the beginning of this function.
     """
     wft = getToolByName(getSite(), 'portal_workflow')
-    if wft.getInfoFor(meeting, 'review_state') == 'new':
+    state = wft.getInfoFor(meeting, 'review_state')
+    if state == 'new':
         meeting._empty_invited_people()
+    elif state == 'past':
+        # The invited groups cannot be edited in the 'past' state, so
+        # nothing should be changed here either.
+        return
     invited = meeting.get_invited_people()
     portal_groups = getToolByName(meeting, 'portal_groups')
     all_groups = list(meeting.getInvited_groups()) + \
