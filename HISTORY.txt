@@ -4,6 +4,9 @@ History of this buildout
 4.8 (unreleased)
 ----------------
 
+- pwreset_action: use userid as login name and make it lower case.
+  [maurits]
+
 - Make the in_factory field of agenda item invisible.  It is not meant
   for end users.
   [maurits]
