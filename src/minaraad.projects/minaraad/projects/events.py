@@ -29,6 +29,7 @@ def set_agenda_item_order(item, event):
     else:
         item.setOrder(0)
 
+
 def save_invited(meeting, event):
     """ When a meeting is saved, we store the list
     of participants based on the groups.
@@ -38,13 +39,19 @@ def save_invited(meeting, event):
 
     When the meeting is edited, we might add new members to the list,
     but we never delete any member of the list.
+
+    Well, in the initial state we may accidentally select the wrong
+    group and we should be able to rectify this without keeping the
+    wrong list of invitees around.  So when still in the initial state
+    we empty the list at the beginning of this function.
     """
+    wft = getToolByName(getSite(), 'portal_workflow')
+    if wft.getInfoFor(meeting, 'review_state') == 'new':
+        meeting._empty_invited_people()
     invited = meeting.get_invited_people()
     portal_groups = getToolByName(meeting, 'portal_groups')
-
     all_groups = list(meeting.getInvited_groups()) + \
                  [meeting.getResponsible_group()]
-
     for group_id in all_groups:
         group = portal_groups.getGroupById(group_id)
 
@@ -62,6 +69,7 @@ def save_invited(meeting, event):
             invited[member_id]['id'] = member_id
             invited[member_id]['fullname'] = member.getProperty('fullname', '')
             invited[member_id]['email'] = member.getProperty('email', '')
+
 
 def concatenate_pdf(attachment, event):
     """ When a SimpleAttachment file is created, so check if it was created

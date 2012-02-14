@@ -233,6 +233,10 @@ class Meeting(BaseMeeting):
 
         return metadata
 
+    def _empty_invited_people(self):
+        anno = self._get_annotations()
+        anno['invited_people'] = PersistentDict()
+
     def get_invited_people(self):
         anno = self._get_annotations()
         if anno.get('invited_people', None) is None:
