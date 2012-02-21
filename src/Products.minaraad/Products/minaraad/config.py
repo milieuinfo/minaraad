@@ -17,7 +17,7 @@ product_globals = globals()
 # Dependencies of Products to be installed by quick-installer.
 # In the Products namespace:
 PRODUCT_DEPENDENCIES = ['FCKeditor', 'OrderableReferenceField',
-                        'SimpleAttachment']
+                        'SimpleAttachment', 'DataGridField']
 # Note that minaraad.projects must be installed after
 # SimpleAttachment, as it changes its type information in portal_types
 # a bit.

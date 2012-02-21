@@ -7,6 +7,8 @@ from Products.ATReferenceBrowserWidget.ATReferenceBrowserWidget import \
 from Products.Archetypes import atapi
 from Products.Archetypes.event import ObjectEditedEvent
 from Products.CMFCore.utils import getToolByName
+from Products.DataGridField.DataGridField import DataGridField
+from Products.DataGridField.DataGridWidget import DataGridWidget
 from persistent.dict import PersistentDict
 from zope.annotation.interfaces import IAnnotations
 from zope.app.component.hooks import getSite
@@ -92,6 +94,29 @@ meeting_schema = base_meeting_schema.copy() + atapi.Schema((
                     default=u'Participants attendance')
             )
         ),
+
+    DataGridField(
+        name='otherInvitees',
+        default=({'id': 'name',
+                  'title': _(u'Name')},
+                 {'id': 'organization',
+                  'title': _(u'Organization')},
+                  ),
+        widget=DataGridWidget(
+            label=_(u'label_other_invitees',
+                    default=u"Other invitees"),
+            description=_(
+                 u'help_other_invitees',
+                 default=(u"Enter the invitees who are not in the selected "
+                          u"committees.")),
+            column_names=(_(u'Name'), _(u'Organization')),
+            ),
+        allow_empty_rows=False,
+        required=False,
+        validators=('isDataGridFilled', ),
+        columns=('name', 'organization', )
+        ),
+
     ))
 
 for schema_key in meeting_schema.keys():

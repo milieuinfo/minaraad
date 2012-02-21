@@ -4,6 +4,9 @@ History of this buildout
 4.9 (unreleased)
 ----------------
 
+- Added DataGridField 'otherInvitees' to meeting.
+  [maurits]
+
 - Add Products.DataGridField.
   [maurits]
 
