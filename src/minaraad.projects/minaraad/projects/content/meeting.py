@@ -99,8 +99,8 @@ meeting_schema = base_meeting_schema.copy() + atapi.Schema((
         name='otherInvitees',
         default=({'id': 'name',
                   'title': _(u'Name')},
-                 {'id': 'organization',
-                  'title': _(u'Organization')},
+                 {'id': 'company',
+                  'title': _(u'Company')},
                   ),
         widget=DataGridWidget(
             label=_(u'label_other_invitees',
@@ -109,12 +109,12 @@ meeting_schema = base_meeting_schema.copy() + atapi.Schema((
                  u'help_other_invitees',
                  default=(u"Enter the invitees who are not in the selected "
                           u"committees.")),
-            column_names=(_(u'Name'), _(u'Organization')),
+            column_names=(_(u'Name'), _(u'Company')),
             ),
         allow_empty_rows=False,
         required=False,
         validators=('isDataGridFilled', ),
-        columns=('name', 'organization', )
+        columns=('name', 'company', )
         ),
 
     ))
