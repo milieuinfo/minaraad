@@ -34,6 +34,7 @@
                          values python: dict(accessor())">
         <thead>
           <tr>
+            <th>#</th>
             <th>Naam</th>
             <th>Organisatie</th>
             <th>aanwezig</th>
@@ -48,6 +49,7 @@
 
             <tal:block tal:define="name python: p;
                                    status python: values.get(p, '')">
+              <td tal:content="repeat/p/number" />
               <td>
                 <metal:use use-macro="context/participants_widget/macros/member_fullname" />
               </td>
