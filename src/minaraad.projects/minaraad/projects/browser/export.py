@@ -194,8 +194,8 @@ class ExportStatisticsView(BrowserView):
             )
         meetings = [brain.getObject() for brain in brains]
         users = {}
-        headers = [u'Naam', u'Organisatie', u'Aanwezig', u'Verontschuldigd',
-                   u'Afwezig']
+        headers = [u'#', u'Naam', u'Organisatie', u'Aanwezig',
+                   u'Verontschuldigd', u'Afwezig']
         for meeting in meetings:
             for user, attendance in meeting.getParticipants():
                 if user not in users:
@@ -228,6 +228,10 @@ class ExportStatisticsView(BrowserView):
             rows.append(row)
 
         self.headers = headers
+        rows.sort()
+        # Add row number in first column.
+        for index, row in enumerate(rows):
+            row.insert(0, index + 1)
         self.rows = rows
 
     def report_attendance_per_meeting(self):
