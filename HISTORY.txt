@@ -4,7 +4,8 @@ History of this buildout
 4.9 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Add Products.DataGridField.
+  [maurits]
 
 
 4.8 (2012-02-14)
