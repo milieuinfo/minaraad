@@ -157,4 +157,13 @@
       permission="zope2.View"
       allowed_interface="minaraad.projects.interfaces.IPASMemberView"
       />
+
+  <browser:page
+      for="minaraad.projects.interfaces.IMeeting"
+      name="mina_pas_member"
+      class=".utils.ParticipantMemberView"
+      permission="zope2.View"
+      allowed_interface="minaraad.projects.interfaces.IPASMemberView"
+      />
+
 </configure>

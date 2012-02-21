@@ -8,6 +8,11 @@ from zope.interface import implements
 
 from minaraad.projects.interfaces import IPASMemberView
 
+empty_member_info = {
+    'username': '', 'description': '', 'language': '',
+    'home_page': '', 'name_or_id': '', 'location': '',
+    'fullname': '', 'company': '', 'has_email': False}
+
 
 class RolesInContext(BrowserView):
     """ Simple view used to check some data.
@@ -53,19 +58,17 @@ class PASMemberView(BrowserView):
 
     @memoize
     def info(self, userid=None):
-        pm = getToolByName(self.context, 'portal_membership')
-
+        context = aq_inner(self.context)
+        pm = getToolByName(context, 'portal_membership')
         if not userid:
             member = pm.getAuthenticatedMember()
         else:
             member = pm.getMemberById(userid)
-
         if member is None:
-            # No such member: removed?  We return something useful anyway.
-            return {'username': userid, 'description': '', 'language': '',
-                    'home_page': '', 'name_or_id': userid, 'location': '',
-                    'fullname': '', 'company': ''}
+            return self.get_empty_member_info(userid)
+        return self.get_member_info(member)
 
+    def get_member_info(self, member):
         names = [safe_unicode(member.getProperty('firstname', '')),
                  safe_unicode(member.getProperty('fullname'))]
         fullname = u' '.join([name for name in names if name])
@@ -79,5 +82,47 @@ class PASMemberView(BrowserView):
                       'company': member.getProperty('company'),
                       }
         memberinfo['name_or_id'] = memberinfo.get('fullname') or \
-            memberinfo.get('username') or userid
+            memberinfo.get('username') or member.getUserId()
         return memberinfo
+
+    def get_empty_member_info(self, userid):
+        # No such member: removed?  We return something useful anyway.
+        info = empty_member_info.copy()
+        info['username'] = userid
+        info['name_or_id'] = userid
+        return info
+
+
+class ParticipantMemberView(PASMemberView):
+    """Return 'harmless' info for a participant.
+
+    A participant can be a member or an extra invitee for who we only
+    know a fullname and company.
+    """
+
+    implements(IPASMemberView)
+
+    @memoize
+    def info(self, userid=None):
+        context = aq_inner(self.context)
+        pm = getToolByName(context, 'portal_membership')
+        if not userid:
+            member = pm.getAuthenticatedMember()
+        else:
+            member = pm.getMemberById(userid)
+        if member is not None:
+            # Normal member
+            return self.get_member_info(member)
+
+        participants = context.get_invited_people()
+        participant = participants.get(userid)
+        if not participant:
+            # No member, no participant.
+            return self.get_empty_member_info(userid)
+        # Participant.
+        info = empty_member_info.copy()
+        info['username'] = participant['id']
+        info['name_or_id'] = participant['id']
+        info['fullname'] = participant['fullname']
+        info['company'] = participant['company']
+        return info

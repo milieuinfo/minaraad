@@ -73,7 +73,15 @@ def save_invited(meeting, event):
             invited[member_id] = PersistentDict()
             invited[member_id]['id'] = member_id
             invited[member_id]['fullname'] = member.getProperty('fullname', '')
+            invited[member_id]['company'] = member.getProperty('company', '')
             invited[member_id]['email'] = member.getProperty('email', '')
+    for extra in meeting.getOtherInvitees():
+        extra_id = extra['name']
+        invited[extra_id] = PersistentDict()
+        invited[extra_id]['id'] = extra_id
+        invited[extra_id]['fullname'] = extra_id
+        invited[extra_id]['company'] = extra['company']
+        invited[extra_id]['email'] = ''
 
 
 def concatenate_pdf(attachment, event):
