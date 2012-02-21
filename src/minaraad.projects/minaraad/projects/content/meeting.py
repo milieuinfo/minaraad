@@ -1,27 +1,25 @@
 import logging
 
-from zope.interface import implements
-from zope.event import notify
-from zope.app.component.hooks import getSite
-
-import transaction
-from Acquisition import aq_parent, aq_inner
 from AccessControl import ClassSecurityInfo
+from Acquisition import aq_parent, aq_inner
+from Products.ATReferenceBrowserWidget.ATReferenceBrowserWidget import \
+    ReferenceBrowserWidget
 from Products.Archetypes import atapi
 from Products.Archetypes.event import ObjectEditedEvent
 from Products.CMFCore.utils import getToolByName
-from Products.ATReferenceBrowserWidget.ATReferenceBrowserWidget import \
-     ReferenceBrowserWidget
-
-from zope.annotation.interfaces import IAnnotations
 from persistent.dict import PersistentDict
+from zope.annotation.interfaces import IAnnotations
+from zope.app.component.hooks import getSite
+from zope.event import notify
+from zope.interface import implements
+import transaction
 
-from minaraad.projects import config
 from minaraad.projects import MinaraadProjectMessageFactory as _
+from minaraad.projects import config
 from minaraad.projects.interfaces import IMeeting, IAgendaItem
-from minaraad.projects.widgets import PARTICIPANT_PRESENT, \
-     ParticipantsWidget
 from minaraad.projects.utils import prepend_zero
+from minaraad.projects.widgets import PARTICIPANT_PRESENT
+from minaraad.projects.widgets import ParticipantsWidget
 
 from base_meeting import base_meeting_schema, BaseMeeting
 
