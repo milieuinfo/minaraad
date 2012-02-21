@@ -28,7 +28,18 @@ def update_ontwikkel():
 
     You should run this with 'fab ontwikkel update_ontwikkel'.
     """
-    run('cd ~/buildout')
-    run('bin/supervisorctl shutdown')
-    run('svn up')
-    run('bin/supervisord')
+    run('cd ~/buildout && bin/supervisorctl shutdown')
+    run('cd ~/buildout && svn up')
+    run('cd ~/buildout && bin/supervisord')
+
+
+def stop_plone():
+    """Stop Plone.
+    """
+    run('cd ~/buildout && bin/supervisorctl shutdown')
+
+
+def info():
+    run('w')
+    run('free')
+    run('df -h')
