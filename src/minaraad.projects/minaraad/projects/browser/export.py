@@ -217,8 +217,12 @@ class ExportStatisticsView(BrowserView):
                 fullname = u' '.join([name for name in names if name])
                 company = safe_unicode(member.getProperty('company', ''))
             else:
-                fullname = user
-                company = ''
+                # We used to allow these too, but they are not wanted
+                # anymore, especially with the addition of the
+                # otherInvitees datagrid field.
+                #fullname = user
+                #company = ''
+                continue
             row = [fullname, company, data['present'], data['excused'],
                    data['absent']]
             rows.append(row)
