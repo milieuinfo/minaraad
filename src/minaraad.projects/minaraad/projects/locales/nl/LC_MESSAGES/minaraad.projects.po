@@ -33,7 +33,7 @@ msgstr "Kies een statistiek:"
 
 #: ./content/meeting.py:103
 msgid "Company"
-msgstr ""
+msgstr "Organisatie"
 
 #: ./profiles/default/actions.xml
 msgid "Create Advisory"
@@ -69,7 +69,7 @@ msgstr "Vergaderingenmap"
 
 #: ./content/meeting.py:101
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 #: ./validators.py:72
 msgid "Number must be 3-digits"
@@ -145,7 +145,7 @@ msgstr "Digibib - Projecten"
 #. Default: "Enter the invitees who are not in the selected committees."
 #: ./content/meeting.py:108
 msgid "help_other_invitees"
-msgstr ""
+msgstr "Voeg genodigden toe die niet in de geselecteerde commissies zitten."
 
 #. Default: "Abstention and/or reject points"
 #: ./content/project.py:289
@@ -391,7 +391,7 @@ msgstr "Samenwerking"
 #. Default: "Other invitees"
 #: ./content/meeting.py:106
 msgid "label_other_invitees"
-msgstr ""
+msgstr "Overige genodigden"
 
 #. Default: "Participants attendance"
 #: ./content/meeting.py:93
