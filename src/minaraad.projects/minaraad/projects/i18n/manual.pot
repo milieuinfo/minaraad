@@ -46,3 +46,7 @@ msgstr ""
 
 msgid "ProjectMember"
 msgstr ""
+
+#: ../skins/DataGridWidget/datagridwidget.pt:76
+msgid "Add new row"
+msgstr ""
