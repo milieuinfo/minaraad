@@ -19,10 +19,10 @@ logger = logging.getLogger('minaraad.projects.content.base_meeting')
 base_meeting_schema = atapi.BaseFolderSchema.copy() + atapi.Schema((
     atapi.DateTimeField(
         name='start_time',
-        required = True,
-        widget = atapi.CalendarWidget(
-            label = _(u'label_start_time',
-                      default=u'Start'),
+        required=True,
+        widget=atapi.CalendarWidget(
+            label=_(u'label_start_time',
+                    default=u'Start'),
             )
         ),
     ))
@@ -45,12 +45,13 @@ class BaseMeeting(atapi.BaseFolder):
         brains = catalog({'path': '/'.join(self.getPhysicalPath()),
                           'portal_type': ['AgendaItem', 'AgendaItemProject']})
 
-        return sorted(brains, key = lambda x: x.getOrder)
+        return sorted(brains, key=lambda x: x.getOrder)
 
     def get_duration(self):
         """ Computes the meeting's duration.
         """
-        return smart_int(sum([item.getDuration for item in self.find_items()]) / 60)
+        return smart_int(sum([item.getDuration for item in self.find_items()])
+                         / 60)
 
     def get_end_time(self):
         """ Computes the end date/time of the meeting.
@@ -58,7 +59,8 @@ class BaseMeeting(atapi.BaseFolder):
         try:
             return self.getStart_time() + (self.get_duration() / 24.0)
         except TypeError:
-            # start time or duration might not be defined and one of them might be None.
+            # start time or duration might not be defined and one of
+            # them might be None.
             return self.getStart_time()
 
     def find_items_and_times(self):
@@ -91,7 +93,8 @@ class BaseMeeting(atapi.BaseFolder):
                 break
 
         # We delete the items.
-        base_res = super(BaseMeeting, self).manage_delObjects(ids, *args, **kwargs)
+        base_res = super(BaseMeeting, self).manage_delObjects(ids, *args,
+                                                              **kwargs)
 
         # Now we find the gaps in orders.
         order = -1
@@ -121,7 +124,8 @@ class BaseMeeting(atapi.BaseFolder):
 
         The only reasons when it is called should be:
         - when a FileAttachment is modified (see events.concatenate_pdf)
-        - when a FileAttachment is deleted (see base_agendaitem.manage_delObjects)
+        - when a FileAttachment is deleted (see
+          base_agendaitem.manage_delObjects)
         - when an agenda item is deleted (see base_meeting.manage_delObjects)
         """
         files = []
@@ -131,7 +135,8 @@ class BaseMeeting(atapi.BaseFolder):
                 if item.is_attachment_pdf(att_id):
                     files.append(
                         {'file': StringIO(item[att_id].getFile()),
-                         'attachment': '%s/%s' % (item.absolute_url(), att_id)})
+                         'attachment': '%s/%s' % (item.absolute_url(),
+                                                    att_id)})
 
         if not files:
             self.pdf = None
@@ -149,12 +154,16 @@ class BaseMeeting(atapi.BaseFolder):
                 try:
                     if pdf.decrypt('') == 0:
                         # There is two cases:
-                        # - the decrypt method raise an error because it can not decrypt
-                        # - the decrypt method just returns 0 to tell it was not able to decrypt
-                        # (in this case, we raise an exception ourself to create the default page)
+                        # - the decrypt method raise an error because
+                        #   it can not decrypt
+                        # - the decrypt method just returns 0 to tell
+                        #   it was not able to decrypt (in this case, we
+                        #   raise an exception ourself to create the
+                        #   default page)
                         raise Exception('Ho noes, we can not decrypt')
                 except:
-                    logger.info('Could not decrypt pdf file at "%s"' % f['attachment'])
+                    logger.info('Could not decrypt pdf file at "%s"' %
+                                f['attachment'])
 
                     # We generate a simple page to tell the user
                     # we were not able to include this file.

@@ -298,8 +298,8 @@ def update_attachment_counter(attachment, event):
 
     catalog = getToolByName(attachment, 'portal_catalog')
     att_count = len(catalog.searchResults(
-        portal_type = 'FileAttachment',
-        path = '/'.join(agenda_item.getPhysicalPath())))
+        portal_type='FileAttachment',
+        path='/'.join(agenda_item.getPhysicalPath())))
 
     try:
         old_att_count = agenda_item.attachment_count
@@ -308,7 +308,8 @@ def update_attachment_counter(attachment, event):
 
     if old_att_count != att_count:
         try:
-            aq_parent(aq_inner(agenda_item))._update_agenda_item_attachment_counter()
+            parent = aq_parent(aq_inner(agenda_item))
+            parent._update_agenda_item_attachment_counter()
         except AttributeError:
             # We might be in the portal factory.
             pass

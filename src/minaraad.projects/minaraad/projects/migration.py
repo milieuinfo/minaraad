@@ -70,14 +70,20 @@ def migrate_advisories_to_projects(context):
     target = portal['digibib']['projects']
     # We only want to migrate a few specially selected folders.
     hardcoded_id_list = [
-        '110519-evaluatie-van-de-werking-2010-van-de-regionale-landschappen'
-        '110719-erkenning-van-een-privaat-natuurreservaat-e-409-gondebeek-te-melle-merelbeke-en-oosterzele-oost-vlaanderen',
-        '110719-uitbreiding-van-een-erkend-natuurreservaat-e-003-blankaart-te-diksmuide-en-houtlhulst-west-vlaanderen',
-        '110823-uitbreiding-van-een-erkend-natuurreservaat-e-111-latemse-meersen-te-sint-martens-latem-oost-vlaanderen',
-        '110823-uitbreiding-van-het-erkend-natuurreservaat-e-216-hof-ten-berg-te-galmaarden-vlaams-brabant-en-geraardsbergen-oost-vlaanderen',
-        '110824-uitbreiding-erkend-natuurreservaat-e-161-duivenbos-te-herzele',
+        '110519-evaluatie-van-de-werking-2010-van-de-regionale-landschappen',
+        ('110719-erkenning-van-een-privaat-natuurreservaat-e-409-gondebeek-te-'
+          'melle-merelbeke-en-oosterzele-oost-vlaanderen'),
+        ('110719-uitbreiding-van-een-erkend-natuurreservaat-e-003-blankaart-'
+          'te-diksmuide-en-houtlhulst-west-vlaanderen'),
+        ('110823-uitbreiding-van-een-erkend-natuurreservaat-e-111-latemse-'
+          'meersen-te-sint-martens-latem-oost-vlaanderen'),
+        ('110823-uitbreiding-van-het-erkend-natuurreservaat-e-216-hof-ten-berg'
+          '-te-galmaarden-vlaams-brabant-en-geraardsbergen-oost-vlaanderen'),
+        ('110824-uitbreiding-erkend-natuurreservaat-e-161-duivenbos-te-'
+          'herzele'),
         '20110930-milieuhandhavingsprogramma-2011',
-        'uitbreiding-van-een-erkend-natuurreservaat-e-016-201ctikkebroeken201d-te-kasterlee-en-oud-turnhout-antwerpen',
+        ('uitbreiding-van-een-erkend-natuurreservaat-e-016-'
+          '201ctikkebroeken201d-te-kasterlee-en-oud-turnhout-antwerpen'),
         ]
     for advisory_id in hardcoded_id_list:
         try:
@@ -166,6 +172,7 @@ def fix_double_invitees(context):
                             user_id)
                 del invited[user_id]
 
+
 def update_attachment_counts(context):
     """ Run the '_update_agenda_item_attachment_counter' on each meeting
     to compute the number of attachments.
@@ -176,7 +183,9 @@ def update_attachment_counts(context):
         meeting = brain.getObject()
         meeting._update_agenda_item_attachment_counter()
 
-    logger.info("Ran '_update_agenda_item_attachment_counter' on %s meetings." % len(brains))
+    logger.info("Ran '_update_agenda_item_attachment_counter' on %s meetings."
+                % len(brains))
+
 
 def rename_attachments(context):
     """ Rename attachments in meetings that are called 'Bijlage XX'
@@ -190,8 +199,8 @@ def rename_attachments(context):
     for brain in brains:
         meeting = brain.getObject()
         attachments = catalog.searchResults(
-            portal_type = 'FileAttachment',
-            path = '/'.join(meeting.getPhysicalPath()))
+            portal_type='FileAttachment',
+            path='/'.join(meeting.getPhysicalPath()))
 
         for att in attachments:
             match = exp.match(att.Title)
@@ -205,6 +214,7 @@ def rename_attachments(context):
 
     logger.info("Updated %s attachment title in %s meetings" % (
         att_count, len(brains)))
+
 
 def update_project_advisory_type(context):
     """ The 'absention' and 'reject_points' keys have been removed

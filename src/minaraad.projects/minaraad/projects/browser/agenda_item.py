@@ -70,7 +70,7 @@ class BaseAgendaItemView(BrowserView):
 
         return new_form
 
-    def check_archetype_form(self, form, context, fields, prefix = None):
+    def check_archetype_form(self, form, context, fields, prefix=None):
         """ Uses the schema validators to validate a form.
         """
         for field in context.schema.fields():
@@ -80,11 +80,12 @@ class BaseAgendaItemView(BrowserView):
 
             if fieldname == 'file':
                 if form.get('file_delete', None) == 'nochange':
-                    # We get an error even when we don't want to change the file ...
+                    # We get an error even when we don't want to
+                    # change the file ...
                     continue
                 elif form['file_file'].filename != '':
-                    # We check there's a file name, in that case a file has been
-                    # uploaded.
+                    # We check there's a file name, in that case a
+                    # file has been uploaded.
                     continue
 
             field_errors = field.validate(
@@ -135,7 +136,7 @@ class BaseAgendaItemView(BrowserView):
 
         return self.context.contentValues()
 
-    def _update_attachment(self, agenda_item, attachment, att_id = None):
+    def _update_attachment(self, agenda_item, attachment, att_id=None):
         """ Update title/publication/file for an attachment.
         """
         if att_id is None:
@@ -166,8 +167,7 @@ class BaseAgendaItemView(BrowserView):
         else:
             new_id = self.context.generateUniqueId('FileAttachment')
 
-        self.context.invokeFactory('FileAttachment',
-                                   id = new_id)
+        self.context.invokeFactory('FileAttachment', id=new_id)
 
         attachment = getattr(agenda_item, new_id)
         attachment.unmarkCreationFlag()
@@ -230,11 +230,10 @@ class EditAgendaItemView(BaseAgendaItemView):
     def redirect_url(self):
         return aq_parent(aq_inner(self.context)).absolute_url()
 
-
     def check_form(self):
         self.check_archetype_form(self.request.form,
-                             self.context,
-                             self.agenda_fields)
+                                  self.context,
+                                  self.agenda_fields)
 
         self.context.post_validate(self.request, self.errors)
 
@@ -245,7 +244,7 @@ class EditAgendaItemView(BaseAgendaItemView):
             self.check_archetype_form(self.get_attachment_form(attachment.id),
                                       attachment,
                                       self.attachment_fields,
-                                      prefix = 'att_%s' % attachment.id)
+                                      prefix='att_%s' % attachment.id)
 
         return len(self.errors.keys()) == 0
 

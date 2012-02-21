@@ -9,21 +9,21 @@ from minaraad.projects.utils import min_to_days
 
 base_agendaitem_schema = atapi.BaseFolderSchema.copy() + atapi.Schema((
     atapi.FloatField(
-        name = 'duration',
-        required = True,
-        widget = atapi.DecimalWidget(
-            label = _(u'label_duration',
-                      default = u'Duration'),
-            description = _(
+        name='duration',
+        required=True,
+        widget=atapi.DecimalWidget(
+            label=_(u'label_duration',
+                    default=u'Duration'),
+            description=_(
                 u'desc_duration',
-                default = u'Fill in the time in number of minutes.')
+                default=u'Fill in the time in number of minutes.')
             )
         ),
 
     atapi.IntegerField(
-        name = 'order',
-        widget = atapi.IntegerWidget(
-            visible = False
+        name='order',
+        widget=atapi.IntegerWidget(
+            visible=False
             )
         ),
     ))
@@ -35,7 +35,6 @@ class BaseAgendaItem(atapi.BaseFolder):
 
     __implements__ = (atapi.BaseFolder.__implements__, )
     implements(IAgendaItem)
-
 
     def get_start_time(self):
         """ Returns the item start time.
@@ -67,7 +66,7 @@ class BaseAgendaItem(atapi.BaseFolder):
             return self.get_start_time() + min_to_days(self.getDuration())
         return self.get_start_time()
 
-    def setOrder(self, order, recursion = True):
+    def setOrder(self, order, recursion=True):
         """ Change the item's order.
         """
         old_order = self.getOrder()
@@ -94,7 +93,7 @@ class BaseAgendaItem(atapi.BaseFolder):
             # We update all items positions.
             for item in items:
                 item = item.getObject()
-                item.setOrder(item.getOrder() + modifier, recursion = False)
+                item.setOrder(item.getOrder() + modifier, recursion=False)
 
         self.order = order
         self.reindexObject(idxs=['getOrder'])
@@ -134,7 +133,8 @@ class BaseAgendaItem(atapi.BaseFolder):
             if self.is_attachment_pdf(att_id):
                 pdf_deleted = True
 
-        base_res = super(BaseAgendaItem, self).manage_delObjects(ids, *args, **kwargs)
+        base_res = super(BaseAgendaItem, self).manage_delObjects(ids, *args,
+                                                                 **kwargs)
 
         if pdf_deleted:
             aq_parent(self).generate_pdf()

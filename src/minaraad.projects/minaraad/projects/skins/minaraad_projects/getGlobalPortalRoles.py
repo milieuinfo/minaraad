@@ -10,4 +10,5 @@
 
 # CHANGED compared to standard Plone: exclude not only Owner, but also
 # ProjectMember.
-return [r for r in context.portal_membership.getPortalRoles() if r != 'Owner' and r != 'ProjectMember']
+return [r for r in context.portal_membership.getPortalRoles()
+        if r != 'Owner' and r != 'ProjectMember']

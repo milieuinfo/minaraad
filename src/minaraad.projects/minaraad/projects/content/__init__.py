@@ -1,1 +1,8 @@
-import project, meeting, digibib, agendaitem, organisation, projectContainer, meetingContainer, organisationContainer
+import project
+import meeting
+import digibib
+import agendaitem
+import organisation
+import projectContainer
+import meetingContainer
+import organisationContainer

@@ -41,7 +41,7 @@ if context.portal_type == 'Meeting' and type_name == 'AgendaItemProject':
               next_action='redirect_to:string:%s/edit_agenda_item' %
                   agenda_item.absolute_url())
     # If there's an issue with object creation, let the factory handle it
-    return state    
+    return state
 
 elif context.portal_factory.getFactoryTypes().has_key(type_name):
     new_url = 'portal_factory/' + type_name + '/' + id

@@ -19,8 +19,8 @@ agendaitem_schema = base_agendaitem_schema + atapi.Schema((
         allowable_content_types=('text/html', ),
         default_content_type='text/html',
         default_output_type='text/html',
-        widget = atapi.RichWidget(
-            label = _(u'label_description',
+        widget=atapi.RichWidget(
+            label=_(u'label_description',
                       default=u'Description')
             )
         ),
@@ -29,7 +29,7 @@ agendaitem_schema = base_agendaitem_schema + atapi.Schema((
         name='project',
         relationship='discussedProject',
         multiValued=0,
-        languageIndependent = 1,
+        languageIndependent=1,
         allowed_types=('Project', ),
         widget=ReferenceBrowserWidget(
             # Note that we have changed referencebrowser.js to use the
@@ -54,16 +54,17 @@ agendaitem_schema = base_agendaitem_schema + atapi.Schema((
         name='in_factory',
         default=False,
         widget=atapi.BooleanWidget(
-            visible={'edit':'invisible', 'view':'invisible'},
+            visible={'edit': 'invisible', 'view': 'invisible'},
             ),
         ),
     ))
 
 for schema_key in agendaitem_schema.keys():
     if not agendaitem_schema[schema_key].schemata == 'default':
-        agendaitem_schema[schema_key].widget.visible={'edit':'invisible',
-                                                      'view':'invisible'}
+        agendaitem_schema[schema_key].widget.visible = {'edit': 'invisible',
+                                                        'view': 'invisible'}
 agendaitem_schema['title'].required = False
+
 
 class AgendaItemProject(BaseAgendaItem):
     """ We do not simply call it AgendaItem but AgendaItemProject
@@ -81,8 +82,9 @@ class AgendaItemProject(BaseAgendaItem):
         if REQUEST.get('title', None) or REQUEST.get('project', None):
             return
 
-        errors['title'] = _(u'label_title_needed',
-                            default=u'You must specify a title if you do not select a project')
+        errors['title'] = _(
+            u'label_title_needed',
+            default=u'You must specify a title if you do not select a project')
 
     def get_previous_project(self):
         try:
@@ -91,7 +93,7 @@ class AgendaItemProject(BaseAgendaItem):
             return
 
         uid_cat = getToolByName(self, 'uid_catalog')
-        brains = uid_cat(UID = previous_uid)
+        brains = uid_cat(UID=previous_uid)
         if len(brains) == 1:
             return brains[0].getObject()
 
@@ -119,14 +121,16 @@ class AgendaItemProject(BaseAgendaItem):
         """ When attachments are deleted in the agenda item,
         we have to update numbering.
         """
-        base = super(AgendaItemProject, self).manage_delObjects(ids, *args, **kwargs)
+        base = super(AgendaItemProject, self).manage_delObjects(ids, *args,
+                                                                **kwargs)
         self._update_numbering()
         return base
 
     def manage_pasteObjects(self, *args, **kwargs):
         """ When attachment items are pasted, we update numbering.
         """
-        base = super(AgendaItemProject, self).manage_pasteObjects(*args, **kwargs)
+        base = super(AgendaItemProject, self).manage_pasteObjects(*args,
+                                                                  **kwargs)
         self._update_numbering()
         return base
 

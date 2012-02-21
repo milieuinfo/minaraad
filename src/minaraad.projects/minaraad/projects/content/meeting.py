@@ -30,12 +30,12 @@ logger = logging.getLogger(__name__)
 meeting_schema = base_meeting_schema.copy() + atapi.Schema((
     atapi.StringField(
         name='responsible_group',
-        required = True,
-        vocabulary = '_group_vocabulary',
-        widget = atapi.SelectionWidget(
+        required=True,
+        vocabulary='_group_vocabulary',
+        widget=atapi.SelectionWidget(
             format='select',
-            label = _(u'label_type',
-                      default=u'Type')
+            label=_(u'label_type',
+                    default=u'Type')
             )
         ),
 
@@ -44,9 +44,9 @@ meeting_schema = base_meeting_schema.copy() + atapi.Schema((
         allowable_content_types=('text/html', ),
         default_content_type='text/html',
         default_output_type='text/html',
-        widget = atapi.RichWidget(
-            label = _(u'label_description',
-                      default=u'Description')
+        widget=atapi.RichWidget(
+            label=_(u'label_description',
+                    default=u'Description')
             )
         ),
 
@@ -54,7 +54,7 @@ meeting_schema = base_meeting_schema.copy() + atapi.Schema((
         name='meetinglocation',
         relationship='meetingLocation',
         multiValued=0,
-        languageIndependent = 1,
+        languageIndependent=1,
         allowed_types=('Organisation', ),
         widget=ReferenceBrowserWidget(
             label=_('label_location',
@@ -70,49 +70,49 @@ meeting_schema = base_meeting_schema.copy() + atapi.Schema((
 
     atapi.StringField(
         name='roomNumber',
-        required = False,
-        widget = atapi.StringWidget(
-            label = _(u'label_room_number',
-                      default=u'Room number')
+        required=False,
+        widget=atapi.StringWidget(
+            label=_(u'label_room_number',
+                    default=u'Room number')
             )
         ),
 
     atapi.LinesField(
         name='invited_groups',
-        vocabulary = '_group_vocabulary',
-        widget = atapi.InAndOutWidget(
-            label = _(u'label_assigned_groups',
-                      default=u'Assigned groups')
+        vocabulary='_group_vocabulary',
+        widget=atapi.InAndOutWidget(
+            label=_(u'label_assigned_groups',
+                    default=u'Assigned groups')
             )
         ),
 
     atapi.LinesField(
         name='participants',
-        vocabulary = '_participants_vocabulary',
-        widget = ParticipantsWidget(
-            label = _(u'label_participants_attendance',
-                      default=u'Participants attendance')
+        vocabulary='_participants_vocabulary',
+        widget=ParticipantsWidget(
+            label=_(u'label_participants_attendance',
+                    default=u'Participants attendance')
             )
         ),
     ))
 
 for schema_key in meeting_schema.keys():
     if not meeting_schema[schema_key].schemata == 'default':
-        meeting_schema[schema_key].widget.visible={'edit':'invisible',
-                                                    'view':'invisible'}
+        meeting_schema[schema_key].widget.visible = {'edit': 'invisible',
+                                                     'view': 'invisible'}
+    meeting_schema[schema_key].write_permission = \
+        'minaraad.projects: manage non past meetings fields'
 
-    meeting_schema[schema_key].write_permission = 'minaraad.projects: manage non past meetings fields'
-
-meeting_schema['participants'].write_permission = 'minaraad.projects: manage past meetings fields'
-
-meeting_schema['title'].widget.visible = {'edit':'invisible',
-                                          'view':'invisible'}
+meeting_schema['participants'].write_permission = \
+    'minaraad.projects: manage past meetings fields'
+meeting_schema['title'].widget.visible = {'edit': 'invisible',
+                                          'view': 'invisible'}
 meeting_schema['title'].required = False
-
 meeting_schema.moveField('responsible_group', before='start_time')
 
+
 class Meeting(BaseMeeting):
-    """
+    """Meeting.
     """
     security = ClassSecurityInfo()
     __implements__ = (atapi.BaseFolder.__implements__, )
@@ -138,7 +138,6 @@ class Meeting(BaseMeeting):
             new_id = '%s-%s' % (formated_time,
                                 count)
             count += 1
-
 
         invalid_id = False
         check_id = getattr(self, 'check_id', None)
@@ -170,7 +169,7 @@ class Meeting(BaseMeeting):
         participants = self.get_invited_people()
         return atapi.DisplayList(
             sorted([(p['id'], p['fullname']) for p in participants.values()],
-                   key = lambda x: x[1]))
+                   key=lambda x: x[1]))
 
     @property
     def organisations_url(self):
@@ -216,8 +215,7 @@ class Meeting(BaseMeeting):
             'path': {'query': '/'.join(self.getPhysicalPath()), 'depth': 1},
             'portal_type': 'FileAttachment'})
 
-        return sorted(brains,
-            key = lambda x: x.Title)
+        return sorted(brains, key=lambda x: x.Title)
 
     def _get_annotations(self):
         """ Returns the Annotations linked to the meeting.
@@ -287,8 +285,8 @@ class Meeting(BaseMeeting):
             item = it[0].getObject()
             item.attachment_start = att_count
             item.attachment_count = len(catalog.searchResults(
-                portal_type = 'FileAttachment',
-                path = '/'.join(item.getPhysicalPath())))
+                portal_type='FileAttachment',
+                path='/'.join(item.getPhysicalPath())))
 
             att_count += item.attachment_count
 
