@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minaraad.projecrts 1.0\n"
-"POT-Creation-Date: 2011-12-07 12:56+0000\n"
+"POT-Creation-Date: 2012-02-21 16:53+0000\n"
 "PO-Revision-Date: 2011-11-25 14:09+0100\n"
 "Last-Translator: Maurits van Rees <m.van.rees@zestsoftware.nl>\n"
 "Language-Team: Zest Software <info@zestsoftware.nl>\n"
@@ -30,6 +30,10 @@ msgstr "Samenvatting aanwezigheid"
 #: ./browser/templates/statistics.pt:55
 msgid "Choose a statistic:"
 msgstr "Kies een statistiek:"
+
+#: ./content/meeting.py:103
+msgid "Company"
+msgstr ""
 
 #: ./profiles/default/actions.xml
 msgid "Create Advisory"
@@ -62,6 +66,10 @@ msgstr "Vergadering"
 #: ./profiles/default/types/MeetingContainer.xml
 msgid "Meeting container"
 msgstr "Vergaderingenmap"
+
+#: ./content/meeting.py:101
+msgid "Name"
+msgstr ""
 
 #: ./validators.py:72
 msgid "Number must be 3-digits"
@@ -133,6 +141,11 @@ msgstr "Digibib - Samenwerkingen"
 #: ./browser/templates/list_projects.pt:10
 msgid "heading_digibib_projects"
 msgstr "Digibib - Projecten"
+
+#. Default: "Enter the invitees who are not in the selected committees."
+#: ./content/meeting.py:108
+msgid "help_other_invitees"
+msgstr ""
 
 #. Default: "Abstention and/or reject points"
 #: ./content/project.py:289
@@ -217,7 +230,7 @@ msgstr ""
 "Met vriendelijke groeten."
 
 #. Default: "Dear ${fullname}, \n\nThe project ${project_name} has been proposed to the board. Here is the description of the project: \n\n${project_desc}\n\nMore information can be found here: \n\n${project_url}"
-#: ./events.py:241
+#: ./events.py:262
 msgid "label_boardmember_mail_content"
 msgstr ""
 "Geachte heer/mevrouw ${fullname},\n"
@@ -237,7 +250,7 @@ msgstr ""
 "De secretaris"
 
 #. Default: "Project ${project_name} has been proposed"
-#: ./events.py:235
+#: ./events.py:256
 msgid "label_boardmember_mail_title"
 msgstr "Het project ${project_name} is voorgesteld"
 
@@ -375,6 +388,11 @@ msgstr "Naam adviesraad"
 msgid "label_organisations"
 msgstr "Samenwerking"
 
+#. Default: "Other invitees"
+#: ./content/meeting.py:106
+msgid "label_other_invitees"
+msgstr ""
+
 #. Default: "Participants attendance"
 #: ./content/meeting.py:93
 msgid "label_participants_attendance"
@@ -451,7 +469,7 @@ msgid "label_secretary_email"
 msgstr "E-mail adres van de secretaris"
 
 #. Default: "The project ${project_name} has to be verified.\nThe project can be found here: ${project_url}"
-#: ./events.py:186
+#: ./events.py:207
 msgid "label_secretary_mail_content"
 msgstr ""
 "Het project ${project_name} dient gecontroleerd te worden.\n"
@@ -466,7 +484,7 @@ msgstr ""
 "Met vriendelijke groet"
 
 #. Default: "Project ${project_name} has been proposed"
-#: ./events.py:180
+#: ./events.py:201
 msgid "label_secretary_mail_title"
 msgstr "Het project ${project_name} wordt voorgesteld aan het dagelijks bestuur"
 
@@ -486,7 +504,7 @@ msgid "label_statistics"
 msgstr "Statistieken"
 
 #. Default: "You must specify a title if you do not select a project"
-#: ./content/agendaitem.py:81
+#: ./content/agendaitem.py:85
 msgid "label_title_needed"
 msgstr "U heeft geen project geselecteerd, u dient een titel op te geven."
 

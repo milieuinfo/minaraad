@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minaraad.projects 1.0\n"
-"POT-Creation-Date: 2011-12-07 12:56+0000\n"
+"POT-Creation-Date: 2012-02-21 16:53+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,6 +28,10 @@ msgstr ""
 
 #: ./browser/templates/statistics.pt:55
 msgid "Choose a statistic:"
+msgstr ""
+
+#: ./content/meeting.py:103
+msgid "Company"
 msgstr ""
 
 #: ./profiles/default/actions.xml
@@ -60,6 +64,10 @@ msgstr ""
 
 #: ./profiles/default/types/MeetingContainer.xml
 msgid "Meeting container"
+msgstr ""
+
+#: ./content/meeting.py:101
+msgid "Name"
 msgstr ""
 
 #: ./validators.py:72
@@ -131,6 +139,11 @@ msgstr ""
 #. Default: "Digibib - Projects"
 #: ./browser/templates/list_projects.pt:10
 msgid "heading_digibib_projects"
+msgstr ""
+
+#. Default: "Enter the invitees who are not in the selected committees."
+#: ./content/meeting.py:108
+msgid "help_other_invitees"
 msgstr ""
 
 #. Default: "Abstention and/or reject points"
@@ -210,12 +223,12 @@ msgid "label_boardmember_digestmail_content"
 msgstr ""
 
 #. Default: "Dear ${fullname}, \n\nThe project ${project_name} has been proposed to the board. Here is the description of the project: \n\n${project_desc}\n\nMore information can be found here: \n\n${project_url}"
-#: ./events.py:241
+#: ./events.py:262
 msgid "label_boardmember_mail_content"
 msgstr ""
 
 #. Default: "Project ${project_name} has been proposed"
-#: ./events.py:235
+#: ./events.py:256
 msgid "label_boardmember_mail_title"
 msgstr ""
 
@@ -353,6 +366,11 @@ msgstr ""
 msgid "label_organisations"
 msgstr ""
 
+#. Default: "Other invitees"
+#: ./content/meeting.py:106
+msgid "label_other_invitees"
+msgstr ""
+
 #. Default: "Participants attendance"
 #: ./content/meeting.py:93
 msgid "label_participants_attendance"
@@ -429,12 +447,12 @@ msgid "label_secretary_email"
 msgstr ""
 
 #. Default: "The project ${project_name} has to be verified.\nThe project can be found here: ${project_url}"
-#: ./events.py:186
+#: ./events.py:207
 msgid "label_secretary_mail_content"
 msgstr ""
 
 #. Default: "Project ${project_name} has been proposed"
-#: ./events.py:180
+#: ./events.py:201
 msgid "label_secretary_mail_title"
 msgstr ""
 
@@ -454,7 +472,7 @@ msgid "label_statistics"
 msgstr ""
 
 #. Default: "You must specify a title if you do not select a project"
-#: ./content/agendaitem.py:81
+#: ./content/agendaitem.py:85
 msgid "label_title_needed"
 msgstr ""
 
