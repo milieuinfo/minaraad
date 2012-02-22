@@ -1,4 +1,5 @@
-from fabric.api import env, run  # local, put, cd
+from __future__ import with_statement  # For Python2.5 support.
+from fabric.api import env, run, cd # local, put
 #from fabric.decorators import hosts
 
 
@@ -28,15 +29,24 @@ def update_ontwikkel():
 
     You should run this with 'fab ontwikkel update_ontwikkel'.
     """
-    run('cd ~/buildout && bin/supervisorctl shutdown')
-    run('cd ~/buildout && svn up')
-    run('cd ~/buildout && bin/supervisord')
+    with cd('~/buildout'):
+        run('bin/supervisorctl shutdown')
+        run('svn up')
+        run('bin/supervisord')
 
 
 def stop_plone():
     """Stop Plone.
     """
-    run('cd ~/buildout && bin/supervisorctl shutdown')
+    with cd('~/buildout'):
+        run('bin/supervisorctl shutdown')
+
+
+def start_plone():
+    """Start Plone.
+    """
+    with cd('~/buildout'):
+        run('bin/supervisord')
 
 
 def info():
