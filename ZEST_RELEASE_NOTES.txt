@@ -4,8 +4,8 @@ Release notes from Zest
 Manual fixes to do on the site.
 
 
-Upgrade to 4.9
---------------
+Upgrade to 4.9 (2012-02-22)
+---------------------------
 
 - In the portal_quickinstaller (or the Extra Producten control panel)
   install the DataGridField product.
