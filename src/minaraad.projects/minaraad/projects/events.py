@@ -76,11 +76,14 @@ def save_invited(meeting, event):
             invited[member_id]['company'] = member.getProperty('company', '')
             invited[member_id]['email'] = member.getProperty('email', '')
     for extra in meeting.getOtherInvitees():
-        extra_id = extra['name']
+        extra_id = extra['name'].strip()
+        if not extra_id:
+            # empty row
+            continue
         invited[extra_id] = PersistentDict()
         invited[extra_id]['id'] = extra_id
         invited[extra_id]['fullname'] = extra_id
-        invited[extra_id]['company'] = extra['company']
+        invited[extra_id]['company'] = extra['company'].strip()
         invited[extra_id]['email'] = ''
 
 
