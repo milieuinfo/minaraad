@@ -111,7 +111,7 @@ meeting_schema = base_meeting_schema.copy() + atapi.Schema((
                           u"committees.")),
             column_names=(_(u'Name'), _(u'Company')),
             ),
-        allow_empty_rows=False,
+        allow_reorder=False,
         required=False,
         validators=('isDataGridFilled', ),
         columns=('name', 'company', )
