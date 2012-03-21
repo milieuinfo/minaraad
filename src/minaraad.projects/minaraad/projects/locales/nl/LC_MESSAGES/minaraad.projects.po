@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minaraad.projecrts 1.0\n"
-"POT-Creation-Date: 2012-02-21 16:53+0000\n"
-"PO-Revision-Date: 2011-11-25 14:09+0100\n"
+"POT-Creation-Date: 2012-03-21 16:53+0000\n"
+"PO-Revision-Date: 2012-03-21 17:53+0100\n"
 "Last-Translator: Maurits van Rees <m.van.rees@zestsoftware.nl>\n"
 "Language-Team: Zest Software <info@zestsoftware.nl>\n"
 "MIME-Version: 1.0\n"
@@ -98,6 +98,10 @@ msgstr "Het ID van een project dient van het formaat YYYYMMDD te zijn"
 #: ./browser/templates/project.pt:166
 msgid "Public advisory"
 msgstr "Publiek advies"
+
+#: ./profiles/default/actions.xml
+msgid "Regenerate PDF"
+msgstr "PDF regeneren"
 
 #: ./browser/templates/statistics.pt:26
 msgid "Select a period:"
@@ -230,7 +234,7 @@ msgstr ""
 "Met vriendelijke groeten."
 
 #. Default: "Dear ${fullname}, \n\nThe project ${project_name} has been proposed to the board. Here is the description of the project: \n\n${project_desc}\n\nMore information can be found here: \n\n${project_url}"
-#: ./events.py:262
+#: ./events.py:265
 msgid "label_boardmember_mail_content"
 msgstr ""
 "Geachte heer/mevrouw ${fullname},\n"
@@ -250,7 +254,7 @@ msgstr ""
 "De secretaris"
 
 #. Default: "Project ${project_name} has been proposed"
-#: ./events.py:256
+#: ./events.py:259
 msgid "label_boardmember_mail_title"
 msgstr "Het project ${project_name} is voorgesteld"
 
@@ -469,7 +473,7 @@ msgid "label_secretary_email"
 msgstr "E-mail adres van de secretaris"
 
 #. Default: "The project ${project_name} has to be verified.\nThe project can be found here: ${project_url}"
-#: ./events.py:207
+#: ./events.py:210
 msgid "label_secretary_mail_content"
 msgstr ""
 "Het project ${project_name} dient gecontroleerd te worden.\n"
@@ -484,7 +488,7 @@ msgstr ""
 "Met vriendelijke groet"
 
 #. Default: "Project ${project_name} has been proposed"
-#: ./events.py:201
+#: ./events.py:204
 msgid "label_secretary_mail_title"
 msgstr "Het project ${project_name} wordt voorgesteld aan het dagelijks bestuur"
 

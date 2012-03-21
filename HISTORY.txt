@@ -4,7 +4,10 @@ History of this buildout
 4.10 (unreleased)
 -----------------
 
-- Nothing changed yet.
+- Added action on meeting to manually regenerate the full
+  PDF. [vincent] 
+
+- Updated listeners for the 'conacatenate_pdf' event. [vincent]
 
 
 4.9 (2012-02-22)

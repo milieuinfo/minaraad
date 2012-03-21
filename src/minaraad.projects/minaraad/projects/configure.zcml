@@ -71,6 +71,18 @@
 
   <subscriber
       for=".interfaces.IAttachment
+           Products.Archetypes.interfaces.IObjectInitializedEvent"
+      handler=".events.concatenate_pdf"
+      />
+
+  <subscriber
+      for=".interfaces.IAttachment
+           Products.Archetypes.interfaces.IObjectEditedEvent"
+      handler=".events.concatenate_pdf"
+      />
+
+  <subscriber
+      for=".interfaces.IAttachment
            zope.lifecycleevent.interfaces.IObjectModifiedEvent"
       handler=".events.concatenate_pdf"
       />

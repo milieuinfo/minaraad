@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minaraad.projects 1.0\n"
-"POT-Creation-Date: 2012-02-21 16:53+0000\n"
+"POT-Creation-Date: 2012-03-21 16:53+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -96,6 +96,10 @@ msgstr ""
 
 #: ./browser/templates/project.pt:166
 msgid "Public advisory"
+msgstr ""
+
+#: ./profiles/default/actions.xml
+msgid "Regenerate PDF"
 msgstr ""
 
 #: ./browser/templates/statistics.pt:26
@@ -223,12 +227,12 @@ msgid "label_boardmember_digestmail_content"
 msgstr ""
 
 #. Default: "Dear ${fullname}, \n\nThe project ${project_name} has been proposed to the board. Here is the description of the project: \n\n${project_desc}\n\nMore information can be found here: \n\n${project_url}"
-#: ./events.py:262
+#: ./events.py:265
 msgid "label_boardmember_mail_content"
 msgstr ""
 
 #. Default: "Project ${project_name} has been proposed"
-#: ./events.py:256
+#: ./events.py:259
 msgid "label_boardmember_mail_title"
 msgstr ""
 
@@ -447,12 +451,12 @@ msgid "label_secretary_email"
 msgstr ""
 
 #. Default: "The project ${project_name} has to be verified.\nThe project can be found here: ${project_url}"
-#: ./events.py:207
+#: ./events.py:210
 msgid "label_secretary_mail_content"
 msgstr ""
 
 #. Default: "Project ${project_name} has been proposed"
-#: ./events.py:201
+#: ./events.py:204
 msgid "label_secretary_mail_title"
 msgstr ""
 

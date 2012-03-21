@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minaraad.projects plone domain 1.0\n"
-"POT-Creation-Date: 2012-02-21 17:05+0000\n"
+"POT-Creation-Date: 2012-03-21 16:53+0000\n"
 "PO-Revision-Date: 2011-10-04 10:00+0200\n"
 "Last-Translator: Maurits van Rees <m.van.rees@zestsoftware.nl>\n"
 "Language-Team: Zest Software <info@zestsoftware.nl>\n"
