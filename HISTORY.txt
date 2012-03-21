@@ -1,7 +1,7 @@
 History of this buildout
 ========================
 
-4.10 (unreleased)
+4.10 (2012-03-21)
 -----------------
 
 - Added action on meeting to manually regenerate the full
