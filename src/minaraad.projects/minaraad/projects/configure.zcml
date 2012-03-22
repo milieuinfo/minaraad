@@ -247,4 +247,12 @@
       handler="minaraad.projects.migration.apply_workflow_step"
       profile="minaraad.projects:default" />
 
+  <genericsetup:upgradeStep
+      title="Apply actions step"
+      description=""
+      source="1018"
+      destination="1019"
+      handler="minaraad.projects.migration.update_actions"
+      profile="minaraad.projects:default" />
+
 </configure>

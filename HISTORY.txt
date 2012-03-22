@@ -4,6 +4,9 @@ History of this buildout
 4.11 (unreleased)
 -----------------
 
+- Added upgrade step to get the new action.
+  [maurits]
+
 - Fixed typo in Dutch translation.
   [maurits]
 
