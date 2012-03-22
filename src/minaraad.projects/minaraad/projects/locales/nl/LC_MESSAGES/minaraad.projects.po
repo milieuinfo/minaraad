@@ -101,7 +101,7 @@ msgstr "Publiek advies"
 
 #: ./profiles/default/actions.xml
 msgid "Regenerate PDF"
-msgstr "PDF regeneren"
+msgstr "PDF regenereren"
 
 #: ./browser/templates/statistics.pt:26
 msgid "Select a period:"

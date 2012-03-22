@@ -4,7 +4,8 @@ History of this buildout
 4.11 (unreleased)
 -----------------
 
-- Nothing changed yet.
+- Fixed typo in Dutch translation.
+  [maurits]
 
 
 4.10 (2012-03-21)
