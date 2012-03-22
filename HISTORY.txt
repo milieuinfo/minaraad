@@ -1,7 +1,7 @@
 History of this buildout
 ========================
 
-4.11 (unreleased)
+4.11 (2012-03-22)
 -----------------
 
 - Added upgrade step to get the new action.
