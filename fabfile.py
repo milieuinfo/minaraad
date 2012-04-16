@@ -32,6 +32,7 @@ def update_ontwikkel():
     with cd('~/buildout'):
         run('bin/supervisorctl shutdown')
         run('svn up')
+        run('bin/buildout')
         run('bin/supervisord')
 
 
