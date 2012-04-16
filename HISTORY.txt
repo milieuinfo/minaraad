@@ -1,8 +1,8 @@
 History of this buildout
 ========================
 
-4.12 (unreleased)
------------------
+4.12. (2012-04-16)
+------------------
 
 - Get rid of ugly underscore after the mail document action.
   [maurits]
