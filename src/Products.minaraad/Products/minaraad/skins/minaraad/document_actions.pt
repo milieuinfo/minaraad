@@ -23,8 +23,7 @@
                      tal:attributes="src    string:$portal_url/$icon;
                                      id     string:icon-${daction/id};
                                      title  title;
-                                     alt    title;" />
-            </a>
+                                     alt    title;" /></a>
         </li>
     </tal:actions>
 
