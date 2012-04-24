@@ -113,7 +113,7 @@
          Prerequisite: a variable named annualreport.
          Note: we hardcode the mimetype to pdf to make sure we don't have to
          wake up the object as happens in the previous macro.
--->
+    -->
     <span metal:define-macro="annualreport_view"
       tal:omit-tag="">
       <tal:block tal:define="size annualreport/getObjSize;

@@ -4,7 +4,8 @@ History of this buildout
 4.13 (unreleased)
 -----------------
 
-- Nothing changed yet.
+- Fixed order of items displaying in 'jaarverslag' view.
+  [vincent]
 
 
 4.12 (2012-04-16)
