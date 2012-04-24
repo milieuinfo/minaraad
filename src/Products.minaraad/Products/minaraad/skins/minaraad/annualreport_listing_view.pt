@@ -6,13 +6,12 @@
   <body>
     <metal:block metal:fill-slot="main"
                  tal:define="current_path python:'/'.join(context.getPhysicalPath());
-                             report_brains python:dict([(brain.id, brain) for brain in context.portal_catalog.searchResults(portal_type='AnnualReport', path=current_path,)]);
-                             brain_ids context/contentIds;
-                             annualreports python: [report_brains.get(b_id) for b_id in brain_ids if b_id in report_brains]">
+                             annualreports python: context.portal_catalog.searchResults(portal_type='AnnualReport', path=current_path, sort_on = 'getObjPositionInParent');">
       <metal:block metal:define-macro="folderlisting" />
 
       <h1 tal:content="context/Title"
           class="documentFirstHeading">Title</h1>
+
       <div class="documentDescription"
            tal:condition="context/Description"
            tal:content="context/Description" />
