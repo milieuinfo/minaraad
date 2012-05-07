@@ -14,15 +14,6 @@
             tal:define="projects view/list_projects">
          <div class="title">
            Lopende Projecten
-           <a href="projects"
-              title="Archive"
-              class="right"
-              i18n:attributes="title">
-             <img src="folder_icon.gif"
-                  tal:attributes="src string:${portal_url}/folder_icon.gif"
-                  alt="Archive"
-                  i18n:attributes="alt" />
-           </a>
            <a href="projects/createObject?type_name=Project"
               title="Add a new project"
               class="right"
@@ -32,6 +23,15 @@
                   tal:attributes="src string:${portal_url}/add_icon.gif"
                   alt="Add a new project"
                   i18n:attributes="alt label_add_project" />
+           </a>
+           <a href="projects"
+              title="Archive"
+              class="right"
+              i18n:attributes="title">
+             <img src="folder_icon.gif"
+                  tal:attributes="src string:${portal_url}/folder_icon.gif"
+                  alt="Archive"
+                  i18n:attributes="alt" />
            </a>
          </div>
          <div class="body">
@@ -57,15 +57,6 @@
             tal:define="meetings view/list_meetings">
          <div class="title">
            Geplande vergaderingen
-           <a href="meetings"
-              title="Archive"
-              class="right"
-              i18n:attributes="title">
-             <img src="folder_icon.gif"
-                  tal:attributes="src string:${portal_url}/folder_icon.gif"
-                  alt="Archive"
-                  i18n:attributes="alt" />
-           </a>
            <a href="meetings/createObject?type_name=Meeting"
               title="Add a new meeting"
               class="right"
@@ -75,6 +66,15 @@
                   tal:attributes="src string:${portal_url}/add_icon.gif"
                   alt="Add a new meeting"
                   i18n:attributes="alt label_add_meeting" />
+           </a>
+           <a href="meetings"
+              title="Archive"
+              class="right"
+              i18n:attributes="title">
+             <img src="folder_icon.gif"
+                  tal:attributes="src string:${portal_url}/folder_icon.gif"
+                  alt="Archive"
+                  i18n:attributes="alt" />
            </a>
          </div>
          <div class="body">

@@ -4,6 +4,9 @@ History of this buildout
 4.14 (unreleased)
 -----------------
 
+- Switch 'folder' and 'plus' icons around in the digibib overview.
+  [maurits]
+
 - Changed label of folder icon in Digibib overview to 'Archive'.
   [maurits]
 
