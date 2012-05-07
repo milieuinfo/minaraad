@@ -33,6 +33,9 @@
                   alt="Archive"
                   i18n:attributes="alt" />
            </a>
+           <a href="projects"
+              class="right widgetlink"
+              i18n:translate="">Archive</a>
          </div>
          <div class="body">
            <ul tal:condition="projects">
@@ -76,6 +79,9 @@
                   alt="Archive"
                   i18n:attributes="alt" />
            </a>
+           <a href="meetings"
+              class="right widgetlink"
+              i18n:translate="">Archive</a>
          </div>
          <div class="body">
            <ul class="digibibMeetingList"

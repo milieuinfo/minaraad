@@ -4,6 +4,9 @@ History of this buildout
 4.14 (unreleased)
 -----------------
 
+- Add a link with the text 'Archive' to the digibib overview.
+  [maurits]
+
 - Switch 'folder' and 'plus' icons around in the digibib overview.
   [maurits]
 
