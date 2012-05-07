@@ -1,7 +1,7 @@
 History of this buildout
 ========================
 
-4.14 (unreleased)
+4.14 (2012-05-07)
 -----------------
 
 - Add a link with the text 'Archive' to the digibib overview.
