@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2012-03-21 16:53+0000\n"
+"POT-Creation-Date: 2012-05-07 08:50+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,6 +23,10 @@ msgstr ""
 
 #: ./profiles/default/types/AgendaItemProject.xml
 msgid "AgendaItem"
+msgstr ""
+
+#: ./browser/templates/digibib.pt:17
+msgid "Archive"
 msgstr ""
 
 #: ./browser/export.py:36
@@ -491,16 +495,6 @@ msgstr ""
 #. Default: "Unanimous"
 #: ./content/project.py:286
 msgid "label_unanimous"
-msgstr ""
-
-#. Default: "View all meetings"
-#: ./browser/templates/digibib.pt:60
-msgid "label_view_all_meetings"
-msgstr ""
-
-#. Default: "View all projects"
-#: ./browser/templates/digibib.pt:17
-msgid "label_view_all_projects"
 msgstr ""
 
 #. Default: "Quarter ${number}"

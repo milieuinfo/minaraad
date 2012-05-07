@@ -4,7 +4,8 @@ History of this buildout
 4.14 (unreleased)
 -----------------
 
-- Nothing changed yet.
+- Changed label of folder icon in Digibib overview to 'Archive'.
+  [maurits]
 
 
 4.13 (2012-04-24)

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minaraad.projecrts 1.0\n"
-"POT-Creation-Date: 2012-03-21 16:53+0000\n"
-"PO-Revision-Date: 2012-03-21 17:53+0100\n"
+"POT-Creation-Date: 2012-05-07 08:50+0000\n"
+"PO-Revision-Date: 2012-05-07 10:51+0200\n"
 "Last-Translator: Maurits van Rees <m.van.rees@zestsoftware.nl>\n"
 "Language-Team: Zest Software <info@zestsoftware.nl>\n"
 "MIME-Version: 1.0\n"
@@ -22,6 +22,10 @@ msgstr "${tname} is aangemaakt."
 #: ./profiles/default/types/AgendaItemProject.xml
 msgid "AgendaItem"
 msgstr "Agendapunt"
+
+#: ./browser/templates/digibib.pt:17
+msgid "Archive"
+msgstr "Archief"
 
 #: ./browser/export.py:36
 msgid "Attendance Summary"
@@ -521,16 +525,6 @@ msgstr "Type"
 #: ./content/project.py:286
 msgid "label_unanimous"
 msgstr "Unaniem"
-
-#. Default: "View all meetings"
-#: ./browser/templates/digibib.pt:60
-msgid "label_view_all_meetings"
-msgstr "Alle vergaderingen bekijken"
-
-#. Default: "View all projects"
-#: ./browser/templates/digibib.pt:17
-msgid "label_view_all_projects"
-msgstr "Alle projecten bekijken"
 
 #. Default: "Quarter ${number}"
 #: ./browser/export.py:151
