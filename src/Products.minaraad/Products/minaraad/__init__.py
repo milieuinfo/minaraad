@@ -27,6 +27,9 @@
 __author__ = """Rocky Burt <r.burt@zestsoftware.nl>"""
 __docformat__ = 'plaintext'
 
+import patches
+patches.patch_all()
+
 from signal import SIGUSR2
 
 from Products.Archetypes import atapi

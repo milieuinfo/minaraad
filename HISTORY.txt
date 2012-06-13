@@ -4,7 +4,7 @@ History of this buildout
 4.15 (unreleased)
 -----------------
 
-- Nothing changed yet.
+- Added patch so recaptcha uses proxies. [vincent]
 
 
 4.14 (2012-05-07)
