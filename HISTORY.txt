@@ -4,7 +4,12 @@ History of this buildout
 4.16 (unreleased)
 -----------------
 
-- Nothing changed yet.
+- Read HTTP_PROXY from the environment when running the buildout and
+  add it to the generated zope.conf.  This avoids the problem the this
+  environment variable does not exist when zope is started at reboot
+  time by cron, which would cause errors checking the captcha on the
+  registration form.
+  [maurits]
 
 
 4.15 (2012-06-13)
