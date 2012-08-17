@@ -1,7 +1,7 @@
 History of this buildout
 ========================
 
-4.16 (unreleased)
+4.16 (2012-08-17)
 -----------------
 
 - Read HTTP_PROXY from the environment when running the buildout and
