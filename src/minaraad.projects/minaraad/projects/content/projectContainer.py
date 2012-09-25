@@ -12,7 +12,6 @@ class ProjectContainer(atapi.BaseFolder):
     """
     """
     security = ClassSecurityInfo()
-    __implements__ = (atapi.BaseFolder.__implements__, )
     implements(IProjectContainer)
 
     _at_rename_after_creation = True

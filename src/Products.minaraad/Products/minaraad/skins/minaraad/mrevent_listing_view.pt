@@ -6,6 +6,7 @@
     <body>
     <metal:block metal:fill-slot="main"
                    tal:define="current_path python:'/'.join(context.getPhysicalPath());
+                               toLocalizedTime nocall:context/@@plone/toLocalizedTime;
                               hearings python:context.portal_catalog.searchResults(portal_type='MREvent',
                                                                                     path=current_path,
                                                                                     sort_on='getStart_time',

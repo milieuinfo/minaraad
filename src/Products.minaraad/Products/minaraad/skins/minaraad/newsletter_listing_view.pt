@@ -7,8 +7,8 @@
    <metal:block metal:fill-slot="main"
                tal:define="current_path python:'/'.join(context.getPhysicalPath());
                            newsletters python:context.portal_catalog.searchResults(
-                               portal_type='NewsLetter', path=current_path,
-                               sort_on='getDate', sort_order='reverse');">
+                           portal_type='NewsLetter', path=current_path,
+                           sort_on='getDate', sort_order='reverse');">
       <metal:block metal:define-macro="folderlisting" />
 
       <h1 tal:content="context/Title"
@@ -19,7 +19,8 @@
           tal:content="context/Description" />
 
       <table id="newsletter-list">
-         <tbody valign="top">
+         <tbody valign="top"
+                tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;">
             <tal:newsitems repeat="item_object newsletters">
             <tr tal:define="obj python:item_object.getObject();
                            daterequired python:obj.getDate() != None;

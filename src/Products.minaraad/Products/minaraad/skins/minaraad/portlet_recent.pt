@@ -7,8 +7,10 @@
          tal:omit-tag="">
 
       <!-- UNUSED: last_login_time python:member.getProperty('last_login_time', DateTime()); -->
-      <tal:recentlist tal:define="results python:request.get('items',
-                                  context.portal_catalog.searchResults(portal_type=['Hearing', 'Advisory',
+      <tal:recentlist tal:define="portal context/@@plone_portal_state/portal;
+                                  toLocalizedTime nocall:context/@@plone/toLocalizedTime;
+                                  results python:request.get('items',
+                                  portal.portal_catalog.searchResults(portal_type=['Hearing', 'Advisory',
                                   'Study', 'AnnualReport',
                                   'Pressrelease', 'NewsLetter',
                                   'Event', 'MREvent', 'Document'],

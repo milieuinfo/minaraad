@@ -5,8 +5,6 @@
     xmlns:cmf="http://namespaces.zope.org/cmf"
     i18n_domain="minaraad.projects">
 
-  <include package="collective.autopermission" />
-
   <!-- Permissions to add our custom content types. -->
   <permission
     id="minaraad.projects.addProject"

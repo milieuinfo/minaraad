@@ -1,11 +1,32 @@
 History of this buildout
 ========================
 
-4.17 (unreleased)
------------------
+5.0 - Plone 4 Branch (unreleased)
+---------------------------------
 
-- Use fresh collective.emaillogin 1.3.  No real changes, it has simply
-  moved to github.
+- Have a canonical list of skin layers for MinaraadTheme in
+  Producst/minaraad/profiles/plone41/skins.xml.
+  [maurits]
+
+- Added a plone41 migration profile that is applied during an upgrade
+  step of Products.minaraad.  Here we can put import steps that should
+  be run once for the migration.  Currently just the skins.xml.  We
+  add the new mina_styles layer only to the Minaraad Theme there.
+  [maurits]
+
+- Moved all css from the minaraad to the new mina_styles skin layer.
+  [maurits]
+
+- Fixed AttributeError when deleting a normal file from a meeting.
+  Normal files do not have a contains_pdf method.
+  [maurits]
+
+- Configure blob storage.  Blobs are stored in postgres.  The zope
+  instance caches them in var/blobcache.
+  [maurits]
+
+- Updated buildout config to Plone 4.1.2 and updated the code so the
+  instance starts.  The TTW migration does not work yet.
   [maurits]
 
 

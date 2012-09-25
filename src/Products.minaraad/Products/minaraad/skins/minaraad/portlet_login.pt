@@ -1,101 +1,108 @@
 <html xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:metal="http://xml.zope.org/namespaces/metal"
       i18n:domain="plone">
-<body tal:define="Iterator python:modules['Products.CMFPlone'].IndexIterator;
-                  tabindex python:Iterator()">
+  <body>
+    <div metal:define-macro="portlet"
+         tal:define="pageloc python: request.URL.split('/')[-1];
+                     portal context/@@plone_portal_state/portal;
+                     okToShowHere python: not pageloc in ('login_form', 'join_form');
+                     auth nocall:here/acl_users/credentials_cookie_auth|nothing;
+                     isAnon context/@@plone_portal_state/anonymous;"
+         tal:condition="python: isAnon and okToShowHere"
+         class="personalbar_bordertop">
 
-
-<div metal:define-macro="portlet"
-     tal:define="pageloc python: request.URL.split('/')[-1];
-                 okToShowHere python: not pageloc in ('login_form', 'join_form');
-                 auth nocall:here/acl_users/credentials_cookie_auth|nothing"
-     tal:condition="python: isAnon and okToShowHere"
-     class="personalbar_bordertop">
-
-    <div class="personalbar"
-        id="portlet-login"
-        tal:define="ac_name auth/name_cookie|string:__ac_name;
-                    ac_password auth/pw_cookie|string:__ac_password;
-                    ac_persist auth/persist_cookie|nothing;
-                    join python:[a['url'] for a in actions['user'] if a['id']=='join'];
-                    canRegister python:test(join and hasattr(here,'portal_registration') and checkPermission('Add portal member', here), 1, 0);
-                    canRequestPassword python:checkPermission('Mail forgotten password', here)"
-        tal:condition="python: auth">
+      <div class="personalbar"
+           id="portlet-login"
+           tal:define="ac_name auth/name_cookie|string:__ac_name;
+                       ac_password auth/pw_cookie|string:__ac_password;
+                       ac_persist auth/persist_cookie|nothing;
+                       join portal/portal_actions/user/join|nothing;
+                       canRegister python:test(join and hasattr(here,'portal_registration') and checkPermission('Add portal member', here), 1, 0);
+                       canRequestPassword python:checkPermission('Mail forgotten password', here)"
+           tal:condition="python: auth">
 
         <form action="login_form"
-            name="loginform"
-            method="post"
-            tal:attributes="action string:${portal_url}/login_form">
+              name="loginform"
+              method="post"
+              tal:attributes="action string:${portal_url}/login_form">
 
-            <input type="hidden" name="form.submitted" value="1" />
-            <input type="hidden" name="came_from" value=""
-                tal:attributes="value context/@@plone/getCurrentUrl" />
-            <input type="hidden" name="js_enabled" id="js_enabled" value="0" />
-            <input type="hidden" name="cookies_enabled" id="cookies_enabled" value="" />
-            <input type="hidden" name="login_name" id="login_name" value="" />
-            <input type="hidden" name="pwd_empty" id="pwd_empty" value="0" />
+          <input type="hidden" name="form.submitted" value="1" />
+          <input type="hidden" name="came_from" value=""
+                 tal:attributes="value context/@@plone/getCurrentUrl" />
+          <input type="hidden" name="js_enabled" id="js_enabled" value="0" />
+          <input type="hidden" name="cookies_enabled" id="cookies_enabled" value="" />
+          <input type="hidden" name="login_name" id="login_name" value="" />
+          <input type="hidden" name="pwd_empty" id="pwd_empty" value="0" />
 
-            <div class="field">
-              <label i18n:translate="label_email"
-                     tal:attributes="for ac_name">E-mail</label>
-                <br />
-                <input type="text"
-                       class="input_login"
-                       size="15"
-                       alt="Login Name"
-                       onclick="showCookieMessage('cookies_message')"
-                       tal:attributes="name ac_name; id ac_name;
-                                    value python:request.get(ac_name, '');
-                                    tabindex tabindex/next"
-                    i18n:attributes="alt label_login_name;"/>
-            </div>
-
-
-            <label for=""
-                tal:attributes="for ac_password"
-                i18n:translate="label_password">Password</label>
+          <div class="field">
+            <label i18n:translate="label_email"
+                   tal:attributes="for ac_name">E-mail</label>
             <br />
-            <input type="password"
-                size="15"
-                class="input_login"
-                alt="Password"
-                onclick="showCookieMessage('cookies_message')"
-                tal:attributes="name ac_password; id ac_password;
-                                tabindex tabindex/next;"
-                i18n:attributes="alt label_password;"/>
+            <input type="text"
+                   class="input_login"
+                   size="15"
+                   alt="Login Name"
+                   onclick="showCookieMessage('cookies_message')"
+                   tal:attributes="name ac_name; id ac_name;
+                                   value python:request.get(ac_name, '')"
+                   i18n:attributes="alt label_login_name;"/>
+          </div>
 
-             <div id="cookies_message"
-                 i18n:translate="enable_cookies_message"
-                 class="portalMessage"
-                 style="display:none">
-                Cookies are not enabled. You must <span i18n:name="enable_cookies">
-                <a href="enabling_cookies" i18n:translate="label_enable_cookies">enable cookies</a></span> before you can log in.
-            </div>
-            <br />
-            <input class="login_button"
-                type="submit"
-                name="submit"
-                value="Log in"
-                alt="Log in"
-                tal:attributes="tabindex tabindex/next;
-                            onclick string:javascript:return setLoginVars('$ac_name','login_name','$ac_password','pwd_empty','js_enabled','cookies_enabled');"
-                i18n:attributes="value label_log_in; alt label_log_in;"/>
+
+          <label for=""
+                 tal:attributes="for ac_password"
+                 i18n:translate="label_password">Password</label>
+          <br />
+          <input type="password"
+                 size="15"
+                 class="input_login"
+                 alt="Password"
+                 onclick="showCookieMessage('cookies_message')"
+                 tal:attributes="name ac_password; id ac_password"
+                 i18n:attributes="alt label_password;"/>
+
+          <div id="cookies_message"
+               i18n:translate="enable_cookies_message"
+               class="portalMessage"
+               style="display:none">
+            Cookies are not enabled. You must <span i18n:name="enable_cookies">
+            <a href="enabling_cookies" i18n:translate="label_enable_cookies">enable cookies</a></span> before you can log in.
+          </div>
+          <br />
+          <input class="login_button"
+                 type="submit"
+                 name="submit"
+                 value="Log in"
+                 alt="Log in"
+                 tal:attributes="onclick string:javascript:return setLoginVars('$ac_name','login_name','$ac_password','pwd_empty','js_enabled','cookies_enabled');"
+                 i18n:attributes="value label_log_in; alt label_log_in;"/>
         </form>
-        <div class="personalbar-links"><a tal:attributes="href python:join.pop()"
-            i18n:domain="minaraad"
-            i18n:translate="label_join_in"
-            tal:condition="canRegister"
-            class="link-personalbar">Join in</a></div>
+        <div class="personalbar-links">
+          <a tal:attributes="href join/url_expr"
+             i18n:domain="minaraad"
+             i18n:translate="label_join_in"
+             tal:condition="canRegister"
+             class="link-personalbar">
+            Join in
+          </a>
+        </div>
 
-        <div class="personalbar-links"><a tal:attributes="href string:${portal_url}/mail_password_form"
-           tal:condition="canRequestPassword"
-           i18n:translate="box_forgot_password_option"
-           class="link-personalbar">Forgot your password?</a></div>
+        <div class="personalbar-links">
+          <a tal:attributes="href string:${portal_url}/mail_password_form"
+             tal:condition="canRequestPassword"
+             i18n:translate="box_forgot_password_option"
+             class="link-personalbar">
+            Forgot your password?
+          </a>
+        </div>
 
-        <div class="personalbar-links"><a class="link-personalbar"
-           tal:attributes="href string:${context/absolute_url}/uitschrijven">Uitschrijven</a></div>
-
+        <div class="personalbar-links">
+          <a class="link-personalbar"
+             tal:attributes="href string:${context/absolute_url}/uitschrijven">
+            Uitschrijven
+          </a>
+        </div>
+      </div>
     </div>
-</div>
-</body>
+  </body>
 </html>

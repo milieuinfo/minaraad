@@ -103,7 +103,6 @@ class ContactPerson(atapi.BaseContent):
     """
     """
     security = ClassSecurityInfo()
-    __implements__ = (getattr(atapi.BaseContent, '__implements__', ()),)
 
     # This name appears in the 'add' box
     archetype_name = 'ContactPerson'

@@ -17,14 +17,12 @@
 
         <div class="LSBox">
         <input id="searchGadget"
-               tabindex=""
                name="SearchableText"
                type="text"
                title="Search Site"
                accesskey="4"
                i18n:attributes="title title_search_site;"
-               tal:attributes="value request/SearchableText|nothing;
-                               tabindex tabindex/next"
+               tal:attributes="value request/SearchableText|nothing;"
                class="visibility:visible" />
 
         <input type="hidden" name="sort_on" value="Date"/>
@@ -32,9 +30,7 @@
 
         <input class="searchButton"
                type="submit"
-               tabindex=""
                value="Search"
-               tal:attributes="tabindex tabindex/next"
                i18n:attributes="value label_search;" />
 
         <div class="LSResult" id="LSResult">

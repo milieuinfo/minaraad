@@ -1,0 +1,78 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:gs="http://namespaces.zope.org/genericsetup"
+    i18n_domain="minaraad">
+
+  <gs:registerProfile
+      name="default"
+      title="Minaraad"
+      directory="profiles/default"
+      description="Profile for the minaraad site."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      />
+
+  <gs:registerProfile
+      name="plone41"
+      title="Upgrade Minaraad to Plone 4.1"
+      directory="profiles/plone41"
+      description="Upgrade profile for Plone 4.1 for the Minaraad site."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      for="Products.CMFPlone.interfaces.IMigratingPloneSiteRoot"
+      />
+
+  <gs:upgradeStep
+      title="Migrate themes"
+      description=""
+      source="1001"
+      destination="1002"
+      handler="Products.minaraad.migration.migrate_themes"
+      sortkey="1"
+      profile="Products.minaraad:default" />
+
+  <gs:upgradeStep
+      title="Save themes"
+      description=""
+      source="1002"
+      destination="1003"
+      handler="Products.minaraad.migration.save_object_themes"
+      sortkey="1"
+      profile="Products.minaraad:default" />
+
+  <gs:upgradeStep
+      title="Migrate contacts"
+      description=""
+      source="1003"
+      destination="1004"
+      handler="Products.minaraad.migration.migrate_contacts"
+      sortkey="1"
+      profile="Products.minaraad:default" />
+
+  <gs:upgradeStep
+      title="Update control panel"
+      description=""
+      source="1004"
+      destination="1005"
+      handler="Products.minaraad.migration.update_controlpanel"
+      sortkey="1"
+      profile="Products.minaraad:default" />
+
+  <gs:upgradeStep
+      title="Update portal_types"
+      description=""
+      source="1005"
+      destination="1006"
+      handler="Products.minaraad.migration.update_portal_types"
+      sortkey="1"
+      profile="Products.minaraad:default" />
+
+  <gs:upgradeStep
+      title="Run Minaraad Plone 4.1 migration profile"
+      description=""
+      source="4999"
+      destination="5000"
+      handler="Products.minaraad.migration.to_plone41"
+      sortkey="1"
+      profile="Products.minaraad:default" />
+
+</configure>

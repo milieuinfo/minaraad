@@ -6,8 +6,9 @@
    <body>
    <metal:block define-macro="body">
 
-      <div tal:define="daterequired python:context.getDate() != None;
-                     date python:toLocalizedTime(context.date);"
+      <div tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;
+                       daterequired python:context.getDate() != None;
+                       date python:toLocalizedTime(context.date);"
          class="hearingsubheader2"
          tal:condition="daterequired">
 

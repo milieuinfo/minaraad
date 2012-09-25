@@ -1,7 +1,5 @@
 <configure xmlns="http://namespaces.zope.org/zope"
-    i18n_domain="plonehrm">
-
-  <include package="collective.autopermission" />
+    i18n_domain="minaraad">
 
   <permission
     id="minaraad.ViewHearingAttendees"

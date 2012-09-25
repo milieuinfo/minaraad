@@ -222,3 +222,11 @@ def remove_double_subscriptions(context):
 
     logger.info('Updated %s objects with PersistentList, found %s objects with double attendees' % (
         obj_count, double_count))
+
+
+def to_plone41(context):
+    # This applies the plone41 profile from minaraad.  This has some
+    # steps that should only be applied once, during the upgrade to
+    # Plone 4.1.
+    profile_id = 'profile-Products.minaraad:plone41'
+    context.runAllImportStepsFromProfile(profile_id, purge_old=False)

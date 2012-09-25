@@ -7,10 +7,13 @@
     i18n_domain="minaraad.projects">
 
   <five:registerPackage package="." initialize=".initialize" />
-
   <i18n:registerTranslations directory="locales" />
-  <include package="collective.autopermission" />
   <cmf:registerDirectory name="minaraad_projects"/>
+
+  <include package="Products.CMFCore" file="permissions.zcml"
+           xmlns:zcml="http://namespaces.zope.org/zcml"
+           zcml:condition="have plone-41" />
+  <include file="permissions.zcml" />
 
   <genericsetup:registerProfile
       name="default"
@@ -21,7 +24,6 @@
       for="Products.CMFPlone.interfaces.IPloneSiteRoot"
       />
 
-  <include file="permissions.zcml" />
   <include package=".browser" />
   <include package=".content" />
 

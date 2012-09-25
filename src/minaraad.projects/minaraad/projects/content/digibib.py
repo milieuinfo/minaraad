@@ -13,7 +13,6 @@ class DigiBib(atapi.OrderedBaseFolder):
     """
     """
     security = ClassSecurityInfo()
-    __implements__ = (atapi.OrderedBaseFolder.__implements__, )
     implements(IDigiBib)
 
     _at_rename_after_creation = True

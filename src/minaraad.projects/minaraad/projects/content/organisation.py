@@ -40,7 +40,6 @@ class Organisation(atapi.BaseContent):
     """
     """
     security = ClassSecurityInfo()
-    __implements__ = (atapi.BaseContent.__implements__, )
     implements(IOrganisation)
     _at_rename_after_creation = True
 

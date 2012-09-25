@@ -34,7 +34,6 @@ from signal import SIGUSR2
 
 from Products.Archetypes import atapi
 from Products.Archetypes import listTypes
-from Products.CMFCore import DirectoryView
 from Products.CMFCore import utils as cmfutils
 from Signals.SignalHandler import SignalHandler
 from Signals.Signals import LogfileReopenHandler
@@ -42,8 +41,7 @@ from zope.i18nmessageid import MessageFactory
 
 from Products.minaraad import config
 from Products.minaraad.utils import email_logger
-DirectoryView.registerDirectory('skins', config.product_globals)
-DirectoryView.registerDirectory('skins/minaraad', config.product_globals)
+
 MinaraadMessageFactory = MessageFactory(u'minaraad')
 
 

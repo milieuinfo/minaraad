@@ -47,8 +47,6 @@ label_schema = BaseSchema + \
 
 class label(BaseContent):
     security = ClassSecurityInfo()
-    __implements__ = (getattr(BaseContent,'__implements__',()),)
-
 
     # This name appears in the 'add' box
     archetype_name             = 'label'
@@ -79,6 +77,3 @@ registerType(label,PROJECTNAME)
 
 ##code-section module-footer #fill in your manual code here
 ##/code-section module-footer
-
-
-

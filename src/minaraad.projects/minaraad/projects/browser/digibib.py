@@ -41,7 +41,14 @@ class DigiBibView(BrowserView):
 
     def list_all_projects(self):
         project_brains = self.ctool({'portal_type': 'Project'})
-        projects = [p.getObject() for p in project_brains]
+        projects = []
+        for p in project_brains:
+            try:
+                projects.append(p.getObject())
+            except:
+                pass
+                # XXX - add some logging
+
         filtered = [p for p in projects
                     if self.mtool.checkPermission(
                         'minaraad.projects: view project in digibib', p)]
@@ -151,7 +158,7 @@ class ProjectsListingView(DigiBibView):
 
     def get_projects(self):
         objects = self._sort_projects(
-            self.context.list_all_projects(), reverse=True)
+            self.list_all_projects(), reverse=True)
 
         # Since we sort on advisory date now, we must organize by the
         # year of that date too, instead of the year of the deadline.

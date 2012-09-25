@@ -16,7 +16,6 @@ class MeetingContainer(atapi.BaseFolder):
     """
     """
     security = ClassSecurityInfo()
-    __implements__ = (atapi.BaseFolder.__implements__, )
     implements(IMeetingContainer)
 
     _at_rename_after_creation = True

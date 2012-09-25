@@ -1,0 +1,545 @@
+/*
+** Plone style sheet - Base Elements
+**
+** Style sheet documentation can be found at http://plone.org/documentation
+**
+** You should preferrably use ploneCustom.css to add your own CSS classes and to
+** customize your portal, as these are the base fundaments of Plone, and will
+** change and be refined in newer versions. Keeping your changes in
+** ploneCustom.css will make it easier to upgrade.
+**
+** Feel free to use whole or parts of this for your own designs, but give credit
+** where credit is due.
+**
+*/
+
+/* <dtml-with base_properties> (do not remove this :) */
+/* <dtml-call "REQUEST.set('portal_url', portal_url())"> (not this either :) */
+
+
+/* Main */
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    text-align: center;
+    color: #313131;
+    font: 70% Verdana,Arial,Lucida,Helvetica,sans-serif;
+    background: url(&dtml-portal_url;/body_bg.gif) repeat-y scroll center top transparent;
+}
+
+a, a:hover {
+    background-color: transparent;
+    color: #A13826;
+}
+
+div.row {
+    float: none;
+}
+
+div.column {
+    float: left;
+}
+
+/* Header */
+#visual-portal-wrapper {
+    width: 1001px;
+    background: url(&dtml-portal_url;/sitelayout_bg.gif) no-repeat scroll left top transparent;
+    border-right: 1px solid #A4CF4D;
+    margin: 0 auto;
+    text-align: left;
+}
+
+div.portal-header-mina {
+    height: 155px;
+}
+
+.header-borderbottom {
+    border-bottom: 1px solid white;
+    width: 800px;
+    margin-top: 155px;
+    float: right;
+}
+
+/* Left column */
+div#portal-column-menu {
+    background-color: #A4CF4D;
+    margin: 0;
+    padding: 0;
+    width: 155px;
+    position: relative;
+    top: 25px;
+    left: 0px;
+}
+
+div#portal-column-menu li {
+    display: block;
+}
+
+div#portal-column-menu a {
+    color: #A13826;
+}
+
+/* - Navigation */
+ul#portal-tabs-nav {
+    background-color: #C8ED7E;
+    border: 1px solid #E0FAAC;
+    line-height: 13px;
+    list-style: none outside none;
+    margin: 0;
+    width: 153px;
+}
+
+#portal-tabs-nav li {
+    background: url(&dtml-portal_url;/menu_arrow.gif) no-repeat scroll 122px 7px #E7FBBF;
+    position: relative;
+}
+
+#portal-tabs-nav a {
+    padding: 5px 10px;
+    background-color: #C8ED7E;
+}
+
+#portal-tabs-nav li.selected a,
+#portal-tabs-nav li.hovered a {
+    background: transparent;
+}
+
+ul#portal-tabs-nav a {
+    color: #313131;
+    display: block;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+ul#portal-tabs-nav li.selected > a,
+ul#portal-tabs-nav li.hovered > a,
+#portlet-events-mina dd a.portlet_more_link,
+.portlet_title {
+    color: #A13826;
+    display: block;
+    padding: 5px 10px;
+    z-index: 1;
+}
+
+#portal-tabs-nav li ul.portal-tabs-nav-items {
+    display: none;
+    left: 140px;
+    position: absolute;
+    top: 0;
+    z-index: 3;
+    background: #E7FBBF !important;
+    background-image: none !important;
+    border-bottom: 0 none !important;
+    border-left: 1px solid #A4CF4D;
+    border-right: 1px solid #A4CF4D;
+    border-top: 1px solid #A4CF4D;
+    margin: 0;
+    padding: 0;
+    width: 170px;
+}
+
+#portal-tabs-nav li.hovered ul.portal-tabs-nav-items {
+    display: block;
+}
+
+#portal-tabs-nav li.portal-tabs-subitem-listitem {
+    padding: 0px;
+}
+
+ul.portal-tabs-nav-items li {
+    border-bottom: 1px solid #A4CF4D;
+    background: transparent !important;
+}
+
+div#portal-column-menu a.portal-tabs-subitem-link {
+    font-weight: normal;
+}
+
+div#portal-column-menu a.portal-tabs-subitem-link:hover {
+    color: #A13826;
+    background-color: #FFF;
+}
+
+/* - Login portlet */
+#portlet-login {
+    padding: 5px 2px;
+}
+
+.mina_portlets_spacing {
+    margin-top: 50px;
+}
+
+#portlet-login .field {
+    clear: none;
+}
+
+.input_login {
+    border: 1px solid black;
+    font-size: 110%;
+}
+
+#portlet-login form {
+    margin-bottom: 20px;
+    padding-left: 3px;
+}
+
+.login_button {
+    background: none repeat scroll 0 0 transparent;
+    border: medium none;
+    color: #A13826;
+    cursor: pointer;
+    font-size: 100% !important;
+    font-weight: bold;
+    margin: 0;
+    padding: 2px 0 0;
+    text-align: left;
+}
+
+/* - Personal navigation */
+
+.personalbar, .portlet-personalbar-mina {
+    background-color: #C8ED7E;
+    border-bottom: 1px solid #E0FAAC;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+}
+
+
+.personalbar-links {
+    margin-top: 8px;
+    font-size: 100%;
+}
+
+.portlet-personalbar-mina .portlet_title {
+    background-color: #006600;
+    color: #FFFFFF;
+}
+
+.portlet-personalbar-mina li {
+    padding-left: 10px;
+    margin-bottom: 0.25em;
+}
+
+.portlet-personalbar-mina li.portalUser {
+    font-weight: bold;
+    margin-bottom: 7px;
+}
+
+/* Main column */
+div#portal-column-content {
+    width: 586px;
+    margin-left: 50px;
+}
+
+#content {
+    font-size: 110%;
+}
+
+
+/* - Breadcrumbs */
+#portal-breadcrumbs {
+    margin-top: 25px;
+    font-size: 100%;
+}
+
+#portal-breadcrumbs a {
+    color: #000000;
+}
+
+#portal-breadcrumbs a:hover {
+    color: #A13826;
+}
+
+
+/* Right column */
+#portal-column-two {
+    width: 189px;
+    position: relative;
+    top: 0px;
+    right: 0px;
+    background-color: #F6F6F5;
+    border-left: 1px solid #D98F81;
+    float: right;
+}
+
+/* - Search portlet */
+#portal-searchbox-mina {
+    background-color: #FFFFFF;
+    padding-bottom: 51px;
+    padding-top: 51px;
+}
+
+.LSBox {
+    clear: left;
+    display: block;
+    float: left;
+    padding-right: 1px;
+    text-align: right;
+}
+
+#searchGadget {
+    width: 105px;
+    border: 1px solid #D98F81;
+}
+
+input.searchButton {
+    font-size: 100%;
+    padding-left: 14px;
+    width: 70px;
+    background: url(&dtml-portal_url;/search_icon.gif) no-repeat scroll 2px 1px #F4CFC8;
+    border: 1px solid #D98F81;
+    color: #313131;
+    cursor: pointer;
+    margin-bottom: 1px !important;
+    padding: 1px 1px 1px 19px;
+    text-transform: lowercase;
+}
+
+
+/* - LinkedIn portlet */
+
+#linkedin-company-insider {
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #A13826;
+    padding: 0 0.5em 1em;
+}
+
+/* - Recent portlet */
+#portlet-events-mina dt {
+    background-color: #A13826;
+    padding: 3px 2px 3px 5px;
+    font-weight: bold;
+}
+
+#portlet-events-mina dt a {
+    color: #FFFFFF;
+}
+
+.portlet_date {
+    color: #7D7D7B;
+}
+
+#portlet-events-mina dd a {
+    color: #313131;
+    display: block;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#portlet-events-mina dd {
+    line-height: normal;
+    margin: 0 !important;
+    padding: 13px 2px 0;
+    margin-bottom: 1em;
+}
+
+
+/* Sites actions */
+div#portal-siteactions {
+    position: absolute;
+    top: 156px;
+    padding-bottom: 0px;
+    font-size: 100%;
+    width: 1001px;
+}
+
+div#portal-siteactions li {
+    background-color: #C8ED7E;
+    border-left: 1px solid #E0FAAC;
+    margin-right: 0px;
+    height: 21px;
+    display: block;
+    float: right;
+    padding: 0px 10px;
+}
+
+div#portal-siteactions li.portal-siteactions {
+    border-right: 1px solid #94C13A;
+}
+
+
+div#portal-siteactions li a,
+div#portal-siteactions li a:hover {
+    color: #A13826;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+
+/* Colophon */
+.colophon-center {
+    text-align: center;
+}
+
+.colophon-center a {
+    font-weight: bold;
+    padding-left: 5px;
+    padding-right: 5px;
+    background-color: transparent;
+    color: #A13826;
+}
+
+/* ------------- OLD CSS ------------------*/
+/*
+body {
+font: &dtml-fontBaseSize; <dtml-var fontFamily>;
+background-color: &dtml-backgroundColor;;
+color: &dtml-fontColor;;
+margin: 0;
+padding: 0;
+}
+table {
+font-size: 100%;
+}
+a {
+color: &dtml-linkColor;;
+background-color: transparent;
+}
+img {
+border: none;
+vertical-align: middle;
+}
+p {
+margin: 0 0 0.75em 0;
+line-height: 1.5em;
+}
+p img {
+border: none;
+margin: 0;
+}
+hr {
+border: 0;
+height: &dtml-borderWidth;;
+color: &dtml-globalBorderColor;;
+background-color: &dtml-globalBorderColor;;
+margin: 0.5em 0 1em 0;
+}
+h1, h2, h3, h4, h5, h6 {
+color: &dtml-fontColor;;
+font-family: <dtml-var headingFontFamily>;
+margin: 0.75em 0 0.25em 0;
+}
+
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+
+}
+
+h1 {
+font-size: 160%;
+}
+h2 {
+font-size: 150%;
+}
+h3 {
+font-size: 125%;
+border-bottom: none;
+font-weight: bold;
+}
+h4 {
+font-size: 110%;
+border-bottom: none;
+font-weight: bold;
+}
+h5 {
+font-size: 100%;
+border-bottom: none;
+font-weight: bold;
+}
+h6 {
+font-size: &dtml-fontSmallSize;;
+border-bottom: none;
+font-weight: bold;
+}
+ul {
+line-height: 1.5em;
+padding: 0;
+}
+ol {
+line-height: 1.5em;
+padding: 0;
+}
+li {
+margin-bottom: 0.5em;
+}
+dt {
+font-weight: bold;
+}
+dd {
+line-height: 1.5em;
+margin-bottom: 1em;
+}
+abbr, acronym, .explain {
+border-bottom: &dtml-borderWidth; dotted &dtml-fontColor;;
+color: &dtml-fontColor;;
+background-color: transparent;
+cursor: help;
+}
+abbr .explain {
+border-bottom: none;
+}
+q {
+font-family: Baskerville, Georgia, serif;
+font-style: italic;
+font-size: 120%;
+}
+blockquote {
+padding-left: 0.5em;
+margin-left: 0;
+border-left: 4px solid &dtml-globalBorderColor;;
+color: &dtml-discreetColor;;
+}
+code, tt {
+font-family: Monaco, "Courier New", Courier, monospace;
+font-size: 120%;
+color: &dtml-fontColor;;
+background-color: &dtml-globalBackgroundColor;;
+padding: 0 0.1em;
+}
+pre {
+font-family: Monaco, "Courier New", Courier, monospace;
+font-size: 100%;
+padding: 1em;
+border: &dtml-borderWidth; &dtml-borderStyle; &dtml-globalBorderColor;;
+color: &dtml-fontColor;;
+background-color: &dtml-globalBackgroundColor;;
+overflow: auto;
+}
+ins {
+color: green;
+text-decoration: none;
+}
+del {
+color: red;
+text-decoration: line-through;
+}
+
+dl.attachmentActionMenu,
+dl.attachmentActionMenu dt.actionMenuHeader,
+dl.attachmentActionMenu dt.actionMenuHeader a {
+    display: inline;
+    text-transform: lowercase;
+}
+
+dl.attachmentActionMenu dd.actionMenuContent ul {
+    background: #FFF;
+    border: 1px solid #74AE0B;
+}
+
+dl.attachmentActionMenu dd.actionMenuContent ul a {
+    text-decoration: none;
+    color: #000;
+    padding: 3px 7px;
+}
+
+dl.attachmentActionMenu dd.actionMenuContent ul a:hover {
+    text-decoration: underline;
+    color: #000;
+    background-color: #ACE00A !important;
+}
+
+/
+/* </dtml-with> */

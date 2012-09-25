@@ -241,7 +241,6 @@ class Project(atapi.BaseFolder, ThemeMixin):
     """
     """
     security = ClassSecurityInfo()
-    __implements__ = (atapi.BaseFolder.__implements__, )
     implements(IProject)
 
     _at_rename_after_creation = True

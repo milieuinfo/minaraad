@@ -190,8 +190,9 @@
                 </span>
                 <br />
                 <div class="search-checkboxlist"
-                     tal:define="allTypes python:putils.getUserFriendlyTypes();
-                             typeLists python:here.createMultiColumnList(allTypes, numCols=2, sort_on='self');"
+                     tal:define="putils context/plone_utils;
+                                 allTypes python:putils.getUserFriendlyTypes();
+                                 typeLists python:here.createMultiColumnList(allTypes, numCols=2, sort_on='self');"
                      tal:repeat="sublist typeLists">
                     <tal:items repeat="type sublist">
                     <tal:tabindex define="tabindex tabindex/next">

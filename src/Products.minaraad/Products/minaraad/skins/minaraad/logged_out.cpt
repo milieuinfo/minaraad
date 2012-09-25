@@ -2,48 +2,56 @@
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:metal="http://xml.zope.org/namespaces/metal"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-      metal:use-macro="here/main_template/macros/master"
+      metal:use-macro="context/main_template/macros/master"
       i18n:domain="plone">
 
-      <head>
-          <script type="text/javascript" metal:fill-slot="javascript_head_slot">
-          </script>
-          <metal:block fill-slot="top_slot"
-                       tal:define="dummy python:request.set('disable_border',1)" />
-          <metal:block fill-slot="column_one_slot" />
-          <metal:block fill-slot="column_two_slot" />
-      </head>
+<head>
+    <metal:js fill-slot="javascript_head_slot">
+        <script type="text/javascript" src=""
+                tal:attributes="src string:${context/portal_url}/login.js">
+        </script>
+    </metal:js>
+    <metal:block fill-slot="top_slot"
+                 tal:define="dummy python:request.set('disable_border',1);
+                             disable_column_two python:request.set('disable_plone.rightcolumn',1);" />
+</head>
 <body>
 
-  <div metal:fill-slot="main"
-       tal:define="auth nocall:here/acl_users/credentials_cookie_auth|here/cookie_authentication|nothing;
-                   came_from request/came_from|request/HTTP_REFERER|nothing;
-                   came_from python:test(utool.isURLInPortal(came_from), came_from, None);
-                   errors options/state/getErrors;
-                   ac_name auth/name_cookie|string:__ac_name;
-                   ac_password auth/pw_cookie|string:__ac_password;
-                   ac_persist auth/persist_cookie|nothing;
-                   login_name python:request.get('login_name', request.get(ac_name, ''));">
+  <metal:main fill-slot="main"
+              tal:define="isAnon context/@@plone_portal_state/anonymous">
 
 <tal:reallyloggedout condition="isAnon">
   <h1 class="documentFirstHeading"
       i18n:translate="heading_signed_out">You are now logged out</h1>
 
-  <p class="documentDescription">Bedankt voor uw bezoek.</p>
+  <div class="documentDescription">Bedankt voor uw bezoek.</div>
+
+  <div id="content-core">
+  </div>
 
 </tal:reallyloggedout>
 
 <tal:notloggedoutafterall tal:condition="not: isAnon">
     <h1 class="documentFirstHeading"
-        i18n:translate="heading_quit_to_log_out">Quit your web browser to log out</h1>
+        i18n:translate="heading_quit_to_log_out">Still logged in as a Zope user</h1>
 
-    <p i18n:translate="description_quit_to_log_out">
-    Because you are logged in via HTTP authentication
-    (i.e. the Zope Management Interface), the only
-    way to log out is to quit your web browser.
-    </p>
+    <div class="documentDescription" i18n:translate="description_quit_to_log_out">
+        You are logged in via HTTP authentication (i.e. the Zope Management
+        Interface). In order to log out, you must:
+    </div>
+
+    <div id="content-core">
+        <p i18n:translate="">
+            <a i18n:name="text_logged_out_link"
+               tal:attributes="href string:${portal_url}/@@plone-root-logout"
+               i18n:translate="">
+                Visit this link
+            </a>
+            and click 'Cancel' when prompted with an authentication prompt.
+        </p>
+    </div>
 </tal:notloggedoutafterall>
 
-</div>
+</metal:main>
 </body>
 </html>

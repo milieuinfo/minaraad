@@ -1,0 +1,171 @@
+Notes on Minaraad Plone 4 migration
+===================================
+
+- Currently we have Plone 3.1.7.
+
+- We should move to the latest stable release, currently Plone 4.1.2.
+
+
+Some dangers to think of
+------------------------
+
+- CacheSetup. Should be uninstalled in Plone 3.  Hopefully nothing
+  then breaks when starting up under Plone 4.  So far so good.
+
+- We use collective.emaillogin.  This has been merged into Plone 4.0
+  so we should not ship with the package itself.  We need to check for
+  changes we made to the login machinery.
+
+- Maybe a few fixes are needed for OrderableReferenceField (which we
+  have created ourselves, to order references to contact persons),
+  although 1.2-beta4 at least claims Plone 4 compatibility:
+
+  http://pypi.python.org/pypi/Products.OrderableReferenceField/
+  Have a look at the issue tracker too:
+  http://plone.org/products/orderablereferencefield/issues
+
+- E-mail sending has seen a few changes and needs to be checked.
+  Maybe port our custom code to use collective.watcherlist.  No
+  distinction needs to be made anymore between physical post and
+  e-mail subscribers, so that may simplify things a bit and allow us
+  to get rid of some code.
+
+- Products.FCKeditor has no release that works on Plone 4.  Buildout
+  works fine and the instance can start, but I get an error when
+  running the Plone migration, even after uninstalling FCKeditor in
+  Plone 4::
+
+    TransformException: Invalid transform : ITransform is not
+    implemented by
+    Products.FCKeditor.transforms.fck_ruid_to_url.fck_ruid_to_url
+
+  We probably need to uninstall FCKeditor in Plone 3.  Then either
+  install collective.ckeditor or use TinyMCE.  We will need to use
+  collective.setdefaulteditor too, and probably update that code a bit
+  to make use of the new option in Plone 4 to just use the system
+  default instead of explicitly setting everyone's preference to the
+  new editor.
+
+
+To do on Plone 3 through the web
+--------------------------------
+
+- Go to the portal_quickinstaller and uninstall CacheSetup.
+
+- Uninstall emaillogin.
+
+- You have to manually remove some skin layers from the Plone Default
+  skin selection:
+
+  - cache_setup
+
+  - emaillogin
+
+- There is a difference between the minaraad Components registry and a
+  default Plone 3.1.7 registry.  This should be added in minaraad while
+  still using Plone 3.1.7, in the Components tab, otherwise you get a
+  ComponentLookupError on IPortalTransformsTool when upgrading to
+  Plone 4 (probably also fine to do this just before doing the Plone
+  migration TTW)::
+
+    <utility
+       interface="Products.PortalTransforms.interfaces.IPortalTransformsTool"
+       object="portal_transforms"/>
+
+  Note that Plone 3.1.7 also has the next few lines, but those objects
+  do not exist in minaraad, so let's not add them; ah, even if you try
+  to add them Zope ignores them and does not actually add them::
+
+    <utility interface="plone.app.i18n.locales.interfaces.IContentLanguages"
+       object="plone_app_content_languages"/>
+    <utility interface="plone.app.i18n.locales.interfaces.ICountries"
+       object="plone_app_countries"/>
+    <utility interface="plone.app.i18n.locales.interfaces.IMetadataLanguages"
+       object="plone_app_metadata_languages"/>
+
+
+To do in the buildout
+---------------------
+
+- Check which versions can be removed from versions.cfg as they are
+  already pinned elsewhere.  Preferably do not remove versions from no
+  longer used recipes though, as the pins are needed for uninstall
+  too.
+
+- Fix the test part.
+
+- Test RelStorage with blobstorage.  TEST IT WELL!!!  There is some
+  confusion (at least for me) between the names of the options and
+  where to put them.  See:
+
+  - http://pypi.python.org/pypi/RelStorage
+  - http://pypi.python.org/pypi/plone.recipe.zope2instance
+
+- The i18noverrides should no longer be used.  The fixes should be
+  done in the code (locales directory).
+
+
+To do in the code
+-----------------
+
+- The i18noverrides buildout part should no longer be used.  The fixes
+  should somehow be done in the code, making sure we override
+  translations properly.  Maurits probably knows how this can be done,
+  but needs to look that up again. :-) See
+  http://maurits.vanrees.org/weblog/archive/2010/10/i18n-plone-4#overriding-translations
+
+- Fix errors during Plone migration, at least this one::
+
+    2011-10-14 18:02:41 INFO plone.app.upgrade migrating btree-based folders from <PloneSite at /minaraad>:
+    2011-10-14 18:02:57 ERROR ZODB.Connection Couldn't load state for 0x637783
+    Traceback (most recent call last):
+      File "/Users/mauritsvanrees/shared-eggs/ZODB3-3.10.3-py2.6-macosx-10.6-x86_64.egg/ZODB/Connection.py", line 860, in setstate
+        self._setstate(obj)
+      File "/Users/mauritsvanrees/shared-eggs/ZODB3-3.10.3-py2.6-macosx-10.6-x86_64.egg/ZODB/Connection.py", line 914, in _setstate
+        self._reader.setGhostState(obj, p)
+      File "/Users/mauritsvanrees/shared-eggs/ZODB3-3.10.3-py2.6-macosx-10.6-x86_64.egg/ZODB/serialize.py", line 613, in setGhostState
+        obj.__setstate__(state)
+      File "/Users/mauritsvanrees/shared-eggs/Products.PortalTransforms-2.0.7-py2.6.egg/Products/PortalTransforms/Transform.py", line 109, in __setstate__
+        self._tr_init()
+      File "/Users/mauritsvanrees/shared-eggs/Products.PortalTransforms-2.0.7-py2.6.egg/Products/PortalTransforms/Transform.py", line 125, in _tr_init
+        transform.__class__)
+    TransformException: Invalid transform : ITransform is not implemented by Products.FCKeditor.transforms.fck_ruid_to_url.fck_ruid_to_url
+    2011-10-14 18:02:57 ERROR plone.app.upgrade Upgrade aborted. Error:
+    Traceback (most recent call last):
+      File "/Users/mauritsvanrees/shared-eggs/Products.CMFPlone-4.1.2-py2.6.egg/Products/CMFPlone/MigrationTool.py", line 175, in upgrade
+        step['step'].doStep(setup)
+      File "/Users/mauritsvanrees/shared-eggs/Products.GenericSetup-1.6.3-py2.6.egg/Products/GenericSetup/upgrade.py", line 142, in doStep
+        self.handler(tool)
+      File "/Users/mauritsvanrees/shared-eggs/plone.app.upgrade-1.1.3-py2.6.egg/plone/app/upgrade/v40/alphas.py", line 443, in migrateFolders
+        MigrationView(portal, None)()
+      File "/Users/mauritsvanrees/shared-eggs/plone.app.folder-1.0.4-py2.6.egg/plone/app/folder/migration.py", line 74, in __call__
+        self.postprocess(obj)
+      File "/Users/mauritsvanrees/shared-eggs/plone.app.upgrade-1.1.3-py2.6.egg/plone/app/upgrade/v40/alphas.py", line 430, in postprocess
+        meta_type = getattr(aq_base(obj), 'meta_type', None)
+      File "/Users/mauritsvanrees/shared-eggs/ZODB3-3.10.3-py2.6-macosx-10.6-x86_64.egg/ZODB/Connection.py", line 860, in setstate
+        self._setstate(obj)
+      File "/Users/mauritsvanrees/shared-eggs/ZODB3-3.10.3-py2.6-macosx-10.6-x86_64.egg/ZODB/Connection.py", line 914, in _setstate
+        self._reader.setGhostState(obj, p)
+      File "/Users/mauritsvanrees/shared-eggs/ZODB3-3.10.3-py2.6-macosx-10.6-x86_64.egg/ZODB/serialize.py", line 613, in setGhostState
+        obj.__setstate__(state)
+      File "/Users/mauritsvanrees/shared-eggs/Products.PortalTransforms-2.0.7-py2.6.egg/Products/PortalTransforms/Transform.py", line 109, in __setstate__
+        self._tr_init()
+      File "/Users/mauritsvanrees/shared-eggs/Products.PortalTransforms-2.0.7-py2.6.egg/Products/PortalTransforms/Transform.py", line 125, in _tr_init
+        transform.__class__)
+    TransformException: Invalid transform : ITransform is not implemented by Products.FCKeditor.transforms.fck_ruid_to_url.fck_ruid_to_url
+    2011-10-14 18:02:57 INFO plone.app.upgrade End of upgrade path, migration has finished
+    2011-10-14 18:02:57 ERROR plone.app.upgrade The upgrade path did NOT reach current version
+    2011-10-14 18:02:57 ERROR plone.app.upgrade Migration has failed
+
+  This might just need a newer Products.FCKeditor.  Or no FCKeditor at
+  all.  Uninstall in Plone 4 is not enough or too late: the transforms
+  are still there in the portal_transforms and cannot be removed TTW.
+
+
+To do on Plone 4 through the web
+--------------------------------
+
+- Run the Plone migration.
+
+- Configure plone.app.caching (not much was previously cached in
+  CacheSetup thouch).

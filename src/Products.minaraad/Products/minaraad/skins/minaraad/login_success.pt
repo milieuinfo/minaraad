@@ -3,7 +3,7 @@
       xmlns:metal="http://xml.zope.org/namespaces/metal"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       lang="en"
-      metal:use-macro="here/main_template/macros/master"
+      metal:use-macro="context/main_template/macros/master"
       i18n:domain="plone">
 
 <head>
@@ -13,32 +13,44 @@
 
 <body>
 
-<tal:block tal:condition="exists: here/portal_skins | nothing"
+<tal:block tal:condition="exists: context/portal_skins | nothing"
            tal:replace="nothing">
-    <tal:block tal:condition="here/portal_skins/updateSkinCookie | nothing"
-               tal:define="dummy here/setupCurrentSkin" />
+    <tal:block tal:condition="context/portal_skins/updateSkinCookie | nothing"
+               tal:define="dummy context/setupCurrentSkin" />
 </tal:block>
 
-<div metal:fill-slot="main">
-  <div tal:condition="not:isAnon">
-    <div tal:define="came_from request/came_from|nothing;
-                     initial_login request/initial_login|nothing;
-                     js_enabled python:request.get('js_enabled','1')!='0';">
+<metal:main fill-slot="main"
+     tal:define="portal_state nocall:context/@@plone_portal_state;
+                 isAnon portal_state/anonymous;">
 
-      <h1 class="documentFirstHeading">U bent nu ingelogd</h1>
+  <metal:not-anon tal:condition="not:isAnon"
+                  tal:define="came_from request/came_from|nothing;
+                              initial_login request/initial_login|nothing;
+                              js_enabled python:request.get('js_enabled','1')!='0';">
+
+      <h1 class="documentFirstHeading"
+          i18n:translate="heading_you_are_now_logged_in">You are now logged in</h1>
 
       <p>
         U kan uw <a
         tal:attributes="href string:${portal_url}/subscriptions_config.html"
         >abonnement</a> hier verfijnen.
       </p>
+      <div id="content-core">
+          <div tal:condition="not:js_enabled">
+             <p i18n:translate="description_enable_cookies_to_stay_logged_in">
+                Note: If you do not remain logged in after leaving this page,
+                it is because you need to enable cookies in your browser.
+             </p>
+          </div>
+      </div>
+  </metal:not-anon>
 
-    </div>
-  </div>
-  <div tal:condition="isAnon">
-    <div metal:use-macro="here/login_failed/macros/login_failed" />
-  </div>
-</div>
+  <metal:anon tal:condition="isAnon">
+      <div metal:use-macro="context/login_failed/macros/login_failed" />
+  </metal:anon>
+
+</metal:main>
 
 </body>
 </html>

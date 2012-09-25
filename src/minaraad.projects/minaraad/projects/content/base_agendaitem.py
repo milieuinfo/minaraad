@@ -33,7 +33,6 @@ class BaseAgendaItem(atapi.BaseFolder):
     """
     """
 
-    __implements__ = (atapi.BaseFolder.__implements__, )
     implements(IAgendaItem)
 
     def get_start_time(self):

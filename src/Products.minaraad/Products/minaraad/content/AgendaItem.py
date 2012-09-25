@@ -102,7 +102,6 @@ class AgendaItem(Attachmentsmixin, BaseAgendaItem):
     An Agendaitem
     """
     security = ClassSecurityInfo()
-    __implements__ = (getattr(Attachmentsmixin,'__implements__',()),)
 
     # This name appears in the 'add' box
     archetype_name = 'AgendaItem'

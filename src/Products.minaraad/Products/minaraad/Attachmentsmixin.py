@@ -4,10 +4,11 @@ __docformat__ = 'plaintext'
 
 from AccessControl import ClassSecurityInfo
 from Products.Archetypes.atapi import *
-from Products.CMFPlone.interfaces.NonStructuralFolder import INonStructuralFolder
-from Products.minaraad.config import *
-
+from Products.CMFPlone.interfaces import INonStructuralFolder
+from zope.interface import implements
 from Products.SimpleAttachment.widget import AttachmentsManagerWidget
+
+from Products.minaraad.config import *
 
 schema = Schema((
     BooleanField(
@@ -29,7 +30,7 @@ class Attachmentsmixin(BaseFolder):
     """
     """
     security = ClassSecurityInfo()
-    __implements__ = (getattr(BaseFolder,'__implements__',()),) + (INonStructuralFolder,)
+    implements(INonStructuralFolder,)
 
     # This name appears in the 'add' box
     archetype_name = 'Attachmentsmixin'

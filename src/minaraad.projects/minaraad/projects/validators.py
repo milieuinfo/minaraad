@@ -1,6 +1,7 @@
+from Products.validation.interfaces.IValidator import IValidator
 from datetime import date
 from zope.i18n import translate
-from Products.validation.interfaces import ivalidator
+from zope.interface import implements
 
 from minaraad.projects import MinaraadProjectMessageFactory as _
 
@@ -25,7 +26,7 @@ class ProjectIdValidator:
     >>> validator('20100231')
     u'Project id must be of the form YYYYMMDD'
     """
-    __implements__ = (ivalidator, )
+    implements(IValidator)
 
     def __init__(self, name):
         self.name = name
@@ -63,7 +64,7 @@ class ProjectNumberValidator:
     u'Number must be 3-digits'
     """
 
-    __implements__ = (ivalidator, )
+    implements(IValidator)
 
     def __init__(self, name):
         self.name = name

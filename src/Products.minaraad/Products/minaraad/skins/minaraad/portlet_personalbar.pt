@@ -3,8 +3,10 @@
       i18n:domain="minaraad">
   <body>
     <metal:portlet define-macro="portlet"
-                   tal:define="display_actions python:user_actions[:-1]+global_actions+user_actions[-1:];
-                               getIconFor nocall:putils/getIconFor;"
+                   tal:define="portal context/@@plone_portal_state/portal;
+                               mtool context/portal_membership;
+                               getIconFor nocall:context/plone_utils/getIconFor;
+                               isAnon context/@@plone_portal_state/anonymous;"
                    tal:condition="not: isAnon">
       <div class="personalbar_bordertop">
         <ul class="portlet-personalbar-mina">
