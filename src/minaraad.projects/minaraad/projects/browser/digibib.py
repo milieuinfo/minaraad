@@ -47,7 +47,7 @@ class DigiBibView(BrowserView):
             except:
                 pass
                 # XXX - add some logging
-                
+
         filtered = [p for p in projects
                     if self.mtool.checkPermission(
                         'minaraad.projects: view project in digibib', p)]
