@@ -20,10 +20,9 @@
   <cmf:registerDirectory name="minaraad"/>
   <cmf:registerDirectory name="mina_styles"/>
 
-  <five:implements
-      class="Products.CMFPlone.Portal.PloneSite"
-      interface=".interfaces.IPortalPropertyContainer"
-    />
+  <class class="Products.CMFPlone.Portal.PloneSite">
+    <implements interface=".interfaces.IPortalPropertyContainer" />
+  </class>
 
   <subscriber
       for="Products.ATContentTypes.interface.IATFolder
