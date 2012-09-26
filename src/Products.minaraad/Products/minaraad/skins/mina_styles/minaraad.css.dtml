@@ -544,18 +544,6 @@ table.pressrelease {
 
 /* --- End Pressrelease --- */
 
-/* --- Start FCKEditor Styles --- */
-
-.subheader1 {
-    font-size: 135%;
-}
-
-.subheader2, .press-title {
-    font-size: 120%;
-}
-
-/* --- End FCKEditor Styles --- */
-
 /* --- Start dropdownmenu --- */
 
 .menumargin_top {

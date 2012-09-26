@@ -12,7 +12,7 @@
  <property name="description" type="text"></property>
  <property name="language" type="string"></property>
  <property name="ext_editor" type="boolean">False</property>
- <property name="wysiwyg_editor" type="string">FCKeditor</property>
+ <property name="wysiwyg_editor" type="string">TinyMCE</property>
  <property name="visible_ids" type="boolean">False</property>
  <property name="must_change_password" type="boolean">False</property>
  <property name="company" type="string"></property>
