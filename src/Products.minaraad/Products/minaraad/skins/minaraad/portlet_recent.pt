@@ -2,8 +2,11 @@
       xmlns:metal="http://xml.zope.org/namespaces/metal"
       i18n:domain="plone">
   <body>
+    <!-- TODO: fix condition.  template.getId() gives an Unauthorized
+         and has the effect that as Zope root user you get logged out
+         from basic authentication, which is rather weird. -->
     <div metal:define-macro="portlet"
-         tal:condition="python:template.getId()!='recently_published'"
+         tal:condition="python:False and template.getId()!='recently_published'"
          tal:omit-tag="">
 
       <!-- UNUSED: last_login_time python:member.getProperty('last_login_time', DateTime()); -->

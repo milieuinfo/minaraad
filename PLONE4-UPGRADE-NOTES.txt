@@ -173,11 +173,16 @@ To do in the code
 - Check that recaptcha still works, as we upgraded to a new versions
   because the old one could not be installed in Plone 4.
 
+- Fix the ancient portlet_recent.pt.
+
 
 To do on Plone 4 through the web
 --------------------------------
 
 - Run the Plone migration.
+
+- Run the upgrade steps from Products.minaraad to get it to version
+  5000 or higher.
 
 - Configure plone.app.caching (not much was previously cached in
   CacheSetup thouch).
