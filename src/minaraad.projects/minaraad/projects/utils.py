@@ -4,7 +4,7 @@ from smtplib import SMTPException
 import pkg_resources
 import socket
 from Products.CMFCore.utils import getToolByName
-from zope.app.component.hooks import getSite
+from zope.component.hooks import getSite
 
 zope2_egg = pkg_resources.working_set.find(
     pkg_resources.Requirement.parse('Zope2'))

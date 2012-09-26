@@ -11,7 +11,7 @@ from Products.DataGridField.DataGridField import DataGridField
 from Products.DataGridField.DataGridWidget import DataGridWidget
 from persistent.dict import PersistentDict
 from zope.annotation.interfaces import IAnnotations
-from zope.app.component.hooks import getSite
+from zope.component.hooks import getSite
 from zope.event import notify
 from zope.interface import implements
 import transaction

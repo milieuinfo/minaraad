@@ -1,5 +1,5 @@
 from Acquisition import aq_parent, aq_inner
-from zope.app.component.hooks import getSite
+from zope.component.hooks import getSite
 from zope.interface import implements
 from AccessControl import ClassSecurityInfo
 from Products.Archetypes import atapi

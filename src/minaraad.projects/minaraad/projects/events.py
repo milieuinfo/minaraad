@@ -1,5 +1,5 @@
 import logging
-from zope.app.component.hooks import getSite
+from zope.component.hooks import getSite
 from Acquisition import aq_parent, aq_inner
 from Products.CMFCore.utils import getToolByName
 from zope.i18n import translate
