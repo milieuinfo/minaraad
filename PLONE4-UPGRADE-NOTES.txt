@@ -170,6 +170,9 @@ To do in the code
   all.  Uninstall in Plone 4 is not enough or too late: the transforms
   are still there in the portal_transforms and cannot be removed TTW.
 
+- Check that recaptcha still works, as we upgraded to a new versions
+  because the old one could not be installed in Plone 4.
+
 
 To do on Plone 4 through the web
 --------------------------------
