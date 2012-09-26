@@ -28,7 +28,8 @@ __docformat__ = 'plaintext'
 import os
 import Products.minaraad.tests
 from zope.app.testing import setup
-from Products.Five import zcml
+from Zope2.App import zcml
+
 from Products import minaraad, Five, GenericSetup
 from Products.CMFCore.utils import getToolByName
 from Products.DCWorkflow.DCWorkflow import WorkflowException
