@@ -8,7 +8,9 @@ email_logger = logging.getLogger('minaraad_email')
 # XXX this may be possible through zope.conf too but I can't figure out
 logbase = os.environ.get('MINARAAD_LOG_PATH')
 if not logbase:
-    logbase = os.environ.get('INSTANCE_HOME') + '/log'
+    # This at least happens when running bin/test in Plone 4...
+    # Let's try the current directory, which would then be .../parts/test.
+    logbase = os.getcwd()
 logpath = '%s/minaraad_email.log' % logbase
 # Get rid of any duplicate slashes:
 logpath = os.path.realpath(logpath)
