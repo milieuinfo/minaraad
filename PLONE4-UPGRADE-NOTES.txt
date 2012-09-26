@@ -54,12 +54,19 @@ To do on Plone 3 through the web
 
 - Uninstall emaillogin.
 
+- Uninstall Products.FCKeditor (it gives a problem during migration
+  and we probably want them to use TinyMCE).
+
 - You have to manually remove some skin layers from the Plone Default
   skin selection:
 
   - cache_setup
 
   - emaillogin
+
+  - fckeditorplone
+
+  - fckeditor
 
 - There is a difference between the minaraad Components registry and a
   default Plone 3.1.7 registry.  This should be added in minaraad while
@@ -114,7 +121,9 @@ To do in the code
   but needs to look that up again. :-) See
   http://maurits.vanrees.org/weblog/archive/2010/10/i18n-plone-4#overriding-translations
 
-- Fix errors during Plone migration, at least this one::
+- Fix errors during Plone migration, at least this one for FCKeditor,
+  though it may no longer be a problem, since we have probably
+  uninstalled it already in Plone 3::
 
     2011-10-14 18:02:41 INFO plone.app.upgrade migrating btree-based folders from <PloneSite at /minaraad>:
     2011-10-14 18:02:57 ERROR ZODB.Connection Couldn't load state for 0x637783
