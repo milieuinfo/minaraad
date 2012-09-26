@@ -1,4 +1,4 @@
-from zope.app import zapi
+from zope.component import getMultiAdapter
 from zope.publisher.browser import setDefaultSkin
 from zope.publisher.browser import TestRequest
 
@@ -45,7 +45,7 @@ class testSubscriptions(MainTestCase):
 
         request = TestRequest()
         setDefaultSkin(request)
-        view = zapi.getMultiAdapter((self.portal, request),
+        view = getMultiAdapter((self.portal, request),
                                     name='subscriptions_config.html')
 
         for x in view.subscriptions():
@@ -55,7 +55,7 @@ class testSubscriptions(MainTestCase):
         # be in the request.
         request = TestRequest(form={'email_Advisory': 'yes',
                                     'email_Study': 'yes'})
-        view = zapi.getMultiAdapter((self.portal, request),
+        view = getMultiAdapter((self.portal, request),
                                     name='subscriptions_config.html')
         view._saveSubscriptions()
 
@@ -72,7 +72,7 @@ class testSubscriptions(MainTestCase):
 
         request = TestRequest()
         setDefaultSkin(request)
-        view = zapi.getMultiAdapter((self.portal, request),
+        view = getMultiAdapter((self.portal, request),
                                     name='subscriptions_config.html')
 
         sm = SubscriptionManager(self.portal)
@@ -118,7 +118,7 @@ class testSubscriptions(MainTestCase):
 
         request['form.button.ExportEmail'] = True
 
-        view = zapi.getMultiAdapter((advisory, request),
+        view = getMultiAdapter((advisory, request),
                                     name='export_subscribers')
 
         HEADER_FIELDS = ("Aanhef", "Voornaam", "Achternaam", "Organisatie",

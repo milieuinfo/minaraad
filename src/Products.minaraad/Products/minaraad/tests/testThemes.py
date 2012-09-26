@@ -27,7 +27,7 @@ __docformat__ = 'plaintext'
 
 from Products.minaraad.tests.MainTestCase import MainTestCase
 from Products.minaraad.themes import ThemeManager
-from zope.app import zapi
+from zope.component import getMultiAdapter
 
 from zope.publisher.browser import TestRequest
 from zope.publisher.browser import setDefaultSkin
@@ -74,7 +74,7 @@ class testThemes(MainTestCase):
     def test_browserAddTheme(self):
         request = TestRequest()
         setDefaultSkin(request)
-        view = zapi.getMultiAdapter((self.portal, request),
+        view = getMultiAdapter((self.portal, request),
                                     name='minaraad_config.html')
 
         lastId = max([x[0] for x in view.themeManager.themes])
@@ -87,7 +87,7 @@ class testThemes(MainTestCase):
     def test_browserSaveThemes(self):
         request = TestRequest()
         setDefaultSkin(request)
-        view = zapi.getMultiAdapter((self.portal, request),
+        view = getMultiAdapter((self.portal, request),
                                     name='minaraad_config.html')
 
         view.themeManager.themes = [(1, 'a'), (2, 'b'), (3, 'c')]
@@ -104,7 +104,7 @@ class testThemes(MainTestCase):
     def test_browserDeleteThemes(self):
         request = TestRequest()
         setDefaultSkin(request)
-        view = zapi.getMultiAdapter((self.portal, request),
+        view = getMultiAdapter((self.portal, request),
                                     name='minaraad_config.html')
 
         view.themeManager.themes = [(1, 'a'), (2, 'b'), (3, 'c')]
@@ -121,7 +121,7 @@ class testThemes(MainTestCase):
     def test_browserThemes(self):
         request = TestRequest()
         setDefaultSkin(request)
-        view = zapi.getMultiAdapter((self.portal, request),
+        view = getMultiAdapter((self.portal, request),
                                     name='minaraad_config.html')
 
         themes = [(1, 'a'), (2, 'b'), (3, 'c')]

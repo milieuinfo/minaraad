@@ -36,7 +36,7 @@ from zope.publisher.browser import TestRequest
 from DateTime import DateTime
 from Products.minaraad.tests.utils import load_file
 
-from zope.app import zapi
+from zope.component import getMultiAdapter
 
 from Products.minaraad.attendees import AttendeeManager
 
@@ -106,7 +106,7 @@ class testHearing(MainTestCase):
 
         request['form.submitted'] = 'exportCSV'
 
-        view = zapi.getMultiAdapter((hearing, request),
+        view = getMultiAdapter((hearing, request),
                                     name='attendees_view')
 
 
