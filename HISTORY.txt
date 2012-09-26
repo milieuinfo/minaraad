@@ -4,6 +4,10 @@ History of this buildout
 5.0 - Plone 4 Branch (unreleased)
 ---------------------------------
 
+- Configure blobs: in the postgres database.
+  We cache them on clients in var/blobcache.
+  [maurits]
+
 - Update to plone 4.2.1.
   [maurits]
 
