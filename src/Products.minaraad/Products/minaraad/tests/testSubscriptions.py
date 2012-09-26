@@ -1,5 +1,5 @@
 from zope.app import zapi
-from zope.app.publication.browser import setDefaultSkin
+from zope.publisher.browser import setDefaultSkin
 from zope.publisher.browser import TestRequest
 
 from Products.minaraad.subscriptions import SubscriptionManager

@@ -30,7 +30,7 @@ from Products.minaraad.themes import ThemeManager
 from zope.app import zapi
 
 from zope.publisher.browser import TestRequest
-from zope.app.publication.browser import setDefaultSkin
+from zope.publisher.browser import setDefaultSkin
 
 THEMES_PROPERTY = [
     '1/Water',
