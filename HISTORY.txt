@@ -4,6 +4,9 @@ History of this buildout
 5.0 - Plone 4 Branch (unreleased)
 ---------------------------------
 
+- Update to plone 4.2.1.
+  [maurits]
+
 - Have a canonical list of skin layers for MinaraadTheme in
   Producst/minaraad/profiles/plone41/skins.xml.
   [maurits]
