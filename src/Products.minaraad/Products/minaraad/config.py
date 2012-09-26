@@ -23,7 +23,7 @@ PRODUCT_DEPENDENCIES = ['OrderableReferenceField',
 # a bit.
 #
 # Other dependency packages:
-PACKAGE_DEPENDENCIES = ['collective.emaillogin', 'minaraad.projects']
+PACKAGE_DEPENDENCIES = ['minaraad.projects']
 
 ADD_LIST = ['Folder',
             'File',
