@@ -2,8 +2,7 @@ import logging
 
 from AccessControl import ClassSecurityInfo
 from Acquisition import aq_parent, aq_inner
-from Products.ATReferenceBrowserWidget.ATReferenceBrowserWidget import \
-    ReferenceBrowserWidget
+from archetypes.referencebrowserwidget.widget import ReferenceBrowserWidget
 from Products.Archetypes import atapi
 from Products.Archetypes.event import ObjectEditedEvent
 from Products.CMFCore.utils import getToolByName

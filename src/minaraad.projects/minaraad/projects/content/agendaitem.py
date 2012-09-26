@@ -3,8 +3,7 @@ from zope.component.hooks import getSite
 from zope.interface import implements
 from AccessControl import ClassSecurityInfo
 from Products.Archetypes import atapi
-from Products.ATReferenceBrowserWidget.ATReferenceBrowserWidget import \
-     ReferenceBrowserWidget
+from archetypes.referencebrowserwidget.widget import ReferenceBrowserWidget
 from Products.CMFCore.utils import getToolByName
 
 from minaraad.projects import config
