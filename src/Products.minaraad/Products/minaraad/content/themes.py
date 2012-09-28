@@ -40,7 +40,7 @@ class ThemeMixin(object):
     def getThemesList(self):
         """Get themes from minaraad properties."""
         themeManager = ThemeManager(self)
-        return atapi.DisplayList(tuple(themeManager.themes))
+        return atapi.IntDisplayList(tuple(themeManager.themes))
 
     security.declarePublic('getEmailThemesList')
     def getEmailThemesList(self):
