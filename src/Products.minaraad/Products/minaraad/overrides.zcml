@@ -5,6 +5,4 @@
 
   <i18n:registerTranslations directory="locales"/>
 
-  <includeOverrides package=".browser" file="overrides.zcml" />
-
 </configure>
