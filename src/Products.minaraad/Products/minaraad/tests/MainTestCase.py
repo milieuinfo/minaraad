@@ -33,7 +33,7 @@ def setup_minaraad():
 from Products.PluggableAuthService.interfaces.plugins import \
     IRoleAssignerPlugin
 
-# Call the deferred setup method, creat a Plone Site and install minaraad.
+# Call the deferred setup method, create a Plone Site and install minaraad.
 setup_minaraad()
 ptc.setupPloneSite(products=['minaraad'])
 
