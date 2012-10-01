@@ -27,10 +27,6 @@ __docformat__ = 'plaintext'
 
 import os
 import Products.minaraad.tests
-from zope.app.testing import setup
-from Zope2.App import zcml
-
-from Products import minaraad, Five, GenericSetup
 from Products.CMFCore.utils import getToolByName
 from Products.DCWorkflow.DCWorkflow import WorkflowException
 
@@ -47,39 +43,6 @@ def load_file(name, size=0):
     data = fd.read()
     fd.close()
     return data
-
-
-def setup_CA():
-    setup.placefulSetUp()
-    # need to setup some Five stuff to get view lookups working
-    zcml.load_config('meta.zcml', Five)
-    zcml.load_config('permissions.zcml', Five)
-    zcml.load_config('configure.zcml', Five.site)
-    zcml.load_config('meta.zcml', GenericSetup)
-
-    zcml.load_config('configure.zcml', minaraad)
-
-    zcml.load_string('''<configure xmlns="http://namespaces.zope.org/zope"
-           xmlns:five="http://namespaces.zope.org/five">
-  <!-- basic collection of directives needed for proper traversal and request
-       handling -->
-  <include package="zope.traversing" />
-  <adapter
-      for="*"
-      factory="Products.Five.traversable.FiveTraversable"
-      provides="zope.traversing.interfaces.ITraversable"
-      />
-  <adapter
-      for="*"
-      factory="zope.traversing.adapters.Traverser"
-      provides="zope.traversing.interfaces.ITraverser"
-      />
-  <five:implements
-      class="ZPublisher.HTTPRequest.HTTPRequest"
-      interface="zope.publisher.interfaces.browser.IBrowserRequest"
-      />
-
-</configure>''')
 
 
 def _createNode(portal, item):
