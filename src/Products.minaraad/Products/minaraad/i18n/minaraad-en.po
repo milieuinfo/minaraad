@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minaraad 0.1\n"
-"POT-Creation-Date: 2011-10-10 16:12+0000\n"
+"POT-Creation-Date: 2012-10-04 15:01+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: Mirella van Teulingen <m.van.teulingen@zestsoftware.nl>\n"
 "Language-Team: English <info@zestsoftware.nl>\n"
@@ -30,10 +30,6 @@ msgstr ""
 
 #: ./profiles/default/types/Study.xml
 msgid "A Study"
-msgstr ""
-
-#: ./profiles/default/types/JoinIn.xml
-msgid "A not-so-basic CMF Content implementation with Dublin Core Metadata included"
 msgstr ""
 
 #. Default: "Advisory"
@@ -71,14 +67,14 @@ msgid "ContactPerson"
 msgstr ""
 
 #. Default: "Date:"
-#: ./skins/minaraad/mina_showdatetime.pt:18
+#: ./skins/minaraad/mina_showdatetime.pt:20
 msgid "Date:"
 msgstr ""
 
 #. Default: "Goal:"
 #: ./skins/minaraad/EmailTemplate-Hearing.pt:22
 #: ./skins/minaraad/EmailTemplate-MREvent.pt:22
-#: ./skins/minaraad/hearing_view.pt:73
+#: ./skins/minaraad/hearing_view.pt:75
 msgid "Goal:"
 msgstr ""
 
@@ -87,14 +83,10 @@ msgstr ""
 msgid "Hearing"
 msgstr ""
 
-#: ./profiles/default/types/JoinIn.xml
-msgid "JoinIn"
-msgstr ""
-
 #. Default: "Location:"
 #: ./skins/minaraad/EmailTemplate-Hearing.pt:18
 #: ./skins/minaraad/EmailTemplate-MREvent.pt:18
-#: ./skins/minaraad/hearing_view.pt:83
+#: ./skins/minaraad/hearing_view.pt:85
 msgid "Location:"
 msgstr ""
 
@@ -126,12 +118,12 @@ msgid "Study"
 msgstr ""
 
 #. Default: "Time:"
-#: ./skins/minaraad/mina_showdatetime.pt:26
+#: ./skins/minaraad/mina_showdatetime.pt:28
 msgid "Time"
 msgstr ""
 
 #. Default: "Advisory date:"
-#: ./skins/minaraad/advisory_view.pt:14
+#: ./skins/minaraad/advisory_view.pt:15
 msgid "advisory_date"
 msgstr ""
 
@@ -146,9 +138,9 @@ msgid "export_descriptions"
 msgstr ""
 
 #. Default: "from"
-#: ./skins/minaraad/hearing_listing_view.pt:72
-#: ./skins/minaraad/mina_showdatetime.pt:38
-#: ./skins/minaraad/mrevent_listing_view.pt:68
+#: ./skins/minaraad/hearing_listing_view.pt:73
+#: ./skins/minaraad/mina_showdatetime.pt:40
+#: ./skins/minaraad/mrevent_listing_view.pt:69
 msgid "from"
 msgstr ""
 
@@ -168,12 +160,12 @@ msgid "heading_themes_setup"
 msgstr ""
 
 #. Default: "You are currently subscribed to this hearing."
-#: ./skins/minaraad/hearing_view.pt:24
+#: ./skins/minaraad/hearing_view.pt:25
 msgid "hearing_registered_label"
 msgstr ""
 
 #. Default: "You are not currently subscribed to this hearing."
-#: ./skins/minaraad/hearing_view.pt:40
+#: ./skins/minaraad/hearing_view.pt:42
 msgid "hearing_unregistered_label"
 msgstr ""
 
@@ -213,9 +205,9 @@ msgid "help_theme_name"
 msgstr ""
 
 #. Default: "hour"
-#: ./skins/minaraad/hearing_listing_view.pt:68
-#: ./skins/minaraad/mina_showdatetime.pt:34
-#: ./skins/minaraad/mrevent_listing_view.pt:64
+#: ./skins/minaraad/hearing_listing_view.pt:69
+#: ./skins/minaraad/mina_showdatetime.pt:36
+#: ./skins/minaraad/mrevent_listing_view.pt:65
 msgid "hour"
 msgstr ""
 
@@ -225,18 +217,18 @@ msgid "label_add"
 msgstr ""
 
 #. Default: "Related documents"
-#: ./skins/minaraad/advisory_view.pt:60
+#: ./skins/minaraad/advisory_view.pt:61
 msgid "label_advisory_related_documents"
 msgstr ""
 
 #. Default: "Agenda items"
-#: ./skins/minaraad/hearing_view.pt:108
-#: ./skins/minaraad/mrevent_view.pt:102
+#: ./skins/minaraad/hearing_view.pt:110
+#: ./skins/minaraad/mrevent_view.pt:104
 msgid "label_agendaitems"
 msgstr ""
 
 #. Default: "Is published"
-#: ./schema_extensions/fileAttachment.py:28
+#: ./schema_extensions/fileAttachment.py:29
 msgid "label_attachment_published"
 msgstr ""
 
@@ -317,8 +309,8 @@ msgid "label_export_as_excel"
 msgstr ""
 
 #. Default: "Export CSV"
-#: ./skins/minaraad/hearing_view.pt:172
-#: ./skins/minaraad/mrevent_view.pt:165
+#: ./skins/minaraad/hearing_view.pt:174
+#: ./skins/minaraad/mrevent_view.pt:168
 msgid "label_exportcsv"
 msgstr ""
 
@@ -361,7 +353,7 @@ msgid "label_jobtitle"
 msgstr ""
 
 #. Default: "Join in"
-#: ./skins/minaraad/portlet_login.pt:84
+#: ./skins/minaraad/portlet_login.pt:81
 msgid "label_join_in"
 msgstr ""
 
@@ -395,7 +387,7 @@ msgid "label_name"
 msgstr ""
 
 #. Default: "New"
-#: ./skins/minaraad/portlet_recent.pt:22
+#: ./skins/minaraad/portlet_recent.pt:27
 msgid "label_new"
 msgstr ""
 
@@ -424,12 +416,12 @@ msgid "label_phonenumber"
 msgstr ""
 
 #. Default: "Product number:"
-#: ./skins/minaraad/advisory_view.pt:27
+#: ./skins/minaraad/advisory_view.pt:28
 msgid "label_product_number"
 msgstr ""
 
 #. Default: "Project:"
-#: ./skins/minaraad/advisory_view.pt:34
+#: ./skins/minaraad/advisory_view.pt:35
 msgid "label_project"
 msgstr ""
 
@@ -493,8 +485,8 @@ msgid "label_subs4"
 msgstr ""
 
 #. Default: "Subscribe"
-#: ./skins/minaraad/hearing_view.pt:43
-#: ./skins/minaraad/mrevent_view.pt:44
+#: ./skins/minaraad/hearing_view.pt:45
+#: ./skins/minaraad/mrevent_view.pt:46
 msgid "label_subscribe"
 msgstr ""
 
@@ -519,8 +511,8 @@ msgstr ""
 
 #. Default: "Theme:"
 #: ./browser/minaraad_config.pt:104
-#: ./skins/minaraad/advisory_view.pt:21
-#: ./skins/minaraad/hearing_view.pt:65
+#: ./skins/minaraad/advisory_view.pt:22
+#: ./skins/minaraad/hearing_view.pt:67
 msgid "label_theme_name"
 msgstr ""
 
@@ -530,8 +522,8 @@ msgid "label_theteam"
 msgstr ""
 
 #. Default: "Unsubscribe"
-#: ./skins/minaraad/hearing_view.pt:27
-#: ./skins/minaraad/mrevent_view.pt:28
+#: ./skins/minaraad/hearing_view.pt:28
+#: ./skins/minaraad/mrevent_view.pt:29
 msgid "label_unsubscribe"
 msgstr ""
 
@@ -550,7 +542,7 @@ msgid "label_zipcode"
 msgstr ""
 
 #. Default: "Check this box if you want this attachment to be publicly available"
-#: ./schema_extensions/fileAttachment.py:31
+#: ./schema_extensions/fileAttachment.py:32
 msgid "labelattachment_published_desc"
 msgstr ""
 
@@ -896,7 +888,7 @@ msgid "minaraad_label_subscription_allowed"
 msgstr ""
 
 #. Default: "Summary"
-#: ./skins/minaraad/advisory_view.pt:44
+#: ./skins/minaraad/advisory_view.pt:45
 #: ./skins/minaraad/study_view.pt:23
 msgid "minaraad_label_summary"
 msgstr ""
@@ -922,8 +914,8 @@ msgid "msg_number_switched_to_userid"
 msgstr ""
 
 #. Default: "(none currently)"
-#: ./skins/minaraad/hearing_view.pt:154
-#: ./skins/minaraad/mrevent_view.pt:147
+#: ./skins/minaraad/hearing_view.pt:156
+#: ./skins/minaraad/mrevent_view.pt:150
 msgid "no_attendees"
 msgstr ""
 
@@ -933,14 +925,14 @@ msgid "no_newsitems_available"
 msgstr ""
 
 #. Default: "Skip to content."
-#: ./skins/minaraad/main_template.pt:67
+#: ./skins/minaraad/old_minaraad_main_template.pt:68
 msgid "skip_to_content"
 msgstr ""
 
 #. Default: "till"
-#: ./skins/minaraad/hearing_listing_view.pt:65
-#: ./skins/minaraad/mina_showdatetime.pt:31
-#: ./skins/minaraad/mrevent_listing_view.pt:61
+#: ./skins/minaraad/hearing_listing_view.pt:66
+#: ./skins/minaraad/mina_showdatetime.pt:33
+#: ./skins/minaraad/mrevent_listing_view.pt:62
 msgid "till"
 msgstr ""
 
@@ -950,14 +942,14 @@ msgid "title_attachments"
 msgstr ""
 
 #. Default: "Attendees"
-#: ./skins/minaraad/hearing_view.pt:146
-#: ./skins/minaraad/mrevent_view.pt:139
+#: ./skins/minaraad/hearing_view.pt:148
+#: ./skins/minaraad/mrevent_view.pt:142
 msgid "title_attendees"
 msgstr ""
 
 #. Default: "Council Members"
-#: ./skins/minaraad/hearing_view.pt:148
-#: ./skins/minaraad/mrevent_view.pt:141
+#: ./skins/minaraad/hearing_view.pt:150
+#: ./skins/minaraad/mrevent_view.pt:144
 msgid "title_counsilmembers"
 msgstr ""
 
@@ -968,19 +960,14 @@ msgid "title_email"
 msgstr ""
 
 #. Default: "Members"
-#: ./skins/minaraad/hearing_view.pt:159
-#: ./skins/minaraad/mrevent_view.pt:152
+#: ./skins/minaraad/hearing_view.pt:161
+#: ./skins/minaraad/mrevent_view.pt:155
 msgid "title_members"
 msgstr ""
 
 #. Default: "My account"
-#: ./skins/minaraad/portlet_personalbar.pt:11
+#: ./skins/minaraad/portlet_personalbar.pt:13
 msgid "title_my_account"
-msgstr ""
-
-#. Default: "By Mail"
-#: ./browser/duplicates.pt:136
-msgid "title_post"
 msgstr ""
 
 #. Default: "Required"
@@ -1001,9 +988,9 @@ msgid "toggle_all"
 msgstr ""
 
 #. Default: "up untill"
-#: ./skins/minaraad/hearing_listing_view.pt:76
-#: ./skins/minaraad/mina_showdatetime.pt:42
-#: ./skins/minaraad/mrevent_listing_view.pt:72
+#: ./skins/minaraad/hearing_listing_view.pt:77
+#: ./skins/minaraad/mina_showdatetime.pt:44
+#: ./skins/minaraad/mrevent_listing_view.pt:73
 msgid "up_untill"
 msgstr ""
 

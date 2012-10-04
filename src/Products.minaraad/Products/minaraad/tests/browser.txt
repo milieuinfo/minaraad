@@ -159,5 +159,4 @@ that are not (yet) tested:
 Look at these as well:
 
 * AgendaItem
-* JoinIn
 * NewsItem

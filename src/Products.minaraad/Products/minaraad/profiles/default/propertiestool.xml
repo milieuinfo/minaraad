@@ -72,7 +72,6 @@
    <element value="Hearing"/>
    <element value="Image"/>
    <element value="ImageAttachment"/>
-   <element value="JoinIn"/>
    <element value="Large Plone Folder"/>
    <element value="Link"/>
    <element value="MREvent"/>
