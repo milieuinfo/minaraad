@@ -175,6 +175,14 @@ To do in the code
 
 - Fix the ancient portlet_recent.pt.
 
+- We had some customization in search.pt.  This template now fails and
+  it has been completely rewritten in Plone 4.2 so we should start
+  from there and check again.  I have removed it for now.
+  What we did previously:
+  - Removed by-line
+  - Removed relevance, also in advanced search form.
+  - Show main path of search result when we have access to it.
+
 
 To do on Plone 4 through the web
 --------------------------------
