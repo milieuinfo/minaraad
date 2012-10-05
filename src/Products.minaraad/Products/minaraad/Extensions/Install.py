@@ -23,21 +23,6 @@ def install(self, reinstall=False):
     portal = getToolByName(self, 'portal_url').getPortalObject()
     portal_quickinstaller = portal.portal_quickinstaller
     for product in PRODUCT_DEPENDENCIES + PACKAGE_DEPENDENCIES:
-        """
-        if reinstall and portal_quickinstaller.isProductInstalled(product):
-            # This suddenly gives stupid errors with kupu resources
-            # and simpleattachment.
-            portal_quickinstaller.reinstallProducts([product])
-            transaction.savepoint()
-        elif not portal_quickinstaller.isProductInstalled(product):
-            portal_quickinstaller.installProduct(product)
-            transaction.savepoint()
-
-        # No idea why we were doing this a second time:
-        print >> out, "Installing dependency %s:" % product
-        portal_quickinstaller.installProduct(product)
-        transaction.savepoint()
-        """
         if not portal_quickinstaller.isProductInstalled(product):
             portal_quickinstaller.installProduct(product)
             transaction.savepoint()
