@@ -27,7 +27,6 @@ def setup_minaraad():
         ztc.installProduct(dependency)
     for dependency in PACKAGE_DEPENDENCIES:
         ztc.installPackage(dependency)
-    ztc.installProduct('minaraad')
 
 
 from Products.PluggableAuthService.interfaces.plugins import \
@@ -35,6 +34,7 @@ from Products.PluggableAuthService.interfaces.plugins import \
 
 # Call the deferred setup method, create a Plone Site and install minaraad.
 setup_minaraad()
+ztc.installProduct('minaraad')
 ptc.setupPloneSite(products=['minaraad'])
 
 
