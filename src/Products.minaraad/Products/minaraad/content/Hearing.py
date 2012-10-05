@@ -5,7 +5,6 @@ from zope.interface import Interface
 from zope.interface import implements
 
 from Products.minaraad import config
-from Products.minaraad.EmailMixin import EmailMixin
 from Products.minaraad.content.MREvent import MREvent
 
 
@@ -56,24 +55,8 @@ class Hearing(MREvent, atapi.BaseFolder):
     """
     security = ClassSecurityInfo()
     implements(IHearing)
-
-    # This name appears in the 'add' box
     archetype_name = 'Hearing'
-
-    meta_type = 'Hearing'
     portal_type = 'Hearing'
-    allowed_content_types = (
-        list(getattr(MREvent, 'allowed_content_types', [])) +
-        list(getattr(EmailMixin, 'allowed_content_types', [])))
-    filter_content_types = 1
-    global_allow = 1
-    #content_icon = 'Hearing.gif'
-    immediate_view = 'base_view'
-    default_view = 'base_view'
-    suppl_views = ()
-    typeDescription = "Hearing"
-    typeDescMsgId = 'description_edit_hearing'
-
     _at_rename_after_creation = True
     schema = Hearing_schema
 

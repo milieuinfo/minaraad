@@ -24,17 +24,6 @@
 # 02110-1301, USA.
 #
 
-__author__ = """Rocky Burt <r.burt@zestsoftware.nl>"""
-__docformat__ = 'plaintext'
-
-
-##code-section init-module-header #fill in your manual code here
-##/code-section init-module-header
-
-
-# Subpackages
-
-# Classes
 import Advisory
 import MREvent
 import ContactPerson
@@ -46,6 +35,5 @@ import NewsLetter
 import NewsItem
 import Hearing
 
-##code-section init-module-footer #fill in your manual code here
-##/code-section init-module-footer
-
+Advisory, MREvent, ContactPerson, AgendaItem, Pressrelease  # pyflakes
+Study, AnnualReport, NewsLetter, NewsItem, Hearing  # pyflakes

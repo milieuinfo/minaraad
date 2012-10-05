@@ -53,27 +53,9 @@ class NewsLetter(EmailMixin, atapi.OrderedBaseFolder):
     A newsletter
     """
     security = ClassSecurityInfo()
-
-    # This name appears in the 'add' box
     archetype_name = 'NewsLetter'
-
-    meta_type = 'NewsLetter'
     portal_type = 'NewsLetter'
-    allowed_content_types = (
-        ['NewsItem'] +
-        list(getattr(EmailMixin, 'allowed_content_types', [])))
-    filter_content_types = 1
-    global_allow = 1
-    #content_icon = 'NewsLetter.gif'
-    immediate_view = 'base_view'
-    default_view = 'base_view'
-    suppl_views = ()
-    typeDescription = "NewsLetter"
-    typeDescMsgId = 'description_edit_newsletter'
-
-
     _at_rename_after_creation = True
-
     schema = NewsLetter_schema
 
     security.declarePublic('getEmailContentsFromContent')

@@ -28,20 +28,17 @@ __author__ = """Rocky Burt <r.burt@zestsoftware.nl>"""
 __docformat__ = 'plaintext'
 
 from AccessControl import ClassSecurityInfo
-from Products.Archetypes.atapi import *
+from Products.Archetypes import atapi
 from Products.minaraad.Attachmentsmixin import Attachmentsmixin
-from Products.minaraad.config import *
+from Products.minaraad import config
 
 from minaraad.projects.content.base_agendaitem import base_agendaitem_schema, BaseAgendaItem
 
-##code-section module-header #fill in your manual code here
-##/code-section module-header
+schema = atapi.Schema((
 
-schema = Schema((
-
-    StringField(
+    atapi.StringField(
         name='speaker',
-        widget=StringWidget(
+        widget=atapi.StringWidget(
             label='Speaker',
             label_msgid='minaraad_label_speaker',
             i18n_domain='minaraad',
@@ -49,9 +46,9 @@ schema = Schema((
         searchable=1
     ),
 
-    StringField(
+    atapi.StringField(
         name='organisation',
-        widget=StringWidget(
+        widget=atapi.StringWidget(
             label='Organisation',
             label_msgid='minaraad_label_organisation',
             i18n_domain='minaraad',
@@ -59,26 +56,26 @@ schema = Schema((
         searchable=1
     ),
 
-    TextField(
+    atapi.TextField(
         name='summary',
-        widget=TextAreaWidget(
+        widget=atapi.TextAreaWidget(
             label='Summary',
             label_msgid='minaraad_label_summary',
             i18n_domain='minaraad',
         )
     ),
 
-    DateTimeField(
+    atapi.DateTimeField(
         name='itemstartdate',
-        widget=CalendarWidget(
+        widget=atapi.CalendarWidget(
             visible=False
         ),
         required=False
     ),
 
-    DateTimeField(
+    atapi.DateTimeField(
         name='itemenddate',
-        widget=CalendarWidget(
+        widget=atapi.CalendarWidget(
             visible=False,
         ),
         required=False
@@ -87,52 +84,20 @@ schema = Schema((
 ),
 )
 
-##code-section after-local-schema #fill in your manual code here
-##/code-section after-local-schema
-
-AgendaItem_schema = getattr(Attachmentsmixin, 'schema', Schema(())).copy() + \
+AgendaItem_schema = getattr(Attachmentsmixin, 'schema', atapi.Schema(())).copy() + \
                     base_agendaitem_schema.copy() + \
                     schema.copy()
 
-##code-section after-schema #fill in your manual code here
-##/code-section after-schema
 
 class AgendaItem(Attachmentsmixin, BaseAgendaItem):
     """
     An Agendaitem
     """
     security = ClassSecurityInfo()
-
-    # This name appears in the 'add' box
     archetype_name = 'AgendaItem'
-
-    meta_type = 'AgendaItem'
     portal_type = 'AgendaItem'
-    allowed_content_types = [] + list(getattr(Attachmentsmixin, 'allowed_content_types', []))
-    filter_content_types = 0
-    global_allow = 0
-    #content_icon = 'AgendaItem.gif'
-    immediate_view = 'base_view'
-    default_view = 'base_view'
-    suppl_views = ()
-    typeDescription = "AgendaItem"
-    typeDescMsgId = 'description_edit_agendaitem'
-
     _at_rename_after_creation = True
-
     schema = AgendaItem_schema
 
-    ##code-section class-header #fill in your manual code here
-    ##/code-section class-header
 
-    # Methods
-
-
-registerType(AgendaItem, PROJECTNAME)
-# end of class AgendaItem
-
-##code-section module-footer #fill in your manual code here
-##/code-section module-footer
-
-
-
+atapi.registerType(AgendaItem, config.PROJECTNAME)

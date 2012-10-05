@@ -18,62 +18,25 @@
 # this program; if not, write to the Free Software Foundation, Inc., 59 Temple
 # Place, Suite 330, Boston, MA  02111-1307  USA
 #
-__author__  = '''Rocky Burt <r.burt@zestsoftware.nl>'''
-__docformat__ = 'plaintext'
-
 
 from AccessControl import ClassSecurityInfo
-from Products.Archetypes.atapi import *
+from Products.Archetypes import atapi
 
+from Products.minaraad import config
 
-
-from Products.minaraad.config import *
-##code-section module-header #fill in your manual code here
-##/code-section module-header
-
-schema=Schema((
+schema=atapi.Schema((
 ),
 )
 
-
-##code-section after-local-schema #fill in your manual code here
-##/code-section after-local-schema
-
-label_schema = BaseSchema + \
+label_schema = atapi.BaseSchema + \
     schema
 
-##code-section after-schema #fill in your manual code here
-##/code-section after-schema
 
-class label(BaseContent):
+class label(atapi.BaseContent):
     security = ClassSecurityInfo()
-
-    # This name appears in the 'add' box
-    archetype_name             = 'label'
-
-    meta_type                  = 'label'
-    portal_type                = 'label'
-    allowed_content_types      = []
-    filter_content_types       = 0
-    global_allow               = 1
-    allow_discussion           = 0
-    #content_icon               = 'label.gif'
-    immediate_view             = 'base_view'
-    default_view               = 'base_view'
-    suppl_views                = ()
-    typeDescription            = "label"
-    typeDescMsgId              = 'description_edit_label'
-
+    archetype_name = 'label'
+    portal_type = 'label'
     schema = label_schema
 
-    ##code-section class-header #fill in your manual code here
-    ##/code-section class-header
 
-
-    #Methods
-
-registerType(label,PROJECTNAME)
-# end of class label
-
-##code-section module-footer #fill in your manual code here
-##/code-section module-footer
+atapi.registerType(label, config.PROJECTNAME)

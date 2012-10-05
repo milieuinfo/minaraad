@@ -24,9 +24,6 @@
 # 02110-1301, USA.
 #
 
-__author__ = """Rocky Burt <r.burt@zestsoftware.nl>"""
-__docformat__ = 'plaintext'
-
 from AccessControl import ClassSecurityInfo
 from Products.Archetypes import atapi
 from Products.minaraad import config
@@ -103,24 +100,9 @@ class ContactPerson(atapi.BaseContent):
     """
     """
     security = ClassSecurityInfo()
-
-    # This name appears in the 'add' box
     archetype_name = 'ContactPerson'
-
-    meta_type = 'ContactPerson'
     portal_type = 'ContactPerson'
-    allowed_content_types = []
-    filter_content_types = 0
-    global_allow = 1
-    #content_icon = 'ContactPerson.gif'
-    immediate_view = 'base_view'
-    default_view = 'base_view'
-    suppl_views = ()
-    typeDescription = "ContactPerson"
-    typeDescMsgId = 'description_edit_contactperson'
-
     _at_rename_after_creation = True
-
     schema = ContactPerson_schema
 
 

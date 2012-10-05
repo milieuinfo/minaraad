@@ -45,9 +45,9 @@ schema = atapi.Schema((
     atapi.ImageField(
         name='foto',
         widget=atapi.ImageWidget(
-           label="Photo",
-           label_msgid='minaraad_label_foto',
-           i18n_domain='minaraad',
+            label="Photo",
+            label_msgid='minaraad_label_foto',
+            i18n_domain='minaraad',
         ),
         storage=atapi.AttributeStorage(),
         sizes={'foto': (300, 300)}
@@ -94,25 +94,8 @@ class Study(PostMixin, EmailMixin, ThemeMixin, Attachmentsmixin):
     """
     implements(IUseContact)
     security = ClassSecurityInfo()
-    # This name appears in the 'add' box
     archetype_name = 'Study'
-
-    meta_type = 'Study'
     portal_type = 'Study'
-    allowed_content_types = (
-        [] +
-        list(getattr(PostMixin, 'allowed_content_types', [])) +
-        list(getattr(EmailMixin, 'allowed_content_types', [])) +
-        list(getattr(Attachmentsmixin, 'allowed_content_types', [])))
-    filter_content_types = 0
-    global_allow = 1
-    #content_icon = 'Study.gif'
-    immediate_view = 'base_view'
-    default_view = 'base_view'
-    suppl_views = ()
-    typeDescription = "Study"
-    typeDescMsgId = 'description_edit_study'
-
     _at_rename_after_creation = True
     schema = Study_schema
 

@@ -109,7 +109,7 @@ schema = atapi.Schema((
 Pressrelease_schema = (
     getattr(EmailMixin, 'schema', atapi.Schema(())).copy() +
     getattr(Attachmentsmixin, 'schema', atapi.Schema(())).copy() +
-    schema.copy() + \
+    schema.copy() +
     contacts_schema.copy())
 
 Pressrelease_schema.moveField('coordinator', after="foto")
@@ -122,26 +122,9 @@ class Pressrelease(EmailMixin, Attachmentsmixin):
     """
     implements(IUseContact)
     security = ClassSecurityInfo()
-
-    # This name appears in the 'add' box
     archetype_name = 'Pressrelease'
-
-    meta_type = 'Pressrelease'
     portal_type = 'Pressrelease'
-    allowed_content_types = (
-        list(getattr(EmailMixin, 'allowed_content_types', [])) +
-        list(getattr(Attachmentsmixin, 'allowed_content_types', [])))
-    filter_content_types = 0
-    global_allow = 1
-    #content_icon = 'Pressrelease.gif'
-    immediate_view = 'base_view'
-    default_view = 'base_view'
-    suppl_views = ()
-    typeDescription = "Pressrelease"
-    typeDescMsgId = 'description_edit_pressrelease'
-
     _at_rename_after_creation = True
-
     schema = Pressrelease_schema
 
 

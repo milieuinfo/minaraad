@@ -13,6 +13,7 @@ class IThemes(Interface):
     def getThemeName():
         """Return name of selected theme"""
 
+
 class IUseContact(Interface):
     """ Marker interface for objects using contacts.
     """

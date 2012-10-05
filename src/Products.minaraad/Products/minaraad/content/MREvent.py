@@ -123,10 +123,10 @@ schema = atapi.Schema((
 )
 
 MREvent_schema = atapi.OrderedBaseFolderSchema.copy() + \
-                 contacts_schema.copy() + \
-                 getattr(EmailMixin, 'schema', atapi.Schema(())).copy() + \
-                 theme_schema.copy() + \
-                 schema.copy()
+    contacts_schema.copy() + \
+    getattr(EmailMixin, 'schema', atapi.Schema(())).copy() + \
+    theme_schema.copy() + \
+    schema.copy()
 
 MREvent_schema.moveField('coordinator', after="foto")
 MREvent_schema.moveField('authors', after="coordinator")
@@ -139,28 +139,12 @@ class IMREvent(Interface):
 class MREvent(BaseMeeting, EmailMixin, ThemeMixin):
     """
     """
-    security = ClassSecurityInfo()
-
-    # This name appears in the 'add' box
-    archetype_name = 'MREvent'
-
-    meta_type = 'MREvent'
-    portal_type = 'MREvent'
-    allowed_content_types = ['AgendaItem', 'File', 'Image']
-    filter_content_types = 1
-    global_allow = 1
-    #content_icon = 'MREvent.gif'
-    immediate_view = 'base_view'
-    default_view = 'base_view'
-    suppl_views = ()
-    typeDescription = "MREvent"
-    typeDescMsgId = 'description_edit_mrevent'
-
-    _at_rename_after_creation = True
-
-    schema = MREvent_schema
-
     implements(IMREvent, IUseContact)
+    security = ClassSecurityInfo()
+    archetype_name = 'MREvent'
+    portal_type = 'MREvent'
+    _at_rename_after_creation = True
+    schema = MREvent_schema
 
 
 atapi.registerType(MREvent, PROJECTNAME)

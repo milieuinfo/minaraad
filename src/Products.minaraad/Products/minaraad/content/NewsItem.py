@@ -62,24 +62,9 @@ class NewsItem(atapi.BaseContent):
     """
     implements(IUseContact)
     security = ClassSecurityInfo()
-
-    # This name appears in the 'add' box
     archetype_name = 'NewsItem'
-
-    meta_type = 'NewsItem'
     portal_type = 'NewsItem'
-    allowed_content_types = []
-    filter_content_types = 0
-    global_allow = 0
-    #content_icon = 'NewsItem.gif'
-    immediate_view = 'base_view'
-    default_view = 'base_view'
-    suppl_views = ()
-    typeDescription = "NewsItem"
-    typeDescMsgId = 'description_edit_newsitem'
-
     _at_rename_after_creation = True
-
     schema = NewsItem_schema
 
 

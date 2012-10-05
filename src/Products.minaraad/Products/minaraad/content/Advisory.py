@@ -151,23 +151,8 @@ class Advisory(PostMixin, ThemeMixin, EmailMixin, Attachmentsmixin):
     """
     implements(IUseContact)
     security = ClassSecurityInfo()
-    # This name appears in the 'add' box
     archetype_name = 'Advisory'
-
-    meta_type = 'Advisory'
     portal_type = 'Advisory'
-    allowed_content_types = (
-        list(getattr(PostMixin, 'allowed_content_types', [])) +
-        list(getattr(Attachmentsmixin, 'allowed_content_types', [])))
-    filter_content_types = 0
-    global_allow = 1
-    #content_icon = 'Advisory.gif'
-    immediate_view = 'base_view'
-    default_view = 'base_view'
-    suppl_views = ()
-    typeDescription = "Advisory"
-    typeDescMsgId = 'description_edit_advisory'
-
     _at_rename_after_creation = True
     schema = Advisory_schema
 

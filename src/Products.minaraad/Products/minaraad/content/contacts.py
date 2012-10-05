@@ -1,6 +1,5 @@
 from Products.Archetypes import atapi
 from Products.OrderableReferenceField import OrderableReferenceField
-from Products.OrderableReferenceField import OrderableReferenceWidget
 from archetypes.referencebrowserwidget.widget import ReferenceBrowserWidget
 
 contacts_schema = atapi.Schema((
