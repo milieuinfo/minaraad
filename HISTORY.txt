@@ -1,11 +1,17 @@
 History of this buildout
 ========================
 
+4.18 (unreleased)
+-----------------
+
+- Nothing changed yet.
+
+
 4.17 (2012-11-06)
 -----------------
 
 - Plone security hot fix.
-  [maurits]
+  [maurits and apparently wimb too]
 
 - Use fresh collective.emaillogin 1.3.  No real changes, it has simply
   moved to github.
