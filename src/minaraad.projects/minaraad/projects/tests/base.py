@@ -126,6 +126,7 @@ class MinaraadTestCase(ptc.PloneTestCase):
         self.portal.invokeFactory('DigiBib', id='digibib')
         self.portal.digibib.invokeFactory('ProjectContainer', id='projects')
         self.portal.digibib.invokeFactory('MeetingContainer', id='meetings')
+        self.portal.digibib.invokeFactory('OrganisationContainer', id='organisations')
 
     def add_group(self, g_id):
         self.portal.portal_groups.addGroup(g_id)

@@ -425,3 +425,75 @@ Now we delete it:
     Could not integrate file at:
     http://nohost/plone/digibib/meetings/meeting/fifth_item/restricted_file
     <BLANKLINE>
+
+
+Saving the location
+-------------------
+
+We use a copy of the meeting location so if information are changed
+about the location, that does not effect the display of a meeting.
+
+First we'll need a location:
+
+    >>> digibib.organisations.invokeFactory('Organisation',
+    ...                                     id='orga')
+    'orga'
+    
+    >>> digibib.organisations.orga.setTitle('My organisation')
+    >>> digibib.organisations.orga.setAddress('Orgaddress')
+    >>> digibib.organisations.orga.setPostalCode('1234AB')
+    >>> digibib.organisations.orga.setCity('OrgaCity')
+
+    >>> digibib.meetings.invokeFactory('Meeting',
+    ...                                id='meeting_located',
+    ...                                title='A meeting with a location',
+    ...                                start_time = DateTime(2010, 3, 8, 15, 30))
+    'meeting_located'
+
+    >>> digibib.meetings.meeting_located.setMeetinglocation(digibib.organisations.orga)
+
+Let's see if the location is saved as expected:
+
+    >>> digibib.meetings.meeting_located.get_saved_location()
+    <persistent.dict.PersistentDict object at ...>
+
+    >>> sorted(digibib.meetings.meeting_located.get_saved_location().items(),
+    ...        key = lambda x: x[0])
+    []
+
+We need to run the event manually:
+
+    >>> from minaraad.projects.events import save_meeting_location
+    >>> save_meeting_location(digibib.meetings.meeting_located, None)
+
+
+Now we'll get the correct data:
+    >>> sorted(digibib.meetings.meeting_located.get_saved_location().items(),
+    ...        key = lambda x: x[0])
+    [('address', 'Orgaddress'),
+     ('city', 'OrgaCity'),
+     ('postalCode', '1234AB'),
+     ('saved', True)]
+
+
+Now if we edit the location, the will not change the values we obtain
+via the cache:
+
+    >>> digibib.organisations.orga.setAddress('Somewhere else')
+    >>> save_meeting_location(digibib.meetings.meeting_located, None)
+    >>> sorted(digibib.meetings.meeting_located.get_saved_location().items(),
+    ...        key = lambda x: x[0])
+    [('address', 'Orgaddress'),
+     ('city', 'OrgaCity'),
+     ('postalCode', '1234AB'),
+     ('saved', True)]
+
+One special case: if the location is removed from the object, then
+we'll get an empty dictionnary:
+
+    >>> digibib.meetings.meeting_located.setMeetinglocation(None)
+    >>> sorted(digibib.meetings.meeting_located.get_saved_location().items(),
+    ...        key = lambda x: x[0])
+    []
+
+
