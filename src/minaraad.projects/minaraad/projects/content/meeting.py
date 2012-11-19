@@ -265,8 +265,6 @@ class Meeting(BaseMeeting):
 
     def get_saved_location(self):
         location = self.getMeetinglocation()
-        if location is None:
-            return {}
 
         anno = self._get_annotations()
         if anno.get('saved_location', None) is None:

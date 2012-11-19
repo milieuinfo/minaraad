@@ -257,4 +257,12 @@
       handler="minaraad.projects.migration.update_actions"
       profile="minaraad.projects:default" />
 
+  <genericsetup:upgradeStep
+      title="Clean/update location cache"
+      description=""
+      source="1019"
+      destination="1020"
+      handler="minaraad.projects.migration.use_location_uid_in_cached_locations"
+      profile="minaraad.projects:default" />
+
 </configure>
