@@ -4,6 +4,8 @@ History of this buildout
 5.0 - Plone 4 Branch (unreleased)
 ---------------------------------
 
+- fixed caching for the meeting's location. [vincent]
+
 - Configure blobs: in the postgres database.
   We cache them on clients in var/blobcache.
   [maurits]
