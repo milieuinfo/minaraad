@@ -3,6 +3,7 @@ import re
 
 from DateTime import DateTime
 from Products.CMFCore.utils import getToolByName
+from persistent.dict import PersistentDict
 
 from minaraad.projects.utils import create_attachment
 from minaraad.projects.utils import is_advisory_request
@@ -249,3 +250,43 @@ def reindex_digibib_containers(context):
         return
     for obj in digibib.contentValues():
         obj.reindexObject()
+
+
+def use_location_uid_in_cached_locations(context):
+    """ We save the UID of the Organisation object in the saved
+    location annotation of the meeting o we only update those
+    when the location object is saved.
+    """
+    catalog = getToolByName(context, 'portal_catalog')
+    brains = catalog(portal_type='Meeting')
+    m_up_count = 0
+    m_cl_count = 0
+
+    for brain in brains:
+        try:
+            meeting = brain.getObject()
+        except:
+            logger.warn('Unable to wake brain at %s' % brain.getURL())
+            continue
+    
+        location = meeting.getMeetinglocation()
+        annotations = meeting.get_saved_location()
+
+        if not location:
+            if not annotations:
+                # Well, nothing to do here.
+                continue
+            
+            annotations = PersistentDict()
+            m_cl_count += 1
+            continue
+
+        if 'UID' in annotations:
+            # Already updated
+            continue
+
+        annotations['UID'] = location.UID()
+        m_up_count += 1
+
+    logger.info('%s meetings updated' % m_up_count)
+    logger.info('%s meetings cleaned' % m_cl_count)

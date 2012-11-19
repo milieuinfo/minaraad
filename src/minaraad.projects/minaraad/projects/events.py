@@ -283,15 +283,20 @@ def save_meeting_location(meeting, event):
     """ When a meeting is saved, we copy the location information
     so it is not updated if the Organisation object is updated.
     """
+    anno = meeting._get_annotations()
     location = meeting.getMeetinglocation()
-    if not location:
-        return
-
     saved_location = meeting.get_saved_location()
-    if 'saved' in saved_location:
+
+    if location is None:
+        # we clean the cache.
+        anno['saved_location'] = PersistentDict()
         return
 
-    saved_location['saved'] = True
+    if location.UID() == saved_location.get('UID', None):
+        # The location linked did not change.
+        return
+
+    saved_location['UID'] = location.UID()
     saved_location['address'] = location.getAddress()
     saved_location['postalCode'] = location.getPostalCode()
     saved_location['city'] = location.getCity()

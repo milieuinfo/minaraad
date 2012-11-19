@@ -470,10 +470,10 @@ We need to run the event manually:
 Now we'll get the correct data:
     >>> sorted(digibib.meetings.meeting_located.get_saved_location().items(),
     ...        key = lambda x: x[0])
-    [('address', 'Orgaddress'),
+    [('UID', '...'),
+     ('address', 'Orgaddress'),
      ('city', 'OrgaCity'),
-     ('postalCode', '1234AB'),
-     ('saved', True)]
+     ('postalCode', '1234AB')]
 
 
 Now if we edit the location, the will not change the values we obtain
@@ -483,15 +483,36 @@ via the cache:
     >>> save_meeting_location(digibib.meetings.meeting_located, None)
     >>> sorted(digibib.meetings.meeting_located.get_saved_location().items(),
     ...        key = lambda x: x[0])
-    [('address', 'Orgaddress'),
+    [('UID', '...'),
+     ('address', 'Orgaddress'),
      ('city', 'OrgaCity'),
-     ('postalCode', '1234AB'),
-     ('saved', True)]
+     ('postalCode', '1234AB')]
 
-One special case: if the location is removed from the object, then
-we'll get an empty dictionnary:
+If we change the linked location, the address is changed:
+
+    >>> digibib.organisations.invokeFactory('Organisation',
+    ...                                     id='orga2')
+    'orga2'
+    
+    >>> digibib.organisations.orga2.setTitle('My second organisation')
+    >>> digibib.organisations.orga2.setAddress('Another place')
+    >>> digibib.organisations.orga2.setPostalCode('4321BA')
+    >>> digibib.organisations.orga2.setCity('Another city')
+
+    >>> digibib.meetings.meeting_located.setMeetinglocation(digibib.organisations.orga2)
+    >>> save_meeting_location(digibib.meetings.meeting_located, None)
+    >>> sorted(digibib.meetings.meeting_located.get_saved_location().items(),
+    ...        key = lambda x: x[0])
+    [('UID', '...'),
+     ('address', 'Another place'),
+     ('city', 'Another city'),
+     ('postalCode', '4321BA')]
+
+
+If the location is removed from the object, then we'll get an empty dictionnary:
 
     >>> digibib.meetings.meeting_located.setMeetinglocation(None)
+    >>> save_meeting_location(digibib.meetings.meeting_located, None)
     >>> sorted(digibib.meetings.meeting_located.get_saved_location().items(),
     ...        key = lambda x: x[0])
     []
