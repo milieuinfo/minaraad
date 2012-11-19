@@ -1,0 +1,126 @@
+95c95
+< FCKTools.RegisterDollarFunction( window ) ;
+---
+> //FCKTools.RegisterDollarFunction( window ) ;
+113c113
+< 			var frmMain = $( 'frmMain' ) ;
+---
+> 			var frmMain = document.getElementById( 'frmMain' ) ;
+118c118
+< 				var height = $( 'contents' ).offsetHeight ;
+---
+> 				var height = document.getElementById( 'contents' ).offsetHeight ;
+121,123c121,123
+< 				height -= $( 'TitleArea' ).offsetHeight ;
+< 				height -= $( 'TabsRow' ).offsetHeight ;
+< 				height -= $( 'PopupButtons' ).offsetHeight ;
+---
+> 				height -= document.getElementById( 'TitleArea' ).offsetHeight ;
+> 				height -= document.getElementById( 'TabsRow' ).offsetHeight ;
+> 				height -= document.getElementById( 'PopupButtons' ).offsetHeight ;
+152c152
+< 				var frmMain		= $( 'frmMain' ) ;
+---
+> 				var frmMain		= document.getElementById( 'frmMain' ) ;
+225c225
+< 		var throbberParent = $( 'throbberBlock' ) ;
+---
+> 		var throbberParent = document.getElementById( 'throbberBlock' ) ;
+248c248
+< 			var throbberParent = $( 'throbberBlock' ) ;
+---
+> 			var throbberParent = document.getElementById( 'throbberBlock' ) ;
+259c259
+< 			var frm = $( 'contents' ) ;
+---
+> 			var frm = document.getElementById( 'contents' ) ;
+270,271c270,271
+< 			$( 'Tabs' ).style.visibility = 'hidden' ;
+< 			$( 'PopupButtons' ).style.visibility = 'hidden' ;
+---
+> 			document.getElementById( 'Tabs' ).style.visibility = 'hidden' ;
+> 			document.getElementById( 'PopupButtons' ).style.visibility = 'hidden' ;
+285c285
+< 			$( 'throbberBlock' ).style.visibility = 'hidden' ;
+---
+> 			document.getElementById( 'throbberBlock' ).style.visibility = 'hidden' ;
+288,289c288,289
+< 			$( 'Tabs' ).style.visibility = '' ;
+< 			$( 'PopupButtons' ).style.visibility = '' ;
+---
+> 			document.getElementById( 'Tabs' ).style.visibility = '' ;
+> 			document.getElementById( 'PopupButtons' ).style.visibility = '' ;
+415c415
+< 		$( 'btnCancel' ).focus() ;
+---
+> 		document.getElementById( 'btnCancel' ).focus() ;
+449c449
+< 				$( oTabs[sCode] ).className = 'PopupTabSelected' ;
+---
+> 				document.getElementById( oTabs[sCode] ).className = 'PopupTabSelected' ;
+451c451
+< 				$( oTabs[sCode] ).className = 'PopupTab' ;
+---
+> 				document.getElementById( oTabs[sCode] ).className = 'PopupTab' ;
+468c468
+< 		var eTabsRow = $( 'Tabs' ) ;
+---
+> 		var eTabsRow = document.getElementById( 'Tabs' ) ;
+483c483
+< 		eTabsRow = $( 'TabsRow' ) ;
+---
+> 		eTabsRow = document.getElementById( 'TabsRow' ) ;
+489c489
+< 			var eTitleArea = $( 'TitleArea' ) ;
+---
+> 			var eTitleArea = document.getElementById( 'TitleArea' ) ;
+508c508
+< 		var oTab = $( oTabs[ tabCode ] ) ;
+---
+> 		var oTab = document.getElementById( oTabs[ tabCode ] ) ;
+515c515
+< 				if ( $( oTabs[sCode] ).style.display != 'none' )
+---
+> 				if ( document.getElementById( oTabs[sCode] ).style.display != 'none' )
+581c581
+< 		$( 'contents' ).dir = langDir;
+---
+> 		document.getElementById( 'contents' ).dir = langDir;
+592c592
+< 		var titleElement = $( 'header' ) ;
+---
+> 		var titleElement = document.getElementById( 'header' ) ;
+608c608
+< 					var blockerFrame = currentParent.contentWindow.$( 'blocker' ) ;
+---
+> 					var blockerFrame = currentParent.contentWindow.document.getElementById( 'blocker' ) ;
+651c651
+< 		$( 'innerContents' ).innerHTML = '<iframe id="frmMain" src="' + Args().Page + '" name="frmMain" frameborder="0" width="100%" height="100%" scrolling="auto" style="visibility: hidden;" allowtransparency="true"><\/iframe>' ;
+---
+> 		document.getElementById( 'innerContents' ).innerHTML = '<iframe id="frmMain" src="' + Args().Page + '" name="frmMain" frameborder="0" width="100%" height="100%" scrolling="auto" style="visibility: hidden;" allowtransparency="true"><\/iframe>' ;
+662c662
+< 		var frmMain = $('frmMain') ;
+---
+> 		var frmMain = document.getElementById('frmMain') ;
+689c689
+< 		$('btnOk').style.visibility = ( showIt ? '' : 'hidden' ) ;
+---
+> 		document.getElementById('btnOk').style.visibility = ( showIt ? '' : 'hidden' ) ;
+716,717c716,717
+< 		if ( $( 'frmMain' ) )
+< 			$( 'frmMain' ).src = FCKTools.GetVoidUrl() ;
+---
+> 		if ( document.getElementById( 'frmMain' ) )
+> 			document.getElementById( 'frmMain' ).src = FCKTools.GetVoidUrl() ;
+737c737
+< 		var cover = $( 'cover' ) ;
+---
+> 		var cover = document.getElementById( 'cover' ) ;
+754c754
+< 				var blocker = $( 'blocker' ) ;
+---
+> 				var blocker = document.getElementById( 'blocker' ) ;
+813c813
+< 			var cover = $( 'cover' ) ;
+---
+> 			var cover = document.getElementById( 'cover' ) ;
