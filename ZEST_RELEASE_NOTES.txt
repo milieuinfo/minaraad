@@ -31,3 +31,11 @@ Things to do after copying a production database to oefen/ontwikkel
     http://plone-minaraad-oe-2.mmis.be:12080
 
 - Save the form.
+
+
+About FCKEditor
+---------------
+
+This buildout uses a custom version of FCKEditor fixing an issue with
+IE9.
+The patch is located in fck_ie9_fix.patch.
