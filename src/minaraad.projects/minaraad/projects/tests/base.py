@@ -1,17 +1,18 @@
 import logging
+import doctest
 
-from zope.testing import doctest
+import transaction
 from Products.PloneTestCase import PloneTestCase as ptc
 from Testing import ZopeTestCase as ztc
-from Products.Five import fiveconfigure, zcml
+from Zope2.App import zcml
+from Products.Five import fiveconfigure
 from Products.PloneTestCase.layer import onsetup
-from Products.Five.testbrowser import Browser
+from Testing.testbrowser import Browser
 from AccessControl import SecurityManagement
 
 from zope.component import getSiteManager
 from Products.MailHost.interfaces import IMailHost
-from Products.PasswordResetTool.tests.utils import MockMailHost as \
-     _MockMailHost
+from Products.CMFPlone.tests.utils import MockMailHost as _MockMailHost
 
 from digibib_view_parser import DigiBibHtmlParser
 from minaraad.projects.setuphandlers import add_catalog_indexes
@@ -81,6 +82,7 @@ class MockLogger:
 class MockMinaraadProperties:
     secretary_email = 'secretary@example.com'
     governance_board = 'daily_governance'
+
 
 
 class MinaraadTestCase(ptc.PloneTestCase):
