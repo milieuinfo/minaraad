@@ -39,14 +39,11 @@ def get_portal():
 @onsetup
 def setup_product():
     fiveconfigure.debug_mode = True
-    #import Products.minaraad
-    #zcml.load_config('configure.zcml', Products.minaraad)
     import minaraad.projects
     zcml.load_config('configure.zcml', minaraad.projects)
     fiveconfigure.debug_mode = False
-    #ztc.installProduct('minaraad')
+
     ztc.installPackage('minaraad.projects')
-    add_catalog_indexes(get_portal())
 
 
 setup_product()
@@ -90,6 +87,7 @@ class MinaraadTestCase(ptc.PloneTestCase):
 
     def _setup(self):
         ptc.PloneTestCase._setup(self)
+        add_catalog_indexes(self.portal)
         self.patch_error_log()
         self.patch_mail_host()
         self.patch_portal_properties()

@@ -60,6 +60,9 @@ def save_invited(meeting, event):
     for group_id in all_groups:
         group = portal_groups.getGroupById(group_id)
 
+        if group is None:
+            continue
+
         for member in group.getGroupMembers():
             # Hum, we have some confusion here between getUserName
             # (login name) and getId (user id).  This is usually the
