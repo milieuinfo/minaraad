@@ -47,6 +47,13 @@ We'll add an item to the meeting:
     ...                       duration=60)
     'first_item'
 
+And notify the creation:
+
+    >>> from Products.Archetypes.event import ObjectEditedEvent
+    >>> from zope.event import notify
+    >>> notify(ObjectEditedEvent(meeting.first_item))
+
+
 This will change the duration of the meeting and its end date:
 
     >>> meeting.get_duration()
@@ -70,12 +77,14 @@ We'll add another item:
     ...                       title='Second item',
     ...                       duration=90)
     'second_item'
+    >>> notify(ObjectEditedEvent(meeting.second_item))
 
 By default, this one appears after the first one:
 
     >>> [(item.Title, item.getOrder) for item in meeting.find_items()]
     [('First item', 0),
      ('Second item', 1)]
+
 
 The meeting duration is again updated:
 
@@ -116,6 +125,7 @@ test this, we'll first add a few items to our meeting:
     ...                               id='%s_item' % item,
     ...                               title='%s item' % item.capitalize(),
     ...                               duration=duration)
+    ...     notify(ObjectEditedEvent(meeting.get('%s_item' % item)))
 
 We'll first check everything worked correctly:
 
@@ -211,16 +221,21 @@ overlap a day, the system should still be able to compute the date correctly.
     ...                        title='First item',
     ...                        duration=120)
     'first_item'
+    >>> notify(ObjectEditedEvent(meeting2.first_item))
+
     >>> meeting2.invokeFactory('AgendaItemProject',
     ...                        id='second_item',
     ...                        title='Second item',
     ...                        duration=130)
     'second_item'
+    >>> notify(ObjectEditedEvent(meeting2.second_item))
+
     >>> meeting2.invokeFactory('AgendaItemProject',
     ...                        id='last_item',
     ...                        title='last item',
     ...                        duration=5)
     'last_item'
+    >>> notify(ObjectEditedEvent(meeting2.last_item))
 
 We can now check the values computed by the meeting:
 
