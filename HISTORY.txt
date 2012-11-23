@@ -1,7 +1,7 @@
 History of this buildout
 ========================
 
-4.18 (unreleased)
+4.18 (2012-11-23)
 -----------------
 
 - Use custom FCKEditor to fix IE9 issues. [vincent]
