@@ -7,14 +7,22 @@ This test suite will ensure project content type works as expected.
     >>> self.add_digibib()
     >>> digibib = self.portal.digibib
 
+    >>> from Products.Archetypes.event import ObjectEditedEvent
+    >>> from zope.event import notify
+
+
 We first need a project or two:
 
     >>> digibib.projects.invokeFactory('Project',
     ...                                'first_project')
     'first_project'
+    >>> notify(ObjectEditedEvent(digibib.projects.first_project))
+
     >>> digibib.projects.invokeFactory('Project',
     ...                                'second_project')
     'second_project'
+    >>> notify(ObjectEditedEvent(digibib.projects.second_project))
+
 
 
 Finding linked meetings
@@ -31,6 +39,8 @@ We'll first add a meeting without reference:
     ...                                'meeting',
     ...                                start_time=DateTime(2012, 5, 5, 12, 0))
     'meeting'
+     >>> notify(ObjectEditedEvent(digibib.meetings.meeting))
+
 
 For the moment, the meeting does not appear in the 'get_meetings'
 attributes of the projects:
@@ -49,12 +59,15 @@ We'll now add AgendaItem to the meeting were the projects are discussed:
     ...                                        project = digibib.projects.first_project)
     'first_item'
     >>> digibib.meetings.meeting.first_item.setDuration(10)
+    >>> notify(ObjectEditedEvent(digibib.meetings.meeting.first_item))
+
     >>> digibib.meetings.meeting.invokeFactory('AgendaItemProject',
     ...                                        'second_item',
     ...                                        duration = 10,
     ...                                        project = digibib.projects.second_project)
     'second_item'
     >>> digibib.meetings.meeting.second_item.setDuration(10)
+    >>> notify(ObjectEditedEvent(digibib.meetings.meeting.second_item))
 
     >>> digibib.projects.first_project.get_meetings()
     [<Meeting at /plone/digibib/meetings/meeting>]
@@ -67,6 +80,7 @@ Now we'll add an agenda item that do not discuss any project:
     >>> digibib.meetings.meeting.invokeFactory('AgendaItemProject',
     ...                                        'last_item')
     'last_item'
+    >>> notify(ObjectEditedEvent(digibib.meetings.meeting.last_item))
 
 Nothing changed for the projects:
 
@@ -158,23 +172,30 @@ To do so, we'll add another meeting with some points:
     ...                                'second_meeting',
     ...                                start_time=DateTime(2012, 5, 5, 12, 0))
     'second_meeting'
+    >>> notify(ObjectEditedEvent(digibib.meetings.second_meeting))
+
     >>> digibib.meetings.second_meeting.invokeFactory(
     ...     'AgendaItemProject',
     ...     'item1',
     ...     project = digibib.projects.first_project,
     ...     duration = 1)
     'item1'
+    >>> notify(ObjectEditedEvent(digibib.meetings.second_meeting.item1))
+
     >>> digibib.meetings.second_meeting.invokeFactory(
     ...     'AgendaItemProject',
     ...     'item2',
     ...     project = digibib.projects.second_project,
     ...     duration = 1)
     'item2'
+    >>> notify(ObjectEditedEvent(digibib.meetings.second_meeting.item2))
+
     >>> digibib.meetings.second_meeting.invokeFactory(
     ...     'AgendaItemProject',
     ...     'item3',
     ...     duration = 1)
     'item3'
+    >>> notify(ObjectEditedEvent(digibib.meetings.second_meeting.item3))
 
     >>> digibib.projects.first_project.get_meetings()
     [<Meeting at /plone/digibib/meetings/second_meeting>]
@@ -194,6 +215,7 @@ We create a second meeting to copy the items:
     ...                                'third_meeting',
     ...                                start_time=DateTime(2012, 5, 5, 12, 0))
     'third_meeting'
+    >>> notify(ObjectEditedEvent(digibib.meetings.third_meeting))
 
 And we copy them:
 
@@ -312,6 +334,7 @@ wait for a cronjob to call a page that will list all proposed projects:
      {'msg': u'Geachte heer/mevrouw , \n\nHieronder vindt u de lijst met nieuwe projecten die zijn voorgesteld:\n - : http://nohost/plone/digibib/projects/first_project\n\nMet vriendelijke groeten.',
       'to': 'member3@example.com',
       'title': u'Weekoverzicht van voorgestelde projecten'}]
+
 
 A project is present only once in a reminder. If there's no project,
 the mail is not sent:
