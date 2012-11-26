@@ -10,12 +10,17 @@ from Products.PloneTestCase.layer import onsetup
 from Testing.testbrowser import Browser
 from AccessControl import SecurityManagement
 
+from zope.event import notify
+from zope.component import adapter
 from zope.component import getSiteManager
+
 from Products.MailHost.interfaces import IMailHost
 from Products.CMFPlone.tests.utils import MockMailHost as _MockMailHost
 
 from digibib_view_parser import DigiBibHtmlParser
 from minaraad.projects.setuphandlers import add_catalog_indexes
+
+from minaraad.projects import events
 
 OPTIONFLAGS = (doctest.ELLIPSIS |
                doctest.NORMALIZE_WHITESPACE)
@@ -41,9 +46,12 @@ def setup_product():
     fiveconfigure.debug_mode = True
     import minaraad.projects
     zcml.load_config('configure.zcml', minaraad.projects)
+    import Products.SimpleAttachment
+    zcml.load_config('configure.zcml', Products.SimpleAttachment)
     fiveconfigure.debug_mode = False
 
     ztc.installPackage('minaraad.projects')
+    ztc.installPackage('Products.SimpleAttachment')
 
 
 setup_product()
@@ -81,17 +89,17 @@ class MockMinaraadProperties:
     governance_board = 'daily_governance'
 
 
-
 class MinaraadTestCase(ptc.PloneTestCase):
     default_password = 'secret'
 
     def _setup(self):
         ptc.PloneTestCase._setup(self)
-        add_catalog_indexes(self.portal)
         self.patch_error_log()
         self.patch_mail_host()
         self.patch_portal_properties()
+        add_catalog_indexes(self.portal)
         #self.patch_logger()
+
 
     def patch_error_log(self):
         self.portal.error_log._ignored_exceptions = ()

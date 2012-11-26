@@ -1,4 +1,5 @@
 import logging
+from zope.component import adapter
 from zope.component.hooks import getSite
 from Acquisition import aq_parent, aq_inner
 from Products.CMFCore.utils import getToolByName
@@ -6,15 +7,20 @@ from zope.i18n import translate
 from Products.CMFPlone.utils import safe_unicode
 from persistent.dict import PersistentDict
 
+from zope.lifecycleevent.interfaces import IObjectModifiedEvent
+
 from minaraad.projects.content.base_meeting import BaseMeeting
 from minaraad.projects import MinaraadProjectMessageFactory as _
 from minaraad.projects.utils import send_email
 from minaraad.projects.config import FROM_EMAIL
+
 from minaraad.projects.interfaces import IAgendaItemProject
+from minaraad.projects.interfaces import IAgendaItem
 
 logger = logging.getLogger('minaraad.projects.events')
 
 
+@adapter(IAgendaItem, IObjectModifiedEvent)
 def set_agenda_item_order(item, event):
     """ This event is called when an AgendaItem is added to a meeting.
     It will set the order so the item will be the last of the list.
@@ -78,6 +84,7 @@ def save_invited(meeting, event):
             invited[member_id]['fullname'] = member.getProperty('fullname', '')
             invited[member_id]['company'] = member.getProperty('company', '')
             invited[member_id]['email'] = member.getProperty('email', '')
+
     for extra in meeting.getOtherInvitees():
         extra_id = extra['name'].strip()
         if not extra_id:

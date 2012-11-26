@@ -317,12 +317,15 @@ three PDf files: onepage.pdf, multipage.pdf and restricted.pdf.
     ...         filename = __file__
     ...     return os.path.abspath(os.path.dirname(filename))
 
+    >>> from minaraad.projects.events import concatenate_pdf
+
     >>> def attach_file(item, id, title, filename):
     ...     f = open('/'.join([mydir(), filename]))
     ...     item.invokeFactory('FileAttachment',
     ...                        id=id,
     ...                        title=title,
     ...                        file=f)
+    ...     notify(ObjectEditedEvent(item[id]))
 
     >>> attach_file(meeting.second_item,
     ...             'first_file',
@@ -468,9 +471,6 @@ First we'll need a location:
     >>> digibib.meetings.meeting_located.setMeetinglocation(digibib.organisations.orga)
 
 Let's see if the location is saved as expected:
-
-    >>> digibib.meetings.meeting_located.get_saved_location()
-    <persistent.dict.PersistentDict object at ...>
 
     >>> sorted(digibib.meetings.meeting_located.get_saved_location().items(),
     ...        key = lambda x: x[0])

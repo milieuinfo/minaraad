@@ -35,11 +35,7 @@
   </class>
 
   <!-- Custom events. -->
-  <subscriber
-      for=".interfaces.IAgendaItem
-           zope.lifecycleevent.interfaces.IObjectModifiedEvent"
-      handler=".events.set_agenda_item_order"
-      />
+  <subscriber handler=".events.set_agenda_item_order" />
 
   <subscriber
       for=".interfaces.IAgendaItemProject
