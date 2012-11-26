@@ -16,20 +16,20 @@ The themes are already there:
     >>> tm.themes
     [(21, 'Strategisch milieubeleid'),
      (22, 'Instrumenten'),
-     (23, 'Milieuhygi\xc3\xabne en klimaat'),
+     (23, 'Milieuhygi...ne en klimaat'),
      (24, 'Water en zee'),
      (25, 'Open Ruimte'),
      (26, 'Ruimtelijke ordening en mobiliteit'),
      (27, 'Participatie en lokale besturen')]
 
-
 We also need some content for wich we'll migrate the theme:
 
+    >>> from Products.CMFPlone.utils import safe_unicode
     >>> for th_id, th_name in tm.themes:
     ...     self.portal.studies.invokeFactory(
     ...         'Study',
     ...         id='study_%s' % th_id,
-    ...         title='Study %s' % th_name,
+    ...         title='Study %s' % safe_unicode(th_name),
     ...         theme=th_id)
     'study_21'
     'study_22'
@@ -45,12 +45,11 @@ We'll check the content has been created correctly:
     ...   if x.portal_type == 'Study']
     [('Study Strategisch milieubeleid', 21, 'Strategisch milieubeleid'),
      ('Study Instrumenten', 22, 'Instrumenten'),
-     ('Study Milieuhygi\xc3\xabne en klimaat', 23, 'Milieuhygi\xc3\xabne en klimaat'),
+     ('Study Milieuhygi...ne en klimaat', 23, 'Milieuhygi...ne en klimaat'),
      ('Study Water en zee', 24, 'Water en zee'),
      ('Study Open Ruimte', 25, 'Open Ruimte'),
      ('Study Ruimtelijke ordening en mobiliteit', 26, 'Ruimtelijke ordening en mobiliteit'),
      ('Study Participatie en lokale besturen', 27, 'Participatie en lokale besturen')]
-
 
 Users can also subscribe to some themes, so we'll add some:
     >>> mtool = self.portal.portal_membership
@@ -81,7 +80,7 @@ Now, if we run the migration, those values will change:
     ...   if x.portal_type == 'Study']
     [('Study Strategisch milieubeleid', 41, 'Deugdelijk bestuur'),
      ('Study Instrumenten', 41, 'Deugdelijk bestuur'),
-     ('Study Milieuhygi\xc3\xabne en klimaat', 23, 'Milieuhygi\xc3\xabne en klimaat'),
+     ('Study Milieuhygi...ne en klimaat', 23, 'Milieuhygi...ne en klimaat'),
      ('Study Water en zee', 42, 'Omgevingskwaliteit'),
      ('Study Open Ruimte', 40, 'Biodiversiteit'),
      ('Study Ruimtelijke ordening en mobiliteit', 42, 'Omgevingskwaliteit'),
@@ -94,7 +93,7 @@ already dissapeared so it's not migrated.
 And the old themes will have disappeared (except 23):
 
     >>> tm.themes
-    [(23, 'Milieuhygi\xc3\xabne en klimaat'),
+    [(23, 'Milieuhygi...ne en klimaat'),
      (40, 'Biodiversiteit'),
      (41, 'Deugdelijk bestuur'),
      (42, 'Omgevingskwaliteit')]
@@ -114,14 +113,14 @@ change anymore:
     ...   if x.portal_type == 'Study']
     [('Study Strategisch milieubeleid', 41, 'Deugdelijk bestuur'),
      ('Study Instrumenten', 41, 'Deugdelijk bestuur'),
-     ('Study Milieuhygi\xc3\xabne en klimaat', 23, 'Milieuhygi\xc3\xabne en klimaat'),
+     ('Study Milieuhygi...ne en klimaat', 23, 'Milieuhygi...ne en klimaat'),
      ('Study Water en zee', 42, 'Omgevingskwaliteit'),
      ('Study Open Ruimte', 40, 'Biodiversiteit'),
      ('Study Ruimtelijke ordening en mobiliteit', 42, 'Omgevingskwaliteit'),
      ('Study Participatie en lokale besturen', 41, 'Deugdelijk bestuur')]
 
     >>> tm.themes
-    [(23, 'Milieuhygi\xc3\xabne en klimaat'),
+    [(23, 'Milieuhygi...ne en klimaat'),
      (40, 'Biodiversiteit'),
      (41, 'Deugdelijk bestuur'),
      (42, 'Omgevingskwaliteit')]
@@ -145,7 +144,7 @@ saving an object).
     >>> [s._theme_name for s in self.portal.studies.contentValues()
     ...  if s.portal_type == 'Study']
     ['Deugdelijk bestuur', 'Deugdelijk bestuur',
-     'Milieuhygi\xc3\xabne en klimaat', 'Omgevingskwaliteit',
+     'Milieuhygi...ne en klimaat', 'Omgevingskwaliteit',
      'Biodiversiteit', 'Omgevingskwaliteit',
      'Deugdelijk bestuur']
 
@@ -155,7 +154,7 @@ Now if a theme is deleted, we'll still be able to access the name via getThemeNa
     >>> [s.getThemeName() for s in self.portal.studies.contentValues()
     ...  if s.portal_type == 'Study']
     ['Deugdelijk bestuur', 'Deugdelijk bestuur',
-     'Milieuhygi\xc3\xabne en klimaat', 'Omgevingskwaliteit',
+     'Milieuhygi...ne en klimaat', 'Omgevingskwaliteit',
      'Biodiversiteit', 'Omgevingskwaliteit',
      'Deugdelijk bestuur']
 

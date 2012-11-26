@@ -11,7 +11,7 @@
 
       <h1 class="documentFirstHeading"
           tal:define="seeIfWeShouldMailAndDoIt view/sendEmail;">
-        <span tal:replace="object_title" /> &mdash;
+        <span tal:replace="context/@@plone_context_state/object_title" /> &mdash;
         <span i18n:translate="label_sendemail"
               tal:omit-tag="">Send e-mail</span>
       </h1>
