@@ -325,15 +325,15 @@ wait for a cronjob to call a page that will list all proposed projects:
     >>> browser.open('http://nohost/plone/cron_projects_reminder')
 
     >>> self.portal.MailHost.messages
-    [{'msg': u'Geachte heer/mevrouw , \n\nHieronder vindt u de lijst met nieuwe projecten die zijn voorgesteld:\n - : http://nohost/plone/digibib/projects/first_project\n\nMet vriendelijke groeten.',
+    [{'msg': u'Dear , \n\nHere is the list of the projects that have been proposed this week:\n - : http://nohost/plone/digibib/projects/first_project \n\nBest regards.',
       'to': 'member1@example.com',
-      'title': u'Weekoverzicht van voorgestelde projecten'},
-     {'msg': u'Geachte heer/mevrouw , \n\nHieronder vindt u de lijst met nieuwe projecten die zijn voorgesteld:\n - : http://nohost/plone/digibib/projects/first_project\n\nMet vriendelijke groeten.',
-      'to': 'member2@example.com',
-      'title': u'Weekoverzicht van voorgestelde projecten'},
-     {'msg': u'Geachte heer/mevrouw , \n\nHieronder vindt u de lijst met nieuwe projecten die zijn voorgesteld:\n - : http://nohost/plone/digibib/projects/first_project\n\nMet vriendelijke groeten.',
+      'title': u'Weekly list of proposed projects'},
+     {'msg': u'Dear , \n\nHere is the list of the projects that have been proposed this week:\n - : http://nohost/plone/digibib/projects/first_project \n\nBest regards.',
       'to': 'member3@example.com',
-      'title': u'Weekoverzicht van voorgestelde projecten'}]
+      'title': u'Weekly list of proposed projects'},
+     {'msg': u'Dear , \n\nHere is the list of the projects that have been proposed this week:\n - : http://nohost/plone/digibib/projects/first_project \n\nBest regards.',
+      'to': 'member2@example.com',
+      'title': u'Weekly list of proposed projects'}]
 
 
 A project is present only once in a reminder. If there's no project,
