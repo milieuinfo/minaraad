@@ -83,11 +83,12 @@ def datetime_diff_minutes(start, end):
 
     We need this helper because multiplying by 1440 and
     then rounding can give weird results.
+    Note: this seems to be fixed with Python 2.6. We keep the
+    method for safety reasons.
+
     >>> d1 = DateTime(2010, 2, 9, 13, 20)
     >>> d2 = DateTime(2010, 2, 9, 14, 00)
 
-    >>> int((d2 - d1) * 1440)
-    39
     >>> datetime_diff_minutes(d1, d2)
     40
 
