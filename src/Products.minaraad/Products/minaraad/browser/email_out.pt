@@ -26,8 +26,9 @@
         <form action="email_out"
               method="post"
               name="email_out"
-              tal:attributes="action string:${context/absolute_url}/$template_id"
-              tal:define="canSend view/canSend">
+              tal:define="template_id template/getId;
+                          canSend view/canSend"
+              tal:attributes="action string:${context/absolute_url}/$template_id">
 
           <fieldset>
             <legend i18n:translate="legend_sendemail">Send e-mail to subscribers</legend>
@@ -82,9 +83,7 @@
                        id="to"
                        name="to"
                        size="70"
-                       tabindex=""
-                       tal:attributes="tabindex tabindex/next;
-                                       value to_" />
+                       tal:attributes="value to_" />
               </div>
 
               <div class="field">
@@ -103,9 +102,7 @@
                        value="1"
                        id="send_as_test"
                        class="noborder"
-                       checked="checked"
-                       tabindex=""
-                       tal:attributes="tabindex tabindex;" />
+                       checked="checked" />
               </div>
 
               <div class="field">
@@ -119,19 +116,15 @@
                 </div>
 
                 <textarea name="additional"
-                          id="additional"
-                          tabindex=""
-                          tal:attributes="tabindex tabindex/next"></textarea>
+                          id="additional"></textarea>
               </div>
 
               <div class="formControls">
                 <input class="context"
-                       tabindex=""
                        type="submit"
                        name="send"
                        value="Send"
-                       i18n:attributes="value label_send;"
-                       tal:attributes="tabindex tabindex/next;" />
+                       i18n:attributes="value label_send;" />
               </div>
             </tal:block>
           </fieldset>
