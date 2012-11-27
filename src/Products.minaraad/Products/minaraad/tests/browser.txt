@@ -86,16 +86,21 @@ Check that editing and immediately saving works, especially for the
 theme as there was an Archetypes bug at some point; this does not seem
 to trigger the error though:
 
-  >>> 'Milieuhygiëne en klimaat' in browser.contents
-  True
-  >>> browser.getLink('Edit').click()
+  >>> import re
+  >>> milieu_exp = re.compile('Milieuhygi.+ne en klimaat', re.M)
+
+  >>> browser.contents
+  '\n...Milieuhygi...ne en klimaat...'
+
+  >>> browser.open('http://nohost/plone/adviezen/my-advisory/edit')
   >>> browser.getControl(name='theme').value
   ['23']
   >>> browser.getForm(name='edit_form').submit()
   >>> browser.url
   'http://nohost/plone/adviezen/my-advisory'
-  >>> 'Milieuhygiëne en klimaat' in browser.contents
-  True
+
+  >>> browser.contents
+  '\n...Milieuhygi...ne en klimaat...'
 
 
 AnnualReport

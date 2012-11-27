@@ -10,7 +10,7 @@ There is currently some predefined themes:
     >>> tm.themes
     [(21, 'Strategisch milieubeleid'),
      (22, 'Instrumenten'),
-     (23, 'Milieuhygi\xc3\xabne en klimaat'),
+     (23, 'Milieuhygi...ne en klimaat'),
      (24, 'Water en zee'),
      (25, 'Open Ruimte'),
      (26, 'Ruimtelijke ordening en mobiliteit'),
@@ -41,7 +41,7 @@ Now if we delete the theme, we can still view the old name:
     >>> tm.themes
     [(21, 'Strategisch milieubeleid'),
      (22, 'Instrumenten'),
-     (23, 'Milieuhygi\xc3\xabne en klimaat'),
+     (23, 'Milieuhygi...ne en klimaat'),
      (25, 'Open Ruimte'),
      (26, 'Ruimtelijke ordening en mobiliteit'),
      (27, 'Participatie en lokale besturen')]
