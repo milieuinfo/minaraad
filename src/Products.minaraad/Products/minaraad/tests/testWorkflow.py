@@ -332,11 +332,18 @@ class testWorkflow(MainTestCase):
         wfTool.doActionFor(self.contentContainer.someobj, 'retract')
         self.logout()
 
-    def assertCannotCreateContent(self, memberId, type_, err=Unauthorized):
+    def assertCannotCreateContent(self, memberId, type_):
         container = self.contentContainer
         self.login(memberId)
-        self.failUnlessRaises(err, container.invokeFactory,
-                              type_, 'someotherobj')
+        try:
+            container.invokeFactory(type_, 'someotherobj')
+            created = True
+        except ValueError:
+            created = False
+        except Unauthorized:
+            created = False
+
+        assert(created, False)
         self.logout()
 
     def _content_state(self):
