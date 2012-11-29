@@ -6,11 +6,12 @@
          and has the effect that as Zope root user you get logged out
          from basic authentication, which is rather weird. -->
     <div metal:define-macro="portlet"
-         tal:condition="python:False and template.getId()!='recently_published'"
          tal:omit-tag="">
 
       <!-- UNUSED: last_login_time python:member.getProperty('last_login_time', DateTime()); -->
-      <tal:recentlist tal:define="portal context/@@plone_portal_state/portal;
+      <tal:recentlist tal:define="template_id template/getId;
+                                  portal context/@@plone_portal_state/portal;
+                                  portal_url portal/absolute_url;
                                   toLocalizedTime nocall:context/@@plone/toLocalizedTime;
                                   results python:request.get('items',
                                   portal.portal_catalog.searchResults(portal_type=['Hearing', 'Advisory',
@@ -20,7 +21,8 @@
                                   sort_on='effective',
                                   sort_order='reverse')[:10]);
                                   portal_default_page portal/@@default_page/getDefaultPage;
-                                  front_page_url string:${portal_url}/${portal_default_page}">
+                                  front_page_url string:${portal_url}/${portal_default_page}"
+                      tal:condition="python: template_id != 'recently_published'">
 
         <dl id="portlet-events-mina">
           <dt>
