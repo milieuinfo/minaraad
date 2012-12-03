@@ -37,7 +37,8 @@
           <tal:items tal:repeat="obj results">
             <dd tal:condition="python:obj.getURL() != front_page_url">
               <span class="portlet_date">
-                <tal:date content="python:toLocalizedTime(obj.effective)" />
+                <tal:date content="python:toLocalizedTime(obj.effective)"
+                          tal:on-error="string: ''"/>
               </span>
               <span class="portlet_date"
                     i18n:domain="plone"
