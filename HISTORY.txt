@@ -4,6 +4,9 @@ History of this buildout
 4.19 (unreleased)
 -----------------
 
+- Replaced references to "Ignace Decancq" by "Jan Verheeke, Secretaris
+  Minaraad". [vincent]
+
 - By default, meeting participants are considered as absent. [vincent]
 
 - Reactivated project reminder crontab, launched at midnight every
