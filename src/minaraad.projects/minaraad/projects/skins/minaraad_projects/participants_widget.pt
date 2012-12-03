@@ -90,7 +90,7 @@
                     tal:attributes="class python: oddrow and 'odd' or 'even'">
 
                 <tal:block tal:define="name python: p;
-                                       status python: values.get(p, 0)">
+                                       status python: values.get(p, 2)">
                   <td>
                     <metal:use use-macro="context/participants_widget/macros/member_fullname" />
                   </td>

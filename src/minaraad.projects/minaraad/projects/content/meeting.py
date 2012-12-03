@@ -20,7 +20,7 @@ from minaraad.projects import MinaraadProjectMessageFactory as _
 from minaraad.projects import config
 from minaraad.projects.interfaces import IMeeting, IAgendaItem
 from minaraad.projects.utils import prepend_zero
-from minaraad.projects.widgets import PARTICIPANT_PRESENT
+from minaraad.projects.widgets import PARTICIPANT_ABSENT
 from minaraad.projects.widgets import ParticipantsWidget
 
 from base_meeting import base_meeting_schema, BaseMeeting
@@ -345,7 +345,7 @@ class Meeting(BaseMeeting):
         for p in self.getField('participants').getRaw(self):
             p_split = p.split('|')
             if len(p_split) == 1:
-                participants.append((p, PARTICIPANT_PRESENT))
+                participants.append((p, PARTICIPANT_ABSENT))
             elif len(p_split) == 2:
                 try:
                     participants.append(('|'.join(p_split[:-1]),

@@ -4,6 +4,8 @@ History of this buildout
 4.19 (unreleased)
 -----------------
 
+- By default, meeting participants are considered as absent. [vincent]
+
 - Reactivated project reminder crontab, launched at midnight every
   tuesday and friday. [vincent]
 

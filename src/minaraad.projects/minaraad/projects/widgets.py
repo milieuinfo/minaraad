@@ -22,7 +22,7 @@ class ParticipantsWidget(Widget.LinesWidget):
             try:
                 value = form.get('%s-%s' % (field.getName(), p), '')
             except ValueError:
-                value = PARTICIPANT_PRESENT
+                value = PARTICIPANT_ABSENT
             participants.append((p, value))
 
         return participants, {}
