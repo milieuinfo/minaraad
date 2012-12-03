@@ -4,6 +4,9 @@ History of this buildout
 5.0 - Plone 4 Branch (unreleased)
 ---------------------------------
 
+- Reactivated project reminder crontab, launched at midnight every
+  tuesday and friday. [vincent]
+
 - fixed caching for the meeting's location. [vincent]
 
 - Configure blobs: in the postgres database.
