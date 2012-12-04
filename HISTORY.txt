@@ -4,6 +4,9 @@ History of this buildout
 5.0 - Plone 4 Branch (unreleased)
 ---------------------------------
 
+- Email from for EmailMixin objects is now specified in a portal
+  property. [vincent]
+
 - Manually commit the transaction after sending
   email. [vincent+maurits]
 

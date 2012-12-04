@@ -2,6 +2,7 @@
 <object name="portal_properties" meta_type="Plone Properties Tool">
  <object name="minaraad_properties" meta_type="Plone Property Sheet">
   <property name="title">Minaraad Properties</property>
+  <property name="newsletter_from" type="string">nieuwsbrief@minaraad.be</property>
   <property name="themes" type="lines">
    <element value="21/Strategisch milieubeleid"/>
    <element value="22/Instrumenten"/>
