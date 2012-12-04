@@ -121,7 +121,7 @@ class EmailNotify(BrowserView):
         plone_utils = getToolByName(portal, 'plone_utils')
         charset = plone_utils.getSiteEncoding()
 
-        fromAddress = portal.getProperty('email_from_address')
+        fromAddress = 'nieuwsbrief@minaraad.be' #portal.getProperty('email_from_address')
 
         subject = '[%s] %s' % (portal.title_or_id(), renderer.context.Title())
 
