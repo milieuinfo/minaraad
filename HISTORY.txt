@@ -4,6 +4,9 @@ History of this buildout
 5.0 - Plone 4 Branch (unreleased)
 ---------------------------------
 
+- Manually commit the transaction after sending
+  email. [vincent+maurits]
+
 - Reactivated project reminder crontab, launched at midnight every
   tuesday and friday. [vincent]
 
