@@ -222,3 +222,4 @@ def remove_double_subscriptions(context):
 
     logger.info('Updated %s objects with PersistentList, found %s objects with double attendees' % (
         obj_count, double_count))
+
