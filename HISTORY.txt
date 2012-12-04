@@ -4,6 +4,9 @@ History of this buildout
 4.19 (unreleased)
 -----------------
 
+- Manually trigger transaction.commit after sending
+  email. [vincent+maurits]
+
 - Replaced references to "Ignace Decancq" by "Jan Verheeke, Secretaris
   Minaraad". [vincent]
 

@@ -31,8 +31,15 @@ from Products.minaraad.tests.MainTestCase import MainTestCase
 
 
 import email
+import transaction
+
 from Products.minaraad.subscriptions import SubscriptionManager
 
+def mock_commit():
+    """ We have to patch transaction.commit for those tests, otherwise
+    we do not get emails in the MailHost.
+    """
+    pass
 
 class testEmailMixin(MainTestCase):
     """Test-cases for class(es) EmailMixin."""
@@ -43,6 +50,7 @@ class testEmailMixin(MainTestCase):
         from Products.MailHost.interfaces import IMailHost
         sm = self.portal.getSiteManager()
         sm.registerUtility(self.portal.MailHost, provided=IMailHost)
+
         self.portal.portal_membership.addMember(
             'bilbo', 'secret',
             ['Member'], [],
@@ -61,6 +69,9 @@ class testEmailMixin(MainTestCase):
         self.loginAsPortalOwner()
         self.portal.jaarverslag.invokeFactory('AnnualReport', 'report')
         context = self.portal.jaarverslag.report
+
+        transaction._old_commit = transaction.commit
+        transaction.commit = mock_commit
 
         mailview = context.unrestrictedTraverse('@@email_out')
         mailview.request.set('send', '1')
@@ -115,6 +126,8 @@ class testEmailMixin(MainTestCase):
         self.assertEquals(lst1, ['bilbo@example.com',
                                  'frodo@example.com'])
 
+        transaction.commit = transaction._old_commit
+
     def beforeTearDown(self):
         self.portal.MailHost = self.portal._original_MailHost
         del self.portal._original_MailHost
@@ -134,6 +147,9 @@ class MockMailHost:
 
     def reset(self):
         self.messages = []
+
+    def getId(self):
+        return 'MailHost'
 
     def send(self, message, mto=None, mfrom=None, subject=None,
              encode=None):
