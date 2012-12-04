@@ -1,3 +1,5 @@
+import transaction
+
 from DateTime import DateTime
 from email.MIMEMultipart import MIMEMultipart
 from email.MIMEText import MIMEText
@@ -260,6 +262,7 @@ class EmailOutView(AbstractView, EmailNotify):
                     ("Now we have %r members ('additionalMembers' "
                      "plus subscribers)." % len(members)))
                 context.setEmailSent(DateTime())
+                transaction.commit()
             else:
                 logger.info("We are in test mode.")
 
