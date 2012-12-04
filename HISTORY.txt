@@ -4,6 +4,9 @@ History of this buildout
 4.19 (unreleased)
 -----------------
 
+- the email_from when sending an email from an EmailMixin object is
+  now specified in potal_properties. [vincent]
+
 - Manually trigger transaction.commit after sending
   email. [vincent+maurits]
 
