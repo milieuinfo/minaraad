@@ -11,7 +11,7 @@
          tal:define="isAnon context/@@plone_portal_state/anonymous;">
       <tal:anonymous condition="isAnon">
         Om uw abonnementen bij te werken moet u ingelogd zijn.  <a
-        href="" tal:attributes="href string: $portal_url/login_form">
+        href="" tal:attributes="href string: $portal_url/login">
         Klik hier</a> om naar het inlogformulier te gaan.
       </tal:anonymous>
       <tal:member condition="not:isAnon">
