@@ -240,3 +240,9 @@ def reapply_actions(context):
 
 def apply_component_registry(context):
     apply_gs_step(context, 'componentregistry')
+
+def apply_css_registry(context):
+    apply_gs_step(context, 'cssregistry')
+
+def apply_skins(context):
+    apply_gs_step(context, 'skins')
