@@ -1,4 +1,4 @@
-<tal:sections tal:define="portal_tabs view/portal_tabs"
+<tal:sections tal:define="portal_tabs view/get_portal_tabs"
      tal:condition="portal_tabs"
      i18n:domain="plone">
     <h5 class="hiddenStructure" i18n:translate="heading_sections">Sections</h5>
@@ -10,9 +10,51 @@
              tal:attributes="id string:portaltab-${tid};
                             class python:selected_tab==tid and 'selected' or 'plain'"
             ><a href=""
-               tal:content="tab/name"
-               tal:attributes="href tab/url;
-                               title tab/description|nothing;">
-            Tab Name
-            </a></li></tal:tabs></ul>
+                tal:content="tab/name"
+                tal:attributes="href tab/url;
+                                title tab/description|nothing;">
+            </a
+            >
+          <ul class="portal-tabs-nav-items"
+              tal:define="subitems tab/children|nothing">
+            
+            <tal:repeat repeat="subitem subitems">
+              <li class="portal-tabs-subitem-listitem"
+                  tal:condition="not:subitem/no_display|nothing">
+                <a class="portal-tabs-subitem-link"
+                   tal:content="subitem/Title"
+                   tal:attributes="href subitem/absolute_url" />
+              </li>
+            </tal:repeat>
+          </ul>
+    </li></tal:tabs></ul>
+    <script type="text/javascript">
+      (function($) {
+        function show_sub_nav() {
+          $(this).find('ul.portal-tabs-nav-items').show();
+        }
+
+        function hide_sub_nav() {
+          $(this).find('ul.portal-tabs-nav-items').hide();
+        }
+
+        $(document).ready(function() {
+          $('#portal-globalnav > li').mouseenter(show_sub_nav);
+          $('#portal-globalnav > li').mouseleave(hide_sub_nav);
+
+          tabs = $('ul.portal-tabs-nav-items');
+          tabs.css({'display': 'none', 'position': 'absolute'});
+          tabs.each(function() {
+            $(this).find('li').css({'display': 'block'});
+          });
+          
+
+          $('#portal-globalnav > li').each(function() {
+            var el = $(this);
+            el.find('ul').css({'left': el.offset().left - 17});
+          });
+        });
+      })(jQuery)
+    </script>
+
 </tal:sections>
