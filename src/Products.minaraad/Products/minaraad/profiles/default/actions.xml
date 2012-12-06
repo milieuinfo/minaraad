@@ -194,18 +194,18 @@
   </action>
   <action title="Mijn contactgegevens" action_id="personal_preferences"
      category="user" condition_expr="member"
-     url_expr="string:$portal_url/personalize_form" visible="True">
+     url_expr="string:$portal_url/@@personal-information" visible="True">
    <permission>View</permission>
   </action>
   <action title="Wachtwoord wijzigen" action_id="password" category="user"
-     condition_expr="member" url_expr="string:$portal_url/password_form"
+     condition_expr="member" url_expr="string:$portal_url/@@change-password"
      visible="True">
    <permission>View</permission>
   </action>
  </action-provider>
  <action-provider name="portal_registration">
   <action title="Join" action_id="join" category="user"
-     condition_expr="not: member" url_expr="string:${portal_url}/join_form"
+     condition_expr="not: member" url_expr="string:${portal_url}/@@register"
      visible="True">
    <permission>Add portal member</permission>
   </action>

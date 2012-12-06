@@ -235,7 +235,7 @@ def apply_gs_step(context, step):
     context.runImportStepFromProfile(PROFILE_ID,
                                      step)
 
-def reapply_actions(context):
+def apply_actions(context):
     apply_gs_step(context, 'actions')
 
 def apply_component_registry(context):
