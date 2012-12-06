@@ -116,4 +116,13 @@
       sortkey="1"
       profile="Products.minaraad:default" />
 
+  <gs:upgradeStep
+      title="Apply component registry"
+      description=""
+      source="5000"
+      destination="5001"
+      handler="Products.minaraad.migration.apply_component_registry"
+      sortkey="1"
+      profile="Products.minaraad:default" />
+
 </configure>

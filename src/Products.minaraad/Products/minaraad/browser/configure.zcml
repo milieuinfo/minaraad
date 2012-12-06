@@ -167,4 +167,12 @@
       allowed_attributes="transitions review_state_title"
       />
 
+  <!-- Overrides (?) the register form to add the captcha. -->
+  <browser:page
+      name="register"
+      for="Products.CMFPlone.Portal.PloneSite"
+      class=".forms.MinaRegistrationForm"
+      permission="zope.Public"
+      />  
+
 </configure>

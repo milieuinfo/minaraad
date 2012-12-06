@@ -230,3 +230,13 @@ def to_plone41(context):
     # Plone 4.1.
     profile_id = 'profile-Products.minaraad:plone41'
     context.runAllImportStepsFromProfile(profile_id, purge_old=False)
+
+def apply_gs_step(context, step):
+    context.runImportStepFromProfile(PROFILE_ID,
+                                     step)
+
+def reapply_actions(context):
+    apply_gs_step(context, 'actions')
+
+def apply_component_registry(context):
+    apply_gs_step(context, 'componentregistry')
