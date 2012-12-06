@@ -7,7 +7,8 @@
                tal:define="dummy python:request.set('disable_border',1)" />
 
   <body>
-    <div metal:fill-slot="prefs_configlet_main">
+    <div metal:fill-slot="content"
+         tal:define="isAnon context/@@plone_portal_state/anonymous;">
       <tal:anonymous condition="isAnon">
         Om uw abonnementen bij te werken moet u ingelogd zijn.  <a
         href="" tal:attributes="href string: $portal_url/login_form">
@@ -70,8 +71,7 @@
                     </label>
                     <input type="checkbox"
                            class="noborder"
-                           tal:attributes="tabindex tabindex/next;
-                                           id string:email_${subscription/id};
+                           tal:attributes="id string:email_${subscription/id};
                                            name string:email_${subscription/id};
                                            value string:email_${subscription/id};
                                            checked subscription/subscribed_email" />
@@ -121,8 +121,7 @@
                      <input type="checkbox"
                             class="noborder"
                             name="themes:list"
-                            tal:attributes="tabindex tabindex/next;
-                                            id string:theme_${theme/id};
+                            tal:attributes="id string:theme_${theme/id};
                                             value theme/id;
                                             checked theme/subscribed" />
                   </td>
@@ -135,8 +134,7 @@
                    type="submit"
                    name="form.button.Save"
                    value="Save"
-                   i18n:attributes="value label_save;"
-                   tal:attributes="tabindex tabindex/next;" />
+                   i18n:attributes="value label_save;" />
           </div>
         </form>
       </tal:member>
