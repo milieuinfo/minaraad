@@ -29,5 +29,7 @@ setup(name='Products.minaraad',
       zip_safe=False,
       install_requires=[
           'setuptools',
+          'five.grok',
+          'quintagroup.formlib.captcha',
           ],
       )

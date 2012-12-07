@@ -4,6 +4,8 @@ History of this buildout
 5.0 - Plone 4 Branch (unreleased)
 ---------------------------------
 
+- Moved theming to Diazo [thomvl]
+
 - Email from for EmailMixin objects is now specified in a portal
   property. [vincent]
 
