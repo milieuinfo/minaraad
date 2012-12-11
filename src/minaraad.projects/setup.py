@@ -1,15 +1,14 @@
 from setuptools import setup, find_packages
 import os
 
-
-def get_file_contents_from_main_dir(filename):
-    file_path = os.path.join('minaraad', 'projects', filename)
-    this_file = open(file_path)
-    contents = this_file.read().strip()
-    this_file.close()
-    return contents
-
-version = get_file_contents_from_main_dir('version.txt')
+try:
+    # Try reading the version.txt from the buildout directory.
+    versionfile = open(os.path.join('..', '..', 'version.txt'))
+    version = versionfile.read().strip()
+    versionfile.close()
+except IOError:
+    # fallback
+    version = '1.0'
 
 setup(name='minaraad.projects',
       version=version,
