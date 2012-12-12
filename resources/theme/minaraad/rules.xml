@@ -117,11 +117,81 @@
       </div>
     </copy>
   </rules>
+  <!-- footer stuff -->
+  <rules if-content="//*[@id='portal-column-one'] and //*[@id='portal-column-two']">
+    <copy css:theme="#portal-footer-wrapper">
+      <div class="cell width-1:2 position-1:4">
+        <div id="portal-footer">
+          <xsl:apply-templates css:select="#portal-footer > *" />
+        </div>
+        <div id="portal-colophon">
+          <xsl:apply-templates css:select="#portal-colophon > *" />
+        </div>
+        <ul id="portal-siteactions">
+          <xsl:apply-templates css:select="#portal-siteactions > *" />
+        </ul>
+        <div id="kss-spinner">
+          <xsl:apply-templates css:select="#kss-spinner > *" />
+        </div>
+      </div>
+    </copy>
+  </rules>
+  <rules if-content="//*[@id='portal-column-one'] and not(//*[@id='portal-column-two'])">
+    <copy css:theme="#portal-footer-wrapper">
+      <div class="cell width-3:4 position-1:4">
+        <div id="portal-footer">
+          <xsl:apply-templates css:select="#portal-footer > *" />
+        </div>
+        <div id="portal-colophon">
+          <xsl:apply-templates css:select="#portal-colophon > *" />
+        </div>
+        <ul id="portal-siteactions">
+          <xsl:apply-templates css:select="#portal-siteactions > *" />
+        </ul>
+        <div id="kss-spinner">
+          <xsl:apply-templates css:select="#kss-spinner > *" />
+        </div>
+      </div>
+    </copy>
+  </rules>
+  <rules if-content="not(//*[@id='portal-column-one']) and //*[@id='portal-column-two']">
+      <copy css:theme="#portal-footer-wrapper">
+        <div class="cell width-3:4 position-0">
+          <div id="portal-footer">
+            <xsl:apply-templates css:select="#portal-footer > *" />
+          </div>
+          <div id="portal-colophon">
+            <xsl:apply-templates css:select="#portal-colophon > *" />
+          </div>
+          <ul id="portal-siteactions">
+            <xsl:apply-templates css:select="#portal-siteactions > *" />
+          </ul>
+          <div id="kss-spinner">
+            <xsl:apply-templates css:select="#kss-spinner > *" />
+          </div>
+        </div>
+      </copy>
+  </rules>
   
-  <after css:theme-children="#portal-footer-wrapper > .cell" css:content="#portal-footer"/>
-  <after css:theme-children="#portal-footer-wrapper > .cell" css:content="#portal-colophon"/>
-  <after css:theme-children="#portal-footer-wrapper > .cell" css:content="#portal-siteactions"/>
+  <rules if-content="not(//*[@id='portal-column-one']) and not(//*[@id='portal-column-two'])">
+    <copy css:theme="#portal-footer-wrapper">
+      <div class="cell width-full position-0">
+        <div id="portal-footer">
+          <xsl:apply-templates css:select="#portal-footer > *" />
+        </div>
+        <div id="portal-colophon">
+          <xsl:apply-templates css:select="#portal-colophon > *" />
+        </div>
+        <ul id="portal-siteactions">
+          <xsl:apply-templates css:select="#portal-siteactions > *" />
+        </ul>
+        <div id="kss-spinner">
+          <xsl:apply-templates css:select="#kss-spinner > *" />
+        </div>
+      </div>
+    </copy>
+  </rules>
+  
   <after css:theme-children="#portal-footer-wrapper > .cell" css:content="#visual-portal-wrapper > script"/>
-  <after css:theme-children="#portal-footer-wrapper > .cell" css:content="#spinner"/>
 
 </rules>
