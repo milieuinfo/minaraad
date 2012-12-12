@@ -61,7 +61,7 @@ body
 h1, h2, h3, h4, h5, h6
   font-family: "Helvetica Neue", Arial, FreeSans, sans-serif
   font-weight: bold
-  color: Black
+  color: #A13826
   line-height: 1.5em
 
 h1, h2
@@ -92,7 +92,7 @@ p
 
 a
   &:link, &:visited
-    color: #205c90
+    color: #A13826
   &:focus img
     outline: thin dotted
 
@@ -105,6 +105,15 @@ input
 q
   quotes: "“" "”" "‘" "’"
 
+.visualClear
+  clear: both
+  font-size: 0
+  height: 0
+  line-height: 0
+  margin: 0
+  padding: 0
+  width: 100%
+
 /* @end*/
 
 /* @group Navigation/search*/
@@ -112,6 +121,8 @@ div#visual-portal-wrapper
   width: 1001px
   margin: 0 auto
   background: url('/++theme++minaraad/img/columnonebg.png') repeat-y left 150px
+  border-right: 1px solid #A4CF4D
+  
 
 #portal-top > div
   width: 100%
@@ -128,9 +139,21 @@ div#visual-portal-wrapper
   
 #portal-columns
   background: url('/++theme++minaraad/img/header_bottom.png') no-repeat
-  padding-top: 25px
+  padding-top: 21px
+#portal-column-one
+  padding-top: 70px
+#portal-column-content
+  padding: 4px 20px 0 45px
   
-
+#portal-column-two  
+  border-left: 1px solid #D98F81
+  
+#column-two-borderholder
+  background: url('/++theme++minaraad/img/column-two-border.gif') repeat-y 801px 0 transparent
+#portal-footer-wrapper > .cell
+  padding: 0 20px 0 45px
+#portal-footer-wrapper > .width-1\3a 2
+  background: url('/++theme++minaraad/img/column-two-border.gif') repeat-y right 0 transparent
 
 /* removes extra space above logo in IE6 and IE7*/
 /* .ie6 and .ie7 is set on <html> by Modernizr library*/
@@ -453,19 +476,20 @@ dl.portlet
 #content
   ul, ol
   a:link
-    color: #205c90
+    color: #A13826
     border-bottom: 0.1em solid #ccc
 
 dl.portlet a:link
-  color: #205c90
+  color: #A13826
   border-bottom: 0.1em solid #ccc
 
 #content a:visited, dl.portlet a:visited
-  color: #427597
-  border-bottom: 0.1em solid #ccc
+  color: #A13826
 
 #content a:hover, dl.portlet a:hover
-  color: #75ad0a !important
+  color: #A13826 !important
+  border-bottom: 0.1em solid #A13826
+  
   /* This one gets an !important because it should always activate in the content area, even when state coloring is active*/
 
 #content

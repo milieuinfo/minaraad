@@ -133,7 +133,7 @@
   h1, h2, h3, h4, h5, h6 {
     font-family: "Helvetica Neue", Arial, FreeSans, sans-serif;
     font-weight: bold;
-    color: black;
+    color: #a13826;
     line-height: 1.5em;
   }
 
@@ -170,7 +170,7 @@
   }
 
   a:link, a:visited {
-    color: #205c90;
+    color: #a13826;
   }
   a:focus img {
     outline: thin dotted;
@@ -188,12 +188,23 @@
     quotes: "“" "”" "‘" "’";
   }
 
+  .visualClear {
+    clear: both;
+    font-size: 0;
+    height: 0;
+    line-height: 0;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+
   /* @end */
   /* @group Navigation/search */
   div#visual-portal-wrapper {
     width: 1001px;
     margin: 0 auto;
     background: url("/++theme++minaraad/img/columnonebg.png") repeat-y left 150px;
+    border-right: 1px solid #a4cf4d;
   }
 
   #portal-top > div {
@@ -214,7 +225,31 @@
 
   #portal-columns {
     background: url("/++theme++minaraad/img/header_bottom.png") no-repeat;
-    padding-top: 25px;
+    padding-top: 21px;
+  }
+
+  #portal-column-one {
+    padding-top: 70px;
+  }
+
+  #portal-column-content {
+    padding: 4px 20px 0 45px;
+  }
+
+  #portal-column-two {
+    border-left: 1px solid #d98f81;
+  }
+
+  #column-two-borderholder {
+    background: url("/++theme++minaraad/img/column-two-border.gif") repeat-y 801px 0 transparent;
+  }
+
+  #portal-footer-wrapper > .cell {
+    padding: 0 20px 0 45px;
+  }
+
+  #portal-footer-wrapper > .width-1\3a 2 {
+    background: url("/++theme++minaraad/img/column-two-border.gif") repeat-y right 0 transparent;
   }
 
   /* removes extra space above logo in IE6 and IE7 */
@@ -565,22 +600,22 @@
   }
 
   #content a:link {
-    color: #205c90;
+    color: #a13826;
     border-bottom: 0.1em solid #cccccc;
   }
 
   dl.portlet a:link {
-    color: #205c90;
+    color: #a13826;
     border-bottom: 0.1em solid #cccccc;
   }
 
   #content a:visited, dl.portlet a:visited {
-    color: #427597;
-    border-bottom: 0.1em solid #cccccc;
+    color: #a13826;
   }
 
   #content a:hover, dl.portlet a:hover {
-    color: #75ad0a !important;
+    color: #a13826 !important;
+    border-bottom: 0.1em solid #a13826;
     /* This one gets an !important because it should always activate in the content area, even when state coloring is active */
   }
 
@@ -2336,6 +2371,140 @@
   }
 
   /* @end */
+  div {
+    /*&.widget
+     * width: 280px
+     * border: 1px solid #db9792
+     * margin-bottom: 20px
+     * font-size: 90% */
+  }
+  div.leftColumn {
+    float: left;
+    width: 250px;
+  }
+  div.rightWidget {
+    float: right;
+    display: inline-block;
+    margin-left: 10px;
+  }
+  div.leftWidget {
+    float: left;
+    display: inline-block;
+  }
+  div.wide {
+    width: 100% !important;
+  }
+  div.widget .title {
+    color: white;
+    background-color: #ae3721;
+    font-weight: bold;
+    padding: 4px 10px;
+  }
+  div.widget #other-years {
+    font-weight: normal;
+    display: inline;
+  }
+  div.widget ul {
+    list-style-type: none !important;
+    list-style-image: none !important;
+    margin: 0px !important;
+    padding: 0px !important;
+  }
+  div.widget ul li {
+    padding: 5px;
+  }
+  div.widget ul li.odd {
+    background: #ffcfc9 !important;
+  }
+  div.widget ul li.even {
+    background: white !important;
+  }
+  div.widget a.standard {
+    text-decoration: none;
+    color: black !important;
+  }
+  div.widget a:hover {
+    text-decoration: underline;
+  }
+
+  .meeting_date, .meeting_times, .meeting_title {
+    display: block;
+  }
+
+  .meeting_date, .meeting_times {
+    font-weight: bold;
+  }
+
+  .row_dragged {
+    background: #cccccc !important;
+  }
+
+  td.draggable {
+    background: white url("/++theme++minaraad/img/drag.gif") no-repeat center center;
+    width: 20px;
+    cursor: move;
+  }
+
+  .row_dragged td.draggable {
+    background: #cccccc url("/++theme++minaraad/img/drag.gif") no-repeat center center;
+  }
+
+  ul.digibibMeetingList li p {
+    margin: 0px;
+  }
+
+  .left {
+    float: left;
+  }
+
+  .right {
+    float: right;
+  }
+
+  table.strong {
+    font-weight: bold;
+    font-size: 90%;
+  }
+
+  .body {
+    font-size: 90%;
+  }
+
+  .widget .body {
+    font-size: 100%;
+  }
+
+  .meetingWidget .meeting_times {
+    font-weight: bold;
+  }
+  .meetingWidget p {
+    margin-bottom: 0px;
+    margin-top: 0px;
+  }
+  .meetingWidget a.attachment {
+    color: #a13826 !important;
+    text-decoration: underline;
+    margin-left: 0.5em;
+  }
+
+  td.center {
+    text-align: center;
+  }
+
+  .body .even {
+    background: none repeat scroll 0 0 #ffcfc9 !important;
+  }
+
+  #other-years select {
+    margin-top: -2px;
+  }
+
+  a.widgetlink {
+    color: white;
+    font-weight: normal;
+    margin-right: 0.3em;
+  }
+
   /* The 16-column Deco Grid System.
    * For the 12-column variant, see decogrids-12.css.
    *
@@ -2496,43 +2665,42 @@
   div#portal-column-one {
     margin-left: -1001px;
     width: 155px;
-    padding-top: 70px;
   }
   div#portal-column-content.width-1\3a 2 {
-    margin-left: -799px;
-    width: 573px;
+    margin-left: -845px;
+    width: 582px;
   }
   div#portal-column-content.position-0.width-3\3a 4 {
-    margin-left: -799px;
-    width: 573px;
+    margin-left: -845px;
+    width: 582px;
   }
   div#portal-column-content.width-full {
-    margin-left: -799px;
-    width: 799px;
+    margin-left: -845px;
+    width: 780px;
   }
   div#portal-column-content.width-3\3a 4 {
-    margin-left: -799px;
-    width: 799px;
+    margin-left: -845px;
+    width: 780px;
   }
   div#portal-column-two {
-    margin-left: -211px;
+    margin-left: -200px;
     width: 200px;
   }
   div#portal-footer-wrapper > .width-1\3a 2 {
-    margin-left: -799px;
-    width: 573px;
+    margin-left: -845px;
+    width: 582px;
   }
   div#portal-footer-wrapper > .position-0.width-3\3a 4 {
-    margin-left: -799px;
-    width: 573px;
+    margin-left: -845px;
+    width: 582px;
   }
   div#portal-footer-wrapper > .width-full {
-    margin-left: -799px;
-    width: 799px;
+    margin-left: -845px;
+    width: 780px;
   }
   div#portal-footer-wrapper > .width-3\3a 4 {
-    margin-left: -799px;
-    width: 799px;
+    margin-left: -845px;
+    width: 780px;
   }
 
   /* Positioning classes, these are subtracting from a rightmost

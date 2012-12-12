@@ -79,14 +79,17 @@
        copy them over into the theme portal-columns div. -->
   <rules if-content="//*[@id='portal-column-one'] and //*[@id='portal-column-two']">
     <copy css:theme="#portal-columns">
-      <div id="portal-column-content" class="cell width-1:2 position-1:4">
-        <xsl:apply-templates css:select="#portal-column-content > *" />
-      </div>
-      <div id="portal-column-one" class="cell width-1:4 position-0">
-        <xsl:apply-templates css:select="#portal-column-one > *" />
-      </div>
-      <div id="portal-column-two" class="cell width-1:4 position-3:4">
-        <xsl:apply-templates css:select="#portal-column-two > *" />
+      <div id="column-two-borderholder">
+        <div id="portal-column-content" class="cell width-1:2 position-1:4">
+          <xsl:apply-templates css:select="#portal-column-content > *" />
+        </div>
+        <div id="portal-column-one" class="cell width-1:4 position-0">
+          <xsl:apply-templates css:select="#portal-column-one > *" />
+        </div>
+        <div id="portal-column-two" class="cell width-1:4 position-3:4">
+          <xsl:apply-templates css:select="#portal-column-two > *" />
+        </div>
+        <div class="visualClear" />
       </div>
     </copy>
   </rules>
@@ -102,11 +105,14 @@
   </rules>
   <rules if-content="not(//*[@id='portal-column-one']) and //*[@id='portal-column-two']">
     <copy css:theme="#portal-columns">
-      <div id="portal-column-content" class="cell width-3:4 position-0">
-        <xsl:apply-templates css:select="#portal-column-content > *" />
-      </div>
-      <div id="portal-column-two" class="cell width-1:4 position-3:4">
-        <xsl:apply-templates css:select="#portal-column-two > *" />
+      <div id="column-two-borderholder">
+        <div id="portal-column-content" class="cell width-3:4 position-0">
+          <xsl:apply-templates css:select="#portal-column-content > *" />
+        </div>
+        <div id="portal-column-two" class="cell width-1:4 position-3:4">
+          <xsl:apply-templates css:select="#portal-column-two > *" />
+        </div>
+        <div class="visualClear" />
       </div>
     </copy>
   </rules>
