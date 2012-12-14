@@ -4,7 +4,8 @@ History of this buildout
 5.0 - Plone 4 Branch (unreleased)
 ---------------------------------
 
-- Added recent portlet. [vincent]
+- Added custom recent portlet, search portlet and linkedIn portlet
+  [vincent]
 
 - Moved theming to Diazo [thomvl]
 

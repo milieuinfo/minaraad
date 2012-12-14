@@ -23,6 +23,28 @@
       edit_permission="plone.app.portlets.ManagePortlets"
       />
 
+  <plone:portlet
+      name="Products.minaraad.Search"
+      interface=".searchPortlet.ISearchPortlet"
+      assignment=".searchPortlet.Assignment"
+      renderer=".searchPortlet.Renderer"
+      addview=".searchPortlet.AddForm"
+      editview=".searchPortlet.EditForm"
+      view_permission="zope2.View"
+      edit_permission="plone.app.portlets.ManagePortlets"
+      />
+
+  <plone:portlet
+      name="Products.minaraad.LinkedIn"
+      interface=".linkedinPortlet.ILinkedInPortlet"
+      assignment=".linkedinPortlet.Assignment"
+      renderer=".linkedinPortlet.Renderer"
+      addview=".linkedinPortlet.AddForm"
+      editview=".linkedinPortlet.EditForm"
+      view_permission="zope2.View"
+      edit_permission="plone.app.portlets.ManagePortlets"
+      />
+
 
   <browser:page
       for="Products.minaraad.content.Hearing.IHearing"

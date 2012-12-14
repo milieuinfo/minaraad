@@ -1,7 +1,20 @@
+<?xml version="1.0"?>
 <portlets>
   <portlet
     addview="Products.minaraad.Recent"
     title="Minaraad recent changes"
     description="Latest changes"
+    />
+
+  <portlet
+    addview="Products.minaraad.Search"
+    title="Minaraad search portlet"
+    description="Search portlet"
+    />
+
+  <portlet
+    addview="Products.minaraad.LinkedIn"
+    title="LinkedIn portlet"
+    description="Shows the LinkedIn link"
     />
 </portlets>
