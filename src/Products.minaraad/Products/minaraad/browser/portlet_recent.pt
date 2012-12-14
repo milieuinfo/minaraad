@@ -12,14 +12,8 @@
       <tal:recentlist tal:define="template_id template/getId;
                                   portal context/@@plone_portal_state/portal;
                                   portal_url portal/absolute_url;
+                                  results view/recent_items;
                                   toLocalizedTime nocall:context/@@plone/toLocalizedTime;
-                                  results python:request.get('items',
-                                  portal.portal_catalog.searchResults(portal_type=['Hearing', 'Advisory',
-                                  'Study', 'AnnualReport',
-                                  'Pressrelease', 'NewsLetter',
-                                  'Event', 'MREvent', 'Document'],
-                                  sort_on='effective',
-                                  sort_order='reverse')[:10]);
                                   portal_default_page portal/@@default_page/getDefaultPage;
                                   front_page_url string:${portal_url}/${portal_default_page}"
                       tal:condition="python: template_id != 'recently_published'">

@@ -246,3 +246,6 @@ def apply_css_registry(context):
 
 def apply_skins(context):
     apply_gs_step(context, 'skins')
+
+def apply_portlets(context):
+    apply_gs_step(context, 'portlets')

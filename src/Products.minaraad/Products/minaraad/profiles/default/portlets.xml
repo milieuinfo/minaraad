@@ -1,0 +1,7 @@
+<portlets>
+  <portlet
+    addview="Products.minaraad.Recent"
+    title="Minaraad recent changes"
+    description="Latest changes"
+    />
+</portlets>

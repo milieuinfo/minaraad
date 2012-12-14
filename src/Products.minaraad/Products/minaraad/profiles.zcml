@@ -152,4 +152,13 @@
       sortkey="1"
       profile="Products.minaraad:default" />
 
+  <gs:upgradeStep
+      title="Apply portlets"
+      description=""
+      source="5004"
+      destination="5005"
+      handler="Products.minaraad.migration.apply_portlets"
+      sortkey="1"
+      profile="Products.minaraad:default" />
+
 </configure>

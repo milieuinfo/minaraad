@@ -25,5 +25,4 @@ class MinaGlobalSectionsViewlet(GlobalSectionsViewlet):
                 except:
                     pass
 
-        print tabs
         return tabs
