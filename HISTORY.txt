@@ -7,6 +7,10 @@ History of this buildout
 - Added custom recent portlet, search portlet and linkedIn portlet
   [vincent]
 
+- Changed text of email subscription notification so it correctly
+  mentions an Event instead of a Hearing when that is the case.
+  [maurits]
+
 - Moved theming to Diazo [thomvl]
 
 - Email from for EmailMixin objects is now specified in a portal
