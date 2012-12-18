@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minaraad 0.1\n"
-"POT-Creation-Date: 2011-10-10 16:12+0000\n"
+"POT-Creation-Date: 2012-12-18 15:21+0000\n"
 "PO-Revision-Date: 2012-02-07 11:15+0100\n"
 "Last-Translator: Maurits van Rees <m.van.rees@zestsoftware.nl>\n"
 "Language-Team: Nederlands <info@zestsoftware.nl>\n"
@@ -73,14 +73,14 @@ msgid "ContactPerson"
 msgstr "Contactpersoon"
 
 #. Default: "Date:"
-#: ./skins/minaraad/mina_showdatetime.pt:18
+#: ./skins/minaraad/mina_showdatetime.pt:20
 msgid "Date:"
 msgstr "Datum:"
 
 #. Default: "Goal:"
 #: ./skins/minaraad/EmailTemplate-Hearing.pt:22
 #: ./skins/minaraad/EmailTemplate-MREvent.pt:22
-#: ./skins/minaraad/hearing_view.pt:73
+#: ./skins/minaraad/hearing_view.pt:75
 msgid "Goal:"
 msgstr "Doelstelling:"
 
@@ -96,7 +96,7 @@ msgstr "JoinIn"
 #. Default: "Location:"
 #: ./skins/minaraad/EmailTemplate-Hearing.pt:18
 #: ./skins/minaraad/EmailTemplate-MREvent.pt:18
-#: ./skins/minaraad/hearing_view.pt:83
+#: ./skins/minaraad/hearing_view.pt:85
 msgid "Location:"
 msgstr "Locatie:"
 
@@ -128,7 +128,7 @@ msgid "Study"
 msgstr "Studie"
 
 #. Default: "Time:"
-#: ./skins/minaraad/mina_showdatetime.pt:26
+#: ./skins/minaraad/mina_showdatetime.pt:28
 msgid "Time"
 msgstr "Tijd:"
 
@@ -149,7 +149,7 @@ msgstr "Klik op de onderstaande button om abonnees van dit content type te expor
 
 #. Default: "from"
 #: ./skins/minaraad/hearing_listing_view.pt:72
-#: ./skins/minaraad/mina_showdatetime.pt:38
+#: ./skins/minaraad/mina_showdatetime.pt:40
 #: ./skins/minaraad/mrevent_listing_view.pt:68
 msgid "from"
 msgstr "van"
@@ -170,12 +170,12 @@ msgid "heading_themes_setup"
 msgstr "Werkvelden"
 
 #. Default: "You are currently subscribed to this hearing."
-#: ./skins/minaraad/hearing_view.pt:24
+#: ./skins/minaraad/hearing_view.pt:25
 msgid "hearing_registered_label"
 msgstr "U bent ingeschreven voor de hoorzitting."
 
 #. Default: "You are not currently subscribed to this hearing."
-#: ./skins/minaraad/hearing_view.pt:40
+#: ./skins/minaraad/hearing_view.pt:42
 msgid "hearing_unregistered_label"
 msgstr "Klik hier om u in te schrijven."
 
@@ -216,7 +216,7 @@ msgstr "Vul de naam in van het nieuwe werkveld."
 
 #. Default: "hour"
 #: ./skins/minaraad/hearing_listing_view.pt:68
-#: ./skins/minaraad/mina_showdatetime.pt:34
+#: ./skins/minaraad/mina_showdatetime.pt:36
 #: ./skins/minaraad/mrevent_listing_view.pt:64
 msgid "hour"
 msgstr "uur"
@@ -232,13 +232,13 @@ msgid "label_advisory_related_documents"
 msgstr "Gerelateerde documenten"
 
 #. Default: "Agenda items"
-#: ./skins/minaraad/hearing_view.pt:108
-#: ./skins/minaraad/mrevent_view.pt:102
+#: ./skins/minaraad/hearing_view.pt:110
+#: ./skins/minaraad/mrevent_view.pt:104
 msgid "label_agendaitems"
 msgstr "Agendapunten"
 
 #. Default: "Is published"
-#: ./schema_extensions/fileAttachment.py:28
+#: ./schema_extensions/fileAttachment.py:29
 msgid "label_attachment_published"
 msgstr "Is publiek"
 
@@ -319,8 +319,8 @@ msgid "label_export_as_excel"
 msgstr "Exporteer naar Excel"
 
 #. Default: "Export CSV"
-#: ./skins/minaraad/hearing_view.pt:172
-#: ./skins/minaraad/mrevent_view.pt:165
+#: ./skins/minaraad/hearing_view.pt:174
+#: ./skins/minaraad/mrevent_view.pt:168
 msgid "label_exportcsv"
 msgstr "Exporteer naar Excel"
 
@@ -342,11 +342,6 @@ msgstr "Voornaam"
 #: ./skins/minaraad/prefs_user_details.cpt:98
 msgid "label_gender"
 msgstr "Aanhef"
-
-#. Default: "Met vriendelijke groet"
-#: ./skins/minaraad/emailtemplate_subscribe_notification.pt:24
-msgid "label_greeting"
-msgstr "Met vriendelijke groet"
 
 #. Default: "House number"
 #: ./skins/minaraad/join_form.cpt:188
@@ -474,29 +469,9 @@ msgstr "E-mail verzenden"
 msgid "label_street"
 msgstr "Straat"
 
-#. Default: "Bij deze bevestigen wij uw"
-#: ./skins/minaraad/emailtemplate_subscribe_notification.pt:10
-msgid "label_subs1"
-msgstr "Bij deze bevestigen wij uw"
-
-#. Default: "voor de hoorzitting"
-#: ./skins/minaraad/emailtemplate_subscribe_notification.pt:13
-msgid "label_subs2"
-msgstr "voor de hoorzitting"
-
-#. Default: "die plaats vindt in"
-#: ./skins/minaraad/emailtemplate_subscribe_notification.pt:15
-msgid "label_subs3"
-msgstr "die plaats vindt in"
-
-#. Default: "op"
-#: ./skins/minaraad/emailtemplate_subscribe_notification.pt:17
-msgid "label_subs4"
-msgstr "op"
-
 #. Default: "Subscribe"
-#: ./skins/minaraad/hearing_view.pt:43
-#: ./skins/minaraad/mrevent_view.pt:44
+#: ./skins/minaraad/hearing_view.pt:45
+#: ./skins/minaraad/mrevent_view.pt:46
 msgid "label_subscribe"
 msgstr "Inschrijven"
 
@@ -504,36 +479,16 @@ msgstr "Inschrijven"
 msgid "label_subscribersoverview"
 msgstr "Werkveld abonnees"
 
-#. Default: "afmelding"
-#: ./skins/minaraad/emailtemplate_subscribe_notification.pt:12
-msgid "label_subsno"
-msgstr "afmelding"
-
-#. Default: "inschrijving"
-#: ./skins/minaraad/emailtemplate_subscribe_notification.pt:11
-msgid "label_subsyes"
-msgstr "inschrijving"
-
-#. Default: "Dank voor uw interesse."
-#: ./skins/minaraad/emailtemplate_subscribe_notification.pt:22
-msgid "label_thank"
-msgstr "Dank voor uw interesse."
-
 #. Default: "Theme:"
 #: ./browser/minaraad_config.pt:104
 #: ./skins/minaraad/advisory_view.pt:21
-#: ./skins/minaraad/hearing_view.pt:65
+#: ./skins/minaraad/hearing_view.pt:67
 msgid "label_theme_name"
 msgstr "Werkveld:"
 
-#. Default: "Het Minaraad-team"
-#: ./skins/minaraad/emailtemplate_subscribe_notification.pt:27
-msgid "label_theteam"
-msgstr "Het Minaraad-team"
-
 #. Default: "Unsubscribe"
-#: ./skins/minaraad/hearing_view.pt:27
-#: ./skins/minaraad/mrevent_view.pt:28
+#: ./skins/minaraad/hearing_view.pt:28
+#: ./skins/minaraad/mrevent_view.pt:29
 msgid "label_unsubscribe"
 msgstr "Uitschrijven"
 
@@ -552,7 +507,7 @@ msgid "label_zipcode"
 msgstr "Postcode"
 
 #. Default: "Check this box if you want this attachment to be publicly available"
-#: ./schema_extensions/fileAttachment.py:31
+#: ./schema_extensions/fileAttachment.py:32
 msgid "labelattachment_published_desc"
 msgstr "Vink deze box aan als u wilt dat deze bijlage publiekelijk beschikbaar wordt."
 
@@ -942,8 +897,8 @@ msgid "msg_number_switched_to_userid"
 msgstr "${count} accounts werden teruggezet naar het gebruik van hun gebruikers-id als login naam."
 
 #. Default: "(none currently)"
-#: ./skins/minaraad/hearing_view.pt:154
-#: ./skins/minaraad/mrevent_view.pt:147
+#: ./skins/minaraad/hearing_view.pt:156
+#: ./skins/minaraad/mrevent_view.pt:150
 msgid "no_attendees"
 msgstr "Er zijn nog geen deelnemers"
 
@@ -953,13 +908,13 @@ msgid "no_newsitems_available"
 msgstr "Er is nog geen informatie beschikbaar"
 
 #. Default: "Skip to content."
-#: ./skins/minaraad/main_template.pt:67
+#: ./skins/minaraad/main_template.pt:66
 msgid "skip_to_content"
 msgstr "Spring door naar de eigenlijke inhoud"
 
 #. Default: "till"
 #: ./skins/minaraad/hearing_listing_view.pt:65
-#: ./skins/minaraad/mina_showdatetime.pt:31
+#: ./skins/minaraad/mina_showdatetime.pt:33
 #: ./skins/minaraad/mrevent_listing_view.pt:61
 msgid "till"
 msgstr "tot"
@@ -970,14 +925,14 @@ msgid "title_attachments"
 msgstr "Bijlagen:"
 
 #. Default: "Attendees"
-#: ./skins/minaraad/hearing_view.pt:146
-#: ./skins/minaraad/mrevent_view.pt:139
+#: ./skins/minaraad/hearing_view.pt:148
+#: ./skins/minaraad/mrevent_view.pt:142
 msgid "title_attendees"
 msgstr "Deelnemers"
 
 #. Default: "Council Members"
-#: ./skins/minaraad/hearing_view.pt:148
-#: ./skins/minaraad/mrevent_view.pt:141
+#: ./skins/minaraad/hearing_view.pt:150
+#: ./skins/minaraad/mrevent_view.pt:144
 msgid "title_counsilmembers"
 msgstr "Raadsleden"
 
@@ -988,8 +943,8 @@ msgid "title_email"
 msgstr "Per e-mail"
 
 #. Default: "Members"
-#: ./skins/minaraad/hearing_view.pt:159
-#: ./skins/minaraad/mrevent_view.pt:152
+#: ./skins/minaraad/hearing_view.pt:161
+#: ./skins/minaraad/mrevent_view.pt:155
 msgid "title_members"
 msgstr "Leden"
 
@@ -997,11 +952,6 @@ msgstr "Leden"
 #: ./skins/minaraad/portlet_personalbar.pt:11
 msgid "title_my_account"
 msgstr "Mijn voorkeuren"
-
-#. Default: "By Mail"
-#: ./browser/duplicates.pt:136
-msgid "title_post"
-msgstr "Per post"
 
 #. Default: "Required"
 #: ./skins/minaraad/join_form.cpt:64
@@ -1022,7 +972,7 @@ msgstr "Selecteer alles:"
 
 #. Default: "up untill"
 #: ./skins/minaraad/hearing_listing_view.pt:76
-#: ./skins/minaraad/mina_showdatetime.pt:42
+#: ./skins/minaraad/mina_showdatetime.pt:44
 #: ./skins/minaraad/mrevent_listing_view.pt:72
 msgid "up_untill"
 msgstr "t/m"
