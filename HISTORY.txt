@@ -4,7 +4,9 @@ History of this buildout
 4.20 (unreleased)
 -----------------
 
-- Nothing changed yet.
+- Changed text of email subscription notification so it correctly
+  mentions an Event instead of a Hearing when that is the case.
+  [maurits]
 
 
 4.19 (2012-12-04)
