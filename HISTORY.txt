@@ -4,7 +4,8 @@ History of this buildout
 4.21 (unreleased)
 -----------------
 
-- Nothing changed yet.
+- Let memmon check for a maximum memory of 2000 MB instead of 2560.
+  [maurits]
 
 
 4.20 (2012-12-18)
