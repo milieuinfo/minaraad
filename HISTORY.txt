@@ -4,6 +4,9 @@ History of this buildout
 5.0 - Plone 4 Branch (unreleased)
 ---------------------------------
 
+- Let memmon check for a maximum memory of 2000 MB instead of 2560.
+  [maurits]
+
 - Added custom recent portlet, search portlet and linkedIn portlet
   [vincent]
 
