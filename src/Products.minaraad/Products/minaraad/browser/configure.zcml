@@ -4,12 +4,12 @@
     xmlns:five="http://namespaces.zope.org/five"
     xmlns:plone="http://namespaces.plone.org/plone">
 
-    <!-- <browser:viewlet -->
-    <!--     name="minaraad.global_sections" -->
-    <!--     manager="plone.app.layout.viewlets.interfaces.IPortalHeader" -->
-    <!--     class=".viewlets.MinaGlobalSectionsViewlet" -->
-    <!--     permission="zope2.View" -->
-    <!--     /> -->
+    <browser:viewlet
+         name="minaraad.global_sections"
+         manager="plone.app.layout.viewlets.interfaces.IPortalHeader"
+         class=".viewlets.MinaGlobalSectionsViewlet"
+         permission="zope2.View"
+         />
 
   <include package="plone.app.portlets" />
   <plone:portlet

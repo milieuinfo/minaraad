@@ -1,0 +1,12 @@
+<div metal:define-macro="portal_footer"
+     i18n:domain="plone"
+     id="portal-footer">
+  <p style="text-align: center">
+      Minaraad - Kliniekstraat 25 - 4de verdieping - 1070 Brussel<br>
+      tel. 02 558 01 30 - fax 02 558 01 31 - e-mail 
+    <a href="mailto:info@minaraad.be">
+      info@minaraad.be
+    </a>
+  </p>
+
+</div>

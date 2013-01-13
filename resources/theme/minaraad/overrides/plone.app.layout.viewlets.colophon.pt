@@ -1,0 +1,18 @@
+<div id="portal-colophon"
+     metal:define-macro="colophon"
+     i18n:domain="plone">
+<metal:slot define-slot="colophon" />
+<div class="colophonWrapper">
+          <a href="http://www.minaraad.be/legal-disclaimer">
+              Disclaimer
+          </a>
+
+          <a href="http://www.minaraad.be/copyright">
+              &copy; Minaraad
+               <span>2013</span>
+          </a>
+          <a href="http://www.minaraad.be/overdewebsite">
+              Over deze website
+          </a>
+</div>
+</div>

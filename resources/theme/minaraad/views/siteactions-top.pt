@@ -1,0 +1,13 @@
+<div id="portal-siteactions-top">
+  <ul>
+    <li id="siteaction-sitemap">
+      <a title="Sitemap" href="/sitemap">Sitemap</a>
+    </li>
+    <li id="siteaction-contact">
+      <a title="Contact" href="/contact-info">Contact</a>
+    </li>
+    <li id="siteaction-bibliotheek" class="last">
+      <a title="Bibliotheek" href="/mina_library">Bibliotheek</a>
+    </li>
+  </ul>
+</div>

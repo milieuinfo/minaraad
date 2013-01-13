@@ -139,11 +139,12 @@ div#visual-portal-wrapper
   
 #portal-columns
   background: url('/++theme++minaraad/img/header_bottom.png') no-repeat
-  padding-top: 21px
+  padding-top: 0px
 #portal-column-one
-  padding-top: 70px
+  padding-top: 85px
 #portal-column-content
-  padding: 4px 20px 0 45px
+  padding: 0 20px 0 45px
+  margin-top: 25px
   
 #portal-column-two  
   border-left: 1px solid #D98F81
@@ -169,7 +170,7 @@ div#visual-portal-wrapper
   margin: 0 0 1em 0
   li a
     display: inline-block
-    padding: 0.5em 1em 2em 1em
+    /*padding: 0.5em 1em 2em 1em*/
     background: #ddd
     min-width: 6em
     white-space: normal
@@ -1629,13 +1630,15 @@ dl.toc
   line-height: 2em
 
 #portal-colophon
-  font-size: 70%
+  font-size: 80%
   text-align: center
   margin-bottom: 1em
   li
     padding: 0 0.75em
   a
-    color: #444
+    font-weight: bold
+    text-decoration: underline
+    padding: 0 5px
 
 /* @end*/
 
@@ -2045,3 +2048,110 @@ a.historyComparePrevious
   display: none
 
 /* @end*/
+
+/* top siteactions*/
+#portal-siteactions-top
+  float: right
+  clear: both
+  
+#portal-siteactions-top ul li
+  border-right: 1px solid #94C13A
+  border-left: 1px solid #E0FAAC
+  background-color: #C8ED7E
+  font-size: 80%
+  height: 21px
+  display: block
+  float: left
+
+#portal-siteactions-top ul li.last
+  border-right: none
+
+#portal-siteactions-top ul li a
+  color: #A13826
+  font-weight: bold
+  text-decoration: none
+  display: block
+  line-height: 21px
+  padding: 0 10px
+
+/* @end*/
+
+/* replace text with images */
+#document-action-sendto
+  height: 1px
+  overflow: hidden
+  background: no-repeat transparent 0px 0px url(/++theme++minaraad/img/mail_icon.gif)
+  padding-top: 15px
+  
+#document-action-print
+  height: 1px
+  overflow: hidden
+  background: no-repeat transparent 0px 0px url(/++theme++minaraad/img/print_icon.gif)
+  padding-top: 15px  
+  
+/* @end */
+
+/* navigation */
+#portal-column-one > #portal-globalnav
+  background-color: #C8ED7E
+  border: 1px solid #E0FAAC
+  line-height: 13px
+  list-style: none outside none
+  margin: 0
+  width: 153px
+  z-index: -1
+  
+#portal-column-one > #portal-globalnav > li
+  width: 155px
+  display: block
+  position: relative
+  font-weight: bold
+  
+#portal-column-one > #portal-globalnav > li.selected,
+#portal-column-one > #portal-globalnav > li:hover
+  background: url(/++theme++minaraad/img/menu_arrow.gif) no-repeat scroll 122px 7px #E7FBBF
+  
+#portal-column-one > #portal-globalnav > li.selected > a,
+#portal-column-one > #portal-globalnav > li:hover > a
+  color: #A13826 !important
+  
+#portal-column-one > #portal-globalnav li a,
+#portal-column-one > #portal-globalnav li a:visited,
+#portal-column-one > #portal-globalnav li a:active
+  width: 100%
+  display: block
+  background: transparent
+  padding: 5px 10px
+  color: black!important
+  width: 130px
+  border: none
+
+#portal-column-one > #portal-globalnav li ul
+  width: 155px
+  display: block
+  position: relative
+  top: 0
+  left: 140px!important
+  color: black!important
+  background: #E7FBBF
+  z-index: 9999
+  border: 1px solid #A4CF4D !important
+
+
+#portal-column-one > #portal-globalnav > li > ul li
+  background: none repeat scroll 0 0 transparent !important
+  border-bottom: 1px solid #A4CF4D !important
+  border-top: 1px solid #FFFFFF !important
+  line-height: 1.3em
+  padding: 1px 2px
+
+#portal-column-one > #portal-globalnav > li > ul li a
+  color: black
+  font-weight: normal
+
+#portal-column-one > #portal-globalnav > li > ul li:hover a
+  color: #A13826!important
+  font-weight: normal
+  background: #fff
+
+/* @end */
