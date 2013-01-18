@@ -7,6 +7,12 @@
   <hidden manager="plone.htmlhead.links" skinname="Plone Default">
     <viewlet name="plone.links.author" />
   </hidden>
+  <hidden manager="plone.htmlhead.links" skinname="Plone Default">
+    <viewlet name="plone.links.author" />
+  </hidden>
+  <hidden manager="plone.portalheader" skinname="Plone Default">
+    <viewlet name="plone.global_sections" />
+  </hidden>
   <order manager="plone.contentviews" skinname="Plone Default">
     <viewlet name="plone.contentviews"/>
     <viewlet name="plone.contentactions"/>

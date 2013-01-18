@@ -249,3 +249,6 @@ def apply_skins(context):
 
 def apply_portlets(context):
     apply_gs_step(context, 'portlets')
+
+def apply_viewlets(context):
+    apply_gs_step(context, 'viewlets')
