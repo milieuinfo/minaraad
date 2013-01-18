@@ -5,6 +5,24 @@ Notes on Minaraad Plone 4 migration
 
 - We should move to the latest stable release, currently Plone 4.1.2.
 
+Installing on servers
+---------------------
+
+We first need a python 2.6 virtual env.
+
+  > cd ~
+  > mkdir virtual_envs
+  > virtualenv -p /usr/bin/python2.6 py26_mina_plone4
+
+Then we can use bootstrap with this new python.
+
+ > cd
+ > cd buildout
+ > /home/zope/virtual_envs/py26_mina_plone4/bin/python2.6 bootstrap.py
+
+We need the virtualenv otherwise we get an error saying distribute
+can't be installed.
+
 
 Some dangers to think of
 ------------------------

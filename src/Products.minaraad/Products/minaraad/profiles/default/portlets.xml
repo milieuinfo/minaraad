@@ -2,23 +2,33 @@
 <portlets    
     xmlns:i18n="http://xml.zope.org/namespaces/i18n"
     i18n:domain="plone">
+
   <portlet
     addview="Products.minaraad.Recent"
     title="Minaraad recent changes"
-    description="Latest changes"
-    />
+    description="Latest changes">
+     <portletmanager
+         name="plone.rightcolumn"
+         type="plone.app.portlets.interfaces.IRightColumn"/>
+  </portlet>
 
   <portlet
     addview="Products.minaraad.Search"
     title="Minaraad search portlet"
-    description="Search portlet"
-    />
+    description="Search portlet">
+    <portletmanager
+        name="plone.rightcolumn"
+        type="plone.app.portlets.interfaces.IRightColumn"/>
+  </portlet>
 
   <portlet
     addview="Products.minaraad.LinkedIn"
     title="LinkedIn portlet"
-    description="Shows the LinkedIn link"
-    />
+    description="Shows the LinkedIn link">
+    <portletmanager
+         name="plone.rightcolumn"
+         type="plone.app.portlets.interfaces.IRightColumn"/>
+  </portlet>
 
   <!-- CMFPlone portlets -->
   <portlet
@@ -27,6 +37,9 @@
       description="A portlet which can render a calendar."
       i18n:attributes="title;
                        description">
+    <portletmanager
+        name="plone.rightcolumn"
+        type="plone.app.portlets.interfaces.IRightColumn"/>
   </portlet>
 
   <portlet
@@ -35,6 +48,9 @@
       description="A portlet which can render a classic template-based portlet"
       i18n:attributes="title;
                        description">
+    <portletmanager
+        name="plone.rightcolumn"
+        type="plone.app.portlets.interfaces.IRightColumn"/>
   </portlet>
 
   <portlet
@@ -43,6 +59,9 @@
       description="A portlet which can render a listing of recent news"
       i18n:attributes="title;
                        description">
+    <portletmanager
+        name="plone.rightcolumn"
+        type="plone.app.portlets.interfaces.IRightColumn"/>
   </portlet>
 
   <portlet
@@ -51,6 +70,9 @@
       description="A portlet which can render a listing of recent events"
       i18n:attributes="title;
                        description">
+    <portletmanager
+        name="plone.rightcolumn"
+        type="plone.app.portlets.interfaces.IRightColumn"/>
   </portlet>
 
   <portlet
@@ -59,6 +81,9 @@
       description="A portlet which can render a log-in box"
       i18n:attributes="title;
                        description">
+    <portletmanager
+        name="plone.rightcolumn"
+        type="plone.app.portlets.interfaces.IRightColumn"/>
   </portlet>
 
   <portlet
@@ -67,6 +92,9 @@
       description="A portlet which can render a navigation tree"
       i18n:attributes="title;
                        description">
+    <portletmanager
+        name="plone.rightcolumn"
+        type="plone.app.portlets.interfaces.IRightColumn"/>
   </portlet>
 
   <portlet
@@ -75,6 +103,9 @@
       description="A portlet which can render a listing of recently changed items."
       i18n:attributes="title;
                        description">
+    <portletmanager
+        name="plone.rightcolumn"
+        type="plone.app.portlets.interfaces.IRightColumn"/>
   </portlet>
 
   <portlet
@@ -83,6 +114,9 @@
       description="A portlet which can render a listing on the review queue."
       i18n:attributes="title;
                        description">
+    <portletmanager
+        name="plone.rightcolumn"
+        type="plone.app.portlets.interfaces.IRightColumn"/>
   </portlet>
 
   <portlet
@@ -91,6 +125,9 @@
       description="A portlet which can receive and render an RSS feed."
       i18n:attributes="title;
                        description">
+    <portletmanager
+        name="plone.rightcolumn"
+        type="plone.app.portlets.interfaces.IRightColumn"/>
   </portlet>
 
   <portlet
@@ -99,6 +136,9 @@
       description="A portlet which shows a search box."
       i18n:attributes="title;
                        description">
+    <portletmanager
+        name="plone.rightcolumn"
+        type="plone.app.portlets.interfaces.IRightColumn"/>
   </portlet>
 
 </portlets>
