@@ -16,6 +16,7 @@
             </a
             >
           <ul class="portal-tabs-nav-items"
+              tal:condition="subitems"
               tal:define="subitems tab/children|nothing">
             
             <tal:repeat repeat="subitem subitems">
