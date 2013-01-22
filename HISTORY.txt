@@ -1,7 +1,7 @@
 History of this buildout
 ========================
 
-4.22 (unreleased)
+4.22 (2013-01-22)
 -----------------
 
 - Memmon limit: 1300.  Use newer versions for supervisor and friends.
