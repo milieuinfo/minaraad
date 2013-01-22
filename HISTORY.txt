@@ -4,7 +4,10 @@ History of this buildout
 4.22 (unreleased)
 -----------------
 
-- Nothing changed yet.
+- Memmon limit: 1300.  Use newer versions for supervisor and friends.
+  Send a mail to Maurits via scripts/sendmail.py when memmon kills the
+  instance.
+  [maurits]
 
 
 4.21 (2013-01-07)
