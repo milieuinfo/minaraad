@@ -207,8 +207,19 @@ To do on Plone 4 through the web
 
 - Run the Plone migration.
 
-- Run the upgrade steps from Products.minaraad to get it to version
-  5000 or higher.
+- The site should fail now (no portlet_recent), that "normal". Go to
+  @@manage-portlets (at the root of the site) and remove
+  the recent portlet.
+
+-  Go to the control panel then the skins, select "(Onbewrkt)".
+
+- Go to the extra-products page and:
+    - install diazo
+    - upgrade minaraad.projects
+    - upgrade minaraad
+   
+- Go to the Diazo configuration page, select the "Minaraad" theme.
+
 
 - Configure plone.app.caching (not much was previously cached in
   CacheSetup thouch).

@@ -232,8 +232,7 @@ def to_plone41(context):
     context.runAllImportStepsFromProfile(profile_id, purge_old=False)
 
 def apply_gs_step(context, step):
-    context.runImportStepFromProfile(PROFILE_ID,
-                                     step)
+    context.runImportStepFromProfile(PROFILE_ID, step)
 
 def apply_actions(context):
     apply_gs_step(context, 'actions')

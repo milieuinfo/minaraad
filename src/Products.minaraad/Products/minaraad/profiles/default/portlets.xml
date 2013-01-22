@@ -7,26 +7,17 @@
     addview="Products.minaraad.Recent"
     title="Minaraad recent changes"
     description="Latest changes">
-     <portletmanager
-         name="plone.rightcolumn"
-         type="plone.app.portlets.interfaces.IRightColumn"/>
   </portlet>
 
   <portlet
     addview="Products.minaraad.Search"
     title="Minaraad search portlet"
     description="Search portlet">
-    <portletmanager
-        name="plone.rightcolumn"
-        type="plone.app.portlets.interfaces.IRightColumn"/>
   </portlet>
 
   <portlet
     addview="Products.minaraad.LinkedIn"
     title="LinkedIn portlet"
     description="Shows the LinkedIn link">
-    <portletmanager
-         name="plone.rightcolumn"
-         type="plone.app.portlets.interfaces.IRightColumn"/>
   </portlet>
 </portlets>
