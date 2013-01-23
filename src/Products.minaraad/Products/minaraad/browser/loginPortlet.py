@@ -12,7 +12,7 @@ class Assignment(p_login.Assignment):
 
 
 class Renderer(p_login.Renderer):
-    _template = ViewPageTemplateFile('portlet_login.pt')
+    render = ViewPageTemplateFile('portlet_login.pt')
 
 
 class AddForm(p_login.AddForm):
