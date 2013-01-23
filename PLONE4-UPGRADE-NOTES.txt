@@ -70,6 +70,22 @@ To do on Plone 3 through the web
 
 - Go to the portal_quickinstaller and uninstall CacheSetup.
 
+- Go to the minaraad service panel (minaraad_service) linked in the
+  Site Setup and search for duplicate email addresses ('Vind email
+  adressen met meerdere gebruikers').  If any are found, use the links
+  to delete the duplicates.  Currently this is reported:
+
+    blauwschuur@yahoo.co.uk
+        ['blauwschuur@yahoo.co.uk', 'hugo.abts']
+    els.martens@lne.vlaanderen.be
+        ['elsmartens', 'martenel']
+
+    http://localhost:8080/minaraad/@@email_duplicates?userid=hugo.abts
+    http://localhost:8080/minaraad/@@email_duplicates?userid=martenel
+
+  Could be done in Plone 4 too, or you can manually remove them in the
+  Users and Groups control panel, but it is better to clean them up soon.
+
 - Uninstall emaillogin.
 
 - Uninstall Products.FCKeditor (it gives a problem during migration

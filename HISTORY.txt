@@ -4,6 +4,10 @@ History of this buildout
 5.0 - Plone 4 Branch (unreleased)
 ---------------------------------
 
+- Use and install collective.emaillogin4 and use internal release of
+  Products.PluggableAuthService, soon to be released officially.
+  [maurits]
+
 - Memmon limit: 1300.  Use newer versions for supervisor and friends.
   Send a mail to Maurits via scripts/sendmail.py when memmon kills the
   instance.
