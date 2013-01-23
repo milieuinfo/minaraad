@@ -91,15 +91,6 @@
         </form>
     </dd>
 
-    <dd class="portletItem even" tal:condition="view/can_request_password">
-        <a href="mail_password_form"
-           class="tile"
-           tal:attributes="href view/mail_password_form">
-           <tal:block replace="structure context/info_icon.png"/>
-           <span tal:omit-tag="" i18n:translate="box_forgot_password_option">Forgot your password?</span>
-        </a>
-    </dd>
-
     <dd class="portletItem lastItem" tal:condition="view/can_register">
         <a href=""
            class="tile"
@@ -110,6 +101,16 @@
         <span class="portletBottomLeft"></span>
         <span class="portletBottomRight"></span>
     </dd>
+
+    <dd class="portletItem even" tal:condition="view/can_request_password">
+        <a href="mail_password_form"
+           class="tile"
+           tal:attributes="href view/mail_password_form">
+           <tal:block replace="structure context/info_icon.png"/>
+           <span tal:omit-tag="" i18n:translate="box_forgot_password_option">Forgot your password?</span>
+        </a>
+    </dd>
+
 </dl>
 
 <dl class="portlet portletLogin"
