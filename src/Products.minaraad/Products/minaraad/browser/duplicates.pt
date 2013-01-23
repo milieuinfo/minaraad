@@ -47,7 +47,8 @@
         </p>
 
         <table class="duplicateforms"
-               tal:define="subscription_view nocall:context/@@subscriptions_config.html">
+               tal:define="subscription_view nocall:context/@@subscriptions_config.html;
+                           toLocalizedTime nocall:context/@@plone/toLocalizedTime;">
           <tr>
             <tal:duplicates tal:repeat="member view/duplicates">
               <td
@@ -197,8 +198,7 @@
                     <input class="context"
                            type="submit"
                            name="form.button.DeleteMember"
-                           value="Verwijder deze gebruiker"
-                           tal:attributes="tabindex tabindex/next;" />
+                           value="Verwijder deze gebruiker" />
                   </div>
                   <input type="hidden" name="form.submitted" value="1" />
                 </form>
