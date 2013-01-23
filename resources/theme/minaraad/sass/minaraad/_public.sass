@@ -148,6 +148,7 @@ div#visual-portal-wrapper
   
 #portal-column-two  
   border-left: 1px solid #D98F81
+  margin-top: 21px
   
 #column-two-borderholder
   background: url('/++theme++minaraad/img/column-two-border.gif') repeat-y 801px 0 transparent
@@ -336,7 +337,7 @@ dl
     span.summary a
       border: none !important
   &.portlet
-    margin: 0 0 1em
+    margin: 1em 0 1em
     font-size: 80%
   &.portletError
     background-color: #FFA500
@@ -448,6 +449,35 @@ dl
 
 /* @end*/
 
+/* @group global portlets */
+#portal-column-one dl.portlet
+  background-color: #C8ED7E
+
+#portal-column-one dl.portlet dt.portletHeader a
+  color: #FFFFFF
+
+#portal-column-one dl.portlet dt.portletHeader
+  background-color: #006600
+  color: #FFFFFF
+
+#portal-column-one dl.portlet dd.portletItem
+  padding: 5px 10px
+
+#portal-column-one dl.portlet dd.portletItem .field input[type="password"],
+#portal-column-one dl.portlet dd.portletItem .field input[type="text"]
+  width: 130px
+  border: 1px solid black
+  padding: 3px
+
+#portal-column-two dl.portlet
+  background-color: #F6F6F5
+
+#portal-column-two dl.portlet dt.portletHeader
+  background-color: #A13826
+  color: white
+
+#portal-column-two dl.portlet dt.portletHeader a
+  color: white
 /* @group Content Area*/
 
 #content
@@ -2077,17 +2107,36 @@ a.historyComparePrevious
 /* @end*/
 
 /* replace text with images */
-#document-action-sendto
-  height: 1px
-  overflow: hidden
-  background: no-repeat transparent 0px 0px url(/++theme++minaraad/img/mail_icon.gif)
-  padding-top: 15px
+
+.documentActions 
+  position: relative
+
+.documentActions > ul
+  margin: 0 !important
   
-#document-action-print
+.documentActions > ul > li
+  display: inline-block!important
+  *display: inline
+  zoom: 1
+
+.documentActions #document-action-sendto
+  background: no-repeat transparent 0px 0px url(/++theme++minaraad/img/mail_icon.gif)
+  list-style: none
+  
+.documentActions #document-action-print
+  background: no-repeat transparent 0px 0px url(/++theme++minaraad/img/print_icon.gif)
+  list-style: none
+
+
+.documentActions #document-action-sendto a, 
+.documentActions #document-action-print a
   height: 1px
   overflow: hidden
-  background: no-repeat transparent 0px 0px url(/++theme++minaraad/img/print_icon.gif)
   padding-top: 15px  
+  display: block
+  width: 16px
+  text-decoration: none
+  border-bottom: none!important
   
 /* @end */
 

@@ -239,6 +239,7 @@
 
   #portal-column-two {
     border-left: 1px solid #d98f81;
+    margin-top: 21px;
   }
 
   #column-two-borderholder {
@@ -447,7 +448,7 @@
     border: none !important;
   }
   dl.portlet {
-    margin: 0 0 1em;
+    margin: 1em 0 1em;
     font-size: 80%;
   }
   dl.portletError {
@@ -570,6 +571,44 @@
   }
 
   /* @end */
+  /* @group global portlets */
+  #portal-column-one dl.portlet {
+    background-color: #c8ed7e;
+  }
+
+  #portal-column-one dl.portlet dt.portletHeader a {
+    color: white;
+  }
+
+  #portal-column-one dl.portlet dt.portletHeader {
+    background-color: #006600;
+    color: white;
+  }
+
+  #portal-column-one dl.portlet dd.portletItem {
+    padding: 5px 10px;
+  }
+
+  #portal-column-one dl.portlet dd.portletItem .field input[type="password"],
+  #portal-column-one dl.portlet dd.portletItem .field input[type="text"] {
+    width: 130px;
+    border: 1px solid black;
+    padding: 3px;
+  }
+
+  #portal-column-two dl.portlet {
+    background-color: #f6f6f5;
+  }
+
+  #portal-column-two dl.portlet dt.portletHeader {
+    background-color: #a13826;
+    color: white;
+  }
+
+  #portal-column-two dl.portlet dt.portletHeader a {
+    color: white;
+  }
+
   /* @group Content Area */
   #content {
     line-height: 1.5em;
@@ -2405,18 +2444,39 @@
 
   /* @end */
   /* replace text with images */
-  #document-action-sendto {
-    height: 1px;
-    overflow: hidden;
-    background: no-repeat transparent 0px 0px url(/++theme++minaraad/img/mail_icon.gif);
-    padding-top: 15px;
+  .documentActions {
+    position: relative;
   }
 
-  #document-action-print {
+  .documentActions > ul {
+    margin: 0 !important;
+  }
+
+  .documentActions > ul > li {
+    display: inline-block !important;
+    *display: inline;
+    zoom: 1;
+  }
+
+  .documentActions #document-action-sendto {
+    background: no-repeat transparent 0px 0px url(/++theme++minaraad/img/mail_icon.gif);
+    list-style: none;
+  }
+
+  .documentActions #document-action-print {
+    background: no-repeat transparent 0px 0px url(/++theme++minaraad/img/print_icon.gif);
+    list-style: none;
+  }
+
+  .documentActions #document-action-sendto a,
+  .documentActions #document-action-print a {
     height: 1px;
     overflow: hidden;
-    background: no-repeat transparent 0px 0px url(/++theme++minaraad/img/print_icon.gif);
     padding-top: 15px;
+    display: block;
+    width: 16px;
+    text-decoration: none;
+    border-bottom: none !important;
   }
 
   /* @end */
@@ -2805,7 +2865,7 @@
   }
   div#portal-column-two {
     margin-left: -200px;
-    width: 200px;
+    width: 199px;
   }
   div#portal-footer-wrapper > .width-1\3a 2 {
     margin-left: -845px;

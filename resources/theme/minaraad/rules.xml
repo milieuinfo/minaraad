@@ -224,4 +224,6 @@
   <prepend css:theme="#portal-column-one" css:content="#portal-globalnav" />
   
   <after css:theme-children="#portal-footer-wrapper > .cell" css:content="#visual-portal-wrapper > script"/>
+  <append css:theme="#content" css:content=".documentActions" />
+  
 </rules>
