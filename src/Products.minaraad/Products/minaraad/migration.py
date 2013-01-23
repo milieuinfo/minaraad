@@ -251,3 +251,7 @@ def apply_portlets(context):
 
 def apply_viewlets(context):
     apply_gs_step(context, 'viewlets')
+
+def install_emaillogin(context):
+    profile_id = 'profile-collective.emaillogin4:default'
+    context.runAllImportStepsFromProfile(profile_id, purge_old=False)

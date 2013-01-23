@@ -170,4 +170,13 @@
       sortkey="1"
       profile="Products.minaraad:default" />
 
+  <gs:upgradeStep
+      title="Install collective.emaillogin4"
+      description=""
+      source="5006"
+      destination="5007"
+      handler="Products.minaraad.migration.install_emaillogin"
+      sortkey="1"
+      profile="Products.minaraad:default" />
+
 </configure>
