@@ -4,6 +4,11 @@ History of this buildout
 5.0 - Plone 4 Branch (unreleased)
 ---------------------------------
 
+- Memmon limit: 1300.  Use newer versions for supervisor and friends.
+  Send a mail to Maurits via scripts/sendmail.py when memmon kills the
+  instance.
+  [maurits]
+
 - Let memmon check for a maximum memory of 2000 MB instead of 2560.
   [maurits]
 
