@@ -45,6 +45,15 @@
       edit_permission="plone.app.portlets.ManagePortlets"
       />
 
+  <plone:portlet
+      name="Products.minaraad.Login"
+      interface=".loginPortlet.ILoginPortlet"
+      assignment=".loginPortlet.Assignment"
+      renderer=".loginPortlet.Renderer"
+      addview=".loginPortlet.AddForm"
+      view_permission="zope2.View"
+      edit_permission="plone.app.portlets.ManagePortlets"
+      />
 
   <browser:page
       for="Products.minaraad.content.Hearing.IHearing"

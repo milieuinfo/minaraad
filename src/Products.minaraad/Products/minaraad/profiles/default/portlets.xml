@@ -20,4 +20,11 @@
     title="LinkedIn portlet"
     description="Shows the LinkedIn link">
   </portlet>
+
+  <portlet
+    addview="Products.minaraad.Login"
+    title="Minaraad Login"
+    description="Login portlet">
+  </portlet>
+
 </portlets>
