@@ -40,7 +40,6 @@
       assignment=".linkedinPortlet.Assignment"
       renderer=".linkedinPortlet.Renderer"
       addview=".linkedinPortlet.AddForm"
-      editview=".linkedinPortlet.EditForm"
       view_permission="zope2.View"
       edit_permission="plone.app.portlets.ManagePortlets"
       />

@@ -25,14 +25,10 @@ class Renderer(base.Renderer):
     render = ViewPageTemplateFile('portlet_linkedin.pt')
 
 
-class AddForm(base.AddForm):
+class AddForm(base.NullAddForm):
     form_fields = form.Fields(ILinkedInPortlet)
     label = _(u"Add linkedin Portlet")
     description = _(u"This portlet shows the linkedIn link")
 
-    def create(self, data):
+    def create(self):
         return Assignment()
-
-
-class EditForm(base.EditForm):
-    label = _(u"Edit linkedin Portlet")
