@@ -55,6 +55,16 @@
       edit_permission="plone.app.portlets.ManagePortlets"
       />
 
+  <plone:portlet
+      name="Products.minaraad.PersonalPreferences"
+      interface=".personalPreferencesPortlet.IPersonalPreferencesPortlet"
+      assignment=".personalPreferencesPortlet.Assignment"
+      renderer=".personalPreferencesPortlet.Renderer"
+      addview=".personalPreferencesPortlet.AddForm"
+      view_permission="zope2.View"
+      edit_permission="plone.app.portlets.ManagePortlets"
+      />
+
   <browser:page
       for="Products.minaraad.content.Hearing.IHearing"
       name="attendees_view"

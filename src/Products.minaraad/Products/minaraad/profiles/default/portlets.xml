@@ -27,4 +27,10 @@
     description="Login portlet">
   </portlet>
 
+  <portlet
+    addview="Products.minaraad.PersonalPreferences"
+    title="Minaraad personal preferences"
+    description="Personal preferences portlet">
+  </portlet>
+
 </portlets>
