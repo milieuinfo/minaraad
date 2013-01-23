@@ -16,7 +16,7 @@
       <div class="personalbar_bordertop">
         <ul class="portlet-personalbar-mina">
           <li>
-             <a tal:attributes="href string:${portal_url}/personalize_form"
+             <a tal:attributes="href string:${portal_url}/@@personal-information"
                class="link-personalbar">Mijn contactgegevens</a>
           </li>
           <li>
@@ -24,7 +24,7 @@
                 class="link-personalbar">Mijn abonnementen</a>
           </li>
           <li>
-             <a tal:attributes="href string:${portal_url}/password_form"
+             <a tal:attributes="href string:${portal_url}/@@change-password"
                 class="link-personalbar">Wachtwoord wijzigen</a>
           </li>
           <li>
@@ -36,7 +36,7 @@
                 tal:attributes="href string:${portal_url}/uitschrijven">Uitschrijven</a>
            </li>
            <li tal:condition="view/can_manage">
-              <a tal:attributes="href string:${portal_url}/plone_control_panel"
+              <a tal:attributes="href string:${portal_url}/@@overview-controlpanel"
                  class="link-personalbar">Website configuratie</a>
            </li>
         </ul>
