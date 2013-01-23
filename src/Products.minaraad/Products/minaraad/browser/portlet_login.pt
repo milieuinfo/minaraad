@@ -95,7 +95,7 @@
         <a href=""
            class="tile"
            tal:attributes="href view/join_action">
-            <span tal:omit-tag="" i18n:translate="box_new_user_option">New user?</span>
+          Registreren
         </a>
         <span class="portletBottomLeft"></span>
         <span class="portletBottomRight"></span>
