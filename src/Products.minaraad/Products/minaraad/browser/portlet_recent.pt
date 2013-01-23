@@ -18,8 +18,8 @@
                                   front_page_url string:${portal_url}/${portal_default_page}"
                       tal:condition="python: template_id != 'recently_published'">
 
-        <dl id="portlet-events-mina">
-          <dt>
+        <dl id="portlet-events-mina" class="portlet">
+          <dt class="portletHeader">
             <a tal:define="has_news exists:portal/nieuw;
                            news_path python:has_news and 'nieuw' or 'recently_modified'"
                tal:attributes="href string:${portal_url}/${news_path}"
@@ -29,7 +29,7 @@
             </a>
           </dt>
           <tal:items tal:repeat="obj results">
-            <dd tal:condition="python:obj.getURL() != front_page_url">
+            <dd class="portletItem" tal:condition="python:obj.getURL() != front_page_url">
               <span class="portlet_date">
                 <tal:date content="python:toLocalizedTime(obj.effective)"
                           tal:on-error="string: ''"/>
