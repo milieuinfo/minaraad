@@ -15,14 +15,6 @@
     <dd class="portletItem odd">
       <div class="personalbar_bordertop">
         <ul class="portlet-personalbar-mina">
-          <li class="portalUser">
-            <a id="user-name"
-               tal:omit-tag="not: mtool/getHomeFolder"
-               tal:attributes="href string:${mtool/getHomeUrl}">
-              <span class="visualCaseSensitive"
-                    tal:replace="python:user.getProperty('firstname', user.getUserName())" />
-            </a>
-          </li>
           <li>
              <a tal:attributes="href string:${portal_url}/personalize_form"
                class="link-personalbar">Mijn contactgegevens</a>
