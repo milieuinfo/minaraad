@@ -1,4 +1,6 @@
+from Products.CMFCore.utils import getToolByName
 from plone.portlets.interfaces import IPortletDataProvider
+from zope.component import getMultiAdapter
 from zope.formlib import form
 from zope.interface import implements
 
@@ -23,6 +25,20 @@ class Assignment(base.Assignment):
 
 class Renderer(base.Renderer):
     render = ViewPageTemplateFile('portlet_personalprefs.pt')
+
+    @property
+    def available(self):
+        """By default, portlets are available
+        """
+        portal_state = getMultiAdapter(
+            (self.context, self.request), name=u'plone_portal_state')
+        return not portal_state.anonymous()
+
+    def can_manage(self):
+        portal_state = getMultiAdapter(
+            (self.context, self.request), name=u'plone_portal_state')
+        mtool = getToolByName(self.context, 'portal_membership')
+        return mtool.checkPermission('Manage portal', portal_state.portal())
 
 
 class AddForm(base.NullAddForm):

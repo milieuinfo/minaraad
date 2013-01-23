@@ -1,19 +1,20 @@
-<html xmlns:tal="http://xml.zope.org/namespaces/tal"
-      xmlns:metal="http://xml.zope.org/namespaces/metal"
-      i18n:domain="minaraad">
-  <body>
-    <metal:portlet define-macro="portlet"
-                   tal:define="portal context/@@plone_portal_state/portal;
-                               mtool context/portal_membership;
-                               getIconFor nocall:context/plone_utils/getIconFor;
-                               isAnon context/@@plone_portal_state/anonymous;"
-                   tal:condition="not: isAnon">
-      <div class="personalbar_bordertop">
-        <ul class="portlet-personalbar-mina">
-          <li class="portlet_title"
+<dl class="portlet portletPersonalPreferences"
+    tal:define="portal_url context/@@plone_portal_state/portal_url;
+                mtool context/portal_membership"
+    i18n:domain="minaraad">
+
+    <dt class="portletHeader">
+        <span class="portletTopLeft"></span>
+        <span class="portlet_title"
               i18n:translate="title_my_account">
             My account
-          </li>
+        </span>
+        <span class="portletTopRight"></span>
+    </dt>
+
+    <dd class="portletItem odd">
+      <div class="personalbar_bordertop">
+        <ul class="portlet-personalbar-mina">
           <li class="portalUser">
             <a id="user-name"
                tal:omit-tag="not: mtool/getHomeFolder"
@@ -42,12 +43,11 @@
              <a class="link-personalbar"
                 tal:attributes="href string:${portal_url}/uitschrijven">Uitschrijven</a>
            </li>
-           <li tal:condition="python:checkPermission('Manage portal', context)">
+           <li tal:condition="view/can_manage">
               <a tal:attributes="href string:${portal_url}/plone_control_panel"
                  class="link-personalbar">Website configuratie</a>
            </li>
         </ul>
       </div>
-    </metal:portlet>
-  </body>
-</html>
+    </dd>
+</dl>
