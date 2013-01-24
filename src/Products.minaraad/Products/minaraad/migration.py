@@ -343,5 +343,7 @@ def fix_mutable_properties_for_groups(context):
     for principal_id, data in props._storage.items():
         if principal_id in group_ids and not data.get('isGroup'):
             props._storage[principal_id]['isGroup'] = True
+            # notify persistence machinery of change
+            props._storage[principal_id] = props._storage[principal_id]
             logger.info("Mutable property sheet of group %s is now regarded "
                         "as belonging to a group.", principal_id)
