@@ -197,4 +197,13 @@
       sortkey="1"
       profile="Products.minaraad:default" />
 
+  <gs:upgradeStep
+      title="Fix mutable_properties for groups"
+      description=""
+      source="5009"
+      destination="5010"
+      handler="Products.minaraad.migration.fix_mutable_properties_for_groups"
+      sortkey="1"
+      profile="Products.minaraad:default" />
+
 </configure>

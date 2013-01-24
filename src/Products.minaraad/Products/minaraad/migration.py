@@ -264,16 +264,6 @@ def cleanup_mutable_properties(context):
     be and how there are so much, but we should clean them up, as they
     give lots of warnings when looking at the Users and Groups control
     panel.
-
-    I'm not sure if groups should be in mutable_properties.  The
-    properties (title, description and email) of groups are saved
-    there.  So for the moment I keep them, but plone.app.controlpanel
-    warns:
-
-    Skipped user without principal object: Reviewers
-    Skipped user without principal object: PWC JACHT
-    etcetera.
-
     """
     grouptool = getToolByName(context, 'portal_groups')
     membertool = getToolByName(context, 'portal_membership')
@@ -333,3 +323,25 @@ def fix_portraits(context):
     logger.info("Pruning memberdata contents.")
     mdata.pruneMemberDataContents()
     logger.info("Done.")
+
+
+def fix_mutable_properties_for_groups(context):
+    """Not all group property sheets have isGroup=True
+
+    This causes warning from plone.app.controlpanel when looking at
+    the users list in the Users and Groups control panel:
+
+    Skipped user without principal object: Reviewers
+    Skipped user without principal object: PWC JACHT
+    etcetera.
+    """
+    grouptool = getToolByName(context, 'portal_groups')
+    group_ids = grouptool.listGroupIds()
+    pas = getToolByName(context, 'acl_users')
+    props = pas.mutable_properties
+
+    for principal_id, data in props._storage.items():
+        if principal_id in group_ids and not data.get('isGroup'):
+            props._storage[principal_id]['isGroup'] = True
+            logger.info("Mutable property sheet of group %s is now regarded "
+                        "as belonging to a group.", principal_id)
