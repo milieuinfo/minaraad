@@ -179,4 +179,22 @@
       sortkey="1"
       profile="Products.minaraad:default" />
 
+  <gs:upgradeStep
+      title="Cleanup PAS.mutable_properties"
+      description=""
+      source="5007"
+      destination="5008"
+      handler="Products.minaraad.migration.cleanup_mutable_properties"
+      sortkey="1"
+      profile="Products.minaraad:default" />
+
+  <gs:upgradeStep
+      title="Fix portraits"
+      description=""
+      source="5008"
+      destination="5009"
+      handler="Products.minaraad.migration.fix_portraits"
+      sortkey="1"
+      profile="Products.minaraad:default" />
+
 </configure>

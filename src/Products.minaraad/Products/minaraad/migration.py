@@ -255,3 +255,81 @@ def apply_viewlets(context):
 def install_emaillogin(context):
     profile_id = 'profile-collective.emaillogin4:default'
     context.runAllImportStepsFromProfile(profile_id, purge_old=False)
+
+def cleanup_mutable_properties(context):
+    """Cleanup PAS.mutable_properties.
+
+    There are 556 users or groups in mutable_properties that do not
+    exist in source_users or source_groups.  I don't know how that can
+    be and how there are so much, but we should clean them up, as they
+    give lots of warnings when looking at the Users and Groups control
+    panel.
+
+    I'm not sure if groups should be in mutable_properties.  The
+    properties (title, description and email) of groups are saved
+    there.  So for the moment I keep them, but plone.app.controlpanel
+    warns:
+
+    Skipped user without principal object: Reviewers
+    Skipped user without principal object: PWC JACHT
+    etcetera.
+
+    """
+    grouptool = getToolByName(context, 'portal_groups')
+    membertool = getToolByName(context, 'portal_membership')
+    pas = getToolByName(context, 'acl_users')
+
+    user_ids = membertool.listMemberIds()
+    group_ids = grouptool.listGroupIds()
+    principal_ids = set(user_ids).union(set(group_ids))
+    to_remove = [user_id for user_id in pas.mutable_properties._storage.keys()
+                 if user_id not in principal_ids]
+    logger.info("About to remove %d users from mutable_properties that have "
+                "no corresponding user or group.", len(to_remove))
+    for user_id in to_remove:
+        pas.mutable_properties.deleteUser(user_id)
+    logger.info("Removed user ids from mutable_properties: %r", to_remove)
+
+
+def fix_portraits(context):
+    """Fix member portraits
+
+    It looks like every member has defaultUser.gif as member portrait.
+    There are a few problems with that.
+
+    - The new default is defaultUser.png.
+
+    - The old gif has been moved to the plone_deprecated skin, which
+      may not always be available.
+
+    - When testing in a fresh Plone 3 site portraits are not stored
+      explicitly anymore when they are the default.
+
+    - I think most of these are from Plone 2.5, because they have a
+      file path of 'CMFPlone/skins/plone_images/defaultUser.gif',
+      which gives an IOError, because it does not exist in the
+      plone_images directory and probably also because the base
+      CMFPlone directory is not found.
+
+    It seems wise to clean this up, otherwise looking at the author
+    page or the preferences page will give an error.
+
+    """
+    mdata = getToolByName(context, 'portal_memberdata')
+    portraits = mdata.portraits
+    logger.info("portal_memberdata has %d portraits before cleanup.",
+                len(portraits.objectIds()))
+    to_remove = []
+    for user_id, portrait in portraits.objectItems():
+        if portrait.getId() == 'defaultUser.gif':
+            to_remove.append(user_id)
+    logger.info("Will remove %d defaultUser.gif portraits.", len(to_remove))
+    for user_id in to_remove:
+        mdata._deletePortrait(user_id)
+    logger.info("portal_memberdata has %d portraits left afer cleanup.",
+                len(portraits.objectIds()))
+
+    # I found a nice method on the memberdata tool.
+    logger.info("Pruning memberdata contents.")
+    mdata.pruneMemberDataContents()
+    logger.info("Done.")
