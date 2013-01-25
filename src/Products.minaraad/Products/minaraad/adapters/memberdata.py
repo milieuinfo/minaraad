@@ -24,6 +24,10 @@ class EnhancedUserDataPanelAdapter(UserDataPanelAdapter):
             f.lower() for f in IEnhancedUserDataSchema._InterfaceClass__attrs.keys()]
 
         for field_name in self.field_names:
+            if field_name in ('email', 'portrait', 'pdelete'):
+                # These need special handling and they are handled
+                # fine upstream in p.a.users already.
+                continue
             setattr(EnhancedUserDataPanelAdapter,
                     field_name,
                     property(getattr(self, 'getp_%s' % field_name),
