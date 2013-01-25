@@ -1,5 +1,4 @@
 from plone.portlets.interfaces import IPortletDataProvider
-from zope.component import getMultiAdapter
 from zope.formlib import form
 from zope.interface import implements
 
@@ -7,6 +6,7 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from plone.app.portlets.portlets import base
 
 from Products.minaraad import MinaraadMessageFactory as _
+
 
 class ILinkedInPortlet(IPortletDataProvider):
     """ A portlet displaying the linkedIn link.

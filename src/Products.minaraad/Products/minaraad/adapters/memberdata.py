@@ -1,5 +1,3 @@
-from zope.component.hooks import getSite
-
 from plone.app.users.browser.personalpreferences import UserDataPanelAdapter
 
 from Products.minaraad.userdataschema import IEnhancedUserDataSchema
@@ -20,7 +18,7 @@ class EnhancedUserDataPanelAdapter(UserDataPanelAdapter):
 
     def __init__(self, *args, **kwargs):
         super(EnhancedUserDataPanelAdapter, self).__init__(*args, **kwargs)
-        self.field_names  = [
+        self.field_names = [
             f.lower() for f in IEnhancedUserDataSchema._InterfaceClass__attrs.keys()]
 
         for field_name in self.field_names:
@@ -32,7 +30,6 @@ class EnhancedUserDataPanelAdapter(UserDataPanelAdapter):
                     field_name,
                     property(getattr(self, 'getp_%s' % field_name),
                              getattr(self, 'setp_%s' % field_name)))
-
 
     def __getattr__(self, name):
         # We first check we are calling get_/set_ on a known field.
@@ -57,7 +54,7 @@ class EnhancedUserDataPanelAdapter(UserDataPanelAdapter):
             def setter(value):
                 if value is None:
                     value = ''
-                    
+
                 return self.context.setMemberProperties({f_name: value})
             return setter
 
@@ -74,6 +71,6 @@ class EnhancedUserDataPanelAdapter(UserDataPanelAdapter):
             def psetter(inst, value):
                 if value is None:
                     value = ''
-                    
+
                 return inst.context.setMemberProperties({f_name: value})
             return psetter
