@@ -10,17 +10,13 @@
 from Products.CMFCore.utils import getToolByName
 request = context.REQUEST
 
-# Make it clear that the userid that is passed in should be used as a
-# login name; also, we have made sure that all login names are lower
-# case, so we should transform it here as well.
-login_name = userid.lower()
 status = "success"
 pw_tool = getToolByName(context, 'portal_password_reset')
 try:
     # Note: resetPassword expects a user id, but collective.emaillogin
     # has a patch that looks for a user id that matches the passed in
     # login name.
-    pw_tool.resetPassword(login_name, randomstring, password)
+    pw_tool.reset(userid, randomstring, password)
 except 'ExpiredRequestError':
     status = "expired"
 except 'InvalidRequestError':
