@@ -8,8 +8,6 @@ from Acquisition import aq_inner
 from DateTime import DateTime
 from Products.CMFCore.utils import getToolByName
 from Products.Five import BrowserView
-from Products.PlonePAS.interfaces.plugins import IUserManagement
-from zope.cachedescriptors.property import Lazy
 from ZODB.POSException import ConflictError
 
 from Products.minaraad.config import TITLE_VOCAB
@@ -21,21 +19,17 @@ logger = logging.getLogger('Minaraad Service Utilities')
 
 class ServiceUtils(BrowserView):
 
-    members_deleted = None
     double_emails = None
-    bad_emails = None
+    double_emails_called = False
     changed_members = None
     changed_members_called = False
     changed_by_date = DateTime('2000/01/01')
 
     def __call__(self):
         if self.request.get('REQUEST_METHOD', 'GET').upper() == 'POST':
-            if self.request.get('form.button.DeleteMembers'):
-                self.members_deleted = self.deleteMembersWithEmptyEmail()
             if self.request.get('form.button.FindDoubleEmails'):
                 self.double_emails = self.find_double_emails()
-            if self.request.get('form.button.FindBadEmails'):
-                self.bad_emails = self.find_bad_emails()
+                self.double_emails_called = True
             if self.request.get('form.button.ShowChangedMembers'):
                 # Show members changed since one month
                 today = DateTime().earliestTime()
@@ -45,10 +39,6 @@ class ServiceUtils(BrowserView):
             if self.request.get('form.button.ShowAllChangedMembers'):
                 self.changed_members = self.find_changed_members()
                 self.changed_members_called = True
-            if self.request.form.get('switch_to_email'):
-                self.switched_to_email = self.switch_to_email()
-            if self.request.form.get('switch_to_userid'):
-                self.switched_to_userid = self.switch_to_userid()
         return self.index()
 
     def find_double_emails(self):
@@ -64,42 +54,6 @@ class ServiceUtils(BrowserView):
 
         return [(email, ids) for (email, ids) in emails.items()
                 if len(ids) > 1]
-
-    def find_bad_emails(self):
-        context = aq_inner(self.context)
-        portal_membership = getToolByName(context, 'portal_membership')
-        reg_tool = getToolByName(context, 'portal_registration')
-        members = portal_membership.listMembers()
-        emails = []
-        for member in members:
-            email = member.getProperty('email')
-            member_id = member.getId()
-            if not reg_tool.isValidEmail(email):
-                emails.append((email, member_id))
-            if not reg_tool.isMemberIdAllowed(email) and \
-                    member_id != email:
-                emails.append((email, member_id))
-
-        return emails
-
-    def deleteMembersWithEmptyEmail(self):
-        'Delete all members with no email address'
-        mt = getToolByName(self, 'portal_membership')
-        acl = getToolByName(self, 'acl_users')
-        all_members = mt.listMembers()
-        members_without_email = [m for m in all_members
-                                 if not m.getProperty('email')
-                                 or not '@' in m.getProperty('email')]
-
-        logger.info('Found %i members without email, proceed to delete...' %
-                    (len(members_without_email), ))
-        for member in members_without_email:
-            id = member.getId()
-            logger.info('Deleting member "%s"' % (id, ))
-            acl.userFolderDelUsers([id])
-        logger.info('Finished deleting %i members' %
-                    (len(members_without_email), ))
-        return 'Deleted %i members' % (len(members_without_email), )
 
     def resetMemberDataTitle(self):
         'Overwrite the title selection for members in the memberdata'
@@ -141,85 +95,12 @@ class ServiceUtils(BrowserView):
                 )
             info = dict(
                 modified=date.strftime('%Y-%m-%d'),
-                url=portal.absolute_url() + '/prefs_user_details?userid=' \
-                    + member.getId(),
+                url=(portal.absolute_url() + '/prefs_user_details?userid='
+                     + member.getId()),
                 fullname=fullname,
                 )
             result.append(info)
         return result
-
-    @property
-    def _email_list(self):
-        context = aq_inner(self.context)
-        pas = getToolByName(context, 'acl_users')
-        emails = {}
-        for user in pas.getUsers():
-            if user is None:
-                # Created in the ZMI?
-                continue
-            email = user.getProperty('email', '')
-            if email:
-                if email not in emails.keys():
-                    emails[email] = []
-                emails[email].append(user.getUserId())
-            else:
-                logger.warn("User %s has no email address.", user.getUserId())
-        return emails
-
-    @Lazy
-    def _plugins(self):
-        """Give list of proper IUserManagement plugins that can update a user.
-        """
-        context = aq_inner(self.context)
-        pas = getToolByName(context, 'acl_users')
-        plugins = []
-        for plugin_id, plugin in pas.plugins.listPlugins(IUserManagement):
-            if hasattr(plugin, 'updateUser'):
-                plugins.append(plugin)
-        if not plugins:
-            logger.warn("No proper IUserManagement plugins found.")
-        return plugins
-
-    def _update_login(self, userid, login):
-        """Update login name of user.
-        """
-        for plugin in self._plugins:
-            try:
-                plugin.updateUser(userid, login)
-            except KeyError:
-                continue
-            else:
-                logger.info("Gave user id %s login name %s",
-                            userid, login)
-                return 1
-        return 0
-
-    def switch_to_email(self):
-        if not self._plugins:
-            return 0
-        success = 0
-        for email, userids in self._email_list.items():
-            if len(userids) > 1:
-                logger.warn("Not setting login name for accounts with same "
-                            "email address %s: %r", email, userids)
-                continue
-            for userid in userids:
-                success += self._update_login(userid, email)
-        return success
-
-    def switch_to_userid(self):
-        context = aq_inner(self.context)
-        pas = getToolByName(context, 'acl_users')
-        if not self._plugins:
-            return 0
-        success = 0
-        for user in pas.getUsers():
-            if user is None:
-                # Created in the ZMI?
-                continue
-            userid = user.getUserId()
-            success += self._update_login(userid, userid)
-        return success
 
 
 SUBJECT = "Minaraad website: nieuwe inlogprocedure"
