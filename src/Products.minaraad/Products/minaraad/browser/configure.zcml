@@ -170,13 +170,6 @@
       template="duplicates.pt"
       />
 
-  <browser:page
-      for="*"
-      name="email_login_notify"
-      class=".service.SendEmailToAllMembers"
-      permission="cmf.ManagePortal"
-      />
-
   <!-- html view for regular files -->
   <browser:page
       for="Products.ATContentTypes.content.file.ATFile"
