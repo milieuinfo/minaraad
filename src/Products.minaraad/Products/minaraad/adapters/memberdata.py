@@ -45,7 +45,7 @@ class EnhancedUserDataPanelAdapter(UserDataPanelAdapter):
 
         if name.startswith('get_'):
             def getter():
-                return self.context.getProperty(f_name, '')
+                return self._getProperty(f_name)
 
             return getter
 
@@ -62,7 +62,7 @@ class EnhancedUserDataPanelAdapter(UserDataPanelAdapter):
         # The main difference is that they take the instance as the first parameter.
         if name.startswith('getp_'):
             def pgetter(inst):
-                return inst.context.getProperty(f_name, '')
+                return inst._getProperty(f_name)
 
             return pgetter
 
