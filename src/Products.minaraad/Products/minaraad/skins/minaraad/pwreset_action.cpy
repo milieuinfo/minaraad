@@ -13,7 +13,7 @@ request = context.REQUEST
 status = "success"
 pw_tool = getToolByName(context, 'portal_password_reset')
 try:
-    pw_tool.reset(userid, randomstring, password)
+    pw_tool.resetPassword(userid, randomstring, password)
 except 'ExpiredRequestError':
     status = "expired"
 except 'InvalidRequestError':
@@ -36,6 +36,6 @@ else:
         # log in as that user (will update cookies)
         acl_users = getToolByName(context, 'acl_users')
         acl_users.updateCredentials(
-            request, request.RESPONSE, login_name, password)
+            request, request.RESPONSE, userid, password)
 
 return state.set(status=status)
