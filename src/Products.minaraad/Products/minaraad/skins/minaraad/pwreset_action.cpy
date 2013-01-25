@@ -13,9 +13,6 @@ request = context.REQUEST
 status = "success"
 pw_tool = getToolByName(context, 'portal_password_reset')
 try:
-    # Note: resetPassword expects a user id, but collective.emaillogin
-    # has a patch that looks for a user id that matches the passed in
-    # login name.
     pw_tool.reset(userid, randomstring, password)
 except 'ExpiredRequestError':
     status = "expired"
