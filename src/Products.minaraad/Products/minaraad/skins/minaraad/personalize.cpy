@@ -5,11 +5,12 @@
 ##bind script=script
 ##bind state=state
 ##bind subpath=traverse_subpath
-##parameters=visible_ids=None, portrait=None, listed=None, REQUEST=None, ext_editor=None, country=None, other_country=None
+##parameters=visible_ids=None, portrait=None, REQUEST=None, ext_editor=None, listed=None
 ##title=Personalization Handler.
 
-from Products.CMFPlone.utils import transaction_note
-from Products.CMFPlone import PloneMessageFactory as PMF
+from Products.CMFCore.utils import getToolByName
+from Products.CMFPlone.utils import transaction_note, set_own_login_name
+from Products.CMFPlone import PloneMessageFactory as _
 
 member=context.portal_membership.getAuthenticatedMember()
 member.setProperties(properties=context.REQUEST, REQUEST=REQUEST)
@@ -25,22 +26,17 @@ else:
     visible_ids=1
 REQUEST.set('visible_ids', visible_ids)
 
-if listed is None and REQUEST is not None:
-    listed=0
-else:
-    listed=1
-REQUEST.set('listed', listed)
-
 if ext_editor is None and REQUEST is not None:
     ext_editor=0
 else:
     ext_editor=1
 REQUEST.set('ext_editor', ext_editor)
 
-if country == 'Ander land':
-    country=other_country
+if listed is None and REQUEST is not None:
+    listed=0
 else:
-    country=country
+    listed=1
+REQUEST.set('listed', listed)
 
 if (portrait and portrait.filename):
     context.portal_membership.changeMemberPortrait(portrait)
@@ -51,16 +47,18 @@ if delete_portrait:
 
 email = context.REQUEST.get('email')
 if email:
-    try:
-        member.setLoginName(email)
-    except ValueError:
-        if member.getId() != 'zestadmin':
-            raise
+    props = getToolByName(context, 'portal_properties').site_properties
+    if props.getProperty('use_email_as_login'):
+        try:
+            set_own_login_name(member, email)
+        except KeyError:
+            # Probably user in zope root
+            pass
 
-member.setProperties(listed=listed, ext_editor=ext_editor, visible_ids=visible_ids, country=country)
+member.setProperties(ext_editor=ext_editor, listed=listed, visible_ids=visible_ids)
 
 tmsg='Edited personal settings for %s' % member.getId()
 transaction_note(tmsg)
 
-context.plone_utils.addPortalMessage(PMF(u'Your personal settings have been saved.'))
+context.plone_utils.addPortalMessage(_(u'Your personal settings have been saved.'))
 return state
