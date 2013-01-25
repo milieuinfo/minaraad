@@ -5,12 +5,12 @@
 ##bind script=script
 ##bind state=state
 ##bind subpath=traverse_subpath
-##parameters=visible_ids=None, portrait=None, REQUEST=None, ext_editor=None, listed=None
+##parameters=visible_ids=None, portrait=None, REQUEST=None, ext_editor=None, listed=None, country=None, other_country=None
 ##title=Personalization Handler.
 
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.utils import transaction_note, set_own_login_name
-from Products.CMFPlone import PloneMessageFactory as _
+from Products.CMFPlone import PloneMessageFactory as PMF
 
 member=context.portal_membership.getAuthenticatedMember()
 member.setProperties(properties=context.REQUEST, REQUEST=REQUEST)
@@ -38,6 +38,11 @@ else:
     listed=1
 REQUEST.set('listed', listed)
 
+if country == 'Ander land':
+    country=other_country
+else:
+    country=country
+
 if (portrait and portrait.filename):
     context.portal_membership.changeMemberPortrait(portrait)
 
@@ -55,10 +60,10 @@ if email:
             # Probably user in zope root
             pass
 
-member.setProperties(ext_editor=ext_editor, listed=listed, visible_ids=visible_ids)
+member.setProperties(ext_editor=ext_editor, listed=listed, visible_ids=visible_ids, country=country)
 
 tmsg='Edited personal settings for %s' % member.getId()
 transaction_note(tmsg)
 
-context.plone_utils.addPortalMessage(_(u'Your personal settings have been saved.'))
+context.plone_utils.addPortalMessage(PMF(u'Your personal settings have been saved.'))
 return state
