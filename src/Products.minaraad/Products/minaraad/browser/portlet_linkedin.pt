@@ -4,9 +4,9 @@
   <body>
     <div metal:define-macro="portlet"
          tal:omit-tag="">
-      <dl id="portlet_mina-linkedin">
-        <dt>LinkedIn</dt>
-        <dd>
+      <dl id="portlet_mina-linkedin" class="portlet">
+        <dt class="portletHeader">LinkedIn</dt>
+        <dd class="portletItem">
           <tal:linkedin
               define="pcs context/@@plone_context_state"
               tal:on-error="string:"
