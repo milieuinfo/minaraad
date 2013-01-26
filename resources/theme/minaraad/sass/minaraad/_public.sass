@@ -141,7 +141,7 @@ div#visual-portal-wrapper
   background: url('/++theme++minaraad/img/header_bottom.png') no-repeat
   padding-top: 0px
 #portal-column-one
-  padding-top: 85px
+  padding-top: 95px
 #portal-column-content
   padding: 0 20px 0 45px
   margin-top: 25px
@@ -449,12 +449,53 @@ dl
 
 /* @end*/
 
+/* @group mina portlets*/
+dl#portlet-events-mina .portlet_date
+  color: #7D7D7B
+
+dl#portlet-events-mina .portletItem a:link
+  color: #000
+  font-weight: bold
+  border: none
+  
+dl#portlet_mina-linkedin.portlet
+  background-color: transparent!important
+  
+dl#portlet_mina-linkedin .portletItem
+  background-color: none
+  padding-top: 0
+  padding-bottom: 0
+  
+//disable headers here
+dl#portlet_mina-linkedin dt,
+dl.portletLogin dt.portletHeader
+  display: none
+
+dl.portletLogin .formControls
+  margin: 0
+
+dl.portletLogin input[type="submit"] 
+  background: none repeat scroll 0 0 transparent 
+  border: medium none
+  color: #A13826
+  cursor: pointer
+  font-size: 100% !important
+  font-weight: bold
+  margin: 0
+  text-align: left
+
+/* @end*/
+
+
 /* @group global portlets */
+
 #portal-column-one dl.portlet
   background-color: #C8ED7E
+  border-bottom: 1px solid #E0FAAC
 
-#portal-column-one dl.portlet dt.portletHeader a
-  color: #FFFFFF
+#portal-column-one dl.portlet dt.portletHeader a,
+#portal-column-two dl.portlet dt.portletHeader a
+  color: #FFFFFF !important
 
 #portal-column-one dl.portlet dt.portletHeader
   background-color: #006600
@@ -462,6 +503,18 @@ dl
 
 #portal-column-one dl.portlet dd.portletItem
   padding: 5px 10px
+  
+#portal-column-one dl.portlet dd.portletItem a:link,
+#portal-column-two dl.portlet dd.portletItem a:link,
+#portal-column-one dl.portlet dd.portletFooter a:link,
+#portal-column-two dl.portlet dd.portletFooter a:link
+  border: none
+  
+#portal-column-one dl.portlet dd.portletItem a:hover,
+#portal-column-two dl.portlet dd.portletItem a:hover,
+#portal-column-one dl.portlet dd.portletFooter a:hover,
+#portal-column-two dl.portlet dd.portletFooter a:hover
+  border-bottom: 1px solid
 
 #portal-column-one dl.portlet dd.portletItem .field input[type="password"],
 #portal-column-one dl.portlet dd.portletItem .field input[type="text"]
@@ -475,9 +528,8 @@ dl
 #portal-column-two dl.portlet dt.portletHeader
   background-color: #A13826
   color: white
+/* @end*/
 
-#portal-column-two dl.portlet dt.portletHeader a
-  color: white
 /* @group Content Area*/
 
 #content
@@ -2143,11 +2195,11 @@ a.historyComparePrevious
 /* navigation */
 #portal-column-one > #portal-globalnav
   background-color: #C8ED7E
-  border: 1px solid #E0FAAC
+  border-bottom: 1px solid #E0FAAC
   line-height: 13px
   list-style: none outside none
   margin: 0
-  width: 153px
+  width: 155px
   z-index: -1
   
 #portal-column-one > #portal-globalnav > li

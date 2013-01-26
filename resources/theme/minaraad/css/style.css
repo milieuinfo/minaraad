@@ -229,7 +229,7 @@
   }
 
   #portal-column-one {
-    padding-top: 85px;
+    padding-top: 95px;
   }
 
   #portal-column-content {
@@ -571,13 +571,57 @@
   }
 
   /* @end */
+  /* @group mina portlets */
+  dl#portlet-events-mina .portlet_date {
+    color: #7d7d7b;
+  }
+
+  dl#portlet-events-mina .portletItem a:link {
+    color: black;
+    font-weight: bold;
+    border: none;
+  }
+
+  dl#portlet_mina-linkedin.portlet {
+    background-color: transparent !important;
+  }
+
+  dl#portlet_mina-linkedin .portletItem {
+    background-color: none;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  dl#portlet_mina-linkedin dt,
+  dl.portletLogin dt.portletHeader {
+    display: none;
+  }
+
+  dl.portletLogin .formControls {
+    margin: 0;
+  }
+
+  dl.portletLogin input[type="submit"] {
+    background: none repeat scroll 0 0 transparent;
+    border: medium none;
+    color: #a13826;
+    cursor: pointer;
+    font-size: 100% !important;
+    font-weight: bold;
+    margin: 0;
+    text-align: left;
+  }
+
+  /* @end */
   /* @group global portlets */
   #portal-column-one dl.portlet {
     background-color: #c8ed7e;
+    border-bottom: 1px solid #e0faac;
   }
 
-  #portal-column-one dl.portlet dt.portletHeader a {
-    color: white;
+  #portal-column-one dl.portlet dt.portletHeader a,
+  #portal-column-two dl.portlet dt.portletHeader a {
+    color: white !important;
   }
 
   #portal-column-one dl.portlet dt.portletHeader {
@@ -587,6 +631,20 @@
 
   #portal-column-one dl.portlet dd.portletItem {
     padding: 5px 10px;
+  }
+
+  #portal-column-one dl.portlet dd.portletItem a:link,
+  #portal-column-two dl.portlet dd.portletItem a:link,
+  #portal-column-one dl.portlet dd.portletFooter a:link,
+  #portal-column-two dl.portlet dd.portletFooter a:link {
+    border: none;
+  }
+
+  #portal-column-one dl.portlet dd.portletItem a:hover,
+  #portal-column-two dl.portlet dd.portletItem a:hover,
+  #portal-column-one dl.portlet dd.portletFooter a:hover,
+  #portal-column-two dl.portlet dd.portletFooter a:hover {
+    border-bottom: 1px solid;
   }
 
   #portal-column-one dl.portlet dd.portletItem .field input[type="password"],
@@ -605,10 +663,7 @@
     color: white;
   }
 
-  #portal-column-two dl.portlet dt.portletHeader a {
-    color: white;
-  }
-
+  /* @end */
   /* @group Content Area */
   #content {
     line-height: 1.5em;
@@ -806,7 +861,7 @@
     margin: 0;
     padding: 0.5em;
     background-color: #666666;
-    background-color: rgba(40, 40, 40, 0.7);
+    background-color: rgba(40, 40, 40, 0);
     color: white;
     font-weight: bold;
     position: relative;
@@ -2483,11 +2538,11 @@
   /* navigation */
   #portal-column-one > #portal-globalnav {
     background-color: #c8ed7e;
-    border: 1px solid #e0faac;
+    border-bottom: 1px solid #e0faac;
     line-height: 13px;
     list-style: none outside none;
     margin: 0;
-    width: 153px;
+    width: 155px;
     z-index: -1;
   }
 
@@ -2869,11 +2924,11 @@
   }
   div#portal-footer-wrapper > .width-1\3a 2 {
     margin-left: -845px;
-    width: 582px;
+    width: 581px;
   }
   div#portal-footer-wrapper > .position-0.width-3\3a 4 {
     margin-left: -845px;
-    width: 582px;
+    width: 581px;
   }
   div#portal-footer-wrapper > .width-full {
     margin-left: -845px;
