@@ -2,120 +2,6 @@
  *  http://localhost:8080/4/portal_css/Sunburst%20Theme/public.css
  *  http://localhost:8080/sprites/portal_css/Sunburst%20Theme/public.css
 
-/* @group CSS Reset
-
-/* Remove implicit browser styles to have a neutral starting point:
- * - No elements should have implicit margin/padding
- * - No underline by default on links (we add it explicitly in the body text)
- * - When we want markers on lists, we will be explicit about it, and they render inline by default
- * - Browsers are inconsistent about hX/pre/code, reset
- * - Linked images should not have borders*/
-
-*
-  margin: 0
-  padding: 0
-  \:link
-    text-decoration: none
-
-\:visited
-  text-decoration: none
-
-* ul, ol
-  list-style: none
-
-*
-  li
-    display: inline
-  h1
-    font-size: 1em
-
-h2, h3, h4, h5, h6, pre, code
-  font-size: 1em
-
-* a img, :link img, :visited img
-  border: none
-
-a
-  outline: none
-
-table
-  border-spacing: 0
-
-img
-  vertical-align: text-bottom
-
-iframe
-  border-width: 0
-  border-style: none
-
-/* @end */
-
-/* @group Basics*/
-
-body
-  font: 100% Arial, FreeSans, sans-serif
-  background: White
-  color: Black
-  /* width: 58em; margin: 1em auto;*/
-
-h1, h2, h3, h4, h5, h6
-  font-family: "Helvetica Neue", Arial, FreeSans, sans-serif
-  font-weight: bold
-  color: #A13826
-  line-height: 1.5em
-
-h1, h2
-  letter-spacing: -0.05em
-
-h1
-  font-size: 2em
-
-h2
-  font-size: 1.75em
-
-h3, h4
-  font-size: 1.25em
-
-h5
-  font-size: 1em
-
-h6
-  font-size: 0.8em
-
-h2, h3, h4, h5, h6
-  color: #444
-
-h2 a, h3 a, h4 a
-  border-bottom: none !important
-
-p
-
-a
-  &:link, &:visited
-    color: #A13826
-  &:focus img
-    outline: thin dotted
-
-dt
-  font-weight: bold
-
-input
-  font-family: "Lucida Grande", Arial, FreeSans
-
-q
-  quotes: "“" "”" "‘" "’"
-
-.visualClear
-  clear: both
-  font-size: 0
-  height: 0
-  line-height: 0
-  margin: 0
-  padding: 0
-  width: 100%
-
-/* @end*/
-
 /* @group Navigation/search*/
 div#visual-portal-wrapper
   width: 1001px
@@ -165,7 +51,7 @@ div#visual-portal-wrapper
 
 #portal-globalnav
   clear: both
-  font-size: 80%
+  font-size: 75%
   background: #ddd
   /* ensure top navigation dont touches portlets, content etc.. #10491*/
   margin: 0 0 1em 0
@@ -324,7 +210,7 @@ a
   &.link-parent
   &.link-anchor
     border: none !important
-    color: Black !important
+    color: #313131 !important
     cursor: default !important
 
 #content a.link-overlay
@@ -338,7 +224,7 @@ dl
       border: none !important
   &.portlet
     margin: 1em 0 1em
-    font-size: 80%
+    font-size: 75%
   &.portletError
     background-color: #FFA500
   &.portlet dt
@@ -406,7 +292,7 @@ dl.portlet a:link
   color: #666
   text-align: right
   a.link-category
-    color: black
+    color: #313131
     padding: 0.25em 0.5em
     background: #ddd
     border-radius: 0.5em
@@ -414,7 +300,7 @@ dl.portlet a:link
     -moz-border-radius: 0.5em
 
 span.selectedTag
-  color: black
+  color: #313131
   padding: 0.25em 0.5em
   background: #ddd
   border-radius: 0.5em
@@ -676,11 +562,11 @@ dl.portalMessage
   background-color: #ffffe3
   clear: both
   a
-    color: black
+    color: #313131
     border-bottom: 1px solid #888
 
 #content dl.portalMessage a
-  color: black
+  color: #313131
   border-bottom: 1px solid #888
 
 dl
@@ -791,7 +677,7 @@ dl
 #content-views li
   &.selected a, a:hover
     background: White
-    color: Black
+    color: #313131
     border-top-right-radius: 0.5em
     border-top-left-radius: 0.5em
     -webkit-border-top-right-radius: 0.5em
@@ -802,7 +688,7 @@ dl
 #content li.formTab a
   &.selected, &:hover
     background: White
-    color: Black
+    color: #313131
     border-top-right-radius: 0.5em
     border-top-left-radius: 0.5em
     -webkit-border-top-right-radius: 0.5em
@@ -813,7 +699,7 @@ dl
 #content-core li.formTab a
   &.selected, &:hover
     background: White
-    color: Black
+    color: #313131
     border-top-right-radius: 0.5em
     border-top-left-radius: 0.5em
     -webkit-border-top-right-radius: 0.5em
@@ -1118,7 +1004,7 @@ dl
 
 .reviewHistory, .contentHistory
   display: inline
-  color: Black
+  color: #313131
 
 .spacer
   margin: 1em
@@ -1129,7 +1015,7 @@ dl
 
 .optionsToggle
   border: 0.1em solid #8cacbb
-  color: Black
+  color: #313131
   background-color: #dee7ec
   font-weight: normal
   font-size: 90%
@@ -1324,7 +1210,7 @@ fieldset, .editionComment
 #content .field input[type="text"][name$=".title"], #archetypes-fieldname-title input
   font-family: "Helvetica Neue", Arial, FreeSans, sans-serif
   line-height: 125%
-  color: Black
+  color: #313131
   letter-spacing: -0.05em
   margin: inherit -0.05em
   font-size: 2em
@@ -1373,7 +1259,7 @@ label
     color: #999
     padding-left: 0.25em
   option
-    color: black
+    color: #313131
   optgroup > option
     padding: 0 0.25em 0 1em
 
@@ -1385,7 +1271,7 @@ dl.enableFormTabbing dd
   color: #76797c
   margin-top: 0.25em
   label:hover
-    color: Black
+    color: #313131
 
 .field
   clear: both
@@ -1523,11 +1409,15 @@ dl.toc
 /* @group Footer*/
 
 #portal-footer
-  font-size: 75%
-  background: #ddd
-  padding: 1em
+  font-size: 60%
+  background: transparent
   margin: 1em 0
   line-height: 2em
+  border-top: #A13826 solid 1px
+  color: #A13826
+
+#portal-footer a
+  text-decoration: underline
 
 #portal-colophon
   font-size: 80%
@@ -1738,7 +1628,7 @@ div.overlay
       label
         cursor: pointer
     &.selected
-      color: #000000
+      color: #313131
   .formTab
     margin-right: 1em
     font-weight: bold
@@ -2041,7 +1931,7 @@ a.historyComparePrevious
   display: block
   background: transparent
   padding: 5px 10px
-  color: black!important
+  color: #313131!important
   width: 130px
   border: none
 
@@ -2051,7 +1941,7 @@ a.historyComparePrevious
   position: relative
   top: 0
   left: 140px!important
-  color: black!important
+  color: #313131!important
   background: #E7FBBF
   z-index: 9999
   border: 1px solid #A4CF4D !important
@@ -2065,7 +1955,7 @@ a.historyComparePrevious
   padding: 1px 2px
 
 #portal-column-one > #portal-globalnav > li > ul li a
-  color: black
+  color: #313131
   font-weight: normal
 
 #portal-column-one > #portal-globalnav > li > ul li:hover a
