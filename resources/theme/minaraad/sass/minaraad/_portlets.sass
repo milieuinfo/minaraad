@@ -1,3 +1,190 @@
+/* @group Portlets*/
+
+div.portletAssignments div.portletHeader
+  padding: 0.42em 1em
+  background: #ddd
+  line-height: normal
+
+dl.portlet dt.hiddenStructure
+  padding: 0
+
+div.portletAssignments
+  font-size: 0.8em
+  line-height: 2em
+  .managedPortletActions
+    float: right
+    a, button
+      margin: 0 0.25em
+      border: none
+      cursor: pointer
+      background-color: transparent
+      color: #205C90
+    form
+      display: inline
+
+dl
+  &.portlet
+    dt a
+      &:link, &:visited, &:hover
+        color: black
+        display: block
+        border: none
+    dd
+      &.portletItem, &.portletFooter
+        padding: 1em
+  &.portletError dd
+    padding: 1em
+
+div.managePortletsLink
+  text-align: center
+  padding: 0.25em 0.5em
+  font-size: 80%
+  margin: 0 auto 1em
+  background: #ddd
+  border-radius: 0.5em
+  -webkit-border-radius: 0.5em
+  -moz-border-radius: 0.5em
+
+a.managePortletsFallback
+  text-align: center
+  padding: 0.25em 0.5em
+  font-size: 80%
+  margin: 0 auto 1em
+  background: #ddd
+  border-radius: 0.5em
+  -webkit-border-radius: 0.5em
+  -moz-border-radius: 0.5em
+  display: inline-block
+  /* in order for our vertical margins to work on inline element*/
+
+#content a.managePortletsFallback
+  display: block
+  border-bottom: none !important
+
+#portlet-prefs a
+  border: none
+  line-height: 2em
+
+#visual-portal-wrapper dl.portletCalendar dd
+  padding: 0
+
+#dashboard-portlets1, #dashboard-portlets2, #dashboard-portlets3, #dashboard-portlets4
+  display: inline-block
+
+/* @end*/
+
+/* @group Navigation portlet*/
+
+dl
+  &.portlet ul.navTree li a
+    border: none
+    display: block
+    zoom: 1
+    &:hover
+  &.portletNavigationTree dd.portletItem
+    padding: 0
+  &.portlet ul
+    &.navTreeLevel0 > .navTreeItem
+      padding: 0.25em 1em
+      border-bottom: 0.1em dotted #ddd
+      line-height: 2em
+    &.navTreeLevel1 .navTreeItem
+      padding-left: 0.5em
+      line-height: 2em
+    &.navTree .navTreeCurrentItem
+      background-color: #ddd
+      border-left: 1em solid #ddd
+      margin-left: -1em
+      margin-right: -1em
+
+/* @end*/
+
+/* @group mina portlets*/
+dl#portlet-events-mina .portlet_date
+  color: #7D7D7B
+
+dl#portlet-events-mina .portletItem a:link
+  color: #000
+  font-weight: bold
+  border: none
+  
+dl#portlet_mina-linkedin.portlet
+  background-color: transparent!important
+  
+dl#portlet_mina-linkedin .portletItem
+  background-color: none
+  padding-top: 0
+  padding-bottom: 0
+  
+//disable headers here
+dl#portlet_mina-linkedin dt,
+dl.portletLogin dt.portletHeader
+  display: none
+
+dl.portletLogin .formControls
+  margin: 0
+
+dl.portletLogin input[type="submit"] 
+  background: none repeat scroll 0 0 transparent 
+  border: medium none
+  color: #A13826
+  cursor: pointer
+  font-size: 100% !important
+  font-weight: bold
+  margin: 0
+  text-align: left
+
+dl.portletSearch .searchField.portlet-search-gadget 
+  width: 150px
+  
+dl.portletSearch .searchButton
+  margin-top: 5px
+/* @end*/
+
+
+/* @group global portlets */
+
+#portal-column-one dl.portlet
+  background-color: #C8ED7E
+  border-bottom: 1px solid #E0FAAC
+
+#portal-column-one dl.portlet dt.portletHeader a,
+#portal-column-two dl.portlet dt.portletHeader a
+  color: #FFFFFF !important
+
+#portal-column-one dl.portlet dt.portletHeader
+  background-color: #006600
+  color: #FFFFFF
+
+#portal-column-one dl.portlet dd.portletItem
+  padding: 5px 10px
+  
+#portal-column-one dl.portlet dd.portletItem a:link,
+#portal-column-two dl.portlet dd.portletItem a:link,
+#portal-column-one dl.portlet dd.portletFooter a:link,
+#portal-column-two dl.portlet dd.portletFooter a:link
+  border: none
+  
+#portal-column-one dl.portlet dd.portletItem a:hover,
+#portal-column-two dl.portlet dd.portletItem a:hover,
+#portal-column-one dl.portlet dd.portletFooter a:hover,
+#portal-column-two dl.portlet dd.portletFooter a:hover
+  border-bottom: 1px solid
+
+#portal-column-one dl.portlet dd.portletItem .field input[type="password"],
+#portal-column-one dl.portlet dd.portletItem .field input[type="text"]
+  width: 130px
+  border: 1px solid black
+  padding: 3px
+
+#portal-column-two dl.portlet
+  background-color: #F6F6F5
+
+#portal-column-two dl.portlet dt.portletHeader
+  background-color: #A13826
+  color: white
+/* @end*/
+
 .managedPortlet
   margin: 0.8em 0
 
