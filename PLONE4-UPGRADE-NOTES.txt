@@ -135,18 +135,9 @@ To do in the buildout
   - http://pypi.python.org/pypi/RelStorage
   - http://pypi.python.org/pypi/plone.recipe.zope2instance
 
-- The i18noverrides should no longer be used.  The fixes should be
-  done in the code (locales directory).
-
 
 To do in the code
 -----------------
-
-- The i18noverrides buildout part should no longer be used.  The fixes
-  should somehow be done in the code, making sure we override
-  translations properly.  Maurits probably knows how this can be done,
-  but needs to look that up again. :-) See
-  http://maurits.vanrees.org/weblog/archive/2010/10/i18n-plone-4#overriding-translations
 
 - Fix errors during Plone migration, at least this one for FCKeditor,
   though it may no longer be a problem, since we have probably
@@ -200,8 +191,6 @@ To do in the code
 - Check that recaptcha still works, as we upgraded to a new versions
   because the old one could not be installed in Plone 4.
 
-- Fix the ancient portlet_recent.pt.
-
 - We had some customization in search.pt.  This template now fails and
   it has been completely rewritten in Plone 4.2 so we should start
   from there and check again.  I have removed it for now.
@@ -220,7 +209,7 @@ To do on Plone 4 through the web
   @@manage-portlets (at the root of the site) and remove
   the recent portlet.
 
--  Go to the control panel then the skins, select "(Onbewrkt)".
+- Go to the control panel then the skins, select "(Onbewerkt)".
 
 - Go to the extra-products page and:
     - install diazo
