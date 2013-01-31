@@ -5,4 +5,11 @@
 
   <i18n:registerTranslations directory="locales"/>
 
+  <browser:page
+      name="search"
+      class="plone.app.search.browser.Search"
+      permission="zope2.View"
+      for="*"
+      template="browser/search.pt"
+      />
 </configure>
