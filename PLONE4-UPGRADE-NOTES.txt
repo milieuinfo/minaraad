@@ -224,3 +224,6 @@ To do on Plone 4 through the web
 
 - Configure plone.app.caching (not much was previously cached in
   CacheSetup thouch).
+
+- Set the default editor to TinyMCE (go to @@set-default-editor page)
+
