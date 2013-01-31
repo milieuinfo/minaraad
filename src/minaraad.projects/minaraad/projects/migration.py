@@ -290,3 +290,6 @@ def use_location_uid_in_cached_locations(context):
 
     logger.info('%s meetings updated' % m_up_count)
     logger.info('%s meetings cleaned' % m_cl_count)
+
+def apply_skin_profile(context):
+    context.runImportStepFromProfile(PROFILE_ID, 'skins')

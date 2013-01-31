@@ -5,6 +5,6 @@
          meta_type="Filesystem Directory View"
          directory="minaraad.projects:skins/minaraad_projects"/>
  <skin-path name="*">
-  <layer name="mina_projects" insert-after="custom"/>
+  <layer name="mina_projects" insert-after="minaraad"/>
  </skin-path>
 </object>
