@@ -205,7 +205,7 @@ To do on Plone 4 through the web
 
 - Run the Plone migration.
 
-- The site should fail now (no portlet_recent), that "normal". Go to
+- The site should fail now (no portlet_recent), that's "normal". Go to
   @@manage-portlets (at the root of the site) and remove
   the recent portlet.
 
@@ -218,8 +218,9 @@ To do on Plone 4 through the web
    
 - Go to the Diazo configuration page, select the "Minaraad" theme.
 
-- Add some portlets on the home page and/or the root of the site.
-  Please be more specific.
+- Add the following portlets on the homepage:
+  - left column: Minaraad login, Minaraad personal preferences
+  - right column: Minaraad search, LinkedIn, Minaraad recent changes
 
 - Configure plone.app.caching (not much was previously cached in
   CacheSetup thouch).
