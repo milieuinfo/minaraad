@@ -1,4 +1,5 @@
 from zope.component.hooks import getSite
+from OFS.interfaces import IFolder
 from plone.app.layout.viewlets.common import GlobalSectionsViewlet
 
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
@@ -20,6 +21,9 @@ class MinaGlobalSectionsViewlet(GlobalSectionsViewlet):
             tab['children'] = []
 
             for el in folder.contentValues():
+                if not IFolder.providedBy(el):
+                    continue
+
                 try:
                     tab['children'].append(el)
                 except:
