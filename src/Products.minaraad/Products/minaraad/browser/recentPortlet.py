@@ -31,6 +31,11 @@ class Renderer(p_recent.Renderer):
                                      sort_on='effective',
                                      sort_order='reverse')[:self.data.count]
 
+    @property
+    def available(self):
+        return self.data.count > 0 and \
+               len(self._data())
+
 
 class AddForm(p_recent.AddForm):
     def create(self, data):
