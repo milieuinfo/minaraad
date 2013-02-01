@@ -1,17 +1,10 @@
-#! /bin/bash
+#! /bin/sh
+i18ndude rebuild-pot --pot locales/minaraad.pot --create minaraad \
+    --merge locales/manual.pot .
 
-# Project name
-PROJECT=minaraad
-
-# Directory that will be search for i18n tags, including subdirs.
-SEARCH_DIR=.
-# Merge the contents of this file into the i18n created file.
-SELF_MADE=i18n/manual.pot
-
-# Rebuild the .pot file of our project and merge the $SELF_MADE file in it.
-i18ndude rebuild-pot --pot i18n/$PROJECT.pot --create $PROJECT --merge $SELF_MADE $SEARCH_DIR
-
-i18ndude sync --pot i18n/$PROJECT.pot i18n/$PROJECT-*.po
+for po in locales/*/LC_MESSAGES/minaraad.po; do
+    i18ndude sync --pot locales/minaraad.pot $po
+done
 
 #echo "Reporting some statistics..."
 # Find places that are missing an "i18n:translate" or
