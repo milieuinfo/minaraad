@@ -12,7 +12,7 @@ class Assignment(p_search.Assignment):
 
 
 class Renderer(p_search.Renderer):
-    _template = ViewPageTemplateFile('portlet_search.pt')
+    render = ViewPageTemplateFile('portlet_search.pt')
 
 
 class AddForm(p_search.AddForm):
