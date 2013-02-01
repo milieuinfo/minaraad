@@ -1,34 +1,32 @@
 <?xml version="1.0"?>
-<dc-workflow workflow_id="file_attachment_workflow"
-             title="File Attachment workflow" description=""
-             state_variable="review_state"
-             initial_state="private">
+<dc-workflow workflow_id="file_attachment_workflow" title="File Attachment workflow" description="" state_variable="review_state" initial_state="private" manager_bypass="False">
  <permission>Modify portal content</permission>
  <permission>View</permission>
  <state state_id="private" title="">
   <exit-transition transition_id="publish"/>
   <exit-transition transition_id="restricted_publish"/>
-  <permission-map name="Modify portal content"
-                  acquired="False">
+  <permission-map name="Modify portal content" acquired="False">
    <permission-role>Manager</permission-role>
    <permission-role>Owner</permission-role>
    <permission-role>Reviewer</permission-role>
+   <permission-role>Site Administrator</permission-role>
   </permission-map>
   <permission-map name="View" acquired="False">
    <permission-role>Manager</permission-role>
    <permission-role>Owner</permission-role>
    <permission-role>Reviewer</permission-role>
+   <permission-role>Site Administrator</permission-role>
   </permission-map>
  </state>
  <state state_id="published" title="">
   <exit-transition transition_id="restricted_publish"/>
   <exit-transition transition_id="retract"/>
   <exit-transition transition_id="unpublish"/>
-  <permission-map name="Modify portal content"
-                  acquired="False">
+  <permission-map name="Modify portal content" acquired="False">
    <permission-role>Manager</permission-role>
    <permission-role>Owner</permission-role>
    <permission-role>Reviewer</permission-role>
+   <permission-role>Site Administrator</permission-role>
   </permission-map>
   <permission-map name="View" acquired="False">
    <permission-role>Anonymous</permission-role>
@@ -38,13 +36,13 @@
  <state state_id="restricted" title="">
   <exit-transition transition_id="publish"/>
   <exit-transition transition_id="retract"/>
-  <permission-map name="Modify portal content"
-                  acquired="False">
+  <permission-map name="Modify portal content" acquired="False">
    <permission-role>Council Member</permission-role>
    <permission-role>DigiBibViewer</permission-role>
    <permission-role>Manager</permission-role>
    <permission-role>Owner</permission-role>
    <permission-role>Reviewer</permission-role>
+   <permission-role>Site Administrator</permission-role>
   </permission-map>
   <permission-map name="View" acquired="False">
    <permission-role>Council Member</permission-role>
@@ -54,12 +52,11 @@
    <permission-role>ProjectMember</permission-role>
    <permission-role>Reader</permission-role>
    <permission-role>Reviewer</permission-role>
+   <permission-role>Site Administrator</permission-role>
   </permission-map>
  </state>
- <transition transition_id="publish" title=""
-             new_state="published" trigger="USER"
-             before_script="" after_script="">
-  <action url="" category="workflow">Publish</action>
+ <transition transition_id="publish" title="" new_state="published" trigger="USER" before_script="" after_script="">
+  <action url="" category="workflow" icon="">Publish</action>
   <guard>
    <guard-role>Author</guard-role>
    <guard-role>Editor</guard-role>
@@ -68,11 +65,8 @@
    <guard-role>Reviewer</guard-role>
   </guard>
  </transition>
- <transition transition_id="restricted_publish"
-             title="restricted publish"
-             new_state="restricted" trigger="USER"
-             before_script="" after_script="">
-  <action url="" category="workflow">restricted publish</action>
+ <transition transition_id="restricted_publish" title="restricted publish" new_state="restricted" trigger="USER" before_script="" after_script="">
+  <action url="" category="workflow" icon="">restricted publish</action>
   <guard>
    <guard-role>Author</guard-role>
    <guard-role>Editor</guard-role>
@@ -81,16 +75,19 @@
    <guard-role>Reviewer</guard-role>
   </guard>
  </transition>
- <transition transition_id="retract" title="retract"
-             new_state="private" trigger="USER"
-             before_script="" after_script="">
-  <action url="" category="workflow">retract</action>
+ <transition transition_id="retract" title="retract" new_state="private" trigger="USER" before_script="" after_script="">
+  <action url="" category="workflow" icon="">retract</action>
   <guard>
    <guard-role>Author</guard-role>
    <guard-role>Editor</guard-role>
    <guard-role>Manager</guard-role>
    <guard-role>Owner</guard-role>
    <guard-role>Reviewer</guard-role>
+  </guard>
+ </transition>
+ <transition transition_id="unpublish" title="Unpublish" new_state="private" trigger="USER" before_script="" after_script="">
+  <action url="" category="workflow" icon="">Unpublish</action>
+  <guard>
   </guard>
  </transition>
 </dc-workflow>

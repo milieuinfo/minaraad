@@ -44,9 +44,6 @@
    <bound-workflow workflow_id="minaraad_workflow"/>
   </type>
   <type type_id="ImageAttachment"/>
-  <type type_id="Large Plone Folder">
-   <bound-workflow workflow_id="minaraad_folder_workflow"/>
-  </type>
   <type type_id="MacroCacheRule"/>
   <type type_id="MacroFolder"/>
   <type type_id="NewsLetter">
