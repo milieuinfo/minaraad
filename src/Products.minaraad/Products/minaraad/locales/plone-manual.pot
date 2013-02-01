@@ -1,4 +1,3 @@
-# ArchGenXML generated POT File
 # Mirella van Teulingen <m.van.teulingen@zestsoftware.nl>, 2006.
 # Maurits van Rees <m.van.rees@zestsoftware.nl>, 2008.
 msgid ""

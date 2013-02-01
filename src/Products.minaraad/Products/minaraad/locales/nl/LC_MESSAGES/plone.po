@@ -1,4 +1,3 @@
-# ArchGenXML generated POT File
 # Mirella van Teulingen <m.van.teulingen@zestsoftware.nl>, 2006.
 # Maurits van Rees <m.van.rees@zestsoftware.nl>, 2008.
 msgid ""
@@ -59,7 +58,6 @@ msgstr ""
 msgid "A portlet which shows a search box."
 msgstr ""
 
-# END of default PloneTranslations msgids that we want to override.
 msgid "Advisory"
 msgstr "Advies"
 
@@ -87,7 +85,7 @@ msgstr ""
 #: profiles/default/workflows/minaraad_folder_workflow/definition.xml
 #: profiles/default/workflows/minaraad_workflow/definition.xml
 msgid "Comments about the last transition"
-msgstr ""
+msgstr "Opmerkingen over de laatste transitie"
 
 msgid "ContactPerson"
 msgstr "Contact persoon"

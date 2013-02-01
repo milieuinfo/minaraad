@@ -1,4 +1,3 @@
-# ArchGenXML generated POT File
 # Rocky Burt <r.burt@zestsoftware.nl>, 2005.
 msgid ""
 msgstr ""

@@ -36,11 +36,11 @@ msgstr "Een studie"
 
 #: ./browser/personalPreferencesPortlet.py:46
 msgid "Add Personal Preferences Portlet"
-msgstr ""
+msgstr "Voeg Persoonlijke voorkeuren portlet toe"
 
 #: ./browser/linkedinPortlet.py:30
 msgid "Add linkedin Portlet"
-msgstr ""
+msgstr "Voeg LinkedIn portlet toe"
 
 #. Default: "Advisory"
 #: ./profiles/default/types/Advisory.xml
@@ -95,7 +95,7 @@ msgstr "Hoorzitting"
 
 #: ./browser/linkedinPortlet.py:21
 msgid "LinkedIn"
-msgstr ""
+msgstr "LinkedIn"
 
 #. Default: "Location:"
 #: ./skins/minaraad/EmailTemplate-Hearing.pt:18
@@ -119,7 +119,7 @@ msgstr "Nieuwsbrief"
 
 #: ./browser/personalPreferencesPortlet.py:23
 msgid "Personal Preferences"
-msgstr ""
+msgstr "Persoonlijke voorkeuren"
 
 #: ./profiles/default/types/Pressrelease.xml
 msgid "Pressrelease"
@@ -132,11 +132,11 @@ msgstr "Studie"
 
 #: ./browser/personalPreferencesPortlet.py:47
 msgid "This portlet shows links for editing your preferences"
-msgstr ""
+msgstr "Deze portlet toont links voor het bijwerken van voorkeuren"
 
 #: ./browser/linkedinPortlet.py:31
 msgid "This portlet shows the linkedIn link"
-msgstr ""
+msgstr "Deze portlet toont de LinkedIn link"
 
 #. Default: "Time:"
 #: ./skins/minaraad/mina_showdatetime.pt:28
@@ -256,7 +256,6 @@ msgstr "Bus"
 
 #. Default: "To block spammers, please solve this \"captcha\""
 #: ./userdataschema.py:123
-#, fuzzy
 msgid "label_captcha"
 msgstr "Los alstublieft deze \"captcha\" op om spammers tegen te gaan."
 
