@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minaraad 0.1\n"
-"POT-Creation-Date: 2013-02-01 16:09+0000\n"
+"POT-Creation-Date: 2013-02-01 16:51+0000\n"
 "PO-Revision-Date: 2012-02-07 11:15+0100\n"
 "Last-Translator: Maurits van Rees <m.van.rees@zestsoftware.nl>\n"
 "Language-Team: Nederlands <info@zestsoftware.nl>\n"

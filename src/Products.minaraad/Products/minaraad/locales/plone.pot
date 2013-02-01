@@ -12,9 +12,9 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0\n"
-"Language-Code: nl\n"
-"Language-Name: Nederlands\n"
-"Preferred-Encodings: latin1 utf-8\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
 "Domain: plone\n"
 "X-Generator: Emacs PO mode, version 2.01\n"
 "X-Is-Fallback-For: nl-be\n"
@@ -59,22 +59,21 @@ msgstr ""
 msgid "A portlet which shows a search box."
 msgstr ""
 
-# END of default PloneTranslations msgids that we want to override.
 msgid "Advisory"
-msgstr "Advies"
+msgstr ""
 
 msgid "AgendaItem"
-msgstr "Agendapunt"
+msgstr ""
 
 #: profiles/default/types/News_Item.xml
 msgid "An announcement that will show up on the news portlet and in the news listing."
 msgstr ""
 
 msgid "AnnualReport"
-msgstr "Jaarverslag"
+msgstr ""
 
 msgid "Author"
-msgstr "Auteur"
+msgstr ""
 
 #: profiles/plone41/portlets.xml
 msgid "Calendar portlet"
@@ -90,10 +89,10 @@ msgid "Comments about the last transition"
 msgstr ""
 
 msgid "ContactPerson"
-msgstr "Contact persoon"
+msgstr ""
 
 msgid "Council Member"
-msgstr "Raadslid"
+msgstr ""
 
 #: profiles/default/types/Folder.xml
 #: profiles/default/types/News_Item.xml
@@ -106,7 +105,7 @@ msgid "Events"
 msgstr ""
 
 msgid "Export Subscribers"
-msgstr "Exporteer naar Excel"
+msgstr ""
 
 #: profiles/default/types/News_Item.xml
 #: profiles/default/types/Plone_Site.xml
@@ -130,7 +129,7 @@ msgid "Folder view"
 msgstr ""
 
 msgid "Hearing"
-msgstr "Hoorzitting"
+msgstr ""
 
 #: profiles/default/types/News_Item.xml
 msgid "History"
@@ -141,7 +140,7 @@ msgid "Login"
 msgstr ""
 
 msgid "MREvent"
-msgstr "Evenement"
+msgstr ""
 
 #: profiles/plone41/portlets.xml
 msgid "Navigation"
@@ -156,21 +155,21 @@ msgid "News Item"
 msgstr ""
 
 msgid "NewsLetter"
-msgstr "Nieuwsbrief"
+msgstr ""
 
 msgid "Pending"
-msgstr "In behandeling"
+msgstr ""
 
 #: profiles/default/workflows/minaraad_workflow/definition.xml
 msgid "Pending from private"
-msgstr "In behandeling"
+msgstr ""
 
 #: profiles/default/workflows/minaraad_workflow/definition.xml
 msgid "Pending from revisioning"
-msgstr "In behandeling van revisie"
+msgstr ""
 
 msgid "Pressrelease"
-msgstr "Persbericht"
+msgstr ""
 
 #: profiles/default/workflows/minaraad_folder_workflow/definition.xml
 #: profiles/default/workflows/minaraad_workflow/definition.xml
@@ -212,14 +211,14 @@ msgid "Search"
 msgstr ""
 
 msgid "Study"
-msgstr "Studie"
+msgstr ""
 
 #: profiles/default/workflows/minaraad_workflow/definition.xml
 msgid "Submit"
 msgstr ""
 
 msgid "Subscriptions"
-msgstr "Abonnementen"
+msgstr ""
 
 #: profiles/default/workflows/minaraad_folder_workflow/definition.xml
 #: profiles/default/workflows/minaraad_workflow/definition.xml
@@ -236,7 +235,7 @@ msgid "The portal_type for the root object in a Plone system."
 msgstr ""
 
 msgid "Themes"
-msgstr "Werkvelden"
+msgstr ""
 
 #: profiles/default/workflows/minaraad_folder_workflow/definition.xml
 #: profiles/default/workflows/minaraad_workflow/definition.xml
@@ -254,22 +253,22 @@ msgid "View"
 msgstr ""
 
 msgid "advisory_listing_view"
-msgstr "Adviezen overzicht"
+msgstr ""
 
 msgid "annualreport_listing_view"
-msgstr "Jaarverslagen overzicht"
+msgstr ""
 
 msgid "hearing_listing_view"
-msgstr "Hoorzittingen overzicht"
+msgstr ""
 
 msgid "list_contact_persons"
-msgstr "Contactpersonen overzicht"
+msgstr ""
 
 msgid "mina_listing"
-msgstr "Map overzicht"
+msgstr ""
 
 msgid "minaraad themes"
-msgstr "minaraad werkvelden"
+msgstr ""
 
 #: profiles/default/workflows/minaraad_folder_workflow/definition.xml
 msgid "minaraad_folder_workflow"
@@ -280,17 +279,17 @@ msgid "minaraad_workflow"
 msgstr ""
 
 msgid "mrevent_listing_view"
-msgstr "Evenementen overzicht"
+msgstr ""
 
 msgid "newsletter_listing_view"
-msgstr "Nieuwsbrieven overzicht"
+msgstr ""
 
 #: profiles/default/workflows/minaraad_folder_workflow/definition.xml
 msgid "pending"
 msgstr ""
 
 msgid "pressrelease_listing_view"
-msgstr "Persberichten overzicht"
+msgstr ""
 
 #: profiles/default/workflows/minaraad_folder_workflow/definition.xml
 #: profiles/default/workflows/minaraad_workflow/definition.xml
@@ -315,13 +314,13 @@ msgstr ""
 #: profiles/default/workflows/minaraad_folder_workflow/definition.xml
 #: profiles/default/workflows/minaraad_workflow/definition.xml
 msgid "restricted"
-msgstr "Besloten"
+msgstr ""
 
 #: profiles/default/workflows/file_attachment_workflow/definition.xml
 #: profiles/default/workflows/minaraad_folder_workflow/definition.xml
 #: profiles/default/workflows/minaraad_workflow/definition.xml
 msgid "restricted publish"
-msgstr "Besloten publiceren"
+msgstr ""
 
 #: profiles/default/workflows/file_attachment_workflow/definition.xml
 #: profiles/default/workflows/minaraad_folder_workflow/definition.xml
@@ -331,14 +330,14 @@ msgstr ""
 
 #: profiles/default/workflows/minaraad_workflow/definition.xml
 msgid "revise"
-msgstr "Reviseren"
+msgstr ""
 
 #: profiles/default/workflows/minaraad_workflow/definition.xml
 msgid "revisioning"
 msgstr ""
 
 msgid "study_listing_view"
-msgstr "Studies overzicht"
+msgstr ""
 
 #: profiles/default/workflows/minaraad_folder_workflow/definition.xml
 #: profiles/default/workflows/minaraad_workflow/definition.xml
@@ -346,5 +345,5 @@ msgid "submit"
 msgstr ""
 
 msgid "subscribers overview"
-msgstr "Abonnee overzicht"
+msgstr ""
 

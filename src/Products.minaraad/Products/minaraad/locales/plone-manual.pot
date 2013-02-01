@@ -1,0 +1,98 @@
+# ArchGenXML generated POT File
+# Mirella van Teulingen <m.van.teulingen@zestsoftware.nl>, 2006.
+# Maurits van Rees <m.van.rees@zestsoftware.nl>, 2008.
+msgid ""
+msgstr ""
+"Project-Id-Version: minaraad\n"
+"POT-Creation-Date: Fri Feb 10 09:04:01 2006\n"
+"PO-Revision-Date: 2008-12-03 17:07+0100\n"
+"Last-Translator: Maurits van Rees <m.van.rees@zestsoftware.nl>\n"
+"Language-Team: Zest Software <info@zestsoftware.nl>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: plone\n"
+"X-Generator: Emacs PO mode, version 2.01\n"
+"X-Is-Fallback-For: nl-be\n"
+
+msgid "Advisory"
+msgstr ""
+
+msgid "Hearing"
+msgstr ""
+
+msgid "Study"
+msgstr ""
+
+msgid "NewsLetter"
+msgstr ""
+
+msgid "ContactPerson"
+msgstr ""
+
+msgid "AnnualReport"
+msgstr ""
+
+msgid "Pressrelease"
+msgstr ""
+
+msgid "MREvent"
+msgstr ""
+
+msgid "Themes"
+msgstr ""
+
+msgid "AgendaItem"
+msgstr ""
+
+msgid "Subscriptions"
+msgstr ""
+
+msgid "Author"
+msgstr ""
+
+msgid "Council Member"
+msgstr ""
+
+msgid "Pending"
+msgstr ""
+
+msgid "advisory_listing_view"
+msgstr ""
+
+msgid "hearing_listing_view"
+msgstr ""
+
+msgid "newsletter_listing_view"
+msgstr ""
+
+msgid "pressrelease_listing_view"
+msgstr ""
+
+msgid "minaraad themes"
+msgstr ""
+
+msgid "subscribers overview"
+msgstr ""
+
+msgid "Export Subscribers"
+msgstr ""
+
+msgid "study_listing_view"
+msgstr ""
+
+msgid "annualreport_listing_view"
+msgstr ""
+
+msgid "mrevent_listing_view"
+msgstr ""
+
+msgid "mina_listing"
+msgstr ""
+
+msgid "list_contact_persons"
+msgstr ""
