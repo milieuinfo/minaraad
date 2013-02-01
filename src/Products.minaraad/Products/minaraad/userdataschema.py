@@ -56,7 +56,7 @@ class IEnhancedUserDataSchema(IUserDataSchema):
 
     firstname = schema.TextLine(
         title=_(u'label_firstname',
-                default=u' First name'),
+                default=u'First name'),
         required=True)
 
     company = schema.TextLine(
@@ -103,7 +103,7 @@ class IEnhancedUserDataSchema(IUserDataSchema):
 
     other_country = schema.TextLine(
         title=_(u'label_other_country',
-                default=u'Other ountry'),
+                default=u'Other country'),
         required=False,
         )
 
