@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minaraad 0.1\n"
-"POT-Creation-Date: 2012-10-04 15:01+0000\n"
+"POT-Creation-Date: 2013-02-01 16:09+0000\n"
 "PO-Revision-Date: 2012-02-07 11:15+0100\n"
 "Last-Translator: Maurits van Rees <m.van.rees@zestsoftware.nl>\n"
 "Language-Team: Nederlands <info@zestsoftware.nl>\n"
@@ -33,6 +33,14 @@ msgstr "Een persbericht"
 #: ./profiles/default/types/Study.xml
 msgid "A Study"
 msgstr "Een studie"
+
+#: ./browser/personalPreferencesPortlet.py:46
+msgid "Add Personal Preferences Portlet"
+msgstr ""
+
+#: ./browser/linkedinPortlet.py:30
+msgid "Add linkedin Portlet"
+msgstr ""
 
 #. Default: "Advisory"
 #: ./profiles/default/types/Advisory.xml
@@ -85,6 +93,10 @@ msgstr "Doelstelling:"
 msgid "Hearing"
 msgstr "Hoorzitting"
 
+#: ./browser/linkedinPortlet.py:21
+msgid "LinkedIn"
+msgstr ""
+
 #. Default: "Location:"
 #: ./skins/minaraad/EmailTemplate-Hearing.pt:18
 #: ./skins/minaraad/EmailTemplate-MREvent.pt:18
@@ -105,19 +117,26 @@ msgstr "Nieuwsbrief"
 msgid "Newsletter"
 msgstr "Nieuwsbrief"
 
+#: ./browser/personalPreferencesPortlet.py:23
+msgid "Personal Preferences"
+msgstr ""
+
 #: ./profiles/default/types/Pressrelease.xml
 msgid "Pressrelease"
 msgstr "Persbericht"
-
-#. Default: "Set_my_password_mina"
-#: ./skins/minaraad/pwreset_form.cpt:97
-msgid "Set_my_password_mina"
-msgstr "Wachtwoord opslaan"
 
 #. Default: "Study"
 #: ./profiles/default/types/Study.xml
 msgid "Study"
 msgstr "Studie"
+
+#: ./browser/personalPreferencesPortlet.py:47
+msgid "This portlet shows links for editing your preferences"
+msgstr ""
+
+#: ./browser/linkedinPortlet.py:31
+msgid "This portlet shows the linkedIn link"
+msgstr ""
 
 #. Default: "Time:"
 #: ./skins/minaraad/mina_showdatetime.pt:28
@@ -171,33 +190,28 @@ msgstr "U bent ingeschreven voor de hoorzitting."
 msgid "hearing_unregistered_label"
 msgstr "Klik hier om u in te schrijven."
 
-#. Default: "Enter an email address. You will use this to login to the site. This is also necessary in case the password is lost. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
-#: ./skins/minaraad/join_form.cpt:349
-msgid "help_email_creation_mina"
-msgstr "Voer uw e-mailadres in. Hiermee kunt u inloggen op deze website. Dit e-mailadres wordt ook gebruikt als u uw wachtwoord bent vergeten. Wij respecteren uw privacy. Uw e-mailadres wordt niet aan derden doorgegeven."
-
 #. Default: "Send out an e-mail to all subscribers pertaining to this item. If the 'Send As Test' checkbox is checked below, the e-mail is only sent to the people in the 'To' field. Fill in the username which should receive the test email. Once a non-test e-mail has been sent out, no further e-mail's can be sent from this particular tab."
-#: ./browser/email_out.pt:45
+#: ./browser/email_out.pt:46
 msgid "help_email_out"
 msgstr "Verzend een e-mail naar alle abonnees op dit content type. Wanneer de checkbox \"Test email versturen\" is aangevinkt, wordt er alleen een e-mail gestuurd naar de e-mailadressen die in het \"Aan\"- veld zijn ingevuld. Vul in het \"Aan\"- veld de gebruikersnaam van de persoon die het test bericht mag ontvangen. Wanneer het daadwerkelijke bericht is verstuurd, is het niet mogelijk op vanuit deze tab opnieuw te versturen."
 
 #. Default: "Additional message text (text used from emailTemplate field is considered master e-mail text)."
-#: ./browser/email_out.pt:115
+#: ./browser/email_out.pt:112
 msgid "help_email_out_additional"
 msgstr "Extra tekst toevoegen aan het bericht (De body tekst is de hoofdtekst.)"
 
 #. Default: "An e-mail has already been sent out for this content type on ${email_sentdate}."
-#: ./browser/email_out.pt:39
+#: ./browser/email_out.pt:40
 msgid "help_email_out_already_sent"
 msgstr "Er is een e-mail verzonden voor dit content type op: ${email_sentdate}"
 
 #. Default: "Comma-separated list of member ids this mail is sent out to. This is only for testing purposes and for members that you want the mail to be sent to in addition to the ones that subscribed."
-#: ./browser/email_out.pt:72
+#: ./browser/email_out.pt:73
 msgid "help_email_out_to"
 msgstr "Voeg hier de gebruikersnamen in van de personen die ook het bericht mogen ontvangen. Gebruik een ',' tussen de gebruikersnamen. Dit is alleen om te testen en voor personen waarvan u wilt dat ze de email ontvangen naast degenen die ingeschreven zijn."
 
 #. Default: "Test e-mails can be sent as frequently as needed but only get sent to the members in the above \"To\" field."
-#: ./browser/email_out.pt:94
+#: ./browser/email_out.pt:93
 msgid "help_send_as_test"
 msgstr "Test e-mails kunnen zo vaak als nodig worden verstuurd. De test e-mail wordt verstuurd naar de gebruikers die hierboven in het \"Aan\" veld zijn ingevuld."
 
@@ -235,35 +249,32 @@ msgid "label_attachment_published"
 msgstr "Is publiek"
 
 #. Default: "Bus"
-#: ./skins/minaraad/join_form.cpt:208
-#: ./skins/minaraad/personalize_form.cpt:222
 #: ./skins/minaraad/prefs_user_details.cpt:253
+#: ./userdataschema.py:83
 msgid "label_bus"
 msgstr "Bus"
 
-#. Default: "To block spammers, please solve this \"captcha\":"
-#: ./skins/minaraad/join_form.cpt:437
+#. Default: "To block spammers, please solve this \"captcha\""
+#: ./userdataschema.py:123
+#, fuzzy
 msgid "label_captcha"
 msgstr "Los alstublieft deze \"captcha\" op om spammers tegen te gaan."
 
 #. Default: "City"
-#: ./skins/minaraad/join_form.cpt:260
-#: ./skins/minaraad/personalize_form.cpt:269
 #: ./skins/minaraad/prefs_user_details.cpt:295
+#: ./userdataschema.py:93
 msgid "label_city"
 msgstr "Woonplaats"
 
 #. Default: "Company"
-#: ./skins/minaraad/join_form.cpt:116
-#: ./skins/minaraad/personalize_form.cpt:128
 #: ./skins/minaraad/prefs_user_details.cpt:162
+#: ./userdataschema.py:63
 msgid "label_company"
 msgstr "Organisatie"
 
 #. Default: "Country"
-#: ./skins/minaraad/join_form.cpt:279
-#: ./skins/minaraad/personalize_form.cpt:294
 #: ./skins/minaraad/prefs_user_details.cpt:320
+#: ./userdataschema.py:98
 msgid "label_country"
 msgstr "Land"
 
@@ -285,12 +296,12 @@ msgid "label_edit"
 msgstr "Wijzigen"
 
 #. Default: "Additional Message"
-#: ./browser/email_out.pt:112
+#: ./browser/email_out.pt:109
 msgid "label_email_out_additional"
 msgstr "Extra Bericht"
 
 #. Default: "To"
-#: ./browser/email_out.pt:69
+#: ./browser/email_out.pt:70
 msgid "label_email_out_to"
 msgstr "Aan"
 
@@ -322,42 +333,29 @@ msgid "label_exportsubscribers"
 msgstr "Exporteer abonneelijst"
 
 #. Default: "First name"
-#: ./skins/minaraad/join_form.cpt:69
-#: ./skins/minaraad/personalize_form.cpt:79
 #: ./skins/minaraad/prefs_user_details.cpt:116
+#: ./userdataschema.py:58
 msgid "label_firstname"
 msgstr "Voornaam"
 
 #. Default: "Gender"
-#: ./skins/minaraad/join_form.cpt:43
-#: ./skins/minaraad/personalize_form.cpt:58
 #: ./skins/minaraad/prefs_user_details.cpt:98
+#: ./userdataschema.py:52
 msgid "label_gender"
 msgstr "Aanhef"
 
-#. Default: "Met vriendelijke groet"
-#: ./skins/minaraad/emailtemplate_subscribe_notification.pt:24
-msgid "label_greeting"
-msgstr "Met vriendelijke groet"
-
 #. Default: "House number"
-#: ./skins/minaraad/join_form.cpt:188
-#: ./skins/minaraad/personalize_form.cpt:198
 #: ./skins/minaraad/prefs_user_details.cpt:229
+#: ./userdataschema.py:78
 msgid "label_housenumber"
 msgstr "Huisnummer"
 
 #. Default: "Job title"
 #: ./skins/minaraad/contactperson_view.pt:21
-#: ./skins/minaraad/join_form.cpt:136
-#: ./skins/minaraad/personalize_form.cpt:149
+#: ./skins/minaraad/prefs_user_details.cpt:183
+#: ./userdataschema.py:68
 msgid "label_jobtitle"
 msgstr "Functie"
-
-#. Default: "Join in"
-#: ./skins/minaraad/portlet_login.pt:81
-msgid "label_join_in"
-msgstr "Registreren"
 
 #. Default: "Last modified"
 #: ./skins/minaraad/prefs_user_details.cpt:85
@@ -365,8 +363,6 @@ msgid "label_last_modification_date"
 msgstr "Laatst gewijzigd op:"
 
 #. Default: "Last name"
-#: ./skins/minaraad/join_form.cpt:96
-#: ./skins/minaraad/personalize_form.cpt:105
 #: ./skins/minaraad/prefs_user_details.cpt:139
 msgid "label_lastname"
 msgstr "Achternaam"
@@ -389,7 +385,7 @@ msgid "label_name"
 msgstr "Naam"
 
 #. Default: "New"
-#: ./skins/minaraad/portlet_recent.pt:27
+#: ./browser/portlet_recent.pt:23
 msgid "label_new"
 msgstr "Nieuw"
 
@@ -399,21 +395,15 @@ msgid "label_no_reference"
 msgstr "<geen referentie>"
 
 #. Default: "Other country"
-#: ./skins/minaraad/join_form.cpt:299
-#: ./skins/minaraad/personalize_form.cpt:316
 #: ./skins/minaraad/prefs_user_details.cpt:340
+#: ./userdataschema.py:105
 msgid "label_other_country"
 msgstr "Ander land namelijk:"
 
-#. Default: "A password will be generated and e-mailed to you to complete the registration process."
-#: ./skins/minaraad/join_form.cpt:427
-msgid "label_password_will_be_mailed_mina"
-msgstr "Er wordt een e-mail gestuurd met verdere instructies om de registratie te kunnen afronden."
-
 #. Default: "Phone number"
 #: ./skins/minaraad/contactperson_view.pt:48
-#: ./skins/minaraad/join_form.cpt:320
-#: ./skins/minaraad/personalize_form.cpt:339
+#: ./skins/minaraad/prefs_user_details.cpt:363
+#: ./userdataschema.py:111
 msgid "label_phonenumber"
 msgstr "Telefoon"
 
@@ -427,15 +417,9 @@ msgstr "Productnummer"
 msgid "label_project"
 msgstr "Project:"
 
-#. Default: "(Required)"
-#: ./skins/minaraad/join_form.cpt:64
-#: ./skins/minaraad/personalize_form.cpt:80
-msgid "label_required"
-msgstr "(Verplicht)"
-
 #. Default: "Save"
 #: ./browser/minaraad_config.pt:69
-#: ./browser/subscriptions_config.pt:134
+#: ./browser/subscriptions_config.pt:133
 msgid "label_save"
 msgstr "Opslaan"
 
@@ -445,12 +429,12 @@ msgid "label_select_all_themes"
 msgstr "Selecteer alle werkvelden"
 
 #. Default: "Send"
-#: ./browser/email_out.pt:128
+#: ./browser/email_out.pt:123
 msgid "label_send"
 msgstr "Verzenden"
 
 #. Default: "Send Test e-mail"
-#: ./browser/email_out.pt:91
+#: ./browser/email_out.pt:90
 msgid "label_send_as_test"
 msgstr "Test e-mail versturen"
 
@@ -460,31 +444,10 @@ msgid "label_sendemail"
 msgstr "E-mail verzenden"
 
 #. Default: "Street"
-#: ./skins/minaraad/join_form.cpt:163
-#: ./skins/minaraad/personalize_form.cpt:173
 #: ./skins/minaraad/prefs_user_details.cpt:205
+#: ./userdataschema.py:73
 msgid "label_street"
 msgstr "Straat"
-
-#. Default: "Bij deze bevestigen wij uw"
-#: ./skins/minaraad/emailtemplate_subscribe_notification.pt:10
-msgid "label_subs1"
-msgstr "Bij deze bevestigen wij uw"
-
-#. Default: "voor de hoorzitting"
-#: ./skins/minaraad/emailtemplate_subscribe_notification.pt:13
-msgid "label_subs2"
-msgstr "voor de hoorzitting"
-
-#. Default: "die plaats vindt in"
-#: ./skins/minaraad/emailtemplate_subscribe_notification.pt:15
-msgid "label_subs3"
-msgstr "die plaats vindt in"
-
-#. Default: "op"
-#: ./skins/minaraad/emailtemplate_subscribe_notification.pt:17
-msgid "label_subs4"
-msgstr "op"
 
 #. Default: "Subscribe"
 #: ./skins/minaraad/hearing_view.pt:45
@@ -496,32 +459,12 @@ msgstr "Inschrijven"
 msgid "label_subscribersoverview"
 msgstr "Werkveld abonnees"
 
-#. Default: "afmelding"
-#: ./skins/minaraad/emailtemplate_subscribe_notification.pt:12
-msgid "label_subsno"
-msgstr "afmelding"
-
-#. Default: "inschrijving"
-#: ./skins/minaraad/emailtemplate_subscribe_notification.pt:11
-msgid "label_subsyes"
-msgstr "inschrijving"
-
-#. Default: "Dank voor uw interesse."
-#: ./skins/minaraad/emailtemplate_subscribe_notification.pt:22
-msgid "label_thank"
-msgstr "Dank voor uw interesse."
-
 #. Default: "Theme:"
 #: ./browser/minaraad_config.pt:104
 #: ./skins/minaraad/advisory_view.pt:22
 #: ./skins/minaraad/hearing_view.pt:67
 msgid "label_theme_name"
 msgstr "Werkveld:"
-
-#. Default: "Het Minaraad-team"
-#: ./skins/minaraad/emailtemplate_subscribe_notification.pt:27
-msgid "label_theteam"
-msgstr "Het Minaraad-team"
 
 #. Default: "Unsubscribe"
 #: ./skins/minaraad/hearing_view.pt:28
@@ -537,9 +480,8 @@ msgid "label_up_to_plone_setup"
 msgstr "Terug naar Plone configuratie"
 
 #. Default: "Zipcode"
-#: ./skins/minaraad/join_form.cpt:236
-#: ./skins/minaraad/personalize_form.cpt:244
 #: ./skins/minaraad/prefs_user_details.cpt:271
+#: ./userdataschema.py:88
 msgid "label_zipcode"
 msgstr "Postcode"
 
@@ -564,7 +506,7 @@ msgid "legend_edit_theme"
 msgstr "Wijzig werkveld"
 
 #. Default: "Send e-mail to subscribers"
-#: ./browser/email_out.pt:33
+#: ./browser/email_out.pt:34
 msgid "legend_sendemail"
 msgstr "E-mail verzenden naar abonnees"
 
@@ -923,16 +865,6 @@ msgstr "Werkveld"
 msgid "minaraad_label_zipcode"
 msgstr "Postcode"
 
-#. Default: "${count} accounts were switched to using their email address as login name."
-#: ./browser/service.pt:98
-msgid "msg_number_switched_to_email"
-msgstr "${count} accounts werden overgeschakeld op het gebruik van hun e-mailadres als login naam."
-
-#. Default: "${count} accounts were switched back to using their user id as login name."
-#: ./browser/service.pt:105
-msgid "msg_number_switched_to_userid"
-msgstr "${count} accounts werden teruggezet naar het gebruik van hun gebruikers-id als login naam."
-
 #. Default: "(none currently)"
 #: ./skins/minaraad/hearing_view.pt:156
 #: ./skins/minaraad/mrevent_view.pt:150
@@ -974,8 +906,8 @@ msgid "title_counsilmembers"
 msgstr "Raadsleden"
 
 #. Default: "By E-mail"
-#: ./browser/duplicates.pt:135
-#: ./browser/subscriptions_config.pt:68
+#: ./browser/duplicates.pt:136
+#: ./browser/subscriptions_config.pt:69
 msgid "title_email"
 msgstr "Per e-mail"
 
@@ -986,19 +918,13 @@ msgid "title_members"
 msgstr "Leden"
 
 #. Default: "My account"
-#: ./skins/minaraad/portlet_personalbar.pt:13
+#: ./browser/portlet_personalprefs.pt:8
 msgid "title_my_account"
 msgstr "Mijn voorkeuren"
 
-#. Default: "Required"
-#: ./skins/minaraad/join_form.cpt:64
-#: ./skins/minaraad/personalize_form.cpt:80
-msgid "title_required"
-msgstr "Verplicht"
-
 #. Default: "Subscriptions"
-#: ./browser/duplicates.pt:133
-#: ./browser/subscriptions_config.pt:49
+#: ./browser/duplicates.pt:134
+#: ./browser/subscriptions_config.pt:50
 msgid "title_subscription"
 msgstr " Uw Abonnementen"
 
