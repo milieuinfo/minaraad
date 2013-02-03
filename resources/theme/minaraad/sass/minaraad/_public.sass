@@ -124,7 +124,23 @@ div#visual-portal-wrapper
   width: 13em
 
 .LSBox
+  position: relative
   input.searchButton, .searchSection
+
+.LSResult
+  position: absolute
+  z-index: 99999
+  left: -220px
+  top: 0px
+  .livesearchContainer
+    background-color: #E7FBBF
+    border: 1px solid #A4CF4D
+    legend#livesearchLegend
+      background: #C8ED7E
+      color: #A13826
+      border: 1px solid #A4CF4D
+    .LSRow
+      width: 320px
 
 #content input.searchField
   margin-bottom: 1em
@@ -232,6 +248,8 @@ dl
     background: #ddd
     line-height: normal
 
+table th.listdate
+  width: 75px
 /* @end*/
 
 /* @group Content Area*/
