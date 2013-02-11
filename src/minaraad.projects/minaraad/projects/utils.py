@@ -168,7 +168,7 @@ def send_email(mto, mfrom, title, content):
                                  subject=title,
                                  charset='utf-8')
         else:
-            mail_host.send(message=content,
+            mail_host.send(content,
                            mto=mto,
                            mfrom=mfrom,
                            subject=title,
