@@ -214,4 +214,14 @@
       handler="Products.minaraad.migration.apply_propertiestool_step"
       sortkey="1"
       profile="Products.minaraad:default" />
+
+  <gs:upgradeStep
+      title="Apply viewlets"
+      description=""
+      source="5011"
+      destination="5012"
+      handler="Products.minaraad.migration.apply_viewlets"
+      sortkey="1"
+      profile="Products.minaraad:default" />
+
 </configure>

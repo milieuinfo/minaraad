@@ -1,19 +1,19 @@
 <?xml version="1.0"?>
 <object>
-  <hidden manager="plone.belowcontentbody" skinname="Plone Default">
+  <hidden manager="plone.belowcontentbody" skinname="*">
     <!--viewlet name="plone.belowcontentbody.workflowhistory" /-->
     <viewlet name="plone.abovecontenttitle.documentactions" />
   </hidden>
-  <hidden manager="plone.htmlhead.links" skinname="Plone Default">
+  <hidden manager="plone.htmlhead.links" skinname="*">
     <viewlet name="plone.links.author" />
   </hidden>
-  <hidden manager="plone.htmlhead.links" skinname="Plone Default">
+  <hidden manager="plone.htmlhead.links" skinname="*">
     <viewlet name="plone.links.author" />
   </hidden>
-  <hidden manager="plone.portalheader" skinname="Plone Default">
+  <hidden manager="plone.portalheader" skinname="*">
     <viewlet name="plone.global_sections" />
   </hidden>
-  <order manager="plone.contentviews" skinname="Plone Default">
+  <order manager="plone.contentviews" skinname="*">
     <viewlet name="plone.contentviews"/>
     <viewlet name="plone.contentactions"/>
   </order>
