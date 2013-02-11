@@ -206,4 +206,12 @@
       sortkey="1"
       profile="Products.minaraad:default" />
 
+  <gs:upgradeStep
+      title="Apply properties tool"
+      description=""
+      source="5010"
+      destination="5011"
+      handler="Products.minaraad.migration.apply_propertiestool_step"
+      sortkey="1"
+      profile="Products.minaraad:default" />
 </configure>

@@ -99,6 +99,22 @@
  </object>
  <object name="site_properties" meta_type="Plone Property Sheet">
   <property name="title">Site wide properties</property>
+  <property name="user_registration_fields" type="lines">
+   <element value="gender"/>
+   <element value="firstname"/>
+   <element value="fullname"/>
+   <element value="company"/>
+   <element value="jobtitle"/>
+   <element value="street"/>
+   <element value="housenumber"/>
+   <element value="bus"/>
+   <element value="zipcode"/>
+   <element value="city"/>
+   <element value="country"/>
+   <element value="other_country"/>
+   <element value="phonenumber"/>
+   <element value="email"/>
+  </property>
   <property name="allowAnonymousViewAbout" type="boolean">True</property>
   <property name="localTimeFormat" type="string">%d-%b-%Y</property>
   <property name="localLongTimeFormat" type="string">%d-%b-%Y %H:%M</property>

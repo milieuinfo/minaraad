@@ -347,3 +347,6 @@ def fix_mutable_properties_for_groups(context):
             props._storage[principal_id] = props._storage[principal_id]
             logger.info("Mutable property sheet of group %s is now regarded "
                         "as belonging to a group.", principal_id)
+
+def apply_propertiestool_step(context):
+    context.runImportStepFromProfile(PROFILE_ID, 'propertiestool')
