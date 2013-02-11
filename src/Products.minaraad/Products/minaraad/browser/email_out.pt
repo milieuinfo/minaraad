@@ -28,7 +28,7 @@
               name="email_out"
               tal:define="template_id template/getId;
                           canSend view/canSend"
-              tal:attributes="action string:${context/absolute_url}/$template_id">
+              tal:attributes="action string:${context/absolute_url}/email_out">
 
           <fieldset>
             <legend i18n:translate="legend_sendemail">Send e-mail to subscribers</legend>
