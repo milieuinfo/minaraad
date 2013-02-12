@@ -4,6 +4,9 @@ History of this buildout
 5.0 - Plone 4 Branch (unreleased)
 ---------------------------------
 
+- Use Plone 4.2.4.
+  [maurits]
+
 - Use and install collective.emaillogin4 and use internal release of
   Products.PluggableAuthService, soon to be released officially.
   [maurits]
