@@ -34,6 +34,9 @@ class MinaGlobalSectionsViewlet(GlobalSectionsViewlet):
                 if not IFolder.providedBy(el):
                     continue
 
+                if getattr(el, 'exclude_from_nav', False):
+                    continue
+
                 try:
                     tab['children'].append(el)
                 except:
