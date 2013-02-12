@@ -7,10 +7,9 @@ from MainTestCase import MinaraadFunctionalTestCase
 
 def test_suite():
     return unittest.TestSuite((
-        doctest.DocFileSuite(
+        ztc.FunctionalDocFileSuite(
             'email_subscription.txt',
-            package='Products.minaraad.tests',
-            #test_class=ContentFunctionalTestCase,
+            test_class=MinaraadFunctionalTestCase,
             optionflags=(doctest.ELLIPSIS |
                          doctest.NORMALIZE_WHITESPACE |
                          doctest.REPORT_UDIFF)),
