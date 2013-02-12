@@ -1,23 +1,29 @@
-<tal:sections tal:define="portal_tabs view/get_portal_tabs"
-     tal:condition="portal_tabs"
+<tal:sections tal:define="sitemap view/get_sitemap;
+                          selected_tab python:view.selected_portal_tab"
      i18n:domain="plone">
     <h5 class="hiddenStructure" i18n:translate="heading_sections">Sections</h5>
 
     <ul id="portal-globalnav"
-        tal:define="selected_tab python:view.selected_portal_tab"
-        ><tal:tabs tal:repeat="tab portal_tabs"
-        ><li tal:define="tid tab/id"
+        tal:define="hidden_titles view/get_hidden_titles"
+        ><li tal:define="current python: selected_tab == 'index_html'"
+             tal:attributes="class python: current  and 'selected' or 'plain'">
+      <a href="/">Home</a>      
+      </li><tal:tabs tal:repeat="tab sitemap/children"
+        ><li tal:define="tid tab/id;
+                         ctitle tab/Title;
+                         current python: selected_tab == tid;
+                         display not: tab/no_display;
+                         excluded_title python: ctitle in hidden_titles"
+             tal:condition="python: display and not excluded_title"
              tal:attributes="id string:portaltab-${tid};
-                            class python:selected_tab==tid and 'selected' or 'plain'"
-            ><a href=""
-                tal:content="tab/name"
-                tal:attributes="href tab/url;
-                                title tab/description|nothing;">
-            </a
+                             class python: current  and 'selected' or 'plain'"
             >
+      <a href=""
+                tal:content="ctitle"
+                tal:attributes="href tab/getURL" />
           <ul class="portal-tabs-nav-items"
-              tal:condition="subitems"
-              tal:define="subitems tab/children|nothing">
+              tal:define="subitems tab/children|nothing"              
+              tal:condition="subitems">
             
             <tal:repeat repeat="subitem subitems">
               <li class="portal-tabs-subitem-listitem"
