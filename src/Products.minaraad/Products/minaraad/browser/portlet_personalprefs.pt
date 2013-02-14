@@ -15,6 +15,9 @@
     <dd class="portletItem odd">
       <div class="personalbar_bordertop">
         <ul class="portlet-personalbar-mina">
+          <li class="portalUser"
+              tal:define="member context/@@plone_portal_state/member;"
+              tal:content="member/getUserName" />
           <li>
              <a tal:attributes="href string:${portal_url}/@@personal-information"
                class="link-personalbar">Mijn contactgegevens</a>
