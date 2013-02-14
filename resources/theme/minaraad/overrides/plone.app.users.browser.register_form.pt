@@ -16,7 +16,7 @@
 
         <div id="content">
             <tal:mailhost tal:condition="view/showForm">
-                <div metal:use-macro="context/base-pageform.html/form">
+                <div metal:use-macro="context/registration-pageform.html/form">
                    <tal:came_from metal:fill-slot="extra_info">
                      <input tal:define="came_from request/form/came_from|nothing"
                             tal:condition="came_from"
