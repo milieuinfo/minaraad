@@ -9,12 +9,10 @@
   <body>
     <div metal:fill-slot="main">
 
-      <div metal:use-macro="here/document_actions/macros/document_actions">
-        Document actions (print, sendto etc)
-      </div>
+      <div tal:replace="structure provider:plone.documentactions" />
 
       <h1 class="documentFirstHeading">
-        <span tal:replace="object_title" /> &mdash;
+        <span tal:replace="context/@@plone_context_state/object_title" /> &mdash;
         <span i18n:translate="label_exportsubscribers"
               tal:omit-tag="">Export Subscriber List</span>
       </h1>
@@ -33,7 +31,7 @@
         </p>
 
         <form method="get"
-              tal:attributes="action string:${context/absolute_url}/$template_id">
+              tal:attributes="action string:${context/absolute_url}/export_subscribers">
 
           <fieldset>
             <legend i18n:translate="label_export_as_excel">Export As Excel Spreadsheet</legend>
@@ -42,7 +40,6 @@
                    name="form.button.ExportEmail"
                    value="Export subscribers"
                    i18n:attributes="value label_export;"
-                   tal:attributes="tabindex tabindex/next;"
                    tal:condition="view/can_email" />
           </fieldset>
 
