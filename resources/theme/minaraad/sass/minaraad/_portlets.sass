@@ -32,6 +32,7 @@ dl
     dd
       &.portletItem, &.portletFooter
         padding: 1em
+        word-wrap: break-word
   &.portletError dd
     padding: 1em
 
@@ -80,7 +81,6 @@ dl
     border: none
     display: block
     zoom: 1
-    &:hover
   &.portletNavigationTree dd.portletItem
     padding: 0
   &.portlet ul
@@ -103,11 +103,16 @@ dl
 dl#portlet-events-mina .portlet_date
   color: #7D7D7B
 
-dl#portlet-events-mina .portletItem a:link
-  color: #313131
-  font-weight: bold
-  border: none
-  
+dl#portlet-events-mina .portletItem a
+  &:link
+    color: #313131
+    font-weight: bold
+    border: none
+  &:visited
+    color: #313131
+  &:hover
+    color: #A13826
+
 dl#portlet_mina-linkedin.portlet
   background-color: transparent!important
   
@@ -164,12 +169,7 @@ dl.portletSearch .searchButton
 #portal-column-one dl.portlet dd.portletFooter a:link,
 #portal-column-two dl.portlet dd.portletFooter a:link
   border: none
-  
-#portal-column-one dl.portlet dd.portletItem a:hover,
-#portal-column-two dl.portlet dd.portletItem a:hover,
-#portal-column-one dl.portlet dd.portletFooter a:hover,
-#portal-column-two dl.portlet dd.portletFooter a:hover
-  border-bottom: 1px solid
+  text-decoration: none
 
 #portal-column-one dl.portlet dd.portletItem .field input[type="password"],
 #portal-column-one dl.portlet dd.portletItem .field input[type="text"]
