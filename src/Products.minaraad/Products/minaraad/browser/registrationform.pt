@@ -74,7 +74,7 @@
                   <div metal:define-slot="extra_info" tal:replace="nothing"></div>
 
                   <fieldset>
-                    <legend>Form name</legend>
+                    <legend>Persoonlijke gegevens en instellingen</legend>
 
                       <tal:block tal:repeat="widget view/widgets">
                         <div class="field"
