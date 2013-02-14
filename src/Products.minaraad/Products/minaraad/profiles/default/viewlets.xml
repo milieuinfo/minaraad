@@ -13,6 +13,9 @@
   <hidden manager="plone.portalheader" skinname="*">
     <viewlet name="plone.global_sections" />
   </hidden>
+  <hidden manager="plone.belowcontenttitle" skinname="*">
+    <viewlet name="plone.belowcontenttitle.documentbyline" />
+  </hidden>
   <order manager="plone.contentviews" skinname="*">
     <viewlet name="plone.contentviews"/>
     <viewlet name="plone.contentactions"/>
