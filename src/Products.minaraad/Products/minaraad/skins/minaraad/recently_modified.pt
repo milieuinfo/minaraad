@@ -33,6 +33,7 @@
 
           <dl tal:condition="python:result.getURL() != front_page_url">
             <dt tal:define="item_wf_state result/review_state;
+                            normalizeString nocall:context/@@plone/normalizeString;
                             item_wf_state_class python:'state-' + normalizeString(item_wf_state);">
               <span tal:attributes="class python: 'visualIcon contenttype-' + normalizeString(result.portal_type) + ' visualIconPadding'">
                 <a href="/view"
