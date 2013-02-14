@@ -17,7 +17,8 @@
       </div>
 
       <div tal:define="daterequired python:context.getDate() != None;
-                     date python:toLocalizedTime(context.date)[:-5];"
+                       toLocalizedTime nocall:context/@@plone/toLocalizedTime
+                       date python:toLocalizedTime(context.date)[:-5];"
          tal:content="date"
          tal:condition="daterequired"
          class="press-date">01-01</div>

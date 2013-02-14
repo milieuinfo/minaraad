@@ -8,7 +8,8 @@
       <h1>
          <span tal:replace="context/Title" />
       </h1>
-      <span tal:replace="python:toLocalizedTime(context.date)" />
+      <span tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;"
+            tal:replace="python:toLocalizedTime(context.date)" />
    </metal:block>
 
    <metal:block define-macro="body">
