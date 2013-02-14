@@ -103,11 +103,13 @@
                     	         span tag. It is often useful to set Invariant errors on the
                     		 fields they refer to. -->
                     	  </tal:comment>
+                              <div class="widget formlibInlineValidation" tal:content="structure widget">
+                                <input type="text" />
+                              </div>
                               <div class="fieldErrorBox" tal:content="structure error">
                                 The Error
                               </div>
-                              <div class="widget formlibInlineValidation" tal:content="structure widget">
-                              <input type="text" /></div>
+
                               <tal:comment tal:condition="nothing">
                                 <!-- TODO Put this back, the Zope3 way.
                                 <img src="alert.gif" alt="Error"
