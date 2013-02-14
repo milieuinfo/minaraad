@@ -73,7 +73,7 @@
 
                   <div metal:define-slot="extra_info" tal:replace="nothing"></div>
 
-                  <fieldset>
+                  <fieldset id="joinForm">
                     <legend>Persoonlijke gegevens en instellingen</legend>
 
                       <tal:block tal:repeat="widget view/widgets">
