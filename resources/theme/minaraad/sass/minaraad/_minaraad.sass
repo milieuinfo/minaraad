@@ -454,3 +454,52 @@ form.mailpassword
   border-bottom: 1px solid #A13826
   img
     cursor: pointer
+
+fieldset#joinForm
+  border: 1px solid #D98F81
+  label span, div.widget
+    float: left
+    margin-bottom: 10px
+    border: none
+  label span
+    width: 150px
+    &.required
+      width: 20px
+      margin-left: -20px
+  .field
+    clear: both
+  .error
+    label span, div.widget
+      color: #313131
+  div#formfield-form-fullname span.formHelp
+    display: none
+  div#formfield-form-email, div#formfield-form-captcha
+    label span, div.widget
+      float: none !important
+    label span.required
+      margin-left: 0px
+      font-size: 12px
+    label span.formHelp
+      width: 100%
+  input
+    background: url("../img/input_background.gif") repeat-x scroll 0 0 White
+    border-color: #666666 #DDDDDD #DDDDDD #666666
+    border-image: none
+    border-style: solid
+    border-width: 1px
+    color: Black
+    font-size: 1em
+    &:focus
+      border-color: #FFA500
+      border-width: 1px
+    &[type=submit]
+      background: url("../img/linkTransparent.gif") no-repeat scroll 9px 1px transparent
+      border: 1px solid #D98F81
+      color: #313131
+      cursor: pointer
+      font-size: 95%
+      padding: 1px 1px 1px 15px
+      text-transform: lowercase
+    &[type=text]
+      width: 203px !important
+      height: 16px
