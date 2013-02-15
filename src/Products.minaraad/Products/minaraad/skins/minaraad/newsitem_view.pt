@@ -5,15 +5,13 @@
 
    <metal:block use-macro="context/global_defines/macros/defines" />
    <body>
-      <metal:block metal:define-macro="header">
+      <metal:block metal:define-macro="body">
          <h1 tal:content="context/Title" />
 
          <div class="documentDescription"
             tal:condition="context/Description"
             tal:content="context/Description" />
-      </metal:block>
 
-      <metal:block metal:define-macro="body">
          <!-- Text -->
          <div class="bodytext"
             tal:content="structure context/getBody"

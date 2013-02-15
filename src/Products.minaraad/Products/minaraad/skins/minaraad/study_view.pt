@@ -4,15 +4,13 @@
    <metal:block use-macro="context/global_defines/macros/defines" />
 
    <body>
-   <metal:block define-macro="header">
+   <metal:block define-macro="body">
       <h1>
          <span tal:replace="context/Title" />
       </h1>
       <span tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;"
             tal:replace="python:toLocalizedTime(context.date)" />
-   </metal:block>
 
-   <metal:block define-macro="body">
      <div tal:define="name context/getThemeName|nothing"
         tal:condition="name"
         class="hearingsubheader2">

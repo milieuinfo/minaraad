@@ -68,7 +68,7 @@
     <metal:block metal:define-macro="show_coord_authors">
       <tal:block define="authors python: obj.getAuthors();
                          coordinator python: obj.getCoordinator()">
-        <div tal:condition="coordinator">
+        <div tal:condition="nocall:coordinator">
           <h5 i18n:translate="minaraad_label_coordinator">Coordinator</h5>
           <tal:block tal:define="contact nocall: coordinator">
             <div metal:use-macro="obj/contactperson_view/macros/contactdetails"

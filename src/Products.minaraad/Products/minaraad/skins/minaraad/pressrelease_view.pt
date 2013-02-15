@@ -5,7 +5,7 @@
    <metal:block use-macro="context/global_defines/macros/defines" />
 
    <body>
-   <metal:block define-macro="header">
+   <metal:block define-macro="body">
       <div class="press-img-left">
          <span tal:replace="structure context/logo_1_logo"
             tal:condition="context/getLogo_1" />
@@ -17,8 +17,9 @@
       </div>
 
       <div tal:define="daterequired python:context.getDate() != None;
-                       toLocalizedTime nocall:context/@@plone/toLocalizedTime
-                       date python:toLocalizedTime(context.date)[:-5];"
+                       toLocalizedTime nocall:context/@@plone/toLocalizedTime;
+                       cdate context/date;
+                       date python:toLocalizedTime(cdate)[:-5];"
          tal:content="date"
          tal:condition="daterequired"
          class="press-date">01-01</div>
@@ -30,9 +31,6 @@
 
       <div class="clear" />
       <br />
-   </metal:block>
-
-   <metal:block define-macro="body">
    <hr />
    <div tal:content="context/getDescription" />
 
