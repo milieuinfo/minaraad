@@ -272,4 +272,11 @@
       template="mrevent_view.pt"
       />
 
+  <browser:page
+      for="Products.minaraad.interfaces.INewsLetter"
+      permission="zope2.View"
+      name="newsletter_view"
+      template="newsletter_view.pt"
+      />
+
 </configure>

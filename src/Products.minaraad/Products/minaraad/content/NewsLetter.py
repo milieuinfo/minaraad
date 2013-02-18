@@ -1,6 +1,9 @@
+from zope.interface import implements
+
 from AccessControl import ClassSecurityInfo
 from Products.Archetypes import atapi
 
+from Products.minaraad.interfaces import INewsLetter
 from Products.minaraad.EmailMixin import EmailMixin
 from Products.minaraad.config import PROJECTNAME
 
@@ -53,6 +56,7 @@ class NewsLetter(EmailMixin, atapi.OrderedBaseFolder):
     A newsletter
     """
     security = ClassSecurityInfo()
+    implements(INewsLetter)
     archetype_name = 'NewsLetter'
     portal_type = 'NewsLetter'
     _at_rename_after_creation = True

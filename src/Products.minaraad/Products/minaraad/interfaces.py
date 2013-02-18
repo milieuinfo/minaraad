@@ -35,3 +35,7 @@ class IHearing(Interface):
 class IMREvent(Interface):
     """ Marker interface for MREvent.
     """
+
+class INewsLetter(Interface):
+    """ Marker interface for MREvent.
+    """

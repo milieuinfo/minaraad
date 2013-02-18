@@ -1,10 +1,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
-      lang="en-US"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
       i18n:domain="minaraad">
-   <metal:block use-macro="context/global_defines/macros/defines" />
-
    <body>
-   <metal:block metal:define-macro="body">
+
+   <metal:content-title fill-slot="content-title">
    <a name="top">
       <h1>
          <span tal:define="daterequired python:context.getDate() != None;
@@ -16,6 +19,8 @@
          <span tal:replace="context/Title" />
       </h1>
    </a>
+   </metal:content-title>
+   <metal:block metal:fill-slot="content-core">
 
    <tal:block
       tal:define="current_path python:'/'.join(context.getPhysicalPath());
@@ -23,8 +28,6 @@
                                     'Adviezen in wording',
                                     'Mededelingen',
                                     'Europese ontwikkelingen'];">
-
-      <metal:block metal:define-macro="folderlisting" />
 
       <div class="bodytext"
           tal:condition="context/getBody"
