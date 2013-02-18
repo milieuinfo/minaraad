@@ -237,7 +237,6 @@
       />
 
   <!-- Old views in skins folder -->
-  <!-- XXX - add interfaces for the objects -->
   <browser:page
       for="Products.minaraad.interfaces.IPressRelease"
       permission="zope2.View"
@@ -245,6 +244,10 @@
       template="pressrelease_view.pt"
       />
 
-  
-
+  <browser:page
+      for="Products.minaraad.interfaces.IAdvisory"
+      permission="zope2.View"
+      name="advisory_view"
+      template="advisory_view.pt"
+      />
 </configure>

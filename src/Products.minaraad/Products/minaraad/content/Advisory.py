@@ -8,6 +8,7 @@ from Products.CMFCore.utils import getToolByName
 from Products.OrderableReferenceField import OrderableReferenceField
 from Products.OrderableReferenceField import OrderableReferenceWidget
 
+from Products.minaraad.interfaces import IAdvisory
 from Products.minaraad.Attachmentsmixin import Attachmentsmixin
 from Products.minaraad.PostMixin import PostMixin
 from Products.minaraad.EmailMixin import EmailMixin
@@ -149,7 +150,7 @@ Advisory_schema.moveField('authors', after="coordinator")
 class Advisory(PostMixin, ThemeMixin, EmailMixin, Attachmentsmixin):
     """An advisory
     """
-    implements(IUseContact)
+    implements(IAdvisory, IUseContact)
     security = ClassSecurityInfo()
     archetype_name = 'Advisory'
     portal_type = 'Advisory'

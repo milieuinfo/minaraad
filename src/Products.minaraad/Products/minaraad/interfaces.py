@@ -19,3 +19,7 @@ class IAttendeeManager(Interface):
 class IPressRelease(Interface):
     """ Marker interface for Press release.
     """
+
+class IAdvisory(Interface):
+    """ Marker interface for Advisory.
+    """

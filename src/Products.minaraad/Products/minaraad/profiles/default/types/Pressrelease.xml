@@ -8,7 +8,7 @@
  <property name="content_meta_type">Pressrelease</property>
  <property name="product">minaraad</property>
  <property name="factory">addPressrelease</property>
- <property name="immediate_view">base_view</property>
+ <property name="immediate_view">pressrelease_view</property>
  <property name="global_allow">True</property>
  <property name="filter_content_types">False</property>
  <property name="allowed_content_types">
