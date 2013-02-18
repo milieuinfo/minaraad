@@ -65,7 +65,7 @@
       />
 
   <browser:page
-      for="Products.minaraad.content.Hearing.IHearing"
+      for="Products.minaraad.interfaces.IHearing"
       name="attendees_view"
       class=".attendees.AttendeesManagerView"
       permission="zope2.View"
@@ -73,7 +73,7 @@
     />
 
   <browser:page
-      for="Products.minaraad.content.MREvent.IMREvent"
+      for="Products.minaraad.interfaces.IMREvent"
       name="attendees_view"
       class=".attendees.AttendeesManagerView"
       permission="zope2.View"
@@ -121,14 +121,14 @@
     />
 
   <browser:page
-      for="Products.minaraad.content.Hearing.IHearing"
+      for="Products.minaraad.interfaces.IHearing"
       name="notify_registration"
       class=".email_notification.SubscriptionNotifyView"
       permission="cmf.ManagePortal"
     />
 
   <browser:page
-      for="Products.minaraad.content.MREvent.IMREvent"
+      for="Products.minaraad.interfaces.IMREvent"
       name="notify_registration"
       class=".email_notification.SubscriptionNotifyView"
       permission="cmf.ManagePortal"
@@ -263,6 +263,13 @@
       permission="zope2.View"
       name="hearing_view"
       template="hearing_view.pt"
+      />
+
+  <browser:page
+      for="Products.minaraad.interfaces.IMREvent"
+      permission="zope2.View"
+      name="mrevent_view"
+      template="mrevent_view.pt"
       />
 
 </configure>

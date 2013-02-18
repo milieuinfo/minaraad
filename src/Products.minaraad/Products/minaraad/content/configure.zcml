@@ -10,7 +10,7 @@
     />
 
   <adapter
-    for=".MREvent.IMREvent"
+    for="Products.minaraad.interfaces.IMREvent"
     provides="Products.minaraad.interfaces.IAttendeeManager"
     factory="Products.minaraad.attendees.AttendeeManager"
     />

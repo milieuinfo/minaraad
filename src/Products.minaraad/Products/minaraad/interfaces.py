@@ -31,3 +31,7 @@ class IAnnualReport(Interface):
 class IHearing(Interface):
     """ Marker interface for Hearing.
     """
+
+class IMREvent(Interface):
+    """ Marker interface for MREvent.
+    """

@@ -87,7 +87,5 @@
       <!-- End contactpersoon -->
 
    </metal:block>
-
-   <metal:block metal:define-macro="folderlisting" />
    </body>
 </html>

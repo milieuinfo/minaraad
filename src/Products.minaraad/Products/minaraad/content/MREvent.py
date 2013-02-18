@@ -7,6 +7,7 @@ from Products.OrderableReferenceField import OrderableReferenceWidget
 from minaraad.projects.content.base_meeting import BaseMeeting
 
 from Products.minaraad.config import PROJECTNAME
+from Products.minaraad.interfaces import IMREvent
 from Products.minaraad.EmailMixin import EmailMixin
 from Products.minaraad.content.interfaces import IUseContact
 from Products.minaraad.content.contacts import contacts_schema
@@ -130,10 +131,6 @@ MREvent_schema = atapi.OrderedBaseFolderSchema.copy() + \
 
 MREvent_schema.moveField('coordinator', after="foto")
 MREvent_schema.moveField('authors', after="coordinator")
-
-
-class IMREvent(Interface):
-    pass
 
 
 class MREvent(BaseMeeting, EmailMixin, ThemeMixin):
