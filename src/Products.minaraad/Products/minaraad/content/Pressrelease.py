@@ -4,7 +4,7 @@ from Products.Archetypes import atapi
 from Products.OrderableReferenceField import OrderableReferenceField
 from Products.OrderableReferenceField import OrderableReferenceWidget
 
-
+from Products.minaraad.interfaces import IPressRelease
 from Products.minaraad.Attachmentsmixin import Attachmentsmixin
 from Products.minaraad.EmailMixin import EmailMixin
 from Products.minaraad.config import PROJECTNAME
@@ -120,7 +120,7 @@ class Pressrelease(EmailMixin, Attachmentsmixin):
     """
     A pressrelease
     """
-    implements(IUseContact)
+    implements(IPressRelease, IUseContact)
     security = ClassSecurityInfo()
     archetype_name = 'Pressrelease'
     portal_type = 'Pressrelease'

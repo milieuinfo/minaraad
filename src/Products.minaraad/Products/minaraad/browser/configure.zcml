@@ -239,7 +239,7 @@
   <!-- Old views in skins folder -->
   <!-- XXX - add interfaces for the objects -->
   <browser:page
-      for="*"
+      for="Products.minaraad.interfaces.IPressRelease"
       permission="zope2.View"
       name="pressrelease_view"
       template="pressrelease_view.pt"

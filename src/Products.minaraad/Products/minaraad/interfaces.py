@@ -15,3 +15,7 @@ class IAttendeeManager(Interface):
 
     def attendees():
         pass
+
+class IPressRelease(Interface):
+    """ Marker interface for Press release.
+    """
