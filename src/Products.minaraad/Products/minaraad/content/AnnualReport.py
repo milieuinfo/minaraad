@@ -1,7 +1,10 @@
+from zope.interface import implements
+
 from AccessControl import ClassSecurityInfo
 from Products.Archetypes import atapi
 from Products.CMFCore.permissions import View
 
+from Products.minaraad.interfaces import IAnnualReport
 from Products.minaraad.PostMixin import PostMixin
 from Products.minaraad.EmailMixin import EmailMixin
 from Products.minaraad import config
@@ -33,6 +36,7 @@ class AnnualReport(PostMixin, EmailMixin, atapi.BaseContent):
     """
     An annual report
     """
+    implements(IAnnualReport)
     security = ClassSecurityInfo()
     archetype_name = 'AnnualReport'
     portal_type = 'AnnualReport'

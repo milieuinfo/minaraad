@@ -250,4 +250,11 @@
       name="advisory_view"
       template="advisory_view.pt"
       />
+
+  <browser:page
+      for="Products.minaraad.interfaces.IAnnualReport"
+      permission="zope2.View"
+      name="annualreport_view"
+      template="annualreport_view.pt"
+      />
 </configure>

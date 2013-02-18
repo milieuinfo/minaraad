@@ -23,3 +23,7 @@ class IPressRelease(Interface):
 class IAdvisory(Interface):
     """ Marker interface for Advisory.
     """
+
+class IAnnualReport(Interface):
+    """ Marker interface for Annual reports.
+    """
