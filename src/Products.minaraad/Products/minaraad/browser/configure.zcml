@@ -257,4 +257,12 @@
       name="annualreport_view"
       template="annualreport_view.pt"
       />
+
+  <browser:page
+      for="Products.minaraad.interfaces.IHearing"
+      permission="zope2.View"
+      name="hearing_view"
+      template="hearing_view.pt"
+      />
+
 </configure>

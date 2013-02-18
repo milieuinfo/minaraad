@@ -5,6 +5,7 @@ from zope.interface import Interface
 from zope.interface import implements
 
 from Products.minaraad import config
+from Products.minaraad.interfaces import IHearing
 from Products.minaraad.content.MREvent import MREvent
 
 
@@ -42,11 +43,6 @@ Hearing_schema = (
 Hearing_schema.moveField('theme', after="goal")
 Hearing_schema.moveField('email_themes', after="theme")
 Hearing_schema.moveField('mot', after="email_themes")
-
-
-class IHearing(Interface):
-    """Marker interface for hearings"""
-    pass
 
 
 class Hearing(MREvent, atapi.BaseFolder):

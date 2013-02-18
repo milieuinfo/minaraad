@@ -27,3 +27,7 @@ class IAdvisory(Interface):
 class IAnnualReport(Interface):
     """ Marker interface for Annual reports.
     """
+
+class IHearing(Interface):
+    """ Marker interface for Hearing.
+    """

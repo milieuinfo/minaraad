@@ -4,7 +4,7 @@
     xmlns:five="http://namespaces.zope.org/five">
 
   <adapter
-    for=".Hearing.IHearing"
+    for="Products.minaraad.interfaces.IHearing"
     provides="Products.minaraad.interfaces.IAttendeeManager"
     factory="Products.minaraad.attendees.AttendeeManager"
     />
