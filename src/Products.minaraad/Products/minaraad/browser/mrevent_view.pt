@@ -14,9 +14,8 @@
 
       <tal:block
           define="start python:context.getStart_time()-1;
-                  current python:DateTime();
                   is_subscribed view/isRegistered;
-                  subscription_allowed python:context.getSubscriptionAllowed() and (current &lt; start);
+                  subscription_allowed python:context.getSubscriptionAllowed() and (start.isFuture());
                   can_subscribe python:subscription_allowed and not is_subscribed;
                   freshly_submitted request/submitted|nothing"
           condition="python:(not freshly_submitted) and (can_subscribe or is_subscribed)">
