@@ -8,15 +8,15 @@
  <property name="content_meta_type">ContactPerson</property>
  <property name="product">minaraad</property>
  <property name="factory">addContactPerson</property>
- <property name="immediate_view">base_view</property>
+ <property name="immediate_view">contactperson_view</property>
  <property name="global_allow">True</property>
  <property name="filter_content_types">False</property>
  <property name="allowed_content_types"/>
  <property name="allow_discussion">False</property>
  <alias from="edit" to="base_edit"/>
- <alias from="view" to="base_view"/>
- <alias from="(Default)" to="base_view"/>
- <alias from="index.html" to="base_view"/>
+ <alias from="view" to="contactperson_view"/>
+ <alias from="(Default)" to="contactperson_view"/>
+ <alias from="index.html" to="contactperson_view"/>
  <action title="View" action_id="view" category="object" condition_expr=""
     url_expr="string:${object_url}" visible="True">
   <permission value="View"/>

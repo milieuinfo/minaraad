@@ -24,10 +24,13 @@
 # 02110-1301, USA.
 #
 
+from zope.interface import implements
+
 from AccessControl import ClassSecurityInfo
 from Products.Archetypes import atapi
-from Products.minaraad import config
 
+from Products.minaraad import config
+from Products.minaraad.interfaces import IContactPerson
 
 schema = atapi.Schema((
 
@@ -99,6 +102,7 @@ ContactPerson_schema = atapi.BaseSchema.copy() + \
 class ContactPerson(atapi.BaseContent):
     """
     """
+    implements(IContactPerson)
     security = ClassSecurityInfo()
     archetype_name = 'ContactPerson'
     portal_type = 'ContactPerson'

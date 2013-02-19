@@ -43,3 +43,7 @@ class INewsLetter(Interface):
 class IStudy(Interface):
     """ Marker interface for Study.
     """
+
+class IContactPerson(Interface):
+    """ Marker interface for contact person.
+    """

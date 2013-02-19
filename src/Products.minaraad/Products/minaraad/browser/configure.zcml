@@ -286,4 +286,11 @@
       template="study_view.pt"
       />
 
+  <browser:page
+      for="Products.minaraad.interfaces.IContactPerson"
+      permission="zope2.View"
+      name="contactperson_view"
+      template="contactperson_view.pt"
+      />
+
 </configure>
