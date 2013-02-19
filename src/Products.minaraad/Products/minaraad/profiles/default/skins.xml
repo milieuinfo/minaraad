@@ -6,6 +6,8 @@
  <!--    directory="Products.minaraad:skins/mina_styles"/> -->
  <skin-path name="*">
   <layer name="minaraad" insert-after="custom"/>
+  <layer name="attachment_widgets" insert-after="minaraad"/>
+  <layer name="simpleattachment" insert-after="minaraad"/>
  </skin-path>
  <!-- <skin-path name="Minaraad Theme"> -->
  <!--  <layer name="mina_styles" insert-after="custom"/> -->

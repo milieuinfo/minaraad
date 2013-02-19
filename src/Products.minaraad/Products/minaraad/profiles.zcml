@@ -135,7 +135,7 @@
       profile="Products.minaraad:default" />
 
   <gs:upgradeStep
-      title="Apply CSS registry"
+      title="Apply skin registry"
       description=""
       source="5002"
       destination="5003"
@@ -241,5 +241,15 @@
       handler="Products.minaraad.migration.update_portal_types"
       sortkey="1"
       profile="Products.minaraad:default" />
+
+  <gs:upgradeStep
+      title="Apply skin registry"
+      description=""
+      source="5014"
+      destination="5015"
+      handler="Products.minaraad.migration.apply_skins"
+      sortkey="1"
+      profile="Products.minaraad:default" />
+
 
 </configure>
