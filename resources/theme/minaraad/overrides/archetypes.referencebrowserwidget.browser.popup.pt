@@ -20,6 +20,7 @@
                   allow_browse widget/allow_browse;
                   image_portal_types widget/image_portal_types;
                   image_method widget/image_method|string:image_icon;
+                  is_project python: fieldName == 'project';
                   ">
 
     <div id="messageWrapper" style="position: relative">
@@ -42,8 +43,12 @@
     </div>
 
     <!-- Search form -->
-    <form action="search" method="post" name="search" id="search"
+    <form action="search"
+          method="post"
+          name="search"
+          id="search"
           style="text-align: right;"
+          tal:condition="not: is_project"
           tal:attributes="action request/getURL">
      <tal:formactions
           tal:condition="widget/allow_search">
