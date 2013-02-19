@@ -10,4 +10,9 @@
  <object name="NewsLetter" meta_type="Factory-based Type Information"/>
  <object name="Pressrelease" meta_type="Factory-based Type Information"/>
  <object name="Study" meta_type="Factory-based Type Information"/>
+ <object name="CMF File" meta_type="Factory-based Type Information"/>
+ <object name="ImageAttachment"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="FileAttachment"
+    meta_type="Factory-based Type Information with dynamic views"/>
 </object>
