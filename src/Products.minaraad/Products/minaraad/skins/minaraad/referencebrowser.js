@@ -58,8 +58,14 @@ jq(function() {
       var title = tablerow.find('label').html();
       var uid = target.attr('rel');
       var messageId;
+
+      var widget_id_base = 'ref_browser_';
+      if (multi !== '0') {
+        widget_id_base = 'ref_browser_items_';
+      }
+
       if (this.checked === true) {
-          refbrowser_setReference('ref_browser_items_' + fieldname,
+          refbrowser_setReference(widget_id_base + fieldname,
                                   uid, title, parseInt(multi));
           messageId = '#messageAdded';
           }
