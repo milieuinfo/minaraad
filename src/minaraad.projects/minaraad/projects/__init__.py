@@ -11,6 +11,8 @@ from validators import ProjectIdValidator, ProjectNumberValidator
 validation.register(ProjectIdValidator('projectIdIsDate'))
 validation.register(ProjectNumberValidator('projectNumber3Digits'))
 
+from minaraad.projects import patches
+patches.apply_all()
 
 def initialize(context):
     """Initializer called when used as a Zope 2 product."""

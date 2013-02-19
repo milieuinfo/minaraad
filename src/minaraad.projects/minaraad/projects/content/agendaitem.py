@@ -31,16 +31,13 @@ agendaitem_schema = base_agendaitem_schema + atapi.Schema((
         languageIndependent=1,
         allowed_types=('Project', ),
         widget=ReferenceBrowserWidget(
-            # Note that we have changed referencebrowser.js to use the
-            # referencebrowser_popup_simple.pt when the field name is
-            # 'project'.
             label=_('label_project',
                     default='Project'),
             only_for_review_states=('active', ),
             show_review_state=0,
             allow_search=0,
-            allow_browse=1,
-            restrict_browsing_to_startup_directory=1,
+            allow_browse=0,
+            restrict_browsing_to_startup_directory=0,
             startup_directory_method='projects_url',
             force_close_on_insert=1,
             ),
