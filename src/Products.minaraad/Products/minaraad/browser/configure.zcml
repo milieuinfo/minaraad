@@ -279,4 +279,11 @@
       template="newsletter_view.pt"
       />
 
+  <browser:page
+      for="Products.minaraad.interfaces.IStudy"
+      permission="zope2.View"
+      name="study_view"
+      template="study_view.pt"
+      />
+
 </configure>

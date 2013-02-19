@@ -39,3 +39,7 @@ class IMREvent(Interface):
 class INewsLetter(Interface):
     """ Marker interface for MREvent.
     """
+
+class IStudy(Interface):
+    """ Marker interface for Study.
+    """

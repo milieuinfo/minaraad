@@ -14,6 +14,7 @@ from Products.minaraad.config import PROJECTNAME
 from Products.minaraad.content.themes import ThemeMixin
 from Products.minaraad.content.themes import theme_schema
 
+from Products.minaraad.interfaces import IStudy
 from Products.minaraad.content.interfaces import IUseContact
 from Products.minaraad.content.contacts import contacts_schema
 
@@ -92,7 +93,7 @@ class Study(PostMixin, EmailMixin, ThemeMixin, Attachmentsmixin):
     """
     A study
     """
-    implements(IUseContact)
+    implements(IStudy, IUseContact)
     security = ClassSecurityInfo()
     archetype_name = 'Study'
     portal_type = 'Study'

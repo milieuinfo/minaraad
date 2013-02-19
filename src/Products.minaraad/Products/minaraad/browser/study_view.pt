@@ -1,23 +1,30 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
-   lang="en-US"
-   i18n:domain="minaraad">
-   <metal:block use-macro="context/global_defines/macros/defines" />
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="minaraad">
 
    <body>
-   <metal:block define-macro="body">
+   <metal:block fill-slot="content-title">
       <h1>
          <span tal:replace="context/Title" />
       </h1>
       <span tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;"
             tal:replace="python:toLocalizedTime(context.date)" />
-
      <div tal:define="name context/getThemeName|nothing"
         tal:condition="name"
         class="hearingsubheader2">
        <span i18n:translate="label_theme_name">Theme:</span>
        <span class="normaltext" tal:content="name" />
      </div>
+   </metal:block>
 
+   <metal:block fill-slot="content-description">
+   </metal:block>
+
+   <metal:block fill-slot="content-core">
      <h5>
         <tal:block i18n:translate="minaraad_label_summary">Summary</tal:block>
      </h5>
@@ -38,7 +45,5 @@
       </tal:block>
       <!-- end contactpersoon -->
    </metal:block>
-
-   <metal:block metal:define-macro="folderlisting" />
    </body>
 </html>
