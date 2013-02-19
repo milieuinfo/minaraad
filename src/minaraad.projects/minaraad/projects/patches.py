@@ -5,10 +5,9 @@ from Products.CMFPlone.PloneBatch import Batch
 def getProjectResult(self):
     assert self._updated
     catalog = self.context.portal_catalog
-    result = catalog(portal_type='Project',
-                     review_state='active')
+    result = catalog(portal_type=self.allowed_types,
+                     review_state=self.widget.only_for_review_states)
 
-    print result
     b_size = int(self.request.get('b_size', 20))
     b_start = int(self.request.get('b_start', 0))
 
