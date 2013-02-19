@@ -1,0 +1,127 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
+      lang="en-US"
+      i18n:domain="minaraad">
+    <metal:block use-macro="context/global_defines/macros/defines" />
+
+    <body>
+
+    <metal:block metal:define-macro="show_coord_authors">
+      <tal:block define="authors python: obj.getAuthors();
+                         coordinator python: obj.getCoordinator()">
+        <div tal:condition="nocall:coordinator">
+          <h5 i18n:translate="minaraad_label_coordinator">Coordinator</h5>
+          <tal:block tal:define="contact nocall: coordinator">
+            <div metal:use-macro="obj/contactperson_macros/macros/contactdetails"
+                 tal:omit-tag="" />
+          </tal:block>
+        </div>
+        <div tal:condition="authors">
+          <h5 i18n:translate="minaraad_label_authors">Co-authors</h5>
+          <tal:block repeat="contact authors">
+            <div metal:use-macro="context/contactperson_macros/macros/contactdetails"
+                 tal:omit-tag="" />
+          </tal:block>
+          <br />
+        </div>
+      </tal:block>
+    </metal:block>
+
+    <metal:block metal:define-macro="contactdetails">
+        <table cellspacing="0" class="contactdetails">
+           <tr tal:condition="contact/getName|nothing">
+               <th>
+                  <span class="float-right">:</span>
+                  <span tal:omit-tag=""
+                    i18n:translate="label_name">Name</span>
+               </th>
+               <td>
+                  <a tal:condition="contact/getLinkedin"
+                     tal:attributes="href contact/getLinkedin">
+                     <img width="12" height="12"
+                        src="http://www.linkedin.com/img/icon/icon_company_insider_in_12x12.gif"
+                        tal:attributes="alt string:LinkedIn profiel van ${contact/getName}" /></a>
+                  <tal:name content="contact/getName" />
+               </td>
+           </tr>
+           <tr tal:condition="contact/getJobtitle|nothing">
+               <th>
+                  <span class="float-right">:</span>
+                  <span tal:omit-tag=""
+                    i18n:translate="label_jobtitle">Job title</span>
+               </th>
+               <td tal:content="contact/getJobtitle" />
+           </tr>
+           <tr tal:condition="contact/getDepartment|nothing">
+               <th>
+                  <span class="float-right">:</span>
+                  <span tal:omit-tag=""
+                    i18n:translate="minaraad_label_department">Department</span>
+               </th>
+               <td tal:content="contact/getDepartment" />
+           </tr>
+           <tr tal:condition="contact/getEmail|nothing">
+              <th>
+                 <span class="float-right">:</span>
+                 <span tal:omit-tag=""
+                   i18n:translate="label_emailaddress">Email address</span>
+              </th>
+               <td>
+                   <a tal:attributes="href string:mailto:${contact/getEmail}"
+                       tal:content="contact/getEmail" />
+               </td>
+           </tr>
+           <tr tal:condition="contact/getPhonenumber|nothing">
+              <th>
+                 <span class="float-right">:</span>
+                 <span tal:omit-tag=""
+                   i18n:translate="label_phonenumber">Phone number</span>
+              </th>
+              <td tal:content="contact/getPhonenumber" />
+           </tr>
+        </table>
+        <br />
+    </metal:block>
+
+    <!-- only e-mailadres is shown in newsitems -->
+    <metal:block metal:define-macro="newsitemcontacts">
+      <a tal:condition="contact/getLinkedin|nothing"
+         tal:attributes="href contact/getLinkedin">
+         <img width="12" height="12"
+            src="http://www.linkedin.com/img/icon/icon_company_insider_in_12x12.gif"
+            tal:attributes="alt string:LinkedIn profiel van ${contact/getName}" /></a>
+      <a tal:attributes="href string:mailto:${contact/getEmail}"
+        tal:content="string:${contact/getName}" />
+       <span tal:condition="not:repeat/contact/end" tal:omit-tag="">,</span>
+    </metal:block>
+
+
+<!-- contactdetails for e-mailmessage -->
+<metal:block metal:define-macro="contactdetails_email">
+<table cellspacing="0"
+       style="font-size:13px">
+<tr tal:condition="contact/getName|nothing">
+<td i18n:translate="label_name">Name</td><td>:</td><td><tal:name content="contact/getName" />
+<a tal:condition="contact/getLinkedin"
+   tal:attributes="href contact/getLinkedin">
+  <img src="http://www.linkedin.com/img/icon/icon_company_insider_in_12x12.gif" /></a>
+</td>
+</tr>
+<tr tal:condition="contact/getJobtitle|nothing">
+<td i18n:translate="label_jobtitle">Job title</td><td>:</td><td tal:content="contact/getJobtitle" />
+</tr>
+<tr tal:condition="contact/getDepartment|nothing"><td i18n:translate="minaraad_label_department">Department</td><td>:</td><td tal:content="contact/getDepartment" />
+</tr>
+<tr tal:condition="contact/getEmail|nothing">
+<td i18n:translate="label_emailaddress">Email address</td><td>:</td><td>
+<a tal:attributes="href string:mailto:${contact/getEmail}"
+    tal:content="contact/getEmail" />
+</td>
+</tr>
+<tr tal:condition="contact/getPhonenumber|nothing">
+<td i18n:translate="label_phonenumber">Phone number</td><td>:</td><td tal:content="contact/getPhonenumber" />
+</tr>
+</table>
+<br />
+</metal:block>
+    </body>
+</html>

@@ -173,7 +173,7 @@
                     tal:replace="label" />
             </strong>
           </tal:block>
-          <metal:block use-macro="context/contactperson_view/macros/contactdetails" />
+          <metal:block use-macro="context/contactperson_macros/macros/contactdetails" />
         </div>
       </metal:block>
 

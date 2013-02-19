@@ -135,7 +135,7 @@
 
       <!-- Contactperson -->
       <tal:block tal:define="obj nocall: context">
-        <div metal:use-macro="context/contactperson_view/macros/show_coord_authors"
+        <div metal:use-macro="context/contactperson_macros/macros/show_coord_authors"
              tal:omit-tag="" />
       </tal:block>
       <!-- end contactpersoon -->
