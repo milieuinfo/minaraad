@@ -293,4 +293,11 @@
       template="contactperson_view.pt"
       />
 
+
+  <browser:page
+      for="Products.ATContentTypes.interfaces.file.IATFile"
+      permission="zope2.View"
+      name="file_view"
+      template="file_view.pt"
+      />
 </configure>
