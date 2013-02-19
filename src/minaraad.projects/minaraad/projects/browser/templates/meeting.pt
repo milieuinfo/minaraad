@@ -17,7 +17,7 @@
         i18n:translate="to_digibib_dashboard">
        To Digibib DashBoard
      </a>
-      <div class="rightWidget widget"
+      <div class="rightWidget digibib_widget"
            tal:define="files context/get_file_brains|nothing"
            tal:condition="files">
         <div class="title" i18n:translate="label_documents">Documents</div>

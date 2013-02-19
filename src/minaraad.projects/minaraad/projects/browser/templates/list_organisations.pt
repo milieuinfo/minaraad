@@ -15,7 +15,7 @@
         i18n:translate="to_digibib_dashboard">
        To Digibib DashBoard
      </a>
-     <div class="widget wide">
+     <div class="digibib_widget wide">
        <div class="title"
             i18n:translate="label_heading_organisations">
          Organisations

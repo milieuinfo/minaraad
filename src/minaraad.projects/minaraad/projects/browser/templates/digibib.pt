@@ -10,7 +10,7 @@
 
      <div id="digibib_view"
           tal:define="mtool context/portal_membership|nothing">
-       <div class="leftWidget widget"
+       <div class="leftWidget digibib_widget"
             tal:define="projects view/list_projects">
          <div class="title">
            Lopende Projecten
@@ -56,7 +56,7 @@
          </div>
        </div>
 
-       <div class="rightWidget widget"
+       <div class="rightWidget digibib_widget"
             tal:define="meetings view/list_meetings">
          <div class="title">
            Geplande vergaderingen

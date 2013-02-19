@@ -17,7 +17,7 @@
      <p class="discreet" tal:content="structure python: context.Description().replace('\n', '<br />')" />
 
      <div class="right">
-       <div class="widget meetingWidget"
+       <div class="digibib_widget meetingWidget"
             tal:define="meetings context/get_meetings"
             tal:condition="meetings">
          <div class="title">Vergaderingen</div>
@@ -42,7 +42,7 @@
          </div>
        </div>
 
-       <div class="widget"
+       <div class="digibib_widget"
             tal:define="documents context/get_documents"
             tal:condition="documents">
          <div class="title">Documenten</div>

@@ -11,7 +11,7 @@
      <tal:block tal:repeat="data view/get_data">
        <tal:block tal:define="meeting python: data['meeting'];
                               items python: data['items']">
-         <div class="widget wide">
+         <div class="digibib_widget wide">
            <div class="title">
              <span tal:replace="data/meeting/getResponsible_group" />
              <p tal:define="d data/meeting/getStart_time">
