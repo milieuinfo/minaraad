@@ -55,8 +55,8 @@ class NewsLetter(EmailMixin, atapi.OrderedBaseFolder):
     """
     A newsletter
     """
-    security = ClassSecurityInfo()
     implements(INewsLetter)
+    security = ClassSecurityInfo()
     archetype_name = 'NewsLetter'
     portal_type = 'NewsLetter'
     _at_rename_after_creation = True

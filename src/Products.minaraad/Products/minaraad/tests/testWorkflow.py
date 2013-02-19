@@ -68,8 +68,8 @@ class testWorkflow(MainTestCase):
                            'restricted_publish')
         self.contentContainer.invokeFactory('NewsLetter', 'pending_private')
         wfTool.doActionFor(self.contentContainer.pending_private, 'submit')
-        self.contentContainer.invokeFactory('NewsLetter', 'published')
-        wfTool.doActionFor(self.contentContainer.published, 'publish')
+        self.contentContainer.invokeFactory('NewsLetter', 'published_nl')
+        wfTool.doActionFor(self.contentContainer.published_nl, 'publish')
         self.contentContainer.invokeFactory('NewsLetter', 'revisioning')
         wfTool.doActionFor(self.contentContainer.revisioning, 'publish')
         wfTool.doActionFor(self.contentContainer.revisioning, 'revise')
@@ -173,7 +173,7 @@ class testWorkflow(MainTestCase):
         self.failIf(checkPermission(permissions.View, obj))
         self.failIf(checkPermission(permissions.ModifyPortalContent, obj))
 
-        obj = self.contentContainer.published
+        obj = self.contentContainer.published_nl
         self.failUnless(checkPermission(permissions.View, obj))
         self.failIf(checkPermission(permissions.ModifyPortalContent, obj))
 
@@ -205,7 +205,7 @@ class testWorkflow(MainTestCase):
         self.failUnless(checkPermission(permissions.View, obj))
         self.failIf(checkPermission(permissions.ModifyPortalContent, obj))
 
-        obj = self.contentContainer.published
+        obj = self.contentContainer.published_nl
         self.failUnless(checkPermission(permissions.View, obj))
         self.failIf(checkPermission(permissions.ModifyPortalContent, obj))
 
@@ -299,7 +299,7 @@ class testWorkflow(MainTestCase):
         self.failUnless(checkPermission(permissions.View, obj))
         self.failUnless(checkPermission(permissions.ModifyPortalContent, obj))
 
-        obj = self.contentContainer.published
+        obj = self.contentContainer.published_nl
         self.failUnless(checkPermission(permissions.View, obj))
         self.failUnless(checkPermission(permissions.ModifyPortalContent, obj))
 
@@ -412,7 +412,7 @@ class testWorkflow(MainTestCase):
         self.failUnless(checkPermission(permissions.View, obj))
         self.failUnless(checkPermission(permissions.ModifyPortalContent, obj))
 
-        obj = self.contentContainer.published
+        obj = self.contentContainer.published_nl
         self.failUnless(checkPermission(permissions.View, obj))
         self.failIf(checkPermission(permissions.ModifyPortalContent, obj))
 
@@ -484,7 +484,7 @@ class testWorkflow(MainTestCase):
         self.failIf(checkPermission(permissions.View, obj))
         self.failIf(checkPermission(permissions.ModifyPortalContent, obj))
 
-        obj = self.contentContainer.published
+        obj = self.contentContainer.published_nl
         self.failUnless(checkPermission(permissions.View, obj))
         self.failIf(checkPermission(permissions.ModifyPortalContent, obj))
 
