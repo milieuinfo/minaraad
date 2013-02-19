@@ -12,4 +12,11 @@
       for="*"
       template="browser/search.pt"
       />
+
+  <browser:page
+      for="Products.CMFPlone.Portal.PloneSite"
+      name="personal-information"
+      class=".browser.personalInformation.CustomizedUserDataPanel"
+      permission="cmf.SetOwnProperties"
+      />
 </configure>
