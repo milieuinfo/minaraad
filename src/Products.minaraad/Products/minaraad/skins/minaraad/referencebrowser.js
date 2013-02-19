@@ -1,14 +1,14 @@
-jq(function() {
+jQuery(function() {
 
   // Move the overlay div to be a direct child
   // of body to avoid IE7 z-index bug.
   // TODO: load this with prepOverlay to standardize this.
-  jq('[id^=atrb_]').detach().appendTo("body");
+  jQuery('[id^=atrb_]').detach().appendTo("body");
 
   // the overlay itself
-  jq('.addreference').overlay({
+  jQuery('.addreference').overlay({
        onBeforeLoad: function() {
-           ov = jq('div#content').data('overlay');
+           ov = jQuery('div#content').data('overlay');
            // close overlay, if there is one already
            // we only allow one referencebrowser per time
            if (ov) {ov.close(); }
@@ -16,7 +16,7 @@ jq(function() {
            var src = this.getTrigger().attr('src');
            var srcfilter = src + ' >*';
            wrap.data('srcfilter', srcfilter);
-           jq('div#content').data('overlay', this);
+           jQuery('div#content').data('overlay', this);
            resetHistory();
            wrap.load(srcfilter, function() {
                var fieldname = wrap.find('input[name=fieldName]').attr('value');
@@ -29,8 +29,8 @@ jq(function() {
        }});
 
   // the breadcrumb-links and the links of the 'tree'-navigati        on
-  jq('[id^=atrb_] a.browsesite', jq('body')[0]).live('click', function(event) {
-      var target = jq(this);
+  jQuery('[id^=atrb_] a.browsesite', jQuery('body')[0]).live('click', function(event) {
+      var target = jQuery(this);
       var src = target.attr('href');
       var wrap = target.parents('.overlaycontent');
       var srcfilter = src + ' >*';
@@ -48,8 +48,8 @@ jq(function() {
       });
 
   // the links for inserting referencens
-  jq('[id^=atrb_] input.insertreference', jq('body')[0]).live('click', function(event) {
-      var target = jq(this);
+  jQuery('[id^=atrb_] input.insertreference', jQuery('body')[0]).live('click', function(event) {
+      var target = jQuery(this);
       var wrap = target.parents('.overlaycontent');
       var fieldname = wrap.find('input[name=fieldName]').attr('value');
       var multi = wrap.find('input[name=multiValued]').attr('value');
@@ -68,7 +68,7 @@ jq(function() {
           messageId = '#messageRemoved';
       }
       if (close_window === '1' && multi != '1') {
-          overlay = jq('div#content').data('overlay');
+          overlay = jQuery('div#content').data('overlay');
           overlay.close();
       } else {
           showMessage(messageId, title);
@@ -77,20 +77,20 @@ jq(function() {
 
 
   // the history menu
-  jq('[id^=atrb_] form#history select[name=path]', jq('body')[0]).live('change', function(event) {
-      var target = jq(this);
+  jQuery('[id^=atrb_] form#history select[name=path]', jQuery('body')[0]).live('change', function(event) {
+      var target = jQuery(this);
       var wrap = target.parents('.overlaycontent');
       var src_selector = '[id^=atrb_] form#history ' +
           'select[name=path] :selected';
-      var src = jq(src_selector).attr('value');
+      var src = jQuery(src_selector).attr('value');
       var srcfilter = src + ' >*';
       refreshOverlay(wrap, srcfilter, '');
       return false;
       });
 
   // the pagination links
-  jq('[id^=atrb_] div.listingBar a', jq('body')[0]).live('click', function(event) {
-      var target = jq(this);
+  jQuery('[id^=atrb_] div.listingBar a', jQuery('body')[0]).live('click', function(event) {
+      var target = jQuery(this);
       var src = target.attr('href');
       var wrap = target.parents('.overlaycontent');
       var srcfilter = src + ' >*';
@@ -102,7 +102,7 @@ jq(function() {
 
   function do_atref_search(event) {
       event.preventDefault();
-      var target = jq(event.target);
+      var target = jQuery(event.target);
       var src = target.parents('form').attr('action');
       var wrap = target.parents('.overlaycontent');
       var fieldname = wrap.find('input[name=fieldName]').attr('value');
@@ -129,18 +129,18 @@ jq(function() {
 
   // the search form
   // // This does not catch form submission via enter in FF but does in IE  
-  jq('[id^=atrb_] form#search').live('submit', do_atref_search);
+  jQuery('[id^=atrb_] form#search').live('submit', do_atref_search);
   //     // This catches form submission in FF
-  jq('[id^=atrb_] form#search input[name=submit]',
-      jq('body')[0]).live('click',do_atref_search);
+  jQuery('[id^=atrb_] form#search input[name=submit]',
+      jQuery('body')[0]).live('click',do_atref_search);
 
 });
 
 function disablecurrentrelations (widget_id) {
-   jq('ul#' + widget_id + ' :input').each(
+   jQuery('ul#' + widget_id + ' :input').each(
        function (intIndex) {
-         uid = jq(this).attr('value');
-         cb = jq('input[rel=' + uid + ']');
+         uid = jQuery(this).attr('value');
+         cb = jQuery('input[rel=' + uid + ']');
          cb.attr('disabled', 'disabled');
          cb.attr('checked', 'checked');
        });
@@ -163,11 +163,11 @@ function refbrowser_setReference(widget_id, uid, label, multi)
     // differentiate between the single and mulitselect widget
     // since the single widget has an extra label field.
     if (multi === 0) {
-        jq('#' + widget_id).attr('value', uid);
-        jq('#' + widget_id + '_label').attr('value', label);
+        jQuery('#' + widget_id).attr('value', uid);
+        jQuery('#' + widget_id + '_label').attr('value', label);
     } else {
         // check if the item isn't already in the list
-        current_values = jq('#' + widget_id + ' input');
+        current_values = jQuery('#' + widget_id + ' input');
         for (i = 0; i < current_values.length; i++) {
             if (current_values[i].value === uid) {
                 return false;
@@ -178,11 +178,11 @@ function refbrowser_setReference(widget_id, uid, label, multi)
         list = document.getElementById(widget_id);
         // add ul-element to DOM, if it is not there
         if (list === null) {
-            container = jq('#archetypes-fieldname-' + fieldname +
+            container = jQuery('#archetypes-fieldname-' + fieldname +
                            ' input + div');
             if (!container.length) {
                 // fix for Plone 3.3 collections, with a weird widget-id
-                container = jq('#archetypes-fieldname-value input + div');
+                container = jQuery('#archetypes-fieldname-value input + div');
             }
             container.after(
                '<ul class="visualNoMarker" id="' + widget_id + '"></ul>');
@@ -200,7 +200,7 @@ function refbrowser_setReference(widget_id, uid, label, multi)
         li.appendChild(label_element);
         li.id = 'ref-' + fieldname + '-' + current_values.length;
 
-        sortable = jq('input[name=' + fieldname + '-sortable]').attr('value');
+        sortable = jQuery('input[name=' + fieldname + '-sortable]').attr('value');
         if (sortable === '1') {
           up_element = document.createElement('a');
           up_element.title = 'Move Up';
@@ -234,7 +234,7 @@ function refbrowser_setReference(widget_id, uid, label, multi)
 // remove the item for the uid from the reference widget
 function refbrowser_delReference(fieldname, uid) {
     var selector = 'input[value="' + uid + '"][name="' + fieldname + ':list"]',
-        inputs = jq(selector);
+        inputs = jQuery(selector);
     inputs.closest('li').remove();
 }
 
@@ -258,8 +258,8 @@ function refbrowser_removeReference(widget_id, multi)
             list[x].selected = 'selected';
         }
     } else {
-        jq('#' + widget_id).attr('value', "");
-        jq('#' + widget_id + '_label').attr('value', "");
+        jQuery('#' + widget_id).attr('value', "");
+        jQuery('#' + widget_id + '_label').attr('value', "");
     }
 }
 
@@ -327,7 +327,7 @@ function refbrowser_moveReferenceDown(self)
     eid = elem.id.split('-');
     pos = parseInt(eid.pop(), 10);
     widget_id = eid.pop();
-    current_values = jq('#ref_browser_items_' + widget_id + ' input');
+    current_values = jQuery('#ref_browser_items_' + widget_id + ' input');
     if ((pos + 1) === current_values.length) {
         return false;
     }
@@ -360,11 +360,11 @@ function refbrowser_moveReferenceDown(self)
 }
 
 function showMessage(messageId, text) {
-    var template = jq(messageId).parent(),
+    var template = jQuery(messageId).parent(),
         message_div = template.clone(),
         message = message_div.children(),
-        old_message = jq('#message'),
-        message_wrapper = jq('#messageWrapper');
+        old_message = jQuery('#message'),
+        message_wrapper = jQuery('#messageWrapper');
 
     // insert a new, cloned message
     message_wrapper.prepend(message_div);
@@ -388,28 +388,28 @@ function submitHistoryForm() {
 }
 
 function pushToHistory(url) {
-  var history = jq(document).data('atrb_history');
+  var history = jQuery(document).data('atrb_history');
   history.push(url);
-  jq(document).data('atrb_history', history);
+  jQuery(document).data('atrb_history', history);
 }
 
 function resetHistory() {
-  jq(document).data('atrb_history', []);
+  jQuery(document).data('atrb_history', []);
 }
 
 function popFromHistory() {
-  var history = jq(document).data('atrb_history');
+  var history = jQuery(document).data('atrb_history');
   value = history.pop();
-  jq(document).data('atrb_history', history);
+  jQuery(document).data('atrb_history', history);
   return value;
 }
 
 function refreshOverlay(wrap, srcfilter, newoption) {
-    var oldhistory = jq('[id^=atrb_] form#history select');
+    var oldhistory = jQuery('[id^=atrb_] form#history select');
     wrap.load(srcfilter, function() {
-        jq('[id^=atrb_] form#history select').append(newoption +
+        jQuery('[id^=atrb_] form#history select').append(newoption +
                                                      oldhistory.html());
-        ov = jq('div#content').data('overlay');
+        ov = jQuery('div#content').data('overlay');
         widget_id = ov.getTrigger().attr('rel').substring(6);
         disablecurrentrelations(widget_id);
         var fieldname = wrap.find('input[name=fieldName]').attr('value');
@@ -419,19 +419,19 @@ function refreshOverlay(wrap, srcfilter, newoption) {
 
 // check all references in the overlay that are present in the widget
 function check_referenced_items(fieldname) {
-    var refs_in_overlay = jq('input.insertreference'),
+    var refs_in_overlay = jQuery('input.insertreference'),
         uid_selector = "input[name='" + fieldname + ":list']",
-        current = jq(uid_selector), // the widget in the form
+        current = jQuery(uid_selector), // the widget in the form
         current_uids = current.map(function () {
-            if (jq(this).attr('checked') === true) {
-                return jq(this).attr('value');
+            if (jQuery(this).attr('checked') === true) {
+                return jQuery(this).attr('value');
             }
             return null;
         });
 
     refs_in_overlay.each(function () {
-        var overlay_ref = jq(this),
-            uid = jq(overlay_ref).attr('rel'),
+        var overlay_ref = jQuery(this),
+            uid = jQuery(overlay_ref).attr('rel'),
             i;
 
         for (i = 0; i < current_uids.length; i++) {
