@@ -66,6 +66,12 @@
                  </dt>
                  <dd class="collapsibleContent attachment_subfolder"
                       tal:define="sub_attachments python: catalog.searchResults(path=item.getPath(), portal_type='FileAttachment', sort_on='getObjPositionInParent')">
+                   <div class="add_attachment_link">
+                   <a tal:attributes="href python: '%s/createObject?type_name=FileAttachment' % item.getURL()">
+                     <img src="add_icon.png" alt="" /> <span i18n:translate="label_add_attachment">Add attachment</span>
+                   </a>
+
+                   </div>
                    <div tal:repeat="attachment sub_attachments">
                      <metal:block use-macro="context/filemacro/macros/attachment_view" />
                      <metal:block use-macro="context/display_macros/macros/attachments_buttons" />

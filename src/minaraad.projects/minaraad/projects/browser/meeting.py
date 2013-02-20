@@ -127,6 +127,8 @@ class MeetingAjax(MeetingView):
             it_obj = item[0].getObject()
             it_obj.attachment_start = att_count
 
+            att_sub_count = ord('a')
+
             jq('#%s span.agendaItemTimes' % item[0].UID).html(
                 '%s tot %su' % (item[1].TimeMinutes(),
                                 item[2].TimeMinutes()))
@@ -134,9 +136,11 @@ class MeetingAjax(MeetingView):
             attachments = catalog.searchResults(
                 portal_type='FileAttachment',
                 path='/'.join(it_obj.getPhysicalPath()))
+
             for att in attachments:
-                jq('#att_%s' % att.UID).html('Bijlage %s: %s' % (
-                    att_count, att.Title))
-                att_count += 1
+                jq('#att_%s' % att.UID).html('Bijlage %s%s: %s' % (
+                    att_count, chr(att_sub_count), att.Title))
+                att_sub_count += 1
+            att_count += 1
 
         return jq

@@ -88,7 +88,7 @@
 
         <tal:attachment repeat="att python: enumerate(attachments)">
           <tal:block tal:define="attachment python: att[1];
-                                 position python: att[0] + counter_start">
+                                 position python: '%s%s' % (counter_start, chr(att[0] + ord('a')))">
 
             <div class="list-attachments"
                  tal:define="oddrow repeat/att/odd">

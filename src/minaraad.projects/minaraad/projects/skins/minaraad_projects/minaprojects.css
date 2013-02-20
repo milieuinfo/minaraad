@@ -31,6 +31,10 @@ div.digibib_widget div.list-attachments dd.actionMenuContent {
     z-index: 100;
 }
 
+div.add_attachment_link {
+    margin-bottom: 15px;
+}
+
 div.wide {
     width: 100% !important;
 }

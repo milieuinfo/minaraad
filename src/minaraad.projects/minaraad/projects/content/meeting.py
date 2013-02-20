@@ -276,6 +276,9 @@ class Meeting(BaseMeeting):
         """ When an AgendaItem is deleted, we have to delete the reference
         to the meeting in the referenced project.
         """
+        if isinstance(ids, basestring):
+            ids = [ids]
+
         for agenda_id in ids:
             item = self[agenda_id]
 
@@ -307,11 +310,7 @@ class Meeting(BaseMeeting):
         for it in items:
             item = it[0].getObject()
             item.attachment_start = att_count
-            item.attachment_count = len(catalog.searchResults(
-                portal_type='FileAttachment',
-                path='/'.join(item.getPhysicalPath())))
-
-            att_count += item.attachment_count
+            att_count += 1
 
     def manage_pasteObjects(self, *args, **kwargs):
         """ We override the manage_pasteObjects() so we can
