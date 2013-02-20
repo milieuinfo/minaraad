@@ -22,11 +22,11 @@ schema = Schema((
 ),
 )
 
-Attachmentsmixin_schema = BaseFolderSchema.copy() + \
+Attachmentsmixin_schema = OrderedBaseFolderSchema.copy() + \
     schema.copy()
 
 
-class Attachmentsmixin(BaseFolder):
+class Attachmentsmixin(OrderedBaseFolder):
     """
     """
     security = ClassSecurityInfo()
@@ -52,7 +52,7 @@ class Attachmentsmixin(BaseFolder):
     schema = Attachmentsmixin_schema
 
     def SearchableText(self, **kwargs):
-        result = super(BaseFolder, self).SearchableText()
+        result = super(OrderedBaseFolder, self).SearchableText()
         for attachment in self.contentValues(
             filter=dict(portal_type='FileAttachment')):
             result += attachment.SearchableText()
