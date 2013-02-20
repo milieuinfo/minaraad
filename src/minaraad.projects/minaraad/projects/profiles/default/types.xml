@@ -18,4 +18,6 @@
     meta_type="Factory-based Type Information" />
   <object name="OrganisationContainer"
     meta_type="Factory-based Type Information" />
+ <object name="AttachmentsFolder"
+    meta_type="Factory-based Type Information with dynamic views"/>
 </object>

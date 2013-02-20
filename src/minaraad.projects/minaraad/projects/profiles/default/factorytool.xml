@@ -10,5 +10,6 @@
   <type portal_type="OrganisationContainer"/>
   <type portal_type="Project"/>
   <type portal_type="ProjectContainer"/>
+  <type portal_type="AttachmentsFolder"/>
  </factorytypes>
 </object>

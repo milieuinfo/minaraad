@@ -293,3 +293,6 @@ def use_location_uid_in_cached_locations(context):
 
 def apply_skin_profile(context):
     context.runImportStepFromProfile(PROFILE_ID, 'skins')
+
+def apply_factory_profile(context):
+    context.runImportStepFromProfile(PROFILE_ID, 'factorytool')

@@ -269,4 +269,20 @@
       handler="minaraad.projects.migration.apply_skin_profile"
       profile="minaraad.projects:default" />
 
+  <genericsetup:upgradeStep
+      title="Update the portal types"
+      description=""
+      source="1021"
+      destination="1022"
+      handler="minaraad.projects.migration.update_types"
+      profile="minaraad.projects:default" />
+
+  <genericsetup:upgradeStep
+      title="Update factory types"
+      description=""
+      source="1022"
+      destination="1023"
+      handler="minaraad.projects.migration.apply_factory_profile"
+      profile="minaraad.projects:default" />
+
 </configure>
