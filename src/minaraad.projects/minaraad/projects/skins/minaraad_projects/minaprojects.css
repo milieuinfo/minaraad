@@ -21,6 +21,16 @@ div.digibib_widget {
     font-size: 90%;
 }
 
+div.digibib_widget div.list-attachments a:hover {
+    text-decoration: none;
+}
+
+div.digibib_widget div.list-attachments dd.actionMenuContent {
+    background: #fff;
+    border: 1px solid #ae3721;
+    z-index: 100;
+}
+
 div.wide {
     width: 100% !important;
 }
