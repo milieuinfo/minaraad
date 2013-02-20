@@ -168,8 +168,10 @@ class ProjectView(BrowserView):
     def get_attachments(self):
         catalog = getToolByName(self.context,
                                 'portal_catalog')
-        first_level = catalog({'path': {'query': '/'.join(self.context.getPhysicalPath()),
-                                        'depth': 1}})
+        first_level = catalog.searchResults(
+            path={'query': '/'.join(self.context.getPhysicalPath()),
+                   'depth': 1},
+            sort_on='getObjPositionInParent')
 
         return first_level
 

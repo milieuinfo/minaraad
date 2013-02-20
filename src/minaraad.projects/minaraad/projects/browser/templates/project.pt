@@ -65,11 +65,11 @@
                    <img src="folder_icon.png" /> <span tal:replace="item/Title" />
                  </dt>
                  <dd class="collapsibleContent attachment_subfolder"
-                      tal:define="sub_attachments python: catalog({'path': item.getPath(), 'portal_type': 'FileAttachment'})">
-                   <tal:block tal:repeat="attachment sub_attachments">
+                      tal:define="sub_attachments python: catalog.searchResults(path=item.getPath(), portal_type='FileAttachment', sort_on='getObjPositionInParent')">
+                   <div tal:repeat="attachment sub_attachments">
                      <metal:block use-macro="context/filemacro/macros/attachment_view" />
                      <metal:block use-macro="context/display_macros/macros/attachments_buttons" />
-                   </tal:block>
+                   </div>
                  </dd>
                </dl>
              </div>
