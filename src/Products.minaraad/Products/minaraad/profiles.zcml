@@ -251,5 +251,13 @@
       sortkey="1"
       profile="Products.minaraad:default" />
 
+  <gs:upgradeStep
+      title="Apply actions"
+      description=""
+      source="5015"
+      destination="5016"
+      handler="Products.minaraad.migration.apply_actions"
+      sortkey="1"
+      profile="Products.minaraad:default" />
 
 </configure>

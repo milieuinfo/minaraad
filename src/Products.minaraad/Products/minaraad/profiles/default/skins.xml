@@ -5,6 +5,7 @@
  <!-- <object name="mina_styles" meta_type="Filesystem Directory View" -->
  <!--    directory="Products.minaraad:skins/mina_styles"/> -->
  <skin-path name="*">
+  <layer name="tinymce" insert-after="custom"/>
   <layer name="minaraad" insert-after="custom"/>
   <layer name="attachment_widgets" insert-after="minaraad"/>
   <layer name="simpleattachment" insert-after="minaraad"/>
