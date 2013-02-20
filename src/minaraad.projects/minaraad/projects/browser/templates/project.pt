@@ -59,19 +59,19 @@
                  <metal:block use-macro="context/filemacro/macros/attachment_view" />
                  <metal:block use-macro="context/display_macros/macros/attachments_buttons" />
                </tal:block>
-               <div tal:condition="not: is_attachment"
-                    class="collapsible collapsed">
-                 <div class="collapsible_header">
+               <dl tal:condition="not: is_attachment"
+                    class="collapsible collapsedOnLoad">
+                 <dt class="collapsibleHeader">
                    <img src="folder_icon.png" /> <span tal:replace="item/Title" />
-                 </div>
-                 <div class="collapsible_content attachment_subfolder"
+                 </dt>
+                 <dd class="collapsibleContent attachment_subfolder"
                       tal:define="sub_attachments python: catalog({'path': item.getPath(), 'portal_type': 'FileAttachment'})">
                    <tal:block tal:repeat="attachment sub_attachments">
                      <metal:block use-macro="context/filemacro/macros/attachment_view" />
                      <metal:block use-macro="context/display_macros/macros/attachments_buttons" />
                    </tal:block>
-                 </div>
-               </div>
+                 </dd>
+               </dl>
              </div>
            </tal:block>
          </div>
