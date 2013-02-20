@@ -25,7 +25,7 @@ except ImportError:
     theme_schema = atapi.Schema(())
     ThemeMixin = object
 
-project_schema = atapi.BaseSchema.copy() + \
+project_schema = atapi.OrderedBaseFolderSchema.copy() + \
                  atapi.Schema((
 
     atapi.StringField(
@@ -237,7 +237,7 @@ for schema_key in project_schema.keys():
                                                      'view': 'invisible'}
 
 
-class Project(atapi.BaseFolder, ThemeMixin):
+class Project(atapi.OrderedBaseFolder, ThemeMixin):
     """
     """
     security = ClassSecurityInfo()
