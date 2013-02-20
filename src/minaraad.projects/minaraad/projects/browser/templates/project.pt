@@ -43,12 +43,36 @@
        </div>
 
        <div class="digibib_widget"
-            tal:define="documents context/get_documents"
+            tal:define="documents view/get_attachments"
             tal:condition="documents">
          <div class="title">Documenten</div>
-         <div class="body">
-           <tal:block tal:define="obj python: context">
-             <metal:block use-macro="context/display_macros/macros/agenda_attachments" />
+         <div class="body"
+              tal:define="obj python: context;
+                          catalog nocall: here/portal_catalog">
+           <tal:block tal:repeat="item documents">
+             <div class="list-attachments"
+                  tal:define="oddrow repeat/item/odd;
+                              ptype item/portal_type;
+                              is_attachment python: ptype == 'FileAttachment'">
+               <tal:block tal:condition="is_attachment" 
+                          tal:define="attachment item">
+                 <metal:block use-macro="context/filemacro/macros/attachment_view" />
+                 <metal:block use-macro="context/display_macros/macros/attachments_buttons" />
+               </tal:block>
+               <div tal:condition="not: is_attachment"
+                    class="collapsible collapsed">
+                 <div class="collapsible_header">
+                   <img src="folder_icon.png" /> <span tal:replace="item/Title" />
+                 </div>
+                 <div class="collapsible_content attachment_subfolder"
+                      tal:define="sub_attachments python: catalog({'path': item.getPath(), 'portal_type': 'FileAttachment'})">
+                   <tal:block tal:repeat="attachment sub_attachments">
+                     <metal:block use-macro="context/filemacro/macros/attachment_view" />
+                     <metal:block use-macro="context/display_macros/macros/attachments_buttons" />
+                   </tal:block>
+                 </div>
+               </div>
+             </div>
            </tal:block>
          </div>
        </div>

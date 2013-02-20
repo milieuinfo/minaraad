@@ -64,14 +64,26 @@
       </tal:block>
       </metal:block>
 
+      <metal:block metal:define-macro="attachments_buttons">
+        <tal:block tal:define="mtool context/portal_membership|nothing;
+                               can_edit python:mtool.checkPermission('Modify portal content', context);"
+                   tal:condition="can_edit">
+          <br />
+          <a tal:attributes="href python: '%s/edit' % attachment.getURL()"
+             ><img src="edit.gif" tal:attributes="src string:${context/portal_url}/edit.gif" /></a>
+          <a tal:attributes="href python: '%s/delete_confirmation' % attachment.getURL()"
+             ><img src="delete_icon.gif"
+             tal:attributes="src string:${context/portal_url}/delete_icon.gif" /></a>
+        </tal:block>
+      </metal:block>
+
+
       <!-- Display the agenda attachments. -->
       <metal:block
           metal:define-macro="agenda_attachments"
           tal:define="current_path python:'/'.join(obj.getPhysicalPath());
                       attachments python:context.portal_catalog.searchResults(portal_type='FileAttachment', path=current_path,);
                       counter_start obj/attachment_start|python: 1;
-                      mtool context/portal_membership|nothing;
-                      can_edit python:mtool.checkPermission('Modify portal content', context);
                       states python:['private', 'restricted', 'published'];">
 
         <tal:attachment repeat="att python: enumerate(attachments)">
@@ -80,16 +92,9 @@
 
             <div class="list-attachments"
                  tal:define="oddrow repeat/att/odd">
-
+              
               <metal:block use-macro="context/filemacro/macros/attachment_view" />
-              <tal:block tal:condition="can_edit">
-                <br />
-                <a tal:attributes="href python: '%s/edit' % attachment.getURL()"
-                   ><img src="edit.gif" tal:attributes="src string:${context/portal_url}/edit.gif" /></a>
-                <a tal:attributes="href python: '%s/delete_confirmation' % attachment.getURL()"
-                   ><img src="delete_icon.gif"
-                       tal:attributes="src string:${context/portal_url}/delete_icon.gif" /></a>
-              </tal:block>
+              <metal:block use-macro="context/display_macros/macros/attachments_buttons" />
             </div>
           </tal:block>
         </tal:attachment>

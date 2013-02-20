@@ -165,6 +165,14 @@ class ProjectView(BrowserView):
     """ Default view of a Project.
     """
 
+    def get_attachments(self):
+        catalog = getToolByName(self.context,
+                                'portal_catalog')
+        first_level = catalog({'path': {'query': '/'.join(self.context.getPhysicalPath()),
+                                        'depth': 1}})
+
+        return first_level
+
     def can_see_project_number(self):
         """ Returns a boolean telling if the user
         can see the project number.
