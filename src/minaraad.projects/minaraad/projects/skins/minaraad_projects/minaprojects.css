@@ -154,10 +154,15 @@ td.center {
     margin-top: -2px;
 }
 
-a.widgetlink {
+#content a.widgetlink {
     color: #fff;
+    border-bottom: none;
     font-weight: normal;
     margin-right: 0.3em;
+}
+
+#content a.widgetlink:hover {
+    color: #fff !important;
 }
 
 .contactdetails .float-right {
