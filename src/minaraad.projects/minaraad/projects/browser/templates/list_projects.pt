@@ -47,7 +47,7 @@
               <li tal:define="oddrow repeat/project/odd"
                   tal:attributes="class python: oddrow and 'odd' or 'even'">
                 <a tal:attributes="href project/absolute_url" class="standard">
-                  <strong tal:content="project/getPID" />
+                  <strong tal:content="project/getProject_number" />
                   <span tal:replace="project/Title" />
                 </a>
               </li>

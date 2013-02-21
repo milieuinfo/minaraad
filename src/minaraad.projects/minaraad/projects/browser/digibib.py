@@ -1,5 +1,3 @@
-import itertools
-
 from DateTime import DateTime
 from Products.Five import BrowserView
 from Products.CMFCore.utils import getToolByName
@@ -25,7 +23,6 @@ class DigiBibView(BrowserView):
         return sorted(m, key=sort_key, reverse=reverse)
 
     def _sort_projects(self, p, reverse=False):
-        # Note: we used to sort on deadline, but now on advisory date.
         return sorted(p, key=lambda x: x.getProject_number(), reverse=reverse)
 
     def list_projects(self):
@@ -75,7 +72,7 @@ class DigiBibView(BrowserView):
             'minaraad.projects: view meeting in digibib', obj)]
         return self._sort_meetings(filtered)
 
-    def organize_by_year(self, objects, get_year):
+    def organize_by_year(self, objects, get_year, sort_on=None):
         """Organize objects by year.
 
         'get_year' is a function that gets the year for one object.
@@ -84,10 +81,13 @@ class DigiBibView(BrowserView):
         a list of links to other years.
         """
         # group by year
-        grouped = itertools.groupby(objects, get_year)
-        # Turn it into a dict, as that is easier for the template
-        results = [dict(year=year, objects=[i for i in objects])
-                   for year, objects in grouped]
+        grouped = {}
+        for obj in objects:
+            year = get_year(obj)
+            if year not in grouped:
+                grouped[year] = []
+
+            grouped[year].append(obj)
 
         # Show the current or requested year only.
         current_year = DateTime().year()
@@ -95,26 +95,37 @@ class DigiBibView(BrowserView):
             year = int(self.request.get('year'))
         except:
             year = current_year
+
         links = []
         this_year = {}  # Should not be needed, but just in case.
-        for result in results:
+        for res_year, objects in sorted(grouped.items(),
+                                        key=lambda g:g[0], reverse=True):
             selected = False
-            if result['year'] == year:
+            if res_year == year:
                 selected = True
-                this_year = result
-            links.append(dict(year=result['year'],
-                               num=len(result['objects']),
+                this_year = {'year': year,
+                             'objects': objects}
+
+            links.append(dict(year=res_year,
+                               num=len(objects),
                                selected=selected))
+
         years = [link['year'] for link in links]
+
         if not this_year:
             # Make a dummy dictionary for this year.  Normally only
             # happens when this is the current year and there are no
             # objects for this year.
             this_year = {'year': year, 'objects': []}
             links.insert(0, {'year': year, 'num': 0, 'selected': True})
+
         if year != current_year and current_year not in years:
             links.insert(0, {'year': current_year, 'num': 0,
                               'selected': False})
+
+        if sort_on is not None:
+            this_year['objects'] = sorted(this_year['objects'], key = sort_on)
+
         return this_year, links
 
 
@@ -163,8 +174,9 @@ class ProjectsListingView(DigiBibView):
         # Since we sort on advisory date now, we must organize by the
         # year of that date too, instead of the year of the deadline.
         get_year = lambda x: x.getAdvisory_date().year()
+        sort_on = lambda x:x.getProject_number()
 
-        return self.organize_by_year(objects, get_year)
+        return self.organize_by_year(objects, get_year, sort_on)
 
 
 class OrganisationsListingView(DigiBibView):
