@@ -26,7 +26,7 @@ class DigiBibView(BrowserView):
 
     def _sort_projects(self, p, reverse=False):
         # Note: we used to sort on deadline, but now on advisory date.
-        return sorted(p, key=lambda x: x.getAdvisory_date(), reverse=reverse)
+        return sorted(p, key=lambda x: x.getProject_number(), reverse=reverse)
 
     def list_projects(self):
         project_brains = self.ctool(
