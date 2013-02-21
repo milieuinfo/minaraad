@@ -96,6 +96,9 @@ To do on Plone 4 through the web
     - install diazo
     - install Quintagroup Captcha Core
     - install collective.emaillogin4
+    - upgrade Simple attachments (note: this takes some time, so use a
+      tunnel to access the instance directly. And it might reset the
+      instance too, weird ...)
     - upgrade minaraad.projects
     - upgrade minaraad
    
