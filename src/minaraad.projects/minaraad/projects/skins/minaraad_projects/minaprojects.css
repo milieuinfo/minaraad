@@ -21,7 +21,12 @@ div.digibib_widget {
     font-size: 90%;
 }
 
-div.digibib_widget div.list-attachments a:hover {
+#content div.digibib_widget .title a:link {
+    text-decoration: none;
+    border-bottom: none;
+}
+
+#content div.digibib_widget div.list-attachments a:hover {
     text-decoration: none;
 }
 
