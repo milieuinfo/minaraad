@@ -25,6 +25,15 @@ div.digibib_widget div.list-attachments a:hover {
     text-decoration: none;
 }
 
+#content div.digibib_widget div.list-attachments dt {
+    margin-left: 4px;
+    padding-left: 3px;
+}
+
+#content div.digibib_widget div.list-attachments dd {
+    margin-left: 0px;
+}
+
 div.digibib_widget div.list-attachments dd.actionMenuContent {
     background: #fff;
     border: 1px solid #ae3721;
