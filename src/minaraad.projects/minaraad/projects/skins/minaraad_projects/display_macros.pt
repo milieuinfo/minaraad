@@ -84,11 +84,13 @@
           tal:define="current_path python:'/'.join(obj.getPhysicalPath());
                       attachments python:context.portal_catalog.searchResults(portal_type='FileAttachment', path=current_path,);
                       counter_start obj/attachment_start|python: 1;
+                      attachments_count python: len(attachments);
                       states python:['private', 'restricted', 'published'];">
 
         <tal:attachment repeat="att python: enumerate(attachments)">
           <tal:block tal:define="attachment python: att[1];
-                                 position python: '%s%s' % (counter_start, chr(att[0] + ord('a')))">
+                                 sub_count python: chr(att[0] + ord('a')) and (attachments_count > 1) or '';
+                                 position python: '%s%s' % (counter_start, sub_count)">
 
             <div class="list-attachments"
                  tal:define="oddrow repeat/att/odd">
