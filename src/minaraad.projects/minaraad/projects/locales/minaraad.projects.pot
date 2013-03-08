@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2012-05-07 08:50+0000\n"
+"POT-Creation-Date: 2013-03-08 13:17+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,8 +25,12 @@ msgstr ""
 msgid "AgendaItem"
 msgstr ""
 
-#: ./browser/templates/digibib.pt:17
+#: ./browser/templates/digibib.pt:27
 msgid "Archive"
+msgstr ""
+
+#: ./profiles/default/types/AttachmentsFolder.xml
+msgid "AttachmentsFolder"
 msgstr ""
 
 #: ./browser/export.py:36
@@ -37,7 +41,7 @@ msgstr ""
 msgid "Choose a statistic:"
 msgstr ""
 
-#: ./content/meeting.py:103
+#: ./content/meeting.py:102
 msgid "Company"
 msgstr ""
 
@@ -61,7 +65,15 @@ msgstr ""
 msgid "DigiBib"
 msgstr ""
 
-#: ./browser/templates/project.pt:167
+#: ./profiles/default/types/AttachmentsFolder.xml
+msgid "Edit"
+msgstr ""
+
+#: ./profiles/default/types/AttachmentsFolder.xml
+msgid "Folder Listing"
+msgstr ""
+
+#: ./browser/templates/project.pt:197
 msgid "Go to advisory"
 msgstr ""
 
@@ -73,11 +85,11 @@ msgstr ""
 msgid "Meeting container"
 msgstr ""
 
-#: ./content/meeting.py:101
+#: ./content/meeting.py:100
 msgid "Name"
 msgstr ""
 
-#: ./validators.py:72
+#: ./validators.py:73
 msgid "Number must be 3-digits"
 msgstr ""
 
@@ -97,11 +109,11 @@ msgstr ""
 msgid "Project container"
 msgstr ""
 
-#: ./validators.py:34
+#: ./validators.py:35
 msgid "Project id must be of the form YYYYMMDD"
 msgstr ""
 
-#: ./browser/templates/project.pt:166
+#: ./browser/templates/project.pt:196
 msgid "Public advisory"
 msgstr ""
 
@@ -115,6 +127,10 @@ msgstr ""
 
 #: ./browser/templates/statistics.pt:27
 msgid "Select either quarter or month or leave both empty for the full year."
+msgstr ""
+
+#: ./profiles/default/types/AttachmentsFolder.xml
+msgid "View"
 msgstr ""
 
 #. Default: "A short description of the contents and the legal background of the advisory request."
@@ -153,22 +169,27 @@ msgid "heading_digibib_projects"
 msgstr ""
 
 #. Default: "Enter the invitees who are not in the selected committees."
-#: ./content/meeting.py:108
+#: ./content/meeting.py:107
 msgid "help_other_invitees"
 msgstr ""
 
 #. Default: "Abstention and/or reject points"
-#: ./content/project.py:289
+#: ./content/project.py:288
 msgid "label_abstention_rejection"
 msgstr ""
 
+#. Default: "Add attachment"
+#: ./browser/templates/project.pt:71
+msgid "label_add_attachment"
+msgstr ""
+
 #. Default: "Add a new meeting"
-#: ./browser/templates/digibib.pt:69
+#: ./browser/templates/digibib.pt:63
 msgid "label_add_meeting"
 msgstr ""
 
 #. Default: "Add a new project"
-#: ./browser/templates/digibib.pt:26
+#: ./browser/templates/digibib.pt:17
 msgid "label_add_project"
 msgstr ""
 
@@ -208,13 +229,13 @@ msgid "label_advisory_requesters"
 msgstr ""
 
 #. Default: "Assigned groups"
-#: ./content/meeting.py:84
+#: ./content/meeting.py:83
 #: ./content/project.py:180
 msgid "label_assigned_groups"
 msgstr ""
 
 #. Default: "Attachments"
-#: ./browser/templates/agenda_item_form.pt:70
+#: ./browser/templates/agenda_item_form.pt:72
 msgid "label_attachments"
 msgstr ""
 
@@ -234,12 +255,12 @@ msgid "label_boardmember_digestmail_content"
 msgstr ""
 
 #. Default: "Dear ${fullname}, \n\nThe project ${project_name} has been proposed to the board. Here is the description of the project: \n\n${project_desc}\n\nMore information can be found here: \n\n${project_url}"
-#: ./events.py:265
+#: ./events.py:275
 msgid "label_boardmember_mail_content"
 msgstr ""
 
 #. Default: "Project ${project_name} has been proposed"
-#: ./events.py:259
+#: ./events.py:269
 msgid "label_boardmember_mail_title"
 msgstr ""
 
@@ -259,8 +280,8 @@ msgid "label_delivery_date"
 msgstr ""
 
 #. Default: "Description"
-#: ./content/agendaitem.py:23
-#: ./content/meeting.py:48
+#: ./content/agendaitem.py:22
+#: ./content/meeting.py:47
 #: ./content/project.py:57
 msgid "label_description"
 msgstr ""
@@ -338,7 +359,7 @@ msgstr ""
 
 #. Default: "Location"
 #: ./browser/templates/meeting.pt:34
-#: ./content/meeting.py:60
+#: ./content/meeting.py:59
 msgid "label_location"
 msgstr ""
 
@@ -358,12 +379,12 @@ msgid "label_no_agenda_items"
 msgstr ""
 
 #. Default: "There is no planned meetings."
-#: ./browser/templates/digibib.pt:93
+#: ./browser/templates/digibib.pt:99
 msgid "label_no_planned_meetings"
 msgstr ""
 
 #. Default: "There is no incoming projects"
-#: ./browser/templates/digibib.pt:49
+#: ./browser/templates/digibib.pt:52
 msgid "label_no_projects"
 msgstr ""
 
@@ -378,12 +399,12 @@ msgid "label_organisations"
 msgstr ""
 
 #. Default: "Other invitees"
-#: ./content/meeting.py:106
+#: ./content/meeting.py:105
 msgid "label_other_invitees"
 msgstr ""
 
 #. Default: "Participants attendance"
-#: ./content/meeting.py:93
+#: ./content/meeting.py:92
 msgid "label_participants_attendance"
 msgstr ""
 
@@ -408,7 +429,7 @@ msgid "label_product_number"
 msgstr ""
 
 #. Default: "Project"
-#: ./content/agendaitem.py:38
+#: ./content/agendaitem.py:34
 msgid "label_project"
 msgstr ""
 
@@ -443,7 +464,7 @@ msgid "label_responsible_group"
 msgstr ""
 
 #. Default: "Room number"
-#: ./content/meeting.py:75
+#: ./content/meeting.py:74
 msgid "label_room_number"
 msgstr ""
 
@@ -458,12 +479,12 @@ msgid "label_secretary_email"
 msgstr ""
 
 #. Default: "The project ${project_name} has to be verified.\nThe project can be found here: ${project_url}"
-#: ./events.py:210
+#: ./events.py:220
 msgid "label_secretary_mail_content"
 msgstr ""
 
 #. Default: "Project ${project_name} has been proposed"
-#: ./events.py:204
+#: ./events.py:214
 msgid "label_secretary_mail_title"
 msgstr ""
 
@@ -483,17 +504,17 @@ msgid "label_statistics"
 msgstr ""
 
 #. Default: "You must specify a title if you do not select a project"
-#: ./content/agendaitem.py:85
+#: ./content/agendaitem.py:81
 msgid "label_title_needed"
 msgstr ""
 
 #. Default: "Type"
-#: ./content/meeting.py:37
+#: ./content/meeting.py:36
 msgid "label_type"
 msgstr ""
 
 #. Default: "Unanimous"
-#: ./content/project.py:286
+#: ./content/project.py:285
 msgid "label_unanimous"
 msgstr ""
 
