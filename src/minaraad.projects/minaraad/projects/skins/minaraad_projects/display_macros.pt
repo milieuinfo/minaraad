@@ -51,9 +51,7 @@
       <tal:block condition="meeting/getStart_time|nothing">
         <p class="meeting_times"
            tal:define="d meeting/getStart_time">
-          <metal:block use-macro="context/display_macros/macros/date" />
-        </p>
-        <p class="meeting_times">
+          <metal:block use-macro="context/display_macros/macros/date" /> - 
           <tal:block tal:define="t meeting/getStart_time">
             <metal:block use-macro="context/display_macros/macros/time" /> :
           </tal:block>
