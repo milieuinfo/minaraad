@@ -7,7 +7,7 @@ from minaraad.projects.interfaces import IAgendaItem
 from minaraad.projects import MinaraadProjectMessageFactory as _
 from minaraad.projects.utils import min_to_days
 
-base_agendaitem_schema = atapi.BaseFolderSchema.copy() + atapi.Schema((
+base_agendaitem_schema = atapi.OrderedBaseFolderSchema.copy() + atapi.Schema((
     atapi.FloatField(
         name='duration',
         required=True,
@@ -29,7 +29,7 @@ base_agendaitem_schema = atapi.BaseFolderSchema.copy() + atapi.Schema((
     ))
 
 
-class BaseAgendaItem(atapi.BaseFolder):
+class BaseAgendaItem(atapi.OrderedBaseFolder):
     """
     """
 
