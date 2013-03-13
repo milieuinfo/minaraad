@@ -1,8 +1,8 @@
 History of this buildout
 ========================
 
-5.0 - Plone 4 Branch (unreleased)
----------------------------------
+4.17 (2013-03-13)
+-----------------
 
 - Use officially released Products.PluggableAuthService 1.10.0 and
   collective.emaillogin4 1.3.
