@@ -1,9 +1,6 @@
 Notes on Minaraad Plone 4 migration
 ===================================
 
-- Currently we have Plone 3.1.7.
-
-- We should move to the latest stable release, currently Plone 4.1.2.
 
 Installing on servers
 ---------------------
@@ -65,6 +62,7 @@ To do on Plone 3 through the web
        interface="Products.PortalTransforms.interfaces.IPortalTransformsTool"
        object="portal_transforms"/>
 
+
 To do in the buildout
 ---------------------
 
@@ -112,7 +110,7 @@ To do on Plone 4 through the web
   - right column: Minaraad search, LinkedIn, Minaraad recent changes
 
 - Configure plone.app.caching (not much was previously cached in
-  CacheSetup thouch).
+  CacheSetup though).
 
 - Set the default editor to TinyMCE (go to @@set-default-editor page)
 
