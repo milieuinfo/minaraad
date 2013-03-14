@@ -4,6 +4,9 @@ History of this buildout
 5.0.1 (unreleased)
 ------------------
 
+- Avoid writing to the database every time we view a meeting.
+  [maurits]
+
 - Only update the main attachment count when an agenda item has at
   least one attachment.
   [maurits]

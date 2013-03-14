@@ -125,7 +125,10 @@ class MeetingAjax(MeetingView):
 
         for item in self.context.find_items_and_times():
             it_obj = item[0].getObject()
-            it_obj.attachment_start = att_count
+            # Avoid making a change to the database when the count
+            # stays the same.
+            if getattr(it_obj, 'attachment_start', None) != att_count:
+                it_obj.attachment_start = att_count
 
             jq('#%s span.agendaItemTimes' % item[0].UID).html(
                 '%s tot %su' % (item[1].TimeMinutes(),

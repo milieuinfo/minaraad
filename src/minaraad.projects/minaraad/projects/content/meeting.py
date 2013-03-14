@@ -309,7 +309,10 @@ class Meeting(BaseMeeting):
 
         for it in items:
             item = it[0].getObject()
-            item.attachment_start = att_count
+            # Avoid making a change to the database when the count
+            # stays the same.
+            if getattr(item, 'attachment_start', None) != att_count:
+                item.attachment_start = att_count
             # Only update the main attachment count when this agenda
             # item has at least one attachment.
             attachments = catalog.searchResults(
