@@ -4,7 +4,8 @@ History of this buildout
 5.0.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Sort meetings by start date.
+  [maurits]
 
 
 5.0 (2013-03-13)

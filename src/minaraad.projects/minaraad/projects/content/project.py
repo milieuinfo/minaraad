@@ -320,7 +320,7 @@ class Project(atapi.OrderedBaseFolder, ThemeMixin):
                 continue
             if mtool.checkPermission('View', meeting):
                 brefs.append(meeting)
-        return brefs
+        return sorted(brefs, key=lambda x: x.getStart_time())
 
     def get_documents(self):
         """ Returns the list of documents added to the project.

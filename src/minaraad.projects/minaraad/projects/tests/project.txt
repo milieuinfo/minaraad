@@ -209,11 +209,11 @@ To do so, we'll add another meeting with some points:
     >>> digibib.projects.second_project.get_agenda_items()
     {<Meeting at /plone/digibib/meetings/second_meeting>: [<AgendaItemProject at /plone/digibib/meetings/second_meeting/item2>]}
 
-We create a second meeting to copy the items:
+We create a third meeting to copy the items:
 
     >>> digibib.meetings.invokeFactory('Meeting',
     ...                                'third_meeting',
-    ...                                start_time=DateTime(2012, 5, 5, 12, 0))
+    ...                                start_time=DateTime(2012, 5, 5, 12, 15))
     'third_meeting'
     >>> notify(ObjectEditedEvent(digibib.meetings.third_meeting))
 
@@ -243,6 +243,12 @@ The third meeting is now referenced by the projects:
     [(<Meeting at ...second_meeting>, [<AgendaItemProject at ...second_meeting/item2>]),
      (<Meeting at ...third_meeting>, [<AgendaItemProject at ...third_meeting/item2>])]
     
+By default we sort the meeting by start time:
+
+    >>> digibib.projects.second_project.get_meetings()
+    [<Meeting at /plone/digibib/meetings/second_meeting>,
+     <Meeting at /plone/digibib/meetings/third_meeting>]
+
 
 If we clone the whole meeting, it also update references:
 
