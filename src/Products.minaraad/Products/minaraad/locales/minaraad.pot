@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minaraad\n"
-"POT-Creation-Date: 2013-02-18 15:29+0000\n"
+"POT-Creation-Date: 2013-03-14 15:57+0000\n"
 "PO-Revision-Date: Mon Aug  8 12:16:21 2005\n"
 "Last-Translator: Rocky Burt <r.burt@zestsoftware.nl>\n"
 "Language-Team: Rocky Burt <r.burt@zestsoftware.nl>\n"
@@ -76,7 +76,7 @@ msgid "Date:"
 msgstr ""
 
 #: ./browser/hearing_view.pt:76
-#: ./browser/mrevent_view.pt:69
+#: ./browser/mrevent_view.pt:68
 #: ./skins/minaraad/EmailTemplate-Hearing.pt:22
 msgid "Goal:"
 msgstr ""
@@ -90,7 +90,7 @@ msgid "LinkedIn"
 msgstr ""
 
 #: ./browser/hearing_view.pt:86
-#: ./browser/mrevent_view.pt:79
+#: ./browser/mrevent_view.pt:78
 #: ./skins/minaraad/EmailTemplate-Hearing.pt:18
 msgid "Location:"
 msgstr ""
@@ -226,7 +226,7 @@ msgstr ""
 
 #. Default: "Agenda items"
 #: ./browser/hearing_view.pt:111
-#: ./browser/mrevent_view.pt:105
+#: ./browser/mrevent_view.pt:104
 msgid "label_agendaitems"
 msgstr ""
 
@@ -292,7 +292,8 @@ msgid "label_email_out_to"
 msgstr ""
 
 #. Default: "Email address"
-#: ./skins/minaraad/contactperson_view.pt:37
+#: ./browser/contactperson_view.pt:40
+#: ./skins/minaraad/contactperson_macros.pt:65
 msgid "label_emailaddress"
 msgstr ""
 
@@ -309,7 +310,7 @@ msgstr ""
 
 #. Default: "Export CSV"
 #: ./browser/hearing_view.pt:175
-#: ./browser/mrevent_view.pt:169
+#: ./browser/mrevent_view.pt:168
 msgid "label_exportcsv"
 msgstr ""
 
@@ -337,9 +338,9 @@ msgid "label_housenumber"
 msgstr ""
 
 #. Default: "Job title"
-#: ./skins/minaraad/contactperson_view.pt:21
+#: ./browser/contactperson_view.pt:24
+#: ./skins/minaraad/contactperson_macros.pt:49
 #: ./skins/minaraad/prefs_user_details.cpt:183
-#: ./userdataschema.py:68
 msgid "label_jobtitle"
 msgstr ""
 
@@ -354,7 +355,7 @@ msgid "label_lastname"
 msgstr ""
 
 #. Default: "LinkedIn"
-#: ./skins/minaraad/contactperson_view.pt:56
+#: ./browser/contactperson_view.pt:59
 msgid "label_linkedin"
 msgstr ""
 
@@ -366,7 +367,8 @@ msgid "label_moreinfo"
 msgstr ""
 
 #. Default: "Name"
-#: ./skins/minaraad/contactperson_view.pt:13
+#: ./browser/contactperson_view.pt:16
+#: ./skins/minaraad/contactperson_macros.pt:34
 msgid "label_name"
 msgstr ""
 
@@ -387,9 +389,9 @@ msgid "label_other_country"
 msgstr ""
 
 #. Default: "Phone number"
-#: ./skins/minaraad/contactperson_view.pt:48
+#: ./browser/contactperson_view.pt:51
+#: ./skins/minaraad/contactperson_macros.pt:76
 #: ./skins/minaraad/prefs_user_details.cpt:363
-#: ./userdataschema.py:111
 msgid "label_phonenumber"
 msgstr ""
 
@@ -437,7 +439,7 @@ msgstr ""
 
 #. Default: "Subscribe"
 #: ./browser/hearing_view.pt:46
-#: ./browser/mrevent_view.pt:47
+#: ./browser/mrevent_view.pt:46
 msgid "label_subscribe"
 msgstr ""
 
@@ -454,7 +456,7 @@ msgstr ""
 
 #. Default: "Unsubscribe"
 #: ./browser/hearing_view.pt:29
-#: ./browser/mrevent_view.pt:30
+#: ./browser/mrevent_view.pt:29
 msgid "label_unsubscribe"
 msgstr ""
 
@@ -608,7 +610,7 @@ msgid "minaraad_label_attachments"
 msgstr ""
 
 #. Default: "Co-authors"
-#: ./skins/minaraad/contactperson_view.pt:79
+#: ./skins/minaraad/contactperson_macros.pt:19
 msgid "minaraad_label_authors"
 msgstr ""
 
@@ -647,7 +649,7 @@ msgid "minaraad_label_contactpersons"
 msgstr ""
 
 #. Default: "Coordinator"
-#: ./skins/minaraad/contactperson_view.pt:72
+#: ./skins/minaraad/contactperson_macros.pt:12
 msgid "minaraad_label_coordinator"
 msgstr ""
 
@@ -659,7 +661,8 @@ msgid "minaraad_label_date"
 msgstr ""
 
 #. Default: "Department"
-#: ./skins/minaraad/contactperson_view.pt:29
+#: ./browser/contactperson_view.pt:32
+#: ./skins/minaraad/contactperson_macros.pt:57
 msgid "minaraad_label_department"
 msgstr ""
 
@@ -819,7 +822,7 @@ msgstr ""
 
 #. Default: "Summary"
 #: ./browser/advisory_view.pt:47
-#: ./skins/minaraad/study_view.pt:22
+#: ./browser/study_view.pt:29
 msgid "minaraad_label_summary"
 msgstr ""
 
@@ -835,7 +838,7 @@ msgstr ""
 
 #. Default: "(none currently)"
 #: ./browser/hearing_view.pt:157
-#: ./browser/mrevent_view.pt:151
+#: ./browser/mrevent_view.pt:150
 msgid "no_attendees"
 msgstr ""
 
@@ -862,13 +865,13 @@ msgstr ""
 
 #. Default: "Attendees"
 #: ./browser/hearing_view.pt:149
-#: ./browser/mrevent_view.pt:143
+#: ./browser/mrevent_view.pt:142
 msgid "title_attendees"
 msgstr ""
 
 #. Default: "Council Members"
 #: ./browser/hearing_view.pt:151
-#: ./browser/mrevent_view.pt:145
+#: ./browser/mrevent_view.pt:144
 msgid "title_counsilmembers"
 msgstr ""
 
@@ -880,7 +883,7 @@ msgstr ""
 
 #. Default: "Members"
 #: ./browser/hearing_view.pt:162
-#: ./browser/mrevent_view.pt:156
+#: ./browser/mrevent_view.pt:155
 msgid "title_members"
 msgstr ""
 
