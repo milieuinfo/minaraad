@@ -100,14 +100,14 @@ meeting_schema = base_meeting_schema.copy() + atapi.Schema((
                   'title': _(u'Name')},
                  {'id': 'company',
                   'title': _(u'Company')},
-                  ),
+                 ),
         widget=DataGridWidget(
             label=_(u'label_other_invitees',
                     default=u"Other invitees"),
             description=_(
-                 u'help_other_invitees',
-                 default=(u"Enter the invitees who are not in the selected "
-                          u"committees.")),
+                u'help_other_invitees',
+                default=(u"Enter the invitees who are not in the selected "
+                         u"committees.")),
             column_names=(_(u'Name'), _(u'Company')),
             ),
         allow_reorder=False,
@@ -155,9 +155,8 @@ class Meeting(BaseMeeting):
         new_id = formated_time
         count = 0
 
-        while new_id  in parent.objectIds():
-            new_id = '%s-%s' % (formated_time,
-                                count)
+        while new_id in parent.objectIds():
+            new_id = '%s-%s' % (formated_time, count)
             count += 1
 
         invalid_id = False
@@ -264,8 +263,6 @@ class Meeting(BaseMeeting):
         return anno['invited_people']
 
     def get_saved_location(self):
-        location = self.getMeetinglocation()
-
         anno = self._get_annotations()
         if anno.get('saved_location', None) is None:
             anno['saved_location'] = PersistentDict()
@@ -355,7 +352,7 @@ class Meeting(BaseMeeting):
             elif len(p_split) == 2:
                 try:
                     participants.append(('|'.join(p_split[:-1]),
-                                          int(p_split[-1])))
+                                         int(p_split[-1])))
                 except (ValueError, AttributeError):
                     logger.warn("Ignoring bad value for participant: %r", p)
             else:

@@ -1,7 +1,6 @@
 import logging
 import doctest
 
-import transaction
 from Products.PloneTestCase import PloneTestCase as ptc
 from Testing import ZopeTestCase as ztc
 from Zope2.App import zcml
@@ -10,8 +9,6 @@ from Products.PloneTestCase.layer import onsetup
 from Testing.testbrowser import Browser
 from AccessControl import SecurityManagement
 
-from zope.event import notify
-from zope.component import adapter
 from zope.component import getSiteManager
 
 from Products.MailHost.interfaces import IMailHost
@@ -19,8 +16,6 @@ from Products.CMFPlone.tests.utils import MockMailHost as _MockMailHost
 
 from digibib_view_parser import DigiBibHtmlParser
 from minaraad.projects.setuphandlers import add_catalog_indexes
-
-from minaraad.projects import events
 
 OPTIONFLAGS = (doctest.ELLIPSIS |
                doctest.NORMALIZE_WHITESPACE)
@@ -99,7 +94,6 @@ class MinaraadTestCase(ptc.PloneTestCase):
         self.patch_portal_properties()
         add_catalog_indexes(self.portal)
         #self.patch_logger()
-
 
     def patch_error_log(self):
         self.portal.error_log._ignored_exceptions = ()
