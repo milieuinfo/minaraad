@@ -4,6 +4,9 @@ History of this buildout
 5.0.1 (unreleased)
 ------------------
 
+- Sort projects by year plus project number and show both.
+  [maurits]
+
 - Refuse to send an e-mail for newsletters, etcetera, when this e-mail
   has already been sent in the last thirty minutes.  This will raise
   an exception and show a traceback.  We also show a warning on the

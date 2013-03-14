@@ -3,6 +3,16 @@ from Products.Five import BrowserView
 from Products.CMFCore.utils import getToolByName
 
 
+def project_sort_key(obj):
+    adv_date = obj.getAdvisory_date()
+    if adv_date:
+        year = obj.getAdvisory_date().year()
+    else:
+        year = 0
+    num = obj.getProject_number()
+    return (year, num)
+
+
 class DigiBibView(BrowserView):
     """ Default view of a DigiBib.
     """
@@ -23,7 +33,7 @@ class DigiBibView(BrowserView):
         return sorted(m, key=sort_key, reverse=reverse)
 
     def _sort_projects(self, p, reverse=False):
-        return sorted(p, key=lambda x: x.getProject_number(), reverse=reverse)
+        return sorted(p, key=project_sort_key, reverse=reverse)
 
     def list_projects(self):
         project_brains = self.ctool(
