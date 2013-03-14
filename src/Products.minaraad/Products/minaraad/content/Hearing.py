@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 from AccessControl import ClassSecurityInfo
 from Products.Archetypes import atapi
-from zope.interface import Interface
 from zope.interface import implements
 
 from Products.minaraad import config

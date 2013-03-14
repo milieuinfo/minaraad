@@ -8,10 +8,8 @@ from Acquisition import aq_inner
 from DateTime import DateTime
 from Products.CMFCore.utils import getToolByName
 from Products.Five import BrowserView
-from ZODB.POSException import ConflictError
 
 from Products.minaraad.config import TITLE_VOCAB
-from Products.minaraad.utils import email_logger
 
 import logging
 logger = logging.getLogger('Minaraad Service Utilities')

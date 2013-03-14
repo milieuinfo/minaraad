@@ -1,10 +1,10 @@
 from zope.component.hooks import getSite
-from OFS.interfaces import IFolder
 
 from Products.CMFCore.utils import getToolByName
 from plone.app.layout.viewlets.common import GlobalSectionsViewlet
 
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+
 
 class MinaGlobalSectionsViewlet(GlobalSectionsViewlet):
     index = ViewPageTemplateFile('sections.pt')

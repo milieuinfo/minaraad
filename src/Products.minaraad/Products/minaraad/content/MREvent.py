@@ -1,6 +1,6 @@
 from AccessControl import ClassSecurityInfo
 from Products.Archetypes import atapi
-from zope.interface import implements, Interface
+from zope.interface import implements
 from Products.OrderableReferenceField import OrderableReferenceField
 from Products.OrderableReferenceField import OrderableReferenceWidget
 
