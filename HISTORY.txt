@@ -4,6 +4,9 @@ History of this buildout
 5.0.1 (unreleased)
 ------------------
 
+- Fixed possible KeyError on company when member has no such property.
+  [maurits]
+
 - Fixed logic error in the display of numbering of attachments in
   meetings.
   [maurits]

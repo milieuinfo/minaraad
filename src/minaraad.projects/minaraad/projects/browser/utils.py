@@ -79,7 +79,7 @@ class PASMemberView(BrowserView):
                       'home_page': member.getProperty('home_page'),
                       'username': member.getUserName(),
                       'has_email': bool(member.getProperty('email')),
-                      'company': member.getProperty('company'),
+                      'company': member.getProperty('company', ''),
                       }
         memberinfo['name_or_id'] = memberinfo.get('fullname') or \
             memberinfo.get('username') or member.getUserId()
@@ -124,5 +124,5 @@ class ParticipantMemberView(PASMemberView):
         info['username'] = participant['id']
         info['name_or_id'] = participant['id']
         info['fullname'] = participant['fullname']
-        info['company'] = participant['company']
+        info['company'] = participant.get('company', '')
         return info
