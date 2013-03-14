@@ -87,7 +87,7 @@
 
         <tal:attachment repeat="att python: enumerate(attachments)">
           <tal:block tal:define="attachment python: att[1];
-                                 sub_count python: chr(att[0] + ord('a')) and (attachments_count > 1) or '';
+                                 sub_count python: chr(att[0] + ord('a')) if (attachments_count > 1) else '';
                                  position python: '%s%s' % (counter_start, sub_count)">
 
             <div class="list-attachments"

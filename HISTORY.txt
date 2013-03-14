@@ -4,6 +4,10 @@ History of this buildout
 5.0.1 (unreleased)
 ------------------
 
+- Fixed logic error in the display of numbering of attachments in
+  meetings.
+  [maurits]
+
 - Sort meetings by start date.
   [maurits]
 
