@@ -4,6 +4,10 @@ History of this buildout
 5.0.1 (unreleased)
 ------------------
 
+- Only update the main attachment count when an agenda item has at
+  least one attachment.
+  [maurits]
+
 - Fixed possible KeyError on company when member has no such property.
   [maurits]
 

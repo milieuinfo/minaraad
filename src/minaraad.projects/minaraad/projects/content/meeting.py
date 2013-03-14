@@ -310,7 +310,13 @@ class Meeting(BaseMeeting):
         for it in items:
             item = it[0].getObject()
             item.attachment_start = att_count
-            att_count += 1
+            # Only update the main attachment count when this agenda
+            # item has at least one attachment.
+            attachments = catalog.searchResults(
+                portal_type='FileAttachment',
+                path='/'.join(item.getPhysicalPath()))
+            if attachments:
+                att_count += 1
 
     def manage_pasteObjects(self, *args, **kwargs):
         """ We override the manage_pasteObjects() so we can

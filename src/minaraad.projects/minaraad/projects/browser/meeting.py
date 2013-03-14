@@ -153,6 +153,9 @@ class MeetingAjax(MeetingView):
                     # and sub_count will not be used anymore.
                     pass
 
-            att_count += 1
+            # Only update the main attachment count when this agenda
+            # item has at least one attachment.
+            if attachments:
+                att_count += 1
 
         return jq
