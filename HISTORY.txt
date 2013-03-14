@@ -4,6 +4,13 @@ History of this buildout
 5.0.1 (unreleased)
 ------------------
 
+- Refuse to send an e-mail for newsletters, etcetera, when this e-mail
+  has already been sent in the last thirty minutes.  This will raise
+  an exception and show a traceback.  We also show a warning on the
+  email_out page with the date and time when this item was sent.
+  Sending a test e-mail is always possible.
+  [maurits]
+
 - Avoid writing to the database every time we view a meeting.
   [maurits]
 

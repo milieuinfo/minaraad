@@ -263,6 +263,12 @@ class EmailOutView(AbstractView, EmailNotify):
                 logger.info(
                     ("Now we have %r members ('additionalMembers' "
                      "plus subscribers)." % len(members)))
+
+                # We set the time that the email has been sent and
+                # immediately commit the transaction.  This should
+                # avoid sending the same emails twice, at least within
+                # a certain period.
+                context.fail_if_already_sent(limit_minutes=30)
                 context.setEmailSent(DateTime())
                 transaction.commit()
             else:
