@@ -1,7 +1,7 @@
 History of this buildout
 ========================
 
-5.0.1 (unreleased)
+5.0.1 (2013-03-15)
 ------------------
 
 - Sort projects by year plus project number and show both.
