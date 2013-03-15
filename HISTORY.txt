@@ -4,7 +4,11 @@ History of this buildout
 5.0.2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Cleanup skin layers.  We created a Minaraad Theme skin layer
+  selection when we started on the migration back in 2011, but we do
+  not use this anymore.  We update Plone Default now.  This at least
+  means we can we now find pyproxy_spinner.gif.
+  [maurits]
 
 
 5.0.1 (2013-03-15)

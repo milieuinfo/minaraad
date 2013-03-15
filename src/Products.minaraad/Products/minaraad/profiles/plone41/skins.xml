@@ -9,27 +9,21 @@
  </skin-path>
  <!-- Start clean: -->
  <skin-path name="Minaraad Theme" remove="True" />
- <skin-path name="Minaraad Theme" >
+ <skin-path name="Plone Default" remove="True" />
+ <skin-path name="Plone Default" >
   <layer name="custom" />
   <layer name="minaraad" />
   <layer name="mina_projects" />
-  <layer name="mina_styles" />
   <layer name="tinymce" />
   <layer name="referencebrowser" />
   <layer name="CMFPlacefulWorkflow" />
   <layer name="LanguageTool" />
-  <layer name="sunburst_images" />
-  <layer name="sunburst_templates" />
-  <layer name="sunburst_styles" />
   <layer name="attachment_widgets" />
   <layer name="simpleattachment" />
   <layer name="cmfeditions_views" />
   <layer name="CMFEditions" />
-  <layer name="kupu_tests" />
   <layer name="orderablereferencefield" />
   <layer name="PasswordReset" />
-  <layer name="kupu_plone" />
-  <layer name="kupu" />
   <layer name="ATContentTypes" />
   <layer name="archetypes" />
   <layer name="mimetypes_icons" />
@@ -37,6 +31,7 @@
   <layer name="plone_wysiwyg" />
   <layer name="plone_prefs" />
   <layer name="plone_templates" />
+  <layer name="plone_styles" />
   <layer name="plone_form_scripts" />
   <layer name="plone_scripts" />
   <layer name="plone_forms" />

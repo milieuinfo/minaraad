@@ -2,16 +2,17 @@
 <object name="portal_skins">
  <object name="minaraad" meta_type="Filesystem Directory View"
     directory="Products.minaraad:skins/minaraad"/>
- <!-- <object name="mina_styles" meta_type="Filesystem Directory View" -->
- <!--    directory="Products.minaraad:skins/mina_styles"/> -->
  <skin-path name="*">
   <layer name="tinymce" insert-after="custom"/>
   <layer name="minaraad" insert-after="custom"/>
   <layer name="attachment_widgets" insert-after="minaraad"/>
   <layer name="simpleattachment" insert-after="minaraad"/>
+  <layer name="CMFPlacefulWorkflow" insert-after="minaraad"/>
   <layer name="DataGridWidget" insert-after="minaraad"/>
+  <layer name="captchas" insert-after="minaraad"/>
+  <layer name="captcha_core_dynamic" insert-after="minaraad"/>
+  <layer name="captcha_core" insert-after="minaraad"/>
+  <layer name="orderablereferencefield" insert-after="minaraad"/>
+  <layer name="pyproxy" insert-after="minaraad"/>
  </skin-path>
- <!-- <skin-path name="Minaraad Theme"> -->
- <!--  <layer name="mina_styles" insert-after="custom"/> -->
- <!-- </skin-path> -->
 </object>
