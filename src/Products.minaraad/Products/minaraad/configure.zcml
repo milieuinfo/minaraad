@@ -19,7 +19,6 @@
   <include file="profiles.zcml" />
 
   <cmf:registerDirectory name="minaraad"/>
-  <cmf:registerDirectory name="mina_styles"/>
 
   <class class="Products.CMFPlone.Portal.PloneSite">
     <implements interface=".interfaces.IPortalPropertyContainer" />
