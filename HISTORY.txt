@@ -1,7 +1,7 @@
 History of this buildout
 ========================
 
-5.0.2 (unreleased)
+5.0.2 (2013-03-15)
 ------------------
 
 - Cleanup skin layers.  We created a Minaraad Theme skin layer
