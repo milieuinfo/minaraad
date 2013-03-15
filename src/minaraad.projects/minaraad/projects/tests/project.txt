@@ -321,7 +321,7 @@ And to propose the project:
 The mail is not sent just after the project is proposed. We have to
 wait for a cronjob to call a page that will list all proposed projects:
 
-    >>> from Products.Five.testbrowser import Browser
+    >>> from Testing.testbrowser import Browser
     >>> from Products.PloneTestCase import PloneTestCase as ptc
     >>> browser = Browser()
     >>> browser.open('%s/login_form/' % self.portal.absolute_url())
