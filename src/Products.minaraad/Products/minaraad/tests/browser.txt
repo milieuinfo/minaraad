@@ -3,7 +3,7 @@ Functional browser tests
 
 Begin by setting up our mock browser.
 
-  >>> from Products.Five.testbrowser import Browser
+  >>> from Testing.testbrowser import Browser
   >>> from Products.PloneTestCase import setup
   >>> from Products.minaraad.tests.utils import print_error_log_on_wrong_browser_status
   >>> self.portal.error_log._ignored_exceptions = ()
