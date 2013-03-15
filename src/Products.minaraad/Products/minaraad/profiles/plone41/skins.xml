@@ -2,6 +2,8 @@
 <object name="portal_skins" default_skin="Plone Default">
  <object name="minaraad" meta_type="Filesystem Directory View"
     directory="Products.minaraad:skins/minaraad"/>
+ <object name="mina_styles" meta_type="Filesystem Directory View"
+    remove="True"/>
  <skin-path name="*">
   <layer name="minaraad" insert-after="custom"/>
  </skin-path>
