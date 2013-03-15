@@ -4,7 +4,8 @@ History of this buildout
 5.0.3 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Remove some more css and javascript and add note to uninstall kupu.
+  [maurits]
 
 
 5.0.2 (2013-03-15)

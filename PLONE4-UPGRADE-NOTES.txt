@@ -91,6 +91,7 @@ To do on Plone 4 through the web
 - Go to the control panel then the skins, select "(Onbewerkt)".
 
 - Go to the extra-products page and:
+    - uninstall Kupu
     - install diazo
     - install Quintagroup Captcha Core
     - install collective.emaillogin4
