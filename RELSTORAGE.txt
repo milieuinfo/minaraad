@@ -150,6 +150,17 @@ In my config file, I specified the user and database to be
 ``minaraad_plone`` database so I had to create it too.
 
 
+Postgres dump
+-------------
+
+A postgres dump on Mac can be done with something like this:
+
+  /opt/local/lib/postgresql92/bin/pg_dump --format=c --role=minaraad -U minaraad -f /tmp/minaraad_plone4.pgdump minaraad_plone4
+
+The postgres server in which you import the dump needs to be the same
+version.  Probably a small version difference is fine.
+
+
 Further reading
 ---------------
 
