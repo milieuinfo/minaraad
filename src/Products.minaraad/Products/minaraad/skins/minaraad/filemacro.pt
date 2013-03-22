@@ -64,9 +64,10 @@
           <tal:filename tal:replace="title"/>
         </a>
         <span class="discreet">
-          (<span tal:replace="contenttype">ContentType</span>,
+          <span tal:replace="contenttype">ContentType</span>,
           <tal:size content="size">0Kb</tal:size>
-
+          </span>
+          <div class="visualClear" />
           <tal:workflow condition="attachment/review_state|nothing">
             <tal:block define="mtool context/portal_membership|nothing;
                                can_edit python:mtool.checkPermission('Modify portal content', context);
@@ -103,8 +104,7 @@
                 </dd>
                 </dl>
             </tal:block>
-          </tal:workflow>)
-        </span>
+          </tal:workflow>
       </tal:block>
     </span>
 

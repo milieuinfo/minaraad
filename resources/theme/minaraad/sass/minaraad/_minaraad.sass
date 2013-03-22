@@ -168,12 +168,10 @@ td.portal-siteactions
   .subscriptions-title th
     font-weight: bold
     padding: 0 5px 0 8px
-    font-size: 120%
     text-transform: capitalize
   .hearingsubscriptiontitle, .checkbox-all
     padding-top: 15px
     padding-bottom: 8px
-    font-size: 120%
   .bold
     font-weight: bold
 
@@ -182,13 +180,11 @@ td.portal-siteactions
 
 .listing
   .subscription-themes, .subscriptiontitles
-    font-size: 110%
   .subscription-themes
     padding-left: 18px
 
 .themelist
   td
-    font-size: 110%
     label
       font-weight: normal
     .discreet
@@ -509,3 +505,76 @@ fieldset#joinForm
     &[type=text]
       width: 203px !important
       height: 16px
+
+/* new changes */
+
+body
+  font-size: 70%
+
+table
+  font-size: 100%
+
+#content a:link
+  border-bottom: 0.1em solid #D98F81
+
+#portal-globalnav, #portal-breadcrumbs
+  font-size: 100%
+
+.listing
+  font-size: 99%
+
+.listing, .listing td, .listing th
+  border-color: #D98F81 !important
+  vertical-align: middle !important
+
+.digibib_widget .list-attachments a
+  border-bottom: none !important
+
+.list-attachments a img
+  position: relative
+  top: 1px
+  border-bottom:  0.1em solid white !important
+
+dl.actionMenu
+  font-size: 100%
+  margin-bottom: 0 !important
+
+.attachmentActionMenu a
+  font-size: 85% !important
+
+.list-attachments dl.actionMenu dt > a
+  border-bottom: 0.1em solid #D98F81 !important
+  color: #A13826 !important
+
+dl.actionMenu.activated dt a
+  margin: 0 !important
+
+.listing thead th, .listing tbody th
+  border-bottom: 1px solid #D98F81 !important
+  background: white !important
+  font-weight: bold
+  color: #313131 !important
+  padding: 0.25em 0.5em !important
+  text-transform: lowercase !important
+  text-align: center !important
+
+.listing tbody td
+  padding: 0.25em 0.5em
+  line-height: 15px !important
+
+#kss-spinner
+  display: none
+  width: 31px
+  height: 31px
+  position: fixed
+  background-position: center center
+  top: 50%
+  left: 50%
+  margin-top: -10px
+  margin-left: -10px
+  background: url(../img/pyproxy_spinner.gif) no-repeat center center
+
+#kss-spinner > img
+  display: none
+
+

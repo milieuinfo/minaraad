@@ -18,7 +18,7 @@ div.digibib_widget {
     width: 280px;
     border: 1px solid #db9792;
     margin-bottom: 20px;
-    font-size: 90%;
+    font-size: 100%;
 }
 
 #content div.digibib_widget .title a:link {
@@ -73,6 +73,10 @@ div.digibib_widget ul {
 }
 
 div.digibib_widget ul li {
+    padding: 0 5px;
+}
+
+div.digibib_widget.meetingWidget ul li {
     padding: 5px;
 }
 
@@ -88,6 +92,7 @@ div.digibib_widget ul li.even {
 div.digibib_widget a.standard {
     text-decoration: none;
     color: #000000 !important;
+    border-bottom: none !important;
 }
 
 div.digibib_widget a:hover {
@@ -96,6 +101,11 @@ div.digibib_widget a:hover {
 
 .meeting_date, .meeting_times, .meeting_title {
     display: block;
+    border-bottom: none !important;
+}
+
+a.meeting_title {
+    text-decoration: underline;
 }
 
 .meeting_date, .meeting_times {
@@ -130,7 +140,7 @@ ul.digibibMeetingList li p {
 
 table.strong {
     font-weight: bold;
-    font-size: 90%;
+    font-size: 100%;
 }
 
 .body {
@@ -146,8 +156,8 @@ table.strong {
 }
 
 .meetingWidget p {
-    margin-bottom: 0px;
-    margin-top: 0px;
+    margin-bottom: 0px !important;
+    margin-top: 0px !important;
 }
 
 .meetingWidget a.attachment {

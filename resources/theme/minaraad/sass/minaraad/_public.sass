@@ -245,7 +245,7 @@ dl
       border: none !important
   &.portlet
     margin: 1em 0 1em
-    font-size: 75%
+    font-size: 100%
   &.portletError
     background-color: #FFA500
   &.portlet dt
@@ -262,7 +262,7 @@ table th.listdate
 #content
   line-height: 1.5em
   clear: both
-  font-size: 80%
+  font-size: 100%
   margin: 1em 0.25em 2em 0.25em
 
 /* Special case of #content - TinyMCE*/
@@ -350,9 +350,12 @@ dl.portlet ol, div.portletStaticText ol
   margin-left: 2em
 
 #content li, dl.portlet li, div.portletStaticText li
-  margin-bottom: 0.25em
+  margin-bottom: 0
   line-height: 1.5em
   display: list-item
+
+#content li + li, dl.portlet li + li, div.portletStaticText li + li
+  margin-top: 0.25em
 
 #content
   dt
@@ -578,7 +581,7 @@ div.listingBar
 
 dl.portalMessage
   margin: 1em 0
-  font-size: 80%
+  font-size: 100%
   border: 1px solid #996
   background-color: #ffffe3
   clear: both
@@ -646,7 +649,7 @@ dl
 #edit-bar
   background-color: #75ad0a
   border: 0.25em solid #75ad0a
-  font-size: 80%
+  font-size: 100%
   min-height: 2em
   margin-bottom: 1em
   padding-top: 0.05em
@@ -960,7 +963,7 @@ dl
         padding: 0
   &.expandedInlineCollapsible dt.collapsibleHeader, &.expandedBlockCollapsible dt.collapsibleHeader
     padding: 0 0.5em 0 2em
-    background: white url(treeExpanded.png) no-repeat 0.5em 50%
+    background: white url(../img/treeExpanded.png) no-repeat 0.5em 50%
     cursor: pointer
   &.collapsedBlockCollapsible
     border: none
@@ -973,7 +976,7 @@ dl
     padding: 0 0.5em 0 2em
     line-height: 1.2em
     cursor: pointer
-    background: white url(treeCollapsed.png) no-repeat 0.5em 50%
+    background: white url(../img/treeCollapsed.png) no-repeat 0.5em 50%
   &.collapsedInlineCollapsible dd.collapsibleContent, &.collapsedBlockCollapsible dd.collapsibleContent
     display: none
   &.collapsedInlineCollapsible
@@ -1430,7 +1433,7 @@ dl.toc
 /* @group Footer*/
 
 #portal-footer
-  font-size: 60%
+  font-size: 100%
   background: transparent
   margin: 1em 0
   line-height: 2em
@@ -1441,7 +1444,7 @@ dl.toc
   text-decoration: underline
 
 #portal-colophon
-  font-size: 80%
+  font-size: 100%
   text-align: center
   margin-bottom: 1em
   li
@@ -1871,8 +1874,7 @@ a.historyComparePrevious
   border-right: 1px solid #94C13A
   border-left: 1px solid #E0FAAC
   background-color: #C8ED7E
-  font-size: 80%
-  height: 21px
+  font-size: 100%
   display: block
   float: left
 
@@ -1886,6 +1888,7 @@ a.historyComparePrevious
   display: block
   line-height: 21px
   padding: 0 10px
+  height: 21px
 
 /* @end*/
 

@@ -92,7 +92,7 @@
              <table class="listing themelist">
                <tr class="subscriptions-title">
                  <th> Uw werkvelden</th>
-                 <th>
+                 <th width="120">
                     <label for="select_all_themes"
                            i18n:translate="toggle_all">
                       Toggle all:
