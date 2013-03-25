@@ -20,12 +20,4 @@
       permission="cmf.SetOwnProperties"
       />
 
-    <browser:page
-        for="Products.TinyMCE.interfaces.utility.ITinyMCE"
-        name="tinymce-getstyle"
-        class=".browser.style.MinaraadTinyMCEStyle"
-        attribute="getStyle"
-        permission="zope2.View"
-        />
-
 </configure>

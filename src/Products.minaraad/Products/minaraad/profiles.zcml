@@ -260,4 +260,13 @@
       sortkey="1"
       profile="Products.minaraad:default" />
 
+  <gs:upgradeStep
+      title="Apply css registry"
+      description=""
+      source="5016"
+      destination="5017"
+      handler="Products.minaraad.migration.apply_css_registry"
+      sortkey="1"
+      profile="Products.minaraad:default" />
+
 </configure>
