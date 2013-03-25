@@ -10,7 +10,7 @@
   <layer name="CMFPlacefulWorkflow" insert-after="minaraad"/>
   <layer name="DataGridWidget" insert-after="minaraad"/>
   <layer name="captchas" insert-after="minaraad"/>
-  <layer name="captcha_core_dynamic" insert-after="minaraad"/>
+  <layer name="captcha_core/dynamic" insert-after="minaraad"/>
   <layer name="captcha_core" insert-after="minaraad"/>
   <layer name="orderablereferencefield" insert-after="minaraad"/>
   <layer name="pyproxy" insert-after="minaraad"/>
