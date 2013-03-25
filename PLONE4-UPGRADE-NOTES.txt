@@ -8,7 +8,9 @@ Installing on servers
 We first need a python 2.6 virtual env.
 
   > cd ~
+  > sudo -E apt-get install python-virtualenv
   > mkdir virtual_envs
+  > cd virtual_envs
   > virtualenv -p /usr/bin/python2.6 py26_mina_plone4
 
 Then we can use bootstrap with this new python.
