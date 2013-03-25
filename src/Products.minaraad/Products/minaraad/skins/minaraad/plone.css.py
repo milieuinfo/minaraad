@@ -17,7 +17,7 @@ for stylesheet in stylesheets:
 
 # Add our theme style
 theme_style = "%s/++theme++minaraad/css/style.css" % context.portal_url()
-print "@import url(%s);" % theme_style
+print '@import "%s";' % theme_style
 
 duration = 1
 seconds = float(duration) * 24.0 * 3600.0
