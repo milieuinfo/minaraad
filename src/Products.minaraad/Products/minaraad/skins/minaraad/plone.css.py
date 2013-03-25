@@ -15,6 +15,10 @@ for stylesheet in stylesheets:
     if stylesheet.getRendering() in ['import', 'inline', 'link']:
         print portal_css.getInlineResource(stylesheet.getId(), context)
 
+# Add our theme style
+theme_style = "%s/++theme++minaraad/css/style.css" % context.portal_url()
+print "@import url(%s);" % theme_style
+
 duration = 1
 seconds = float(duration) * 24.0 * 3600.0
 response = context.REQUEST.RESPONSE
