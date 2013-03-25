@@ -7,8 +7,8 @@ Installing on servers
 
 We first need a python 2.6 virtual env.
 
+  > sudo -E apt-get install python-virtualenv python2.6-dev
   > cd ~
-  > sudo -E apt-get install python-virtualenv
   > mkdir virtual_envs
   > cd virtual_envs
   > virtualenv -p /usr/bin/python2.6 py26_mina_plone4

@@ -12,6 +12,7 @@
   </hidden>
   <hidden manager="plone.portalheader" skinname="*">
     <viewlet name="plone.global_sections" />
+    <viewlet name="plone.personal_bar" />
   </hidden>
   <hidden manager="plone.belowcontenttitle" skinname="*">
     <viewlet name="plone.belowcontenttitle.documentbyline" />
