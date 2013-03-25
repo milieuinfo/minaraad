@@ -1,7 +1,7 @@
 History of this buildout
 ========================
 
-5.0.4 (unreleased)
+5.0.4 (2013-03-25)
 ------------------
 
 - Styling.
