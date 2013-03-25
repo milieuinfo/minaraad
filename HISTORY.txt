@@ -1,7 +1,7 @@
 History of this buildout
 ========================
 
-5.0.5 (unreleased)
+5.0.5 (2013-03-25)
 ------------------
 
 - Hide the personal bar viewlet.
