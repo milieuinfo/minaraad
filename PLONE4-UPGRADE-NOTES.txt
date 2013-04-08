@@ -117,3 +117,7 @@ To do on Plone 4 through the web
 
 - Set the default editor to TinyMCE (go to @@set-default-editor page)
 
+- Go to the MailHost in the ZMI, enable 'Use mail queue' and set the
+  Queue directory to /home/zope/buildout/var/zopemailq.  The directory
+  should NOT exist yet.  It will be created with the appropriate
+  Maildir subdirectories.
