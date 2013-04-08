@@ -278,4 +278,13 @@
       sortkey="1"
       profile="Products.minaraad:default" />
 
+  <gs:upgradeStep
+      title="Update mailhost"
+      description=""
+      source="5018"
+      destination="5019"
+      handler="Products.minaraad.migration.update_mailhost"
+      sortkey="1"
+      profile="Products.minaraad:default" />
+
 </configure>

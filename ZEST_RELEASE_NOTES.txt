@@ -4,11 +4,12 @@ Release notes from Zest
 Manual fixes to do on the site.
 
 
-Upgrade to 4.9 (2012-02-22)
+Upgrade to 4.23 (2013-04-08)
 ---------------------------
 
-- In the portal_quickinstaller (or the Extra Producten control panel)
-  install the DataGridField product.
+- In the ZMI, go to portal_setup, to the Upgrades tab, select
+  Products.minaraad and run the upgrade step (for updating the
+  mailhost).
 
 
 Things to do after copying a production database to oefen/ontwikkel

@@ -350,3 +350,15 @@ def fix_mutable_properties_for_groups(context):
 
 def apply_propertiestool_step(context):
     context.runImportStepFromProfile(PROFILE_ID, 'propertiestool')
+
+
+def update_mailhost(context):
+    from Products.MailHost.interfaces import IMailHost
+    from Products.SecureMaildropHost.SecureMaildropHost import SecureMaildropHost
+    portal = getToolByName(context, 'portal_url').getPortalObject()
+    sm = portal.getSiteManager()
+    sm.unregisterUtility(portal.MailHost, provided=IMailHost)
+    portal._delObject('MailHost')
+    MailHost = SecureMaildropHost()
+    portal.MailHost = MailHost
+    sm.registerUtility(MailHost, provided=IMailHost)

@@ -4,6 +4,9 @@ History of this buildout
 5.0.6 (unreleased)
 ------------------
 
+- Use maildrop host.  See zest release notes.
+  [maurits]
+
 - Update find-links to Plone release 4.2.4 & thirdparty on dist.plone.org
   [fred]
   
