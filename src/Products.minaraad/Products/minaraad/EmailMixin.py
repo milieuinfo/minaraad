@@ -25,6 +25,7 @@
 #
 
 from AccessControl import ClassSecurityInfo
+from DateTime import DateTime
 from Products.Archetypes import atapi
 
 schema = atapi.Schema((
@@ -58,3 +59,26 @@ class EmailMixin:
     _at_rename_after_creation = True
 
     schema = EmailMixin_schema
+
+    def fail_if_already_sent(self, limit_minutes=None):
+        """Fail if this item has already been sent.
+
+        - limit_minutes: set this to 30 to disallow resending an email
+          within 30 minutes of a previous send.  By default this is
+          set to None, which means we never allow resending.
+
+        Note: sending a test email should not result in the emailSent
+        field being set, but that decision is up to the code that
+        sends the emails.
+        """
+        sent = self.getEmailSent()
+        if not sent:
+            return
+        if limit_minutes is None:
+            # We never allow resending at all.
+            raise AlreadySentError
+        minutes = (DateTime() - sent) * 60 * 24
+        if minutes < limit_minutes:
+            raise AlreadySentError("%d minuten geleden verstuurd, wat minder "
+                                   "is dan het minimum van %d." % (
+                                       minutes, limit_minutes))

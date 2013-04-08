@@ -16,6 +16,12 @@
               tal:omit-tag="">Send e-mail</span>
       </h1>
 
+      <p tal:condition="context/getEmailSent"
+         tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime">
+        <strong>Waarschuwing:</strong> een e-mail is al verstuurd op
+        <tal:time content="python:toLocalizedTime(context.getEmailSent(), long_format=1)" />.
+      </p>
+
       <p tal:condition="view/show_theme_warning">
         <strong>Waarschuwing:</strong> op dit object is het werkveld nog niet
         ingesteld. Er zullen dus geen abonnees gevonden worden. <a
