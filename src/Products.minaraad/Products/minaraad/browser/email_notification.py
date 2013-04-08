@@ -158,7 +158,7 @@ class EmailNotify(BrowserView):
 
             try:
                 logger.info("Starting mail to %s.", toAddress)
-                mailHost.send(message=message,
+                mailHost.send(message,
                               mto=toAddress,
                               mfrom=fromAddress,
                               subject=subject)

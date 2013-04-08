@@ -223,3 +223,14 @@ def remove_double_subscriptions(context):
     logger.info('Updated %s objects with PersistentList, found %s objects with double attendees' % (
         obj_count, double_count))
 
+
+def update_mailhost(context):
+    from Products.MailHost.interfaces import IMailHost
+    from Products.SecureMaildropHost.SecureMaildropHost import SecureMaildropHost
+    portal = getToolByName(context, 'portal_url').getPortalObject()
+    sm = portal.getSiteManager()
+    sm.unregisterUtility(portal.MailHost, provided=IMailHost)
+    portal._delObject('MailHost')
+    MailHost = SecureMaildropHost()
+    portal.MailHost = MailHost
+    sm.registerUtility(MailHost, provided=IMailHost)

@@ -7,7 +7,9 @@ Manual fixes to do on the site.
 Upgrade to 4.23 (2013-04-08)
 ---------------------------
 
-- In the ZMI, delete MailHost, add a new SecureMaildropHost with id MailHost.
+- In the ZMI, go to portal_setup, to the Upgrades tab, select
+  Products.minaraad and run the upgrade step (for updating the
+  mailhost).
 
 
 Things to do after copying a production database to oefen/ontwikkel
