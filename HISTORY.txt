@@ -1,7 +1,7 @@
 History of this buildout
 ========================
 
-4.23 (unreleased)
+4.23 (2013-04-08)
 -----------------
 
 - Use maildrop host.  See zest release notes.
