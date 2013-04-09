@@ -121,6 +121,13 @@
     />
 
   <browser:page
+      for="*"
+      name="reset_email_sent"
+      class=".email_notification.ResetEmailSent"
+      permission="cmf.ManagePortal"
+    />
+
+  <browser:page
       for="Products.minaraad.interfaces.IHearing"
       name="notify_registration"
       class=".email_notification.SubscriptionNotifyView"

@@ -4,6 +4,13 @@ History of this buildout
 5.0.6 (unreleased)
 ------------------
 
+- Completely refuse to send an email when an email has already been
+  sent for a context.  A reset is required.
+  [maurits]
+
+- Allow resetting the emailSent time when half an hour has passed.
+  [maurits]
+
 - Update find-links to Plone release 4.2.4 & thirdparty on dist.plone.org
   [fred]
   
@@ -11,6 +18,7 @@ History of this buildout
   nowadays be able to compile fine on both OS X and linux if the necessary
   libraries are present (libxml2-dev, libxslt-dev).
   [fred]
+
 
 5.0.5 (2013-03-25)
 ------------------

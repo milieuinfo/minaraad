@@ -74,6 +74,8 @@ class testEmailMixin(MainTestCase):
         transaction.commit = mock_commit
 
         mailview = context.unrestrictedTraverse('@@email_out')
+        # Only POST requests can really send mails.
+        mailview.request['REQUEST_METHOD'] = 'POST'
         mailview.request.set('send', '1')
 
         # Can we render this?

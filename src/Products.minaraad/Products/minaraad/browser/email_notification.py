@@ -16,6 +16,8 @@ from Products.minaraad.subscriptions import SubscriptionManager
 from Products.minaraad.subscriptions import THEME_FILTERED
 from Products.minaraad.utils import email_logger as logger
 
+LIMIT_MINUTES = 30
+
 
 class DictLike(object):
 
@@ -223,11 +225,24 @@ class EmailOutView(AbstractView, EmailNotify):
                 rendered += self.renderFromText(self.text)
             return rendered
 
+    def can_reset(self):
+        """Can the user reset the emailSent time?
+
+        This is only possible if the email has not been sent within a
+        certain time, be default half an hour.
+        """
+        context = aq_inner(self.context)
+        return not context.has_already_been_sent(limit_minutes=LIMIT_MINUTES)
+
     def sendEmail(self):
         logger.info("Start of EmailOutView.sendEmail.")
         context = aq_inner(self.context)
         request = self.request
         response = request.response
+
+        if not request.get('REQUEST_METHOD', 'GET').upper() == 'POST':
+            logger.debug("This is a GET request, so we should not send email.")
+            return
 
         if request.get('send', None) is not None:
             logger.info("Yes, we should send email.")
@@ -266,9 +281,12 @@ class EmailOutView(AbstractView, EmailNotify):
 
                 # We set the time that the email has been sent and
                 # immediately commit the transaction.  This should
-                # avoid sending the same emails twice, at least within
-                # a certain period.
-                context.fail_if_already_sent(limit_minutes=30)
+                # avoid sending the same emails twice.  First we check
+                # if an email has already been sent.  If it has been
+                # sent, and the user really wants to send it twice, he
+                # must first explicitly reset the emailSent time.  See
+                # the ResetEmailSent browser view.
+                context.fail_if_already_sent()
                 context.setEmailSent(DateTime())
                 transaction.commit()
             else:
@@ -397,3 +415,17 @@ class EmailTestView(EmailNotify):
         failed_postings = self.email(renderer, valid_members)
 
         return u"Failed postings, if any: %r" % failed_postings
+
+
+class ResetEmailSent(BrowserView):
+
+    def __call__(self):
+        if not self.request.get('REQUEST_METHOD', 'GET').upper() == 'POST':
+            return "Error: only POST allowed."
+        context = aq_inner(self.context)
+        if context.has_already_been_sent(limit_minutes=LIMIT_MINUTES):
+            return ("Error: the time limit has for resetting has not been "
+                    "reached yet.")
+        context.setEmailSent(None)
+        return self.request.RESPONSE.redirect(
+            context.absolute_url() + '/email_out')
