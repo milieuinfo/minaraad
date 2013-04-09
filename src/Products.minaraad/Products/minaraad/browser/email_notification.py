@@ -240,6 +240,10 @@ class EmailOutView(AbstractView, EmailNotify):
         request = self.request
         response = request.response
 
+        if not request.get('REQUEST_METHOD', 'GET').upper() == 'POST':
+            logger.debug("This is a GET request, so we should not send email.")
+            return
+
         if request.get('send', None) is not None:
             logger.info("Yes, we should send email.")
 
