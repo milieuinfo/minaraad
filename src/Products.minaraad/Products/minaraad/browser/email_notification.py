@@ -277,9 +277,12 @@ class EmailOutView(AbstractView, EmailNotify):
 
                 # We set the time that the email has been sent and
                 # immediately commit the transaction.  This should
-                # avoid sending the same emails twice, at least within
-                # a certain period.
-                context.fail_if_already_sent(limit_minutes=LIMIT_MINUTES)
+                # avoid sending the same emails twice.  First we check
+                # if an email has already been sent.  If it has been
+                # sent, and the user really wants to send it twice, he
+                # must first explicitly reset the emailSent time.  See
+                # the ResetEmailSent browser view.
+                context.fail_if_already_sent()
                 context.setEmailSent(DateTime())
                 transaction.commit()
             else:

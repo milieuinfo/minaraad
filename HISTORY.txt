@@ -4,6 +4,10 @@ History of this buildout
 4.24 (unreleased)
 -----------------
 
+- Completely refuse to send an email when an email has already been
+  sent for a context.  A reset is required.
+  [maurits]
+
 - Allow resetting the emailSent time when half an hour has passed.
   [maurits]
 
