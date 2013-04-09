@@ -1,7 +1,7 @@
 History of this buildout
 ========================
 
-4.24 (unreleased)
+4.24 (2013-04-09)
 -----------------
 
 - Completely refuse to send an email when an email has already been
