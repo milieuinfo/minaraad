@@ -232,5 +232,7 @@ def update_mailhost(context):
     sm.unregisterUtility(portal.MailHost, provided=IMailHost)
     portal._delObject('MailHost')
     MailHost = SecureMaildropHost('MailHost')
+    # Note that MailHost._transactional is True by default, which
+    # seems good: only send the mails when the transaction finishes.
     portal._setObject('MailHost', MailHost)
     sm.registerUtility(MailHost, provided=IMailHost)
