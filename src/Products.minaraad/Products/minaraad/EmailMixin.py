@@ -60,8 +60,8 @@ class EmailMixin:
 
     schema = EmailMixin_schema
 
-    def fail_if_already_sent(self, limit_minutes=None):
-        """Fail if this item has already been sent.
+    def has_already_been_sent(self, limit_minutes=None):
+        """Has this item already been sent?
 
         - limit_minutes: set this to 30 to disallow resending an email
           within 30 minutes of a previous send.  By default this is
@@ -73,12 +73,31 @@ class EmailMixin:
         """
         sent = self.getEmailSent()
         if not sent:
+            return False
+        if limit_minutes is None:
+            # We never allow resending at all.
+            return True
+        minutes = (DateTime() - sent) * 60 * 24
+        return minutes < limit_minutes
+
+    def fail_if_already_sent(self, limit_minutes=None):
+        """Fail if this item has already been sent.
+
+        - limit_minutes: set this to 30 to disallow resending an email
+          within 30 minutes of a previous send.  By default this is
+          set to None, which means we never allow resending.
+
+        Note: sending a test email should not result in the emailSent
+        field being set, but that decision is up to the code that
+        sends the emails.
+        """
+        if not self.has_already_been_sent(limit_minutes):
             return
         if limit_minutes is None:
             # We never allow resending at all.
             raise AlreadySentError
+        sent = self.getEmailSent()
         minutes = (DateTime() - sent) * 60 * 24
-        if minutes < limit_minutes:
-            raise AlreadySentError("%d minuten geleden verstuurd, wat minder "
-                                   "is dan het minimum van %d." % (
-                                       minutes, limit_minutes))
+        raise AlreadySentError("%d minuten geleden verstuurd, wat minder "
+                               "is dan het minimum van %d." % (
+                                   minutes, limit_minutes))

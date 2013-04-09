@@ -4,6 +4,9 @@ History of this buildout
 4.24 (unreleased)
 -----------------
 
+- Allow resetting the emailSent time when half an hour has passed.
+  [maurits]
+
 - Use better upgrade code for MailHost.  The new MailHost worked, but
   was invisible.
   [maurits]

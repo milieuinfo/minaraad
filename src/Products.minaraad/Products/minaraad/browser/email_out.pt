@@ -16,11 +16,47 @@
               tal:omit-tag="">Send e-mail</span>
       </h1>
 
-      <p tal:condition="context/getEmailSent"
+      <div tal:condition="context/getEmailSent"
          tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime">
-        <strong>Waarschuwing:</strong> een e-mail is al verstuurd op
+        <h2>Al verstuurd</h2>
+        <p>
+        <strong>Waarschuwing:</strong> een e-mail is verstuurd op
         <tal:time content="python:toLocalizedTime(context.getEmailSent(), long_format=1)" />.
-      </p>
+        </p>
+
+        <p>
+        Om dubbele verzending te voorkomen, kunt u het eerste half uur
+        geen e-mail versturen.  Weet u zeker dat u de e-mail toch nog
+        een keer wilt versturen, dan kunt u na dit half uur de pagina
+        resetten zodat de website vergeet dat de e-mail al verstuurd
+        is.  Daarna kunt de de e-mail nogmaals versturen.
+        </p>
+
+        <p>
+        N.B. Een test e-mail kan altijd verstuurd worden.
+        </p>
+        <div tal:condition="view/can_reset">
+          Reset hier de pagina:
+          <form action="reset_email_sent"
+                method="post"
+                name="reset_email_sent"
+                style="display: inline"
+                tal:attributes="action string:${context/absolute_url}/reset_email_sent"
+                tal:define="canSend view/canSend">
+            <div class="formControls"
+                style="display: inline">
+              <input class="context"
+                     tabindex=""
+                     type="submit"
+                     name="reset"
+                     value="Reset" />
+            </div>
+          </form>
+        </div>
+        <div tal:condition="not:view/can_reset">
+          De knop om te resetten wordt pas zichtbaar na een half uur.
+        </div>
+      </div>
 
       <p tal:condition="view/show_theme_warning">
         <strong>Waarschuwing:</strong> op dit object is het werkveld nog niet
