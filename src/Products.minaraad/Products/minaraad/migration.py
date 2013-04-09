@@ -231,6 +231,6 @@ def update_mailhost(context):
     sm = portal.getSiteManager()
     sm.unregisterUtility(portal.MailHost, provided=IMailHost)
     portal._delObject('MailHost')
-    MailHost = SecureMaildropHost()
-    portal.MailHost = MailHost
+    MailHost = SecureMaildropHost('MailHost')
+    portal._setObject('MailHost', MailHost)
     sm.registerUtility(MailHost, provided=IMailHost)

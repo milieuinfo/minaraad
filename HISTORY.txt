@@ -4,7 +4,9 @@ History of this buildout
 4.24 (unreleased)
 -----------------
 
-- Nothing changed yet.
+- Use better upgrade code for MailHost.  The new MailHost worked, but
+  was invisible.
+  [maurits]
 
 
 4.23 (2013-04-08)
