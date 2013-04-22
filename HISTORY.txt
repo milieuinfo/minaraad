@@ -1,7 +1,7 @@
 History of this buildout
 ========================
 
-5.0.7 (unreleased)
+5.0.7 (2013-04-22)
 ------------------
 
 - Cleanup PLONE4-UPGRADE-NOTES.txt.
