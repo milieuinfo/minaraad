@@ -13,12 +13,6 @@ We first need a python 2.6 virtual env.
   > cd virtual_envs
   > virtualenv -p /usr/bin/python2.6 py26_mina_plone4
 
-Then we can use bootstrap with this new python.
-
- > cd
- > cd buildout
- > /home/zope/virtual_envs/py26_mina_plone4/bin/python2.6 bootstrap.py
-
 We need the virtualenv otherwise we get an error saying distribute
 can't be installed.
 
@@ -40,10 +34,10 @@ To do on Plone 3 through the web
 - Uninstall emaillogin.
 
 - Uninstall Products.FCKeditor (it gives a problem during migration
-  and we probably want them to use TinyMCE).
+  and we want to use TinyMCE now).
 
 - You have to manually remove some skin layers from the Plone Default
-  skin selection:
+  skin selection in portal_skins in the ZMI:
 
   - cache_setup
 
@@ -57,34 +51,25 @@ To do on Plone 3 through the web
   default Plone 3.1.7 registry.  This should be added in minaraad while
   still using Plone 3.1.7, in the Components tab, otherwise you get a
   ComponentLookupError on IPortalTransformsTool when upgrading to
-  Plone 4 (probably also fine to do this just before doing the Plone
-  migration TTW)::
+  Plone 4::
 
     <utility
        interface="Products.PortalTransforms.interfaces.IPortalTransformsTool"
        object="portal_transforms"/>
 
 
-To do in the buildout
----------------------
+To do on Plone 4
+----------------
 
-- Check which versions can be removed from versions.cfg as they are
-  already pinned elsewhere.  Preferably do not remove versions from no
-  longer used recipes though, as the pins are needed for uninstall
-  too.
+- Stop supervisor and switch to the new buildout tag.
 
-- Test RelStorage with blobstorage.  TEST IT WELL!!!  There is some
-  confusion (at least for me) between the names of the options and
-  where to put them.  See:
+- Use the new python from the virtualenv to bootstrap the buildout.
 
-  - http://pypi.python.org/pypi/RelStorage
-  - http://pypi.python.org/pypi/plone.recipe.zope2instance
+  $ /home/zope/virtual_envs/py26_mina_plone4/bin/python2.6 bootstrap.py
 
+- Start supervisor.
 
-To do on Plone 4 through the web
---------------------------------
-
-- Run the Plone migration.
+- Run the Plone migration in the ZMI.
 
 - The site should fail now (no portlet_recent), that's "normal". Go to
   @@manage-portlets (at the root of the site) and remove
@@ -98,7 +83,7 @@ To do on Plone 4 through the web
     - install Quintagroup Captcha Core
     - install collective.emaillogin4
     - upgrade Simple attachments (note: this takes some time, so use a
-      tunnel to access the instance directly. And it might reset the
+      tunnel to access the zope port directly. And it might reset the
       instance too, weird ...)
     - upgrade minaraad.projects
     - upgrade minaraad
@@ -115,9 +100,17 @@ To do on Plone 4 through the web
 - Configure plone.app.caching (not much was previously cached in
   CacheSetup though).
 
-- Set the default editor to TinyMCE (go to @@set-default-editor page)
+- Set the default editor to TinyMCE.  Go to @@set-default-editor page,
+  and follow the instructions at the top in two steps:
+
+  - First select TinyMCE and set this as the default editor.
+
+  - Then select 'Standaard gebruik website' and set this in the
+    preferences of each existing user.
 
 - Go to the MailHost in the ZMI, enable 'Use mail queue' and set the
   Queue directory to /home/zope/buildout/var/zopemailq.  The directory
   should NOT exist yet.  It will be created with the appropriate
-  Maildir subdirectories.
+  Maildir subdirectories.  If these options are not available, let
+  Maurits know.  There were a bit too many changes in the minaraad
+  mail setup recently in Plone 3.

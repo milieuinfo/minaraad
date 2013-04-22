@@ -4,7 +4,8 @@ History of this buildout
 5.0.7 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Cleanup PLONE4-UPGRADE-NOTES.txt.
+  [maurits]
 
 
 5.0.6 (2013-04-18)
