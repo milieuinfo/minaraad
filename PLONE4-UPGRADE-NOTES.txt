@@ -7,7 +7,7 @@ Installing on servers
 
 We first need a python 2.6 virtual env and a few more libraries.
 
-  > sudo -E apt-get install python-virtualenv python2.6-dev libxml2 libxslt1-dev
+  > sudo -E apt-get install python-virtualenv python2.6-dev libxml2 libxslt1-dev python-imaging
   > cd ~
   > mkdir virtual_envs
   > cd virtual_envs
@@ -62,6 +62,8 @@ To do on Plone 3 through the web
 
 To do on Plone 4
 ----------------
+
+- Note: the migration takes a lot of memory.  6 GB is advised.
 
 - Stop supervisor and switch to the new buildout tag.
 
