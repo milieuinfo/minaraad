@@ -5,9 +5,9 @@ Notes on Minaraad Plone 4 migration
 Installing on servers
 ---------------------
 
-We first need a python 2.6 virtual env.
+We first need a python 2.6 virtual env and a few more libraries.
 
-  > sudo -E apt-get install python-virtualenv python2.6-dev
+  > sudo -E apt-get install python-virtualenv python2.6-dev libxml2 libxslt1-dev
   > cd ~
   > mkdir virtual_envs
   > cd virtual_envs
@@ -37,7 +37,9 @@ To do on Plone 3 through the web
   and we want to use TinyMCE now).
 
 - You have to manually remove some skin layers from the Plone Default
-  skin selection in portal_skins in the ZMI:
+  skin selection.  Go to portal_skins in the ZMI, then the Properties
+  tab, remove the next skin layers from the Plone Default list and
+  click Save:
 
   - cache_setup
 
@@ -66,6 +68,11 @@ To do on Plone 4
 - Use the new python from the virtualenv to bootstrap the buildout.
 
   $ /home/zope/virtual_envs/py26_mina_plone4/bin/python2.6 bootstrap.py
+
+- Check that the bin/buildout command has the python2.6 command from
+  the virtual env in the first line.
+
+- Run bin/buildout.
 
 - Start supervisor.
 
