@@ -4,7 +4,8 @@ History of this buildout
 5.0.8 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Added upgrade step to restore a normal MailHost.
+  [maurits]
 
 
 5.0.7 (2013-04-22)

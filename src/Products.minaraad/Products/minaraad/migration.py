@@ -350,3 +350,31 @@ def fix_mutable_properties_for_groups(context):
 
 def apply_propertiestool_step(context):
     context.runImportStepFromProfile(PROFILE_ID, 'propertiestool')
+
+
+def update_mailhost(context, klass):
+    from Products.MailHost.interfaces import IMailHost
+    portal = getToolByName(context, 'portal_url').getPortalObject()
+    if portal.MailHost.__class__ == klass:
+        logger.info("portal.MailHost is already of class %s", klass)
+        return
+    sm = portal.getSiteManager()
+    sm.unregisterUtility(portal.MailHost, provided=IMailHost)
+    portal._delObject('MailHost')
+    MailHost = klass('MailHost')
+    # Note that MailHost._transactional is True by default, which
+    # seems good: only send the mails when the transaction finishes.
+    portal._setObject('MailHost', MailHost)
+    sm.registerUtility(MailHost, provided=IMailHost)
+    logger.info("Created new portal.MailHost with class %s", klass)
+
+
+def update_to_maildrophost(context):
+    from Products.SecureMaildropHost.SecureMaildropHost import \
+        SecureMaildropHost as klass
+    update_mailhost(context, klass)
+
+
+def restore_mailhost(context):
+    from Products.MailHost.MailHost import MailHost as klass
+    update_mailhost(context, klass)

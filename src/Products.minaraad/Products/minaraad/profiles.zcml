@@ -278,4 +278,13 @@
       sortkey="1"
       profile="Products.minaraad:default" />
 
+  <gs:upgradeStep
+      title="Restore MailHost"
+      description=""
+      source="5018"
+      destination="5019"
+      handler="Products.minaraad.migration.restore_mailhost"
+      sortkey="1"
+      profile="Products.minaraad:default" />
+
 </configure>
