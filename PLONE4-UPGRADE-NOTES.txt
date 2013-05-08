@@ -76,7 +76,10 @@ To do on Plone 4
 
 - Run bin/buildout.
 
-- Start supervisor.
+- Start supervisor: bin/supervisord
+
+- Stop memmon, anders kan het zijn dat de zope instantie herstart
+  wordt bij te hoog geheugengebruik: bin/supervisorctl stop memmon
 
 - Run the Plone migration in the ZMI.
 
@@ -123,3 +126,5 @@ To do on Plone 4
   Maildir subdirectories.  If these options are not available, let
   Maurits know.  There were a bit too many changes in the minaraad
   mail setup recently in Plone 3.
+
+- Start memmon weer: bin/supervisorctl start memmon
