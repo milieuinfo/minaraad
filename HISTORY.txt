@@ -1,7 +1,7 @@
 History of this buildout
 ========================
 
-5.0.8 (unreleased)
+5.0.8 (2013-05-08)
 ------------------
 
 - Added upgrade step to restore a normal MailHost.
