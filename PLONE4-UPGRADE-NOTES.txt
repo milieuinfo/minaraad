@@ -49,6 +49,11 @@ To do on Plone 3 through the web
 
   - fckeditor
 
+- Recently the main_template.pt was changed slightly through the web.
+  This must be undone when going to Plone 4.  Go to the portal_skins
+  in the ZMI, then to the custom skin folder, and remove
+  'main_template' if it is there.
+
 - There is a difference between the minaraad Components registry and a
   default Plone 3.1.7 registry.  This should be added in minaraad while
   still using Plone 3.1.7, in the Components tab, otherwise you get a
