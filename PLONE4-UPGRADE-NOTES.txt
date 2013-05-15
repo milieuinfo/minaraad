@@ -99,6 +99,7 @@ To do on Plone 4
     - install diazo
     - install Quintagroup Captcha Core
     - install collective.emaillogin4
+    - plone.app.caching (HTTP caching support)
     - upgrade Simple attachments (note: this takes some time, so use a
       tunnel to access the zope port directly. And it might reset the
       instance too, weird ...)
