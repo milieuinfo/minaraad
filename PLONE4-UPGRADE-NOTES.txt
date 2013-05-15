@@ -112,7 +112,7 @@ To do on Plone 4
 - Go to the Theme Settings page (@@theming-controlpanel), select the
   "Minaraad" theme and enable it.
 
-- Add the following portlets on the homepage:
+- Add the following portlets on the root of the site (so not the front-page):
   - left column: Minaraad login, Minaraad personal preferences
   - right column: Minaraad search, LinkedIn, Minaraad recent changes
 
