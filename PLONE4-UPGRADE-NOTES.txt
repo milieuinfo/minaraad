@@ -108,7 +108,8 @@ To do on Plone 4
 - Go the the ZMI, portal_setup, import tab. Select "CMFEditions" and
   import all steps.
 
-- Go to the Diazo configuration page, select the "Minaraad" theme.
+- Go to the Theme Settings page (@@theming-controlpanel), select the
+  "Minaraad" theme and enable it.
 
 - Add the following portlets on the homepage:
   - left column: Minaraad login, Minaraad personal preferences
