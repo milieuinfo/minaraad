@@ -143,4 +143,10 @@ To do on Plone 4
   Maurits know.  There were a bit too many changes in the minaraad
   mail setup recently in Plone 3.
 
+  The SMTP host should be: smtp-plone.mmis.be.
+
+  If 'Status of queue processor thread' says it is stopped, then there
+  should be a link 'Start queue processor thread' and you should click
+  on it.
+
 - Start memmon weer: bin/supervisorctl start memmon
