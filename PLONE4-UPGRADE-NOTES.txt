@@ -119,6 +119,15 @@ To do on Plone 4
 - Configure plone.app.caching (not much was previously cached in
   CacheSetup though).
 
+  - Global settings:
+    - Enable caching
+  - Caching proxies:
+    - Enable purging
+    - Caching proxies: pick the right servers. For production it is:
+      http://plone-minaraad-pr-1.mmis.be:12080
+      http://plone-minaraad-pr-2.mmis.be:12080
+    - Check 'Virtual host rewriting takes place front of the caching proxy'
+
 - Set the default editor to TinyMCE.  Go to @@set-default-editor page,
   and follow the instructions at the top in two steps:
 
