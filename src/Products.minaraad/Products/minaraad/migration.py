@@ -378,3 +378,20 @@ def update_to_maildrophost(context):
 def restore_mailhost(context):
     from Products.MailHost.MailHost import MailHost as klass
     update_mailhost(context, klass)
+
+
+def fix_viewlet_persistence(context):
+    # The viewlet storage should be persistent, but some old parts are
+    # simple dictionaries, which mean applying the viewlets.xml or
+    # editing manage-viewlets only has effect until the next restart.
+    from persistent.mapping import PersistentMapping
+    from plone.app.viewletmanager.interfaces import IViewletSettingsStorage
+    from zope.component import getUtility
+
+    storage = getUtility(IViewletSettingsStorage)
+    for setting in (storage._order, storage._hidden):
+        for key, value in setting.items():
+            if isinstance(value, dict):
+                value = PersistentMapping(value)
+                setting[key] = value
+                logger.info("Made value of key %s a persistent mapping.", key)

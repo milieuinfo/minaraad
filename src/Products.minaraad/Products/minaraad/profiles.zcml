@@ -287,4 +287,19 @@
       sortkey="1"
       profile="Products.minaraad:default" />
 
+  <gs:upgradeSteps
+      source="5019"
+      destination="5020"
+      sortkey="1"
+      profile="Products.minaraad:default">
+    <gs:upgradeStep
+        title="Fix viewlet persistence"
+        description=""
+        handler="Products.minaraad.migration.fix_viewlet_persistence" />
+    <gs:upgradeStep
+        title="Apply viewlets"
+        description=""
+        handler="Products.minaraad.migration.apply_viewlets" />
+  </gs:upgradeSteps>
+
 </configure>
