@@ -4,7 +4,8 @@ History of this buildout
 5.0.9 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Various improvements to styling, viewlets, migration document.
+  [maurits]
 
 
 5.0.8 (2013-05-08)
