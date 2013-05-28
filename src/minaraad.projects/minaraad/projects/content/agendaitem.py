@@ -20,7 +20,7 @@ agendaitem_schema = base_agendaitem_schema + atapi.Schema((
         default_output_type='text/html',
         widget=atapi.RichWidget(
             label=_(u'label_description',
-                      default=u'Description')
+                    default=u'Description')
             )
         ),
 

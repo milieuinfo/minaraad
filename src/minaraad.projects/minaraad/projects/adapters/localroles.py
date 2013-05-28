@@ -32,7 +32,7 @@ class LocalRoleProvider(object):
             project = self.context
 
         return g_id == project.getResponsible_group() or \
-               g_id in project.getAssigned_groups()
+            g_id in project.getAssigned_groups()
 
     def check_state(self, project=None):
         """ When projects are not activated, we do
@@ -100,7 +100,7 @@ class MeetingLocalRoleProvider(LocalRoleProvider):
     def getAllRoles(self):
         gtool = getToolByName(self.context, 'portal_groups')
         all_groups = list(self.context.getInvited_groups()) + \
-                     [self.context.getResponsible_group()]
+            [self.context.getResponsible_group()]
 
         for group_id in gtool.getGroupIds():
             if group_id in all_groups:

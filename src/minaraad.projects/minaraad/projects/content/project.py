@@ -25,8 +25,7 @@ except ImportError:
     theme_schema = atapi.Schema(())
     ThemeMixin = object
 
-project_schema = atapi.OrderedBaseFolderSchema.copy() + \
-                 atapi.Schema((
+project_schema = atapi.OrderedBaseFolderSchema.copy() + atapi.Schema((
 
     atapi.StringField(
         name='project_number',
@@ -34,7 +33,7 @@ project_schema = atapi.OrderedBaseFolderSchema.copy() + \
         validators=('projectNumber3Digits', ),
         widget=atapi.StringWidget(
             label=_(u'label_project_number',
-                      default=u'Project number')
+                    default=u'Project number')
             )
         ),
 
@@ -44,7 +43,7 @@ project_schema = atapi.OrderedBaseFolderSchema.copy() + \
         validators=('projectNumber3Digits', ),
         widget=atapi.StringWidget(
             label=_(u'label_product_number',
-                      default=u'Product number')
+                    default=u'Product number')
             )
         ),
 
@@ -55,7 +54,7 @@ project_schema = atapi.OrderedBaseFolderSchema.copy() + \
         default_output_type='text/html',
         widget=atapi.RichWidget(
             label=_(u'label_description',
-                      default=u'Description'),
+                    default=u'Description'),
             description=_(
                 u'desc_description',
                 default=(u"A short description of the contents and the "
@@ -69,7 +68,7 @@ project_schema = atapi.OrderedBaseFolderSchema.copy() + \
         widget=atapi.CalendarWidget(
             show_hm=False,
             label=_(u'label_adv_date',
-                      default=u'Advisory date')
+                    default=u'Advisory date')
             )
         ),
 
@@ -79,7 +78,7 @@ project_schema = atapi.OrderedBaseFolderSchema.copy() + \
         vocabulary='_requester_vocabulary',
         widget=atapi.SelectionWidget(
             label=_(u'label_adv_requester',
-                      default=u'Advisory requester')
+                    default=u'Advisory requester')
             )
         ),
 
@@ -89,7 +88,7 @@ project_schema = atapi.OrderedBaseFolderSchema.copy() + \
         default=30,
         widget=atapi.IntegerWidget(
             label=_(u'label_adv_term',
-                      default=u'Advisory term')
+                    default=u'Advisory term')
             )
         ),
 
@@ -97,7 +96,7 @@ project_schema = atapi.OrderedBaseFolderSchema.copy() + \
         name='advisory_request',
         widget=atapi.FileWidget(
             label=_(u'label_adv_request',
-                      default=u'Advisory request')
+                    default=u'Advisory request')
             )
         ),
 
@@ -108,7 +107,7 @@ project_schema = atapi.OrderedBaseFolderSchema.copy() + \
         widget=atapi.MultiSelectionWidget(
             format="checkbox",
             label=_(u'label_organisations',
-                      default=u'Participating organisations')
+                    default=u'Participating organisations')
             )
         ),
 
@@ -118,7 +117,7 @@ project_schema = atapi.OrderedBaseFolderSchema.copy() + \
         vocabulary='_group_vocabulary',
         widget=atapi.SelectionWidget(
             label=_(u'label_responsible_group',
-                      default=u'Responsible group')
+                    default=u'Responsible group')
             )
         ),
 
@@ -129,7 +128,7 @@ project_schema = atapi.OrderedBaseFolderSchema.copy() + \
         widget=atapi.CalendarWidget(
             show_hm=False,
             label=_(u'label_postpone_date',
-                      default=u'Dealine (postponed)')
+                    default=u'Dealine (postponed)')
             )
         ),
 
@@ -139,7 +138,7 @@ project_schema = atapi.OrderedBaseFolderSchema.copy() + \
         widget=atapi.CalendarWidget(
             show_hm=False,
             label=_(u'label_delivery_date',
-                      default=u'Delivery date (actual)')
+                    default=u'Delivery date (actual)')
             )
         ),
 
@@ -150,7 +149,7 @@ project_schema = atapi.OrderedBaseFolderSchema.copy() + \
         vocabulary='_adv_type_vocabulary',
         widget=atapi.SelectionWidget(
             label=_(u'label_adv_type',
-                      default=u'Advisory type')
+                    default=u'Advisory type')
             )
         ),
 
@@ -159,7 +158,7 @@ project_schema = atapi.OrderedBaseFolderSchema.copy() + \
         vocabulary='_disagreeing_members_vocabulary',
         widget=atapi.MultiSelectionWidget(
             label=_(u'label_disagreeing_members',
-                      default=u'Disagreeing members'),
+                    default=u'Disagreeing members'),
             format='checkbox',
             )
         ),
@@ -168,7 +167,7 @@ project_schema = atapi.OrderedBaseFolderSchema.copy() + \
         name='reject_reasons',
         widget=atapi.LinesWidget(
             label=_(u'label_reject_reasons',
-                      default=u'Reject reasons')
+                    default=u'Reject reasons')
             )
         ),
 
@@ -178,7 +177,7 @@ project_schema = atapi.OrderedBaseFolderSchema.copy() + \
         vocabulary='_group_vocabulary',
         widget=atapi.InAndOutWidget(
             label=_(u'label_assigned_groups',
-                      default=u'Assigned groups')
+                    default=u'Assigned groups')
             )
         ),
     )) + \

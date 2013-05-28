@@ -136,7 +136,7 @@ class BaseMeeting(atapi.BaseFolder):
                     files.append(
                         {'file': StringIO(item[att_id].getFile()),
                          'attachment': '%s/%s' % (item.absolute_url(),
-                                                    att_id)})
+                                                  att_id)})
 
         if not files:
             self.pdf = None

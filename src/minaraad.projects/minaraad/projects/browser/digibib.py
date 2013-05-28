@@ -109,7 +109,7 @@ class DigiBibView(BrowserView):
         links = []
         this_year = {}  # Should not be needed, but just in case.
         for res_year, objects in sorted(grouped.items(),
-                                        key=lambda g:g[0], reverse=True):
+                                        key=lambda g: g[0], reverse=True):
             selected = False
             if res_year == year:
                 selected = True
@@ -117,8 +117,8 @@ class DigiBibView(BrowserView):
                              'objects': objects}
 
             links.append(dict(year=res_year,
-                               num=len(objects),
-                               selected=selected))
+                              num=len(objects),
+                              selected=selected))
 
         years = [link['year'] for link in links]
 
@@ -131,7 +131,7 @@ class DigiBibView(BrowserView):
 
         if year != current_year and current_year not in years:
             links.insert(0, {'year': current_year, 'num': 0,
-                              'selected': False})
+                             'selected': False})
 
         if sort_on is not None:
             this_year['objects'] = sorted(this_year['objects'], key = sort_on)
@@ -157,9 +157,9 @@ class MeetingsListingView(DigiBibView):
 
     def get_past_meetings(self):
         objects = self._sort_meetings(
-              [meeting.getObject() for meeting in self.context.list_meetings()
-                if meeting.getStart_time and \
-                meeting.getStart_time.isPast()], reverse=True)
+            [meeting.getObject() for meeting in self.context.list_meetings()
+             if meeting.getStart_time and
+             meeting.getStart_time.isPast()], reverse=True)
 
         def get_year(x):
             return x.getStart_time().year()
@@ -169,7 +169,7 @@ class MeetingsListingView(DigiBibView):
     def get_future_meetings(self):
         return self._sort_meetings(
             [meeting.getObject() for meeting in self.context.list_meetings()
-             if meeting.getStart_time and \
+             if meeting.getStart_time and
              not meeting.getStart_time.isPast()])
 
 
@@ -184,7 +184,7 @@ class ProjectsListingView(DigiBibView):
         # Since we sort on advisory date now, we must organize by the
         # year of that date too, instead of the year of the deadline.
         get_year = lambda x: x.getAdvisory_date().year()
-        sort_on = lambda x:x.getProject_number()
+        sort_on = lambda x: x.getProject_number()
 
         return self.organize_by_year(objects, get_year, sort_on)
 

@@ -32,8 +32,8 @@ class ProjectPropertiesView(BrowserView):
         return {'email': props.secretary_email,
                 'board': props.governance_board,
                 'requesters': '\n'.join(props.requesters),
-                'membership_organizations': \
-                           '\n'.join(props.membership_organizations),
+                'membership_organizations': '\n'.join(
+                    props.membership_organizations),
                 }
 
     def set_properties(self, email, board, requesters,

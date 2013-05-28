@@ -80,19 +80,22 @@ class ProjectsReminder(BrowserView):
             for key in mapping:
                 mapping[key] = safe_unicode(mapping[key])
 
-            title = translate(_(u'label_boardmember_digest_mail_title',
-                                default=u'Weekly list of proposed projects',
-                                mapping=mapping),
-                              context=self.context.REQUEST)
+            title = translate(
+                _(u'label_boardmember_digest_mail_title',
+                  default=u'Weekly list of proposed projects',
+                  mapping=mapping),
+                context=self.context.REQUEST)
 
-            content = translate(_(u'label_boardmember_digestmail_content',
-                              default=u'Dear ${fullname}, \n\n' + \
-                              'Here is the list of the projects that have ' + \
-                              'been proposed this week:\n' + \
-                              '${project_list} \n\n' + \
-                              'Best regards.',
-                              mapping=mapping),
-                            context=self.context.REQUEST)
+            content = translate(
+                _(u'label_boardmember_digestmail_content',
+                  default=(
+                      u'Dear ${fullname}, \n\n'
+                      u'Here is the list of the projects that have '
+                      u'been proposed this week:\n'
+                      u'${project_list} \n\n'
+                      u'Best regards.'),
+                  mapping=mapping),
+                context=self.context.REQUEST)
 
             member_email = member.getProperty('email', None)
             if member_email is None:

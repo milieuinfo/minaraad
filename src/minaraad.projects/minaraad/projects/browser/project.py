@@ -170,7 +170,7 @@ class ProjectView(BrowserView):
                                 'portal_catalog')
         first_level = catalog.searchResults(
             path={'query': '/'.join(self.context.getPhysicalPath()),
-                   'depth': 1},
+                  'depth': 1},
             sort_on='getObjPositionInParent')
 
         return first_level

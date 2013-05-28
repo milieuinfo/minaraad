@@ -120,8 +120,8 @@ def datetime_diff_minutes(start, end):
         return DateTime(d.year(), d.month(), d.day())
 
     return 1440 * int(simple_date(end) - simple_date(start)) + \
-           60 * (end.hour() - start.hour()) + \
-           end.minute() - start.minute()
+        60 * (end.hour() - start.hour()) + \
+        end.minute() - start.minute()
 
 
 def human_readable_size(size):

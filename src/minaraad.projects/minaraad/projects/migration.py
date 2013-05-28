@@ -75,18 +75,18 @@ def migrate_advisories_to_projects(context):
     hardcoded_id_list = [
         '110519-evaluatie-van-de-werking-2010-van-de-regionale-landschappen',
         ('110719-erkenning-van-een-privaat-natuurreservaat-e-409-gondebeek-te-'
-          'melle-merelbeke-en-oosterzele-oost-vlaanderen'),
+         'melle-merelbeke-en-oosterzele-oost-vlaanderen'),
         ('110719-uitbreiding-van-een-erkend-natuurreservaat-e-003-blankaart-'
-          'te-diksmuide-en-houtlhulst-west-vlaanderen'),
+         'te-diksmuide-en-houtlhulst-west-vlaanderen'),
         ('110823-uitbreiding-van-een-erkend-natuurreservaat-e-111-latemse-'
-          'meersen-te-sint-martens-latem-oost-vlaanderen'),
+         'meersen-te-sint-martens-latem-oost-vlaanderen'),
         ('110823-uitbreiding-van-het-erkend-natuurreservaat-e-216-hof-ten-berg'
-          '-te-galmaarden-vlaams-brabant-en-geraardsbergen-oost-vlaanderen'),
+         '-te-galmaarden-vlaams-brabant-en-geraardsbergen-oost-vlaanderen'),
         ('110824-uitbreiding-erkend-natuurreservaat-e-161-duivenbos-te-'
-          'herzele'),
+         'herzele'),
         '20110930-milieuhandhavingsprogramma-2011',
         ('uitbreiding-van-een-erkend-natuurreservaat-e-016-'
-          '201ctikkebroeken201d-te-kasterlee-en-oud-turnhout-antwerpen'),
+         '201ctikkebroeken201d-te-kasterlee-en-oud-turnhout-antwerpen'),
         ]
     for advisory_id in hardcoded_id_list:
         try:
@@ -133,7 +133,7 @@ def migrate_advisories_to_projects(context):
 
         for doc in advisory.contentValues():
             if (is_advisory_request(doc) and
-                project.getAdvisory_request().getSize() == 0):
+                    project.getAdvisory_request().getSize() == 0):
                 project.setAdvisory_request(doc.getFile())
                 logger.info("Saved advisory request.")
             else:
@@ -293,11 +293,14 @@ def use_location_uid_in_cached_locations(context):
     logger.info('%s meetings updated' % m_up_count)
     logger.info('%s meetings cleaned' % m_cl_count)
 
+
 def apply_skin_profile(context):
     context.runImportStepFromProfile(PROFILE_ID, 'skins')
 
+
 def apply_factory_profile(context):
     context.runImportStepFromProfile(PROFILE_ID, 'factorytool')
+
 
 def apply_types_fixes(context):
     context.runImportStepFromProfile(FIXES_PROFILE_ID, 'typeinfo')

@@ -10,7 +10,7 @@ from zope.i18n import translate
 
 from minaraad.projects import MinaraadProjectMessageFactory as _
 from minaraad.projects.widgets import PARTICIPANT_PRESENT, \
-     PARTICIPANT_EXCUSED, PARTICIPANT_ABSENT
+    PARTICIPANT_EXCUSED, PARTICIPANT_ABSENT
 from minaraad.projects.utils import getEndOfMonth
 
 

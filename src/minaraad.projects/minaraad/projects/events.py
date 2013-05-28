@@ -62,7 +62,7 @@ def save_invited(meeting, event):
     invited = meeting.get_invited_people()
     portal_groups = getToolByName(meeting, 'portal_groups')
     all_groups = list(meeting.getInvited_groups()) + \
-                 [meeting.getResponsible_group()]
+        [meeting.getResponsible_group()]
     for group_id in all_groups:
         group = portal_groups.getGroupById(group_id)
 
@@ -148,7 +148,7 @@ def save_board_members(project, event):
     members = project.get_board_members()
 
     all_groups = list(project.getAssigned_groups()) + \
-                 [project.getResponsible_group()]
+        [project.getResponsible_group()]
     m_ids = [m['id'] for m in members]
 
     for group_id in all_groups:
