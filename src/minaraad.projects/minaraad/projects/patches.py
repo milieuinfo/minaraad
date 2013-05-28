@@ -30,4 +30,4 @@ def unapply_referencebrowser_patch():
 
 def apply_all():
     apply_referencebrowser_patch()
-    
+

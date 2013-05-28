@@ -13,12 +13,12 @@
     <span tal:replace="structure context/logo_1_logo"
           tal:condition="context/getLogo_1" />
   </div>
-  
+
   <div class="press-img-right">
     <span tal:replace="structure context/logo_2_logo"
           tal:condition="context/getLogo_2" />
   </div>
-  
+
   <div tal:define="daterequired python:context.getDate() != None;
                    toLocalizedTime nocall:context/@@plone/toLocalizedTime;
                    cdate context/date;
@@ -26,12 +26,12 @@
        tal:content="date"
        tal:condition="daterequired"
        class="press-date">01-01</div>
-  
+
   <div class="press-title"
        tal:content="context/Title">Title</div>
   <div class="press-subhead"
        tal:content="context/getSubheader">SubHeader</div>
-  
+
   <div class="clear" />
   <br />
 </metal:content-title>

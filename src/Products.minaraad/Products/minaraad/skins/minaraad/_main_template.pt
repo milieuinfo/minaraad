@@ -96,7 +96,7 @@
               <div metal:use-macro="here/global_sections/macros/portal_tabs">
                 The global sections tabs. (Welcome, News etc)
               </div>
-              
+
               <div class="mina_portlets_spacing">
                 <metal:block metal:use-macro="here/portlet_login/macros/portlet" />
                 <metal:block metal:use-macro="here/portlet_personalbar/macros/portlet" />
@@ -185,7 +185,7 @@
                    tal:omit-tag="">
                 The quicksearch box, normally placed at the top right
               </div>
-              
+
                <tal:linkedin
                    define="pcs context/@@plone_context_state"
                    tal:on-error="string:"

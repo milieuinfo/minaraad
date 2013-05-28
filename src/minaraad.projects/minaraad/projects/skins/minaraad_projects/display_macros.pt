@@ -51,7 +51,7 @@
       <tal:block condition="meeting/getStart_time|nothing">
         <span class="meeting_times"
            tal:define="d meeting/getStart_time">
-          <metal:block use-macro="context/display_macros/macros/date" /> - 
+          <metal:block use-macro="context/display_macros/macros/date" /> -
           <tal:block tal:define="t meeting/getStart_time">
             <metal:block use-macro="context/display_macros/macros/time" /> :
           </tal:block>
@@ -66,7 +66,7 @@
         <tal:block tal:define="mtool context/portal_membership|nothing;
                                can_edit python:mtool.checkPermission('Modify portal content', context);"
                    tal:condition="can_edit">
-          
+
           <a class="icon" tal:attributes="href python: '%s/edit' % attachment.getURL()"
              ><img src="edit.gif" tal:attributes="src string:${context/portal_url}/edit.gif" /></a>
           <a class="icon" tal:attributes="href python: '%s/delete_confirmation' % attachment.getURL()"
@@ -93,7 +93,7 @@
 
             <div class="list-attachments"
                  tal:define="oddrow repeat/att/odd">
-              
+
               <metal:block use-macro="context/filemacro/macros/attachment_view" />
               <metal:block use-macro="context/display_macros/macros/attachments_buttons" />
             </div>

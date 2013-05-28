@@ -234,7 +234,7 @@
       for="Products.CMFPlone.Portal.PloneSite"
       class=".forms.MinaRegistrationForm"
       permission="zope.Public"
-      />  
+      />
 
   <browser:page
       for="*"

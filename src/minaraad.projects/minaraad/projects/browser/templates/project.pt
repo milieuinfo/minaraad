@@ -54,7 +54,7 @@
                   tal:define="oddrow repeat/item/odd;
                               ptype item/portal_type;
                               is_attachment python: ptype == 'FileAttachment'">
-               <tal:block tal:condition="is_attachment" 
+               <tal:block tal:condition="is_attachment"
                           tal:define="attachment item">
                  <metal:block use-macro="context/filemacro/macros/attachment_view" />
                  <metal:block use-macro="context/display_macros/macros/attachments_buttons" />

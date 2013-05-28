@@ -12,7 +12,7 @@
           <ul class="portal-tabs-nav-items"
               tal:define="subitems tab/children|nothing"
               tal:condition="tab/children">
-            
+
             <tal:repeat repeat="subitem subitems">
               <li class="portal-tabs-subitem-listitem"
                   tal:condition="not:subitem/no_display">

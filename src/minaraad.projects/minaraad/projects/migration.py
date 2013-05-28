@@ -270,7 +270,7 @@ def use_location_uid_in_cached_locations(context):
         except:
             logger.warn('Unable to wake brain at %s' % brain.getURL())
             continue
-    
+
         location = meeting.getMeetinglocation()
         annotations = meeting.get_saved_location()
 
@@ -278,7 +278,7 @@ def use_location_uid_in_cached_locations(context):
             if not annotations:
                 # Well, nothing to do here.
                 continue
-            
+
             annotations = PersistentDict()
             m_cl_count += 1
             continue
