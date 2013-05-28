@@ -3,15 +3,15 @@ __author__ = """Rocky Burt <r.burt@zestsoftware.nl>"""
 __docformat__ = 'plaintext'
 
 from AccessControl import ClassSecurityInfo
-from Products.Archetypes.atapi import *
+from Products.Archetypes import atapi
 from Products.CMFPlone.interfaces import INonStructuralFolder
 from zope.interface import implements
 from Products.SimpleAttachment.widget import AttachmentsManagerWidget
 
-from Products.minaraad.config import *
+from Products.minaraad.config import PROJECTNAME
 
-schema = Schema((
-    BooleanField(
+schema = atapi.Schema((
+    atapi.BooleanField(
         name='displayAttachments',
         widget=AttachmentsManagerWidget(
             label='Displayattachments',
@@ -22,11 +22,11 @@ schema = Schema((
 ),
 )
 
-Attachmentsmixin_schema = OrderedBaseFolderSchema.copy() + \
+Attachmentsmixin_schema = atapi.OrderedBaseFolderSchema.copy() + \
     schema.copy()
 
 
-class Attachmentsmixin(OrderedBaseFolder):
+class Attachmentsmixin(atapi.OrderedBaseFolder):
     """
     """
     security = ClassSecurityInfo()
@@ -52,11 +52,11 @@ class Attachmentsmixin(OrderedBaseFolder):
     schema = Attachmentsmixin_schema
 
     def SearchableText(self, **kwargs):
-        result = super(OrderedBaseFolder, self).SearchableText()
+        result = super(atapi.OrderedBaseFolder, self).SearchableText()
         for attachment in self.contentValues(
-            filter=dict(portal_type='FileAttachment')):
+                filter=dict(portal_type='FileAttachment')):
             result += attachment.SearchableText()
         return result
 
 
-registerType(Attachmentsmixin, PROJECTNAME)
+atapi.registerType(Attachmentsmixin, PROJECTNAME)

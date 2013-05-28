@@ -107,8 +107,7 @@ class testHearing(MainTestCase):
         request['form.submitted'] = 'exportCSV'
 
         view = getMultiAdapter((hearing, request),
-                                    name='attendees_view')
-
+                               name='attendees_view')
 
         HEADER_FIELDS = ("Aanhef", "Voornaam", "Achternaam", "Organisatie",
                          "Functie", "Straat", "Huisnummer", "Bus", "Postcode",
@@ -188,25 +187,25 @@ class testHearing(MainTestCase):
         self.hoorzitting.setFoto(TESTIMAGE, content_type="image/gif")
 
         self.failUnless(self.hoorzitting.Title()==TITLE,
-                         'Value is %s' % self.hoorzitting.Title())
+                        'Value is %s' % self.hoorzitting.Title())
         self.failUnless(self.hoorzitting.getSubheader()==SUBHEADER,
-                         'Value is %s' % self.hoorzitting.getSubheader())
+                        'Value is %s' % self.hoorzitting.getSubheader())
         self.failUnless(self.hoorzitting.getDescription()==DESCRIPTION,
-                         'Value is %s' % self.hoorzitting.getDescription())
+                        'Value is %s' % self.hoorzitting.getDescription())
         self.failUnless(self.hoorzitting.getGoal()==GOAL,
-                         'Value is %s' % self.hoorzitting.getGoal())
+                        'Value is %s' % self.hoorzitting.getGoal())
         self.failUnless(self.hoorzitting.getLocation()==LOCATION,
-                         'Value is %s' % self.hoorzitting.getLocation())
+                        'Value is %s' % self.hoorzitting.getLocation())
         self.failUnless(self.hoorzitting.getStart_time()==STARTDATE,
-                         'Value is %s' % self.hoorzitting.getStart_time())
+                        'Value is %s' % self.hoorzitting.getStart_time())
         self.failUnless(self.hoorzitting.getTheme()==THEME,
-                         'Value is %s' % self.hoorzitting.getTheme())
+                        'Value is %s' % self.hoorzitting.getTheme())
         self.failUnless(self.hoorzitting.getMot()==MOT,
-                         'Value is %s' % self.hoorzitting.getMot())
+                        'Value is %s' % self.hoorzitting.getMot())
         self.failUnless(self.hoorzitting.getBody()==HTMLBODY,
-                         'Value is %s' % self.hoorzitting.getBody())
+                        'Value is %s' % self.hoorzitting.getBody())
         self.failUnless(self.hoorzitting.getContact()==[self.contactperson],
-                         'Value is %s' % self.hoorzitting.getContact())
+                        'Value is %s' % self.hoorzitting.getContact())
         myclass = str(self.hoorzitting.getFoto().__class__)
         correct = "<class 'Products.Archetypes.Field.Image'>"
         self.failUnless(myclass==correct, 'Value is %s and not %s' %

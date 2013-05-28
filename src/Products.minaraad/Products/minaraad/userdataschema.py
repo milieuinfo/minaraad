@@ -36,6 +36,7 @@ def gender_vocabulary(context):
         [SimpleVocabulary.createTerm(x)
          for x in portal_memberdata.genders])
 
+
 @grok.provider(IContextSourceBinder)
 def country_vocabulary(context):
     portal_memberdata = getToolByName(
@@ -113,6 +114,7 @@ class IEnhancedUserDataSchema(IUserDataSchema):
         required=False,
         )
 
+
 class IRegisterForm(Interface):
     """ Marker interface for the custom register form.
     """
@@ -123,5 +125,3 @@ class ICaptchaSchema(Interface):
         title=_(u'label_captcha',
                 default=u'To block spammers, please solve this "captcha"'),
         )
-
-

@@ -61,7 +61,7 @@ class testAnnualReport(MainTestCase):
         self.testar.setAttachment(ATTACHMENT, content_type="application/pdf")
 
         self.failUnless(self.testar.Title()==TITLE,
-                         'Value is %s' % self.testar.Title())
+                        'Value is %s' % self.testar.Title())
         myclass = str(self.testar.getAttachment().__class__)
         correct = "<class 'OFS.Image.File'>"
         self.failUnless(myclass==correct, 'Value is %s and not %s' %

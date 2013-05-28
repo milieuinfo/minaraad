@@ -46,7 +46,7 @@ class testSubscriptions(MainTestCase):
         request = TestRequest()
         setDefaultSkin(request)
         view = getMultiAdapter((self.portal, request),
-                                    name='subscriptions_config.html')
+                               name='subscriptions_config.html')
 
         for x in view.subscriptions():
             self.failIf(x['subscribed_email'])
@@ -56,7 +56,7 @@ class testSubscriptions(MainTestCase):
         request = TestRequest(form={'email_Advisory': 'yes',
                                     'email_Study': 'yes'})
         view = getMultiAdapter((self.portal, request),
-                                    name='subscriptions_config.html')
+                               name='subscriptions_config.html')
         view._saveSubscriptions()
 
         for x in sm.subscriptions:
@@ -73,7 +73,7 @@ class testSubscriptions(MainTestCase):
         request = TestRequest()
         setDefaultSkin(request)
         view = getMultiAdapter((self.portal, request),
-                                    name='subscriptions_config.html')
+                               name='subscriptions_config.html')
 
         sm = SubscriptionManager(self.portal)
         subscriptions = view.subscriptions()
@@ -119,7 +119,7 @@ class testSubscriptions(MainTestCase):
         request['form.button.ExportEmail'] = True
 
         view = getMultiAdapter((advisory, request),
-                                    name='export_subscribers')
+                               name='export_subscribers')
 
         HEADER_FIELDS = ("Aanhef", "Voornaam", "Achternaam", "Organisatie",
                          "Functie", "Straat", "Huisnummer", "Bus", "Postcode",

@@ -22,6 +22,7 @@ def folder_views(object, event):
                     (object.getId(), initial))
         object.setLayout(initial)
 
+
 def save_theme_name(obj, event):
     """ This event is called everytime an object
     with a theme is updated.
@@ -70,4 +71,3 @@ def publish_on_save(obj, event):
         # But we might have different placeful workflow policies
         # in the future.
         return
-

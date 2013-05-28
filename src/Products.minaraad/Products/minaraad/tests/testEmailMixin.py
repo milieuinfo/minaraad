@@ -35,11 +35,13 @@ import transaction
 
 from Products.minaraad.subscriptions import SubscriptionManager
 
+
 def mock_commit():
     """ We have to patch transaction.commit for those tests, otherwise
     we do not get emails in the MailHost.
     """
     pass
+
 
 class testEmailMixin(MainTestCase):
     """Test-cases for class(es) EmailMixin."""
@@ -103,7 +105,6 @@ class testEmailMixin(MainTestCase):
         text = (u"Some random additional info, "
                 u"and a non-ascii charact\xebr".encode(charset))
         context.setTitle(u"Another non-ascii charact\xebr!".encode(charset))
-
 
         mailview.request.set('to', 'bilbo,frodo')
         mailview.request.set('additional', text)

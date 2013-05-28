@@ -42,9 +42,10 @@ class AttendeesManagerView(AbstractView):
         response = self.request.response
 
         if isAnonymous:
-            return response.redirect(portal.absolute_url() \
-                   +"/login_form?came_from=" \
-                   +urllib.quote(self.referring_url))
+            return response.redirect(
+                portal.absolute_url() +
+                "/login_form?came_from=" +
+                urllib.quote(self.referring_url))
 
         action = self.request.get('form.submitted', None)
         memberId = memberTool.getAuthenticatedMember().getId()
@@ -118,7 +119,7 @@ class AttendeesManagerView(AbstractView):
                 continue
 
             nice = member.getProperty('firstname', '') + ' ' + \
-                   member.getProperty('fullname', '')
+                member.getProperty('fullname', '')
             nice = nice.strip()
             if not nice:
                 nice = memberId

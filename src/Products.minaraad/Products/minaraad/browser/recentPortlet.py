@@ -34,7 +34,7 @@ class Renderer(p_recent.Renderer):
     @property
     def available(self):
         return self.data.count > 0 and \
-               len(self._data())
+            len(self._data())
 
 
 class AddForm(p_recent.AddForm):
@@ -44,4 +44,3 @@ class AddForm(p_recent.AddForm):
 
 class EditForm(p_recent.EditForm):
     pass
-

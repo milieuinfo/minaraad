@@ -271,10 +271,10 @@ class EmailOutView(AbstractView, EmailNotify):
                     themes = context.get_all_themes()
                     logger.info("We're filtering on theme: %s", themes)
 
-                members = [member for member in
-                           sm.emailSubscribers(self.getSubscriptionId(),
-                                               themes=themes)] + \
-                           members
+                members = [
+                    member for member in
+                    sm.emailSubscribers(self.getSubscriptionId(), themes=themes)
+                    ] + members
                 logger.info(
                     ("Now we have %r members ('additionalMembers' "
                      "plus subscribers)." % len(members)))
@@ -410,7 +410,7 @@ class EmailTestView(EmailNotify):
         else:
             members = portal.portal_membership.listMembers()
         valid_members = [m for m in members if m.getProperty('email') and
-                                               '@' in m.getProperty('email')]
+                         '@' in m.getProperty('email')]
         renderer = self.EmailRenderer(context)
         failed_postings = self.email(renderer, valid_members)
 

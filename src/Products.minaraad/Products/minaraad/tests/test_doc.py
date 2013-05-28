@@ -5,6 +5,7 @@ from Testing import ZopeTestCase as ztc
 
 from MainTestCase import MinaraadFunctionalTestCase
 
+
 def test_suite():
     return unittest.TestSuite((
         ztc.FunctionalDocFileSuite(

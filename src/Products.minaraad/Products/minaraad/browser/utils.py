@@ -130,11 +130,9 @@ class AttachmentWorkflowHelper(BrowserView):
         transitions = []
         add = transitions.append
         if current != 'private':
-            add(dict(id='retract',
-                      name='terugtrekken'))
+            add(dict(id='retract', name='terugtrekken'))
         if current != 'restricted':
-            add(dict(id='restricted_publish',
-                      name='besloten publiceren'))
+            add(dict(id='restricted_publish', name='besloten publiceren'))
         if current != 'published':
             add(dict(id='publish', name='publiceren'))
         return transitions

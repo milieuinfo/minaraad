@@ -52,14 +52,14 @@ class testMREvent(MainTestCase):
         """ Test if the MREvent has all the required fields
         """
 
-        self.mrevent.Title()          # Titel
-        self.mrevent.getDescription() # Omschrijving
-        self.mrevent.getGoal()        # Doelstelling
-        self.mrevent.getSubheader()   # Subkop
-        self.mrevent.getLocation()    # Lokatie
-        self.mrevent.getStart_time()  # Start tijd
-        self.mrevent.get_end_time()   # Eind tijd
-        self.mrevent.getContact()     # Contactpersoon
+        self.mrevent.Title()           # Titel
+        self.mrevent.getDescription()  # Omschrijving
+        self.mrevent.getGoal()         # Doelstelling
+        self.mrevent.getSubheader()    # Subkop
+        self.mrevent.getLocation()     # Lokatie
+        self.mrevent.getStart_time()   # Start tijd
+        self.mrevent.get_end_time()    # Eind tijd
+        self.mrevent.getContact()      # Contactpersoon
 
         self.mrevent.setFoto(TESTIMAGE, content_type="image/gif")
 

@@ -16,33 +16,41 @@ class IAttendeeManager(Interface):
     def attendees():
         pass
 
+
 class IPressRelease(Interface):
     """ Marker interface for Press release.
     """
+
 
 class IAdvisory(Interface):
     """ Marker interface for Advisory.
     """
 
+
 class IAnnualReport(Interface):
     """ Marker interface for Annual reports.
     """
+
 
 class IHearing(Interface):
     """ Marker interface for Hearing.
     """
 
+
 class IMREvent(Interface):
     """ Marker interface for MREvent.
     """
+
 
 class INewsLetter(Interface):
     """ Marker interface for MREvent.
     """
 
+
 class IStudy(Interface):
     """ Marker interface for Study.
     """
+
 
 class IContactPerson(Interface):
     """ Marker interface for contact person.

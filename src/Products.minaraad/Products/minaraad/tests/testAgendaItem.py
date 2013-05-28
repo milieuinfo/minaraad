@@ -60,12 +60,12 @@ class testAgendaItem(MainTestCase):
         """ Test if the AgendaItem has all the required fields
         """
 
-        self.agendaitem.Title()            # Onderwerp
-        self.agendaitem.getSpeaker()       # Spreker
-        self.agendaitem.getOrganisation()  # Organisatie
-        self.agendaitem.getSummary()       # Samenvatting
-        self.agendaitem.getItemstartdate() # Start tijd
-        self.agendaitem.getItemenddate()   # Eind tijd
+        self.agendaitem.Title()             # Onderwerp
+        self.agendaitem.getSpeaker()        # Spreker
+        self.agendaitem.getOrganisation()   # Organisatie
+        self.agendaitem.getSummary()        # Samenvatting
+        self.agendaitem.getItemstartdate()  # Start tijd
+        self.agendaitem.getItemenddate()    # Eind tijd
 
     def test_Existance(self):
         """ Test if the AgendaItem exists within portal_types

@@ -48,11 +48,11 @@ class testContactPerson(MainTestCase):
 
     def test_Fields(self):
 
-        self.contactperson.getName()        # Naam
-        self.contactperson.getJobtitle()    # Functie
-        self.contactperson.getDepartment()  # Afdeling
-        self.contactperson.getEmail()       # E-mailadres
-        self.contactperson.getPhonenumber() # Telefoonnummer
+        self.contactperson.getName()         # Naam
+        self.contactperson.getJobtitle()     # Functie
+        self.contactperson.getDepartment()   # Afdeling
+        self.contactperson.getEmail()        # E-mailadres
+        self.contactperson.getPhonenumber()  # Telefoonnummer
 
     def test_Existance(self):
         """ Test if the ContactPerson exists within portal_types

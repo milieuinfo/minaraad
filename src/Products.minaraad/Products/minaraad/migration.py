@@ -84,6 +84,7 @@ def _migrate_themes(context, new_themes, mapping):
     logger.info('Found %s objects to update: %s updated and %s without mapping' % (
         obj_count, updated_obj_count, unmapped_obj_count))
 
+
 def migrate_themes(context):
     """ Updates themes.
     """
@@ -95,6 +96,7 @@ def migrate_themes(context):
                32: 42, 26: 42, 24: 42}
 
     _migrate_themes(context, new_themes, mapping)
+
 
 def save_object_themes(context):
     """ Manually triggers the 'save_theme_name' event
@@ -120,6 +122,7 @@ def save_object_themes(context):
         obj_count += 1
 
     logger.info('Migrated %s objects' % obj_count)
+
 
 def migrate_contacts(context):
     """ Split the contact field into Coordinator and Authors field.
@@ -182,6 +185,7 @@ def apply_workflow_step(context):
 def apply_properties_step(context):
     context.runImportStepFromProfile(PROFILE_ID, 'properties')
 
+
 def remove_double_subscriptions(context):
     """ Update _attendees object to use PersistenList
     and remove double attendees.
@@ -219,7 +223,6 @@ def remove_double_subscriptions(context):
         obj.restrictedTraverse('@@attendees_view').groupedAttendees()
         obj_count += 1
 
-
     logger.info('Updated %s objects with PersistentList, found %s objects with double attendees' % (
         obj_count, double_count))
 
@@ -231,30 +234,39 @@ def to_plone41(context):
     profile_id = 'profile-Products.minaraad:plone41'
     context.runAllImportStepsFromProfile(profile_id, purge_old=False)
 
+
 def apply_gs_step(context, step):
     context.runImportStepFromProfile(PROFILE_ID, step)
+
 
 def apply_actions(context):
     apply_gs_step(context, 'actions')
 
+
 def apply_component_registry(context):
     apply_gs_step(context, 'componentregistry')
+
 
 def apply_css_registry(context):
     apply_gs_step(context, 'cssregistry')
 
+
 def apply_skins(context):
     apply_gs_step(context, 'skins')
+
 
 def apply_portlets(context):
     apply_gs_step(context, 'portlets')
 
+
 def apply_viewlets(context):
     apply_gs_step(context, 'viewlets')
+
 
 def install_emaillogin(context):
     profile_id = 'profile-collective.emaillogin4:default'
     context.runAllImportStepsFromProfile(profile_id, purge_old=False)
+
 
 def cleanup_mutable_properties(context):
     """Cleanup PAS.mutable_properties.
@@ -347,6 +359,7 @@ def fix_mutable_properties_for_groups(context):
             props._storage[principal_id] = props._storage[principal_id]
             logger.info("Mutable property sheet of group %s is now regarded "
                         "as belonging to a group.", principal_id)
+
 
 def apply_propertiestool_step(context):
     context.runImportStepFromProfile(PROFILE_ID, 'propertiestool')

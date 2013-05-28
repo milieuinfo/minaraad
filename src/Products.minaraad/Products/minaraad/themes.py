@@ -1,5 +1,6 @@
 from Products.CMFCore.utils import getToolByName
 
+
 class ThemeManager(object):
 
     def __init__(self, portal):

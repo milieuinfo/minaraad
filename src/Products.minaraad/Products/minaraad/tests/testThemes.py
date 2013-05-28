@@ -75,7 +75,7 @@ class testThemes(MainTestCase):
         request = TestRequest()
         setDefaultSkin(request)
         view = getMultiAdapter((self.portal, request),
-                                    name='minaraad_config.html')
+                               name='minaraad_config.html')
 
         lastId = max([x[0] for x in view.themeManager.themes])
 
@@ -88,7 +88,7 @@ class testThemes(MainTestCase):
         request = TestRequest()
         setDefaultSkin(request)
         view = getMultiAdapter((self.portal, request),
-                                    name='minaraad_config.html')
+                               name='minaraad_config.html')
 
         view.themeManager.themes = [(1, 'a'), (2, 'b'), (3, 'c')]
 
@@ -105,7 +105,7 @@ class testThemes(MainTestCase):
         request = TestRequest()
         setDefaultSkin(request)
         view = getMultiAdapter((self.portal, request),
-                                    name='minaraad_config.html')
+                               name='minaraad_config.html')
 
         view.themeManager.themes = [(1, 'a'), (2, 'b'), (3, 'c')]
 
@@ -122,7 +122,7 @@ class testThemes(MainTestCase):
         request = TestRequest()
         setDefaultSkin(request)
         view = getMultiAdapter((self.portal, request),
-                                    name='minaraad_config.html')
+                               name='minaraad_config.html')
 
         themes = [(1, 'a'), (2, 'b'), (3, 'c')]
         themesDict = [{'id': id, 'Title': title} for id, title in themes]

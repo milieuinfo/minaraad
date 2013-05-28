@@ -70,13 +70,13 @@ class testStudy(MainTestCase):
         self.teststudy.setContact(self.contactperson.UID())
 
         self.failUnless(self.teststudy.Title()==TITLE,
-                         'Value is %s' % self.teststudy.Title())
+                        'Value is %s' % self.teststudy.Title())
         self.failUnless(self.teststudy.getDescription()==DESCRIPTION,
-                         'Value is %s' % self.teststudy.getDescription())
+                        'Value is %s' % self.teststudy.getDescription())
         self.failUnless(self.teststudy.getDate()==DATE,
-                         'Value is %s' % self.teststudy.getDate())
+                        'Value is %s' % self.teststudy.getDate())
         self.failUnless(self.teststudy.getContact()==[self.contactperson],
-                         'Value is %s' % self.teststudy.getContact())
+                        'Value is %s' % self.teststudy.getContact())
 
 
 def test_suite():

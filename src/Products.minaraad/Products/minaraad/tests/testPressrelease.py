@@ -87,17 +87,17 @@ class testPressrelease(MainTestCase):
         self.testpers.setFoto(TESTIMAGE, content_type="image/gif")
 
         self.failUnless(self.testpers.Title()==TITLE,
-                         'Value is %s' % self.testpers.Title())
+                        'Value is %s' % self.testpers.Title())
         self.failUnless(self.testpers.getSubheader()==SUBHEADER,
-                         'Value is %s' % self.testpers.getSubheader())
+                        'Value is %s' % self.testpers.getSubheader())
         self.failUnless(self.testpers.getDescription()==DESCRIPTION,
-                         'Value is %s' % self.testpers.getDescription())
+                        'Value is %s' % self.testpers.getDescription())
         self.failUnless(self.testpers.getDate()==DATE,
-                         'Value is %s' % self.testpers.getDate())
+                        'Value is %s' % self.testpers.getDate())
         self.failUnless(self.testpers.getBody()==HTMLBODY,
-                         'Value is %s' % self.testpers.getBody())
+                        'Value is %s' % self.testpers.getBody())
         self.failUnless(self.testpers.getContact()==[self.contactperson],
-                         'Value is %s' % self.testpers.getContact())
+                        'Value is %s' % self.testpers.getContact())
         myclass = str(self.testpers.getLogo_1().__class__)
         correct = "<class 'Products.Archetypes.Field.Image'>"
         self.failUnless(myclass==correct, 'Value is %s and not %s' %
