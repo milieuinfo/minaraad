@@ -12,6 +12,17 @@
       for="Products.CMFPlone.interfaces.IPloneSiteRoot"
       />
 
+  <genericsetup:registerProfile
+      name="fixes"
+      title="minaraad.projects small fixes"
+      directory="profiles/fixes"
+      description="Profile for fixing a few settings on the live site.
+                   For example, we should not allow adding more folders
+                   to the live Digibib."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      />
+
   <!-- Register the import step -->
   <genericsetup:importStep
       name="minaraad.projects"
@@ -181,6 +192,14 @@
       source="1022"
       destination="1023"
       handler="minaraad.projects.migration.apply_factory_profile"
+      profile="minaraad.projects:default" />
+
+  <genericsetup:upgradeStep
+      title="Update Dibigib settings"
+      description="Disallow addings items in Digibib"
+      source="1023"
+      destination="1024"
+      handler="minaraad.projects.migration.apply_types_fixes"
       profile="minaraad.projects:default" />
 
 </configure>

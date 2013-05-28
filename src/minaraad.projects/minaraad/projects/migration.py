@@ -11,6 +11,8 @@ from minaraad.projects.utils import is_advisory_request
 logger = logging.getLogger('minaraad.projects.migration')
 # The default profile id of your package:
 PROFILE_ID = 'profile-minaraad.projects:default'
+# Profile with a few special fixes:
+FIXES_PROFILE_ID = 'profile-minaraad.projects:fixes'
 
 
 def extend_minaraad_properties(context):
@@ -296,3 +298,6 @@ def apply_skin_profile(context):
 
 def apply_factory_profile(context):
     context.runImportStepFromProfile(PROFILE_ID, 'factorytool')
+
+def apply_types_fixes(context):
+    context.runImportStepFromProfile(FIXES_PROFILE_ID, 'typeinfo')
