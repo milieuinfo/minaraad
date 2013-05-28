@@ -1,7 +1,7 @@
 History of this buildout
 ========================
 
-5.0.10 (unreleased)
+5.0.10 (2013-05-28)
 -------------------
 
 - Disallow adding anything directly to the existing Digibib.
