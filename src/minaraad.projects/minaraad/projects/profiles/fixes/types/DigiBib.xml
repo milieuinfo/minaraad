@@ -10,14 +10,9 @@
  <property name="product">minaraad.projects</property>
  <property name="factory">addDigiBib</property>
  <property name="immediate_view">digibib_view</property>
- <property name="global_allow">True</property>
+ <property name="global_allow">False</property>
  <property name="filter_content_types">True</property>
- <property name="allowed_content_types">
-   <element value="ProjectContainer" />
-   <element value="MeetingContainer" />
-   <element value="OrganisationContainer" />
-   <element value="Folder" />
- </property>
+ <property name="allowed_content_types" />
  <property name="allow_discussion">False</property>
  <alias from="(Default)" to="digibib_view"/>
  <alias from="edit" to="base_edit"/>
