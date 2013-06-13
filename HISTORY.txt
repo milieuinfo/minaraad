@@ -4,6 +4,10 @@ History of this buildout
 5.0.11 (unreleased)
 -------------------
 
+- Register document actions viewlet above the content title.
+  Float them to the right.
+  [maurits]
+
 - Fix newsitem_view by making it a browser view.
   The title was shown twice when viewing it.
   [maurits]

@@ -21,4 +21,7 @@
     <viewlet name="plone.contentviews"/>
     <viewlet name="plone.contentactions"/>
   </order>
+  <order manager="plone.abovecontenttitle" skinname="*">
+    <viewlet name="plone.abovecontenttitle.documentactions"/>
+  </order>
 </object>

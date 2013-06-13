@@ -311,6 +311,10 @@
         title="Update portal_types"
         description=""
         handler="Products.minaraad.migration.update_portal_types" />
+    <gs:upgradeStep
+        title="Apply viewlets"
+        description=""
+        handler="Products.minaraad.migration.apply_viewlets" />
   </gs:upgradeSteps>
 
 </configure>
