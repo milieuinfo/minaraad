@@ -315,6 +315,10 @@
         title="Apply viewlets"
         description=""
         handler="Products.minaraad.migration.apply_viewlets" />
+    <gs:upgradeStep
+        title="Cook resources"
+        description="Refresh portal_css and portal_javascript"
+        handler="Products.minaraad.migration.cook_resources" />
   </gs:upgradeSteps>
 
 </configure>

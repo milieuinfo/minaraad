@@ -4,6 +4,9 @@ History of this buildout
 5.0.11 (unreleased)
 -------------------
 
+- Add upgrade step to cook the resources.
+  [maurits]
+
 - Avoid double underlines in listing of newsletter.
   'li.newsitemslist a' got an underline, but '#content a:link'
   already got a bottom border.

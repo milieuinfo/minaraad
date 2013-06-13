@@ -408,3 +408,12 @@ def fix_viewlet_persistence(context):
                 value = PersistentMapping(value)
                 setting[key] = value
                 logger.info("Made value of key %s a persistent mapping.", key)
+
+
+def cook_resources(context):
+    # When you change a css or javascript, the resources should be
+    # cooked again, otherwise on production you will keep seeing old
+    # cached resources.
+    for registry_id in ('portal_css', 'portal_javascripts'):
+        registry = getToolByName(context, registry_id)
+        registry.cookResources()
