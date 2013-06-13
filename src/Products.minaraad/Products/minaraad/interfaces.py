@@ -42,6 +42,11 @@ class IMREvent(Interface):
     """
 
 
+class INewsItem(Interface):
+    """ Marker interface for NewsItem.
+    """
+
+
 class INewsLetter(Interface):
     """ Marker interface for MREvent.
     """

@@ -302,4 +302,15 @@
         handler="Products.minaraad.migration.apply_viewlets" />
   </gs:upgradeSteps>
 
+  <gs:upgradeSteps
+      source="5020"
+      destination="5021"
+      sortkey="1"
+      profile="Products.minaraad:default">
+    <gs:upgradeStep
+        title="Update portal_types"
+        description=""
+        handler="Products.minaraad.migration.update_portal_types" />
+  </gs:upgradeSteps>
+
 </configure>

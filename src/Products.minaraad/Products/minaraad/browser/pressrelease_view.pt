@@ -6,7 +6,6 @@
       metal:use-macro="context/main_template/macros/master"
       i18n:domain="minaraad">
 <body>
-   <body>
 
 <metal:content-title fill-slot="content-title">
   <div class="press-img-left">

@@ -7,6 +7,7 @@ from Products.OrderableReferenceField import OrderableReferenceWidget
 from Products.minaraad.config import PROJECTNAME
 from Products.minaraad.content.interfaces import IUseContact
 from Products.minaraad.content.contacts import contacts_schema
+from Products.minaraad.interfaces import INewsItem
 
 
 schema = atapi.Schema((
@@ -60,7 +61,7 @@ NewsItem_schema = atapi.BaseSchema.copy() + schema.copy() + contacts_schema.copy
 class NewsItem(atapi.BaseContent):
     """
     """
-    implements(IUseContact)
+    implements(IUseContact, INewsItem)
     security = ClassSecurityInfo()
     archetype_name = 'NewsItem'
     portal_type = 'NewsItem'

@@ -4,6 +4,10 @@ History of this buildout
 5.0.11 (unreleased)
 -------------------
 
+- Fix newsitem_view by making it a browser view.
+  The title was shown twice when viewing it.
+  [maurits]
+
 - Removed tabsDropMenu.js which gave an error but was not used.
   Removed unused global_menu.pt and global_sections.pt.
   [maurits]
