@@ -4,7 +4,8 @@ History of this buildout
 5.0.11 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- css: load the portal header.jpg from the Plone Site root.
+  [maurits]
 
 
 5.0.10 (2013-05-28)

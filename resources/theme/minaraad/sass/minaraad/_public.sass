@@ -14,11 +14,18 @@ div#visual-portal-wrapper
   width: 100%
   margin-left: -100%
   
+/* header.jpg should be loaded from the Plone Site root.
+ * '/header.jpg' would probably work on the live site, but not when you
+ * access the Zope root directly.
+ *
+ * We need to use the url relative to the css, whic is loaded at:
+ * http://127.0.0.1:8080/minaraad/portal_css/Plone%20Default/++theme++minaraad/css/style.css
+ */
 #portal-header
   position: relative
   z-index: 2
-  background: url("/++theme++minaraad/img/header.jpg") no-repeat scroll right top white
-  
+  background: url("../../../../header.jpg") no-repeat scroll right top white
+
 #portal-logo
   display: inline-block
   margin-top: 10px
