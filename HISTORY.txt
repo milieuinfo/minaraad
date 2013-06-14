@@ -4,6 +4,9 @@ History of this buildout
 5.0.11 (unreleased)
 -------------------
 
+- css: load the portal header.jpg from the context.
+  [maurits]
+
 - Add upgrade step to cook the resources.
   [maurits]
 
@@ -22,9 +25,6 @@ History of this buildout
 
 - Removed tabsDropMenu.js which gave an error but was not used.
   Removed unused global_menu.pt and global_sections.pt.
-  [maurits]
-
-- css: load the portal header.jpg from the Plone Site root.
   [maurits]
 
 
