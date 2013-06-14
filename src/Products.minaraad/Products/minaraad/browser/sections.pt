@@ -7,7 +7,7 @@
         tal:define="hidden_titles view/get_hidden_titles"
         ><li tal:define="current python: selected_tab == 'index_html'"
              tal:attributes="class python: current  and 'selected' or 'plain'">
-      <a href="/">Home</a>
+      <a href="/" tal:attributes="href context/@@plone_portal_state/portal_url">Home</a>
       </li><tal:tabs tal:repeat="tab sitemap/children"
         ><li tal:define="tid tab/id;
                          ctitle tab/Title;
