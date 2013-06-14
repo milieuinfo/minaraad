@@ -332,4 +332,11 @@
       template="fileattachment_view.pt"
       />
 
+  <browser:page
+      for="*"
+      permission="zope.Public"
+      name="header-image-css"
+      class=".utils.HeaderImageCSS"
+      />
+
 </configure>

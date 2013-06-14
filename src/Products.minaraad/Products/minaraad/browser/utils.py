@@ -141,3 +141,40 @@ class AttachmentWorkflowHelper(BrowserView):
         wf_tool = getToolByName(self.context, 'portal_workflow')
         return wf_tool.getTitleForStateOnType(
             brain.review_state, brain.portal_type)
+
+
+HEADER_IMAGE_CSS = """
+#portal-header {
+    background: url("%s") no-repeat scroll right top #FFFFFF;
+    position: relative;
+    z-index: 2;
+}
+
+"""
+
+
+class HeaderImageCSS(BrowserView):
+    """CSS for header image.
+
+    We want the nearest header.jpg in the acquisition context.  For
+    caching it is best to look up the image and return its
+    absolute_url, instead of simply loading header.jpg in the current
+    context.  It will work, but then the same image will be loaded by
+    the browser for lots of different pages.
+
+    This is meant to be used in the rules.xml of the Diazo theme, like this:
+
+    <after css:theme="title" css:content="style" href="@@header-image-css" />
+
+    Because we set the Content-Type header to text/css, diazo will put
+    a 'style' tag around it.  Nice.
+    """
+
+    def __call__(self):
+        image = self.context.restrictedTraverse('header.jpg', None)
+        if image is None:
+            url = ''
+        else:
+            url = image.absolute_url()
+        self.request.RESPONSE.setHeader('Content-Type', 'text/css')
+        return HEADER_IMAGE_CSS % url

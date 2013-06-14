@@ -41,6 +41,7 @@
   <after css:theme="title" css:content="head link"/>
 
   <!-- Style -->
+  <after css:theme="title" css:content="style" href="@@header-image-css" />
   <after css:theme="title" css:content="head style"/>
 
   <!-- Scripts -->
