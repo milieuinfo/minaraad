@@ -326,7 +326,7 @@
       />
 
   <browser:page
-      for=" Products.SimpleAttachment.interfaces.IFileAttachment"
+      for="Products.SimpleAttachment.interfaces.IFileAttachment"
       permission="zope2.View"
       name="fileattachment_view"
       template="fileattachment_view.pt"
