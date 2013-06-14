@@ -13,7 +13,8 @@
 
         <a href=""
            class="link-parent"
-           tal:define="parent_url python:here.navigationParent(here, template_id)"
+           tal:define="template_id template/id;
+                       parent_url python:here.navigationParent(here, template_id)"
            tal:condition="parent_url"
            tal:attributes="href parent_url"
            i18n:translate="go_to_parent_url">
@@ -30,6 +31,7 @@
                                       more_url more_url|request/more_url|string:folder_contents;
                                       contentsMethod python:test(here.portal_type=='Topic', here.queryCatalog, here.getFolderContents);
                                       folderContents folderContents|python:contentsMethod(contentFilter);
+                                      mtool nocall:context/portal_membership;
                                       use_view_action site_properties/typesUseViewActionInListings|python:();
                                       over_limit python: limit_display and len(folderContents) > limit_display;
                                       folderContents python: (over_limit and folderContents[:limit_display]) or folderContents;
