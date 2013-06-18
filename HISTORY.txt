@@ -4,7 +4,8 @@ History of this buildout
 5.0.13 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- Added Plone Security hotfix 1.0.
+  [maurits]
 
 
 5.0.12 (2013-06-18)
