@@ -1,7 +1,7 @@
 History of this buildout
 ========================
 
-5.0.13 (unreleased)
+5.0.13 (2013-06-18)
 -------------------
 
 - Added Plone Security hotfix 1.0.
