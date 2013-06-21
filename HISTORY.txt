@@ -1,7 +1,7 @@
 History of this buildout
 ========================
 
-5.0.14 (unreleased)
+5.0.14 (2013-06-21)
 -------------------
 
 - Fix dynamic sorting and filtering in search form.
