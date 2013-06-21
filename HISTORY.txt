@@ -4,7 +4,8 @@ History of this buildout
 5.0.14 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- Fix display of location in meeting.
+  [maurits]
 
 
 5.0.13 (2013-06-18)

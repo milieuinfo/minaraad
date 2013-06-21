@@ -30,7 +30,7 @@
       </div>
 
       <tal:block tal:define="location context/get_saved_location|nothing"
-                 tal:condition="python: location.get('saved', 0)">
+                 tal:condition="python: location.get('UID', 0)">
         <strong i18n:translate="label_location">
           Location
         </strong>
