@@ -4,6 +4,9 @@ History of this buildout
 5.0.14 (unreleased)
 -------------------
 
+- Fix dynamic sorting and filtering in search form.
+  [maurits]
+
 - Fix display of location in meeting.
   [maurits]
 

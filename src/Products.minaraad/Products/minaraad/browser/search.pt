@@ -274,7 +274,11 @@
                                                    site_properties context/portal_properties/site_properties;
                                                    use_view_action site_properties/typesUseViewActionInListings|python:();
                                                    allowAnonymousViewAbout site_properties/allowAnonymousViewAbout;
-                                                   show_about python:not isAnon or allowAnonymousViewAbout;">
+                                                   show_about python:not isAnon or allowAnonymousViewAbout;
+                                                   cropText nocall:context/@@plone/cropText;
+                                                   desc_length site_properties/search_results_description_length;
+                                                   desc_ellipsis site_properties/ellipsis;
+                                                   ">
                           <dl class="searchResults">
                               <tal:results repeat="item batch">
                                     <dt tal:attributes="class item/ContentTypeClass">
@@ -298,7 +302,7 @@
                                       </span>
                                     </dt>
                                     <dd>
-                                      <span tal:replace="python:plone_view.cropText(item.Description(), desc_length, desc_ellipsis)">
+                                      <span tal:replace="python:cropText(item.Description(), desc_length, desc_ellipsis)">
                                         Cropped description
                                       </span>
                                     </dd>
