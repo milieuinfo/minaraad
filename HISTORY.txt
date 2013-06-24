@@ -1,7 +1,7 @@
 History of this buildout
 ========================
 
-5.0.15 (unreleased)
+5.0.15 (2013-06-24)
 -------------------
 
 - Fix edit_agenda_item page.
