@@ -4,7 +4,8 @@ History of this buildout
 5.0.15 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- Fix edit_agenda_item page.
+  [maurits]
 
 
 5.0.14 (2013-06-21)

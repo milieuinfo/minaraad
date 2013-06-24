@@ -532,4 +532,18 @@ If the location is removed from the object, then we'll get an empty dictionnary:
     ...        key = lambda x: x[0])
     []
 
+Use a test browser to login:
 
+    >>> from Testing.testbrowser import Browser
+    >>> from Products.PloneTestCase import PloneTestCase as ptc
+    >>> browser = Browser()
+    >>> browser.open('%s/login_form/' % self.portal.absolute_url())
+    >>> browser.getControl(name='__ac_name').value = ptc.portal_owner
+    >>> browser.getControl(name='__ac_password').value = ptc.default_password
+    >>> browser.getControl(name='submit').click()
+
+Can we use our special page for editing an agenda item and at the same
+time editing or adding attachments?
+
+    >>> browser.open(meeting.second_item.absolute_url() + '/edit_agenda_item')
+    >>> browser.getControl(name='form_submitted').click()

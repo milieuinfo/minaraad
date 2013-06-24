@@ -23,10 +23,6 @@ class BaseAgendaItemView(BrowserView):
     def get_agenda_item(self):
         return self.context
 
-    def get_attachment_extra_fields(self, attachment):
-        extender = ISchemaExtender(attachment)
-        return dict([(f.getName(), f) for f in extender.getFields()])
-
     def redirect_url(self):
         """ URL where the user is redirected after form submission.
         """
@@ -73,7 +69,7 @@ class BaseAgendaItemView(BrowserView):
     def check_archetype_form(self, form, context, fields, prefix=None):
         """ Uses the schema validators to validate a form.
         """
-        for field in context.schema.fields():
+        for field in context.Schema().fields():
             fieldname = field.getName()
             if not fieldname in fields:
                 continue
@@ -145,7 +141,7 @@ class BaseAgendaItemView(BrowserView):
         form = self.filter_archetype_form(
             self.get_attachment_form(att_id),
             attachment,
-            attachment.schema,
+            attachment.Schema(),
             self.attachment_fields)
 
         if form.get('file', False) is None:
