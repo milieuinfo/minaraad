@@ -4,7 +4,8 @@ History of this buildout
 5.0.16 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- Fixed some templates that were still using prefs_main_template.
+  [maurits]
 
 
 5.0.15 (2013-06-24)

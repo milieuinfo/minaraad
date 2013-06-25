@@ -6,7 +6,7 @@
   <metal:block metal:fill-slot="top_slot" tal:define="dummy python:request.set('disable_border',1)" />
 
   <body>
-    <div metal:fill-slot="prefs_configlet_main">
+    <div metal:fill-slot="main">
      <tal:comment condition="nothing">
        We may have more exports later, that warrant a different title,
        but for now this is fine.
