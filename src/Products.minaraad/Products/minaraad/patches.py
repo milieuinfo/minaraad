@@ -38,7 +38,6 @@ def set_last_modification_date(member):
         if not sheet.hasProperty(property_id):
             continue
         if IMutablePropertySheet.providedBy(sheet):
-            print 'setting last modification date'
             sheet.setProperty(user, property_id, value)
             break
 
