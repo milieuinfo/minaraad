@@ -44,9 +44,7 @@ def set_last_modification_date(member):
 
 
 def notifyModified(self):
-    print 'last modified 1:', self.getProperty('last_modification_date')
     set_last_modification_date(self)
-    print 'last modified: 2', self.getProperty('last_modification_date')
     return self._orig_notifyModified()
 
 
