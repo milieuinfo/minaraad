@@ -4,6 +4,9 @@ History of this buildout
 5.0.16 (unreleased)
 -------------------
 
+- Update the last modification date when changing a member.
+  [maurits]
+
 - Fixed some templates that were still using prefs_main_template.
   [maurits]
 
