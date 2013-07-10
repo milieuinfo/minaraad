@@ -321,4 +321,13 @@
         handler="Products.minaraad.migration.cook_resources" />
   </gs:upgradeSteps>
 
+  <gs:upgradeStep
+      title="Apply CSS registry"
+      description=""
+      source="5021"
+      destination="5022"
+      handler="Products.minaraad.migration.apply_css_registry"
+      sortkey="1"
+      profile="Products.minaraad:default" />
+
 </configure>

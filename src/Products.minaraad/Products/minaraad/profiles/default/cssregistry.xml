@@ -4,5 +4,5 @@
  <stylesheet id="print.css" remove="True" />
  <stylesheet id="++theme++minaraad/css/print.css" media="print" />
  <stylesheet id="mobile.css" remove="True" />
- <stylesheet id="++theme++minaraad/css/mobile.css" media="handheld, screen and (max-device-width: 480px)" />
+ <stylesheet id="++theme++minaraad/css/mobile.css" media="handheld, screen and (max-device-width: 480px)" enabled="False" />
 </object>
