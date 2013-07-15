@@ -1,7 +1,7 @@
 History of this buildout
 ========================
 
-5.0.17 (unreleased)
+5.0.17 (2013-07-15)
 -------------------
 
 - Disabled Mobile CSS as it caused problems on mobile devices
