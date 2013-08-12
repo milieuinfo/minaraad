@@ -1,3 +1,4 @@
+from zope.component import getMultiAdapter
 from zope.interface import implements
 
 from zope.formlib import form
@@ -17,9 +18,17 @@ class MinaRegistrationForm(RegistrationForm):
         # Get the fields so we can fiddle with them
         myfields = super(MinaRegistrationForm, self).form_fields
 
-        # Add a captcha field to the schema
-        myfields += form.Fields(ICaptchaSchema)
-        myfields['captcha'].custom_widget = CaptchaWidget
+        # Add a captcha field when the user is not logged in.  This is
+        # the normal case for this register form, but we check it
+        # explicitly, because there are problems with kss inline
+        # validation which are best solved by only offering inline
+        # validation for logged-in users.
+        pps = getMultiAdapter((self.context, self.request),
+                              name='plone_portal_state')
+        if pps.anonymous():
+            # Add a captcha field to the schema
+            myfields += form.Fields(ICaptchaSchema)
+            myfields['captcha'].custom_widget = CaptchaWidget
 
         # Perform any field shuffling here...
 

@@ -4,7 +4,8 @@ History of this buildout
 5.0.18 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- Only add captcha field to the registration form for anonymous users.
+  [maurits]
 
 
 5.0.17 (2013-07-15)
