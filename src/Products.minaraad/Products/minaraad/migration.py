@@ -166,7 +166,6 @@ def migrate_contacts(context):
 
 def update_controlpanel(context):
     context.runImportStepFromProfile(PROFILE_ID, 'controlpanel')
-    context.runImportStepFromProfile(PROFILE_ID, 'action-icons')
 
 
 def update_portal_types(context):

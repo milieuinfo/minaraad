@@ -38,7 +38,6 @@ def extend_minaraad_properties(context):
 
 def update_controlpanel(context):
     context.runImportStepFromProfile(PROFILE_ID, 'controlpanel')
-    context.runImportStepFromProfile(PROFILE_ID, 'action-icons')
 
 
 def update_types(context):
@@ -47,7 +46,6 @@ def update_types(context):
 
 def update_actions(context):
     context.runImportStepFromProfile(PROFILE_ID, 'actions')
-    context.runImportStepFromProfile(PROFILE_ID, 'action-icons')
 
 
 def apply_workflow_step(context):
