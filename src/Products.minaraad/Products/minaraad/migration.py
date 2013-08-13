@@ -251,6 +251,10 @@ def apply_css_registry(context):
     apply_gs_step(context, 'cssregistry')
 
 
+def apply_javascript_registry(context):
+    apply_gs_step(context, 'jsregistry')
+
+
 def apply_skins(context):
     apply_gs_step(context, 'skins')
 

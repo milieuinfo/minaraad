@@ -4,6 +4,10 @@ History of this buildout
 5.0.18 (unreleased)
 -------------------
 
+- Normalize the kss resources to what default Plone has.
+  KSS is only for logged-in users.  With upgrade step.
+  [maurits]
+
 - Use newer quintagroup captcha versions, plus a patch for them, so
   inline validation is not done for the captcha field.  The inline
   validation would previously succeed and then expire the key, so the
