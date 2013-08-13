@@ -35,11 +35,4 @@
   <permission>Manage portal</permission>
  </configlet>
 
- <!-- Remove txng3's configlet if still present -->
- <configlet title="TextIndexNG3" action_id="TextIndexNG3" appId="TextIndexNG3"
-    category="Products" condition_expr=""
-    url_expr="string:${portal_url}/txng_maintenance" visible="False">
-  <permission>Manage portal</permission>
- </configlet>
-
 </object>
