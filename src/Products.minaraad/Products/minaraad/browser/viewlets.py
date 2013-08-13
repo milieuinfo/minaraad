@@ -12,6 +12,8 @@ class MinaGlobalSectionsViewlet(GlobalSectionsViewlet):
     def get_hidden_titles(self):
         portal = getSite()
         portal_props = getToolByName(portal, 'portal_properties')
+        if not portal_props.navtree_properties.hasProperty('titlesNotInTabs'):
+            return []
         return portal_props.navtree_properties.titlesNotInTabs
 
     def get_sitemap(self):
