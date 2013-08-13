@@ -8,6 +8,16 @@ from quintagroup.formlib.captcha import CaptchaWidget
 from Products.minaraad.userdataschema import IRegisterForm, ICaptchaSchema
 
 
+class PatchedCaptchaWidget(CaptchaWidget):
+    # Temporary patch for issue
+    # http://plone.org/products/plone-captchas/issues/6
+    def _toFieldValue(self, input):
+        value = super(PatchedCaptchaWidget, self)._toFieldValue(input)
+        if isinstance(value, unicode):
+            value = value.encode('ascii', 'ignore')
+        return value
+
+
 class MinaRegistrationForm(RegistrationForm):
     """ Subclass the standard registration form
     """
@@ -28,7 +38,7 @@ class MinaRegistrationForm(RegistrationForm):
         if pps.anonymous():
             # Add a captcha field to the schema
             myfields += form.Fields(ICaptchaSchema)
-            myfields['captcha'].custom_widget = CaptchaWidget
+            myfields['captcha'].custom_widget = PatchedCaptchaWidget
 
         # Perform any field shuffling here...
 

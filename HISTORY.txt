@@ -4,6 +4,12 @@ History of this buildout
 5.0.18 (unreleased)
 -------------------
 
+- Use newer quintagroup captcha versions, plus a patch for them, so
+  inline validation is not done for the captcha field.  The inline
+  validation would previously succeed and then expire the key, so the
+  normal non-inline validation would fail.
+  [maurits]
+
 - Only add captcha field to the registration form for anonymous users.
   [maurits]
 
