@@ -4,7 +4,7 @@
    i18n:domain="minaraad">
  <property i18n:translate="" name="title">Pressrelease</property>
  <property i18n:translate="" name="description">A Press Release</property>
- <property name="content_icon">folder_icon.gif</property>
+ <property name="content_icon">folder_icon.png</property>
  <property name="content_meta_type">Pressrelease</property>
  <property name="product">minaraad</property>
  <property name="factory">addPressrelease</property>

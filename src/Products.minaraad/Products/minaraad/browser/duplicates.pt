@@ -146,7 +146,7 @@
                         <img
                             alt="Ingeschreven per e-mail"
                             tal:condition="python:subscription['can_email'] and subscription['subscribed_email']"
-                            tal:attributes="src string:${portal_url}/confirm_icon.gif" />
+                            tal:attributes="src string:${portal_url}/confirm_icon.png" />
                       </td>
                     </tr>
                   </tal:block>
@@ -171,7 +171,7 @@
                        <img
                            alt="Ingeschreven"
                            tal:condition="theme/subscribed"
-                           tal:attributes="src string:${portal_url}/confirm_icon.gif" />
+                           tal:attributes="src string:${portal_url}/confirm_icon.png" />
                        &nbsp;
                      </td>
                    </tr>

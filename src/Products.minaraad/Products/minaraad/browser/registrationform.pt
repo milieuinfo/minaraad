@@ -112,8 +112,8 @@
 
                               <tal:comment tal:condition="nothing">
                                 <!-- TODO Put this back, the Zope3 way.
-                                <img src="alert.gif" alt="Error"
-                                tal:replace="structure context/alert.gif" />
+                                <img src="alert.png" alt="Error"
+                                tal:replace="structure context/alert.png" />
                                 -->
                               </tal:comment>
                         </div>

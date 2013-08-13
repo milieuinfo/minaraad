@@ -4,7 +4,7 @@
    i18n:domain="minaraad">
  <property i18n:translate="" name="title">ContactPerson</property>
  <property i18n:translate="" name="description"></property>
- <property name="content_icon">document_icon.gif</property>
+ <property name="content_icon">document_icon.png</property>
  <property name="content_meta_type">ContactPerson</property>
  <property name="product">minaraad</property>
  <property name="factory">addContactPerson</property>

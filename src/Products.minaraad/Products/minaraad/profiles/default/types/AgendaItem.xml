@@ -4,7 +4,7 @@
    i18n:domain="minaraad">
  <property i18n:translate="" name="title">AgendaItem</property>
  <property i18n:translate="" name="description">An Agendaitem</property>
- <property name="content_icon">folder_icon.gif</property>
+ <property name="content_icon">folder_icon.png</property>
  <property name="content_meta_type">AgendaItem</property>
  <property name="product">minaraad</property>
  <property name="factory">addAgendaItem</property>

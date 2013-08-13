@@ -19,8 +19,8 @@
               class="right"
               tal:condition="python: mtool and mtool.checkPermission('Modify portal content', context)"
               i18n:attributes="title label_add_project">
-             <img src="add_icon.gif"
-                  tal:attributes="src string:${portal_url}/add_icon.gif"
+             <img src="add_icon.png"
+                  tal:attributes="src string:${portal_url}/add_icon.png"
                   alt="Add a new project"
                   i18n:attributes="alt label_add_project" />
            </a>
@@ -28,8 +28,8 @@
               title="Archive"
               class="right"
               i18n:attributes="title">
-             <img src="folder_icon.gif"
-                  tal:attributes="src string:${portal_url}/folder_icon.gif"
+             <img src="folder_icon.png"
+                  tal:attributes="src string:${portal_url}/folder_icon.png"
                   alt="Archive"
                   i18n:attributes="alt" />
            </a>
@@ -66,8 +66,8 @@
               class="right"
               tal:condition="python: mtool and mtool.checkPermission('Modify portal content', context)"
               i18n:attributes="title label_add_meeting">
-             <img src="add_icon.gif"
-                  tal:attributes="src string:${portal_url}/add_icon.gif"
+             <img src="add_icon.png"
+                  tal:attributes="src string:${portal_url}/add_icon.png"
                   alt="Add a new meeting"
                   i18n:attributes="alt label_add_meeting" />
            </a>
@@ -75,8 +75,8 @@
               title="Archive"
               class="right"
               i18n:attributes="title">
-             <img src="folder_icon.gif"
-                  tal:attributes="src string:${portal_url}/folder_icon.gif"
+             <img src="folder_icon.png"
+                  tal:attributes="src string:${portal_url}/folder_icon.png"
                   alt="Archive"
                   i18n:attributes="alt" />
            </a>

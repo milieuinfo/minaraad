@@ -343,6 +343,10 @@
         title="Apply controlpanel"
         description=""
         handler="Products.minaraad.migration.update_controlpanel" />
+    <gs:upgradeStep
+        title="Update portal_types"
+        description=""
+        handler="Products.minaraad.migration.update_portal_types" />
   </gs:upgradeSteps>
 
 </configure>

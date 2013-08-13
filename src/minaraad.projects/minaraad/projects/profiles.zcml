@@ -202,12 +202,19 @@
       handler="minaraad.projects.migration.apply_types_fixes"
       profile="minaraad.projects:default" />
 
-  <genericsetup:upgradeStep
-      title="Update control panel configlets"
-      description=""
+  <genericsetup:upgradeSteps
       source="1024"
       destination="1025"
-      handler="minaraad.projects.migration.update_controlpanel"
-      profile="minaraad.projects:default" />
+      sortkey="1"
+      profile="minaraad.projects:default">
+    <genericsetup:upgradeStep
+        title="Update control panel configlets"
+        description=""
+        handler="minaraad.projects.migration.update_controlpanel" />
+    <genericsetup:upgradeStep
+        title="Update the portal types"
+        description=""
+        handler="minaraad.projects.migration.update_types" />
+  </genericsetup:upgradeSteps>
 
 </configure>

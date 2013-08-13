@@ -35,8 +35,8 @@
 
            <a class="attachment"
               tal:attributes="href python: '%s/project_documents' % context.absolute_url()">
-             <img src="pdf_icon.gif" alt="PDF document"
-                  tal:attributes="src string:${portal_url}/pdf_icon.gif" />
+             <img src="pdf_icon.png" alt="PDF document"
+                  tal:attributes="src string:${portal_url}/pdf_icon.png" />
              Toon alle ontwerpdocumenten
            </a>
          </div>

@@ -4,6 +4,9 @@ History of this buildout
 5.0.18 (unreleased)
 -------------------
 
+- Change most images to use png instead of gif.
+  [maurits]
+
 - Cleanup controlpanel icons.
   [maurits]
 

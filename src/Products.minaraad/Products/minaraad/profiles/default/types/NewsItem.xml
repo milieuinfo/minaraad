@@ -4,7 +4,7 @@
  <property name="title">NewsItem</property>
  <property name="description">
       </property>
- <property name="content_icon">document_icon.gif</property>
+ <property name="content_icon">document_icon.png</property>
  <property name="content_meta_type">NewsItem</property>
  <property name="product">minaraad</property>
  <property name="factory">addNewsItem</property>
