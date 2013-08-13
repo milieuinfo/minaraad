@@ -4,27 +4,32 @@
  <!-- Our configlets -->
  <configlet title="Servicepaneel Minaraad" action_id="minaraad_service"
     appId="minaraad" category="Products" condition_expr="python:True"
-    url_expr="string:${portal_url}/minaraad_service" visible="True">
+    url_expr="string:${portal_url}/minaraad_service" visible="True"
+    icon_expr="string:site_icon.png">
   <permission>Manage Portal</permission>
  </configlet>
  <configlet title="minaraad themes" action_id="Themes" appId="ThemesID"
     category="Products" condition_expr="python:True"
-    url_expr="string:${portal_url}/minaraad_config.html" visible="True">
+    url_expr="string:${portal_url}/minaraad_config.html" visible="True"
+    icon_expr="string:site_icon.png">
   <permission>Manage Portal</permission>
  </configlet>
  <configlet title="Subscriptions" action_id="Subscriptions"
     appId="SubscriptionsID" category="Member" condition_expr="python:True"
-    url_expr="string:${portal_url}/subscriptions_config.html" visible="True">
+    url_expr="string:${portal_url}/subscriptions_config.html" visible="True"
+    icon_expr="string:site_icon.png">
   <permission>View</permission>
  </configlet>
  <configlet title="subscribers overview" action_id="Subscribers"
     appId="SubscribersID" category="Products" condition_expr="python:True"
-    url_expr="string:${portal_url}/subscribers_config.html" visible="True">
+    url_expr="string:${portal_url}/subscribers_config.html" visible="True"
+    icon_expr="string:site_icon.png">
   <permission>Manage Portal</permission>
  </configlet>
  <configlet title="Contactpersonen" action_id="minaraad_contact_persons"
     appId="minaraad" category="Products" condition_expr="python:True"
-    url_expr="string:${portal_url}/contactpersonen" visible="True">
+    url_expr="string:${portal_url}/contactpersonen" visible="True"
+    icon_expr="string:site_icon.png">
   <permission>Manage Portal</permission>
  </configlet>
 

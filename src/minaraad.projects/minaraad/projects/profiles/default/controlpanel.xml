@@ -10,6 +10,7 @@
      category="Products"
      condition_expr="python:True"
      url_expr="string:${portal_url}/project_properties"
+     icon_expr="string:site_icon.png"
      visible="True">
   <permission>Manage portal</permission>
  </configlet>
@@ -21,6 +22,7 @@
      category="Products"
      condition_expr="python:True"
      url_expr="string:${portal_url}/@@export_statistics"
+     icon_expr="string:site_icon.png"
      visible="True">
   <permission>Manage portal</permission>
  </configlet>

@@ -7,7 +7,7 @@
    <property name="description" i18n:translate=""></property>
    <property
       name="url_expr">string:${globals_view/getCurrentObjectUrl}/generate_pdf</property>
-   <property name="icon_expr"></property>
+   <property name="icon_expr">string:pdf_icon.png</property>
    <property name="available_expr">python: object.portal_type == 'Meeting'</property>
    <property name="permissions">
     <element value="View"/>
@@ -20,7 +20,7 @@
    <property name="description" i18n:translate="">Create advisory from information in project</property>
    <property
       name="url_expr">string:${globals_view/getCurrentObjectUrl}/create_advisory</property>
-   <property name="icon_expr"></property>
+   <property name="icon_expr">string:folder_icon.png</property>
    <property
       name="available_expr">object/@@can_create_advisory</property>
    <property name="permissions">

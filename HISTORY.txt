@@ -4,6 +4,9 @@ History of this buildout
 5.0.18 (unreleased)
 -------------------
 
+- Cleanup controlpanel icons.
+  [maurits]
+
 - Normalize the kss resources to what default Plone has.
   KSS is only for logged-in users.  With upgrade step.
   [maurits]

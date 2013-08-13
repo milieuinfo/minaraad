@@ -330,13 +330,19 @@
       sortkey="1"
       profile="Products.minaraad:default" />
 
-  <gs:upgradeStep
-      title="Apply Javascript registry"
-      description=""
+  <gs:upgradeSteps
       source="5022"
       destination="5023"
-      handler="Products.minaraad.migration.apply_javascript_registry"
       sortkey="1"
-      profile="Products.minaraad:default" />
+      profile="Products.minaraad:default">
+    <gs:upgradeStep
+        title="Apply Javascript registry"
+        description=""
+        handler="Products.minaraad.migration.apply_javascript_registry" />
+    <gs:upgradeStep
+        title="Apply controlpanel"
+        description=""
+        handler="Products.minaraad.migration.update_controlpanel" />
+  </gs:upgradeSteps>
 
 </configure>
