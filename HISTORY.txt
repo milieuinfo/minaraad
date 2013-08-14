@@ -1,7 +1,7 @@
 History of this buildout
 ========================
 
-5.0.19 (unreleased)
+5.0.19 (2013-08-14)
 -------------------
 
 - sendmail script: send from help@milieuinfo.be.  This avoids problems
