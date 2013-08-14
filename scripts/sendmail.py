@@ -17,6 +17,11 @@ import smtplib
 HOST = 'smtp-plone.mmis.be'
 TO = 'm.van.rees@zestsoftware.nl'
 FROM = 'm.van.rees@zestsoftware.nl'
+# The zestsoftware.nl domain uses SPF, which means the email gets
+# bounced when trying to use a FROM address with that domain, because
+# the mmis.be mail host is not in the SPF list for the zestsoftware.nl
+# domain.  See http://www.openspf.org/Best_Practices/Webgenerated
+SENDER = 'help@milieuinfo.be'
 
 text = sys.stdin.read()
 info = {
@@ -38,4 +43,4 @@ conn = smtplib.SMTP(host=HOST)
 message = """From: %(from_address)s
 %(text)s
 """
-conn.sendmail(FROM, [TO], message % info)
+conn.sendmail(SENDER, [TO], message % info)
