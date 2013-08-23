@@ -68,7 +68,7 @@
          </tal:block>
       </tal:block>
 
-      <fieldset>
+      <fieldset id="attachments-fieldset">
         <legend i18n:translate="label_attachments">
           Attachments
         </legend>
@@ -93,6 +93,14 @@
             </tal:block>
         </tal:block>
       </fieldset>
+      
+      <script type="text/javascript">
+        // Disable inline (kss) validation in the attachments,
+        // because that only leads to errors.
+        (function($) {
+          $('#attachments-fieldset .blurrable').removeClass('blurrable');
+        })(jQuery)
+      </script>
 
       <input class="context" type="submit"
              name="form_submitted" value="Bewaren" />

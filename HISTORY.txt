@@ -4,6 +4,10 @@ History of this buildout
 5.0.20 (unreleased)
 -------------------
 
+- Disable inline (kss) validation in the attachments on our agenda
+  item edit form, because that only leads to errors.
+  [maurits]
+
 - Fixed 'KeyError portal' on recently_modified. I am not sure how
   people actually get to that page, but the error is in the error log.
   [maurits]
