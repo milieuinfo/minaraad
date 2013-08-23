@@ -4,7 +4,9 @@ History of this buildout
 5.0.20 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- Fixed 'KeyError portal' on recently_modified. I am not sure how
+  people actually get to that page, but the error is in the error log.
+  [maurits]
 
 
 5.0.19 (2013-08-14)
