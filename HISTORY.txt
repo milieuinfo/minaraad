@@ -4,6 +4,9 @@ History of this buildout
 5.0.20 (unreleased)
 -------------------
 
+- Remove version pins for no longer used recipes.
+  [maurits]
+
 - Disable inline (kss) validation in the attachments on our agenda
   item edit form, because that only leads to errors.
   [maurits]
