@@ -41,7 +41,9 @@ conn = smtplib.SMTP(host=HOST)
 #
 # Memmon only needs this:
 message = """From: %(from_address)s
-To: %(to_address)s
 %(text)s
 """
+if 'To: ' not in text:
+    # Prepend To header.
+    message = "To: %(to_address)s\n" + message
 conn.sendmail(SENDER, [TO], message % info)
