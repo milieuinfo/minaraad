@@ -4,6 +4,9 @@ History of this buildout
 5.0.20 (unreleased)
 -------------------
 
+- Products.PloneHotfix20131210 1.0
+  [maurits]
+
 - Fix send_mail script to not send double To headers.
   [maurits]
 
