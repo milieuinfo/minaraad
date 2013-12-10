@@ -343,7 +343,7 @@ class testWorkflow(MainTestCase):
         except Unauthorized:
             created = False
 
-        assert(created, False)
+        assert not created
         self.logout()
 
     def _content_state(self):
