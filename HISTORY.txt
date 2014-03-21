@@ -4,7 +4,9 @@ History of this buildout
 5.0.21 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- Increase production memmon limit for the instance to 2300.  This is
+  after a memory increase from 3 to 4 GB.
+  [maurits]
 
 
 5.0.20 (2013-12-10)
