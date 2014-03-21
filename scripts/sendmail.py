@@ -13,6 +13,7 @@
 
 import sys
 import smtplib
+from socket import gethostname
 
 HOST = 'smtp-plone.mmis.be'
 TO = 'm.van.rees@zestsoftware.nl'
@@ -23,7 +24,7 @@ FROM = 'm.van.rees@zestsoftware.nl'
 # domain.  See http://www.openspf.org/Best_Practices/Webgenerated
 SENDER = 'help@milieuinfo.be'
 
-text = sys.stdin.read()
+text = sys.stdin.read() + '\n\nSent from host: ' + gethostname()
 info = {
     'to_address': TO,
     'from_address': FROM,
