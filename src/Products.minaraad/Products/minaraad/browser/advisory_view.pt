@@ -29,7 +29,9 @@
            class="themesubheader">
           <span i18n:translate="label_product_number">Product number:</span>
           <span class="normaltext"
-                tal:content="python:'%d-%s' % (context.getDate().year(), product_number)" />
+                tal:define="date python:context.getDate();
+                            year python:date is not None and date.year() or 0"
+                tal:content="python:'%d-%s' % (year, product_number)" />
       </div>
       <div tal:define="project context/getProject|nothing"
            tal:condition="python:project and checkPermission('View', project)"
@@ -37,7 +39,9 @@
           <span i18n:translate="label_project">Project:</span>
           <a tal:attributes="href project/absolute_url">
             <tal:project_id
-                tal:content="python:'%d-%s' % (project.getAdvisory_date().year(), project.getProject_number())"
+                tal:define="date python:context.getAdvisory_date();
+                            year python:date is not None and date.year() or 0"
+                tal:content="python:'%d-%s' % (year, project.getProject_number())"
                 tal:on-error="project/getId" />
           </a>
       </div>
