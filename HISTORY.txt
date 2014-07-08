@@ -1,7 +1,7 @@
 History of this buildout
 ========================
 
-5.0.23 (unreleased)
+5.0.23 (2014-07-08)
 -------------------
 
 - Fix possible ``AttributeError: 'NoneType' object has no attribute
