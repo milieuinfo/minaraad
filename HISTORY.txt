@@ -4,7 +4,10 @@ History of this buildout
 5.0.23 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- Memmon: 1500 MB.  'Popen' uses fork/clone under the hood, which
+  means you suddenly need twice as much memory when using
+  portaltransforms.  See http://stackoverflow.com/questions/1367373
+  [maurits]
 
 
 5.0.22 (2014-04-25)
