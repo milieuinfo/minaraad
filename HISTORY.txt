@@ -1,7 +1,7 @@
 History of this buildout
 ========================
 
-5.0.24 (unreleased)
+5.0.24 (2014-07-17)
 -------------------
 
 - Change times for crontab-pack to a bit earlier on Saturday. 
