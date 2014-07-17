@@ -4,6 +4,9 @@ History of this buildout
 5.0.24 (unreleased)
 -------------------
 
+- Change times for crontab-pack to a bit earlier on Saturday. 
+  [maurits]
+
 - Fix crontab-pack.  It needs an absolute path to the zodbpack.cfg
   file, otherwise it only works when the working directory is the
   buildout directory.
