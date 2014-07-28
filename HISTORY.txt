@@ -1,7 +1,7 @@
 History of this buildout
 ========================
 
-5.0.25 (unreleased)
+5.0.25 (2014-07-28)
 -------------------
 
 - sendmail script: send to webadmin@zestsoftware.nl too.
