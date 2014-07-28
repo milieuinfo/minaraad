@@ -47,4 +47,8 @@ message = """From: %(from_address)s
 if 'To: ' not in text:
     # Prepend To header.
     message = "To: %(to_address)s\n" + message
-conn.sendmail(SENDER, [TO], message % info)
+if ',' in TO:
+    TO = [x.strip() for x in TO.split(',')]
+else:
+    TO = [TO]
+conn.sendmail(SENDER, TO, message % info)
