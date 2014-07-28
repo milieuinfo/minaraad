@@ -4,7 +4,8 @@ History of this buildout
 5.0.25 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- sendmail script: send to webadmin@zestsoftware.nl too.
+  [maurits]
 
 
 5.0.24 (2014-07-17)

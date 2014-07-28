@@ -16,7 +16,7 @@ import smtplib
 from socket import gethostname
 
 HOST = 'smtp-plone.mmis.be'
-TO = 'm.van.rees@zestsoftware.nl'
+TO = 'm.van.rees@zestsoftware.nl, webadmin@zestsoftware.nl'
 FROM = 'm.van.rees@zestsoftware.nl'
 # The zestsoftware.nl domain uses SPF, which means the email gets
 # bounced when trying to use a FROM address with that domain, because
