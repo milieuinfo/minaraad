@@ -4,7 +4,10 @@ History of this buildout
 5.0.26 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- Use Products.PortalTransforms 2.1.4-zest20140731.  This uses
+  subprocess.Popen instead of os.popen4 and should be better for
+  memory.
+  [maurits]
 
 
 5.0.25 (2014-07-28)
