@@ -1,7 +1,7 @@
 History of this buildout
 ========================
 
-5.0.28 (unreleased)
+5.0.28 (2014-10-06)
 -------------------
 
 - Use correct jqueryui version for Plone 4.2.  Do not use newer
