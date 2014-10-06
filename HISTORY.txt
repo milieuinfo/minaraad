@@ -4,7 +4,9 @@ History of this buildout
 5.0.28 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- Use correct jqueryui version for Plone 4.2.  Do not use newer
+  plone.app.jquery version.
+  [maurits]
 
 
 5.0.27 (2014-09-17)
