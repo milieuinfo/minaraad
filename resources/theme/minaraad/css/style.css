@@ -1113,6 +1113,8 @@ dl.actionMenu.activated dt a { margin: 0 !important; }
 
 #content a.link-parent { display: block; background: transparent url("/++theme++minaraad/img/arrowUp.png") 4px 5px no-repeat; padding: 1px 0px 10px 16px; font-size: 90%; text-decoration: none; border-bottom: 0; }
 
+#content .pfg-form { width: 68.75%; }
+
 /* The 16-column Deco Grid System. For the 12-column variant, see decogrids-12.css.  Cells are 4% width, 1.125% left/right margin.  If page width is fixed to 960px width: Cell will be equivalent to 40px, left/right margin will be 10px. */
 div.row { float: left; width: 100%; display: block; position: relative; }
 div.cell { position: relative; float: left; left: 100%; }
