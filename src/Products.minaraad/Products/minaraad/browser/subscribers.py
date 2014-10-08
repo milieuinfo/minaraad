@@ -44,15 +44,15 @@ class ExportSubscribersView(BrowserView):
         ploneUtils = getToolByName(self.context, 'plone_utils')
         safeSubscriberId = ploneUtils.normalizeString(self.contenttype).lower()
 
-        theme = None
+        themes = None
         if self.contenttype in THEME_FILTERED:
             themes = self.context.get_all_themes()
 
         subscribers = self.sm.emailSubscribers(self.contenttype,
                                                themes=themes)
 
-        logger.info("Exporting cvs for %s subscribers for %s (theme=%r)",
-                    len(subscribers), self.contenttype, theme)
+        logger.info("Exporting cvs for %s subscribers for %s (themes=%r)",
+                    len(subscribers), self.contenttype, themes)
         return buildCSV(self.context,
                         subscribers,
                         filename='%s-subscribers.csv' % safeSubscriberId)
