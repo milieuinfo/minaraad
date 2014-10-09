@@ -1,7 +1,7 @@
 History of this buildout
 ========================
 
-5.0.30 (unreleased)
+5.0.30 (2014-10-09)
 -------------------
 
 - Fix ``UnboundLocalError: local variable 'themes' referenced before
