@@ -43,6 +43,8 @@ class DigiBibView(BrowserView):
         now we do it for all projects in one go, without needing to
         get the objects to ask if we have a permission there.
         """
+        if not brains:
+            return brains
         if self.mtool.checkPermission(
                 'minaraad.projects: view project in digibib', self.context):
             # The user already has the right permission in the digibib
@@ -57,6 +59,8 @@ class DigiBibView(BrowserView):
             return filtered
         member = pps.member()
         group_ids = member.getGroups()
+        if not group_ids:
+            return filtered
         for brain in brains:
             state = brain.review_state
             if state not in ['active', 'finished', 'completed']:
@@ -86,6 +90,68 @@ class DigiBibView(BrowserView):
         filtered = self._filter_projects(project_brains)
         return self._sort_projects(filtered)
 
+    def _filter_meetings(self, brains):
+        """Filter meeting brains.
+
+        This basically does the same as adapters/localroles.py.  But
+        now we do it for all meetings in one go, without needing to
+        get the objects to ask if we have a permission there.
+        """
+        if not brains:
+            return brains
+        if self.mtool.checkPermission(
+                'minaraad.projects: view meeting in digibib', self.context):
+            # The user already has the right permission in the digibib
+            # context, so she can see all meetings.  She probably has
+            # the Manager or Council Member role.
+            return brains
+
+        filtered = []
+        pps = getMultiAdapter(
+            (self.context, self.request), name="plone_portal_state")
+        if pps.anonymous():
+            return filtered
+        member = pps.member()
+        group_ids = member.getGroups()
+        if not group_ids:
+            return filtered
+        project_brains = self.ctool({'portal_type': 'Project'})
+        project_mapping = {}
+        for project in project_brains:
+            project_mapping[project.getProject_number] = project
+        for brain in brains:
+            # Is one of the groups of the user invited?
+            for group_id in group_ids:
+                if group_id in brain.getInvited_groups:
+                    filtered.append(brain)
+            if not brain.project_numbers:
+                # No projects linked to this meeting.
+                continue
+            found = False
+            for pnum in brain.project_numbers:
+                project = project_mapping.get(pnum)
+                if project is None:
+                    continue
+                state = project.review_state
+                if state not in ['active', 'finished', 'completed']:
+                    continue
+                found = False
+                for group_id in group_ids:
+                    if group_id == project.getResponsible_group:
+                        found = True
+                        break
+                    if group_id in project.getAssigned_groups:
+                        found = True
+                        break
+                if not found:
+                    # No relevant group found in this related project.
+                    continue
+            if not found:
+                # No relevant group found in *any* related project.
+                continue
+            filtered.append(brain)
+        return filtered
+
     def list_meetings(self):
         try:
             meeting_container = self.context.meetings
@@ -99,12 +165,8 @@ class DigiBibView(BrowserView):
             if meeting.review_state == 'planned'
             or (meeting.getStart_time and not meeting.getStart_time.isPast())
             ]
-        # Now we need the objects for another check and we need those
-        # in the template anyway.
-        objects = [meeting.getObject() for meeting in initial_filtered]
-        filtered = [obj for obj in objects if self.mtool.checkPermission(
-            'minaraad.projects: view meeting in digibib', obj)]
-        return self._sort_meetings(filtered)
+        filtered = self._filter_meetings(initial_filtered)
+        return self._sort_meetings(filtered, brains=True)
 
     def organize_by_year(self, objects, get_year, sort_on=None):
         """Organize objects by year.

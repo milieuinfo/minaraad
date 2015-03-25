@@ -5,7 +5,7 @@ History of this buildout
 -------------------
 
 - Digibib: do not get project objects.  Filter the projects based on
-  the catalog metadata.
+  the catalog metadata.  Do the same for meetings.
   [maurits]
 
 - Meeting archive: no longer use getObject.
