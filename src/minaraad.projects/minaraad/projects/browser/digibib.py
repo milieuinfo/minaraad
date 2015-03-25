@@ -157,20 +157,20 @@ class MeetingsListingView(DigiBibView):
 
     def get_past_meetings(self):
         objects = self._sort_meetings(
-            [meeting.getObject() for meeting in self.context.list_meetings()
+            [meeting for meeting in self.context.list_meetings()
              if meeting.getStart_time and
-             meeting.getStart_time.isPast()], reverse=True)
+             meeting.getStart_time.isPast()], brains=True, reverse=True)
 
         def get_year(x):
-            return x.getStart_time().year()
+            return x.getStart_time.year()
 
         return self.organize_by_year(objects, get_year)
 
     def get_future_meetings(self):
         return self._sort_meetings(
-            [meeting.getObject() for meeting in self.context.list_meetings()
+            [meeting for meeting in self.context.list_meetings()
              if meeting.getStart_time and
-             not meeting.getStart_time.isPast()])
+             not meeting.getStart_time.isPast()], brains=True)
 
 
 class ProjectsListingView(DigiBibView):

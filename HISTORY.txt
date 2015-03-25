@@ -4,6 +4,9 @@ History of this buildout
 5.0.31 (unreleased)
 -------------------
 
+- Meeting archive: no longer use getObject.
+  [maurits]
+
 - Add getResponsible_group to catalog metadata.
   [maurits]
 
