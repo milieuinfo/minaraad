@@ -176,7 +176,7 @@ def save_board_members(project, event):
                 for m in members:
                     if m['id'] != member_id:
                         continue
-                    if not g_tuple in m['groups']:
+                    if g_tuple not in m['groups']:
                         m['groups'].append(g_tuple)
                     if m.get('fullname') != fullname:
                         m['fullname'] = fullname
