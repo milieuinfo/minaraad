@@ -122,11 +122,17 @@ def save_project_references(agendaitem, event):
     To avoid having to look at all back references to find the meetings
     where a project is discussed, we update a persistent dictionnary
     in the project to quickly find the meeting.
+
+    Also, recatalog the parent meeting: the project_numbers may need
+    updating.
     """
     # We first look at the previous project linked
     # by the Agenda item.
     previous_project = agendaitem.get_previous_project()
     current_project = agendaitem.getProject()
+    # Might be the same.  Note: condition with 'is' may not work.
+    if previous_project == current_project:
+        return
 
     if previous_project:
         previous_project.remove_agendaitem_reference(agendaitem)
@@ -135,6 +141,13 @@ def save_project_references(agendaitem, event):
         current_project.add_agendaitem_reference(agendaitem)
 
     agendaitem.set_previous_project(current_project)
+    meeting = aq_parent(agendaitem)
+    if meeting:
+        path = '/'.join(meeting.getPhysicalPath())
+        catalog = getToolByName(agendaitem, 'portal_catalog')
+        # passing in a valid but inexpensive index, makes sure we
+        # don't reindex expensive indexes like SearchableText
+        catalog.catalog_object(meeting, path, ['id'], update_metadata=True)
 
 
 def save_board_members(project, event):
