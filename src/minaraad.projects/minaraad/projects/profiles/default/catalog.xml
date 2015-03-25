@@ -6,5 +6,7 @@
   <column value="getDuration" />
   <column value="getStart_time" />
   <column value="get_end_time" />
+  <column value="getAdvisory_date" />
   <column value="getResponsible_group" />
+  <column value="getProject_number" />
 </object>

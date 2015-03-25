@@ -223,11 +223,11 @@
       profile="minaraad.projects:default">
     <genericsetup:upgradeStep
         title="Run catalog step"
-        description="Adds getResponsible_group metadata"
+        description="Adds several meeting and project metadata"
         handler="minaraad.projects.migration.run_catalog_step" />
     <genericsetup:upgradeStep
         title="Update meeting and project catalog metadata"
-        description="Adds getResponsible_group metadata to brains"
+        description="Adds several meeting and project metadata to brains"
         handler="minaraad.projects.migration.update_meeting_project_metadata" />
   </genericsetup:upgradeSteps>
 
