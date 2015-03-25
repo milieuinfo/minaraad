@@ -219,6 +219,10 @@ class Meeting(BaseMeeting):
                 projects.append(p)
         return projects
 
+    def project_numbers(self):
+        # Used in the catalog.
+        return [p.getProject_number() for p in self.get_all_projects()]
+
     def get_files(self):
         """ Finds all attachment for the meeting.
         """

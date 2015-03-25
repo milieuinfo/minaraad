@@ -11,8 +11,9 @@ History of this buildout
 - Meeting archive: no longer use getObject.
   [maurits]
 
-- Add getAdvisory_date, getAssigned_groups, getResponsible_group and
-  getProject_number to catalog metadata.
+- Add catalog metadata: getAdvisory_date, getAssigned_groups,
+  getInvited_groups, getProject_number, getResponsible_group,
+  project_numbers.
   [maurits]
 
 
