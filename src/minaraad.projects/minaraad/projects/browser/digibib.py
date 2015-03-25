@@ -1,15 +1,16 @@
 from DateTime import DateTime
 from Products.Five import BrowserView
 from Products.CMFCore.utils import getToolByName
+from zope.component import getMultiAdapter
 
 
-def project_sort_key(obj):
-    adv_date = obj.getAdvisory_date()
+def project_sort_key(brain):
+    adv_date = brain.getAdvisory_date
     if adv_date:
-        year = obj.getAdvisory_date().year()
+        year = adv_date.year()
     else:
         year = 0
-    num = obj.getProject_number()
+    num = brain.getProject_number
     return (year, num)
 
 
@@ -35,31 +36,54 @@ class DigiBibView(BrowserView):
     def _sort_projects(self, p, reverse=False):
         return sorted(p, key=project_sort_key, reverse=reverse)
 
+    def _filter_projects(self, brains):
+        """Filter project brains.
+
+        This basically does the same as adapters/localroles.py.  But
+        now we do it for all projects in one go, without needing to
+        get the objects to ask if we have a permission there.
+        """
+        if self.mtool.checkPermission(
+                'minaraad.projects: view project in digibib', self.context):
+            # The user already has the right permission in the digibib
+            # context, so she can see all projects.  She probably has
+            # the Manager or Council Member role.
+            return brains
+
+        filtered = []
+        pps = getMultiAdapter(
+            (self.context, self.request), name="plone_portal_state")
+        if pps.anonymous():
+            return filtered
+        member = pps.member()
+        group_ids = member.getGroups()
+        for brain in brains:
+            state = brain.review_state
+            if state not in ['active', 'finished', 'completed']:
+                continue
+            found = False
+            for group_id in group_ids:
+                if group_id == brain.getResponsible_group:
+                    found = True
+                    break
+                if group_id in brain.getAssigned_groups:
+                    found = True
+                    break
+            if not found:
+                continue
+            filtered.append(brain)
+        return filtered
+
     def list_projects(self):
         project_brains = self.ctool(
             {'portal_type': 'Project',
              'review_state': ['in_consideration', 'active', 'finished']})
-        projects = [p.getObject() for p in project_brains]
-        filtered = [p for p in projects
-                    if self.mtool.checkPermission(
-                        'minaraad.projects: view project in digibib', p)]
-
+        filtered = self._filter_projects(project_brains)
         return self._sort_projects(filtered)
 
     def list_all_projects(self):
         project_brains = self.ctool({'portal_type': 'Project'})
-        projects = []
-        for p in project_brains:
-            try:
-                projects.append(p.getObject())
-            except:
-                pass
-                # XXX - add some logging
-
-        filtered = [p for p in projects
-                    if self.mtool.checkPermission(
-                        'minaraad.projects: view project in digibib', p)]
-
+        filtered = self._filter_projects(project_brains)
         return self._sort_projects(filtered)
 
     def list_meetings(self):
@@ -178,15 +202,15 @@ class ProjectsListingView(DigiBibView):
     """
 
     def get_projects(self):
-        objects = self._sort_projects(
+        brains = self._sort_projects(
             self.list_all_projects(), reverse=True)
 
         # Since we sort on advisory date now, we must organize by the
         # year of that date too, instead of the year of the deadline.
-        get_year = lambda x: x.getAdvisory_date().year()
-        sort_on = lambda x: x.getProject_number()
+        get_year = lambda x: x.getAdvisory_date.year()
+        sort_on = lambda x: x.getProject_number
 
-        return self.organize_by_year(objects, get_year, sort_on)
+        return self.organize_by_year(brains, get_year, sort_on)
 
 
 class OrganisationsListingView(DigiBibView):

@@ -4,6 +4,10 @@ History of this buildout
 5.0.31 (unreleased)
 -------------------
 
+- Digibib: do not get project objects.  Filter the projects based on
+  the catalog metadata.
+  [maurits]
+
 - Meeting archive: no longer use getObject.
   [maurits]
 
