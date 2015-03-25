@@ -3,6 +3,8 @@ import re
 
 from DateTime import DateTime
 from Products.CMFCore.utils import getToolByName
+from Products.ZCatalog.ProgressHandler import ZLogHandler
+from ZODB.POSException import ConflictError
 from persistent.dict import PersistentDict
 
 from minaraad.projects.utils import create_attachment
@@ -302,3 +304,51 @@ def apply_factory_profile(context):
 
 def apply_types_fixes(context):
     context.runImportStepFromProfile(FIXES_PROFILE_ID, 'typeinfo')
+
+
+def run_catalog_step(context):
+    context.runImportStepFromProfile(PROFILE_ID, 'catalog')
+
+
+def update_catalog_metadata(context, types=None):
+    """Update catalog metadata.
+
+    Adapted from updateIconMetadata in plone.app.upgrade v40/betas.py.
+    """
+    catalog = getToolByName(context, 'portal_catalog')
+    search = catalog.unrestrictedSearchResults
+    if types is None:
+        logger.info('Updating catalog metadata.')
+        brains = search(sort_on="path")
+    else:
+        if isinstance(types, basestring):
+            types = [types]
+        logger.info('Updating catalog metadata for %s.', ', '.join(types))
+        brains = search(portal_type=types, sort_on="path")
+    num_objects = len(brains)
+    # Yes, this logs quite often, but I just know I am going to thank
+    # myself for that...  Feedback about progress is good for my heart.
+    # [Maurits]
+    pghandler = ZLogHandler(10)
+    pghandler.init('Updating catalog metadata', num_objects)
+    i = 0
+    for brain in brains:
+        pghandler.report(i)
+        obj = brain.getObject()
+        # passing in a valid but inexpensive index, makes sure we don't
+        # reindex the entire catalog including expensive indexes like
+        # SearchableText
+        brain_path = brain.getPath()
+        try:
+            catalog.catalog_object(obj, brain_path, ['id'], True, pghandler)
+        except ConflictError:
+            raise
+        except Exception:
+            pass
+        i += 1
+    pghandler.finish()
+    logger.info('Done updating catalog metadata.')
+
+
+def update_meeting_project_metadata(context):
+    update_catalog_metadata(context, types=['Meeting', 'Project'])

@@ -4,7 +4,8 @@ History of this buildout
 5.0.31 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- Add getResponsible_group to catalog metadata.
+  [maurits]
 
 
 5.0.30 (2014-10-09)
