@@ -120,10 +120,19 @@ class DigiBibView(BrowserView):
         for project in project_brains:
             project_mapping[project.getProject_number] = project
         for brain in brains:
+            # We have nested 'for' loops, and during such a nested
+            # loop we may want to break the inner loop and continue
+            # with the outer loop.  We use a 'found' variable to help
+            # us keep track.
+            found = False
             # Is one of the groups of the user invited?
             for group_id in group_ids:
                 if group_id in brain.getInvited_groups:
-                    filtered.append(brain)
+                    found = True
+                    break
+            if found:
+                filtered.append(brain)
+                continue
             if not brain.project_numbers:
                 # No projects linked to this meeting.
                 continue
