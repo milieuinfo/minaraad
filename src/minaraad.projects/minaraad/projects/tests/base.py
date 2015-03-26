@@ -158,10 +158,11 @@ class MinaraadTestCase(ptc.PloneTestCase):
             group = pgroups.getGroupById(group_id)
             group.addMember(u_id)
 
-    def add_project(self, p_id, title, responsible_grp, assigned_grps):
+    def add_project(self, p_id, p_num, title, responsible_grp, assigned_grps):
         self.portal.digibib.projects.invokeFactory(
             'Project',
             id=p_id,
+            project_number=p_num,
             title=title,
             responsible_group=responsible_grp,
             assigned_groups=assigned_grps)

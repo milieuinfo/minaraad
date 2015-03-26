@@ -31,16 +31,19 @@ First, we need some working groups and users:
 And some projects on which they will work:
 
     >>> self.add_project('group_1_project',
+    ...                  '100',
     ...                  'Project 1',
     ...                  'group_1',
     ...                  ['group_1'])
 
     >>> self.add_project('group_2_project',
+    ...                  '020',
     ...                  'Project 2',
     ...                  'group_2',
     ...                  ['group_2'])
 
     >>> self.add_project('group_1_2_project',
+    ...                  '120',
     ...                  'Project 3',
     ...                  'group_1',
     ...                  ['group_2'])
@@ -145,6 +148,7 @@ The last one checks that the project is in the correct state (validated):
 We'll add a validated project to ensure it works:
 
     >>> self.add_project('20101016',
+    ...                  '400',
     ...                  'Project 4',
     ...                  'group_1',
     ...                  ['group_2'])
@@ -164,6 +168,7 @@ We'll add a validated project to ensure it works:
 And a rejected one:
 
     >>> self.add_project('20101017',
+    ...                  '500',
     ...                  'Project 5',
     ...                  'group_1',
     ...                  ['group_2'])
@@ -254,7 +259,7 @@ be able to see it:
     >>> [x for x in adapter.getAllRoles()]
     [('group_1', ('ProjectMember',))]
 
-Le's undo our ugly patching:
+Let's undo our ugly patching:
 
     >>> LocalRoleProvider.check_state = LocalRoleProvider.old_check_state
 
