@@ -14,12 +14,14 @@ This test suite will ensure project content type works as expected.
 We first need a project or two:
 
     >>> digibib.projects.invokeFactory('Project',
-    ...                                'first_project')
+    ...                                'first_project',
+    ...                                project_number='100')
     'first_project'
     >>> notify(ObjectEditedEvent(digibib.projects.first_project))
 
     >>> digibib.projects.invokeFactory('Project',
-    ...                                'second_project')
+    ...                                'second_project',
+    ...                                project_number='200')
     'second_project'
     >>> notify(ObjectEditedEvent(digibib.projects.second_project))
 
@@ -220,10 +222,14 @@ We create a third meeting to copy the items:
 And we copy them:
 
     >>> items = digibib.meetings.second_meeting.manage_copyObjects(['item1', 'item2', 'item3'])
+    >>> digibib.meetings.third_meeting.project_numbers()
+    []
     >>> digibib.meetings.third_meeting.manage_pasteObjects(items)
     [{'new_id': 'item1', 'id': 'item1'},
      {'new_id': 'item2', 'id': 'item2'},
      {'new_id': 'item3', 'id': 'item3'}]
+    >>> digibib.meetings.third_meeting.project_numbers()
+    ['100', '200']
 
 The third meeting is now referenced by the projects:
 
