@@ -11,7 +11,7 @@ from zope.lifecycleevent.interfaces import IObjectModifiedEvent
 
 from minaraad.projects.content.base_meeting import BaseMeeting
 from minaraad.projects import MinaraadProjectMessageFactory as _
-from minaraad.projects.utils import send_email
+from minaraad.projects.utils import send_email, recatalog_object
 from minaraad.projects.config import FROM_EMAIL
 
 from minaraad.projects.interfaces import IAgendaItemProject
@@ -130,9 +130,9 @@ def save_project_references(agendaitem, event):
     # by the Agenda item.
     previous_project = agendaitem.get_previous_project()
     current_project = agendaitem.getProject()
-    # Might be the same.  Note: condition with 'is' may not work.
-    if previous_project == current_project:
-        return
+    # They might be the same, in which case you would be tempted to
+    # return immediately, but that gives wrong results when copying
+    # agenda items to another meeting.  Bit strange.
 
     if previous_project:
         previous_project.remove_agendaitem_reference(agendaitem)
@@ -141,13 +141,18 @@ def save_project_references(agendaitem, event):
         current_project.add_agendaitem_reference(agendaitem)
 
     agendaitem.set_previous_project(current_project)
-    meeting = aq_parent(agendaitem)
-    if meeting:
-        path = '/'.join(meeting.getPhysicalPath())
-        catalog = getToolByName(agendaitem, 'portal_catalog')
-        # passing in a valid but inexpensive index, makes sure we
-        # don't reindex expensive indexes like SearchableText
-        catalog.catalog_object(meeting, path, ['id'], update_metadata=True)
+    # recatalog the meeting
+    recatalog_object(aq_parent(agendaitem))
+
+
+def update_meeting_project_numbers(agendaitem, event):
+    """ Recatalog parent meeting to update project_numbers.
+
+    An agenda item can reference a project via the 'project'
+    attribute.
+    """
+    recatalog_object(event.oldParent)
+    recatalog_object(event.newParent)
 
 
 def save_board_members(project, event):
@@ -203,6 +208,11 @@ def copy_project_title(agendaItem, event):
         return
 
     agendaItem.title = agendaItem.getProject().title
+
+
+def recatalog_project_meetings(project, event):
+    for meeting in project.get_agenda_items().keys():
+        recatalog_object(meeting)
 
 
 def send_email_to_secretary(project, event):

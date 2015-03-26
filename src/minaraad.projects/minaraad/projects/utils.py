@@ -250,3 +250,13 @@ def create_attachment(context, document, published=True):
     logger.info("Created a %s attachment with id %s.",
                 published and 'published' or 'private', attachment_id)
     return attachment
+
+
+def recatalog_object(obj):
+    if obj is None:
+        return
+    path = '/'.join(obj.getPhysicalPath())
+    catalog = getToolByName(obj, 'portal_catalog')
+    # passing in a valid but inexpensive index, makes sure we
+    # don't reindex expensive indexes like SearchableText
+    catalog.catalog_object(obj, path, ['id'], update_metadata=True)

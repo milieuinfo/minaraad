@@ -50,6 +50,12 @@
       />
 
   <subscriber
+      for=".interfaces.IAgendaItemProject
+           zope.lifecycleevent.interfaces.IObjectMovedEvent"
+      handler=".events.update_meeting_project_numbers"
+      />
+
+  <subscriber
       for=".interfaces.IProject
            zope.lifecycleevent.interfaces.IObjectModifiedEvent"
       handler=".events.save_board_members"
@@ -89,6 +95,12 @@
       for=".interfaces.IProject
            Products.CMFCore.interfaces.IActionSucceededEvent"
       handler=".events.send_email_to_secretary"
+      />
+
+  <subscriber
+      for=".interfaces.IProject
+           Products.CMFCore.interfaces.IActionSucceededEvent"
+      handler=".events.recatalog_project_meetings"
       />
 
   <!-- Adapters -->
