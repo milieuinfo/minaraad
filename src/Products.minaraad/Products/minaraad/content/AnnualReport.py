@@ -8,11 +8,11 @@ from Products.minaraad.interfaces import IAnnualReport
 from Products.minaraad.PostMixin import PostMixin
 from Products.minaraad.EmailMixin import EmailMixin
 from Products.minaraad import config
-
+from plone.app.blob.field import BlobField
 
 schema = atapi.Schema((
 
-    atapi.FileField(
+    BlobField(
         name='attachment',
         widget=atapi.FileWidget(
             label='Attachment',

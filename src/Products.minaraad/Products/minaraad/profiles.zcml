@@ -349,4 +349,12 @@
         handler="Products.minaraad.migration.update_portal_types" />
   </gs:upgradeSteps>
 
+  <gs:upgradeStep
+      title="Update AnnualReport to blob file"
+      description=""
+      source="5023"
+      destination="5024"
+      handler="Products.minaraad.migration.migrate_to_blob_fields"
+      profile="Products.minaraad:default" />
+
 </configure>

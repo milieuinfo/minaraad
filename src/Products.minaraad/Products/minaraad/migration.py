@@ -420,3 +420,8 @@ def cook_resources(context):
     for registry_id in ('portal_css', 'portal_javascripts'):
         registry = getToolByName(context, registry_id)
         registry.cookResources()
+
+
+def migrate_to_blob_fields(context):
+    from plone.app.blob.migrations import migrate
+    return migrate(context, 'AnnualReport')

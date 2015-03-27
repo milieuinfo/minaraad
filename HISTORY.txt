@@ -4,6 +4,9 @@ History of this buildout
 5.0.31 (unreleased)
 -------------------
 
+- AnnualReport: use blob file.
+  [maurits]
+
 - Remove all traces of maildrop.
   [maurits]
 
