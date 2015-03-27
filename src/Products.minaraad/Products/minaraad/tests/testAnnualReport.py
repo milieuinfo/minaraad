@@ -63,7 +63,7 @@ class testAnnualReport(MainTestCase):
         self.failUnless(self.testar.Title()==TITLE,
                         'Value is %s' % self.testar.Title())
         myclass = str(self.testar.getAttachment().__class__)
-        correct = "<class 'OFS.Image.File'>"
+        correct = "<class 'plone.app.blob.field.BlobWrapper'>"
         self.failUnless(myclass==correct, 'Value is %s and not %s' %
                         (myclass, correct))
 
