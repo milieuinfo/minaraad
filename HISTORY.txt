@@ -4,6 +4,9 @@ History of this buildout
 5.0.31 (unreleased)
 -------------------
 
+- Update RelStorage, psycopg2 and related packages to latest versions.
+  [maurits]
+
 - Digibib: do not get project objects.  Filter the projects based on
   the catalog metadata.  Do the same for meetings.
   [maurits]
