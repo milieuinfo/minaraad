@@ -8,6 +8,7 @@ This test suite will ensure project content type works as expected.
     >>> digibib = self.portal.digibib
 
     >>> from Products.Archetypes.event import ObjectEditedEvent
+    >>> from Products.CMFCore.utils import getToolByName
     >>> from zope.event import notify
 
 
@@ -289,7 +290,8 @@ When updating a project, some mails are sent at some steps.
 
 There is not yet messages sent as we did not check or propose any project:
 
-    >>> self.portal.MailHost.messages
+    >>> mailHost = getToolByName(self.portal, 'MailHost')
+    >>> mailHost.messages
     []
 
 
@@ -297,13 +299,14 @@ Now we'll propose the first project. A mail is sent to the secretary
 to check it.
 
     >>> self.check_project('first_project')
-    >>> self.portal.MailHost.messages[0]['to']
+    >>> mailHost = getToolByName(self.portal, 'MailHost')
+    >>> mailHost.messages[0]['to']
     'secretary@example.com'
 
-    >>> self.portal.MailHost.messages[0]['title']
+    >>> mailHost.messages[0]['title']
     u'Project  has been proposed'
 
-    >>> print self.portal.MailHost.messages[0]['msg']
+    >>> print mailHost.messages[0]['msg']
     The project  has to be verified.
     The project can be found here: http://nohost/plone/digibib/projects/first_project
 
@@ -321,7 +324,11 @@ And to propose the project:
 
     >>> self.portal.MailHost.reset()
     >>> self.propose_project('first_project')
-    >>> self.portal.MailHost.messages
+
+Get the MailHost fresh, to be sure we have the correct object.
+
+    >>> mailHost = getToolByName(self.portal, 'MailHost')
+    >>> mailHost.messages
     []
 
 The mail is not sent just after the project is proposed. We have to
@@ -362,15 +369,16 @@ minaraad.projects gives the english ones):
     ...      'to': 'member2@example.com',
     ...      'title': u'Weekly list of proposed projects'}]
 
-    >>> self.portal.MailHost.messages in [dutch_msg, english_msg]
+    >>> mailHost = getToolByName(self.portal, 'MailHost')
+    >>> mailHost.messages in [dutch_msg, english_msg]
     True
 
 
 A project is present only once in a reminder. If there's no project,
 the mail is not sent:
 
-    >>> self.portal.MailHost.reset()
+    >>> mailHost.reset()
     >>> browser.open('http://nohost/plone/cron_projects_reminder')
-
-    >>> self.portal.MailHost.messages
+    >>> mailHost = getToolByName(self.portal, 'MailHost')
+    >>> mailHost.messages
     []
