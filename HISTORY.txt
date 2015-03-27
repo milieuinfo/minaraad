@@ -4,6 +4,9 @@ History of this buildout
 5.0.31 (unreleased)
 -------------------
 
+- Plone 4.2.7.
+  [maurits]
+
 - Update RelStorage, psycopg2 and related packages to latest versions.
   [maurits]
 
