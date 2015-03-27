@@ -14,8 +14,9 @@ a postgres client, a postgres server (unless you only use this
 buildout to connect to an existing postgres server on a different
 machine) and a development library for postgres bindings.
 
-Postgres version 8.4 or 9.0 should both be fine.  Pick the most recent
-that is supported on your platform.
+Postgres version 9.x should be fine.  Pick the most recent that is
+supported on your platform.  Milieuinfo, who host the minaraad project
+is now (March 2015) about to move from 9.1 to 9.3.
 
 On Ubuntu::
 
@@ -155,10 +156,120 @@ Postgres dump
 
 A postgres dump on Mac can be done with something like this:
 
-  /opt/local/lib/postgresql92/bin/pg_dump --format=c --role=minaraad -U minaraad -f /tmp/minaraad_plone4.pgdump minaraad_plone4
+  /opt/local/lib/postgresql93/bin/pg_dump --format=c --role=minaraad -U minaraad -f /tmp/minaraad_plone4.pgdump minaraad_plone4
 
 The postgres server in which you import the dump needs to be the same
 version.  Probably a small version difference is fine.
+
+
+Postgres restore
+----------------
+
+I (Maurits) don't know if Guy Wauters from Milieuinfo
+(guy@milieuinfo.be) did the dump in the same way as above.  But I
+recently got a dump from him.  Restoring it was troublesome.  Maybe in
+the end this would have been fine on a fresh database::
+
+  /opt/local/lib/postgresql93/bin/pg_restore --dbname=minaraad_plone4 --clean --disable-triggers minaraad_productie_20150325.dump 
+
+I got far too many errors this way, about database schemas and not
+being able to remove or create stuff.  Maybe they could all be
+ignored, but I did not trust it.  Similar problems when adding the
+--schema-only option.
+
+In the end, what I did was this:
+
+As postgres user create roles and user.  For minaraad user specify the
+password that you have set in the [postgresconf] section in the
+buildout config files::
+
+  /opt/local/lib/postgresql93/bin/createuser --no-login minaraad_ddl
+  /opt/local/lib/postgresql93/bin/createuser --no-login minaraad_dml
+  /opt/local/lib/postgresql93/bin/createuser --pwprompt minaraad
+
+As postgres user open a psql prompt and give the minaraad user two
+roles.  This may not be needed locally, but this is how it was done on
+the production database::
+
+  GRANT minaraad_ddl TO minaraad;
+  GRANT minaraad_dml TO minaraad;
+
+AS postgres user create the database::
+
+  /opt/local/lib/postgresql93/bin/createdb --owner=minaraad minaraad_plone4
+
+Now start the Plone Site as the normal user who always does that.
+This makes sure the tables get created::
+
+  bin/instance fg
+
+Login to localhost:8080 and verify that there is no Plone Site.  Stop
+Plone again.
+
+Now as normal user open a psql prompt and truncate all the tables.
+You may want to check first how many transactions are currently
+there.  Should be about 10.  But we remove them all to make room for
+the data that we will restore::
+
+  minaraad_plone4=> \dt
+                 List of relations
+   Schema |       Name        | Type  |  Owner   
+  --------+-------------------+-------+----------
+   public | blob_chunk        | table | minaraad
+   public | commit_lock       | table | minaraad
+   public | current_object    | table | minaraad
+   public | object_ref        | table | minaraad
+   public | object_refs_added | table | minaraad
+   public | object_state      | table | minaraad
+   public | pack_object       | table | minaraad
+   public | pack_state        | table | minaraad
+   public | pack_state_tid    | table | minaraad
+   public | transaction       | table | minaraad
+  (10 rows)
+  minaraad_plone4=> SELECT count(*) FROM transaction;
+   count 
+  -------
+   10
+  (1 row)
+  minaraad_plone4=> TRUNCATE blob_chunk CASCADE;
+  minaraad_plone4=> TRUNCATE commit_lock CASCADE;
+  minaraad_plone4=> TRUNCATE current_object CASCADE;
+  minaraad_plone4=> TRUNCATE object_ref CASCADE;
+  minaraad_plone4=> TRUNCATE object_refs_added CASCADE;
+  minaraad_plone4=> TRUNCATE object_state CASCADE;
+  minaraad_plone4=> TRUNCATE pack_object CASCADE;
+  minaraad_plone4=> TRUNCATE pack_state CASCADE;
+  minaraad_plone4=> TRUNCATE pack_state_tid CASCADE;
+  minaraad_plone4=> TRUNCATE transaction CASCADE;
+
+Now as postgres user do the restore.  You will want to redirect stdout
+and especially stderr somewhere else, like here::
+
+  /opt/local/lib/postgresql93/bin/pg_restore --dbname=minaraad_plone4 --clean --data-only --no-privileges --disable-triggers --jobs=4 minaraad_productie_20150325.dump > /tmp/pg_restore.out 2> /tmp/pg_restore.err
+
+This may take 15 or 20 minutes.  In /tmp/pg_restore.err you will see
+lots of errors like this::
+
+  pg_restore: [archiver (db)] Error while PROCESSING TOC:
+  pg_restore: [archiver (db)] Error from TOC entry 6221; 2613 9911303 BLOB 9911303 minaraad
+  pg_restore: [archiver (db)] could not execute query: ERROR:  large object 9911303 does not exist
+      Command was: SELECT pg_catalog.lo_unlink('9911303');
+
+Apparently this can be safely ignored.  At the end there was this
+warning::
+
+  WARNING: errors ignored on restore: 4577
+
+When finished, open psql again and check that you now have lots more
+transactions, something like this::
+
+  minaraad_plone4=> select count(*) from transaction;
+   count 
+  -------
+   25889
+  (1 row)
+
+Start the Plone Site and see if things work.
 
 
 Further reading
