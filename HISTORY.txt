@@ -4,6 +4,9 @@ History of this buildout
 5.0.31 (unreleased)
 -------------------
 
+- Update various minor versions.
+  [maurits]
+
 - Plone 4.2.7.
   [maurits]
 
