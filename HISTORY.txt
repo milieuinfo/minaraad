@@ -4,6 +4,9 @@ History of this buildout
 5.0.31 (unreleased)
 -------------------
 
+- Add Pillow 2.7.0 egg.
+  [maurits]
+
 - Update various minor versions.
   [maurits]
 
