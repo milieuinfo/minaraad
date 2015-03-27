@@ -27,6 +27,7 @@
 __author__ = """Rocky Burt <r.burt@zestsoftware.nl>"""
 __docformat__ = 'plaintext'
 
+from Products.CMFCore.utils import getToolByName
 from Products.minaraad.tests.MainTestCase import MainTestCase
 
 
@@ -83,23 +84,32 @@ class testEmailMixin(MainTestCase):
         # Can we render this?
         mailview()
 
-        mailHost = self.portal.MailHost
+        mailHost = getToolByName(self.portal, 'MailHost')
         self.assertEqual(len(mailHost.messages), 0)
         mailHost.reset()
+        # Pretend that no email has been sent.
+        # context.setEmailSent(None)
 
         # now lets test that test emails can be sent
         mailview.request.set('send_as_test', '1')
         mailview()
         mailview()
+        # context.setEmailSent(None)
 
         # and one real email
         mailview.request.set('additional', 'extra')
+        # Need to get the MailHost tool each time before resetting,
+        # otherwise we might have a different object somehow.
+        mailHost = getToolByName(self.portal, 'MailHost')
         mailHost.reset()
+        # context.setEmailSent(None)
 
         sm = SubscriptionManager(self.portal)
         sm.subscribe('AnnualReport')
         mailview()
+        mailHost = getToolByName(self.portal, 'MailHost')
         mailHost.reset()
+        # context.setEmailSent(None)
 
         charset = self.portal.plone_utils.getSiteEncoding()
         text = (u"Some random additional info, "
@@ -109,7 +119,9 @@ class testEmailMixin(MainTestCase):
         mailview.request.set('to', 'bilbo,frodo')
         mailview.request.set('additional', text)
         mailview()
+        context.setEmailSent(None)
 
+        mailHost = getToolByName(self.portal, 'MailHost')
         msg = mailHost.messages[0]
         textParts = [x for x in msg.walk()
                      if x.get('Content-Type', '').find('text/plain') > -1]
