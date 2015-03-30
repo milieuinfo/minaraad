@@ -31,6 +31,22 @@ def install(self, reinstall=False):
     portal_setup.runAllImportStepsFromProfile(
         'profile-Products.minaraad:default')
 
+    # Fix encoded element.  In the tests it somehow works fine without
+    # this on Mac, but not on Linux.  Problem is that in both cases it
+    # gets encoded as iso-8859-1, but Plone wants utf-8 everywhere.
+    mina_props = portal.portal_properties.minaraad_properties
+    themes = mina_props.getProperty('themes')
+    new_themes = []
+    for theme in themes:
+        # This is especially for "23/Milieuhygiëne en klimaat"
+        try:
+            theme.decode('utf-8')
+        except UnicodeDecodeError:
+            # Bad one, fix it.
+            theme = theme.decode('iso-8859-1').encode('utf-8')
+        new_themes.append(theme)
+    mina_props._updateProperty('themes', tuple(new_themes))
+
     # Set up form controller actions for the widgets to work
     registerAttachmentsFormControllerActions(self)
     set_recaptcha_keys(self)
