@@ -3,6 +3,7 @@ from Products.Archetypes import atapi
 from zope.interface import implements
 from Products.OrderableReferenceField import OrderableReferenceField
 from Products.OrderableReferenceField import OrderableReferenceWidget
+from plone.app.blob.field import ImageField
 
 from minaraad.projects.content.base_meeting import BaseMeeting
 
@@ -85,7 +86,7 @@ schema = atapi.Schema((
         ),
     ),
 
-    atapi.ImageField(
+    ImageField(
         name='foto',
         widget=atapi.ImageWidget(
             label="Photo",

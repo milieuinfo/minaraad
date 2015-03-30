@@ -7,6 +7,7 @@ from archetypes.referencebrowserwidget.widget import ReferenceBrowserWidget
 from Products.CMFCore.utils import getToolByName
 from Products.OrderableReferenceField import OrderableReferenceField
 from Products.OrderableReferenceField import OrderableReferenceWidget
+from plone.app.blob.field import ImageField
 
 from Products.minaraad.interfaces import IAdvisory
 from Products.minaraad.Attachmentsmixin import Attachmentsmixin
@@ -69,7 +70,7 @@ schema = atapi.Schema((
         default_output_type='text/html',
     ),
 
-    atapi.ImageField(
+    ImageField(
         name='foto',
         widget=atapi.ImageWidget(
             label="Photo",

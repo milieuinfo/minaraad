@@ -422,6 +422,12 @@ def cook_resources(context):
         registry.cookResources()
 
 
-def migrate_to_blob_fields(context):
+def migrate_to_blob_file_fields(context):
     from plone.app.blob.migrations import migrate
     return migrate(context, 'AnnualReport')
+
+
+def migrate_to_blob_image_fields(context):
+    from plone.app.blob.migrations import migrate
+    return migrate(context, [
+        'Advisory', 'MREvent', 'Pressrelease', 'Study'])

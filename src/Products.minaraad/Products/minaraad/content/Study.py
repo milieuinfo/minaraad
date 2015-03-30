@@ -5,7 +5,7 @@ from AccessControl import ClassSecurityInfo
 from Products.Archetypes import atapi
 from Products.OrderableReferenceField import OrderableReferenceField
 from Products.OrderableReferenceField import OrderableReferenceWidget
-
+from plone.app.blob.field import ImageField
 
 from Products.minaraad.PostMixin import PostMixin
 from Products.minaraad.EmailMixin import EmailMixin
@@ -43,7 +43,7 @@ schema = atapi.Schema((
         default_output_type='text/html',
     ),
 
-    atapi.ImageField(
+    ImageField(
         name='foto',
         widget=atapi.ImageWidget(
             label="Photo",

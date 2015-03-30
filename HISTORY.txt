@@ -4,6 +4,9 @@ History of this buildout
 5.0.31 (unreleased)
 -------------------
 
+- Use blob image files for our custom content types.
+  [maurits]
+
 - AnnualReport and Project: use blob file.
   [maurits]
 

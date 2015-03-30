@@ -207,7 +207,7 @@ class testHearing(MainTestCase):
         self.failUnless(self.hoorzitting.getContact()==[self.contactperson],
                         'Value is %s' % self.hoorzitting.getContact())
         myclass = str(self.hoorzitting.getFoto().__class__)
-        correct = "<class 'Products.Archetypes.Field.Image'>"
+        correct = "<class 'plone.app.blob.field.BlobWrapper'>"
         self.failUnless(myclass==correct, 'Value is %s and not %s' %
                         (myclass, correct))
 

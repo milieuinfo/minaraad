@@ -349,12 +349,18 @@
         handler="Products.minaraad.migration.update_portal_types" />
   </gs:upgradeSteps>
 
-  <gs:upgradeStep
-      title="Update AnnualReport to blob file"
-      description=""
+  <gs:upgradeSteps
       source="5023"
       destination="5024"
-      handler="Products.minaraad.migration.migrate_to_blob_fields"
-      profile="Products.minaraad:default" />
+      profile="Products.minaraad:default">
+    <gs:upgradeStep
+        title="Update our custom content types to blob file fields"
+        description="These types are affected: AnnualReport"
+        handler="Products.minaraad.migration.migrate_to_blob_file_fields" />
+    <gs:upgradeStep
+        title="Update our custom content types to blob image fields"
+        description="These types are affected: Advisory, MREvent, Pressrelease, Study."
+        handler="Products.minaraad.migration.migrate_to_blob_image_fields" />
+  </gs:upgradeSteps>
 
 </configure>

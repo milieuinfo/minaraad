@@ -64,7 +64,7 @@ class testMREvent(MainTestCase):
         self.mrevent.setFoto(TESTIMAGE, content_type="image/gif")
 
         myclass = str(self.mrevent.getFoto().__class__)
-        correct = "<class 'Products.Archetypes.Field.Image'>"
+        correct = "<class 'plone.app.blob.field.BlobWrapper'>"
         self.failUnless(myclass==correct, 'Value is %s and not %s' %
                         (myclass, correct))
 

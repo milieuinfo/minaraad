@@ -3,6 +3,7 @@ from AccessControl import ClassSecurityInfo
 from Products.Archetypes import atapi
 from Products.OrderableReferenceField import OrderableReferenceField
 from Products.OrderableReferenceField import OrderableReferenceWidget
+from plone.app.blob.field import ImageField
 
 from Products.minaraad.interfaces import IPressRelease
 from Products.minaraad.Attachmentsmixin import Attachmentsmixin
@@ -56,7 +57,7 @@ schema = atapi.Schema((
         default_output_type='text/html',
     ),
 
-    atapi.ImageField(
+    ImageField(
         name='logo_1',
         widget=atapi.ImageWidget(
             label="Logo 1",
@@ -67,7 +68,7 @@ schema = atapi.Schema((
         sizes={'logo': (125, 125)}
     ),
 
-    atapi.ImageField(
+    ImageField(
         name='logo_2',
         widget=atapi.ImageWidget(
             label="Logo 2",
@@ -78,7 +79,7 @@ schema = atapi.Schema((
         sizes={'logo': (125, 125)}
     ),
 
-    atapi.ImageField(
+    ImageField(
         name='foto',
         widget=atapi.ImageWidget(
             label="Photo",

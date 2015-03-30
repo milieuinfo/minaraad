@@ -99,7 +99,7 @@ class testPressrelease(MainTestCase):
         self.failUnless(self.testpers.getContact()==[self.contactperson],
                         'Value is %s' % self.testpers.getContact())
         myclass = str(self.testpers.getLogo_1().__class__)
-        correct = "<class 'Products.Archetypes.Field.Image'>"
+        correct = "<class 'plone.app.blob.field.BlobWrapper'>"
         self.failUnless(myclass==correct, 'Value is %s and not %s' %
                         (myclass, correct))
         myclass = str(self.testpers.getLogo_2().__class__)
