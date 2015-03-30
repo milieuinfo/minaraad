@@ -79,4 +79,10 @@ class MainTestCase(ptc.PloneTestCase):
 
 
 class MinaraadFunctionalTestCase(MainTestCase, ptc.FunctionalTestCase):
-    pass
+
+    def _setup(self):
+        # Explicitly call both, to avoid test isolation problems on
+        # Linux: running the browser.txt tests separately goes fine,
+        # but not when you do the full bin/test.  Mac had no problem.
+        ptc.FunctionalTestCase._setup(self)
+        MainTestCase._setup(self)
