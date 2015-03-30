@@ -356,3 +356,8 @@ def update_meeting_project_metadata(context):
 
 def update_rolemap(context):
     context.runImportStepFromProfile(PROFILE_ID, 'rolemap')
+
+
+def migrate_to_blob_fields(context):
+    from plone.app.blob.migrations import migrate
+    return migrate(context, 'Project')

@@ -9,6 +9,7 @@ from Products.CMFCore.utils import getToolByName
 from zope.annotation.interfaces import IAnnotations
 from persistent.dict import PersistentDict
 from persistent.list import PersistentList
+from plone.app.blob.field import BlobField
 
 from minaraad.projects import config
 from minaraad.projects import MinaraadProjectMessageFactory as _
@@ -92,7 +93,7 @@ project_schema = atapi.OrderedBaseFolderSchema.copy() + atapi.Schema((
             )
         ),
 
-    atapi.FileField(
+    BlobField(
         name='advisory_request',
         widget=atapi.FileWidget(
             label=_(u'label_adv_request',
