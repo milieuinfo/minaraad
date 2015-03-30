@@ -229,6 +229,10 @@
         title="Update meeting and project catalog metadata"
         description="Adds several meeting and project metadata to brains"
         handler="minaraad.projects.migration.update_meeting_project_metadata" />
+    <genericsetup:upgradeStep
+        title="Update rolemap"
+        description="Removes ProjectMember role from 'view meeting/project in digibib'"
+        handler="minaraad.projects.migration.update_rolemap" />
   </genericsetup:upgradeSteps>
 
 </configure>

@@ -352,3 +352,7 @@ def update_catalog_metadata(context, types=None):
 
 def update_meeting_project_metadata(context):
     update_catalog_metadata(context, types=['Meeting', 'Project'])
+
+
+def update_rolemap(context):
+    context.runImportStepFromProfile(PROFILE_ID, 'rolemap')

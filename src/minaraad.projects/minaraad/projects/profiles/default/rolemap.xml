@@ -49,13 +49,11 @@
 
     <permission name="minaraad.projects: view meeting in digibib" acquire="True">
       <role name="Manager"/>
-      <role name="ProjectMember" />
       <role name="Council Member" />
     </permission>
 
     <permission name="minaraad.projects: view project in digibib" acquire="True">
       <role name="Manager"/>
-      <role name="ProjectMember" />
       <role name="Council Member" />
     </permission>
   </permissions>
