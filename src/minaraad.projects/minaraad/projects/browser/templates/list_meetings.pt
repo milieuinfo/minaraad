@@ -30,7 +30,7 @@
             <tal:block tal:repeat="meeting meetings">
               <li tal:define="oddrow repeat/meeting/odd"
                   tal:attributes="class python: oddrow and 'odd' or 'even'">
-                <a tal:attributes="href meeting/absolute_url" class="standard">
+                <a tal:attributes="href meeting/getURL" class="standard">
                   <strong>
                     <tal:block tal:define="d meeting/getStart_time">
                       <metal:block use-macro="context/display_macros/macros/date" />
