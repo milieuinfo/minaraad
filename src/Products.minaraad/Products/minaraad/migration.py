@@ -431,3 +431,31 @@ def migrate_to_blob_image_fields(context):
     from plone.app.blob.migrations import migrate
     return migrate(context, [
         'Advisory', 'MREvent', 'Pressrelease', 'Study'])
+
+
+def reindex_object_provides_index(context):
+    """Reindex the object_provides index.
+
+    This index gives errors when indexing content, for example during
+    blob migration:
+
+      ERROR Zope.UnIndex KeywordIndex: unindex_object could not remove
+      documentId 1995228665 from index object_provides.  This should not
+      happen.
+
+      Traceback (most recent call last):
+
+        File ".../Products/PluginIndexes/common/UnIndex.py", line 160,
+              in removeForwardIndexEntry
+          indexRow.remove(documentId)
+      KeyError: 1995228665
+
+    The errors are ignored and seem harmless, but they clutter the
+    log.  We clear the index and reindex it to fix this.
+    """
+    from Acquisition import aq_get
+    catalog = getToolByName(context, 'portal_catalog')
+    index_id = 'object_provides'
+    logger.info("Reindexing %s index.", index_id)
+    catalog.manage_clearIndex([index_id])
+    catalog.reindexIndex(index_id, aq_get(context, 'REQUEST', None))

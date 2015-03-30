@@ -4,6 +4,9 @@ History of this buildout
 5.0.31 (unreleased)
 -------------------
 
+- Upgrade step: reindex object_provides index.
+  [maurits]
+
 - Use blob image files for our custom content types.
   [maurits]
 
