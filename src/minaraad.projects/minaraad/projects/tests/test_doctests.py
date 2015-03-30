@@ -11,7 +11,7 @@ import base
 def test_suite():
     return unittest.TestSuite([
         ztc.FunctionalDocFileSuite(
-            'localroles.txt',
+            'digibib_filtering.txt',
             test_class=base.MinaraadFunctionalTestCase,
             optionflags=base.OPTIONFLAGS),
         ztc.FunctionalDocFileSuite(

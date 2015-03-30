@@ -1,0 +1,184 @@
+Digibib project and meeting filtering
+=====================================
+
+Those tests will ensure that Projects and Meetings are correctly
+filtered depending on the groups users belong to.  The principle is
+not to block access to members, but to let the DigiBib view filter
+shown meetings and projects.
+
+This used to be done by grant an extra role (ProjectMember) on the fly
+in a local role adapter, but this method was dropped because it needed
+to wake up too many objects, at least for the meeting archive.
+
+
+Setup
+-----
+
+    >>> self.setRoles(('Manager'))
+    >>> self.add_digibib()
+    >>> digibib = self.portal.digibib
+
+First, we need some working groups and users:
+
+    >>> self.add_group('group_1')
+    >>> self.add_group('group_2')
+    >>> self.add_group('group_3')
+
+    >>> self.add_user('member_group_1', ['group_1'], ['DigiBibViewer'])
+    >>> self.add_user('member_group_2', ['group_2'], ['DigiBibViewer'])
+    >>> self.add_user('member_group_3', ['group_3'], ['DigiBibViewer'])
+    >>> self.add_user('member_group_1_2', ['group_1', 'group_2'], ['DigiBibViewer'])
+
+    >>> user_ids = ['member_group_1', 'member_group_2',
+    ...             'member_group_3', 'member_group_1_2']
+
+And some projects on which they will work:
+
+    >>> self.add_project('group_1_project',
+    ...                  '100',
+    ...                  'Project 1',
+    ...                  'group_1',
+    ...                  ['group_1'])
+
+    >>> self.add_project('group_2_project',
+    ...                  '020',
+    ...                  'Project 2',
+    ...                  'group_2',
+    ...                  ['group_2'])
+
+    >>> self.add_project('group_1_2_project',
+    ...                  '120',
+    ...                  'Project 3',
+    ...                  'group_1',
+    ...                  ['group_2'])
+
+    >>> project_ids = ['group_1_project',
+    ...                'group_2_project',
+    ...                'group_1_2_project']
+
+We also add some meetings about those projects:
+
+We need to have meetings in the future to be sure they appear in the
+digibib view:
+
+    >>> from DateTime import DateTime
+    >>> year = DateTime().year() + 1
+
+    >>> self.add_meeting('meeting-project-one',
+    ...                  'Meeting project one',
+    ...                  ['group_3'],
+    ...                  ['group_1_project'],
+    ...                  DateTime(year, 1 , 11, 15, 30))
+    >>> self.add_meeting('second-meeting-project-one',
+    ...                  'Second meeting project one',
+    ...                  [],
+    ...                  ['group_1_project'],
+    ...                  DateTime(year, 2 , 11, 15, 30))
+    >>> self.add_meeting('meeting-project-two',
+    ...                  'Meeting project two',
+    ...                  ['group_3'],
+    ...                  ['group_2_project'],
+    ...                  DateTime(year, 8 , 12, 15, 30))
+    >>> self.add_meeting('meeting-project-three-and-two',
+    ...                  'Meeting project three and two',
+    ...                  [],
+    ...                  ['group_2_project', 'group_1_2_project'],
+    ...                  DateTime(year, 10 , 15, 15, 30))
+    >>> self.add_meeting('meeting-project-three',
+    ...                  'Meeting project three',
+    ...                  [],
+    ...                  ['group_1_2_project'],
+    ...                  DateTime(year, 10 , 15, 15, 30))
+
+    >>> meeting_ids = ['meeting-project-one',
+    ...                'second-meeting-project-one',
+    ...                'meeting-project-two',
+    ...                'meeting-project-three-and-two',
+    ...                'meeting-project-three']
+
+
+Unvalidated projects
+--------------------
+
+Currently, none of the projects are validated. So our users can not
+see them:
+
+    >>> def show_access(obj_ids, container):
+    ...     for user_id in user_ids:
+    ...         print '%s: ' % user_id
+    ...         shown = self.check_shown_in_digibib(user_id, obj_ids, container)
+    ...         for obj_id in shown:
+    ...             print ' - %s' % obj_id
+
+    >>> def show_projects_access():
+    ...     show_access(project_ids, digibib.projects)
+
+    >>> def show_meetings_access():
+    ...     show_access(meeting_ids, digibib.meetings)
+
+    >>> show_projects_access()
+    member_group_1: 
+    member_group_2: 
+    member_group_3: 
+    member_group_1_2: 
+
+They can neither access the meeting (except for the member of the
+third group, as he belongs to an invited group for some meetings):
+
+    >>> show_meetings_access()
+    member_group_1:
+    member_group_2: 
+    member_group_3: 
+     - meeting-project-one
+     - meeting-project-two
+    member_group_1_2: 
+
+But the board members are able to see them.  Well, this can simply be
+done by giving them the global role DigiBibViewer, so no need to test
+this here.
+
+
+Validated projects access
+-------------------------
+
+We will now validate our project so the users can work on it:
+
+    >>> for pid in project_ids:
+    ...     self.start_project(pid)
+
+Now the users should be able to see the projects:
+
+    >>> show_projects_access()
+    member_group_1: 
+     - group_1_project
+     - group_1_2_project
+    member_group_2: 
+     - group_2_project
+     - group_1_2_project
+    member_group_3: 
+    member_group_1_2: 
+     - group_1_project
+     - group_2_project
+     - group_1_2_project
+
+And they will also see the related meetings:
+
+    >>> show_meetings_access()
+    member_group_1: 
+     - meeting-project-one
+     - second-meeting-project-one
+     - meeting-project-three-and-two
+     - meeting-project-three
+    member_group_2: 
+     - meeting-project-two
+     - meeting-project-three-and-two
+     - meeting-project-three
+    member_group_3: 
+     - meeting-project-one
+     - meeting-project-two
+    member_group_1_2: 
+     - meeting-project-one
+     - second-meeting-project-one
+     - meeting-project-two
+     - meeting-project-three-and-two
+     - meeting-project-three

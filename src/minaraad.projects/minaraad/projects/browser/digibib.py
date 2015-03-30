@@ -39,9 +39,10 @@ class DigiBibView(BrowserView):
     def _filter_projects(self, brains):
         """Filter project brains.
 
-        This basically does the same as adapters/localroles.py.  But
-        now we do it for all projects in one go, without needing to
-        get the objects to ask if we have a permission there.
+        This basically does the same as we used to do in
+        adapters/localroles.py.  But now we do it for all projects in
+        one go, without needing to get the objects to ask if we have a
+        permission there.
         """
         if not brains:
             return brains
@@ -93,9 +94,10 @@ class DigiBibView(BrowserView):
     def _filter_meetings(self, brains):
         """Filter meeting brains.
 
-        This basically does the same as adapters/localroles.py.  But
-        now we do it for all meetings in one go, without needing to
-        get the objects to ask if we have a permission there.
+        This basically does the same as we used to do in
+        adapters/localroles.py.  But now we do it for all meetings in
+        one go, without needing to get the objects to ask if we have a
+        permission there.
         """
         if not brains:
             return brains

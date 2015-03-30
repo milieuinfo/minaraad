@@ -103,15 +103,4 @@
       handler=".events.recatalog_project_meetings"
       />
 
-  <!-- Adapters -->
-   <adapter
-      factory=".adapters.localroles.ProjectLocalRoleProvider"
-      name="project_local_role_provider"
-     />
-
-   <adapter
-      factory=".adapters.localroles.MeetingLocalRoleProvider"
-      name="meeting_local_role_provider"
-     />
-
 </configure>
