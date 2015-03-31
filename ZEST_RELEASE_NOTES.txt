@@ -23,8 +23,8 @@ we use Python 2.7 now.  This needs some actions.
   bin/buildout.
 
 - On one zeoclient, migrate the blobs to NFS:
-  bin/blobchunkdownload --dry-run --delete-blobs var/blobstorage
-  bin/blobchunkdownload --delete-blobs var/blobstorage
+  bin/blobchunkdownload --dry-run --delete-blobs parts/conf/blobmigrate.cfg /home/zope/minaraad-blobs/
+  bin/blobchunkdownload --delete-blobs parts/conf/blobmigrate.cfg /home/zope/minaraad-blobs/
 
 - Start supervisor on both zeoclient machines.
 
