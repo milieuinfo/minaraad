@@ -15,7 +15,7 @@ we use Python 2.7 now.  This needs some actions.
 
 - Check that an NFS is mounted on /home/zope/minaraad-blobs.
 
-- sudo apt-get install python27 python27-dev.
+- sudo apt-get install python2.7 python2.7-dev
 
 - Shutdown supervisor on both zeoclient machines.
 
