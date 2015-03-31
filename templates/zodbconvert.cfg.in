@@ -2,6 +2,8 @@
   path ${parts.postgresconf.source}
 </filestorage>
 <relstorage destination>
+  blob-dir ${parts.conf.blob_storage}
+  shared-blob-dir true
   <postgresql>
     dsn ${parts.postgresconf.dsn}
   </postgresql>

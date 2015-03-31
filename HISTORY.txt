@@ -4,6 +4,10 @@ History of this buildout
 5.0.31 (unreleased)
 -------------------
 
+- Start using NFS for shared blob storage.  Use a script to migrate to
+  this setup.  See ZEST_RELEASE_NOTES.txt.
+  [maurits]
+
 - Upgrade step: reindex object_provides index.
   [maurits]
 

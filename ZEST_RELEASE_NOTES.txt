@@ -4,11 +4,44 @@ Release notes from Zest
 Manual fixes to do on the site.
 
 
-Upgrade to 4.9 (2012-02-22)
----------------------------
+Upgrade to 5.1.0 (2015-04-01)
+-----------------------------
 
-- In the portal_quickinstaller (or the Extra Producten control panel)
-  install the DataGridField product.
+We have an NFS now and we want to use it as shared blob directory.
+Also, our custom content types now use blobs.  And performance in the
+digibib has been increased by adding more information to the
+portal_catalog.  And we have updated from Plone 4.2.4 to 4.2.7.  Also,
+we use Python 2.7 now.  This needs some actions.
+
+- Check that an NFS is mounted on /home/zope/minaraad-blobs.
+
+- sudo apt-get install python27 python27-dev.
+
+- Shutdown supervisor on both zeoclient machines.
+
+- Checkout the new buildout tag, run python2.7 bootstrap.py, and
+  bin/buildout.
+
+- On one zeoclient, migrate the blobs to NFS:
+  bin/blobchunkdownload --dry-run --delete-blobs var/blobstorage
+  bin/blobchunkdownload --delete-blobs var/blobstorage
+
+- Start supervisor on both zeoclient machines.
+
+- Login to the Plone Site.
+
+- Go to the Zope Management Interface.
+
+- You will see a link to update Plone from 4.2.4 to 4.2.7.  Follow
+  this link and follow the instructions.
+
+- Go to the Plone Site, then Site Setup, then Extra Products.
+
+- Run the upgrade steps for Products.minaraad.
+
+- Run the upgrade steps for minaraad.projects.  Please keep this
+  order, as the Products.minaraad upgrade does a reindex to prevent
+  lots of errors from being reported.
 
 
 Things to do after copying a production database to oefen/ontwikkel

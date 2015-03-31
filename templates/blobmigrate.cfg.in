@@ -1,0 +1,7 @@
+<relstorage source>
+  blob-dir ${parts.buildout.directory}/var/blobcache
+  shared-blob-dir false
+  <postgresql>
+    dsn ${parts.postgresconf.dsn}
+  </postgresql>
+</relstorage>
