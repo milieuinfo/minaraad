@@ -1,8 +1,8 @@
 History of this buildout
 ========================
 
-5.0.31 (unreleased)
--------------------
+5.1.0 (2015-04-01)
+------------------
 
 - Start using NFS for shared blob storage.  Use a script to migrate to
   this setup.  See ZEST_RELEASE_NOTES.txt.
