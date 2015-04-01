@@ -4,6 +4,10 @@ History of this buildout
 5.1.1 (unreleased)
 ------------------
 
+- Increase memmonlimit to 1750MB.  It just restarts far too often.
+  Hopefully our recent changes help.
+  [maurits]
+
 - Use progress handler in reindex upgrade step.  Hopefully avoids
   MemoryError.
   [maurits]
