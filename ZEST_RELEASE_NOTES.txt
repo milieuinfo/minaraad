@@ -30,6 +30,9 @@ we use Python 2.7 now.  This needs some actions.
 
 - Start supervisor on both zeoclient machines.
 
+- The memory monitor kills the zope instance a bit too soon during
+  upgrades, so stop it for now: bin/supervisorctl stop memmon
+
 - Login to the Plone Site.
 
 - Go to the Zope Management Interface.
@@ -44,6 +47,8 @@ we use Python 2.7 now.  This needs some actions.
 - Run the upgrade steps for minaraad.projects.  Please keep this
   order, as the Products.minaraad upgrade does a reindex to prevent
   lots of errors from being reported.
+
+- You can start the memory monitor now: bin/supervisorctl start memmon
 
 
 Things to do after copying a production database to oefen/ontwikkel
