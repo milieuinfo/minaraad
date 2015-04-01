@@ -54,15 +54,11 @@ we use Python 2.7 now.  This needs some actions.
 Things to do after copying a production database to oefen/ontwikkel
 ===================================================================
 
-- Go to the Cache Configuration Tool
-  (<plone-url>/portal_cache_settings) in the Site Setup (Website
+- Go to the Cache Configuration Panel
+  (<plone-url>/@@caching-controlpanel) in the Site Setup (Website
   configuratie).
 
-- Edit the Site domains to point to the correct url, one of these:
-  http://ontwikkel.minaraad.be:80
-  http://oefen.minaraad.be:80
-
-- Edit the Proxy Cache Domains.
+- Edit the Caching proxies on the Caching proxies tab.
   For ontwikkel:
     http://plone-minaraad-on-1.mmis.be:12080
     http://plone-minaraad-on-2.mmis.be:12080
