@@ -460,6 +460,5 @@ def reindex_object_provides_index(context):
     logger.info("Reindexing %s index.", index_id)
     catalog.manage_clearIndex([index_id])
     pghandler = ZLogHandler(1000)
-    pghandler.init('Updating %s index' % index_id)
     catalog.reindexIndex(index_id, aq_get(context, 'REQUEST', None),
                          pghandler=pghandler)
