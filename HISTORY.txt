@@ -1,7 +1,7 @@
 History of this buildout
 ========================
 
-5.1.1 (unreleased)
+5.1.1 (2015-04-01)
 ------------------
 
 - Increase memmonlimit to 1750MB.  It just restarts far too often.
