@@ -26,6 +26,8 @@ we use Python 2.7 now.  This needs some actions.
   bin/blobchunkdownload --dry-run --delete-blobs parts/conf/blobmigrate.cfg /home/zope/minaraad-blobs/
   bin/blobchunkdownload --delete-blobs parts/conf/blobmigrate.cfg /home/zope/minaraad-blobs/
 
+  On the 'ontwikkel-1' machine this update takes about 20 minutes.
+
 - Start supervisor on both zeoclient machines.
 
 - Login to the Plone Site.
@@ -37,7 +39,7 @@ we use Python 2.7 now.  This needs some actions.
 
 - Go to the Plone Site, then Site Setup, then Extra Products.
 
-- Run the upgrade steps for Products.minaraad.
+- Run the upgrade steps for the Minaraad product.
 
 - Run the upgrade steps for minaraad.projects.  Please keep this
   order, as the Products.minaraad upgrade does a reindex to prevent
