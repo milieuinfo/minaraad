@@ -1,6 +1,7 @@
 import logging
 
 from Products.CMFCore.utils import getToolByName
+from Products.ZCatalog.ProgressHandler import ZLogHandler
 from persistent.list import PersistentList
 
 from Products.minaraad.themes import ThemeManager
@@ -458,4 +459,7 @@ def reindex_object_provides_index(context):
     index_id = 'object_provides'
     logger.info("Reindexing %s index.", index_id)
     catalog.manage_clearIndex([index_id])
-    catalog.reindexIndex(index_id, aq_get(context, 'REQUEST', None))
+    pghandler = ZLogHandler(1000)
+    pghandler.init('Updating %s index', index_id)
+    catalog.reindexIndex(index_id, aq_get(context, 'REQUEST', None),
+                         pghandler=pghandler)
