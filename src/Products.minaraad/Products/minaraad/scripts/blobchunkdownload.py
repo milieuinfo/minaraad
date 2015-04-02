@@ -24,13 +24,20 @@ One way to do that, would be to download the blobs into a new
 directory and then start using that as the shared blob directory.
 
 This script does that.  It also, optionally, removes the blob_chunks
-and large objects from the database.
+and large objects from the database.  Use the --delete-blobs option
+for this.
+
+An alternative for the --delete-blobs option, at least on Postgres, is:
+
+1. In a psql prompt, type: `TRUNCATE blob_chunk;` to empty this table.
+   This is near instantaneous.
+
+2. As postgres user (database admin) run `vacuumlo databasename` to
+   cleanup the large objects.  This can take a few minutes.
 
 Note: a blob may be stored in multiple blob_chunks if it is very
 large.  Restoring and deleting this is untested, so currently the
 script stops when it encounters such a blob.
-
-Usage: blobdownload config_file new_blob_dir
 
 Sample config file:
 
