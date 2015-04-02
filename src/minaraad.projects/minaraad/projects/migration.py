@@ -360,4 +360,6 @@ def update_rolemap(context):
 
 def migrate_to_blob_fields(context):
     from plone.app.blob.migrations import migrate
-    return migrate(context, 'Project')
+    logger.info("Migrating to blob fields...")
+    migrate(context, 'Project')
+    logger.info("Done migrating to blob fields.")

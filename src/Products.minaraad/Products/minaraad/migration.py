@@ -425,13 +425,17 @@ def cook_resources(context):
 
 def migrate_to_blob_file_fields(context):
     from plone.app.blob.migrations import migrate
-    return migrate(context, 'AnnualReport')
+    logger.info("Migrating to blob file fields...")
+    migrate(context, 'AnnualReport')
+    logger.info("Done migrating to blob file fields.")
 
 
 def migrate_to_blob_image_fields(context):
     from plone.app.blob.migrations import migrate
-    return migrate(context, [
+    logger.info("Migrating to blob image fields...")
+    migrate(context, [
         'Advisory', 'MREvent', 'Pressrelease', 'Study'])
+    logger.info("Done migrating to blob image fields.")
 
 
 def reindex_object_provides_index(context):
