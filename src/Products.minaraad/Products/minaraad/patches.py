@@ -49,20 +49,26 @@ def set_last_modification_date(member):
             break
 
 
-# security.declareProtected(View, 'deleteLocalRoles')
-# @postonly
 def deleteLocalRoles(self, obj, member_ids, reindex=1, recursive=0,
                      REQUEST=None, depth=3):
     """ Delete local roles of specified members.
 
     This takes far too much memory.  See if we can reduce this.
 
-    We add a depth on which we search.  This is a fluid depth.  If the
-    object does not need deletion of local roles, we decrease the
+    We have tried convincing Zope to release memory by using
+    savepoints (transaction.savepoint(optimistic=True)).  We tried
+    using the catalog to search for only folderish items, and do
+    explicit garbage collection.  Nothing helped.
+
+    Now we add a depth on which we search.  This is a fluid depth.  If
+    the object does not need deletion of local roles, we decrease the
     depth, thus eliminating uninteresting folders where the member
     likely has no local roles anywhere.
+
+    Yes, this may fail to delete some local roles.  But at least it
+    usually finishes within a few seconds instead of about a minute.
+    And it does not consume over 1.5 GB of memory.  So be happy.
     """
-    from time import time
     deleted = False
     if _checkPermission(ChangeLocalRoles, obj):
         for member_id in member_ids:
@@ -75,23 +81,15 @@ def deleteLocalRoles(self, obj, member_ids, reindex=1, recursive=0,
         depth -= 1
         if depth <= 0:
             # Ignore the rest of this content tree, if any.
-            logger.info("Ignoring %s and below.", '/'.join(obj.getPhysicalPath()))
             return
-
-    time2 = time()
 
     if recursive and hasattr(aq_base(obj), 'contentValues'):
         for subobj in obj.contentValues():
             self.deleteLocalRoles(subobj, member_ids, 0, 1, depth=depth)
 
-    time3 = time()
-    if reindex:
-        print("delete local roles everywhere: %f" % (time3 - time2))
     if reindex and hasattr(aq_base(obj), 'reindexObjectSecurity'):
         # reindexObjectSecurity is always recursive
         obj.reindexObjectSecurity()
-        time4 = time()
-        print("reindex object security: %f" % (time4 - time3))
 
 
 def notifyModified(self):
