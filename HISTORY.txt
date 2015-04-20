@@ -4,6 +4,12 @@ History of this buildout
 5.1.4 (unreleased)
 ------------------
 
+- Make deleting users much much faster.  It was really slow, or not
+  working because of a memory cutoff, due to recursive deletion of
+  local roles.  Now we check local roles until a fluid depth, which
+  avoids waking up all objects in the site.
+  [maurits]
+
 - Log a bit more while migrating.
   [maurits]
 
