@@ -1,6 +1,5 @@
 import logging
 import os
-import transaction
 import urllib2
 
 from Acquisition import aq_base
@@ -9,8 +8,6 @@ from Products.CMFCore.MemberDataTool import MemberData
 from Products.CMFCore.MembershipTool import MembershipTool
 from Products.CMFCore.permissions import ChangeLocalRoles
 from Products.CMFCore.utils import _checkPermission
-from Products.CMFCore.utils import getToolByName
-from Products.CMFPlone.interfaces import IPloneSiteRoot
 from Products.PlonePAS.interfaces.propertysheets import IMutablePropertySheet
 from recaptcha.client import captcha
 
@@ -55,51 +52,46 @@ def set_last_modification_date(member):
 # security.declareProtected(View, 'deleteLocalRoles')
 # @postonly
 def deleteLocalRoles(self, obj, member_ids, reindex=1, recursive=0,
-                     REQUEST=None):
+                     REQUEST=None, depth=3):
     """ Delete local roles of specified members.
 
     This takes far too much memory.  See if we can reduce this.
+
+    We add a depth on which we search.  This is a fluid depth.  If the
+    object does not need deletion of local roles, we decrease the
+    depth, thus eliminating uninteresting folders where the member
+    likely has no local roles anywhere.
     """
-    if not IPloneSiteRoot.providedBy(obj) or not recursive:
-        # Not what we expect.  We should use the original method.
-        logger.warn("Using original deleteLocalRoles.")
-        return self._orig_deleteLocalRoles(
-            obj, member_ids, reindex=reindex, recursive=recursive,
-            REQUEST=REQUEST)
     from time import time
-    deleteLocalRolesSingleObject(obj, member_ids)
-    time2 = time()
-    catalog = getToolByName(obj, 'portal_catalog')
-    for obj_count, brain in enumerate(catalog.unrestrictedSearchResults()):
-        if obj_count % 100 == 0:
-            print("Saving sub transaction or savepoint. Object count %d" % obj_count)
-            transaction.savepoint(optimistic=True)
-        try:
-            obj = brain.getObject()
-        except AttributeError:
-            logger.error("Couldn't access %s" % brain.getPath())
-            continue
-        deleteLocalRolesSingleObject(obj, member_ids)
-
-    time3 = time()
-    print("delete local roles everywhere: %f" % (time3 - time2))
-    if reindex and hasattr(aq_base(obj), 'reindexObjectSecurity'):
-        # reindexObjectSecurity is always recursive
-        obj.reindexObjectSecurity()
-    time4 = time()
-    if reindex:
-        print("reindex object security: %f" % (time4 - time3))
-    return obj_count
-
-
-def deleteLocalRolesSingleObject(obj, member_ids):
-    """ Delete local roles of specified members.
-    """
+    deleted = False
     if _checkPermission(ChangeLocalRoles, obj):
         for member_id in member_ids:
             if obj.get_local_roles_for_userid(userid=member_id):
                 obj.manage_delLocalRoles(userids=member_ids)
+                deleted = True
                 break
+    if not deleted:
+        # Nothing deleted at this level.  Decrease depth.
+        depth -= 1
+        if depth <= 0:
+            # Ignore the rest of this content tree, if any.
+            logger.info("Ignoring %s and below.", '/'.join(obj.getPhysicalPath()))
+            return
+
+    time2 = time()
+
+    if recursive and hasattr(aq_base(obj), 'contentValues'):
+        for subobj in obj.contentValues():
+            self.deleteLocalRoles(subobj, member_ids, 0, 1, depth=depth)
+
+    time3 = time()
+    if reindex:
+        print("delete local roles everywhere: %f" % (time3 - time2))
+    if reindex and hasattr(aq_base(obj), 'reindexObjectSecurity'):
+        # reindexObjectSecurity is always recursive
+        obj.reindexObjectSecurity()
+        time4 = time()
+        print("reindex object security: %f" % (time4 - time3))
 
 
 def notifyModified(self):
