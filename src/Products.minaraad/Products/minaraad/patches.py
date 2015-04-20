@@ -1,3 +1,4 @@
+import logging
 import os
 import transaction
 import urllib2
@@ -9,8 +10,11 @@ from Products.CMFCore.MembershipTool import MembershipTool
 from Products.CMFCore.permissions import ChangeLocalRoles
 from Products.CMFCore.utils import _checkPermission
 from Products.CMFCore.utils import getToolByName
+from Products.CMFPlone.interfaces import IPloneSiteRoot
 from Products.PlonePAS.interfaces.propertysheets import IMutablePropertySheet
 from recaptcha.client import captcha
+
+logger = logging.getLogger('Products.minaraad')
 
 
 def submit(*args, **kwargs):
@@ -51,47 +55,34 @@ def set_last_modification_date(member):
 # security.declareProtected(View, 'deleteLocalRoles')
 # @postonly
 def deleteLocalRoles(self, obj, member_ids, reindex=1, recursive=0,
-                     REQUEST=None, obj_count=0):
+                     REQUEST=None):
     """ Delete local roles of specified members.
 
     This takes far too much memory.  See if we can reduce this.
-
-    Example with ZopeFindAndApply:
-
-    def fixOwnerTuple(obj, path):
-        old = obj.getOwnerTuple()
-        if old and old[0][-1] == 'portal_memberdata':
-            new = (['acl_users'], old[1])
-            logger.info('Repairing %s: %r -> %r' % (path, old, new))
-            obj._owner = new
-    portal.ZopeFindAndApply(portal, search_sub=True, apply_func=fixOwnerTuple)
-
-    Well, might want to try the catalog.
-
     """
-    if reindex:
-        print("Using minaraad patch of deleteLocalRoles.")
+    if not IPloneSiteRoot.providedBy(obj) or not recursive:
+        # Not what we expect.  We should use the original method.
+        logger.warn("Using original deleteLocalRoles.")
+        return self._orig_deleteLocalRoles(
+            obj, member_ids, reindex=reindex, recursive=recursive,
+            REQUEST=REQUEST)
     from time import time
-    time1 = time()
     deleteLocalRolesSingleObject(obj, member_ids)
     time2 = time()
-    obj_count += 1
-    if reindex:
-        print("main del local roles: %f" % (time2 - time1))
-    if obj_count % 100 == 0:
-        print("Saving sub transaction or savepoint. Object count %d" % obj_count)
-        transaction.savepoint(optimistic=True)
-        # Note that when searching on the Internet, you see references
-        # to committing a sub transaction like this, but that is only
-        # for ZODB 4 it seems.  It certainly fails with a TypeError
-        # for us: transaction.commit(True)
-    if recursive and hasattr(aq_base(obj), 'contentValues'):
-        for subobj in obj.contentValues():
-            obj_count = self.deleteLocalRoles(subobj, member_ids, 0, 1, obj_count=obj_count)
+    catalog = getToolByName(obj, 'portal_catalog')
+    for obj_count, brain in enumerate(catalog.unrestrictedSearchResults()):
+        if obj_count % 100 == 0:
+            print("Saving sub transaction or savepoint. Object count %d" % obj_count)
+            transaction.savepoint(optimistic=True)
+        try:
+            obj = brain.getObject()
+        except AttributeError:
+            logger.error("Couldn't access %s" % brain.getPath())
+            continue
+        deleteLocalRolesSingleObject(obj, member_ids)
 
     time3 = time()
-    if reindex:
-        print("delete local roles everywhere: %f" % (time3 - time2))
+    print("delete local roles everywhere: %f" % (time3 - time2))
     if reindex and hasattr(aq_base(obj), 'reindexObjectSecurity'):
         # reindexObjectSecurity is always recursive
         obj.reindexObjectSecurity()
