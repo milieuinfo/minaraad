@@ -19,14 +19,25 @@ we use Python 2.7 now.  This needs some actions.
 
 - Shutdown supervisor on both zeoclient machines.
 
-- Checkout the new buildout tag, run python2.7 bootstrap.py, and
-  bin/buildout.
+- Checkout the new buildout tag.
+
+- On ONE instance each of oefen/productie you want the cronjob to cleanup
+  PAS (Pluggable Authentication Service).  Edit the parts in
+  buildout.cfg and make sure crontab-cleanup-pas is in there.  See
+  also buildout.cfg.in.
+
+- run python2.7 bootstrap.py, and bin/buildout.
 
 - Do 'svn status'.  I expect that it will state an unknown
   src/minaraad.projects/minaraad/projects/adapters directory.  This
   was removed from subversion, but it cannot be removed automatically,
   because it will contain two .pyc files.  Please remove the directory
   manually.
+
+- On one zeoclient, run this command to cleanup left-overs from
+  already removed members:
+
+  bin/instance run scripts/cleanup_pas.py
 
 - On one zeoclient, migrate the blobs to NFS:
   bin/blobchunkdownload --dry-run --delete-blobs parts/conf/blobmigrate.cfg /home/zope/minaraad-blobs/
