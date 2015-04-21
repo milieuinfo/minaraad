@@ -12,10 +12,13 @@ extends =
 # On ONE instance of productie you want to send e-mails twice a week
 # reminding about projects.  It is best not to do this on oefen, to
 # avoid confusing users with mails from this system.
+# On ONE instance each of oefen/productie you want the cronjob to cleanup
+# PAS (Pluggable Authentication Service).
 
 parts +=
 #    crontab-pack
 #    crontab-projects-reminder
+#    crontab-cleanup-pas
 
 
 [munin]

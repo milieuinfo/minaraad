@@ -4,6 +4,12 @@ History of this buildout
 5.1.4 (unreleased)
 ------------------
 
+- Add script for cleaning up non-existing users from various lists in
+  PAS (Pluggable Authentication Service, acl_users).  Please enable
+  this on ONE oefen and ONE productie instance by adding the
+  crontab-cleanup-pas to the parts in buildout.cfg.
+  [maurits]
+
 - Make deleting users much much faster.  It was really slow, or not
   working because of a memory cutoff, due to recursive deletion of
   local roles.  Now we check local roles until a fluid depth, which
