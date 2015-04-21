@@ -4,7 +4,9 @@ History of this buildout
 5.1.5 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Comment out memmon in supervisor.  Let's see how often this is still
+  a problem after the update.
+  [maurits]
 
 
 5.1.4 (2015-04-21)
