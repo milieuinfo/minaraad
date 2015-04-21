@@ -22,6 +22,12 @@ we use Python 2.7 now.  This needs some actions.
 - Checkout the new buildout tag, run python2.7 bootstrap.py, and
   bin/buildout.
 
+- Do 'svn status'.  I expect that it will state an unknown
+  src/minaraad.projects/minaraad/projects/adapters directory.  This
+  was removed from subversion, but it cannot be removed automatically,
+  because it will contain two .pyc files.  Please remove the directory
+  manually.
+
 - On one zeoclient, migrate the blobs to NFS:
   bin/blobchunkdownload --dry-run --delete-blobs parts/conf/blobmigrate.cfg /home/zope/minaraad-blobs/
   bin/blobchunkdownload --delete-blobs parts/conf/blobmigrate.cfg /home/zope/minaraad-blobs/
