@@ -68,6 +68,10 @@ for site in plones:
     print("Removed %d non-existing principals from groups." %
           total_group_delete)
 
+    md_tool = getToolByName(site, 'portal_memberdata')
+    md_tool.pruneMemberDataContents()
+    print("Pruned data from portal_memberdata for non-existing users.")
+
     note = 'Cleaned PAS for Plone Site %s.' % site.id
     print(note)
     # Commit transaction and add note.
