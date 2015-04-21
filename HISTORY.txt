@@ -1,7 +1,7 @@
 History of this buildout
 ========================
 
-5.1.4 (unreleased)
+5.1.4 (2015-04-21)
 ------------------
 
 - Add script for cleaning up non-existing users from various lists in
