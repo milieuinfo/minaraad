@@ -49,6 +49,25 @@ for site in plones:
         del roleman._principal_roles[principal_id]
     print("Removed %d non-existing principals from roles." % len(to_delete))
 
+    # Groups
+    groupman = pas.source_groups
+    total_group_delete = 0
+    for group_id in groupman.listGroupIds():
+        to_delete = []
+        for principal_id, login in groupman.listAssignedPrincipals(group_id):
+            info = pas.searchPrincipals(id=principal_id, exact_match=True)
+            if len(info) == 0:
+                # Gather list for handling after we have gone through
+                # all items.
+                to_delete.append(principal_id)
+        total_group_delete += len(to_delete)
+        for principal_id in to_delete:
+            print("Removing principal %r from group %r" % (
+                principal_id, group_id))
+            groupman.removePrincipalFromGroup(principal_id, group_id)
+    print("Removed %d non-existing principals from groups." %
+          total_group_delete)
+
     note = 'Cleaned PAS for Plone Site %s.' % site.id
     print(note)
     # Commit transaction and add note.
