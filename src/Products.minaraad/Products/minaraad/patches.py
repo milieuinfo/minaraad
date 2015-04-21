@@ -61,27 +61,46 @@ def deleteLocalRoles(self, obj, member_ids, reindex=1, recursive=0,
     explicit garbage collection.  Nothing helped.
 
     Now we add a depth on which we search.  This is a fluid depth.  If
-    the object does not need deletion of local roles, we decrease the
-    depth, thus eliminating uninteresting folders where the member
-    likely has no local roles anywhere.
+    the object does not need deletion of local roles and there are no
+    interesting local roles at all, we decrease the depth, thus
+    eliminating uninteresting folders where the member likely has no
+    local roles anywhere.
 
     Yes, this may fail to delete some local roles.  But at least it
     usually finishes within a few seconds instead of about a minute.
     And it does not consume over 1.5 GB of memory.  So be happy.
+
+    Note: with a depth of 4 you would already crawl about 90 percent
+    of the site, so that would hardly help.
     """
-    deleted = False
+    delete = False
     if _checkPermission(ChangeLocalRoles, obj):
-        for member_id in member_ids:
-            if obj.get_local_roles_for_userid(userid=member_id):
-                obj.manage_delLocalRoles(userids=member_ids)
-                deleted = True
+        has_local_roles = False
+        for user, roles in obj.get_local_roles():
+            if user in member_ids:
+                delete = True
+            if len(roles) == 0:
+                # I guess this cannot happen, but let's be safe.
+                continue
+            elif len(roles) > 1:
+                has_local_roles = True
                 break
-    if not deleted:
-        # Nothing deleted at this level.  Decrease depth.
-        depth -= 1
-        if depth <= 0:
-            # Ignore the rest of this content tree, if any.
-            return
+            elif roles[0] == 'Owner':
+                # Only one uninteresting role.
+                continue
+            else:
+                has_local_roles = True
+                break
+        if delete:
+            # At least one to-be-deleted role has been found.
+            obj.manage_delLocalRoles(userids=member_ids)
+        elif not has_local_roles:
+            # Nothing deleted at this level, and no interesting local
+            # roles for other users.  Decrease search depth.
+            depth -= 1
+            if depth <= 0:
+                # Ignore the rest of this content tree, if any.
+                return
 
     if recursive and hasattr(aq_base(obj), 'contentValues'):
         for subobj in obj.contentValues():
