@@ -1,7 +1,7 @@
 History of this buildout
 ========================
 
-5.1.5 (unreleased)
+5.1.5 (2015-04-21)
 ------------------
 
 - Comment out memmon in supervisor.  Let's see how often this is still
