@@ -4,7 +4,8 @@ History of this buildout
 5.1.6 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Fix wrong links in projects list.
+  [maurits]
 
 
 5.1.5 (2015-04-21)
