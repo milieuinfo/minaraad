@@ -4,7 +4,10 @@ History of this buildout
 5.1.7 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Pillow 2.8.1.  You have to install an extra dependency first:
+  sudo apt-get install libfreetype6-dev
+  This makes sure captchas on the registration form work again.
+  [maurits]
 
 
 5.1.6 (2015-05-27)
