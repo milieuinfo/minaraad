@@ -1,7 +1,7 @@
 History of this buildout
 ========================
 
-5.1.7 (unreleased)
+5.1.7 (2015-05-27)
 ------------------
 
 - Pillow 2.8.1.  You have to install an extra dependency first:
