@@ -247,6 +247,9 @@ class EditAgendaItemView(BaseAgendaItemView):
     def process_form(self):
         form = self.request.form
         self.context.update(**form)
+        # Somehow the mimetype of the summary gets set to text/plain
+        # when it is empty.  It must be html.
+        self.context.summary.mimetype = 'text/html'
 
         if self.context.getIn_factory():
             self.context.setIn_factory(False)
