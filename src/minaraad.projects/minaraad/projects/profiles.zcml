@@ -239,4 +239,12 @@
         handler="minaraad.projects.migration.migrate_to_blob_fields" />
   </genericsetup:upgradeSteps>
 
+  <genericsetup:upgradeStep
+      source="1026"
+      destination="1027"
+      profile="minaraad.projects:default"
+      title="Fix agenda item summariy fields"
+      description="Set the mimetype of the summary to text/html."
+      handler="minaraad.projects.migration.agenda_item_project_set_summary_html" />
+
 </configure>

@@ -363,3 +363,27 @@ def migrate_to_blob_fields(context):
     logger.info("Migrating to blob fields...")
     migrate(context, 'Project')
     logger.info("Done migrating to blob fields.")
+
+
+def agenda_item_project_set_summary_html(context):
+    """Set the mimetype of the summary to text/html.
+
+    Otherwise when editing you get a bare textarea and cannot save it.
+    """
+    catalog = getToolByName(context, 'portal_catalog')
+    brains = catalog(portal_type='AgendaItemProject')
+    num_objects = len(brains)
+    logger.info("Updating agenda item summaries.")
+    fixed = 0
+    pghandler = ZLogHandler(100)
+    pghandler.init('Setting mimetype html for agenda item summaries',
+                   num_objects)
+    for index, brain in enumerate(brains):
+        pghandler.report(index)
+        obj = brain.getObject()
+        if obj.summary.mimetype != 'text/html':
+            obj.summary.mimetype = 'text/html'
+            fixed += 1
+    pghandler.finish()
+    logger.info("Have set summary mimetype to text/html for {0}/{1} agenda "
+                "items.".format(fixed, len(brains)))

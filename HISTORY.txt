@@ -4,6 +4,9 @@ History of this buildout
 5.1.8 (unreleased)
 ------------------
 
+- Add migration to fix summary mimetypes of existing agenda items.
+  [maurits]
+
 - When adding/editing an agenda item, set the mimetype to text/html.
   The add-form would show a rich text editor, but when you did not
   enter anything and later wanted to edit it again, you got a basic

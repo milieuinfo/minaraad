@@ -15,6 +15,9 @@ from base_agendaitem import BaseAgendaItem, base_agendaitem_schema
 agendaitem_schema = base_agendaitem_schema + atapi.Schema((
     atapi.TextField(
         name='summary',
+        # Note: see process_form in browser/agenda_item.py where we
+        # explicitly set the mimetype to text/html to avoid problems
+        # when editing an empty text field.
         allowable_content_types=('text/html', ),
         default_content_type='text/html',
         default_output_type='text/html',
