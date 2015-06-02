@@ -1,7 +1,7 @@
 History of this buildout
 ========================
 
-5.1.8 (unreleased)
+5.1.8 (2015-06-02)
 ------------------
 
 - Add migration to fix summary mimetypes of existing agenda items.
