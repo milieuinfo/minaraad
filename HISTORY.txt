@@ -1,7 +1,7 @@
 History of this buildout
 ========================
 
-5.1.9 (unreleased)
+5.1.9 (2015-09-10)
 ------------------
 
 - Products.PloneHotfix20150910 1.1
