@@ -4,6 +4,10 @@ History of this buildout
 5.1.10 (unreleased)
 -------------------
 
+- Added UBUNTU-1404.rst with instructions on how to update the
+  servers.
+  [maurits]
+
 - Updated several minor versions.
   [maurits]
 
