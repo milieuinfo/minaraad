@@ -4,7 +4,8 @@ History of this buildout
 5.1.10 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- Updated several minor versions.
+  [maurits]
 
 
 5.1.9 (2015-09-10)
