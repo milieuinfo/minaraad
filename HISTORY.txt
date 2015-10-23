@@ -4,7 +4,8 @@ History of this buildout
 5.1.11 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- Updated iPython.
+  [maurits]
 
 
 5.1.10 (2015-09-18)
@@ -204,7 +205,7 @@ History of this buildout
 5.0.24 (2014-07-17)
 -------------------
 
-- Change times for crontab-pack to a bit earlier on Saturday. 
+- Change times for crontab-pack to a bit earlier on Saturday.
   [maurits]
 
 - Fix crontab-pack.  It needs an absolute path to the zodbpack.cfg
@@ -415,7 +416,7 @@ History of this buildout
 
 - Update find-links to Plone release 4.2.4 & thirdparty on dist.plone.org
   [fred]
-  
+
 - Remove lxml (z3c.rescipe.staticlxml) from the parts as the lxml should
   nowadays be able to compile fine on both OS X and linux if the necessary
   libraries are present (libxml2-dev, libxslt-dev).
@@ -617,7 +618,7 @@ History of this buildout
 -----------------
 
 - Added action on meeting to manually regenerate the full
-  PDF. [vincent] 
+  PDF. [vincent]
 
 - Updated listeners for the 'conacatenate_pdf' event. [vincent]
 
