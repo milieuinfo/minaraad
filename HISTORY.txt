@@ -4,6 +4,9 @@ History of this buildout
 5.1.11 (unreleased)
 -------------------
 
+- Added ipdb.
+  [maurits]
+
 - Updated iPython.
   [maurits]
 
