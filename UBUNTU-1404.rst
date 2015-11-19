@@ -39,33 +39,10 @@ Blobs
 cat /etc/fstab
 cat minaraad-blobs/.layout  # must be 'bushy' without a line ending
 ls -laR minaraad-blobs/
+touch minaraad-blobs/foo && rm minaraad-blobs/foo
 
-XXX Problem on all four ontwikkel servers: the directory is not
-readable or is empty.
-
-On pr-1 it says:
-mount:
-zfs-74.mmis.be:/export/mina/plone-minaraad-pr on /home/zope/minaraad-blobs type nfs (rw,nfsvers=3,hard,intr,nolock,addr=192.168.74.145)
-fstab:
-zfs-74.mmis.be:/export/mina/plone-minaraad-pr /home/zope/minaraad-blobs nfs nfsvers=3,rw,hard,intr,nolock 0 0
-
-On on-1 it says:
-mount:
-zfs-76.mmis.be:/export/mina/plone-minaraad-on on /home/zope/minaraad-blobs type nfs (rw,nfsvers=3,hard,intr,nolock,addr=192.168.76.145)
-fstab:
-zfs-76.mmis.be:/export/mina/plone-minaraad-on /home/zope/minaraad-blobs nfs nfsvers=3,rw,hard,intr,nolock 0 0
-ls -laR minaraad-blobs:
-minaraad-blobs:
-total 8
-drwx------+  3 zope zope    4 2015-09-01 13:41 .
-drwxr-xr-x  13 zope zope 4096 2015-05-27 12:55 ..
--rw-r--r--+  1 zope zope    5 2015-09-01 13:41 .layout
-drwx------+  2 zope zope    2 2015-09-01 13:41 tmp
-
-minaraad-blobs/tmp:
-total 3
-drwx------+ 2 zope zope 2 2015-09-01 13:41 .
-drwx------+ 3 zope zope 4 2015-09-01 13:41 ..
+Currently, on ontwikkel 1 and 2 this works.  On 3 and 4 I get
+'permission denied'...
 
 
 Extra packages
