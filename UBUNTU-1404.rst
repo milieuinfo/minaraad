@@ -41,9 +41,6 @@ cat minaraad-blobs/.layout  # must be 'bushy' without a line ending
 ls -laR minaraad-blobs/
 touch minaraad-blobs/foo && rm minaraad-blobs/foo
 
-Currently, on ontwikkel 1 and 2 this works.  On 3 and 4 I get
-'permission denied'...
-
 
 Extra packages
 --------------
