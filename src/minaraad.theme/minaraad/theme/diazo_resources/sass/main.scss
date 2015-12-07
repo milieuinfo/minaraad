@@ -7,11 +7,11 @@
 //
 // Fonts
 //
-
-// TODO: Load only the used fonts.
-// At the moment we load to many fonts.
 $roboto-font-path: 'roboto' !default;
 @import "../bower_components/roboto-fontface/css/roboto-fontface.scss";
+
+$flanders-font-path: 'flanders' !default;
+@import "../fonts/flanders/flanders.scss";
 
 // Set asset path
 $bootstrap-sass-asset-helper: "bootstrap-sass-official/assets/";

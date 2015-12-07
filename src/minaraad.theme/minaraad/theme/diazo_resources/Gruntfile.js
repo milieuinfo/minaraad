@@ -115,6 +115,19 @@ module.exports = function(grunt) {
                   src: ['*'],
                   dest: 'static/roboto/',
                   filter: 'isFile'
+              },
+
+              //
+              // Copy Flanders fonts.
+              //
+              // Will fail silently if source files are missing due to wildcard.
+
+              {
+                  expand: true,
+                  cwd: 'fonts/flanders',
+                  src: ['*.eot', '*.svg', '*.ttf', '*.woff'],
+                  dest: 'static/flanders/',
+                  filter: 'isFile'
               }
 
             ]

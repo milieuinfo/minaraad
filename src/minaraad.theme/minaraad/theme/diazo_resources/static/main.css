@@ -143,6 +143,62 @@
   src: url("roboto/Roboto-BlackItalic.eot");
   src: url("roboto/Roboto-BlackItalic.eot?#iefix") format("embedded-opentype"), url("roboto/Roboto-BlackItalic.woff2") format("woff2"), url("roboto/Roboto-BlackItalic.woff") format("woff"), url("roboto/Roboto-BlackItalic.ttf") format("truetype"), url("roboto/Roboto-BlackItalic.svg#Roboto") format("svg"); }
 
+@font-face {
+  font-family: "Flanders Art Sans";
+  src: url("flanders/flanders-sans-light.eot");
+  src: url("flanders/flanders-sans-light.eot?#iefix") format("embedded-opentype"), url("flanders/flanders-sans-light.woff") format("woff"), url("flanders/flanders-sans-light.ttf") format("truetype"), url("flanders/flanders-sans-light.svg#26c269558e3060dfbe8b0bc36088245c") format("svg");
+  font-style: normal;
+  font-weight: 300; }
+
+@font-face {
+  font-family: "Flanders Art Sans";
+  src: url("flanders/flanders-sans-regular.eot");
+  src: url("flanders/flanders-sans-regular.eot?#iefix") format("embedded-opentype"), url("flanders/flanders-sans-regular.woff") format("woff"), url("flanders/flanders-sans-regular.ttf") format("truetype"), url("flanders/flanders-sans-regular.svg#5999c311efabb8ef8bfd93d30f0ab8ab") format("svg");
+  font-style: normal;
+  font-weight: 400; }
+
+@font-face {
+  font-family: "Flanders Art Sans";
+  src: url("flanders/flanders-sans-medium.eot");
+  src: url("flanders/flanders-sans-medium.eot?#iefix") format("embedded-opentype"), url("flanders/flanders-sans-medium.woff") format("woff"), url("flanders/flanders-sans-medium.ttf") format("truetype"), url("flanders/flanders-sans-medium.svg#7ebdc43021fbf6b8f40b21819190e2b4") format("svg");
+  font-style: normal;
+  font-weight: 500; }
+
+@font-face {
+  font-family: "Flanders Art Sans";
+  src: url("flanders/flanders-sans-bold.eot");
+  src: url("flanders/flanders-sans-bold.eot?#iefix") format("embedded-opentype"), url("flanders/flanders-sans-bold.woff") format("woff"), url("flanders/flanders-sans-bold.ttf") format("truetype"), url("flanders/flanders-sans-bold.svg#d0ebe09b8d309cd8a8986065f592a85e") format("svg");
+  font-style: normal;
+  font-weight: 600; }
+
+@font-face {
+  font-family: "Flanders Art Serif";
+  src: url("flanders/flanders-serif-light.eot");
+  src: url("flanders/flanders-serif-light.eot?#iefix") format("embedded-opentype"), url("flanders/flanders-serif-light.woff") format("woff"), url("flanders/flanders-serif-light.ttf") format("truetype"), url("flanders/flanders-serif-light.svg#26c269558e3060dfbe8b0bc36088245c") format("svg");
+  font-style: normal;
+  font-weight: 300; }
+
+@font-face {
+  font-family: "Flanders Art Serif";
+  src: url("flanders/flanders-serif-regular.eot");
+  src: url("flanders/flanders-serif-regular.eot?#iefix") format("embedded-opentype"), url("flanders/flanders-serif-regular.woff") format("woff"), url("flanders/flanders-serif-regular.ttf") format("truetype"), url("flanders/flanders-serif-regular.svg#5999c311efabb8ef8bfd93d30f0ab8ab") format("svg");
+  font-style: normal;
+  font-weight: 400; }
+
+@font-face {
+  font-family: "Flanders Art Serif";
+  src: url("flanders/flanders-serif-medium.eot");
+  src: url("flanders/flanders-serif-medium.eot?#iefix") format("embedded-opentype"), url("flanders/flanders-serif-medium.woff") format("woff"), url("flanders/flanders-serif-medium.ttf") format("truetype"), url("flanders/flanders-serif-medium.svg#7ebdc43021fbf6b8f40b21819190e2b4") format("svg");
+  font-style: normal;
+  font-weight: 500; }
+
+@font-face {
+  font-family: "Flanders Art Serif";
+  src: url("flanders/flanders-serif-bold.eot");
+  src: url("flanders/flanders-serif-bold.eot?#iefix") format("embedded-opentype"), url("flanders/flanders-serif-bold.woff") format("woff"), url("flanders/flanders-serif-bold.ttf") format("truetype"), url("flanders/flanders-serif-bold.svg#d0ebe09b8d309cd8a8986065f592a85e") format("svg");
+  font-style: normal;
+  font-weight: 600; }
+
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 html {
   font-family: sans-serif;

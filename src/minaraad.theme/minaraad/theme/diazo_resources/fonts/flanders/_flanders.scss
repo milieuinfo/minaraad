@@ -3,48 +3,96 @@
 // --------------------------------------------------
 //
 
+// These import statements are written by Zest. Because the example files form
+// http://webstijlgids.vlaanderen.be/ have bad style (pun intended).
+//
+
 @font-face {
-  font-family: "Flanders Art Sans Light";
-  src: url("fonts/FlandersArtSans-Light.eot");
-  src: url("fonts/FlandersArtSans-Light.eot?#iefix") format("embedded-opentype"),
-       url("fonts/FlandersArtSans-Light.woff") format("woff"),
-       url("fonts/FlandersArtSans-Light.ttf")  format("truetype"),
-       url("fonts/FlandersArtSans-Light.svg#26c269558e3060dfbe8b0bc36088245c") format("svg");
+  font-family: "Flanders Art Sans";
+  src: url("#{$flanders-font-path}/flanders-sans-light.eot");
+  src: url("#{$flanders-font-path}/flanders-sans-light.eot?#iefix") format("embedded-opentype"),
+       url("#{$flanders-font-path}/flanders-sans-light.woff") format("woff"),
+       url("#{$flanders-font-path}/flanders-sans-light.ttf")  format("truetype"),
+       url("#{$flanders-font-path}/flanders-sans-light.svg#26c269558e3060dfbe8b0bc36088245c") format("svg");
   font-style:   normal;
-  font-weight:  200;
+  font-weight:  300;
 }
 
 @font-face {
   font-family: "Flanders Art Sans";
-  src: url("fonts/FlandersArtSans-Regular.eot");
-  src: url("fonts/FlandersArtSans-Regular.eot?#iefix") format("embedded-opentype"),
-       url("fonts/FlandersArtSans-Regular.woff") format("woff"),
-       url("fonts/FlandersArtSans-Regular.ttf")  format("truetype"),
-       url("fonts/FlandersArtSans-Regular.svg#5999c311efabb8ef8bfd93d30f0ab8ab") format("svg");
+  src: url("#{$flanders-font-path}/flanders-sans-regular.eot");
+  src: url("#{$flanders-font-path}/flanders-sans-regular.eot?#iefix") format("embedded-opentype"),
+       url("#{$flanders-font-path}/flanders-sans-regular.woff") format("woff"),
+       url("#{$flanders-font-path}/flanders-sans-regular.ttf")  format("truetype"),
+       url("#{$flanders-font-path}/flanders-sans-regular.svg#5999c311efabb8ef8bfd93d30f0ab8ab") format("svg");
   font-style:   normal;
   font-weight:  400;
 }
 
 @font-face {
-  font-family: "Flanders Art Sans Medium";
-  src: url("fonts/FlandersArtSans-Medium.eot");
-  src: url("fonts/FlandersArtSans-Medium.eot?#iefix") format("embedded-opentype"),
-       url("fonts/FlandersArtSans-Medium.woff") format("woff"),
-       url("fonts/FlandersArtSans-Medium.ttf")  format("truetype"),
-       url("fonts/FlandersArtSans-Medium.svg#7ebdc43021fbf6b8f40b21819190e2b4") format("svg");
+  font-family: "Flanders Art Sans";
+  src: url("#{$flanders-font-path}/flanders-sans-medium.eot");
+  src: url("#{$flanders-font-path}/flanders-sans-medium.eot?#iefix") format("embedded-opentype"),
+       url("#{$flanders-font-path}/flanders-sans-medium.woff") format("woff"),
+       url("#{$flanders-font-path}/flanders-sans-medium.ttf")  format("truetype"),
+       url("#{$flanders-font-path}/flanders-sans-medium.svg#7ebdc43021fbf6b8f40b21819190e2b4") format("svg");
+  font-style:   normal;
+  font-weight:  500;
+}
+
+@font-face {
+  font-family: "Flanders Art Sans";
+  src: url("#{$flanders-font-path}/flanders-sans-bold.eot");
+  src: url("#{$flanders-font-path}/flanders-sans-bold.eot?#iefix") format("embedded-opentype"),
+       url("#{$flanders-font-path}/flanders-sans-bold.woff") format("woff"),
+       url("#{$flanders-font-path}/flanders-sans-bold.ttf")  format("truetype"),
+       url("#{$flanders-font-path}/flanders-sans-bold.svg#d0ebe09b8d309cd8a8986065f592a85e") format("svg");
+  font-style:   normal;
+  font-weight:  600;
+}
+
+@font-face {
+  font-family: "Flanders Art Serif";
+  src: url("#{$flanders-font-path}/flanders-serif-light.eot");
+  src: url("#{$flanders-font-path}/flanders-serif-light.eot?#iefix") format("embedded-opentype"),
+       url("#{$flanders-font-path}/flanders-serif-light.woff") format("woff"),
+       url("#{$flanders-font-path}/flanders-serif-light.ttf")  format("truetype"),
+       url("#{$flanders-font-path}/flanders-serif-light.svg#26c269558e3060dfbe8b0bc36088245c") format("svg");
+  font-style:   normal;
+  font-weight:  300;
+}
+
+@font-face {
+  font-family: "Flanders Art Serif";
+  src: url("#{$flanders-font-path}/flanders-serif-regular.eot");
+  src: url("#{$flanders-font-path}/flanders-serif-regular.eot?#iefix") format("embedded-opentype"),
+       url("#{$flanders-font-path}/flanders-serif-regular.woff") format("woff"),
+       url("#{$flanders-font-path}/flanders-serif-regular.ttf")  format("truetype"),
+       url("#{$flanders-font-path}/flanders-serif-regular.svg#5999c311efabb8ef8bfd93d30f0ab8ab") format("svg");
   font-style:   normal;
   font-weight:  400;
 }
 
 @font-face {
-  font-family: "Flanders Art Sans Bold";
-  src: url("fonts/FlandersArtSans-Bold.eot");
-  src: url("fonts/FlandersArtSans-Bold.eot?#iefix") format("embedded-opentype"),
-       url("fonts/FlandersArtSans-Bold.woff") format("woff"),
-       url("fonts/FlandersArtSans-Bold.ttf")  format("truetype"),
-       url("fonts/FlandersArtSans-Bold.svg#d0ebe09b8d309cd8a8986065f592a85e") format("svg");
+  font-family: "Flanders Art Serif";
+  src: url("#{$flanders-font-path}/flanders-serif-medium.eot");
+  src: url("#{$flanders-font-path}/flanders-serif-medium.eot?#iefix") format("embedded-opentype"),
+       url("#{$flanders-font-path}/flanders-serif-medium.woff") format("woff"),
+       url("#{$flanders-font-path}/flanders-serif-medium.ttf")  format("truetype"),
+       url("#{$flanders-font-path}/flanders-serif-medium.svg#7ebdc43021fbf6b8f40b21819190e2b4") format("svg");
   font-style:   normal;
-  font-weight:  700;
+  font-weight:  500;
+}
+
+@font-face {
+  font-family: "Flanders Art Serif";
+  src: url("#{$flanders-font-path}/flanders-serif-bold.eot");
+  src: url("#{$flanders-font-path}/flanders-serif-bold.eot?#iefix") format("embedded-opentype"),
+       url("#{$flanders-font-path}/flanders-serif-bold.woff") format("woff"),
+       url("#{$flanders-font-path}/flanders-serif-bold.ttf")  format("truetype"),
+       url("#{$flanders-font-path}/flanders-serif-bold.svg#d0ebe09b8d309cd8a8986065f592a85e") format("svg");
+  font-style:   normal;
+  font-weight:  600;
 }
 
 
@@ -52,33 +100,43 @@
 // DEMO
 //
 
-//    .wrapper {
-//      font-size: 2em;
-//      line-height: 1.3em;
+//    .light_sans {
+//      font-family: 'Flanders Art Sans';  // Should also give fallback like `Helvetica, Arial, sans-serif`
+//      font-weight: 300;  // light
 //    }
 //
-//    .//title {
-//      font-size: 2.5em;
-//      color: #000000;
+//    .regular_sans {
+//      font-family: 'Flanders Art Sans';
+//      font-weight: 400;  // normal
 //    }
 //
-//    .light {
-//      font-family: 'Flanders Art Sans Light', sans-serif;
-//      font-weight: 200;
+//    .medium_sans {
+//      font-family: 'Flanders Art Sans';
+//      font-weight: 500;  // medium
 //    }
 //
-//    .regular {
-//      font-family: 'Flanders Art Sans', sans-serif;
-//      font-weight: 400;
-//    }
-//
-//    .medium {
-//      font-family: 'Flanders Art Sans Medium', sans-serif;
-//      font-weight: 400;
-//    }
-//
-//    .bold {
-//      font-family: 'Flanders Art Sans Medium', sans-serif;
-//      font-weight: 700;
+//    .bold_sans {
+//      font-family: 'Flanders Art Sans';
+//      font-weight: 600;  // bold
 //    }
 
+
+//    .light_serif {
+//      font-family: 'Flanders Art Serif';
+//      font-weight: 300;
+//    }
+//
+//    .regular_serif {
+//      font-family: 'Flanders Art Serif';
+//      font-weight: 400;
+//    }
+//
+//    .medium_serif {
+//      font-family: 'Flanders Art Serif';
+//      font-weight: 500;
+//    }
+//
+//    .bold_serif {
+//      font-family: 'Flanders Art Serif';
+//      font-weight: 600;
+//    }
