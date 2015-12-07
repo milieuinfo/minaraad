@@ -1,0 +1,84 @@
+//
+// Flanders font imports
+// --------------------------------------------------
+//
+
+@font-face {
+  font-family: "Flanders Art Sans Light";
+  src: url("fonts/FlandersArtSans-Light.eot");
+  src: url("fonts/FlandersArtSans-Light.eot?#iefix") format("embedded-opentype"),
+       url("fonts/FlandersArtSans-Light.woff") format("woff"),
+       url("fonts/FlandersArtSans-Light.ttf")  format("truetype"),
+       url("fonts/FlandersArtSans-Light.svg#26c269558e3060dfbe8b0bc36088245c") format("svg");
+  font-style:   normal;
+  font-weight:  200;
+}
+
+@font-face {
+  font-family: "Flanders Art Sans";
+  src: url("fonts/FlandersArtSans-Regular.eot");
+  src: url("fonts/FlandersArtSans-Regular.eot?#iefix") format("embedded-opentype"),
+       url("fonts/FlandersArtSans-Regular.woff") format("woff"),
+       url("fonts/FlandersArtSans-Regular.ttf")  format("truetype"),
+       url("fonts/FlandersArtSans-Regular.svg#5999c311efabb8ef8bfd93d30f0ab8ab") format("svg");
+  font-style:   normal;
+  font-weight:  400;
+}
+
+@font-face {
+  font-family: "Flanders Art Sans Medium";
+  src: url("fonts/FlandersArtSans-Medium.eot");
+  src: url("fonts/FlandersArtSans-Medium.eot?#iefix") format("embedded-opentype"),
+       url("fonts/FlandersArtSans-Medium.woff") format("woff"),
+       url("fonts/FlandersArtSans-Medium.ttf")  format("truetype"),
+       url("fonts/FlandersArtSans-Medium.svg#7ebdc43021fbf6b8f40b21819190e2b4") format("svg");
+  font-style:   normal;
+  font-weight:  400;
+}
+
+@font-face {
+  font-family: "Flanders Art Sans Bold";
+  src: url("fonts/FlandersArtSans-Bold.eot");
+  src: url("fonts/FlandersArtSans-Bold.eot?#iefix") format("embedded-opentype"),
+       url("fonts/FlandersArtSans-Bold.woff") format("woff"),
+       url("fonts/FlandersArtSans-Bold.ttf")  format("truetype"),
+       url("fonts/FlandersArtSans-Bold.svg#d0ebe09b8d309cd8a8986065f592a85e") format("svg");
+  font-style:   normal;
+  font-weight:  700;
+}
+
+
+//
+// DEMO
+//
+
+//    .wrapper {
+//      font-size: 2em;
+//      line-height: 1.3em;
+//    }
+//
+//    .//title {
+//      font-size: 2.5em;
+//      color: #000000;
+//    }
+//
+//    .light {
+//      font-family: 'Flanders Art Sans Light', sans-serif;
+//      font-weight: 200;
+//    }
+//
+//    .regular {
+//      font-family: 'Flanders Art Sans', sans-serif;
+//      font-weight: 400;
+//    }
+//
+//    .medium {
+//      font-family: 'Flanders Art Sans Medium', sans-serif;
+//      font-weight: 400;
+//    }
+//
+//    .bold {
+//      font-family: 'Flanders Art Sans Medium', sans-serif;
+//      font-weight: 700;
+//    }
+
