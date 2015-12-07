@@ -79,18 +79,11 @@ module.exports = function(grunt) {
                         'bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/modal.js',
 //                        'bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/tooltip.js',
 //                        'bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/popover.js',
-                      ],
-                      dest: 'static/bootstrap.js',
-                      nonull: true
-                  },
-                  {
-                      src: [
-                        'js/ploneorg.js'
+                        'js/minaraad.js'
                       ],
                       dest: 'static/main.js',
                       nonull: true
                   }
-
                 ]
             }
         },
