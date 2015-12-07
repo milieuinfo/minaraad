@@ -84,3 +84,18 @@
 //  p { ... }
 //  a { ... }
 //  .lead { ... }
+
+
+//
+// Load main css into Tiny
+//
+// At the moment we use the main css to style all TinyMCE content.
+// Ideally we want to use only a subset. E.g. only the typographical styles.
+
+@import "main.scss";
+
+// Text never stands flush against the edge of a frame. So why in Tiny?
+// This gives a margin.
+body {
+  margin: 1em;
+}

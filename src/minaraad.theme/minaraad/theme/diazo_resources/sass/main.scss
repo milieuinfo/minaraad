@@ -4,8 +4,14 @@
 //
 // Combining custom bootstrap and partials to one file.
 
-// Font path
-@import url(https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic);
+//
+// Fonts
+//
+
+// TODO: Load only the used fonts.
+// At the moment we load to many fonts.
+$roboto-font-path: 'roboto' !default;
+@import "../bower_components/roboto-fontface/css/roboto-fontface.scss";
 
 // Set asset path
 $bootstrap-sass-asset-helper: "bootstrap-sass-official/assets/";
@@ -19,7 +25,8 @@ $fa-font-path:        "fontawesome/fonts" !default;
 @import "../bower_components/fontawesome/scss/font-awesome.scss";
 
 // Carousel
-@import 'partials/carousel';
+// We don't use corousel.
+// @import 'partials/carousel';
 
 // Layout, positioning and floats.
 @import 'partials/layout';
@@ -42,19 +49,3 @@ $fa-font-path:        "fontawesome/fonts" !default;
 
 // Portlet specific styling.
 @import 'partials/portlets';
-
-
-.showmedia{
-  position: fixed;
-  z-index: 999999;
-  padding: 5px;
-  right: 0;
-  background-color: #fff;
-  border-left: 1px solid black;
-  border-bottom: 1px solid black;
-}
-
-// Dirty fix for expertise list view.
-.documentByLine {
-  display: none;
-}
