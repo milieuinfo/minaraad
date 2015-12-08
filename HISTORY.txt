@@ -4,7 +4,8 @@ History of this buildout
 5.1.12 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- Products.PloneHotfix20151208 1.0
+  [maurits]
 
 
 5.1.11 (2015-11-20)
