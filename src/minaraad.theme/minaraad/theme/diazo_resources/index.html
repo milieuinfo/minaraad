@@ -60,41 +60,74 @@
     <body>
 
         <header>
+
           <div class="topbar">
-            <div class="sites">
-              <p><a href="#">VLAANDEREN.be</a><a href="">Minaraad</a></p>
-            </div>
-            <div class="contact">
-              <p><a href="#">Contacteer ons (?)</a></p>
+            <div class="container">
+              <div class="sites">
+                  <a href="#">VLAANDEREN.be</a>
+                  <a href="">Minaraad.be</a>
+              </div>
+              <div class="contact">
+                <ul class="navbar-right">
+                  <li id="fat-menu" class="dropdown">
+                    <a id="drop3" href="#"
+                       class="dropdown-toggle"
+                       data-toggle="dropdown"
+                       role="button"
+                       aria-haspopup="true"
+                       aria-expanded="false">
+                      Contacteer ons <i class="fa fa-question-circle"></i>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="drop3">
+                      <li>
+                        <a href="mailto:info@minaraad.nl">
+                          <h3>
+                            Stuur een e-mail <i class="fa fa-envelope"></i>
+                          </h3>
+                          info@minaraad.nl
+                        </a>
+                      </li>
+                      <li>
+                        <a href="call:">
+                          <h3>
+                            Bel ons <i class="fa fa-phone"></i>
+                          </h3>
+                          Elke werkdag van 9u tot 19u<br>
+                          02 558 01 30
+                        </a>
+                      </li>
+                      <li>
+                        <a href="http://twitter.com/">
+                          <h3>
+                            Volg ons op Twitter <i class="fa fa-twitter"></i>
+                          </h3>
+                          @minaraad
+                        </a>
+                      </li>
+                      <li>
+                        <a href="contact.html">
+                          <h3>
+                            Contactpagina <i class="fa fa-chevron-right"></i>
+                          </h3>
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
 
           <div class="logobar">
-            <div class="logo">
-              <a class="navbar-brand" title="Plone logo" href="index.html">
-                <span class="sr-only">Plone.org</span>
-                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                     version="1.1"
-                     id="Layer_1"
-                     x="0px"
-                     y="0px"
-                     width="158.253px"
-                     height="40.686px"
-                     viewBox="0 0 158.253 40.686"
-                     enable-background="new 0 0 158.253 40.686"
-                     xml:space="preserve">
-                  <g><path fill="white" d="M65.327,23.208h-6.589v11.388h-4.393V5.638h10.981c5.653,0,9.271,3.742,9.271,8.785                 S70.979,23.208,65.327,23.208z M65.082,9.583h-6.345v9.639h6.345c3.05,0,5.124-1.749,5.124-4.799                 C70.206,11.372,68.132,9.583,65.082,9.583z"></path><path fill="white" d="M83.969,34.596c-3.904,0-5.652-2.644-5.652-5.693V5.638h4.148v23.021c0,1.587,0.567,2.399,2.235,2.399h1.83                 v3.538H83.969z"></path><path fill="white" d="M104.762,32.399c-1.344,1.384-3.377,2.44-6.184,2.44c-2.805,0-4.799-1.058-6.141-2.44                 c-1.951-2.032-2.439-4.637-2.439-8.134c0-3.457,0.488-6.061,2.439-8.094c1.342-1.383,3.336-2.44,6.141-2.44                 c2.807,0,4.84,1.059,6.184,2.44c1.951,2.033,2.439,4.637,2.439,8.094C107.203,27.763,106.713,30.366,104.762,32.399z                  M101.629,18.613c-0.773-0.773-1.83-1.181-3.051-1.181c-1.219,0-2.236,0.406-3.01,1.181c-1.26,1.261-1.422,3.416-1.422,5.652                 s0.162,4.393,1.422,5.653c0.773,0.771,1.791,1.22,3.01,1.22c1.221,0,2.277-0.447,3.051-1.22c1.262-1.262,1.424-3.417,1.424-5.653                 S102.891,19.873,101.629,18.613z"></path><path fill="white" d="M123.643,34.596V22.029c0-3.214-1.83-4.597-4.147-4.597s-4.271,1.423-4.271,4.597v12.566h-4.147v-20.62                 h4.065v2.074c1.425-1.546,3.416-2.318,5.49-2.318c2.115,0,3.865,0.691,5.084,1.871c1.586,1.545,2.074,3.497,2.074,5.815v13.178                 L123.643,34.596L123.643,34.596z"></path><path fill="white" d="M135.772,25.486c0,3.537,1.871,5.774,5.246,5.774c2.317,0,3.539-0.649,5.004-2.115l2.643,2.481                 c-2.115,2.114-4.107,3.213-7.727,3.213c-5.166,0-9.273-2.725-9.273-10.574c0-6.671,3.457-10.534,8.744-10.534                 c5.531,0,8.744,4.067,8.744,9.925v1.83H135.772z M144.475,19.791c-0.65-1.545-2.113-2.604-4.066-2.604                 c-1.951,0-3.457,1.059-4.107,2.604c-0.406,0.936-0.488,1.546-0.529,2.807h9.273C145.003,21.337,144.883,20.726,144.475,19.791z"></path><circle fill="white" cx="17.815" cy="11.516" r="4.402"></circle><path fill="white" d="M31.167,20.311c0,2.433-1.969,4.401-4.403,4.401c-2.427,0-4.401-1.97-4.401-4.401                 c0-2.433,1.975-4.401,4.401-4.401C29.2,15.909,31.167,17.879,31.167,20.311z"></path><circle fill="white" cx="17.801" cy="29.131" r="4.402"></circle><g><path fill="white" d="M20.441-0.045C9.207-0.044,0.1,9.063,0.099,20.298C0.1,31.532,9.207,40.639,20.441,40.641                     c11.235-0.002,20.341-9.107,20.343-20.343C40.783,9.063,31.677-0.044,20.441-0.045z M31.891,31.747                     c-2.937,2.934-6.972,4.742-11.45,4.743c-4.478-0.001-8.513-1.811-11.45-4.743C6.058,28.81,4.25,24.775,4.249,20.298                     c0.001-4.478,1.809-8.513,4.743-11.45c2.937-2.934,6.972-4.742,11.45-4.743c4.478,0.001,8.513,1.81,11.45,4.743                     c2.934,2.938,4.742,6.973,4.743,11.45C36.633,24.775,34.825,28.81,31.891,31.747z"></path></g><g><path fill="white" d="M153.985,9.95c-1.195,0-2.164,0.971-2.164,2.168c0.002,1.197,0.969,2.168,2.164,2.168                     c1.199,0,2.172-0.971,2.172-2.168S155.184,9.95,153.985,9.95z M153.985,13.968c-1.021-0.002-1.846-0.827-1.846-1.85                     c0.002-1.021,0.825-1.849,1.846-1.851c1.023,0.002,1.852,0.828,1.854,1.851C155.836,13.141,155.008,13.966,153.985,13.968z"></path></g><g><path fill="white" d="M154.507,13.409l-0.54-1.08h-0.486v1.08h-0.389v-2.564h0.994c0.484,0,0.796,0.313,0.796,0.75                     c0,0.367-0.224,0.602-0.513,0.68l0.592,1.136L154.507,13.409L154.507,13.409z M154.056,11.195h-0.575v0.803h0.575 c0.261,0,0.437-0.147,0.437-0.399S154.317,11.195,154.056,11.195z"></path></g></g>
-                </svg>
-              </a>
-            </div>
-            <div class="search">
-              <p><a href="#">Search form here</a></p>
-            </div>
-          </div>
-
-          <nav class="navbar navbar-default">
             <div class="container">
-              <div class="navbar-header">
+              <div class="logo">
+                <a class="navbar-brand" title="Minaraad logo" href="index.html">
+                  <span class="sr-only">Minaraad.be</span>
+                  <img src="img/minaraad.svg" alt="Minaraad logo">
+                </a>
+              </div>
+
+
                 <button type="button"
                         class="navbar-toggle collapsed"
                         data-toggle="collapse"
@@ -106,11 +139,33 @@
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
                 </button>
-              </div>
+
+              <!--TODO: Add search form. Use Plone search form html? -->
+              <!--Makes Diazo easier. But we also like to stay in BS-style. -->
+              <!--<div class="search">-->
+                <!--<p><a href="#">Search form here</a></p>-->
+              <!--</div>-->
+            </div>
+          </div>
+
+          <nav class="navbar navbar-default">
+            <div class="container">
+              <!--<div class="navbar-header">-->
+                <!--<button type="button"-->
+                        <!--class="navbar-toggle collapsed"-->
+                        <!--data-toggle="collapse"-->
+                        <!--data-target="#navbar"-->
+                        <!--aria-expanded="false"-->
+                        <!--aria-controls="navbar">-->
+                  <!--<span class="sr-only">Toggle navigation</span>-->
+                  <!--<span class="icon-bar"></span>-->
+                  <!--<span class="icon-bar"></span>-->
+                  <!--<span class="icon-bar"></span>-->
+                <!--</button>-->
+              <!--</div>-->
               <div id="navbar" class="collapse navbar-collapse">
-                <ul class="nav navbar-nav navbar-right">
-                  <!-- li class="active" -->
-                  <li><a href="#">Home</a></li>
+                <ul class="nav navbar-nav">
+                  <li class="active"><a href="#">Home</a></li>
                   <li><a href="#">Thema's</a></li>
                   <li><a href="#">Documenten</a></li>
                   <li><a href="#">Over de Minaraad</a></li>
@@ -121,216 +176,226 @@
 
             </div>
           </nav>
-
         </header>
 
-        <div class="container">
-          <div class="row">
-            <ol class="breadcrumb">
-              <li><a href="#">Home</a></li>
-              <li><a href="#">Library</a></li>
-              <li class="active">Data</li>
-            </ol>
-          </div>
-        </div>
+        <div class="content-wrapper">
 
-        <div class="container">
-          <div class="row">
-            <aside id="global_statusmessage">
-
-                <div class="alert alert-success" role="alert">
-                    <strong>Well done!</strong>
-                    You successfully read this important
-                    alert message.
-                </div>
-                <div class="alert alert-info" role="alert">
-                    <strong>Heads up!</strong>
-                    This alert needs your attention, but it's
-                    not super important.
-                </div>
-                <div class="alert alert-warning" role="alert">
-                    <strong>Warning!</strong>
-                    Better check yourself, you're not looking too good.
-                </div>
-                <div class="alert alert-danger" role="alert">
-                    <strong>Oh snap!</strong>
-                    Change a few things up and try submitting
-                    again.
-                </div>
-
-            </aside>
-          </div>
-        </div>
-
-        <main role="main" id="main-container">
-          <div class="container">
-            <div class="row row-offcanvas row-offcanvas-right">
-              <div id="column1-container"></div>
-              <div id="content-container">
-
-                <div class="col-xs-6 col-lg-offset-3">
-
-                  <h1>Heading 1</h1>
-                  <p class="lead">Fabio vel iudice vincam, sunt in culpa qui officia. Hi omnes lingua, institutis, legibus inter se differunt. Quisque placerat facilisis egestas cillum dolore.</p>
-                  <p>Pellentesque habitant morbi tristique senectus et netus. Inmensae subtilitatis, obscuris et malesuada fames. Me non paenitet nullum festiviorem excogitasse ad hoc. Sed haec quis possit intrepidus aestimare tellus. Quisque ut dolor gravida, placerat libero vel, euismod. Quo usque tandem abutere, Catilina, patientia nostra?</p>
-                  <p>
-                    <a href="#" class="btn btn-default">Knop normaal</a>
-                    <a href="#" class="btn btn-primary">Knop primair</a>
-                  </p>
-                  <h2>Heading 2</h2>
-                  <p>Fabio vel iudice vincam, sunt in culpa qui officia. Hi omnes lingua, institutis, legibus inter se differunt. Quisque placerat facilisis egestas cillum dolore.</p>
-                  <ul>
-                    <li>Pellentesque habitant</li>
-                    <li>morbi tristique senectus</li>
-                    <li>Et netus. Inmensae subtilitatis.</li>
-                  </ul>
-                  <p>Fabio vel iudice vincam, sunt in culpa qui officia. Hi omnes lingua, institutis, legibus inter se differunt. Quisque placerat facilisis egestas cillum dolore.</p>
-                  <ol>
-                    <li>Pellentesque habitant</li>
-                    <li>morbi tristique senectus</li>
-                    <li>Et netus. Inmensae subtilitatis.</li>
-                  </ol>
-                   <p>Obscuris et malesuada fames. Me non paenitet nullum festiviorem excogitasse ad hoc. Sed haec quis possit intrepidus aestimare tellus. Quisque ut dolor gravida, placerat libero vel, euismod. Quo usque tandem abutere, Catilina, patientia nostra?</p>
-                  <h3>Heading 3</h3>
-                  <p>Fabio vel iudice vincam, sunt in culpa qui officia. Hi omnes lingua, institutis, legibus inter se differunt. Quisque placerat facilisis egestas cillum dolore.</p>
-                  <blockquote>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                  </blockquote>
-                  <p>Pellentesque habitant morbi tristique senectus et netus. Inmensae subtilitatis, obscuris et malesuada fames. Me non paenitet nullum festiviorem excogitasse ad hoc. Sed haec quis possit intrepidus aestimare tellus. Quisque ut dolor gravida, placerat libero vel, euismod. Quo usque tandem abutere, Catilina, patientia nostra?</p>
-                  <h4>Heading 4</h4>
-                  <table class="table"> <caption>Optional table caption.</caption> <thead> <tr> <th>#</th> <th>First Name</th> <th>Last Name</th> <th>Username</th> </tr> </thead> <tbody> <tr> <th scope="row">1</th> <td>Mark</td> <td>Otto</td> <td>@mdo</td> </tr> <tr> <th scope="row">2</th> <td>Jacob</td> <td>Thornton</td> <td>@fat</td> </tr> <tr> <th scope="row">3</th> <td>Larry</td> <td>the Bird</td> <td>@twitter</td> </tr> </tbody> </table>
-
-                  <h1>List Group</h1>
-
-                  <div class="list-group">
-                    <a href="#" class="list-group-item active">
-                      Cras justo odio
-                    </a>
-                    <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
-                    <a href="#" class="list-group-item">Morbi leo risus</a>
-                    <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-                    <a href="#" class="list-group-item">Vestibulum at eros</a>
-                  </div>
-
-                  <h1>Panels</h1>
-                  <div class="panel panel-default">
-                    <div class="panel-heading">
-                        Panel heading without title
-                    </div>
-                    <div class="panel-body">
-                      Panel content
-                    </div>
-                  </div>
-
-                  <div class="panel panel-default">
-                    <div class="panel-heading">
-                      <h3 class="panel-title">Panel title</h3>
-                    </div>
-                    <div class="panel-body">
-                      Panel content
-                    </div>
-                  </div>
-
-                  <h1>Form</h1>
-                  <form>
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">Email address</label>
-                      <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputPassword1">Password</label>
-                      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputFile">File input</label>
-                      <input type="file" id="exampleInputFile">
-                      <p class="help-block">Example block-level help text here.</p>
-                    </div>
-                    <div class="checkbox">
-                      <label>
-                        <input type="checkbox"> Check me out
-                      </label>
-                    </div>
-                    <button type="submit" class="btn btn-default">Submit</button>
-                  </form>                    <div class="form-group">
-                      <label for="exampleInputEmail1">Email address</label>
-                      <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputPassword1">Password</label>
-                      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputFile">File input</label>
-                      <input type="file" id="exampleInputFile">
-                      <p class="help-block">Example block-level help text here.</p>
-                    </div>
-                    <div class="checkbox">
-                      <label>
-                        <input type="checkbox"> Check me out
-                      </label>
-                    </div>
-                    <button type="submit" class="btn btn-default">Submit</button>
-                  </form>
-                </div>
-
-
-              </div>
-              <div id="column2-container"></div>
+          <div class="breadcrumbbar">
+            <div class="container">
+                <ol class="breadcrumb">
+                  <li><a href="#"><i class="fa fa-home"></i></a></li>
+                  <li><a href="#">Thema's</a></li>
+                  <li><a href="#">Biodiversiteit</a></li>
+                  <li class="active">Groenboek Beleidsplan Ruimte Vlaanderen</li>
+                </ol>
             </div>
           </div>
-        </main>
 
-        <!-- Modal -->
-        <div class="modal fade" id="modal-login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Login via Github</h4>
+          <main role="main" id="main-container">
+            <div class="container">
+
+
+
+
+              <aside id="global_statusmessage">
+
+                  <div class="alert alert-success" role="alert">
+                      <strong>Well done!</strong>
+                      You successfully read this important
+                      alert message.
+                  </div>
+                  <div class="alert alert-info" role="alert">
+                      <strong>Heads up!</strong>
+                      This alert needs your attention, but it's
+                      not super important.
+                  </div>
+                  <div class="alert alert-warning" role="alert">
+                      <strong>Warning!</strong>
+                      Better check yourself, you're not looking too good.
+                  </div>
+                  <div class="alert alert-danger" role="alert">
+                      <strong>Oh snap!</strong>
+                      Change a few things up and try submitting
+                      again.
+                  </div>
+
+              </aside>
+
+
+
+
+              <div class="row row-offcanvas row-offcanvas-right">
+                <div id="column1-container"></div>
+                <div id="content-container">
+
+                  <div class="col-sm-6 col-lg-offset-3">
+
+                    <h1>Heading 1</h1>
+                    <p class="lead">Fabio vel iudice vincam, sunt in culpa qui officia. Hi omnes lingua, institutis, legibus inter se differunt. Quisque placerat facilisis egestas cillum dolore.</p>
+                    <p>Pellentesque habitant morbi tristique senectus et netus. Inmensae subtilitatis, obscuris et malesuada fames. Me non paenitet nullum festiviorem excogitasse ad hoc. Sed haec quis possit intrepidus aestimare tellus. Quisque ut dolor gravida, placerat libero vel, euismod. Quo usque tandem abutere, Catilina, patientia nostra?</p>
+                    <p>
+                      <a href="#" class="btn btn-default">Knop normaal</a>
+                      <a href="#" class="btn btn-primary">Knop primair</a>
+                    </p>
+                    <h2>Heading 2</h2>
+                    <p>Fabio vel iudice vincam, sunt in culpa qui officia. Hi omnes lingua, institutis, legibus inter se differunt. Quisque placerat facilisis egestas cillum dolore.</p>
+                    <ul>
+                      <li>Pellentesque habitant</li>
+                      <li>morbi tristique senectus</li>
+                      <li>Et netus. Inmensae subtilitatis.</li>
+                    </ul>
+                    <p>Fabio vel iudice vincam, sunt in culpa qui officia. Hi omnes lingua, institutis, legibus inter se differunt. Quisque placerat facilisis egestas cillum dolore.</p>
+                    <ol>
+                      <li>Pellentesque habitant</li>
+                      <li>morbi tristique senectus</li>
+                      <li>Et netus. Inmensae subtilitatis.</li>
+                    </ol>
+                     <p>Obscuris et malesuada fames. Me non paenitet nullum festiviorem excogitasse ad hoc. Sed haec quis possit intrepidus aestimare tellus. Quisque ut dolor gravida, placerat libero vel, euismod. Quo usque tandem abutere, Catilina, patientia nostra?</p>
+                    <h3>Heading 3</h3>
+                    <p>Fabio vel iudice vincam, sunt in culpa qui officia. Hi omnes lingua, institutis, legibus inter se differunt. Quisque placerat facilisis egestas cillum dolore.</p>
+                    <blockquote>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                    </blockquote>
+                    <p>Pellentesque habitant morbi tristique senectus et netus. Inmensae subtilitatis, obscuris et malesuada fames. Me non paenitet nullum festiviorem excogitasse ad hoc. Sed haec quis possit intrepidus aestimare tellus. Quisque ut dolor gravida, placerat libero vel, euismod. Quo usque tandem abutere, Catilina, patientia nostra?</p>
+                    <h4>Heading 4</h4>
+                    <table class="table"> <caption>Optional table caption.</caption> <thead> <tr> <th>#</th> <th>First Name</th> <th>Last Name</th> <th>Username</th> </tr> </thead> <tbody> <tr> <th scope="row">1</th> <td>Mark</td> <td>Otto</td> <td>@mdo</td> </tr> <tr> <th scope="row">2</th> <td>Jacob</td> <td>Thornton</td> <td>@fat</td> </tr> <tr> <th scope="row">3</th> <td>Larry</td> <td>the Bird</td> <td>@twitter</td> </tr> </tbody> </table>
+
+                    <h1>List Group</h1>
+
+                    <div class="list-group">
+                      <a href="#" class="list-group-item active">
+                        Cras justo odio
+                      </a>
+                      <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+                      <a href="#" class="list-group-item">Morbi leo risus</a>
+                      <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+                      <a href="#" class="list-group-item">Vestibulum at eros</a>
+                    </div>
+
+                    <h1>Panels</h1>
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                          Panel heading without title
+                      </div>
+                      <div class="panel-body">
+                        Panel content
+                      </div>
+                    </div>
+
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <h3 class="panel-title">Panel title</h3>
+                      </div>
+                      <div class="panel-body">
+                        Panel content
+                      </div>
+                    </div>
+
+                    <h1>Form</h1>
+                    <form>
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputFile">File input</label>
+                        <input type="file" id="exampleInputFile">
+                        <p class="help-block">Example block-level help text here.</p>
+                      </div>
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox"> Check me out
+                        </label>
+                      </div>
+                      <button type="submit" class="btn btn-default">Submit</button>
+                    </form>                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputFile">File input</label>
+                        <input type="file" id="exampleInputFile">
+                        <p class="help-block">Example block-level help text here.</p>
+                      </div>
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox"> Check me out
+                        </label>
+                      </div>
+                      <button type="submit" class="btn btn-default">Submit</button>
+                    </form>
+                  </div>
+
+
+                </div>
+                <div id="column2-container"></div>
               </div>
-              <div class="modal-body">
-                <p class="lead">Quid securi etiam tamquam eu fugiat nulla
-                  pariatur. Gallia est omnis divisa in partes tres, quarum.
-                  Phasellus laoreet lorem vel dolor tempus vehicula. Cras
-                  mattis iudicium purus sit amet fermentum.</p>
-                <p>Sed haec quis possit intrepidus aestimare tellus.
-                Praeterea iter est quasdam res quas ex communi. Integer
-                legentibus erat a ante historiarum dapibus. Non equidem invideo,
-                miror magis posuere velit aliquet. Curabitur est gravida et
-                libero vitae dictum. Unam incolunt Belgae, aliam Aquitani,
-                tertiam.</p>
-              </div>
-              <div class="modal-footer">
-                <button type="button"
-                        class="btn btn-default"
-                        data-dismiss="modal">
-                  Cancel
-                </button>
-                <a href="/some/authentication-view"
-                   type="button"
-                   class="btn btn-primary">
-                  Okay, take me to Github
-                </a>
+            </div>
+          </main>
+
+          <!-- Modal -->
+          <div class="modal fade" id="modal-login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="myModalLabel">Login via Github</h4>
+                </div>
+                <div class="modal-body">
+                  <p class="lead">Quid securi etiam tamquam eu fugiat nulla
+                    pariatur. Gallia est omnis divisa in partes tres, quarum.
+                    Phasellus laoreet lorem vel dolor tempus vehicula. Cras
+                    mattis iudicium purus sit amet fermentum.</p>
+                  <p>Sed haec quis possit intrepidus aestimare tellus.
+                  Praeterea iter est quasdam res quas ex communi. Integer
+                  legentibus erat a ante historiarum dapibus. Non equidem invideo,
+                  miror magis posuere velit aliquet. Curabitur est gravida et
+                  libero vitae dictum. Unam incolunt Belgae, aliam Aquitani,
+                  tertiam.</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button"
+                          class="btn btn-default"
+                          data-dismiss="modal">
+                    Cancel
+                  </button>
+                  <a href="/some/authentication-view"
+                     type="button"
+                     class="btn btn-primary">
+                    Okay, take me to Github
+                  </a>
+                </div>
               </div>
             </div>
           </div>
+
         </div>
 
         <footer>
+
+          <div class="footer-image" style="background-image:url('img/vink.jpg')">
+          </div>
+
           <section class="sec-full-width footer-doormat">
 
             <div class="container">
               <div class="row">
-                <div class="column">
-                    <p>
-                      <a href="#">
-                        ## LOGO DIAP HERE ##
-                      </a>
-                    </p>
+
+                <div class="column logo">
+                  <a href="#">
+                    <img src="img/minaraad_white.svg" alt="Minaraad logo">
+                  </a>
                 </div>
 
-                <div class="column">
+                <div class="column sitemap">
                   <h3><a href="#">Sitemap</a></h3>
                   <ul>
                     <li><a href="#">Home</a></li>
@@ -341,7 +406,7 @@
                   </ul>
                 </div>
 
-                <div class="column">
+                <div class="column themas">
                   <h3><a href="#">Thema's</a></h3>
                   <ul>
                     <li><a href="#">Klimaat</a></li>
@@ -349,31 +414,29 @@
                     <li><a href="#">Hinder</a></li>
                     <li><a href="#">Biodiversiteit</a></li>
                     <li><a href="#">Bestuurskwaliteit</a></li>
-                    <li><a href="#">Vergroening van</a></li>
-                    <li><a href="#">de economie</a></li>
+                    <li><a href="#">Vergroening van de economie</a></li>
                     <li><a href="#">Impulsen</a></li>
                   </ul>
                 </div>
 
-                <div class="column">
+                <div class="column newsletter">
                   <h3><a href="#">Nieuwsbrief</a></h3>
-                  <p><a href="#" class="btn btn-primary"><i class="fa fa-envelope"></i> Abonneren</a></p>
-                  <h3><a href="#">Sociale Media</a></h3>
-                  <ul>
-                    <li><a href="#"><i class="fa fa-twitter"></i> Twitter</a></li>
-                    <li><a href="#"><i class="fa fa-linkedin"></i> LinkedIn</a></li>
-                    <li><a href="#"><i class="fa fa-youtube"></i> YouTube</a></li>
-                  </ul>
-
+                  <p><a href="#" class="btn btn-primary btn-sm"><i class="fa fa-envelope"></i> Abonneren</a></p>
+                    <h3><a href="#">Sociale Media</a></h3>
+                    <ul class="social">
+                      <li><a href="#"><i class="fa fa-twitter"></i> Twitter</a></li>
+                      <li><a href="#"><i class="fa fa-linkedin"></i> LinkedIn</a></li>
+                      <li><a href="#"><i class="fa fa-youtube"></i> YouTube</a></li>
+                    </ul>
                 </div>
 
-                <div class="column">
+                <div class="column digibib">
                   <h3><a href="http://docs.plone.org/develop">Digibib</a></h3>
                   <p>Non equidem invideo, miror magis posuere velit aliquet.</p>
-                  <p><a href="#" class="btn btn-primary"><i class="fa fa-sign-in"></i> Login</a></p>
+                  <p><a href="#" class="btn btn-primary btn-sm"><i class="fa fa-sign-in"></i> Login</a></p>
                 </div>
 
-                <div class="column">
+                <div class="column contact">
                   <h3><a href="#">Contact</a></h3>
                   <p>Minaraad</br>
                      Kliniekstraat 25</br>

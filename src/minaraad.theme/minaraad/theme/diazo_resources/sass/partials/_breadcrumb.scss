@@ -1,0 +1,16 @@
+.breadcrumbbar {
+  background: $mina-bg-gray;
+  margin-bottom: 20px;
+  .breadcrumb {
+    margin-bottom: 0;
+    font-family: $headings-font-family;
+    font-weight: 500;
+    font-size: 13.5px;
+    > li + li:before {
+      content: $fa-var-angle-right;
+      font-family: FontAwesome;
+      padding: 0 10px 0 8px;
+      color: gray;
+    }
+  }
+}

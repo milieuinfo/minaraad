@@ -69,7 +69,7 @@ module.exports = function(grunt) {
                         'bower_components/jquery/dist/jquery.js',
 //                        'bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/affix.js',
 //                        'bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/alert.js',
-//                        'bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/button.js',
+                        'bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/button.js',
                         'bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/carousel.js',
                         'bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/collapse.js',
                         'bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/dropdown.js',
@@ -105,19 +105,6 @@ module.exports = function(grunt) {
               },
 
               //
-              // Copy Roboto fonts.
-              //
-              // Will fail silently if source files are missing due to wildcard.
-
-              {
-                  expand: true,
-                  cwd: 'bower_components/roboto-fontface/fonts',
-                  src: ['*'],
-                  dest: 'static/roboto/',
-                  filter: 'isFile'
-              },
-
-              //
               // Copy Flanders fonts.
               //
               // Will fail silently if source files are missing due to wildcard.
@@ -127,6 +114,19 @@ module.exports = function(grunt) {
                   cwd: 'fonts/flanders',
                   src: ['*.eot', '*.svg', '*.ttf', '*.woff'],
                   dest: 'static/flanders/',
+                  filter: 'isFile'
+              },
+
+              //
+              // Copy images.
+              //
+              // Will fail silently if source files are missing due to wildcard.
+
+              {
+                  expand: true,
+                  cwd: 'img',
+                  src: ['**/*'],
+                  dest: 'static/img',
                   filter: 'isFile'
               }
 

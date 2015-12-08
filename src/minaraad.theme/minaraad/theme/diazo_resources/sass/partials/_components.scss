@@ -9,63 +9,66 @@
 // Mobile first
 // -----------------------------------------------------------------------------
 
+//
+// Set smooth font rendering.
+//
 
-#parent-fieldname-text img{
-  @extend .img-responsive;
+body{
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.error{
-  color: red;
+//
+// Animate all links.
+//
+
+a {
+  transition-duration: 0.2s;
+  -webkit-transition-duration: 0.2s; // Safari
 }
 
-h5{
-  font-weight: bold;
-}
+//
+// Button
+//
 
-video {
-  margin-bottom: 15px;
-}
-
-dt, dd {
-  line-height: 1.9em!important;
-}
-
-#content {
-  line-height: normal;
-  font-size: 100%;
-  margin: 0;
-  p,li {
-    line-height:1.5em;
+.btn {
+  font-weight: 500;
+  i {
+    margin-right: .4em;
   }
 }
 
-.tileItem {
-  a{
-    text-decoration: none;
-  }
-  .tileImage{
-    float: right;
-  }
+//
+// (Text) selection color
+//
+
+$selection-color: $mina-blue-light-2;
+::selection {
+  background: $selection-color;
+}
+::-moz-selection {
+  background: $selection-color;
 }
 
-.state-published{
-  color: $brand-primary !important;
+
+//
+// Background image
+//
+// Vlaamse overheid strepen.
+
+.content-wrapper {
+  background-color: $mina-bg-light-gray;
+  background-image: url('img/background-pattern.png');
+
 }
 
-.portalMessage{
-  @extend .alert;
-  &.success{
-    @extend .alert-success;
-  }
-  &.info{
-    @extend .alert-info;
-  }
-  &.error{
-    @extend .alert-danger;
-  }
-  &.warning{
-    @extend .alert-warning;
-  }
+//
+// Lead
+//
+
+.lead {
+  font-family: $headings-font-family;
+  font-weight: 400;
 }
 
 

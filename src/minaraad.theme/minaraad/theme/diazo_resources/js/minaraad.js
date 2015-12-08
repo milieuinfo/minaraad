@@ -9,4 +9,7 @@
     // ${project} JS here...
     console.log("Hello Minaraad World!");
 
+    $('data-toggle["dropdown"]').dropdown();
+
+
 })(); // end scope.

@@ -24,15 +24,9 @@ $bootstrap-sass-asset-helper: "bootstrap-sass-official/assets/";
 $fa-font-path:        "fontawesome/fonts" !default;
 @import "../bower_components/fontawesome/scss/font-awesome.scss";
 
-// Carousel
-// We don't use corousel.
-// @import 'partials/carousel';
-
-// Layout, positioning and floats.
-@import 'partials/layout';
-
 // Header and footer styling.
 @import 'partials/header';
+@import 'partials/breadcrumb';
 @import 'partials/footer';
 
 // Form styling.
