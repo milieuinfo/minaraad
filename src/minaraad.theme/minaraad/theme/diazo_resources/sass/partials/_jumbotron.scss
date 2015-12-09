@@ -1,0 +1,77 @@
+//
+// Jumbotron
+// --------------------------------------------------
+//
+// Contains a quote about Minaraad or a description of the current theme.
+// Does not use the defaults form BS to prevent counter styling.
+
+
+// -----------------------------------------------------------------------------
+// Mobile first
+// -----------------------------------------------------------------------------
+
+.jumbotronbar {
+  background-color: $mina-blue;
+  .container {
+    background-image: none;
+    background-size: auto 102%;
+    background-repeat: no-repeat;
+  }
+}
+
+.column-left {
+  // At xs we do not display column left.
+  @extend .col-sm-2, .col-md-4;
+}
+
+.jumbotron {
+  @extend .col-xs-offset-1, .col-sm-offset-0;
+  @extend .col-xs-10;
+  @extend .col-sm-10, .col-md-7, .col-lg-7;
+  padding: 2em 2em 1em 2em;
+  color: white;
+  background: $mina-blue-dark;
+  p.lead {
+    font-family: $font-family-serif;
+    font-size: 24px;
+  }
+}
+
+
+// -----------------------------------------------------------------------------
+// Small screen / tablet
+// -----------------------------------------------------------------------------
+
+@media (min-width: $screen-sm-min) {
+
+  .jumbotronbar .container {
+      background-image: url('img/jumbotron-bg.svg');
+      background-position: right 606px bottom -1px;
+  }
+
+}
+
+
+// -----------------------------------------------------------------------------
+// Medium screen / desktop
+// -----------------------------------------------------------------------------
+
+@media (min-width: $screen-md-min) {
+
+  .jumbotronbar .container {
+    background-position: right 630px bottom -1px;
+  }
+
+}
+
+// -----------------------------------------------------------------------------
+// Large screen / wide desktop
+// -----------------------------------------------------------------------------
+
+@media (min-width: $screen-lg-min) {
+
+  .jumbotronbar .container {
+    background-position: right 764px bottom -1px;
+  }
+
+}

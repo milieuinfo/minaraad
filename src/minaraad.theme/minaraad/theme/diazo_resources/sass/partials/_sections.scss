@@ -1,0 +1,156 @@
+//
+// Sections
+// --------------------------------------------------
+//
+// Styling for:
+//
+//  - Section (rows)
+//  - Columns
+//  - Articles (articles aka documents aka blocks)
+//
+
+
+// -----------------------------------------------------------------------------
+// Mobile first
+// -----------------------------------------------------------------------------
+
+//
+// General
+//
+
+.sec-header {
+  h2 {
+    font-size: 18px;
+    font-weight: 500;
+    padding: .5em 0;
+  }
+}
+
+
+//
+// Section
+//
+// A section is a full width row:
+//
+// - Default (the underlying page background)
+// - Dark (transparent gray)
+//
+// We use the abbr `sec` instead of the full `section` to avoid clashing with
+// Plone `section-...` body classes.
+
+
+.sec {
+  padding-bottom: 20px;
+}
+
+.sec-default {
+}
+
+.sec-dark {
+  background: $mina-bg-gray;
+}
+
+//
+// Columns
+//
+// We use default bootstrap columns. Here we define the grid behaviour
+// for various sections.
+
+.sec-home {
+  .column {
+    @extend .col-xs-12, .col-sm-6, .col-md-3;
+  }
+}
+
+.sec-related {
+  .column {
+    @extend .col-xs-12, .col-sm-6, .col-md-3;
+  }
+}
+
+
+
+//
+// Articles
+//
+// ..
+
+// Advice style article.
+article {
+  background: white;
+  margin-bottom: 15px;
+  img {
+    @extend .img-responsive;
+    width: 100%;
+  }
+  .body {
+    padding: 20px;
+    border: 1px solid darken(white, 15);
+    border-top: 0;
+  }
+  h3 {
+    font-size: 18px;
+    margin-top: 0;
+  }
+  a {
+    display: block;
+    p {
+      color: $text-color;
+      text-decoration: none;
+    }
+    &:hover, &:focus {
+      text-decoration: none;
+      h3 {
+        text-decoration: underline;
+      }
+      p {
+        color: $link-hover-color;
+      }
+    }
+  }
+}
+
+
+// -----------------------------------------------------------------------------
+// Small screen / tablet
+// -----------------------------------------------------------------------------
+
+@media (min-width: $screen-sm-min) {
+
+  .sec-header {
+    h2 {
+      font-size: 20px;
+    }
+  }
+
+}
+
+
+// -----------------------------------------------------------------------------
+// Medium screen / desktop
+// -----------------------------------------------------------------------------
+
+@media (min-width: $screen-md-min) {
+
+  .sec-header {
+    h2 {
+      font-size: 22px;
+    }
+  }
+
+
+}
+
+// -----------------------------------------------------------------------------
+// Large screen / wide desktop
+// -----------------------------------------------------------------------------
+
+@media (min-width: $screen-lg-min) {
+
+  .sec-header {
+    h2 {
+      font-size: 24px;
+    }
+  }
+
+}

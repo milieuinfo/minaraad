@@ -35,11 +35,15 @@ $fa-font-path:        "fontawesome/fonts" !default;
 // Components are project specific building blocks.
 @import 'partials/components';
 
-// Page specific styling.
-@import 'partials/pages';
+// Section styling
+@import 'partials/sections';
 
-// Page specific styling.
+// Jumbotron styling
+@import 'partials/jumbotron';
+
+// Page styling.
 @import 'partials/plone_edit_form';
 
-// Portlet specific styling.
+// Portlet styling.
 @import 'partials/portlets';
+

@@ -5,7 +5,6 @@
        xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
        xmlns:xi="http://www.w3.org/2001/XInclude">
 
-
   <theme href="/++theme++minaraad/index.html" css:if-content="body.template-homepage"/>
 
   <theme href="/++theme++minaraad/page.html" if-not-path="/"/>
