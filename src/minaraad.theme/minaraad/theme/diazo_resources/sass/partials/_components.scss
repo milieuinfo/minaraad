@@ -71,7 +71,46 @@ $selection-color: $mina-blue-light-2;
   font-weight: 400;
 }
 
+//
+// List group
+//
+// Counter style BS. We don't want rounded corners. But can't set the var to 0
+// because we want rounded corners on other elemenents (form field and buttons).
 
+.list-group {
+  .list-group-item {
+    &:first-child, &:last-child {
+      border-radius: 0;
+    }
+  }
+}
+
+.list-group-themes {
+  border-top: 5px solid $mina-blue;
+  a{
+    font-size: 16px;
+    font-weight: 500;
+    color: $mina-blue-dark;
+    &:hover, &:focus {
+      color: white;
+      background: $mina-blue;
+    }
+    img {
+      @extend .img-circle;
+      height: 28px;
+      width: 28px;
+      margin-right: .5em;
+      display: block;
+      float: left;
+      margin-top: -3px;
+
+    }
+    i {
+      font-size: 1.4em;
+    }
+  }
+
+}
 
 // -----------------------------------------------------------------------------
 // Small screen / tablet
