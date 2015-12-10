@@ -54,7 +54,7 @@ $selection-color: $mina-blue-light-2;
 //
 // Background image
 //
-// Vlaamse overheid strepen.
+// Vlaamse overheid background pattern.
 
 .content-wrapper {
   background-color: $mina-bg-light-gray;
@@ -79,6 +79,7 @@ $selection-color: $mina-blue-light-2;
 
 .list-group {
   .list-group-item {
+    padding: 15px 20px;
     &:first-child, &:last-child {
       border-radius: 0;
     }
@@ -109,7 +110,9 @@ $selection-color: $mina-blue-light-2;
       font-size: 1.4em;
     }
   }
-
+  .list-group-item {
+    padding: 15px 20px 15px 17px;
+  }
 }
 
 // -----------------------------------------------------------------------------

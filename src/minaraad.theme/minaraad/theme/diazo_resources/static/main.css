@@ -478,7 +478,7 @@ figure {
 img {
   vertical-align: middle; }
 
-.img-responsive, article img {
+.img-responsive, .article-default img, .article-advice img, .article-event img, .article-next-meeting img, .article-vision img {
   display: block;
   max-width: 100%;
   height: auto; }
@@ -6667,8 +6667,10 @@ a {
   font-family: "Flanders Art Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 400; }
 
-.list-group .list-group-item:first-child, .list-group .list-group-item:last-child {
-  border-radius: 0; }
+.list-group .list-group-item {
+  padding: 15px 20px; }
+  .list-group .list-group-item:first-child, .list-group .list-group-item:last-child {
+    border-radius: 0; }
 
 .list-group-themes {
   border-top: 5px solid #2e94bd; }
@@ -6688,41 +6690,85 @@ a {
       margin-top: -3px; }
     .list-group-themes a i {
       font-size: 1.4em; }
+  .list-group-themes .list-group-item {
+    padding: 15px 20px 15px 17px; }
 
 .sec-header h2 {
   font-size: 18px;
   font-weight: 500;
   padding: .5em 0; }
 
-.sec {
+.sec, .sec-default, .sec-home, .sec-dark, .sec-related {
   padding-bottom: 20px; }
 
-.sec-dark {
+.sec-dark, .sec-related {
   background: rgba(0, 0, 0, 0.05); }
 
-article {
+.article-default, .article-advice, .article-event, .article-next-meeting, .article-vision {
   background: white;
   margin-bottom: 15px; }
-  article img {
+  .article-default img, .article-advice img, .article-event img, .article-next-meeting img, .article-vision img {
     width: 100%; }
-  article .body {
-    padding: 20px;
-    border: 1px solid #d9d9d9;
-    border-top: 0; }
-  article h3 {
+  .article-default .body, .article-advice .body, .article-event .body, .article-next-meeting .body, .article-vision .body {
+    padding: 15px 20px 6px; }
+  .article-default h3, .article-advice h3, .article-event h3, .article-next-meeting h3, .article-vision h3 {
     font-size: 18px;
     margin-top: 0; }
-  article a {
+  .article-default > a, .article-advice > a, .article-event > a, .article-next-meeting > a, .article-vision > a {
     display: block; }
-    article a p {
-      color: #333333;
-      text-decoration: none; }
-    article a:hover, article a:focus {
-      text-decoration: none; }
-      article a:hover h3, article a:focus h3 {
-        text-decoration: underline; }
-      article a:hover p, article a:focus p {
-        color: #1f647f; }
+  .article-default a p, .article-advice a p, .article-event a p, .article-next-meeting a p, .article-vision a p {
+    color: #333333;
+    text-decoration: none; }
+  .article-default a:hover, .article-advice a:hover, .article-event a:hover, .article-next-meeting a:hover, .article-vision a:hover, .article-default a:focus, .article-advice a:focus, .article-event a:focus, .article-next-meeting a:focus, .article-vision a:focus {
+    text-decoration: none; }
+    .article-default a:hover p, .article-advice a:hover p, .article-event a:hover p, .article-next-meeting a:hover p, .article-vision a:hover p, .article-default a:focus p, .article-advice a:focus p, .article-event a:focus p, .article-next-meeting a:focus p, .article-vision a:focus p {
+      color: #1f647f; }
+
+.article-advice .body {
+  border: 1px solid #d9d9d9;
+  border-top: 0; }
+
+.article-advice a:hover h3, .article-advice a:focus h3 {
+  text-decoration: underline; }
+
+.article-event, .article-next-meeting, .article-vision {
+  background: #e3f2ed; }
+  .article-event header, .article-next-meeting header, .article-vision header {
+    text-transform: uppercase;
+    background: #4aa894;
+    color: white;
+    padding: 11px 10px 10px 13px; }
+    .article-event header h3, .article-next-meeting header h3, .article-vision header h3, .article-event header time, .article-next-meeting header time, .article-vision header time {
+      margin: 0;
+      font-size: 16px; }
+      .article-event header h3 i, .article-next-meeting header h3 i, .article-vision header h3 i, .article-event header time i, .article-next-meeting header time i, .article-vision header time i {
+        display: block;
+        float: left;
+        height: 1.1em;
+        margin-right: .4em; }
+  .article-event .body h3, .article-next-meeting .body h3, .article-vision .body h3, .article-event .body time, .article-next-meeting .body time, .article-vision .body time {
+    color: #387d70;
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 10px; }
+
+.article-next-meeting {
+  background: #fbeaed; }
+  .article-next-meeting header {
+    background: #b2324d; }
+  .article-next-meeting .body time {
+    color: #b2324d;
+    display: block; }
+
+.article-vision {
+  background: #edf5f7; }
+  .article-vision header {
+    background: #2e94bd; }
+  .article-vision .body {
+    overflow: hidden; }
+    .article-vision .body time {
+      color: #2e94bd;
+      display: block; }
 
 @media (min-width: 768px) {
   .sec-header h2 {
@@ -6758,11 +6804,11 @@ article {
 
 @media (min-width: 992px) {
   .jumbotronbar .container {
-    background-position: right 630px bottom -1px; } }
+    background-position: right 632px bottom -1px; } }
 
 @media (min-width: 1200px) {
   .jumbotronbar .container {
-    background-position: right 764px bottom -1px; } }
+    background-position: right 767px bottom -1px; } }
 
 #global_statusmessage {
   margin-top: 1em; }

@@ -27,7 +27,7 @@ footer {
 
 
 .footer-doormat {
-  // Layout
+  @extend .sec-full-width;
   .column {
     @extend .col-xs-6, .col-sm-4, .col-md-2;
   }
@@ -94,6 +94,7 @@ footer {
 
 
 .footer-legal {
+  @extend .sec-full-width;
   margin:0;
   color: rgb(223, 230, 236);
   background: $vlaanderen-dark-gray;

@@ -3,7 +3,7 @@
 // --------------------------------------------------
 //
 // Contains a quote about Minaraad or a description of the current theme.
-// Does not use the defaults form BS to prevent counter styling.
+// Note: Does NOT use the Bootstrap `.jumbotron` to prevent counter styling.
 
 
 // -----------------------------------------------------------------------------
@@ -59,7 +59,7 @@
 @media (min-width: $screen-md-min) {
 
   .jumbotronbar .container {
-    background-position: right 630px bottom -1px;
+    background-position: right 632px bottom -1px;
   }
 
 }
@@ -71,7 +71,7 @@
 @media (min-width: $screen-lg-min) {
 
   .jumbotronbar .container {
-    background-position: right 764px bottom -1px;
+    background-position: right 767px bottom -1px;
   }
 
 }

@@ -6,7 +6,7 @@
 //
 //  - Section (rows)
 //  - Columns
-//  - Articles (articles aka documents aka blocks)
+//  - Articles (aka documents aka blocks)
 //
 
 
@@ -32,21 +32,22 @@
 //
 // A section is a full width row:
 //
-// - Default (the underlying page background)
-// - Dark (transparent gray)
+// - sec-default (transparent)
+// - sec-dark (transparent gray)
 //
-// We use the abbr `sec` instead of the full `section` to avoid clashing with
-// Plone `section-...` body classes.
-
+// Note: We use the abbr `sec` instead of the full `section` to avoid clashing
+// with Plone `section-...` body classes.
 
 .sec {
   padding-bottom: 20px;
 }
 
 .sec-default {
+  @extend .sec;
 }
 
 .sec-dark {
+  @extend .sec;
   background: $mina-bg-gray;
 }
 
@@ -57,26 +58,29 @@
 // for various sections.
 
 .sec-home {
+  @extend .sec-default;
   .column {
     @extend .col-xs-12, .col-sm-6, .col-md-3;
   }
 }
 
 .sec-related {
+  @extend .sec-dark;
   .column {
     @extend .col-xs-12, .col-sm-6, .col-md-3;
   }
 }
 
 
-
 //
 // Articles
 //
-// ..
+// Article styling of block elements. The whole block is a link and
+// points to the articles detail page.
 
-// Advice style article.
-article {
+// TODO: diffrent naming for 'link blocks' and 'detail-views'.
+
+.article-default {
   background: white;
   margin-bottom: 15px;
   img {
@@ -84,16 +88,16 @@ article {
     width: 100%;
   }
   .body {
-    padding: 20px;
-    border: 1px solid darken(white, 15);
-    border-top: 0;
+    padding: 15px 20px 6px;
   }
   h3 {
     font-size: 18px;
     margin-top: 0;
   }
-  a {
+  > a {
     display: block;
+  }
+  a {
     p {
       color: $text-color;
       text-decoration: none;
@@ -101,7 +105,7 @@ article {
     &:hover, &:focus {
       text-decoration: none;
       h3 {
-        text-decoration: underline;
+        //text-decoration: underline;
       }
       p {
         color: $link-hover-color;
@@ -110,6 +114,79 @@ article {
   }
 }
 
+.article-advice {
+  @extend .article-default;
+  .body {
+    border: 1px solid darken(white, 15);
+    border-top: 0;
+  }
+  a {
+    &:hover, &:focus {
+      h3 {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.article-event {
+  @extend .article-default;
+  background: $mina-green-light-4;
+  header {
+    text-transform: uppercase;
+    background: $mina-green;
+    color: white;
+    padding: 11px 10px 10px 13px;
+    h3, time {
+      margin: 0;
+      font-size: 16px;
+      i {
+        display: block;
+        float: left;
+        height: 1.1em;
+        margin-right: .4em;
+      }
+    }
+  }
+  .body {
+    h3, time {
+      color: $mina-green-dark;
+      font-size: 15px;
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+  }
+}
+
+.article-next-meeting {
+  @extend .article-event;
+  background: $mina-red-light-bg;
+  header {
+    background: $mina-red;
+  }
+  .body {
+    time {
+      color: $mina-red;
+      display: block;
+    }
+  }
+}
+
+// jaarwerking
+.article-vision {
+  @extend .article-event;
+  background: $mina-blue-light-4;
+  header {
+    background: $mina-blue;
+  }
+  .body {
+    overflow: hidden;
+    time {
+      color: $mina-blue;
+      display: block;
+    }
+  }
+}
 
 // -----------------------------------------------------------------------------
 // Small screen / tablet
