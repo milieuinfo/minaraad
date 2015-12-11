@@ -34,10 +34,10 @@ $mina-blue-darkest: rgb(15, 71, 92);
 
 $mina-blue-light-1: rgb(125, 178, 201);  // We shouldn't use them all.
 $mina-blue-light-2: rgb(191, 217, 227);  // We shouldn't use them all.
-//$mina-blue-light-3: rgb(222, 237, 242);  // We shouldn't use them all.
+$mina-blue-light-3: rgb(222, 237, 242);  // bg hover color.
 $mina-blue-light-4: rgb(237, 245, 247);  // We shouldn't use them all.
 
-$mina-label-blue: rgb(98, 172, 203);      // ColorPicker
+$mina-label-blue: rgb(98, 172, 203);     // ColorPicker
 
 // Red
 $mina-red-dark: rgb(134, 38, 58);
@@ -164,9 +164,9 @@ $headings-font-family:  $font-family-sans-serif;
 //$line-height-large:         1.33 !default;
 //$line-height-small:         1.5 !default;
 
-$border-radius-base: 3px;       //4px !default;
-$border-radius-large: 3px;      //6px !default;
-$border-radius-small: 0;       //3px !default;
+//$border-radius-base: 3px;       //4px !default;
+//$border-radius-large: 3px;      //6px !default;
+//$border-radius-small: 0;       //3px !default;
 
 ////** Global color for active items (e.g., navs or dropdowns).
 //$component-active-color:    #fff !default;

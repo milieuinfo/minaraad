@@ -115,6 +115,24 @@ $selection-color: $mina-blue-light-2;
   }
 }
 
+//
+// Theme
+//
+
+h1 {
+  @extend .pull-left;
+  color: white;
+  font-size: 22px;
+  margin-top: 2.3em;
+}
+
+.theme-image {
+  @extend .img-circle;
+  @extend .img-responsive;
+  width: 105px;
+  margin-top: 1em;
+
+}
 // -----------------------------------------------------------------------------
 // Small screen / tablet
 // -----------------------------------------------------------------------------

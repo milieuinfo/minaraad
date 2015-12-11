@@ -20,9 +20,9 @@
 
 .sec-header {
   h2 {
-    font-size: 18px;
-    font-weight: 500;
-    padding: .5em 0;
+    font-size: 24px;
+    font-weight: 400;
+    padding: 0 0 .5em 0;
   }
 }
 
@@ -94,10 +94,8 @@
     font-size: 18px;
     margin-top: 0;
   }
-  > a {
-    display: block;
-  }
   a {
+    display: block;
     p {
       color: $text-color;
       text-decoration: none;
@@ -144,7 +142,7 @@
         display: block;
         float: left;
         height: 1.1em;
-        margin-right: .4em;
+        margin-right: 0.6em;
       }
     }
   }
@@ -154,6 +152,14 @@
       font-size: 15px;
       font-weight: 500;
       margin-bottom: 10px;
+    }
+  }
+  a {
+    &:hover, &:focus {
+      background: $mina-green-light-3;
+      header {
+        background: $mina-green-dark;
+      }
     }
   }
 }
@@ -168,6 +174,14 @@
     time {
       color: $mina-red;
       display: block;
+    }
+  }
+  a {
+    &:hover, &:focus {
+      background: darken($mina-red-light-bg, 5);
+      header {
+        background: $mina-red-dark;
+      }
     }
   }
 }
@@ -186,6 +200,18 @@
       display: block;
     }
   }
+  a {
+    &:hover, &:focus {
+      .btn {
+        background: darken($btn-primary-bg, 10);
+        border-color: darken($btn-primary-border, 10);
+      }
+      background: $mina-blue-light-3;
+      header {
+        background: $mina-blue-dark;
+      }
+    }
+  }
 }
 
 // -----------------------------------------------------------------------------
@@ -196,7 +222,7 @@
 
   .sec-header {
     h2 {
-      font-size: 20px;
+      font-size: 18px;
     }
   }
 
@@ -211,7 +237,7 @@
 
   .sec-header {
     h2 {
-      font-size: 22px;
+      font-size: 18px;
     }
   }
 
@@ -226,7 +252,7 @@
 
   .sec-header {
     h2 {
-      font-size: 24px;
+      font-size: 18px;
     }
   }
 
