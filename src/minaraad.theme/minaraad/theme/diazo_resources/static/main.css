@@ -816,7 +816,8 @@ blockquote {
 
 .blockquote-reverse,
 blockquote.pull-right,
-.topbar blockquote.contact {
+.topbar blockquote.contact,
+.logobar blockquote.search {
   padding-right: 15px;
   padding-left: 0;
   border-right: 5px solid #eeeeee;
@@ -825,16 +826,16 @@ blockquote.pull-right,
   .blockquote-reverse footer:before,
   .blockquote-reverse small:before,
   .blockquote-reverse .small:before,
-  blockquote.pull-right footer:before, .topbar blockquote.contact footer:before,
-  blockquote.pull-right small:before, .topbar blockquote.contact small:before,
-  blockquote.pull-right .small:before, .topbar blockquote.contact .small:before {
+  blockquote.pull-right footer:before, .topbar blockquote.contact footer:before, .logobar blockquote.search footer:before,
+  blockquote.pull-right small:before, .topbar blockquote.contact small:before, .logobar blockquote.search small:before,
+  blockquote.pull-right .small:before, .topbar blockquote.contact .small:before, .logobar blockquote.search .small:before {
     content: ''; }
   .blockquote-reverse footer:after,
   .blockquote-reverse small:after,
   .blockquote-reverse .small:after,
-  blockquote.pull-right footer:after, .topbar blockquote.contact footer:after,
-  blockquote.pull-right small:after, .topbar blockquote.contact small:after,
-  blockquote.pull-right .small:after, .topbar blockquote.contact .small:after {
+  blockquote.pull-right footer:after, .topbar blockquote.contact footer:after, .logobar blockquote.search footer:after,
+  blockquote.pull-right small:after, .topbar blockquote.contact small:after, .logobar blockquote.search small:after,
+  blockquote.pull-right .small:after, .topbar blockquote.contact .small:after, .logobar blockquote.search .small:after {
     content: '\00A0 \2014'; }
 
 address {
@@ -2209,43 +2210,60 @@ fieldset[disabled] a.btn {
     color: #fff;
     background-color: #333; }
 
-.btn-primary {
+.btn-primary, .logobar .search button {
   color: #fff;
   background-color: #2e94bd;
   border-color: #2984a8; }
-  .btn-primary:focus, .btn-primary.focus {
+  .btn-primary:focus, .logobar .search button:focus, .btn-primary.focus, .logobar .search button.focus {
     color: #fff;
     background-color: #247494;
     border-color: #103442; }
-  .btn-primary:hover {
+  .btn-primary:hover, .logobar .search button:hover {
     color: #fff;
     background-color: #247494;
     border-color: #1d5d77; }
-  .btn-primary:active, .btn-primary.active,
-  .open > .btn-primary.dropdown-toggle {
+  .btn-primary:active, .logobar .search button:active, .btn-primary.active, .logobar .search button.active,
+  .open > .btn-primary.dropdown-toggle, .logobar .search
+  .open > button.dropdown-toggle {
     color: #fff;
     background-color: #247494;
     border-color: #1d5d77; }
-    .btn-primary:active:hover, .btn-primary:active:focus, .btn-primary:active.focus, .btn-primary.active:hover, .btn-primary.active:focus, .btn-primary.active.focus,
-    .open > .btn-primary.dropdown-toggle:hover,
-    .open > .btn-primary.dropdown-toggle:focus,
-    .open > .btn-primary.dropdown-toggle.focus {
+    .btn-primary:active:hover, .logobar .search button:active:hover, .btn-primary:active:focus, .logobar .search button:active:focus, .btn-primary:active.focus, .logobar .search button:active.focus, .btn-primary.active:hover, .logobar .search button.active:hover, .btn-primary.active:focus, .logobar .search button.active:focus, .btn-primary.active.focus, .logobar .search button.active.focus,
+    .open > .btn-primary.dropdown-toggle:hover, .logobar .search
+    .open > button.dropdown-toggle:hover,
+    .open > .btn-primary.dropdown-toggle:focus, .logobar .search
+    .open > button.dropdown-toggle:focus,
+    .open > .btn-primary.dropdown-toggle.focus, .logobar .search
+    .open > button.dropdown-toggle.focus {
       color: #fff;
       background-color: #1d5d77;
       border-color: #103442; }
-  .btn-primary:active, .btn-primary.active,
-  .open > .btn-primary.dropdown-toggle {
+  .btn-primary:active, .logobar .search button:active, .btn-primary.active, .logobar .search button.active,
+  .open > .btn-primary.dropdown-toggle, .logobar .search
+  .open > button.dropdown-toggle {
     background-image: none; }
-  .btn-primary.disabled, .btn-primary.disabled:hover, .btn-primary.disabled:focus, .btn-primary.disabled.focus, .btn-primary.disabled:active, .btn-primary.disabled.active, .btn-primary[disabled], .btn-primary[disabled]:hover, .btn-primary[disabled]:focus, .btn-primary[disabled].focus, .btn-primary[disabled]:active, .btn-primary[disabled].active,
+  .btn-primary.disabled, .logobar .search button.disabled, .btn-primary.disabled:hover, .logobar .search button.disabled:hover, .btn-primary.disabled:focus, .logobar .search button.disabled:focus, .btn-primary.disabled.focus, .logobar .search button.disabled.focus, .btn-primary.disabled:active, .logobar .search button.disabled:active, .btn-primary.disabled.active, .logobar .search button.disabled.active, .btn-primary[disabled], .logobar .search button[disabled], .btn-primary[disabled]:hover, .logobar .search button[disabled]:hover, .btn-primary[disabled]:focus, .logobar .search button[disabled]:focus, .btn-primary[disabled].focus, .logobar .search button[disabled].focus, .btn-primary[disabled]:active, .logobar .search button[disabled]:active, .btn-primary[disabled].active, .logobar .search button[disabled].active,
   fieldset[disabled] .btn-primary,
+  fieldset[disabled] .logobar .search button, .logobar .search
+  fieldset[disabled] button,
   fieldset[disabled] .btn-primary:hover,
+  fieldset[disabled] .logobar .search button:hover, .logobar .search
+  fieldset[disabled] button:hover,
   fieldset[disabled] .btn-primary:focus,
+  fieldset[disabled] .logobar .search button:focus, .logobar .search
+  fieldset[disabled] button:focus,
   fieldset[disabled] .btn-primary.focus,
+  fieldset[disabled] .logobar .search button.focus, .logobar .search
+  fieldset[disabled] button.focus,
   fieldset[disabled] .btn-primary:active,
-  fieldset[disabled] .btn-primary.active {
+  fieldset[disabled] .logobar .search button:active, .logobar .search
+  fieldset[disabled] button:active,
+  fieldset[disabled] .btn-primary.active,
+  fieldset[disabled] .logobar .search button.active, .logobar .search
+  fieldset[disabled] button.active {
     background-color: #2e94bd;
     border-color: #2984a8; }
-  .btn-primary .badge {
+  .btn-primary .badge, .logobar .search button .badge {
     color: #2e94bd;
     background-color: #fff; }
 
@@ -2528,7 +2546,7 @@ tbody.collapse.in {
   -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
   background-clip: padding-box; }
-  .dropdown-menu.pull-right, .topbar .dropdown-menu.contact, .footer-flanders a.dropdown-menu.less {
+  .dropdown-menu.pull-right, .topbar .dropdown-menu.contact, .logobar .dropdown-menu.search, .footer-flanders a.dropdown-menu.less {
     right: 0;
     left: auto; }
   .dropdown-menu .divider {
@@ -2596,7 +2614,7 @@ tbody.collapse.in {
   top: 0;
   z-index: 990; }
 
-.pull-right > .dropdown-menu, .topbar .contact > .dropdown-menu, .footer-flanders a.less > .dropdown-menu {
+.pull-right > .dropdown-menu, .topbar .contact > .dropdown-menu, .logobar .search > .dropdown-menu, .footer-flanders a.less > .dropdown-menu {
   right: 0;
   left: auto; }
 
@@ -4209,7 +4227,7 @@ button.close {
   margin-left: auto;
   margin-right: auto; }
 
-.pull-right, .topbar .contact, .footer-flanders a.less {
+.pull-right, .topbar .contact, .logobar .search, .footer-flanders a.less {
   float: right !important; }
 
 .pull-left, .topbar .sites, .column-left .theme-title div h1 {
@@ -4487,7 +4505,7 @@ button.close {
   margin-left: .3em; }
 
 /* Deprecated as of 4.4.0 */
-.pull-right, .topbar .contact, .footer-flanders a.less {
+.pull-right, .topbar .contact, .logobar .search, .footer-flanders a.less {
   float: right; }
 
 .pull-left, .topbar .sites, .column-left .theme-title div h1 {
@@ -4496,7 +4514,7 @@ button.close {
 .fa.pull-left, .topbar .fa.sites, .column-left .theme-title div h1.fa {
   margin-right: .3em; }
 
-.fa.pull-right, .topbar .fa.contact, .footer-flanders a.fa.less {
+.fa.pull-right, .topbar .fa.contact, .logobar .fa.search, .footer-flanders a.fa.less {
   margin-left: .3em; }
 
 .fa-spin {
@@ -6484,18 +6502,25 @@ button.close {
   margin: 10px 0 5px 0;
   padding: 0; }
 
-.logobar button {
+.logobar button.navbar-toggle {
   background-color: #246e8c;
-  border-radius: 0;
   top: 15px;
   padding: 13px 11px;
   margin-right: 10px; }
-  .logobar button .icon-bar {
+  .logobar button.navbar-toggle .icon-bar {
     display: block;
     background: white;
     width: 20px;
     height: 2px;
     border-radius: 0px; }
+
+.logobar .search {
+  margin-top: 2em; }
+  .logobar .search .input-group input.form-control {
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px; }
+  .logobar .search label {
+    font-weight: 300; }
 
 nav.navbar {
   border: 0;
@@ -6661,6 +6686,15 @@ a {
   font-weight: 500; }
   .btn i {
     margin-right: .4em; }
+
+p.label {
+  font-weight: 500;
+  color: #62accb !important;
+  text-transform: uppercase;
+  line-height: 1em;
+  font-size: 11.1px; }
+  p.label span {
+    margin-left: .5em; }
 
 ::selection {
   background: #bfd9e3; }

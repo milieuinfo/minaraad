@@ -128,24 +128,39 @@
                 </a>
               </div>
 
+              <button type="button"
+                      class="navbar-toggle collapsed"
+                      data-toggle="collapse"
+                      data-target="#navbar"
+                      aria-expanded="false"
+                      aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
 
-                <button type="button"
-                        class="navbar-toggle collapsed"
-                        data-toggle="collapse"
-                        data-target="#navbar"
-                        aria-expanded="false"
-                        aria-controls="navbar">
-                  <span class="sr-only">Toggle navigation</span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                </button>
+              <div class="search">
+                <form class="form-inline">
+                    <div class = "input-group">
+                       <label class="sr-only" for="search">Zoekterm</label>
+                       <input type = "text" class = "form-control">
 
-              <!--TODO: Add search form. Use Plone search form html? -->
-              <!--Makes Diazo easier. But we also like to stay in BS-style. -->
-              <!--<div class="search">-->
-                <!--<p><a href="#">Search form here</a></p>-->
-              <!--</div>-->
+                       <span class = "input-group-btn">
+                          <button class = "btn btn-default" type = "button">
+                             Go!
+                          </button>
+                       </span>
+                    </div>
+                    <p>
+                      <label>
+                        <input type="checkbox" name="path" value="/Plone">
+                        alleen in huidige sectie
+                      </label>
+                    </p>
+                </form>
+              </div>
+
             </div>
           </div>
 
@@ -245,37 +260,37 @@
 
                       <div class="list-group list-group-themes">
                         <a href="#" class="list-group-item">
-                          <img src="img/theme/windmill_square.jpg" alt="somthing" />
+                          <img src="img/theme/windmill_square.jpg" alt="something" />
                           Klimaat
                           <i class="fa fa-angle-right pull-right"></i>
                         </a>
                         <a href="#" class="list-group-item">
-                          <img src="img/theme/lab_square.jpg" alt="somthing" />
+                          <img src="img/theme/lab_square.jpg" alt="something" />
                           Hinder
                           <i class="fa fa-angle-right pull-right"></i>
                         </a>
                         <a href="#" class="list-group-item">
-                          <img src="img/theme/bird_square.jpg" alt="somthing" />
+                          <img src="img/theme/bird_square.jpg" alt="something" />
                           Biodiversiteit
                           <i class="fa fa-angle-right pull-right"></i>
                         </a>
                         <a href="#" class="list-group-item">
-                          <img src="img/theme/pen_square.jpg" alt="somthing" />
+                          <img src="img/theme/pen_square.jpg" alt="something" />
                           Materialen
                           <i class="fa fa-angle-right pull-right"></i>
                         </a>
                         <a href="#" class="list-group-item">
-                          <img src="img/theme/sky_square.jpg" alt="somthing" />
+                          <img src="img/theme/sky_square.jpg" alt="something" />
                           Vergroening van de economie
                           <i class="fa fa-angle-right pull-right"></i>
                         </a>
                         <a href="#" class="list-group-item">
-                          <img src="img/theme/pen_square.jpg" alt="somthing" />
+                          <img src="img/theme/pen_square.jpg" alt="something" />
                           Bestuurskwaliteit
                           <i class="fa fa-angle-right pull-right"></i>
                         </a>
                         <a href="#" class="list-group-item">
-                          <img src="img/theme/lab_square.jpg" alt="somthing" />
+                          <img src="img/theme/lab_square.jpg" alt="something" />
                           Andere thema’s
                           <i class="fa fa-angle-right pull-right"></i>
                         </a>
@@ -293,6 +308,7 @@
                           <img src="static/img/photos/natuur_en_milieu.jpg" alt="Lorem pixel image">
                           <div class="body">
                             <h3>Uitbreiding van een erkend natuurreservaat E-003 "Blankaart" te Diksmuide en Houthulst (West-Vlaanderen)</h3>
+                            <p class="label">Advies <span>Biodiversiteit</span></p>
                             <p class="truncate">Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet.</p>
                           </div>
                         </a>
@@ -303,6 +319,7 @@
                           <img src="static/img/photos/studeren.jpg" alt="Lorem pixel image">
                           <div class="body">
                             <h3>Omzetting richtlijn industriële emissies</h3>
+                            <p class="label">Advies <span>Vergroening van de economie</span></p>
                             <p class="truncate">Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet.</p>
                           </div>
                         </a>
@@ -345,6 +362,7 @@
                         </header>
                         <div class="body">
                           <h3>ABC van het emissiehandels­systeem en prioriteiten van het EU-voorzitterschap</h3>
+                          <p class="label">Advies <span>Biodiversiteit</span></p>
                         </div>
                       </a>
                     </article>
@@ -359,6 +377,7 @@
                         </header>
                         <div class="body">
                           <h3>EU-voorzitterschap</h3>
+                          <p class="label">Advies <span>Biodiversiteit</span></p>
                         </div>
                       </a>
                     </article>
@@ -425,6 +444,7 @@
                         <img src="static/img/photos/gezin_in_bos.jpg" alt="Lorem pixel image">
                         <div class="body">
                         <h3>ABC van het emissiehandelssysteem en prioriteiten van het EU-voorzitterschap</h3>
+                        <p class="label">Advies <span>Biodiversiteit</span></p>
                         <p class="truncate">Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet.</p>
                         </div>
                       </a>
@@ -436,6 +456,7 @@
                         <img src="static/img/photos/natuur_en_milieu.jpg" alt="Lorem pixel image">
                         <div class="body">
                           <h3>Uitbreiding van een erkend natuurreservaat E-003 "Blankaart" te Diksmuide en Houthulst (West-Vlaanderen)</h3>
+                          <p class="label">Advies <span>Biodiversiteit</span></p>
                           <p class="truncate">Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet.</p>
                         </div>
                       </a>
@@ -447,6 +468,7 @@
                         <img src="static/img/photos/studeren.jpg" alt="Lorem pixel image">
                         <div class="body">
                           <h3>Omzetting richtlijn industriële emissies</h3>
+                          <p class="label">Advies <span>Biodiversiteit</span></p>
                           <p class="truncate">Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet.</p>
                         </div>
                       </a>
@@ -458,6 +480,7 @@
                         <img src="static/img/photos/werk.jpg" alt="Lorem pixel image">
                         <div class="body">
                           <h3>Luchtkwaliteitsplan en uitstelaanvraag voor de normen van NO2</h3>
+                          <p class="label">Advies <span>Biodiversiteit</span></p>
                           <p class="truncate">Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet.</p>
                         </div>
                       </a>
@@ -481,6 +504,7 @@
                         <img src="static/img/photos/gezin_in_bos.jpg" alt="Lorem pixel image">
                         <div class="body">
                         <h3>ABC van het emissiehandelssysteem en prioriteiten van het EU-voorzitterschap</h3>
+                        <p class="label">Advies <span>Biodiversiteit</span></p>
                         <p class="truncate">Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet.</p>
                         </div>
                       </a>
@@ -497,6 +521,7 @@
                         <img src="static/img/photos/natuur_en_milieu.jpg" alt="Lorem pixel image">
                         <div class="body">
                           <h3>Uitbreiding van een erkend natuurreservaat E-003 "Blankaart" te Diksmuide en Houthulst (West-Vlaanderen)</h3>
+                          <p class="label">Advies <span>Biodiversiteit</span></p>
                           <p class="truncate">Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet.</p>
                         </div>
                       </a>
@@ -513,6 +538,7 @@
                         <img src="static/img/photos/studeren.jpg" alt="Lorem pixel image">
                         <div class="body">
                           <h3>Omzetting richtlijn industriële emissies</h3>
+                          <p class="label">Advies <span>Biodiversiteit</span></p>
                           <p class="truncate">Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet.</p>
                         </div>
                       </a>
@@ -529,6 +555,7 @@
                         <img src="static/img/photos/werk.jpg" alt="Lorem pixel image">
                         <div class="body">
                           <h3>Luchtkwaliteitsplan en uitstelaanvraag voor de normen van NO2</h3>
+                          <p class="label">Advies <span>Biodiversiteit</span></p>
                           <p class="truncate">Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet.</p>
                         </div>
                       </a>

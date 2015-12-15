@@ -128,49 +128,40 @@
                 </a>
               </div>
 
+              <button type="button"
+                      class="navbar-toggle collapsed"
+                      data-toggle="collapse"
+                      data-target="#navbar"
+                      aria-expanded="false"
+                      aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
 
-                <button type="button"
-                        class="navbar-toggle collapsed"
-                        data-toggle="collapse"
-                        data-target="#navbar"
-                        aria-expanded="false"
-                        aria-controls="navbar">
-                  <span class="sr-only">Toggle navigation</span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                </button>
+              <div class="search">
+                <form class="form-inline">
+                    <div class = "input-group">
+                       <label class="sr-only" for="search">Zoekterm</label>
+                       <input type = "text" class = "form-control">
 
-              <!--TODO: Add search form. Use Plone search form html? -->
-              <!--Makes Diazo easier. But we also like to stay in BS-style. -->
-              <!--<div class="search">-->
-                <!--<p><a href="#">Search form here</a></p>-->
-              <!--</div>-->
+                       <span class = "input-group-btn">
+                          <button class = "btn btn-default" type = "button">
+                             Go!
+                          </button>
+                       </span>
+                    </div>
+                    <p>
+                      <label>
+                        <input type="checkbox" name="path" value="/Plone">
+                        alleen in huidige sectie
+                      </label>
+                    </p>
+                </form>
+              </div>
+
             </div>
-          </div>
-
-          <div id="global_statusmessage" class="container">
-
-              <div class="alert alert-success" role="alert">
-                  <strong>Well done!</strong>
-                  You successfully read this important
-                  alert message.
-              </div>
-              <div class="alert alert-info" role="alert">
-                  <strong>Heads up!</strong>
-                  This alert needs your attention, but it's
-                  not super important.
-              </div>
-              <div class="alert alert-warning" role="alert">
-                  <strong>Warning!</strong>
-                  Better check yourself, you're not looking too good.
-              </div>
-              <div class="alert alert-danger" role="alert">
-                  <strong>Oh snap!</strong>
-                  Change a few things up and try submitting
-                  again.
-              </div>
-
           </div>
 
           <nav class="navbar navbar-default">
@@ -195,15 +186,6 @@
           <div class="jumbotronbar">
               <div class="container">
                 <div class="column-left">
-                  <div class="col-xs-7 theme-title">
-                    <!-- Wrapper div to vertical align. -->
-                    <div>
-                      <h1>Vergroening van de economie</h1>
-                    </div>
-                  </div>
-                  <div class="col-xs-5">
-                    <img src="img/theme/bird_square.jpg" class="img-circle pull-right theme-image">
-                  </div>
                 </div>
                 <div class="jumbotron">
                   <p class="lead">
@@ -212,17 +194,6 @@
                   </p>
                 </div>
               </div>
-          </div>
-
-          <div class="breadcrumbbar">
-            <div class="container">
-                <ol class="breadcrumb">
-                  <li><a href="#"><i class="fa fa-home"></i></a></li>
-                  <li><a href="#">Thema’s</a></li>
-                  <li><a href="#">Biodiversiteit</a></li>
-                  <li class="active">Groenboek Beleidsplan Ruimte Vlaanderen</li>
-                </ol>
-            </div>
           </div>
 
           <main role="main" id="main-container">
@@ -245,37 +216,37 @@
 
                       <div class="list-group list-group-themes">
                         <a href="#" class="list-group-item">
-                          <img src="img/theme/windmill_square.jpg" alt="somthing" />
+                          <img src="img/theme/windmill_square.jpg" alt="something" />
                           Klimaat
                           <i class="fa fa-angle-right pull-right"></i>
                         </a>
                         <a href="#" class="list-group-item">
-                          <img src="img/theme/lab_square.jpg" alt="somthing" />
+                          <img src="img/theme/lab_square.jpg" alt="something" />
                           Hinder
                           <i class="fa fa-angle-right pull-right"></i>
                         </a>
                         <a href="#" class="list-group-item">
-                          <img src="img/theme/bird_square.jpg" alt="somthing" />
+                          <img src="img/theme/bird_square.jpg" alt="something" />
                           Biodiversiteit
                           <i class="fa fa-angle-right pull-right"></i>
                         </a>
                         <a href="#" class="list-group-item">
-                          <img src="img/theme/pen_square.jpg" alt="somthing" />
+                          <img src="img/theme/pen_square.jpg" alt="something" />
                           Materialen
                           <i class="fa fa-angle-right pull-right"></i>
                         </a>
                         <a href="#" class="list-group-item">
-                          <img src="img/theme/sky_square.jpg" alt="somthing" />
+                          <img src="img/theme/sky_square.jpg" alt="something" />
                           Vergroening van de economie
                           <i class="fa fa-angle-right pull-right"></i>
                         </a>
                         <a href="#" class="list-group-item">
-                          <img src="img/theme/pen_square.jpg" alt="somthing" />
+                          <img src="img/theme/pen_square.jpg" alt="something" />
                           Bestuurskwaliteit
                           <i class="fa fa-angle-right pull-right"></i>
                         </a>
                         <a href="#" class="list-group-item">
-                          <img src="img/theme/lab_square.jpg" alt="somthing" />
+                          <img src="img/theme/lab_square.jpg" alt="something" />
                           Andere thema’s
                           <i class="fa fa-angle-right pull-right"></i>
                         </a>
@@ -412,244 +383,6 @@
               </div>
             </section>
 
-            <section class="sec-related">
-              <div  class="container">
-                <div class="sec-header">
-                  <h2><a href="#">Gerelateerde documenten</a></h2>
-                </div>
-
-                <div class="row">
-                  <div class="column">
-                    <article class="article-advice">
-                      <a href="#">
-                        <img src="static/img/photos/gezin_in_bos.jpg" alt="Lorem pixel image">
-                        <div class="body">
-                        <h3>ABC van het emissiehandelssysteem en prioriteiten van het EU-voorzitterschap</h3>
-                        <p class="truncate">Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet.</p>
-                        </div>
-                      </a>
-                    </article>
-                  </div>
-                  <div class="column">
-                    <article class="article-advice">
-                      <a href="#">
-                        <img src="static/img/photos/natuur_en_milieu.jpg" alt="Lorem pixel image">
-                        <div class="body">
-                          <h3>Uitbreiding van een erkend natuurreservaat E-003 "Blankaart" te Diksmuide en Houthulst (West-Vlaanderen)</h3>
-                          <p class="truncate">Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet.</p>
-                        </div>
-                      </a>
-                    </article>
-                  </div>
-                  <div class="column">
-                    <article class="article-advice">
-                      <a href="#">
-                        <img src="static/img/photos/studeren.jpg" alt="Lorem pixel image">
-                        <div class="body">
-                          <h3>Omzetting richtlijn industriële emissies</h3>
-                          <p class="truncate">Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet.</p>
-                        </div>
-                      </a>
-                    </article>
-                  </div>
-                  <div class="column">
-                    <article class="article-advice">
-                      <a href="#">
-                        <img src="static/img/photos/werk.jpg" alt="Lorem pixel image">
-                        <div class="body">
-                          <h3>Luchtkwaliteitsplan en uitstelaanvraag voor de normen van NO2</h3>
-                          <p class="truncate">Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet.</p>
-                        </div>
-                      </a>
-                    </article>
-                  </div>
-                </div>
-              </div>
-            </section>
-
-            <section class="sec-home">
-              <div  class="container">
-                <div class="row">
-                  <div class="column">
-
-                    <div class="sec-header">
-                      <h2><a href="#">Thema’s</a></h2>
-                    </div>
-
-                    <article class="article-advice">
-                      <a href="#">
-                        <img src="static/img/photos/gezin_in_bos.jpg" alt="Lorem pixel image">
-                        <div class="body">
-                        <h3>ABC van het emissiehandelssysteem en prioriteiten van het EU-voorzitterschap</h3>
-                        <p class="truncate">Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet.</p>
-                        </div>
-                      </a>
-                    </article>
-                  </div>
-                  <div class="column">
-
-                    <div class="sec-header">
-                      <h2><a href="#">Actuele documenten</a></h2>
-                    </div>
-
-                    <article class="article-advice">
-                      <a href="#">
-                        <img src="static/img/photos/natuur_en_milieu.jpg" alt="Lorem pixel image">
-                        <div class="body">
-                          <h3>Uitbreiding van een erkend natuurreservaat E-003 "Blankaart" te Diksmuide en Houthulst (West-Vlaanderen)</h3>
-                          <p class="truncate">Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet.</p>
-                        </div>
-                      </a>
-                    </article>
-                  </div>
-                  <div class="column">
-
-                    <div class="sec-header">
-                      <h2><a href="#">Agenda</a></h2>
-                    </div>
-
-                    <article class="article-advice">
-                      <a href="#">
-                        <img src="static/img/photos/studeren.jpg" alt="Lorem pixel image">
-                        <div class="body">
-                          <h3>Omzetting richtlijn industriële emissies</h3>
-                          <p class="truncate">Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet.</p>
-                        </div>
-                      </a>
-                    </article>
-                  </div>
-                  <div class="column">
-
-                    <div class="sec-header">
-                      <h2><a href="#">Over de Minaraad</a></h2>
-                    </div>
-
-                    <article class="article-advice">
-                      <a href="#">
-                        <img src="static/img/photos/werk.jpg" alt="Lorem pixel image">
-                        <div class="body">
-                          <h3>Luchtkwaliteitsplan en uitstelaanvraag voor de normen van NO2</h3>
-                          <p class="truncate">Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet.</p>
-                        </div>
-                      </a>
-                    </article>
-                  </div>
-                </div>
-              </div>
-            </section>
-
-
-            <section class="sec-default">
-              <div class="container">
-                <div class="col-sm-6 col-lg-offset-3">
-
-                  <h1>Heading 1</h1>
-                  <p class="lead">Fabio vel iudice vincam, sunt in culpa qui officia. Hi omnes lingua, institutis, legibus inter se differunt. Quisque placerat facilisis egestas cillum dolore.</p>
-                  <p>Pellentesque habitant morbi tristique senectus et netus. Inmensae subtilitatis, obscuris et malesuada fames. Me non paenitet nullum festiviorem excogitasse ad hoc. Sed haec quis possit intrepidus aestimare tellus. Quisque ut dolor gravida, placerat libero vel, euismod. Quo usque tandem abutere, Catilina, patientia nostra?</p>
-                  <p>
-                    <a href="#" class="btn btn-default">Knop normaal</a>
-                    <a href="#" class="btn btn-primary">Knop primair</a>
-                  </p>
-                  <h2>Heading 2</h2>
-                  <p>Fabio vel iudice vincam, sunt in culpa qui officia. Hi omnes lingua, institutis, legibus inter se differunt. Quisque placerat facilisis egestas cillum dolore.</p>
-                  <ul>
-                    <li>Pellentesque habitant</li>
-                    <li>morbi tristique senectus</li>
-                    <li>Et netus. Inmensae subtilitatis.</li>
-                  </ul>
-                  <p>Fabio vel iudice vincam, sunt in culpa qui officia. Hi omnes lingua, institutis, legibus inter se differunt. Quisque placerat facilisis egestas cillum dolore.</p>
-                  <ol>
-                    <li>Pellentesque habitant</li>
-                    <li>morbi tristique senectus</li>
-                    <li>Et netus. Inmensae subtilitatis.</li>
-                  </ol>
-                   <p>Obscuris et malesuada fames. Me non paenitet nullum festiviorem excogitasse ad hoc. Sed haec quis possit intrepidus aestimare tellus. Quisque ut dolor gravida, placerat libero vel, euismod. Quo usque tandem abutere, Catilina, patientia nostra?</p>
-                  <h3>Heading 3</h3>
-                  <p>Fabio vel iudice vincam, sunt in culpa qui officia. Hi omnes lingua, institutis, legibus inter se differunt. Quisque placerat facilisis egestas cillum dolore.</p>
-                  <blockquote>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                  </blockquote>
-                  <p>Pellentesque habitant morbi tristique senectus et netus. Inmensae subtilitatis, obscuris et malesuada fames. Me non paenitet nullum festiviorem excogitasse ad hoc. Sed haec quis possit intrepidus aestimare tellus. Quisque ut dolor gravida, placerat libero vel, euismod. Quo usque tandem abutere, Catilina, patientia nostra?</p>
-                  <h4>Heading 4</h4>
-                  <table class="table"> <caption>Optional table caption.</caption> <thead> <tr> <th>#</th> <th>First Name</th> <th>Last Name</th> <th>Username</th> </tr> </thead> <tbody> <tr> <th scope="row">1</th> <td>Mark</td> <td>Otto</td> <td>@mdo</td> </tr> <tr> <th scope="row">2</th> <td>Jacob</td> <td>Thornton</td> <td>@fat</td> </tr> <tr> <th scope="row">3</th> <td>Larry</td> <td>the Bird</td> <td>@twitter</td> </tr> </tbody> </table>
-
-                  <h1>List Group</h1>
-
-                  <div class="list-group">
-                    <a href="#" class="list-group-item active">
-                      Cras justo odio
-                    </a>
-                    <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
-                    <a href="#" class="list-group-item">Morbi leo risus</a>
-                    <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-                    <a href="#" class="list-group-item">Vestibulum at eros</a>
-                  </div>
-
-                  <h1>Panels</h1>
-                  <div class="panel panel-default">
-                    <div class="panel-heading">
-                        Panel heading without title
-                    </div>
-                    <div class="panel-body">
-                      Panel content
-                    </div>
-                  </div>
-
-                  <div class="panel panel-default">
-                    <div class="panel-heading">
-                      <h3 class="panel-title">Panel title</h3>
-                    </div>
-                    <div class="panel-body">
-                      Panel content
-                    </div>
-                  </div>
-
-                  <h1>Form</h1>
-                  <form>
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">Email address</label>
-                      <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputPassword1">Password</label>
-                      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputFile3">File input</label>
-                      <input type="file" id="exampleInputFile3">
-                      <p class="help-block">Example block-level help text here.</p>
-                    </div>
-                    <div class="checkbox">
-                      <label>
-                        <input type="checkbox"> Check me out
-                      </label>
-                    </div>
-                    <button type="submit" class="btn btn-default">Submit</button>
-
-                  <div class="form-group">
-                      <label for="exampleInputEmail2">Email address</label>
-                      <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputPassword2">Password</label>
-                      <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputFile">File input</label>
-                      <input type="file" id="exampleInputFile">
-                      <p class="help-block">Example block-level help text here.</p>
-                    </div>
-                    <div class="checkbox">
-                      <label>
-                        <input type="checkbox"> Check me out
-                      </label>
-                    </div>
-                    <button type="submit" class="btn btn-default">Submit</button>
-                  </form>
-                </div>
-              </div>
-            </section>
-
           </main>
 
           <!-- Modal -->
@@ -691,9 +424,6 @@
         </div>
 
         <footer>
-
-          <div class="footer-image" style="background-image:url('img/theme/bird.jpg')">
-          </div>
 
           <section class="footer-doormat">
 
