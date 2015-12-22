@@ -1,5 +1,5 @@
 /*! */
-/*! ${project} */
+/*! Minaraad */
 
 // Self wrapping closure
 // Set strict on our scope.
@@ -8,27 +8,6 @@
 
     // Is everybody ready?
     $(function() {
-        // Truncate paragraphs.
-        var paragraphs = $("p.truncate");
-        $.each(paragraphs, function (index, paragraph) {
-          var height = 0,
-            i = 1,
-            words,
-            text,
-            previous_text,
-            previous_previous_text;
-          words = paragraph.textContent.split(/\s+/);
-          if ($(paragraph).height() > 75) {
-            while (height < 75) {
-              previous_previous_text = previous_text;
-              previous_text = text;
-              text = paragraph.textContent = words.slice(0, i).join(' ');
-              height = $(paragraph).height();
-              i++;
-            }
-            paragraph.textContent = previous_previous_text + ' ...';
-          }
-        });
 
         // Toggle the drawer.
         var owner = $("#owner"),
@@ -46,7 +25,19 @@
           $(owner).slideDown("fast");
           return false;
         });
-    });
 
+      // Build the wall
+      // Add a tiny delay. Just enough to let grid items get their height.
+      // This fixes the bottom margin.
+      setTimeout(function() {
+        $(".masonry").masonry({
+          itemSelector: '.grid-item',
+          columnWidth: '.grid-item',
+          percentPosition: true
+        });
+      }, 1);
+
+  });
 
 })(); // end scope.
+

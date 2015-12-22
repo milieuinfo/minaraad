@@ -8,6 +8,7 @@
     "jquery-hoverIntent": "v1.8.1",
     "bower": "*",
     "install": "~1.0.4",
-    "roboto-fontface": "~0.4.3"
+    "roboto-fontface": "~0.4.3",
+    "masonry": "~3.3.2"
   }
 }
