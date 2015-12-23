@@ -35,8 +35,8 @@ project_schema = atapi.OrderedBaseFolderSchema.copy() + atapi.Schema((
         widget=atapi.StringWidget(
             label=_(u'label_project_number',
                     default=u'Project number')
-            )
-        ),
+        )
+    ),
 
     atapi.StringField(
         name='product_number',
@@ -45,8 +45,8 @@ project_schema = atapi.OrderedBaseFolderSchema.copy() + atapi.Schema((
         widget=atapi.StringWidget(
             label=_(u'label_product_number',
                     default=u'Product number')
-            )
-        ),
+        )
+    ),
 
     atapi.TextField(
         name='body',
@@ -60,8 +60,8 @@ project_schema = atapi.OrderedBaseFolderSchema.copy() + atapi.Schema((
                 u'desc_description',
                 default=(u"A short description of the contents and the "
                          u"legal background of the advisory request.")),
-            )
-        ),
+        )
+    ),
 
     atapi.DateTimeField(
         name='advisory_date',
@@ -70,8 +70,8 @@ project_schema = atapi.OrderedBaseFolderSchema.copy() + atapi.Schema((
             show_hm=False,
             label=_(u'label_adv_date',
                     default=u'Advisory date')
-            )
-        ),
+        )
+    ),
 
     atapi.StringField(
         name='advisory_requester',
@@ -80,8 +80,8 @@ project_schema = atapi.OrderedBaseFolderSchema.copy() + atapi.Schema((
         widget=atapi.SelectionWidget(
             label=_(u'label_adv_requester',
                     default=u'Advisory requester')
-            )
-        ),
+        )
+    ),
 
     atapi.IntegerField(
         name='advisory_term',
@@ -90,16 +90,16 @@ project_schema = atapi.OrderedBaseFolderSchema.copy() + atapi.Schema((
         widget=atapi.IntegerWidget(
             label=_(u'label_adv_term',
                     default=u'Advisory term')
-            )
-        ),
+        )
+    ),
 
     BlobField(
         name='advisory_request',
         widget=atapi.FileWidget(
             label=_(u'label_adv_request',
                     default=u'Advisory request')
-            )
-        ),
+        )
+    ),
 
     atapi.LinesField(
         name='organisations',
@@ -109,8 +109,8 @@ project_schema = atapi.OrderedBaseFolderSchema.copy() + atapi.Schema((
             format="checkbox",
             label=_(u'label_organisations',
                     default=u'Participating organisations')
-            )
-        ),
+        )
+    ),
 
     atapi.StringField(
         name='responsible_group',
@@ -119,8 +119,8 @@ project_schema = atapi.OrderedBaseFolderSchema.copy() + atapi.Schema((
         widget=atapi.SelectionWidget(
             label=_(u'label_responsible_group',
                     default=u'Responsible group')
-            )
-        ),
+        )
+    ),
 
 
     atapi.DateTimeField(
@@ -130,8 +130,8 @@ project_schema = atapi.OrderedBaseFolderSchema.copy() + atapi.Schema((
             show_hm=False,
             label=_(u'label_postpone_date',
                     default=u'Dealine (postponed)')
-            )
-        ),
+        )
+    ),
 
     atapi.DateTimeField(
         name='delivery_date',
@@ -140,8 +140,8 @@ project_schema = atapi.OrderedBaseFolderSchema.copy() + atapi.Schema((
             show_hm=False,
             label=_(u'label_delivery_date',
                     default=u'Delivery date (actual)')
-            )
-        ),
+        )
+    ),
 
 
     atapi.StringField(
@@ -151,8 +151,8 @@ project_schema = atapi.OrderedBaseFolderSchema.copy() + atapi.Schema((
         widget=atapi.SelectionWidget(
             label=_(u'label_adv_type',
                     default=u'Advisory type')
-            )
-        ),
+        )
+    ),
 
     atapi.LinesField(
         name='disagreeing_members',
@@ -161,16 +161,16 @@ project_schema = atapi.OrderedBaseFolderSchema.copy() + atapi.Schema((
             label=_(u'label_disagreeing_members',
                     default=u'Disagreeing members'),
             format='checkbox',
-            )
-        ),
+        )
+    ),
 
     atapi.LinesField(
         name='reject_reasons',
         widget=atapi.LinesWidget(
             label=_(u'label_reject_reasons',
                     default=u'Reject reasons')
-            )
-        ),
+        )
+    ),
 
     atapi.LinesField(
         name='assigned_groups',
@@ -179,9 +179,9 @@ project_schema = atapi.OrderedBaseFolderSchema.copy() + atapi.Schema((
         widget=atapi.InAndOutWidget(
             label=_(u'label_assigned_groups',
                     default=u'Assigned groups')
-            )
-        ),
-    )) + \
+        )
+    ),
+)) + \
     theme_schema.copy() + \
     contacts_schema.copy()
 
@@ -247,6 +247,7 @@ class Project(atapi.OrderedBaseFolder, ThemeMixin):
     schema = project_schema
 
     security.declarePrivate('_renameAfterCreation')
+
     def _renameAfterCreation(self, check_auto_id=False):
         """ Use the project number and year to generate the ID.
         """

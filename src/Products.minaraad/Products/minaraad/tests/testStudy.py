@@ -69,13 +69,13 @@ class testStudy(MainTestCase):
         self.teststudy.setDate(DATE)
         self.teststudy.setContact(self.contactperson.UID())
 
-        self.failUnless(self.teststudy.Title()==TITLE,
+        self.failUnless(self.teststudy.Title() == TITLE,
                         'Value is %s' % self.teststudy.Title())
-        self.failUnless(self.teststudy.getDescription()==DESCRIPTION,
+        self.failUnless(self.teststudy.getDescription() == DESCRIPTION,
                         'Value is %s' % self.teststudy.getDescription())
-        self.failUnless(self.teststudy.getDate()==DATE,
+        self.failUnless(self.teststudy.getDate() == DATE,
                         'Value is %s' % self.teststudy.getDate())
-        self.failUnless(self.teststudy.getContact()==[self.contactperson],
+        self.failUnless(self.teststudy.getContact() == [self.contactperson],
                         'Value is %s' % self.teststudy.getContact())
 
 

@@ -83,6 +83,7 @@ class MeetingPdfView(MeetingView):
 
 
 class MeetingAjax(MeetingView):
+
     @jquery
     def meeting_order_changed(self):
         form = self.request.form

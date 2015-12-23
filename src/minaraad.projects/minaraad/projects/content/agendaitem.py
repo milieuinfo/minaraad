@@ -24,8 +24,8 @@ agendaitem_schema = base_agendaitem_schema + atapi.Schema((
         widget=atapi.RichWidget(
             label=_(u'label_description',
                     default=u'Description')
-            )
-        ),
+        )
+    ),
 
     atapi.ReferenceField(
         name='project',
@@ -43,8 +43,8 @@ agendaitem_schema = base_agendaitem_schema + atapi.Schema((
             restrict_browsing_to_startup_directory=0,
             startup_directory_method='projects_url',
             force_close_on_insert=1,
-            ),
         ),
+    ),
 
     atapi.BooleanField(
         # This field will be set to false once the object has been saved
@@ -54,9 +54,9 @@ agendaitem_schema = base_agendaitem_schema + atapi.Schema((
         default=False,
         widget=atapi.BooleanWidget(
             visible={'edit': 'invisible', 'view': 'invisible'},
-            ),
         ),
-    ))
+    ),
+))
 
 for schema_key in agendaitem_schema.keys():
     if not agendaitem_schema[schema_key].schemata == 'default':

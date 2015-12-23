@@ -47,7 +47,7 @@ class testWorkflow(MainTestCase):
             ('cmember', 'Council Member'),
             ('reviewer', 'Member'),
             ('manager', 'Manager'),
-            )
+        )
         membership = self.portal.portal_membership
         for memberId, role in MEMBERS:
             self.assureRoles([role])

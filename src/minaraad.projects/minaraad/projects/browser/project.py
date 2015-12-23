@@ -115,7 +115,7 @@ class CreateAdvisory(CanCreateAdvisory):
             relatedDocuments=public_uids,
             theme=context.getTheme(),
             email_themes=context.getEmail_themes(),  # Not shown in projecs
-            )
+        )
 
         # For some reason the date field needs to be handled separately.
         advisory.setDate(context.getDelivery_date())

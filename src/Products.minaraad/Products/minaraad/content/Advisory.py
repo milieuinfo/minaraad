@@ -52,8 +52,8 @@ schema = atapi.Schema((
             label=MinaraadProjectMessageFactory(
                 u'label_product_number',
                 default=u'Product number')
-            )
-        ),
+        )
+    ),
 
     # Body (which already existed) serves as the summary (of the attachment,
     # summary is shown in the listings).
@@ -129,12 +129,12 @@ schema = atapi.Schema((
 )
 
 Advisory_schema = (
-                getattr(PostMixin, 'schema', atapi.Schema(())).copy() +
-                getattr(EmailMixin, 'schema', atapi.Schema(())).copy() +
-                theme_schema.copy() +
-                getattr(Attachmentsmixin, 'schema', atapi.Schema(())).copy() +
-                contacts_schema.copy() +
-                schema.copy())
+    getattr(PostMixin, 'schema', atapi.Schema(())).copy() +
+    getattr(EmailMixin, 'schema', atapi.Schema(())).copy() +
+    theme_schema.copy() +
+    getattr(Attachmentsmixin, 'schema', atapi.Schema(())).copy() +
+    contacts_schema.copy() +
+    schema.copy())
 Advisory_schema['description'].isMetadata = False
 # Hide the description field, but keep it intact as the
 # extensions/fix_summary.py script wants to have a go at migrating the

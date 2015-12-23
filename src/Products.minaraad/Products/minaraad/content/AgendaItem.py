@@ -85,8 +85,8 @@ schema = atapi.Schema((
 )
 
 AgendaItem_schema = getattr(Attachmentsmixin, 'schema', atapi.Schema(())).copy() + \
-                    base_agendaitem_schema.copy() + \
-                    schema.copy()
+    base_agendaitem_schema.copy() + \
+    schema.copy()
 
 
 class AgendaItem(Attachmentsmixin, BaseAgendaItem):

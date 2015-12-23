@@ -28,7 +28,7 @@ theme_schema = atapi.Schema((
         schemata='metadata'
     ),
 
-    ))
+))
 
 
 class ThemeMixin(object):
@@ -37,12 +37,14 @@ class ThemeMixin(object):
     security = ClassSecurityInfo()
 
     security.declarePublic('getThemesList')
+
     def getThemesList(self):
         """Get themes from minaraad properties."""
         themeManager = ThemeManager(self)
         return atapi.IntDisplayList(tuple(themeManager.themes))
 
     security.declarePublic('getEmailThemesList')
+
     def getEmailThemesList(self):
         """ We can not use the same vocabulary as the values
         are stored as string and getThemesList returns a dictionnary
@@ -55,6 +57,7 @@ class ThemeMixin(object):
     # getTheme is provided as archetype's default accessor if you use
     # theme_schema.
     security.declarePublic('getThemeName')
+
     def getThemeName(self):
         """Get the theme name when it is set."""
         themeId = self.getTheme()
@@ -65,7 +68,7 @@ class ThemeMixin(object):
         themeManager = ThemeManager(self)
         themeId = int(themeId)
         titles = [title for (id, title) in themeManager.themes
-                  if id==themeId]
+                  if id == themeId]
 
         if len(titles) != 1:
             # This theme might have been deleted since, we use the one

@@ -28,9 +28,9 @@ organisation_schema = atapi.BaseSchema.copy() + atapi.Schema((
         name='city',
         widget=atapi.StringWidget(
             label=_(u'label_city', default=u'City'),
-            ),
         ),
-    ))
+    ),
+))
 
 organisation_schema['title'].widget.label = _(u'label_organisation_name',
                                               default=u'Name')

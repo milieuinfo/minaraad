@@ -18,6 +18,7 @@ class RolesInContext(BrowserView):
     """ Simple view used to check some data.
     Not declared in configure.zcml
     """
+
     def __call__(self):
         mtool = getToolByName(self.context, 'portal_membership')
         user = mtool.getAuthenticatedMember()
@@ -29,6 +30,7 @@ class RolesInContext(BrowserView):
 class ParentRedirect(BrowserView):
     """ Redirects to the context parent.
     """
+
     def __call__(self):
         parent = aq_parent(aq_inner(self.context))
         if parent is None:

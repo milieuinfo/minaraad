@@ -97,7 +97,7 @@ class testHearing(MainTestCase):
             zipcode="007",
             city="Rotterdam",
             country="The Netherlands",
-            )
+        )
 
         member.setProperties(**props)
 
@@ -147,7 +147,7 @@ class testHearing(MainTestCase):
         """
 
         themes = self.hoorzitting.getThemesList()
-        self.failUnless(len(themes)>0)
+        self.failUnless(len(themes) > 0)
 
     def test_AttendeeRegistration(self):
         """We want to know if members are correctly added and removed as
@@ -186,29 +186,29 @@ class testHearing(MainTestCase):
         self.hoorzitting.setBody(HTMLBODY, text_format="text/html")
         self.hoorzitting.setFoto(TESTIMAGE, content_type="image/gif")
 
-        self.failUnless(self.hoorzitting.Title()==TITLE,
+        self.failUnless(self.hoorzitting.Title() == TITLE,
                         'Value is %s' % self.hoorzitting.Title())
-        self.failUnless(self.hoorzitting.getSubheader()==SUBHEADER,
+        self.failUnless(self.hoorzitting.getSubheader() == SUBHEADER,
                         'Value is %s' % self.hoorzitting.getSubheader())
-        self.failUnless(self.hoorzitting.getDescription()==DESCRIPTION,
+        self.failUnless(self.hoorzitting.getDescription() == DESCRIPTION,
                         'Value is %s' % self.hoorzitting.getDescription())
-        self.failUnless(self.hoorzitting.getGoal()==GOAL,
+        self.failUnless(self.hoorzitting.getGoal() == GOAL,
                         'Value is %s' % self.hoorzitting.getGoal())
-        self.failUnless(self.hoorzitting.getLocation()==LOCATION,
+        self.failUnless(self.hoorzitting.getLocation() == LOCATION,
                         'Value is %s' % self.hoorzitting.getLocation())
-        self.failUnless(self.hoorzitting.getStart_time()==STARTDATE,
+        self.failUnless(self.hoorzitting.getStart_time() == STARTDATE,
                         'Value is %s' % self.hoorzitting.getStart_time())
-        self.failUnless(self.hoorzitting.getTheme()==THEME,
+        self.failUnless(self.hoorzitting.getTheme() == THEME,
                         'Value is %s' % self.hoorzitting.getTheme())
-        self.failUnless(self.hoorzitting.getMot()==MOT,
+        self.failUnless(self.hoorzitting.getMot() == MOT,
                         'Value is %s' % self.hoorzitting.getMot())
-        self.failUnless(self.hoorzitting.getBody()==HTMLBODY,
+        self.failUnless(self.hoorzitting.getBody() == HTMLBODY,
                         'Value is %s' % self.hoorzitting.getBody())
-        self.failUnless(self.hoorzitting.getContact()==[self.contactperson],
+        self.failUnless(self.hoorzitting.getContact() == [self.contactperson],
                         'Value is %s' % self.hoorzitting.getContact())
         myclass = str(self.hoorzitting.getFoto().__class__)
         correct = "<class 'plone.app.blob.field.BlobWrapper'>"
-        self.failUnless(myclass==correct, 'Value is %s and not %s' %
+        self.failUnless(myclass == correct, 'Value is %s and not %s' %
                         (myclass, correct))
 
 

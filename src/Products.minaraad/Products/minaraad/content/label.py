@@ -24,7 +24,7 @@ from Products.Archetypes import atapi
 
 from Products.minaraad import config
 
-schema=atapi.Schema((
+schema = atapi.Schema((
 ),
 )
 

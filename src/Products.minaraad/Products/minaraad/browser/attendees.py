@@ -68,7 +68,7 @@ class AttendeesManagerView(AbstractView):
                 status = 'warning'
             else:
                 message = 'Het afmelden is gelukt. U ontvangt hiervan nog een bevestiging per e-mail.'
-                status= 'info'
+                status = 'info'
             IStatusMessage(self.request).addStatusMessage(message, type=status)
             return response.redirect(self.referring_url + '?submitted=1')
         elif action == 'exportCSV':
@@ -97,6 +97,7 @@ class AttendeesManagerView(AbstractView):
         return member.getMemberId() in self.manager.attendees()
 
     security.declareProtected(ManagePortal, 'groupedAttendees')
+
     def groupedAttendees(self):
         context = aq_inner(self.context)
         attendees = {'council_members': [],
@@ -136,6 +137,7 @@ class AttendeesManagerView(AbstractView):
         return attendees
 
     security.declareProtected(ManagePortal, 'buildAttendeesCSV')
+
     def buildAttendeesCSV(self):
         context = aq_inner(self.context)
         memTool = getToolByName(context, 'portal_membership')

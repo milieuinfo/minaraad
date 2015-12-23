@@ -37,7 +37,7 @@ class ExportStatisticsView(BrowserView):
             # Here is an old one that may be handy for testing the
             # statistics selection:
             #('report_attendance_per_meeting', _(u"Attendance Per Meeting")),
-            ]
+        ]
 
         statistics = []
         statistic = self.request.get('export_statistic', '')
@@ -53,12 +53,12 @@ class ExportStatisticsView(BrowserView):
             # If we want a select dropdown we must add this at the top:
             if statistic:
                 statistics.insert(0,
-                    {'id': '--', 'value': '--', 'selected': None,
-                     'title': '--'})
+                                  {'id': '--', 'value': '--', 'selected': None,
+                                   'title': '--'})
             else:
                 statistics.insert(0,
-                    {'id': '--', 'value': '--', 'selected': 1,
-                     'title': '--'})
+                                  {'id': '--', 'value': '--', 'selected': 1,
+                                   'title': '--'})
 
         return statistics
 
@@ -191,7 +191,7 @@ class ExportStatisticsView(BrowserView):
             review_state='past',
             getStart_time={'query': [self.start, self.end],
                            'range': 'minmax'},
-            )
+        )
         meetings = [brain.getObject() for brain in brains]
         users = {}
         headers = [u'#', u'Naam', u'Organisatie', u'Aanwezig',
@@ -248,7 +248,7 @@ class ExportStatisticsView(BrowserView):
             review_state='past',
             getStart_time={'query': [self.start, self.end],
                            'range': 'minmax'},
-            )
+        )
         meetings = [brain.getObject() for brain in brains]
         users = {}
         headers = [u'Naam', u'Organisatie']
@@ -268,7 +268,7 @@ class ExportStatisticsView(BrowserView):
             PARTICIPANT_PRESENT: 'P',
             PARTICIPANT_EXCUSED: 'E',
             PARTICIPANT_ABSENT: 'A',
-            }
+        }
         mtool = getToolByName(self.context, 'portal_membership')
         rows = []
         for user, data in users.items():

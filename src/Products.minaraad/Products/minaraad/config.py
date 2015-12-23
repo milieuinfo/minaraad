@@ -44,7 +44,7 @@ LOCAL_ADDITIONS = {
     'contactpersonen': ['ContactPerson'],
     'voorstelling': ADD_LIST,
     'evenementen': ['MREvent'],
-    }
+}
 
 # SELECT_VIEWS is a dictionary, the keys are folder names. The value
 # is the view to be selected for that folder.
@@ -58,7 +58,7 @@ SELECT_VIEWS = {
     'studies': 'mina_listing',
     'hoorzittingen': 'mina_listing',
     'contactpersonen': 'list_contact_persons',
-    }
+}
 
 
 # INITIAL_CHILD_LAYOUT is a dictionary, the keys are folder names. The
@@ -70,7 +70,7 @@ INITIAL_CHILD_LAYOUT = {
     'persberichten': 'pressrelease_listing_view',
     'studies': 'study_listing_view',
     'hoorzittingen': 'hearing_listing_view',
-    }
+}
 
 
 # This is used for the gender field in portal_memberdata

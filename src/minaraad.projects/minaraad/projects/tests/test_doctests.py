@@ -26,7 +26,7 @@ def test_suite():
             'attachment_numbering.txt',
             test_class=base.MinaraadFunctionalTestCase,
             optionflags=base.OPTIONFLAGS),
-        ])
+    ])
 
 if __name__ == '__main__':
     unittest.main(defaultTest='test_suite')

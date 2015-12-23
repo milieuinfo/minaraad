@@ -17,16 +17,16 @@ base_agendaitem_schema = atapi.OrderedBaseFolderSchema.copy() + atapi.Schema((
             description=_(
                 u'desc_duration',
                 default=u'Fill in the time in number of minutes.')
-            )
-        ),
+        )
+    ),
 
     atapi.IntegerField(
         name='order',
         widget=atapi.IntegerWidget(
             visible=False
-            )
-        ),
-    ))
+        )
+    ),
+))
 
 
 class BaseAgendaItem(atapi.OrderedBaseFolder):

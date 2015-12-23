@@ -29,7 +29,7 @@ __docformat__ = 'plaintext'
 
 from Products.minaraad.tests.MainTestCase import MainTestCase
 
-##code-section module-beforeclass #fill in your manual code here
+# code-section module-beforeclass #fill in your manual code here
 TITLE = "title"
 HTMLBODY = "<p>dit is mijn body</p>"
 PLAINBODY = "dit is mijn body"
@@ -65,11 +65,11 @@ class testNewsItem(MainTestCase):
         self.testitem.setBody(HTMLBODY, text_format="text/html")
         self.testitem.setCategory(CATEGORY)
 
-        self.failUnless(self.testitem.Title()==TITLE,
+        self.failUnless(self.testitem.Title() == TITLE,
                         'Value is %s' % self.testitem.Title())
-        self.failUnless(self.testitem.getBody()==HTMLBODY,
+        self.failUnless(self.testitem.getBody() == HTMLBODY,
                         'Value is %s' % self.testitem.getBody())
-        self.failUnless(self.testitem.getCategory()==CATEGORY,
+        self.failUnless(self.testitem.getCategory() == CATEGORY,
                         'Value is %s' % self.testitem.getCategory())
 
 

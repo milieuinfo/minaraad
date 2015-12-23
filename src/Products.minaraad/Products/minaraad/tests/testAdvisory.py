@@ -66,15 +66,15 @@ class testAdvisory(MainTestCase):
         self.advisory.setContact(self.contactperson.UID())
         self.advisory.setBody(HTMLBODY, text_format="text/html")
 
-        self.failUnless(self.advisory.Title()==TITLE,
+        self.failUnless(self.advisory.Title() == TITLE,
                         'Value is %s' % self.advisory.Title())
-        self.failUnless(self.advisory.getDescription()==DESCRIPTION,
+        self.failUnless(self.advisory.getDescription() == DESCRIPTION,
                         'Value is %s' % self.advisory.getDescription())
-        self.failUnless(self.advisory.getDate()==DATE,
+        self.failUnless(self.advisory.getDate() == DATE,
                         'Value is %s' % self.advisory.getDate())
-        self.failUnless(self.advisory.getContact()==[self.contactperson],
+        self.failUnless(self.advisory.getContact() == [self.contactperson],
                         'Value is %s' % self.advisory.getContact())
-        self.failUnless(self.advisory.getBody()==HTMLBODY,
+        self.failUnless(self.advisory.getBody() == HTMLBODY,
                         'Value is %s' % self.advisory.getBody())
 
     def test_Existance(self):

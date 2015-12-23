@@ -33,8 +33,8 @@ class FileAttachmentExtender(object):
                     u'labelattachment_published_desc',
                     default=(u'Check this box if you want this attachment to '
                              u'be publicly available'))
-                    )
-                    ),
+            )
+        ),
     ]
 
     def __init__(self, context):

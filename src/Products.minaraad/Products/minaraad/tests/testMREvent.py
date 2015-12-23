@@ -65,7 +65,7 @@ class testMREvent(MainTestCase):
 
         myclass = str(self.mrevent.getFoto().__class__)
         correct = "<class 'plone.app.blob.field.BlobWrapper'>"
-        self.failUnless(myclass==correct, 'Value is %s and not %s' %
+        self.failUnless(myclass == correct, 'Value is %s and not %s' %
                         (myclass, correct))
 
     def test_Existance(self):

@@ -35,8 +35,8 @@ meeting_schema = base_meeting_schema.copy() + atapi.Schema((
             format='select',
             label=_(u'label_type',
                     default=u'Type')
-            )
-        ),
+        )
+    ),
 
     atapi.TextField(
         name='body',
@@ -46,8 +46,8 @@ meeting_schema = base_meeting_schema.copy() + atapi.Schema((
         widget=atapi.RichWidget(
             label=_(u'label_description',
                     default=u'Description')
-            )
-        ),
+        )
+    ),
 
     atapi.ReferenceField(
         name='meetinglocation',
@@ -64,8 +64,8 @@ meeting_schema = base_meeting_schema.copy() + atapi.Schema((
             restrict_browsing_to_startup_directory=0,
             startup_directory_method='organisations_url',
             force_close_on_insert=1,
-            ),
         ),
+    ),
 
     atapi.StringField(
         name='roomNumber',
@@ -73,8 +73,8 @@ meeting_schema = base_meeting_schema.copy() + atapi.Schema((
         widget=atapi.StringWidget(
             label=_(u'label_room_number',
                     default=u'Room number')
-            )
-        ),
+        )
+    ),
 
     atapi.LinesField(
         name='invited_groups',
@@ -82,8 +82,8 @@ meeting_schema = base_meeting_schema.copy() + atapi.Schema((
         widget=atapi.InAndOutWidget(
             label=_(u'label_assigned_groups',
                     default=u'Assigned groups')
-            )
-        ),
+        )
+    ),
 
     atapi.LinesField(
         name='participants',
@@ -91,8 +91,8 @@ meeting_schema = base_meeting_schema.copy() + atapi.Schema((
         widget=ParticipantsWidget(
             label=_(u'label_participants_attendance',
                     default=u'Participants attendance')
-            )
-        ),
+        )
+    ),
 
     DataGridField(
         name='otherInvitees',
@@ -109,14 +109,14 @@ meeting_schema = base_meeting_schema.copy() + atapi.Schema((
                 default=(u"Enter the invitees who are not in the selected "
                          u"committees.")),
             column_names=(_(u'Name'), _(u'Company')),
-            ),
+        ),
         allow_reorder=False,
         required=False,
         validators=('isDataGridFilled', ),
         columns=('name', 'company', )
-        ),
+    ),
 
-    ))
+))
 
 for schema_key in meeting_schema.keys():
     if not meeting_schema[schema_key].schemata == 'default':
@@ -143,13 +143,14 @@ class Meeting(BaseMeeting):
     schema = meeting_schema
 
     security.declarePrivate('_renameAfterCreation')
+
     def _renameAfterCreation(self, check_auto_id=False):
         """ Use the project number and year to generate the ID.
         """
         start_time = self.getStart_time()
         formated_time = '%s%s%s' % (start_time.year(),
-                             prepend_zero(start_time.month()),
-                             prepend_zero(start_time.day()))
+                                    prepend_zero(start_time.month()),
+                                    prepend_zero(start_time.day()))
 
         parent = aq_parent(aq_inner(self))
         new_id = formated_time

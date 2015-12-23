@@ -39,12 +39,13 @@ schema = atapi.Schema((
 
     atapi.TextField(
         name='goal',
-        allowable_content_types=('text/plain', 'text/structured', 'text/html', 'application/msword', ),
+        allowable_content_types=(
+            'text/plain', 'text/structured', 'text/html', 'application/msword', ),
         widget=atapi.RichWidget(
             label='Goal',
             label_msgid='minaraad_label_goal',
             i18n_domain='minaraad',
-            ),
+        ),
         searchable=1,
         default_content_type='text/html',
         default_output_type='text/html',
@@ -63,7 +64,8 @@ schema = atapi.Schema((
 
     atapi.TextField(
         name='body',
-        allowable_content_types=('text/plain', 'text/structured', 'text/html', 'application/msword', ),
+        allowable_content_types=(
+            'text/plain', 'text/structured', 'text/html', 'application/msword', ),
         widget=atapi.RichWidget(
             label='Body',
             label_msgid='minaraad_label_body',

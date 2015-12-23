@@ -104,7 +104,7 @@ class EmailRenderer(object):
                                 <br />
                                 %s
                                 ''' % text),
-            })
+        })
         return body
 
 
@@ -156,7 +156,7 @@ class EmailNotify(BrowserView):
                 fromAddress=fromAddress,
                 member=member,
                 toAddress=toAddress or 'N/A (%s)' % member.getProperty('id'),
-                )
+            )
 
             try:
                 logger.info("Starting mail to %s.", toAddress)
@@ -273,8 +273,9 @@ class EmailOutView(AbstractView, EmailNotify):
 
                 members = [
                     member for member in
-                    sm.emailSubscribers(self.getSubscriptionId(), themes=themes)
-                    ] + members
+                    sm.emailSubscribers(
+                        self.getSubscriptionId(), themes=themes)
+                ] + members
                 logger.info(
                     ("Now we have %r members ('additionalMembers' "
                      "plus subscribers)." % len(members)))

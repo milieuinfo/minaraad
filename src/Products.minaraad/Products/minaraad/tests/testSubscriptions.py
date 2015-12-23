@@ -109,7 +109,7 @@ class testSubscriptions(MainTestCase):
             zipcode="007",
             city="Rotterdam",
             country="The Netherlands",
-            )
+        )
 
         member.setProperties(**props)
 

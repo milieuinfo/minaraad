@@ -60,7 +60,8 @@ class EnhancedUserDataPanelAdapter(UserDataPanelAdapter):
 
         # These are more or less the same than the previous ones but are called when
         # using the property.
-        # The main difference is that they take the instance as the first parameter.
+        # The main difference is that they take the instance as the first
+        # parameter.
         if name.startswith('getp_'):
             def pgetter(inst):
                 return inst._getProperty(f_name)

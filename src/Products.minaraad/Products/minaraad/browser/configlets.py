@@ -22,7 +22,7 @@ LONGDESC = {
     25: 'Landbouw, natuur, bos, jacht, erkenningen',
     # Nothing for 26
     27: 'NME, samenwerkingsovereenkomst',
-    }
+}
 
 
 class AbstractView(BrowserView):
@@ -76,7 +76,7 @@ class MinaraadConfigletView(AbstractView):
         items = self.themeManager.themes
         isEditing = self.request.get('form.button.Edit', None) is not None
         return [{'id': id, 'Title': title} for id, title in items
-                if (not isEditing) or self.request.get('theme_%i'%id, None)]
+                if (not isEditing) or self.request.get('theme_%i' % id, None)]
 
     def showEditableFields(self):
         return self.request.get('form.button.Edit', None) is not None
@@ -159,14 +159,14 @@ class SubscriptionsConfigletView(AbstractView):
                 subscribed_email=item.email,
                 can_email=sm.canSubscribeEmail(item.id),
                 Title=item.id,
-                )
+            )
             subscriptions.append(sub)
         return subscriptions
 
     def _saveSubscriptions(self):
         subscriptions = self.subscriptionManager.subscriptions
         for sub in subscriptions:
-            sub.email = not not self.request.get('email_'+sub.id, False)
+            sub.email = not not self.request.get('email_' + sub.id, False)
 
         self.subscriptionManager.subscriptions = subscriptions
         self.subscriptionManager.themes = self.request.form.get('themes', [])
@@ -206,7 +206,7 @@ class SubscribersConfigletView(AbstractView):
             sub = dict(
                 id=name,
                 can_email=(name in SUBSCRIPTIONS_EMAIL),
-                )
+            )
             yield sub
 
     def buildSubscriberCSV(self, contenttype, themes):
@@ -230,7 +230,7 @@ class SubscribersConfigletView(AbstractView):
 
     def buildMembersCSV(self):
         context = aq_inner(self.context)
-        mtool= getToolByName(context, 'portal_membership')
+        mtool = getToolByName(context, 'portal_membership')
         subscribers = mtool.listMembers()
         logger.info("Exporting cvs for all %s members.", len(subscribers))
         return buildCSV(context, subscribers, filename='all-members.csv')

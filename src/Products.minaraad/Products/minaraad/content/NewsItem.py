@@ -55,7 +55,8 @@ schema = atapi.Schema((
 ),
 )
 
-NewsItem_schema = atapi.BaseSchema.copy() + schema.copy() + contacts_schema.copy()
+NewsItem_schema = atapi.BaseSchema.copy() + schema.copy() + \
+    contacts_schema.copy()
 
 
 class NewsItem(atapi.BaseContent):

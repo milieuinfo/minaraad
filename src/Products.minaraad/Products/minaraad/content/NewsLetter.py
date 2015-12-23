@@ -63,6 +63,7 @@ class NewsLetter(EmailMixin, atapi.OrderedBaseFolder):
     schema = NewsLetter_schema
 
     security.declarePublic('getEmailContentsFromContent')
+
     def getEmailContentsFromContent(self):
         """
         """

@@ -86,27 +86,27 @@ class testPressrelease(MainTestCase):
         self.testpers.setLogo_2(TESTIMAGE, content_type="image/gif")
         self.testpers.setFoto(TESTIMAGE, content_type="image/gif")
 
-        self.failUnless(self.testpers.Title()==TITLE,
+        self.failUnless(self.testpers.Title() == TITLE,
                         'Value is %s' % self.testpers.Title())
-        self.failUnless(self.testpers.getSubheader()==SUBHEADER,
+        self.failUnless(self.testpers.getSubheader() == SUBHEADER,
                         'Value is %s' % self.testpers.getSubheader())
-        self.failUnless(self.testpers.getDescription()==DESCRIPTION,
+        self.failUnless(self.testpers.getDescription() == DESCRIPTION,
                         'Value is %s' % self.testpers.getDescription())
-        self.failUnless(self.testpers.getDate()==DATE,
+        self.failUnless(self.testpers.getDate() == DATE,
                         'Value is %s' % self.testpers.getDate())
-        self.failUnless(self.testpers.getBody()==HTMLBODY,
+        self.failUnless(self.testpers.getBody() == HTMLBODY,
                         'Value is %s' % self.testpers.getBody())
-        self.failUnless(self.testpers.getContact()==[self.contactperson],
+        self.failUnless(self.testpers.getContact() == [self.contactperson],
                         'Value is %s' % self.testpers.getContact())
         myclass = str(self.testpers.getLogo_1().__class__)
         correct = "<class 'plone.app.blob.field.BlobWrapper'>"
-        self.failUnless(myclass==correct, 'Value is %s and not %s' %
+        self.failUnless(myclass == correct, 'Value is %s and not %s' %
                         (myclass, correct))
         myclass = str(self.testpers.getLogo_2().__class__)
-        self.failUnless(myclass==correct, 'Value is %s and not %s' %
+        self.failUnless(myclass == correct, 'Value is %s and not %s' %
                         (myclass, correct))
         myclass = str(self.testpers.getFoto().__class__)
-        self.failUnless(myclass==correct, 'Value is %s and not %s' %
+        self.failUnless(myclass == correct, 'Value is %s and not %s' %
                         (myclass, correct))
 
 

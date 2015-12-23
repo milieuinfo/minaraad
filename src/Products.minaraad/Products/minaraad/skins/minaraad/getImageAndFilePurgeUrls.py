@@ -1,11 +1,11 @@
-## Script (Python) "getImageAndFilePurgeUrls"
-##bind container=container
-##bind context=context
-##bind namespace=
-##bind script=script
-##bind subpath=traverse_subpath
-##parameters=
-##title=Get extra urls to purge for ATImage and ATFile downloads
+# Script (Python) "getImageAndFilePurgeUrls"
+# bind container=container
+# bind context=context
+# bind namespace=
+# bind script=script
+# bind subpath=traverse_subpath
+# parameters=
+# title=Get extra urls to purge for ATImage and ATFile downloads
 
 # Modification by reinout to standard cachefu script:
 # * Reacting on FileAttachment and AnnualReport as on File.

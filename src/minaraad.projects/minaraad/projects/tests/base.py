@@ -66,6 +66,7 @@ class MockMailHost(_MockMailHost):
 
 
 class MockLogger:
+
     def __init__(self, name):
         self.name = name
 
@@ -93,7 +94,7 @@ class MinaraadTestCase(ptc.PloneTestCase):
         self.patch_mail_host()
         self.patch_portal_properties()
         add_catalog_indexes(self.portal)
-        #self.patch_logger()
+        # self.patch_logger()
 
     def patch_error_log(self):
         self.portal.error_log._ignored_exceptions = ()
@@ -128,7 +129,8 @@ class MinaraadTestCase(ptc.PloneTestCase):
         self.portal.invokeFactory('DigiBib', id='digibib')
         self.portal.digibib.invokeFactory('ProjectContainer', id='projects')
         self.portal.digibib.invokeFactory('MeetingContainer', id='meetings')
-        self.portal.digibib.invokeFactory('OrganisationContainer', id='organisations')
+        self.portal.digibib.invokeFactory(
+            'OrganisationContainer', id='organisations')
 
     def add_group(self, g_id):
         self.portal.portal_groups.addGroup(g_id)

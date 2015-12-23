@@ -54,7 +54,7 @@ def publish_on_save(obj, event):
         # The workflow might not have been applied.
         return
 
-    if  state == 'published':
+    if state == 'published':
         if published:
             return
         action = 'restricted_publish'

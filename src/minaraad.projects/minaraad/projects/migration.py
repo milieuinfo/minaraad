@@ -87,7 +87,7 @@ def migrate_advisories_to_projects(context):
         '20110930-milieuhandhavingsprogramma-2011',
         ('uitbreiding-van-een-erkend-natuurreservaat-e-016-'
          '201ctikkebroeken201d-te-kasterlee-en-oud-turnhout-antwerpen'),
-        ]
+    ]
     for advisory_id in hardcoded_id_list:
         try:
             advisory = advisory_folder[advisory_id]
@@ -119,7 +119,7 @@ def migrate_advisories_to_projects(context):
         project.setAdvisory_date(advisory_date)
         fields = dict(
             title=title_part,
-            )
+        )
         # Process the form:
         project.processForm(values=fields)
         # processForm may have caused a rename

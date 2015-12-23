@@ -64,7 +64,7 @@ def initialize(context):
         permission=config.DEFAULT_ADD_CONTENT_PERMISSION,
         extra_constructors=constructors,
         fti=ftis,
-        ).initialize(context)
+    ).initialize(context)
 
     loggers = email_logger.handlers
     SignalHandler.registerHandler(SIGUSR2, LogfileReopenHandler(loggers))

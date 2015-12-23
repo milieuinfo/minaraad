@@ -143,7 +143,7 @@ class SubscriptionManager(object):
         tool = getToolByName(self.portal, 'portal_membership')
         members = tool.listMembers()
         logger.info("portal_membership has %r members in total.",
-                 len(members))
+                    len(members))
 
         subscribers = []
         if themes is None:

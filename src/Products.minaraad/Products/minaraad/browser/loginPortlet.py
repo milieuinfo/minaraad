@@ -16,5 +16,6 @@ class Renderer(p_login.Renderer):
 
 
 class AddForm(p_login.AddForm):
+
     def create(self):
         return Assignment()

@@ -175,7 +175,7 @@ class DigiBibView(BrowserView):
             meeting for meeting in meetings
             if meeting.review_state == 'planned'
             or (meeting.getStart_time and not meeting.getStart_time.isPast())
-            ]
+        ]
         filtered = self._filter_meetings(initial_filtered)
         return self._sort_meetings(filtered, brains=True)
 
@@ -231,7 +231,7 @@ class DigiBibView(BrowserView):
                              'selected': False})
 
         if sort_on is not None:
-            this_year['objects'] = sorted(this_year['objects'], key = sort_on)
+            this_year['objects'] = sorted(this_year['objects'], key=sort_on)
 
         return this_year, links
 

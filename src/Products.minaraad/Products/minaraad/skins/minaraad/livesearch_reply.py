@@ -1,11 +1,11 @@
-## Script (Python) "livescript_reply"
-##bind container=container
-##bind context=context
-##bind namespace=
-##bind script=script
-##bind subpath=traverse_subpath
-##parameters=q,limit=10
-##title=Determine whether to show an id in an edit form
+# Script (Python) "livescript_reply"
+# bind container=container
+# bind context=context
+# bind namespace=
+# bind script=script
+# bind subpath=traverse_subpath
+# parameters=q,limit=10
+# title=Determine whether to show an id in an edit form
 
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone import PloneMessageFactory as PMF
@@ -20,7 +20,8 @@ portalProperties = getToolByName(context, 'portal_properties')
 siteProperties = getattr(portalProperties, 'site_properties', None)
 useViewAction = []
 if siteProperties is not None:
-    useViewAction = siteProperties.getProperty('typesUseViewActionInListings', [])
+    useViewAction = siteProperties.getProperty(
+        'typesUseViewActionInListings', [])
 
 # SIMPLE CONFIGURATION
 USE_ICON = True
@@ -33,8 +34,10 @@ catalog = context.portal_catalog
 
 friendly_types = ploneUtils.getUserFriendlyTypes()
 
+
 def quotestring(s):
     return '"%s"' % s
+
 
 def quote_bad_chars(s):
     bad_chars = ["(", ")"]
@@ -56,16 +59,16 @@ def quote_bad_chars(s):
 ##q = re.compile(r'[\*\?\-\+]+').sub(' ', q)
 for char in '?-+*':
     q = q.replace(char, ' ')
-r=q.split()
+r = q.split()
 r = " AND ".join(r)
-r = quote_bad_chars(r)+'*'
-searchterms = url_quote(r.replace(' ','+'))
+r = quote_bad_chars(r) + '*'
+searchterms = url_quote(r.replace(' ', '+'))
 
 site_encoding = context.plone_utils.getSiteEncoding()
 
 results = catalog(SearchableText=r, portal_type=friendly_types)
 
-searchterm_query = '?searchterm=%s'%url_quote_plus(q)
+searchterm_query = '?searchterm=%s' % url_quote_plus(q)
 
 RESPONSE = context.REQUEST.RESPONSE
 RESPONSE.setHeader('Content-Type', 'text/xml;charset=%s' % site_encoding)
@@ -74,13 +77,16 @@ RESPONSE.setHeader('Content-Type', 'text/xml;charset=%s' % site_encoding)
 #   &darr;      --> &#8595;
 #   &hellip;    --> &#8230;
 legend_livesearch = PMF('legend_livesearch', default='LiveSearch &#8595;')
-label_no_results_found = PMF('label_no_results_found', default='No matching results found.')
-label_advanced_search = PMF('label_advanced_search', default='Advanced Search&#8230;')
+label_no_results_found = PMF(
+    'label_no_results_found', default='No matching results found.')
+label_advanced_search = PMF('label_advanced_search',
+                            default='Advanced Search&#8230;')
 label_show_all = PMF('label_show_all', default='Show all&#8230;')
 
 ts = getToolByName(context, 'translation_service')
 
 output = []
+
 
 def write(s):
     output.append(safe_unicode(s))
@@ -88,18 +94,22 @@ def write(s):
 
 if not results:
     write('''<fieldset class="livesearchContainer">''')
-    write('''<legend id="livesearchLegend">%s</legend>''' % ts.translate(legend_livesearch))
+    write('''<legend id="livesearchLegend">%s</legend>''' %
+          ts.translate(legend_livesearch))
     write('''<div class="LSIEFix">''')
-    write('''<div id="LSNothingFound">%s</div>''' % ts.translate(label_no_results_found))
+    write('''<div id="LSNothingFound">%s</div>''' %
+          ts.translate(label_no_results_found))
     write('''<div class="LSRow">''')
-    write('<a href="search_form" style="font-weight:normal">%s</a>' % ts.translate(label_advanced_search))
+    write('<a href="search_form" style="font-weight:normal">%s</a>' %
+          ts.translate(label_advanced_search))
     write('''</div>''')
     write('''</div>''')
     write('''</fieldset>''')
 
 else:
     write('''<fieldset class="livesearchContainer">''')
-    write('''<legend id="livesearchLegend">%s</legend>''' % ts.translate(legend_livesearch))
+    write('''<legend id="livesearchLegend">%s</legend>''' %
+          ts.translate(legend_livesearch))
     write('''<div class="LSIEFix">''')
     write('''<ul class="LSTable">''')
     for result in results[:limit]:
@@ -113,31 +123,36 @@ else:
         write('''<img src="%s"/>''' % result.getIcon)
         full_title = safe_unicode(pretty_title_or_id(result))
         if len(full_title) > MAX_TITLE:
-            display_title = ''.join((full_title[:MAX_TITLE],'...'))
+            display_title = ''.join((full_title[:MAX_TITLE], '...'))
         else:
             display_title = full_title
         full_title = full_title.replace('"', '&quot;')
-        write('''<a href="%s" title="%s">%s</a>''' % (itemUrl, full_title, display_title))
-        write('''<span class="discreet">[%s%%]</span>''' % result.data_record_normalized_score_)
+        write('''<a href="%s" title="%s">%s</a>''' %
+              (itemUrl, full_title, display_title))
+        write('''<span class="discreet">[%s%%]</span>''' %
+              result.data_record_normalized_score_)
         display_description = safe_unicode(result.Description)
         if len(display_description) > MAX_DESCRIPTION:
-            display_description = ''.join((display_description[:MAX_DESCRIPTION],'...'))
-        write('''<div class="discreet" style="margin-left: 2.5em;">%s</div>''' % (display_description))
+            display_description = ''.join(
+                (display_description[:MAX_DESCRIPTION], '...'))
+        write('''<div class="discreet" style="margin-left: 2.5em;">%s</div>''' %
+              (display_description))
         write('''</li>''')
         full_title, display_title, display_description = None, None, None
 
     write('''<li class="LSRow">''')
-    write( '<a href="search_form" style="font-weight:normal">%s</a>' % ts.translate(label_advanced_search))
+    write('<a href="search_form" style="font-weight:normal">%s</a>' %
+          ts.translate(label_advanced_search))
     write('''</li>''')
 
-    if len(results)>limit:
+    if len(results) > limit:
         # add a more... row
         write('''<li class="LSRow">''')
-        write( '<a href="%s" style="font-weight:normal">%s</a>' % ('search?SearchableText=' + searchterms + '&sort_on=Date&sort_order=reverse', ts.translate(label_show_all)))
+        write('<a href="%s" style="font-weight:normal">%s</a>' % ('search?SearchableText=' +
+                                                                  searchterms + '&sort_on=Date&sort_order=reverse', ts.translate(label_show_all)))
         write('''</li>''')
     write('''</ul>''')
     write('''</div>''')
     write('''</fieldset>''')
 
 return '\n'.join(output).encode(site_encoding)
-

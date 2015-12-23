@@ -23,9 +23,9 @@ base_meeting_schema = atapi.BaseFolderSchema.copy() + atapi.Schema((
         widget=atapi.CalendarWidget(
             label=_(u'label_start_time',
                     default=u'Start'),
-            )
-        ),
-    ))
+        )
+    ),
+))
 
 
 class BaseMeeting(atapi.BaseFolder):

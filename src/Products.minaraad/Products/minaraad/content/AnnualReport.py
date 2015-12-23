@@ -44,6 +44,7 @@ class AnnualReport(PostMixin, EmailMixin, atapi.BaseContent):
     schema = AnnualReport_schema
 
     security.declareProtected(View, 'download')
+
     def download(self, REQUEST=None, RESPONSE=None):
         """Download the file (with content-disposition attachment).
         """

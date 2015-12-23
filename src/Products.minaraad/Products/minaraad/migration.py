@@ -191,7 +191,7 @@ def remove_double_subscriptions(context):
     and remove double attendees.
     """
     catalog = getToolByName(context, 'portal_catalog')
-    brains = catalog.searchResults(portal_type = ['Hearing', 'MREvent'])
+    brains = catalog.searchResults(portal_type=['Hearing', 'MREvent'])
 
     obj_count = 0
     double_count = 0

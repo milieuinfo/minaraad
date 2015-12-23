@@ -13,7 +13,7 @@ class ThemeManager(object):
         highest_id = max([id for id, title in self.themes])
         return highest_id + 1
 
-    def addTheme(self, theme, newId = None):
+    def addTheme(self, theme, newId=None):
         propsTool = getToolByName(self.portal, 'portal_properties')
         sheet = propsTool.minaraad_properties
 

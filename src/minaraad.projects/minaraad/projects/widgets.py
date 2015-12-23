@@ -11,9 +11,10 @@ class ParticipantsWidget(Widget.LinesWidget):
     _properties = Widget.TypesWidget._properties.copy()
     _properties.update({
         'macro': "participants_widget"
-        })
+    })
 
     security.declarePublic('process_form')
+
     def process_form(self, instance, field, form, empty_marker=None,
                      emptyReturnsMarker=False, validating=True):
         vocabulary = getattr(instance, field.vocabulary)()

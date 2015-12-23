@@ -60,11 +60,11 @@ class testAnnualReport(MainTestCase):
         self.testar.setTitle(TITLE)
         self.testar.setAttachment(ATTACHMENT, content_type="application/pdf")
 
-        self.failUnless(self.testar.Title()==TITLE,
+        self.failUnless(self.testar.Title() == TITLE,
                         'Value is %s' % self.testar.Title())
         myclass = str(self.testar.getAttachment().__class__)
         correct = "<class 'plone.app.blob.field.BlobWrapper'>"
-        self.failUnless(myclass==correct, 'Value is %s and not %s' %
+        self.failUnless(myclass == correct, 'Value is %s and not %s' %
                         (myclass, correct))
 
 

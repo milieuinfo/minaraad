@@ -262,8 +262,8 @@ class SaneDescriptionFormatter(optparse.IndentedHelpFormatter):
 
 def main(argv=sys.argv):
     parser = optparse.OptionParser(description=__doc__,
-        usage="%prog [options] config_file new_blob_dir",
-        formatter=SaneDescriptionFormatter())
+                                   usage="%prog [options] config_file new_blob_dir",
+                                   formatter=SaneDescriptionFormatter())
     parser.add_option(
         "--dry-run", dest="dry_run", action="store_true",
         help="Attempt to open the storage, then explain what would be done")
@@ -280,7 +280,8 @@ def main(argv=sys.argv):
         "--limit", dest="limit", action="store", type="int",
         help="Download and/or delete at most this number of blobs. "
              "Default: no limit (technically: -1).")
-    parser.set_defaults(dry_run=False, clear=False, delete_blobs=False, limit=-1)
+    parser.set_defaults(dry_run=False, clear=False,
+                        delete_blobs=False, limit=-1)
     options, args = parser.parse_args(argv[1:])
 
     if len(args) != 2:

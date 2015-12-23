@@ -1,11 +1,11 @@
-## Script (Python) "getGlobalPortalRoles"
-##bind container=container
-##bind context=context
-##bind namespace=
-##bind script=script
-##bind subpath=traverse_subpath
-##parameters=
-##title=
+# Script (Python) "getGlobalPortalRoles"
+# bind container=container
+# bind context=context
+# bind namespace=
+# bind script=script
+# bind subpath=traverse_subpath
+# parameters=
+# title=
 ##
 
 # CHANGED compared to standard Plone: exclude not only Owner, but also

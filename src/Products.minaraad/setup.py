@@ -17,7 +17,7 @@ setup(name='Products.minaraad',
       long_description="Product for minaraad.be",
       classifiers=[
           "Programming Language :: Python",
-          ],
+      ],
       keywords='',
       author='Zest Software',
       author_email='info@zestsoftware.nl',
@@ -31,10 +31,10 @@ setup(name='Products.minaraad',
           'setuptools',
           'five.grok',
           'quintagroup.formlib.captcha',
-          ],
+      ],
       entry_points={
           'console_scripts': [
               'blobchunkdownload = Products.minaraad.scripts.blobchunkdownload:main',
-              ],
-          },
+          ],
+      },
       )

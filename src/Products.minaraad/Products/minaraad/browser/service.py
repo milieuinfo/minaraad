@@ -90,12 +90,12 @@ class ServiceUtils(BrowserView):
                 member.getProperty('gender'),
                 member.getProperty('firstname'),
                 member.getProperty('fullname'),
-                )
+            )
             info = dict(
                 modified=date.strftime('%Y-%m-%d'),
                 url=(portal.absolute_url() + '/prefs_user_details?userid='
                      + member.getId()),
                 fullname=fullname,
-                )
+            )
             result.append(info)
         return result

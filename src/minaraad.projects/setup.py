@@ -19,7 +19,7 @@ setup(name='minaraad.projects',
       classifiers=[
           "Framework :: Plone",
           "Programming Language :: Python",
-          ],
+      ],
       keywords='',
       author='Zest software',
       author_email='',

@@ -29,7 +29,7 @@ def initialize(context):
         ProjectContainer='minaraad.projects: Add ProjectContainer',
         MeetingContainer='minaraad.projects: Add MeetingContainer',
         OrganisationContainer='minaraad.projects: Add OrganisationContainer',
-        )
+    )
 
     # Initialize portal content
     content_types, constructors, ftis = atapi.process_types(
@@ -44,4 +44,4 @@ def initialize(context):
             content_types=(atype, ),
             permission=permissions[atype.portal_type],
             extra_constructors=(constructor, ),
-            ).initialize(context)
+        ).initialize(context)

@@ -71,18 +71,18 @@ class testNewsLetter(MainTestCase):
         self.testnewsletter.setDate(DATE)
         self.testnewsletter.setBody(HTMLBODY, text_format="text/html")
 
-        self.failUnless(self.testnewsletter.Title()==TITLE,
+        self.failUnless(self.testnewsletter.Title() == TITLE,
                         'Value is %s' % self.testnewsletter.Title())
-        self.failUnless(self.testnewsletter.getDescription()==DESCRIPTION,
+        self.failUnless(self.testnewsletter.getDescription() == DESCRIPTION,
                         'Value is %s' % self.testnewsletter.getDescription())
-        self.failUnless(self.testnewsletter.getDate()==DATE,
+        self.failUnless(self.testnewsletter.getDate() == DATE,
                         'Value is %s' % self.testnewsletter.getDate())
-        self.failUnless(self.testnewsletter.getBody()==HTMLBODY,
+        self.failUnless(self.testnewsletter.getBody() == HTMLBODY,
                         'Value %s is not %s' % (self.testnewsletter.getBody(),
                                                 HTMLBODY))
 
         self.testnewsletter.setBody(PLAINBODY, text_format="text/plain")
-        self.failUnless(self.testnewsletter.getBody()==HTMLBODY,
+        self.failUnless(self.testnewsletter.getBody() == HTMLBODY,
                         'Value %s is not %s' % (self.testnewsletter.getBody(),
                                                 HTMLBODY))
 

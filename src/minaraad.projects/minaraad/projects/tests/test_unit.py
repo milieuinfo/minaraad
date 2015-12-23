@@ -13,7 +13,7 @@ def test_suite():
                              optionflags=base.OPTIONFLAGS),
         doctest.DocTestSuite(module='minaraad.projects.utils',
                              optionflags=base.OPTIONFLAGS),
-        ])
+    ])
 
 if __name__ == '__main__':
     unittest.main(defaultTest='test_suite')

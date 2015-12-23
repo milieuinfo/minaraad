@@ -11,6 +11,7 @@ from Products.minaraad.userdataschema import IRegisterForm, ICaptchaSchema
 class PatchedCaptchaWidget(CaptchaWidget):
     # Temporary patch for issue
     # http://plone.org/products/plone-captchas/issues/6
+
     def _toFieldValue(self, input):
         value = super(PatchedCaptchaWidget, self)._toFieldValue(input)
         if isinstance(value, unicode):

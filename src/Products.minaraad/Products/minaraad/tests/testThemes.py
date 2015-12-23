@@ -47,7 +47,7 @@ THEMES_PROPERTY = [
     '12/Milieureglementering',
     '13/Instrumenten',
     '14/Milieuhygi\xc3\xabne',
-    ]
+]
 
 
 class testThemes(MainTestCase):
@@ -82,7 +82,7 @@ class testThemes(MainTestCase):
         request.form['theme_name'] = 'blah'
         view._addTheme()
 
-        self.failUnless(view.themeManager.themes[-1] == (lastId+1, 'blah'))
+        self.failUnless(view.themeManager.themes[-1] == (lastId + 1, 'blah'))
 
     def test_browserSaveThemes(self):
         request = TestRequest()

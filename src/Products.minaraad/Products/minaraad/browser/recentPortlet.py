@@ -38,6 +38,7 @@ class Renderer(p_recent.Renderer):
 
 
 class AddForm(p_recent.AddForm):
+
     def create(self, data):
         return Assignment(count=data.get('count', 5))
 

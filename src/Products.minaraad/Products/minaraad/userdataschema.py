@@ -100,19 +100,19 @@ class IEnhancedUserDataSchema(IUserDataSchema):
                 default=u'Country'),
         source=country_vocabulary,
         required=False,
-        )
+    )
 
     other_country = schema.TextLine(
         title=_(u'label_other_country',
                 default=u'Other country'),
         required=False,
-        )
+    )
 
     phonenumber = schema.TextLine(
         title=_(u'label_phonenumber',
                 default=u'Phone number'),
         required=False,
-        )
+    )
 
 
 class IRegisterForm(Interface):
@@ -124,4 +124,4 @@ class ICaptchaSchema(Interface):
     captcha = Captcha(
         title=_(u'label_captcha',
                 default=u'To block spammers, please solve this "captcha"'),
-        )
+    )
