@@ -1,6 +1,5 @@
-from plone.app.users.browser.personalpreferences import UserDataPanelAdapter
-
 from Products.minaraad.userdataschema import IEnhancedUserDataSchema
+from plone.app.users.browser.personalpreferences import UserDataPanelAdapter
 
 
 class EnhancedUserDataPanelAdapter(UserDataPanelAdapter):
@@ -19,7 +18,8 @@ class EnhancedUserDataPanelAdapter(UserDataPanelAdapter):
     def __init__(self, *args, **kwargs):
         super(EnhancedUserDataPanelAdapter, self).__init__(*args, **kwargs)
         self.field_names = [
-            f.lower() for f in IEnhancedUserDataSchema._InterfaceClass__attrs.keys()]
+            f.lower()
+            for f in IEnhancedUserDataSchema._InterfaceClass__attrs.keys()]
 
         for field_name in self.field_names:
             if field_name in ('email', 'portrait', 'pdelete'):
@@ -58,10 +58,9 @@ class EnhancedUserDataPanelAdapter(UserDataPanelAdapter):
                 return self.context.setMemberProperties({f_name: value})
             return setter
 
-        # These are more or less the same than the previous ones but are called when
-        # using the property.
-        # The main difference is that they take the instance as the first
-        # parameter.
+        # These are more or less the same as the previous ones but are called
+        # when using the property.  The main difference is that they take the
+        # instance as the first parameter.
         if name.startswith('getp_'):
             def pgetter(inst):
                 return inst._getProperty(f_name)

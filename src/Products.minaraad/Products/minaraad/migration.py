@@ -1,14 +1,12 @@
-import logging
-
 from Products.CMFCore.utils import getToolByName
 from Products.ZCatalog.ProgressHandler import ZLogHandler
-from persistent.list import PersistentList
-
-from Products.minaraad.themes import ThemeManager
-from Products.minaraad.subscriptions import SubscriptionManager
 from Products.minaraad.content.interfaces import IThemes, IUseContact
-from Products.minaraad.interfaces import IAttendeeManager
 from Products.minaraad.events import save_theme_name
+from Products.minaraad.interfaces import IAttendeeManager
+from Products.minaraad.subscriptions import SubscriptionManager
+from Products.minaraad.themes import ThemeManager
+from persistent.list import PersistentList
+import logging
 
 logger = logging.getLogger('Products.minaraad.migrations')
 # The default profile id of your package:
@@ -82,8 +80,8 @@ def _migrate_themes(context, new_themes, mapping):
     # Then we remove the old themes.
     manager.deleteThemes(mapping.keys())
 
-    logger.info('Found %s objects to update: %s updated and %s without mapping' % (
-        obj_count, updated_obj_count, unmapped_obj_count))
+    logger.info('Found %s objects to update: %s updated and %s without '
+                'mapping' % (obj_count, updated_obj_count, unmapped_obj_count))
 
 
 def migrate_themes(context):
@@ -161,8 +159,8 @@ def migrate_contacts(context):
 
         obj.setContact([])
 
-    logger.info('Migrated %s objects: %s with  a coordinator and %s with authors' % (
-        obj_count, coordinator_count, authors_count))
+    logger.info('Migrated %s objects: %s with  a coordinator and %s with '
+                'authors' % (obj_count, coordinator_count, authors_count))
 
 
 def update_controlpanel(context):
@@ -223,8 +221,8 @@ def remove_double_subscriptions(context):
         obj.restrictedTraverse('@@attendees_view').groupedAttendees()
         obj_count += 1
 
-    logger.info('Updated %s objects with PersistentList, found %s objects with double attendees' % (
-        obj_count, double_count))
+    logger.info('Updated %s objects with PersistentList, found %s objects '
+                'with double attendees' % (obj_count, double_count))
 
 
 def to_plone41(context):

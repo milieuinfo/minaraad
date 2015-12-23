@@ -1,17 +1,15 @@
-import logging
-import urllib
-
 from AccessControl import ClassSecurityInfo
 from Acquisition import aq_inner
 from Products.CMFCore.permissions import ManagePortal
 from Products.CMFCore.utils import getToolByName
-from Products.statusmessages.interfaces import IStatusMessage
-from zope.component import getMultiAdapter
-from zope.interface import Interface, implements
-
 from Products.minaraad.browser.configlets import AbstractView
 from Products.minaraad.browser.utils import buildCSV
 from Products.minaraad.interfaces import IAttendeeManager
+from Products.statusmessages.interfaces import IStatusMessage
+from zope.component import getMultiAdapter
+from zope.interface import Interface, implements
+import logging
+import urllib
 
 logger = logging.getLogger('minaraad')
 
@@ -54,20 +52,24 @@ class AttendeesManagerView(AbstractView):
             if self.notifyRegistration(memberId, True):
                 # notifyRegistration returns list of failed email addresses,
                 # so a match means that there's some error.
-                message = 'Uw inschrijving is gelukt, maar het verzenden van de bevestigingse-mail is niet gelukt.'
+                message = ('Uw inschrijving is gelukt, maar het verzenden '
+                           'van de bevestigingse-mail is niet gelukt.')
                 status = 'warning'
             else:
-                message = 'Uw inschrijving is gelukt. U ontvangt hiervan nog een bevestiging per e-mail.'
+                message = ('Uw inschrijving is gelukt. U ontvangt hiervan '
+                           'nog een bevestiging per e-mail.')
                 status = 'info'
             IStatusMessage(self.request).addStatusMessage(message, type=status)
             return response.redirect(self.referring_url + '?submitted=1')
         elif action == 'unregister':
             self.manager.removeMember(memberId)
             if self.notifyRegistration(memberId, False):
-                message = 'Het afmelden is gelukt, maar het verzenden van de bevestigingse-mail is niet gelukt.'
+                message = ('Het afmelden is gelukt, maar het verzenden '
+                           'van de bevestigingse-mail is niet gelukt.')
                 status = 'warning'
             else:
-                message = 'Het afmelden is gelukt. U ontvangt hiervan nog een bevestiging per e-mail.'
+                message = ('Het afmelden is gelukt. U ontvangt hiervan '
+                           'nog een bevestiging per e-mail.')
                 status = 'info'
             IStatusMessage(self.request).addStatusMessage(message, type=status)
             return response.redirect(self.referring_url + '?submitted=1')

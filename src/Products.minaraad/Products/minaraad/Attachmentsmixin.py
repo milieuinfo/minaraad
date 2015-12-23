@@ -1,7 +1,4 @@
 # -*- coding: utf-8 -*-
-__author__ = """Rocky Burt <r.burt@zestsoftware.nl>"""
-__docformat__ = 'plaintext'
-
 from AccessControl import ClassSecurityInfo
 from Products.Archetypes import atapi
 from Products.CMFPlone.interfaces import INonStructuralFolder
@@ -40,7 +37,6 @@ class Attachmentsmixin(atapi.OrderedBaseFolder):
     allowed_content_types = ['FileAttachment']
     filter_content_types = 1
     global_allow = 0
-    #content_icon = 'Attachmentsmixin.gif'
     immediate_view = 'base_view'
     default_view = 'base_view'
     suppl_views = ()

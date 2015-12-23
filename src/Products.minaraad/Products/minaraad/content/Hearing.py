@@ -1,11 +1,10 @@
 # -*- coding: utf-8 -*-
 from AccessControl import ClassSecurityInfo
 from Products.Archetypes import atapi
-from zope.interface import implements
-
 from Products.minaraad import config
-from Products.minaraad.interfaces import IHearing
 from Products.minaraad.content.MREvent import MREvent
+from Products.minaraad.interfaces import IHearing
+from zope.interface import implements
 
 
 schema = atapi.Schema((
@@ -26,7 +25,10 @@ schema = atapi.Schema((
         widget=atapi.BooleanWidget(
             label='Subscription allowed',
             label_msgid='minaraad_label_subscription_allowed',
-            description='By default, subscription is allowed till one day before start of the event. Uncheck this field to disallow subscription immediately.',
+            description=(
+                'By default, subscription is allowed till one day before '
+                'start of the event. Uncheck this field to disallow '
+                'subscription immediately.'),
             description_msgid='minaraad_description_subscription_allowed',
             i18n_domain='minaraad',
         ),

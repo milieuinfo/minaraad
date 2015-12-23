@@ -1,19 +1,17 @@
 from AccessControl import ClassSecurityInfo
 from Products.Archetypes import atapi
-from zope.interface import implements
 from Products.OrderableReferenceField import OrderableReferenceField
 from Products.OrderableReferenceField import OrderableReferenceWidget
-from plone.app.blob.field import ImageField
-
-from minaraad.projects.content.base_meeting import BaseMeeting
-
-from Products.minaraad.config import PROJECTNAME
-from Products.minaraad.interfaces import IMREvent
 from Products.minaraad.EmailMixin import EmailMixin
-from Products.minaraad.content.interfaces import IUseContact
+from Products.minaraad.config import PROJECTNAME
 from Products.minaraad.content.contacts import contacts_schema
+from Products.minaraad.content.interfaces import IUseContact
 from Products.minaraad.content.themes import ThemeMixin
 from Products.minaraad.content.themes import theme_schema
+from Products.minaraad.interfaces import IMREvent
+from minaraad.projects.content.base_meeting import BaseMeeting
+from plone.app.blob.field import ImageField
+from zope.interface import implements
 
 
 schema = atapi.Schema((
@@ -40,7 +38,11 @@ schema = atapi.Schema((
     atapi.TextField(
         name='goal',
         allowable_content_types=(
-            'text/plain', 'text/structured', 'text/html', 'application/msword', ),
+            'text/plain',
+            'text/structured',
+            'text/html',
+            'application/msword',
+            ),
         widget=atapi.RichWidget(
             label='Goal',
             label_msgid='minaraad_label_goal',
@@ -65,7 +67,11 @@ schema = atapi.Schema((
     atapi.TextField(
         name='body',
         allowable_content_types=(
-            'text/plain', 'text/structured', 'text/html', 'application/msword', ),
+            'text/plain',
+            'text/structured',
+            'text/html',
+            'application/msword',
+            ),
         widget=atapi.RichWidget(
             label='Body',
             label_msgid='minaraad_label_body',
@@ -82,7 +88,10 @@ schema = atapi.Schema((
         widget=atapi.BooleanWidget(
             label='Subscription allowed',
             label_msgid='minaraad_label_subscription_allowed',
-            description='By default, subscription is allowed till one day before start of the event. Uncheck this field to disallow subscription immediately.',
+            description=(
+                'By default, subscription is allowed till one day before '
+                'start of the event. Uncheck this field to disallow '
+                'subscription immediately.'),
             description_msgid='minaraad_description_subscription_allowed',
             i18n_domain='minaraad',
         ),

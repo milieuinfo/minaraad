@@ -1,17 +1,15 @@
-'''\
-Service utilities
+"""Service utilities
 
-to be used by Manager only
-'''
+To be used by Manager only.
+"""
 
 from Acquisition import aq_inner
 from DateTime import DateTime
 from Products.CMFCore.utils import getToolByName
 from Products.Five import BrowserView
-
 from Products.minaraad.config import TITLE_VOCAB
-
 import logging
+
 logger = logging.getLogger('Minaraad Service Utilities')
 
 
@@ -50,7 +48,7 @@ class ServiceUtils(BrowserView):
                 emails[email] = []
             emails[email].append(member.getId())
 
-        return [(email, ids) for (email, ids) in emails.items()
+        return [(mail, ids) for (mail, ids) in emails.items()
                 if len(ids) > 1]
 
     def resetMemberDataTitle(self):

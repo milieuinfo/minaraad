@@ -11,7 +11,7 @@ class BaseHtmlView(BrowserView):
 
     def extract_html(self):
         """Return html for pdf/doc attachment"""
-        #pt_tool = getToolByName(self.context, 'portal_transforms')
+        # pt_tool = getToolByName(self.context, 'portal_transforms')
         pt_tool = self.context.portal_transforms
         # ^^^ getToolByName gives me a bogus unexisting one... [reinout]
         f = self.file_contents()

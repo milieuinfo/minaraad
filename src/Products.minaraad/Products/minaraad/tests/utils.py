@@ -1,34 +1,8 @@
 # -*- coding: utf-8 -*-
-#
-# File: utils.py
-#
-# Copyright (c) 2006 by Zest Software
-#
-# GNU General Public License (GPL)
-#
-# This program is free software; you can redistribute it and/or
-# modify it under the terms of the GNU General Public License
-# as published by the Free Software Foundation; either version 2
-# of the License, or (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program; if not, write to the Free Software
-# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
-# 02110-1301, USA.
-#
-
-__author__ = """Rocky Burt <r.burt@zestsoftware.nl>"""
-__docformat__ = 'plaintext'
-
-import os
-import Products.minaraad.tests
 from Products.CMFCore.utils import getToolByName
 from Products.DCWorkflow.DCWorkflow import WorkflowException
+import Products.minaraad.tests
+import os
 
 
 def load_file(name, size=0):
@@ -50,7 +24,7 @@ def _createNode(portal, item):
     id = item['id']
     type = item['type']
 
-    if not id in portal.objectIds():
+    if id not in portal.objectIds():
         portal.invokeFactory(type, id=id)
     created_object = portal._getOb(id, None)
     created_object.setTitle(item['title'])

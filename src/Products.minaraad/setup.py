@@ -34,7 +34,7 @@ setup(name='Products.minaraad',
       ],
       entry_points={
           'console_scripts': [
-              'blobchunkdownload = Products.minaraad.scripts.blobchunkdownload:main',
+              'blobchunkdownload = Products.minaraad.scripts.blobchunkdownload:main',  # noqa
           ],
       },
       )

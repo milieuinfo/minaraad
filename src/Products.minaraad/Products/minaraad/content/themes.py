@@ -1,9 +1,8 @@
 from AccessControl import ClassSecurityInfo
 from Products.Archetypes import atapi
-from zope.interface import implements
-
 from Products.minaraad.content.interfaces import IThemes
 from Products.minaraad.themes import ThemeManager
+from zope.interface import implements
 
 
 theme_schema = atapi.Schema((
@@ -52,7 +51,8 @@ class ThemeMixin(object):
         """
         themeManager = ThemeManager(self)
         return atapi.DisplayList(
-            tuple([(str(thId), thName) for thId, thName in themeManager.themes]))
+            tuple([(str(thId), thName)
+                   for thId, thName in themeManager.themes]))
 
     # getTheme is provided as archetype's default accessor if you use
     # theme_schema.

@@ -1,24 +1,22 @@
-
+from Products.CMFCore.utils import getToolByName
+from Products.minaraad.utils import list_match
 import logging
 
-from Products.CMFCore.utils import getToolByName
-
-from Products.minaraad.utils import list_match
-
 logger = logging.getLogger('minaraad_email')
-
-
-SUBSCRIPTIONS_EMAIL = ('AnnualReport',
-                       'Study',
-                       'NewsLetter',
-                       'Pressrelease',
-                       'Hearing',
-                       'Advisory',
-                       'MREvent')
-
-THEME_FILTERED = ['Advisory',
-                  'Hearing',
-                  'Study']
+SUBSCRIPTIONS_EMAIL = (
+    'AnnualReport',
+    'Study',
+    'NewsLetter',
+    'Pressrelease',
+    'Hearing',
+    'Advisory',
+    'MREvent',
+    )
+THEME_FILTERED = [
+    'Advisory',
+    'Hearing',
+    'Study',
+    ]
 
 
 class NotSubscribableError(Exception):
@@ -66,8 +64,8 @@ class SubscriptionManager(object):
         tool = getToolByName(self.portal, 'portal_membership')
         if member is None:
             member = tool.getAuthenticatedMember()
-        #themeManager = ThemeManager(self.portal)
-        #themeIds = [id for id, title in themeManager.themes]
+        # themeManager = ThemeManager(self.portal)
+        # themeIds = [id for id, title in themeManager.themes]
         ourThemeIds = member.getProperty('themes', [])
         return ourThemeIds
 
@@ -153,7 +151,8 @@ class SubscriptionManager(object):
             if contenttype in THEME_FILTERED:
                 member_themes = self._getThemes(member)
                 if not list_match(themes, member_themes):
-                    logger.debug('Not selecting %r as there is no match between %r and %r',
+                    logger.debug('Not selecting %r as there is no match '
+                                 'between %r and %r',
                                  member, themes, member_themes)
                     continue
             for x in subscriptions:

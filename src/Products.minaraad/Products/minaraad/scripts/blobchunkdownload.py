@@ -52,7 +52,7 @@ Sample config file:
 new_blob_dir must be the path to a directory that does not exist yet.
 Otherwise the script will quit immediately.
 
-"""
+"""  # noqa
 
 import ZConfig
 import ZODB.blob
@@ -261,9 +261,10 @@ class SaneDescriptionFormatter(optparse.IndentedHelpFormatter):
 
 
 def main(argv=sys.argv):
-    parser = optparse.OptionParser(description=__doc__,
-                                   usage="%prog [options] config_file new_blob_dir",
-                                   formatter=SaneDescriptionFormatter())
+    parser = optparse.OptionParser(
+        description=__doc__,
+        usage="%prog [options] config_file new_blob_dir",
+        formatter=SaneDescriptionFormatter())
     parser.add_option(
         "--dry-run", dest="dry_run", action="store_true",
         help="Attempt to open the storage, then explain what would be done")
