@@ -48,6 +48,14 @@
 
 .sec-home {
   @extend .sec-default;
+  // The wrapper column groups the first two colums so that
+  // Thema's and Agenda end up as the first items on sm.
+  .wrapper-column {
+    @extend .col-xs-12, .col-sm-6;
+    .column {
+      @extend .col-xs-12, .col-sm-12, .col-md-6;
+    }
+  }
   .column {
     @extend .col-xs-12, .col-sm-6, .col-md-3;
   }
@@ -62,6 +70,20 @@
 
 .sec-themes {
   @extend .sec-default;
+  .left {
+    @extend .col-xs-12;
+    @extend .col-sm-12;
+    @extend .col-md-9;
+    .column {
+      @extend .col-sm-6;
+      @extend .col-md-4;
+    }
+  }
+  .right {
+    @extend .col-xs-12;
+    @extend .col-sm-6, .col-sm-push-3;
+    @extend .col-md-3, .col-md-push-0;
+  }
 }
 
 

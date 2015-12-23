@@ -5,11 +5,6 @@
 // Contains a quote about Minaraad or a description of the current theme.
 // Note: Does NOT use the Bootstrap `.jumbotron` to prevent counter styling.
 
-
-// -----------------------------------------------------------------------------
-// Mobile first
-// -----------------------------------------------------------------------------
-
 .jumbotronbar {
   background-color: $mina-blue;
   .container {
@@ -17,36 +12,36 @@
     background-size: auto 102%;
     background-repeat: no-repeat;
   }
-}
-
-.column-left {
-  // At xs we do not display column left.
-  @extend .col-xs-10, .col-xs-offset-1;
-  @extend .col-sm-5 , .col-sm-offset-0;
-  @extend .col-md-4;
-  .theme-title {
-    height: 133px;
-    line-height: 133px;
-    div  {
-      display: inline-block;
-      vertical-align: middle;
-      line-height: 20px;
-      margin: 0;
-      h1 {
-        @extend .pull-left;
+  .column-left {
+    @extend .col-xs-10, .col-xs-offset-1;
+    @extend .col-sm-5 , .col-sm-offset-0;
+    @extend .col-md-4;
+    .theme-title {
+      height: 133px;
+      line-height: 133px;
+      div  {
+        display: inline-block;
+        vertical-align: middle;
+        line-height: 20px;
         margin: 0;
-        color: white;
-        font-size: 22px;
+        h1 {
+          @extend .pull-left;
+          margin: 0;
+          color: white;
+          font-size: 22px;
+        }
       }
     }
+    .theme-image {
+      @extend .img-circle;
+      @extend .img-responsive;
+      width: 105px;
+      margin: 1em 0;
+    }
   }
-  .theme-image {
-    @extend .img-circle;
-    @extend .img-responsive;
-    width: 105px;
-    margin: 1em 0;
-  }
+
 }
+
 
 .jumbotron {
   @extend .col-xs-offset-1, .col-sm-offset-0;
@@ -61,7 +56,6 @@
     font-size: 24px;
   }
 }
-
 
 
 // -----------------------------------------------------------------------------
@@ -89,6 +83,7 @@
   }
 
 }
+
 
 // -----------------------------------------------------------------------------
 // Large screen / wide desktop
