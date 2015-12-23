@@ -1,16 +1,15 @@
+from AccessControl import ClassSecurityInfo
 from Acquisition import aq_parent, aq_inner
+from Products.Archetypes import atapi
+from Products.CMFCore.utils import getToolByName
+from archetypes.referencebrowserwidget.widget import ReferenceBrowserWidget
+from minaraad.projects import MinaraadProjectMessageFactory as _
+from minaraad.projects import config
+from minaraad.projects.content.base_agendaitem import BaseAgendaItem
+from minaraad.projects.content.base_agendaitem import base_agendaitem_schema
+from minaraad.projects.interfaces import IAgendaItemProject
 from zope.component.hooks import getSite
 from zope.interface import implements
-from AccessControl import ClassSecurityInfo
-from Products.Archetypes import atapi
-from archetypes.referencebrowserwidget.widget import ReferenceBrowserWidget
-from Products.CMFCore.utils import getToolByName
-
-from minaraad.projects import config
-from minaraad.projects import MinaraadProjectMessageFactory as _
-from minaraad.projects.interfaces import IAgendaItemProject
-
-from base_agendaitem import BaseAgendaItem, base_agendaitem_schema
 
 agendaitem_schema = base_agendaitem_schema + atapi.Schema((
     atapi.TextField(

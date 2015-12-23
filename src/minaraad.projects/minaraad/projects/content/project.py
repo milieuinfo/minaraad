@@ -1,20 +1,17 @@
-from zope.interface import implements
-from Acquisition import aq_parent, aq_inner
-
-import transaction
 from AccessControl import ClassSecurityInfo
+from Acquisition import aq_parent, aq_inner
 from Products.Archetypes import atapi
 from Products.CMFCore.utils import getToolByName
-
-from zope.annotation.interfaces import IAnnotations
+from minaraad.projects import MinaraadProjectMessageFactory as _
+from minaraad.projects import config
+from minaraad.projects.interfaces import IProject
+from minaraad.projects.utils import prepend_zero
 from persistent.dict import PersistentDict
 from persistent.list import PersistentList
 from plone.app.blob.field import BlobField
-
-from minaraad.projects import config
-from minaraad.projects import MinaraadProjectMessageFactory as _
-from minaraad.projects.interfaces import IProject
-from minaraad.projects.utils import prepend_zero
+from zope.annotation.interfaces import IAnnotations
+from zope.interface import implements
+import transaction
 
 try:
     from Products.minaraad.content.contacts import contacts_schema
@@ -376,7 +373,7 @@ class Project(atapi.OrderedBaseFolder, ThemeMixin):
         """
         anno = self._get_annotations()
 
-        if not 'agenda_items' in anno:
+        if 'agenda_items' not in anno:
             anno['agenda_items'] = PersistentDict()
 
         return anno['agenda_items']
@@ -414,10 +411,10 @@ class Project(atapi.OrderedBaseFolder, ThemeMixin):
         meeting_uid = aq_parent(aq_inner(agendaitem)).UID()
         agendaitem_uid = agendaitem.UID()
 
-        if not meeting_uid in items:
+        if meeting_uid not in items:
             items[meeting_uid] = PersistentList()
 
-        if not agendaitem_uid in items[meeting_uid]:
+        if agendaitem_uid not in items[meeting_uid]:
             items[meeting_uid].append(agendaitem_uid)
 
     def remove_agendaitem_reference(self, agendaitem):
@@ -425,11 +422,11 @@ class Project(atapi.OrderedBaseFolder, ThemeMixin):
         meeting_uid = aq_parent(aq_inner(agendaitem)).UID()
         agendaitem_uid = agendaitem.UID()
 
-        if not meeting_uid in items:
+        if meeting_uid not in items:
             # That should not happen normally ...
             return
 
-        if not agendaitem_uid in items[meeting_uid]:
+        if agendaitem_uid not in items[meeting_uid]:
             # That should not happen neither.
             return
 

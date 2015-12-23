@@ -1,8 +1,8 @@
-import project
-import meeting
-import digibib
-import agendaitem
-import organisation
-import projectContainer
-import meetingContainer
-import organisationContainer
+import project  # noqa
+import meeting  # noqa
+import digibib  # noqa
+import agendaitem  # noqa
+import organisation  # noqa
+import projectContainer  # noqa
+import meetingContainer  # noqa
+import organisationContainer  # noqa

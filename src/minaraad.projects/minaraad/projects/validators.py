@@ -77,7 +77,7 @@ class ProjectNumberValidator:
             digits = [str(x) for x in range(0, 10)]
 
             for d in value:
-                if not d in digits:
+                if d not in digits:
                     raise Exception
 
         except:

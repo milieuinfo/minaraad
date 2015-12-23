@@ -1,17 +1,16 @@
-from operator import itemgetter
-from StringIO import StringIO
-
 from DateTime import DateTime
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.utils import safe_unicode
 from Products.Five import BrowserView
+from StringIO import StringIO
+from minaraad.projects import MinaraadProjectMessageFactory as _
+from minaraad.projects.utils import getEndOfMonth
+from minaraad.projects.widgets import PARTICIPANT_ABSENT
+from minaraad.projects.widgets import PARTICIPANT_EXCUSED
+from minaraad.projects.widgets import PARTICIPANT_PRESENT
+from operator import itemgetter
 from zope.component import getMultiAdapter
 from zope.i18n import translate
-
-from minaraad.projects import MinaraadProjectMessageFactory as _
-from minaraad.projects.widgets import PARTICIPANT_PRESENT, \
-    PARTICIPANT_EXCUSED, PARTICIPANT_ABSENT
-from minaraad.projects.utils import getEndOfMonth
 
 
 class ExportStatisticsView(BrowserView):
@@ -36,7 +35,7 @@ class ExportStatisticsView(BrowserView):
             ('report_attendance_summary', _(u"Attendance Summary")),
             # Here is an old one that may be handy for testing the
             # statistics selection:
-            #('report_attendance_per_meeting', _(u"Attendance Per Meeting")),
+            # ('report_attendance_per_meeting', _(u"Attendance Per Meeting")),
         ]
 
         statistics = []
@@ -220,8 +219,8 @@ class ExportStatisticsView(BrowserView):
                 # We used to allow these too, but they are not wanted
                 # anymore, especially with the addition of the
                 # otherInvitees datagrid field.
-                #fullname = user
-                #company = ''
+                # fullname = user
+                # company = ''
                 continue
             row = [fullname, company, data['present'], data['excused'],
                    data['absent']]

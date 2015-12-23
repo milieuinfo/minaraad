@@ -1,10 +1,9 @@
-from zope.i18n import translate
-from Products.statusmessages.interfaces import IStatusMessage
-from Products.Five import BrowserView
 from Products.CMFCore.utils import getToolByName
-
-from minaraad.projects.config import FILTERED_GROUPS
+from Products.Five import BrowserView
+from Products.statusmessages.interfaces import IStatusMessage
 from minaraad.projects import MinaraadProjectMessageFactory as _
+from minaraad.projects.config import FILTERED_GROUPS
+from zope.i18n import translate
 
 
 class ProjectPropertiesView(BrowserView):
@@ -47,7 +46,7 @@ class ProjectPropertiesView(BrowserView):
     def get_groups(self):
         pgroups = getToolByName(self.context, 'portal_groups')
         return sorted([g.id for g in pgroups.listGroups()
-                       if not g.id in FILTERED_GROUPS])
+                       if g.id not in FILTERED_GROUPS])
 
     def __call__(self):
         form = self.request.form
@@ -59,7 +58,7 @@ class ProjectPropertiesView(BrowserView):
 
             return self.index()
 
-        if not 'form_submitted' in form:
+        if 'form_submitted' not in form:
             return self.index()
 
         if not form.get('email', None):

@@ -1,10 +1,10 @@
 from DateTime import DateTime
-import logging
+from Products.CMFCore.utils import getToolByName
 from smtplib import SMTPException
+from zope.component.hooks import getSite
+import logging
 import pkg_resources
 import socket
-from Products.CMFCore.utils import getToolByName
-from zope.component.hooks import getSite
 
 zope2_egg = pkg_resources.working_set.find(
     pkg_resources.Requirement.parse('Zope2'))
@@ -216,8 +216,8 @@ def getEndOfMonth(year, month):
 
 
 def link_project_and_advisory(project, advisory):
-    #project.advisory_uid = advisory.UID()
-    #advisory.project_uid = project.UID()
+    # project.advisory_uid = advisory.UID()
+    # advisory.project_uid = project.UID()
     # We have added a referenceField on the advisory:
     advisory.setProject(project.UID())
 

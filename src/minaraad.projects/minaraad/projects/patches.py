@@ -1,4 +1,5 @@
-from archetypes.referencebrowserwidget.browser.view import ReferenceBrowserPopup
+from archetypes.referencebrowserwidget.browser.view import \
+    ReferenceBrowserPopup
 
 from Products.CMFPlone.PloneBatch import Batch
 

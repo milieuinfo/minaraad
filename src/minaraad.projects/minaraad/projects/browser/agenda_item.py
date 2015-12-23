@@ -1,10 +1,10 @@
-from zExceptions import Unauthorized
 from Acquisition import aq_inner, aq_parent
+from Products.Archetypes.event import ObjectEditedEvent
+from Products.Archetypes.event import ObjectInitializedEvent
 from Products.Five import BrowserView
-from zope.event import notify
-from Products.Archetypes.event import ObjectInitializedEvent, ObjectEditedEvent
-
 from archetypes.schemaextender.interfaces import ISchemaExtender
+from zExceptions import Unauthorized
+from zope.event import notify
 
 
 class BaseAgendaItemView(BrowserView):
@@ -52,7 +52,7 @@ class BaseAgendaItemView(BrowserView):
 
         for field in schema.fields() + extra_fields:
             fieldname = field.getName()
-            if not fieldname in fields:
+            if fieldname not in fields:
                 continue
 
             widget = field.widget
@@ -71,7 +71,7 @@ class BaseAgendaItemView(BrowserView):
         """
         for field in context.Schema().fields():
             fieldname = field.getName()
-            if not fieldname in fields:
+            if fieldname not in fields:
                 continue
 
             if fieldname == 'file':
@@ -123,7 +123,7 @@ class BaseAgendaItemView(BrowserView):
         # We create three new attachments.
         # They will be deleted after if needed.
         for att_id in self.new_ids:
-            if not att_id in self.context.contentIds():
+            if att_id not in self.context.contentIds():
                 try:
                     self.context.invokeFactory('FileAttachment', id=att_id)
                 except Unauthorized:
