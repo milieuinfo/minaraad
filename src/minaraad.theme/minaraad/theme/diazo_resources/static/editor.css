@@ -6492,35 +6492,34 @@ button.close {
     .topbar a:hover, .topbar a:focus {
       color: white; }
 
-.logobar .logo a {
-  height: 64px; }
-  .logobar .logo a img {
-    width: 290px;
+.logobar {
+  background: white; }
+  .logobar .logo a {
     height: 64px; }
-
-.logobar .navbar-brand {
-  margin: 10px 0 5px 0;
-  padding: 0; }
-
-.logobar button.navbar-toggle {
-  background-color: #246e8c;
-  top: 15px;
-  padding: 13px 11px;
-  margin-right: 10px; }
-  .logobar button.navbar-toggle .icon-bar {
-    display: block;
-    background: white;
-    width: 20px;
-    height: 2px;
-    border-radius: 0px; }
-
-.logobar .search {
-  margin-top: 2em; }
-  .logobar .search .input-group input.form-control {
-    border-top-left-radius: 3px;
-    border-bottom-left-radius: 3px; }
-  .logobar .search label {
-    font-weight: 300; }
+    .logobar .logo a img {
+      width: 290px;
+      height: 64px; }
+  .logobar .navbar-brand {
+    margin: 10px 0 5px 0;
+    padding: 0; }
+  .logobar button.navbar-toggle {
+    background-color: #246e8c;
+    top: 15px;
+    padding: 13px 11px;
+    margin-right: 10px; }
+    .logobar button.navbar-toggle .icon-bar {
+      display: block;
+      background: white;
+      width: 20px;
+      height: 2px;
+      border-radius: 0px; }
+  .logobar .search {
+    margin-top: 2em; }
+    .logobar .search .input-group input.form-control {
+      border-top-left-radius: 3px;
+      border-bottom-left-radius: 3px; }
+    .logobar .search label {
+      font-weight: 300; }
 
 nav.navbar {
   border: 0;
@@ -6555,6 +6554,14 @@ nav.navbar {
       font-family: FontAwesome;
       padding: 0 10px 0 8px;
       color: gray; }
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column; }
+
+.content-wrapper {
+  flex: 1; }
 
 footer {
   border-top: 6px solid #4aa894; }
@@ -6702,7 +6709,7 @@ p.label {
 ::-moz-selection {
   background: #bfd9e3; }
 
-.content-wrapper {
+body {
   background-color: whitesmoke;
   background-image: url("img/background-pattern.png"); }
 

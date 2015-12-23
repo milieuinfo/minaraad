@@ -10,6 +10,17 @@
 // -----------------------------------------------------------------------------
 
 
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.content-wrapper {
+  flex: 1;
+}
+
+
 footer {
   border-top: 6px solid $mina-green;
 }
