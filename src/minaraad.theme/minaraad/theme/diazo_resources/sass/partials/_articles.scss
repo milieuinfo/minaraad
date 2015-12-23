@@ -1,0 +1,143 @@
+//
+// Articles
+//
+// Article is the represntation of a content type in a listing.
+// The whole item or article block is a direct link to it's detail page.
+
+// TODO: diffrent naming for 'link blocks' and 'detail-views'.
+
+.article-default {
+  background: white;
+  margin-bottom: 15px;
+  img {
+    @extend .img-responsive;
+    width: 100%;
+  }
+  .body {
+    padding: 15px 20px 6px;
+  }
+  h3 {
+    font-size: 18px;
+    margin-top: 0;
+  }
+  a {
+    display: block;
+    p {
+      color: $text-color;
+      text-decoration: none;
+    }
+    &:hover, &:focus {
+      text-decoration: none;
+      h3 {
+        //text-decoration: underline;
+      }
+      p {
+        color: $link-hover-color;
+      }
+    }
+  }
+}
+
+.article-advice {
+  @extend .article-default;
+  .body {
+    border: 1px solid darken(white, 15);
+    border-top: 0;
+  }
+  a {
+    &:hover, &:focus {
+      h3 {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.article-event {
+  @extend .article-default;
+  background: $mina-green-light-4;
+  header {
+    text-transform: uppercase;
+    background: $mina-green;
+    color: white;
+    padding: 11px 10px 10px 13px;
+    h3, time {
+      margin: 0;
+      font-size: 16px;
+      i {
+        display: block;
+        float: left;
+        height: 1.1em;
+        margin-right: 0.6em;
+      }
+    }
+  }
+  .body {
+    h3, time {
+      color: $mina-green-dark;
+      font-size: 15px;
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+  }
+  a {
+    &:hover, &:focus {
+      background: $mina-green-light-3;
+      header {
+        background: $mina-green-dark;
+      }
+    }
+  }
+}
+
+.article-next-meeting {
+  @extend .article-event;
+  background: $mina-red-light-bg;
+  header {
+    background: $mina-red;
+  }
+  .body {
+    time {
+      color: $mina-red;
+      display: block;
+    }
+  }
+  a {
+    &:hover, &:focus {
+      background: darken($mina-red-light-bg, 5);
+      header {
+        background: $mina-red-dark;
+      }
+    }
+  }
+}
+
+//
+// jaarwerking
+//
+.article-vision {
+  @extend .article-event;
+  background: $mina-blue-light-4;
+  header {
+    background: $mina-blue;
+  }
+  .body {
+    overflow: hidden;
+    time {
+      color: $mina-blue;
+      display: block;
+    }
+  }
+  a {
+    &:hover, &:focus {
+      .btn {
+        background: darken($btn-primary-bg, 10);
+        border-color: darken($btn-primary-border, 10);
+      }
+      background: $mina-blue-light-3;
+      header {
+        background: $mina-blue-dark;
+      }
+    }
+  }
+}
