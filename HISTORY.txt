@@ -4,7 +4,9 @@ History of this buildout
 5.1.14 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- Moved to git.  Temporary repo:
+  git@bitbucket.org:zestsoftware/minaraad.git
+  [maurits]
 
 
 5.1.13 (2015-12-08)

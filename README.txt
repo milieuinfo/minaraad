@@ -18,6 +18,11 @@ $ chmod 600 passwords.py
 Getting started
 ---------------
 
+Get the code, currently from here:
+
+ $ git clone git@bitbucket.org:zestsoftware/minaraad.git
+ $ cd minaraad
+
 The first thing you need to do is decide if you are going to use this
 buildout for local development, ontwikkel, oefen or productie.  You
 should copy the sample buildout.cfg.in file to buildout.cfg::
@@ -38,7 +43,7 @@ http://maurits.vanrees.org/weblog/archive/2008/01/easily-creating-repeatable-bui
 
 Now, you need to run:
 
- $ python2.4 bootstrap.py
+ $ python2.7 bootstrap.py
 
 This will install the bin/buildout script for you.
 
@@ -74,15 +79,15 @@ But we can do something ourselves too if wanted; we can create a
 filestorage version in backup.fs::
 
  $ bin/zodbconvert parts/conf/zodb-relstorage-to-filestorage.cfg
- 
+
 Anyway, now we stop the instance with supervisor::
 
  $ bin/supervisorctl shutdown
 
 Now switch the buildout to the tag given by Zest, e.g.::
 
- $ svn switch https://svn.zestsoftware.nl/.../tags/0.1
- $ svn switch https://svn.milieuinfo.be/.../tags/0.1
+ $ git fetch
+ $ git checkout 5.1.13
 
 Run bin/buildout::
 
