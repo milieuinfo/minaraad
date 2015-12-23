@@ -4,6 +4,9 @@ History of this buildout
 5.1.14 (unreleased)
 -------------------
 
+- Cleaned up the code: pyflakes, pep8, trailing white space.
+  [maurits]
+
 - Moved to git.  Temporary repo:
   git@bitbucket.org:zestsoftware/minaraad.git
   [maurits]
