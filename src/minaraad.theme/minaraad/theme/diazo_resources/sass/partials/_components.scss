@@ -131,6 +131,72 @@ $selection-color: $mina-blue-light-2;
   }
 }
 
+//
+// Theme list
+//
+// The theme list page columns behave a bit diffrent than the default because
+// the `.right` column contains a special theme (other or unclassified items).
+
+.theme-list {
+  h3 {
+      text-transform: uppercase;
+  }
+  .left {
+    @extend .col-xs-12;
+    @extend .col-sm-12;
+    @extend .col-md-9;
+    .column {
+      @extend .col-sm-6;
+      @extend .col-md-4;
+    }
+    article {
+      @extend .article-default;
+    }
+    img {
+      @extend .img-circle;
+      @extend .pull-right;
+      height: 56px;
+      width: 56px !important;
+    }
+    a {
+      border-top: 6px solid $mina-blue;
+      &:hover, &:focus {
+        border-top: 6px solid $mina-blue-dark;
+        h3 {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+  .right {
+    @extend .col-xs-12;
+    @extend .col-sm-6, .col-sm-push-3;
+    @extend .col-md-3, .col-md-push-0;
+    article {
+      background: $mina-blue-light-4;
+      header {
+        background: $mina-blue-light-1;
+      }
+      a {
+        &:hover, &:focus {
+          background: $mina-blue-light-3;
+          header {
+            background: darken($mina-blue-light-1, 10);
+          }
+        }
+      }
+      img {
+        @extend .img-circle;
+        @extend .pull-left;
+        height: 26px;
+        width: 26px !important;
+        margin-top: -5px;
+        margin-right: 0.6em;
+      }
+    }
+  }
+}
+
 // -----------------------------------------------------------------------------
 // Small screen / tablet
 // -----------------------------------------------------------------------------

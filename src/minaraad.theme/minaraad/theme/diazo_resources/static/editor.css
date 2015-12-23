@@ -478,7 +478,7 @@ figure {
 img {
   vertical-align: middle; }
 
-.img-responsive, .article-default img, .article-advice img, .article-event img, .article-next-meeting img, .article-vision img, .column-left .theme-image {
+.img-responsive, .article-default img, .theme-list .left article img, .article-advice img, .article-event img, .article-next-meeting img, .article-vision img, .column-left .theme-image {
   display: block;
   max-width: 100%;
   height: auto; }
@@ -499,7 +499,7 @@ img {
   max-width: 100%;
   height: auto; }
 
-.img-circle, .list-group-themes a img, .column-left .theme-image {
+.img-circle, .list-group-themes a img, .theme-list .left img, .theme-list .right article img, .column-left .theme-image {
   border-radius: 50%; }
 
 hr {
@@ -883,13 +883,13 @@ address {
   .row:after {
     clear: both; }
 
-.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .footer-doormat .column, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .sec-home .column, .sec-related .column, .grid-item, .col-lg-3, .col-xs-4, .col-sm-4, .footer-doormat .column, .col-md-4, .column-left, .col-lg-4, .col-xs-5, .col-sm-5, .column-left, .col-md-5, .col-lg-5, .col-xs-6, .footer-doormat .column, .col-sm-6, .sec-home .column, .sec-related .column, .grid-item, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .jumbotron, .col-md-7, .jumbotron, .col-lg-7, .jumbotron, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .column-left, .jumbotron, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .sec-home .column, .sec-related .column, .grid-item, .col-sm-12, .footer-flanders #owner, .footer-flanders #drawer, .col-md-12, .col-lg-12 {
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .footer-doormat .column, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .theme-list .right, .sec-home .column, .sec-related .column, .grid-item, .col-lg-3, .col-xs-4, .col-sm-4, .footer-doormat .column, .col-md-4, .theme-list .left .column, .column-left, .col-lg-4, .col-xs-5, .col-sm-5, .column-left, .col-md-5, .col-lg-5, .col-xs-6, .footer-doormat .column, .col-sm-6, .theme-list .left .column, .theme-list .right, .sec-home .column, .sec-related .column, .grid-item, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .jumbotron, .col-md-7, .jumbotron, .col-lg-7, .jumbotron, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .theme-list .left, .col-lg-9, .col-xs-10, .column-left, .jumbotron, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .theme-list .left, .theme-list .right, .sec-home .column, .sec-related .column, .grid-item, .col-sm-12, .footer-flanders #owner, .footer-flanders #drawer, .theme-list .left, .col-md-12, .col-lg-12 {
   position: relative;
   min-height: 1px;
   padding-left: 8px;
   padding-right: 7px; }
 
-.col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .footer-doormat .column, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .column-left, .jumbotron, .col-xs-11, .col-xs-12, .sec-home .column, .sec-related .column, .grid-item {
+.col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .footer-doormat .column, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .column-left, .jumbotron, .col-xs-11, .col-xs-12, .theme-list .left, .theme-list .right, .sec-home .column, .sec-related .column, .grid-item {
   float: left; }
 
 .col-xs-1 {
@@ -925,7 +925,7 @@ address {
 .col-xs-11 {
   width: 91.6666666667%; }
 
-.col-xs-12, .sec-home .column, .sec-related .column, .grid-item {
+.col-xs-12, .theme-list .left, .theme-list .right, .sec-home .column, .sec-related .column, .grid-item {
   width: 100%; }
 
 .col-xs-pull-0 {
@@ -1046,7 +1046,7 @@ address {
   margin-left: 100%; }
 
 @media (min-width: 768px) {
-  .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .footer-doormat .column, .col-sm-5, .column-left, .col-sm-6, .sec-home .column, .sec-related .column, .grid-item, .col-sm-7, .jumbotron, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12, .footer-flanders #owner, .footer-flanders #drawer {
+  .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .footer-doormat .column, .col-sm-5, .column-left, .col-sm-6, .theme-list .left .column, .theme-list .right, .sec-home .column, .sec-related .column, .grid-item, .col-sm-7, .jumbotron, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12, .footer-flanders #owner, .footer-flanders #drawer, .theme-list .left {
     float: left; }
   .col-sm-1 {
     width: 8.3333333333%; }
@@ -1058,7 +1058,7 @@ address {
     width: 33.3333333333%; }
   .col-sm-5, .column-left {
     width: 41.6666666667%; }
-  .col-sm-6, .sec-home .column, .sec-related .column, .grid-item {
+  .col-sm-6, .theme-list .left .column, .theme-list .right, .sec-home .column, .sec-related .column, .grid-item {
     width: 50%; }
   .col-sm-7, .jumbotron {
     width: 58.3333333333%; }
@@ -1070,7 +1070,7 @@ address {
     width: 83.3333333333%; }
   .col-sm-11 {
     width: 91.6666666667%; }
-  .col-sm-12, .footer-flanders #owner, .footer-flanders #drawer {
+  .col-sm-12, .footer-flanders #owner, .footer-flanders #drawer, .theme-list .left {
     width: 100%; }
   .col-sm-pull-0 {
     right: auto; }
@@ -1104,7 +1104,7 @@ address {
     left: 8.3333333333%; }
   .col-sm-push-2 {
     left: 16.6666666667%; }
-  .col-sm-push-3 {
+  .col-sm-push-3, .theme-list .right {
     left: 25%; }
   .col-sm-push-4 {
     left: 33.3333333333%; }
@@ -1152,15 +1152,15 @@ address {
     margin-left: 100%; } }
 
 @media (min-width: 992px) {
-  .col-md-1, .col-md-2, .footer-doormat .column, .col-md-3, .sec-home .column, .sec-related .column, .grid-item, .col-md-4, .column-left, .col-md-5, .col-md-6, .col-md-7, .jumbotron, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12 {
+  .col-md-1, .col-md-2, .footer-doormat .column, .col-md-3, .theme-list .right, .sec-home .column, .sec-related .column, .grid-item, .col-md-4, .theme-list .left .column, .column-left, .col-md-5, .col-md-6, .col-md-7, .jumbotron, .col-md-8, .col-md-9, .theme-list .left, .col-md-10, .col-md-11, .col-md-12 {
     float: left; }
   .col-md-1 {
     width: 8.3333333333%; }
   .col-md-2, .footer-doormat .column {
     width: 16.6666666667%; }
-  .col-md-3, .sec-home .column, .sec-related .column, .grid-item {
+  .col-md-3, .theme-list .right, .sec-home .column, .sec-related .column, .grid-item {
     width: 25%; }
-  .col-md-4, .column-left {
+  .col-md-4, .theme-list .left .column, .column-left {
     width: 33.3333333333%; }
   .col-md-5 {
     width: 41.6666666667%; }
@@ -1170,7 +1170,7 @@ address {
     width: 58.3333333333%; }
   .col-md-8 {
     width: 66.6666666667%; }
-  .col-md-9 {
+  .col-md-9, .theme-list .left {
     width: 75%; }
   .col-md-10 {
     width: 83.3333333333%; }
@@ -1204,7 +1204,7 @@ address {
     right: 91.6666666667%; }
   .col-md-pull-12 {
     right: 100%; }
-  .col-md-push-0 {
+  .col-md-push-0, .theme-list .right {
     left: auto; }
   .col-md-push-1 {
     left: 8.3333333333%; }
@@ -2546,7 +2546,7 @@ tbody.collapse.in {
   -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
   background-clip: padding-box; }
-  .dropdown-menu.pull-right, .topbar .dropdown-menu.contact, .logobar .dropdown-menu.search, .footer-flanders a.dropdown-menu.less {
+  .dropdown-menu.pull-right, .topbar .dropdown-menu.contact, .logobar .dropdown-menu.search, .footer-flanders a.dropdown-menu.less, .theme-list .left img.dropdown-menu {
     right: 0;
     left: auto; }
   .dropdown-menu .divider {
@@ -2614,7 +2614,7 @@ tbody.collapse.in {
   top: 0;
   z-index: 990; }
 
-.pull-right > .dropdown-menu, .topbar .contact > .dropdown-menu, .logobar .search > .dropdown-menu, .footer-flanders a.less > .dropdown-menu {
+.pull-right > .dropdown-menu, .topbar .contact > .dropdown-menu, .logobar .search > .dropdown-menu, .footer-flanders a.less > .dropdown-menu, .theme-list .left img > .dropdown-menu {
   right: 0;
   left: auto; }
 
@@ -4227,10 +4227,10 @@ button.close {
   margin-left: auto;
   margin-right: auto; }
 
-.pull-right, .topbar .contact, .logobar .search, .footer-flanders a.less {
+.pull-right, .topbar .contact, .logobar .search, .footer-flanders a.less, .theme-list .left img {
   float: right !important; }
 
-.pull-left, .topbar .sites, .column-left .theme-title div h1 {
+.pull-left, .topbar .sites, .theme-list .right article img, .column-left .theme-title div h1 {
   float: left !important; }
 
 .hide {
@@ -4505,16 +4505,16 @@ button.close {
   margin-left: .3em; }
 
 /* Deprecated as of 4.4.0 */
-.pull-right, .topbar .contact, .logobar .search, .footer-flanders a.less {
+.pull-right, .topbar .contact, .logobar .search, .footer-flanders a.less, .theme-list .left img {
   float: right; }
 
-.pull-left, .topbar .sites, .column-left .theme-title div h1 {
+.pull-left, .topbar .sites, .theme-list .right article img, .column-left .theme-title div h1 {
   float: left; }
 
-.fa.pull-left, .topbar .fa.sites, .column-left .theme-title div h1.fa {
+.fa.pull-left, .topbar .fa.sites, .theme-list .right article img.fa, .column-left .theme-title div h1.fa {
   margin-right: .3em; }
 
-.fa.pull-right, .topbar .fa.contact, .logobar .fa.search, .footer-flanders a.fa.less {
+.fa.pull-right, .topbar .fa.contact, .logobar .fa.search, .footer-flanders a.fa.less, .theme-list .left img.fa {
   margin-left: .3em; }
 
 .fa-spin {
@@ -6736,35 +6736,63 @@ p.label {
   .list-group-themes .list-group-item {
     padding: 15px 20px 15px 17px; }
 
+.theme-list h3 {
+  text-transform: uppercase; }
+
+.theme-list .left img {
+  height: 56px;
+  width: 56px !important; }
+
+.theme-list .left a {
+  border-top: 6px solid #2e94bd; }
+  .theme-list .left a:hover, .theme-list .left a:focus {
+    border-top: 6px solid #246e8c; }
+    .theme-list .left a:hover h3, .theme-list .left a:focus h3 {
+      text-decoration: underline; }
+
+.theme-list .right article {
+  background: #edf5f7; }
+  .theme-list .right article header {
+    background: #7db2c9; }
+  .theme-list .right article a:hover, .theme-list .right article a:focus {
+    background: #deedf2; }
+    .theme-list .right article a:hover header, .theme-list .right article a:focus header {
+      background: #599dba; }
+  .theme-list .right article img {
+    height: 26px;
+    width: 26px !important;
+    margin-top: -5px;
+    margin-right: 0.6em; }
+
 .sec-header h2 {
   font-size: 24px;
   font-weight: 400;
   padding: 0 0 .5em 0; }
 
-.sec, .sec-default, .sec-home, .sec-dark, .sec-related {
+.sec, .sec-default, .sec-home, .sec-themes, .sec-dark, .sec-related {
   padding-bottom: 20px; }
 
 .sec-dark, .sec-related {
   background: rgba(0, 0, 0, 0.05); }
 
-.article-default, .article-advice, .article-event, .article-next-meeting, .article-vision {
+.article-default, .theme-list .left article, .article-advice, .article-event, .article-next-meeting, .article-vision {
   background: white;
   margin-bottom: 15px; }
-  .article-default img, .article-advice img, .article-event img, .article-next-meeting img, .article-vision img {
+  .article-default img, .theme-list .left article img, .article-advice img, .article-event img, .article-next-meeting img, .article-vision img {
     width: 100%; }
-  .article-default .body, .article-advice .body, .article-event .body, .article-next-meeting .body, .article-vision .body {
+  .article-default .body, .theme-list .left article .body, .article-advice .body, .article-event .body, .article-next-meeting .body, .article-vision .body {
     padding: 15px 20px 6px; }
-  .article-default h3, .article-advice h3, .article-event h3, .article-next-meeting h3, .article-vision h3 {
+  .article-default h3, .theme-list .left article h3, .article-advice h3, .article-event h3, .article-next-meeting h3, .article-vision h3 {
     font-size: 18px;
     margin-top: 0; }
-  .article-default a, .article-advice a, .article-event a, .article-next-meeting a, .article-vision a {
+  .article-default a, .theme-list .left article a, .article-advice a, .article-event a, .article-next-meeting a, .article-vision a {
     display: block; }
-    .article-default a p, .article-advice a p, .article-event a p, .article-next-meeting a p, .article-vision a p {
+    .article-default a p, .theme-list .left article a p, .article-advice a p, .article-event a p, .article-next-meeting a p, .article-vision a p {
       color: #333333;
       text-decoration: none; }
-    .article-default a:hover, .article-advice a:hover, .article-event a:hover, .article-next-meeting a:hover, .article-vision a:hover, .article-default a:focus, .article-advice a:focus, .article-event a:focus, .article-next-meeting a:focus, .article-vision a:focus {
+    .article-default a:hover, .theme-list .left article a:hover, .article-advice a:hover, .article-event a:hover, .article-next-meeting a:hover, .article-vision a:hover, .article-default a:focus, .theme-list .left article a:focus, .article-advice a:focus, .article-event a:focus, .article-next-meeting a:focus, .article-vision a:focus {
       text-decoration: none; }
-      .article-default a:hover p, .article-advice a:hover p, .article-event a:hover p, .article-next-meeting a:hover p, .article-vision a:hover p, .article-default a:focus p, .article-advice a:focus p, .article-event a:focus p, .article-next-meeting a:focus p, .article-vision a:focus p {
+      .article-default a:hover p, .theme-list .left article a:hover p, .article-advice a:hover p, .article-event a:hover p, .article-next-meeting a:hover p, .article-vision a:hover p, .article-default a:focus p, .theme-list .left article a:focus p, .article-advice a:focus p, .article-event a:focus p, .article-next-meeting a:focus p, .article-vision a:focus p {
         color: #1f647f; }
 
 .article-advice .body {
