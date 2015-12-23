@@ -79,7 +79,7 @@ def tail(f, n, offset=None):
     avg_line_length = 100
     to_read = n + (offset or 0)
 
-    while 1:
+    while True:
         try:
             f.seek(-(avg_line_length * to_read), 2)
         except IOError:
@@ -103,7 +103,7 @@ class SeeEmailLog(BrowserView):
         logpath = email_logger.handlers[0].baseFilename
         try:
             logfile = open(logpath)
-        except IOError, exc:
+        except IOError as exc:
             return "Error opening email log file:\n%s" % exc
         try:
             if num == 0:

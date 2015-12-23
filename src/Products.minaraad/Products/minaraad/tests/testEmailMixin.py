@@ -135,8 +135,7 @@ class testEmailMixin(MainTestCase):
         self.failUnless("Bilbo" in payload,
                         "First name of member not in payload.")
 
-        lst1 = [x['To'] for x in mailHost.messages]
-        lst1.sort()
+        lst1 = sorted([x['To'] for x in mailHost.messages])
 
         self.assertEquals(lst1, ['bilbo@example.com',
                                  'frodo@example.com'])

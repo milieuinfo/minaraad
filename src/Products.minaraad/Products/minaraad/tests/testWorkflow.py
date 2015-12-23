@@ -125,16 +125,14 @@ class testWorkflow(MainTestCase):
         elif isinstance(possible, basestring):
             possible = [possible]
         else:
-            possible = list(possible)
-            possible.sort()
+            possible = sorted(possible)
 
         wfTool = getToolByName(self.portal, 'portal_workflow')
         container = self.contentContainer
 
         self.login(memberId)
         transitions = wfTool.getTransitionsFor(container.someobj)
-        transitions = [x['id'] for x in transitions]
-        transitions.sort()
+        transitions = sorted([x['id'] for x in transitions])
         self.assertEqual(possible, transitions)
         self.logout()
 
@@ -268,16 +266,14 @@ class testWorkflow(MainTestCase):
         elif isinstance(possible, basestring):
             possible = [possible]
         else:
-            possible = list(possible)
-            possible.sort()
+            possible = sorted(possible)
 
         wfTool = getToolByName(self.portal, 'portal_workflow')
         container = self.contentContainer
 
         self.login(memberId)
         transitions = wfTool.getTransitionsFor(container)
-        transitions = [x['id'] for x in transitions]
-        transitions.sort()
+        transitions = sorted([x['id'] for x in transitions])
         self.assertEqual(possible, transitions)
         self.logout()
 

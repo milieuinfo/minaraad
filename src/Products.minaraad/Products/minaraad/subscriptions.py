@@ -88,8 +88,7 @@ class SubscriptionManager(object):
         # Combine them, filtering out duplicates by using a set.
         allNames = SUBSCRIPTIONS_EMAIL
         # Just for testing/debugging: sort them.
-        allNames = list(allNames)
-        allNames.sort()
+        allNames = sorted(allNames)
 
         subscriptions = [Subscription(x) for x in allNames]
 

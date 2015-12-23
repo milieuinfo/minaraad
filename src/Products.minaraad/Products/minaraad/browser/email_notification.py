@@ -164,7 +164,7 @@ class EmailNotify(BrowserView):
                               mto=toAddress,
                               mfrom=fromAddress,
                               subject=subject)
-            except Exception, exc:
+            except Exception as exc:
                 send_info.excname = str(exc.__class__.__name__)
                 send_info.exctxt = str(exc)
                 logger.error('Template %(path)s email failed sending from '
