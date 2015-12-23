@@ -4,8 +4,8 @@
        xmlns:xhtml="http://www.w3.org/1999/xhtml"
        xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-  <!-- The condition makes sure that theme is only applied when served in the 
-       plone main_template. This is necessary for functional edit popups in 
+  <!-- The condition makes sure that theme is only applied when served in the
+       plone main_template. This is necessary for functional edit popups in
        Tiny, for example. -->
   <theme href="index.html" css:if-content="#visual-portal-wrapper"/>
 
@@ -69,11 +69,11 @@
   <!--<drop css:content="#portal-globalnav" />-->
   <drop css:content="#portal-searchbox" />
   <drop css:content="#portal-globalnav" />
-  
+
   <append css:theme="#visual-portal-wrapper">
     <xsl:element name="div">
           <xsl:attribute name="class">visualClear</xsl:attribute>
-    </xsl:element>    
+    </xsl:element>
   </append>
   <copy css:theme="#portal-top > .cell" css:content-children="#portal-top"/>
 
@@ -138,7 +138,7 @@
       <div id="portal-column-one" class="cell width-1:4 position-0">
         <ul id="portal-globalnav">
           <xsl:apply-templates css:select="#portal-globalnav > *" />
-        </ul>        
+        </ul>
       </div>
     </copy>
   </rules>
@@ -190,7 +190,7 @@
           <div id="portal-colophon">
             <xsl:apply-templates css:select="#portal-colophon > *" />
           </div>
-          <!-- using custom template in minaraad 
+          <!-- using custom template in minaraad
           <ul id="portal-siteactions">
             <xsl:apply-templates css:select="#portal-siteactions > *" />
           </ul>-->
@@ -200,7 +200,7 @@
         </div>
       </copy>
   </rules>
-  
+
   <rules if-content="not(//*[@id='portal-column-one']) and not(//*[@id='portal-column-two'])">
     <copy css:theme="#portal-footer-wrapper">
       <div class="cell width-full position-0">
@@ -222,8 +222,8 @@
   </rules>
   <prepend css:theme="#portal-columns" css:content="#portal-siteactions-top" href="./@@siteactions-top" />
   <prepend css:theme="#portal-column-one" css:content="#portal-globalnav" />
-  
+
   <after css:theme-children="#portal-footer-wrapper > .cell" css:content="#visual-portal-wrapper > script"/>
   <append css:theme="#content" css:content=".documentActions" />
-  
+
 </rules>

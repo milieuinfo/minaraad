@@ -4,8 +4,8 @@
        xmlns:xhtml="http://www.w3.org/1999/xhtml"
        xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-  <!-- The condition makes sure that theme is only applied when served in the 
-       plone main_template. This is necessary for functional edit popups in 
+  <!-- The condition makes sure that theme is only applied when served in the
+       plone main_template. This is necessary for functional edit popups in
        Tiny, for example. -->
   <theme href="index.html" css:if-content="#visual-portal-wrapper"/>
 
@@ -37,7 +37,7 @@
   <replace css:theme="title" css:content="title" />
 
   <!-- Links -->
-  <!-- Make sure none of the non standard plone stylesheets get roled in 
+  <!-- Make sure none of the non standard plone stylesheets get roled in
        together with the standard ones in portal_css -->
   <before css:theme="head link" css:content="head link"/>
 
@@ -110,7 +110,7 @@
       </div>
     </copy>
   </rules>
-  
+
   <after css:theme-children="#portal-footer-wrapper > .cell" css:content="#portal-footer"/>
   <after css:theme-children="#portal-footer-wrapper > .cell" css:content="#portal-colophon"/>
   <after css:theme-children="#portal-footer-wrapper > .cell" css:content="#portal-siteactions"/>

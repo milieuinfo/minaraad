@@ -93,7 +93,7 @@
             </tal:block>
         </tal:block>
       </fieldset>
-      
+
       <script type="text/javascript">
         // Disable inline (kss) validation in the attachments,
         // because that only leads to errors.
