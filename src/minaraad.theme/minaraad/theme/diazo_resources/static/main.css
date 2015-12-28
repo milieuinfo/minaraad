@@ -480,7 +480,7 @@ figure {
 img {
   vertical-align: middle; }
 
-.img-responsive, .jumbotronbar .column-left .theme-image, .article-default img, .article-advice img, .article-event img, .article-next-meeting img, .article-vision img, .article-theme-other img, .article-theme img, .advice-detail article img {
+.img-responsive, .jumbotronbar .column-left .theme-image, .article-default img, .article-advice img, .article-event img, .article-next-meeting img, .article-vision img, .article-theme-other img, .article-theme img, .images img {
   display: block;
   max-width: 100%;
   height: auto; }
@@ -876,22 +876,22 @@ address {
   .container-fluid:after {
     clear: both; }
 
-.row, .thumbnails {
+.row, .images .thumbnails {
   margin-left: -7px;
   margin-right: -7px; }
-  .row:before, .thumbnails:before, .row:after, .thumbnails:after {
+  .row:before, .images .thumbnails:before, .row:after, .images .thumbnails:after {
     content: " ";
     display: table; }
-  .row:after, .thumbnails:after {
+  .row:after, .images .thumbnails:after {
     clear: both; }
 
-.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .footer-doormat .column, .col-lg-2, .col-xs-3, .thumbnails a, .advice-detail nav, .col-sm-3, .col-md-3, .masonry .grid-item, .sec-home .column, .sec-related .column, .sec-themes .right, .col-lg-3, .col-xs-4, .advice-detail article aside, .col-sm-4, .footer-doormat .column, .col-md-4, .jumbotronbar .column-left, .sec-themes .left .column, .col-lg-4, .col-xs-5, .advice-detail article .body, .col-sm-5, .jumbotronbar .column-left, .col-md-5, .col-lg-5, .col-xs-6, .footer-doormat .column, .col-sm-6, .masonry .grid-item, .sec-home .wrapper-column, .sec-home .column, .sec-related .column, .sec-themes .left .column, .sec-themes .right, .col-md-6, .sec-home .wrapper-column .column, .col-lg-6, .col-xs-7, .col-sm-7, .jumbotron, .col-md-7, .jumbotron, .col-lg-7, .jumbotron, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .sec-themes .left, .col-lg-9, .col-xs-10, .jumbotronbar .column-left, .jumbotron, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .masonry .grid-item, .sec-home .wrapper-column, .sec-home .wrapper-column .column, .sec-home .column, .sec-related .column, .sec-themes .left, .sec-themes .right, .col-sm-12, .footer-flanders #owner, .footer-flanders #drawer, .sec-home .wrapper-column .column, .sec-themes .left, .col-md-12, .col-lg-12 {
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .footer-doormat .column, .col-lg-2, .col-xs-3, .sec-advice-detail nav, .images .thumbnails a, .col-sm-3, .col-md-3, .masonry .grid-item, .sec-home .column, .sec-related .column, .sec-themes .right, .col-lg-3, .col-xs-4, .sec-advice-detail article aside, .col-sm-4, .footer-doormat .column, .col-md-4, .jumbotronbar .column-left, .sec-themes .left .column, .col-lg-4, .col-xs-5, .sec-advice-detail article .body, .col-sm-5, .jumbotronbar .column-left, .col-md-5, .col-lg-5, .col-xs-6, .footer-doormat .column, .col-sm-6, .masonry .grid-item, .sec-home .wrapper-column, .sec-home .column, .sec-related .column, .sec-themes .left .column, .sec-themes .right, .col-md-6, .sec-home .wrapper-column .column, .col-lg-6, .col-xs-7, .col-sm-7, .jumbotron, .col-md-7, .jumbotron, .col-lg-7, .jumbotron, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .sec-themes .left, .col-lg-9, .col-xs-10, .jumbotronbar .column-left, .jumbotron, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .masonry .grid-item, .sec-home .wrapper-column, .sec-home .wrapper-column .column, .sec-home .column, .sec-related .column, .sec-themes .left, .sec-themes .right, .col-sm-12, .footer-flanders #owner, .footer-flanders #drawer, .sec-home .wrapper-column .column, .sec-themes .left, .col-md-12, .col-lg-12 {
   position: relative;
   min-height: 1px;
   padding-left: 7px;
   padding-right: 7px; }
 
-.col-xs-1, .col-xs-2, .col-xs-3, .thumbnails a, .advice-detail nav, .col-xs-4, .advice-detail article aside, .col-xs-5, .advice-detail article .body, .col-xs-6, .footer-doormat .column, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .jumbotronbar .column-left, .jumbotron, .col-xs-11, .col-xs-12, .masonry .grid-item, .sec-home .wrapper-column, .sec-home .wrapper-column .column, .sec-home .column, .sec-related .column, .sec-themes .left, .sec-themes .right {
+.col-xs-1, .col-xs-2, .col-xs-3, .sec-advice-detail nav, .images .thumbnails a, .col-xs-4, .sec-advice-detail article aside, .col-xs-5, .sec-advice-detail article .body, .col-xs-6, .footer-doormat .column, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .jumbotronbar .column-left, .jumbotron, .col-xs-11, .col-xs-12, .masonry .grid-item, .sec-home .wrapper-column, .sec-home .wrapper-column .column, .sec-home .column, .sec-related .column, .sec-themes .left, .sec-themes .right {
   float: left; }
 
 .col-xs-1 {
@@ -900,13 +900,13 @@ address {
 .col-xs-2 {
   width: 16.6666666667%; }
 
-.col-xs-3, .thumbnails a, .advice-detail nav {
+.col-xs-3, .sec-advice-detail nav, .images .thumbnails a {
   width: 25%; }
 
-.col-xs-4, .advice-detail article aside {
+.col-xs-4, .sec-advice-detail article aside {
   width: 33.3333333333%; }
 
-.col-xs-5, .advice-detail article .body {
+.col-xs-5, .sec-advice-detail article .body {
   width: 41.6666666667%; }
 
 .col-xs-6, .footer-doormat .column {
@@ -6855,7 +6855,7 @@ body {
   font-weight: 400;
   padding: 0 0 .5em 0; }
 
-.sec, .sec-default, .sec-home, .sec-themes, .sec-advice, .sec-dark, .sec-related {
+.sec, .sec-default, .sec-home, .sec-themes, .sec-advice-detail, .sec-dark, .sec-related {
   padding-top: 20px;
   padding-bottom: 20px; }
 
@@ -6983,30 +6983,37 @@ body {
     margin-top: -5px;
     margin-right: 0.6em; }
 
-.advice-detail article h1, .advice-detail article h2 {
+.images img {
+  margin-bottom: 14px; }
+
+.article-advice-detail h1, .article-advice-detail h2 {
   color: #246e8c; }
 
-.advice-detail article h1 {
+.article-advice-detail h1 {
   font-size: 24px; }
 
-.advice-detail article h2 {
+.article-advice-detail h2 {
   font-size: 18px; }
 
-.advice-detail article .body h3 {
-  padding-top: 0; }
-
-.advice-detail article .body section {
-  border-top: 6px solid #2e94bd;
+.article-advice-detail .body section {
+  border-top: 5px solid #2e94bd;
   padding: 0 15px 1px 15px;
   background-color: white;
   margin-bottom: 15px; }
 
-.advice-detail article img {
-  margin-bottom: 14px; }
+.article-advice-detail .body h3:first-child {
+  padding-top: 0; }
 
-.advice-detail nav section {
-  border-top: 6px solid #2e94bd;
+nav section.prev-next, nav section.archive, nav section.theme-list {
+  border-top: 5px solid #86263a;
   padding: 0 15px 1px 15px;
-  background-color: white; }
+  background-color: white;
+  margin-bottom: 15px; }
+  nav section.prev-next h2, nav section.archive h2, nav section.theme-list h2 {
+    color: #b2324d;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-top: .75em; }
 
 /*# sourceMappingURL=main.css.map */

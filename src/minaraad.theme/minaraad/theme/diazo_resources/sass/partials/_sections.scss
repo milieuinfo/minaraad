@@ -88,10 +88,27 @@
   }
 }
 
-.sec-advice {
-  @extend .sec-default;
+//
+// Sections in detail pages.
+//
 
+.sec-advice-detail {
+  @extend .sec-default;
+  article {
+    aside {
+      @extend .col-xs-4;
+    }
+    .body {
+      @extend .col-xs-5;
+    }
+  }
+  nav {
+    @extend .col-xs-3;
+  }
 }
+
+
+
 
 // -----------------------------------------------------------------------------
 // Small screen / tablet

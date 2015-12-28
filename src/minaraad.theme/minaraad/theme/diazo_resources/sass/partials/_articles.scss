@@ -1,10 +1,8 @@
 //
 // Articles
 //
-// Article is the represntation of a content type in a listing.
+// Article is the representation of a content type in a listing.
 // The whole item or article block is a direct link to it's detail page.
-
-// TODO: diffrent naming for 'link blocks' and 'detail-views'.
 
 .article-default {
   background: white;
@@ -203,58 +201,82 @@
   }
 }
 
+//
+// Detail mixin
+//
+// Mixin used in detail views.
+
+@mixin article-block-line-top($color) {
+  border-top: 5px solid $color;
+  padding: 0 15px 1px 15px;
+  background-color: white;
+  margin-bottom: 15px;
+}
 
 
-//// Detail views
+//
+// Detail views
+//
+// Article styling in detail views.
 
-
-.thumbnails {
-  @extend .row;
-  a {
-    @extend .col-xs-3;
+.images {
+  img {
+    @extend .img-responsive;
+    margin-bottom: 14px;
+  }
+  .thumbnails {
+    @extend .row;
+    a {
+      @extend .col-xs-3;
+    }
   }
 }
 
 
-// TODO split columns and articles.
-.advice-detail {
-  article {
-    h1, h2 {
-      color: $mina-blue-dark; // TODO: Drop? Does this conflict with link color?
+.article-advice-detail {
+  h1, h2 {
+    color: $mina-blue-dark; // TODO: Drop? Does this conflict with link color?
+  }
+  h1 {
+    font-size: 24px;
+  }
+  h2 {
+    font-size: 18px;
+  }
+  .body {
+    section {
+      @include article-block-line-top($mina-blue);
     }
-    h1 {
-      font-size: 24px;
-    }
-    h2 {
-      font-size: 18px;
-    }
-
-    aside {
-      @extend .col-xs-4;
-    }
-    .body {
-      @extend .col-xs-5;
-      h3 {
-        padding-top: 0;
-      }
-      section {
-        border-top: 6px solid $mina-blue;
-        padding: 0 15px 1px 15px;
-        background-color: white;
-        margin-bottom: 15px;
-      }
-    }
-    img {
-      @extend .img-responsive;
-      margin-bottom: 14px;
+    h3:first-child {
+      padding-top: 0;
     }
   }
-  nav {
-    @extend .col-xs-3;
-    section {
-        border-top: 6px solid $mina-blue;
-        padding: 0 15px 1px 15px;
-        background-color: white;
+}
+
+
+//
+// Navigation
+//
+nav section {
+  &.prev-next, &.archive, &.theme-list {
+    @include article-block-line-top($mina-red-dark);
+    h2 {
+      color: $mina-red;
+      font-size: 16px;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-top: .75em;
     }
+  }
+  &.prev-next {
+    ul {
+
+    }
+  }
+  &.archive {
+
+  }
+  &.theme-list {
+
   }
 }
