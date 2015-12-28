@@ -876,22 +876,22 @@ address {
   .container-fluid:after {
     clear: both; }
 
-.row, .images .thumbnails {
+.row, .sec-advice-detail article, .images .thumbnails {
   margin-left: -7px;
   margin-right: -7px; }
-  .row:before, .images .thumbnails:before, .row:after, .images .thumbnails:after {
+  .row:before, .sec-advice-detail article:before, .images .thumbnails:before, .row:after, .sec-advice-detail article:after, .images .thumbnails:after {
     content: " ";
     display: table; }
-  .row:after, .images .thumbnails:after {
+  .row:after, .sec-advice-detail article:after, .images .thumbnails:after {
     clear: both; }
 
-.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .footer-doormat .column, .col-lg-2, .col-xs-3, .sec-advice-detail nav, .images .thumbnails a, .col-sm-3, .col-md-3, .masonry .grid-item, .sec-home .column, .sec-related .column, .sec-themes .right, .col-lg-3, .col-xs-4, .sec-advice-detail article aside, .col-sm-4, .footer-doormat .column, .col-md-4, .jumbotronbar .column-left, .sec-themes .left .column, .col-lg-4, .col-xs-5, .sec-advice-detail article .body, .col-sm-5, .jumbotronbar .column-left, .col-md-5, .col-lg-5, .col-xs-6, .footer-doormat .column, .col-sm-6, .masonry .grid-item, .sec-home .wrapper-column, .sec-home .column, .sec-related .column, .sec-themes .left .column, .sec-themes .right, .col-md-6, .sec-home .wrapper-column .column, .col-lg-6, .col-xs-7, .col-sm-7, .jumbotron, .col-md-7, .jumbotron, .col-lg-7, .jumbotron, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .sec-themes .left, .col-lg-9, .col-xs-10, .jumbotronbar .column-left, .jumbotron, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .masonry .grid-item, .sec-home .wrapper-column, .sec-home .wrapper-column .column, .sec-home .column, .sec-related .column, .sec-themes .left, .sec-themes .right, .col-sm-12, .footer-flanders #owner, .footer-flanders #drawer, .sec-home .wrapper-column .column, .sec-themes .left, .col-md-12, .col-lg-12 {
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .footer-doormat .column, .col-lg-2, .col-xs-3, .images .thumbnails a, .col-sm-3, .col-md-3, .masonry .grid-item, .sec-home .column, .sec-related .column, .sec-themes .right, .sec-advice-detail nav, .col-lg-3, .col-xs-4, .col-sm-4, .footer-doormat .column, .sec-advice-detail nav, .col-md-4, .jumbotronbar .column-left, .sec-themes .left .column, .col-lg-4, .col-xs-5, .col-sm-5, .jumbotronbar .column-left, .col-md-5, .sec-advice-detail article aside, .col-lg-5, .col-xs-6, .footer-doormat .column, .col-sm-6, .masonry .grid-item, .sec-home .wrapper-column, .sec-home .column, .sec-related .column, .sec-themes .left .column, .sec-themes .right, .col-md-6, .sec-home .wrapper-column .column, .col-lg-6, .col-xs-7, .col-sm-7, .jumbotron, .col-md-7, .jumbotron, .sec-advice-detail article .body, .col-lg-7, .jumbotron, .col-xs-8, .col-sm-8, .sec-advice-detail article, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .sec-themes .left, .sec-advice-detail article, .col-lg-9, .col-xs-10, .jumbotronbar .column-left, .jumbotron, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .masonry .grid-item, .sec-home .wrapper-column, .sec-home .wrapper-column .column, .sec-home .column, .sec-related .column, .sec-themes .left, .sec-themes .right, .sec-advice-detail article aside, .sec-advice-detail article .body, .sec-advice-detail nav, .col-sm-12, .footer-flanders #owner, .footer-flanders #drawer, .sec-home .wrapper-column .column, .sec-themes .left, .col-md-12, .col-lg-12 {
   position: relative;
   min-height: 1px;
   padding-left: 7px;
   padding-right: 7px; }
 
-.col-xs-1, .col-xs-2, .col-xs-3, .sec-advice-detail nav, .images .thumbnails a, .col-xs-4, .sec-advice-detail article aside, .col-xs-5, .sec-advice-detail article .body, .col-xs-6, .footer-doormat .column, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .jumbotronbar .column-left, .jumbotron, .col-xs-11, .col-xs-12, .masonry .grid-item, .sec-home .wrapper-column, .sec-home .wrapper-column .column, .sec-home .column, .sec-related .column, .sec-themes .left, .sec-themes .right {
+.col-xs-1, .col-xs-2, .col-xs-3, .images .thumbnails a, .col-xs-4, .col-xs-5, .col-xs-6, .footer-doormat .column, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .jumbotronbar .column-left, .jumbotron, .col-xs-11, .col-xs-12, .masonry .grid-item, .sec-home .wrapper-column, .sec-home .wrapper-column .column, .sec-home .column, .sec-related .column, .sec-themes .left, .sec-themes .right, .sec-advice-detail article aside, .sec-advice-detail article .body, .sec-advice-detail nav {
   float: left; }
 
 .col-xs-1 {
@@ -900,13 +900,13 @@ address {
 .col-xs-2 {
   width: 16.6666666667%; }
 
-.col-xs-3, .sec-advice-detail nav, .images .thumbnails a {
+.col-xs-3, .images .thumbnails a {
   width: 25%; }
 
-.col-xs-4, .sec-advice-detail article aside {
+.col-xs-4 {
   width: 33.3333333333%; }
 
-.col-xs-5, .sec-advice-detail article .body {
+.col-xs-5 {
   width: 41.6666666667%; }
 
 .col-xs-6, .footer-doormat .column {
@@ -927,7 +927,7 @@ address {
 .col-xs-11 {
   width: 91.6666666667%; }
 
-.col-xs-12, .masonry .grid-item, .sec-home .wrapper-column, .sec-home .wrapper-column .column, .sec-home .column, .sec-related .column, .sec-themes .left, .sec-themes .right {
+.col-xs-12, .masonry .grid-item, .sec-home .wrapper-column, .sec-home .wrapper-column .column, .sec-home .column, .sec-related .column, .sec-themes .left, .sec-themes .right, .sec-advice-detail article aside, .sec-advice-detail article .body, .sec-advice-detail nav {
   width: 100%; }
 
 .col-xs-pull-0 {
@@ -1048,7 +1048,7 @@ address {
   margin-left: 100%; }
 
 @media (min-width: 768px) {
-  .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .footer-doormat .column, .col-sm-5, .jumbotronbar .column-left, .col-sm-6, .masonry .grid-item, .sec-home .wrapper-column, .sec-home .column, .sec-related .column, .sec-themes .left .column, .sec-themes .right, .col-sm-7, .jumbotron, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12, .footer-flanders #owner, .footer-flanders #drawer, .sec-home .wrapper-column .column, .sec-themes .left {
+  .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .footer-doormat .column, .sec-advice-detail nav, .col-sm-5, .jumbotronbar .column-left, .col-sm-6, .masonry .grid-item, .sec-home .wrapper-column, .sec-home .column, .sec-related .column, .sec-themes .left .column, .sec-themes .right, .col-sm-7, .jumbotron, .col-sm-8, .sec-advice-detail article, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12, .footer-flanders #owner, .footer-flanders #drawer, .sec-home .wrapper-column .column, .sec-themes .left {
     float: left; }
   .col-sm-1 {
     width: 8.3333333333%; }
@@ -1056,7 +1056,7 @@ address {
     width: 16.6666666667%; }
   .col-sm-3 {
     width: 25%; }
-  .col-sm-4, .footer-doormat .column {
+  .col-sm-4, .footer-doormat .column, .sec-advice-detail nav {
     width: 33.3333333333%; }
   .col-sm-5, .jumbotronbar .column-left {
     width: 41.6666666667%; }
@@ -1064,7 +1064,7 @@ address {
     width: 50%; }
   .col-sm-7, .jumbotron {
     width: 58.3333333333%; }
-  .col-sm-8 {
+  .col-sm-8, .sec-advice-detail article {
     width: 66.6666666667%; }
   .col-sm-9 {
     width: 75%; }
@@ -1154,25 +1154,25 @@ address {
     margin-left: 100%; } }
 
 @media (min-width: 992px) {
-  .col-md-1, .col-md-2, .footer-doormat .column, .col-md-3, .masonry .grid-item, .sec-home .column, .sec-related .column, .sec-themes .right, .col-md-4, .jumbotronbar .column-left, .sec-themes .left .column, .col-md-5, .col-md-6, .sec-home .wrapper-column .column, .col-md-7, .jumbotron, .col-md-8, .col-md-9, .sec-themes .left, .col-md-10, .col-md-11, .col-md-12 {
+  .col-md-1, .col-md-2, .footer-doormat .column, .col-md-3, .masonry .grid-item, .sec-home .column, .sec-related .column, .sec-themes .right, .sec-advice-detail nav, .col-md-4, .jumbotronbar .column-left, .sec-themes .left .column, .col-md-5, .sec-advice-detail article aside, .col-md-6, .sec-home .wrapper-column .column, .col-md-7, .jumbotron, .sec-advice-detail article .body, .col-md-8, .col-md-9, .sec-themes .left, .sec-advice-detail article, .col-md-10, .col-md-11, .col-md-12 {
     float: left; }
   .col-md-1 {
     width: 8.3333333333%; }
   .col-md-2, .footer-doormat .column {
     width: 16.6666666667%; }
-  .col-md-3, .masonry .grid-item, .sec-home .column, .sec-related .column, .sec-themes .right {
+  .col-md-3, .masonry .grid-item, .sec-home .column, .sec-related .column, .sec-themes .right, .sec-advice-detail nav {
     width: 25%; }
   .col-md-4, .jumbotronbar .column-left, .sec-themes .left .column {
     width: 33.3333333333%; }
-  .col-md-5 {
+  .col-md-5, .sec-advice-detail article aside {
     width: 41.6666666667%; }
   .col-md-6, .sec-home .wrapper-column .column {
     width: 50%; }
-  .col-md-7, .jumbotron {
+  .col-md-7, .jumbotron, .sec-advice-detail article .body {
     width: 58.3333333333%; }
   .col-md-8 {
     width: 66.6666666667%; }
-  .col-md-9, .sec-themes .left {
+  .col-md-9, .sec-themes .left, .sec-advice-detail article {
     width: 75%; }
   .col-md-10 {
     width: 83.3333333333%; }
@@ -6821,7 +6821,16 @@ body {
 
 .lead {
   font-family: "Flanders Art Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 400; }
+  font-weight: 400;
+  font-size: 16px; }
+
+.dl-horizontal dt {
+  font-weight: normal;
+  text-align: left;
+  width: 120px; }
+
+.dl-horizontal dd {
+  margin-left: 120px; }
 
 .list-group .list-group-item {
   padding: 15px 20px; }
@@ -6848,6 +6857,64 @@ body {
       font-size: 1.4em; }
   .list-group-themes .list-group-item {
     padding: 15px 20px 15px 17px; }
+
+nav section.prev-next, nav section.archive, nav section.theme-list {
+  border-top: 5px solid #86263a;
+  padding: 0 15px 1px 15px;
+  background-color: white;
+  margin-bottom: 15px; }
+  nav section.prev-next h2, nav section.archive h2, nav section.theme-list h2 {
+    color: #b2324d;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-top: .75em; }
+
+nav section a:hover, nav section a:active {
+  text-decoration: none;
+  color: #5e1b29; }
+
+nav section ul {
+  padding: 0;
+  list-style-type: none; }
+  nav section ul li a {
+    color: #2d2d2d;
+    padding: 3px;
+    display: block; }
+    nav section ul li a:hover, nav section ul li a:active {
+      background: #fbeaed; }
+  nav section ul li.active a {
+    background: #fbeaed; }
+
+nav section.prev-next ul li a {
+  padding-left: 5px; }
+
+nav section.prev-next ul li a:before {
+  font-family: 'FontAwesome';
+  color: white;
+  margin-left: -17px;
+  float: left; }
+
+nav section.prev-next ul li:first-child a {
+  border-left: 18px solid #d5405f; }
+  nav section.prev-next ul li:first-child a:before {
+    content: "\f104"; }
+
+nav section.prev-next ul li:last-child a {
+  border-left: 18px solid #b2324d; }
+  nav section.prev-next ul li:last-child a:before {
+    content: "\f105"; }
+
+nav section.archive li a:before, nav section.theme-list li a:before {
+  font-family: 'FontAwesome';
+  color: #e37f94;
+  float: left;
+  content: "\f138";
+  margin-right: 7px;
+  margin-bottom: 2px; }
+
+nav section.archive li a:hover:before, nav section.archive li.active a:before, nav section.theme-list li a:hover:before, nav section.theme-list li.active a:before {
+  color: #b2324d; }
 
 .sec-header h2 {
   font-size: 24px;
@@ -6984,10 +7051,10 @@ body {
     margin-right: 0.6em; }
 
 .images img {
-  margin-bottom: 14px; }
+  margin-bottom: 10px; }
 
 .article-advice-detail h1, .article-advice-detail h2 {
-  color: #246e8c; }
+  color: #2d2d2d; }
 
 .article-advice-detail h1 {
   font-size: 24px; }
@@ -7003,17 +7070,5 @@ body {
 
 .article-advice-detail .body h3:first-child {
   padding-top: 0; }
-
-nav section.prev-next, nav section.archive, nav section.theme-list {
-  border-top: 5px solid #86263a;
-  padding: 0 15px 1px 15px;
-  background-color: white;
-  margin-bottom: 15px; }
-  nav section.prev-next h2, nav section.archive h2, nav section.theme-list h2 {
-    color: #b2324d;
-    font-size: 16px;
-    font-weight: 600;
-    text-transform: uppercase;
-    margin-top: .75em; }
 
 /*# sourceMappingURL=main.css.map */

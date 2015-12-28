@@ -202,19 +202,6 @@
 }
 
 //
-// Detail mixin
-//
-// Mixin used in detail views.
-
-@mixin article-block-line-top($color) {
-  border-top: 5px solid $color;
-  padding: 0 15px 1px 15px;
-  background-color: white;
-  margin-bottom: 15px;
-}
-
-
-//
 // Detail views
 //
 // Article styling in detail views.
@@ -222,7 +209,7 @@
 .images {
   img {
     @extend .img-responsive;
-    margin-bottom: 14px;
+    margin-bottom: 10px;
   }
   .thumbnails {
     @extend .row;
@@ -235,7 +222,10 @@
 
 .article-advice-detail {
   h1, h2 {
-    color: $mina-blue-dark; // TODO: Drop? Does this conflict with link color?
+    // TODO: Drop? Does this conflict with link color?
+    // This breaks with the design. But i'll go for black for now!
+    // color: $mina-blue-dark;
+    color: $vlaanderen-dark-gray;
   }
   h1 {
     font-size: 24px;
@@ -250,33 +240,5 @@
     h3:first-child {
       padding-top: 0;
     }
-  }
-}
-
-
-//
-// Navigation
-//
-nav section {
-  &.prev-next, &.archive, &.theme-list {
-    @include article-block-line-top($mina-red-dark);
-    h2 {
-      color: $mina-red;
-      font-size: 16px;
-      font-weight: 600;
-      text-transform: uppercase;
-      margin-top: .75em;
-    }
-  }
-  &.prev-next {
-    ul {
-
-    }
-  }
-  &.archive {
-
-  }
-  &.theme-list {
-
   }
 }

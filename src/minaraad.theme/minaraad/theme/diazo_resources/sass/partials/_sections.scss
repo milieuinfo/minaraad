@@ -94,16 +94,24 @@
 
 .sec-advice-detail {
   @extend .sec-default;
+
   article {
+    @extend .col-sm-8;
+    @extend .col-md-9;
+    @extend .row;
     aside {
-      @extend .col-xs-4;
+      @extend .col-xs-12;
+      @extend .col-md-5;
     }
     .body {
-      @extend .col-xs-5;
+      @extend .col-xs-12;
+      @extend .col-md-7;
     }
   }
   nav {
-    @extend .col-xs-3;
+    @extend .col-xs-12;
+    @extend .col-sm-4;
+    @extend .col-md-3;
   }
 }
 
@@ -136,7 +144,6 @@
       font-size: 18px;
     }
   }
-
 
 }
 
