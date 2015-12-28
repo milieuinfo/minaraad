@@ -6983,9 +6983,14 @@ body {
     margin-top: -5px;
     margin-right: 0.6em; }
 
-.advice-detail article h1 {
-  font-size: 24px;
+.advice-detail article h1, .advice-detail article h2 {
   color: #246e8c; }
+
+.advice-detail article h1 {
+  font-size: 24px; }
+
+.advice-detail article h2 {
+  font-size: 18px; }
 
 .advice-detail article .body h3 {
   padding-top: 0; }
@@ -6993,7 +6998,8 @@ body {
 .advice-detail article .body section {
   border-top: 6px solid #2e94bd;
   padding: 0 15px 1px 15px;
-  background-color: white; }
+  background-color: white;
+  margin-bottom: 15px; }
 
 .advice-detail article img {
   margin-bottom: 14px; }

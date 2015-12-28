@@ -219,10 +219,16 @@
 // TODO split columns and articles.
 .advice-detail {
   article {
-    h1 {
-      font-size: 24px;
+    h1, h2 {
       color: $mina-blue-dark; // TODO: Drop? Does this conflict with link color?
     }
+    h1 {
+      font-size: 24px;
+    }
+    h2 {
+      font-size: 18px;
+    }
+
     aside {
       @extend .col-xs-4;
     }
@@ -235,6 +241,7 @@
         border-top: 6px solid $mina-blue;
         padding: 0 15px 1px 15px;
         background-color: white;
+        margin-bottom: 15px;
       }
     }
     img {
