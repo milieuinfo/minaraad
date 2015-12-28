@@ -21,8 +21,13 @@ $bootstrap-sass-asset-helper: "bootstrap-sass-official/assets/";
 $fa-font-path:        "fontawesome/fonts" !default;
 @import "../bower_components/fontawesome/scss/font-awesome.scss";
 
-// Masonary
+// Masonary (stacked content)
 @import 'partials/masonry';
+
+// Featherlight (lightbox and gallery)
+@import '../bower_components/featherlight/src/featherlight.css';
+@import '../bower_components/featherlight/src/featherlight.gallery.css';
+@import 'partials/featerlight';
 
 // Header and footer
 @import 'partials/header';

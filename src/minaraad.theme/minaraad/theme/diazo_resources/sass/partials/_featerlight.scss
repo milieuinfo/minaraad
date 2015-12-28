@@ -1,0 +1,61 @@
+.featherlight .featherlight-content {
+    padding: 0;
+    border-bottom: 0;
+    margin-left: 20px;
+    margin-right: 20px;
+    background: none;
+}
+
+span.featherlight-close-icon.featherlight-close {
+    line-height: 20px;
+    width: 24px;
+    height: 24px;
+    border-radius: 12px;
+    background: black;
+    color: white;
+    font-weight: bold;
+    border: 2px solid white;
+}
+
+.featherlight-inner {
+    padding:12px;
+}
+
+.featherlight-next, .featherlight-previous {
+    top: 0;
+    margin: 12px;
+    span {
+        margin-top: -30px;
+        font-size: 20px;
+        width: 49%;
+
+    }
+    &:hover {
+        background: rgba(255,255,255,0.25);
+    }
+}
+
+//.featherlight-next span, .featherlight-previous span {
+//    display: none;
+//    position: absolute;
+//    top: 50%;
+//    left: 5%;
+//    width: 50px;
+//    text-align: center;
+//    font-size: 80px;
+//    margin-top: -40px;
+//    color: #fff;
+//    font-style: normal;
+//    font-weight: normal;
+//    height: 50px;
+//    border-radius: 25px;
+//    line-height: 53px;
+//}
+
+.featherlight-previous {
+    left: 0;
+}
+
+.featherlight-next {
+    right: 0;
+}

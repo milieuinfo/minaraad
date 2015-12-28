@@ -202,3 +202,50 @@
     margin-right: 0.6em;
   }
 }
+
+
+
+//// Detail views
+
+
+.thumbnails {
+  @extend .row;
+  a {
+    @extend .col-xs-3;
+  }
+}
+
+.advice-detail {
+  article {
+    h1 {
+      font-size: 24px;
+      color: $mina-blue-dark; // TODO: Drop? Does this conflict with link color?
+    }
+    aside {
+      @extend .col-xs-4;
+    }
+    .body {
+      @extend .col-xs-5;
+      h3 {
+        padding-top: 0;
+      }
+      section {
+        border-top: 6px solid $mina-blue;
+        padding: 0 15px 1px 15px;
+        background-color: white;
+      }
+    }
+    img {
+      @extend .img-responsive;
+      margin-bottom: 14px;
+    }
+  }
+  nav {
+    @extend .col-xs-2;
+    section {
+        border-top: 6px solid $mina-blue;
+        padding: 0 15px 1px 15px;
+        background-color: white;
+    }
+  }
+}

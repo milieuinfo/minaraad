@@ -4,11 +4,9 @@
 // CSS3 columns.
 
 .masonry {
-  margin-top: 2em;
-}
-
-.grid-item {
-  @extend .col-xs-12;
-  @extend .col-sm-6;
-  @extend .col-md-3;
+  .grid-item {
+    @extend .col-xs-12;
+    @extend .col-sm-6;
+    @extend .col-md-3;
+  }
 }
