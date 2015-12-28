@@ -367,7 +367,13 @@ $dropdown-link-hover-bg: $mina-blue-light-4;      //   #f5f5f5 !default;
 //** Number of columns in the grid.
 //$grid-columns:              12 !default;
 //** Padding between columns. Gets divided in half for the left and right.
-$grid-gutter-width:         15px !default;
+
+// Needs to be even.
+// The half grid gutter width is the negative margin on the row to compensate
+// for fist and last column gutters. Choosing a odd grid gutter width results
+// in a horizontal scrollbar to compensate the 1px rounding error in BS.
+$grid-gutter-width:         14px;
+
 // Navbar collapse
 //** Point at which the navbar becomes uncollapsed.
 //$grid-float-breakpoint:     $screen-sm-min !default;
