@@ -95,10 +95,12 @@ body {
   font-weight: normal;
   text-align: left;
   width: 120px;
+  @extend .small;
 }
 
 .dl-horizontal dd {
-    margin-left: 120px;
+  margin-left: 120px;
+  @extend .small;
 }
 
 //

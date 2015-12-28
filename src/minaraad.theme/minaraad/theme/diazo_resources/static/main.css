@@ -538,19 +538,67 @@ h1, h2, h3, h4, h5, h6,
   line-height: 1.1;
   color: inherit; }
   h1 small,
-  h1 .small, h2 small,
-  h2 .small, h3 small,
-  h3 .small, h4 small,
-  h4 .small, h5 small,
-  h5 .small, h6 small,
+  h1 .small,
+  h1 .dl-horizontal dt, .dl-horizontal
+  h1 dt,
+  h1 .dl-horizontal dd, .dl-horizontal
+  h1 dd, h2 small,
+  h2 .small,
+  h2 .dl-horizontal dt, .dl-horizontal
+  h2 dt,
+  h2 .dl-horizontal dd, .dl-horizontal
+  h2 dd, h3 small,
+  h3 .small,
+  h3 .dl-horizontal dt, .dl-horizontal
+  h3 dt,
+  h3 .dl-horizontal dd, .dl-horizontal
+  h3 dd, h4 small,
+  h4 .small,
+  h4 .dl-horizontal dt, .dl-horizontal
+  h4 dt,
+  h4 .dl-horizontal dd, .dl-horizontal
+  h4 dd, h5 small,
+  h5 .small,
+  h5 .dl-horizontal dt, .dl-horizontal
+  h5 dt,
+  h5 .dl-horizontal dd, .dl-horizontal
+  h5 dd, h6 small,
   h6 .small,
+  h6 .dl-horizontal dt, .dl-horizontal
+  h6 dt,
+  h6 .dl-horizontal dd, .dl-horizontal
+  h6 dd,
   .h1 small,
-  .h1 .small, .h2 small,
-  .h2 .small, .h3 small,
-  .h3 .small, .h4 small,
-  .h4 .small, .h5 small,
-  .h5 .small, .h6 small,
-  .h6 .small {
+  .h1 .small,
+  .h1 .dl-horizontal dt, .dl-horizontal
+  .h1 dt,
+  .h1 .dl-horizontal dd, .dl-horizontal
+  .h1 dd, .h2 small,
+  .h2 .small,
+  .h2 .dl-horizontal dt, .dl-horizontal
+  .h2 dt,
+  .h2 .dl-horizontal dd, .dl-horizontal
+  .h2 dd, .h3 small,
+  .h3 .small,
+  .h3 .dl-horizontal dt, .dl-horizontal
+  .h3 dt,
+  .h3 .dl-horizontal dd, .dl-horizontal
+  .h3 dd, .h4 small,
+  .h4 .small,
+  .h4 .dl-horizontal dt, .dl-horizontal
+  .h4 dt,
+  .h4 .dl-horizontal dd, .dl-horizontal
+  .h4 dd, .h5 small,
+  .h5 .small,
+  .h5 .dl-horizontal dt, .dl-horizontal
+  .h5 dt,
+  .h5 .dl-horizontal dd, .dl-horizontal
+  .h5 dd, .h6 small,
+  .h6 .small,
+  .h6 .dl-horizontal dt, .dl-horizontal
+  .h6 dt,
+  .h6 .dl-horizontal dd, .dl-horizontal
+  .h6 dd {
     font-weight: normal;
     line-height: 1;
     color: #777777; }
@@ -561,14 +609,38 @@ h3, .h3 {
   margin-top: 20px;
   margin-bottom: 10px; }
   h1 small,
-  h1 .small, .h1 small,
+  h1 .small,
+  h1 .dl-horizontal dt, .dl-horizontal
+  h1 dt,
+  h1 .dl-horizontal dd, .dl-horizontal
+  h1 dd, .h1 small,
   .h1 .small,
+  .h1 .dl-horizontal dt, .dl-horizontal
+  .h1 dt,
+  .h1 .dl-horizontal dd, .dl-horizontal
+  .h1 dd,
   h2 small,
-  h2 .small, .h2 small,
+  h2 .small,
+  h2 .dl-horizontal dt, .dl-horizontal
+  h2 dt,
+  h2 .dl-horizontal dd, .dl-horizontal
+  h2 dd, .h2 small,
   .h2 .small,
+  .h2 .dl-horizontal dt, .dl-horizontal
+  .h2 dt,
+  .h2 .dl-horizontal dd, .dl-horizontal
+  .h2 dd,
   h3 small,
-  h3 .small, .h3 small,
-  .h3 .small {
+  h3 .small,
+  h3 .dl-horizontal dt, .dl-horizontal
+  h3 dt,
+  h3 .dl-horizontal dd, .dl-horizontal
+  h3 dd, .h3 small,
+  .h3 .small,
+  .h3 .dl-horizontal dt, .dl-horizontal
+  .h3 dt,
+  .h3 .dl-horizontal dd, .dl-horizontal
+  .h3 dd {
     font-size: 65%; }
 
 h4, .h4,
@@ -577,14 +649,38 @@ h6, .h6 {
   margin-top: 10px;
   margin-bottom: 10px; }
   h4 small,
-  h4 .small, .h4 small,
+  h4 .small,
+  h4 .dl-horizontal dt, .dl-horizontal
+  h4 dt,
+  h4 .dl-horizontal dd, .dl-horizontal
+  h4 dd, .h4 small,
   .h4 .small,
+  .h4 .dl-horizontal dt, .dl-horizontal
+  .h4 dt,
+  .h4 .dl-horizontal dd, .dl-horizontal
+  .h4 dd,
   h5 small,
-  h5 .small, .h5 small,
+  h5 .small,
+  h5 .dl-horizontal dt, .dl-horizontal
+  h5 dt,
+  h5 .dl-horizontal dd, .dl-horizontal
+  h5 dd, .h5 small,
   .h5 .small,
+  .h5 .dl-horizontal dt, .dl-horizontal
+  .h5 dt,
+  .h5 .dl-horizontal dd, .dl-horizontal
+  .h5 dd,
   h6 small,
-  h6 .small, .h6 small,
-  .h6 .small {
+  h6 .small,
+  h6 .dl-horizontal dt, .dl-horizontal
+  h6 dt,
+  h6 .dl-horizontal dd, .dl-horizontal
+  h6 dd, .h6 small,
+  .h6 .small,
+  .h6 .dl-horizontal dt, .dl-horizontal
+  .h6 dt,
+  .h6 .dl-horizontal dd, .dl-horizontal
+  .h6 dd {
     font-size: 75%; }
 
 h1, .h1 {
@@ -618,7 +714,9 @@ p {
       font-size: 21px; } }
 
 small,
-.small {
+.small,
+.dl-horizontal dt,
+.dl-horizontal dd {
   font-size: 85%; }
 
 mark,
@@ -806,14 +904,22 @@ blockquote {
     margin-bottom: 0; }
   blockquote footer,
   blockquote small,
-  blockquote .small {
+  blockquote .small,
+  blockquote .dl-horizontal dt, .dl-horizontal
+  blockquote dt,
+  blockquote .dl-horizontal dd, .dl-horizontal
+  blockquote dd {
     display: block;
     font-size: 80%;
     line-height: 1.428571429;
     color: #777777; }
     blockquote footer:before,
     blockquote small:before,
-    blockquote .small:before {
+    blockquote .small:before,
+    blockquote .dl-horizontal dt:before, .dl-horizontal
+    blockquote dt:before,
+    blockquote .dl-horizontal dd:before, .dl-horizontal
+    blockquote dd:before {
       content: '\2014 \00A0'; }
 
 .blockquote-reverse,
@@ -828,16 +934,32 @@ blockquote.pull-right,
   .blockquote-reverse footer:before,
   .blockquote-reverse small:before,
   .blockquote-reverse .small:before,
+  .blockquote-reverse .dl-horizontal dt:before, .dl-horizontal
+  .blockquote-reverse dt:before,
+  .blockquote-reverse .dl-horizontal dd:before, .dl-horizontal
+  .blockquote-reverse dd:before,
   blockquote.pull-right footer:before, .topbar blockquote.contact footer:before, .logobar blockquote.search footer:before,
   blockquote.pull-right small:before, .topbar blockquote.contact small:before, .logobar blockquote.search small:before,
-  blockquote.pull-right .small:before, .topbar blockquote.contact .small:before, .logobar blockquote.search .small:before {
+  blockquote.pull-right .small:before, .topbar blockquote.contact .small:before, .logobar blockquote.search .small:before,
+  blockquote.pull-right .dl-horizontal dt:before, .dl-horizontal
+  blockquote.pull-right dt:before, .topbar blockquote.contact .dl-horizontal dt:before, .dl-horizontal .topbar blockquote.contact dt:before, .logobar blockquote.search .dl-horizontal dt:before, .dl-horizontal .logobar blockquote.search dt:before,
+  blockquote.pull-right .dl-horizontal dd:before, .dl-horizontal
+  blockquote.pull-right dd:before, .topbar blockquote.contact .dl-horizontal dd:before, .dl-horizontal .topbar blockquote.contact dd:before, .logobar blockquote.search .dl-horizontal dd:before, .dl-horizontal .logobar blockquote.search dd:before {
     content: ''; }
   .blockquote-reverse footer:after,
   .blockquote-reverse small:after,
   .blockquote-reverse .small:after,
+  .blockquote-reverse .dl-horizontal dt:after, .dl-horizontal
+  .blockquote-reverse dt:after,
+  .blockquote-reverse .dl-horizontal dd:after, .dl-horizontal
+  .blockquote-reverse dd:after,
   blockquote.pull-right footer:after, .topbar blockquote.contact footer:after, .logobar blockquote.search footer:after,
   blockquote.pull-right small:after, .topbar blockquote.contact small:after, .logobar blockquote.search small:after,
-  blockquote.pull-right .small:after, .topbar blockquote.contact .small:after, .logobar blockquote.search .small:after {
+  blockquote.pull-right .small:after, .topbar blockquote.contact .small:after, .logobar blockquote.search .small:after,
+  blockquote.pull-right .dl-horizontal dt:after, .dl-horizontal
+  blockquote.pull-right dt:after, .topbar blockquote.contact .dl-horizontal dt:after, .dl-horizontal .topbar blockquote.contact dt:after, .logobar blockquote.search .dl-horizontal dt:after, .dl-horizontal .logobar blockquote.search dt:after,
+  blockquote.pull-right .dl-horizontal dd:after, .dl-horizontal
+  blockquote.pull-right dd:after, .topbar blockquote.contact .dl-horizontal dd:after, .dl-horizontal .topbar blockquote.contact dd:after, .logobar blockquote.search .dl-horizontal dd:after, .dl-horizontal .logobar blockquote.search dd:after {
     content: '\00A0 \2014'; }
 
 address {
@@ -3644,11 +3766,23 @@ button.list-group-item {
   border-color: #2e94bd; }
   .list-group-item.active .list-group-item-heading,
   .list-group-item.active .list-group-item-heading > small,
-  .list-group-item.active .list-group-item-heading > .small, .list-group-item.active:hover .list-group-item-heading,
+  .list-group-item.active .list-group-item-heading > .small,
+  .list-group-item.active .dl-horizontal .list-group-item-heading > dt, .dl-horizontal
+  .list-group-item.active .list-group-item-heading > dt,
+  .list-group-item.active .dl-horizontal .list-group-item-heading > dd, .dl-horizontal
+  .list-group-item.active .list-group-item-heading > dd, .list-group-item.active:hover .list-group-item-heading,
   .list-group-item.active:hover .list-group-item-heading > small,
-  .list-group-item.active:hover .list-group-item-heading > .small, .list-group-item.active:focus .list-group-item-heading,
+  .list-group-item.active:hover .list-group-item-heading > .small,
+  .list-group-item.active:hover .dl-horizontal .list-group-item-heading > dt, .dl-horizontal
+  .list-group-item.active:hover .list-group-item-heading > dt,
+  .list-group-item.active:hover .dl-horizontal .list-group-item-heading > dd, .dl-horizontal
+  .list-group-item.active:hover .list-group-item-heading > dd, .list-group-item.active:focus .list-group-item-heading,
   .list-group-item.active:focus .list-group-item-heading > small,
-  .list-group-item.active:focus .list-group-item-heading > .small {
+  .list-group-item.active:focus .list-group-item-heading > .small,
+  .list-group-item.active:focus .dl-horizontal .list-group-item-heading > dt, .dl-horizontal
+  .list-group-item.active:focus .list-group-item-heading > dt,
+  .list-group-item.active:focus .dl-horizontal .list-group-item-heading > dd, .dl-horizontal
+  .list-group-item.active:focus .list-group-item-heading > dd {
     color: inherit; }
   .list-group-item.active .list-group-item-text, .list-group-item.active:hover .list-group-item-text, .list-group-item.active:focus .list-group-item-text {
     color: #c6e5f1; }
@@ -3784,9 +3918,13 @@ button.list-group-item-danger {
   color: inherit; }
   .panel-title > a,
   .panel-title > small,
-  .panel-title > .small,
+  .panel-title > .small, .dl-horizontal
+  .panel-title > dt, .dl-horizontal
+  .panel-title > dd,
   .panel-title > small > a,
-  .panel-title > .small > a {
+  .panel-title > .small > a, .dl-horizontal
+  .panel-title > dt > a, .dl-horizontal
+  .panel-title > dd > a {
     color: inherit; }
 
 .panel-footer {
