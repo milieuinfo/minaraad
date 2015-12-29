@@ -207,11 +207,16 @@
 
                     <section class="search">
                       <h2>Zoeken</h2>
-                      <label class="sr-only" for="search">Zoeken</label>
-                      <p>
-                        <input type="text" id="search">
-                      </p>
-                      <ul>
+                      <div class = "input-group">
+                        <label class="sr-only" for="search">Zoekterm</label>
+                        <input type = "text" class = "form-control" placeholder="Zoekterm">
+                        <span class = "input-group-btn">
+                          <button class = "btn btn-default" type = "button">
+                             Zoeken
+                          </button>
+                        </span>
+                    </div>
+                    <ul>
                       <li>
                         <label>
                           <input type="radio" name="search" value="all"> Alle items
@@ -222,12 +227,8 @@
                           <input type="radio" name="search" value="section"> Huidige selectie
                         </label>
                       </li>
+                    </ul>
 
-                      </ul>
-                      <p class="clearfix">
-                        <button class="btn btn-primary btn-sm
-                         pull-right">Zoeken</button>
-                      </p>
                     </section>
                     <section class="filters">
                       <h2>Thema's</h2>
