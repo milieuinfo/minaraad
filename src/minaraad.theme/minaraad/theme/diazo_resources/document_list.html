@@ -148,7 +148,7 @@
 
                        <span class = "input-group-btn">
                           <button class = "btn btn-default" type = "button">
-                             Go!
+                             Zoeken
                           </button>
                        </span>
                     </div>
@@ -197,7 +197,329 @@
             <section class="sec-article">
               <div  class="container">
                 <div class="row">
-                  Document list here.
+
+                <div class="sec-header">
+                  <h1>Documenten</h1>
+                </div>
+
+                <nav class="document-nav col-xs-12 col-sm-4 col-md-3 col-lg-3">
+                  <form>
+
+                    <section class="search">
+                      <h2>Zoeken</h2>
+                      <label class="sr-only" for="search">Zoeken</label>
+                      <p>
+                        <input type="text" id="search">
+                      </p>
+                      <ul>
+                      <li>
+                        <label>
+                          <input type="radio" name="search" value="all"> Alle items
+                        </label>
+                      </li>
+                      <li>
+                        <label>
+                          <input type="radio" name="search" value="section"> Huidige selectie
+                        </label>
+                      </li>
+
+                      </ul>
+                      <p class="clearfix">
+                        <button class="btn btn-primary btn-sm
+                         pull-right">Zoeken</button>
+                      </p>
+                    </section>
+                    <section class="filters">
+                      <h2>Thema's</h2>
+                      <ul>
+                        <li>
+                          <label>
+                            <input type="checkbox" name="vehicle" value="theme"> Klimaat
+                          </label>
+                        </li>
+                        <li>
+                          <label>
+                            <input type="checkbox" name="vehicle" value="theme"> Materialen
+                          </label>
+                        </li>
+                        <li>
+                          <label>
+                            <input type="checkbox" name="vehicle" value="theme"> Hinder
+                          </label>
+                        </li>
+                        <li>
+                          <label>
+                            <input type="checkbox" name="vehicle" value="theme"> Biodiversiteit
+                          </label>
+                        </li>
+                        <li>
+                          <label>
+                            <input type="checkbox" name="vehicle" value="theme"> Bestuurskwaliteit
+                          </label>
+                        </li>
+                        <li>
+                          <label>
+                            <input type="checkbox" name="vehicle" value="theme"> Vergroening van de economie
+                          </label>
+                        </li>
+                        <li>
+                          <label>
+                            <input type="checkbox" name="vehicle" value="theme"> Andere thema's
+                          </label>
+                        </li>
+                      </ul>
+                      <!-- Todo Soort?-->
+                      <h2>Type</h2>
+                      <ul>
+                        <li>
+                          <label>
+                            <input type="checkbox" name="vehicle" value="theme"> Advies
+                          </label>
+                        </li>
+                        <li>
+                          <label>
+                            <input type="checkbox" name="vehicle" value="theme"> Jaarverslag
+                          </label>
+                        </li>
+                        <li>
+                          <label>
+                            <input type="checkbox" name="vehicle" value="theme"> Hoorzitting
+                          </label>
+                        </li>
+                        <li>
+                          <label>
+                            <input type="checkbox" name="vehicle" value="theme"> Evenement
+                          </label>
+                        </li>
+                        <li>
+                          <label>
+                            <input type="checkbox" name="vehicle" value="theme"> Orïëntatienota
+                          </label>
+                        </li>
+                      </ul>
+
+                      <h2>Jaar</h2>
+                      <p>
+                        <select>
+                          <option value="">Alle jaren</option>
+                          <option value="2015">2015</option>
+                          <option value="2014">2014</option>
+                          <option value="2013">2013</option>
+                        </select>
+                      </p>
+                    </section>
+                    <section class="digibib">
+                      <h2>Digibib</h2>
+                      <ul>
+                        <li>
+                          <label>
+                            <input type="radio" name="digibib" value="all"> Alle items
+                          </label>
+                        </li>
+                        <li>
+                          <label>
+                            <input type="radio" name="digibib" value="website"> Alleen website
+                          </label>
+                        </li>
+                        <li>
+                          <label>
+                            <input type="radio" name="digibib" value="digibib"> Alleen Digibib
+                          </label>
+                        </li>
+                      <ul>
+                    </section>
+
+                  </form>
+                </nav>
+
+
+
+                <div class="col-xs-12 col-sm-8 col-md-9 col-lg-9">
+                <div class="masonry masonry-documents">
+
+                      <div class="grid-item">
+                      <article class="article-advice">
+                          <a href="advice.html">
+                            <img src="static/img/photos/natuur_en_milieu.jpg" alt="Lorem pixel image">
+                            <div class="body">
+                              <h3>Uitbreiding van een erkend natuurreservaat E-003 "Blankaart" te Diksmuide en Houthulst (West-Vlaanderen)</h3>
+                              <p class="label">Advies <span>Biodiversiteit</span></p>
+                              <p class="truncate">Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet.</p>
+                            </div>
+                          </a>
+                        </article>
+                      </div>
+
+                      <div class="grid-item">
+                      <article class="article-advice">
+                        <a href="advice.html">
+                          <img src="static/img/photos/studeren.jpg" alt="Lorem pixel image">
+                          <div class="body">
+                            <h3>Omzetting richtlijn industriële emissies</h3>
+                            <p class="label">Advies <span>Biodiversiteit</span></p>
+                            <p class="truncate">Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet.</p>
+                          </div>
+                        </a>
+                      </article>
+                      </div>
+
+                      <div class="grid-item">
+                      <article class="article-event">
+                        <a href="event.html">
+                          <header>
+                            <h3>
+                              <i class="fa fa-comments"></i>
+                              2 april 2016
+                            </h3>
+                          </header>
+                          <div class="body">
+                            <p class="label">Evenement <span>biodiversiteit</span></p>
+                            <h3>ABC van het emissiehandels­systeem en prioriteiten van het EU-voorzitterschap</h3>
+                          </div>
+                        </a>
+                      </article>
+                      </div>
+
+                      <div class="grid-item">
+                      <article class="article-event">
+                        <a href="event.html">
+                          <header>
+                            <h3>
+                              <i class="fa fa-comments"></i>
+                              2 april 2016
+                            </h3>
+                          </header>
+                          <div class="body">
+                            <p class="label">Evenement <span>biodiversiteit</span></p>
+                            <h3>ABC van het emissiehandels­systeem en prioriteiten van het EU-voorzitterschap</h3>
+                          </div>
+                        </a>
+                      </article>
+                      </div>
+
+                      <div class="grid-item">
+                      <article class="article-event">
+                        <a href="event.html">
+                          <header>
+                            <h3>
+                              <i class="fa fa-comments"></i>
+                              2 april 2016
+                            </h3>
+                          </header>
+                          <div class="body">
+                            <p class="label">Evenement <span>Biodiversiteit</span></p>
+                            <h3>ABC van het emissiehandels­systeem en prioriteiten van het EU-voorzitterschap</h3>
+                          </div>
+                        </a>
+                      </article>
+                      </div>
+
+                      <div class="grid-item">
+                      <article class="article-event">
+                        <a href="event.html">
+                          <header>
+                            <h3>
+                              <i class="fa fa-flag"></i>
+                              5 september 2016
+                            </h3>
+                          </header>
+                          <div class="body">
+                            <p class="label">Evenement <span>biodiversiteit</span></p>
+                            <h3>EU-voorzitterschap</h3>
+                          </div>
+                        </a>
+                      </article>
+                      </div>
+
+                      <div class="grid-item">
+                      <article class="article-advice">
+                        <a href="advice.html">
+                          <img src="static/img/photos/natuur_en_milieu.jpg" alt="Lorem pixel image">
+                          <div class="body">
+                            <h3>Uitbreiding van een erkend natuurreservaat E-003 "Blankaart" te Diksmuide en Houthulst (West-Vlaanderen)</h3>
+                            <p class="label">Advies <span>Biodiversiteit</span></p>
+                            <p class="truncate">Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet.</p>
+                          </div>
+                        </a>
+                      </article>
+                      </div>
+
+                      <div class="grid-item">
+                      <article class="article-advice">
+                        <a href="advice.html">
+                          <img src="static/img/photos/studeren.jpg" alt="Lorem pixel image">
+                          <div class="body">
+                            <h3>Omzetting richtlijn industriële emissies</h3>
+                            <p class="label">Advies <span>Biodiversiteit</span></p>
+                            <p class="truncate">Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet.</p>
+                          </div>
+                        </a>
+                      </article>
+                      </div>
+
+                      <div class="grid-item">
+                      <article class="article-event">
+                        <a href="event.html">
+                          <header>
+                            <h3>
+                              <i class="fa fa-comments"></i>
+                              2 april 2016
+                            </h3>
+                          </header>
+                          <div class="body">
+                            <p class="label">Evenement <span>biodiversiteit</span></p>
+                            <h3>ABC van het emissiehandels­systeem en prioriteiten van het EU-voorzitterschap</h3>
+                          </div>
+                        </a>
+                      </article>
+                      </div>
+
+                      <div class="grid-item">
+                      <article class="article-event">
+                        <a href="event.html">
+                          <header>
+                            <h3>
+                              <i class="fa fa-comments"></i>
+                              2 april 2016
+                            </h3>
+                          </header>
+                          <div class="body">
+                            <p class="label">Evenement <span>biodiversiteit</span></p>
+                            <h3>ABC van het emissiehandels­systeem en prioriteiten van het EU-voorzitterschap</h3>
+                          </div>
+                        </a>
+                      </article>
+                      </div>
+
+                      <div class="grid-item">
+                      <article class="article-event">
+                        <a href="event.html">
+                          <header>
+                            <h3>
+                              <i class="fa fa-comments"></i>
+                              2 april 2016
+                            </h3>
+                          </header>
+                          <div class="body">
+                            <p class="label">Evenement <span>biodiversiteit</span></p>
+                            <h3>ABC van het emissiehandels­systeem en prioriteiten van het EU-voorzitterschap</h3>
+                          </div>
+                        </a>
+                      </article>
+                      </div>
+
+                </div>
+
+                </div>
+
+
+
+
+
+
+
+
+
                 </div>
               </div>
             </section>

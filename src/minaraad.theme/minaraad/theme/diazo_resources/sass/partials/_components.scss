@@ -220,7 +220,12 @@ body {
 
 
 nav section {
-  &.prev-next, &.archive, &.theme-list {
+  &.search,
+  &.filters,
+  &.digibib,
+  &.prev-next,
+  &.archive,
+  &.theme-list {
     @include article-block-line-top($mina-red-dark);
     h2 {
       color: $mina-red;
@@ -247,6 +252,19 @@ nav section {
     }
     li.active a {
       background: $mina-red-light-bg;
+    }
+  }
+  &.search,
+  &.filters,
+  &.digibib {
+    background: $mina-bg-gray;
+    label {
+      font-weight: normal;
+    }
+  }
+  &.search {
+    input[type="text"] {
+      width: 100%;
     }
   }
   &.prev-next {
