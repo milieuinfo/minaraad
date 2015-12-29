@@ -127,6 +127,19 @@ module.exports = function(grunt) {
               },
 
               //
+              // Copy Flat icon fonts.
+              //
+              // Will fail silently if source files are missing due to wildcard.
+
+              {
+                  expand: true,
+                  cwd: 'fonts/flaticon',
+                  src: ['*.eot', '*.svg', '*.ttf', '*.woff'],
+                  dest: 'static/flaticon/',
+                  filter: 'isFile'
+              },
+
+              //
               // Copy images.
               //
               // Will fail silently if source files are missing due to wildcard.

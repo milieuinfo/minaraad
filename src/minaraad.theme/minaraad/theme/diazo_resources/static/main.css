@@ -201,6 +201,80 @@
   font-style: normal;
   font-weight: 600; }
 
+@font-face {
+  font-family: "Flaticon";
+  src: url("flaticon/flaticon.eot");
+  src: url("flaticon/flaticon.eot#iefix") format("embedded-opentype"), url("flaticon/flaticon.woff") format("woff"), url("flaticon/flaticon.ttf") format("truetype"), url("flaticon/flaticon.svg") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+[class^="flaticon-"]:before, [class*=" flaticon-"]:before,
+[class^="flaticon-"]:after, [class*=" flaticon-"]:after {
+  font-family: Flaticon;
+  font-size: 20px;
+  font-style: normal;
+  margin-left: 20px; }
+
+.flaticon-doc:before {
+  content: "\e000"; }
+
+.flaticon-documents:before {
+  content: "\e001"; }
+
+.flaticon-docx1:before {
+  content: "\e002"; }
+
+.flaticon-gif5:before {
+  content: "\e003"; }
+
+.flaticon-html8:before {
+  content: "\e004"; }
+
+.flaticon-jpg2:before {
+  content: "\e005"; }
+
+.flaticon-list40:before {
+  content: "\e006"; }
+
+.flaticon-mov:before {
+  content: "\e007"; }
+
+.flaticon-mp42:before {
+  content: "\e008"; }
+
+.flaticon-odt1:before {
+  content: "\e009"; }
+
+.flaticon-otf5:before {
+  content: "\e00a"; }
+
+.flaticon-pdf17:before {
+  content: "\e00b"; }
+
+.flaticon-png4:before {
+  content: "\e00c"; }
+
+.flaticon-ppt2:before {
+  content: "\e00d"; }
+
+.flaticon-rtf1:before {
+  content: "\e00e"; }
+
+.flaticon-svg2:before {
+  content: "\e00f"; }
+
+.flaticon-tiff:before {
+  content: "\e010"; }
+
+.flaticon-txt:before {
+  content: "\e011"; }
+
+.flaticon-write13:before {
+  content: "\e012"; }
+
+.flaticon-xls2:before {
+  content: "\e013"; }
+
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 html {
   font-family: sans-serif;
@@ -925,7 +999,8 @@ blockquote {
 .blockquote-reverse,
 blockquote.pull-right,
 .topbar blockquote.contact,
-.logobar blockquote.search {
+.logobar blockquote.search,
+.list-group-downloads .list-group-item .body blockquote.btn {
   padding-right: 15px;
   padding-left: 0;
   border-right: 5px solid #eeeeee;
@@ -938,13 +1013,13 @@ blockquote.pull-right,
   .blockquote-reverse dt:before,
   .blockquote-reverse .dl-horizontal dd:before, .dl-horizontal
   .blockquote-reverse dd:before,
-  blockquote.pull-right footer:before, .topbar blockquote.contact footer:before, .logobar blockquote.search footer:before,
-  blockquote.pull-right small:before, .topbar blockquote.contact small:before, .logobar blockquote.search small:before,
-  blockquote.pull-right .small:before, .topbar blockquote.contact .small:before, .logobar blockquote.search .small:before,
+  blockquote.pull-right footer:before, .topbar blockquote.contact footer:before, .logobar blockquote.search footer:before, .list-group-downloads .list-group-item .body blockquote.btn footer:before,
+  blockquote.pull-right small:before, .topbar blockquote.contact small:before, .logobar blockquote.search small:before, .list-group-downloads .list-group-item .body blockquote.btn small:before,
+  blockquote.pull-right .small:before, .topbar blockquote.contact .small:before, .logobar blockquote.search .small:before, .list-group-downloads .list-group-item .body blockquote.btn .small:before,
   blockquote.pull-right .dl-horizontal dt:before, .dl-horizontal
-  blockquote.pull-right dt:before, .topbar blockquote.contact .dl-horizontal dt:before, .dl-horizontal .topbar blockquote.contact dt:before, .logobar blockquote.search .dl-horizontal dt:before, .dl-horizontal .logobar blockquote.search dt:before,
+  blockquote.pull-right dt:before, .topbar blockquote.contact .dl-horizontal dt:before, .dl-horizontal .topbar blockquote.contact dt:before, .logobar blockquote.search .dl-horizontal dt:before, .dl-horizontal .logobar blockquote.search dt:before, .list-group-downloads .list-group-item .body blockquote.btn .dl-horizontal dt:before, .dl-horizontal .list-group-downloads .list-group-item .body blockquote.btn dt:before,
   blockquote.pull-right .dl-horizontal dd:before, .dl-horizontal
-  blockquote.pull-right dd:before, .topbar blockquote.contact .dl-horizontal dd:before, .dl-horizontal .topbar blockquote.contact dd:before, .logobar blockquote.search .dl-horizontal dd:before, .dl-horizontal .logobar blockquote.search dd:before {
+  blockquote.pull-right dd:before, .topbar blockquote.contact .dl-horizontal dd:before, .dl-horizontal .topbar blockquote.contact dd:before, .logobar blockquote.search .dl-horizontal dd:before, .dl-horizontal .logobar blockquote.search dd:before, .list-group-downloads .list-group-item .body blockquote.btn .dl-horizontal dd:before, .dl-horizontal .list-group-downloads .list-group-item .body blockquote.btn dd:before {
     content: ''; }
   .blockquote-reverse footer:after,
   .blockquote-reverse small:after,
@@ -953,13 +1028,13 @@ blockquote.pull-right,
   .blockquote-reverse dt:after,
   .blockquote-reverse .dl-horizontal dd:after, .dl-horizontal
   .blockquote-reverse dd:after,
-  blockquote.pull-right footer:after, .topbar blockquote.contact footer:after, .logobar blockquote.search footer:after,
-  blockquote.pull-right small:after, .topbar blockquote.contact small:after, .logobar blockquote.search small:after,
-  blockquote.pull-right .small:after, .topbar blockquote.contact .small:after, .logobar blockquote.search .small:after,
+  blockquote.pull-right footer:after, .topbar blockquote.contact footer:after, .logobar blockquote.search footer:after, .list-group-downloads .list-group-item .body blockquote.btn footer:after,
+  blockquote.pull-right small:after, .topbar blockquote.contact small:after, .logobar blockquote.search small:after, .list-group-downloads .list-group-item .body blockquote.btn small:after,
+  blockquote.pull-right .small:after, .topbar blockquote.contact .small:after, .logobar blockquote.search .small:after, .list-group-downloads .list-group-item .body blockquote.btn .small:after,
   blockquote.pull-right .dl-horizontal dt:after, .dl-horizontal
-  blockquote.pull-right dt:after, .topbar blockquote.contact .dl-horizontal dt:after, .dl-horizontal .topbar blockquote.contact dt:after, .logobar blockquote.search .dl-horizontal dt:after, .dl-horizontal .logobar blockquote.search dt:after,
+  blockquote.pull-right dt:after, .topbar blockquote.contact .dl-horizontal dt:after, .dl-horizontal .topbar blockquote.contact dt:after, .logobar blockquote.search .dl-horizontal dt:after, .dl-horizontal .logobar blockquote.search dt:after, .list-group-downloads .list-group-item .body blockquote.btn .dl-horizontal dt:after, .dl-horizontal .list-group-downloads .list-group-item .body blockquote.btn dt:after,
   blockquote.pull-right .dl-horizontal dd:after, .dl-horizontal
-  blockquote.pull-right dd:after, .topbar blockquote.contact .dl-horizontal dd:after, .dl-horizontal .topbar blockquote.contact dd:after, .logobar blockquote.search .dl-horizontal dd:after, .dl-horizontal .logobar blockquote.search dd:after {
+  blockquote.pull-right dd:after, .topbar blockquote.contact .dl-horizontal dd:after, .dl-horizontal .topbar blockquote.contact dd:after, .logobar blockquote.search .dl-horizontal dd:after, .dl-horizontal .logobar blockquote.search dd:after, .list-group-downloads .list-group-item .body blockquote.btn .dl-horizontal dd:after, .dl-horizontal .list-group-downloads .list-group-item .body blockquote.btn dd:after {
     content: '\00A0 \2014'; }
 
 address {
@@ -1007,19 +1082,19 @@ address {
   .row:after, .sec-advice-detail article:after, .images .thumbnails:after {
     clear: both; }
 
-.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .footer-doormat .column, .col-lg-2, .col-xs-3, .images .thumbnails a, .col-sm-3, .col-md-3, .masonry .grid-item, .sec-home .column, .sec-related .column, .sec-themes .right, .sec-advice-detail nav, .col-lg-3, .col-xs-4, .col-sm-4, .footer-doormat .column, .sec-advice-detail nav, .col-md-4, .jumbotronbar .column-left, .sec-themes .left .column, .col-lg-4, .col-xs-5, .col-sm-5, .jumbotronbar .column-left, .col-md-5, .sec-advice-detail article aside, .col-lg-5, .col-xs-6, .footer-doormat .column, .col-sm-6, .masonry .grid-item, .sec-home .wrapper-column, .sec-home .column, .sec-related .column, .sec-themes .left .column, .sec-themes .right, .col-md-6, .sec-home .wrapper-column .column, .col-lg-6, .col-xs-7, .col-sm-7, .jumbotron, .col-md-7, .jumbotron, .sec-advice-detail article .body, .col-lg-7, .jumbotron, .col-xs-8, .col-sm-8, .sec-advice-detail article, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .sec-themes .left, .sec-advice-detail article, .col-lg-9, .col-xs-10, .jumbotronbar .column-left, .jumbotron, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .masonry .grid-item, .sec-home .wrapper-column, .sec-home .wrapper-column .column, .sec-home .column, .sec-related .column, .sec-themes .left, .sec-themes .right, .sec-advice-detail article aside, .sec-advice-detail article .body, .sec-advice-detail nav, .col-sm-12, .footer-flanders #owner, .footer-flanders #drawer, .sec-home .wrapper-column .column, .sec-themes .left, .col-md-12, .col-lg-12 {
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .list-group-downloads .list-group-item .icon, .col-sm-2, .col-md-2, .footer-doormat .column, .col-lg-2, .col-xs-3, .images .thumbnails a, .col-sm-3, .col-md-3, .masonry .grid-item, .sec-home .column, .sec-related .column, .sec-themes .right, .sec-advice-detail nav, .col-lg-3, .col-xs-4, .col-sm-4, .footer-doormat .column, .sec-advice-detail nav, .col-md-4, .jumbotronbar .column-left, .sec-themes .left .column, .col-lg-4, .col-xs-5, .col-sm-5, .jumbotronbar .column-left, .col-md-5, .sec-advice-detail article aside, .col-lg-5, .col-xs-6, .footer-doormat .column, .col-sm-6, .masonry .grid-item, .sec-home .wrapper-column, .sec-home .column, .sec-related .column, .sec-themes .left .column, .sec-themes .right, .col-md-6, .sec-home .wrapper-column .column, .col-lg-6, .col-xs-7, .col-sm-7, .jumbotron, .col-md-7, .jumbotron, .sec-advice-detail article .body, .col-lg-7, .jumbotron, .col-xs-8, .col-sm-8, .sec-advice-detail article, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .sec-themes .left, .sec-advice-detail article, .col-lg-9, .col-xs-10, .jumbotronbar .column-left, .jumbotron, .list-group-downloads .list-group-item .body, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .masonry .grid-item, .sec-home .wrapper-column, .sec-home .wrapper-column .column, .sec-home .column, .sec-related .column, .sec-themes .left, .sec-themes .right, .sec-advice-detail article aside, .sec-advice-detail article .body, .sec-advice-detail nav, .col-sm-12, .footer-flanders #owner, .footer-flanders #drawer, .sec-home .wrapper-column .column, .sec-themes .left, .col-md-12, .col-lg-12 {
   position: relative;
   min-height: 1px;
   padding-left: 7px;
   padding-right: 7px; }
 
-.col-xs-1, .col-xs-2, .col-xs-3, .images .thumbnails a, .col-xs-4, .col-xs-5, .col-xs-6, .footer-doormat .column, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .jumbotronbar .column-left, .jumbotron, .col-xs-11, .col-xs-12, .masonry .grid-item, .sec-home .wrapper-column, .sec-home .wrapper-column .column, .sec-home .column, .sec-related .column, .sec-themes .left, .sec-themes .right, .sec-advice-detail article aside, .sec-advice-detail article .body, .sec-advice-detail nav {
+.col-xs-1, .col-xs-2, .list-group-downloads .list-group-item .icon, .col-xs-3, .images .thumbnails a, .col-xs-4, .col-xs-5, .col-xs-6, .footer-doormat .column, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .jumbotronbar .column-left, .jumbotron, .list-group-downloads .list-group-item .body, .col-xs-11, .col-xs-12, .masonry .grid-item, .sec-home .wrapper-column, .sec-home .wrapper-column .column, .sec-home .column, .sec-related .column, .sec-themes .left, .sec-themes .right, .sec-advice-detail article aside, .sec-advice-detail article .body, .sec-advice-detail nav {
   float: left; }
 
 .col-xs-1 {
   width: 8.3333333333%; }
 
-.col-xs-2 {
+.col-xs-2, .list-group-downloads .list-group-item .icon {
   width: 16.6666666667%; }
 
 .col-xs-3, .images .thumbnails a {
@@ -1043,7 +1118,7 @@ address {
 .col-xs-9 {
   width: 75%; }
 
-.col-xs-10, .jumbotronbar .column-left, .jumbotron {
+.col-xs-10, .jumbotronbar .column-left, .jumbotron, .list-group-downloads .list-group-item .body {
   width: 83.3333333333%; }
 
 .col-xs-11 {
@@ -2670,7 +2745,7 @@ tbody.collapse.in {
   -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
   background-clip: padding-box; }
-  .dropdown-menu.pull-right, .topbar .dropdown-menu.contact, .logobar .dropdown-menu.search, .footer-flanders a.dropdown-menu.less, .article-theme img.dropdown-menu {
+  .dropdown-menu.pull-right, .topbar .dropdown-menu.contact, .logobar .dropdown-menu.search, .footer-flanders a.dropdown-menu.less, .list-group-downloads .list-group-item .body .dropdown-menu.btn, .article-theme img.dropdown-menu {
     right: 0;
     left: auto; }
   .dropdown-menu .divider {
@@ -2738,7 +2813,7 @@ tbody.collapse.in {
   top: 0;
   z-index: 990; }
 
-.pull-right > .dropdown-menu, .topbar .contact > .dropdown-menu, .logobar .search > .dropdown-menu, .footer-flanders a.less > .dropdown-menu, .article-theme img > .dropdown-menu {
+.pull-right > .dropdown-menu, .topbar .contact > .dropdown-menu, .logobar .search > .dropdown-menu, .footer-flanders a.less > .dropdown-menu, .list-group-downloads .list-group-item .body .btn > .dropdown-menu, .article-theme img > .dropdown-menu {
   right: 0;
   left: auto; }
 
@@ -3714,7 +3789,7 @@ tbody.collapse.in {
   .alert-danger .alert-link {
     color: #843534; }
 
-.list-group {
+.list-group, .list-group-themes, .list-group-downloads {
   margin-bottom: 20px;
   padding-left: 0; }
 
@@ -3934,32 +4009,40 @@ button.list-group-item-danger {
   border-bottom-right-radius: 3px;
   border-bottom-left-radius: 3px; }
 
-.panel > .list-group,
-.panel > .panel-collapse > .list-group {
+.panel > .list-group, .panel > .list-group-themes, .panel > .list-group-downloads,
+.panel > .panel-collapse > .list-group,
+.panel > .panel-collapse > .list-group-themes,
+.panel > .panel-collapse > .list-group-downloads {
   margin-bottom: 0; }
-  .panel > .list-group .list-group-item,
-  .panel > .panel-collapse > .list-group .list-group-item {
+  .panel > .list-group .list-group-item, .panel > .list-group-themes .list-group-item, .panel > .list-group-downloads .list-group-item,
+  .panel > .panel-collapse > .list-group .list-group-item,
+  .panel > .panel-collapse > .list-group-themes .list-group-item,
+  .panel > .panel-collapse > .list-group-downloads .list-group-item {
     border-width: 1px 0;
     border-radius: 0; }
-  .panel > .list-group:first-child .list-group-item:first-child,
-  .panel > .panel-collapse > .list-group:first-child .list-group-item:first-child {
+  .panel > .list-group:first-child .list-group-item:first-child, .panel > .list-group-themes:first-child .list-group-item:first-child, .panel > .list-group-downloads:first-child .list-group-item:first-child,
+  .panel > .panel-collapse > .list-group:first-child .list-group-item:first-child,
+  .panel > .panel-collapse > .list-group-themes:first-child .list-group-item:first-child,
+  .panel > .panel-collapse > .list-group-downloads:first-child .list-group-item:first-child {
     border-top: 0;
     border-top-right-radius: 3px;
     border-top-left-radius: 3px; }
-  .panel > .list-group:last-child .list-group-item:last-child,
-  .panel > .panel-collapse > .list-group:last-child .list-group-item:last-child {
+  .panel > .list-group:last-child .list-group-item:last-child, .panel > .list-group-themes:last-child .list-group-item:last-child, .panel > .list-group-downloads:last-child .list-group-item:last-child,
+  .panel > .panel-collapse > .list-group:last-child .list-group-item:last-child,
+  .panel > .panel-collapse > .list-group-themes:last-child .list-group-item:last-child,
+  .panel > .panel-collapse > .list-group-downloads:last-child .list-group-item:last-child {
     border-bottom: 0;
     border-bottom-right-radius: 3px;
     border-bottom-left-radius: 3px; }
 
-.panel > .panel-heading + .panel-collapse > .list-group .list-group-item:first-child {
+.panel > .panel-heading + .panel-collapse > .list-group .list-group-item:first-child, .panel > .panel-heading + .panel-collapse > .list-group-themes .list-group-item:first-child, .panel > .panel-heading + .panel-collapse > .list-group-downloads .list-group-item:first-child {
   border-top-right-radius: 0;
   border-top-left-radius: 0; }
 
-.panel-heading + .list-group .list-group-item:first-child {
+.panel-heading + .list-group .list-group-item:first-child, .panel-heading + .list-group-themes .list-group-item:first-child, .panel-heading + .list-group-downloads .list-group-item:first-child {
   border-top-width: 0; }
 
-.list-group + .panel-footer {
+.list-group + .panel-footer, .list-group-themes + .panel-footer, .list-group-downloads + .panel-footer {
   border-top-width: 0; }
 
 .panel > .table,
@@ -4102,7 +4185,9 @@ button.list-group-item-danger {
   .panel-group .panel-heading {
     border-bottom: 0; }
     .panel-group .panel-heading + .panel-collapse > .panel-body,
-    .panel-group .panel-heading + .panel-collapse > .list-group {
+    .panel-group .panel-heading + .panel-collapse > .list-group,
+    .panel-group .panel-heading + .panel-collapse > .list-group-themes,
+    .panel-group .panel-heading + .panel-collapse > .list-group-downloads {
       border-top: 1px solid #ddd; }
   .panel-group .panel-footer {
     border-top: 0; }
@@ -4367,7 +4452,7 @@ button.close {
   margin-left: auto;
   margin-right: auto; }
 
-.pull-right, .topbar .contact, .logobar .search, .footer-flanders a.less, .article-theme img {
+.pull-right, .topbar .contact, .logobar .search, .footer-flanders a.less, .list-group-downloads .list-group-item .body .btn, .article-theme img {
   float: right !important; }
 
 .pull-left, .topbar .sites, .jumbotronbar .column-left .theme-title div h1, .article-theme-other img {
@@ -4645,7 +4730,7 @@ button.close {
   margin-left: .3em; }
 
 /* Deprecated as of 4.4.0 */
-.pull-right, .topbar .contact, .logobar .search, .footer-flanders a.less, .article-theme img {
+.pull-right, .topbar .contact, .logobar .search, .footer-flanders a.less, .list-group-downloads .list-group-item .body .btn, .article-theme img {
   float: right; }
 
 .pull-left, .topbar .sites, .jumbotronbar .column-left .theme-title div h1, .article-theme-other img {
@@ -4654,7 +4739,7 @@ button.close {
 .fa.pull-left, .topbar .fa.sites, .jumbotronbar .column-left .theme-title div h1.fa, .article-theme-other img.fa {
   margin-right: .3em; }
 
-.fa.pull-right, .topbar .fa.contact, .logobar .fa.search, .footer-flanders a.fa.less, .article-theme img.fa {
+.fa.pull-right, .topbar .fa.contact, .logobar .fa.search, .footer-flanders a.fa.less, .list-group-downloads .list-group-item .body .fa.btn, .article-theme img.fa {
   margin-left: .3em; }
 
 .fa-spin {
@@ -6938,6 +7023,69 @@ a {
   .btn i {
     margin-right: .4em; }
 
+.btn-mina-green, .list-group-downloads .list-group-item .body .btn {
+  color: white;
+  background-color: #4aa894;
+  border-color: #387d70; }
+  .btn-mina-green:focus, .list-group-downloads .list-group-item .body .btn:focus, .btn-mina-green.focus, .list-group-downloads .list-group-item .body .focus.btn {
+    color: white;
+    background-color: #3a8575;
+    border-color: #112521; }
+  .btn-mina-green:hover, .list-group-downloads .list-group-item .body .btn:hover {
+    color: white;
+    background-color: #3a8575;
+    border-color: #25534a; }
+  .btn-mina-green:active, .list-group-downloads .list-group-item .body .btn:active, .btn-mina-green.active, .list-group-downloads .list-group-item .body .active.btn,
+  .open > .btn-mina-green.dropdown-toggle, .list-group-downloads .list-group-item .body
+  .open > .dropdown-toggle.btn {
+    color: white;
+    background-color: #3a8575;
+    border-color: #25534a; }
+    .btn-mina-green:active:hover, .list-group-downloads .list-group-item .body .btn:active:hover, .btn-mina-green:active:focus, .list-group-downloads .list-group-item .body .btn:active:focus, .btn-mina-green:active.focus, .list-group-downloads .list-group-item .body .btn:active.focus, .btn-mina-green.active:hover, .list-group-downloads .list-group-item .body .active.btn:hover, .btn-mina-green.active:focus, .list-group-downloads .list-group-item .body .active.btn:focus, .btn-mina-green.active.focus, .list-group-downloads .list-group-item .body .active.focus.btn,
+    .open > .btn-mina-green.dropdown-toggle:hover, .list-group-downloads .list-group-item .body
+    .open > .dropdown-toggle.btn:hover,
+    .open > .btn-mina-green.dropdown-toggle:focus, .list-group-downloads .list-group-item .body
+    .open > .dropdown-toggle.btn:focus,
+    .open > .btn-mina-green.dropdown-toggle.focus, .list-group-downloads .list-group-item .body
+    .open > .dropdown-toggle.focus.btn {
+      color: white;
+      background-color: #2f6c5f;
+      border-color: #112521; }
+  .btn-mina-green:active, .list-group-downloads .list-group-item .body .btn:active, .btn-mina-green.active, .list-group-downloads .list-group-item .body .active.btn,
+  .open > .btn-mina-green.dropdown-toggle, .list-group-downloads .list-group-item .body
+  .open > .dropdown-toggle.btn {
+    background-image: none; }
+  .btn-mina-green.disabled, .list-group-downloads .list-group-item .body .disabled.btn, .btn-mina-green.disabled:hover, .list-group-downloads .list-group-item .body .disabled.btn:hover, .btn-mina-green.disabled:focus, .list-group-downloads .list-group-item .body .disabled.btn:focus, .btn-mina-green.disabled.focus, .list-group-downloads .list-group-item .body .disabled.focus.btn, .btn-mina-green.disabled:active, .list-group-downloads .list-group-item .body .disabled.btn:active, .btn-mina-green.disabled.active, .list-group-downloads .list-group-item .body .disabled.active.btn, .btn-mina-green[disabled], .list-group-downloads .list-group-item .body [disabled].btn, .btn-mina-green[disabled]:hover, .list-group-downloads .list-group-item .body [disabled].btn:hover, .btn-mina-green[disabled]:focus, .list-group-downloads .list-group-item .body [disabled].btn:focus, .btn-mina-green[disabled].focus, .list-group-downloads .list-group-item .body [disabled].focus.btn, .btn-mina-green[disabled]:active, .list-group-downloads .list-group-item .body [disabled].btn:active, .btn-mina-green[disabled].active, .list-group-downloads .list-group-item .body [disabled].active.btn,
+  fieldset[disabled] .btn-mina-green,
+  fieldset[disabled] .list-group-downloads .list-group-item .body .btn, .list-group-downloads .list-group-item .body
+  fieldset[disabled] .btn,
+  fieldset[disabled] .btn-mina-green:hover,
+  fieldset[disabled] .list-group-downloads .list-group-item .body .btn:hover, .list-group-downloads .list-group-item .body
+  fieldset[disabled] .btn:hover,
+  fieldset[disabled] .btn-mina-green:focus,
+  fieldset[disabled] .list-group-downloads .list-group-item .body .btn:focus, .list-group-downloads .list-group-item .body
+  fieldset[disabled] .btn:focus,
+  fieldset[disabled] .btn-mina-green.focus,
+  fieldset[disabled] .list-group-downloads .list-group-item .body .focus.btn, .list-group-downloads .list-group-item .body
+  fieldset[disabled] .focus.btn,
+  fieldset[disabled] .btn-mina-green:active,
+  fieldset[disabled] .list-group-downloads .list-group-item .body .btn:active, .list-group-downloads .list-group-item .body
+  fieldset[disabled] .btn:active,
+  fieldset[disabled] .btn-mina-green.active,
+  fieldset[disabled] .list-group-downloads .list-group-item .body .active.btn, .list-group-downloads .list-group-item .body
+  fieldset[disabled] .active.btn {
+    background-color: #4aa894;
+    border-color: #387d70; }
+  .btn-mina-green .badge, .list-group-downloads .list-group-item .body .btn .badge {
+    color: #4aa894;
+    background-color: white; }
+
+[class^="flaticon-"]:before,
+[class*=" flaticon-"]:before {
+  font-size: 46px;
+  line-height: 46px;
+  margin-left: 0; }
+
 p.label {
   font-weight: 500;
   color: #62accb !important;
@@ -6970,9 +7118,9 @@ body {
 .dl-horizontal dd {
   margin-left: 120px; }
 
-.list-group .list-group-item {
+.list-group .list-group-item, .list-group-themes .list-group-item, .list-group-downloads .list-group-item {
   padding: 15px 20px; }
-  .list-group .list-group-item:first-child, .list-group .list-group-item:last-child {
+  .list-group .list-group-item:first-child, .list-group-themes .list-group-item:first-child, .list-group-downloads .list-group-item:first-child, .list-group .list-group-item:last-child, .list-group-themes .list-group-item:last-child, .list-group-downloads .list-group-item:last-child {
     border-radius: 0; }
 
 .list-group-themes {
@@ -6995,6 +7143,26 @@ body {
       font-size: 1.4em; }
   .list-group-themes .list-group-item {
     padding: 15px 20px 15px 17px; }
+
+.list-group-downloads {
+  margin-left: -15px;
+  margin-right: -15px;
+  margin-bottom: 0; }
+  .list-group-downloads .list-group-item:last-child {
+    border-bottom: none; }
+  .list-group-downloads .list-group-item {
+    border-left: 0;
+    border-right: 0;
+    padding: 15px;
+    overflow: auto; }
+    .list-group-downloads .list-group-item .icon {
+      color: #246e8c; }
+      .list-group-downloads .list-group-item .icon i:before {
+        margin-left: -5px; }
+    .list-group-downloads .list-group-item .body h3 {
+      margin-top: 0;
+      font-size: 16px;
+      color: #2e94bd; }
 
 nav section.prev-next, nav section.archive, nav section.theme-list {
   border-top: 5px solid #86263a;
@@ -7201,6 +7369,7 @@ nav section.archive li a:hover:before, nav section.archive li.active a:before, n
   font-size: 18px; }
 
 .article-advice-detail .body section {
+  border: 1px solid #d9d9d9;
   border-top: 5px solid #2e94bd;
   padding: 0 15px 1px 15px;
   background-color: white;

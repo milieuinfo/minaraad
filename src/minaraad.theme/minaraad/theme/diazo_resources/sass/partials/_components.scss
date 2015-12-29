@@ -38,6 +38,22 @@ a {
   }
 }
 
+.btn-mina-green {
+  @include button-variant(white, $mina-green, $mina-green-dark);
+}
+
+//
+// Icons
+//
+
+[class^="flaticon-"]:before,
+[class*=" flaticon-"]:before {
+    font-size: 46px;
+    line-height: 46px;
+    margin-left: 0;
+}
+
+
 //
 // Label
 //
@@ -107,7 +123,7 @@ body {
 // List group
 //
 // Counter style BS. We don't want rounded corners. But can't set the var to 0
-// because we want rounded corners on other elemenents (form field and buttons).
+// because we want rounded corners on other elements (form field and buttons).
 
 .list-group {
   .list-group-item {
@@ -119,6 +135,7 @@ body {
 }
 
 .list-group-themes {
+  @extend .list-group;
   border-top: 5px solid $mina-blue;
   a{
     font-size: 16px;
@@ -144,6 +161,42 @@ body {
   }
   .list-group-item {
     padding: 15px 20px 15px 17px;
+  }
+}
+
+.list-group-downloads {
+  @extend .list-group;
+  margin-left: -15px;
+  margin-right: -15px;
+  margin-bottom: 0;
+  .list-group-item:last-child {
+    border-bottom: none;
+  }
+  .list-group-item {
+    border-left: 0;
+    border-right: 0;
+    padding: 15px;
+    overflow: auto;
+    .icon {
+      @extend .col-xs-2;
+      color: $mina-blue-dark;
+      i:before {
+        margin-left: -5px;
+      }
+
+    }
+    .body {
+      @extend .col-xs-10;
+      h3 {
+        margin-top: 0;
+        font-size: 16px;
+        color: $mina-blue;
+      }
+      .btn {
+        @extend .pull-right;
+        @extend .btn-mina-green;
+      }
+    }
   }
 }
 

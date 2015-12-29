@@ -10,6 +10,9 @@ $roboto-font-path: 'roboto' !default;
 $flanders-font-path: 'flanders' !default;
 @import "../fonts/flanders/flanders.scss";
 
+$flaticon-font-path: 'flaticon' !default;
+@import "../fonts/flaticon/flaticon.scss";
+
 // Set asset path
 $bootstrap-sass-asset-helper: "bootstrap-sass-official/assets/";
 

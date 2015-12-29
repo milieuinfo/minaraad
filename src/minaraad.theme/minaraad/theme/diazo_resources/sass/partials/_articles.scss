@@ -235,6 +235,7 @@
   }
   .body {
     section {
+      border: 1px solid darken(white, 15);
       @include article-block-line-top($mina-blue);
     }
     h3:first-child {

@@ -3,7 +3,6 @@
 //
 // Custom styling for the featerlight lightbox.
 
-
 .featherlight .featherlight-content {
     padding: 0;
     border-bottom: 0;
@@ -58,24 +57,6 @@ $featherlight-gradient-2: rgba(0, 0, 0, 0);
     background: linear-gradient(to right, $featherlight-gradient-2, $featherlight-gradient-1); /* Standard syntax */
 
 }
-
-
-//.featherlight-next span, .featherlight-previous span {
-//    display: none;
-//    position: absolute;
-//    top: 50%;
-//    left: 5%;
-//    width: 50px;
-//    text-align: center;
-//    font-size: 80px;
-//    margin-top: -40px;
-//    color: #fff;
-//    font-style: normal;
-//    font-weight: normal;
-//    height: 50px;
-//    border-radius: 25px;
-//    line-height: 53px;
-//}
 
 .featherlight-previous {
     left: 0;
