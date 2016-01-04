@@ -243,3 +243,9 @@
     }
   }
 }
+
+
+
+.article-contact-detail {
+  @extend .article-advice-detail;
+}

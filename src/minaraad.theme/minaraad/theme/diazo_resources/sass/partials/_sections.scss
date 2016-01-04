@@ -115,7 +115,25 @@
   }
 }
 
+.sec-contact-detail {
+  @extend .sec-default;
 
+  article {
+    .body {
+      @extend .col-xs-12;
+      @extend .col-sm-8, .col-sm-push-4;
+      @extend .col-md-6, .col-md-push-5;
+      @extend .col-lg-5, .col-md-push-5;
+
+    }
+    aside {
+      @extend .col-xs-12;
+      @extend .col-sm-4, .col-sm-pull-8;
+      @extend .col-md-4, .col-md-pull-6;
+      @extend .col-lg-4, .col-lg-pull-5;
+    }
+  }
+}
 
 
 // -----------------------------------------------------------------------------
