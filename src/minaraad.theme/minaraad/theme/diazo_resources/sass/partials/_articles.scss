@@ -12,13 +12,14 @@
     width: 100%;
   }
   .body {
-    padding: 15px 20px 6px;
+    padding: 15px 20px 7px;
   }
   h3 {
     font-size: 18px;
     margin-top: 0;
   }
-  a {
+  > a {
+    overflow: auto;
     display: block;
     p {
       color: $text-color;
@@ -247,5 +248,10 @@
 
 
 .article-contact-detail {
+  @extend .article-advice-detail;
+}
+
+
+.article-page-detail {
   @extend .article-advice-detail;
 }

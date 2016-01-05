@@ -225,6 +225,7 @@ nav section {
   &.digibib,
   &.prev-next,
   &.archive,
+  &.nav-list,
   &.theme-list {
     @include article-block-line-top($mina-red-dark);
     h2 {
@@ -296,7 +297,9 @@ nav section {
       }
     }
   }
-  &.archive, &.theme-list {
+  &.archive,
+  &.theme-list,
+  &.nav-list {
     li a:before {
       font-family: 'FontAwesome';
       color: lighten($mina-red-light, 15);

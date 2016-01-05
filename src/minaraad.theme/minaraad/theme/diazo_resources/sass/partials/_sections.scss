@@ -115,6 +115,12 @@
   }
 }
 
+//
+// Contact
+//
+// Note: With push and pull we flip the columns form sm and up.
+// XS has the default document flow.
+
 .sec-contact-detail {
   @extend .sec-default;
 
@@ -135,6 +141,22 @@
   }
 }
 
+//
+// Page detail
+//
+
+.sec-page-detail {
+  @extend .sec-default;
+  .left {
+    @extend .col-lg-3;
+  }
+  .article-page-detail {
+    @extend .col-lg-5, .col-lg-offset-1;
+  }
+  .right {
+    @extend .col-lg-3;
+  }
+}
 
 // -----------------------------------------------------------------------------
 // Small screen / tablet

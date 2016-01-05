@@ -1082,7 +1082,7 @@ address {
   .row:after, .masonry-documents:after, .sec-advice-detail article:after, .images .thumbnails:after {
     clear: both; }
 
-.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .list-group-downloads .list-group-item .icon, .col-sm-2, .col-md-2, .footer-doormat .column, .col-lg-2, .col-xs-3, .images .thumbnails a, .col-sm-3, .col-md-3, .masonry .grid-item, .sec-home .column, .sec-related .column, .sec-themes .right, .sec-advice-detail nav, .col-lg-3, .masonry-documents .grid-item, .col-xs-4, .col-sm-4, .footer-doormat .column, .sec-advice-detail nav, .sec-contact-detail article aside, .col-md-4, .masonry-documents .grid-item, .jumbotronbar .column-left, .sec-themes .left .column, .sec-contact-detail article aside, .col-lg-4, .sec-contact-detail article aside, .col-xs-5, .col-sm-5, .jumbotronbar .column-left, .col-md-5, .sec-advice-detail article aside, .col-lg-5, .sec-contact-detail article .body, .col-xs-6, .footer-doormat .column, .col-sm-6, .masonry .grid-item, .masonry-documents .grid-item, .sec-home .wrapper-column, .sec-home .column, .sec-related .column, .sec-themes .left .column, .sec-themes .right, .col-md-6, .sec-home .wrapper-column .column, .sec-contact-detail article .body, .col-lg-6, .col-xs-7, .col-sm-7, .jumbotron, .col-md-7, .jumbotron, .sec-advice-detail article .body, .col-lg-7, .jumbotron, .col-xs-8, .col-sm-8, .sec-advice-detail article, .sec-contact-detail article .body, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .sec-themes .left, .sec-advice-detail article, .col-lg-9, .col-xs-10, .jumbotronbar .column-left, .jumbotron, .list-group-downloads .list-group-item .body, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .masonry .grid-item, .masonry-documents .grid-item, .sec-home .wrapper-column, .sec-home .wrapper-column .column, .sec-home .column, .sec-related .column, .sec-themes .left, .sec-themes .right, .sec-advice-detail article aside, .sec-advice-detail article .body, .sec-advice-detail nav, .sec-contact-detail article .body, .sec-contact-detail article aside, .col-sm-12, .footer-flanders #owner, .footer-flanders #drawer, .sec-home .wrapper-column .column, .sec-themes .left, .col-md-12, .col-lg-12 {
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .list-group-downloads .list-group-item .icon, .col-sm-2, .col-md-2, .footer-doormat .column, .col-lg-2, .col-xs-3, .images .thumbnails a, .col-sm-3, .col-md-3, .masonry .grid-item, .sec-home .column, .sec-related .column, .sec-themes .right, .sec-advice-detail nav, .col-lg-3, .masonry-documents .grid-item, .sec-page-detail .left, .sec-page-detail .right, .col-xs-4, .col-sm-4, .footer-doormat .column, .sec-advice-detail nav, .sec-contact-detail article aside, .col-md-4, .masonry-documents .grid-item, .jumbotronbar .column-left, .sec-themes .left .column, .sec-contact-detail article aside, .col-lg-4, .sec-contact-detail article aside, .col-xs-5, .col-sm-5, .jumbotronbar .column-left, .col-md-5, .sec-advice-detail article aside, .col-lg-5, .sec-contact-detail article .body, .sec-page-detail .article-page-detail, .col-xs-6, .footer-doormat .column, .col-sm-6, .masonry .grid-item, .masonry-documents .grid-item, .sec-home .wrapper-column, .sec-home .column, .sec-related .column, .sec-themes .left .column, .sec-themes .right, .col-md-6, .sec-home .wrapper-column .column, .sec-contact-detail article .body, .col-lg-6, .col-xs-7, .col-sm-7, .jumbotron, .col-md-7, .jumbotron, .sec-advice-detail article .body, .col-lg-7, .jumbotron, .col-xs-8, .col-sm-8, .sec-advice-detail article, .sec-contact-detail article .body, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .sec-themes .left, .sec-advice-detail article, .col-lg-9, .col-xs-10, .jumbotronbar .column-left, .jumbotron, .list-group-downloads .list-group-item .body, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .masonry .grid-item, .masonry-documents .grid-item, .sec-home .wrapper-column, .sec-home .wrapper-column .column, .sec-home .column, .sec-related .column, .sec-themes .left, .sec-themes .right, .sec-advice-detail article aside, .sec-advice-detail article .body, .sec-advice-detail nav, .sec-contact-detail article .body, .sec-contact-detail article aside, .col-sm-12, .footer-flanders #owner, .footer-flanders #drawer, .sec-home .wrapper-column .column, .sec-themes .left, .col-md-12, .col-lg-12 {
   position: relative;
   min-height: 1px;
   padding-left: 7px;
@@ -1457,17 +1457,17 @@ address {
     margin-left: 100%; } }
 
 @media (min-width: 1200px) {
-  .col-lg-1, .col-lg-2, .col-lg-3, .masonry-documents .grid-item, .col-lg-4, .sec-contact-detail article aside, .col-lg-5, .sec-contact-detail article .body, .col-lg-6, .col-lg-7, .jumbotron, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12 {
+  .col-lg-1, .col-lg-2, .col-lg-3, .masonry-documents .grid-item, .sec-page-detail .left, .sec-page-detail .right, .col-lg-4, .sec-contact-detail article aside, .col-lg-5, .sec-contact-detail article .body, .sec-page-detail .article-page-detail, .col-lg-6, .col-lg-7, .jumbotron, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12 {
     float: left; }
   .col-lg-1 {
     width: 8.3333333333%; }
   .col-lg-2 {
     width: 16.6666666667%; }
-  .col-lg-3, .masonry-documents .grid-item {
+  .col-lg-3, .masonry-documents .grid-item, .sec-page-detail .left, .sec-page-detail .right {
     width: 25%; }
   .col-lg-4, .sec-contact-detail article aside {
     width: 33.3333333333%; }
-  .col-lg-5, .sec-contact-detail article .body {
+  .col-lg-5, .sec-contact-detail article .body, .sec-page-detail .article-page-detail {
     width: 41.6666666667%; }
   .col-lg-6 {
     width: 50%; }
@@ -1537,7 +1537,7 @@ address {
     left: 100%; }
   .col-lg-offset-0 {
     margin-left: 0%; }
-  .col-lg-offset-1 {
+  .col-lg-offset-1, .sec-page-detail .article-page-detail {
     margin-left: 8.3333333333%; }
   .col-lg-offset-2 {
     margin-left: 16.6666666667%; }
@@ -7164,12 +7164,12 @@ body {
       font-size: 16px;
       color: #2e94bd; }
 
-nav section.search, nav section.filters, nav section.digibib, nav section.prev-next, nav section.archive, nav section.theme-list {
+nav section.search, nav section.filters, nav section.digibib, nav section.prev-next, nav section.archive, nav section.nav-list, nav section.theme-list {
   border-top: 5px solid #86263a;
   padding: 0 15px 1px 15px;
   background-color: white;
   margin-bottom: 15px; }
-  nav section.search h2, nav section.filters h2, nav section.digibib h2, nav section.prev-next h2, nav section.archive h2, nav section.theme-list h2 {
+  nav section.search h2, nav section.filters h2, nav section.digibib h2, nav section.prev-next h2, nav section.archive h2, nav section.nav-list h2, nav section.theme-list h2 {
     color: #b2324d;
     font-size: 16px;
     font-weight: 600;
@@ -7222,7 +7222,7 @@ nav section.prev-next ul li:last-child a {
   nav section.prev-next ul li:last-child a:before {
     content: "\f105"; }
 
-nav section.archive li a:before, nav section.theme-list li a:before {
+nav section.archive li a:before, nav section.theme-list li a:before, nav section.nav-list li a:before {
   font-family: 'FontAwesome';
   color: #e37f94;
   float: left;
@@ -7230,7 +7230,7 @@ nav section.archive li a:before, nav section.theme-list li a:before {
   margin-right: 7px;
   margin-bottom: 2px; }
 
-nav section.archive li a:hover:before, nav section.archive li.active a:before, nav section.theme-list li a:hover:before, nav section.theme-list li.active a:before {
+nav section.archive li a:hover:before, nav section.archive li.active a:before, nav section.theme-list li a:hover:before, nav section.theme-list li.active a:before, nav section.nav-list li a:hover:before, nav section.nav-list li.active a:before {
   color: #b2324d; }
 
 .sec-header h2 {
@@ -7239,7 +7239,7 @@ nav section.archive li a:hover:before, nav section.archive li.active a:before, n
   font-weight: 400;
   padding: 0 0 .5em 0; }
 
-.sec, .sec-default, .sec-home, .sec-themes, .sec-advice-detail, .sec-contact-detail, .sec-dark, .sec-related {
+.sec, .sec-default, .sec-home, .sec-themes, .sec-advice-detail, .sec-contact-detail, .sec-page-detail, .sec-dark, .sec-related {
   padding-top: 20px;
   padding-bottom: 20px; }
 
@@ -7264,18 +7264,19 @@ nav section.archive li a:hover:before, nav section.archive li.active a:before, n
   .article-default img, .article-advice img, .article-event img, .article-next-meeting img, .article-vision img, .article-theme-other img, .article-theme img {
     width: 100%; }
   .article-default .body, .article-advice .body, .article-event .body, .article-next-meeting .body, .article-vision .body, .article-theme-other .body, .article-theme .body {
-    padding: 15px 20px 6px; }
+    padding: 15px 20px 7px; }
   .article-default h3, .article-advice h3, .article-event h3, .article-next-meeting h3, .article-vision h3, .article-theme-other h3, .article-theme h3 {
     font-size: 18px;
     margin-top: 0; }
-  .article-default a, .article-advice a, .article-event a, .article-next-meeting a, .article-vision a, .article-theme-other a, .article-theme a {
+  .article-default > a, .article-advice > a, .article-event > a, .article-next-meeting > a, .article-vision > a, .article-theme-other > a, .article-theme > a {
+    overflow: auto;
     display: block; }
-    .article-default a p, .article-advice a p, .article-event a p, .article-next-meeting a p, .article-vision a p, .article-theme-other a p, .article-theme a p {
+    .article-default > a p, .article-advice > a p, .article-event > a p, .article-next-meeting > a p, .article-vision > a p, .article-theme-other > a p, .article-theme > a p {
       color: #333333;
       text-decoration: none; }
-    .article-default a:hover, .article-advice a:hover, .article-event a:hover, .article-next-meeting a:hover, .article-vision a:hover, .article-theme-other a:hover, .article-theme a:hover, .article-default a:focus, .article-advice a:focus, .article-event a:focus, .article-next-meeting a:focus, .article-vision a:focus, .article-theme-other a:focus, .article-theme a:focus {
+    .article-default > a:hover, .article-advice > a:hover, .article-event > a:hover, .article-next-meeting > a:hover, .article-vision > a:hover, .article-theme-other > a:hover, .article-theme > a:hover, .article-default > a:focus, .article-advice > a:focus, .article-event > a:focus, .article-next-meeting > a:focus, .article-vision > a:focus, .article-theme-other > a:focus, .article-theme > a:focus {
       text-decoration: none; }
-      .article-default a:hover p, .article-advice a:hover p, .article-event a:hover p, .article-next-meeting a:hover p, .article-vision a:hover p, .article-theme-other a:hover p, .article-theme a:hover p, .article-default a:focus p, .article-advice a:focus p, .article-event a:focus p, .article-next-meeting a:focus p, .article-vision a:focus p, .article-theme-other a:focus p, .article-theme a:focus p {
+      .article-default > a:hover p, .article-advice > a:hover p, .article-event > a:hover p, .article-next-meeting > a:hover p, .article-vision > a:hover p, .article-theme-other > a:hover p, .article-theme > a:hover p, .article-default > a:focus p, .article-advice > a:focus p, .article-event > a:focus p, .article-next-meeting > a:focus p, .article-vision > a:focus p, .article-theme-other > a:focus p, .article-theme > a:focus p {
         color: #1f647f; }
 
 .article-advice .body {
@@ -7370,23 +7371,23 @@ nav section.archive li a:hover:before, nav section.archive li.active a:before, n
 .images img {
   margin-bottom: 10px; }
 
-.article-advice-detail h1, .article-contact-detail h1, .article-advice-detail h2, .article-contact-detail h2 {
+.article-advice-detail h1, .article-contact-detail h1, .article-page-detail h1, .article-advice-detail h2, .article-contact-detail h2, .article-page-detail h2 {
   color: #2d2d2d; }
 
-.article-advice-detail h1, .article-contact-detail h1 {
+.article-advice-detail h1, .article-contact-detail h1, .article-page-detail h1 {
   font-size: 24px; }
 
-.article-advice-detail h2, .article-contact-detail h2 {
+.article-advice-detail h2, .article-contact-detail h2, .article-page-detail h2 {
   font-size: 18px; }
 
-.article-advice-detail .body section, .article-contact-detail .body section {
+.article-advice-detail .body section, .article-contact-detail .body section, .article-page-detail .body section {
   border: 1px solid #d9d9d9;
   border-top: 5px solid #2e94bd;
   padding: 0 15px 1px 15px;
   background-color: white;
   margin-bottom: 15px; }
 
-.article-advice-detail .body h3:first-child, .article-contact-detail .body h3:first-child {
+.article-advice-detail .body h3:first-child, .article-contact-detail .body h3:first-child, .article-page-detail .body h3:first-child {
   padding-top: 0; }
 
 /*# sourceMappingURL=main.css.map */
