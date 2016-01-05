@@ -147,14 +147,20 @@
 
 .sec-page-detail {
   @extend .sec-default;
-  .left {
-    @extend .col-lg-3;
+  .toc {
+    @extend .col-sm-4;
+    @extend .col-md-3, .col-md-push-9;
+    @extend .col-lg-3, .col-lg-push-9;
   }
   .article-page-detail {
+    @extend .col-sm-8;
+    @extend .col-md-6;
     @extend .col-lg-5, .col-lg-offset-1;
   }
-  .right {
-    @extend .col-lg-3;
+  .sub-nav {
+    @extend .col-sm-6, .col-sm-offset-4;
+    @extend .col-md-3, .col-md-offset-0, .col-md-pull-9;
+    @extend .col-lg-3, .col-lg-pull-9;
   }
 }
 

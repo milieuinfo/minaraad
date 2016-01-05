@@ -1082,7 +1082,7 @@ address {
   .row:after, .masonry-documents:after, .sec-advice-detail article:after, .images .thumbnails:after {
     clear: both; }
 
-.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .list-group-downloads .list-group-item .icon, .col-sm-2, .col-md-2, .footer-doormat .column, .col-lg-2, .col-xs-3, .images .thumbnails a, .col-sm-3, .col-md-3, .masonry .grid-item, .sec-home .column, .sec-related .column, .sec-themes .right, .sec-advice-detail nav, .col-lg-3, .masonry-documents .grid-item, .sec-page-detail .left, .sec-page-detail .right, .col-xs-4, .col-sm-4, .footer-doormat .column, .sec-advice-detail nav, .sec-contact-detail article aside, .col-md-4, .masonry-documents .grid-item, .jumbotronbar .column-left, .sec-themes .left .column, .sec-contact-detail article aside, .col-lg-4, .sec-contact-detail article aside, .col-xs-5, .col-sm-5, .jumbotronbar .column-left, .col-md-5, .sec-advice-detail article aside, .col-lg-5, .sec-contact-detail article .body, .sec-page-detail .article-page-detail, .col-xs-6, .footer-doormat .column, .col-sm-6, .masonry .grid-item, .masonry-documents .grid-item, .sec-home .wrapper-column, .sec-home .column, .sec-related .column, .sec-themes .left .column, .sec-themes .right, .col-md-6, .sec-home .wrapper-column .column, .sec-contact-detail article .body, .col-lg-6, .col-xs-7, .col-sm-7, .jumbotron, .col-md-7, .jumbotron, .sec-advice-detail article .body, .col-lg-7, .jumbotron, .col-xs-8, .col-sm-8, .sec-advice-detail article, .sec-contact-detail article .body, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .sec-themes .left, .sec-advice-detail article, .col-lg-9, .col-xs-10, .jumbotronbar .column-left, .jumbotron, .list-group-downloads .list-group-item .body, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .masonry .grid-item, .masonry-documents .grid-item, .sec-home .wrapper-column, .sec-home .wrapper-column .column, .sec-home .column, .sec-related .column, .sec-themes .left, .sec-themes .right, .sec-advice-detail article aside, .sec-advice-detail article .body, .sec-advice-detail nav, .sec-contact-detail article .body, .sec-contact-detail article aside, .col-sm-12, .footer-flanders #owner, .footer-flanders #drawer, .sec-home .wrapper-column .column, .sec-themes .left, .col-md-12, .col-lg-12 {
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .list-group-downloads .list-group-item .icon, .col-sm-2, .col-md-2, .footer-doormat .column, .col-lg-2, .col-xs-3, .images .thumbnails a, .col-sm-3, .col-md-3, .masonry .grid-item, .sec-home .column, .sec-related .column, .sec-themes .right, .sec-advice-detail nav, .sec-page-detail .toc, .sec-page-detail .sub-nav, .col-lg-3, .masonry-documents .grid-item, .sec-page-detail .toc, .sec-page-detail .sub-nav, .col-xs-4, .col-sm-4, .footer-doormat .column, .sec-advice-detail nav, .sec-contact-detail article aside, .sec-page-detail .toc, .col-md-4, .masonry-documents .grid-item, .jumbotronbar .column-left, .sec-themes .left .column, .sec-contact-detail article aside, .col-lg-4, .sec-contact-detail article aside, .col-xs-5, .col-sm-5, .jumbotronbar .column-left, .col-md-5, .sec-advice-detail article aside, .col-lg-5, .sec-contact-detail article .body, .sec-page-detail .article-page-detail, .col-xs-6, .footer-doormat .column, .col-sm-6, .masonry .grid-item, .masonry-documents .grid-item, .sec-home .wrapper-column, .sec-home .column, .sec-related .column, .sec-themes .left .column, .sec-themes .right, .sec-page-detail .sub-nav, .col-md-6, .sec-home .wrapper-column .column, .sec-contact-detail article .body, .sec-page-detail .article-page-detail, .col-lg-6, .col-xs-7, .col-sm-7, .jumbotron, .col-md-7, .jumbotron, .sec-advice-detail article .body, .col-lg-7, .jumbotron, .col-xs-8, .col-sm-8, .sec-advice-detail article, .sec-contact-detail article .body, .sec-page-detail .article-page-detail, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .sec-themes .left, .sec-advice-detail article, .col-lg-9, .col-xs-10, .jumbotronbar .column-left, .jumbotron, .list-group-downloads .list-group-item .body, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .masonry .grid-item, .masonry-documents .grid-item, .sec-home .wrapper-column, .sec-home .wrapper-column .column, .sec-home .column, .sec-related .column, .sec-themes .left, .sec-themes .right, .sec-advice-detail article aside, .sec-advice-detail article .body, .sec-advice-detail nav, .sec-contact-detail article .body, .sec-contact-detail article aside, .col-sm-12, .footer-flanders #owner, .footer-flanders #drawer, .sec-home .wrapper-column .column, .sec-themes .left, .col-md-12, .col-lg-12 {
   position: relative;
   min-height: 1px;
   padding-left: 7px;
@@ -1245,7 +1245,7 @@ address {
   margin-left: 100%; }
 
 @media (min-width: 768px) {
-  .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .footer-doormat .column, .sec-advice-detail nav, .sec-contact-detail article aside, .col-sm-5, .jumbotronbar .column-left, .col-sm-6, .masonry .grid-item, .masonry-documents .grid-item, .sec-home .wrapper-column, .sec-home .column, .sec-related .column, .sec-themes .left .column, .sec-themes .right, .col-sm-7, .jumbotron, .col-sm-8, .sec-advice-detail article, .sec-contact-detail article .body, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12, .footer-flanders #owner, .footer-flanders #drawer, .sec-home .wrapper-column .column, .sec-themes .left {
+  .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .footer-doormat .column, .sec-advice-detail nav, .sec-contact-detail article aside, .sec-page-detail .toc, .col-sm-5, .jumbotronbar .column-left, .col-sm-6, .masonry .grid-item, .masonry-documents .grid-item, .sec-home .wrapper-column, .sec-home .column, .sec-related .column, .sec-themes .left .column, .sec-themes .right, .sec-page-detail .sub-nav, .col-sm-7, .jumbotron, .col-sm-8, .sec-advice-detail article, .sec-contact-detail article .body, .sec-page-detail .article-page-detail, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12, .footer-flanders #owner, .footer-flanders #drawer, .sec-home .wrapper-column .column, .sec-themes .left {
     float: left; }
   .col-sm-1 {
     width: 8.3333333333%; }
@@ -1253,15 +1253,15 @@ address {
     width: 16.6666666667%; }
   .col-sm-3 {
     width: 25%; }
-  .col-sm-4, .footer-doormat .column, .sec-advice-detail nav, .sec-contact-detail article aside {
+  .col-sm-4, .footer-doormat .column, .sec-advice-detail nav, .sec-contact-detail article aside, .sec-page-detail .toc {
     width: 33.3333333333%; }
   .col-sm-5, .jumbotronbar .column-left {
     width: 41.6666666667%; }
-  .col-sm-6, .masonry .grid-item, .masonry-documents .grid-item, .sec-home .wrapper-column, .sec-home .column, .sec-related .column, .sec-themes .left .column, .sec-themes .right {
+  .col-sm-6, .masonry .grid-item, .masonry-documents .grid-item, .sec-home .wrapper-column, .sec-home .column, .sec-related .column, .sec-themes .left .column, .sec-themes .right, .sec-page-detail .sub-nav {
     width: 50%; }
   .col-sm-7, .jumbotron {
     width: 58.3333333333%; }
-  .col-sm-8, .sec-advice-detail article, .sec-contact-detail article .body {
+  .col-sm-8, .sec-advice-detail article, .sec-contact-detail article .body, .sec-page-detail .article-page-detail {
     width: 66.6666666667%; }
   .col-sm-9 {
     width: 75%; }
@@ -1331,7 +1331,7 @@ address {
     margin-left: 16.6666666667%; }
   .col-sm-offset-3 {
     margin-left: 25%; }
-  .col-sm-offset-4 {
+  .col-sm-offset-4, .sec-page-detail .sub-nav {
     margin-left: 33.3333333333%; }
   .col-sm-offset-5 {
     margin-left: 41.6666666667%; }
@@ -1351,19 +1351,19 @@ address {
     margin-left: 100%; } }
 
 @media (min-width: 992px) {
-  .col-md-1, .col-md-2, .footer-doormat .column, .col-md-3, .masonry .grid-item, .sec-home .column, .sec-related .column, .sec-themes .right, .sec-advice-detail nav, .col-md-4, .masonry-documents .grid-item, .jumbotronbar .column-left, .sec-themes .left .column, .sec-contact-detail article aside, .col-md-5, .sec-advice-detail article aside, .col-md-6, .sec-home .wrapper-column .column, .sec-contact-detail article .body, .col-md-7, .jumbotron, .sec-advice-detail article .body, .col-md-8, .col-md-9, .sec-themes .left, .sec-advice-detail article, .col-md-10, .col-md-11, .col-md-12 {
+  .col-md-1, .col-md-2, .footer-doormat .column, .col-md-3, .masonry .grid-item, .sec-home .column, .sec-related .column, .sec-themes .right, .sec-advice-detail nav, .sec-page-detail .toc, .sec-page-detail .sub-nav, .col-md-4, .masonry-documents .grid-item, .jumbotronbar .column-left, .sec-themes .left .column, .sec-contact-detail article aside, .col-md-5, .sec-advice-detail article aside, .col-md-6, .sec-home .wrapper-column .column, .sec-contact-detail article .body, .sec-page-detail .article-page-detail, .col-md-7, .jumbotron, .sec-advice-detail article .body, .col-md-8, .col-md-9, .sec-themes .left, .sec-advice-detail article, .col-md-10, .col-md-11, .col-md-12 {
     float: left; }
   .col-md-1 {
     width: 8.3333333333%; }
   .col-md-2, .footer-doormat .column {
     width: 16.6666666667%; }
-  .col-md-3, .masonry .grid-item, .sec-home .column, .sec-related .column, .sec-themes .right, .sec-advice-detail nav {
+  .col-md-3, .masonry .grid-item, .sec-home .column, .sec-related .column, .sec-themes .right, .sec-advice-detail nav, .sec-page-detail .toc, .sec-page-detail .sub-nav {
     width: 25%; }
   .col-md-4, .masonry-documents .grid-item, .jumbotronbar .column-left, .sec-themes .left .column, .sec-contact-detail article aside {
     width: 33.3333333333%; }
   .col-md-5, .sec-advice-detail article aside {
     width: 41.6666666667%; }
-  .col-md-6, .sec-home .wrapper-column .column, .sec-contact-detail article .body {
+  .col-md-6, .sec-home .wrapper-column .column, .sec-contact-detail article .body, .sec-page-detail .article-page-detail {
     width: 50%; }
   .col-md-7, .jumbotron, .sec-advice-detail article .body {
     width: 58.3333333333%; }
@@ -1395,7 +1395,7 @@ address {
     right: 58.3333333333%; }
   .col-md-pull-8 {
     right: 66.6666666667%; }
-  .col-md-pull-9 {
+  .col-md-pull-9, .sec-page-detail .sub-nav {
     right: 75%; }
   .col-md-pull-10 {
     right: 83.3333333333%; }
@@ -1421,7 +1421,7 @@ address {
     left: 58.3333333333%; }
   .col-md-push-8 {
     left: 66.6666666667%; }
-  .col-md-push-9 {
+  .col-md-push-9, .sec-page-detail .toc {
     left: 75%; }
   .col-md-push-10 {
     left: 83.3333333333%; }
@@ -1429,7 +1429,7 @@ address {
     left: 91.6666666667%; }
   .col-md-push-12 {
     left: 100%; }
-  .col-md-offset-0 {
+  .col-md-offset-0, .sec-page-detail .sub-nav {
     margin-left: 0%; }
   .col-md-offset-1 {
     margin-left: 8.3333333333%; }
@@ -1457,13 +1457,13 @@ address {
     margin-left: 100%; } }
 
 @media (min-width: 1200px) {
-  .col-lg-1, .col-lg-2, .col-lg-3, .masonry-documents .grid-item, .sec-page-detail .left, .sec-page-detail .right, .col-lg-4, .sec-contact-detail article aside, .col-lg-5, .sec-contact-detail article .body, .sec-page-detail .article-page-detail, .col-lg-6, .col-lg-7, .jumbotron, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12 {
+  .col-lg-1, .col-lg-2, .col-lg-3, .masonry-documents .grid-item, .sec-page-detail .toc, .sec-page-detail .sub-nav, .col-lg-4, .sec-contact-detail article aside, .col-lg-5, .sec-contact-detail article .body, .sec-page-detail .article-page-detail, .col-lg-6, .col-lg-7, .jumbotron, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12 {
     float: left; }
   .col-lg-1 {
     width: 8.3333333333%; }
   .col-lg-2 {
     width: 16.6666666667%; }
-  .col-lg-3, .masonry-documents .grid-item, .sec-page-detail .left, .sec-page-detail .right {
+  .col-lg-3, .masonry-documents .grid-item, .sec-page-detail .toc, .sec-page-detail .sub-nav {
     width: 25%; }
   .col-lg-4, .sec-contact-detail article aside {
     width: 33.3333333333%; }
@@ -1501,7 +1501,7 @@ address {
     right: 58.3333333333%; }
   .col-lg-pull-8 {
     right: 66.6666666667%; }
-  .col-lg-pull-9 {
+  .col-lg-pull-9, .sec-page-detail .sub-nav {
     right: 75%; }
   .col-lg-pull-10 {
     right: 83.3333333333%; }
@@ -1527,7 +1527,7 @@ address {
     left: 58.3333333333%; }
   .col-lg-push-8 {
     left: 66.6666666667%; }
-  .col-lg-push-9 {
+  .col-lg-push-9, .sec-page-detail .toc {
     left: 75%; }
   .col-lg-push-10 {
     left: 83.3333333333%; }
