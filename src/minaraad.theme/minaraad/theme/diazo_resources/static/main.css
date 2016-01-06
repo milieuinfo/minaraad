@@ -6911,7 +6911,7 @@ nav.navbar {
 
 @media (min-width: 768px) {
   .jumbotronbar .container {
-    background-image: url("static/img/jumbotron-bg.svg");
+    background-image: url("img/jumbotron-bg.svg");
     background-position: right 427px bottom -1px; } }
 
 @media (min-width: 992px) {
@@ -7141,7 +7141,7 @@ p.label {
 
 body {
   background-color: whitesmoke;
-  background-image: url("static/img/background-pattern.png"); }
+  background-image: url("img/background-pattern.png"); }
 
 .lead {
   font-family: "Flanders Art Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
