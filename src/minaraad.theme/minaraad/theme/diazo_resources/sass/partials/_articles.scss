@@ -245,6 +245,9 @@
   }
 }
 
+.article-event-detail {
+  @extend .article-advice-detail;
+}
 
 
 .article-contact-detail {
@@ -254,4 +257,26 @@
 
 .article-page-detail {
   @extend .article-advice-detail;
+}
+
+
+.event-detail-lead {
+  border: 1px solid darken(white, 15);
+  //border-top: 5px solid $mina-blue;
+  padding: 0 15px 1px 15px;
+  background-color: white;
+  margin-bottom: 15px;
+  header {
+    background: $mina-blue;
+    color: white;
+    margin: -1px -16px;
+    padding: 1px 15px;
+
+  }
+    h1 {
+    font-size: 24px;
+  }
+  h2 {
+    font-size: 18px;
+  }
 }

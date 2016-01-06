@@ -3,10 +3,6 @@
 //
 // Combining custom bootstrap and partials into one file.
 
-
-$roboto-font-path: 'roboto' !default;
-@import "../bower_components/roboto-fontface/css/roboto-fontface.scss";
-
 $flanders-font-path: 'flanders' !default;
 @import "../fonts/flanders/flanders.scss";
 
@@ -28,8 +24,8 @@ $fa-font-path:        "fontawesome/fonts" !default;
 @import 'partials/masonry';
 
 // Featherlight (lightbox and gallery)
-@import '../bower_components/featherlight/src/featherlight.css';
-@import '../bower_components/featherlight/src/featherlight.gallery.css';
+@import '../bower_components/featherlight/src/featherlight';
+@import '../bower_components/featherlight/src/featherlight.gallery';
 @import 'partials/featerlight';
 
 // Header and footer

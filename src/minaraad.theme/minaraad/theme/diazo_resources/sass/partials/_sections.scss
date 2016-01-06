@@ -92,6 +92,10 @@
 // Sections in detail pages.
 //
 
+//
+// Advice detail
+//
+
 .sec-advice-detail {
   @extend .sec-default;
 
@@ -114,6 +118,15 @@
     @extend .col-md-3;
   }
 }
+
+//
+// Event detail
+//
+
+.sec-event-detail {
+  @extend .sec-advice-detail;
+}
+
 
 //
 // Contact
