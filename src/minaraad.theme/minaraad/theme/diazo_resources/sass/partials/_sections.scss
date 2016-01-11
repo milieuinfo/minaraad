@@ -1,0 +1,221 @@
+//
+// Sections
+// --------------------------------------------------
+//
+// A section is a full width row, an area in a page that groups some items.
+// A page can have multiple sections.
+
+
+//
+// General
+//
+
+.sec-header {
+  h2 {
+    font-size: 24px;
+    margin-top: 0;
+    font-weight: 400;
+    padding: 0 0 .5em 0;
+  }
+}
+
+//
+// Section
+//
+// - sec-default (transparent)
+// - sec-dark (transparent gray)
+//
+// Note: We use the abbr `sec` instead of the full `section` to avoid clashing
+// with Plone `section-...` body classes.
+
+.sec {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.sec-default {
+  @extend .sec;
+}
+
+.sec-dark {
+  @extend .sec;
+  background: $mina-bg-gray;
+}
+
+//
+// Columns
+//
+// We use default bootstrap columns. Here we define the grid behaviour
+// for various sections.
+
+.sec-home {
+  @extend .sec-default;
+  // The wrapper column groups the first two colums so that
+  // Thema's and Agenda end up as the first items on sm.
+  .wrapper-column {
+    @extend .col-xs-12, .col-sm-6;
+    .column {
+      @extend .col-xs-12, .col-sm-12, .col-md-6;
+    }
+  }
+  .column {
+    @extend .col-xs-12, .col-sm-6, .col-md-3;
+  }
+}
+
+.sec-related {
+  @extend .sec-dark;
+  .column {
+    @extend .col-xs-12, .col-sm-6, .col-md-3;
+  }
+}
+
+.sec-themes {
+  @extend .sec-default;
+  .left {
+    @extend .col-xs-12;
+    @extend .col-sm-12;
+    @extend .col-md-9;
+    .column {
+      @extend .col-sm-6;
+      @extend .col-md-4;
+    }
+  }
+  .right {
+    @extend .col-xs-12;
+    @extend .col-sm-6, .col-sm-push-3;
+    @extend .col-md-3, .col-md-push-0;
+  }
+}
+
+//
+// Sections in detail pages.
+//
+
+//
+// Advice detail
+//
+
+.sec-advice-detail {
+  @extend .sec-default;
+
+  article {
+    @extend .col-sm-8;
+    @extend .col-md-9;
+    @extend .row;
+    aside {
+      @extend .col-xs-12;
+      @extend .col-md-5;
+    }
+    .body {
+      @extend .col-xs-12;
+      @extend .col-md-7;
+    }
+  }
+  nav {
+    @extend .col-xs-12;
+    @extend .col-sm-4;
+    @extend .col-md-3;
+  }
+}
+
+//
+// Event detail
+//
+
+.sec-event-detail {
+  @extend .sec-advice-detail;
+}
+
+
+//
+// Contact
+//
+// Note: With push and pull we flip the columns form sm and up.
+// XS has the default document flow.
+
+.sec-contact-detail {
+  @extend .sec-default;
+
+  article {
+    .body {
+      @extend .col-xs-12;
+      @extend .col-sm-8, .col-sm-push-4;
+      @extend .col-md-6, .col-md-push-5;
+      @extend .col-lg-5, .col-md-push-5;
+
+    }
+    aside {
+      @extend .col-xs-12;
+      @extend .col-sm-4, .col-sm-pull-8;
+      @extend .col-md-4, .col-md-pull-6;
+      @extend .col-lg-4, .col-lg-pull-5;
+    }
+  }
+}
+
+//
+// Page detail
+//
+
+.sec-page-detail {
+  @extend .sec-default;
+  .toc {
+    @extend .col-sm-4;
+    @extend .col-md-3, .col-md-push-9;
+    @extend .col-lg-3, .col-lg-push-9;
+  }
+  .article-page-detail {
+    @extend .col-sm-8;
+    @extend .col-md-6;
+    @extend .col-lg-5, .col-lg-offset-1;
+  }
+  .sub-nav {
+    @extend .col-sm-6, .col-sm-offset-4;
+    @extend .col-md-3, .col-md-offset-0, .col-md-pull-9;
+    @extend .col-lg-3, .col-lg-pull-9;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Small screen / tablet
+// -----------------------------------------------------------------------------
+
+@media (min-width: $screen-sm-min) {
+
+  .sec-header {
+    h2 {
+      font-size: 18px;
+    }
+  }
+
+}
+
+
+// -----------------------------------------------------------------------------
+// Medium screen / desktop
+// -----------------------------------------------------------------------------
+
+@media (min-width: $screen-md-min) {
+
+  .sec-header {
+    h2 {
+      font-size: 18px;
+    }
+  }
+
+}
+
+// -----------------------------------------------------------------------------
+// Large screen / wide desktop
+// -----------------------------------------------------------------------------
+
+@media (min-width: $screen-lg-min) {
+
+  .sec-header {
+    h2 {
+      font-size: 18px;
+    }
+  }
+
+}

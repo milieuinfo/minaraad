@@ -1,0 +1,282 @@
+//
+// Articles
+//
+// Article is the representation of a content type in a listing.
+// The whole item or article block is a direct link to it's detail page.
+
+.article-default {
+  background: white;
+  margin-bottom: 15px;
+  img {
+    @extend .img-responsive;
+    width: 100%;
+  }
+  .body {
+    padding: 15px 20px 7px;
+  }
+  h3 {
+    font-size: 18px;
+    margin-top: 0;
+  }
+  > a {
+    overflow: auto;
+    display: block;
+    p {
+      color: $text-color;
+      text-decoration: none;
+    }
+    &:hover, &:focus {
+      text-decoration: none;
+      h3 {
+        //text-decoration: underline;
+      }
+      p {
+        color: $link-hover-color;
+      }
+    }
+  }
+}
+
+.article-advice {
+  @extend .article-default;
+  .body {
+    border: 1px solid darken(white, 15);
+    border-top: 0;
+  }
+  a {
+    &:hover, &:focus {
+      h3 {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.article-event {
+  @extend .article-default;
+  background: $mina-green-light-4;
+  header {
+    text-transform: uppercase;
+    background: $mina-green;
+    color: white;
+    padding: 11px 10px 10px 13px;
+    h3, time {
+      margin: 0;
+      font-size: 16px;
+      i {
+        display: block;
+        float: left;
+        height: 1.1em;
+        margin-right: 0.6em;
+      }
+    }
+  }
+  .body {
+    h3, time {
+      color: $mina-green-dark;
+      font-size: 15px;
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+  }
+  a {
+    &:hover, &:focus {
+      background: $mina-green-light-3;
+      header {
+        background: $mina-green-dark;
+      }
+    }
+  }
+}
+
+.article-next-meeting {
+  @extend .article-event;
+  background: $mina-red-light-bg;
+  header {
+    background: $mina-red;
+  }
+  .body {
+    time {
+      color: $mina-red;
+      display: block;
+    }
+  }
+  a {
+    &:hover, &:focus {
+      background: darken($mina-red-light-bg, 5);
+      header {
+        background: $mina-red-dark;
+      }
+    }
+  }
+}
+
+//
+// jaarwerking
+//
+.article-vision {
+  @extend .article-event;
+  background: $mina-blue-light-4;
+  header {
+    background: $mina-blue;
+  }
+  .body {
+    overflow: hidden;
+    time {
+      color: $mina-blue;
+      display: block;
+    }
+  }
+  a {
+    &:hover, &:focus {
+      .btn {
+        background: darken($btn-primary-bg, 10);
+        border-color: darken($btn-primary-border, 10);
+      }
+      background: $mina-blue-light-3;
+      header {
+        background: $mina-blue-dark;
+      }
+    }
+  }
+}
+
+
+//
+// Themes
+//
+
+//
+// Theme list
+//
+// The theme list page columns behave a bit diffrent than the default because
+// the `.right` column contains a special theme (other or unclassified items).
+
+.article-theme, .article-theme-other {
+  h3 {
+      text-transform: uppercase;
+  }
+}
+
+.article-theme {
+  @extend .article-default;
+  img {
+    @extend .img-circle;
+    @extend .pull-right;
+    height: 56px;
+    width: 56px !important;
+  }
+  a {
+    border-top: 6px solid $mina-blue;
+    &:hover, &:focus {
+      border-top: 6px solid $mina-blue-dark;
+      h3 {
+        text-decoration: underline;
+      }
+    }
+  }
+
+}
+
+.article-theme-other {
+  @extend .article-event;
+  background: $mina-blue-light-4;
+  header {
+    background: $mina-blue-light-1;
+  }
+  a {
+    &:hover, &:focus {
+      background: $mina-blue-light-3;
+      header {
+        background: darken($mina-blue-light-1, 10);
+      }
+    }
+  }
+  img {
+    @extend .img-circle;
+    @extend .pull-left;
+    height: 26px;
+    width: 26px !important;
+    margin-top: -5px;
+    margin-right: 0.6em;
+  }
+}
+
+//
+// Detail views
+//
+// Article styling in detail views.
+
+.images {
+  img {
+    @extend .img-responsive;
+    margin-bottom: 10px;
+  }
+  .thumbnails {
+    @extend .row;
+    a {
+      @extend .col-xs-3;
+    }
+  }
+}
+
+
+.article-advice-detail {
+  h1, h2 {
+    // TODO: Drop? Does this conflict with link color?
+    // This breaks with the design. But i'll go for black for now!
+    // color: $mina-blue-dark;
+    color: $vlaanderen-dark-gray;
+  }
+  h1 {
+    font-size: 24px;
+  }
+  h2 {
+    font-size: 18px;
+  }
+  .body {
+    section {
+      border: 1px solid darken(white, 15);
+      @include article-block-line-top($mina-blue);
+    }
+    h3:first-child {
+      padding-top: 0;
+    }
+  }
+}
+
+.article-event-detail {
+  @extend .article-advice-detail;
+}
+
+
+.article-contact-detail {
+  @extend .article-advice-detail;
+}
+
+
+.article-page-detail {
+  @extend .article-advice-detail;
+}
+
+
+.event-detail-lead {
+  border: 1px solid darken(white, 15);
+  //border-top: 5px solid $mina-blue;
+  padding: 0 15px 1px 15px;
+  background-color: white;
+  margin-bottom: 15px;
+  header {
+    background: $mina-blue;
+    color: white;
+    margin: -1px -16px;
+    padding: 1px 15px;
+
+  }
+    h1 {
+    font-size: 24px;
+  }
+  h2 {
+    font-size: 18px;
+  }
+}

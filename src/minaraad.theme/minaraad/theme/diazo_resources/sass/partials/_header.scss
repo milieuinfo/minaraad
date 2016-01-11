@@ -1,0 +1,194 @@
+// -----------------------------------------------------------------------------
+// Mobile first
+// -----------------------------------------------------------------------------
+
+//
+// Header
+//
+// The top section of the site. Repeats on every page.
+
+//
+// Topbar
+//
+// Holds links to other sites and the contact pull down.
+
+.topbar {
+  .sites {
+    @extend .pull-left;
+  }
+  .contact {
+    @extend .pull-right;
+    .navbar-right {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+    }
+    .open {
+      background-image: url('static/img/point.svg');
+      background-size: 15px 15px;
+      background-position: center bottom;
+      background-repeat: no-repeat;
+    }
+    .dropdown-menu {
+      width: 260px;
+      margin-top: 0;
+      border: 10px solid $vlaanderen-dark-gray;
+      border-top: 0;
+      -webkit-border-radius:0;
+      -moz-border-radius:0;
+      border-radius:0;
+      margin-left: -125px; // Pull the menu to left.
+      li {
+        border-bottom: 1px solid $mina-bg-light-gray;
+      }
+      a {
+        &:hover, &:focus {
+          h3 {
+            color: $mina-blue;
+          }
+        }
+      }
+      h3 {
+        font-size: 16px;
+        color: $mina-blue-dark;
+        font-weight: 600;
+        margin-top: 5px;
+        margin-bottom: 5px;
+      }
+      i {
+        float:right;
+        font-size: 1.25em;
+      }
+    }
+  }
+  background: $vlaanderen-dark-gray;
+  a {
+    font-size: 14px;
+    line-height: 14px;
+    font-family: $headings-font-family;
+    font-weight: 500;
+    color: $vlaanderen-link-color;
+    text-decoration: none;
+    padding: 15px 10px 13px 10px;
+    display: inline-block;
+    &:hover, &:focus {
+      color: $vlaanderen-link-color-hover;
+    }
+  }
+}
+
+//
+// Logo bar
+//
+// Logo and search form.
+
+.logobar {
+  background: white;
+  //height: 115px;
+  .logo {
+    a {
+      height: 64px;
+      img {
+        width: 290px;
+        height: 64px;
+      }
+    }
+  }
+  .navbar-brand {
+    margin: 10px 0 5px 0;
+    padding: 0;
+  }
+  .search {
+    @extend .hidden-xs;
+  }
+  button.navbar-toggle {
+    background-color: $mina-blue-dark;
+    top: 15px;
+    padding: 13px 11px;
+    margin-right: 10px;
+    .icon-bar {
+      display: block;
+      background: white;
+      width: 20px;
+      height: 2px;
+      border-radius: 0px;
+    }
+  }
+  .search {
+    margin-top: 2em;
+    @extend .pull-right;
+    .input-group input.form-control {
+      border-top-left-radius: 3px;
+      border-bottom-left-radius: 3px;
+    }
+    button {
+      @extend .btn-primary;
+    }
+    label {
+      font-weight: 300;
+    }
+  }
+}
+
+//
+// Navigation bar
+//
+// Global navigation aka main menu.
+
+nav.navbar {
+  border:0;
+  font-family: $headings-font-family;
+  font-size: 18px;
+  .nav > li > a {
+    padding: 10px 20px;
+  }
+  &.navbar-default {
+    // The navbar in xs collapsed state is a thin line.
+    min-height: 10px;
+  }
+}
+
+
+
+
+// -----------------------------------------------------------------------------
+// Small screen / tablet
+// -----------------------------------------------------------------------------
+
+@media (min-width: $screen-sm-min) {
+
+  .logobar {
+    height: 115px;
+    .logo {
+      a {
+        height: 90px;
+        img {
+          width: 420px;
+          height: 90px;
+        }
+      }
+    }
+    .navbar-brand {
+      margin-top: 15px;
+       padding: 0;
+    }
+  }
+
+}
+
+
+// -----------------------------------------------------------------------------
+// Medium screen / desktop
+// -----------------------------------------------------------------------------
+
+@media (min-width: $screen-md-min) {
+
+}
+
+// -----------------------------------------------------------------------------
+// Large screen / wide desktop
+// -----------------------------------------------------------------------------
+
+@media (min-width: $screen-lg-min) {
+
+}

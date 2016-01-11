@@ -1,0 +1,69 @@
+//
+// Featerlight lightbox
+//
+// Custom styling for the featerlight lightbox.
+
+.featherlight .featherlight-content {
+    padding: 0;
+    border-bottom: 0;
+    margin-left: 20px;
+    margin-right: 20px;
+    background: none;
+}
+
+span.featherlight-close-icon.featherlight-close {
+    line-height: 20px;
+    width: 24px;
+    height: 24px;
+    border-radius: 12px;
+    background: black;
+    color: white;
+    font-weight: bold;
+    border: 2px solid white;
+}
+
+.featherlight-inner {
+    padding:12px;
+}
+
+$featherlight-gradient-1: rgba(0, 0, 0, 0.5);
+$featherlight-gradient-2: rgba(0, 0, 0, 0);
+
+.featherlight-next, .featherlight-previous {
+    top: 0;
+    margin: 12px;
+        span {
+        margin-top: -30px;
+        font-size: 20px;
+        width: 30px;
+        text-shadow: none;
+    }
+    &:hover {
+        background-color: $featherlight-gradient-1; /* For browsers that do not support gradients */
+    }
+}
+
+.featherlight-previous:hover {
+    background: -webkit-linear-gradient(left, $featherlight-gradient-1 , $featherlight-gradient-2); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, $featherlight-gradient-1, $featherlight-gradient-2); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, $featherlight-gradient-1, $featherlight-gradient-2); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, $featherlight-gradient-1, $featherlight-gradient-2); /* Standard syntax */
+
+}
+.featherlight-next:hover {
+    background: -webkit-linear-gradient(left, $featherlight-gradient-2 , $featherlight-gradient-1); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, $featherlight-gradient-2, $featherlight-gradient-1); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, $featherlight-gradient-2, $featherlight-gradient-1); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, $featherlight-gradient-2, $featherlight-gradient-1); /* Standard syntax */
+
+}
+
+.featherlight-previous {
+    left: 0;
+    right: 50%;
+}
+
+.featherlight-next {
+    right: 0;
+    left: 50%;
+}

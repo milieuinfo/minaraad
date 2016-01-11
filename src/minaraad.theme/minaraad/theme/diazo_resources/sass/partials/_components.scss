@@ -1,0 +1,342 @@
+//
+// Components
+// --------------------------------------------------
+//
+// Components are project specific building blocks.
+
+
+// -----------------------------------------------------------------------------
+// Mobile first
+// -----------------------------------------------------------------------------
+
+//
+// Set smooth font rendering.
+//
+
+body{
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+//
+// Animate all links.
+//
+
+a {
+  transition-duration: 0.2s;
+  -webkit-transition-duration: 0.2s; // Safari
+}
+
+//
+// Button
+//
+
+.btn {
+  font-weight: 500;
+  i {
+    margin-right: .4em;
+  }
+}
+
+.btn-mina-green {
+  @include button-variant(white, $mina-green, $mina-green-dark);
+}
+
+//
+// Icons
+//
+
+[class^="flaticon-"]:before,
+[class*=" flaticon-"]:before {
+    font-size: 46px;
+    line-height: 46px;
+    margin-left: 0;
+}
+
+
+//
+// Label
+//
+// Thema en type document label
+
+p.label {
+  font-weight: 500;
+  color: $mina-label-blue !important;
+  text-transform: uppercase;
+  line-height: 1em;
+  font-size: 11.1px;
+  span {
+    margin-left: .5em;
+  }
+}
+
+//
+// (Text) selection color
+//
+
+$selection-color: $mina-blue-light-2;
+::selection {
+  background: $selection-color;
+}
+::-moz-selection {
+  background: $selection-color;
+}
+
+
+//
+// Background image
+//
+// Vlaamse overheid background pattern.
+
+body {
+  background-color: $mina-bg-light-gray;
+  background-image: url('img/background-pattern.png');
+}
+
+//
+// Lead
+//
+
+.lead {
+  font-family: $headings-font-family;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+//
+// Key value pairs
+//
+
+.dl-horizontal dt {
+  font-weight: normal;
+  text-align: left;
+  width: 120px;
+  @extend .small;
+}
+
+.dl-horizontal dd {
+  margin-left: 120px;
+  @extend .small;
+}
+
+//
+// List group
+//
+// Counter style BS. We don't want rounded corners. But can't set the var to 0
+// because we want rounded corners on other elements (form field and buttons).
+
+.list-group {
+  .list-group-item {
+    padding: 15px 20px;
+    &:first-child, &:last-child {
+      border-radius: 0;
+    }
+  }
+}
+
+.list-group-themes {
+  @extend .list-group;
+  border-top: 5px solid $mina-blue;
+  a{
+    font-size: 16px;
+    font-weight: 500;
+    color: $mina-blue-dark;
+    &:hover, &:focus {
+      color: white;
+      background: $mina-blue;
+    }
+    img {
+      @extend .img-circle;
+      height: 28px;
+      width: 28px;
+      margin-right: .5em;
+      display: block;
+      float: left;
+      margin-top: -3px;
+
+    }
+    i {
+      font-size: 1.4em;
+    }
+  }
+  .list-group-item {
+    padding: 15px 20px 15px 17px;
+  }
+}
+
+.list-group-downloads {
+  @extend .list-group;
+  margin-left: -15px;
+  margin-right: -15px;
+  margin-bottom: 0;
+  .list-group-item:last-child {
+    border-bottom: none;
+  }
+  .list-group-item {
+    border-left: 0;
+    border-right: 0;
+    padding: 15px;
+    overflow: auto;
+    .icon {
+      @extend .col-xs-2;
+      color: $mina-blue-dark;
+      i:before {
+        margin-left: -5px;
+      }
+
+    }
+    .body {
+      @extend .col-xs-10;
+      h3 {
+        margin-top: 0;
+        font-size: 16px;
+        color: $mina-blue;
+      }
+      .btn {
+        @extend .pull-right;
+        @extend .btn-mina-green;
+      }
+    }
+  }
+}
+
+
+//
+// Navigation
+//
+// The red navigation bars.
+
+//
+// Detail mixin
+//
+// Mixin used in detail views.
+
+@mixin article-block-line-top($color) {
+  border-top: 5px solid $color;
+  padding: 0 15px 1px 15px;
+  background-color: white;
+  margin-bottom: 15px;
+}
+
+
+nav section {
+  &.search,
+  &.filters,
+  &.digibib,
+  &.prev-next,
+  &.archive,
+  &.nav-list,
+  &.theme-list {
+    @include article-block-line-top($mina-red-dark);
+    h2 {
+      color: $mina-red;
+      font-size: 16px;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-top: .75em;
+    }
+  }
+  a:hover, a:active {
+    text-decoration: none;
+    color: darken($mina-red-dark, 10);
+  }
+  ul {
+    padding: 0;
+    list-style-type: none;
+    li a {
+      color: $vlaanderen-dark-gray;
+      padding: 3px;
+      display: block;
+      &:hover, &:active {
+        background: $mina-red-light-bg;
+      }
+    }
+    li.active a {
+      background: $mina-red-light-bg;
+    }
+  }
+  &.search,
+  &.filters,
+  &.digibib {
+    background: $mina-bg-gray;
+    label {
+      font-weight: normal;
+    }
+  }
+  &.search {
+    input[type="text"] {
+      width: 100%;
+    }
+    .input-group {
+      margin-bottom: .5em;
+    }
+  }
+  &.prev-next {
+    ul {
+      li a {
+        padding-left: 5px;
+      }
+      li a:before {
+        font-family: 'FontAwesome';
+        //font-size: 15px;
+        color: white;
+        margin-left: -17px;
+        float: left;
+      }
+      li:first-child a {
+        border-left: 18px solid $mina-red-light;
+        &:before {
+          content: "\f104";
+        }
+      }
+      li:last-child a {
+        border-left: 18px solid $mina-red;
+        &:before {
+          content: "\f105";
+        }
+      }
+    }
+  }
+  &.archive,
+  &.theme-list,
+  &.nav-list {
+    li a:before {
+      font-family: 'FontAwesome';
+      color: lighten($mina-red-light, 15);
+      float: left;
+      content: "\f138";
+      margin-right: 7px;
+      margin-bottom: 2px;
+    }
+    li a:hover:before, li.active a:before {
+        color: $mina-red;
+    }
+  }
+}
+
+
+
+// -----------------------------------------------------------------------------
+// Small screen / tablet
+// -----------------------------------------------------------------------------
+
+@media (min-width: $screen-sm-min) {
+
+}
+
+
+// -----------------------------------------------------------------------------
+// Medium screen / desktop
+// -----------------------------------------------------------------------------
+
+@media (min-width: $screen-md-min) {
+
+}
+
+// -----------------------------------------------------------------------------
+// Large screen / wide desktop
+// -----------------------------------------------------------------------------
+
+@media (min-width: $screen-lg-min) {
+
+}

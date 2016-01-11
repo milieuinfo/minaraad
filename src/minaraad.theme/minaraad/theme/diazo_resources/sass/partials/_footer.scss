@@ -1,0 +1,156 @@
+//
+// Footer
+// --------------------------------------------------
+//
+// The footer elements.
+
+
+// -----------------------------------------------------------------------------
+// Mobile first
+// -----------------------------------------------------------------------------
+
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.content-wrapper {
+  flex: 1;
+}
+
+
+footer {
+  border-top: 6px solid $mina-green;
+}
+
+.footer-image {
+  height: 260px;
+  border-bottom: 6px solid $mina-green;
+  //background: url(images/bg.jpg) no-repeat center center fixed;
+  background-position: center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+
+.footer-doormat {
+  @extend .sec-full-width;
+  .column {
+    @extend .col-xs-6, .col-sm-4, .col-md-2;
+  }
+  .logo, .sitemap, .newsletter, .digibib {
+    @extend .hidden-xs;
+  }
+
+  margin: 0;
+  color: $mina-blue-light-2;
+  background: $mina-blue-darkest;
+  font-family: $headings-font-family;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 14 * 1.3px;
+  padding: 2em 0 5em 0;
+
+  // Remove the top margin form the fist heading in every column.
+  .column h3:first-child {
+    margin-top: 0;
+  }
+
+  h3 {
+    font-size: 16px;
+    margin-bottom: 1.15 * 16px;
+    a {
+      color: $mina-green;
+      &:hover, &:active {
+        color: $mina-green-signal;
+      }
+    }
+  }
+  ul {
+    padding:0;
+    list-style-type: none;
+    > li {
+      margin-bottom: 5px;
+    }
+  }
+  a {
+    color: $mina-blue-light-2;
+    &:hover, &:active {
+      color: white;
+    }
+  }
+  .btn {
+    color: white;
+  }
+  .logo img {
+    width: 100%;
+  }
+  .digibib {
+    font-family: $font-family-sans-serif;
+    font-size: 11px;
+    line-height: 16px;
+  }
+  .social {
+    i {
+      margin-right: .4em;
+      color: white;
+      font-size: 1.2em;
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Small screen / tablet
+// -----------------------------------------------------------------------------
+
+@media (min-width: $screen-sm-min) {
+
+
+  .footer-image {
+    height: 300px;
+  }
+  //body {
+  //  /* Margin bottom by footer height */
+  //  margin-bottom: 100px;
+  //}
+  //#portal-footer-wrapper {
+  //
+  //}
+
+}
+
+
+// -----------------------------------------------------------------------------
+// Medium screen / desktop
+// -----------------------------------------------------------------------------
+
+@media (min-width: $screen-md-min) {
+
+  .footer-image {
+    height: 340px;
+  }
+  //body {
+  //  /* Margin bottom by footer height */
+  //  margin-bottom: 100px;
+  //}
+  //#portal-footer-wrapper {
+  //
+  //}
+
+}
+
+// -----------------------------------------------------------------------------
+// Large screen / wide desktop
+// -----------------------------------------------------------------------------
+
+@media (min-width: $screen-lg-min) {
+
+  .footer-image {
+    height: 380px;
+  }
+
+}

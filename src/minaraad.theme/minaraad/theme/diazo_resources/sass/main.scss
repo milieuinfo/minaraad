@@ -1,0 +1,43 @@
+//
+// Main
+//
+// Combining custom bootstrap and partials into one file.
+
+$flanders-font-path: 'flanders' !default;
+@import "../fonts/flanders/flanders.scss";
+
+$flaticon-font-path: 'flaticon' !default;
+@import "../fonts/flaticon/flaticon.scss";
+
+// Set asset path
+$bootstrap-sass-asset-helper: "bootstrap-sass-official/assets/";
+
+// Custom bootstrap.
+@import "custom_bootstrap/variables";
+@import "custom_bootstrap/bootstrap";
+
+// Fontawesome.
+$fa-font-path:        "fontawesome/fonts" !default;
+@import "../bower_components/fontawesome/scss/font-awesome.scss";
+
+// Masonary (stacked content)
+@import 'partials/masonry';
+
+// Featherlight (lightbox and gallery)
+@import '../bower_components/featherlight/src/featherlight';
+@import '../bower_components/featherlight/src/featherlight.gallery';
+@import 'partials/featerlight';
+
+// Header and footer
+@import 'partials/header';
+@import 'partials/breadcrumb';
+@import 'partials/jumbotron';
+@import 'partials/footer';
+@import 'partials/footer_flanders';
+
+// Components are project specific building blocks
+@import 'partials/components';
+
+// Section > column > article
+@import 'partials/sections';
+@import 'partials/articles';
