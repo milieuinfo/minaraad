@@ -242,7 +242,7 @@ msgid "The portal_type for the root object in a Plone system."
 msgstr ""
 
 msgid "Themes"
-msgstr "Werkvelden"
+msgstr "Thema's"
 
 #: profiles/default/workflows/minaraad_folder_workflow/definition.xml
 #: profiles/default/workflows/minaraad_workflow/definition.xml

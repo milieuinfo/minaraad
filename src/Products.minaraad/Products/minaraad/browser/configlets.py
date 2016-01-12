@@ -56,17 +56,17 @@ class MinaraadConfigletView(AbstractView):
 
         if request.get('form.button.Add', None):
             self._addTheme()
-            message = u"Werkveld toegevoegd"
+            message = u"Thema toegevoegd"
             IStatusMessage(request).addStatusMessage(message, type="info")
             return response.redirect(self.referring_url)
         elif request.get('form.button.Save', None):
             self._saveThemes()
-            message = u"Werkvelden opgeslagen"
+            message = u"Thema opgeslagen"
             IStatusMessage(request).addStatusMessage(message, type="info")
             return response.redirect(self.referring_url)
         elif request.get('form.button.Delete', None):
             self._deleteThemes()
-            message = u"Werkveld verwijderd"
+            message = u"Thema verwijderd"
             IStatusMessage(request).addStatusMessage(message, type="info")
             return response.redirect(self.referring_url)
 

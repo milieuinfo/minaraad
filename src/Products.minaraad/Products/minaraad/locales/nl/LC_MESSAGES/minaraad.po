@@ -178,7 +178,7 @@ msgstr "Abonnee overzicht"
 #. Default: "Themes Settings"
 #: ./browser/minaraad_config.pt:14
 msgid "heading_themes_setup"
-msgstr "Werkvelden"
+msgstr "Thema's"
 
 #. Default: "You are currently subscribed to this hearing."
 #: ./browser/hearing_view.pt:26
@@ -458,14 +458,14 @@ msgstr "Inschrijven"
 
 #: browser/subscribers_config.pt
 msgid "label_subscribersoverview"
-msgstr "Werkveld abonnees"
+msgstr "Thema abonnees"
 
 #. Default: "Theme:"
 #: ./browser/advisory_view.pt:24
 #: ./browser/hearing_view.pt:68
 #: ./browser/minaraad_config.pt:104
 msgid "label_theme_name"
-msgstr "Werkveld:"
+msgstr "Thema:"
 
 #. Default: "Unsubscribe"
 #: ./browser/hearing_view.pt:29
@@ -494,7 +494,7 @@ msgstr "Vink deze box aan als u wilt dat deze bijlage publiekelijk beschikbaar w
 #. Default: "Add Theme"
 #: ./browser/minaraad_config.pt:101
 msgid "legend_add_theme_details"
-msgstr "Werkveld toevoegen"
+msgstr "Thema toevoegen"
 
 #. Default: "Current Themes"
 #: ./browser/minaraad_config.pt:35
@@ -860,7 +860,7 @@ msgstr "Samenvatting"
 #. Default: "Theme"
 #: content/Hearing.py
 msgid "minaraad_label_theme"
-msgstr "Werkveld"
+msgstr "Thema"
 
 #. Default: "Zipcode"
 #: Organisation.py

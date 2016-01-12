@@ -162,7 +162,7 @@
                    tal:define="is_last repeat/member/end"
                    tal:attributes="class python:is_last and ' ' or 'first_columns'">
 
-                 <h2 class="themeheader">Werkvelden</h2>
+                 <h2 class="themeheader">Thema's</h2>
                  <table>
                    <tr tal:repeat="theme python:subscription_view.themes(member.getId())">
                      <td class="themeduplicate"

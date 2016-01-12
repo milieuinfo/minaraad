@@ -22,7 +22,7 @@
               tal:attributes="action string:${context/absolute_url}/subscribers_config.html">
 
           <fieldset>
-            <legend>Werkvelden</legend>
+            <legend>Thema's</legend>
             <div tal:repeat="theme view/themes">
               <input type="checkbox"
                      class="noborder"

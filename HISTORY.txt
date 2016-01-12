@@ -4,6 +4,9 @@ History of this buildout
 5.1.14 (unreleased)
 -------------------
 
+- Rename werkveld > theme
+  [coen]
+
 - Add minaraad theme to project.
   [coen]
 
