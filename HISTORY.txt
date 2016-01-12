@@ -4,6 +4,11 @@ History of this buildout
 5.1.14 (unreleased)
 -------------------
 
+- Add upgrade step
+- Remove portal action 'Mijn abonnementen'
+- Remove configlet 'subscribers overview'
+  [coen]
+
 - Pinned slightly newer AccessControl to get rid of starup errors.
   [coen]
 

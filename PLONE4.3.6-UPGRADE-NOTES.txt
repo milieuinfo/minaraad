@@ -1,3 +1,10 @@
 Notes on Minaraad migration Plone 4.3.6 (january 2016)
 ======================================================
 
+
+Upgrade step
+------------
+
+It does the following:
+
+    - Map the old theme names to the new ones.

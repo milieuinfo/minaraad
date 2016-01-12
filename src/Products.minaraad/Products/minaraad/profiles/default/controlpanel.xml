@@ -23,7 +23,7 @@
  <configlet title="subscribers overview" action_id="Subscribers"
     appId="SubscribersID" category="Products" condition_expr="python:True"
     url_expr="string:${portal_url}/subscribers_config.html" visible="True"
-    icon_expr="string:site_icon.png">
+    icon_expr="string:site_icon.png" remove="True">
   <permission>Manage Portal</permission>
  </configlet>
  <configlet title="Contactpersonen" action_id="minaraad_contact_persons"

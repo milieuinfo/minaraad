@@ -21,6 +21,15 @@
       for="Products.CMFPlone.interfaces.IMigratingPloneSiteRoot"
       />
 
+  <gs:registerProfile
+      name="plone436"
+      title="Upgrade Minaraad to Plone 4.3.6"
+      directory="profiles/plone436"
+      description="Upgrade profile for Plone 4.3.6 for the Minaraad site."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      for="Products.CMFPlone.interfaces.IMigratingPloneSiteRoot"
+      />
+
   <gs:upgradeStep
       title="Migrate themes"
       description=""
@@ -366,5 +375,14 @@
         description="These types are affected: Advisory, MREvent, Pressrelease, Study."
         handler="Products.minaraad.migration.migrate_to_blob_image_fields" />
   </gs:upgradeSteps>
+
+  <gs:upgradeStep
+      title="Run Minaraad Plone 4.3.6 migration profile"
+      description=""
+      source="5024"
+      destination="5025"
+      handler="Products.minaraad.migration.to_plone436"
+      sortkey="1"
+      profile="Products.minaraad:default" />
 
 </configure>

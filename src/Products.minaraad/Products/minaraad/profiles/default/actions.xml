@@ -193,11 +193,6 @@
      visible="True">
    <permission>Manage portal</permission>
   </action>
-  <action title="Mijn abonnementen" action_id="subscriptions_config"
-     category="user" condition_expr="member"
-     url_expr="string:$portal_url/subscriptions_config.html" visible="True">
-   <permission>View</permission>
-  </action>
   <action title="Mijn contactgegevens" action_id="personal_preferences"
      category="user" condition_expr="member"
      url_expr="string:$portal_url/@@personal-information" visible="True">

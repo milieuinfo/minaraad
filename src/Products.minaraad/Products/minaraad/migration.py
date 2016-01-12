@@ -464,3 +464,11 @@ def reindex_object_provides_index(context):
     pghandler = ZLogHandler(1000)
     catalog.reindexIndex(index_id, aq_get(context, 'REQUEST', None),
                          pghandler=pghandler)
+
+
+def to_plone436(context):
+    # This applies the plone436 profile from minaraad.  This has some
+    # steps that should only be applied once, during the upgrade to
+    # Plone 4.3.6
+    profile_id = 'profile-Products.minaraad:plone436'
+    context.runAllImportStepsFromProfile(profile_id, purge_old=False)

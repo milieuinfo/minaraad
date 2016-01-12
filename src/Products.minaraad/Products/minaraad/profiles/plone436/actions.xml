@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<object name="portal_actions" meta_type="Plone Actions Tool">
+ <action-provider name="portal_actions">
+  <action title="Mijn abonnementen" action_id="subscriptions_config"
+     category="user" condition_expr="member"
+     url_expr="string:$portal_url/subscriptions_config.html" visible="True"
+     remove="True">
+   <permission>View</permission>
+  </action>
+ </action-provider>
+</object>
