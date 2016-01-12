@@ -4,6 +4,19 @@ History of this buildout
 5.1.14 (unreleased)
 -------------------
 
+- Create upgrade notes for upgrade to Plone 3.4.6.
+  [coen]
+
+- Merge minaraad.theme to src dir. All is now in one repository.
+  [coen]
+
+- Removed LinkedIn portlet.
+  The portlet is also removed from the live site. No upgradestep needed.
+  [coen]
+
+- Updated pinnings to Plone 4.3.6
+  [coen]
+
 - Cleaned up the code: pyflakes, pep8, trailing white space.
   [maurits]
 
