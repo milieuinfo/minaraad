@@ -1,3 +1,10 @@
 Notes on Minaraad migration Plone 4.3.6 (january 2016)
 ======================================================
 
+Newsletter migration
+--------------------
+1. Setup a mailchimp account for minaraad.
+2. Go to the minaraad controlpanel/subscribers_config and export all subscriber groups to csv's.
+3. Import the subscribers to mailchimp. Go to the lists tab in mailchimp. Chose import from dropdown.
+4. In the minaraad controlpanel/mailchimp add the API key found in mailchimp/account/extra/api-keys.
+5. Add mailchimp portlets to the site at preferred locations.
