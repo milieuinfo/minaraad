@@ -4,6 +4,9 @@ History of this buildout
 5.1.14 (unreleased)
 -------------------
 
+- Add minaraad theme to project.
+  [coen]
+
 - Add upgrade step
 - Remove portal action 'Mijn abonnementen'
 - Remove configlet 'subscribers overview'
