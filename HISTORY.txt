@@ -4,6 +4,9 @@ History of this buildout
 5.1.14 (unreleased)
 -------------------
 
+- Removed built-in newsletter functionality in favor of mailchimp
+  [diederik]
+
 - Pinned slightly newer AccessControl to get rid of starup errors.
   [coen]
 
