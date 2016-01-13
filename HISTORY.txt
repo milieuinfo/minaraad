@@ -4,6 +4,9 @@ History of this buildout
 5.1.14 (unreleased)
 -------------------
 
+- Remove portal tabs submenu on hover. HTML and JS.
+  [coen]
+
 - Remove MinaraadConfigletView. Used to CRUD themes.
   [coen]
 

@@ -49,22 +49,6 @@
         <meta name="generator" content="Plone - http://plone.org" />
       </tal:notajax>
 
-    <script type="text/javascript">
-      (function($) {
-        function show_sub_nav() {
-          $(this).addClass('hovered');
-        }
-
-        function hide_sub_nav() {
-          $(this).removeClass('hovered');
-        }
-
-        $(document).ready(function() {
-          $('#portal-tabs-nav > li').mouseenter(show_sub_nav);
-          $('#portal-tabs-nav > li').mouseleave(hide_sub_nav);
-        });
-      })(jQuery)
-    </script>
     </head>
 
     <body tal:define="isRTL portal_state/is_rtl;
