@@ -88,14 +88,6 @@
       allowed_interface=".attendees.IAttendeesManagerView"
       />
 
-  <browser:page
-      for="Products.minaraad.interfaces.IPortalPropertyContainer"
-      name="minaraad_config.html"
-      class=".configlets.MinaraadConfigletView"
-      permission="cmf.ManagePortal"
-      template="minaraad_config.pt"
-    />
-
   <!-- Service view for admin use only -->
 
   <browser:page
