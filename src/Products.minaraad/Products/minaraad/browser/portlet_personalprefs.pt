@@ -23,10 +23,6 @@
                class="link-personalbar">Mijn contactgegevens</a>
           </li>
           <li>
-             <a tal:attributes="href string:${portal_url}/subscriptions_config.html"
-                class="link-personalbar">Mijn abonnementen</a>
-          </li>
-          <li>
              <a tal:attributes="href string:${portal_url}/@@change-password"
                 class="link-personalbar">Wachtwoord wijzigen</a>
           </li>

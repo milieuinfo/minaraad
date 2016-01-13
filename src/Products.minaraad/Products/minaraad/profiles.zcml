@@ -378,11 +378,11 @@
 
   <gs:upgradeStep
       title="Run Minaraad Plone 4.3.6 migration profile"
-      description=""
+      description="Minaraad Plone 4.3.6 migration profile"
       source="5024"
       destination="5025"
       handler="Products.minaraad.migration.to_plone436"
-      sortkey="1"
-      profile="Products.minaraad:default" />
+      profile="Products.minaraad:default"
+  />
 
 </configure>
