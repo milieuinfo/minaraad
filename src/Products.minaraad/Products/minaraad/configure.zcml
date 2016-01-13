@@ -15,7 +15,6 @@
   <include package=".browser" />
   <include package=".content" />
   <include package=".adapters" />
-  <include file="deprecation.zcml" />
   <include file="profiles.zcml" />
 
   <cmf:registerDirectory name="minaraad"/>

@@ -34,6 +34,7 @@ import AnnualReport
 import NewsLetter
 import NewsItem
 import Hearing
+import Theme
 
 Advisory, MREvent, ContactPerson, AgendaItem, Pressrelease  # pyflakes
-Study, AnnualReport, NewsLetter, NewsItem, Hearing  # pyflakes
+Study, AnnualReport, NewsLetter, NewsItem, Hearing, Theme  # pyflakes
