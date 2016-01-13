@@ -15,6 +15,9 @@ History of this buildout
 - Remove configlet 'subscribers overview'
   [coen]
 
+- Removed built-in newsletter functionality in favor of mailchimp
+  [diederik]
+
 - Pinned slightly newer AccessControl to get rid of starup errors.
   [coen]
 
