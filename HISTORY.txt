@@ -4,6 +4,9 @@ History of this buildout
 5.1.14 (unreleased)
 -------------------
 
+- Add migrate step to move content to theme folders and subfolders
+  [coen]
+
 - Install plone.api
 - Add CT Theme
 - Add Creation migration of themes

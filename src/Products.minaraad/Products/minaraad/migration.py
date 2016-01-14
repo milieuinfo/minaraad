@@ -1,7 +1,12 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 # from Products.minaraad.subscriptions import SubscriptionManager
 # from Products.minaraad.themes import ThemeManager
 from persistent.list import PersistentList
 from plone import api
+from plone.locking.interfaces import ILockable
+from Products.CMFCalendar.exceptions import ResourceLockedError
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.utils import _createObjectByType
 from Products.minaraad.content.interfaces import IThemes, IUseContact
@@ -10,6 +15,7 @@ from Products.minaraad.interfaces import IAttendeeManager
 from Products.ZCatalog.ProgressHandler import ZLogHandler
 import logging
 import transaction
+
 
 
 
@@ -524,12 +530,59 @@ def move_content(context):
     Search the whole site for content of some theme and type and move it to the
     appropriate folders.
 
+        21 / Strategisch milieubeleid,   "Vergroening economie"
+        22 / Instrumenten                "Bestuurskwaliteit"
+        -- / ----------,                 "Materialen"
+        23 / Milieuhygiëne en klimaat,   "Klimaat"
+        24 / Water en zee,               "Hinder"
+        25 / Open Ruimte                 "Biodiversiteit"
+        26 / Ruimtelijke ordening en mobiliteit, ""
+        27 / Participatie en lokale besturen,  "Bestuur"
+
     :param context:
     :return:
     """
+    themes = {
+        21: "vergroening-van-de-economie",
+        22: "bestuurskwaliteit",
+        27: "bestuurskwaliteit",
+        23: "klimaat",
+        24: "hinder",
+        25: "biodiversiteit",
+        26: "temp-ruimtelijke-ordening-en-mobiliteit",
+    }
 
-    # TODO: add logic.
-    pass
+    types = [
+        ('Advisory', 'advies'),
+        ('MREvent', 'evenement'),
+        ('Hearing', 'hoorzitting'),
+        ('Study', 'studie'),
+    ]
+
+    portal = api.portal.get()
+
+    for portal_type, sub_folder in types:
+        brains = api.content.find(
+            context=portal,
+            portal_type=portal_type,
+        )
+        for brain in brains:
+            obj = brain.getObject()
+
+            lockable = ILockable(obj)
+            if lockable.locked():
+                lockable.unlock()
+                logger.info("Unlock %s", obj.title)
+
+            try:
+                theme = themes[obj.theme]
+            except KeyError:
+                theme = 'andere-themas'
+
+            target = portal['themas'][theme][sub_folder]
+            api.content.move(source=obj, target=target)
+            logger.info("Moved %s to %s %s", obj.title, theme, sub_folder)
+
 
 
 def create_theme_folders(context):
@@ -541,13 +594,15 @@ def create_theme_folders(context):
     """
 
     themes = [
-        "Vergroening economie",
+        "Vergroening van de economie",
         "Bestuurskwaliteit",
+        "Materialen",
         "Klimaat",
         "Hinder",
         "Biodiversiteit",
-        "Materialen",
-        "Overig",
+        "Andere thema's",
+        # Temp folders.
+        "Temp Ruimtelijke ordening en mobiliteit"
     ]
 
     portal = getToolByName(context, 'portal_url').getPortalObject()
