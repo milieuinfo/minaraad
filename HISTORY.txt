@@ -4,6 +4,13 @@ History of this buildout
 5.1.14 (unreleased)
 -------------------
 
+- Install plone.api
+- Add CT Theme
+- Add Creation migration of themes
+- Add event subscriber to create theme sub folders
+- Sort versions.cfg
+  [coen]
+
 - Remove portal tabs submenu on hover. HTML and JS.
   [coen]
 

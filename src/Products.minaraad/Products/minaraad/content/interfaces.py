@@ -1,6 +1,5 @@
 from zope.interface import Interface
 
-
 class IThemes(Interface):
     """Lists applicable themes and provides theme displaylist."""
 

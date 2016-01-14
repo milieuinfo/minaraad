@@ -1,100 +1,105 @@
+# from Products.minaraad.subscriptions import SubscriptionManager
+# from Products.minaraad.themes import ThemeManager
+from persistent.list import PersistentList
+from plone import api
 from Products.CMFCore.utils import getToolByName
-from Products.ZCatalog.ProgressHandler import ZLogHandler
+from Products.CMFPlone.utils import _createObjectByType
 from Products.minaraad.content.interfaces import IThemes, IUseContact
 from Products.minaraad.events import save_theme_name
 from Products.minaraad.interfaces import IAttendeeManager
-from Products.minaraad.subscriptions import SubscriptionManager
-from Products.minaraad.themes import ThemeManager
-from persistent.list import PersistentList
+from Products.ZCatalog.ProgressHandler import ZLogHandler
 import logging
+import transaction
+
+
 
 logger = logging.getLogger('Products.minaraad.migrations')
 # The default profile id of your package:
 PROFILE_ID = 'profile-Products.minaraad:default'
 
 
-def _migrate_themes(context, new_themes, mapping):
-    manager = ThemeManager(context)
-    theme_ids = [x[0] for x in manager.themes]
-    # The first step is to create the new themes.
-    for theme_id, value in new_themes.items():
-        if theme_id in theme_ids:
-            continue
+# def _migrate_themes(context, new_themes, mapping):
+#     manager = ThemeManager(context)
+#     theme_ids = [x[0] for x in manager.themes]
+#     # The first step is to create the new themes.
+#     for theme_id, value in new_themes.items():
+#         if theme_id in theme_ids:
+#             continue
+#
+#         manager.addTheme(value, theme_id)
+#
+#     # Now we update all objects having themes.
+#     catalog = getToolByName(context, 'portal_catalog')
+#     brains = catalog.searchResults()
+#
+#     obj_count = 0
+#     updated_obj_count = 0
+#     unmapped_obj_count = 0
+#
+#     for brain in brains:
+#         try:
+#             obj = brain.getObject()
+#         except:
+#             logger.info('Could not wake brain at %s' % brain.getURL())
+#             continue
+#
+#         if not IThemes.providedBy(obj):
+#             continue
+#
+#         obj_count += 1
+#         theme_id = obj.getTheme()
+#
+#         if theme_id is None:
+#             continue
+#
+#         new_id = mapping.get(theme_id, None)
+#         if new_id:
+#             obj.setTheme(new_id)
+#             updated_obj_count += 1
+#         else:
+#             unmapped_obj_count += 1
+#
+#     # We update member's subscriptions
+#     mtool = getToolByName(context, 'portal_membership')
+#     smanager = SubscriptionManager(context)
+#
+#     for user_id in mtool.listMemberIds():
+#         user = mtool.getMemberById(user_id)
+#
+#         user_themes = []
+#         for th_id in smanager._getThemes(user):
+#             try:
+#                 th_id = int(th_id)
+#             except ValueError:
+#                 continue
+#
+#             if th_id in new_themes.keys():
+#                 # This one was already migrated.
+#                 user_themes.append(str(th_id))
+#                 continue
+#
+#             user_themes.append(str(mapping.get(th_id, th_id)))
+#
+#         smanager._setThemes(user_themes, user)
+#
+#     # Then we remove the old themes.
+#     manager.deleteThemes(mapping.keys())
+#
+#     logger.info('Found %s objects to update: %s updated and %s without '
+#                 'mapping' % (obj_count, updated_obj_count, unmapped_obj_count))
 
-        manager.addTheme(value, theme_id)
 
-    # Now we update all objects having themes.
-    catalog = getToolByName(context, 'portal_catalog')
-    brains = catalog.searchResults()
-
-    obj_count = 0
-    updated_obj_count = 0
-    unmapped_obj_count = 0
-
-    for brain in brains:
-        try:
-            obj = brain.getObject()
-        except:
-            logger.info('Could not wake brain at %s' % brain.getURL())
-            continue
-
-        if not IThemes.providedBy(obj):
-            continue
-
-        obj_count += 1
-        theme_id = obj.getTheme()
-
-        if theme_id is None:
-            continue
-
-        new_id = mapping.get(theme_id, None)
-        if new_id:
-            obj.setTheme(new_id)
-            updated_obj_count += 1
-        else:
-            unmapped_obj_count += 1
-
-    # We update member's subscriptions
-    mtool = getToolByName(context, 'portal_membership')
-    smanager = SubscriptionManager(context)
-
-    for user_id in mtool.listMemberIds():
-        user = mtool.getMemberById(user_id)
-
-        user_themes = []
-        for th_id in smanager._getThemes(user):
-            try:
-                th_id = int(th_id)
-            except ValueError:
-                continue
-
-            if th_id in new_themes.keys():
-                # This one was already migrated.
-                user_themes.append(str(th_id))
-                continue
-
-            user_themes.append(str(mapping.get(th_id, th_id)))
-
-        smanager._setThemes(user_themes, user)
-
-    # Then we remove the old themes.
-    manager.deleteThemes(mapping.keys())
-
-    logger.info('Found %s objects to update: %s updated and %s without '
-                'mapping' % (obj_count, updated_obj_count, unmapped_obj_count))
-
-
-def migrate_themes(context):
-    """ Updates themes.
-    """
-    new_themes = {40: 'Biodiversiteit',
-                  41: 'Deugdelijk bestuur',
-                  42: 'Omgevingskwaliteit'}
-
-    mapping = {25: 40, 22: 41, 21: 41, 27: 41,
-               32: 42, 26: 42, 24: 42}
-
-    _migrate_themes(context, new_themes, mapping)
+# def migrate_themes(context):
+#     """ Updates themes.
+#     """
+#     new_themes = {40: 'Biodiversiteit',
+#                   41: 'Deugdelijk bestuur',
+#                   42: 'Omgevingskwaliteit'}
+#
+#     mapping = {25: 40, 22: 41, 21: 41, 27: 41,
+#                32: 42, 26: 42, 24: 42}
+#
+#     _migrate_themes(context, new_themes, mapping)
 
 
 def save_object_themes(context):
@@ -465,10 +470,120 @@ def reindex_object_provides_index(context):
     catalog.reindexIndex(index_id, aq_get(context, 'REQUEST', None),
                          pghandler=pghandler)
 
+from PIL import Image, ImageDraw, ImageColor
+from random import choice
+import cStringIO
+from Products.Archetypes.Field import ImageField
+
+def create_lead_image(size=(800, 450), color="blue"):
+    """
+    Creates an memory object containing an image.
+    Expects a size tuple and PIL color.
+
+    :param size: tuple of ints (width, height) default (800, 450)
+    :param color: String or PIL color (r,g,b) tuple.
+    :return: NamedBlobImage
+    """
+    # Create an image.
+    im = Image.new("RGB", size, color=color)
+
+    # Draw some lines
+    draw = ImageDraw.Draw(im)
+    color = ImageColor.getrgb(color)
+    for i in range(9):
+        factor = choice(range(8, 18, 1)) / 10.0
+        stroke_color = (
+            int(min(color[0] * factor, 255)),
+            int(min(color[1] * factor, 255)),
+            int(min(color[2] * factor, 255)),
+        )
+        draw.line(
+            [
+                (choice(range(0, size[0])), choice(range(0, size[1]))),
+                (choice(range(0, size[0])), choice(range(0, size[1])))
+            ],
+            fill=stroke_color,
+            width=int(size[1] / 5)
+        )
+
+    # 'Save' the file.
+    sio = cStringIO.StringIO()
+    im.save(sio, format="PNG")
+    sio.seek(0)
+
+    # Create named blob image
+    # image_field = ImageField()
+    # nbi.data = sio.read()
+    # nbi.filename = u"example.png"
+
+    return sio.read()
+
+
+def move_content(context):
+    """
+    Search the whole site for content of some theme and type and move it to the
+    appropriate folders.
+
+    :param context:
+    :return:
+    """
+
+    # TODO: add logic.
+    pass
+
+
+def create_theme_folders(context):
+    """
+    Create theme folders. Subfolders are created by an event subscriber.
+
+    :param context:
+    :return: None
+    """
+
+    themes = [
+        "Vergroening economie",
+        "Bestuurskwaliteit",
+        "Klimaat",
+        "Hinder",
+        "Biodiversiteit",
+        "Materialen",
+        "Overig",
+    ]
+
+    portal = getToolByName(context, 'portal_url').getPortalObject()
+    folder = portal.get('themas', False)
+    if not folder:
+        folder = _createObjectByType("Folder", portal, 'themas')
+        folder.title = "Thema's"
+        transaction.savepoint(optimistic=True)
+        workflowTool = getToolByName(folder, "portal_workflow")
+        workflowTool.doActionFor(folder, "publish")
+        logger.info("%s created", folder)
+
+    for title in themes:
+        theme = api.content.create(
+            type='Theme',
+            title=title,
+            container=folder,
+            description="%s introductietekst hier." % title,
+            secondary=(title == "Overig"),
+            image=create_lead_image(size=(600, 600)),
+            footerImage=create_lead_image(size=(1200, 600)),
+        )
+        api.content.transition(obj=theme, transition='publish')
+        logger.info("%s created", title)
+
 
 def to_plone436(context):
-    # This applies the plone436 profile from minaraad.  This has some
-    # steps that should only be applied once, during the upgrade to
-    # Plone 4.3.6
+    """
+    This applies the plone436 profile from minaraad.  This has some
+    steps that should only be applied once, during the upgrade to
+    Plone 4.3.6
+    """
+
     profile_id = 'profile-Products.minaraad:plone436'
     context.runAllImportStepsFromProfile(profile_id, purge_old=False)
+
+    # Various
+    create_theme_folders(context)
+    move_content(context)

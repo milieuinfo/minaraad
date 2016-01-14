@@ -29,6 +29,12 @@
       handler=".events.folder_views" />
 
   <subscriber
+      for="Products.minaraad.interfaces.ITheme
+           Products.Archetypes.interfaces.IObjectInitializedEvent"
+      handler=".events.create_default_theme_content" />
+
+  <!-- TODO: REMOVE AFTER MIGRATION. I-->
+  <subscriber
       for="Products.minaraad.content.interfaces.IThemes
            zope.lifecycleevent.interfaces.IObjectModifiedEvent"
       handler=".events.save_theme_name" />

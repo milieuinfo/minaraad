@@ -1,86 +1,52 @@
+from archetypes.referencebrowserwidget import ReferenceBrowserWidget
 from Products.Archetypes import atapi
 from Products.ATContentTypes.content import folder
 from Products.ATContentTypes.content.schemata import finalizeATCTSchema
+from Products.CMFCore.permissions import ModifyPortalContent
 from Products.minaraad.config import PROJECTNAME
 from Products.minaraad.interfaces import ITheme
-from zope.interface import implements
 from Products.validation import V_REQUIRED
+from zope.interface import implements
 
 ThemeSchema = folder.ATFolderSchema.copy() + atapi.Schema((
-
-    # atapi.StringField(
-    #         'phone',
-    #         required=True,
-    #         searchable=True,
-    #         widget=atapi.StringWidget(
-    #                 label="Phone number",
-    #                 description=""
-    #         )
-    # ),
-    #
-    # atapi.TextField(
-    #         'text',
-    #         required=False,
-    #         searchable=True,
-    #         validators=('isTidyHtmlWithCleanup',),
-    #         default_output_type='text/x-html-safe',
-    #         widget=atapi.RichWidget(
-    #                 label=u"Descriptive text",
-    #                 description="",
-    #                 rows=25,
-    #                 allow_file_upload=False
-    #         ),
-    # ),
-    # atapi.ReferenceField(
-    #         'highlightedFilms',
-    #         relationship='isPromotingFilm',
-    #         multiValued=True,
-    #         vocabulary_factory=u"optilux.cinemacontent.CurrentFilms",
-    #         vocabulary_display_path_bound=-1,
-    #         enforceVocabulary=True,
-    #         widget=atapi.ReferenceWidget(
-    #                 label="Highlighted films",
-    #                 description=""
-    #         )
-    # ),
 
     atapi.ImageField(
         "image",
         original_size=(600, 600),
-        # sizes={
-        #     'mini': (80,80),
-        #     'normal': (200,200),
-        #     'big': (300,300),
-        #     'maxi': (500,500)
-        # }
+        sizes={
+            'mini': (80, 80),
+            'normal': (200, 200),
+            'big': (300, 300),
+            'maxi': (500, 500),
+        },
         validators=(
             ('isNonEmptyFile', V_REQUIRED),
             ('checkImageMaxSize', V_REQUIRED)
         ),
         widget=atapi.ImageWidget(
-                label="Thema icoon",
-                desciption="Upload een vierkante afbeelding (een detail uit de footer-afbeelding)",
-                show_content_type=False,
+            label="Thema icoon",
+            desciption="Upload een vierkante afbeelding (een detail uit de footer-afbeelding)",
+            show_content_type=False,
         ),
     ),
 
     atapi.ImageField(
         "footerImage",
-        original_size=(1200, 600),
-        # sizes={
-        #     'mini': (80,80),
-        #     'normal': (200,200),
-        #     'big': (300,300),
-        #     'maxi': (500,500)
-        # }
+        original_size=(1200, 300),
+        sizes={
+            'mini': (80, 80),
+            'normal': (200, 200),
+            'big': (300, 300),
+            'maxi': (500, 500),
+        },
         validators=(
             ('isNonEmptyFile', V_REQUIRED),
             ('checkImageMaxSize', V_REQUIRED)
         ),
         widget=atapi.ImageWidget(
-                label="Thema icoon",
-                desciption="Upload een vierkante afbeelding (een detail uit de footer-afbeelding)",
-                show_content_type=False,
+            label="Footer image",
+            desciption="",
+            show_content_type=False,
         ),
     ),
 
@@ -91,14 +57,25 @@ ThemeSchema = folder.ATFolderSchema.copy() + atapi.Schema((
         )
     ),
 
-    atapi.IntegerField(
-            'migrationId',
-            required=False,
-            searchable=False,
-            widget=atapi.IntegerWidget(
-                    label="Old theme id",
-                    description="This id is used to select this folder in a upgrade step for theme mapping."
-            )
+    atapi.ReferenceField(
+        'highlighted',
+        relationship='relatesTo',
+        multiValued=True,
+        isMetadata=True,
+        languageIndependent=False,
+        referencesSortable=True,
+        keepReferencesOnCopy=True,
+        write_permission=ModifyPortalContent,
+        widget=ReferenceBrowserWidget(
+            allow_search=True,
+            allow_browse=True,
+            allow_sorting=True,
+            show_indexes=False,
+            force_close_on_insert=True,
+            label=u'Related items',
+            description='',
+            visible={'edit': 'visible', 'view': 'invisible'}
+        )
     ),
 
 ))
