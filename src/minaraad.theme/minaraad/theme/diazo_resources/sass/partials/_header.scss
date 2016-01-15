@@ -106,6 +106,8 @@
     top: 15px;
     padding: 13px 11px;
     margin-right: 10px;
+    position: inherit;
+    margin-bottom: 10px;
     .icon-bar {
       display: block;
       background: white;
@@ -148,7 +150,20 @@ nav.navbar {
   }
 }
 
+// -----------------------------------------------------------------------------
+// Small screen / tablet
+// -----------------------------------------------------------------------------
 
+@media (min-width: $screen-xs-min) {
+  
+  .logobar {
+    button.navbar-toggle {
+      position: relative;
+      margin-bottom: 3px;
+    }
+  }
+
+}
 
 
 // -----------------------------------------------------------------------------

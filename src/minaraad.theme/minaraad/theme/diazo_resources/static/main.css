@@ -6829,7 +6829,9 @@ span.featherlight-close-icon.featherlight-close {
     background-color: #246e8c;
     top: 15px;
     padding: 13px 11px;
-    margin-right: 10px; }
+    margin-right: 10px;
+    position: inherit;
+    margin-bottom: 10px; }
     .logobar button.navbar-toggle .icon-bar {
       display: block;
       background: white;
@@ -6852,6 +6854,11 @@ nav.navbar {
     padding: 10px 20px; }
   nav.navbar.navbar-default {
     min-height: 10px; }
+
+@media (min-width: 480px) {
+  .logobar button.navbar-toggle {
+    position: relative;
+    margin-bottom: 3px; } }
 
 @media (min-width: 768px) {
   .logobar {
