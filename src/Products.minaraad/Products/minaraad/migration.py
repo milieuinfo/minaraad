@@ -515,6 +515,30 @@ def create_lead_image(size=(800, 450), color="blue"):
     return sio.read()
 
 
+def move_redundant_folders(context):
+    """
+    Backup redundant folders into a unpublished 'Dropped items' folder.
+
+    :param context:
+    :return: None
+    """
+    portal = api.portal.get()
+    target = api.content.create(
+        type='Folder',
+        title='Vervallen items',
+        container=portal,
+        description="Tijdens de migratie is onderliggende inhoud waarschijnlijk overbodig geworden.",
+    )
+
+    api.content.move(source=portal['adviezen'], target=target)
+    api.content.move(source=portal['studies'], target=target)
+    api.content.move(source=portal['hoorzittingen'], target=target)
+    api.content.move(source=portal['evenementen'], target=target)
+    api.content.move(source=portal['evenementen'], target=target)
+    api.content.move(source=portal['persberichten'], target=target)
+    logger.info("Moved old CT containers to folder `Vervallen items`.")
+
+
 def move_content(context):
     """
     Search the whole site for content of some theme and type and move it to the
