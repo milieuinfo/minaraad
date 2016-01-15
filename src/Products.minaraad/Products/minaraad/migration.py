@@ -4,20 +4,19 @@
 # from Products.minaraad.subscriptions import SubscriptionManager
 # from Products.minaraad.themes import ThemeManager
 from persistent.list import PersistentList
+from PIL import Image, ImageDraw, ImageColor
 from plone import api
 from plone.locking.interfaces import ILockable
-from Products.CMFCalendar.exceptions import ResourceLockedError
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.utils import _createObjectByType
 from Products.minaraad.content.interfaces import IThemes, IUseContact
 from Products.minaraad.events import save_theme_name
 from Products.minaraad.interfaces import IAttendeeManager
 from Products.ZCatalog.ProgressHandler import ZLogHandler
+from random import choice
+import cStringIO
 import logging
 import transaction
-
-
-
 
 logger = logging.getLogger('Products.minaraad.migrations')
 # The default profile id of your package:
@@ -476,10 +475,6 @@ def reindex_object_provides_index(context):
     catalog.reindexIndex(index_id, aq_get(context, 'REQUEST', None),
                          pghandler=pghandler)
 
-from PIL import Image, ImageDraw, ImageColor
-from random import choice
-import cStringIO
-from Products.Archetypes.Field import ImageField
 
 def create_lead_image(size=(800, 450), color="blue"):
     """
@@ -516,11 +511,6 @@ def create_lead_image(size=(800, 450), color="blue"):
     sio = cStringIO.StringIO()
     im.save(sio, format="PNG")
     sio.seek(0)
-
-    # Create named blob image
-    # image_field = ImageField()
-    # nbi.data = sio.read()
-    # nbi.filename = u"example.png"
 
     return sio.read()
 
@@ -582,7 +572,6 @@ def move_content(context):
             target = portal['themas'][theme][sub_folder]
             api.content.move(source=obj, target=target)
             logger.info("Moved %s to %s %s", obj.title, theme, sub_folder)
-
 
 
 def create_theme_folders(context):
