@@ -4,6 +4,9 @@ History of this buildout
 5.1.14 (unreleased)
 -------------------
 
+- Unassign right column portlets
+  [coen]
+
 - Move redundant top level folders into an unpublished folder.
   [coen]
 
