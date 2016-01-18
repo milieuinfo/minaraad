@@ -4,6 +4,9 @@ History of this buildout
 5.1.14 (unreleased)
 -------------------
 
+- Remove resources directory and contents.
+  [coen]
+
 - Add vocabularies for facetednavigation
   [coen]
 
