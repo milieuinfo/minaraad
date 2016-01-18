@@ -4456,7 +4456,7 @@ button.close {
     display: inline-block !important; } }
 
 @media (max-width: 767px) {
-  .hidden-xs, .logobar .search, .footer-doormat .logo, .footer-doormat .sitemap, .footer-doormat .newsletter, .footer-doormat .digibib {
+  .hidden-xs, .footer-doormat .logo, .footer-doormat .sitemap, .footer-doormat .newsletter, .footer-doormat .digibib {
     display: none !important; } }
 
 @media (min-width: 768px) and (max-width: 991px) {
@@ -6838,13 +6838,22 @@ span.featherlight-close-icon.featherlight-close {
       width: 20px;
       height: 2px;
       border-radius: 0px; }
+  .logobar button.btn-search {
+    background-color: #2e94bd;
+    color: white;
+    padding: 10px; }
   .logobar .search {
-    margin-top: 2em; }
+    display: none;
+    background: #4aa894;
+    margin: 0 -7px;
+    padding: 15px 15px 0px 15px; }
     .logobar .search .input-group input.form-control {
       border-top-left-radius: 3px;
       border-bottom-left-radius: 3px; }
     .logobar .search label {
       font-weight: 300; }
+    .logobar .search p {
+      margin: 0; }
 
 nav.navbar {
   border: 0;
@@ -6868,6 +6877,11 @@ nav.navbar {
       .logobar .logo a img {
         width: 420px;
         height: 90px; }
+    .logobar .search {
+      margin: 2em 0 0 0;
+      padding: 0;
+      background: transparent;
+      display: block; }
     .logobar .navbar-brand {
       margin-top: 15px;
       padding: 0; } }

@@ -98,9 +98,9 @@
     margin: 10px 0 5px 0;
     padding: 0;
   }
-  .search {
-    @extend .hidden-xs;
-  }
+//  .search {
+//    @extend .hidden-xs;
+//  }
   button.navbar-toggle {
     background-color: $mina-blue-dark;
     top: 15px;
@@ -116,8 +116,16 @@
       border-radius: 0px;
     }
   }
+  button.btn-search{
+    background-color: $mina-blue;
+    color: white;
+    padding: 10px;
+  }
   .search {
-    margin-top: 2em;
+    display: none;
+    background: $mina-green;
+    margin: 0 -7px;
+    padding: 15px 15px 0px 15px;
     @extend .pull-right;
     .input-group input.form-control {
       border-top-left-radius: 3px;
@@ -128,6 +136,9 @@
     }
     label {
       font-weight: 300;
+    }
+    p{
+      margin: 0;
     }
   }
 }
@@ -182,6 +193,12 @@ nav.navbar {
           height: 90px;
         }
       }
+    }
+    .search{
+      margin: 2em 0 0 0;
+      padding: 0;
+      background: transparent;
+      display: block;
     }
     .navbar-brand {
       margin-top: 15px;

@@ -26,6 +26,16 @@
           return false;
         });
 
+        // Set listener on search buttons.
+        $(".btn-search").click(function () {
+          $(".search").slideToggle(
+            "fast",
+            function () {
+              // TODO: only on slide open.
+              $("#search").focus();
+            });
+        });
+
       // Build the wall
       // Add a tiny delay. Just enough to let grid items get their height.
       // This fixes the bottom margin.
