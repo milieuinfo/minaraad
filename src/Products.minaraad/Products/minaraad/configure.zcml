@@ -48,4 +48,14 @@
   <include package="archetypes.schemaextender" />
   <adapter factory=".schema_extensions.fileAttachment.FileAttachmentExtender" />
 
+  <utility
+    component=".vocabularies.ThemePathVocabularyFactory"
+    name="minaraad.theme_path"
+    />
+
+  <utility
+    component=".vocabularies.FacetedPortalTypesVocabularyFactory"
+    name="minaraad.portal_types"
+    />
+
 </configure>
