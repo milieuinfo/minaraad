@@ -6831,13 +6831,13 @@ span.featherlight-close-icon.featherlight-close {
     padding: 13px 11px;
     margin-right: 10px;
     position: inherit;
-    margin-bottom: 10px; }
+    margin-bottom: 10px;
+    border-radius: 0px; }
     .logobar button.navbar-toggle .icon-bar {
       display: block;
       background: white;
       width: 20px;
-      height: 2px;
-      border-radius: 0px; }
+      height: 2px; }
   .logobar button.btn-search {
     background-color: #2e94bd;
     color: white;
