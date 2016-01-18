@@ -4,6 +4,9 @@ History of this buildout
 5.1.14 (unreleased)
 -------------------
 
+- Do not put content in subfolders.
+  [coen]
+
 - Add year widget for faceted navigation
   [coen, maurits]
 

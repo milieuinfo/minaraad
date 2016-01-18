@@ -74,24 +74,3 @@ def publish_on_save(obj, event):
         # But we might have different placeful workflow policies
         # in the future.
         return
-
-
-def create_default_theme_content(obj, event):
-    """ This event is called every time an theme is created.
-    """
-    sub_folders = [
-        u'Advies',
-        u'Evenement',
-        u'Hoorzitting',
-        u'Oriëntatienota',
-        u'Studie',
-        u'Toespraak',
-    ]
-    for title in sub_folders:
-        folder = api.content.create(
-            type='Folder',
-            title=title,
-            container=obj,
-        )
-        api.content.transition(obj=folder, transition='publish')
-        logger.info("%s created", title)

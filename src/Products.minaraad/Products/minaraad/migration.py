@@ -586,7 +586,7 @@ def setup_various(context):
     # Sort items.
     items = [
         'themas',
-        'documents',
+        'documenten',
         'over-de-minaraad',
         'digibib',
         'Contact',
@@ -605,7 +605,7 @@ def move_redundant_folders(context):
     :return: None
     """
     portal = api.portal.get()
-    folder = api.portal.get('vervallen-items')
+    folder = portal.get('vervallen-items')
     if not folder:
         folder = api.content.create(
             type='Folder',
@@ -657,35 +657,33 @@ def move_content(context):
     }
 
     types = [
-        ('Advisory', 'advies'),
-        ('MREvent', 'evenement'),
-        ('Hearing', 'hoorzitting'),
-        ('Study', 'studie'),
+        'Advisory',
+        'MREvent',
+        'Hearing',
+        'Study',
     ]
 
     portal = api.portal.get()
+    brains = api.content.find(
+        context=portal,
+        portal_type=types,
+    )
+    for brain in brains:
+        obj = brain.getObject()
 
-    for portal_type, sub_folder in types:
-        brains = api.content.find(
-            context=portal,
-            portal_type=portal_type,
-        )
-        for brain in brains:
-            obj = brain.getObject()
+        lockable = ILockable(obj)
+        if lockable.locked():
+            lockable.unlock()
+            logger.info("Unlock %s", obj.title)
 
-            lockable = ILockable(obj)
-            if lockable.locked():
-                lockable.unlock()
-                logger.info("Unlock %s", obj.title)
+        try:
+            theme = themes[obj.theme]
+        except KeyError:
+            theme = 'andere-themas'
 
-            try:
-                theme = themes[obj.theme]
-            except KeyError:
-                theme = 'andere-themas'
-
-            target = portal['themas'][theme][sub_folder]
-            api.content.move(source=obj, target=target)
-            logger.info("Moved %s to %s %s", obj.title, theme, sub_folder)
+        target = portal['themas'][theme]
+        api.content.move(source=obj, target=target)
+        logger.info("Moved %s to %s", obj.title, theme)
 
 
 def create_theme_folders(context):
