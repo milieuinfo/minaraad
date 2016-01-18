@@ -50,13 +50,6 @@ ThemeSchema = folder.ATFolderSchema.copy() + atapi.Schema((
         ),
     ),
 
-    atapi.BooleanField(
-        "secondary",
-        widget=atapi.BooleanWidget(
-                description="Als aangevinkt zal deze folder uitgesloten worden van primaire lijstjes en alleen voorkomen in de secondaire thema lijsten.",
-        )
-    ),
-
     atapi.ReferenceField(
         'highlighted',
         relationship='relatesTo',
@@ -75,6 +68,13 @@ ThemeSchema = folder.ATFolderSchema.copy() + atapi.Schema((
             label=u'Related items',
             description='',
             visible={'edit': 'visible', 'view': 'invisible'}
+        )
+    ),
+
+    atapi.BooleanField(
+        "secondary",
+        widget=atapi.BooleanWidget(
+                description="Als aangevinkt zal deze folder uitgesloten worden van primaire lijstjes en alleen voorkomen in de secondaire thema lijsten.",
         )
     ),
 

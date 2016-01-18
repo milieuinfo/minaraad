@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<object>
+ <stylesheet id="++theme++minaraad/css/style.css" remove="True" />
+ <stylesheet id="++theme++minaraad/css/print.css" remove="True" />
+ <stylesheet id="++theme++minaraad/css/mobile.css" remove="True" />
+</object>

@@ -376,13 +376,34 @@
         handler="Products.minaraad.migration.migrate_to_blob_image_fields" />
   </gs:upgradeSteps>
 
-  <gs:upgradeStep
-      title="Run Minaraad Plone 4.3.6 migration profile"
-      description="Minaraad Plone 4.3.6 migration profile"
+  <gs:upgradeSteps
       source="5024"
       destination="5025"
-      handler="Products.minaraad.migration.to_plone436"
-      profile="Products.minaraad:default"
-  />
+      profile="Products.minaraad:default">
+    <gs:upgradeStep
+        title="Apply plone436 profile"
+        description="Apply the xml migration profile."
+        handler="Products.minaraad.migration.to_plone436" />
+    <gs:upgradeStep
+        title="Create theme folders"
+        description="Create theme folders and subfolders."
+        handler="Products.minaraad.migration.create_theme_folders" />
+    <gs:upgradeStep
+        title="Move content"
+        description="Move various content types into the new folder stucuture."
+        handler="Products.minaraad.migration.move_content" />
+    <gs:upgradeStep
+        title="Move redundant folders"
+        description="Move the redundant top level folders into a unpublished folder"
+        handler="Products.minaraad.migration.move_redundant_folders" />
+    <gs:upgradeStep
+        title="Setup various"
+        description="Various little content modifications"
+        handler="Products.minaraad.migration.setup_various" />
+    <gs:upgradeStep
+        title="Remove portlets"
+        description="Remove portlets from right column"
+        handler="Products.minaraad.migration.unassign_portlets" />
+  </gs:upgradeSteps>
 
 </configure>

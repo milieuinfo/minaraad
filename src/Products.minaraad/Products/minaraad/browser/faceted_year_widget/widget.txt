@@ -1,0 +1,143 @@
+Date range widget
+=================
+
+Implementation of ATContentTypes date range criteria for facted navigation usage.
+
+Imports
+-------
+
+    >>> from DateTime import DateTime
+    >>> from zope.component import getMultiAdapter
+    >>> from Products.CMFCore.utils import getToolByName
+    >>> from eea.facetednavigation.interfaces import ICriteria
+
+Set up
+------
+
+    >>> self.loginAsPortalOwner()
+    >>> fid = portal.invokeFactory('Folder', 'sandbox-widgets')
+    >>> sandbox = portal._getOb(fid)
+    >>> sandbox.setTitle('Faceted navigation folder test')
+    >>> request = sandbox.REQUEST
+
+    >>> subtyper = getMultiAdapter((sandbox, request), name=u'faceted_subtyper')
+    >>> subtyper.enable()
+
+    >>> putils = getToolByName(sandbox, 'plone_utils')
+    >>> handler = getMultiAdapter((sandbox, request), name=u'faceted_configure')
+    >>> query = getMultiAdapter((sandbox, request), name=u'faceted_query')
+
+    >>> today = DateTime()
+    >>> this_year = today.year()
+
+Cleanup default widgets
+-----------------------
+
+    >>> cids = ICriteria(sandbox).keys()
+
+Default widgets
+
+    >>> cids
+    [...'c1',...]
+
+    >>> for cid in cids:
+    ...     ICriteria(sandbox).delete(cid)
+    >>> ICriteria(sandbox).keys()
+    []
+
+Add hidden text widget
+----------------------
+
+This helps us to search only for items with this text in the title.
+
+    >>> _ = handler(addWidget_button=True, wtype='text')
+    >>> _ = handler(updateCriterion_button='Save', cid='c0',
+    ...     c0_default='Year item', c0_index='Title', c0_hidden=True)
+
+Add test folders
+----------------
+
+Three years ago::
+
+    >>> past_3 = sandbox.invokeFactory('Folder', 'past_3', title='Year item 1')
+    >>> past_3 = sandbox._getOb(past_3)
+    >>> past_3.setLanguage('en')
+    >>> putils.editMetadata(past_3, effective_date=DateTime(this_year - 3, today.month(), 1))
+
+Two years ago::
+
+    >>> past_2 = sandbox.invokeFactory('Folder', 'past_2', title='Year item 2')
+    >>> past_2 = sandbox._getOb(past_2)
+    >>> past_2.setLanguage('en')
+    >>> putils.editMetadata(past_2, effective_date=DateTime(this_year - 2, today.month(), 1))
+
+One year ago::
+
+    >>> past = sandbox.invokeFactory('Folder', 'past', title='Year item 3')
+    >>> past = sandbox._getOb(past)
+    >>> past.setLanguage('en')
+    >>> putils.editMetadata(past, effective_date=DateTime(this_year - 1, today.month(), 1))
+
+January this year:
+
+    >>> january_1 = sandbox.invokeFactory('Folder', 'january_1', title='Year item 4')
+    >>> january_1 = sandbox._getOb(january_1)
+    >>> january_1.setLanguage('en')
+    >>> putils.editMetadata(january_1, effective_date=DateTime(this_year, 1, 1))
+
+Another one in January this year:
+
+    >>> january_2 = sandbox.invokeFactory('Folder', 'january_2', title='Year item 5')
+    >>> january_2 = sandbox._getOb(january_2)
+    >>> january_2.setLanguage('en')
+    >>> putils.editMetadata(january_2, effective_date=DateTime(this_year, 1, 1, 1, 1))
+
+
+Empty query
+-----------
+
+    >>> brains = query.query(batch=False)
+    >>> len(brains)
+    5
+
+Add widget
+----------
+
+    >>> _ = handler(wtype='yearrange', addWidget_button=True)
+
+
+Get some results (default set)
+------------------------------
+
+This year is always the default::
+
+    >>> _ = handler(updateCriterion_button='Save', cid='c1', c1_hidden=True,
+    ...     c1_index='effective')
+    >>> brains = query.query()
+    >>> [brain.getId for brain in brains]
+    ['january_2', 'january_1']
+
+
+Get some results (no default)
+------------------------------
+
+    >>> _ = handler(updateCriterion_button='Save', cid='c1', c1_hidden=False,
+    ...     c1_index='effective')
+
+This year::
+
+    >>> brains = query.query(c1=this_year)
+    >>> [brain.getId for brain in brains]
+    ['january_2', 'january_1']
+
+Previous year::
+
+    >>> brains = query.query(c1=this_year - 1)
+    >>> [brain.getId for brain in brains]
+    ['past']
+
+Two years ago till now::
+
+    >>> brains = query.query(c1=[this_year - 2, this_year])
+    >>> [brain.getId for brain in brains]
+    ['january_2', 'january_1', 'past', 'past_2']

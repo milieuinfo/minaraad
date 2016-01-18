@@ -4,19 +4,24 @@
 # from Products.minaraad.subscriptions import SubscriptionManager
 # from Products.minaraad.themes import ThemeManager
 from persistent.list import PersistentList
+from PIL import Image, ImageDraw, ImageColor
 from plone import api
 from plone.locking.interfaces import ILockable
-from Products.CMFCalendar.exceptions import ResourceLockedError
+from plone.portlets.interfaces import IPortletAssignmentMapping
+from plone.portlets.interfaces import IPortletManager
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.utils import _createObjectByType
 from Products.minaraad.content.interfaces import IThemes, IUseContact
 from Products.minaraad.events import save_theme_name
 from Products.minaraad.interfaces import IAttendeeManager
 from Products.ZCatalog.ProgressHandler import ZLogHandler
+from random import choice
+from zope.component import getMultiAdapter
+from zope.component import getUtility
+from zope.container import contained
+import cStringIO
 import logging
 import transaction
-
-
 
 
 logger = logging.getLogger('Products.minaraad.migrations')
@@ -476,10 +481,6 @@ def reindex_object_provides_index(context):
     catalog.reindexIndex(index_id, aq_get(context, 'REQUEST', None),
                          pghandler=pghandler)
 
-from PIL import Image, ImageDraw, ImageColor
-from random import choice
-import cStringIO
-from Products.Archetypes.Field import ImageField
 
 def create_lead_image(size=(800, 450), color="blue"):
     """
@@ -517,12 +518,115 @@ def create_lead_image(size=(800, 450), color="blue"):
     im.save(sio, format="PNG")
     sio.seek(0)
 
-    # Create named blob image
-    # image_field = ImageField()
-    # nbi.data = sio.read()
-    # nbi.filename = u"example.png"
-
     return sio.read()
+
+
+def unassign_portlets(context):
+    """
+    Remove assignements of the portlets in the right column.
+
+    :param context:
+    :return:
+    """
+    portal = api.portal.get()
+    contained.fixing_up = True
+    manager = getUtility(IPortletManager, name=u'plone.rightcolumn', context=portal)
+    assignments = getMultiAdapter((portal, manager), IPortletAssignmentMapping)
+    for portlet in assignments:
+        del assignments[portlet]
+    contained.fixing_up = False
+
+
+def setup_various(context):
+    """
+    Setup about page:
+
+        - Create documents folder
+        - Move `Jaarverslagen` into `Algemeen`
+        - Move `Contact` to portal root
+        - Rename `algemeen` > `Over de Minaraad`
+        - Sort items.
+
+    :param context:
+    :return: None
+    """
+
+    portal = api.portal.get()
+
+    # Create documents folder
+    documents = portal.get('documenten')
+    if not documents:
+        documents = api.content.create(
+            type='Folder',
+            title="Documenten",
+            container=portal,
+            description="Facetted navigation here.",
+        )
+        api.content.transition(obj=documents, transition='publish')
+        logger.info("%s created", documents)
+
+    # Move `Jaarverslagen` into `Algemeen`
+    report = portal.get('jaarverslag')
+    about = portal.get('Algemeen')
+    if report and about:
+        api.content.move(source=report, target=about)
+        logger.info("Moved `jaarverslag` into `Algemeen`")
+
+    # Move `Contact` to portal root
+    contact = about.get('Contact')
+    if contact:
+        api.content.move(source=contact, target=portal)
+        logger.info("Moved `Contact` into portal root")
+
+    # Rename `algemeen` > `Over de Minaraad`
+    about.title = 'Over de Minaraad'
+    api.content.rename(obj=about, new_id="over-de-minaraad")
+    logger.info("Renamed Algemeen > Over de Minaraad")
+
+    # Sort items.
+    items = [
+        'themas',
+        'documents',
+        'over-de-minaraad',
+        'digibib',
+        'Contact',
+    ]
+    items.reverse()
+    for uid in items:
+        portal.moveObjectsToTop(uid)
+        logger.info('%s is now on top.', uid)
+
+
+def move_redundant_folders(context):
+    """
+    Backup redundant folders into a private 'Dropped items' folder.
+
+    :param context:
+    :return: None
+    """
+    portal = api.portal.get()
+    folder = api.portal.get('vervallen-items')
+    if not folder:
+        folder = api.content.create(
+            type='Folder',
+            title='Vervallen items',
+            container=portal,
+            description="Tijdens de migratie is onderliggende inhoud waarschijnlijk overbodig geworden.",
+        )
+
+    redundant_items = [
+        'adviezen',
+        'studies',
+        'hoorzittingen',
+        'evenementen',
+        'nieuwsbrieven',
+    ]
+
+    for uid in redundant_items:
+        obj = portal.get(uid)
+        if obj:
+            api.content.move(source=obj, target=folder)
+            logger.info("Moved %s to Vervallen items.", uid)
 
 
 def move_content(context):
@@ -584,7 +688,6 @@ def move_content(context):
             logger.info("Moved %s to %s %s", obj.title, theme, sub_folder)
 
 
-
 def create_theme_folders(context):
     """
     Create theme folders. Subfolders are created by an event subscriber.
@@ -606,7 +709,7 @@ def create_theme_folders(context):
     ]
 
     portal = getToolByName(context, 'portal_url').getPortalObject()
-    folder = portal.get('themas', False)
+    folder = portal.get('themas')
     if not folder:
         folder = _createObjectByType("Folder", portal, 'themas')
         folder.title = "Thema's"
@@ -638,7 +741,3 @@ def to_plone436(context):
 
     profile_id = 'profile-Products.minaraad:plone436'
     context.runAllImportStepsFromProfile(profile_id, purge_old=False)
-
-    # Various
-    create_theme_folders(context)
-    move_content(context)
