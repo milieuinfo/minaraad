@@ -32,7 +32,7 @@
             "fast",
             function () {
               // TODO: only on slide open.
-              $("#search").focus();
+              $(".form-control").focus();
             });
         });
 
