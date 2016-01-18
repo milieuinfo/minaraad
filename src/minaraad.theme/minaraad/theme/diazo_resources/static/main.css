@@ -7458,10 +7458,21 @@ nav section.archive li a:hover:before, nav section.archive li.active a:before, n
     background: #2e94bd;
     color: white;
     margin: -1px -16px;
-    padding: 1px 15px; }
+    padding: 11px 10px 10px 13px; }
+    .event-detail-lead header h1 {
+      margin: 0; }
   .event-detail-lead h1 {
     font-size: 24px; }
   .event-detail-lead h2 {
+    font-size: 18px; }
+
+.event-detail {
+  border: 1px solid #d9d9d9;
+  border-top: 5px solid #2e94bd;
+  padding: 0 15px 1px 15px;
+  background-color: white;
+  margin-bottom: 15px; }
+  .event-detail h2 {
     font-size: 18px; }
 
 /*# sourceMappingURL=main.css.map */
