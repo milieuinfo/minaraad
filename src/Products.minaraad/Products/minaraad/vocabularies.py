@@ -62,13 +62,13 @@ class FacetedPortalTypesVocabulary(object):
             'Study': u'Study',
             # 'DigiBib': u'DigiBib',
             'Hearing': u'Hearing',
-            'Project': u'Project',
+            # 'Project': u'Project',
             # 'Theme': u'Theme',
             # 'Pressrelease': u'Pressrelease',
             # 'Folder': u'Folder',
             # 'Document': u'Page',
-            'Meeting': u'Meeting',
-            # 'AnnualReport': u'AnnualReport'
+            # 'Meeting': u'Meeting',
+            'AnnualReport': u'AnnualReport'
         }
 
         if ftool is not None:

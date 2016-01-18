@@ -4,10 +4,13 @@ History of this buildout
 5.1.14 (unreleased)
 -------------------
 
+- Add year widget for faceted navigation
+  [coen, maurits]
+
 - Remove resources directory and contents.
   [coen]
 
-- Add vocabularies for facetednavigation
+- Add vocabularies for faceted navigation
   [coen]
 
 - Unassign right column portlets
