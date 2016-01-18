@@ -554,11 +554,11 @@ def setup_various(context):
     portal = api.portal.get()
 
     # Create documents folder
-    documents = portal.get('documents')
+    documents = portal.get('documenten')
     if not documents:
         documents = api.content.create(
             type='Folder',
-            title="Documents",
+            title="Documenten",
             container=portal,
             description="Facetted navigation here.",
         )
