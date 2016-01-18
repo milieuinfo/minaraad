@@ -4,6 +4,12 @@ History of this buildout
 5.1.14 (unreleased)
 -------------------
 
+- Install EEA.facetednavigation, MailChimp and Minaraad.theme products.
+  [coen]
+
+- Select default skin
+  [coen]
+
 - Do not put content in subfolders.
   [coen]
 

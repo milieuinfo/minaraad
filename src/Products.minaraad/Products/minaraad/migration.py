@@ -521,6 +521,11 @@ def create_lead_image(size=(800, 450), color="blue"):
     return sio.read()
 
 
+# def uninstall_classic_theme(context):
+#     setup_tool = context.portal_setup
+#     setup_tool.runAllImportStepsFromProfile('profile-plonetheme.classic:uninstall')
+
+
 def unassign_portlets(context):
     """
     Remove assignements of the portlets in the right column.
