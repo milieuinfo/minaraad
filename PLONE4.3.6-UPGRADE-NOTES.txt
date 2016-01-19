@@ -18,6 +18,15 @@ Upgrade
 Post upgrade
 ============
 
+Rebuild the date indexes
+------------------------
+
+During development we got `POSKeyError: 0x68b743` erros.
+
+Go to: http://localhost:8080/minaraad/portal_catalog/manage_catalogIndexes?skey=meta_type&rkey=meta_type
+Select all date related. Chose `Clear index`
+Select all date related. Chose `Reindex`
+
 
 Newsletter migration
 --------------------
