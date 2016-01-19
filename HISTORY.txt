@@ -4,6 +4,9 @@ History of this buildout
 5.1.14 (unreleased)
 -------------------
 
+- Add section widget to faceted navigation. Digibib / Site / Both
+  [coen]
+
 - Install EEA.facetednavigation, MailChimp and Minaraad.theme products.
   [coen]
 
