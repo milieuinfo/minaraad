@@ -404,9 +404,6 @@
         title="Remove portlets"
         description="Remove portlets from right column"
         handler="Products.minaraad.migration.unassign_portlets" />
-    <!--<gs:upgradeStep-->
-        <!--title="Uninstall Classic theme"-->
-        <!--handler="Products.minaraad.migration.uninstall_classic_theme" />-->
   </gs:upgradeSteps>
 
 </configure>
