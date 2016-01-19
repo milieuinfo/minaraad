@@ -4,7 +4,8 @@ History of this buildout
 5.1.14 (unreleased)
 -------------------
 
-- Add section widget to faceted navigation. Digibib / Site / Both
+- Add custom section radio widget based on the default radio widget from
+  faceted navigation. Select all, website or Digibib.
   [coen]
 
 - Install EEA.facetednavigation, MailChimp and Minaraad.theme products.
