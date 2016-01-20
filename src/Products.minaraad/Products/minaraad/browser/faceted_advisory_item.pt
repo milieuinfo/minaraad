@@ -8,7 +8,6 @@
      tal:attributes="href url;
                      title description">
 
-    <!--? TODO: Add condition -->
     <img style="width:100%"
         tal:condition="has_image"
         tal:attributes="

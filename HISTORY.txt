@@ -4,6 +4,8 @@ History of this buildout
 5.1.14 (unreleased)
 -------------------
 
+- Register faceted preview template for file attachments
+
 - Add year select widget
   [coen]
 

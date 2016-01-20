@@ -15,6 +15,13 @@
     permission="zope2.View"
     />
 
+  <browser:page
+    name="faceted-preview-item"
+    for="Products.SimpleAttachment.interfaces.IFileAttachment"
+    template="faceted_fileattachment_item.pt"
+    permission="zope2.View"
+    />
+
   <browser:viewlet
        name="minaraad.global_sections"
        manager="plone.app.layout.viewlets.interfaces.IPortalHeader"
