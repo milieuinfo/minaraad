@@ -1,10 +1,18 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
     xmlns:browser="http://namespaces.zope.org/browser"
-    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:faceted="http://namespaces.zope.org/faceted"
     xmlns:plone="http://namespaces.plone.org/plone">
 
+  <include package=".faceted_section_widget" />
   <include package=".faceted_year_widget" />
+
+  <browser:page
+    name="faceted-preview-item"
+    for="Products.minaraad.interfaces.IAdvisory"
+    template="faceted_advisory_item.pt"
+    permission="zope2.View"
+    />
 
   <browser:viewlet
        name="minaraad.global_sections"

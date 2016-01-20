@@ -4,6 +4,22 @@ History of this buildout
 5.1.14 (unreleased)
 -------------------
 
+- Add cunstom template for advice preview in faceted navigation.
+  [coen, maurits]
+
+- Add custom section radio widget based on the default radio widget from
+  faceted navigation. Select all, website or Digibib.
+  [coen, maurits]
+
+- Install EEA.facetednavigation, MailChimp and Minaraad.theme products.
+  [coen]
+
+- Select default skin
+  [coen]
+
+- Do not put content in subfolders.
+  [coen]
+
 - Add year widget for faceted navigation
   [coen, maurits]
 

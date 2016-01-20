@@ -1,0 +1,19 @@
+<div class="photoAlbumEntry">
+  <a tal:define="
+      description context/Description|string:;
+      title context/pretty_title_or_id|string:;
+      desc_or_title python:description or title;
+      url context/absolute_url|string:#"
+     tal:attributes="href url;
+                     title description">
+
+    <!--? TODO: Add condition -->
+    <img style="width:100%" tal:attributes="
+      title desc_or_title;
+      alt title;
+      src string:$url/@@images/foto/foto"/>
+    <span class="photoAlbumEntryTitle" tal:content="context/pretty_title_or_id|string:">Title</span>
+    <span class="photoAlbumEntryDescription" tal:content="description">Description</span>
+
+  </a>
+</div>
