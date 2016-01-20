@@ -271,8 +271,21 @@
     color: white;
     margin: -1px -16px;
     padding: 11px 10px 10px 13px;
-    h1{
+    h3{
       margin: 0;
+      font-size: 16px;
+      float: left;
+    }
+    button{
+      @extend .btn-primary;
+      float: right;
+      line-height: 1;
+      padding: 2px 12px;
+    }
+    &:after{
+      display: block;
+      clear: both;
+      content: "";
     }
   }
   h1 {
@@ -291,5 +304,39 @@
   margin-bottom: 15px;
   h2{
     font-size: 18px;
+  }
+}
+
+.event-form{
+  border: 1px solid darken(white, 15);
+  //border-top: 5px solid $mina-blue;
+  padding: 0 15px 20px 15px;
+  background-color: white;
+  margin-bottom: 15px;
+  header {
+    background: $mina-blue;
+    color: white;
+    margin: -1px -16px;
+    padding: 11px 10px 10px 13px;
+    margin-bottom: 20px;
+    h3{
+      margin: 0;
+      font-size: 16px;
+    }
+  }
+  form{
+    margin-left: 20px;
+    label{
+      font-weight: normal;
+    }
+    button{
+      @extend .btn-primary;
+      float: right;
+    }
+    &:after{
+      display: block;
+      content: "";
+      clear: both;
+    }
   }
 }

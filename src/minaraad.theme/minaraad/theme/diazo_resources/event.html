@@ -223,10 +223,11 @@
                         <section class="event-detail-lead">
                           <!-- TODO: fix header with button -->
                           <header>
-                            <h1>
+                            <h3>
                               <i class="fa fa-comments"></i>
                               2 april 2016
-                            </h1>
+                            </h3>
+                            <button type="button" class="btn btn-default" onClick="location.href='#inschrijven'">Inschrijven</button>
                           </header>
                           <h1>Groenboek Beleidsplan Ruimte Vlaanderen</h1>
                           <p class="label">Evenement <span>Biodiversiteit</span></p>
@@ -256,7 +257,37 @@
                           </p>
                         </section>
 
-                        <!-- TODO: Add form -->
+                        <section class="event-form" name="inschrijven" id="inschrijven">
+                          <header>
+                            <h3>Inschrijven</h3>
+                          </header>
+                          <p>Excepteur sint obcaecat cupiditat non proident culpa. Ambitioni dedisse scripsisse iudicaretur. Non equidem invideo, miror magis posuere velit aliquet.</p>
+                          <form>
+                            <div class="form-group">
+                              <label for="firstname">Voornaam</label>
+                              <input type="text" class="form-control" id="firstname" placeholder="Voornaam">
+                            </div>
+                            <div class="form-group">
+                              <label for="lastname">Achternaam</label>
+                              <input type="text" class="form-control" id="lastname" placeholder="Achternaam">
+                            </div>
+                            <div class="form-group">
+                              <label for="exampleInputEmail1">Email address</label>
+                              <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                            </div>
+                            <div class="form-group">
+                              <label for="functie">Functie en/of organisatie (optioneel)</label>
+                              <input type="text" class="form-control" id="functie" placeholder="Functie / organisatie">
+                            </div>
+                            <div class="checkbox">
+                              <label>
+                                <input type="checkbox"> Gegevens onthouden
+                              </label>
+                            </div>
+                            <button type="submit" class="btn btn-default">Inschrijven</button>
+                          </form>
+                        </section>
+
 
                       </div>
                     </article>

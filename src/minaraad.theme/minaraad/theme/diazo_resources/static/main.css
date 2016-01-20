@@ -2263,60 +2263,94 @@ fieldset[disabled] a.btn {
     color: #fff;
     background-color: #333; }
 
-.btn-primary, .logobar .search button {
+.btn-primary, .logobar .search button, .event-detail-lead header button, .event-form form button {
   color: #fff;
   background-color: #2e94bd;
   border-color: #2984a8; }
-  .btn-primary:focus, .logobar .search button:focus, .btn-primary.focus, .logobar .search button.focus {
+  .btn-primary:focus, .logobar .search button:focus, .event-detail-lead header button:focus, .event-form form button:focus, .btn-primary.focus, .logobar .search button.focus, .event-detail-lead header button.focus, .event-form form button.focus {
     color: #fff;
     background-color: #247494;
     border-color: #103442; }
-  .btn-primary:hover, .logobar .search button:hover {
+  .btn-primary:hover, .logobar .search button:hover, .event-detail-lead header button:hover, .event-form form button:hover {
     color: #fff;
     background-color: #247494;
     border-color: #1d5d77; }
-  .btn-primary:active, .logobar .search button:active, .btn-primary.active, .logobar .search button.active,
+  .btn-primary:active, .logobar .search button:active, .event-detail-lead header button:active, .event-form form button:active, .btn-primary.active, .logobar .search button.active, .event-detail-lead header button.active, .event-form form button.active,
   .open > .btn-primary.dropdown-toggle, .logobar .search
+  .open > button.dropdown-toggle, .event-detail-lead header
+  .open > button.dropdown-toggle, .event-form form
   .open > button.dropdown-toggle {
     color: #fff;
     background-color: #247494;
     border-color: #1d5d77; }
-    .btn-primary:active:hover, .logobar .search button:active:hover, .btn-primary:active:focus, .logobar .search button:active:focus, .btn-primary:active.focus, .logobar .search button:active.focus, .btn-primary.active:hover, .logobar .search button.active:hover, .btn-primary.active:focus, .logobar .search button.active:focus, .btn-primary.active.focus, .logobar .search button.active.focus,
+    .btn-primary:active:hover, .logobar .search button:active:hover, .event-detail-lead header button:active:hover, .event-form form button:active:hover, .btn-primary:active:focus, .logobar .search button:active:focus, .event-detail-lead header button:active:focus, .event-form form button:active:focus, .btn-primary:active.focus, .logobar .search button:active.focus, .event-detail-lead header button:active.focus, .event-form form button:active.focus, .btn-primary.active:hover, .logobar .search button.active:hover, .event-detail-lead header button.active:hover, .event-form form button.active:hover, .btn-primary.active:focus, .logobar .search button.active:focus, .event-detail-lead header button.active:focus, .event-form form button.active:focus, .btn-primary.active.focus, .logobar .search button.active.focus, .event-detail-lead header button.active.focus, .event-form form button.active.focus,
     .open > .btn-primary.dropdown-toggle:hover, .logobar .search
+    .open > button.dropdown-toggle:hover, .event-detail-lead header
+    .open > button.dropdown-toggle:hover, .event-form form
     .open > button.dropdown-toggle:hover,
     .open > .btn-primary.dropdown-toggle:focus, .logobar .search
+    .open > button.dropdown-toggle:focus, .event-detail-lead header
+    .open > button.dropdown-toggle:focus, .event-form form
     .open > button.dropdown-toggle:focus,
     .open > .btn-primary.dropdown-toggle.focus, .logobar .search
+    .open > button.dropdown-toggle.focus, .event-detail-lead header
+    .open > button.dropdown-toggle.focus, .event-form form
     .open > button.dropdown-toggle.focus {
       color: #fff;
       background-color: #1d5d77;
       border-color: #103442; }
-  .btn-primary:active, .logobar .search button:active, .btn-primary.active, .logobar .search button.active,
+  .btn-primary:active, .logobar .search button:active, .event-detail-lead header button:active, .event-form form button:active, .btn-primary.active, .logobar .search button.active, .event-detail-lead header button.active, .event-form form button.active,
   .open > .btn-primary.dropdown-toggle, .logobar .search
+  .open > button.dropdown-toggle, .event-detail-lead header
+  .open > button.dropdown-toggle, .event-form form
   .open > button.dropdown-toggle {
     background-image: none; }
-  .btn-primary.disabled, .logobar .search button.disabled, .btn-primary.disabled:hover, .logobar .search button.disabled:hover, .btn-primary.disabled:focus, .logobar .search button.disabled:focus, .btn-primary.disabled.focus, .logobar .search button.disabled.focus, .btn-primary.disabled:active, .logobar .search button.disabled:active, .btn-primary.disabled.active, .logobar .search button.disabled.active, .btn-primary[disabled], .logobar .search button[disabled], .btn-primary[disabled]:hover, .logobar .search button[disabled]:hover, .btn-primary[disabled]:focus, .logobar .search button[disabled]:focus, .btn-primary[disabled].focus, .logobar .search button[disabled].focus, .btn-primary[disabled]:active, .logobar .search button[disabled]:active, .btn-primary[disabled].active, .logobar .search button[disabled].active,
+  .btn-primary.disabled, .logobar .search button.disabled, .event-detail-lead header button.disabled, .event-form form button.disabled, .btn-primary.disabled:hover, .logobar .search button.disabled:hover, .event-detail-lead header button.disabled:hover, .event-form form button.disabled:hover, .btn-primary.disabled:focus, .logobar .search button.disabled:focus, .event-detail-lead header button.disabled:focus, .event-form form button.disabled:focus, .btn-primary.disabled.focus, .logobar .search button.disabled.focus, .event-detail-lead header button.disabled.focus, .event-form form button.disabled.focus, .btn-primary.disabled:active, .logobar .search button.disabled:active, .event-detail-lead header button.disabled:active, .event-form form button.disabled:active, .btn-primary.disabled.active, .logobar .search button.disabled.active, .event-detail-lead header button.disabled.active, .event-form form button.disabled.active, .btn-primary[disabled], .logobar .search button[disabled], .event-detail-lead header button[disabled], .event-form form button[disabled], .btn-primary[disabled]:hover, .logobar .search button[disabled]:hover, .event-detail-lead header button[disabled]:hover, .event-form form button[disabled]:hover, .btn-primary[disabled]:focus, .logobar .search button[disabled]:focus, .event-detail-lead header button[disabled]:focus, .event-form form button[disabled]:focus, .btn-primary[disabled].focus, .logobar .search button[disabled].focus, .event-detail-lead header button[disabled].focus, .event-form form button[disabled].focus, .btn-primary[disabled]:active, .logobar .search button[disabled]:active, .event-detail-lead header button[disabled]:active, .event-form form button[disabled]:active, .btn-primary[disabled].active, .logobar .search button[disabled].active, .event-detail-lead header button[disabled].active, .event-form form button[disabled].active,
   fieldset[disabled] .btn-primary,
   fieldset[disabled] .logobar .search button, .logobar .search
+  fieldset[disabled] button,
+  fieldset[disabled] .event-detail-lead header button, .event-detail-lead header
+  fieldset[disabled] button,
+  fieldset[disabled] .event-form form button, .event-form form
   fieldset[disabled] button,
   fieldset[disabled] .btn-primary:hover,
   fieldset[disabled] .logobar .search button:hover, .logobar .search
   fieldset[disabled] button:hover,
+  fieldset[disabled] .event-detail-lead header button:hover, .event-detail-lead header
+  fieldset[disabled] button:hover,
+  fieldset[disabled] .event-form form button:hover, .event-form form
+  fieldset[disabled] button:hover,
   fieldset[disabled] .btn-primary:focus,
   fieldset[disabled] .logobar .search button:focus, .logobar .search
+  fieldset[disabled] button:focus,
+  fieldset[disabled] .event-detail-lead header button:focus, .event-detail-lead header
+  fieldset[disabled] button:focus,
+  fieldset[disabled] .event-form form button:focus, .event-form form
   fieldset[disabled] button:focus,
   fieldset[disabled] .btn-primary.focus,
   fieldset[disabled] .logobar .search button.focus, .logobar .search
   fieldset[disabled] button.focus,
+  fieldset[disabled] .event-detail-lead header button.focus, .event-detail-lead header
+  fieldset[disabled] button.focus,
+  fieldset[disabled] .event-form form button.focus, .event-form form
+  fieldset[disabled] button.focus,
   fieldset[disabled] .btn-primary:active,
   fieldset[disabled] .logobar .search button:active, .logobar .search
   fieldset[disabled] button:active,
+  fieldset[disabled] .event-detail-lead header button:active, .event-detail-lead header
+  fieldset[disabled] button:active,
+  fieldset[disabled] .event-form form button:active, .event-form form
+  fieldset[disabled] button:active,
   fieldset[disabled] .btn-primary.active,
   fieldset[disabled] .logobar .search button.active, .logobar .search
+  fieldset[disabled] button.active,
+  fieldset[disabled] .event-detail-lead header button.active, .event-detail-lead header
+  fieldset[disabled] button.active,
+  fieldset[disabled] .event-form form button.active, .event-form form
   fieldset[disabled] button.active {
     background-color: #2e94bd;
     border-color: #2984a8; }
-  .btn-primary .badge, .logobar .search button .badge {
+  .btn-primary .badge, .logobar .search button .badge, .event-detail-lead header button .badge, .event-form form button .badge {
     color: #2e94bd;
     background-color: #fff; }
 
@@ -7459,8 +7493,18 @@ nav section.archive li a:hover:before, nav section.archive li.active a:before, n
     color: white;
     margin: -1px -16px;
     padding: 11px 10px 10px 13px; }
-    .event-detail-lead header h1 {
-      margin: 0; }
+    .event-detail-lead header h3 {
+      margin: 0;
+      font-size: 16px;
+      float: left; }
+    .event-detail-lead header button {
+      float: right;
+      line-height: 1;
+      padding: 2px 12px; }
+    .event-detail-lead header:after {
+      display: block;
+      clear: both;
+      content: ""; }
   .event-detail-lead h1 {
     font-size: 24px; }
   .event-detail-lead h2 {
@@ -7474,5 +7518,30 @@ nav section.archive li a:hover:before, nav section.archive li.active a:before, n
   margin-bottom: 15px; }
   .event-detail h2 {
     font-size: 18px; }
+
+.event-form {
+  border: 1px solid #d9d9d9;
+  padding: 0 15px 20px 15px;
+  background-color: white;
+  margin-bottom: 15px; }
+  .event-form header {
+    background: #2e94bd;
+    color: white;
+    margin: -1px -16px;
+    padding: 11px 10px 10px 13px;
+    margin-bottom: 20px; }
+    .event-form header h3 {
+      margin: 0;
+      font-size: 16px; }
+  .event-form form {
+    margin-left: 20px; }
+    .event-form form label {
+      font-weight: normal; }
+    .event-form form button {
+      float: right; }
+    .event-form form:after {
+      display: block;
+      content: "";
+      clear: both; }
 
 /*# sourceMappingURL=main.css.map */
