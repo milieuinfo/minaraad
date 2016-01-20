@@ -1,4 +1,4 @@
-FacetedEdit.SelectWidget = function(wid){
+FacetedEdit.YearSelectWidget = function(wid){
   this.wid = wid;
   this.widget = jQuery('#' + wid + '_widget');
   this.elements = jQuery('option', this.widget);
@@ -15,7 +15,7 @@ FacetedEdit.SelectWidget = function(wid){
   this.count();
 };
 
-FacetedEdit.SelectWidget.prototype = {
+FacetedEdit.YearSelectWidget.prototype = {
   count: function(){
     if(!this.widget.hasClass('faceted-count')){
       return;
@@ -46,16 +46,16 @@ FacetedEdit.SelectWidget.prototype = {
   }
 };
 
-FacetedEdit.initializeSelectWidget = function(){
-  jQuery('div.faceted-select-widget').each(function(){
+FacetedEdit.initializeYearSelectWidget = function(){
+  jQuery('div.faceted-year-select-widget').each(function(){
       var wid = jQuery(this).attr('id');
       wid = wid.split('_')[0];
-      FacetedEdit.Widgets[wid] = new FacetedEdit.SelectWidget(wid);
+      FacetedEdit.Widgets[wid] = new FacetedEdit.YearSelectWidget(wid);
   });
 };
 
 jQuery(document).ready(function(){
   jQuery(FacetedEdit.Events).bind(
     FacetedEdit.Events.INITIALIZE_WIDGETS,
-    FacetedEdit.initializeSelectWidget);
+    FacetedEdit.initializeYearSelectWidget);
 });

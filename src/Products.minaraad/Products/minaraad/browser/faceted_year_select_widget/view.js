@@ -1,6 +1,6 @@
 /* Select Widget
 */
-Faceted.SelectWidget = function(wid){
+Faceted.YearSelectWidget = function(wid){
   this.wid = wid;
   this.widget = jQuery('#' + this.wid + '_widget');
   this.widget.show();
@@ -54,7 +54,7 @@ Faceted.SelectWidget = function(wid){
   }
 };
 
-Faceted.SelectWidget.prototype = {
+Faceted.YearSelectWidget.prototype = {
   select_change: function(element, evt){
     if(!jQuery(element).val()){
       element = null;
@@ -138,7 +138,7 @@ Faceted.SelectWidget.prototype = {
 
     var widget = this;
     var html = jQuery('<dd>');
-    var span = jQuery('<span class="facted-select-criterion">');
+    var span = jQuery('<span class="facted-year-select-criterion">');
     html.attr('id', 'criteria_' + this.wid + '_entries');
     var element = jQuery(this.selected);
     var value = element.val();
@@ -186,7 +186,7 @@ Faceted.SelectWidget.prototype = {
     var current_val = select.val();
     jQuery(options).each(function(){
       var option = jQuery(this);
-      option.removeClass('faceted-select-item-disabled');
+      option.removeClass('faceted-year-select-item-disabled');
       option.attr('disabled', false);
       var key = option.val();
 
@@ -201,7 +201,7 @@ Faceted.SelectWidget.prototype = {
       }
       if(!value){
         option.attr('disabled', 'disabled');
-        option.addClass('faceted-select-item-disabled');
+        option.addClass('faceted-year-select-item-disabled');
       }
     });
     if(sortcountable){
@@ -216,16 +216,16 @@ Faceted.SelectWidget.prototype = {
   }
 };
 
-Faceted.initializeSelectWidget = function(evt){
-  jQuery('div.faceted-select-widget').each(function(){
+Faceted.initializeYearSelectWidget = function(evt){
+  jQuery('div.faceted-year-select-widget').each(function(){
     var wid = jQuery(this).attr('id');
     wid = wid.split('_')[0];
-    Faceted.Widgets[wid] = new Faceted.SelectWidget(wid);
+    Faceted.Widgets[wid] = new Faceted.YearSelectWidget(wid);
   });
 };
 
 jQuery(document).ready(function(){
   jQuery(Faceted.Events).bind(
     Faceted.Events.INITIALIZE,
-    Faceted.initializeSelectWidget);
+    Faceted.initializeYearSelectWidget);
 });

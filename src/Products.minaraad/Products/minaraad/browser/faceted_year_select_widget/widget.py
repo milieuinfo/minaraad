@@ -65,11 +65,11 @@ class Widget(CountableWidget):
     """ Widget
     """
     # Widget properties
-    widget_type = 'select'
-    widget_label = _('Select')
-    view_js = '++resource++eea.facetednavigation.widgets.select.view.js'
-    edit_js = '++resource++eea.facetednavigation.widgets.select.edit.js'
-    view_css = '++resource++eea.facetednavigation.widgets.select.view.css'
+    widget_type = 'year-select'
+    widget_label = _('Year select')
+    view_js = '++resource++eea.facetednavigation.widgets.year-select.view.js'
+    edit_js = '++resource++eea.facetednavigation.widgets.year-select.edit.js'
+    view_css = '++resource++eea.facetednavigation.widgets.year-select.view.css'
 
     index = ViewPageTemplateFile('widget.pt')
     edit_schema = CountableWidget.edit_schema.copy() + EditSchema

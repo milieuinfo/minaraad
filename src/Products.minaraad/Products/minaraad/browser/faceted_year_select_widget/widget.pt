@@ -1,4 +1,4 @@
-<div class="faceted-widget faceted-select-widget" style="display: none"
+<div class="faceted-widget faceted-year-select-widget" style="display: none"
      i18n:domain="eea" tal:define="
   error_view nocall:context/@@faceted.widget.error;
   wid python:view.data.getId();
