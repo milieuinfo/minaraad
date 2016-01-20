@@ -6,6 +6,7 @@
 
   <include package=".faceted_section_widget" />
   <include package=".faceted_year_widget" />
+  <include package=".faceted_year_select_widget" />
 
   <browser:page
     name="faceted-preview-item"
