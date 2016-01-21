@@ -4,6 +4,9 @@ History of this buildout
 5.1.14 (unreleased)
 -------------------
 
+- Fix arrow path.
+  [coen]
+
 - Add homepage view, template, diazo rules.
   [coen]
 
