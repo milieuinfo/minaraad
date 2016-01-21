@@ -1,9 +1,4 @@
 <?xml version="1.0"?>
 <metadata>
   <version>1000</version>
-  <dependencies>
-    <dependency>profile-eea.facetednavigation:default</dependency>
-    <dependency>profile-collective.mailchimp:default</dependency>
-    <dependency>profile-minaraad.theme:default</dependency>
-  </dependencies>
 </metadata>

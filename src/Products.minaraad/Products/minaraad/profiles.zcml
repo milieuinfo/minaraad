@@ -381,6 +381,10 @@
       destination="5025"
       profile="Products.minaraad:default">
     <gs:upgradeStep
+        title="Apply extra product profiles"
+        description="Apply extra product profiles."
+        handler="Products.minaraad.migration.apply_extra_product_profiles" />
+    <gs:upgradeStep
         title="Apply plone436 profile"
         description="Apply the xml migration profile."
         handler="Products.minaraad.migration.to_plone436" />

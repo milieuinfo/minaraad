@@ -730,6 +730,23 @@ def create_theme_folders(context):
         logger.info("%s created", title)
 
 
+def apply_extra_product_profiles(context):
+    """
+    This applies the plone436 profile from minaraad.  This has some
+    steps that should only be applied once, during the upgrade to
+    Plone 4.3.6
+    """
+
+    profiles = [
+        "profile-eea.facetednavigation:default",
+        "profile-collective.mailchimp:default",
+        "profile-minaraad.theme:default",
+    ]
+
+    for profile_id in profiles:
+        context.runAllImportStepsFromProfile(profile_id, purge_old=False)
+
+
 def to_plone436(context):
     """
     This applies the plone436 profile from minaraad.  This has some

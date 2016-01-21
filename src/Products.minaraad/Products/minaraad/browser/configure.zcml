@@ -22,6 +22,13 @@
     permission="zope2.View"
     />
 
+  <browser:page
+    name="faceted-preview-item"
+    for="Products.ATContentTypes.interfaces.file.IATFile"
+    template="faceted_fileattachment_item.pt"
+    permission="zope2.View"
+    />
+
   <browser:viewlet
        name="minaraad.global_sections"
        manager="plone.app.layout.viewlets.interfaces.IPortalHeader"
@@ -80,6 +87,14 @@
       addview=".personalPreferencesPortlet.AddForm"
       view_permission="zope2.View"
       edit_permission="plone.app.portlets.ManagePortlets"
+      />
+
+  <browser:page
+      name="homepage"
+      for="Products.ATContentTypes.interfaces.IATDocument"
+      class="Products.minaraad.browser.homepage.HomepageView"
+      template="homepage.pt"
+      permission="zope2.View"
       />
 
   <browser:page

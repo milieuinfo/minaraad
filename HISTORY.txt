@@ -4,7 +4,11 @@ History of this buildout
 5.1.14 (unreleased)
 -------------------
 
+- Add homepage view, template, diazo rules.
+  [coen]
+
 - Register faceted preview template for file attachments
+  [coen]
 
 - Add year select widget
   [coen]
