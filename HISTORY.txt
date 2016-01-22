@@ -4,6 +4,10 @@ History of this buildout
 5.1.14 (unreleased)
 -------------------
 
+- Add Plone edit bar rules and styling.
+- Basic Diazo to copy content.
+  [coen]
+
 - Add theme custom view
 - Add the view to a default page.
   [coen]

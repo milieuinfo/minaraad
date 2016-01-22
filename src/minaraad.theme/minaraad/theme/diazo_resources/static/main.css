@@ -7475,7 +7475,51 @@ nav section.archive li a:hover:before, nav section.archive li.active a:before, n
   .event-detail h2 {
     font-size: 18px; }
 
+#editbar-wrapper {
+  padding-top: 15px;
+  padding-bottom: 0; }
+
+#edit-bar {
+  line-height: 26px;
+  font-size: 100%;
+  font-family: Arial, FreeSans, sans-serif; }
+  #edit-bar a {
+    transition-duration: 0s;
+    -webkit-transition-duration: 0s; }
+
+#content-views li.selected a,
+#content-views li a:hover,
+#content li.formTab a.selected,
+#content li.formTab a:hover,
+#content-core li.formTab a.selected,
+#content-core li.formTab a:hover {
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+  -webkit-border-top-right-radius: 0;
+  -webkit-border-top-left-radius: 0;
+  -moz-border-radius-topleft: 0;
+  -moz-border-radius-topright: 0; }
+
 #pyproxy_spinner {
   display: none; }
+
+#content-views,
+#contentActionMenus,
+#editbar-wrapper,
+#edit-bar,
+.actionMenuContent,
+#contentActionMenus dl.actionMenu a,
+#contentActionMenus dl.actionMenu.activated dd {
+  background: #0F475C;
+  border-color: #0F475C; }
+
+ul#contentActionMenus ul li a {
+  padding: 4px; }
+
+#contentActionMenus {
+  margin-top: 5px; }
+
+div#folderHeader span, div#contextHeader span {
+  font-weight: bold; }
 
 /*# sourceMappingURL=main.css.map */

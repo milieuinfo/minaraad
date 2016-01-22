@@ -42,7 +42,4 @@ $fa-font-path:        "fontawesome/fonts" !default;
 @import 'partials/sections';
 @import 'partials/articles';
 
-
-#pyproxy_spinner {
-  display:none;
-}
+@import 'plone_ui';
