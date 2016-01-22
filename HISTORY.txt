@@ -4,6 +4,9 @@ History of this buildout
 5.1.14 (unreleased)
 -------------------
 
+- Add upgradesteps to add default page and select view for home and themes.
+  [coen]
+
 - Add Plone edit bar rules and styling.
 - Basic Diazo to copy content.
   [coen]
