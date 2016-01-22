@@ -4,6 +4,10 @@ History of this buildout
 5.1.14 (unreleased)
 -------------------
 
+- Add theme custom view
+- Add the view to a default page.
+  [coen]
+
 - Fix arrow path.
   [coen]
 

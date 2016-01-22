@@ -1,0 +1,147 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="minaraad">
+    <body>
+
+    <hidden fill-slot="content-title">
+    </hidden>
+
+    <hidden fill-slot="content-description">
+    </hidden>
+
+    <metal:block metal:fill-slot="content-core">
+
+        <div class="content-wrapper">
+
+          <!--?<div class="breadcrumbbar">-->
+            <!--?<div class="container">-->
+                <!--?<ol class="breadcrumb">-->
+                  <!--?<li><a href="home.html"><i class="fa fa-home"></i></a></li>-->
+                  <!--?<li class="active">Thema’s</li>-->
+                <!--?</ol>-->
+            <!--?</div>-->
+          <!--?</div>-->
+
+          <main role="main" id="main-container">
+
+            <section class="sec-themes">
+              <div  class="container">
+
+                <div class="sec-header">
+                  <h2><a href="#">Thema’s</a></h2>
+                </div>
+
+                <div class="row">
+
+                    <div class="left">
+                      <div class="row">
+
+                        <tal:primaryThemes tal:repeat="item view/primary_themes">
+                          <div class="column">
+                            <article class="article-theme">
+                              <a tal:attributes="href item/absolute_url">
+                                <div class="body">
+                                  <tal:image
+                                      tal:define="images item/@@images;
+                                      thumbnail python:images.scale('image', width=100, height=100, direction='down')"
+                                      tal:condition="thumbnail">
+                                    <img tal:attributes="src thumbnail/url; alt item/title" />
+                                  </tal:image>
+                                  <h3 tal:content="item/Title">
+                                  </h3>
+                                  <p class="truncate" tal:content="item/Description">
+                                  </p>
+                                </div>
+                              </a>
+                            </article>
+                          </div>
+
+                          <div tal:define="number repeat/item/number"
+                               tal:condition="python:number % 2 == 0"
+                               class="col-sm-12 visible-sm">
+                          </div>
+
+                          <!--! Break column to equalise 'rows'. -->
+                          <div tal:define="number repeat/item/number"
+                              tal:condition="python:number % 3 == 0"
+                               class="col-md-12 visible-md visible-lg">
+                          </div>
+
+                        </tal:primaryThemes>
+
+                      </div>
+                    </div>
+
+                    <div class="right">
+
+                      <tal:secondaryThemes tal:repeat="item view/secondary_themes">
+                        <article class="article-theme-other">
+                          <a tal:attributes="href item/absolute_url">
+                            <header>
+                              <tal:image
+                                  tal:define="images item/@@images;
+                                  thumbnail python:images.scale('image', width=100, height=100, direction='down')"
+                                  tal:condition="thumbnail">
+                                <img tal:attributes="src thumbnail/url; alt item/title" />
+                              </tal:image>
+                              <h3 tal:content="item/Title"></h3>
+                            </header>
+                            <div class="body">
+                              <p tal:content="item/Description"></p>
+                            </div>
+                          </a>
+                        </article>
+                      </tal:secondaryThemes>
+
+                    </div>
+
+                </div>
+
+              </div>
+            </section>
+
+            <section class="sec-related">
+              <div  class="container">
+                <div class="sec-header">
+                  <h2><a href="#">Actuele documenten</a></h2>
+                </div>
+
+                <div class="row">
+
+                      <tal:relatedItems
+                          tal:define="related_items python:context.getRelatedItems();"
+                          tal:repeat="item related_items">
+                        <div class="column">
+                          <article class="article-advice">
+                            <a tal:attributes="href item/absolute_url">
+                              <tal:image
+                                  tal:define="images item/@@images;
+                                  thumbnail python:images.scale('foto', width=648, height=365, direction='down')"
+                                  tal:condition="thumbnail">
+                                <img tal:attributes="src thumbnail/url; alt item/title" />
+                              </tal:image>
+                              <div class="body">
+                                <h3 tal:content="item/Title"></h3>
+                                <p class="label">Advies <span>biodiversiteit</span></p>
+                                <p class="truncate" tal:content="item/Description"></p>
+                              </div>
+                            </a>
+                          </article>
+                      </div>
+                      </tal:relatedItems>
+
+                </div>
+              </div>
+            </section>
+
+          </main>
+
+        </div>
+
+    </metal:block>
+    </body>
+</html>

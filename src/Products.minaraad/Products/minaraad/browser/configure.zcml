@@ -98,6 +98,14 @@
       />
 
   <browser:page
+      name="themes"
+      for="Products.ATContentTypes.interfaces.IATDocument"
+      class="Products.minaraad.browser.theme.ThemeListView"
+      template="theme_list.pt"
+      permission="zope2.View"
+      />
+
+  <browser:page
       for="Products.minaraad.interfaces.IHearing"
       name="attendees_view"
       class=".attendees.AttendeesManagerView"

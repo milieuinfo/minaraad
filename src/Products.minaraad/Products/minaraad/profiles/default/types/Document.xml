@@ -7,5 +7,6 @@
  <property name="view_methods">
      <element value="document_view"/>
      <element value="homepage"/>
+     <element value="themes"/>
  </property>
 </object>
