@@ -13,9 +13,6 @@
     <hidden fill-slot="content-description">
     </hidden>
 
-    <hidden fill-slot="content-belowcontentbody">
-    </hidden>
-
     <metal:block metal:fill-slot="content-core">
 
       <div class="content-wrapper">
