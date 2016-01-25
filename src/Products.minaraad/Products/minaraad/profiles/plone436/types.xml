@@ -6,8 +6,8 @@
  <object name="ContactPerson" meta_type="Factory-based Type Information"/>
  <object name="Hearing" meta_type="Factory-based Type Information"/>
  <object name="MREvent" meta_type="Factory-based Type Information"/>
- <object name="NewsItem" meta_type="Factory-based Type Information"/>
- <object name="NewsLetter" meta_type="Factory-based Type Information"/>
+ <object name="NewsItem" meta_type="Factory-based Type Information" remove="true"/>
+ <object name="NewsLetter" meta_type="Factory-based Type Information" remove="true"/>
  <object name="Pressrelease" meta_type="Factory-based Type Information"/>
  <object name="Study" meta_type="Factory-based Type Information"/>
  <object name="CMF File" meta_type="Factory-based Type Information"/>
