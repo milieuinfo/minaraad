@@ -9,7 +9,7 @@ logger = logging.getLogger('Products.minaraad')
 
 class ThemeListView(BrowserView):
     """
-    Homepage View.
+    Theme List View.
     """
 
     def __call__(self):
@@ -31,3 +31,9 @@ class ThemeListView(BrowserView):
 
     def secondary_themes(self):
         return self.themes()[6:]
+
+
+class ThemeView(ThemeListView):
+    """
+    Theme View.
+    """

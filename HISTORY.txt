@@ -4,6 +4,9 @@ History of this buildout
 5.1.14 (unreleased)
 -------------------
 
+- Add default view for theme folders.
+  [coen]
+
 - Add upgradesteps to add default page and select view for home and themes.
   [coen]
 
