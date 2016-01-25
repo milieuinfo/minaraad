@@ -381,6 +381,10 @@
       destination="5025"
       profile="Products.minaraad:default">
     <gs:upgradeStep
+        title="Apply extra product profiles"
+        description="Apply extra product profiles."
+        handler="Products.minaraad.migration.apply_extra_product_profiles" />
+    <gs:upgradeStep
         title="Apply plone436 profile"
         description="Apply the xml migration profile."
         handler="Products.minaraad.migration.to_plone436" />
@@ -404,6 +408,15 @@
         title="Remove portlets"
         description="Remove portlets from right column"
         handler="Products.minaraad.migration.unassign_portlets" />
+    <gs:upgradeStep
+        title="Select default page and view for homepage"
+        description="Select default page and view for homepage."
+        handler="Products.minaraad.migration.homepage_select_default_page_and_view" />
+    <gs:upgradeStep
+        title="Select default page and view for themas"
+        description="Select default page and view for themas."
+        handler="Products.minaraad.migration.themas_select_default_page_and_view" />
+
   </gs:upgradeSteps>
 
 </configure>

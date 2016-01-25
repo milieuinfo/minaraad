@@ -6,6 +6,29 @@
 
   <include package=".faceted_section_widget" />
   <include package=".faceted_year_widget" />
+  <include package=".faceted_year_select_widget" />
+
+  <!-- Faceted navigation -->
+  <browser:page
+    name="faceted-preview-item"
+    for="Products.minaraad.interfaces.IAdvisory"
+    template="faceted_advisory_item.pt"
+    permission="zope2.View"
+    />
+
+  <browser:page
+    name="faceted-preview-item"
+    for="Products.SimpleAttachment.interfaces.IFileAttachment"
+    template="faceted_fileattachment_item.pt"
+    permission="zope2.View"
+    />
+
+  <browser:page
+    name="faceted-preview-item"
+    for="Products.ATContentTypes.interfaces.file.IATFile"
+    template="faceted_fileattachment_item.pt"
+    permission="zope2.View"
+    />
 
   <browser:page
     name="faceted-preview-item"
@@ -75,12 +98,36 @@
       />
 
   <browser:page
+      name="homepage"
+      for="Products.ATContentTypes.interfaces.IATDocument"
+      class="Products.minaraad.browser.homepage.HomepageView"
+      template="homepage.pt"
+      permission="zope2.View"
+      />
+
+  <browser:page
+      name="themes"
+      for="Products.ATContentTypes.interfaces.IATDocument"
+      class="Products.minaraad.browser.theme.ThemeListView"
+      template="theme_list.pt"
+      permission="zope2.View"
+      />
+
+  <browser:page
+      name="theme"
+      for="Products.minaraad.interfaces.ITheme"
+      class="Products.minaraad.browser.theme.ThemeView"
+      template="theme_detail.pt"
+      permission="zope2.View"
+  />
+
+  <browser:page
       for="Products.minaraad.interfaces.IHearing"
       name="attendees_view"
       class=".attendees.AttendeesManagerView"
       permission="zope2.View"
       allowed_interface=".attendees.IAttendeesManagerView"
-    />
+  />
 
   <browser:page
       for="Products.minaraad.interfaces.IMREvent"

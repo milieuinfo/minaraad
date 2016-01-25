@@ -1,0 +1,16 @@
+.faceted-year-select-item-disabled {
+  color: gray;
+}
+
+.faceted-zero-count-hidden .faceted-year-select-item-disabled {
+  display: none;
+}
+
+.faceted-year-select-widget label.select-field {
+  position:absolute;
+  left:-10000px;
+  top:auto;
+  width:1px;
+  height:1px;
+  overflow:hidden;
+}

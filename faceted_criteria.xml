@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<object name="documenten" meta_type="ATFolder">
+ <criteria>
+  <criterion name="c3">
+   <property name="widget">criteria</property>
+   <property name="title">Current search</property>
+   <property name="position">left</property>
+   <property name="section">default</property>
+   <property name="hidden">1</property>
+  </criterion>
+  <criterion name="c4">
+   <property name="widget">text</property>
+   <property name="title">Zoeken</property>
+   <property name="position">left</property>
+   <property name="section">default</property>
+   <property name="hidden">0</property>
+   <property name="index">SearchableText</property>
+   <property name="default"></property>
+   <property name="onlyallelements"></property>
+   <property name="wildcard">1</property>
+  </criterion>
+  <criterion name="c0">
+   <property name="widget">resultsperpage</property>
+   <property name="title">Results per page</property>
+   <property name="position">left</property>
+   <property name="section">default</property>
+   <property name="hidden">1</property>
+   <property name="start"></property>
+   <property name="end">50</property>
+   <property name="step">50</property>
+   <property name="default">50</property>
+  </criterion>
+  <criterion name="c7">
+   <property name="widget">checkbox</property>
+   <property name="title">Thema</property>
+   <property name="position">left</property>
+   <property name="section">default</property>
+   <property name="hidden">0</property>
+   <property name="count">1</property>
+   <property name="sortcountable"></property>
+   <property name="hidezerocount"></property>
+   <property name="index">path</property>
+   <property name="operator">or</property>
+   <property name="operator_visible"></property>
+   <property name="vocabulary">minaraad.theme_path</property>
+   <property name="catalog"></property>
+   <property name="maxitems">50</property>
+   <property name="sortreversed"></property>
+   <property name="default"></property>
+  </criterion>
+  <criterion name="c2">
+   <property name="widget">checkbox</property>
+   <property name="title">Type</property>
+   <property name="position">left</property>
+   <property name="section">default</property>
+   <property name="hidden">0</property>
+   <property name="count">1</property>
+   <property name="sortcountable"></property>
+   <property name="hidezerocount"></property>
+   <property name="index">Type</property>
+   <property name="operator">or</property>
+   <property name="operator_visible"></property>
+   <property name="vocabulary">minaraad.portal_types</property>
+   <property name="catalog"></property>
+   <property name="maxitems">50</property>
+   <property name="sortreversed"></property>
+   <property name="default"></property>
+  </criterion>
+  <criterion name="c6">
+   <property name="widget">yearrange</property>
+   <property name="title">Year</property>
+   <property name="position">left</property>
+   <property name="section">default</property>
+   <property name="hidden">0</property>
+   <property name="count">1</property>
+   <property name="sortcountable">0</property>
+   <property name="hidezerocount">1</property>
+   <property name="index">effective</property>
+   <property name="start_year">2009</property>
+   <property name="future_years"></property>
+  </criterion>
+  <criterion name="c1">
+   <property name="widget">section</property>
+   <property name="title">Sectie</property>
+   <property name="position">left</property>
+   <property name="section">default</property>
+   <property name="hidden">0</property>
+   <property name="count">1</property>
+   <property name="sortcountable">0</property>
+   <property name="hidezerocount">0</property>
+   <property name="hidealloption">0</property>
+   <property name="default"></property>
+  </criterion>
+ </criteria>
+</object>

@@ -537,6 +537,50 @@ def unassign_portlets(context):
     contained.fixing_up = False
 
 
+def themas_select_default_page_and_view(context):
+    """
+    Add default page and select view for themas.
+    :param contect:
+    :return: None
+    """
+
+    page_uid = "thema-lijst"
+    folder = api.portal.get().themas
+    page = api.content.create(
+        type='Document',
+        title="Thema's",
+        id=page_uid,
+        container=folder,
+    )
+    api.content.transition(obj=page, transition='publish')
+    folder.moveObjectsToTop(page_uid)
+    folder.setDefaultPage(page_uid)
+    page.setLayout("themes")
+    logger.info("Created, made default page and set layout for %s", folder)
+    page.related
+
+
+def homepage_select_default_page_and_view(context):
+    """
+    Add default page and select view for homepage.
+    :param contect:
+    :return: None
+    """
+    portal = api.portal.get()
+
+    homepage = api.content.create(
+        type='Document',
+        title="Milieu- en Natuurraad van Vlaanderen (Minaraad)",
+        id="homepage",
+        container=portal,
+        description="De Minaraad is de strategische adviesraad voor het beleidsdomein Leefmilieu, Natuur en Energie van de Vlaamse Overheid.",
+    )
+    api.content.transition(obj=homepage, transition='publish')
+    portal.setDefaultPage("homepage")
+    homepage.setLayout("homepage")
+    logger.info("Created, made default page and set layout for %s", homepage)
+
+
 def setup_various(context):
     """
     Setup about page:
@@ -728,6 +772,23 @@ def create_theme_folders(context):
         )
         api.content.transition(obj=theme, transition='publish')
         logger.info("%s created", title)
+
+
+def apply_extra_product_profiles(context):
+    """
+    This applies the plone436 profile from minaraad.  This has some
+    steps that should only be applied once, during the upgrade to
+    Plone 4.3.6
+    """
+
+    profiles = [
+        "profile-eea.facetednavigation:default",
+        "profile-collective.mailchimp:default",
+        "profile-minaraad.theme:default",
+    ]
+
+    for profile_id in profiles:
+        context.runAllImportStepsFromProfile(profile_id, purge_old=False)
 
 
 def to_plone436(context):

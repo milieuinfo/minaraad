@@ -3,12 +3,14 @@
       description context/Description|string:;
       title context/pretty_title_or_id|string:;
       desc_or_title python:description or title;
-      url context/absolute_url|string:#"
+      url context/absolute_url|string:#;
+      has_image python:context.foto.foto;"
      tal:attributes="href url;
                      title description">
 
-    <!--? TODO: Add condition -->
-    <img style="width:100%" tal:attributes="
+    <img style="width:100%"
+        tal:condition="has_image"
+        tal:attributes="
       title desc_or_title;
       alt title;
       src string:$url/@@images/foto/foto"/>

@@ -1,0 +1,37 @@
+<div class="photoAlbumEntry">
+  <a tal:define="
+      description context/Description|string:;
+      title context/pretty_title_or_id|string:;
+      desc_or_title python:description or title;
+      url context/absolute_url|string:#;
+      attachment nocall:context;
+      size attachment/getObjSize;
+      icon attachment/getIcon;
+      title attachment/Title|attachment/getId;
+      mimetype attachment/content_type|nothing;
+      uid attachment/UID;
+      contenttype python:context.lookupMime(mimetype) or 'Onbekend';"
+     tal:attributes="href string:${url}/download;
+                     id python: 'att_%s' % uid;
+                     title description">
+
+      <img tal:condition="icon"
+           src=""
+           alt=""
+           tal:attributes="src string:${context/portal_url}/${icon};
+                           alt contenttype"/>
+
+      <span tal:condition="position|nothing">
+        Bijlage <span tal:replace="position" />:
+      </span>
+      <tal:filename tal:replace="title"/>
+      <span class="discreet">
+        <span tal:replace="contenttype">ContentType</span>,
+        <tal:size content="size">0Kb</tal:size>
+      </span>
+
+    <span class="photoAlbumEntryTitle" tal:content="context/pretty_title_or_id|string:">Title</span>
+    <span class="photoAlbumEntryDescription" tal:content="description">Description</span>
+
+  </a>
+</div>
