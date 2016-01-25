@@ -4,6 +4,19 @@ History of this buildout
 5.1.14 (unreleased)
 -------------------
 
+- Use mailchimp api3 branch
+  [diederik]
+
+- Add upgrade instructions for faceted criteria and javascript/css.
+  [coen]
+
+- Add theme mixin
+- Add macros to render links
+  [coen]
+
+- Add theme mixin and macros to render link items.
+  [coen]
+
 - Add default view for theme folders.
   [coen]
 
@@ -90,9 +103,6 @@ History of this buildout
 - Remove portal action 'Mijn abonnementen'
 - Remove configlet 'subscribers overview'
   [coen]
-
-- Removed built-in newsletter functionality in favor of mailchimp
-  [diederik]
 
 - Pinned slightly newer AccessControl to get rid of starup errors.
   [coen]

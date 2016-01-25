@@ -17,3 +17,4 @@ local.cfg
 parts
 scripts/passwords.py
 var
+src/collective.mailchimp

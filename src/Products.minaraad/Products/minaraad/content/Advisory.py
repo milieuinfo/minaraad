@@ -13,8 +13,9 @@ from Products.minaraad.interfaces import IAdvisory
 from Products.minaraad.Attachmentsmixin import Attachmentsmixin
 from Products.minaraad.PostMixin import PostMixin
 from Products.minaraad.EmailMixin import EmailMixin
+from Products.minaraad.ThemeMixin import ThemeMixin
 from Products.minaraad.config import PROJECTNAME
-from Products.minaraad.content.themes import ThemeMixin
+from Products.minaraad.content.themes import ThemeMixin as OldThemeMixin
 from Products.minaraad.content.themes import theme_schema
 from Products.minaraad.content.interfaces import IUseContact
 from Products.minaraad.content.contacts import contacts_schema
@@ -148,7 +149,7 @@ Advisory_schema.moveField('coordinator', after="foto")
 Advisory_schema.moveField('authors', after="coordinator")
 
 
-class Advisory(PostMixin, ThemeMixin, EmailMixin, Attachmentsmixin):
+class Advisory(PostMixin, OldThemeMixin, ThemeMixin, EmailMixin, Attachmentsmixin):
     """An advisory
     """
     implements(IAdvisory, IUseContact)
