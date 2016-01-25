@@ -557,7 +557,6 @@ def themas_select_default_page_and_view(context):
     folder.setDefaultPage(page_uid)
     page.setLayout("themes")
     logger.info("Created, made default page and set layout for %s", folder)
-    page.related
 
 
 def homepage_select_default_page_and_view(context):
