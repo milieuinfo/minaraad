@@ -7,6 +7,9 @@ History of this buildout
 - Use mailchimp api3 branch
   [diederik]
 
+- Add upgrade instructions for faceted criteria and javascript/css.
+  [coen]
+
 - Add theme mixin
 - Add macros to render links
   [coen]
