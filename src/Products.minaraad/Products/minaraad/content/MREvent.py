@@ -6,7 +6,8 @@ from Products.minaraad.EmailMixin import EmailMixin
 from Products.minaraad.config import PROJECTNAME
 from Products.minaraad.content.contacts import contacts_schema
 from Products.minaraad.content.interfaces import IUseContact
-from Products.minaraad.content.themes import ThemeMixin
+from Products.minaraad.content.themes import ThemeMixin as OldThemeMixin
+from Products.minaraad.ThemeMixin import ThemeMixin
 from Products.minaraad.content.themes import theme_schema
 from Products.minaraad.interfaces import IMREvent
 from minaraad.projects.content.base_meeting import BaseMeeting
@@ -145,7 +146,7 @@ MREvent_schema.moveField('coordinator', after="foto")
 MREvent_schema.moveField('authors', after="coordinator")
 
 
-class MREvent(BaseMeeting, EmailMixin, ThemeMixin):
+class MREvent(BaseMeeting, EmailMixin, OldThemeMixin, ThemeMixin):
     """
     """
     implements(IMREvent, IUseContact)

@@ -31,7 +31,8 @@
                         tal:define="images context/@@images;
                         thumbnail python:images.scale('image', width=105, height=105, direction='down')"
                         tal:condition="thumbnail">
-                      <img tal:attributes="src thumbnail/url; alt context/title" class="img-circle pull-right theme-image" />
+                      <img tal:attributes="src thumbnail/url; alt context/title"
+                           class="img-circle pull-right theme-image" />
                     </tal:image>
                   </div>
                 </div>
@@ -62,25 +63,9 @@
                   <tal:relatedItems
                     tal:define="related_items python:context.getRelatedItems();"
                     tal:repeat="item related_items">
-
                       <div class="grid-item">
-
-                        <!--? This pattern also lives on homepage. metal:use-macro="" -->
-                        <article class="article-advice">
-                          <a tal:attributes="href item/absolute_url">
-                            <tal:image
-                                tal:define="images item/@@images;
-                                thumbnail python:images.scale('foto', width=648, height=365, direction='down')"
-                                tal:condition="thumbnail">
-                              <img tal:attributes="src thumbnail/url; alt item/title" />
-                            </tal:image>
-                            <div class="body">
-                              <h3 tal:content="item/Title"></h3>
-                              <p class="label">Advies <span>biodiversiteit</span></p>
-                              <p class="truncate" tal:content="item/Description"></p>
-                            </div>
-                          </a>
-                        </article>
+                          <tal:block metal:use-macro="context/@@items/macros/related_items">
+                          </tal:block>
                       </div>
                   </tal:relatedItems>
 
@@ -120,3 +105,5 @@
     </metal:block>
     </body>
 </html>
+
+<!--?TODO: Add footer image. -->

@@ -1,3 +1,19 @@
+"""
+These are the old style themes and can be dropped after the 2016 upgrade.
+This logic is needed by the upgrade step. But will become redundant after
+the upgrade is executed.
+
+New theme logic is handled by putting a theme in a theme container
+(new content type). See:
+
+    `Products.minaraad/Products/minaraad/content/Theme.py`
+
+The new way for objects to lookup their theme is the LabelMixin:
+
+    `Products.minaraad/Products/minaraad/LabelMixin.py`
+
+"""
+
 from AccessControl import ClassSecurityInfo
 from Products.Archetypes import atapi
 from Products.minaraad.content.interfaces import IThemes

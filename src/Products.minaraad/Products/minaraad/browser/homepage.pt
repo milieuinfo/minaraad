@@ -77,25 +77,12 @@
                         </h2>
                       </div>
 
-                      <tal:relatedItems
+                      <tal:block
                           tal:define="related_items python:context.getRelatedItems();"
                           tal:repeat="item related_items">
-                        <article class="article-advice">
-                          <a tal:attributes="href item/absolute_url">
-                            <tal:image
-                                tal:define="images item/@@images;
-                                thumbnail python:images.scale('foto', width=648, height=365, direction='down')"
-                                tal:condition="thumbnail">
-                              <img tal:attributes="src thumbnail/url; alt item/title" />
-                            </tal:image>
-                            <div class="body">
-                              <h3 tal:content="item/Title"></h3>
-                              <p class="label">Advies <span>biodiversiteit</span></p>
-                              <p class="truncate" tal:content="item/Description"></p>
-                            </div>
-                          </a>
-                        </article>
-                      </tal:relatedItems>
+                        <tal:block metal:use-macro="context/@@items/macros/related_items">
+                        </tal:block>
+                      </tal:block>
 
                     </div>
 
@@ -113,39 +100,25 @@
                       </h2>
                     </div>
 
-                    <tal:futureEvents tal:repeat="item view/future_events">
+                    <!--? Todo: Add `volgende raadsvergadering` -->
+                    <!--?<article class="article-next-meeting">-->
+                      <!--?<a href="event.html">-->
+                        <!--?<header>-->
+                          <!--?<h3>-->
+                            <!--?<i class="fa fa-gavel"></i>-->
+                            <!--?Volgende raadszitting-->
+                          <!--?</h3>-->
+                        <!--?</header>-->
+                        <!--?<div class="body">-->
+                          <!--?<time datetime="2015-11-25 9:30">26 november 2015 9:30</time>-->
+                        <!--?</div>-->
+                      <!--?</a>-->
+                    <!--?</article>-->
 
-                      <!--? Todo: Add `volgende raadsvergadering` -->
-                      <!--?<article class="article-next-meeting">-->
-                        <!--?<a href="event.html">-->
-                          <!--?<header>-->
-                            <!--?<h3>-->
-                              <!--?<i class="fa fa-gavel"></i>-->
-                              <!--?Volgende raadszitting-->
-                            <!--?</h3>-->
-                          <!--?</header>-->
-                          <!--?<div class="body">-->
-                            <!--?<time datetime="2015-11-25 9:30">26 november 2015 9:30</time>-->
-                          <!--?</div>-->
-                        <!--?</a>-->
-                      <!--?</article>-->
-
-                      <article class="article-event">
-                        <a tal:attributes="href item/getURL; title item/Title">
-                          <header>
-                            <h3 tal:define="d item/getStart_time|nothing">
-                              <i class="fa fa-comments"></i>
-                              <metal:block use-macro="context/display_macros/macros/date" />
-                            </h3>
-                          </header>
-                          <div class="body">
-                            <p class="label">Evenement <span>biodiversiteit</span></p>
-                            <h3 tal:content="item/Title"></h3>
-                          </div>
-                        </a>
-                      </article>
-
-                    </tal:futureEvents>
+                    <tal:block tal:repeat="item view/future_events">
+                      <tal:block metal:use-macro="context/@@items/macros/event">
+                      </tal:block>
+                    </tal:block>
                   </div>
 
                   <div class="column">

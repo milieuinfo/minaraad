@@ -7,6 +7,13 @@ History of this buildout
 - Use mailchimp api3 branch
   [diederik]
 
+- Add theme mixin
+- Add macros to render links
+  [coen]
+
+- Add theme mixin and macros to render link items.
+  [coen]
+
 - Add default view for theme folders.
   [coen]
 

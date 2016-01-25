@@ -91,6 +91,13 @@
       />
 
   <browser:page
+      for="*"
+      name="@@items"
+      template="items.pt"
+      permission="zope2.View"
+      />
+
+  <browser:page
       name="homepage"
       for="Products.ATContentTypes.interfaces.IATDocument"
       class="Products.minaraad.browser.homepage.HomepageView"
