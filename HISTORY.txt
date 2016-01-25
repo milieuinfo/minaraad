@@ -4,6 +4,9 @@ History of this buildout
 5.1.14 (unreleased)
 -------------------
 
+- Use mailchimp api3 branch
+  [diederik]
+
 - Add default view for theme folders.
   [coen]
 

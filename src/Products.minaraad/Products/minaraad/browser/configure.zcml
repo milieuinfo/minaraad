@@ -138,10 +138,6 @@
       allowed_interface=".attendees.IAttendeesManagerView"
       />
 
-<<<<<<< 820e5a12877cab509c77b5fbc5c39ff24b3f5d8f
-
-=======
->>>>>>> Undo merge
   <browser:page
       for="Products.minaraad.interfaces.IPortalPropertyContainer"
       name="minaraad_config.html"
