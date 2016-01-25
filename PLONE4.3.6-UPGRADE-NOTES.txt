@@ -36,6 +36,7 @@ Select all date related. Chose `Clear index`
 Select all date related. Chose `Reindex`
 
 
+<<<<<<< HEAD
 Newsletter migration
 --------------------
 
@@ -62,10 +63,18 @@ Errors
 
 WARNING OFS.Uninstalled Could not import class 'CSCachingPolicyManager'
 from module 'Products.CacheSetup.content.caching_policy_manager'
+=======
+Upgrade step
+------------
+>>>>>>> parent of 0c205cf... Merge branch 'MINA-32_newsletter' into merge-branches
 
  - Tried to install `Products.CacheSetup` but got me other errors.
  - Tried to run `Products.CacheSetup` uninstall handler.
    That didn't resolve the issue.
  - Tried to delete `caching_policy_manager` from ZMI.
 
+<<<<<<< HEAD
 Status: open. I'll leave it. It doesn't seem to harm.
+=======
+    - Map the old theme names to the new ones.
+>>>>>>> parent of 0c205cf... Merge branch 'MINA-32_newsletter' into merge-branches

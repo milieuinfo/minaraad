@@ -9,6 +9,14 @@ from Products.minaraad.subscriptions import SubscriptionManager
 from Products.minaraad.themes import ThemeManager
 
 
+from Products.statusmessages.interfaces import IStatusMessage
+
+from Products.minaraad.browser.utils import buildCSV
+from Products.minaraad.subscriptions import SUBSCRIPTIONS_EMAIL
+from Products.minaraad.subscriptions import SubscriptionManager
+from Products.minaraad.themes import ThemeManager
+
+
 logger = logging.getLogger('configlets')
 
 
@@ -40,7 +48,6 @@ class AbstractView(BrowserView):
         if pos > -1:
             self.referring_url = self.referring_url[:pos]
 
-
 class MinaraadConfigletView(AbstractView):
     """Configlet for a manager to manage themes.
     """
@@ -55,17 +62,17 @@ class MinaraadConfigletView(AbstractView):
 
         if request.get('form.button.Add', None):
             self._addTheme()
-            message = u"Werkveld toegevoegd"
+            message = u"Thema toegevoegd"
             IStatusMessage(request).addStatusMessage(message, type="info")
             return response.redirect(self.referring_url)
         elif request.get('form.button.Save', None):
             self._saveThemes()
-            message = u"Werkvelden opgeslagen"
+            message = u"Thema opgeslagen"
             IStatusMessage(request).addStatusMessage(message, type="info")
             return response.redirect(self.referring_url)
         elif request.get('form.button.Delete', None):
             self._deleteThemes()
-            message = u"Werkveld verwijderd"
+            message = u"Thema verwijderd"
             IStatusMessage(request).addStatusMessage(message, type="info")
             return response.redirect(self.referring_url)
 
