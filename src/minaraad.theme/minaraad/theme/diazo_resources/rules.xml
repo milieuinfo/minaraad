@@ -47,11 +47,11 @@
   <replace css:theme="#editbar" css:content="#edit-bar" css:if-not-content=".ajax_load" css:if-content=".userrole-authenticated"/>
   <replace css:theme="#anonymous-actions" css:content="#portal-personaltools-wrapper" css:if-not-content=".ajax_load" css:if-content=".userrole-anonymous"/>
 
-
   <!-- Main content block -->
   <replace content='//*[@id="content-core"]' theme='//*[@id="main-container"]' />
 
 
+  <replace css:content-children="#portal-breadcrumbs" css:theme-children=".breadcrumbbar" />
 
   <!-- Central column -->
   <!--<xsl:variable name="central">-->

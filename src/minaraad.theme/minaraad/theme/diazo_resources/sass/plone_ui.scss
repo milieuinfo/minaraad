@@ -36,6 +36,10 @@
     -moz-border-radius-topright: 0;
 }
 
+#breadcrumbs-current{
+  color: $breadcrumb-active-color;
+}
+
 // Hide the spinner.
 #pyproxy_spinner {
   display:none;
