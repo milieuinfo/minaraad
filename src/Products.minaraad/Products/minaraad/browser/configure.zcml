@@ -145,6 +145,75 @@
       allowed_interface=".attendees.IAttendeesManagerView"
       />
 
+
+  <browser:page
+      for="Products.minaraad.interfaces.IPortalPropertyContainer"
+      name="minaraad_config.html"
+      class=".configlets.MinaraadConfigletView"
+      permission="cmf.ManagePortal"
+      template="minaraad_config.pt"
+    />
+
+  <browser:page
+      for="Products.minaraad.interfaces.IPortalPropertyContainer"
+      name="subscribers_config.html"
+      class=".configlets.SubscribersConfigletView"
+      permission="cmf.ManagePortal"
+      template="subscribers_config.pt"
+    />
+
+  <browser:page
+      for="Products.minaraad.interfaces.IPortalPropertyContainer"
+      name="subscriptions_config.html"
+      class=".configlets.SubscriptionsConfigletView"
+      permission="zope2.View"
+      template="subscriptions_config.pt"
+    />
+
+  <browser:page
+      for="*"
+      name="email_out"
+      class=".email_notification.EmailOutView"
+      permission="cmf.ManagePortal"
+      template="email_out.pt"
+    />
+
+  <browser:page
+      for="*"
+      name="reset_email_sent"
+      class=".email_notification.ResetEmailSent"
+      permission="cmf.ManagePortal"
+    />
+
+  <browser:page
+      for="Products.minaraad.interfaces.IHearing"
+      name="notify_registration"
+      class=".email_notification.SubscriptionNotifyView"
+      permission="cmf.ManagePortal"
+    />
+
+  <browser:page
+      for="Products.minaraad.interfaces.IMREvent"
+      name="notify_registration"
+      class=".email_notification.SubscriptionNotifyView"
+      permission="cmf.ManagePortal"
+    />
+
+  <browser:page
+      for="*"
+      name="send_membership_reminder"
+      class=".email_notification.EmailTestView"
+      permission="cmf.ManagePortal"
+    />
+
+  <browser:page
+      for="*"
+      name="export_subscribers"
+      class=".subscribers.ExportSubscribersView"
+      permission="cmf.ManagePortal"
+      template="export-subscribers.pt"
+  />
+
   <!-- Service view for admin use only -->
 
   <browser:page
