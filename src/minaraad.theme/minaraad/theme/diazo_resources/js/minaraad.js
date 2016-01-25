@@ -45,7 +45,7 @@
           columnWidth: '.grid-item',
           percentPosition: true
         });
-      }, 1);
+      }, 200);
 
   });
 
