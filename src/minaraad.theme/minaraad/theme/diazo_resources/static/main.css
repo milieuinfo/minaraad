@@ -8050,4 +8050,7 @@ dl.actionMenu.activated dd {
   #plone_edit_form [type='submit'], #plone_edit_form [type='button'] {
     margin-right: 5px; }
 
+.faceted-column li, .footer-doormat ul > li {
+  display: list-item; }
+
 /*# sourceMappingURL=main.css.map */
