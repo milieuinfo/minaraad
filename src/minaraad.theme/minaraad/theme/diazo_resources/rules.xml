@@ -22,11 +22,12 @@
     <!-- dont use Plone icons, use the theme -->
     <drop css:content="head link[rel='apple-touch-icon']" />
     <drop css:content="head link[rel='shortcut icon']" />
+    <!-- Script -->
+    <before theme-children="/html/head" content="/html/head/script" />
     <!-- CSS -->
     <before theme-children="/html/head" content="/html/head/link" />
     <before theme-children="/html/head" content="/html/head/style" />
-    <!-- Script -->
-    <after theme-children="/html/head" content="/html/head/script" />
+
   </rules>
 
   <!-- Copy over the id/class attributes on the body tag.
@@ -71,8 +72,8 @@
   <rules css:if-content="body.template-atct_edit, body.template-folder_contents, body.template-sharing, body.template-login_form, body.template-login_success, body.template-versions_history_form">
 
     <replace css:theme="#main-container">
-        <div class="container plone_edit_form">
-          <article style="background:white;padding:15px;">
+        <div id="plone_edit_form" class="container">
+          <article id="content">
            <xsl:copy-of select="//*[@id='content']/*"/>
           </article>
         </div>
@@ -81,7 +82,7 @@
   </rules>
 
   <!-- Custum views just to have the content-core -->
-  <replace css:content="#content-core " css:theme="#main-container" css:if-content="body.template-homepage, body.template-themes"/>
+  <replace css:content="#content-core " css:theme="#main-container" css:if-content="body.template-homepage, body.template-themes, body.template-theme"/>
 
 
 

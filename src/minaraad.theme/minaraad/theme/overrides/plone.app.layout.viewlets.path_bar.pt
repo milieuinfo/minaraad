@@ -7,31 +7,26 @@
     <ol class="breadcrumb">
       <li id="breadcrumbs-home"><a tal:attributes="href view/navigation_root_url"><i class="fa fa-home"></i></a></li>
 
-      <li tal:repeat="crumb breadcrumbs"
+      <tal:block tal:repeat="crumb breadcrumbs"
             tal:attributes="dir python:is_rtl and 'rtl' or 'ltr';
                             id string:breadcrumbs-${repeat/crumb/number}">
-          <tal:item tal:define="is_last repeat/crumb/end;
-                                url crumb/absolute_url;
-                                title crumb/Title">
-              <a href="#"
-                 tal:omit-tag="not: url"
-                 tal:condition="python:not is_last"
-                 tal:attributes="href url"
-                 tal:content="title">
-                  crumb
-              </a>
-              <tal:block tal:condition="not: is_last">
-                <span id="breadcrumbs-current"
-                      tal:condition="is_last"
-                      tal:content="title">crumb</span>
-              </tal:block>
-              <tal:block tal:condition="is_last">
-                <span id="breadcrumbs-current" class="active"
-                      tal:condition="is_last"
-                      tal:content="title">crumb</span>
-              </tal:block>
-           </tal:item>
-      </li>
+        <tal:item tal:define="is_last repeat/crumb/end;
+                              url crumb/absolute_url;
+                              title crumb/Title">
+          <li tal:condition="python:not is_last">
+            <a href="#"
+               tal:omit-tag="not: url"
+               tal:attributes="href url"
+               tal:content="title">
+                crumb
+            </a>
+          </li>
+          <li tal:condition="is_last" class="active">
+            <span id="breadcrumbs-current"
+                  tal:content="title">crumb</span>
+          </li>
+        </tal:item>
+      </tal:block>
 
     </ol>
     </div>

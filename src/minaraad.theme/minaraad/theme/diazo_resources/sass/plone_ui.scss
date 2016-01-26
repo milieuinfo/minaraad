@@ -36,9 +36,9 @@
     -moz-border-radius-topright: 0;
 }
 
-#breadcrumbs-current{
-  color: $breadcrumb-active-color;
-}
+//#breadcrumbs-current{
+//  color: $breadcrumb-active-color;
+//}
 
 // Hide the spinner.
 #pyproxy_spinner {
@@ -71,17 +71,6 @@ div#folderHeader, div#contextHeader {
   }
 }
 
-[type='submit'], [type='button'] {
-  @extend .btn;
-  @extend .btn-primary;
-  margin-right: 5px;
-}
-
-input[value='Annuleren'], input[type='file'] {
-  @extend .btn;
-  @extend .btn-default;
-
-}
 
 #sharing-search-button {
   @extend .btn-xs;
@@ -105,7 +94,7 @@ dl.actionMenu.activated dd {
 }
 
 #contentActionMenus dl.actionMenu.activated dt a {
-  background: darken(#0F475C, 5);
+  background: darken($mina-blue-dark, 5);
 }
 
 .actionMenuContent {
@@ -114,6 +103,43 @@ dl.actionMenu.activated dd {
     background-clip: padding-box;
 }
 
-.plone_edit_forms {
-  margin-bottom: 1em;
+#plone_edit_form {
+  //
+  // Basics
+  //
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  #content {
+    background:white;
+    padding: 30px;
+  }
+  //
+  // Form tabs
+  //
+  #content ul.formTabs,
+  #content-core ul.formTabs {
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+    -webkit-border-top-right-radius: 0;
+    -webkit-border-top-left-radius: 0;
+    -moz-border-radius-topleft: 0;
+    -moz-border-radius-topright: 0;
+  }
+
+  //
+  // Buttons
+  //
+  [type='submit'], [type='button'] {
+    @extend .btn;
+    @extend .btn-primary;
+    margin-right: 5px;
+  }
+
+  input[value='Annuleren'], input[type='file'] {
+    @extend .btn;
+    @extend .btn-default;
+
+  }
+
 }
+
