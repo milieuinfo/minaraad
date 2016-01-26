@@ -40,12 +40,12 @@
   <!-- Render the document actions (send/print).  Plone currently
        registers it for IBelowContentBody, but we want it above the
        content title.  -->
-  <browser:viewlet
-      name="plone.abovecontenttitle.documentactions"
-      manager="plone.app.layout.viewlets.interfaces.IAboveContentTitle"
-      class="plone.app.layout.viewlets.content.DocumentActionsViewlet"
-      permission="zope2.View"
-      />
+  <!--<browser:viewlet-->
+      <!--name="plone.abovecontenttitle.documentactions"-->
+      <!--manager="plone.app.layout.viewlets.interfaces.IAboveContentTitle"-->
+      <!--class="plone.app.layout.viewlets.content.DocumentActionsViewlet"-->
+      <!--permission="zope2.View"-->
+      <!--/>-->
 
   <include package="plone.app.portlets" />
   <plone:portlet

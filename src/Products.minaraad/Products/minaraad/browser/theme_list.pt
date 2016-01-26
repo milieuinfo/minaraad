@@ -17,15 +17,6 @@
 
         <div class="content-wrapper">
 
-          <div class="breadcrumbbar">
-            <div class="container">
-                <ol class="breadcrumb">
-                  <li><a href="home.html"><i class="fa fa-home"></i></a></li>
-                  <li class="active">Thema’s</li>
-                </ol>
-            </div>
-          </div>
-
           <main role="main" id="main-container">
 
             <section class="sec-themes">

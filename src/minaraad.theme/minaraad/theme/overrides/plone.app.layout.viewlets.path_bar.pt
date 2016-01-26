@@ -20,13 +20,16 @@
                  tal:content="title">
                   crumb
               </a>
-              <span class="breadcrumbSeparator" tal:condition="not: is_last">
-                  <tal:ltr condition="not: is_rtl">/</tal:ltr>
-                  <tal:rtl condition="is_rtl">\</tal:rtl>
-              </span>
-              <span id="breadcrumbs-current"
-                    tal:condition="is_last"
-                    tal:content="title">crumb</span>
+              <tal:block tal:condition="not: is_last">
+                <span id="breadcrumbs-current"
+                      tal:condition="is_last"
+                      tal:content="title">crumb</span>
+              </tal:block>
+              <tal:block tal:condition="is_last">
+                <span id="breadcrumbs-current" class="active"
+                      tal:condition="is_last"
+                      tal:content="title">crumb</span>
+              </tal:block>
            </tal:item>
       </li>
 

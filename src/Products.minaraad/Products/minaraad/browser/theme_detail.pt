@@ -15,44 +15,33 @@
 
     <metal:block metal:fill-slot="content-core">
 
-        <div class="content-wrapper">
-
-          <div class="jumbotronbar">
-              <div class="container">
-                <div class="column-left">
-                  <div class="col-xs-7 theme-title">
-                    <!-- Wrapper div to vertical align. -->
-                    <div>
-                      <h1 tal:content="context/Title"></h1>
-                    </div>
-                  </div>
-                  <div class="col-xs-5">
-                    <tal:image
-                        tal:define="images context/@@images;
-                        thumbnail python:images.scale('image', width=105, height=105, direction='down')"
-                        tal:condition="thumbnail">
-                      <img tal:attributes="src thumbnail/url; alt context/title"
-                           class="img-circle pull-right theme-image" />
-                    </tal:image>
+        <div class="jumbotronbar">
+            <div class="container">
+              <div class="column-left">
+                <div class="col-xs-7 theme-title">
+                  <!-- Wrapper div to vertical align. -->
+                  <div>
+                    <h1 tal:content="context/Title"></h1>
                   </div>
                 </div>
-                <div class="jumbotron">
-                  <p class="lead" tal:content="context/Description">
-                  </p>
+                <div class="col-xs-5">
+                  <tal:image
+                      tal:define="images context/@@images;
+                      thumbnail python:images.scale('image', width=105, height=105, direction='down')"
+                      tal:condition="thumbnail">
+                    <img tal:attributes="src thumbnail/url; alt context/title"
+                         class="img-circle pull-right theme-image" />
+                  </tal:image>
                 </div>
               </div>
-          </div>
-
-          <!--? TODO: replace breadcurmb with Diazo-->
-          <div class="breadcrumbbar">
-            <div class="container">
-                <ol class="breadcrumb">
-                  <li><a href="home.html"><i class="fa fa-home"></i></a></li>
-                  <li><a href="theme_list.html">Thema’s</a></li>
-                  <li class="active">Biodiversiteit</li>
-                </ol>
+              <div class="jumbotron">
+                <p class="lead" tal:content="context/Description">
+                </p>
+              </div>
             </div>
-          </div>
+        </div>
+
+        <div class="content-wrapper">
 
           <main role="main" id="main-container">
 

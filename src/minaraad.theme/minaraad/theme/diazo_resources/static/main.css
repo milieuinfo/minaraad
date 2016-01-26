@@ -347,8 +347,12 @@ th {
     page-break-after: avoid; }
   .navbar {
     display: none; }
-  .btn > .caret,
-  .dropup > .btn > .caret {
+  .btn > .caret, [type='submit'] > .caret, [type='button'] > .caret, input[value='Annuleren'] > .caret, input[type='file'] > .caret,
+  .dropup > .btn > .caret,
+  .dropup > [type='submit'] > .caret,
+  .dropup > [type='button'] > .caret,
+  .dropup > input[value='Annuleren'] > .caret,
+  .dropup > input[type='file'] > .caret {
     border-top-color: #000 !important; }
   .label {
     border: 1px solid #000; }
@@ -854,7 +858,9 @@ blockquote {
 blockquote.pull-right,
 .topbar blockquote.contact,
 .logobar blockquote.search,
-.list-group-downloads .list-group-item .body blockquote.btn {
+.list-group-downloads .list-group-item .body blockquote.btn,
+.list-group-downloads .list-group-item .body blockquote[type='submit'],
+.list-group-downloads .list-group-item .body blockquote[type='button'] {
   padding-right: 15px;
   padding-left: 0;
   border-right: 5px solid #eeeeee;
@@ -867,13 +873,13 @@ blockquote.pull-right,
   .blockquote-reverse dt:before,
   .blockquote-reverse .dl-horizontal dd:before, .dl-horizontal
   .blockquote-reverse dd:before,
-  blockquote.pull-right footer:before, .topbar blockquote.contact footer:before, .logobar blockquote.search footer:before, .list-group-downloads .list-group-item .body blockquote.btn footer:before,
-  blockquote.pull-right small:before, .topbar blockquote.contact small:before, .logobar blockquote.search small:before, .list-group-downloads .list-group-item .body blockquote.btn small:before,
-  blockquote.pull-right .small:before, .topbar blockquote.contact .small:before, .logobar blockquote.search .small:before, .list-group-downloads .list-group-item .body blockquote.btn .small:before,
+  blockquote.pull-right footer:before, .topbar blockquote.contact footer:before, .logobar blockquote.search footer:before, .list-group-downloads .list-group-item .body blockquote.btn footer:before, .list-group-downloads .list-group-item .body blockquote[type='submit'] footer:before, .list-group-downloads .list-group-item .body blockquote[type='button'] footer:before,
+  blockquote.pull-right small:before, .topbar blockquote.contact small:before, .logobar blockquote.search small:before, .list-group-downloads .list-group-item .body blockquote.btn small:before, .list-group-downloads .list-group-item .body blockquote[type='submit'] small:before, .list-group-downloads .list-group-item .body blockquote[type='button'] small:before,
+  blockquote.pull-right .small:before, .topbar blockquote.contact .small:before, .logobar blockquote.search .small:before, .list-group-downloads .list-group-item .body blockquote.btn .small:before, .list-group-downloads .list-group-item .body blockquote[type='submit'] .small:before, .list-group-downloads .list-group-item .body blockquote[type='button'] .small:before,
   blockquote.pull-right .dl-horizontal dt:before, .dl-horizontal
-  blockquote.pull-right dt:before, .topbar blockquote.contact .dl-horizontal dt:before, .dl-horizontal .topbar blockquote.contact dt:before, .logobar blockquote.search .dl-horizontal dt:before, .dl-horizontal .logobar blockquote.search dt:before, .list-group-downloads .list-group-item .body blockquote.btn .dl-horizontal dt:before, .dl-horizontal .list-group-downloads .list-group-item .body blockquote.btn dt:before,
+  blockquote.pull-right dt:before, .topbar blockquote.contact .dl-horizontal dt:before, .dl-horizontal .topbar blockquote.contact dt:before, .logobar blockquote.search .dl-horizontal dt:before, .dl-horizontal .logobar blockquote.search dt:before, .list-group-downloads .list-group-item .body blockquote.btn .dl-horizontal dt:before, .dl-horizontal .list-group-downloads .list-group-item .body blockquote.btn dt:before, .list-group-downloads .list-group-item .body blockquote[type='submit'] .dl-horizontal dt:before, .dl-horizontal .list-group-downloads .list-group-item .body blockquote[type='submit'] dt:before, .list-group-downloads .list-group-item .body blockquote[type='button'] .dl-horizontal dt:before, .dl-horizontal .list-group-downloads .list-group-item .body blockquote[type='button'] dt:before,
   blockquote.pull-right .dl-horizontal dd:before, .dl-horizontal
-  blockquote.pull-right dd:before, .topbar blockquote.contact .dl-horizontal dd:before, .dl-horizontal .topbar blockquote.contact dd:before, .logobar blockquote.search .dl-horizontal dd:before, .dl-horizontal .logobar blockquote.search dd:before, .list-group-downloads .list-group-item .body blockquote.btn .dl-horizontal dd:before, .dl-horizontal .list-group-downloads .list-group-item .body blockquote.btn dd:before {
+  blockquote.pull-right dd:before, .topbar blockquote.contact .dl-horizontal dd:before, .dl-horizontal .topbar blockquote.contact dd:before, .logobar blockquote.search .dl-horizontal dd:before, .dl-horizontal .logobar blockquote.search dd:before, .list-group-downloads .list-group-item .body blockquote.btn .dl-horizontal dd:before, .dl-horizontal .list-group-downloads .list-group-item .body blockquote.btn dd:before, .list-group-downloads .list-group-item .body blockquote[type='submit'] .dl-horizontal dd:before, .dl-horizontal .list-group-downloads .list-group-item .body blockquote[type='submit'] dd:before, .list-group-downloads .list-group-item .body blockquote[type='button'] .dl-horizontal dd:before, .dl-horizontal .list-group-downloads .list-group-item .body blockquote[type='button'] dd:before {
     content: ''; }
   .blockquote-reverse footer:after,
   .blockquote-reverse small:after,
@@ -882,13 +888,13 @@ blockquote.pull-right,
   .blockquote-reverse dt:after,
   .blockquote-reverse .dl-horizontal dd:after, .dl-horizontal
   .blockquote-reverse dd:after,
-  blockquote.pull-right footer:after, .topbar blockquote.contact footer:after, .logobar blockquote.search footer:after, .list-group-downloads .list-group-item .body blockquote.btn footer:after,
-  blockquote.pull-right small:after, .topbar blockquote.contact small:after, .logobar blockquote.search small:after, .list-group-downloads .list-group-item .body blockquote.btn small:after,
-  blockquote.pull-right .small:after, .topbar blockquote.contact .small:after, .logobar blockquote.search .small:after, .list-group-downloads .list-group-item .body blockquote.btn .small:after,
+  blockquote.pull-right footer:after, .topbar blockquote.contact footer:after, .logobar blockquote.search footer:after, .list-group-downloads .list-group-item .body blockquote.btn footer:after, .list-group-downloads .list-group-item .body blockquote[type='submit'] footer:after, .list-group-downloads .list-group-item .body blockquote[type='button'] footer:after,
+  blockquote.pull-right small:after, .topbar blockquote.contact small:after, .logobar blockquote.search small:after, .list-group-downloads .list-group-item .body blockquote.btn small:after, .list-group-downloads .list-group-item .body blockquote[type='submit'] small:after, .list-group-downloads .list-group-item .body blockquote[type='button'] small:after,
+  blockquote.pull-right .small:after, .topbar blockquote.contact .small:after, .logobar blockquote.search .small:after, .list-group-downloads .list-group-item .body blockquote.btn .small:after, .list-group-downloads .list-group-item .body blockquote[type='submit'] .small:after, .list-group-downloads .list-group-item .body blockquote[type='button'] .small:after,
   blockquote.pull-right .dl-horizontal dt:after, .dl-horizontal
-  blockquote.pull-right dt:after, .topbar blockquote.contact .dl-horizontal dt:after, .dl-horizontal .topbar blockquote.contact dt:after, .logobar blockquote.search .dl-horizontal dt:after, .dl-horizontal .logobar blockquote.search dt:after, .list-group-downloads .list-group-item .body blockquote.btn .dl-horizontal dt:after, .dl-horizontal .list-group-downloads .list-group-item .body blockquote.btn dt:after,
+  blockquote.pull-right dt:after, .topbar blockquote.contact .dl-horizontal dt:after, .dl-horizontal .topbar blockquote.contact dt:after, .logobar blockquote.search .dl-horizontal dt:after, .dl-horizontal .logobar blockquote.search dt:after, .list-group-downloads .list-group-item .body blockquote.btn .dl-horizontal dt:after, .dl-horizontal .list-group-downloads .list-group-item .body blockquote.btn dt:after, .list-group-downloads .list-group-item .body blockquote[type='submit'] .dl-horizontal dt:after, .dl-horizontal .list-group-downloads .list-group-item .body blockquote[type='submit'] dt:after, .list-group-downloads .list-group-item .body blockquote[type='button'] .dl-horizontal dt:after, .dl-horizontal .list-group-downloads .list-group-item .body blockquote[type='button'] dt:after,
   blockquote.pull-right .dl-horizontal dd:after, .dl-horizontal
-  blockquote.pull-right dd:after, .topbar blockquote.contact .dl-horizontal dd:after, .dl-horizontal .topbar blockquote.contact dd:after, .logobar blockquote.search .dl-horizontal dd:after, .dl-horizontal .logobar blockquote.search dd:after, .list-group-downloads .list-group-item .body blockquote.btn .dl-horizontal dd:after, .dl-horizontal .list-group-downloads .list-group-item .body blockquote.btn dd:after {
+  blockquote.pull-right dd:after, .topbar blockquote.contact .dl-horizontal dd:after, .dl-horizontal .topbar blockquote.contact dd:after, .logobar blockquote.search .dl-horizontal dd:after, .dl-horizontal .logobar blockquote.search dd:after, .list-group-downloads .list-group-item .body blockquote.btn .dl-horizontal dd:after, .dl-horizontal .list-group-downloads .list-group-item .body blockquote.btn dd:after, .list-group-downloads .list-group-item .body blockquote[type='submit'] .dl-horizontal dd:after, .dl-horizontal .list-group-downloads .list-group-item .body blockquote[type='submit'] dd:after, .list-group-downloads .list-group-item .body blockquote[type='button'] .dl-horizontal dd:after, .dl-horizontal .list-group-downloads .list-group-item .body blockquote[type='button'] dd:after {
     content: '\00A0 \2014'; }
 
 address {
@@ -1752,46 +1758,78 @@ input[type="search"] {
   input[type="date"].input-sm, .input-group-sm > input[type="date"].form-control,
   .input-group-sm > input[type="date"].input-group-addon,
   .input-group-sm > .input-group-btn > input[type="date"].btn,
+  .input-group-sm > .input-group-btn > input[type="date"][type='submit'],
+  .input-group-sm > .input-group-btn > input[type="date"][type='button'],
+  .input-group-sm > .input-group-btn > input[type="date"][value='Annuleren'],
+  .input-group-sm > .input-group-btn > input[type="date"][type='file'],
   .input-group-sm input[type="date"],
   input[type="time"].input-sm,
   .input-group-sm > input[type="time"].form-control,
   .input-group-sm > input[type="time"].input-group-addon,
   .input-group-sm > .input-group-btn > input[type="time"].btn,
+  .input-group-sm > .input-group-btn > input[type="time"][type='submit'],
+  .input-group-sm > .input-group-btn > input[type="time"][type='button'],
+  .input-group-sm > .input-group-btn > input[type="time"][value='Annuleren'],
+  .input-group-sm > .input-group-btn > input[type="time"][type='file'],
   .input-group-sm
   input[type="time"],
   input[type="datetime-local"].input-sm,
   .input-group-sm > input[type="datetime-local"].form-control,
   .input-group-sm > input[type="datetime-local"].input-group-addon,
   .input-group-sm > .input-group-btn > input[type="datetime-local"].btn,
+  .input-group-sm > .input-group-btn > input[type="datetime-local"][type='submit'],
+  .input-group-sm > .input-group-btn > input[type="datetime-local"][type='button'],
+  .input-group-sm > .input-group-btn > input[type="datetime-local"][value='Annuleren'],
+  .input-group-sm > .input-group-btn > input[type="datetime-local"][type='file'],
   .input-group-sm
   input[type="datetime-local"],
   input[type="month"].input-sm,
   .input-group-sm > input[type="month"].form-control,
   .input-group-sm > input[type="month"].input-group-addon,
   .input-group-sm > .input-group-btn > input[type="month"].btn,
+  .input-group-sm > .input-group-btn > input[type="month"][type='submit'],
+  .input-group-sm > .input-group-btn > input[type="month"][type='button'],
+  .input-group-sm > .input-group-btn > input[type="month"][value='Annuleren'],
+  .input-group-sm > .input-group-btn > input[type="month"][type='file'],
   .input-group-sm
   input[type="month"] {
     line-height: 30px; }
   input[type="date"].input-lg, .input-group-lg > input[type="date"].form-control,
   .input-group-lg > input[type="date"].input-group-addon,
   .input-group-lg > .input-group-btn > input[type="date"].btn,
+  .input-group-lg > .input-group-btn > input[type="date"][type='submit'],
+  .input-group-lg > .input-group-btn > input[type="date"][type='button'],
+  .input-group-lg > .input-group-btn > input[type="date"][value='Annuleren'],
+  .input-group-lg > .input-group-btn > input[type="date"][type='file'],
   .input-group-lg input[type="date"],
   input[type="time"].input-lg,
   .input-group-lg > input[type="time"].form-control,
   .input-group-lg > input[type="time"].input-group-addon,
   .input-group-lg > .input-group-btn > input[type="time"].btn,
+  .input-group-lg > .input-group-btn > input[type="time"][type='submit'],
+  .input-group-lg > .input-group-btn > input[type="time"][type='button'],
+  .input-group-lg > .input-group-btn > input[type="time"][value='Annuleren'],
+  .input-group-lg > .input-group-btn > input[type="time"][type='file'],
   .input-group-lg
   input[type="time"],
   input[type="datetime-local"].input-lg,
   .input-group-lg > input[type="datetime-local"].form-control,
   .input-group-lg > input[type="datetime-local"].input-group-addon,
   .input-group-lg > .input-group-btn > input[type="datetime-local"].btn,
+  .input-group-lg > .input-group-btn > input[type="datetime-local"][type='submit'],
+  .input-group-lg > .input-group-btn > input[type="datetime-local"][type='button'],
+  .input-group-lg > .input-group-btn > input[type="datetime-local"][value='Annuleren'],
+  .input-group-lg > .input-group-btn > input[type="datetime-local"][type='file'],
   .input-group-lg
   input[type="datetime-local"],
   input[type="month"].input-lg,
   .input-group-lg > input[type="month"].form-control,
   .input-group-lg > input[type="month"].input-group-addon,
   .input-group-lg > .input-group-btn > input[type="month"].btn,
+  .input-group-lg > .input-group-btn > input[type="month"][type='submit'],
+  .input-group-lg > .input-group-btn > input[type="month"][type='button'],
+  .input-group-lg > .input-group-btn > input[type="month"][value='Annuleren'],
+  .input-group-lg > .input-group-btn > input[type="month"][type='file'],
   .input-group-lg
   input[type="month"] {
     line-height: 46px; } }
@@ -1869,15 +1907,27 @@ fieldset[disabled]
   min-height: 34px; }
   .form-control-static.input-lg, .input-group-lg > .form-control-static.form-control,
   .input-group-lg > .form-control-static.input-group-addon,
-  .input-group-lg > .input-group-btn > .form-control-static.btn, .form-control-static.input-sm, .input-group-sm > .form-control-static.form-control,
+  .input-group-lg > .input-group-btn > .form-control-static.btn,
+  .input-group-lg > .input-group-btn > .form-control-static[type='submit'],
+  .input-group-lg > .input-group-btn > .form-control-static[type='button'],
+  .input-group-lg > .input-group-btn > input.form-control-static[value='Annuleren'],
+  .input-group-lg > .input-group-btn > input.form-control-static[type='file'], .form-control-static.input-sm, .input-group-sm > .form-control-static.form-control,
   .input-group-sm > .form-control-static.input-group-addon,
-  .input-group-sm > .input-group-btn > .form-control-static.btn {
+  .input-group-sm > .input-group-btn > .form-control-static.btn,
+  .input-group-sm > .input-group-btn > .form-control-static[type='submit'],
+  .input-group-sm > .input-group-btn > .form-control-static[type='button'],
+  .input-group-sm > .input-group-btn > input.form-control-static[value='Annuleren'],
+  .input-group-sm > .input-group-btn > input.form-control-static[type='file'] {
     padding-left: 0;
     padding-right: 0; }
 
 .input-sm, .input-group-sm > .form-control,
 .input-group-sm > .input-group-addon,
-.input-group-sm > .input-group-btn > .btn {
+.input-group-sm > .input-group-btn > .btn,
+.input-group-sm > .input-group-btn > [type='submit'],
+.input-group-sm > .input-group-btn > [type='button'],
+.input-group-sm > .input-group-btn > input[value='Annuleren'],
+.input-group-sm > .input-group-btn > input[type='file'] {
   height: 30px;
   padding: 5px 10px;
   font-size: 12px;
@@ -1886,17 +1936,23 @@ fieldset[disabled]
 
 select.input-sm, .input-group-sm > select.form-control,
 .input-group-sm > select.input-group-addon,
-.input-group-sm > .input-group-btn > select.btn {
+.input-group-sm > .input-group-btn > select.btn,
+.input-group-sm > .input-group-btn > select[type='submit'],
+.input-group-sm > .input-group-btn > select[type='button'] {
   height: 30px;
   line-height: 30px; }
 
 textarea.input-sm, .input-group-sm > textarea.form-control,
 .input-group-sm > textarea.input-group-addon,
 .input-group-sm > .input-group-btn > textarea.btn,
+.input-group-sm > .input-group-btn > textarea[type='submit'],
+.input-group-sm > .input-group-btn > textarea[type='button'],
 select[multiple].input-sm,
 .input-group-sm > select[multiple].form-control,
 .input-group-sm > select[multiple].input-group-addon,
-.input-group-sm > .input-group-btn > select[multiple].btn {
+.input-group-sm > .input-group-btn > select[multiple].btn,
+.input-group-sm > .input-group-btn > select[multiple][type='submit'],
+.input-group-sm > .input-group-btn > select[multiple][type='button'] {
   height: auto; }
 
 .form-group-sm .form-control {
@@ -1923,7 +1979,11 @@ select[multiple].input-sm,
 
 .input-lg, .input-group-lg > .form-control,
 .input-group-lg > .input-group-addon,
-.input-group-lg > .input-group-btn > .btn {
+.input-group-lg > .input-group-btn > .btn,
+.input-group-lg > .input-group-btn > [type='submit'],
+.input-group-lg > .input-group-btn > [type='button'],
+.input-group-lg > .input-group-btn > input[value='Annuleren'],
+.input-group-lg > .input-group-btn > input[type='file'] {
   height: 46px;
   padding: 10px 16px;
   font-size: 18px;
@@ -1932,17 +1992,23 @@ select[multiple].input-sm,
 
 select.input-lg, .input-group-lg > select.form-control,
 .input-group-lg > select.input-group-addon,
-.input-group-lg > .input-group-btn > select.btn {
+.input-group-lg > .input-group-btn > select.btn,
+.input-group-lg > .input-group-btn > select[type='submit'],
+.input-group-lg > .input-group-btn > select[type='button'] {
   height: 46px;
   line-height: 46px; }
 
 textarea.input-lg, .input-group-lg > textarea.form-control,
 .input-group-lg > textarea.input-group-addon,
 .input-group-lg > .input-group-btn > textarea.btn,
+.input-group-lg > .input-group-btn > textarea[type='submit'],
+.input-group-lg > .input-group-btn > textarea[type='button'],
 select[multiple].input-lg,
 .input-group-lg > select[multiple].form-control,
 .input-group-lg > select[multiple].input-group-addon,
-.input-group-lg > .input-group-btn > select[multiple].btn {
+.input-group-lg > .input-group-btn > select[multiple].btn,
+.input-group-lg > .input-group-btn > select[multiple][type='submit'],
+.input-group-lg > .input-group-btn > select[multiple][type='button'] {
   height: auto; }
 
 .form-group-lg .form-control {
@@ -1987,6 +2053,10 @@ select[multiple].input-lg,
 .input-lg + .form-control-feedback, .input-group-lg > .form-control + .form-control-feedback,
 .input-group-lg > .input-group-addon + .form-control-feedback,
 .input-group-lg > .input-group-btn > .btn + .form-control-feedback,
+.input-group-lg > .input-group-btn > [type='submit'] + .form-control-feedback,
+.input-group-lg > .input-group-btn > [type='button'] + .form-control-feedback,
+.input-group-lg > .input-group-btn > input[value='Annuleren'] + .form-control-feedback,
+.input-group-lg > .input-group-btn > input[type='file'] + .form-control-feedback,
 .input-group-lg + .form-control-feedback,
 .form-group-lg .form-control + .form-control-feedback {
   width: 46px;
@@ -1996,6 +2066,10 @@ select[multiple].input-lg,
 .input-sm + .form-control-feedback, .input-group-sm > .form-control + .form-control-feedback,
 .input-group-sm > .input-group-addon + .form-control-feedback,
 .input-group-sm > .input-group-btn > .btn + .form-control-feedback,
+.input-group-sm > .input-group-btn > [type='submit'] + .form-control-feedback,
+.input-group-sm > .input-group-btn > [type='button'] + .form-control-feedback,
+.input-group-sm > .input-group-btn > input[value='Annuleren'] + .form-control-feedback,
+.input-group-sm > .input-group-btn > input[type='file'] + .form-control-feedback,
 .input-group-sm + .form-control-feedback,
 .form-group-sm .form-control + .form-control-feedback {
   width: 30px;
@@ -2180,7 +2254,7 @@ select[multiple].input-lg,
     padding-top: 6px;
     font-size: 12px; } }
 
-.btn {
+.btn, [type='submit'], [type='button'], input[value='Annuleren'], input[type='file'] {
   display: inline-block;
   margin-bottom: 0;
   font-weight: normal;
@@ -2199,113 +2273,151 @@ select[multiple].input-lg,
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none; }
-  .btn:focus, .btn.focus, .btn:active:focus, .btn:active.focus, .btn.active:focus, .btn.active.focus {
+  .btn:focus, [type='submit']:focus, [type='button']:focus, input[value='Annuleren']:focus, input[type='file']:focus, .btn.focus, .focus[type='submit'], .focus[type='button'], input.focus[value='Annuleren'], input.focus[type='file'], .btn:active:focus, [type='submit']:active:focus, [type='button']:active:focus, input[value='Annuleren']:active:focus, input[type='file']:active:focus, .btn:active.focus, [type='submit']:active.focus, [type='button']:active.focus, input[value='Annuleren']:active.focus, input[type='file']:active.focus, .btn.active:focus, .active[type='submit']:focus, .active[type='button']:focus, input.active[value='Annuleren']:focus, input.active[type='file']:focus, .btn.active.focus, .active.focus[type='submit'], .active.focus[type='button'], input.active.focus[value='Annuleren'], input.active.focus[type='file'] {
     outline: thin dotted;
     outline: 5px auto -webkit-focus-ring-color;
     outline-offset: -2px; }
-  .btn:hover, .btn:focus, .btn.focus {
+  .btn:hover, [type='submit']:hover, [type='button']:hover, input[value='Annuleren']:hover, input[type='file']:hover, .btn:focus, [type='submit']:focus, [type='button']:focus, input[value='Annuleren']:focus, input[type='file']:focus, .btn.focus, .focus[type='submit'], .focus[type='button'], input.focus[value='Annuleren'], input.focus[type='file'] {
     color: #333;
     text-decoration: none; }
-  .btn:active, .btn.active {
+  .btn:active, [type='submit']:active, [type='button']:active, input[value='Annuleren']:active, input[type='file']:active, .btn.active, .active[type='submit'], .active[type='button'], input.active[value='Annuleren'], input.active[type='file'] {
     outline: 0;
     background-image: none;
     -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
     box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125); }
-  .btn.disabled, .btn[disabled],
-  fieldset[disabled] .btn {
+  .btn.disabled, .disabled[type='submit'], .disabled[type='button'], input.disabled[value='Annuleren'], input.disabled[type='file'], .btn[disabled], [disabled][type='submit'], [disabled][type='button'], input[disabled][value='Annuleren'], input[disabled][type='file'],
+  fieldset[disabled] .btn,
+  fieldset[disabled] [type='submit'],
+  fieldset[disabled] [type='button'],
+  fieldset[disabled] input[value='Annuleren'],
+  fieldset[disabled] input[type='file'] {
     cursor: not-allowed;
     opacity: 0.65;
     filter: alpha(opacity=65);
     -webkit-box-shadow: none;
     box-shadow: none; }
 
-a.btn.disabled,
-fieldset[disabled] a.btn {
+a.btn.disabled, a.disabled[type='submit'], a.disabled[type='button'],
+fieldset[disabled] a.btn,
+fieldset[disabled] a[type='submit'],
+fieldset[disabled] a[type='button'] {
   pointer-events: none; }
 
-.btn-default {
+.btn-default, input[value='Annuleren'], input[type='file'] {
   color: #333;
   background-color: #fff;
   border-color: #ccc; }
-  .btn-default:focus, .btn-default.focus {
+  .btn-default:focus, input[value='Annuleren']:focus, input[type='file']:focus, .btn-default.focus, input.focus[value='Annuleren'], input.focus[type='file'] {
     color: #333;
     background-color: #e6e6e6;
     border-color: #8c8c8c; }
-  .btn-default:hover {
+  .btn-default:hover, input[value='Annuleren']:hover, input[type='file']:hover {
     color: #333;
     background-color: #e6e6e6;
     border-color: #adadad; }
-  .btn-default:active, .btn-default.active,
-  .open > .btn-default.dropdown-toggle {
+  .btn-default:active, input[value='Annuleren']:active, input[type='file']:active, .btn-default.active, input.active[value='Annuleren'], input.active[type='file'],
+  .open > .btn-default.dropdown-toggle,
+  .open > input.dropdown-toggle[value='Annuleren'],
+  .open > input.dropdown-toggle[type='file'] {
     color: #333;
     background-color: #e6e6e6;
     border-color: #adadad; }
-    .btn-default:active:hover, .btn-default:active:focus, .btn-default:active.focus, .btn-default.active:hover, .btn-default.active:focus, .btn-default.active.focus,
+    .btn-default:active:hover, input[value='Annuleren']:active:hover, input[type='file']:active:hover, .btn-default:active:focus, input[value='Annuleren']:active:focus, input[type='file']:active:focus, .btn-default:active.focus, input[value='Annuleren']:active.focus, input[type='file']:active.focus, .btn-default.active:hover, input.active[value='Annuleren']:hover, input.active[type='file']:hover, .btn-default.active:focus, input.active[value='Annuleren']:focus, input.active[type='file']:focus, .btn-default.active.focus, input.active.focus[value='Annuleren'], input.active.focus[type='file'],
     .open > .btn-default.dropdown-toggle:hover,
+    .open > input.dropdown-toggle[value='Annuleren']:hover,
+    .open > input.dropdown-toggle[type='file']:hover,
     .open > .btn-default.dropdown-toggle:focus,
-    .open > .btn-default.dropdown-toggle.focus {
+    .open > input.dropdown-toggle[value='Annuleren']:focus,
+    .open > input.dropdown-toggle[type='file']:focus,
+    .open > .btn-default.dropdown-toggle.focus,
+    .open > input.dropdown-toggle.focus[value='Annuleren'],
+    .open > input.dropdown-toggle.focus[type='file'] {
       color: #333;
       background-color: #d4d4d4;
       border-color: #8c8c8c; }
-  .btn-default:active, .btn-default.active,
-  .open > .btn-default.dropdown-toggle {
+  .btn-default:active, input[value='Annuleren']:active, input[type='file']:active, .btn-default.active, input.active[value='Annuleren'], input.active[type='file'],
+  .open > .btn-default.dropdown-toggle,
+  .open > input.dropdown-toggle[value='Annuleren'],
+  .open > input.dropdown-toggle[type='file'] {
     background-image: none; }
-  .btn-default.disabled, .btn-default.disabled:hover, .btn-default.disabled:focus, .btn-default.disabled.focus, .btn-default.disabled:active, .btn-default.disabled.active, .btn-default[disabled], .btn-default[disabled]:hover, .btn-default[disabled]:focus, .btn-default[disabled].focus, .btn-default[disabled]:active, .btn-default[disabled].active,
+  .btn-default.disabled, input.disabled[value='Annuleren'], input.disabled[type='file'], .btn-default.disabled:hover, input.disabled[value='Annuleren']:hover, input.disabled[type='file']:hover, .btn-default.disabled:focus, input.disabled[value='Annuleren']:focus, input.disabled[type='file']:focus, .btn-default.disabled.focus, input.disabled.focus[value='Annuleren'], input.disabled.focus[type='file'], .btn-default.disabled:active, input.disabled[value='Annuleren']:active, input.disabled[type='file']:active, .btn-default.disabled.active, input.disabled.active[value='Annuleren'], input.disabled.active[type='file'], .btn-default[disabled], input[disabled][value='Annuleren'], input[disabled][type='file'], .btn-default[disabled]:hover, input[disabled][value='Annuleren']:hover, input[disabled][type='file']:hover, .btn-default[disabled]:focus, input[disabled][value='Annuleren']:focus, input[disabled][type='file']:focus, .btn-default[disabled].focus, input[disabled].focus[value='Annuleren'], input[disabled].focus[type='file'], .btn-default[disabled]:active, input[disabled][value='Annuleren']:active, input[disabled][type='file']:active, .btn-default[disabled].active, input[disabled].active[value='Annuleren'], input[disabled].active[type='file'],
   fieldset[disabled] .btn-default,
+  fieldset[disabled] input[value='Annuleren'],
+  fieldset[disabled] input[type='file'],
   fieldset[disabled] .btn-default:hover,
+  fieldset[disabled] input[value='Annuleren']:hover,
+  fieldset[disabled] input[type='file']:hover,
   fieldset[disabled] .btn-default:focus,
+  fieldset[disabled] input[value='Annuleren']:focus,
+  fieldset[disabled] input[type='file']:focus,
   fieldset[disabled] .btn-default.focus,
+  fieldset[disabled] input.focus[value='Annuleren'],
+  fieldset[disabled] input.focus[type='file'],
   fieldset[disabled] .btn-default:active,
-  fieldset[disabled] .btn-default.active {
+  fieldset[disabled] input[value='Annuleren']:active,
+  fieldset[disabled] input[type='file']:active,
+  fieldset[disabled] .btn-default.active,
+  fieldset[disabled] input.active[value='Annuleren'],
+  fieldset[disabled] input.active[type='file'] {
     background-color: #fff;
     border-color: #ccc; }
-  .btn-default .badge {
+  .btn-default .badge, input[value='Annuleren'] .badge, input[type='file'] .badge {
     color: #fff;
     background-color: #333; }
 
-.btn-primary, .logobar .search button, .event-detail-lead header button, .event-form form button {
+.btn-primary, .logobar .search button, .event-detail-lead header button, .event-form form button, [type='submit'], [type='button'] {
   color: #fff;
   background-color: #2e94bd;
   border-color: #2984a8; }
-  .btn-primary:focus, .logobar .search button:focus, .event-detail-lead header button:focus, .event-form form button:focus, .btn-primary.focus, .logobar .search button.focus, .event-detail-lead header button.focus, .event-form form button.focus {
+  .btn-primary:focus, .logobar .search button:focus, .event-detail-lead header button:focus, .event-form form button:focus, [type='submit']:focus, [type='button']:focus, .btn-primary.focus, .logobar .search button.focus, .event-detail-lead header button.focus, .event-form form button.focus, .focus[type='submit'], .focus[type='button'] {
     color: #fff;
     background-color: #247494;
     border-color: #103442; }
-  .btn-primary:hover, .logobar .search button:hover, .event-detail-lead header button:hover, .event-form form button:hover {
+  .btn-primary:hover, .logobar .search button:hover, .event-detail-lead header button:hover, .event-form form button:hover, [type='submit']:hover, [type='button']:hover {
     color: #fff;
     background-color: #247494;
     border-color: #1d5d77; }
-  .btn-primary:active, .logobar .search button:active, .event-detail-lead header button:active, .event-form form button:active, .btn-primary.active, .logobar .search button.active, .event-detail-lead header button.active, .event-form form button.active,
+  .btn-primary:active, .logobar .search button:active, .event-detail-lead header button:active, .event-form form button:active, [type='submit']:active, [type='button']:active, .btn-primary.active, .logobar .search button.active, .event-detail-lead header button.active, .event-form form button.active, .active[type='submit'], .active[type='button'],
   .open > .btn-primary.dropdown-toggle, .logobar .search
   .open > button.dropdown-toggle, .event-detail-lead header
   .open > button.dropdown-toggle, .event-form form
-  .open > button.dropdown-toggle {
+  .open > button.dropdown-toggle,
+  .open > .dropdown-toggle[type='submit'],
+  .open > .dropdown-toggle[type='button'] {
     color: #fff;
     background-color: #247494;
     border-color: #1d5d77; }
-    .btn-primary:active:hover, .logobar .search button:active:hover, .event-detail-lead header button:active:hover, .event-form form button:active:hover, .btn-primary:active:focus, .logobar .search button:active:focus, .event-detail-lead header button:active:focus, .event-form form button:active:focus, .btn-primary:active.focus, .logobar .search button:active.focus, .event-detail-lead header button:active.focus, .event-form form button:active.focus, .btn-primary.active:hover, .logobar .search button.active:hover, .event-detail-lead header button.active:hover, .event-form form button.active:hover, .btn-primary.active:focus, .logobar .search button.active:focus, .event-detail-lead header button.active:focus, .event-form form button.active:focus, .btn-primary.active.focus, .logobar .search button.active.focus, .event-detail-lead header button.active.focus, .event-form form button.active.focus,
+    .btn-primary:active:hover, .logobar .search button:active:hover, .event-detail-lead header button:active:hover, .event-form form button:active:hover, [type='submit']:active:hover, [type='button']:active:hover, .btn-primary:active:focus, .logobar .search button:active:focus, .event-detail-lead header button:active:focus, .event-form form button:active:focus, [type='submit']:active:focus, [type='button']:active:focus, .btn-primary:active.focus, .logobar .search button:active.focus, .event-detail-lead header button:active.focus, .event-form form button:active.focus, [type='submit']:active.focus, [type='button']:active.focus, .btn-primary.active:hover, .logobar .search button.active:hover, .event-detail-lead header button.active:hover, .event-form form button.active:hover, .active[type='submit']:hover, .active[type='button']:hover, .btn-primary.active:focus, .logobar .search button.active:focus, .event-detail-lead header button.active:focus, .event-form form button.active:focus, .active[type='submit']:focus, .active[type='button']:focus, .btn-primary.active.focus, .logobar .search button.active.focus, .event-detail-lead header button.active.focus, .event-form form button.active.focus, .active.focus[type='submit'], .active.focus[type='button'],
     .open > .btn-primary.dropdown-toggle:hover, .logobar .search
     .open > button.dropdown-toggle:hover, .event-detail-lead header
     .open > button.dropdown-toggle:hover, .event-form form
     .open > button.dropdown-toggle:hover,
+    .open > .dropdown-toggle[type='submit']:hover,
+    .open > .dropdown-toggle[type='button']:hover,
     .open > .btn-primary.dropdown-toggle:focus, .logobar .search
     .open > button.dropdown-toggle:focus, .event-detail-lead header
     .open > button.dropdown-toggle:focus, .event-form form
     .open > button.dropdown-toggle:focus,
+    .open > .dropdown-toggle[type='submit']:focus,
+    .open > .dropdown-toggle[type='button']:focus,
     .open > .btn-primary.dropdown-toggle.focus, .logobar .search
     .open > button.dropdown-toggle.focus, .event-detail-lead header
     .open > button.dropdown-toggle.focus, .event-form form
-    .open > button.dropdown-toggle.focus {
+    .open > button.dropdown-toggle.focus,
+    .open > .dropdown-toggle.focus[type='submit'],
+    .open > .dropdown-toggle.focus[type='button'] {
       color: #fff;
       background-color: #1d5d77;
       border-color: #103442; }
-  .btn-primary:active, .logobar .search button:active, .event-detail-lead header button:active, .event-form form button:active, .btn-primary.active, .logobar .search button.active, .event-detail-lead header button.active, .event-form form button.active,
+  .btn-primary:active, .logobar .search button:active, .event-detail-lead header button:active, .event-form form button:active, [type='submit']:active, [type='button']:active, .btn-primary.active, .logobar .search button.active, .event-detail-lead header button.active, .event-form form button.active, .active[type='submit'], .active[type='button'],
   .open > .btn-primary.dropdown-toggle, .logobar .search
   .open > button.dropdown-toggle, .event-detail-lead header
   .open > button.dropdown-toggle, .event-form form
-  .open > button.dropdown-toggle {
+  .open > button.dropdown-toggle,
+  .open > .dropdown-toggle[type='submit'],
+  .open > .dropdown-toggle[type='button'] {
     background-image: none; }
-  .btn-primary.disabled, .logobar .search button.disabled, .event-detail-lead header button.disabled, .event-form form button.disabled, .btn-primary.disabled:hover, .logobar .search button.disabled:hover, .event-detail-lead header button.disabled:hover, .event-form form button.disabled:hover, .btn-primary.disabled:focus, .logobar .search button.disabled:focus, .event-detail-lead header button.disabled:focus, .event-form form button.disabled:focus, .btn-primary.disabled.focus, .logobar .search button.disabled.focus, .event-detail-lead header button.disabled.focus, .event-form form button.disabled.focus, .btn-primary.disabled:active, .logobar .search button.disabled:active, .event-detail-lead header button.disabled:active, .event-form form button.disabled:active, .btn-primary.disabled.active, .logobar .search button.disabled.active, .event-detail-lead header button.disabled.active, .event-form form button.disabled.active, .btn-primary[disabled], .logobar .search button[disabled], .event-detail-lead header button[disabled], .event-form form button[disabled], .btn-primary[disabled]:hover, .logobar .search button[disabled]:hover, .event-detail-lead header button[disabled]:hover, .event-form form button[disabled]:hover, .btn-primary[disabled]:focus, .logobar .search button[disabled]:focus, .event-detail-lead header button[disabled]:focus, .event-form form button[disabled]:focus, .btn-primary[disabled].focus, .logobar .search button[disabled].focus, .event-detail-lead header button[disabled].focus, .event-form form button[disabled].focus, .btn-primary[disabled]:active, .logobar .search button[disabled]:active, .event-detail-lead header button[disabled]:active, .event-form form button[disabled]:active, .btn-primary[disabled].active, .logobar .search button[disabled].active, .event-detail-lead header button[disabled].active, .event-form form button[disabled].active,
+  .btn-primary.disabled, .logobar .search button.disabled, .event-detail-lead header button.disabled, .event-form form button.disabled, .disabled[type='submit'], .disabled[type='button'], .btn-primary.disabled:hover, .logobar .search button.disabled:hover, .event-detail-lead header button.disabled:hover, .event-form form button.disabled:hover, .disabled[type='submit']:hover, .disabled[type='button']:hover, .btn-primary.disabled:focus, .logobar .search button.disabled:focus, .event-detail-lead header button.disabled:focus, .event-form form button.disabled:focus, .disabled[type='submit']:focus, .disabled[type='button']:focus, .btn-primary.disabled.focus, .logobar .search button.disabled.focus, .event-detail-lead header button.disabled.focus, .event-form form button.disabled.focus, .disabled.focus[type='submit'], .disabled.focus[type='button'], .btn-primary.disabled:active, .logobar .search button.disabled:active, .event-detail-lead header button.disabled:active, .event-form form button.disabled:active, .disabled[type='submit']:active, .disabled[type='button']:active, .btn-primary.disabled.active, .logobar .search button.disabled.active, .event-detail-lead header button.disabled.active, .event-form form button.disabled.active, .disabled.active[type='submit'], .disabled.active[type='button'], .btn-primary[disabled], .logobar .search button[disabled], .event-detail-lead header button[disabled], .event-form form button[disabled], [disabled][type='submit'], [disabled][type='button'], .btn-primary[disabled]:hover, .logobar .search button[disabled]:hover, .event-detail-lead header button[disabled]:hover, .event-form form button[disabled]:hover, [disabled][type='submit']:hover, [disabled][type='button']:hover, .btn-primary[disabled]:focus, .logobar .search button[disabled]:focus, .event-detail-lead header button[disabled]:focus, .event-form form button[disabled]:focus, [disabled][type='submit']:focus, [disabled][type='button']:focus, .btn-primary[disabled].focus, .logobar .search button[disabled].focus, .event-detail-lead header button[disabled].focus, .event-form form button[disabled].focus, [disabled].focus[type='submit'], [disabled].focus[type='button'], .btn-primary[disabled]:active, .logobar .search button[disabled]:active, .event-detail-lead header button[disabled]:active, .event-form form button[disabled]:active, [disabled][type='submit']:active, [disabled][type='button']:active, .btn-primary[disabled].active, .logobar .search button[disabled].active, .event-detail-lead header button[disabled].active, .event-form form button[disabled].active, [disabled].active[type='submit'], [disabled].active[type='button'],
   fieldset[disabled] .btn-primary,
   fieldset[disabled] .logobar .search button, .logobar .search
   fieldset[disabled] button,
@@ -2313,6 +2425,8 @@ fieldset[disabled] a.btn {
   fieldset[disabled] button,
   fieldset[disabled] .event-form form button, .event-form form
   fieldset[disabled] button,
+  fieldset[disabled] [type='submit'],
+  fieldset[disabled] [type='button'],
   fieldset[disabled] .btn-primary:hover,
   fieldset[disabled] .logobar .search button:hover, .logobar .search
   fieldset[disabled] button:hover,
@@ -2320,6 +2434,8 @@ fieldset[disabled] a.btn {
   fieldset[disabled] button:hover,
   fieldset[disabled] .event-form form button:hover, .event-form form
   fieldset[disabled] button:hover,
+  fieldset[disabled] [type='submit']:hover,
+  fieldset[disabled] [type='button']:hover,
   fieldset[disabled] .btn-primary:focus,
   fieldset[disabled] .logobar .search button:focus, .logobar .search
   fieldset[disabled] button:focus,
@@ -2327,6 +2443,8 @@ fieldset[disabled] a.btn {
   fieldset[disabled] button:focus,
   fieldset[disabled] .event-form form button:focus, .event-form form
   fieldset[disabled] button:focus,
+  fieldset[disabled] [type='submit']:focus,
+  fieldset[disabled] [type='button']:focus,
   fieldset[disabled] .btn-primary.focus,
   fieldset[disabled] .logobar .search button.focus, .logobar .search
   fieldset[disabled] button.focus,
@@ -2334,6 +2452,8 @@ fieldset[disabled] a.btn {
   fieldset[disabled] button.focus,
   fieldset[disabled] .event-form form button.focus, .event-form form
   fieldset[disabled] button.focus,
+  fieldset[disabled] .focus[type='submit'],
+  fieldset[disabled] .focus[type='button'],
   fieldset[disabled] .btn-primary:active,
   fieldset[disabled] .logobar .search button:active, .logobar .search
   fieldset[disabled] button:active,
@@ -2341,16 +2461,20 @@ fieldset[disabled] a.btn {
   fieldset[disabled] button:active,
   fieldset[disabled] .event-form form button:active, .event-form form
   fieldset[disabled] button:active,
+  fieldset[disabled] [type='submit']:active,
+  fieldset[disabled] [type='button']:active,
   fieldset[disabled] .btn-primary.active,
   fieldset[disabled] .logobar .search button.active, .logobar .search
   fieldset[disabled] button.active,
   fieldset[disabled] .event-detail-lead header button.active, .event-detail-lead header
   fieldset[disabled] button.active,
   fieldset[disabled] .event-form form button.active, .event-form form
-  fieldset[disabled] button.active {
+  fieldset[disabled] button.active,
+  fieldset[disabled] .active[type='submit'],
+  fieldset[disabled] .active[type='button'] {
     background-color: #2e94bd;
     border-color: #2984a8; }
-  .btn-primary .badge, .logobar .search button .badge, .event-detail-lead header button .badge, .event-form form button .badge {
+  .btn-primary .badge, .logobar .search button .badge, .event-detail-lead header button .badge, .event-form form button .badge, [type='submit'] .badge, [type='button'] .badge {
     color: #2e94bd;
     background-color: #fff; }
 
@@ -2535,19 +2659,19 @@ fieldset[disabled] a.btn {
     color: #777777;
     text-decoration: none; }
 
-.btn-lg, .btn-group-lg > .btn {
+.btn-lg, .btn-group-lg > .btn, .btn-group-lg > [type='submit'], .btn-group-lg > [type='button'], .btn-group-lg > input[value='Annuleren'], .btn-group-lg > input[type='file'] {
   padding: 10px 16px;
   font-size: 18px;
   line-height: 1.3333333;
   border-radius: 6px; }
 
-.btn-sm, .btn-group-sm > .btn {
+.btn-sm, .btn-group-sm > .btn, .btn-group-sm > [type='submit'], .btn-group-sm > [type='button'], .btn-group-sm > input[value='Annuleren'], .btn-group-sm > input[type='file'] {
   padding: 5px 10px;
   font-size: 12px;
   line-height: 1.5;
   border-radius: 3px; }
 
-.btn-xs, .btn-group-xs > .btn {
+.btn-xs, .btn-group-xs > .btn, .btn-group-xs > [type='submit'], .btn-group-xs > [type='button'], .btn-group-xs > input[value='Annuleren'], .btn-group-xs > input[type='file'], #sharing-search-button {
   padding: 1px 5px;
   font-size: 12px;
   line-height: 1.5;
@@ -2633,7 +2757,7 @@ tbody.collapse.in {
   -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
   background-clip: padding-box; }
-  .dropdown-menu.pull-right, .topbar .dropdown-menu.contact, .logobar .dropdown-menu.search, .footer-flanders a.dropdown-menu.less, .list-group-downloads .list-group-item .body .dropdown-menu.btn, .article-theme img.dropdown-menu {
+  .dropdown-menu.pull-right, .topbar .dropdown-menu.contact, .logobar .dropdown-menu.search, .footer-flanders a.dropdown-menu.less, .list-group-downloads .list-group-item .body .dropdown-menu.btn, .list-group-downloads .list-group-item .body .dropdown-menu[type='submit'], .list-group-downloads .list-group-item .body .dropdown-menu[type='button'], .list-group-downloads .list-group-item .body input.dropdown-menu[value='Annuleren'], .list-group-downloads .list-group-item .body input.dropdown-menu[type='file'], .article-theme img.dropdown-menu {
     right: 0;
     left: auto; }
   .dropdown-menu .divider {
@@ -2701,7 +2825,7 @@ tbody.collapse.in {
   top: 0;
   z-index: 990; }
 
-.pull-right > .dropdown-menu, .topbar .contact > .dropdown-menu, .logobar .search > .dropdown-menu, .footer-flanders a.less > .dropdown-menu, .list-group-downloads .list-group-item .body .btn > .dropdown-menu, .article-theme img > .dropdown-menu {
+.pull-right > .dropdown-menu, .topbar .contact > .dropdown-menu, .logobar .search > .dropdown-menu, .footer-flanders a.less > .dropdown-menu, .list-group-downloads .list-group-item .body .btn > .dropdown-menu, .list-group-downloads .list-group-item .body [type='submit'] > .dropdown-menu, .list-group-downloads .list-group-item .body [type='button'] > .dropdown-menu, .list-group-downloads .list-group-item .body input[value='Annuleren'] > .dropdown-menu, .list-group-downloads .list-group-item .body input[type='file'] > .dropdown-menu, .article-theme img > .dropdown-menu {
   right: 0;
   left: auto; }
 
@@ -2731,20 +2855,48 @@ tbody.collapse.in {
   position: relative;
   display: inline-block;
   vertical-align: middle; }
-  .btn-group > .btn,
-  .btn-group-vertical > .btn {
+  .btn-group > .btn, .btn-group > [type='submit'], .btn-group > [type='button'], .btn-group > input[value='Annuleren'], .btn-group > input[type='file'],
+  .btn-group-vertical > .btn,
+  .btn-group-vertical > [type='submit'],
+  .btn-group-vertical > [type='button'],
+  .btn-group-vertical > input[value='Annuleren'],
+  .btn-group-vertical > input[type='file'] {
     position: relative;
     float: left; }
-    .btn-group > .btn:hover, .btn-group > .btn:focus, .btn-group > .btn:active, .btn-group > .btn.active,
+    .btn-group > .btn:hover, .btn-group > [type='submit']:hover, .btn-group > [type='button']:hover, .btn-group > input[value='Annuleren']:hover, .btn-group > input[type='file']:hover, .btn-group > .btn:focus, .btn-group > [type='submit']:focus, .btn-group > [type='button']:focus, .btn-group > input[value='Annuleren']:focus, .btn-group > input[type='file']:focus, .btn-group > .btn:active, .btn-group > [type='submit']:active, .btn-group > [type='button']:active, .btn-group > input[value='Annuleren']:active, .btn-group > input[type='file']:active, .btn-group > .btn.active, .btn-group > .active[type='submit'], .btn-group > .active[type='button'], .btn-group > input.active[value='Annuleren'], .btn-group > input.active[type='file'],
     .btn-group-vertical > .btn:hover,
+    .btn-group-vertical > [type='submit']:hover,
+    .btn-group-vertical > [type='button']:hover,
+    .btn-group-vertical > input[value='Annuleren']:hover,
+    .btn-group-vertical > input[type='file']:hover,
     .btn-group-vertical > .btn:focus,
+    .btn-group-vertical > [type='submit']:focus,
+    .btn-group-vertical > [type='button']:focus,
+    .btn-group-vertical > input[value='Annuleren']:focus,
+    .btn-group-vertical > input[type='file']:focus,
     .btn-group-vertical > .btn:active,
-    .btn-group-vertical > .btn.active {
+    .btn-group-vertical > [type='submit']:active,
+    .btn-group-vertical > [type='button']:active,
+    .btn-group-vertical > input[value='Annuleren']:active,
+    .btn-group-vertical > input[type='file']:active,
+    .btn-group-vertical > .btn.active,
+    .btn-group-vertical > .active[type='submit'],
+    .btn-group-vertical > .active[type='button'],
+    .btn-group-vertical > input.active[value='Annuleren'],
+    .btn-group-vertical > input.active[type='file'] {
       z-index: 2; }
 
-.btn-group .btn + .btn,
+.btn-group .btn + .btn, .btn-group [type='submit'] + .btn, .btn-group [type='button'] + .btn, .btn-group input[value='Annuleren'] + .btn, .btn-group input[type='file'] + .btn, .btn-group .btn + [type='submit'], .btn-group [type='submit'] + [type='submit'], .btn-group [type='button'] + [type='submit'], .btn-group input[value='Annuleren'] + [type='submit'], .btn-group input[type='file'] + [type='submit'], .btn-group .btn + [type='button'], .btn-group [type='submit'] + [type='button'], .btn-group [type='button'] + [type='button'], .btn-group input[value='Annuleren'] + [type='button'], .btn-group input[type='file'] + [type='button'], .btn-group .btn + input[value='Annuleren'], .btn-group [type='submit'] + input[value='Annuleren'], .btn-group [type='button'] + input[value='Annuleren'], .btn-group input[value='Annuleren'] + input[value='Annuleren'], .btn-group input[type='file'] + input[value='Annuleren'], .btn-group .btn + input[type='file'], .btn-group [type='submit'] + input[type='file'], .btn-group [type='button'] + input[type='file'], .btn-group input[value='Annuleren'] + input[type='file'], .btn-group input[type='file'] + input[type='file'],
 .btn-group .btn + .btn-group,
+.btn-group [type='submit'] + .btn-group,
+.btn-group [type='button'] + .btn-group,
+.btn-group input[value='Annuleren'] + .btn-group,
+.btn-group input[type='file'] + .btn-group,
 .btn-group .btn-group + .btn,
+.btn-group .btn-group + [type='submit'],
+.btn-group .btn-group + [type='button'],
+.btn-group .btn-group + input[value='Annuleren'],
+.btn-group .btn-group + input[type='file'],
 .btn-group .btn-group + .btn-group {
   margin-left: -1px; }
 
@@ -2755,25 +2907,25 @@ tbody.collapse.in {
     display: table; }
   .btn-toolbar:after {
     clear: both; }
-  .btn-toolbar .btn,
+  .btn-toolbar .btn, .btn-toolbar [type='submit'], .btn-toolbar [type='button'], .btn-toolbar input[value='Annuleren'], .btn-toolbar input[type='file'],
   .btn-toolbar .btn-group,
   .btn-toolbar .input-group {
     float: left; }
-  .btn-toolbar > .btn,
+  .btn-toolbar > .btn, .btn-toolbar > [type='submit'], .btn-toolbar > [type='button'], .btn-toolbar > input[value='Annuleren'], .btn-toolbar > input[type='file'],
   .btn-toolbar > .btn-group,
   .btn-toolbar > .input-group {
     margin-left: 5px; }
 
-.btn-group > .btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {
+.btn-group > .btn:not(:first-child):not(:last-child):not(.dropdown-toggle), .btn-group > [type='submit']:not(:first-child):not(:last-child):not(.dropdown-toggle), .btn-group > [type='button']:not(:first-child):not(:last-child):not(.dropdown-toggle), .btn-group > input[value='Annuleren']:not(:first-child):not(:last-child):not(.dropdown-toggle), .btn-group > input[type='file']:not(:first-child):not(:last-child):not(.dropdown-toggle) {
   border-radius: 0; }
 
-.btn-group > .btn:first-child {
+.btn-group > .btn:first-child, .btn-group > [type='submit']:first-child, .btn-group > [type='button']:first-child, .btn-group > input[value='Annuleren']:first-child, .btn-group > input[type='file']:first-child {
   margin-left: 0; }
-  .btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle) {
+  .btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle), .btn-group > [type='submit']:first-child:not(:last-child):not(.dropdown-toggle), .btn-group > [type='button']:first-child:not(:last-child):not(.dropdown-toggle), .btn-group > input[value='Annuleren']:first-child:not(:last-child):not(.dropdown-toggle), .btn-group > input[type='file']:first-child:not(:last-child):not(.dropdown-toggle) {
     border-bottom-right-radius: 0;
     border-top-right-radius: 0; }
 
-.btn-group > .btn:last-child:not(:first-child),
+.btn-group > .btn:last-child:not(:first-child), .btn-group > [type='submit']:last-child:not(:first-child), .btn-group > [type='button']:last-child:not(:first-child), .btn-group > input[value='Annuleren']:last-child:not(:first-child), .btn-group > input[type='file']:last-child:not(:first-child),
 .btn-group > .dropdown-toggle:not(:first-child) {
   border-bottom-left-radius: 0;
   border-top-left-radius: 0; }
@@ -2781,15 +2933,15 @@ tbody.collapse.in {
 .btn-group > .btn-group {
   float: left; }
 
-.btn-group > .btn-group:not(:first-child):not(:last-child) > .btn {
+.btn-group > .btn-group:not(:first-child):not(:last-child) > .btn, .btn-group > .btn-group:not(:first-child):not(:last-child) > [type='submit'], .btn-group > .btn-group:not(:first-child):not(:last-child) > [type='button'], .btn-group > .btn-group:not(:first-child):not(:last-child) > input[value='Annuleren'], .btn-group > .btn-group:not(:first-child):not(:last-child) > input[type='file'] {
   border-radius: 0; }
 
-.btn-group > .btn-group:first-child:not(:last-child) > .btn:last-child,
+.btn-group > .btn-group:first-child:not(:last-child) > .btn:last-child, .btn-group > .btn-group:first-child:not(:last-child) > [type='submit']:last-child, .btn-group > .btn-group:first-child:not(:last-child) > [type='button']:last-child, .btn-group > .btn-group:first-child:not(:last-child) > input[value='Annuleren']:last-child, .btn-group > .btn-group:first-child:not(:last-child) > input[type='file']:last-child,
 .btn-group > .btn-group:first-child:not(:last-child) > .dropdown-toggle {
   border-bottom-right-radius: 0;
   border-top-right-radius: 0; }
 
-.btn-group > .btn-group:last-child:not(:first-child) > .btn:first-child {
+.btn-group > .btn-group:last-child:not(:first-child) > .btn:first-child, .btn-group > .btn-group:last-child:not(:first-child) > [type='submit']:first-child, .btn-group > .btn-group:last-child:not(:first-child) > [type='button']:first-child, .btn-group > .btn-group:last-child:not(:first-child) > input[value='Annuleren']:first-child, .btn-group > .btn-group:last-child:not(:first-child) > input[type='file']:first-child {
   border-bottom-left-radius: 0;
   border-top-left-radius: 0; }
 
@@ -2797,11 +2949,11 @@ tbody.collapse.in {
 .btn-group.open .dropdown-toggle {
   outline: 0; }
 
-.btn-group > .btn + .dropdown-toggle {
+.btn-group > .btn + .dropdown-toggle, .btn-group > [type='submit'] + .dropdown-toggle, .btn-group > [type='button'] + .dropdown-toggle, .btn-group > input[value='Annuleren'] + .dropdown-toggle, .btn-group > input[type='file'] + .dropdown-toggle {
   padding-left: 8px;
   padding-right: 8px; }
 
-.btn-group > .btn-lg + .dropdown-toggle, .btn-group-lg.btn-group > .btn + .dropdown-toggle {
+.btn-group > .btn-lg + .dropdown-toggle, .btn-group-lg.btn-group > .btn + .dropdown-toggle, .btn-group-lg.btn-group > [type='submit'] + .dropdown-toggle, .btn-group-lg.btn-group > [type='button'] + .dropdown-toggle, .btn-group-lg.btn-group > input[value='Annuleren'] + .dropdown-toggle, .btn-group-lg.btn-group > input[type='file'] + .dropdown-toggle {
   padding-left: 12px;
   padding-right: 12px; }
 
@@ -2812,19 +2964,23 @@ tbody.collapse.in {
     -webkit-box-shadow: none;
     box-shadow: none; }
 
-.btn .caret {
+.btn .caret, [type='submit'] .caret, [type='button'] .caret, input[value='Annuleren'] .caret, input[type='file'] .caret {
   margin-left: 0; }
 
-.btn-lg .caret, .btn-group-lg > .btn .caret {
+.btn-lg .caret, .btn-group-lg > .btn .caret, .btn-group-lg > [type='submit'] .caret, .btn-group-lg > [type='button'] .caret, .btn-group-lg > input[value='Annuleren'] .caret, .btn-group-lg > input[type='file'] .caret {
   border-width: 5px 5px 0;
   border-bottom-width: 0; }
 
-.dropup .btn-lg .caret, .dropup .btn-group-lg > .btn .caret {
+.dropup .btn-lg .caret, .dropup .btn-group-lg > .btn .caret, .dropup .btn-group-lg > [type='submit'] .caret, .dropup .btn-group-lg > [type='button'] .caret, .dropup .btn-group-lg > input[value='Annuleren'] .caret, .dropup .btn-group-lg > input[type='file'] .caret {
   border-width: 0 5px 5px; }
 
-.btn-group-vertical > .btn,
+.btn-group-vertical > .btn, .btn-group-vertical > [type='submit'], .btn-group-vertical > [type='button'], .btn-group-vertical > input[value='Annuleren'], .btn-group-vertical > input[type='file'],
 .btn-group-vertical > .btn-group,
-.btn-group-vertical > .btn-group > .btn {
+.btn-group-vertical > .btn-group > .btn,
+.btn-group-vertical > .btn-group > [type='submit'],
+.btn-group-vertical > .btn-group > [type='button'],
+.btn-group-vertical > .btn-group > input[value='Annuleren'],
+.btn-group-vertical > .btn-group > input[type='file'] {
   display: block;
   float: none;
   width: 100%;
@@ -2837,38 +2993,46 @@ tbody.collapse.in {
 .btn-group-vertical > .btn-group:after {
   clear: both; }
 
-.btn-group-vertical > .btn-group > .btn {
+.btn-group-vertical > .btn-group > .btn, .btn-group-vertical > .btn-group > [type='submit'], .btn-group-vertical > .btn-group > [type='button'], .btn-group-vertical > .btn-group > input[value='Annuleren'], .btn-group-vertical > .btn-group > input[type='file'] {
   float: none; }
 
-.btn-group-vertical > .btn + .btn,
+.btn-group-vertical > .btn + .btn, .btn-group-vertical > [type='submit'] + .btn, .btn-group-vertical > [type='button'] + .btn, .btn-group-vertical > input[value='Annuleren'] + .btn, .btn-group-vertical > input[type='file'] + .btn, .btn-group-vertical > .btn + [type='submit'], .btn-group-vertical > [type='submit'] + [type='submit'], .btn-group-vertical > [type='button'] + [type='submit'], .btn-group-vertical > input[value='Annuleren'] + [type='submit'], .btn-group-vertical > input[type='file'] + [type='submit'], .btn-group-vertical > .btn + [type='button'], .btn-group-vertical > [type='submit'] + [type='button'], .btn-group-vertical > [type='button'] + [type='button'], .btn-group-vertical > input[value='Annuleren'] + [type='button'], .btn-group-vertical > input[type='file'] + [type='button'], .btn-group-vertical > .btn + input[value='Annuleren'], .btn-group-vertical > [type='submit'] + input[value='Annuleren'], .btn-group-vertical > [type='button'] + input[value='Annuleren'], .btn-group-vertical > input[value='Annuleren'] + input[value='Annuleren'], .btn-group-vertical > input[type='file'] + input[value='Annuleren'], .btn-group-vertical > .btn + input[type='file'], .btn-group-vertical > [type='submit'] + input[type='file'], .btn-group-vertical > [type='button'] + input[type='file'], .btn-group-vertical > input[value='Annuleren'] + input[type='file'], .btn-group-vertical > input[type='file'] + input[type='file'],
 .btn-group-vertical > .btn + .btn-group,
+.btn-group-vertical > [type='submit'] + .btn-group,
+.btn-group-vertical > [type='button'] + .btn-group,
+.btn-group-vertical > input[value='Annuleren'] + .btn-group,
+.btn-group-vertical > input[type='file'] + .btn-group,
 .btn-group-vertical > .btn-group + .btn,
+.btn-group-vertical > .btn-group + [type='submit'],
+.btn-group-vertical > .btn-group + [type='button'],
+.btn-group-vertical > .btn-group + input[value='Annuleren'],
+.btn-group-vertical > .btn-group + input[type='file'],
 .btn-group-vertical > .btn-group + .btn-group {
   margin-top: -1px;
   margin-left: 0; }
 
-.btn-group-vertical > .btn:not(:first-child):not(:last-child) {
+.btn-group-vertical > .btn:not(:first-child):not(:last-child), .btn-group-vertical > [type='submit']:not(:first-child):not(:last-child), .btn-group-vertical > [type='button']:not(:first-child):not(:last-child), .btn-group-vertical > input[value='Annuleren']:not(:first-child):not(:last-child), .btn-group-vertical > input[type='file']:not(:first-child):not(:last-child) {
   border-radius: 0; }
 
-.btn-group-vertical > .btn:first-child:not(:last-child) {
+.btn-group-vertical > .btn:first-child:not(:last-child), .btn-group-vertical > [type='submit']:first-child:not(:last-child), .btn-group-vertical > [type='button']:first-child:not(:last-child), .btn-group-vertical > input[value='Annuleren']:first-child:not(:last-child), .btn-group-vertical > input[type='file']:first-child:not(:last-child) {
   border-top-right-radius: 4px;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0; }
 
-.btn-group-vertical > .btn:last-child:not(:first-child) {
+.btn-group-vertical > .btn:last-child:not(:first-child), .btn-group-vertical > [type='submit']:last-child:not(:first-child), .btn-group-vertical > [type='button']:last-child:not(:first-child), .btn-group-vertical > input[value='Annuleren']:last-child:not(:first-child), .btn-group-vertical > input[type='file']:last-child:not(:first-child) {
   border-bottom-left-radius: 4px;
   border-top-right-radius: 0;
   border-top-left-radius: 0; }
 
-.btn-group-vertical > .btn-group:not(:first-child):not(:last-child) > .btn {
+.btn-group-vertical > .btn-group:not(:first-child):not(:last-child) > .btn, .btn-group-vertical > .btn-group:not(:first-child):not(:last-child) > [type='submit'], .btn-group-vertical > .btn-group:not(:first-child):not(:last-child) > [type='button'], .btn-group-vertical > .btn-group:not(:first-child):not(:last-child) > input[value='Annuleren'], .btn-group-vertical > .btn-group:not(:first-child):not(:last-child) > input[type='file'] {
   border-radius: 0; }
 
-.btn-group-vertical > .btn-group:first-child:not(:last-child) > .btn:last-child,
+.btn-group-vertical > .btn-group:first-child:not(:last-child) > .btn:last-child, .btn-group-vertical > .btn-group:first-child:not(:last-child) > [type='submit']:last-child, .btn-group-vertical > .btn-group:first-child:not(:last-child) > [type='button']:last-child, .btn-group-vertical > .btn-group:first-child:not(:last-child) > input[value='Annuleren']:last-child, .btn-group-vertical > .btn-group:first-child:not(:last-child) > input[type='file']:last-child,
 .btn-group-vertical > .btn-group:first-child:not(:last-child) > .dropdown-toggle {
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0; }
 
-.btn-group-vertical > .btn-group:last-child:not(:first-child) > .btn:first-child {
+.btn-group-vertical > .btn-group:last-child:not(:first-child) > .btn:first-child, .btn-group-vertical > .btn-group:last-child:not(:first-child) > [type='submit']:first-child, .btn-group-vertical > .btn-group:last-child:not(:first-child) > [type='button']:first-child, .btn-group-vertical > .btn-group:last-child:not(:first-child) > input[value='Annuleren']:first-child, .btn-group-vertical > .btn-group:last-child:not(:first-child) > input[type='file']:first-child {
   border-top-right-radius: 0;
   border-top-left-radius: 0; }
 
@@ -2877,20 +3041,32 @@ tbody.collapse.in {
   width: 100%;
   table-layout: fixed;
   border-collapse: separate; }
-  .btn-group-justified > .btn,
+  .btn-group-justified > .btn, .btn-group-justified > [type='submit'], .btn-group-justified > [type='button'], .btn-group-justified > input[value='Annuleren'], .btn-group-justified > input[type='file'],
   .btn-group-justified > .btn-group {
     float: none;
     display: table-cell;
     width: 1%; }
-  .btn-group-justified > .btn-group .btn {
+  .btn-group-justified > .btn-group .btn, .btn-group-justified > .btn-group [type='submit'], .btn-group-justified > .btn-group [type='button'], .btn-group-justified > .btn-group input[value='Annuleren'], .btn-group-justified > .btn-group input[type='file'] {
     width: 100%; }
   .btn-group-justified > .btn-group .dropdown-menu {
     left: auto; }
 
-[data-toggle="buttons"] > .btn input[type="radio"],
+[data-toggle="buttons"] > .btn input[type="radio"], [data-toggle="buttons"] > [type='submit'] input[type="radio"], [data-toggle="buttons"] > [type='button'] input[type="radio"], [data-toggle="buttons"] > input[value='Annuleren'] input[type="radio"], [data-toggle="buttons"] > input[type='file'] input[type="radio"],
 [data-toggle="buttons"] > .btn input[type="checkbox"],
+[data-toggle="buttons"] > [type='submit'] input[type="checkbox"],
+[data-toggle="buttons"] > [type='button'] input[type="checkbox"],
+[data-toggle="buttons"] > input[value='Annuleren'] input[type="checkbox"],
+[data-toggle="buttons"] > input[type='file'] input[type="checkbox"],
 [data-toggle="buttons"] > .btn-group > .btn input[type="radio"],
-[data-toggle="buttons"] > .btn-group > .btn input[type="checkbox"] {
+[data-toggle="buttons"] > .btn-group > [type='submit'] input[type="radio"],
+[data-toggle="buttons"] > .btn-group > [type='button'] input[type="radio"],
+[data-toggle="buttons"] > .btn-group > input[value='Annuleren'] input[type="radio"],
+[data-toggle="buttons"] > .btn-group > input[type='file'] input[type="radio"],
+[data-toggle="buttons"] > .btn-group > .btn input[type="checkbox"],
+[data-toggle="buttons"] > .btn-group > [type='submit'] input[type="checkbox"],
+[data-toggle="buttons"] > .btn-group > [type='button'] input[type="checkbox"],
+[data-toggle="buttons"] > .btn-group > input[value='Annuleren'] input[type="checkbox"],
+[data-toggle="buttons"] > .btn-group > input[type='file'] input[type="checkbox"] {
   position: absolute;
   clip: rect(0, 0, 0, 0);
   pointer-events: none; }
@@ -2937,13 +3113,21 @@ tbody.collapse.in {
   border-radius: 4px; }
   .input-group-addon.input-sm,
   .input-group-sm > .input-group-addon,
-  .input-group-sm > .input-group-btn > .input-group-addon.btn {
+  .input-group-sm > .input-group-btn > .input-group-addon.btn,
+  .input-group-sm > .input-group-btn > .input-group-addon[type='submit'],
+  .input-group-sm > .input-group-btn > .input-group-addon[type='button'],
+  .input-group-sm > .input-group-btn > input.input-group-addon[value='Annuleren'],
+  .input-group-sm > .input-group-btn > input.input-group-addon[type='file'] {
     padding: 5px 10px;
     font-size: 12px;
     border-radius: 3px; }
   .input-group-addon.input-lg,
   .input-group-lg > .input-group-addon,
-  .input-group-lg > .input-group-btn > .input-group-addon.btn {
+  .input-group-lg > .input-group-btn > .input-group-addon.btn,
+  .input-group-lg > .input-group-btn > .input-group-addon[type='submit'],
+  .input-group-lg > .input-group-btn > .input-group-addon[type='button'],
+  .input-group-lg > .input-group-btn > input.input-group-addon[value='Annuleren'],
+  .input-group-lg > .input-group-btn > input.input-group-addon[type='file'] {
     padding: 10px 16px;
     font-size: 18px;
     border-radius: 6px; }
@@ -2954,10 +3138,26 @@ tbody.collapse.in {
 .input-group .form-control:first-child,
 .input-group-addon:first-child,
 .input-group-btn:first-child > .btn,
+.input-group-btn:first-child > [type='submit'],
+.input-group-btn:first-child > [type='button'],
+.input-group-btn:first-child > input[value='Annuleren'],
+.input-group-btn:first-child > input[type='file'],
 .input-group-btn:first-child > .btn-group > .btn,
+.input-group-btn:first-child > .btn-group > [type='submit'],
+.input-group-btn:first-child > .btn-group > [type='button'],
+.input-group-btn:first-child > .btn-group > input[value='Annuleren'],
+.input-group-btn:first-child > .btn-group > input[type='file'],
 .input-group-btn:first-child > .dropdown-toggle,
 .input-group-btn:last-child > .btn:not(:last-child):not(.dropdown-toggle),
-.input-group-btn:last-child > .btn-group:not(:last-child) > .btn {
+.input-group-btn:last-child > [type='submit']:not(:last-child):not(.dropdown-toggle),
+.input-group-btn:last-child > [type='button']:not(:last-child):not(.dropdown-toggle),
+.input-group-btn:last-child > input[value='Annuleren']:not(:last-child):not(.dropdown-toggle),
+.input-group-btn:last-child > input[type='file']:not(:last-child):not(.dropdown-toggle),
+.input-group-btn:last-child > .btn-group:not(:last-child) > .btn,
+.input-group-btn:last-child > .btn-group:not(:last-child) > [type='submit'],
+.input-group-btn:last-child > .btn-group:not(:last-child) > [type='button'],
+.input-group-btn:last-child > .btn-group:not(:last-child) > input[value='Annuleren'],
+.input-group-btn:last-child > .btn-group:not(:last-child) > input[type='file'] {
   border-bottom-right-radius: 0;
   border-top-right-radius: 0; }
 
@@ -2967,10 +3167,26 @@ tbody.collapse.in {
 .input-group .form-control:last-child,
 .input-group-addon:last-child,
 .input-group-btn:last-child > .btn,
+.input-group-btn:last-child > [type='submit'],
+.input-group-btn:last-child > [type='button'],
+.input-group-btn:last-child > input[value='Annuleren'],
+.input-group-btn:last-child > input[type='file'],
 .input-group-btn:last-child > .btn-group > .btn,
+.input-group-btn:last-child > .btn-group > [type='submit'],
+.input-group-btn:last-child > .btn-group > [type='button'],
+.input-group-btn:last-child > .btn-group > input[value='Annuleren'],
+.input-group-btn:last-child > .btn-group > input[type='file'],
 .input-group-btn:last-child > .dropdown-toggle,
 .input-group-btn:first-child > .btn:not(:first-child),
-.input-group-btn:first-child > .btn-group:not(:first-child) > .btn {
+.input-group-btn:first-child > [type='submit']:not(:first-child),
+.input-group-btn:first-child > [type='button']:not(:first-child),
+.input-group-btn:first-child > input[value='Annuleren']:not(:first-child),
+.input-group-btn:first-child > input[type='file']:not(:first-child),
+.input-group-btn:first-child > .btn-group:not(:first-child) > .btn,
+.input-group-btn:first-child > .btn-group:not(:first-child) > [type='submit'],
+.input-group-btn:first-child > .btn-group:not(:first-child) > [type='button'],
+.input-group-btn:first-child > .btn-group:not(:first-child) > input[value='Annuleren'],
+.input-group-btn:first-child > .btn-group:not(:first-child) > input[type='file'] {
   border-bottom-left-radius: 0;
   border-top-left-radius: 0; }
 
@@ -2981,16 +3197,16 @@ tbody.collapse.in {
   position: relative;
   font-size: 0;
   white-space: nowrap; }
-  .input-group-btn > .btn {
+  .input-group-btn > .btn, .input-group-btn > [type='submit'], .input-group-btn > [type='button'], .input-group-btn > input[value='Annuleren'], .input-group-btn > input[type='file'] {
     position: relative; }
-    .input-group-btn > .btn + .btn {
+    .input-group-btn > .btn + .btn, .input-group-btn > [type='submit'] + .btn, .input-group-btn > [type='button'] + .btn, .input-group-btn > input[value='Annuleren'] + .btn, .input-group-btn > input[type='file'] + .btn, .input-group-btn > .btn + [type='submit'], .input-group-btn > [type='submit'] + [type='submit'], .input-group-btn > [type='button'] + [type='submit'], .input-group-btn > input[value='Annuleren'] + [type='submit'], .input-group-btn > input[type='file'] + [type='submit'], .input-group-btn > .btn + [type='button'], .input-group-btn > [type='submit'] + [type='button'], .input-group-btn > [type='button'] + [type='button'], .input-group-btn > input[value='Annuleren'] + [type='button'], .input-group-btn > input[type='file'] + [type='button'], .input-group-btn > .btn + input[value='Annuleren'], .input-group-btn > [type='submit'] + input[value='Annuleren'], .input-group-btn > [type='button'] + input[value='Annuleren'], .input-group-btn > input[value='Annuleren'] + input[value='Annuleren'], .input-group-btn > input[type='file'] + input[value='Annuleren'], .input-group-btn > .btn + input[type='file'], .input-group-btn > [type='submit'] + input[type='file'], .input-group-btn > [type='button'] + input[type='file'], .input-group-btn > input[value='Annuleren'] + input[type='file'], .input-group-btn > input[type='file'] + input[type='file'] {
       margin-left: -1px; }
-    .input-group-btn > .btn:hover, .input-group-btn > .btn:focus, .input-group-btn > .btn:active {
+    .input-group-btn > .btn:hover, .input-group-btn > [type='submit']:hover, .input-group-btn > [type='button']:hover, .input-group-btn > input[value='Annuleren']:hover, .input-group-btn > input[type='file']:hover, .input-group-btn > .btn:focus, .input-group-btn > [type='submit']:focus, .input-group-btn > [type='button']:focus, .input-group-btn > input[value='Annuleren']:focus, .input-group-btn > input[type='file']:focus, .input-group-btn > .btn:active, .input-group-btn > [type='submit']:active, .input-group-btn > [type='button']:active, .input-group-btn > input[value='Annuleren']:active, .input-group-btn > input[type='file']:active {
       z-index: 2; }
-  .input-group-btn:first-child > .btn,
+  .input-group-btn:first-child > .btn, .input-group-btn:first-child > [type='submit'], .input-group-btn:first-child > [type='button'], .input-group-btn:first-child > input[value='Annuleren'], .input-group-btn:first-child > input[type='file'],
   .input-group-btn:first-child > .btn-group {
     margin-right: -1px; }
-  .input-group-btn:last-child > .btn,
+  .input-group-btn:last-child > .btn, .input-group-btn:last-child > [type='submit'], .input-group-btn:last-child > [type='button'], .input-group-btn:last-child > input[value='Annuleren'], .input-group-btn:last-child > input[type='file'],
   .input-group-btn:last-child > .btn-group {
     z-index: 2;
     margin-left: -1px; }
@@ -3369,10 +3585,10 @@ tbody.collapse.in {
 .navbar-btn {
   margin-top: 3px;
   margin-bottom: 3px; }
-  .navbar-btn.btn-sm, .btn-group-sm > .navbar-btn.btn {
+  .navbar-btn.btn-sm, .btn-group-sm > .navbar-btn.btn, .btn-group-sm > .navbar-btn[type='submit'], .btn-group-sm > .navbar-btn[type='button'], .btn-group-sm > input.navbar-btn[value='Annuleren'], .btn-group-sm > input.navbar-btn[type='file'] {
     margin-top: 5px;
     margin-bottom: 5px; }
-  .navbar-btn.btn-xs, .btn-group-xs > .navbar-btn.btn {
+  .navbar-btn.btn-xs, .btn-group-xs > .navbar-btn.btn, .btn-group-xs > .navbar-btn[type='submit'], .btn-group-xs > .navbar-btn[type='button'], .btn-group-xs > input.navbar-btn[value='Annuleren'], .btn-group-xs > input.navbar-btn[type='file'], .navbar-btn#sharing-search-button {
     margin-top: 9px;
     margin-bottom: 9px; }
 
@@ -4299,10 +4515,10 @@ button.close {
     display: table; }
   .modal-footer:after {
     clear: both; }
-  .modal-footer .btn + .btn {
+  .modal-footer .btn + .btn, .modal-footer [type='submit'] + .btn, .modal-footer [type='button'] + .btn, .modal-footer input[value='Annuleren'] + .btn, .modal-footer input[type='file'] + .btn, .modal-footer .btn + [type='submit'], .modal-footer [type='submit'] + [type='submit'], .modal-footer [type='button'] + [type='submit'], .modal-footer input[value='Annuleren'] + [type='submit'], .modal-footer input[type='file'] + [type='submit'], .modal-footer .btn + [type='button'], .modal-footer [type='submit'] + [type='button'], .modal-footer [type='button'] + [type='button'], .modal-footer input[value='Annuleren'] + [type='button'], .modal-footer input[type='file'] + [type='button'], .modal-footer .btn + input[value='Annuleren'], .modal-footer [type='submit'] + input[value='Annuleren'], .modal-footer [type='button'] + input[value='Annuleren'], .modal-footer input[value='Annuleren'] + input[value='Annuleren'], .modal-footer input[type='file'] + input[value='Annuleren'], .modal-footer .btn + input[type='file'], .modal-footer [type='submit'] + input[type='file'], .modal-footer [type='button'] + input[type='file'], .modal-footer input[value='Annuleren'] + input[type='file'], .modal-footer input[type='file'] + input[type='file'] {
     margin-left: 5px;
     margin-bottom: 0; }
-  .modal-footer .btn-group .btn + .btn {
+  .modal-footer .btn-group .btn + .btn, .modal-footer .btn-group [type='submit'] + .btn, .modal-footer .btn-group [type='button'] + .btn, .modal-footer .btn-group input[value='Annuleren'] + .btn, .modal-footer .btn-group input[type='file'] + .btn, .modal-footer .btn-group .btn + [type='submit'], .modal-footer .btn-group [type='submit'] + [type='submit'], .modal-footer .btn-group [type='button'] + [type='submit'], .modal-footer .btn-group input[value='Annuleren'] + [type='submit'], .modal-footer .btn-group input[type='file'] + [type='submit'], .modal-footer .btn-group .btn + [type='button'], .modal-footer .btn-group [type='submit'] + [type='button'], .modal-footer .btn-group [type='button'] + [type='button'], .modal-footer .btn-group input[value='Annuleren'] + [type='button'], .modal-footer .btn-group input[type='file'] + [type='button'], .modal-footer .btn-group .btn + input[value='Annuleren'], .modal-footer .btn-group [type='submit'] + input[value='Annuleren'], .modal-footer .btn-group [type='button'] + input[value='Annuleren'], .modal-footer .btn-group input[value='Annuleren'] + input[value='Annuleren'], .modal-footer .btn-group input[type='file'] + input[value='Annuleren'], .modal-footer .btn-group .btn + input[type='file'], .modal-footer .btn-group [type='submit'] + input[type='file'], .modal-footer .btn-group [type='button'] + input[type='file'], .modal-footer .btn-group input[value='Annuleren'] + input[type='file'], .modal-footer .btn-group input[type='file'] + input[type='file'] {
     margin-left: -1px; }
   .modal-footer .btn-block + .btn-block {
     margin-left: 0; }
@@ -4340,7 +4556,7 @@ button.close {
   margin-left: auto;
   margin-right: auto; }
 
-.pull-right, .topbar .contact, .logobar .search, .footer-flanders a.less, .list-group-downloads .list-group-item .body .btn, .article-theme img {
+.pull-right, .topbar .contact, .logobar .search, .footer-flanders a.less, .list-group-downloads .list-group-item .body .btn, .list-group-downloads .list-group-item .body [type='submit'], .list-group-downloads .list-group-item .body [type='button'], .list-group-downloads .list-group-item .body input[value='Annuleren'], .list-group-downloads .list-group-item .body input[type='file'], .article-theme img {
   float: right !important; }
 
 .pull-left, .topbar .sites, .jumbotronbar .column-left .theme-title div h1, .article-theme-other img {
@@ -4618,7 +4834,7 @@ button.close {
   margin-left: .3em; }
 
 /* Deprecated as of 4.4.0 */
-.pull-right, .topbar .contact, .logobar .search, .footer-flanders a.less, .list-group-downloads .list-group-item .body .btn, .article-theme img {
+.pull-right, .topbar .contact, .logobar .search, .footer-flanders a.less, .list-group-downloads .list-group-item .body .btn, .list-group-downloads .list-group-item .body [type='submit'], .list-group-downloads .list-group-item .body [type='button'], .list-group-downloads .list-group-item .body input[value='Annuleren'], .list-group-downloads .list-group-item .body input[type='file'], .article-theme img {
   float: right; }
 
 .pull-left, .topbar .sites, .jumbotronbar .column-left .theme-title div h1, .article-theme-other img {
@@ -4627,7 +4843,7 @@ button.close {
 .fa.pull-left, .topbar .fa.sites, .jumbotronbar .column-left .theme-title div h1.fa, .article-theme-other img.fa {
   margin-right: .3em; }
 
-.fa.pull-right, .topbar .fa.contact, .logobar .fa.search, .footer-flanders a.fa.less, .list-group-downloads .list-group-item .body .fa.btn, .article-theme img.fa {
+.fa.pull-right, .topbar .fa.contact, .logobar .fa.search, .footer-flanders a.fa.less, .list-group-downloads .list-group-item .body .fa.btn, .list-group-downloads .list-group-item .body .fa[type='submit'], .list-group-downloads .list-group-item .body .fa[type='button'], .list-group-downloads .list-group-item .body input.fa[value='Annuleren'], .list-group-downloads .list-group-item .body input.fa[type='file'], .article-theme img.fa {
   margin-left: .3em; }
 
 .fa-spin {
@@ -6937,7 +7153,7 @@ nav.navbar {
   background-color: #2e94bd; }
   .jumbotronbar .container {
     background-image: none;
-    background-size: auto 102%;
+    background-size: auto 103%;
     background-repeat: no-repeat; }
   .jumbotronbar .column-left .theme-title {
     height: 133px;
@@ -7024,7 +7240,7 @@ footer {
     color: #bfd9e3; }
     .footer-doormat a:hover, .footer-doormat a:active {
       color: white; }
-  .footer-doormat .btn {
+  .footer-doormat .btn, .footer-doormat [type='submit'], .footer-doormat [type='button'], .footer-doormat input[value='Annuleren'], .footer-doormat input[type='file'] {
     color: white; }
   .footer-doormat .logo img {
     width: 100%; }
@@ -7111,65 +7327,133 @@ a {
   transition-duration: 0.2s;
   -webkit-transition-duration: 0.2s; }
 
-.btn {
+.btn, [type='submit'], [type='button'], input[value='Annuleren'], input[type='file'] {
   font-weight: 500; }
-  .btn i {
+  .btn i, [type='submit'] i, [type='button'] i, input[value='Annuleren'] i, input[type='file'] i {
     margin-right: .4em; }
 
-.btn-mina-green, .list-group-downloads .list-group-item .body .btn {
+.btn-mina-green, .list-group-downloads .list-group-item .body .btn, .list-group-downloads .list-group-item .body [type='submit'], .list-group-downloads .list-group-item .body [type='button'], .list-group-downloads .list-group-item .body input[value='Annuleren'], .list-group-downloads .list-group-item .body input[type='file'] {
   color: white;
   background-color: #4aa894;
   border-color: #387d70; }
-  .btn-mina-green:focus, .list-group-downloads .list-group-item .body .btn:focus, .btn-mina-green.focus, .list-group-downloads .list-group-item .body .focus.btn {
+  .btn-mina-green:focus, .list-group-downloads .list-group-item .body .btn:focus, .list-group-downloads .list-group-item .body [type='submit']:focus, .list-group-downloads .list-group-item .body [type='button']:focus, .list-group-downloads .list-group-item .body input[value='Annuleren']:focus, .list-group-downloads .list-group-item .body input[type='file']:focus, .btn-mina-green.focus, .list-group-downloads .list-group-item .body .focus.btn, .list-group-downloads .list-group-item .body .focus[type='submit'], .list-group-downloads .list-group-item .body .focus[type='button'], .list-group-downloads .list-group-item .body input.focus[value='Annuleren'], .list-group-downloads .list-group-item .body input.focus[type='file'] {
     color: white;
     background-color: #3a8575;
     border-color: #112521; }
-  .btn-mina-green:hover, .list-group-downloads .list-group-item .body .btn:hover {
+  .btn-mina-green:hover, .list-group-downloads .list-group-item .body .btn:hover, .list-group-downloads .list-group-item .body [type='submit']:hover, .list-group-downloads .list-group-item .body [type='button']:hover, .list-group-downloads .list-group-item .body input[value='Annuleren']:hover, .list-group-downloads .list-group-item .body input[type='file']:hover {
     color: white;
     background-color: #3a8575;
     border-color: #25534a; }
-  .btn-mina-green:active, .list-group-downloads .list-group-item .body .btn:active, .btn-mina-green.active, .list-group-downloads .list-group-item .body .active.btn,
+  .btn-mina-green:active, .list-group-downloads .list-group-item .body .btn:active, .list-group-downloads .list-group-item .body [type='submit']:active, .list-group-downloads .list-group-item .body [type='button']:active, .list-group-downloads .list-group-item .body input[value='Annuleren']:active, .list-group-downloads .list-group-item .body input[type='file']:active, .btn-mina-green.active, .list-group-downloads .list-group-item .body .active.btn, .list-group-downloads .list-group-item .body .active[type='submit'], .list-group-downloads .list-group-item .body .active[type='button'], .list-group-downloads .list-group-item .body input.active[value='Annuleren'], .list-group-downloads .list-group-item .body input.active[type='file'],
   .open > .btn-mina-green.dropdown-toggle, .list-group-downloads .list-group-item .body
-  .open > .dropdown-toggle.btn {
+  .open > .dropdown-toggle.btn, .list-group-downloads .list-group-item .body
+  .open > .dropdown-toggle[type='submit'], .list-group-downloads .list-group-item .body
+  .open > .dropdown-toggle[type='button'], .list-group-downloads .list-group-item .body
+  .open > input.dropdown-toggle[value='Annuleren'], .list-group-downloads .list-group-item .body
+  .open > input.dropdown-toggle[type='file'] {
     color: white;
     background-color: #3a8575;
     border-color: #25534a; }
-    .btn-mina-green:active:hover, .list-group-downloads .list-group-item .body .btn:active:hover, .btn-mina-green:active:focus, .list-group-downloads .list-group-item .body .btn:active:focus, .btn-mina-green:active.focus, .list-group-downloads .list-group-item .body .btn:active.focus, .btn-mina-green.active:hover, .list-group-downloads .list-group-item .body .active.btn:hover, .btn-mina-green.active:focus, .list-group-downloads .list-group-item .body .active.btn:focus, .btn-mina-green.active.focus, .list-group-downloads .list-group-item .body .active.focus.btn,
+    .btn-mina-green:active:hover, .list-group-downloads .list-group-item .body .btn:active:hover, .list-group-downloads .list-group-item .body [type='submit']:active:hover, .list-group-downloads .list-group-item .body [type='button']:active:hover, .list-group-downloads .list-group-item .body input[value='Annuleren']:active:hover, .list-group-downloads .list-group-item .body input[type='file']:active:hover, .btn-mina-green:active:focus, .list-group-downloads .list-group-item .body .btn:active:focus, .list-group-downloads .list-group-item .body [type='submit']:active:focus, .list-group-downloads .list-group-item .body [type='button']:active:focus, .list-group-downloads .list-group-item .body input[value='Annuleren']:active:focus, .list-group-downloads .list-group-item .body input[type='file']:active:focus, .btn-mina-green:active.focus, .list-group-downloads .list-group-item .body .btn:active.focus, .list-group-downloads .list-group-item .body [type='submit']:active.focus, .list-group-downloads .list-group-item .body [type='button']:active.focus, .list-group-downloads .list-group-item .body input[value='Annuleren']:active.focus, .list-group-downloads .list-group-item .body input[type='file']:active.focus, .btn-mina-green.active:hover, .list-group-downloads .list-group-item .body .active.btn:hover, .list-group-downloads .list-group-item .body .active[type='submit']:hover, .list-group-downloads .list-group-item .body .active[type='button']:hover, .list-group-downloads .list-group-item .body input.active[value='Annuleren']:hover, .list-group-downloads .list-group-item .body input.active[type='file']:hover, .btn-mina-green.active:focus, .list-group-downloads .list-group-item .body .active.btn:focus, .list-group-downloads .list-group-item .body .active[type='submit']:focus, .list-group-downloads .list-group-item .body .active[type='button']:focus, .list-group-downloads .list-group-item .body input.active[value='Annuleren']:focus, .list-group-downloads .list-group-item .body input.active[type='file']:focus, .btn-mina-green.active.focus, .list-group-downloads .list-group-item .body .active.focus.btn, .list-group-downloads .list-group-item .body .active.focus[type='submit'], .list-group-downloads .list-group-item .body .active.focus[type='button'], .list-group-downloads .list-group-item .body input.active.focus[value='Annuleren'], .list-group-downloads .list-group-item .body input.active.focus[type='file'],
     .open > .btn-mina-green.dropdown-toggle:hover, .list-group-downloads .list-group-item .body
-    .open > .dropdown-toggle.btn:hover,
+    .open > .dropdown-toggle.btn:hover, .list-group-downloads .list-group-item .body
+    .open > .dropdown-toggle[type='submit']:hover, .list-group-downloads .list-group-item .body
+    .open > .dropdown-toggle[type='button']:hover, .list-group-downloads .list-group-item .body
+    .open > input.dropdown-toggle[value='Annuleren']:hover, .list-group-downloads .list-group-item .body
+    .open > input.dropdown-toggle[type='file']:hover,
     .open > .btn-mina-green.dropdown-toggle:focus, .list-group-downloads .list-group-item .body
-    .open > .dropdown-toggle.btn:focus,
+    .open > .dropdown-toggle.btn:focus, .list-group-downloads .list-group-item .body
+    .open > .dropdown-toggle[type='submit']:focus, .list-group-downloads .list-group-item .body
+    .open > .dropdown-toggle[type='button']:focus, .list-group-downloads .list-group-item .body
+    .open > input.dropdown-toggle[value='Annuleren']:focus, .list-group-downloads .list-group-item .body
+    .open > input.dropdown-toggle[type='file']:focus,
     .open > .btn-mina-green.dropdown-toggle.focus, .list-group-downloads .list-group-item .body
-    .open > .dropdown-toggle.focus.btn {
+    .open > .dropdown-toggle.focus.btn, .list-group-downloads .list-group-item .body
+    .open > .dropdown-toggle.focus[type='submit'], .list-group-downloads .list-group-item .body
+    .open > .dropdown-toggle.focus[type='button'], .list-group-downloads .list-group-item .body
+    .open > input.dropdown-toggle.focus[value='Annuleren'], .list-group-downloads .list-group-item .body
+    .open > input.dropdown-toggle.focus[type='file'] {
       color: white;
       background-color: #2f6c5f;
       border-color: #112521; }
-  .btn-mina-green:active, .list-group-downloads .list-group-item .body .btn:active, .btn-mina-green.active, .list-group-downloads .list-group-item .body .active.btn,
+  .btn-mina-green:active, .list-group-downloads .list-group-item .body .btn:active, .list-group-downloads .list-group-item .body [type='submit']:active, .list-group-downloads .list-group-item .body [type='button']:active, .list-group-downloads .list-group-item .body input[value='Annuleren']:active, .list-group-downloads .list-group-item .body input[type='file']:active, .btn-mina-green.active, .list-group-downloads .list-group-item .body .active.btn, .list-group-downloads .list-group-item .body .active[type='submit'], .list-group-downloads .list-group-item .body .active[type='button'], .list-group-downloads .list-group-item .body input.active[value='Annuleren'], .list-group-downloads .list-group-item .body input.active[type='file'],
   .open > .btn-mina-green.dropdown-toggle, .list-group-downloads .list-group-item .body
-  .open > .dropdown-toggle.btn {
+  .open > .dropdown-toggle.btn, .list-group-downloads .list-group-item .body
+  .open > .dropdown-toggle[type='submit'], .list-group-downloads .list-group-item .body
+  .open > .dropdown-toggle[type='button'], .list-group-downloads .list-group-item .body
+  .open > input.dropdown-toggle[value='Annuleren'], .list-group-downloads .list-group-item .body
+  .open > input.dropdown-toggle[type='file'] {
     background-image: none; }
-  .btn-mina-green.disabled, .list-group-downloads .list-group-item .body .disabled.btn, .btn-mina-green.disabled:hover, .list-group-downloads .list-group-item .body .disabled.btn:hover, .btn-mina-green.disabled:focus, .list-group-downloads .list-group-item .body .disabled.btn:focus, .btn-mina-green.disabled.focus, .list-group-downloads .list-group-item .body .disabled.focus.btn, .btn-mina-green.disabled:active, .list-group-downloads .list-group-item .body .disabled.btn:active, .btn-mina-green.disabled.active, .list-group-downloads .list-group-item .body .disabled.active.btn, .btn-mina-green[disabled], .list-group-downloads .list-group-item .body [disabled].btn, .btn-mina-green[disabled]:hover, .list-group-downloads .list-group-item .body [disabled].btn:hover, .btn-mina-green[disabled]:focus, .list-group-downloads .list-group-item .body [disabled].btn:focus, .btn-mina-green[disabled].focus, .list-group-downloads .list-group-item .body [disabled].focus.btn, .btn-mina-green[disabled]:active, .list-group-downloads .list-group-item .body [disabled].btn:active, .btn-mina-green[disabled].active, .list-group-downloads .list-group-item .body [disabled].active.btn,
+  .btn-mina-green.disabled, .list-group-downloads .list-group-item .body .disabled.btn, .list-group-downloads .list-group-item .body .disabled[type='submit'], .list-group-downloads .list-group-item .body .disabled[type='button'], .list-group-downloads .list-group-item .body input.disabled[value='Annuleren'], .list-group-downloads .list-group-item .body input.disabled[type='file'], .btn-mina-green.disabled:hover, .list-group-downloads .list-group-item .body .disabled.btn:hover, .list-group-downloads .list-group-item .body .disabled[type='submit']:hover, .list-group-downloads .list-group-item .body .disabled[type='button']:hover, .list-group-downloads .list-group-item .body input.disabled[value='Annuleren']:hover, .list-group-downloads .list-group-item .body input.disabled[type='file']:hover, .btn-mina-green.disabled:focus, .list-group-downloads .list-group-item .body .disabled.btn:focus, .list-group-downloads .list-group-item .body .disabled[type='submit']:focus, .list-group-downloads .list-group-item .body .disabled[type='button']:focus, .list-group-downloads .list-group-item .body input.disabled[value='Annuleren']:focus, .list-group-downloads .list-group-item .body input.disabled[type='file']:focus, .btn-mina-green.disabled.focus, .list-group-downloads .list-group-item .body .disabled.focus.btn, .list-group-downloads .list-group-item .body .disabled.focus[type='submit'], .list-group-downloads .list-group-item .body .disabled.focus[type='button'], .list-group-downloads .list-group-item .body input.disabled.focus[value='Annuleren'], .list-group-downloads .list-group-item .body input.disabled.focus[type='file'], .btn-mina-green.disabled:active, .list-group-downloads .list-group-item .body .disabled.btn:active, .list-group-downloads .list-group-item .body .disabled[type='submit']:active, .list-group-downloads .list-group-item .body .disabled[type='button']:active, .list-group-downloads .list-group-item .body input.disabled[value='Annuleren']:active, .list-group-downloads .list-group-item .body input.disabled[type='file']:active, .btn-mina-green.disabled.active, .list-group-downloads .list-group-item .body .disabled.active.btn, .list-group-downloads .list-group-item .body .disabled.active[type='submit'], .list-group-downloads .list-group-item .body .disabled.active[type='button'], .list-group-downloads .list-group-item .body input.disabled.active[value='Annuleren'], .list-group-downloads .list-group-item .body input.disabled.active[type='file'], .btn-mina-green[disabled], .list-group-downloads .list-group-item .body [disabled].btn, .list-group-downloads .list-group-item .body [disabled][type='submit'], .list-group-downloads .list-group-item .body [disabled][type='button'], .list-group-downloads .list-group-item .body input[disabled][value='Annuleren'], .list-group-downloads .list-group-item .body input[disabled][type='file'], .btn-mina-green[disabled]:hover, .list-group-downloads .list-group-item .body [disabled].btn:hover, .list-group-downloads .list-group-item .body [disabled][type='submit']:hover, .list-group-downloads .list-group-item .body [disabled][type='button']:hover, .list-group-downloads .list-group-item .body input[disabled][value='Annuleren']:hover, .list-group-downloads .list-group-item .body input[disabled][type='file']:hover, .btn-mina-green[disabled]:focus, .list-group-downloads .list-group-item .body [disabled].btn:focus, .list-group-downloads .list-group-item .body [disabled][type='submit']:focus, .list-group-downloads .list-group-item .body [disabled][type='button']:focus, .list-group-downloads .list-group-item .body input[disabled][value='Annuleren']:focus, .list-group-downloads .list-group-item .body input[disabled][type='file']:focus, .btn-mina-green[disabled].focus, .list-group-downloads .list-group-item .body [disabled].focus.btn, .list-group-downloads .list-group-item .body [disabled].focus[type='submit'], .list-group-downloads .list-group-item .body [disabled].focus[type='button'], .list-group-downloads .list-group-item .body input[disabled].focus[value='Annuleren'], .list-group-downloads .list-group-item .body input[disabled].focus[type='file'], .btn-mina-green[disabled]:active, .list-group-downloads .list-group-item .body [disabled].btn:active, .list-group-downloads .list-group-item .body [disabled][type='submit']:active, .list-group-downloads .list-group-item .body [disabled][type='button']:active, .list-group-downloads .list-group-item .body input[disabled][value='Annuleren']:active, .list-group-downloads .list-group-item .body input[disabled][type='file']:active, .btn-mina-green[disabled].active, .list-group-downloads .list-group-item .body [disabled].active.btn, .list-group-downloads .list-group-item .body [disabled].active[type='submit'], .list-group-downloads .list-group-item .body [disabled].active[type='button'], .list-group-downloads .list-group-item .body input[disabled].active[value='Annuleren'], .list-group-downloads .list-group-item .body input[disabled].active[type='file'],
   fieldset[disabled] .btn-mina-green,
   fieldset[disabled] .list-group-downloads .list-group-item .body .btn, .list-group-downloads .list-group-item .body
   fieldset[disabled] .btn,
+  fieldset[disabled] .list-group-downloads .list-group-item .body [type='submit'], .list-group-downloads .list-group-item .body
+  fieldset[disabled] [type='submit'],
+  fieldset[disabled] .list-group-downloads .list-group-item .body [type='button'], .list-group-downloads .list-group-item .body
+  fieldset[disabled] [type='button'],
+  fieldset[disabled] .list-group-downloads .list-group-item .body input[value='Annuleren'], .list-group-downloads .list-group-item .body
+  fieldset[disabled] input[value='Annuleren'],
+  fieldset[disabled] .list-group-downloads .list-group-item .body input[type='file'], .list-group-downloads .list-group-item .body
+  fieldset[disabled] input[type='file'],
   fieldset[disabled] .btn-mina-green:hover,
   fieldset[disabled] .list-group-downloads .list-group-item .body .btn:hover, .list-group-downloads .list-group-item .body
   fieldset[disabled] .btn:hover,
+  fieldset[disabled] .list-group-downloads .list-group-item .body [type='submit']:hover, .list-group-downloads .list-group-item .body
+  fieldset[disabled] [type='submit']:hover,
+  fieldset[disabled] .list-group-downloads .list-group-item .body [type='button']:hover, .list-group-downloads .list-group-item .body
+  fieldset[disabled] [type='button']:hover,
+  fieldset[disabled] .list-group-downloads .list-group-item .body input[value='Annuleren']:hover, .list-group-downloads .list-group-item .body
+  fieldset[disabled] input[value='Annuleren']:hover,
+  fieldset[disabled] .list-group-downloads .list-group-item .body input[type='file']:hover, .list-group-downloads .list-group-item .body
+  fieldset[disabled] input[type='file']:hover,
   fieldset[disabled] .btn-mina-green:focus,
   fieldset[disabled] .list-group-downloads .list-group-item .body .btn:focus, .list-group-downloads .list-group-item .body
   fieldset[disabled] .btn:focus,
+  fieldset[disabled] .list-group-downloads .list-group-item .body [type='submit']:focus, .list-group-downloads .list-group-item .body
+  fieldset[disabled] [type='submit']:focus,
+  fieldset[disabled] .list-group-downloads .list-group-item .body [type='button']:focus, .list-group-downloads .list-group-item .body
+  fieldset[disabled] [type='button']:focus,
+  fieldset[disabled] .list-group-downloads .list-group-item .body input[value='Annuleren']:focus, .list-group-downloads .list-group-item .body
+  fieldset[disabled] input[value='Annuleren']:focus,
+  fieldset[disabled] .list-group-downloads .list-group-item .body input[type='file']:focus, .list-group-downloads .list-group-item .body
+  fieldset[disabled] input[type='file']:focus,
   fieldset[disabled] .btn-mina-green.focus,
   fieldset[disabled] .list-group-downloads .list-group-item .body .focus.btn, .list-group-downloads .list-group-item .body
   fieldset[disabled] .focus.btn,
+  fieldset[disabled] .list-group-downloads .list-group-item .body .focus[type='submit'], .list-group-downloads .list-group-item .body
+  fieldset[disabled] .focus[type='submit'],
+  fieldset[disabled] .list-group-downloads .list-group-item .body .focus[type='button'], .list-group-downloads .list-group-item .body
+  fieldset[disabled] .focus[type='button'],
+  fieldset[disabled] .list-group-downloads .list-group-item .body input.focus[value='Annuleren'], .list-group-downloads .list-group-item .body
+  fieldset[disabled] input.focus[value='Annuleren'],
+  fieldset[disabled] .list-group-downloads .list-group-item .body input.focus[type='file'], .list-group-downloads .list-group-item .body
+  fieldset[disabled] input.focus[type='file'],
   fieldset[disabled] .btn-mina-green:active,
   fieldset[disabled] .list-group-downloads .list-group-item .body .btn:active, .list-group-downloads .list-group-item .body
   fieldset[disabled] .btn:active,
+  fieldset[disabled] .list-group-downloads .list-group-item .body [type='submit']:active, .list-group-downloads .list-group-item .body
+  fieldset[disabled] [type='submit']:active,
+  fieldset[disabled] .list-group-downloads .list-group-item .body [type='button']:active, .list-group-downloads .list-group-item .body
+  fieldset[disabled] [type='button']:active,
+  fieldset[disabled] .list-group-downloads .list-group-item .body input[value='Annuleren']:active, .list-group-downloads .list-group-item .body
+  fieldset[disabled] input[value='Annuleren']:active,
+  fieldset[disabled] .list-group-downloads .list-group-item .body input[type='file']:active, .list-group-downloads .list-group-item .body
+  fieldset[disabled] input[type='file']:active,
   fieldset[disabled] .btn-mina-green.active,
   fieldset[disabled] .list-group-downloads .list-group-item .body .active.btn, .list-group-downloads .list-group-item .body
-  fieldset[disabled] .active.btn {
+  fieldset[disabled] .active.btn,
+  fieldset[disabled] .list-group-downloads .list-group-item .body .active[type='submit'], .list-group-downloads .list-group-item .body
+  fieldset[disabled] .active[type='submit'],
+  fieldset[disabled] .list-group-downloads .list-group-item .body .active[type='button'], .list-group-downloads .list-group-item .body
+  fieldset[disabled] .active[type='button'],
+  fieldset[disabled] .list-group-downloads .list-group-item .body input.active[value='Annuleren'], .list-group-downloads .list-group-item .body
+  fieldset[disabled] input.active[value='Annuleren'],
+  fieldset[disabled] .list-group-downloads .list-group-item .body input.active[type='file'], .list-group-downloads .list-group-item .body
+  fieldset[disabled] input.active[type='file'] {
     background-color: #4aa894;
     border-color: #387d70; }
-  .btn-mina-green .badge, .list-group-downloads .list-group-item .body .btn .badge {
+  .btn-mina-green .badge, .list-group-downloads .list-group-item .body .btn .badge, .list-group-downloads .list-group-item .body [type='submit'] .badge, .list-group-downloads .list-group-item .body [type='button'] .badge, .list-group-downloads .list-group-item .body input[value='Annuleren'] .badge, .list-group-downloads .list-group-item .body input[type='file'] .badge {
     color: #4aa894;
     background-color: white; }
 
@@ -7427,7 +7711,7 @@ nav section.archive li a:hover:before, nav section.archive li.active a:before, n
       display: block; }
   .article-vision a:hover, .article-vision a:focus {
     background: #deedf2; }
-    .article-vision a:hover .btn, .article-vision a:focus .btn {
+    .article-vision a:hover .btn, .article-vision a:hover [type='submit'], .article-vision a:hover [type='button'], .article-vision a:hover input[value='Annuleren'], .article-vision a:hover input[type='file'], .article-vision a:focus .btn, .article-vision a:focus [type='submit'], .article-vision a:focus [type='button'], .article-vision a:focus input[value='Annuleren'], .article-vision a:focus input[type='file'] {
       background: #247494;
       border-color: #1f647f; }
     .article-vision a:hover header, .article-vision a:focus header {
@@ -7593,5 +7877,33 @@ ul#contentActionMenus ul li a {
 
 div#folderHeader span, div#contextHeader span {
   font-weight: bold; }
+
+[type='submit'], [type='button'] {
+  margin-right: 5px; }
+
+.template-folder_contents table {
+  margin-bottom: 1em; }
+
+dd.actionMenuContent {
+  margin-top: 10px; }
+
+dl.actionMenu.activated dd {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  -webkit-border-bottom-right-radius: 0;
+  -webkit-border-bottom-left-radius: 0;
+  -moz-border-radius-bottomleft: 0;
+  -moz-border-radius-bottomright: 0; }
+
+#contentActionMenus dl.actionMenu.activated dt a {
+  background: #0b3646; }
+
+.actionMenuContent {
+  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  background-clip: padding-box; }
+
+.plone_edit_forms {
+  margin-bottom: 1em; }
 
 /*# sourceMappingURL=main.css.map */

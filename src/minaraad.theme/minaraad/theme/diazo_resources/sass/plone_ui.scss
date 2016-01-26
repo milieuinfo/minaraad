@@ -70,3 +70,50 @@ div#folderHeader, div#contextHeader {
     font-weight: bold;
   }
 }
+
+[type='submit'], [type='button'] {
+  @extend .btn;
+  @extend .btn-primary;
+  margin-right: 5px;
+}
+
+input[value='Annuleren'], input[type='file'] {
+  @extend .btn;
+  @extend .btn-default;
+
+}
+
+#sharing-search-button {
+  @extend .btn-xs;
+}
+
+.template-folder_contents table {
+  margin-bottom: 1em;
+}
+
+dd.actionMenuContent {
+    margin-top: 10px;
+}
+
+dl.actionMenu.activated dd {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  -webkit-border-bottom-right-radius: 0;
+  -webkit-border-bottom-left-radius: 0;
+  -moz-border-radius-bottomleft: 0;
+  -moz-border-radius-bottomright: 0;
+}
+
+#contentActionMenus dl.actionMenu.activated dt a {
+  background: darken(#0F475C, 5);
+}
+
+.actionMenuContent {
+    -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+    background-clip: padding-box;
+}
+
+.plone_edit_forms {
+  margin-bottom: 1em;
+}
