@@ -5,7 +5,7 @@ History of this buildout
 -------------------
 
 - Diazo rules and styling of plone edit forms.
-  [coen]
+  [coen, lennard]
 
 - Use mailchimp api3 branch
   [diederik]
