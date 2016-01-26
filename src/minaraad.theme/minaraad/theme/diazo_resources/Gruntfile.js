@@ -66,7 +66,7 @@ module.exports = function(grunt) {
 
                         // TODO: We don't need jQuery in the theme if we use Plone.
                         // This jquery only during theme development.
-                        'bower_components/jquery/dist/jquery.js',
+//                        'bower_components/jquery/dist/jquery.js',
 
                         // Masonry (stacked content)
                         'bower_components/masonry/dist/masonry.pkgd.js',
