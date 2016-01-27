@@ -8053,4 +8053,21 @@ dl.actionMenu.activated dd {
 .faceted-column li, .footer-doormat ul > li {
   display: list-item; }
 
+.photoAlbumEntry {
+  background-image: none;
+  background: white;
+  margin-bottom: 5px;
+  padding-bottom: 1em;
+  margin-right: 5px;
+  border: 1px solid #ccc;
+  height: auto;
+  text-align: left; }
+  .photoAlbumEntry .photoAlbumEntryTitle {
+    height: auto; }
+  .photoAlbumEntry a {
+    height: auto; }
+
+div.row, div.masonry-documents, .images div.thumbnails {
+  width: auto; }
+
 /*# sourceMappingURL=main.css.map */

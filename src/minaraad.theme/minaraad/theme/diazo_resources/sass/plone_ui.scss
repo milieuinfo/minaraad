@@ -143,7 +143,28 @@ dl.actionMenu.activated dd {
 
 }
 
-
 .faceted-column li, .footer-doormat ul > li{
   display: list-item;
+}
+
+.photoAlbumEntry {
+  background-image: none;
+  background: white;
+  margin-bottom: 5px;
+  padding-bottom: 1em;
+  margin-right: 5px;
+  border: 1px solid #ccc;
+  height: auto;
+  text-align: left;
+  .photoAlbumEntryTitle {
+    height: auto;
+  }
+  a {
+    height: auto;
+  }
+}
+
+// Sunburst columns.css
+div.row {
+ width: auto;
 }

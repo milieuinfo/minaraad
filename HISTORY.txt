@@ -4,6 +4,13 @@ History of this buildout
 5.1.14 (unreleased)
 -------------------
 
+- Add faceted navigation notes.
+- Fix column width (homepage had gap between 2nd and 3rd column)
+- Remove faceted nav year (range) widget
+- Indent homepage.pt
+- Update faceted faceted criteria
+  [coen]
+
 - Remove top pagination form facetednavigation
   [coen]
 

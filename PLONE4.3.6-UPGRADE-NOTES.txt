@@ -32,8 +32,17 @@ Rebuild the date indexes
 During development we got `POSKeyError: 0x68b743` erros.
 
 Go to: http://localhost:8080/minaraad/portal_catalog/manage_catalogIndexes?skey=meta_type&rkey=meta_type
-Select all date related. Chose `Clear index`
-Select all date related. Chose `Reindex`
+Select all date related. Choose `Clear index`
+Select all date related. Choose `Reindex`
+
+
+Configure Faceted navigation
+----------------------------
+
+ - Go to 'Documenten' folder.
+ - Choose 'Acties' > 'Schakel facetnavigatie'
+ - Choose 'Facet criteria' > 'Importeren'
+ - Upload faceted_criteria.xml (xml file lives in project root)
 
 
 Newsletter migration

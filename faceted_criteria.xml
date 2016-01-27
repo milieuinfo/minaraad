@@ -66,18 +66,15 @@
    <property name="sortreversed"></property>
    <property name="default"></property>
   </criterion>
-  <criterion name="c6">
-   <property name="widget">yearrange</property>
-   <property name="title">Year</property>
+  <criterion name="c5">
+   <property name="widget">year-select</property>
+   <property name="title">Jaar</property>
    <property name="position">left</property>
    <property name="section">default</property>
    <property name="hidden">0</property>
    <property name="count">1</property>
    <property name="sortcountable">0</property>
-   <property name="hidezerocount">1</property>
-   <property name="index">effective</property>
-   <property name="start_year">2009</property>
-   <property name="future_years"></property>
+   <property name="hidezerocount">0</property>
   </criterion>
   <criterion name="c1">
    <property name="widget">section</property>
