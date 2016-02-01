@@ -4,6 +4,8 @@ History of this buildout
 5.1.14 (unreleased)
 -------------------
 
+- Added nodejs.cfg and package.json from Zest website.  [maurits]
+
 - Add faceted navigation notes.
 - Fix column width (homepage had gap between 2nd and 3rd column)
 - Remove faceted nav year (range) widget

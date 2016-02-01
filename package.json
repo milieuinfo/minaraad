@@ -1,0 +1,16 @@
+{
+  "name": "container",
+  "version": "1.0.0",
+  "description": "=================== Using this buildout ===================",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bower": "1.5.3",
+    "grunt-cli": "0.1.13",
+    "grunt": "0.4.5"
+  }
+}
