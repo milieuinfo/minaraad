@@ -4774,7 +4774,7 @@ button.close {
     display: inline-block !important; } }
 
 @media (max-width: 767px) {
-  .hidden-xs, .footer-doormat .logo, .footer-doormat .sitemap, .footer-doormat .newsletter, .footer-doormat .digibib {
+  .hidden-xs, .footer-doormat .logo, .footer-doormat .sitemap, .footer-doormat .newsletter, .footer-doormat .digibib, .footer-doormat .social-media {
     display: none !important; } }
 
 @media (min-width: 768px) and (max-width: 991px) {

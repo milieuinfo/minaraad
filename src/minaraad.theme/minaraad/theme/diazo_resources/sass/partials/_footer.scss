@@ -42,7 +42,7 @@ footer {
   .column {
     @extend .col-xs-6, .col-sm-4, .col-md-2;
   }
-  .logo, .sitemap, .newsletter, .digibib {
+  .logo, .sitemap, .newsletter, .digibib, .social-media {
     @extend .hidden-xs;
   }
 
