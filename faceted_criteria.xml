@@ -68,6 +68,7 @@
     <element value="Advisory"/>
     <element value="Hearing"/>
     <element value="MREvent"/>
+    <element value="AnnualReport"/>
     <element value="Study"/>
    </property>
   </criterion>
