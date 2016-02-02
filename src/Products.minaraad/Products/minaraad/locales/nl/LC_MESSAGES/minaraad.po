@@ -32,7 +32,7 @@ msgstr "Een persbericht"
 
 #: ./profiles/default/types/Study.xml
 msgid "A Study"
-msgstr "Een studie"
+msgstr "Een nota"
 
 #: ./browser/personalPreferencesPortlet.py:46
 msgid "Add Personal Preferences Portlet"
@@ -128,7 +128,7 @@ msgstr "Persbericht"
 #. Default: "Study"
 #: ./profiles/default/types/Study.xml
 msgid "Study"
-msgstr "Studie"
+msgstr "Nota"
 
 #: ./browser/personalPreferencesPortlet.py:47
 msgid "This portlet shows links for editing your preferences"
@@ -941,4 +941,3 @@ msgstr "Selecteer alles:"
 #: ./skins/minaraad/mrevent_listing_view.pt:73
 msgid "up_untill"
 msgstr "t/m"
-
