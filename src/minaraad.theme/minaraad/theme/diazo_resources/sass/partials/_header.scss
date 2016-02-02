@@ -23,15 +23,23 @@
       padding: 0;
       list-style-type: none;
     }
-    .open {
-      background-image: url('img/point.svg');
-      background-size: 15px 15px;
-      background-position: center bottom;
-      background-repeat: no-repeat;
+    .open .dropdown-menu:after{
+      bottom: 100%;
+      left: 75%;
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+      border-color: rgba(0, 0, 0, 0);
+      border-bottom-color: white;
+      border-width: 10px;
+      margin-left: -10px;
     }
     .dropdown-menu {
       width: 260px;
-      margin-top: 0;
+      margin-top: 12px;
       border: 10px solid $vlaanderen-dark-gray;
       border-top: 0;
       -webkit-border-radius:0;
