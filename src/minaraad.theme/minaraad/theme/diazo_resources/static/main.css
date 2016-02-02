@@ -7159,7 +7159,10 @@ span.featherlight-close-icon.featherlight-close {
   .logobar button.btn-search {
     background-color: #2e94bd;
     color: white;
-    padding: 10px; }
+    height: 35px;
+    width: 35px;
+    margin-top: 7px;
+    padding: 2px; }
   .logobar .search {
     display: none;
     background: #4aa894;

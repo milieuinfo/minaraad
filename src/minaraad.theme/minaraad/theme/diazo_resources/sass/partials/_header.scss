@@ -119,7 +119,10 @@
   button.btn-search{
     background-color: $mina-blue;
     color: white;
-    padding: 10px;
+    height: 35px;
+    width: 35px;
+    margin-top: 7px;
+    padding: 2px;
   }
   .search {
     display: none;
