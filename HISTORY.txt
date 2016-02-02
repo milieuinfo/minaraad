@@ -1,8 +1,8 @@
 History of this buildout
 ========================
 
-5.1.14 (unreleased)
--------------------
+6.0.0 (unreleased)
+------------------
 
 - Added nodejs.cfg and package.json from Zest website.  [maurits]
 

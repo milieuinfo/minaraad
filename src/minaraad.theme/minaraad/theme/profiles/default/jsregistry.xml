@@ -17,40 +17,15 @@
       for the latest list of all available keys and default values.
       -->
 
-<!--
- <javascript
-    id="++theme++minaraad/static/main.js"
-    cacheable="False" compression="safe" cookable="False"
-    enabled="True" expression=""  inline="False" />
- -->
- 
-  
-   <javascript
-     id="++theme++minaraad/js/vendor/jquery-1.10.1.min.js"
-     cacheable="True" compression="safe" cookable="True"
-     enabled="True" expression=""  inline="False" insert-before="*" />
    <javascript
      id="++resource++plone.app.jquery.js"
-     enabled="False" /> 
-   <javascript
-     id="++theme++minaraad/js/vendor/jquery-migrate-1.2.1.min.js"
-     cacheable="True" compression="safe" cookable="True"
-     enabled="True" expression=""  inline="False" insert-after="++theme++minaraad/js/vendor/jquery-1.10.1.min.js" />
+     enabled="True" />
    <javascript
      id="modernizr.js"
-     enabled="False" />
+     enabled="True" />
    <javascript
-     id="++theme++minaraad/js/vendor/modernizr-2.6.2.min.js"
-     cacheable="True" compression="safe" cookable="True"
-     enabled="True" expression=""  inline="False" insert-after="modernizr.js" />
-    <javascript
-      id="++framework++plone/js/respond.min.js"
-      cacheable="True" compression="safe" cookable="True"
-      enabled="True" expression=""  inline="False" />
-    <javascript
       id="++theme++minaraad/js/main.js"
       cacheable="True" compression="safe" cookable="True"
       enabled="True" expression=""  inline="False" />
-  
- 
+
 </object>

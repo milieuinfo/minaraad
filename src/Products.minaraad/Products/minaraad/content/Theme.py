@@ -25,7 +25,8 @@ ThemeSchema = folder.ATFolderSchema.copy() + atapi.Schema((
         ),
         widget=atapi.ImageWidget(
             label="Thema icoon",
-            desciption="Upload een vierkante afbeelding (een detail uit de footer-afbeelding)",
+            description=("Upload een vierkante afbeelding "
+                         "(een detail uit de footer afbeelding)"),
             show_content_type=False,
         ),
     ),
@@ -44,8 +45,10 @@ ThemeSchema = folder.ATFolderSchema.copy() + atapi.Schema((
             ('checkImageMaxSize', V_REQUIRED)
         ),
         widget=atapi.ImageWidget(
-            label="Footer image",
-            desciption="",
+            label="Footer afbeelding",
+            description=("Upload een liggende afbeelding, "
+                         "ongeveer drie keer zo breed als hoog, "
+                         "bijvoorbeeld 1498 pixels breed by 460 pixels hoog."),
             show_content_type=False,
         ),
     ),
