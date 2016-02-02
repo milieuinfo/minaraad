@@ -131,6 +131,11 @@ body {
     &:first-child, &:last-child {
       border-radius: 0;
     }
+    &:after{
+      display: block;
+      clear: both;
+      content:"";
+    }
   }
 }
 

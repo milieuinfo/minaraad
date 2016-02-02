@@ -58,17 +58,12 @@
                       </div>
                   </tal:relatedItems>
 
-
-
-                      <div class="grid-item">
-
                         <!--? TODO: the same pattern lives on homepage. metal:use-macro="" -->
                         <div class="list-group list-group-themes">
-
-                          <a tal:repeat="theme view/themes"
+                         <div tal:repeat="theme view/themes" class="grid-item">
+                          <a 
                              tal:attributes="href theme/absolute_url"
                              class="list-group-item">
-
                             <tal:image
                                 tal:define="images theme/@@images;
                                 thumbnail python:images.scale('image', width=100, height=100, direction='down')"
@@ -79,8 +74,8 @@
                             <tal:block tal:replace="theme/title"></tal:block>
                             <i class="fa fa-angle-right pull-right"></i>
                           </a>
+                          </div>
 
-                        </div>
                       </div>
 
                 </div>

@@ -7646,6 +7646,10 @@ body {
   padding: 15px 20px; }
   .list-group .list-group-item:first-child, .list-group-themes .list-group-item:first-child, .list-group-downloads .list-group-item:first-child, .list-group .list-group-item:last-child, .list-group-themes .list-group-item:last-child, .list-group-downloads .list-group-item:last-child {
     border-radius: 0; }
+  .list-group .list-group-item:after, .list-group-themes .list-group-item:after, .list-group-downloads .list-group-item:after {
+    display: block;
+    clear: both;
+    content: ""; }
 
 .list-group-themes {
   border-top: 5px solid #2e94bd; }
