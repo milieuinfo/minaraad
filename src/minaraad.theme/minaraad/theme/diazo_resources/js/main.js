@@ -8,14 +8,10 @@
 
   // Is everybody ready?
   $(function() {
-    $('.faceted-results').bind("DOMSubtreeModified", function() {
-      if ($('.masonry').children().length === 0) {
-        return;
-      }
+    $(Faceted.Events).bind(Faceted.Events.AJAX_QUERY_SUCCESS, function(evt){
       setTimeout(function(){
         $('.masonry').masonry();
-      }, 1000);
-
+      }, 200);
     });
   });
 
