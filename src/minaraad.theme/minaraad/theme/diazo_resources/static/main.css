@@ -7680,6 +7680,9 @@ body {
 .userrole-anonymous #editbar-wrapper {
   display: none; }
 
+#pyproxy_spinner, #ajax-spinner {
+  display: none !important; }
+
 nav section.search, nav section.filters, nav section.digibib, nav section.prev-next, nav section.archive, nav section.nav-list, nav section.theme-list {
   border-top: 5px solid #86263a;
   padding: 0 15px 1px 15px;
