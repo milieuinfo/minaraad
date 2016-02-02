@@ -218,7 +218,7 @@ msgid "Search"
 msgstr ""
 
 msgid "Study"
-msgstr "Studie"
+msgstr "Nota"
 
 #: profiles/default/workflows/minaraad_workflow/definition.xml
 msgid "Submit"
@@ -344,7 +344,7 @@ msgid "revisioning"
 msgstr ""
 
 msgid "study_listing_view"
-msgstr "Studies overzicht"
+msgstr "Nota overzicht"
 
 #: profiles/default/workflows/minaraad_folder_workflow/definition.xml
 #: profiles/default/workflows/minaraad_workflow/definition.xml
@@ -353,4 +353,3 @@ msgstr ""
 
 msgid "subscribers overview"
 msgstr "Abonnee overzicht"
-

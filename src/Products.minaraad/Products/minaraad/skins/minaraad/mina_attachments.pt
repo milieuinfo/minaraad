@@ -27,7 +27,7 @@
             class="attachment-title">Advisory</div>
         <div i18n:domain="plone"
             tal:condition="python:attachments and context.portal_type == 'Study'"
-            class="attachment-title">Studiedocument</div>
+            class="attachment-title">Notadocument</div>
         <div tal:repeat="attachment attachments"
              class="list-attachments">
           <metal:block use-macro="context/filemacro/macros/attachment_view" />

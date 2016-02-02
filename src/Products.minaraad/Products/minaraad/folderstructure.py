@@ -170,7 +170,7 @@ ROOT_CHILDREN = [
      'type': 'Folder',
      'children': PERSBERICHTEN_CHILDREN},
     {'id': 'studies',
-     'title': 'Studies',
+     'title': 'Nota\'s',
      'type': 'Folder',
      'children': STUDIES_CHILDREN},
     {'id': 'hoorzittingen',
