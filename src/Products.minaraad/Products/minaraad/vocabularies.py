@@ -69,7 +69,8 @@ class FacetedPortalTypesVocabulary(object):
             # 'Folder': u'Folder',
             # 'Document': u'Page',
             # 'Meeting': u'Meeting',
-            'AnnualReport': u'AnnualReport'
+            'AnnualReport': u'AnnualReport',
+            'File': u'File',
         }
 
         if ftool is not None:
