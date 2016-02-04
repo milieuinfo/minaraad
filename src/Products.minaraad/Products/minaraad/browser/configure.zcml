@@ -375,4 +375,14 @@
       class=".utils.HeaderImageCSS"
       />
 
+  <!-- Register @@newsletter for Zope root with a redirect to Plone,
+       so we can point to /@@newsletter in the diazo theme and still
+       end up in /plonesite/@@newsletter. -->
+  <browser:page
+      name="newsletter"
+      for="OFS.interfaces.IApplication"
+      class=".helpers.RedirectPlone"
+      permission="zope2.View"
+      />
+
 </configure>
