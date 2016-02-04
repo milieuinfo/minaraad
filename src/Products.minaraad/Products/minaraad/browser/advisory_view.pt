@@ -6,89 +6,136 @@
       metal:use-macro="context/main_template/macros/master"
       i18n:domain="minaraad">
    <body>
+
+    <hidden metal:fill-slot="content-title">
+    </hidden>
+
+    <hidden metal:fill-slot="content-description">
+    </hidden>
+
    <metal:block fill-slot="content-core">
 
-      <div tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;
-                       daterequired python:context.getDate() != None;
-                       date python:toLocalizedTime(context.date);"
-         class="hearingsubheader2"
-         tal:condition="daterequired">
+        <div class="content-wrapper">
 
-         <span i18n:translate="advisory_date">Advisory date:</span>
-         <span class="normaltext"
-               tal:content="date" />
-      </div>
-      <div tal:define="name context/getThemeName|nothing"
-           tal:condition="name"
-           class="themesubheader">
-          <span i18n:translate="label_theme_name">Theme:</span>
-          <span class="normaltext" tal:content="name" />
-      </div>
-      <div tal:define="product_number context/getProduct_number|nothing"
-           tal:condition="product_number"
-           class="themesubheader">
-          <span i18n:translate="label_product_number">Product number:</span>
-          <span class="normaltext"
-                tal:define="date python:context.getDate();
-                            year python:date is not None and date.year() or 0"
-                tal:content="python:'%d-%s' % (year, product_number)" />
-      </div>
-      <div tal:define="project context/getProject|nothing"
-           tal:condition="python:project and checkPermission('View', project)"
-           class="themesubheader">
-          <span i18n:translate="label_project">Project:</span>
-          <a tal:attributes="href project/absolute_url">
-            <tal:project_id
-                tal:define="date python:context.getAdvisory_date();
-                            year python:date is not None and date.year() or 0"
-                tal:content="python:'%d-%s' % (year, project.getProject_number())"
-                tal:on-error="project/getId" />
-          </a>
-      </div>
+          <main role="main" id="main-container">
 
+            <div class="sec-advice-detail">
+              <div class="container">
+                <div class="row">
 
-      <tal:summary condition="context/getBody|nothing">
-        <h5><tal:block i18n:translate="minaraad_label_summary">Summary</tal:block>:</h5>
-        <div tal:condition="context/getFoto"
-             class="float-right">
-          <img tal:attributes="src string:${context/absolute_url}/foto_foto"
-               alt="" />
+                  <div class="article-advice-detail">
+
+                    <article>
+                      <aside class="images" data-featherlight-gallery data-featherlight-filter="a">
+                        <!-- TODO: where should these images come from? There is only one 'foto' field. -->
+                        <figure tal:condition="context/getFoto">
+                          <a tal:attributes="href string:${context/absolute_url}/foto_foto">
+                            <img tal:attributes="src string:${context/absolute_url}/foto_foto" alt="" />
+                          </a>
+                        </figure>
+                        <div class="thumbnails">
+                          <a href="static/img/photos/belgisch_landschap.jpg"><img src="static/img/photos/belgisch_landschap.jpg" alt=""></a>
+                          <a href="static/img/photos/biologisch_onderzoek.jpg"><img src="static/img/photos/biologisch_onderzoek.jpg" alt=""></a>
+                          <a href="static/img/photos/windmolen.jpg"><img src="static/img/photos/windmolen.jpg" alt=""></a>
+                        </div>
+                      </aside>
+                      <div class="body">
+                        <section>
+                          <header>
+                            <h1 tal:content="context/Title">Groenboek Beleidsplan Ruimte Vlaanderen</h1>
+                            <p class="label">Advies <span tal:content="context/getThemeTitle|nothing">Biodiversiteit</span></p>
+                          </header>
+                          <p class="lead" tal:content="context/Description" />
+                        </section>
+
+                        <section>
+                          <h2>Samenvatting</h2>
+                          <dl class="dl-horizontal"
+                              tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;
+                                          date python:context.getDate();
+                                          has_date python:date is not None;
+                                          year python:date.year() if has_date else 0;
+                                          product_number context/getProduct_number|nothing;
+                                          project context/getProject|nothing;
+                                          show_project python:project and checkPermission('View', project);
+                                          ">
+                            <tal:date condition="has_date">
+                              <dt>Adviesdatum</dt>
+                              <dd tal:content="python:toLocalizedTime(context.date)">16 september 2015</dd>
+                            </tal:date>
+                            <tal:number condition="product_number">
+                              <dt>Productnummer</dt>
+                              <dd tal:content="python:'%d-%s' % (year, product_number)">2015-021</dd>
+                            </tal:number>
+                            <tal:project condition="show_project">
+                              <dt>Project</dt>
+                              <dd>
+                              <a tal:attributes="href project/absolute_url">
+                                <tal:project_id
+                                    tal:define="date python:context.getAdvisory_date();
+                                                year python:date is not None and date.year() or 0"
+                                    tal:content="python:'%d-%s' % (year, project.getProject_number())"
+                                    tal:on-error="project/getId" />
+                              </a>
+                              </dd>
+                            </tal:project>
+                          </dl>
+                          <div tal:content="structure context/getBody|nothing" />
+                        </section>
+
+                        <section>
+                          <metal:block use-macro="context/@@items/macros/listattachments" />
+                        </section>
+
+                      </div>
+                    </article>
+
+                    <nav>
+                      <!-- TODO: make this non static -->
+                      <section class="prev-next">
+                        <h2>Bladeren</h2>
+                        <p class="label">Advies <span>Biodiversiteit</span></p>
+                        <ul>
+                          <li><a href="#">Conferentie Luchtkwaliteit 2014</a></li>
+                          <li><a href="#">Vlaamse NME-dag 'Groene Economie'</a></li>
+                        </ul>
+                      </section>
+                      <section class="archive">
+                        <h2>Archief</h2>
+                        <p class="label">Advies <span>Biodiversiteit</span></p>
+                        <ul>
+                          <li><a href="#">2014</a></li>
+                          <li><a href="#">2013</a></li>
+                          <li><a href="#">2012</a></li>
+                          <li><a href="#">2011</a></li>
+                          <li><a href="#">2010</a></li>
+                          <li><a href="#">2009</a></li>
+                        </ul>
+                      </section>
+                      <section class="theme-list">
+                        <h2>Thema's</h2>
+                        <ul>
+                          <li><a href="theme_detail.html">Klimaat</a></li>
+                          <li><a href="theme_detail.html">Materialen</a></li>
+                          <li><a href="theme_detail.html">Hinder</a></li>
+                          <li class="active"><a href="theme_detail.html">Biodiversiteit</a></li>
+                          <li><a href="theme_detail.html">Bestuurskwaliteit</a></li>
+                          <li><a href="theme_detail.html">Vergroening van de economie</a></li>
+                          <li><a href="theme_detail.html">Andere thema's</a></li>
+                        </ul>
+                      </section>
+                    </nav>
+
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <tal:block metal:use-macro="context/@@items/macros/related_documents" />
+
+          </main>
         </div>
-        <div tal:content="structure context/getBody" />
-      </tal:summary>
-
-      <!-- Start Attachments-->
-      <div metal:use-macro="context/mina_attachments/macros/listattachments" />
-      <!-- end Attachments -->
-
-      <!-- Start related documents -->
-      <tal:related define="docs python:context.getRelatedDocuments()"
-                   condition="docs">
-         <h5 i18n:translate="label_advisory_related_documents">
-           Related documents
-         </h5>
-         <ul>
-           <li tal:repeat="doc docs">
-             <tal:block tal:define="is_file python:doc.portal_type in ('File', 'FileAttachment');">
-               <tal:block tal:condition="python:not is_file and not is_attachment">
-                 <a tal:attributes="href doc/absolute_url"
-                    tal:content="doc/title_or_id" />
-               </tal:block>
-               <tal:block tal:condition="is_file">
-                 <metal:block use-macro="context/filemacro/macros/related_view" />
-               </tal:block>
-             </tal:block>
-           </li>
-         </ul>
-      </tal:related>
-      <!-- End related documents -->
-
-      <!-- Start contactperson -->
-      <tal:block tal:define="obj nocall: context">
-        <div metal:use-macro="context/contactperson_macros/macros/show_coord_authors"
-             tal:omit-tag="" />
-      </tal:block>
-      <!-- End contactpersoon -->
 
    </metal:block>
    </body>

@@ -3,6 +3,7 @@
       i18n:domain="minaraad">
   <body>
 
+    <!-- TODO: move to context/@@items/macros/agenda_attachments -->
     <metal:block metal:define-macro="agenda_attachments"
                  tal:define="current_path python:'/'.join(obj.getPhysicalPath());
                              attachments python:context.portal_catalog.searchResults(portal_type='FileAttachment',
@@ -14,6 +15,7 @@
       </div>
     </metal:block>
 
+    <!-- TODO: use context/@@items/macros/listattachments instead -->
     <metal:block metal:define-macro="listattachments"
                  tal:define="current_path python:'/'.join(context.getPhysicalPath());
                              attachments python:context.portal_catalog.searchResults(portal_type=['File', 'FileAttachment'],

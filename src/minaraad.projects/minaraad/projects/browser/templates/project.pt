@@ -56,6 +56,7 @@
                               is_attachment python: ptype == 'FileAttachment'">
                <tal:block tal:condition="is_attachment"
                           tal:define="attachment item">
+                 <!-- TODO: possibly switch to use-macro="context/@@items/macros/attachment_view" /-->
                  <metal:block use-macro="context/filemacro/macros/attachment_view" />
                  <metal:block use-macro="context/display_macros/macros/attachments_buttons" />
                </tal:block>

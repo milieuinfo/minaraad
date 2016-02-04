@@ -7,10 +7,10 @@
       i18n:domain="minaraad">
     <body>
 
-    <hidden fill-slot="content-title">
+    <hidden metal:fill-slot="content-title">
     </hidden>
 
-    <hidden fill-slot="content-description">
+    <hidden metal:fill-slot="content-description">
     </hidden>
 
     <metal:block metal:fill-slot="content-core">
@@ -53,7 +53,7 @@
                     tal:define="related_items python:context.getRelatedItems();"
                     tal:repeat="item related_items">
                       <div class="grid-item">
-                          <tal:block metal:use-macro="context/@@items/macros/related_items">
+                          <tal:block metal:use-macro="context/@@items/macros/related_item">
                           </tal:block>
                       </div>
                   </tal:relatedItems>
@@ -61,7 +61,7 @@
                         <!--? TODO: the same pattern lives on homepage. metal:use-macro="" -->
                         <div class="list-group list-group-themes">
                          <div tal:repeat="theme view/themes" class="grid-item">
-                          <a 
+                          <a
                              tal:attributes="href theme/absolute_url"
                              class="list-group-item">
                             <tal:image

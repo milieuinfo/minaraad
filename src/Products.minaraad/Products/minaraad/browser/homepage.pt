@@ -81,7 +81,7 @@
                         <tal:block
                             tal:define="related_items python:context.getRelatedItems();"
                             tal:repeat="item related_items">
-                          <tal:block metal:use-macro="context/@@items/macros/related_items">
+                          <tal:block metal:use-macro="context/@@items/macros/related_item">
                           </tal:block>
                         </tal:block>
 

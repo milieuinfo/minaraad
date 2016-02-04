@@ -10,7 +10,7 @@ class ThemeMixin(object):
     security = ClassSecurityInfo()
 
     def getThemeObject(self):
-        """ getThemeOject
+        """Get theme object.
 
         Look up the Theme for this object by traversing up to the first
         theme folder.
@@ -24,3 +24,13 @@ class ThemeMixin(object):
                 return None
             obj = self.aq_parent
         return obj
+
+    def getThemeTitle(self):
+        """Get title of theme object.
+
+        :return: Theme title or empty string
+        """
+        theme = self.getThemeObject()
+        if theme is None:
+            return u''
+        return theme.Title()

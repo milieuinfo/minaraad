@@ -24,6 +24,7 @@
         <div class="body">
           <div tal:repeat="attachment files"
                class="list-attachments">
+            <!-- TODO: possibly switch to use-macro="context/@@items/macros/attachment_view" /-->
             <metal:block use-macro="context/filemacro/macros/attachment_view" />
           </div>
         </div>
