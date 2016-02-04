@@ -39,9 +39,9 @@
         <a tal:attributes="href item/absolute_url">
           <div class="body">
             <h3 tal:content="item/Title"></h3>
-            <p class="label" tal:define="theme item/getThemeObject|nothing">
+            <p class="label" tal:condition="show_theme_title|nothing">
               <span tal:content="item/portal_type"/>
-              <span tal:condition="nocall:theme" tal:content="theme/title"></span>
+              <span tal:content="item/getThemeTitle|nothing"></span>
             </p>
             <p class="truncate" tal:content="item/Description"></p>
           </div>
@@ -61,8 +61,9 @@
           </tal:image>
           <div class="body">
             <h3 tal:content="item/Title"></h3>
-            <p class="label" tal:define="theme item/getThemeObject|nothing">Advies
-              <span tal:condition="nocall:theme" tal:content="theme/title"></span>
+            <p class="label" tal:condition="show_theme_title|nothing">
+              Advies
+              <span tal:content="item/getThemeTitle|nothing"></span>
             </p>
             <p class="truncate" tal:content="item/Description"></p>
           </div>
@@ -81,11 +82,9 @@
             </h3>
           </header>
           <div class="body">
-            <!--? TODO: We are handling brains. So getObject to find it's parent. :/ -->
-            <p class="label" tal:define="item item/getObject">Evenement
-              <span tal:define="theme item/getThemeObject"
-                    tal:condition="theme"
-                    tal:content="theme/title"></span>
+            <p class="label" tal:condition="show_theme_title|nothing">
+              Evenement
+              <span tal:content="item/getThemeTitle|nothing"></span>
             </p>
             <h3 tal:content="item/Title"></h3>
           </div>
@@ -105,10 +104,9 @@
             </h3>
           </header>
           <div class="body">
-            <p class="label">Hoorzitting
-              <span tal:define="theme item/getThemeObject"
-                    tal:condition="nocall:theme"
-                    tal:content="theme/title"></span>
+            <p class="label" tal:condition="show_theme_title|nothing">
+              Hoorzitting
+              <span tal:content="item/getThemeTitle|nothing"></span>
             </p>
             <h3 tal:content="item/Title"></h3>
           </div>
@@ -160,6 +158,9 @@
           </div>
           <div class="body">
             <h3 tal:content="title">ABC van het emissiehandels­systeem en prioriteiten van het EU-voorzitterschap</h3>
+            <p class="label" tal:condition="show_theme_title|nothing">
+              <span tal:content="item/getThemeTitle|nothing"></span>
+            </p>
             <span tal:condition="position|nothing">
               Bijlage <span tal:replace="position" />:
             </span>
@@ -213,7 +214,8 @@
     </metal:block>
 
     <metal:block define-macro="related_documents"
-                 tal:define="docs python:context.getRelatedDocuments()"
+                 tal:define="docs python:context.getRelatedDocuments();
+                             show_theme_title python:True"
                  tal:condition="docs">
       <section class="sec-related">
         <div  class="container">

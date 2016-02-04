@@ -15,6 +15,10 @@
       alt title;
       src string:$url/@@images/foto/foto"/>
     <span class="photoAlbumEntryTitle" tal:content="context/pretty_title_or_id|string:">Title</span>
+    <p class="label">
+      Advies
+      <span tal:content="context/getThemeTitle|nothing"></span>
+    </p>
     <span class="photoAlbumEntryDescription" tal:content="description">Description</span>
 
   </a>
