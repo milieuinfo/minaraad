@@ -68,6 +68,16 @@
         }
       );
 
+      // Activate the overlay on the login link.
+      $('#login_link a').prepOverlay(
+        {
+          subtype: 'ajax',
+          filter: common_content_filter,
+          // formselector: 'form#login_form',
+          noform: function(el) {return $.plonepopups.noformerrorshow(el, 'close');}
+        }
+      );
+
   });
 
 })(); // end scope.

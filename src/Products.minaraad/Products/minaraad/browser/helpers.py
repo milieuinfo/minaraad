@@ -30,6 +30,17 @@ class RedirectPlone(BrowserView):
         permission="zope2.View"
         />
 
+    Or several pages at once:
+
+      <browser:pages
+          for="OFS.interfaces.IApplication"
+          class=".helpers.RedirectPlone"
+          permission="zope2.View">
+        <browser:page name="newsletter" />
+        <browser:page name="login_form" />
+        <browser:page name="logout" />
+      </browser:pages>
+
     There must be a referer.  Without referer we could look for any
     Plone Site in the Zope root, but let's not.  That is not the goal we
     are after.  Maybe later.

@@ -378,11 +378,13 @@
   <!-- Register @@newsletter for Zope root with a redirect to Plone,
        so we can point to /@@newsletter in the diazo theme and still
        end up in /plonesite/@@newsletter. -->
-  <browser:page
-      name="newsletter"
+  <browser:pages
       for="OFS.interfaces.IApplication"
       class=".helpers.RedirectPlone"
-      permission="zope2.View"
-      />
+      permission="zope2.View">
+    <browser:page name="newsletter" />
+    <browser:page name="login_form" />
+    <browser:page name="logout" />
+  </browser:pages>
 
 </configure>
