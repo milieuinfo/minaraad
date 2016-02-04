@@ -416,6 +416,10 @@
         title="Select default page and view for themas"
         description="Select default page and view for themas."
         handler="Products.minaraad.migration.themas_select_default_page_and_view" />
+    <gs:upgradeStep
+        title="Activate minaraad theme"
+        description="Or reactivate it. This also reapplies the manifest.cfg."
+        handler="Products.minaraad.migration.activate_theme" />
 
   </gs:upgradeSteps>
 

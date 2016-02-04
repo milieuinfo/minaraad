@@ -799,3 +799,12 @@ def to_plone436(context):
 
     profile_id = 'profile-Products.minaraad:plone436'
     context.runAllImportStepsFromProfile(profile_id, purge_old=False)
+
+
+def activate_theme(context):
+    """Activate diazo theme."""
+    from plone.app.theming.utils import getTheme
+    from plone.app.theming.utils import applyTheme
+    theme = getTheme('minaraad')
+    applyTheme(theme)
+    logger.info('Activated minaraad diazo theme.')
