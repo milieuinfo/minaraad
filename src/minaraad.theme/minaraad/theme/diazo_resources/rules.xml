@@ -51,6 +51,10 @@
   <!-- Copy href from plone logo -->
     <copy attributes="href" css:content='#portal-logo' css:theme=".navbar-brand" />
 
+  <!-- Drop some theme items for anonymous or authenticated. -->
+  <drop css:theme=".drop_anon" if="$anonymous" />
+  <drop css:theme=".drop_auth" if-not="$anonymous" />
+
   <!-- Main content block. Jumbotron, breadcrumbs, main-container (in that order)  -->
   <rules css:if-content=".jumbotronbar">
     <replace css:theme=".jumbotronbar" css:content=".jumbotronbar" method="raw" />
