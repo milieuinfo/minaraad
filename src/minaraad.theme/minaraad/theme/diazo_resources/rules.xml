@@ -5,7 +5,7 @@
        xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
        xmlns:xi="http://www.w3.org/2001/XInclude">
 
-
+  <notheme if="$ajax_load" />
   <theme href="/++theme++minaraad/index.html" />
   <notheme css:if-not-content="#visual-portal-wrapper" />
 
@@ -45,8 +45,8 @@
   <replace css:theme-children="#global_statusmessage" css:content-children="#global_statusmessage" />
 
   <!-- Toolbar -->
-  <replace css:theme="#editbar" css:content="#edit-bar" css:if-not-content=".ajax_load" css:if-content=".userrole-authenticated"/>
-  <replace css:theme="#anonymous-actions" css:content="#portal-personaltools-wrapper" css:if-not-content=".ajax_load" css:if-content=".userrole-anonymous"/>
+  <replace css:theme="#editbar" css:content="#edit-bar" css:if-content=".userrole-authenticated"/>
+  <replace css:theme="#anonymous-actions" css:content="#portal-personaltools-wrapper" css:if-content=".userrole-anonymous"/>
 
   <!-- Copy href from plone logo -->
     <copy attributes="href" css:content='#portal-logo' css:theme=".navbar-brand" />
