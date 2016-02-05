@@ -7183,6 +7183,9 @@ span.featherlight-close-icon.featherlight-close {
       font-weight: 300; }
     .logobar .search p {
       margin: 0; }
+    .logobar .search .searchSection label {
+      padding-left: 5px;
+      color: white; }
 
 nav.navbar {
   border: 0;
@@ -7210,7 +7213,9 @@ nav.navbar {
       margin: 2em 0 0 0;
       padding: 0;
       background: transparent;
-      display: block; }
+      display: block !important; }
+      .logobar .search .searchSection label {
+        color: #76797c; }
     .logobar .navbar-brand {
       margin-top: 15px;
       padding: 0; } }
