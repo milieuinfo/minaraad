@@ -389,6 +389,10 @@
         description="Apply the xml migration profile."
         handler="Products.minaraad.migration.to_plone436" />
     <gs:upgradeStep
+        title="Rebuild date indexes"
+        description="Some indexes are corrupted this clears and builds all Date related indexes"
+        handler="Products.minaraad.migration.rebuild_date_indexes" />
+    <gs:upgradeStep
         title="Create theme folders"
         description="Create theme folders and subfolders."
         handler="Products.minaraad.migration.create_theme_folders" />
@@ -420,6 +424,10 @@
         title="Activate minaraad theme"
         description="Or reactivate it. This also reapplies the manifest.cfg."
         handler="Products.minaraad.migration.activate_theme" />
+    <gs:upgradeStep
+        title="Configure faceted navigation"
+        description="Documents section uses faceted navigation."
+        handler="Products.minaraad.migration.setup_faceted_navigation" />
 
   </gs:upgradeSteps>
 

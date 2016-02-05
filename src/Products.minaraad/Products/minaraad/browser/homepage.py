@@ -32,7 +32,9 @@ class HomepageView(BrowserView):
         future = DateTime(now.year() + 1, now.month(), now.day()).latestTime()
         brains = api.content.find(
             sort_order='ascending',
-            portal_type="MREvent",
+            sort_on='getStart_time',
+            portal_type='MREvent',
+            review_state='published',
             getStart_time={
                 'query': (
                     now,
@@ -40,7 +42,6 @@ class HomepageView(BrowserView):
                 ),
                 'range': 'min:max',
             },
-
         )
         return brains
 
@@ -49,8 +50,9 @@ class HomepageView(BrowserView):
         future = DateTime(now.year() + 1, now.month(), now.day()).latestTime()
         brains = api.content.find(
             sort_order='ascending',
-            portal_type="Hearing",
-            review_state="published",
+            sort_on='getStart_time',
+            portal_type='Hearing',
+            review_state='published',
             getStart_time={
                 'query': (
                     now,
@@ -58,7 +60,6 @@ class HomepageView(BrowserView):
                 ),
                 'range': 'min:max',
             },
-
         )
         return brains
 

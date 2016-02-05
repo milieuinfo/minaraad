@@ -4,6 +4,16 @@ History of this buildout
 6.0.0 (unreleased)
 ------------------
 
+- Reindex Date indexes to prevent POSKeyErrors.  [jladage]
+
+- Configure Documenten faceted navigation.  [jladage]
+
+- Add theme titles to homepage agenda items if inside a theme.
+  [jladage]
+
+- Add index getThemeTitle and define it on theme, wow acquisition
+  will take care of indexing all children. [jladage]
+
 - Added next meeting (hearing CT) logic with support for multiple
   planned hearings. [jladage]
 

@@ -417,8 +417,6 @@ def fix_viewlet_persistence(context):
     # editing manage-viewlets only has effect until the next restart.
     from persistent.mapping import PersistentMapping
     from plone.app.viewletmanager.interfaces import IViewletSettingsStorage
-    from zope.component import getUtility
-
     storage = getUtility(IViewletSettingsStorage)
     for setting in (storage._order, storage._hidden):
         for key, value in setting.items():
@@ -808,3 +806,21 @@ def activate_theme(context):
     theme = getTheme('minaraad')
     applyTheme(theme)
     logger.info('Activated minaraad diazo theme.')
+
+def setup_faceted_navigation(context):
+    portal = getToolByName(context, 'portal_url').getPortalObject()
+    docs = portal['documenten']
+    subtyper = docs.restrictedTraverse('@@faceted_subtyper')
+    subtyper.enable()
+    importer = docs.restrictedTraverse('@@faceted_exportimport')
+    criteria_file = open('faceted_criteria.xml')
+    importer.import_xml(import_file=criteria_file)
+
+def rebuild_date_indexes(context):
+    catalog = getToolByName(context, 'portal_catalog')
+    idxs = ['effectiveRange','Date','getStart_time','getDate',
+            'expires','created','modified','published',
+            'get_end_time','effective','start']
+    catalog.manage_clearIndex(ids=idxs)
+    catalog.manage_reindexIndex(ids=idxs)
+

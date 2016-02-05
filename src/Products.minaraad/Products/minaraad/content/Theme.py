@@ -103,4 +103,9 @@ class Theme(folder.ATFolder):
     implements(ITheme)
     schema = ThemeSchema
 
+    def getThemeTitle(self):
+        """Return the title of the Theme in which this Advisory resides"""
+        return self.Title()
+
+
 atapi.registerType(Theme, PROJECTNAME)

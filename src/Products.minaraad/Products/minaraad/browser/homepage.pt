@@ -101,12 +101,14 @@
                       </h2>
                     </div>
 
-                    <tal:block tal:repeat="item view/next_meetings">
+                    <tal:block tal:define="show_theme_title python:True"
+                               tal:repeat="item view/next_meetings">
                       <tal:block metal:use-macro="context/@@items/macros/hearing">
                       </tal:block>
                     </tal:block>           
 
-                    <tal:block tal:repeat="item view/future_events">
+                    <tal:block tal:define="show_theme_title python:True"
+                               tal:repeat="item view/future_events">
                       <tal:block metal:use-macro="context/@@items/macros/event">
                       </tal:block>
                     </tal:block>
