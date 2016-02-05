@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<object name="Advisory" meta_type="Factory-based Type Information"
+   xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+   i18n:domain="minaraad">
+ <action title="Export Subscribers" action_id="export_subscribers"
+    category="object" condition_expr="python:1"
+    url_expr="string:${object_url}/export_subscribers" visible="False">
+  <permission value="Modify portal content"/>
+ </action>
+ <action title="E-mail" action_id="email_out" category="object"
+    condition_expr="python:1" url_expr="string:${object_url}/email_out"
+    visible="False">
+  <permission value="Modify portal content"/>
+ </action>
+ <action title="Export Subscribers" action_id="export_subscribers"
+    category="object" condition_expr="python:1"
+    url_expr="string:${object_url}/export_subscribers" visible="False">
+  <permission value="Modify portal content"/>
+ </action>
+</object>
