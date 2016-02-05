@@ -27,6 +27,21 @@ a {
   -webkit-transition-duration: 0.2s; // Safari
 }
 
+a, a:link, a:visited {
+  color: $link-color;
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    color: $link-hover-color;
+    text-decoration: $link-hover-decoration;
+  }
+
+  &:focus {
+    @include tab-focus;
+  }
+}
+
 //
 // Button
 //

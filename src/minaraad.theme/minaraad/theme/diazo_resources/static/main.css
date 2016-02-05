@@ -7411,6 +7411,17 @@ a {
   transition-duration: 0.2s;
   -webkit-transition-duration: 0.2s; }
 
+a, a:link, a:visited {
+  color: #2e94bd;
+  text-decoration: none; }
+  a:hover, a:focus, a:link:hover, a:link:focus, a:visited:hover, a:visited:focus {
+    color: #1f647f;
+    text-decoration: underline; }
+  a:focus, a:link:focus, a:visited:focus {
+    outline: thin dotted;
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: -2px; }
+
 .btn, #plone_edit_form [type='submit'], #plone_edit_form [type='button'], #plone_edit_form input[value='Annuleren'], #plone_edit_form input[type='file'] {
   font-weight: 500; }
   .btn i, #plone_edit_form [type='submit'] i, #plone_edit_form [type='button'] i, #plone_edit_form input[value='Annuleren'] i, #plone_edit_form input[type='file'] i {
