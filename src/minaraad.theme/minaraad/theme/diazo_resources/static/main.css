@@ -8108,4 +8108,7 @@ dl.actionMenu.activated dd {
   .photoAlbumEntry a {
     height: auto; }
 
+div.row, div.masonry-documents, .images div.thumbnails {
+  width: auto; }
+
 /*# sourceMappingURL=main.css.map */
