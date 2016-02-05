@@ -7129,7 +7129,7 @@ span.featherlight-close-icon.featherlight-close {
     .topbar .contact .dropdown-menu i {
       float: right;
       font-size: 1.25em; }
-  .topbar a {
+  .topbar a:link, .topbar a:visited {
     font-size: 14px;
     line-height: 14px;
     font-family: "Flanders Art Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -7138,8 +7138,8 @@ span.featherlight-close-icon.featherlight-close {
     text-decoration: none;
     padding: 15px 10px 13px 10px;
     display: inline-block; }
-    .topbar a:hover, .topbar a:focus {
-      color: white; }
+  .topbar a:hover, .topbar a:focus {
+    color: white; }
 
 .logobar {
   background: white; }
@@ -7311,19 +7311,19 @@ footer {
   .footer-doormat h3 {
     font-size: 16px;
     margin-bottom: 18.4px; }
-    .footer-doormat h3 a {
+    .footer-doormat h3 a:link, .footer-doormat h3 a:visited {
       color: #4aa894; }
-      .footer-doormat h3 a:hover, .footer-doormat h3 a:active {
-        color: #00cca1; }
+    .footer-doormat h3 a:hover, .footer-doormat h3 a:active {
+      color: #00cca1; }
   .footer-doormat ul {
     padding: 0;
     list-style-type: none; }
     .footer-doormat ul > li {
       margin-bottom: 5px; }
-  .footer-doormat a {
+  .footer-doormat a:link, .footer-doormat a:visited {
     color: #bfd9e3; }
-    .footer-doormat a:hover, .footer-doormat a:active {
-      color: white; }
+  .footer-doormat a:hover, .footer-doormat a:active {
+    color: white; }
   .footer-doormat .btn, .footer-doormat #plone_edit_form [type='submit'], #plone_edit_form .footer-doormat [type='submit'], .footer-doormat #plone_edit_form [type='button'], #plone_edit_form .footer-doormat [type='button'], .footer-doormat #plone_edit_form input[value='Annuleren'], #plone_edit_form .footer-doormat input[value='Annuleren'], .footer-doormat #plone_edit_form input[type='file'], #plone_edit_form .footer-doormat input[type='file'] {
     color: white; }
   .footer-doormat .logo img {
@@ -7411,13 +7411,14 @@ a {
   transition-duration: 0.2s;
   -webkit-transition-duration: 0.2s; }
 
-a, a:link, a:visited {
-  color: #2e94bd;
+a {
   text-decoration: none; }
-  a:hover, a:focus, a:link:hover, a:link:focus, a:visited:hover, a:visited:focus {
+  a:link, a:visited {
+    color: #2e94bd; }
+  a:hover, a:focus {
     color: #1f647f;
     text-decoration: underline; }
-  a:focus, a:link:focus, a:visited:focus {
+  a:focus {
     outline: thin dotted;
     outline: 5px auto -webkit-focus-ring-color;
     outline-offset: -2px; }

@@ -71,14 +71,16 @@
   }
   background: $vlaanderen-dark-gray;
   a {
-    font-size: 14px;
-    line-height: 14px;
-    font-family: $headings-font-family;
-    font-weight: 500;
-    color: $vlaanderen-link-color;
-    text-decoration: none;
-    padding: 15px 10px 13px 10px;
-    display: inline-block;
+    &:link, &:visited{
+      font-size: 14px;
+      line-height: 14px;
+      font-family: $headings-font-family;
+      font-weight: 500;
+      color: $vlaanderen-link-color;
+      text-decoration: none;
+      padding: 15px 10px 13px 10px;
+      display: inline-block;
+    }
     &:hover, &:focus {
       color: $vlaanderen-link-color-hover;
     }

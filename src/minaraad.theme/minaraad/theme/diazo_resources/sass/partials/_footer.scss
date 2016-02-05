@@ -64,7 +64,9 @@ footer {
     font-size: 16px;
     margin-bottom: 1.15 * 16px;
     a {
-      color: $mina-green;
+      &:link, &:visited{
+        color: $mina-green;
+      }
       &:hover, &:active {
         color: $mina-green-signal;
       }
@@ -78,7 +80,9 @@ footer {
     }
   }
   a {
-    color: $mina-blue-light-2;
+    &:link, &:visited{
+      color: $mina-blue-light-2;
+    }
     &:hover, &:active {
       color: white;
     }

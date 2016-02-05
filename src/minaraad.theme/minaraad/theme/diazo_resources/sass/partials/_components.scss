@@ -27,8 +27,10 @@ a {
   -webkit-transition-duration: 0.2s; // Safari
 }
 
-a, a:link, a:visited {
-  color: $link-color;
+a {
+  &:link, &:visited{
+    color: $link-color;
+  }
   text-decoration: none;
 
   &:hover,
