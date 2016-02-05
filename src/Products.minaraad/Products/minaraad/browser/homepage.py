@@ -43,3 +43,22 @@ class HomepageView(BrowserView):
 
         )
         return brains
+
+    def next_meetings(self):
+        now = DateTime().earliestTime()
+        future = DateTime(now.year() + 1, now.month(), now.day()).latestTime()
+        brains = api.content.find(
+            sort_order='ascending',
+            portal_type="Hearing",
+            review_state="published",
+            getStart_time={
+                'query': (
+                    now,
+                    future,
+                ),
+                'range': 'min:max',
+            },
+
+        )
+        return brains
+

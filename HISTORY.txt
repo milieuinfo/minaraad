@@ -4,6 +4,12 @@ History of this buildout
 6.0.0 (unreleased)
 ------------------
 
+- Added next meeting (hearing CT) logic with support for multiple
+  planned hearings. [jladage]
+
+- Updated json-ld info and removed twitter from social channels in
+  footer. [jladage]
+
 - Added nodejs.cfg and package.json from Zest website.  [maurits]
 
 - Add faceted navigation notes.

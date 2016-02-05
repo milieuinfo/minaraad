@@ -101,20 +101,10 @@
                       </h2>
                     </div>
 
-                    <!--? Todo: Add `volgende raadsvergadering` -->
-                    <!--?<article class="article-next-meeting">-->
-                      <!--?<a href="event.html">-->
-                        <!--?<header>-->
-                          <!--?<h3>-->
-                            <!--?<i class="fa fa-gavel"></i>-->
-                            <!--?Volgende raadszitting-->
-                          <!--?</h3>-->
-                        <!--?</header>-->
-                        <!--?<div class="body">-->
-                          <!--?<time datetime="2015-11-25 9:30">26 november 2015 9:30</time>-->
-                        <!--?</div>-->
-                      <!--?</a>-->
-                    <!--?</article>-->
+                    <tal:block tal:repeat="item view/next_meetings">
+                      <tal:block metal:use-macro="context/@@items/macros/hearing">
+                      </tal:block>
+                    </tal:block>           
 
                     <tal:block tal:repeat="item view/future_events">
                       <tal:block metal:use-macro="context/@@items/macros/event">

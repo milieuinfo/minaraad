@@ -94,21 +94,20 @@
 
     <!--? Hearing -->
     <metal:block metal:define-macro="hearing">
-      <article class="article-event">
-        <!--? TODO: Add href to a. Error on `href item/getURL;z -->
-        <a tal:attributes="title item/Title">
+      <article class="article-next-meeting">
+        <a href="event.html"
+           tal:attributes="href python: item.getURL()">
           <header>
-            <h3 tal:define="d item/getStart_time|nothing">
-              <i class="fa fa-comments"></i>
-              <metal:block use-macro="context/display_macros/macros/date" />
+            <h3>
+              <i class="fa fa-gavel"></i>
+              Volgende raadszitting
             </h3>
           </header>
           <div class="body">
-            <p class="label" tal:condition="show_theme_title|nothing">
-              Hoorzitting
-              <span tal:content="item/getThemeTitle|nothing"></span>
-            </p>
-            <h3 tal:content="item/Title"></h3>
+            <time tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;
+                              start python:item.getStart_time"
+                  tal:attributes="datetime python: start.strftime('%Y-%m-%d %h:%m+01:00')"
+                  tal:content="python: toLocalizedTime(start, long_format=1)">26 november 2015 9:30</time>
           </div>
         </a>
       </article>
