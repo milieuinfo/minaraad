@@ -824,3 +824,12 @@ def rebuild_date_indexes(context):
     catalog.manage_clearIndex(ids=idxs)
     catalog.manage_reindexIndex(ids=idxs)
 
+def unininstall_classic_theme(context):
+    portal = getToolByName(context, 'portal_url').getPortalObject()
+    installer = getToolByName(context, 'portal_quickinstaller')
+    import pdb;pdb.set_trace()
+    if getattr(portal, 'persberichten'):
+        portal.manage_delObjects(ids=['persberichten'])
+    for product in installer.listInstalledProducts():
+        if product['id'] == 'plonetheme.classic':
+            installer.uninstallProducts(products=['plonetheme.classic'])

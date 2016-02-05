@@ -428,6 +428,10 @@
         title="Configure faceted navigation"
         description="Documents section uses faceted navigation."
         handler="Products.minaraad.migration.setup_faceted_navigation" />
+    <gs:upgradeStep
+        title="Unininstall Plone Classic Theme"
+        description="Unininstall old Plone Classic Theme."
+        handler="Products.minaraad.migration.unininstall_classic_theme" />
 
   </gs:upgradeSteps>
 
