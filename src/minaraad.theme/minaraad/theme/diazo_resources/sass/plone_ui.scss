@@ -143,8 +143,14 @@ dl.actionMenu.activated dd {
 
 }
 
-.faceted-column li, .footer-doormat ul > li, .configlets li{
+* li{
   display: list-item;
+}
+
+#edit-bar{
+  li{
+    display: inline;
+  }
 }
 
 .photoAlbumEntry {

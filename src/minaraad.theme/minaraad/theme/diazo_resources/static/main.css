@@ -8088,8 +8088,11 @@ dl.actionMenu.activated dd {
   #plone_edit_form [type='submit'], #plone_edit_form [type='button'] {
     margin-right: 5px; }
 
-.faceted-column li, .footer-doormat ul > li, .configlets li {
+* li {
   display: list-item; }
+
+#edit-bar li {
+  display: inline; }
 
 .photoAlbumEntry {
   background-image: none;
