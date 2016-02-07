@@ -135,7 +135,7 @@ Advisory_schema = (
     getattr(EmailMixin, 'schema', atapi.Schema(())).copy() +
     theme_schema.copy() +
     getattr(Attachmentsmixin, 'schema', atapi.Schema(())).copy() +
-    ImageAttachmentsmixin.schema.copy() +
+    getattr(ImageAttachmentsmixin, 'schema', atapi.Schema(())).copy() +
     contacts_schema.copy() +
     schema.copy())
 Advisory_schema['description'].isMetadata = False

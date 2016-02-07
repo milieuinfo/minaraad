@@ -10,6 +10,8 @@ from Products.minaraad.content.themes import ThemeMixin as OldThemeMixin
 from Products.minaraad.ThemeMixin import ThemeMixin
 from Products.minaraad.content.themes import theme_schema
 from Products.minaraad.interfaces import IMREvent
+from Products.minaraad.Attachmentsmixin import Attachmentsmixin
+from Products.minaraad.ImageAttachmentsmixin import ImageAttachmentsmixin
 from minaraad.projects.content.base_meeting import BaseMeeting
 from plone.app.blob.field import ImageField
 from zope.interface import implements
@@ -139,6 +141,7 @@ schema = atapi.Schema((
 MREvent_schema = atapi.OrderedBaseFolderSchema.copy() + \
     contacts_schema.copy() + \
     getattr(EmailMixin, 'schema', atapi.Schema(())).copy() + \
+    getattr(ImageAttachmentsmixin, 'schema', atapi.Schema(())).copy() + \
     theme_schema.copy() + \
     schema.copy()
 
@@ -146,7 +149,7 @@ MREvent_schema.moveField('coordinator', after="foto")
 MREvent_schema.moveField('authors', after="coordinator")
 
 
-class MREvent(BaseMeeting, EmailMixin, OldThemeMixin, ThemeMixin):
+class MREvent(Attachmentsmixin, BaseMeeting, EmailMixin, OldThemeMixin, ThemeMixin):
     """
     """
     implements(IMREvent, IUseContact)

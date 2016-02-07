@@ -781,8 +781,7 @@ def apply_extra_product_profiles(context):
     profiles = [
         "profile-eea.facetednavigation:default",
         "profile-collective.mailchimp:default",
-        "profile-minaraad.theme:default",
-    ]
+        "profile-minaraad.theme:default"]
 
     for profile_id in profiles:
         context.runAllImportStepsFromProfile(profile_id, purge_old=False)
@@ -807,6 +806,7 @@ def activate_theme(context):
     applyTheme(theme)
     logger.info('Activated minaraad diazo theme.')
 
+
 def setup_faceted_navigation(context):
     portal = getToolByName(context, 'portal_url').getPortalObject()
     docs = portal['documenten']
@@ -816,13 +816,15 @@ def setup_faceted_navigation(context):
     criteria_file = open('faceted_criteria.xml')
     importer.import_xml(import_file=criteria_file)
 
+
 def rebuild_date_indexes(context):
     catalog = getToolByName(context, 'portal_catalog')
-    idxs = ['effectiveRange','Date','getStart_time','getDate',
-            'expires','created','modified','published',
-            'get_end_time','effective','start']
+    idxs = ['effectiveRange', 'Date', 'getStart_time', 'getDate',
+            'expires', 'created', 'modified', 'published',
+            'get_end_time', 'effective', 'start']
     catalog.manage_clearIndex(ids=idxs)
     catalog.manage_reindexIndex(ids=idxs)
+
 
 def unininstall_classic_theme(context):
     portal = getToolByName(context, 'portal_url').getPortalObject()
@@ -833,13 +835,17 @@ def unininstall_classic_theme(context):
         if product['id'] == 'plonetheme.classic':
             installer.uninstallProducts(products=['plonetheme.classic'])
 
+
 def migrate_advisory_foto_field_to_imageattachment(context):
     from Products.SimpleAttachment.setuphandlers import registerImagesFormControllerActions
     portal = getToolByName(context, 'portal_url').getPortalObject()
-    registerImagesFormControllerActions(portal, contentType = 'Advisory', template = 'base_edit')
+    registerImagesFormControllerActions(portal, contentType='Advisory',
+                                        template='base_edit')
+    registerImagesFormControllerActions(portal, contentType='MREvent',
+                                        template='base_edit')
 
     catalog = getToolByName(context, 'portal_catalog')
-    brains = catalog({'portal_type': ['Advisory'],}) # Probably handy for other types as well.
+    brains = catalog({'portal_type': ['Advisory', 'MREvent']})
     for brain in brains:
         obj = brain.getObject()
         foto = obj.getFoto()
@@ -860,4 +866,7 @@ def migrate_advisory_foto_field_to_imageattachment(context):
             new_obj.reindexObject()
             #remove image from foto field
             obj.setFoto(None)
+
+
+
 
