@@ -4,6 +4,8 @@ History of this buildout
 6.0.0 (unreleased)
 ------------------
 
+- Integrated Nexprev box for Advisory. [jadage]
+
 - Added ImageAttachments to Advisory to support multiple images
   to be added. [jladage]
 

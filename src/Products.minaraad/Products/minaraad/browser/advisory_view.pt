@@ -79,14 +79,8 @@
                     </article>
 
                     <nav>
-                      <!-- TODO: make this non static -->
                       <section class="prev-next">
-                        <h2>Bladeren</h2>
-                        <p class="label">Advies <span>Biodiversiteit</span></p>
-                        <ul>
-                          <li><a href="#">Conferentie Luchtkwaliteit 2014</a></li>
-                          <li><a href="#">Vlaamse NME-dag 'Groene Economie'</a></li>
-                        </ul>
+                        <metal:block use-macro="context/@@items/macros/nextprev" />
                       </section>
                       <section class="archive">
                         <h2>Archief</h2>

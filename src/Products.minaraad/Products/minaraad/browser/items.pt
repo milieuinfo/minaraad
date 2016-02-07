@@ -250,5 +250,27 @@
       </section>
     </metal:block>
 
+    <metal:block define-macro="nextprev"
+                 tal:define="nextprev nocall:context/@@plone_nextprevious_view;
+                             prev nextprev/previous;
+                             next nextprev/next;">
+      <h2>Bladeren</h2>
+      <p class="label">
+        <span i18n:translate="" tal:replace="context/portal_type">Advies</span>
+        <span tal:content="context/getThemeTitle">Biodiversiteit</span></p>
+      <ul>
+        <li tal:condition="python:prev is not None">
+          <a href="#" tal:attributes="href prev/url"
+                      tal:content="prev/title">
+            Conferentie Luchtkwaliteit 2014</a>
+        </li>
+        <li tal:condition="python:next is not None">
+          <a href="#" tal:attributes="href next/url"
+                      tal:content="next/title">
+            Vlaamse NME-dag 'Groene Economie'</a>
+        </li>
+      </ul>
+    </metal:block>
+
   </body>
 </html>
