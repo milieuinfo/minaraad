@@ -119,8 +119,8 @@
     </metal:block>
 
     <metal:block metal:define-macro="listimageattachments"
-                 tal:define="images context/getImages;
-                             first_image context/getFirstImage;">
+                 tal:define="images context/get_images;
+                             first_image context/get_first_image;">
       <tal:images condition="context/has_image">
         <aside class="images" data-featherlight-gallery data-featherlight-filter="a">
           <figure>
@@ -140,9 +140,7 @@
     </metal:block>
 
     <metal:block metal:define-macro="listattachments"
-                 tal:define="current_path python:'/'.join(context.getPhysicalPath());
-                             attachments python:context.portal_catalog.searchResults(portal_type=['File', 'FileAttachment'],
-                             path={'query': current_path, 'depth':1})">
+                 tal:define="attachments context/get_attachments">
       <tal:attachments condition="attachments">
         <h2>Downloads</h2>
         <div class="list-group-downloads">
@@ -251,7 +249,7 @@
     </metal:block>
 
     <metal:block define-macro="nextprev"
-                 tal:define="nextprev nocall:context/@@plone_nextprevious_view;
+                 tal:define="nextprev context/@@helpers/nextprev;
                              prev nextprev/previous;
                              next nextprev/next;">
       <h2>Bladeren</h2>
@@ -260,12 +258,12 @@
         <span tal:content="context/getThemeTitle">Biodiversiteit</span>
       </p>
       <ul>
-        <li tal:condition="python:prev is not None">
+        <li class="prev" tal:condition="python:prev is not None">
           <a href="#" tal:attributes="href prev/url"
                       tal:content="prev/title">
             Conferentie Luchtkwaliteit 2014</a>
         </li>
-        <li tal:condition="python:next is not None">
+        <li class="next" tal:condition="python:next is not None">
           <a href="#" tal:attributes="href next/url"
                       tal:content="next/title">
             Vlaamse NME-dag 'Groene Economie'</a>

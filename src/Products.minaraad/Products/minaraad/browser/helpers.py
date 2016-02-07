@@ -9,6 +9,9 @@ class HelpersView(BrowserView):
     """
 
     def years(self):
+        """ Return a dict of years and url's to the documenten section
+            for the current theme and content type.
+        """
         catalog = getToolByName(self.context, 'portal_catalog')
         results = []
         ctype = self.context.portal_type
@@ -44,6 +47,42 @@ class HelpersView(BrowserView):
                'url': base_url + '#c2='+ctype+'&c5='+str(yr) +'&c7=%2Fminaraad%2Fthemas%2F' + theme.getId()})
 
         return results
+
+    def nextprev(self):
+        """ Return links to the previous or next item. Depending on the location it will
+            vary based on the context.
+
+            - Items are ordered by effective date.
+            - Only display items within the same theme.
+            - Only display items with the same type.
+        """
+        catalog = getToolByName(self.context, 'portal_catalog')
+        ctype = self.context.portal_type
+        path = '/'.join(self.context.getThemeObject().getPhysicalPath())
+        items = catalog.searchResults(portal_type=ctype,
+                                      path=path,
+                                      sort_on='effective',
+                                      sort_order='ascending')
+        pos = 0
+        prev = None
+        nxt = None
+        for item in items:
+            if item.getObject() == self.context:
+                prev = pos - 1 if pos > 1 else None
+                this = pos
+                nxt = pos + 1
+            pos += 1
+        pos -= 1
+        prev_dict = None
+        if prev is not None and prev >= 0:
+            prev_dict = dict(title=items[prev].Title,
+                             url=items[prev].getURL())
+        next_dict = None
+        if nxt is not None and nxt <= pos:
+            next_dict = dict(title=items[nxt].Title,
+                             url=items[nxt].getURL())
+
+        return {'next': next_dict, 'previous': prev_dict}
 
 
 class RedirectPlone(BrowserView):

@@ -4,7 +4,7 @@
       title context/pretty_title_or_id|string:;
       desc_or_title python:description or title;
       url context/absolute_url|string:#;
-      first_image context/getFirstImage;
+      first_image context/get_first_image;
       has_image context/has_image"
      tal:attributes="href url;
                      title description">

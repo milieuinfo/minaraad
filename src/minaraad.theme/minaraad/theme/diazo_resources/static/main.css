@@ -7763,14 +7763,14 @@ nav section.prev-next ul li a:before {
   margin-left: -17px;
   float: left; }
 
-nav section.prev-next ul li:first-child a {
+nav section.prev-next ul li.prev a {
   border-left: 18px solid #d5405f; }
-  nav section.prev-next ul li:first-child a:before {
+  nav section.prev-next ul li.prev a:before {
     content: "\f104"; }
 
-nav section.prev-next ul li:last-child a {
+nav section.prev-next ul li.next a {
   border-left: 18px solid #b2324d; }
-  nav section.prev-next ul li:last-child a:before {
+  nav section.prev-next ul li.next a:before {
     content: "\f105"; }
 
 nav section.archive li a:before, nav section.theme-list li a:before, nav section.nav-list li a:before {

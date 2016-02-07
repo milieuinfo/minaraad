@@ -4,6 +4,12 @@ History of this buildout
 6.0.0 (unreleased)
 ------------------
 
+- refactor method names to as_it_should().
+
+- Custom prevnext implementation which browsers between items within
+  a theme and between similar content types.
+  [jladage] 
+
 - Integrate year archive box for Advisory.  [jladage]
 
 - Integrated Nexprev box for Advisory.  [jadage]

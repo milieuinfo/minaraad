@@ -319,13 +319,13 @@ nav section {
         margin-left: -17px;
         float: left;
       }
-      li:first-child a {
+      li.prev a {
         border-left: 18px solid $mina-red-light;
         &:before {
           content: "\f104";
         }
       }
-      li:last-child a {
+      li.next a {
         border-left: 18px solid $mina-red;
         &:before {
           content: "\f105";
