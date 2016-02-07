@@ -68,12 +68,12 @@ class HelpersView(BrowserView):
         nxt = None
         for item in items:
             if item.getObject() == self.context:
-                prev = pos - 1 if pos > 1 else None
+                prev = pos - 1 if pos >= 1 else None
                 nxt = pos + 1
             pos += 1
         pos -= 1
         prev_dict = None
-        if prev is not None and prev >= 0:
+        if prev is not None:
             prev_dict = dict(title=items[prev].Title,
                              url=items[prev].getURL())
         next_dict = None
