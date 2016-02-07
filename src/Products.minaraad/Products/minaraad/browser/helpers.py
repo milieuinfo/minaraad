@@ -1,6 +1,49 @@
 from Products.Five import BrowserView
+from Products.CMFCore.utils import getToolByName
+from DateTime import DateTime
 from urlparse import urljoin
 from urlparse import urlparse
+
+class HelpersView(BrowserView):
+    """ Various helpers to render links to the Documenten section.
+    """
+
+    def years(self):
+        catalog = getToolByName(self.context, 'portal_catalog')
+        results = []
+        ctype = self.context.portal_type
+        theme = self.context.getThemeObject()
+
+        # Sometimes objects are created with a effective date of
+        # '1000-01-01 00:00:00'. Resulting in 1000+ values.
+        # Therefore we limit `fist` to a reasonable effective date.
+        first = catalog.searchResults(
+                portal_type=ctype,
+                sort_on='effective',
+                sort_order='ascending',
+                sort_limit=1,
+                effective={
+                    'query': (
+                        DateTime('1980-01-01 00:00:00'),
+                    ),
+                    'range': 'min',
+                }
+        )[0].effective.year()
+        last = catalog.searchResults(
+                sort_on='effective',
+                sort_order='descending',
+                sort_limit=1
+        )[0].effective.year()
+
+        years = range(first, last, 1)
+        years.reverse()
+        portal_url = getToolByName(self.context, 'portal_url')()
+        base_url = portal_url + '/documenten/'
+        for yr in years:
+            results.append({'year': yr,
+               'url': base_url + '#c2='+ctype+'&c5='+str(yr) +'&c7=%2Fminaraad%2Fthemas%2F' + theme.getId()})
+
+        return results
 
 
 class RedirectPlone(BrowserView):

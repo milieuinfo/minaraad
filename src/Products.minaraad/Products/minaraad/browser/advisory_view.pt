@@ -83,16 +83,8 @@
                         <metal:block use-macro="context/@@items/macros/nextprev" />
                       </section>
                       <section class="archive">
-                        <h2>Archief</h2>
-                        <p class="label">Advies <span>Biodiversiteit</span></p>
-                        <ul>
-                          <li><a href="#">2014</a></li>
-                          <li><a href="#">2013</a></li>
-                          <li><a href="#">2012</a></li>
-                          <li><a href="#">2011</a></li>
-                          <li><a href="#">2010</a></li>
-                          <li><a href="#">2009</a></li>
-                        </ul>
+                        <metal:block use-macro="context/@@items/macros/yeararchive" />
+
                       </section>
                       <section class="theme-list">
                         <h2>Thema's</h2>

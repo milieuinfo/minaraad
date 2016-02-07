@@ -827,7 +827,6 @@ def rebuild_date_indexes(context):
 def unininstall_classic_theme(context):
     portal = getToolByName(context, 'portal_url').getPortalObject()
     installer = getToolByName(context, 'portal_quickinstaller')
-    import pdb;pdb.set_trace()
     if getattr(portal, 'persberichten'):
         portal.manage_delObjects(ids=['persberichten'])
     for product in installer.listInstalledProducts():

@@ -257,7 +257,8 @@
       <h2>Bladeren</h2>
       <p class="label">
         <span i18n:translate="" tal:replace="context/portal_type">Advies</span>
-        <span tal:content="context/getThemeTitle">Biodiversiteit</span></p>
+        <span tal:content="context/getThemeTitle">Biodiversiteit</span>
+      </p>
       <ul>
         <li tal:condition="python:prev is not None">
           <a href="#" tal:attributes="href prev/url"
@@ -270,6 +271,19 @@
             Vlaamse NME-dag 'Groene Economie'</a>
         </li>
       </ul>
+    </metal:block>
+
+    <metal:block define-macro="yeararchive">
+    <h2>Archief</h2>
+    <p class="label">
+      <span i18n:translate=""
+        tal:replace="context/portal_type">Advies</span><span
+        tal:content="context/getThemeTitle">Biodiversiteit</span></p>
+    <ul>
+      <li tal:repeat="year context/@@helpers/years"><a href="#"
+          tal:attributes="href year/url"
+          tal:content="year/year">2014</a></li>
+    </ul>
     </metal:block>
 
   </body>

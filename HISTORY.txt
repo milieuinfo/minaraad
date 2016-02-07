@@ -4,19 +4,21 @@ History of this buildout
 6.0.0 (unreleased)
 ------------------
 
-- Integrated Nexprev box for Advisory. [jadage]
+- Integrate year archive box for Advisory.  [jladage]
+
+- Integrated Nexprev box for Advisory.  [jadage]
 
 - Added ImageAttachments to Advisory to support multiple images
-  to be added. [jladage]
+  to be added.  [jladage]
 
 - Migrate the foto field to an ImageAttachment for each Advisory.
   [jladage]
 
 - Removed Email actions from Advisory.  [jladage]
 
-- Uninstall Classic Theme. [jladage]
+- Uninstall Classic Theme.  [jladage]
 
-- Removed folder "Persberichten". [jladage]
+- Removed folder "Persberichten".  [jladage]
 
 - Reindex Date indexes to prevent POSKeyErrors.  [jladage]
 
@@ -26,7 +28,7 @@ History of this buildout
   [jladage]
 
 - Add index getThemeTitle and define it on theme, wow acquisition
-  will take care of indexing all children. [jladage]
+  will take care of indexing all children.  [jladage]
 
 - Added next meeting (hearing CT) logic with support for multiple
   planned hearings. [jladage]

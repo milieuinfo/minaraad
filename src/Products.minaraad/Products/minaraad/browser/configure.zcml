@@ -387,4 +387,12 @@
     <browser:page name="logout" />
   </browser:pages>
 
+
+  <browser:page
+      for="*"
+      name="helpers"
+      permission="zope2.View"
+      class=".helpers.HelpersView"
+      />
+
 </configure>
