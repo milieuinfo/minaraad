@@ -11,6 +11,7 @@ from plone.app.blob.field import ImageField
 
 from Products.minaraad.interfaces import IAdvisory
 from Products.minaraad.Attachmentsmixin import Attachmentsmixin
+from Products.minaraad.ImageAttachmentsmixin import ImageAttachmentsmixin
 from Products.minaraad.PostMixin import PostMixin
 from Products.minaraad.EmailMixin import EmailMixin
 from Products.minaraad.ThemeMixin import ThemeMixin
@@ -134,6 +135,7 @@ Advisory_schema = (
     getattr(EmailMixin, 'schema', atapi.Schema(())).copy() +
     theme_schema.copy() +
     getattr(Attachmentsmixin, 'schema', atapi.Schema(())).copy() +
+    ImageAttachmentsmixin.schema.copy() +
     contacts_schema.copy() +
     schema.copy())
 Advisory_schema['description'].isMetadata = False
@@ -144,7 +146,7 @@ Advisory_schema.moveField('coordinator', after="foto")
 Advisory_schema.moveField('authors', after="coordinator")
 
 
-class Advisory(PostMixin, OldThemeMixin, ThemeMixin, EmailMixin, Attachmentsmixin):
+class Advisory(Attachmentsmixin, PostMixin, OldThemeMixin, ThemeMixin, EmailMixin):
     """An advisory
     """
     implements(IAdvisory, IUseContact)

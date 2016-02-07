@@ -47,10 +47,32 @@ class Attachmentsmixin(atapi.OrderedBaseFolder):
 
     schema = Attachmentsmixin_schema
 
+    def getFirstImage(self):
+        """ Return first image attached to this content item
+        """
+        images = self.getImages()
+        if len(images) > 0:
+            return images[0]
+
+    def has_image(self):
+        if self.getFirstImage() is not None:
+            return True
+        return False
+
+    def getImages(self):
+        """ return a list of images attached to this content item
+        """
+        return self.contentValues(filter=dict(portal_type='ImageAttachment'))
+
+
+    def getAttachments(self):
+        """ return a list of images attached to this item
+        """
+        return self.contentValues(filter=dict(portal_type='FileAttachment'))
+
     def SearchableText(self, **kwargs):
         result = super(atapi.OrderedBaseFolder, self).SearchableText()
-        for attachment in self.contentValues(
-                filter=dict(portal_type='FileAttachment')):
+        for attachment in self.getAttachments():
             result += attachment.SearchableText()
         return result
 

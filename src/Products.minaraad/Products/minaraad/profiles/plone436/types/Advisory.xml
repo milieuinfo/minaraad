@@ -2,6 +2,11 @@
 <object name="Advisory" meta_type="Factory-based Type Information"
    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
    i18n:domain="minaraad">
+   <property i18n:translate="" name="title">Advisory</property>
+   <property name="allowed_content_types">
+    <element value="FileAttachment"/>
+    <element value="ImageAttachment"/>
+   </property>
  <action title="Export Subscribers" action_id="export_subscribers"
     category="object" condition_expr="python:1"
     url_expr="string:${object_url}/export_subscribers" visible="False">

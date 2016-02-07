@@ -26,19 +26,7 @@
                   <div class="article-advice-detail">
 
                     <article>
-                      <aside class="images" data-featherlight-gallery data-featherlight-filter="a">
-                        <!-- TODO: where should these images come from? There is only one 'foto' field. -->
-                        <figure tal:condition="context/getFoto">
-                          <a tal:attributes="href string:${context/absolute_url}/foto_foto">
-                            <img tal:attributes="src string:${context/absolute_url}/foto_foto" alt="" />
-                          </a>
-                        </figure>
-                        <div class="thumbnails">
-                          <a href="static/img/photos/belgisch_landschap.jpg"><img src="static/img/photos/belgisch_landschap.jpg" alt=""></a>
-                          <a href="static/img/photos/biologisch_onderzoek.jpg"><img src="static/img/photos/biologisch_onderzoek.jpg" alt=""></a>
-                          <a href="static/img/photos/windmolen.jpg"><img src="static/img/photos/windmolen.jpg" alt=""></a>
-                        </div>
-                      </aside>
+                      <metal:block use-macro="context/@@items/macros/listimageattachments"></metal:block>
                       <div class="body">
                         <section>
                           <header>

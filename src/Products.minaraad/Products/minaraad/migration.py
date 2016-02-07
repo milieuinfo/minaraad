@@ -833,3 +833,32 @@ def unininstall_classic_theme(context):
     for product in installer.listInstalledProducts():
         if product['id'] == 'plonetheme.classic':
             installer.uninstallProducts(products=['plonetheme.classic'])
+
+def migrate_advisory_foto_field_to_imageattachment(context):
+    from Products.SimpleAttachment.setuphandlers import registerImagesFormControllerActions
+    portal = getToolByName(context, 'portal_url').getPortalObject()
+    registerImagesFormControllerActions(portal, contentType = 'Advisory', template = 'base_edit')
+
+    catalog = getToolByName(context, 'portal_catalog')
+    brains = catalog({'portal_type': ['Advisory'],}) # Probably handy for other types as well.
+    for brain in brains:
+        obj = brain.getObject()
+        foto = obj.getFoto()
+        if foto is None:
+            continue
+        filename = foto.filename
+        if filename and filename != '':
+            #create ImageAttachment
+            new_context = context.portal_factory.doCreate(obj, obj.getId())
+            newImageId = new_context.invokeFactory(id=filename,
+                                                   type_name='ImageAttachment')
+            if newImageId is not None and newImageId != '':
+                imageId = newImageId
+
+            new_obj = getattr(new_context, imageId, None)
+            new_obj.setTitle(filename)
+            new_obj.setImage(foto.data)
+            new_obj.reindexObject()
+            #remove image from foto field
+            obj.setFoto(None)
+

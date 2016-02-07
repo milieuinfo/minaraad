@@ -118,6 +118,26 @@
       <h1>TODO: Study</h1>
     </metal:block>
 
+    <metal:block metal:define-macro="listimageattachments"
+                 tal:define="images context/getImages;
+                             first_image context/getFirstImage;">
+      <tal:images condition="context/has_image">
+        <aside class="images" data-featherlight-gallery data-featherlight-filter="a">
+          <figure>
+            <a tal:attributes="href string:${first_image/absolute_url}">
+              <img tal:attributes="src string:${first_image/absolute_url}/image_preview;
+                                   alt first_image/Title" />
+            </a>
+          </figure>
+          <div class="thumbnails">
+            <a tal:repeat="img python:images[1:]" tal:attributes="href string:${img/absolute_url}">
+              <img tal:attributes="src string:${img/absolute_url}/image_thumb;
+                                   alt string:img/Title" />
+            </a>
+          </div>
+        </aside>
+      </tal:images>
+    </metal:block>
 
     <metal:block metal:define-macro="listattachments"
                  tal:define="current_path python:'/'.join(context.getPhysicalPath());

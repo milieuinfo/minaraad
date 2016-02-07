@@ -4,6 +4,13 @@ History of this buildout
 6.0.0 (unreleased)
 ------------------
 
+- Added ImageAttachments to Advisory to support multiple images
+  to be added. [jladage]
+
+- Migrate the foto field to an ImageAttachment for each Advisory.
+  [jladage]
+
+- Removed Email actions from Advisory.  [jladage]
 
 - Uninstall Classic Theme. [jladage]
 

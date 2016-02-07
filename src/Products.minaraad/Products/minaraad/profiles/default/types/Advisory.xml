@@ -13,6 +13,7 @@
  <property name="filter_content_types">False</property>
  <property name="allowed_content_types">
   <element value="FileAttachment"/>
+  <element value="ImageAttachment"/>
  </property>
  <property name="allow_discussion">False</property>
  <alias from="edit" to="base_edit"/>
@@ -37,20 +38,5 @@
     condition_expr="object/isPrincipiaFolderish"
     url_expr="string:${folder_url}/view" visible="False">
   <permission value="View"/>
- </action>
- <action title="Export Subscribers" action_id="export_subscribers"
-    category="object" condition_expr="python:1"
-    url_expr="string:${object_url}/export_subscribers" visible="True">
-  <permission value="Modify portal content"/>
- </action>
- <action title="E-mail" action_id="email_out" category="object"
-    condition_expr="python:1" url_expr="string:${object_url}/email_out"
-    visible="True">
-  <permission value="Modify portal content"/>
- </action>
- <action title="Export Subscribers" action_id="export_subscribers"
-    category="object" condition_expr="python:1"
-    url_expr="string:${object_url}/export_subscribers" visible="True">
-  <permission value="Modify portal content"/>
  </action>
 </object>

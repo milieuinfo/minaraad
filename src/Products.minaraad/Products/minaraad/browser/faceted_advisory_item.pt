@@ -4,16 +4,16 @@
       title context/pretty_title_or_id|string:;
       desc_or_title python:description or title;
       url context/absolute_url|string:#;
-      has_image python:context.foto.foto;"
+      first_image context/getFirstImage;
+      has_image context/has_image"
      tal:attributes="href url;
                      title description">
 
     <img style="width:100%"
         tal:condition="has_image"
-        tal:attributes="
-      title desc_or_title;
-      alt title;
-      src string:$url/@@images/foto/foto"/>
+        tal:attributes="title desc_or_title;
+                        alt title;
+                        src first_image/absolute_url"/>
     <span class="photoAlbumEntryTitle" tal:content="context/pretty_title_or_id|string:">Title</span>
     <p class="label">
       Advies

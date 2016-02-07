@@ -1,0 +1,15 @@
+TODO
+====
+
+Here's a list of things we can do as part of support afterwards.
+
+Cleanup
+-------
+
+- Remove EmailMixin and actions from all CT's
+
+- Remove old theme field from all CT's and Vocabulary/control_panel.
+
+
+
+
