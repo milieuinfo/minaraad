@@ -284,5 +284,15 @@
     </ul>
     </metal:block>
 
+    <metal:block define-macro="themelist">
+        <h2>Thema's</h2>
+        <ul>
+          <li tal:repeat="theme context/@@helpers/themes"
+              tal:attributes="class theme/css_class">
+            <a href="theme_detail.html"
+               tal:attributes="href theme/url"
+               tal:content="theme/title">Biodiversiteit</a></li>
+        </ul>
+    </metal:block>
   </body>
 </html>

@@ -1,5 +1,5 @@
 from Products.Five import BrowserView
-from Products.CMFCore.utils import getToolByName
+from plone import api
 from DateTime import DateTime
 from urlparse import urljoin
 from urlparse import urlparse
@@ -12,7 +12,7 @@ class HelpersView(BrowserView):
         """ Return a dict of years and url's to the documenten section
             for the current theme and content type.
         """
-        catalog = getToolByName(self.context, 'portal_catalog')
+        catalog = api.portal.get_tool(name='portal_catalog')
         results = []
         ctype = self.context.portal_type
         theme = self.context.getThemeObject()
@@ -40,7 +40,7 @@ class HelpersView(BrowserView):
 
         years = range(first, last, 1)
         years.reverse()
-        portal_url = getToolByName(self.context, 'portal_url')()
+        portal_url = api.portal.get().absolute_url()
         base_url = portal_url + '/documenten/'
         for yr in years:
             results.append({'year': yr,
@@ -56,7 +56,7 @@ class HelpersView(BrowserView):
             - Only display items within the same theme.
             - Only display items with the same type.
         """
-        catalog = getToolByName(self.context, 'portal_catalog')
+        catalog = api.portal.get_tool(name='portal_catalog')
         ctype = self.context.portal_type
         path = '/'.join(self.context.getThemeObject().getPhysicalPath())
         items = catalog.searchResults(portal_type=ctype,
@@ -69,7 +69,6 @@ class HelpersView(BrowserView):
         for item in items:
             if item.getObject() == self.context:
                 prev = pos - 1 if pos > 1 else None
-                this = pos
                 nxt = pos + 1
             pos += 1
         pos -= 1
@@ -83,6 +82,27 @@ class HelpersView(BrowserView):
                              url=items[nxt].getURL())
 
         return {'next': next_dict, 'previous': prev_dict}
+
+    def themes(self):
+        """ Return a list of themes in the form of dicts.
+        """
+        brains = api.content.find(
+            context=api.portal.get(),
+            portal_type="Theme",
+        )
+        current_theme = self.context.getThemeObject()
+        themes = [brain.getObject() for brain in brains]
+        results = []
+        for theme in themes:
+            css_class = ''
+            if current_theme == theme:
+               css_class = 'active'
+            results.append({
+                'title': theme.Title(),
+                'url': theme.absolute_url(),
+                'css_class': css_class
+            })
+        return results
 
 
 class RedirectPlone(BrowserView):

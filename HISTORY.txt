@@ -4,6 +4,11 @@ History of this buildout
 6.0.0 (unreleased)
 ------------------
 
+- Integrated Themes list, with current theme highlighted.
+  [jladage]
+
+- Refactor out getToolByName. [jladage]
+
 - refactor method names to as_it_should().
 
 - Custom prevnext implementation which browsers between items within
