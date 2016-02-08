@@ -725,7 +725,6 @@ def move_content(context):
 
         target = portal['themas'][theme]
         if aq_parent(obj).getPhysicalPath() == target.getPhysicalPath():
-            logger.info("Already moved %s", obj.title)
             continue
 
         api.content.move(source=obj, target=target)
