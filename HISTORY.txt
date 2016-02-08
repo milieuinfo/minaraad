@@ -4,6 +4,8 @@ History of this buildout
 6.0.0 (unreleased)
 ------------------
 
+- Fix html of facet previews. [jladage]
+
 - Integrate Hearing detail view and refactored foto migration.
   [jladage]
 

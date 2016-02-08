@@ -1,4 +1,4 @@
-<div class="photoAlbumEntry">
+<article class="article-advice">
   <a tal:define="
       description context/Description|string:;
       title context/pretty_title_or_id|string:;
@@ -14,12 +14,17 @@
         tal:attributes="title desc_or_title;
                         alt title;
                         src first_image/absolute_url"/>
-    <span class="photoAlbumEntryTitle" tal:content="context/pretty_title_or_id|string:">Title</span>
-    <p class="label">
-      Advies
-      <span tal:content="context/getThemeTitle|nothing"></span>
-    </p>
-    <span class="photoAlbumEntryDescription" tal:content="description">Description</span>
-
+    <div class="body">
+      <h3 tal:content="title">Title</h3>
+      <p class="label">
+        Advies
+        <span tal:content="context/getThemeTitle|nothing"></span>
+      </p>
+      <p class="truncate"
+         tal:condition="python:description is not None"
+         tal:content="description">
+        Description of this item.
+      </p>
+    </div>
   </a>
-</div>
+</article>

@@ -17,6 +17,20 @@
 
   <browser:page
     name="faceted-preview-item"
+    for="Products.minaraad.interfaces.IMREvent"
+    template="faceted_event_item.pt"
+    permission="zope2.View"
+    />
+
+  <browser:page
+    name="faceted-preview-item"
+    for="Products.minaraad.interfaces.IHearing"
+    template="faceted_hearing_item.pt"
+    permission="zope2.View"
+    />
+
+  <browser:page
+    name="faceted-preview-item"
     for="Products.SimpleAttachment.interfaces.IFileAttachment"
     template="faceted_fileattachment_item.pt"
     permission="zope2.View"
