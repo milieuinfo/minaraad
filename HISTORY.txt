@@ -4,6 +4,9 @@ History of this buildout
 6.0.0 (unreleased)
 ------------------
 
+- Fix image rendering of Recent Documents on theme_list page.
+  [jladage]
+
 - Fix html of facet previews. [jladage]
 
 - Integrate Hearing detail view and refactored foto migration.
