@@ -66,7 +66,7 @@
               Advies
               <span tal:content="item/getThemeTitle|nothing"></span>
             </p>
-            <p class="truncate" tal:content="item/Description"></p>
+            <div class="truncate" tal:content="structure context/getPopular_summary|nothing" />
           </div>
         </a>
       </article>
@@ -88,6 +88,7 @@
               <span tal:content="item/getThemeTitle|nothing"></span>
             </p>
             <h3 tal:content="item/Title"></h3>
+            <p class="truncate" tal:content="context/Description|nothing" />
           </div>
         </a>
       </article>
@@ -97,7 +98,7 @@
     <metal:block metal:define-macro="hearing">
       <article class="article-next-meeting">
         <a href="event.html"
-           tal:attributes="href python: item.absolute_url()">
+           tal:attributes="href item/absolute_url">
           <header>
             <h3>
               <i class="fa fa-gavel"></i>
@@ -106,7 +107,7 @@
           </header>
           <div class="body">
             <time tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;
-                              start python:item.getStart_time()"
+                              start item/getStart_time"
                   tal:attributes="datetime python: start.strftime('%Y-%m-%d %h:%m+01:00')"
                   tal:content="python: toLocalizedTime(start, long_format=1)">26 november 2015 9:30</time>
           </div>

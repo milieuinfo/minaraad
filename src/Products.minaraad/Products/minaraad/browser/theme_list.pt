@@ -117,8 +117,11 @@
                               </tal:image>
                               <div class="body">
                                 <h3 tal:content="item/Title"></h3>
-                                <p class="label">Advies <span>biodiversiteit</span></p>
-                                <p class="truncate" tal:content="item/Description"></p>
+                                <p class="label">
+                                   <span tal:content="item/portal_type"
+                                         tal:omit-tag=""
+                                   i18n:translate="">Advies</span> <span tal:content="item/getThemeTitle">biodiversiteit</span></p>
+                                <div class="truncate" tal:content="structure item/getPopular_summary|item/Description|nothing"></div>
                               </div>
                             </a>
                           </article>

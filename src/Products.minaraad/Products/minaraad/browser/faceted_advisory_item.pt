@@ -1,18 +1,14 @@
 <article class="article-advice">
   <a tal:define="
-      description context/Description|string:;
       title context/pretty_title_or_id|string:;
-      desc_or_title python:description or title;
       url context/absolute_url|string:#;
       first_image context/get_first_image;
       has_image context/has_image"
-     tal:attributes="href url;
-                     title description">
+     tal:attributes="href url">
 
     <img style="width:100%"
         tal:condition="has_image"
-        tal:attributes="title desc_or_title;
-                        alt title;
+        tal:attributes="alt title;
                         src first_image/absolute_url"/>
     <div class="body">
       <h3 tal:content="title">Title</h3>
@@ -20,11 +16,11 @@
         Advies
         <span tal:content="context/getThemeTitle|nothing"></span>
       </p>
-      <p class="truncate"
-         tal:condition="python:description is not None"
-         tal:content="description">
+      <div class="truncate"
+         tal:condition="python: context.getPopular_summary() is not ''"
+         tal:content="structure context/getPopular_summary|nothing">
         Description of this item.
-      </p>
+      </div>
     </div>
   </a>
 </article>
