@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minaraad\n"
-"POT-Creation-Date: 2013-03-14 15:57+0000\n"
+"POT-Creation-Date: 2016-02-08 15:23+0000\n"
 "PO-Revision-Date: Mon Aug  8 12:16:21 2005\n"
 "Last-Translator: Rocky Burt <r.burt@zestsoftware.nl>\n"
 "Language-Team: Rocky Burt <r.burt@zestsoftware.nl>\n"
@@ -35,11 +35,8 @@ msgstr ""
 msgid "Add Personal Preferences Portlet"
 msgstr ""
 
-#: ./browser/linkedinPortlet.py:30
-msgid "Add linkedin Portlet"
-msgstr ""
-
 #: ./profiles/default/types/Advisory.xml
+#: ./profiles/plone436/types/Advisory.xml
 msgid "Advisory"
 msgstr ""
 
@@ -63,10 +60,6 @@ msgstr ""
 msgid "AnnualReport"
 msgstr ""
 
-#: ./skins/minaraad/prefs_user_edit.cpy:46
-msgid "Changes made."
-msgstr ""
-
 #: ./profiles/default/types/ContactPerson.xml
 msgid "ContactPerson"
 msgstr ""
@@ -75,8 +68,26 @@ msgstr ""
 msgid "Date:"
 msgstr ""
 
-#: ./browser/hearing_view.pt:76
-#: ./browser/mrevent_view.pt:68
+#: ./browser/faceted_section_widget/widget.py:37
+msgid "Default selected item"
+msgstr ""
+
+#: ./browser/faceted_section_widget/widget.py:36
+msgid "Default value"
+msgstr ""
+
+#: ./profiles/default/types/Theme.xml
+#: ./profiles/plone436/types/Theme.xml
+msgid "Edit"
+msgstr ""
+
+#: ./profiles/default/types/Theme.xml
+#: ./profiles/plone436/types/Theme.xml
+msgid "Folder Listing"
+msgstr ""
+
+#: ./browser/hearing_view.pt:108
+#: ./browser/mrevent_view.pt:56
 #: ./skins/minaraad/EmailTemplate-Hearing.pt:22
 msgid "Goal:"
 msgstr ""
@@ -85,18 +96,26 @@ msgstr ""
 msgid "Hearing"
 msgstr ""
 
-#: ./browser/linkedinPortlet.py:21
-msgid "LinkedIn"
+#: ./browser/faceted_section_widget/widget.py:25
+msgid "Hide 'All' option"
 msgstr ""
 
-#: ./browser/hearing_view.pt:86
-#: ./browser/mrevent_view.pt:78
+#: ./browser/faceted_section_widget/widget.py:26
+msgid "If this checkbox is checked, hides the All option"
+msgstr ""
+
+#: ./browser/hearing_view.pt:118
+#: ./browser/mrevent_view.pt:50
 #: ./skins/minaraad/EmailTemplate-Hearing.pt:18
 msgid "Location:"
 msgstr ""
 
 #: ./profiles/default/types/MREvent.xml
 msgid "MREvent"
+msgstr ""
+
+#: ./profiles.zcml:13
+msgid "Minaraad"
 msgstr ""
 
 #: ./profiles/default/types/NewsLetter.xml
@@ -111,20 +130,33 @@ msgstr ""
 msgid "Personal Preferences"
 msgstr ""
 
+#: ./content/Advisory.py:65
+msgid "Popular summary"
+msgstr ""
+
 #: ./profiles/default/types/Pressrelease.xml
 msgid "Pressrelease"
+msgstr ""
+
+#: ./profiles.zcml:13
+msgid "Profile for the minaraad site."
+msgstr ""
+
+#: ./browser/faceted_section_widget/widget.py:50
+msgid "Section"
 msgstr ""
 
 #: ./profiles/default/types/Study.xml
 msgid "Study"
 msgstr ""
 
-#: ./browser/personalPreferencesPortlet.py:47
-msgid "This portlet shows links for editing your preferences"
+#: ./profiles/default/types/Theme.xml
+#: ./profiles/plone436/types/Theme.xml
+msgid "Theme"
 msgstr ""
 
-#: ./browser/linkedinPortlet.py:31
-msgid "This portlet shows the linkedIn link"
+#: ./browser/personalPreferencesPortlet.py:47
+msgid "This portlet shows links for editing your preferences"
 msgstr ""
 
 #. Default: "Time:"
@@ -132,9 +164,29 @@ msgstr ""
 msgid "Time"
 msgstr ""
 
-#. Default: "Advisory date:"
-#: ./browser/advisory_view.pt:17
-msgid "advisory_date"
+#: ./profiles.zcml:22
+msgid "Upgrade Minaraad to Plone 4.1"
+msgstr ""
+
+#: ./profiles.zcml:31
+msgid "Upgrade Minaraad to Plone 4.3.6"
+msgstr ""
+
+#: ./profiles.zcml:22
+msgid "Upgrade profile for Plone 4.1 for the Minaraad site."
+msgstr ""
+
+#: ./profiles.zcml:31
+msgid "Upgrade profile for Plone 4.3.6 for the Minaraad site."
+msgstr ""
+
+#: ./profiles/default/types/Theme.xml
+#: ./profiles/plone436/types/Theme.xml
+msgid "View"
+msgstr ""
+
+#: ./browser/faceted_year_select_widget/widget.py:22
+msgid "Year select"
 msgstr ""
 
 #. Default: "Themes settings for Site"
@@ -169,42 +221,42 @@ msgid "heading_themes_setup"
 msgstr ""
 
 #. Default: "You are currently subscribed to this hearing."
-#: ./browser/hearing_view.pt:26
+#: ./browser/hearing_view.pt:58
 msgid "hearing_registered_label"
 msgstr ""
 
 #. Default: "You are not currently subscribed to this hearing."
-#: ./browser/hearing_view.pt:43
+#: ./browser/hearing_view.pt:75
 msgid "hearing_unregistered_label"
 msgstr ""
 
 #. Default: "Send out an e-mail to all subscribers pertaining to this item. If the 'Send As Test' checkbox is checked below, the e-mail is only sent to the people in the 'To' field. Fill in the username which should receive the test email. Once a non-test e-mail has been sent out, no further e-mail's can be sent from this particular tab."
-#: ./browser/email_out.pt:46
+#: ./browser/email_out.pt:88
 msgid "help_email_out"
 msgstr ""
 
 #. Default: "Additional message text (text used from emailTemplate field is considered master e-mail text)."
-#: ./browser/email_out.pt:112
+#: ./browser/email_out.pt:154
 msgid "help_email_out_additional"
 msgstr ""
 
 #. Default: "An e-mail has already been sent out for this content type on ${email_sentdate}."
-#: ./browser/email_out.pt:40
+#: ./browser/email_out.pt:82
 msgid "help_email_out_already_sent"
 msgstr ""
 
 #. Default: "Comma-separated list of member ids this mail is sent out to. This is only for testing purposes and for members that you want the mail to be sent to in addition to the ones that subscribed."
-#: ./browser/email_out.pt:73
+#: ./browser/email_out.pt:115
 msgid "help_email_out_to"
 msgstr ""
 
 #. Default: "Test e-mails can be sent as frequently as needed but only get sent to the members in the above \"To\" field."
-#: ./browser/email_out.pt:93
+#: ./browser/email_out.pt:135
 msgid "help_send_as_test"
 msgstr ""
 
 #. Default: "Name of the new theme to create."
-#: ./browser/minaraad_config.pt:108
+#: ./browser/minaraad_config.pt:103
 msgid "help_theme_name"
 msgstr ""
 
@@ -215,18 +267,12 @@ msgid "hour"
 msgstr ""
 
 #. Default: "Add"
-#: ./browser/minaraad_config.pt:121
+#: ./browser/minaraad_config.pt:115
 msgid "label_add"
 msgstr ""
 
-#. Default: "Related documents"
-#: ./browser/advisory_view.pt:63
-msgid "label_advisory_related_documents"
-msgstr ""
-
 #. Default: "Agenda items"
-#: ./browser/hearing_view.pt:111
-#: ./browser/mrevent_view.pt:104
+#: ./browser/hearing_view.pt:143
 msgid "label_agendaitems"
 msgstr ""
 
@@ -236,31 +282,27 @@ msgid "label_attachment_published"
 msgstr ""
 
 #. Default: "Bus"
-#: ./skins/minaraad/prefs_user_details.cpt:253
-#: ./userdataschema.py:83
+#: ./userdataschema.py:84
 msgid "label_bus"
 msgstr ""
 
 #. Default: "To block spammers, please solve this \"captcha\""
-#: ./userdataschema.py:123
+#: ./userdataschema.py:125
 msgid "label_captcha"
 msgstr ""
 
 #. Default: "City"
-#: ./skins/minaraad/prefs_user_details.cpt:295
-#: ./userdataschema.py:93
+#: ./userdataschema.py:94
 msgid "label_city"
 msgstr ""
 
 #. Default: "Company"
-#: ./skins/minaraad/prefs_user_details.cpt:162
-#: ./userdataschema.py:63
+#: ./userdataschema.py:64
 msgid "label_company"
 msgstr ""
 
 #. Default: "Country"
-#: ./skins/minaraad/prefs_user_details.cpt:320
-#: ./userdataschema.py:98
+#: ./userdataschema.py:99
 msgid "label_country"
 msgstr ""
 
@@ -272,22 +314,22 @@ msgid "label_dear"
 msgstr ""
 
 #. Default: "Delete"
-#: ./browser/minaraad_config.pt:83
+#: ./browser/minaraad_config.pt:79
 msgid "label_delete"
 msgstr ""
 
 #. Default: "Edit"
-#: ./browser/minaraad_config.pt:76
+#: ./browser/minaraad_config.pt:73
 msgid "label_edit"
 msgstr ""
 
 #. Default: "Additional Message"
-#: ./browser/email_out.pt:109
+#: ./browser/email_out.pt:151
 msgid "label_email_out_additional"
 msgstr ""
 
 #. Default: "To"
-#: ./browser/email_out.pt:70
+#: ./browser/email_out.pt:112
 msgid "label_email_out_to"
 msgstr ""
 
@@ -309,8 +351,8 @@ msgid "label_export_as_excel"
 msgstr ""
 
 #. Default: "Export CSV"
-#: ./browser/hearing_view.pt:175
-#: ./browser/mrevent_view.pt:168
+#: ./browser/hearing_view.pt:207
+#: ./browser/mrevent_view.pt:146
 msgid "label_exportcsv"
 msgstr ""
 
@@ -320,38 +362,25 @@ msgid "label_exportsubscribers"
 msgstr ""
 
 #. Default: "First name"
-#: ./skins/minaraad/prefs_user_details.cpt:116
-#: ./userdataschema.py:58
+#: ./userdataschema.py:59
 msgid "label_firstname"
 msgstr ""
 
 #. Default: "Gender"
-#: ./skins/minaraad/prefs_user_details.cpt:98
-#: ./userdataschema.py:52
+#: ./userdataschema.py:53
 msgid "label_gender"
 msgstr ""
 
 #. Default: "House number"
-#: ./skins/minaraad/prefs_user_details.cpt:229
-#: ./userdataschema.py:78
+#: ./userdataschema.py:79
 msgid "label_housenumber"
 msgstr ""
 
 #. Default: "Job title"
 #: ./browser/contactperson_view.pt:24
 #: ./skins/minaraad/contactperson_macros.pt:49
-#: ./skins/minaraad/prefs_user_details.cpt:183
+#: ./userdataschema.py:69
 msgid "label_jobtitle"
-msgstr ""
-
-#. Default: "Last modified"
-#: ./skins/minaraad/prefs_user_details.cpt:85
-msgid "label_last_modification_date"
-msgstr ""
-
-#. Default: "Last name"
-#: ./skins/minaraad/prefs_user_details.cpt:139
-msgid "label_lastname"
 msgstr ""
 
 #. Default: "LinkedIn"
@@ -383,30 +412,19 @@ msgid "label_no_reference"
 msgstr ""
 
 #. Default: "Other country"
-#: ./skins/minaraad/prefs_user_details.cpt:340
-#: ./userdataschema.py:105
+#: ./userdataschema.py:106
 msgid "label_other_country"
 msgstr ""
 
 #. Default: "Phone number"
 #: ./browser/contactperson_view.pt:51
 #: ./skins/minaraad/contactperson_macros.pt:76
-#: ./skins/minaraad/prefs_user_details.cpt:363
+#: ./userdataschema.py:112
 msgid "label_phonenumber"
 msgstr ""
 
-#. Default: "Product number:"
-#: ./browser/advisory_view.pt:30
-msgid "label_product_number"
-msgstr ""
-
-#. Default: "Project:"
-#: ./browser/advisory_view.pt:37
-msgid "label_project"
-msgstr ""
-
 #. Default: "Save"
-#: ./browser/minaraad_config.pt:69
+#: ./browser/minaraad_config.pt:67
 #: ./browser/subscriptions_config.pt:133
 msgid "label_save"
 msgstr ""
@@ -417,12 +435,12 @@ msgid "label_select_all_themes"
 msgstr ""
 
 #. Default: "Send"
-#: ./browser/email_out.pt:123
+#: ./browser/email_out.pt:165
 msgid "label_send"
 msgstr ""
 
 #. Default: "Send Test e-mail"
-#: ./browser/email_out.pt:90
+#: ./browser/email_out.pt:132
 msgid "label_send_as_test"
 msgstr ""
 
@@ -432,14 +450,12 @@ msgid "label_sendemail"
 msgstr ""
 
 #. Default: "Street"
-#: ./skins/minaraad/prefs_user_details.cpt:205
-#: ./userdataschema.py:73
+#: ./userdataschema.py:74
 msgid "label_street"
 msgstr ""
 
 #. Default: "Subscribe"
-#: ./browser/hearing_view.pt:46
-#: ./browser/mrevent_view.pt:46
+#: ./browser/hearing_view.pt:78
 msgid "label_subscribe"
 msgstr ""
 
@@ -448,15 +464,14 @@ msgid "label_subscribersoverview"
 msgstr ""
 
 #. Default: "Theme:"
-#: ./browser/advisory_view.pt:24
-#: ./browser/hearing_view.pt:68
-#: ./browser/minaraad_config.pt:104
+#: ./browser/hearing_view.pt:100
+#: ./browser/minaraad_config.pt:99
+#: ./browser/study_view.pt:19
 msgid "label_theme_name"
 msgstr ""
 
 #. Default: "Unsubscribe"
-#: ./browser/hearing_view.pt:29
-#: ./browser/mrevent_view.pt:29
+#: ./browser/hearing_view.pt:61
 msgid "label_unsubscribe"
 msgstr ""
 
@@ -468,8 +483,7 @@ msgid "label_up_to_plone_setup"
 msgstr ""
 
 #. Default: "Zipcode"
-#: ./skins/minaraad/prefs_user_details.cpt:271
-#: ./userdataschema.py:88
+#: ./userdataschema.py:89
 msgid "label_zipcode"
 msgstr ""
 
@@ -479,7 +493,7 @@ msgid "labelattachment_published_desc"
 msgstr ""
 
 #. Default: "Add Theme"
-#: ./browser/minaraad_config.pt:101
+#: ./browser/minaraad_config.pt:96
 msgid "legend_add_theme_details"
 msgstr ""
 
@@ -494,7 +508,7 @@ msgid "legend_edit_theme"
 msgstr ""
 
 #. Default: "Send e-mail to subscribers"
-#: ./browser/email_out.pt:34
+#: ./browser/email_out.pt:76
 msgid "legend_sendemail"
 msgstr ""
 
@@ -821,7 +835,6 @@ msgid "minaraad_label_subscription_allowed"
 msgstr ""
 
 #. Default: "Summary"
-#: ./browser/advisory_view.pt:47
 #: ./browser/study_view.pt:29
 msgid "minaraad_label_summary"
 msgstr ""
@@ -837,8 +850,8 @@ msgid "minaraad_label_zipcode"
 msgstr ""
 
 #. Default: "(none currently)"
-#: ./browser/hearing_view.pt:157
-#: ./browser/mrevent_view.pt:150
+#: ./browser/hearing_view.pt:189
+#: ./browser/mrevent_view.pt:128
 msgid "no_attendees"
 msgstr ""
 
@@ -859,19 +872,19 @@ msgid "till"
 msgstr ""
 
 #. Default: "Attachments"
-#: ./skins/minaraad/mina_attachments.pt:22
+#: ./skins/minaraad/mina_attachments.pt:24
 msgid "title_attachments"
 msgstr ""
 
 #. Default: "Attendees"
-#: ./browser/hearing_view.pt:149
-#: ./browser/mrevent_view.pt:142
+#: ./browser/hearing_view.pt:181
+#: ./browser/mrevent_view.pt:120
 msgid "title_attendees"
 msgstr ""
 
 #. Default: "Council Members"
-#: ./browser/hearing_view.pt:151
-#: ./browser/mrevent_view.pt:144
+#: ./browser/hearing_view.pt:183
+#: ./browser/mrevent_view.pt:122
 msgid "title_counsilmembers"
 msgstr ""
 
@@ -882,8 +895,8 @@ msgid "title_email"
 msgstr ""
 
 #. Default: "Members"
-#: ./browser/hearing_view.pt:162
-#: ./browser/mrevent_view.pt:155
+#: ./browser/hearing_view.pt:194
+#: ./browser/mrevent_view.pt:133
 msgid "title_members"
 msgstr ""
 
@@ -909,4 +922,3 @@ msgstr ""
 #: ./skins/minaraad/mrevent_listing_view.pt:73
 msgid "up_untill"
 msgstr ""
-
