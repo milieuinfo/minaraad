@@ -76,21 +76,21 @@ msgstr "Datum:"
 
 #: ./browser/faceted_section_widget/widget.py:37
 msgid "Default selected item"
-msgstr ""
+msgstr "Standaard geselecteerd item"
 
 #: ./browser/faceted_section_widget/widget.py:36
 msgid "Default value"
-msgstr ""
+msgstr "Standaardwaarde"
 
 #: ./profiles/default/types/Theme.xml
 #: ./profiles/plone436/types/Theme.xml
 msgid "Edit"
-msgstr ""
+msgstr "Bewerken"
 
 #: ./profiles/default/types/Theme.xml
 #: ./profiles/plone436/types/Theme.xml
 msgid "Folder Listing"
-msgstr ""
+msgstr "Inhoud"
 
 #. Default: "Goal:"
 #: ./browser/hearing_view.pt:108
@@ -106,11 +106,11 @@ msgstr "Hoorzitting"
 
 #: ./browser/faceted_section_widget/widget.py:25
 msgid "Hide 'All' option"
-msgstr ""
+msgstr "Verberg optie 'Alle'"
 
 #: ./browser/faceted_section_widget/widget.py:26
 msgid "If this checkbox is checked, hides the All option"
-msgstr ""
+msgstr "Als deze checkbox is aangevinkt, wordt de optie 'Alle' verborgen."
 
 #. Default: "Location:"
 #: ./browser/hearing_view.pt:118
@@ -125,7 +125,7 @@ msgstr "Evenement"
 
 #: ./profiles.zcml:13
 msgid "Minaraad"
-msgstr ""
+msgstr "Minaraad"
 
 #. Default: "Newsletter"
 #: ./profiles/default/types/NewsLetter.xml
@@ -142,7 +142,7 @@ msgstr "Persoonlijke voorkeuren"
 
 #: ./content/Advisory.py:65
 msgid "Popular summary"
-msgstr ""
+msgstr "Populaire samenvatting"
 
 #: ./profiles/default/types/Pressrelease.xml
 msgid "Pressrelease"
@@ -150,11 +150,11 @@ msgstr "Persbericht"
 
 #: ./profiles.zcml:13
 msgid "Profile for the minaraad site."
-msgstr ""
+msgstr "Profiel voor de minaraad site."
 
 #: ./browser/faceted_section_widget/widget.py:50
 msgid "Section"
-msgstr ""
+msgstr "Sectie"
 
 #. Default: "Study"
 #: ./profiles/default/types/Study.xml
@@ -164,7 +164,7 @@ msgstr "Nota"
 #: ./profiles/default/types/Theme.xml
 #: ./profiles/plone436/types/Theme.xml
 msgid "Theme"
-msgstr ""
+msgstr "Thema"
 
 #: ./browser/personalPreferencesPortlet.py:47
 msgid "This portlet shows links for editing your preferences"
@@ -177,28 +177,28 @@ msgstr "Tijd:"
 
 #: ./profiles.zcml:22
 msgid "Upgrade Minaraad to Plone 4.1"
-msgstr ""
+msgstr "Upgrade Minaraad naar Plone 4.1"
 
 #: ./profiles.zcml:31
 msgid "Upgrade Minaraad to Plone 4.3.6"
-msgstr ""
+msgstr "Upgrade Minaraad naar Plone 4.3.6"
 
 #: ./profiles.zcml:22
 msgid "Upgrade profile for Plone 4.1 for the Minaraad site."
-msgstr ""
+msgstr "Upgrade profile voor Plone 4.1 voor de Minaraad site."
 
 #: ./profiles.zcml:31
 msgid "Upgrade profile for Plone 4.3.6 for the Minaraad site."
-msgstr ""
+msgstr "Upgrade profile voor Plone 4.3.6 voor de Minaraad site."
 
 #: ./profiles/default/types/Theme.xml
 #: ./profiles/plone436/types/Theme.xml
 msgid "View"
-msgstr ""
+msgstr "Bekijken"
 
 #: ./browser/faceted_year_select_widget/widget.py:22
 msgid "Year select"
-msgstr ""
+msgstr "Jaarselectie"
 
 #. Default: "Themes settings for Site"
 #: ./browser/minaraad_config.pt:23
