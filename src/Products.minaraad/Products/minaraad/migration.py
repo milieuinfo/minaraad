@@ -6,11 +6,13 @@
 from persistent.list import PersistentList
 from PIL import Image, ImageDraw, ImageColor
 from plone import api
+from plone.i18n.normalizer import idnormalizer
 from plone.locking.interfaces import ILockable
 from plone.portlets.interfaces import IPortletAssignmentMapping
 from plone.portlets.interfaces import IPortletManager
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.utils import _createObjectByType
+from Products.SimpleAttachment.setuphandlers import registerImagesFormControllerActions
 from Products.minaraad.content.interfaces import IThemes, IUseContact
 from Products.minaraad.events import save_theme_name
 from Products.minaraad.interfaces import IAttendeeManager
@@ -815,6 +817,8 @@ def setup_faceted_navigation(context):
     importer = docs.restrictedTraverse('@@faceted_exportimport')
     criteria_file = open('faceted_criteria.xml')
     importer.import_xml(import_file=criteria_file)
+    logger.info("Configured faceted navigation for /documenten")
+
 
 
 def rebuild_date_indexes(context):
@@ -834,18 +838,19 @@ def unininstall_classic_theme(context):
     for product in installer.listInstalledProducts():
         if product['id'] == 'plonetheme.classic':
             installer.uninstallProducts(products=['plonetheme.classic'])
+            logger.info("Plone Classic Theme uninstalled")
 
 
-def migrate_advisory_foto_field_to_imageattachment(context):
-    from Products.SimpleAttachment.setuphandlers import registerImagesFormControllerActions
+
+def migrate_foto_field_to_imageattachment(context):
     portal = getToolByName(context, 'portal_url').getPortalObject()
-    registerImagesFormControllerActions(portal, contentType='Advisory',
-                                        template='base_edit')
-    registerImagesFormControllerActions(portal, contentType='MREvent',
-                                        template='base_edit')
+    migrate_types = ['Advisory', 'MREvent', 'Hearing']
+    for ctype in migrate_types:
+        registerImagesFormControllerActions(portal, contentType=ctype,
+                                            template='base_edit')
 
     catalog = getToolByName(context, 'portal_catalog')
-    brains = catalog({'portal_type': ['Advisory', 'MREvent']})
+    brains = catalog({'portal_type': migrate_types })
     for brain in brains:
         obj = brain.getObject()
         foto = obj.getFoto()
@@ -855,7 +860,7 @@ def migrate_advisory_foto_field_to_imageattachment(context):
         if filename and filename != '':
             #create ImageAttachment
             new_context = context.portal_factory.doCreate(obj, obj.getId())
-            newImageId = new_context.invokeFactory(id=filename,
+            newImageId = new_context.invokeFactory(id=idnormalizer.normalize(filename),
                                                    type_name='ImageAttachment')
             if newImageId is not None and newImageId != '':
                 imageId = newImageId
@@ -866,6 +871,8 @@ def migrate_advisory_foto_field_to_imageattachment(context):
             new_obj.reindexObject()
             #remove image from foto field
             obj.setFoto(None)
+            logger.info("Migrated foto field of %s to ImageAttachment", obj.Title())
+
 
 
 

@@ -4,6 +4,9 @@ History of this buildout
 6.0.0 (unreleased)
 ------------------
 
+- Integrate Hearing detail view and refactored foto migration.
+  [jladage]
+
 - Integrate MREvent detail view and migrate foto field to
   ImageAttachement. [jladage]
 
