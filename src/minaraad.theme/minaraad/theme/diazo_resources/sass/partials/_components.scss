@@ -351,6 +351,37 @@ nav section {
 }
 
 
+#faceted-form{
+  .faceted-widget{
+    border-top: 5px solid $mina-red-dark;
+    padding: 0.75em 15px 10px 15px;
+    margin-bottom: 15px;
+    background: $mina-bg-gray;
+    .widget-fieldset{
+      margin: 0;
+      padding: 0;
+      border: 0;
+      legend{
+        color: #b2324d;
+        font-size: 16px;
+        font-weight: 600;
+        text-transform: uppercase;
+        margin-top: .75em;
+        border: 0;
+      }
+      input[type=text]{
+        width: 100%;
+      }
+      label{
+        font-weight: normal;
+        padding-left: 0.5em;
+        width: 90%;
+      }
+    }
+  }
+}
+
+
 
 // -----------------------------------------------------------------------------
 // Small screen / tablet
