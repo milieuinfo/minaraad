@@ -100,13 +100,13 @@ option.  But zero days is exactly what you want after you have just
 migrated from filestorage to relstorage::
 
   $ bin/zodbpack parts/conf/zodbpack.cfg
- 
+
 The packing can also be split into two parts, which is recommended at
 least after doing a big change on a large database, like after the
 initial migration to RelStorage.  You then start with a pre pack::
 
   $ bin/zodbpack --prepack parts/conf/zodbpack.cfg
- 
+
 This changes nothing, but only does some analyzing.  The information on
 what to pack gets stored in a table; the packing itself is not done.
 A second prepack run is therefore much faster and a pack will also be
@@ -170,7 +170,7 @@ I (Maurits) don't know if Guy Wauters from Milieuinfo
 recently got a dump from him.  Restoring it was troublesome.  Maybe in
 the end this would have been fine on a fresh database::
 
-  /opt/local/lib/postgresql93/bin/pg_restore --dbname=minaraad_plone4 --clean --disable-triggers minaraad_productie_20150325.dump 
+  /opt/local/lib/postgresql93/bin/pg_restore --dbname=minaraad_plone4 --clean --disable-triggers minaraad_productie_20150325.dump
 
 I got far too many errors this way, about database schemas and not
 being able to remove or create stuff.  Maybe they could all be
@@ -213,7 +213,7 @@ the data that we will restore::
 
   minaraad_plone4=> \dt
                  List of relations
-   Schema |       Name        | Type  |  Owner   
+   Schema |       Name        | Type  |  Owner
   --------+-------------------+-------+----------
    public | blob_chunk        | table | minaraad
    public | commit_lock       | table | minaraad
@@ -227,20 +227,26 @@ the data that we will restore::
    public | transaction       | table | minaraad
   (10 rows)
   minaraad_plone4=> SELECT count(*) FROM transaction;
-   count 
+   count
   -------
    10
   (1 row)
-  minaraad_plone4=> TRUNCATE blob_chunk CASCADE;
-  minaraad_plone4=> TRUNCATE commit_lock CASCADE;
-  minaraad_plone4=> TRUNCATE current_object CASCADE;
-  minaraad_plone4=> TRUNCATE object_ref CASCADE;
-  minaraad_plone4=> TRUNCATE object_refs_added CASCADE;
-  minaraad_plone4=> TRUNCATE object_state CASCADE;
-  minaraad_plone4=> TRUNCATE pack_object CASCADE;
-  minaraad_plone4=> TRUNCATE pack_state CASCADE;
-  minaraad_plone4=> TRUNCATE pack_state_tid CASCADE;
-  minaraad_plone4=> TRUNCATE transaction CASCADE;
+
+Once you have setup the database in this way, you can truncate all
+tables.  If you get a fresh database dump later, you can do this
+again, instead of dropping and creating the databse.  In a psql
+prompt for your minaraad database, paste this:
+
+TRUNCATE blob_chunk CASCADE;
+TRUNCATE commit_lock CASCADE;
+TRUNCATE current_object CASCADE;
+TRUNCATE object_ref CASCADE;
+TRUNCATE object_refs_added CASCADE;
+TRUNCATE object_state CASCADE;
+TRUNCATE pack_object CASCADE;
+TRUNCATE pack_state CASCADE;
+TRUNCATE pack_state_tid CASCADE;
+TRUNCATE transaction CASCADE;
 
 Now as postgres user do the restore.  You will want to redirect stdout
 and especially stderr somewhere else, like here::
@@ -264,7 +270,7 @@ When finished, open psql again and check that you now have lots more
 transactions, something like this::
 
   minaraad_plone4=> select count(*) from transaction;
-   count 
+   count
   -------
    25889
   (1 row)
