@@ -96,6 +96,12 @@
   background: white;
   //height: 115px;
   .logo {
+    &:after{
+      clear: both;
+      width: 100%;
+      content: "";
+      display: block;
+    }
     a {
       height: 64px;
       img {
@@ -188,6 +194,11 @@ nav.navbar {
     button.navbar-toggle {
       position: relative;
       margin-bottom: 3px;
+    }
+    .logo {
+      &:after{
+        display: none;
+      }
     }
   }
 

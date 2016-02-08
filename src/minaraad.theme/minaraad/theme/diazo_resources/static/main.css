@@ -7143,6 +7143,11 @@ span.featherlight-close-icon.featherlight-close {
 
 .logobar {
   background: white; }
+  .logobar .logo:after {
+    clear: both;
+    width: 100%;
+    content: "";
+    display: block; }
   .logobar .logo a {
     height: 64px; }
     .logobar .logo a img {
@@ -7199,7 +7204,9 @@ nav.navbar {
 @media (min-width: 480px) {
   .logobar button.navbar-toggle {
     position: relative;
-    margin-bottom: 3px; } }
+    margin-bottom: 3px; }
+  .logobar .logo:after {
+    display: none; } }
 
 @media (min-width: 768px) {
   .logobar {
