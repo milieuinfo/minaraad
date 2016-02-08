@@ -617,15 +617,16 @@ def setup_various(context):
         logger.info("Moved `jaarverslag` into `Algemeen`")
 
     # Move `Contact` to portal root
-    contact = about.get('Contact')
-    if contact:
-        api.content.move(source=contact, target=portal)
-        logger.info("Moved `Contact` into portal root")
+    if about:
+        contact = about.get('Contact')
+        if contact:
+            api.content.move(source=contact, target=portal)
+            logger.info("Moved `Contact` into portal root")
 
-    # Rename `algemeen` > `Over de Minaraad`
-    about.title = 'Over de Minaraad'
-    api.content.rename(obj=about, new_id="over-de-minaraad")
-    logger.info("Renamed Algemeen > Over de Minaraad")
+        # Rename `algemeen` > `Over de Minaraad`
+        about.title = 'Over de Minaraad'
+        api.content.rename(obj=about, new_id="over-de-minaraad")
+        logger.info("Renamed Algemeen > Over de Minaraad")
 
     # Sort items.
     items = [
@@ -837,7 +838,7 @@ def rebuild_date_indexes(context):
 def unininstall_classic_theme(context):
     portal = getToolByName(context, 'portal_url').getPortalObject()
     installer = getToolByName(context, 'portal_quickinstaller')
-    if getattr(portal, 'persberichten'):
+    if getattr(portal, 'persberichten', None):
         portal.manage_delObjects(ids=['persberichten'])
     for product in installer.listInstalledProducts():
         if product['id'] == 'plonetheme.classic':
