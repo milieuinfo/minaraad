@@ -21,7 +21,7 @@ class HelpersView(BrowserView):
         # Sometimes objects are created with a effective date of
         # '1000-01-01 00:00:00'. Resulting in 1000+ values.
         # Therefore we limit `fist` to a reasonable effective date.
-        first = catalog.searchResults(
+        brain = catalog.searchResults(
                 portal_type=ctype,
                 path='/'.join(theme.getPhysicalPath()),
                 sort_on='effective',
@@ -33,7 +33,11 @@ class HelpersView(BrowserView):
                     ),
                     'range': 'min',
                 }
-        )[0].effective.year()
+        )
+        if brain and brain is not None:
+            first = brain[0].effective.year()
+        else:
+            return results
         last = catalog.searchResults(
                 sort_on='effective',
                 sort_order='descending',
