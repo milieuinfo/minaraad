@@ -110,10 +110,10 @@
                           <article class="article-advice">
                             <a tal:attributes="href item/absolute_url">
                               <tal:image
-                                  tal:define="images item/@@images;
-                                  thumbnail python:images.scale('foto', width=648, height=365, direction='down')"
-                                  tal:condition="thumbnail">
-                                <img tal:attributes="src thumbnail/url; alt item/title" />
+                                  tal:define="image item/get_first_image;"
+                                  tal:condition="python: image is not None">
+                                <img tal:attributes="src string:${image/absolute_url}/image_preview;
+                                                     alt item/title" />
                               </tal:image>
                               <div class="body">
                                 <h3 tal:content="item/Title"></h3>

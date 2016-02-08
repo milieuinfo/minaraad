@@ -9,6 +9,7 @@ from Products.OrderableReferenceField import OrderableReferenceField
 from Products.OrderableReferenceField import OrderableReferenceWidget
 from plone.app.blob.field import ImageField
 
+from Products.minaraad import MinaraadMessageFactory as _
 from Products.minaraad.interfaces import IAdvisory
 from Products.minaraad.Attachmentsmixin import Attachmentsmixin
 from Products.minaraad.ImageAttachmentsmixin import ImageAttachmentsmixin
@@ -55,6 +56,16 @@ schema = atapi.Schema((
                 u'label_product_number',
                 default=u'Product number')
         )
+    ),
+
+    atapi.TextField(
+        name='popular_summary',
+        allowable_content_types=('text/html', ),
+        widget=atapi.RichWidget(
+            label=_('Popular summary'),
+        ),
+        default_content_type='text/html',
+        default_output_type='text/html',
     ),
 
     # Body (which already existed) serves as the summary (of the attachment,
@@ -139,6 +150,9 @@ Advisory_schema = (
     contacts_schema.copy() +
     schema.copy())
 Advisory_schema['description'].isMetadata = False
+# Hide the description field.
+Advisory_schema['description'].widget.visible = {
+    'edit': 'hidden', 'view': 'invisible'}
 Advisory_schema['project'].widget.visible = {
     'edit': 'invisible', 'view': 'invisible'}
 

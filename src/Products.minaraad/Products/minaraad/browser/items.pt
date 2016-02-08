@@ -75,7 +75,7 @@
     <!--? MREvent -->
     <metal:block metal:define-macro="event">
       <article class="article-event">
-        <a tal:attributes="href item/getURL; title item/Title">
+        <a tal:attributes="href item/absolute_url; title item/Title">
           <header>
             <h3 tal:define="d item/getStart_time|nothing">
               <i class="fa fa-comments"></i>
@@ -97,7 +97,7 @@
     <metal:block metal:define-macro="hearing">
       <article class="article-next-meeting">
         <a href="event.html"
-           tal:attributes="href python: item.getURL()">
+           tal:attributes="href python: item.absolute_url()">
           <header>
             <h3>
               <i class="fa fa-gavel"></i>
@@ -106,7 +106,7 @@
           </header>
           <div class="body">
             <time tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;
-                              start python:item.getStart_time"
+                              start python:item.getStart_time()"
                   tal:attributes="datetime python: start.strftime('%Y-%m-%d %h:%m+01:00')"
                   tal:content="python: toLocalizedTime(start, long_format=1)">26 november 2015 9:30</time>
           </div>

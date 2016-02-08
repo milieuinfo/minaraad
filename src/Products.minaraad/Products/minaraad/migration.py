@@ -7,11 +7,16 @@ from Acquisition import aq_parent
 from persistent.list import PersistentList
 from PIL import Image, ImageDraw, ImageColor
 from plone import api
+from plone.i18n.normalizer import idnormalizer
 from plone.locking.interfaces import ILockable
 from plone.portlets.interfaces import IPortletAssignmentMapping
 from plone.portlets.interfaces import IPortletManager
+from Products.Archetypes.utils import mapply
+from Products.Archetypes.utils import shasattr
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.utils import _createObjectByType
+from Products.SimpleAttachment.setuphandlers import \
+    registerImagesFormControllerActions
 from Products.minaraad.content.interfaces import IThemes, IUseContact
 from Products.minaraad.events import save_theme_name
 from Products.minaraad.interfaces import IAttendeeManager
@@ -529,7 +534,8 @@ def unassign_portlets(context):
     """
     portal = api.portal.get()
     contained.fixing_up = True
-    manager = getUtility(IPortletManager, name=u'plone.rightcolumn', context=portal)
+    manager = getUtility(
+        IPortletManager, name=u'plone.rightcolumn', context=portal)
     assignments = getMultiAdapter((portal, manager), IPortletAssignmentMapping)
     for portlet in assignments:
         del assignments[portlet]
@@ -571,7 +577,9 @@ def homepage_select_default_page_and_view(context):
         title="Milieu- en Natuurraad van Vlaanderen (Minaraad)",
         id="homepage",
         container=portal,
-        description="De Minaraad is de strategische adviesraad voor het beleidsdomein Leefmilieu, Natuur en Energie van de Vlaamse Overheid.",
+        description=("De Minaraad is de strategische adviesraad voor het "
+                     "beleidsdomein Leefmilieu, Natuur en Energie van de "
+                     "Vlaamse Overheid."),
     )
     api.content.transition(obj=homepage, transition='publish')
     portal.setDefaultPage("homepage")
@@ -615,15 +623,16 @@ def setup_various(context):
         logger.info("Moved `jaarverslag` into `Algemeen`")
 
     # Move `Contact` to portal root
-    contact = about.get('Contact')
-    if contact:
-        api.content.move(source=contact, target=portal)
-        logger.info("Moved `Contact` into portal root")
+    if about:
+        contact = about.get('Contact')
+        if contact:
+            api.content.move(source=contact, target=portal)
+            logger.info("Moved `Contact` into portal root")
 
-    # Rename `algemeen` > `Over de Minaraad`
-    about.title = 'Over de Minaraad'
-    api.content.rename(obj=about, new_id="over-de-minaraad")
-    logger.info("Renamed Algemeen > Over de Minaraad")
+        # Rename `algemeen` > `Over de Minaraad`
+        about.title = 'Over de Minaraad'
+        api.content.rename(obj=about, new_id="over-de-minaraad")
+        logger.info("Renamed Algemeen > Over de Minaraad")
 
     # Sort items.
     items = [
@@ -653,7 +662,8 @@ def move_redundant_folders(context):
             type='Folder',
             title='Vervallen items',
             container=portal,
-            description="Tijdens de migratie is onderliggende inhoud waarschijnlijk overbodig geworden.",
+            description=("Tijdens de migratie is onderliggende inhoud "
+                         "waarschijnlijk overbodig geworden."),
         )
 
     redundant_items = [
@@ -819,6 +829,7 @@ def setup_faceted_navigation(context):
     importer = docs.restrictedTraverse('@@faceted_exportimport')
     criteria_file = open('faceted_criteria.xml')
     importer.import_xml(import_file=criteria_file)
+    logger.info("Configured faceted navigation for /documenten")
 
 
 def rebuild_date_indexes(context):
@@ -833,23 +844,23 @@ def rebuild_date_indexes(context):
 def unininstall_classic_theme(context):
     portal = getToolByName(context, 'portal_url').getPortalObject()
     installer = getToolByName(context, 'portal_quickinstaller')
-    if getattr(portal, 'persberichten'):
+    if getattr(portal, 'persberichten', None):
         portal.manage_delObjects(ids=['persberichten'])
     for product in installer.listInstalledProducts():
         if product['id'] == 'plonetheme.classic':
             installer.uninstallProducts(products=['plonetheme.classic'])
+            logger.info("Plone Classic Theme uninstalled")
 
 
-def migrate_advisory_foto_field_to_imageattachment(context):
-    from Products.SimpleAttachment.setuphandlers import registerImagesFormControllerActions
+def migrate_foto_field_to_imageattachment(context):
     portal = getToolByName(context, 'portal_url').getPortalObject()
-    registerImagesFormControllerActions(portal, contentType='Advisory',
-                                        template='base_edit')
-    registerImagesFormControllerActions(portal, contentType='MREvent',
-                                        template='base_edit')
+    migrate_types = ['Advisory', 'MREvent', 'Hearing']
+    for ctype in migrate_types:
+        registerImagesFormControllerActions(portal, contentType=ctype,
+                                            template='base_edit')
 
     catalog = getToolByName(context, 'portal_catalog')
-    brains = catalog({'portal_type': ['Advisory', 'MREvent']})
+    brains = catalog({'portal_type': migrate_types})
     for brain in brains:
         obj = brain.getObject()
         foto = obj.getFoto()
@@ -857,16 +868,75 @@ def migrate_advisory_foto_field_to_imageattachment(context):
             continue
         filename = foto.filename
         if filename and filename != '':
-            #create ImageAttachment
+            # create ImageAttachment
             new_context = context.portal_factory.doCreate(obj, obj.getId())
-            newImageId = new_context.invokeFactory(id=filename,
-                                                   type_name='ImageAttachment')
-            if newImageId is not None and newImageId != '':
-                imageId = newImageId
-
-            new_obj = getattr(new_context, imageId, None)
+            newImageId = new_context.invokeFactory(
+                id=idnormalizer.normalize(filename),
+                type_name='ImageAttachment')
+            new_obj = getattr(new_context, newImageId)
             new_obj.setTitle(filename)
             new_obj.setImage(foto.data)
             new_obj.reindexObject()
-            #remove image from foto field
+            # remove image from foto field
             obj.setFoto(None)
+            logger.info("Migrated foto field of %s to ImageAttachment",
+                        brain.getPath())
+
+
+def initialize_rich_text_fields_object(instance):
+    """New rich text fields should have mimetype text/html.
+
+    New richtext fields, get treated as text/plain.  This means you do
+    not get a rich text editor.  Saving it once in the Plone UI helps.
+    Let's do that here.
+
+    Adapted from setDefaults in Archetypes BasicSchema.
+
+    Taken over from knmp.im.
+    """
+    # default_output_type = 'text/x-html-safe'
+    default_output_type = 'text/html'
+    mimetype = 'text/html'
+    schema = instance.Schema()
+    fixed = False
+    for field in schema.values():
+        # We only need to do this for fields with one specific mimetype.
+        if not shasattr(field, 'default_output_type'):
+            continue
+        if field.default_output_type != default_output_type:
+            continue
+        # only touch writable fields
+        mutator = field.getMutator(instance)
+        if mutator is None:
+            continue
+        base_unit = field.getBaseUnit(instance)
+        # This check was in knmp.im, but somehow fails for us here: the new
+        # popular_summary field has the correct mimetype already, but it still
+        # shows up as plain textarea widget.
+        # if base_unit.mimetype == mimetype:
+        #     continue
+        # If content has already been set, we respect it.
+        if base_unit:
+            continue
+        default = field.getDefault(instance)
+        args = (default,)
+        kw = {'field': field.__name__,
+              '_initializing_': True}
+        kw['mimetype'] = mimetype
+        mapply(mutator, *args, **kw)
+        fixed = True
+    return fixed
+
+
+def initialize_rich_text_fields_all_advisories(context):
+    """Initialize new rich text fields for all Advisories.
+    """
+    catalog = getToolByName(context, 'portal_catalog')
+    brains = catalog({'portal_type': 'Advisory'})
+    fixed = 0
+    for brain in brains:
+        obj = brain.getObject()
+        if initialize_rich_text_fields_object(obj):
+            fixed += 1
+    logger.info('Initialized fields in %d out of %d Advisories.',
+                fixed, len(brains))

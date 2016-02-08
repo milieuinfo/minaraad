@@ -15,6 +15,7 @@
   <element value="AgendaItem"/>
   <element value="File"/>
   <element value="Image"/>
+  <element value="ImageAttachment"/>
  </property>
  <property name="allow_discussion">False</property>
  <alias from="edit" to="base_edit"/>

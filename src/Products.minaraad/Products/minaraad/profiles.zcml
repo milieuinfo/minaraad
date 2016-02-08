@@ -433,10 +433,13 @@
         description="Unininstall old Plone Classic Theme."
         handler="Products.minaraad.migration.unininstall_classic_theme" />
     <gs:upgradeStep
-        title="Migrate Advisory foto field to ImageAttachment"
-        description="Migrate Advisory foto field to ImageAttachment."
-        handler="Products.minaraad.migration.migrate_advisory_foto_field_to_imageattachment" />
-
+        title="Migrate foto field to ImageAttachment"
+        description="Migrate foto field to ImageAttachment."
+        handler="Products.minaraad.migration.migrate_foto_field_to_imageattachment" />
+    <gs:upgradeStep
+        title="Initialize rich text fields for Advisories"
+        description="This adds the popular_summary field."
+        handler="Products.minaraad.migration.initialize_rich_text_fields_all_advisories" />
   </gs:upgradeSteps>
 
 </configure>

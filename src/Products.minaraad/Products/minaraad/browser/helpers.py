@@ -4,6 +4,7 @@ from DateTime import DateTime
 from urlparse import urljoin
 from urlparse import urlparse
 
+
 class HelpersView(BrowserView):
     """ Various helpers to render links to the Documenten section.
     """
@@ -22,6 +23,7 @@ class HelpersView(BrowserView):
         # Therefore we limit `fist` to a reasonable effective date.
         first = catalog.searchResults(
                 portal_type=ctype,
+                path='/'.join(theme.getPhysicalPath()),
                 sort_on='effective',
                 sort_order='ascending',
                 sort_limit=1,
@@ -35,22 +37,22 @@ class HelpersView(BrowserView):
         last = catalog.searchResults(
                 sort_on='effective',
                 sort_order='descending',
-                sort_limit=1
-        )[0].effective.year()
+                sort_limit=1)[0].effective.year()
 
         years = range(first, last, 1)
         years.reverse()
         portal_url = api.portal.get().absolute_url()
-        base_url = portal_url + '/documenten/'
+        url = portal_url + '/documenten/'
+        tkey = '&c7=%2Fminaraad%2Fthemas%2F'
         for yr in years:
-            results.append({'year': yr,
-               'url': base_url + '#c2='+ctype+'&c5='+str(yr) +'&c7=%2Fminaraad%2Fthemas%2F' + theme.getId()})
+            search_url = url + '#c2=' + ctype + '&c5=' + str(yr) + tkey + theme.getId()
+            results.append({'year': yr, 'url': search_url})
 
         return results
 
     def nextprev(self):
-        """ Return links to the previous or next item. Depending on the location it will
-            vary based on the context.
+        """ Return links to the previous or next item. Depending on the
+            location it will vary based on the context.
 
             - Items are ordered by effective date.
             - Only display items within the same theme.
@@ -96,12 +98,11 @@ class HelpersView(BrowserView):
         for theme in themes:
             css_class = ''
             if current_theme == theme:
-               css_class = 'active'
+                css_class = 'active'
             results.append({
                 'title': theme.Title(),
                 'url': theme.absolute_url(),
-                'css_class': css_class
-            })
+                'css_class': css_class})
         return results
 
 
@@ -149,6 +150,8 @@ class RedirectPlone(BrowserView):
     """
 
     def __call__(self):
+        """ Handle redirect
+        """
         # We want the Plone Site from the referer.
         referer = self.request['HTTP_REFERER']
         if not referer:
