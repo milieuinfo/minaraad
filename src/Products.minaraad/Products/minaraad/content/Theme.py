@@ -38,7 +38,7 @@ ThemeSchema = folder.ATFolderSchema.copy() + atapi.Schema((
             'mini': (80, 80),
             'normal': (200, 200),
             'big': (300, 300),
-            'maxi': (500, 500),
+            'maxi': (1500, 500),
         },
         validators=(
             ('isNonEmptyFile', V_REQUIRED),
@@ -48,7 +48,7 @@ ThemeSchema = folder.ATFolderSchema.copy() + atapi.Schema((
             label="Footer afbeelding",
             description=("Upload een liggende afbeelding, "
                          "ongeveer drie keer zo breed als hoog, "
-                         "bijvoorbeeld 1498 pixels breed by 460 pixels hoog."),
+                         "bijvoorbeeld 1500 pixels breed by 500 pixels hoog."),
             show_content_type=False,
         ),
     ),
