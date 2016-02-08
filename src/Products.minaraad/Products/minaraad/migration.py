@@ -3,6 +3,7 @@
 
 # from Products.minaraad.subscriptions import SubscriptionManager
 # from Products.minaraad.themes import ThemeManager
+from Acquisition import aq_parent
 from persistent.list import PersistentList
 from PIL import Image, ImageDraw, ImageColor
 from plone import api
@@ -723,6 +724,9 @@ def move_content(context):
             theme = 'andere-themas'
 
         target = portal['themas'][theme]
+        if aq_parent(obj).getPhysicalPath() == target.getPhysicalPath():
+            continue
+
         api.content.move(source=obj, target=target)
         logger.info("Moved %s to %s", obj.title, theme)
 
@@ -866,7 +870,3 @@ def migrate_advisory_foto_field_to_imageattachment(context):
             new_obj.reindexObject()
             #remove image from foto field
             obj.setFoto(None)
-
-
-
-
