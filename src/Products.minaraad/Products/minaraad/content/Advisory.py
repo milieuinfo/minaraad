@@ -139,6 +139,9 @@ Advisory_schema = (
     contacts_schema.copy() +
     schema.copy())
 Advisory_schema['description'].isMetadata = False
+# Hide the description field.
+Advisory_schema['description'].widget.visible = {
+    'edit': 'hidden', 'view': 'invisible'}
 Advisory_schema['project'].widget.visible = {
     'edit': 'invisible', 'view': 'invisible'}
 
