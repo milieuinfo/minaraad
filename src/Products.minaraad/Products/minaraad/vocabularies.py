@@ -8,7 +8,6 @@ from zope.schema.vocabulary import SimpleTerm, SimpleVocabulary
 from zope.site.hooks import getSite
 import operator
 
-from eea.facetednavigation.widgets import widget
 
 def safe_encode(term):
     if not isinstance(term, basestring):
