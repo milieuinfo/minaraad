@@ -54,8 +54,9 @@
       <article class="article-advice">
         <a tal:attributes="href item/absolute_url">
           <tal:image
-              tal:define="images item/@@images;
-              thumbnail python:images.scale('foto', width=648, height=365, direction='down')"
+              tal:define="first_image item/get_first_image;
+                          images first_image/@@images;
+              thumbnail python:images.scale('image', width=648, height=365, direction='down')"
               tal:condition="thumbnail">
             <img tal:attributes="src thumbnail/url; alt item/title" />
           </tal:image>
