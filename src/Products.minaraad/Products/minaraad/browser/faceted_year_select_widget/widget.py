@@ -32,6 +32,7 @@ class Widget(CountableWidget):
 
     @property
     def years(self):
+
         catalog = getToolByName(self.context, 'portal_catalog')
 
         # Sometimes objects are created with a effective date of
@@ -54,7 +55,7 @@ class Widget(CountableWidget):
                 sort_limit=1
         )[0].effective.year()
 
-        years = range(first, last, 1)
+        years = range(first, last + 1, 1)
         years.reverse()
         return years
 
@@ -74,14 +75,13 @@ class Widget(CountableWidget):
 
         index_id = self.data.get('index')
         if not index_id:
-            return res
+            index_id = 'effective'
 
         ctool = getToolByName(self.context, 'portal_catalog')
         index = ctool._catalog.getIndex(index_id)
         ctool = queryUtility(IFacetedCatalog)
         if not ctool:
             return res
-
         brains = IISet(brain.getRID() for brain in brains)
         res[""] = res['all'] = len(brains)
         for value in sequence:
@@ -118,7 +118,6 @@ class Widget(CountableWidget):
 
         if not value:
             return query
-
         # The date indexes do not support selecting for example year.
         # So we make a range from first to last day of the year.
         start = DateTime(value, 1, 1)
