@@ -11,6 +11,8 @@ from plone.i18n.normalizer import idnormalizer
 from plone.locking.interfaces import ILockable
 from plone.portlets.interfaces import IPortletAssignmentMapping
 from plone.portlets.interfaces import IPortletManager
+from Products.Archetypes.utils import mapply
+from Products.Archetypes.utils import shasattr
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.utils import _createObjectByType
 from Products.SimpleAttachment.setuphandlers import \
@@ -879,3 +881,62 @@ def migrate_foto_field_to_imageattachment(context):
             obj.setFoto(None)
             logger.info("Migrated foto field of %s to ImageAttachment",
                         brain.getPath())
+
+
+def initialize_rich_text_fields_object(instance):
+    """New rich text fields should have mimetype text/html.
+
+    New richtext fields, get treated as text/plain.  This means you do
+    not get a rich text editor.  Saving it once in the Plone UI helps.
+    Let's do that here.
+
+    Adapted from setDefaults in Archetypes BasicSchema.
+
+    Taken over from knmp.im.
+    """
+    # default_output_type = 'text/x-html-safe'
+    default_output_type = 'text/html'
+    mimetype = 'text/html'
+    schema = instance.Schema()
+    fixed = False
+    for field in schema.values():
+        # We only need to do this for fields with one specific mimetype.
+        if not shasattr(field, 'default_output_type'):
+            continue
+        if field.default_output_type != default_output_type:
+            continue
+        # only touch writable fields
+        mutator = field.getMutator(instance)
+        if mutator is None:
+            continue
+        base_unit = field.getBaseUnit(instance)
+        # This check was in knmp.im, but somehow fails for us here: the new
+        # popular_summary field has the correct mimetype already, but it still
+        # shows up as plain textarea widget.
+        # if base_unit.mimetype == mimetype:
+        #     continue
+        # If content has already been set, we respect it.
+        if base_unit:
+            continue
+        default = field.getDefault(instance)
+        args = (default,)
+        kw = {'field': field.__name__,
+              '_initializing_': True}
+        kw['mimetype'] = mimetype
+        mapply(mutator, *args, **kw)
+        fixed = True
+    return fixed
+
+
+def initialize_rich_text_fields_all_advisories(context):
+    """Initialize new rich text fields for all Advisories.
+    """
+    catalog = getToolByName(context, 'portal_catalog')
+    brains = catalog({'portal_type': 'Advisory'})
+    fixed = 0
+    for brain in brains:
+        obj = brain.getObject()
+        if initialize_rich_text_fields_object(obj):
+            fixed += 1
+    logger.info('Initialized fields in %d out of %d Advisories.',
+                fixed, len(brains))

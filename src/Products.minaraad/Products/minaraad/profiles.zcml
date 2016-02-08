@@ -436,7 +436,10 @@
         title="Migrate foto field to ImageAttachment"
         description="Migrate foto field to ImageAttachment."
         handler="Products.minaraad.migration.migrate_foto_field_to_imageattachment" />
-
+    <gs:upgradeStep
+        title="Initialize rich text fields for Advisories"
+        description="This adds the popular_summary field."
+        handler="Products.minaraad.migration.initialize_rich_text_fields_all_advisories" />
   </gs:upgradeSteps>
 
 </configure>
