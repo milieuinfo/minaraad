@@ -86,6 +86,14 @@
 
         </div>
 
+        <div class="footer-image"
+              tal:define="images context/@@images;
+              thumbnail python:images.scale('footerImage', scale='maxi', direction='down')"
+              tal:condition="thumbnail"
+              tal:attributes="style string:background-image:url('${thumbnail/url}')"
+        >
+        </div>
+
     </metal:block>
     </body>
 </html>
