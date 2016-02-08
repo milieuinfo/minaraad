@@ -13,7 +13,8 @@ from plone.portlets.interfaces import IPortletAssignmentMapping
 from plone.portlets.interfaces import IPortletManager
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.utils import _createObjectByType
-from Products.SimpleAttachment.setuphandlers import registerImagesFormControllerActions
+from Products.SimpleAttachment.setuphandlers import \
+    registerImagesFormControllerActions
 from Products.minaraad.content.interfaces import IThemes, IUseContact
 from Products.minaraad.events import save_theme_name
 from Products.minaraad.interfaces import IAttendeeManager
@@ -531,7 +532,8 @@ def unassign_portlets(context):
     """
     portal = api.portal.get()
     contained.fixing_up = True
-    manager = getUtility(IPortletManager, name=u'plone.rightcolumn', context=portal)
+    manager = getUtility(
+        IPortletManager, name=u'plone.rightcolumn', context=portal)
     assignments = getMultiAdapter((portal, manager), IPortletAssignmentMapping)
     for portlet in assignments:
         del assignments[portlet]
@@ -573,7 +575,9 @@ def homepage_select_default_page_and_view(context):
         title="Milieu- en Natuurraad van Vlaanderen (Minaraad)",
         id="homepage",
         container=portal,
-        description="De Minaraad is de strategische adviesraad voor het beleidsdomein Leefmilieu, Natuur en Energie van de Vlaamse Overheid.",
+        description=("De Minaraad is de strategische adviesraad voor het "
+                     "beleidsdomein Leefmilieu, Natuur en Energie van de "
+                     "Vlaamse Overheid."),
     )
     api.content.transition(obj=homepage, transition='publish')
     portal.setDefaultPage("homepage")
@@ -656,7 +660,8 @@ def move_redundant_folders(context):
             type='Folder',
             title='Vervallen items',
             container=portal,
-            description="Tijdens de migratie is onderliggende inhoud waarschijnlijk overbodig geworden.",
+            description=("Tijdens de migratie is onderliggende inhoud "
+                         "waarschijnlijk overbodig geworden."),
         )
 
     redundant_items = [
@@ -825,7 +830,6 @@ def setup_faceted_navigation(context):
     logger.info("Configured faceted navigation for /documenten")
 
 
-
 def rebuild_date_indexes(context):
     catalog = getToolByName(context, 'portal_catalog')
     idxs = ['effectiveRange', 'Date', 'getStart_time', 'getDate',
@@ -846,7 +850,6 @@ def unininstall_classic_theme(context):
             logger.info("Plone Classic Theme uninstalled")
 
 
-
 def migrate_foto_field_to_imageattachment(context):
     portal = getToolByName(context, 'portal_url').getPortalObject()
     migrate_types = ['Advisory', 'MREvent', 'Hearing']
@@ -855,7 +858,7 @@ def migrate_foto_field_to_imageattachment(context):
                                             template='base_edit')
 
     catalog = getToolByName(context, 'portal_catalog')
-    brains = catalog({'portal_type': migrate_types })
+    brains = catalog({'portal_type': migrate_types})
     for brain in brains:
         obj = brain.getObject()
         foto = obj.getFoto()
@@ -863,17 +866,16 @@ def migrate_foto_field_to_imageattachment(context):
             continue
         filename = foto.filename
         if filename and filename != '':
-            #create ImageAttachment
+            # create ImageAttachment
             new_context = context.portal_factory.doCreate(obj, obj.getId())
-            newImageId = new_context.invokeFactory(id=idnormalizer.normalize(filename),
-                                                   type_name='ImageAttachment')
-            if newImageId is not None and newImageId != '':
-                imageId = newImageId
-
-            new_obj = getattr(new_context, imageId, None)
+            newImageId = new_context.invokeFactory(
+                id=idnormalizer.normalize(filename),
+                type_name='ImageAttachment')
+            new_obj = getattr(new_context, newImageId)
             new_obj.setTitle(filename)
             new_obj.setImage(foto.data)
             new_obj.reindexObject()
-            #remove image from foto field
+            # remove image from foto field
             obj.setFoto(None)
-            logger.info("Migrated foto field of %s to ImageAttachment", obj.Title())
+            logger.info("Migrated foto field of %s to ImageAttachment",
+                        brain.getPath())
