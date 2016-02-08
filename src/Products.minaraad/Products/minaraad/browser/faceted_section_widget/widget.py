@@ -18,18 +18,20 @@ from plone import api
 
 EditSchema = Schema((
 
-    BooleanField('hidealloption',
+    BooleanField(
+        'hidealloption',
         schemata="default",
         default=False,
         widget=BooleanWidget(
             label=_(u"Hide 'All' option"),
-            description=_(u'If this checkbox is checked, hides the All '
-                          u'option'),
+            description=_(
+                u'If this checkbox is checked, hides the All option'),
             i18n_domain="eea"
         )
     ),
 
-    StringField('default',
+    StringField(
+        'default',
         schemata="default",
         widget=StringWidget(
             size=25,
