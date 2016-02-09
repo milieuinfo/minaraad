@@ -9,6 +9,7 @@
   <theme href="/++theme++minaraad/index.html" />
   <notheme css:if-not-content="#visual-portal-wrapper" />
 
+  <drop css:content="#viewlet-below-content-body" />
   <!-- Head -->
   <rules if-content="//*[@id='portal-top']">
     <!-- Attributes -->
@@ -95,6 +96,9 @@
   <copy attributes="value" css:content=".searchButton" css:theme=".search button" />
   <replace css:content=".searchSection" css:theme=".search p"/>
 
+  <!-- footer -->
+  <replace css:content-children=".footer-doormat" css:theme-children=".footer-doormat" />
+  <drop css:content="#viewlet-below-content-body" />
 
   <!-- Central column -->
   <!--<xsl:variable name="central">-->

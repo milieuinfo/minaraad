@@ -57,6 +57,15 @@
        permission="zope2.View"
        />
 
+  <browser:viewlet
+       name="minaraad.footer"
+       for="*"
+       manager="plone.app.layout.viewlets.interfaces.IBelowContentBody"
+       class=".footer.MinaFooter"
+       template="footer.pt"
+       permission="zope2.View"
+       />
+
   <include package="plone.app.portlets" />
   <plone:portlet
       name="Products.minaraad.Recent"

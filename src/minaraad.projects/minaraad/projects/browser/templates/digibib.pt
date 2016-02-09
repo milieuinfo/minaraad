@@ -3,7 +3,7 @@
       metal:use-macro="here/main_template/macros/master"
       i18n:domain="minaraad.projects">
   <body>
-    <div metal:fill-slot="main">
+    <metal:block metal:fill-slot="content-core">
      <h1 class="documentFirstHeading">
        Digibib Overzicht
      </h1>
@@ -108,6 +108,6 @@
      <div style="clear: both;">
        &nbsp;
      </div>
-    </div>
+  </metal:block>
   </body>
 </html>
