@@ -31,6 +31,13 @@
 
   <browser:page
     name="faceted-preview-item"
+    for="Products.minaraad.interfaces.IStudy"
+    template="faceted_study_item.pt"
+    permission="zope2.View"
+    />
+
+  <browser:page
+    name="faceted-preview-item"
     for="Products.SimpleAttachment.interfaces.IFileAttachment"
     template="faceted_fileattachment_item.pt"
     permission="zope2.View"

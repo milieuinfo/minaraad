@@ -1,0 +1,26 @@
+<article class="article-advice">
+  <a tal:define="
+      title context/pretty_title_or_id|string:;
+      url context/absolute_url|string:#;
+      first_image context/get_first_image;
+      has_image context/has_image"
+     tal:attributes="href url">
+
+    <img style="width:100%"
+        tal:condition="has_image"
+        tal:attributes="alt title;
+                        src first_image/absolute_url"/>
+    <div class="body">
+      <h3 tal:content="title">Title</h3>
+      <p class="label">
+        Nota
+        <span tal:content="context/getThemeTitle|nothing"></span>
+      </p>
+      <div class="truncate"
+         tal:condition="python: context.Description() is not ''"
+         tal:content="structure context/Description">
+        Description of this item.
+      </div>
+    </div>
+  </a>
+</article>

@@ -7,43 +7,79 @@
       i18n:domain="minaraad">
 
    <body>
-   <metal:block fill-slot="content-title">
-      <h1>
-         <span tal:replace="context/Title" />
-      </h1>
-      <span tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;"
-            tal:replace="python:toLocalizedTime(context.date)" />
-     <div tal:define="name context/getThemeName|nothing"
-        tal:condition="name"
-        class="hearingsubheader2">
-       <span i18n:translate="label_theme_name">Theme:</span>
-       <span class="normaltext" tal:content="name" />
-     </div>
-   </metal:block>
 
-   <metal:block fill-slot="content-description">
-   </metal:block>
+    <hidden metal:fill-slot="content-title">
+    </hidden>
+
+    <hidden metal:fill-slot="content-description">
+    </hidden>
 
    <metal:block fill-slot="content-core">
-     <h5>
-        <tal:block i18n:translate="minaraad_label_summary">Summary</tal:block>
-     </h5>
-     <img tal:condition="context/getFoto"
-          tal:attributes="src string:${context/absolute_url}/foto_foto;"
-           alt=""
-           class="hearingphoto" />
-     <div tal:condition="context/getBody"
-          tal:content="structure context/getBody" />
-      <!-- Start Attachments-->
-      <div metal:use-macro="context/mina_attachments/macros/listattachments" />
-      <!-- end Attachments -->
 
-      <!-- Contactperson -->
-      <tal:block tal:define="obj nocall: context">
-        <div metal:use-macro="context/contactperson_macros/macros/show_coord_authors"
-             tal:omit-tag="" />
-      </tal:block>
-      <!-- end contactpersoon -->
+        <div class="content-wrapper">
+
+          <main role="main" id="main-container">
+
+            <div class="sec-advice-detail">
+              <div class="container">
+                <div class="row">
+
+                  <div class="article-advice-detail">
+
+                    <article>
+                      <metal:block use-macro="context/@@items/macros/listimageattachments"></metal:block>
+                      <div class="body">
+                        <section>
+                          <header>
+                            <h1 tal:content="context/Title">Groenboek Beleidsplan Ruimte Vlaanderen</h1>
+                            <p class="label">Nota <span tal:content="context/getThemeTitle|nothing">Biodiversiteit</span></p>
+                          </header>
+                          <p class="lead" tal:content="structure context/Description|nothing" />
+                        </section>
+
+                        <section>
+                          <h2>
+                            <tal:block i18n:translate="minaraad_label_summary">Summary</tal:block>
+                          </h2>
+                          <div tal:condition="context/getBody"
+                               tal:content="structure context/getBody" />
+                          <!-- Contactperson -->
+                          <tal:block tal:define="obj nocall: context">
+                            <div metal:use-macro="context/contactperson_macros/macros/show_coord_authors"
+                                 tal:omit-tag="" />
+                          </tal:block>
+                          <!-- end contactpersoon -->
+                        </section>
+
+                        <section>
+                          <metal:block use-macro="context/@@items/macros/listattachments" />
+                        </section>
+
+                      </div>
+                    </article>
+
+                    <nav>
+                      <section class="prev-next">
+                        <metal:block use-macro="context/@@items/macros/nextprev" />
+                      </section>
+                      <section class="archive">
+                        <metal:block use-macro="context/@@items/macros/yeararchive" />
+
+                      </section>
+                      <section class="theme-list">
+                        <metal:block use-macro="context/@@items/macros/themelist" />
+                      </section>
+                    </nav>
+
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+          </main>
+        </div>
+
    </metal:block>
    </body>
 </html>

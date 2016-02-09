@@ -854,7 +854,7 @@ def unininstall_classic_theme(context):
 
 def migrate_foto_field_to_imageattachment(context):
     portal = getToolByName(context, 'portal_url').getPortalObject()
-    migrate_types = ['Advisory', 'MREvent', 'Hearing']
+    migrate_types = ['Advisory', 'MREvent', 'Hearing', 'Study']
     for ctype in migrate_types:
         registerImagesFormControllerActions(portal, contentType=ctype,
                                             template='base_edit')

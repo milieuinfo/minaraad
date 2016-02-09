@@ -4,6 +4,9 @@ History of this buildout
 6.0.0 (unreleased)
 ------------------
 
+- Integrate Study and migrate foto field to ImageAttachment.
+  [jladage]
+
 - Fix image rendering of Recent Documents on theme_list page.
   [jladage]
 
