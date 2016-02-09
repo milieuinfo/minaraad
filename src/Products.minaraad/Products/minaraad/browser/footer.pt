@@ -25,13 +25,7 @@
       <div class="column themas">
         <h3><a href="#">Thema’s</a></h3>
         <ul>
-          <li><a href="theme_detail.html">Klimaat</a></li>
-          <li><a href="theme_detail.html">Materialen</a></li>
-          <li><a href="theme_detail.html">Hinder</a></li>
-          <li><a href="theme_detail.html">Biodiversiteit</a></li>
-          <li><a href="theme_detail.html">Bestuurskwaliteit</a></li>
-          <li><a href="theme_detail.html">Vergroening van de economie</a></li>
-          <li><a href="theme_detail.html">Impulsen</a></li>
+          <li tal:repeat="theme view/themes"><a tal:attributes="href theme/absolute_url" tal:content="theme/Title"></a></li>
         </ul>
       </div>
 
