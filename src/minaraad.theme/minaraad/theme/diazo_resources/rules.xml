@@ -97,8 +97,8 @@
   <replace css:content=".searchSection" css:theme=".search p"/>
 
   <!-- footer -->
-  <replace css:content-children=".footer-doormat" css:theme-children=".footer-doormat" />
-  <drop css:content="#viewlet-below-content-body" />
+  <replace css:content=".footer-doormat" css:theme=".footer-doormat" />
+ <!-- <drop css:content="#viewlet-below-content-body" /> -->
 
   <!-- Central column -->
   <!--<xsl:variable name="central">-->
