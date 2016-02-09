@@ -60,7 +60,7 @@
   <browser:viewlet
        name="minaraad.footer"
        for="*"
-       manager="plone.app.layout.viewlets.interfaces.IBelowContentBody"
+       manager="plone.app.layout.viewlets.interfaces.IPortalFooter"
        class=".footer.MinaFooter"
        template="footer.pt"
        permission="zope2.View"

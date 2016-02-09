@@ -103,7 +103,7 @@
   </replace>
 
   <!-- Edit views -->
-  <rules css:if-content="body.template-atct_edit, body.template-folder_contents, body.template-sharing, body.template-login_form, body.template-login_success, body.template-versions_history_form">
+  <rules css:if-content="body.template-atct_edit, body.template-base_edit, body.template-folder_contents, body.template-sharing, body.template-login_form, body.template-login_success, body.template-versions_history_form">
 
     <replace css:theme="#main-container">
         <div id="plone_edit_form" class="container">
