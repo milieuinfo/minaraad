@@ -1,0 +1,10 @@
+<object>
+    <hidden manager="plone.portalfooter" skinname="minaraad">
+        <viewlet name="plone.footer" />
+    </hidden>
+    <order manager="plone.portalfooter" skinname="minaraad"
+           based-on="Plone Default">
+        <viewlet name="minaraad.footer"
+                 insert-before="*" />
+    </order>
+</object>
