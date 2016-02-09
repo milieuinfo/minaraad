@@ -9,6 +9,8 @@
         </a>
       </div>
 
+      <div class="clearfix visible-sm-block"></div>
+
       <div class="column sitemap">
         <h3><a href="#">Sitemap</a></h3>
         <ul>
