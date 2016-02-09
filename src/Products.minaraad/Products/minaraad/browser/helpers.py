@@ -51,7 +51,8 @@ class HelpersView(BrowserView):
         for yr in years:
             search_url = url + '#c2=' + ctype + '&c5=' + str(yr) + tkey + theme.getId()
             results.append({'year': yr, 'url': search_url})
-
+        if results == []:
+            return None
         return results
 
     def nextprev(self):

@@ -14,10 +14,17 @@
     </hidden>
 
   <metal:block fill-slot="content-core"
-      tal:define="view nocall:context/@@attendees_view;
-                  current_path python:'/'.join(context.getPhysicalPath());
-                  agendaItems context/find_items_and_times;
-                  toLocalizedTime nocall:context/@@plone/toLocalizedTime;">
+               tal:define="view nocall:context/@@attendees_view;
+                           current_path python:'/'.join(context.getPhysicalPath());
+                           agendaItems context/find_items_and_times;
+                           toLocalizedTime nocall:context/@@plone/toLocalizedTime;
+                           start python:context.getStart_time()-1;
+                           anonymous context/@@plone_portal_state/anonymous;
+                           is_subscribed view/isRegistered;
+                           subscription_allowed python:context.getSubscriptionAllowed() and start.isFuture();
+                           can_subscribe python:subscription_allowed and not is_subscribed;
+                           freshly_submitted request/submitted|nothing">
+
   <div class="content-wrapper">
     <main role="main" id="main-container">
       <div class="sec-event-detail">
@@ -28,14 +35,41 @@
               <article>
                 <metal:block use-macro="context/@@items/macros/listimageattachments"></metal:block>
                 <div class="body">
-  
+
                   <section class="event-detail-lead">
                     <header>
                       <h3>
                         <i class="fa fa-comments"></i>
                         <span tal:replace="python:toLocalizedTime(context.getStart_time())">2 april 2016</span>
                       </h3>
-                      <button type="button" class="btn btn-default" onClick="location.href='#inschrijven'">Inschrijven</button>
+                      <tal:block condition="python:(not freshly_submitted) and (not anonymous) and (can_subscribe or is_subscribed)">
+                          <form tal:condition="is_subscribed"
+                                method="post"
+                                tal:attributes="action string:${context/absolute_url}/@@attendees_view">
+                            <button class="context btn btn-warning"
+                                   type="submit"
+                                   name="form.button.Submit"
+                                   i18n:translate="label_unsubscribe"> Unsubscribe </button>
+                            <input type="hidden"
+                                   name="form.submitted"
+                                   value="unregister" />
+                          </form>
+
+                          <form tal:condition="can_subscribe"
+                                method="post"
+                                tal:attributes="action string:${context/absolute_url}/@@attendees_view">
+                            <button class="btn btn-default"
+                                   type="submit"
+                                   name="form.button.Submit"
+                                   i18n:translate="label_subscribe"> Subscribe </button>
+                            <input type="hidden"
+                                   name="form.submitted"
+                                   value="register" />
+                          </form>
+                      </tal:block>
+                      <tal:block condition="anonymous">
+                        <button type="button" class="btn btn-default" onclick="location.href='#inschrijven'">Inschrijven</button>
+                      </tal:block>
                     </header>
                     <h1 tal:content="context/Title">Groenboek Beleidsplan Ruimte Vlaanderen</h1>
                     <p class="label">Evenement <span tal:content="context/getThemeTitle|nothing">Biodiversiteit</span></p>
@@ -67,154 +101,147 @@
                       populi, nihil! Quis aute iure reprehenderit in
                       voluptate velit esse.
                     </p>
-                    <!-- Contactperson -->
+
                     <tal:block tal:define="obj nocall: context">
                       <div metal:use-macro="context/contactperson_macros/macros/show_coord_authors"
                            tal:omit-tag="" />
                     </tal:block>
-                    <!-- end contactpersoon -->
+
+                    <div class="visualClear"></div>
+                    <!-- End text -->
+
+                    <!-- Speakers 
+                    <h2 tal:condition ="agendaItems"
+                         i18n:translate="label_agendaitems">Agenda items</h2>
+
+                    <table id="meeting_view"
+                           tal:condition="agendaItems" width="100%">
+                      <tbody>
+                        <tal:block tal:repeat="item agendaItems">
+                          <tr tal:define="obj python: item[0];
+                                          obj obj/getObject|nocall:obj;"
+                              tal:attributes="id obj/UID">
+                            <td>
+                              <ul class="AgendaItems">
+                                <metal:block use-macro="context/display_macros/macros/agendaItem" />
+                              </ul>
+                            </td>
+                            <td tal:condition="obj/can_be_edited|nothing"
+                                class="draggable">
+                            </td>
+                          </tr>
+                        </tal:block>
+                      </tbody>
+                    </table> -->
+                    <!-- End speakers -->
 
 
-        <div class="visualClear"></div>
-        <!-- End text -->
+                    <tal:block tal:define="attendees view/groupedAttendees;
+                                           attended_members attendees/members;
+                                           attended_c_members attendees/council_members"
+                               tal:condition="python:attended_members != [] or attended_c_members != []">
 
+                    <fieldset tal:condition="python:checkPermission('Manage portal', here)">
+                        <legend i18n:translate="title_attendees">Attendees</legend>
+                        <dl class="Attendees">
+                            <dt i18n:translate="title_counsilmembers">
+                                Council Members
+                            </dt>
+                            <dd tal:repeat="attendee attended_c_members">
+                                <span tal:replace="attendee/niceName" />
+                            </dd>
+                            <dd tal:condition="not:attended_c_members"
+                                class="discreet"
+                                i18n:translate="no_attendees">
+                            (none currently)
+                            </dd>
+                            <dt i18n:translate="title_members">
+                                Members
+                            </dt>
+                            <dd tal:repeat="attendee attended_members">
+                                <span tal:replace="attendee/niceName" />
+                            </dd>
+                            <dd tal:condition="not:attended_members"
+                                class="discreet"
+                                i18n:translate="no_attendees">
+                            (none currently)
+                            </dd>
+                        </dl>
+                        <form tal:attributes="action string:${context/absolute_url}/@@attendees_view">
+                        <input class="context"
+                               type="submit"
+                               name="form.button.Submit"
+                               value="Export CSV"
+                               i18n:attributes="value label_exportcsv;" />
 
-        <!-- Hearing Files -->
-        <div>
-          <metal:block metal:use-macro="context/mina_attachments/macros/listattachments"/>
-        </div>
-        <!-- Hearing Files -->
+                        <input type="hidden"
+                               name="form.submitted"
+                               value="exportCSV" />
+                      </form>
+                    </fieldset>
+                    </tal:block>
+                  </section>
 
-        <!-- Speakers 
-        <h2 tal:condition ="agendaItems"
-             i18n:translate="label_agendaitems">Agenda items</h2>
+                  <section class="event-form" name="inschrijven" id="inschrijven"
+                          tal:condition="python: anonymous and subscription_allowed">
+                    <header>
+                      <h3>Inschrijven</h3>
+                    </header>
+                    <p>Indien u wilt deelnemen aan dit evenement, vul dan het onderstaande
+                       formulier in. Heeft u een account, log dan in en klik bovenaan op de
+                       button "Inschrijven".</p>
+                    <p>Nieuwe accounts worden niet meer verstrekt en de optie om in te
+                       loggen vervalt binnenkort voor geïnteresseerden.</p>
 
-        <table id="meeting_view"
-               tal:condition="agendaItems" width="100%">
-          <tbody>
-            <tal:block tal:repeat="item agendaItems">
-              <tr tal:define="obj python: item[0];
-                              obj obj/getObject|nocall:obj;"
-                  tal:attributes="id obj/UID">
-                <td>
-                  <ul class="AgendaItems">
-                    <metal:block use-macro="context/display_macros/macros/agendaItem" />
-                  </ul>
-                </td>
-                <td tal:condition="obj/can_be_edited|nothing"
-                    class="draggable">
-                </td>
-              </tr>
-            </tal:block>
-          </tbody>
-        </table>
-        <!-- End speakers -->
-
-
-        <tal:block tal:define="attendees view/groupedAttendees;
-                               attended_members attendees/members;
-                               attended_c_members attendees/council_members"
-                   tal:condition="python:attended_members != [] or attended_c_members != []">
-
-        <fieldset tal:condition="python:checkPermission('Manage portal', here)">
-            <legend i18n:translate="title_attendees">Attendees</legend>
-            <dl class="Attendees">
-                <dt i18n:translate="title_counsilmembers">
-                    Council Members
-                </dt>
-                <dd tal:repeat="attendee attended_c_members">
-                    <span tal:replace="attendee/niceName" />
-                </dd>
-                <dd tal:condition="not:attended_c_members"
-                    class="discreet"
-                    i18n:translate="no_attendees">
-                (none currently)
-                </dd>
-                <dt i18n:translate="title_members">
-                    Members
-                </dt>
-                <dd tal:repeat="attendee attended_members">
-                    <span tal:replace="attendee/niceName" />
-                </dd>
-                <dd tal:condition="not:attended_members"
-                    class="discreet"
-                    i18n:translate="no_attendees">
-                (none currently)
-                </dd>
-            </dl>
-            <form tal:attributes="action string:${context/absolute_url}/@@attendees_view">
-            <input class="context"
-                   type="submit"
-                   name="form.button.Submit"
-                   value="Export CSV"
-                   i18n:attributes="value label_exportcsv;" />
-
-            <input type="hidden"
-                   name="form.submitted"
-                   value="exportCSV" />
-          </form>
-        </fieldset>
-        </tal:block>
-        </section>
-
-        <section class="event-form" name="inschrijven" id="inschrijven">
-          <header>
-            <h3>Inschrijven</h3>
-          </header>
-          <p>Excepteur sint obcaecat cupiditat non proident culpa. Ambitioni dedisse scripsisse iudicaretur. Non equidem invideo, miror magis posuere velit aliquet.</p>
-          <form>
-            <div class="form-group">
-              <label for="firstname">Voornaam</label>
-              <input type="text" class="form-control" id="firstname" placeholder="Voornaam">
-            </div>
-            <div class="form-group">
-              <label for="lastname">Achternaam</label>
-              <input type="text" class="form-control" id="lastname" placeholder="Achternaam">
-            </div>
-            <div class="form-group">
-              <label for="exampleInputEmail1">Email address</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
-            </div>
-            <div class="form-group">
-              <label for="functie">Functie en/of organisatie (optioneel)</label>
-              <input type="text" class="form-control" id="functie" placeholder="Functie / organisatie">
-            </div>
-            <div class="checkbox">
-              <label>
-                <input type="checkbox"> Gegevens onthouden
-              </label>
-            </div>
-            <button type="submit" class="btn btn-default">Inschrijven</button>
-          </form>
-        </section>
-        
-       </div>
-                    </article>
-
-                    <nav>
-                      <section class="prev-next">
-                        <metal:block use-macro="context/@@items/macros/nextprev" />
-                      </section>
-                      <section class="archive">
-                        <metal:block use-macro="context/@@items/macros/yeararchive" />
-
-                      </section>
-                      <section class="theme-list">
-                        <metal:block use-macro="context/@@items/macros/themelist" />
-                      </section>
-                    </nav>
-
-                  </div>
+                    <form>
+                      <div class="form-group">
+                        <label for="firstname">Voornaam</label>
+                        <input type="text" class="form-control"
+                               id="firstname" placeholder="Voornaam">
+                      </div>
+                      <div class="form-group">
+                        <label for="lastname">Achternaam</label>
+                        <input type="text" class="form-control"
+                               id="lastname" placeholder="Achternaam">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input type="email" class="form-control"
+                               id="exampleInputEmail1" placeholder="Email">
+                      </div>
+                      <div class="form-group">
+                        <label for="functie">Functie en/of organisatie (optioneel)</label>
+                        <input type="text" class="form-control"
+                               id="functie" placeholder="Functie / organisatie">
+                      </div>
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox"> Gegevens onthouden
+                        </label>
+                      </div>
+                      <button type="submit" class="btn btn-default">Inschrijven</button>
+                    </form>
+                  </section>
 
                 </div>
-              </div>
-            </div>
+              </article>
 
-           <!-- <tal:block metal:use-macro="context/@@items/macros/related_documents" />
--->
-          </main>
-        </div>
+              <nav>
+                <metal:block use-macro="context/@@items/macros/nextprev" />
 
-   </metal:block>
-   </body>
+                <metal:block use-macro="context/@@items/macros/yeararchive" />
+
+                <section class="theme-list">
+                  <metal:block use-macro="context/@@items/macros/themelist" />
+                </section>
+              </nav>
+
+            </div> <!--article-event-detail-->
+          </div> <!-- row -->
+        </div> <!-- container -->
+      </div> <!-- sec-event-detail -->
+    </main>
+  </div> <!--content-wrapper -->
+  </metal:block>
+  </body>
 </html>

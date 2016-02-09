@@ -4,6 +4,12 @@ History of this buildout
 6.0.0 (unreleased)
 ------------------
 
+- If no years or no prev/next, don't display the box.
+  [jladage]
+
+- Restore form handling for subscribing to Hearings or Events.
+  [jladage]
+
 - Fix year query. Didn't understand the part of getting the index
   from self.data, set it to effective hardcode, since thats what
   this widget should filter on. [jladage[

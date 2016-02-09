@@ -79,13 +79,11 @@
                     </article>
 
                     <nav>
-                      <section class="prev-next">
-                        <metal:block use-macro="context/@@items/macros/nextprev" />
-                      </section>
-                      <section class="archive">
-                        <metal:block use-macro="context/@@items/macros/yeararchive" />
 
-                      </section>
+                      <metal:block use-macro="context/@@items/macros/nextprev" />
+
+                      <metal:block use-macro="context/@@items/macros/yeararchive" />
+
                       <section class="theme-list">
                         <metal:block use-macro="context/@@items/macros/themelist" />
                       </section>
