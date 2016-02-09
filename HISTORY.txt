@@ -4,6 +4,10 @@ History of this buildout
 6.0.0 (unreleased)
 ------------------
 
+- Fix year query. Didn't understand the part of getting the index
+  from self.data, set it to effective hardcode, since thats what
+  this widget should filter on. [jladage[
+
 - Integrate Study and migrate foto field to ImageAttachment.
   [jladage]
 

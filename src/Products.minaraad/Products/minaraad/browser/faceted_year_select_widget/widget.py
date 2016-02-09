@@ -73,10 +73,7 @@ class Widget(CountableWidget):
         if not sequence:
             return res
 
-        index_id = self.data.get('index')
-        if not index_id:
-            index_id = 'effective'
-
+        index_id = 'effective'
         ctool = getToolByName(self.context, 'portal_catalog')
         index = ctool._catalog.getIndex(index_id)
         ctool = queryUtility(IFacetedCatalog)
@@ -106,10 +103,6 @@ class Widget(CountableWidget):
         """ Get value from form and return a catalog dict query
         """
         query = {}
-        index = self.data.get('index', '')
-        index = index.encode('utf-8', 'replace')
-        if not index:
-            return query
 
         if self.hidden:
             value = self.default
@@ -122,7 +115,7 @@ class Widget(CountableWidget):
         # So we make a range from first to last day of the year.
         start = DateTime(value, 1, 1)
         end = DateTime(value, 12, 31).latestTime()
-        query[index] = {
+        query['effective'] = {
             'query': (start, end),
             'range': 'min:max'
         }
