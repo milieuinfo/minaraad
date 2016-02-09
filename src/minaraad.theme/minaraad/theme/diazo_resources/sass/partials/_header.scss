@@ -184,6 +184,30 @@ nav.navbar {
   }
 }
 
+// Alert message's
+.portalMessage{
+  @extend .alert;
+  font-size: 14px !important;
+  dt{
+    background-color: transparent !important;
+    font-weight: 700 !important;
+    color: inherit !important;
+    margin: 0 !important;
+  }
+  &.success{
+    @extend .alert-success;
+  }
+  &.info{
+    @extend .alert-info;
+  }
+  &.error{
+    @extend .alert-danger;
+  }
+  &.warning{
+    @extend .alert-warning;
+  }
+}
+
 // -----------------------------------------------------------------------------
 // Small screen / tablet
 // -----------------------------------------------------------------------------

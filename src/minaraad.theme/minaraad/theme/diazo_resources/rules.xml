@@ -43,7 +43,7 @@
   </xsl:template>
 
   <!-- Alert message -->
-  <replace css:theme-children="#global_statusmessage" css:content-children="#global_statusmessage" />
+  <replace css:theme-children="#global_statusmessage" css:content=".portalMessage" />
 
   <!-- Toolbar -->
   <replace css:theme="#editbar" css:content="#edit-bar" css:if-content=".userrole-authenticated"/>

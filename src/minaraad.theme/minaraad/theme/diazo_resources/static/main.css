@@ -3899,20 +3899,20 @@ tbody.collapse.in {
   border-bottom-right-radius: 3px;
   border-top-right-radius: 3px; }
 
-.alert {
+.alert, .portalMessage {
   padding: 15px;
   margin-bottom: 20px;
   border: 1px solid transparent;
   border-radius: 4px; }
-  .alert h4 {
+  .alert h4, .portalMessage h4 {
     margin-top: 0;
     color: inherit; }
-  .alert .alert-link {
+  .alert .alert-link, .portalMessage .alert-link {
     font-weight: bold; }
-  .alert > p,
-  .alert > ul {
+  .alert > p, .portalMessage > p,
+  .alert > ul, .portalMessage > ul {
     margin-bottom: 0; }
-  .alert > p + p {
+  .alert > p + p, .portalMessage > p + p {
     margin-top: 5px; }
 
 .alert-dismissable,
@@ -3925,40 +3925,40 @@ tbody.collapse.in {
     right: -21px;
     color: inherit; }
 
-.alert-success {
+.alert-success, .portalMessage.success {
   background-color: #e3f2ed;
   border-color: #d2eade;
   color: #3c763d; }
-  .alert-success hr {
+  .alert-success hr, .portalMessage.success hr {
     border-top-color: #c0e2d1; }
-  .alert-success .alert-link {
+  .alert-success .alert-link, .portalMessage.success .alert-link {
     color: #2b542c; }
 
-.alert-info {
+.alert-info, .portalMessage.info {
   background-color: #edf5f7;
   border-color: #d4ebec;
   color: #31708f; }
-  .alert-info hr {
+  .alert-info hr, .portalMessage.info hr {
     border-top-color: #c3e3e4; }
-  .alert-info .alert-link {
+  .alert-info .alert-link, .portalMessage.info .alert-link {
     color: #245269; }
 
-.alert-warning {
+.alert-warning, .portalMessage.warning {
   background-color: #fcf8e3;
   border-color: #faebcc;
   color: #8a6d3b; }
-  .alert-warning hr {
+  .alert-warning hr, .portalMessage.warning hr {
     border-top-color: #f7e1b5; }
-  .alert-warning .alert-link {
+  .alert-warning .alert-link, .portalMessage.warning .alert-link {
     color: #66512c; }
 
-.alert-danger {
+.alert-danger, .portalMessage.error {
   background-color: #fbeaed;
   border-color: #f7d5e0;
   color: #a94442; }
-  .alert-danger hr {
+  .alert-danger hr, .portalMessage.error hr {
     border-top-color: #f3bfd1; }
-  .alert-danger .alert-link {
+  .alert-danger .alert-link, .portalMessage.error .alert-link {
     color: #843534; }
 
 .list-group, .list-group-themes, .list-group-downloads {
@@ -7200,6 +7200,14 @@ nav.navbar {
     padding: 10px 20px; }
   nav.navbar.navbar-default {
     min-height: 10px; }
+
+.portalMessage {
+  font-size: 14px !important; }
+  .portalMessage dt {
+    background-color: transparent !important;
+    font-weight: 700 !important;
+    color: inherit !important;
+    margin: 0 !important; }
 
 @media (min-width: 480px) {
   .logobar button.navbar-toggle {
