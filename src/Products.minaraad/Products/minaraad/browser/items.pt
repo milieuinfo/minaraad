@@ -53,12 +53,11 @@
     <metal:block metal:define-macro="advisory_link">
       <article class="article-advice">
         <a tal:attributes="href item/absolute_url">
-          <tal:image
-              tal:define="first_image item/get_first_image;
-                          images first_image/@@images;
+          <tal:image tal:define="first_image item/get_first_image"
+              tal:condition="python:first_image is not None">
+            <img tal:define="images first_image/@@images;
               thumbnail python:images.scale('image', width=648, height=365, direction='down')"
-              tal:condition="thumbnail">
-            <img tal:attributes="src thumbnail/url; alt item/title" />
+ tal:attributes="src thumbnail/url; alt item/title" />
           </tal:image>
           <div class="body">
             <h3 tal:content="item/Title"></h3>
