@@ -59,6 +59,11 @@ a {
   @include button-variant(white, $mina-green, $mina-green-dark);
 }
 
+.button-field, input[type="submit"] {
+    @extend .btn;
+    @extend .btn-primary;
+}
+
 //
 // Icons
 //

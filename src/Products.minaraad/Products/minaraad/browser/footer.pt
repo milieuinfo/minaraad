@@ -12,13 +12,14 @@
       <div class="clearfix visible-sm-block"></div>
 
       <div class="column sitemap">
-        <h3><a href="#">CUSTOMIZED Sitemap</a></h3>
+        <h3><a href="/sitemap.xml">Sitemap</a></h3>
         <ul>
-          <li><a href="home.html">Home</a></li>
+          <li tal:repeat="item view/menu_items"><a tal:attributes="href item/url" tal:content="item/name"></a></li>
+          <!--<li><a href="home.html">Home</a></li>
           <li><a href="theme_list.html">Thema’s</a></li>
           <li><a href="document_list.html">Documenten</a></li>
           <li><a href="about.html">Over de Minaraad</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="contact.html">Contact</a></li>-->
         </ul>
       </div>
 
@@ -30,7 +31,7 @@
       </div>
 
       <div class="column social-media">
-          <h3><a href="#">Sociale Media</a></h3>
+          <h3><a href="">Sociale Media</a></h3>
           <ul class="social">
             <li><a href="#"><i class="fa fa-linkedin"></i> LinkedIn</a></li>
             <li><a href="#"><i class="fa fa-youtube"></i> YouTube</a></li>
@@ -52,8 +53,8 @@
            Kliniekstraat 25<br/>
            1070 Brussel
         </p>
-        <p>tel 02 558 01 30<br/>
-           fax 02 558 01 31<br/>
+        <p><a href="tel:+3225580130">tel 02 558 01 30</a><br/>
+           <a href="fax:+3225580131">fax 02 558 01 31<a/><br/>
         </p>
         <p>
           <a href="mailto:info@minaraad.be">info@minaraad.be</a>

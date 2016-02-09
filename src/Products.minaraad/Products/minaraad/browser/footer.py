@@ -1,6 +1,7 @@
 from plone.app.layout.viewlets import common as base
 from zope.cachedescriptors.property import Lazy
 from plone import api
+from zope.component import getMultiAdapter
 
 class MinaFooter(base.ViewletBase):
     def __call__(self):
@@ -16,3 +17,25 @@ class MinaFooter(base.ViewletBase):
             portal_type="Theme",
         )
         return [brain.getObject() for brain in brains][:6]
+
+    def menu_items(self):
+        context_state = getMultiAdapter((self.context, self.request),
+                                    name=u'plone_context_state')
+        actions_dirty = context_state.actions()
+
+        # clean actions
+        actions = []
+        for actionInfo in actions:
+            try:
+                data = actionInfo.copy()
+                actions.append(data)
+            except:
+                continue
+
+        # Get CatalogNavigationTabs instance
+        portal_tabs_view = getMultiAdapter((self.context, self.request),
+                                       name='portal_tabs_view')
+
+        # Action parameter is "portal_tabs" by default, but can be other
+        portal_tabs = portal_tabs_view.topLevelTabs(actions=actions)
+        return portal_tabs
