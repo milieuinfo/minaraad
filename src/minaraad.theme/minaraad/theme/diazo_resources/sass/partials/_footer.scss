@@ -45,6 +45,9 @@ footer {
   .logo, .sitemap, .newsletter, .digibib, .social-media {
     @extend .hidden-xs;
   }
+ .newsletter, .digibib, .social-media {
+    @extend .hidden-sm;
+  }
 
   margin: 0;
   color: $mina-blue-light-2;
@@ -124,6 +127,10 @@ footer {
   //#portal-footer-wrapper {
   //
   //}
+  
+  .footer-doormat .logo{
+    margin-bottom: 30px;
+  }
 
 }
 
