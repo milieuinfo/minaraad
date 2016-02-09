@@ -43,14 +43,43 @@
   </xsl:template>
 
   <!-- Alert message -->
-  <replace css:theme-children="#global_statusmessage" css:content=".portalMessage" />
+<!--
+  Replace theme met content
+  
+  #global_statusmessage met .portalMessage
+  Add in de .portalMessage de close button
+  
+   -->
+  
+  <rules css:if-content=".portalMessage">
+    <replace css:content=".portalMessage.info" css:theme=".alert-info .portalMessage_wrapper" method="raw"/>
+    <replace css:content=".portalMessage.succes" css:theme=".alert-success .portalMessage_wrapper" method="raw"/>
+    <replace css:content=".portalMessage.error" css:theme=".alert-danger .portalMessage_wrapper" method="raw"/>
+    <replace css:content=".portalMessage.warning" css:theme=".alert-warning .portalMessage_wrapper" method="raw"/>
+
+    <drop css:content="#content .portalMessage" />
+
+  </rules>
+  
+  <rules css:if-not-content=".portalMessage.info">
+    <drop css:theme=".alert-info" />
+  </rules>
+  <rules css:if-not-content=".portalMessage.success">
+    <drop css:theme=".alert-success" />
+  </rules>
+  <rules css:if-not-content=".portalMessage.error">
+    <drop css:theme=".alert-danger" />
+  </rules>
+  <rules css:if-not-content=".portalMessage.warning">
+    <drop css:theme=".alert-warning" />
+  </rules>
 
   <!-- Toolbar -->
   <replace css:theme="#editbar" css:content="#edit-bar" css:if-content=".userrole-authenticated"/>
   <replace css:theme="#anonymous-actions" css:content="#portal-personaltools-wrapper" css:if-content=".userrole-anonymous"/>
 
   <!-- Copy href from plone logo -->
-    <copy attributes="href" css:content='#portal-logo' css:theme=".navbar-brand" />
+  <copy attributes="href" css:content='#portal-logo' css:theme=".navbar-brand" />
 
   <!-- Drop some theme items for anonymous or authenticated. -->
   <drop css:theme=".drop_anon" if="$anonymous" />

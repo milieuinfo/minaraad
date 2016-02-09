@@ -3899,20 +3899,20 @@ tbody.collapse.in {
   border-bottom-right-radius: 3px;
   border-top-right-radius: 3px; }
 
-.alert, .portalMessage {
+.alert {
   padding: 15px;
   margin-bottom: 20px;
   border: 1px solid transparent;
   border-radius: 4px; }
-  .alert h4, .portalMessage h4 {
+  .alert h4 {
     margin-top: 0;
     color: inherit; }
-  .alert .alert-link, .portalMessage .alert-link {
+  .alert .alert-link {
     font-weight: bold; }
-  .alert > p, .portalMessage > p,
-  .alert > ul, .portalMessage > ul {
+  .alert > p,
+  .alert > ul {
     margin-bottom: 0; }
-  .alert > p + p, .portalMessage > p + p {
+  .alert > p + p {
     margin-top: 5px; }
 
 .alert-dismissable,
@@ -3925,40 +3925,40 @@ tbody.collapse.in {
     right: -21px;
     color: inherit; }
 
-.alert-success, .portalMessage.success {
+.alert-success {
   background-color: #e3f2ed;
   border-color: #d2eade;
   color: #3c763d; }
-  .alert-success hr, .portalMessage.success hr {
+  .alert-success hr {
     border-top-color: #c0e2d1; }
-  .alert-success .alert-link, .portalMessage.success .alert-link {
+  .alert-success .alert-link {
     color: #2b542c; }
 
-.alert-info, .portalMessage.info {
+.alert-info {
   background-color: #edf5f7;
   border-color: #d4ebec;
   color: #31708f; }
-  .alert-info hr, .portalMessage.info hr {
+  .alert-info hr {
     border-top-color: #c3e3e4; }
-  .alert-info .alert-link, .portalMessage.info .alert-link {
+  .alert-info .alert-link {
     color: #245269; }
 
-.alert-warning, .portalMessage.warning {
+.alert-warning {
   background-color: #fcf8e3;
   border-color: #faebcc;
   color: #8a6d3b; }
-  .alert-warning hr, .portalMessage.warning hr {
+  .alert-warning hr {
     border-top-color: #f7e1b5; }
-  .alert-warning .alert-link, .portalMessage.warning .alert-link {
+  .alert-warning .alert-link {
     color: #66512c; }
 
-.alert-danger, .portalMessage.error {
+.alert-danger {
   background-color: #fbeaed;
   border-color: #f7d5e0;
   color: #a94442; }
-  .alert-danger hr, .portalMessage.error hr {
+  .alert-danger hr {
     border-top-color: #f3bfd1; }
-  .alert-danger .alert-link, .portalMessage.error .alert-link {
+  .alert-danger .alert-link {
     color: #843534; }
 
 .list-group, .list-group-themes, .list-group-downloads {
@@ -7201,13 +7201,26 @@ nav.navbar {
   nav.navbar.navbar-default {
     min-height: 10px; }
 
-.portalMessage {
-  font-size: 14px !important; }
-  .portalMessage dt {
-    background-color: transparent !important;
-    font-weight: 700 !important;
-    color: inherit !important;
-    margin: 0 !important; }
+#global_statusmessage {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  margin-left: -477px;
+  z-index: 999; }
+  #global_statusmessage .portalMessage {
+    font-size: 14px;
+    border: 0;
+    color: inherit;
+    background-color: transparent;
+    margin: 0;
+    clear: none; }
+    #global_statusmessage .portalMessage dt {
+      background-color: transparent;
+      font-weight: 700;
+      color: inherit;
+      margin: 0; }
+    #global_statusmessage .portalMessage dd {
+      background-color: transparent; }
 
 @media (min-width: 480px) {
   .logobar button.navbar-toggle {

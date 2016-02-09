@@ -185,28 +185,31 @@ nav.navbar {
 }
 
 // Alert message's
-.portalMessage{
-  @extend .alert;
-  font-size: 14px !important;
-  dt{
-    background-color: transparent !important;
-    font-weight: 700 !important;
-    color: inherit !important;
-    margin: 0 !important;
-  }
-  &.success{
-    @extend .alert-success;
-  }
-  &.info{
-    @extend .alert-info;
-  }
-  &.error{
-    @extend .alert-danger;
-  }
-  &.warning{
-    @extend .alert-warning;
+#global_statusmessage{
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  margin-left: -477px;
+  z-index: 999;
+  .portalMessage{
+    font-size: 14px;
+    border: 0;
+    color: inherit;
+    background-color: transparent;
+    margin: 0;
+    clear: none;
+    dt{
+      background-color: transparent;
+      font-weight: 700;
+      color: inherit;
+      margin: 0;
+    }
+    dd{
+      background-color: transparent;
+    }
   }
 }
+
 
 // -----------------------------------------------------------------------------
 // Small screen / tablet
