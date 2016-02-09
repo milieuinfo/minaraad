@@ -252,37 +252,44 @@
     <metal:block define-macro="nextprev"
                  tal:define="nextprev context/@@helpers/nextprev;
                              prev nextprev/previous;
-                             next nextprev/next;">
-      <h2>Bladeren</h2>
-      <p class="label">
-        <span i18n:translate="" tal:replace="context/portal_type">Advies</span>
-        <span tal:content="context/getThemeTitle">Biodiversiteit</span>
-      </p>
-      <ul>
-        <li class="prev" tal:condition="python:prev is not None">
-          <a href="#" tal:attributes="href prev/url"
-                      tal:content="prev/title">
-            Conferentie Luchtkwaliteit 2014</a>
-        </li>
-        <li class="next" tal:condition="python:next is not None">
-          <a href="#" tal:attributes="href next/url"
-                      tal:content="next/title">
-            Vlaamse NME-dag 'Groene Economie'</a>
-        </li>
-      </ul>
+                             next nextprev/next;"
+                 tal:condition="python: prev and next">
+      <section class="prev-next">
+        <h2>Bladeren</h2>
+        <p class="label">
+          <span i18n:translate="" tal:replace="context/portal_type">Advies</span>
+          <span tal:content="context/getThemeTitle">Biodiversiteit</span>
+        </p>
+        <ul>
+          <li class="prev" tal:condition="python:prev is not None">
+            <a href="#" tal:attributes="href prev/url"
+                        tal:content="prev/title">
+              Conferentie Luchtkwaliteit 2014</a>
+          </li>
+          <li class="next" tal:condition="python:next is not None">
+            <a href="#" tal:attributes="href next/url"
+                        tal:content="next/title">
+              Vlaamse NME-dag 'Groene Economie'</a>
+          </li>
+        </ul>
+      </section>
     </metal:block>
 
-    <metal:block define-macro="yeararchive">
-    <h2>Archief</h2>
-    <p class="label">
-      <span i18n:translate=""
-        tal:replace="context/portal_type">Advies</span><span
-        tal:content="context/getThemeTitle">Biodiversiteit</span></p>
-    <ul>
-      <li tal:repeat="year context/@@helpers/years"><a href="#"
-          tal:attributes="href year/url"
-          tal:content="year/year">2014</a></li>
-    </ul>
+    <metal:block define-macro="yeararchive"
+       tal:define="years context/@@helpers/years"
+       tal:condition="python:years is not None">
+      <section class="archive">
+        <h2>Archief</h2>
+        <p class="label">
+          <span i18n:translate=""
+            tal:replace="context/portal_type">Advies</span><span
+            tal:content="context/getThemeTitle">Biodiversiteit</span></p>
+        <ul>
+          <li tal:repeat="year years"><a href="#"
+              tal:attributes="href year/url"
+              tal:content="year/year">2014</a></li>
+        </ul>
+      </section>
     </metal:block>
 
     <metal:block define-macro="themelist">

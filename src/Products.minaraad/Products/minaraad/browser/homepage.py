@@ -43,7 +43,7 @@ class HomepageView(BrowserView):
                 'range': 'min:max',
             },
         )
-        return brains
+        return [brain.getObject() for brain in brains]
 
     def next_meetings(self):
         now = DateTime().earliestTime()
@@ -61,5 +61,6 @@ class HomepageView(BrowserView):
                 'range': 'min:max',
             },
         )
-        return brains
+
+        return [brain.getObject() for brain in brains]
 
