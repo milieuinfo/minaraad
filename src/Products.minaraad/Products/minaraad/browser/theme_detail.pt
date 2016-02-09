@@ -59,8 +59,9 @@
                   </tal:relatedItems>
 
                         <!--? TODO: the same pattern lives on homepage. metal:use-macro="" -->
+                        <div class="grid-item">
                         <div class="list-group list-group-themes">
-                         <div tal:repeat="theme view/themes" class="grid-item">
+                         <div tal:repeat="theme view/themes">
                           <a
                              tal:attributes="href theme/absolute_url"
                              class="list-group-item">
@@ -74,8 +75,8 @@
                             <tal:block tal:replace="theme/title"></tal:block>
                             <i class="fa fa-angle-right pull-right"></i>
                           </a>
-                          </div>
-
+                        </div>
+                        </div>
                       </div>
 
                 </div>
