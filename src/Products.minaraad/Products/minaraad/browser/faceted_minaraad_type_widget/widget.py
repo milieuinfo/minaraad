@@ -5,12 +5,8 @@ from plone.i18n.normalizer import urlnormalizer as normalizer
 from Products.Archetypes.public import Schema
 from Products.Archetypes.public import IntegerField
 from Products.Archetypes.public import LinesField
-from Products.Archetypes.public import BooleanField
-from Products.Archetypes.public import StringField
 from Products.Archetypes.public import IntegerWidget
 from Products.Archetypes.public import LinesWidget
-from Products.Archetypes.public import SelectionWidget
-from Products.Archetypes.public import BooleanWidget
 from Products.CMFCore.utils import getToolByName
 
 from eea.facetednavigation.dexterity_support import normalize as atdx_normalize
@@ -18,29 +14,11 @@ from eea.facetednavigation.widgets import ViewPageTemplateFile
 from eea.faceted.vocabularies.utils import compare
 from eea.facetednavigation.widgets.widget import CountableWidget
 from eea.facetednavigation import EEAMessageFactory as _
+from zope.component import getUtility
+from zope.schema.interfaces import IVocabularyFactory
 
 
 EditSchema = Schema((
-    StringField(
-        'vocabulary',
-        schemata="default",
-        vocabulary_factory='eea.faceted.vocabularies.PortalVocabularies',
-        widget=SelectionWidget(
-            label=_(u"Vocabulary"),
-            description=_(u'Vocabulary to use to render widget items'),
-        )
-    ),
-    StringField(
-        'catalog',
-        schemata="default",
-        vocabulary_factory='eea.faceted.vocabularies.UseCatalog',
-        widget=SelectionWidget(
-            format='select',
-            label=_(u'Catalog'),
-            description=_(u"Get unique values from catalog "
-                          u"as an alternative for vocabulary"),
-        )
-    ),
     IntegerField(
         'maxitems',
         schemata="display",
@@ -48,14 +26,6 @@ EditSchema = Schema((
         widget=IntegerWidget(
             label=_(u"Maximum items"),
             description=_(u'Number of items visible in widget'),
-        )
-    ),
-    BooleanField(
-        'sortreversed',
-        schemata="display",
-        widget=BooleanWidget(
-            label=_(u"Reverse options"),
-            description=_(u"Sort options reversed"),
         )
     ),
     LinesField(
@@ -83,6 +53,25 @@ class Widget(CountableWidget):
 
     index = ViewPageTemplateFile('widget.pt')
     edit_schema = CountableWidget.edit_schema.copy() + EditSchema
+
+    def portal_vocabulary(self):
+        """Look up selected vocabulary from portal_vocabulary or from ZTK
+           zope-vocabulary factory.
+        """
+        voc_id = 'minaraad.portal_types'
+        voc = getUtility(IVocabularyFactory, voc_id)
+        values = []
+        for term in voc(self.context):
+            value = term.value
+            if isinstance(value, str):
+                value = value.decode('utf-8')
+            values.append((value, (term.title or term.token or value)))
+        return values
+
+    def vocabulary(self, **kwargs):
+        """ Return data vocabulary
+        """
+        return self.portal_vocabulary()
 
     @property
     def css_class(self):
