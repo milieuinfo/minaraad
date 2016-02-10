@@ -4,6 +4,9 @@ History of this buildout
 6.0.0 (unreleased)
 ------------------
 
+- Added own faceted type widget.  You need to import the
+  faceted_criteria.xml from the buildout directory.  [maurits]
+
 - If no years or no prev/next, don't display the box.
   [jladage]
 
@@ -12,7 +15,7 @@ History of this buildout
 
 - Fix year query. Didn't understand the part of getting the index
   from self.data, set it to effective hardcode, since thats what
-  this widget should filter on. [jladage[
+  this widget should filter on. [jladage]
 
 - Integrate Study and migrate foto field to ImageAttachment.
   [jladage]
@@ -37,7 +40,7 @@ History of this buildout
 
 - Custom prevnext implementation which browsers between items within
   a theme and between similar content types.
-  [jladage] 
+  [jladage]
 
 - Integrate year archive box for Advisory.  [jladage]
 
