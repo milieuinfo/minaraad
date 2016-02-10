@@ -25,13 +25,16 @@
 
             <nav class="toc">
 
-              <section class="nav-list">
+              <section class="nav-list"
+                       tal:condition="context/getTableContents">
                 <h2>Inhoudsopgave</h2>
+                <div class="nav-items">
                 <ul>
                   <li><a href="#">Over de Minaraad</a></li>
                   <li><a href="#">Decretale grondslag</a></li>
                   <li><a href="#">Taakstelling</a></li>
                 </ul>
+                </div>
               </section>
 
             </nav>
