@@ -1,4 +1,4 @@
-FacetedEdit.CheckboxesWidget = function(wid){
+FacetedEdit.MinaraadTypesWidget = function(wid){
   var self = this;
   this.wid = wid;
   this.widget = jQuery('#' + wid + '_widget');
@@ -42,7 +42,7 @@ FacetedEdit.CheckboxesWidget = function(wid){
   this.count();
 };
 
-FacetedEdit.CheckboxesWidget.prototype = {
+FacetedEdit.MinaraadTypesWidget.prototype = {
   count: function(){
     if(!this.widget.hasClass('faceted-count')){
       return;
@@ -81,16 +81,16 @@ FacetedEdit.CheckboxesWidget.prototype = {
   }
 };
 
-FacetedEdit.initializeCheckboxesWidget = function(){
-  jQuery('div.faceted-checkboxes-widget').each(function(){
+FacetedEdit.initializeMinaraadTypesWidget = function(){
+  jQuery('div.faceted-minaraad-types-widget').each(function(){
       var wid = jQuery(this).attr('id');
       wid = wid.split('_')[0];
-      FacetedEdit.Widgets[wid] = new FacetedEdit.CheckboxesWidget(wid);
+      FacetedEdit.Widgets[wid] = new FacetedEdit.MinaraadTypesWidget(wid);
   });
 };
 
 jQuery(document).ready(function(){
   jQuery(FacetedEdit.Events).bind(
     FacetedEdit.Events.INITIALIZE_WIDGETS,
-    FacetedEdit.initializeCheckboxesWidget);
+    FacetedEdit.initializeMinaraadTypesWidget);
 });

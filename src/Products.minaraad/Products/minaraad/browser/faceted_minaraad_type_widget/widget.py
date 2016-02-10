@@ -1,4 +1,4 @@
-""" Checkbox widget
+""" minaraad_type widget
 """
 from plone.i18n.normalizer import urlnormalizer as normalizer
 
@@ -22,7 +22,8 @@ from eea.facetednavigation import EEAMessageFactory as _
 
 
 EditSchema = Schema((
-    StringField('index',
+    StringField(
+        'index',
         schemata="default",
         required=True,
         vocabulary_factory='eea.faceted.vocabularies.CatalogIndexes',
@@ -32,7 +33,8 @@ EditSchema = Schema((
             i18n_domain="eea"
         )
     ),
-    StringField('operator',
+    StringField(
+        'operator',
         schemata='default',
         required=True,
         vocabulary=DisplayList([('or', 'OR'), ('and', 'AND')]),
@@ -44,7 +46,8 @@ EditSchema = Schema((
             i18n_domain="eea"
         )
     ),
-    BooleanField('operator_visible',
+    BooleanField(
+        'operator_visible',
         schemata='default',
         required=False,
         default=False,
@@ -54,7 +57,8 @@ EditSchema = Schema((
                           "AND or OR between elements"),
         )
     ),
-    StringField('vocabulary',
+    StringField(
+        'vocabulary',
         schemata="default",
         vocabulary_factory='eea.faceted.vocabularies.PortalVocabularies',
         widget=SelectionWidget(
@@ -62,17 +66,19 @@ EditSchema = Schema((
             description=_(u'Vocabulary to use to render widget items'),
         )
     ),
-    StringField('catalog',
+    StringField(
+        'catalog',
         schemata="default",
         vocabulary_factory='eea.faceted.vocabularies.UseCatalog',
         widget=SelectionWidget(
             format='select',
             label=_(u'Catalog'),
             description=_(u"Get unique values from catalog "
-                        u"as an alternative for vocabulary"),
+                          u"as an alternative for vocabulary"),
         )
     ),
-    IntegerField('maxitems',
+    IntegerField(
+        'maxitems',
         schemata="display",
         default=0,
         widget=IntegerWidget(
@@ -80,14 +86,16 @@ EditSchema = Schema((
             description=_(u'Number of items visible in widget'),
         )
     ),
-    BooleanField('sortreversed',
+    BooleanField(
+        'sortreversed',
         schemata="display",
         widget=BooleanWidget(
             label=_(u"Reverse options"),
             description=_(u"Sort options reversed"),
         )
     ),
-    LinesField('default',
+    LinesField(
+        'default',
         schemata="default",
         widget=LinesWidget(
             label=_(u'Default value'),
@@ -97,16 +105,17 @@ EditSchema = Schema((
     ),
 ))
 
+
 class Widget(CountableWidget):
     """ Widget
     """
     # Widget properties
-    widget_type = 'checkbox'
-    widget_label = _('Checkboxes')
-    view_js = '++resource++eea.facetednavigation.widgets.checkbox.view.js'
-    edit_js = '++resource++eea.facetednavigation.widgets.checkbox.edit.js'
-    view_css = '++resource++eea.facetednavigation.widgets.checkbox.view.css'
-    edit_css = '++resource++eea.facetednavigation.widgets.checkbox.edit.css'
+    widget_type = 'minaraad_type'
+    widget_label = _('Types')
+    view_js = '++resource++eea.facetednavigation.widgets.minaraad_type.view.js'
+    edit_js = '++resource++eea.facetednavigation.widgets.minaraad_type.edit.js'
+    view_css = '++resource++eea.facetednavigation.widgets.minaraad_type.view.css'  # noqa
+    edit_css = '++resource++eea.facetednavigation.widgets.minaraad_type.edit.css'  # noqa
 
     index = ViewPageTemplateFile('widget.pt')
     edit_schema = CountableWidget.edit_schema.copy() + EditSchema
@@ -117,9 +126,8 @@ class Widget(CountableWidget):
         """
         css_type = self.widget_type
         css_title = normalizer.normalize(self.data.title)
-        return ('faceted-checkboxes-widget '
+        return ('faceted-minaraad-types-widget '
                 'faceted-{0}-widget section-{1}').format(css_type, css_title)
-
 
     @property
     def default(self):

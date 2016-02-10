@@ -1,8 +1,8 @@
-.faceted-checkbox-item-disabled {
+.faceted-minaraad-type-item-disabled {
   color: gray;
 }
 
-.faceted-zero-count-hidden .faceted-checkbox-item-disabled {
+.faceted-zero-count-hidden .faceted-minaraad-type-item-disabled {
   display: none ! important;
 }
 
@@ -24,11 +24,11 @@
   padding-left: 0.5em;
 }
 
-.faceted-checkbox-more {
+.faceted-minaraad-type-more {
   text-align: right;
 }
 
-.faceted-checkbox-less {
+.faceted-minaraad-type-less {
   text-align: right;
 }
 

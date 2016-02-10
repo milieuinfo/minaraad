@@ -6,22 +6,22 @@
   <faceted:widget factory=".widget.Widget" />
 
   <browser:resource
-    name="eea.facetednavigation.widgets.checkbox.view.js"
+    name="eea.facetednavigation.widgets.minaraad_type.view.js"
     file="./view.js"
    />
 
   <browser:resource
-    name="eea.facetednavigation.widgets.checkbox.edit.js"
+    name="eea.facetednavigation.widgets.minaraad_type.edit.js"
     file="./edit.js"
    />
 
   <browser:resource
-    name="eea.facetednavigation.widgets.checkbox.view.css"
+    name="eea.facetednavigation.widgets.minaraad_type.view.css"
     file="./view.css"
    />
 
   <browser:resource
-    name="eea.facetednavigation.widgets.checkbox.edit.css"
+    name="eea.facetednavigation.widgets.minaraad_type.edit.css"
     file="./edit.css"
    />
 
