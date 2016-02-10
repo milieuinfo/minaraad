@@ -5,6 +5,7 @@
     xmlns:plone="http://namespaces.plone.org/plone">
 
   <include package=".faceted_section_widget" />
+  <include package=".faceted_minaraad_type_widget" />
   <include package=".faceted_year_select_widget" />
 
   <!-- Faceted navigation -->
