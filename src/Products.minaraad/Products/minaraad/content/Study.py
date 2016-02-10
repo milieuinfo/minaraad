@@ -51,6 +51,7 @@ schema = atapi.Schema((
             label="Photo",
             label_msgid='minaraad_label_foto',
             i18n_domain='minaraad',
+            visible=False
         ),
         storage=atapi.AttributeStorage(),
         sizes={'foto': (300, 300)}
