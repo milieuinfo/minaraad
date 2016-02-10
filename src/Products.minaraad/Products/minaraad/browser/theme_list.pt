@@ -29,10 +29,10 @@
                 <div class="row">
 
                     <div class="left">
-                      <div class="row">
+                      <div class="row masonry">
 
                         <tal:primaryThemes tal:repeat="item view/primary_themes">
-                          <div class="column">
+                          <div class="column grid-item">
                             <article class="article-theme">
                               <a tal:attributes="href item/absolute_url">
                                 <div class="body">
@@ -51,21 +51,11 @@
                             </article>
                           </div>
 
-                          <div tal:define="number repeat/item/number"
-                               tal:condition="repeat/item/even"
-                               class="col-sm-12 visible-sm">
-                          </div>
-
-                          <!--! Break column to equalise 'rows'. -->
-                          <div tal:define="number repeat/item/number"
-                              tal:condition="python:number % 3 == 0"
-                               class="col-md-12 visible-md visible-lg">
-                          </div>
-
                         </tal:primaryThemes>
 
                       </div>
                     </div>
+
 
                     <div class="right">
 
@@ -101,12 +91,12 @@
                   <h2><a href="#">Actuele documenten</a></h2>
                 </div>
 
-                <div class="row">
+                <div class="row masonry">
 
                       <tal:relatedItems
                           tal:define="related_items python:context.getRelatedItems();"
                           tal:repeat="item related_items">
-                        <div class="column">
+                        <div class="column grid-item">
                           <article class="article-advice">
                             <a tal:attributes="href item/absolute_url">
                               <tal:image
