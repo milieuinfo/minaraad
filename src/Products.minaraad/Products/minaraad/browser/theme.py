@@ -27,11 +27,11 @@ class ThemeListView(BrowserView):
         return [brain.getObject() for brain in brains]
 
     def primary_themes(self):
-        if len(self.themes) >= 6:
+        if len(self.themes()) >= 6:
             return self.themes()[:6]
 
     def secondary_themes(self):
-        if len(self.themes) > 6:
+        if len(self.themes()) > 6:
             return self.themes()[6:]
 
 
