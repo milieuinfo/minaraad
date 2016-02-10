@@ -49,7 +49,7 @@
    <property name="default"></property>
   </criterion>
   <criterion name="c2">
-   <property name="widget">checkbox</property>
+   <property name="widget">minaraad_type</property>
    <property name="title">Type</property>
    <property name="position">left</property>
    <property name="section">default</property>
@@ -57,13 +57,7 @@
    <property name="count">1</property>
    <property name="sortcountable">0</property>
    <property name="hidezerocount">0</property>
-   <property name="index">Type</property>
-   <property name="operator">or</property>
-   <property name="operator_visible">0</property>
-   <property name="vocabulary">minaraad.portal_types</property>
-   <property name="catalog"></property>
    <property name="maxitems">50</property>
-   <property name="sortreversed">0</property>
    <property name="default">
     <element value="Advisory"/>
     <element value="Hearing"/>
