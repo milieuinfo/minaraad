@@ -2,13 +2,10 @@ from AccessControl import ClassSecurityInfo
 from Products.Archetypes import atapi
 from Products.OrderableReferenceField import OrderableReferenceField
 from Products.OrderableReferenceField import OrderableReferenceWidget
-from Products.minaraad.EmailMixin import EmailMixin
 from Products.minaraad.config import PROJECTNAME
 from Products.minaraad.content.contacts import contacts_schema
 from Products.minaraad.content.interfaces import IUseContact
-from Products.minaraad.content.themes import ThemeMixin as OldThemeMixin
 from Products.minaraad.ThemeMixin import ThemeMixin
-from Products.minaraad.content.themes import theme_schema
 from Products.minaraad.interfaces import IMREvent
 from Products.minaraad.Attachmentsmixin import Attachmentsmixin
 from Products.minaraad.ImageAttachmentsmixin import ImageAttachmentsmixin
@@ -55,7 +52,6 @@ schema = atapi.Schema((
         default_content_type='text/html',
         default_output_type='text/html',
     ),
-
 
     atapi.StringField(
         name='location',
@@ -106,7 +102,7 @@ schema = atapi.Schema((
             label="Photo",
             label_msgid='minaraad_label_foto',
             i18n_domain='minaraad',
-            visible=False,
+            visible=False
         ),
         storage=atapi.AttributeStorage(),
         sizes={'foto': (300, 300)}
@@ -140,17 +136,15 @@ schema = atapi.Schema((
 )
 
 MREvent_schema = atapi.OrderedBaseFolderSchema.copy() + \
-    contacts_schema.copy() + \
-    getattr(EmailMixin, 'schema', atapi.Schema(())).copy() + \
-    getattr(ImageAttachmentsmixin, 'schema', atapi.Schema(())).copy() + \
-    theme_schema.copy() + \
-    schema.copy()
+    schema.copy() + \
+    ImageAttachmentsmixin.schema.copy() + \
+    contacts_schema.copy()
 
-MREvent_schema.moveField('coordinator', after="foto")
+MREvent_schema.moveField('coordinator', after="subscriptionAllowed")
 MREvent_schema.moveField('authors', after="coordinator")
 
 
-class MREvent(Attachmentsmixin, BaseMeeting, EmailMixin, OldThemeMixin, ThemeMixin):
+class MREvent(Attachmentsmixin, BaseMeeting, ThemeMixin):
     """
     """
     implements(IMREvent, IUseContact)

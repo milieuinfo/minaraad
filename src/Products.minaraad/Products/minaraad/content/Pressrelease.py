@@ -7,7 +7,6 @@ from plone.app.blob.field import ImageField
 
 from Products.minaraad.interfaces import IPressRelease
 from Products.minaraad.Attachmentsmixin import Attachmentsmixin
-from Products.minaraad.EmailMixin import EmailMixin
 from Products.minaraad.config import PROJECTNAME
 from Products.minaraad.content.interfaces import IUseContact
 from Products.minaraad.content.contacts import contacts_schema
@@ -108,7 +107,6 @@ schema = atapi.Schema((
 
 
 Pressrelease_schema = (
-    getattr(EmailMixin, 'schema', atapi.Schema(())).copy() +
     getattr(Attachmentsmixin, 'schema', atapi.Schema(())).copy() +
     schema.copy() +
     contacts_schema.copy())
@@ -117,7 +115,7 @@ Pressrelease_schema.moveField('coordinator', after="foto")
 Pressrelease_schema.moveField('authors', after="coordinator")
 
 
-class Pressrelease(EmailMixin, Attachmentsmixin):
+class Pressrelease(Attachmentsmixin):
     """
     A pressrelease
     """

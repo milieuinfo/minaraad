@@ -44,14 +44,15 @@ from Products.minaraad.utils import email_logger
 
 MinaraadMessageFactory = MessageFactory(u'minaraad')
 
+# Maurits: Is this still necessary. I added ImageAttachementMixin without
+# mentioning it here and works fine. Could it be GenericSetup now
+# takes care of this?
 
 def initialize(context):
     # imports packages and types for registration
     import content
-    import EmailMixin
-    import PostMixin
     import Attachmentsmixin
-    content, EmailMixin, PostMixin, Attachmentsmixin  # pyflakes
+    content, Attachmentsmixin  # pyflakes
 
     # Initialize portal content
     content_types, constructors, ftis = atapi.process_types(

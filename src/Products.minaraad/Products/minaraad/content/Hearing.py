@@ -41,9 +41,7 @@ Hearing_schema = (
     getattr(MREvent, 'schema', atapi.Schema(())).copy() +
     schema.copy())
 
-Hearing_schema.moveField('theme', after="goal")
-Hearing_schema.moveField('email_themes', after="theme")
-Hearing_schema.moveField('mot', after="email_themes")
+Hearing_schema.moveField('mot', after="description")
 
 
 class Hearing(MREvent, atapi.BaseFolder):

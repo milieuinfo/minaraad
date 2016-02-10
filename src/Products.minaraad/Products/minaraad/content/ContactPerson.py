@@ -95,8 +95,7 @@ schema = atapi.Schema((
 ),
 )
 
-ContactPerson_schema = atapi.BaseSchema.copy() + \
-    schema.copy()
+ContactPerson_schema = atapi.BaseSchema.copy() + schema.copy()
 
 
 class ContactPerson(atapi.BaseContent):

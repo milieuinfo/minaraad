@@ -4,6 +4,8 @@ History of this buildout
 6.0.0 (unreleased)
 ------------------
 
+- Remove email subscribers code. [jladage]
+
 - Implement Document view.
   [jladage]
 

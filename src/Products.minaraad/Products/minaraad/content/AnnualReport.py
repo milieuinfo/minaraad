@@ -5,8 +5,6 @@ from Products.Archetypes import atapi
 from Products.CMFCore.permissions import View
 
 from Products.minaraad.interfaces import IAnnualReport
-from Products.minaraad.PostMixin import PostMixin
-from Products.minaraad.EmailMixin import EmailMixin
 from Products.minaraad import config
 from plone.app.blob.field import BlobField
 
@@ -26,13 +24,10 @@ schema = atapi.Schema((
 ),
 )
 
-AnnualReport_schema = atapi.BaseSchema.copy() + \
-    getattr(PostMixin, 'schema', atapi.Schema(())).copy() + \
-    getattr(EmailMixin, 'schema', atapi.Schema(())).copy() + \
-    schema.copy()
+AnnualReport_schema = atapi.BaseSchema.copy() + schema.copy()
 
 
-class AnnualReport(PostMixin, EmailMixin, atapi.BaseContent):
+class AnnualReport(atapi.BaseContent):
     """
     An annual report
     """
