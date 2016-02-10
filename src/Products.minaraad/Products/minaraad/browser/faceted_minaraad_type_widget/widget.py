@@ -53,6 +53,7 @@ class Widget(CountableWidget):
 
     index = ViewPageTemplateFile('widget.pt')
     edit_schema = CountableWidget.edit_schema.copy() + EditSchema
+    index_id = 'portal_type'
 
     def portal_vocabulary(self):
         """Look up selected vocabulary from portal_vocabulary or from ZTK
@@ -121,7 +122,7 @@ class Widget(CountableWidget):
         """ Get value from form and return a catalog dict query
         """
         query = {}
-        index = 'portal_type'
+        index = self.index_id
         operator = 'or'
 
         if self.hidden:
@@ -143,3 +144,11 @@ class Widget(CountableWidget):
 
         query[index] = {'query': value, 'operator': operator}
         return query
+
+    def count(self, brains, sequence=None):
+        """ Intersect results
+        """
+        # We have removed the index from the fields, because we have a
+        # hardcoded index.  But some of the code expects it in the data.
+        self.data.index = self.index_id
+        return super(Widget, self).count(brains, sequence=sequence)
