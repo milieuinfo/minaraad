@@ -127,7 +127,7 @@
   <replace css:content=".searchSection" css:theme=".search p"/>
 
   <!-- footer -->
-  <replace css:content=".footer-doormat" css:theme=".footer-doormat" />
+  <replace css:content="footer" css:theme="footer" />
  <!-- <drop css:content="#viewlet-below-content-body" /> -->
 
   <!-- Central column -->

@@ -1,5 +1,5 @@
-<section class="footer-doormat"
-        tal:define="portal_url view/portal/absolute_url">
+<footer tal:define="portal_url view/portal/absolute_url">
+<section class="footer-doormat">
 
   <div class="container">
     <div class="row">
@@ -76,3 +76,45 @@
 
   </div>
 </section>
+
+<section class="footer-flanders">
+  <div class="container">
+    <div class="row">
+
+      <div id="owner">
+        <p>Dit is een officiële website van de Vlaamse overheid
+          <a class="more" href="#">Meer info</a>
+        </p>
+      </div>
+
+      <div id="drawer" class="sec-owner-drawer" style="display:none">
+          <a href="#" class="less">
+            Verberg info
+          </a>
+          <img src="static/img/vlaanderen.svg"
+               tal:attributes="src string:${portal_url}/++theme++minaraad/static/img/vlaanderen.svg"
+              alt="Vlaanderen Logo">
+          <h2>
+            www.minaraad.be is een officiële website van de
+            Vlaamse overheid
+          </h2>
+          <p class="published-by">
+            uitgegeven door
+            <a href="http://www.minaraad.be/over-de-minaraad">
+              <span>de Minaraad</span>
+            </a>
+          </p>
+          <p>
+            De Minaraad is de strategische adviesraad voor het
+            beleidsdomein Leefmilieu, Natuur en Energie van de
+            Vlaamse Overheid.
+            De Raad heeft een algemene bevoegdheid inzake studie,
+            aanbeveling en advies voor alles wat verband houdt
+            met milieu en natuur.
+          </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+</footer>
