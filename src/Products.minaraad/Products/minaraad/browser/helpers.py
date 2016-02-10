@@ -49,7 +49,8 @@ class HelpersView(BrowserView):
         url = portal_url + '/documenten/'
         tkey = '&c7=%2Fminaraad%2Fthemas%2F'
         for yr in years:
-            search_url = url + '#c2=' + ctype + '&c5=' + str(yr) + tkey + theme.getId()
+            search_url = url + '#c2=' + ctype + \
+                         '&c5=' + str(yr) + tkey + theme.getId()
             results.append({'year': yr, 'url': search_url})
         if results == []:
             return None
@@ -109,6 +110,36 @@ class HelpersView(BrowserView):
                 'url': theme.absolute_url(),
                 'css_class': css_class})
         return results
+
+    def submenu_items(self):
+        """ Return a set of sub folders for a given context
+        """
+        over = api.portal.get()['over-de-minaraad']
+        objPhysicalPath = self.context.getPhysicalPath()
+        objPath = '/'.join(objPhysicalPath)
+        brains = api.content.find(
+            context=over,
+            depth=1,
+            portal_type="Folder")
+        res = []
+        for b in brains:
+            itemPath = b.getPath()
+            itemPhysicalPath = itemPath.split('/')
+            isCurrent = isCurrentParent = False
+            if itemPath is not None:
+                if objPath == itemPath:
+                    isCurrent = True
+                elif objPath.startswith(itemPath) and len(objPhysicalPath) > len(itemPhysicalPath):
+                    isCurrentParent = True
+            css_class = ''
+            if isCurrent or isCurrentParent:
+                css_class = 'active'
+            res.append({
+                'url': b.getURL(),
+                'title':b.Title,
+                'css_class': css_class,
+            })
+        return res
 
 
 class RedirectPlone(BrowserView):

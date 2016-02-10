@@ -4,6 +4,9 @@ History of this buildout
 6.0.0 (unreleased)
 ------------------
 
+- Implement Document view.
+  [jladage]
+
 - Added own faceted type widget.  You need to import the
   faceted_criteria.xml from the buildout directory.  [maurits]
 

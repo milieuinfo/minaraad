@@ -7911,7 +7911,7 @@ nav section ul {
     color: #2d2d2d;
     padding: 3px;
     display: block; }
-    nav section ul li a:hover, nav section ul li a:active {
+    nav section ul li a:hover, nav section ul li a:active, nav section ul li a.active {
       background: #fbeaed; }
   nav section ul li.active a {
     background: #fbeaed; }
