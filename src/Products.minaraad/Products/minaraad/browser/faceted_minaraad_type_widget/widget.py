@@ -134,6 +134,12 @@ class Widget(CountableWidget):
         if not value:
             return query
 
+        # When getting Files, we also want to get FileAttachments.
+        if not isinstance(value, list):
+            value = [value]
+        if 'File' in value:
+            value.append('FileAttachment')
+
         query[index] = {'query': value, 'operator': operator}
         return query
 
@@ -143,4 +149,12 @@ class Widget(CountableWidget):
         # We have removed the index from the fields, because we have a
         # hardcoded index.  But some of the code expects it in the data.
         self.data.index = self.index_id
-        return super(Widget, self).count(brains, sequence=sequence)
+        # When getting Files, we also want to get FileAttachments.
+        if not sequence:
+            sequence = [key for key, value in self.vocabulary()]
+            if 'FileAttachment' not in sequence:
+                sequence.append('FileAttachment')
+        result = super(Widget, self).count(brains, sequence=sequence)
+        if 'File' in result and 'FileAttachment' in result:
+            result['File'] += result.pop('FileAttachment')
+        return result
