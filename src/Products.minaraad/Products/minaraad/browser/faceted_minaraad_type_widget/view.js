@@ -95,6 +95,28 @@ Faceted.MinaraadTypesWidget.prototype = {
     this.do_query(element);
   },
 
+  set_select_all_label: function(checked){
+    var label = this.widget.find('.select_all_label');
+    if (label.length) {
+      if (checked) {
+        label.text('Maak selectie ongedaan');
+      } else {
+        label.text('Selecteer alles');
+      }
+    }
+  },
+
+  toggle_all: function(element, evt){
+    var checked = element.checked;
+    var inputs = jQuery('form input[type=checkbox]', this.widget);
+    for (var index = 0; index < inputs.length; index++) {
+      inputs[index].checked = checked;
+    }
+    this.set_select_all_label(checked);
+    // Perform the query
+    this.do_query(element);
+  },
+
   operator_click: function(element, evt){
     var self = this;
     if(self.operator === 'or'){
@@ -140,6 +162,12 @@ Faceted.MinaraadTypesWidget.prototype = {
     if(checked){
       jQuery('form input[type=checkbox]', this.widget).val(checked);
       this.selected = jQuery('form input[type=checkbox]:checked', this.widget);
+      for (var i = 0; i < checked.length; i++) {
+        if (checked[i] === 'select_all') {
+          this.set_select_all_label(true);
+          break;
+        }
+      }
     }
 
     var operator = Faceted.Query[this.wid + '-operator'];
@@ -258,6 +286,13 @@ Faceted.MinaraadTypesWidget.prototype = {
       var input = jQuery('input', li);
       input.unbind();
       var key = input.val();
+      if (key === 'select_all') {
+        input.attr('disabled', false);
+        input.click(function(evt){
+          context.toggle_all(this, evt);
+        });
+        return;
+      }
 
       var span = jQuery('span', li);
       if(!span.length){

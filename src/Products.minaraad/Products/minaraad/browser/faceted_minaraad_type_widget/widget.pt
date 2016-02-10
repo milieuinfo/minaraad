@@ -25,6 +25,18 @@
   <form action="." method="get">
 
   <ul>
+    <li tal:define="chbox_id string:select_all_${wid};
+                    checked python:view.selected('select_all');">
+        <input type="checkbox" class="faceted-noborder"
+               value="select_all"
+               tal:attributes="name chbox_id;
+                               checked checked;
+                               id chbox_id;" />
+        <label class="select_all_label" tal:attributes="for chbox_id">
+          <tal:block condition="not:checked">Selecteer alles</tal:block>
+          <tal:block condition="checked">Maak selectie ongedaan</tal:block>
+        </label>
+    </li>
     <tal:items repeat="term vocabulary">
       <li tal:define="
         term_id python:term[0];
