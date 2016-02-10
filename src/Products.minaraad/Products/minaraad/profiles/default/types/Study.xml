@@ -3,7 +3,7 @@
    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
    i18n:domain="minaraad">
  <property i18n:translate="" name="title">Study</property>
- <property i18n:translate="" name="description">A Study</property>
+ <property i18n:translate="" name="description"></property>
  <property name="content_icon">folder_icon.png</property>
  <property name="content_meta_type">Study</property>
  <property name="product">minaraad</property>

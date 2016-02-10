@@ -51,14 +51,15 @@
   
    -->
   
-  <rules css:if-content=".portalMessage">
+  <rules css:if-content="#content .portalMessage">
     <replace css:content=".portalMessage.info" css:theme=".alert-info .portalMessage_wrapper" method="raw"/>
     <replace css:content=".portalMessage.succes" css:theme=".alert-success .portalMessage_wrapper" method="raw"/>
     <replace css:content=".portalMessage.error" css:theme=".alert-danger .portalMessage_wrapper" method="raw"/>
     <replace css:content=".portalMessage.warning" css:theme=".alert-warning .portalMessage_wrapper" method="raw"/>
-
     <drop css:content="#content .portalMessage" />
-
+  </rules>
+  <rules css:if-not-content="#content .portalMessage">
+    <drop css:theme="#global_statusmessage" />
   </rules>
   
   <rules css:if-not-content=".portalMessage.info">

@@ -8,5 +8,6 @@
      <element value="document_view"/>
      <element value="homepage"/>
      <element value="themes"/>
+     <element value="contact"/>
  </property>
 </object>

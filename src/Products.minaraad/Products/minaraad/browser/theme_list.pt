@@ -40,7 +40,7 @@
                                       tal:define="images item/@@images;
                                       thumbnail python:images.scale('image', width=105, height=105, direction='down')"
                                       tal:condition="thumbnail">
-                                    <img tal:attributes="src thumbnail/url; alt item/title" />
+                                    <img tal:attributes="src thumbnail/url; alt item/Title" />
                                   </tal:image>
                                   <h3 tal:content="item/Title">
                                   </h3>
@@ -52,7 +52,7 @@
                           </div>
 
                           <div tal:define="number repeat/item/number"
-                               tal:condition="python:number % 2 == 0"
+                               tal:condition="repeat/item/even"
                                class="col-sm-12 visible-sm">
                           </div>
 
