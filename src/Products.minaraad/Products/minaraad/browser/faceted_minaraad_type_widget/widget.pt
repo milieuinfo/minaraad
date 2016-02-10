@@ -12,8 +12,6 @@
   css python:sortcountable and css + ' faceted-sortcountable' or css;
   maxitems python:view.data.get('maxitems', 0) or 0;
   operator python:view.operator;
-  operator_visible python:view.operator_visible;
-  operator_lable python: 'any' if operator == 'or' else 'all';
   vocabulary view/vocabulary;"
   tal:condition="vocabulary"
   tal:attributes="id string:${wid}_widget; class css; data-operator python:operator;">
@@ -23,15 +21,6 @@
     python:view.translate(title)" i18n:translate="">HTML Widget</legend>
 
   <tal:facet on-error="structure python:error_view(error=error, cid=wid)">
-
-  <div class="faceted-operator" tal:condition="operator_visible" title="match any/all filters bellow" i18n:attributes="title">
-    <label tal:attributes="for string:$wid-operator" i18n:translate="">match</label>
-    <a data-or="any" data-and="all" data-name="operator" i18n:attributes="data-or; data-and" tal:attributes="
-        href string:#$wid-operator=$operator;
-        data-value string:$operator;
-        "
-      tal:content="operator_lable" />
-  </div>
 
   <form action="." method="get">
 

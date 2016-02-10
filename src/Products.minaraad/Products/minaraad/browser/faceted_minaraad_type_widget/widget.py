@@ -11,7 +11,6 @@ from Products.Archetypes.public import IntegerWidget
 from Products.Archetypes.public import LinesWidget
 from Products.Archetypes.public import SelectionWidget
 from Products.Archetypes.public import BooleanWidget
-from Products.Archetypes.utils import DisplayList
 from Products.CMFCore.utils import getToolByName
 
 from eea.facetednavigation.dexterity_support import normalize as atdx_normalize
@@ -22,41 +21,6 @@ from eea.facetednavigation import EEAMessageFactory as _
 
 
 EditSchema = Schema((
-    StringField(
-        'index',
-        schemata="default",
-        required=True,
-        vocabulary_factory='eea.faceted.vocabularies.CatalogIndexes',
-        widget=SelectionWidget(
-            label=_(u'Catalog index'),
-            description=_(u'Catalog index to use for search'),
-            i18n_domain="eea"
-        )
-    ),
-    StringField(
-        'operator',
-        schemata='default',
-        required=True,
-        vocabulary=DisplayList([('or', 'OR'), ('and', 'AND')]),
-        default='or',
-        widget=SelectionWidget(
-            format='select',
-            label=_(u'Default operator'),
-            description=_(u'Search with AND/OR between elements'),
-            i18n_domain="eea"
-        )
-    ),
-    BooleanField(
-        'operator_visible',
-        schemata='default',
-        required=False,
-        default=False,
-        widget=BooleanWidget(
-            label=_(u"Operator visible"),
-            description=_(u"Let the end-user choose to search with "
-                          "AND or OR between elements"),
-        )
-    ),
     StringField(
         'vocabulary',
         schemata="default",
@@ -156,30 +120,20 @@ class Widget(CountableWidget):
     def operator_visible(self):
         """ Is operator visible for anonymous users
         """
-        return self.data.get('operator_visible', False)
+        return False
 
     @property
     def operator(self):
         """ Get the default query operator
         """
-        return self.data.get('operator', 'and')
+        return 'or'
 
     def query(self, form):
         """ Get value from form and return a catalog dict query
         """
         query = {}
-        index = self.data.get('index', '')
-        index = index.encode('utf-8', 'replace')
-
-        if not self.operator_visible:
-            operator = self.operator
-        else:
-            operator = form.get(self.data.getId() + '-operator', self.operator)
-
-        operator = operator.encode('utf-8', 'replace')
-
-        if not index:
-            return query
+        index = 'portal_type'
+        operator = 'or'
 
         if self.hidden:
             value = self.default
@@ -192,12 +146,11 @@ class Widget(CountableWidget):
             return query
 
         catalog = getToolByName(self.context, 'portal_catalog')
-        if index in catalog.Indexes:
-            if catalog.Indexes[index].meta_type == 'BooleanIndex':
-                if value == 'False':
-                    value = False
-                elif value == 'True':
-                    value = True
+        if catalog.Indexes[index].meta_type == 'BooleanIndex':
+            if value == 'False':
+                value = False
+            elif value == 'True':
+                value = True
 
         query[index] = {'query': value, 'operator': operator}
         return query
