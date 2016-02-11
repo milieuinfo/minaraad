@@ -14,8 +14,8 @@ from zope.interface import implements
 import transaction
 
 from Products.minaraad.content.contacts import contacts_schema
-from Products.minaraad.content.themes import old_theme_schema
-from Products.minaraad.content.themes import OldThemeMixin
+from Products.minaraad.ThemeMixin import old_theme_schema
+from Products.minaraad.ThemeMixin import OldThemeMixin
 
 project_schema = atapi.OrderedBaseFolderSchema.copy() + atapi.Schema((
 
