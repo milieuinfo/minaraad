@@ -67,13 +67,6 @@
       />
 
   <browser:page
-      name="migrate_advisories_to_projects"
-      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
-      class=".project.MigrateAdvisoriesToProjects"
-      permission="cmf.ManagePortal"
-      />
-
-  <browser:page
       name="meeting_view"
       for="minaraad.projects.interfaces.IMeeting"
       class=".meeting.MeetingView"

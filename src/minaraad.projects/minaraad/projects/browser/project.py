@@ -10,7 +10,6 @@ from Products.statusmessages.interfaces import IStatusMessage
 
 from minaraad.projects import MinaraadProjectMessageFactory as _
 from minaraad.projects.utils import link_project_and_advisory
-from minaraad.projects.migration import migrate_advisories_to_projects
 
 logger = logging.getLogger(__name__)
 
@@ -141,24 +140,6 @@ class CreateAdvisory(CanCreateAdvisory):
 
         # Redirect to that Advisory.
         self.request.RESPONSE.redirect(advisory.absolute_url())
-
-
-class MigrateAdvisoriesToProjects(BrowserView):
-    """Migrate public advisories to projects.
-
-    Public advisories in the 'adviezen' map should be copied to a new
-    Project and as much content as possible taken over.  Only 2009 and
-    younger should be taken.
-    """
-
-    def __call__(self):
-        migrate = int(self.request.get('migrate', 0))
-        if migrate != 1:
-            return "Call with ?migrate=1 to do the migration."
-
-        context = aq_inner(self.context)
-        migrate_advisories_to_projects(context)
-        return "Done"
 
 
 class ProjectView(BrowserView):

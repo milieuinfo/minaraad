@@ -1,14 +1,10 @@
 import logging
 import re
 
-from DateTime import DateTime
 from Products.CMFCore.utils import getToolByName
 from Products.ZCatalog.ProgressHandler import ZLogHandler
 from ZODB.POSException import ConflictError
 from persistent.dict import PersistentDict
-
-from minaraad.projects.utils import create_attachment
-from minaraad.projects.utils import is_advisory_request
 
 logger = logging.getLogger('minaraad.projects.migration')
 # The default profile id of your package:
@@ -61,84 +57,6 @@ def apply_workflow_step(context):
 
 def apply_propertiestool_step(context):
     context.runImportStepFromProfile(PROFILE_ID, 'propertiestool')
-
-
-def migrate_advisories_to_projects(context):
-    # This is the second incarnation of this migration.
-    # We have already migrated adviezen/2009-2011.
-    # Now we want to migrate digibib-1/dossiers-adviezen/2009-2011.
-    portal = getToolByName(context, 'portal_url').getPortalObject()
-    # advisory_folder = portal['adviezen']
-    advisory_folder = portal['digibib-1']['dossiers-adviezen']['2011']
-    target = portal['digibib']['projects']
-    # We only want to migrate a few specially selected folders.
-    hardcoded_id_list = [
-        '110519-evaluatie-van-de-werking-2010-van-de-regionale-landschappen',
-        ('110719-erkenning-van-een-privaat-natuurreservaat-e-409-gondebeek-te-'
-         'melle-merelbeke-en-oosterzele-oost-vlaanderen'),
-        ('110719-uitbreiding-van-een-erkend-natuurreservaat-e-003-blankaart-'
-         'te-diksmuide-en-houtlhulst-west-vlaanderen'),
-        ('110823-uitbreiding-van-een-erkend-natuurreservaat-e-111-latemse-'
-         'meersen-te-sint-martens-latem-oost-vlaanderen'),
-        ('110823-uitbreiding-van-het-erkend-natuurreservaat-e-216-hof-ten-berg'
-         '-te-galmaarden-vlaams-brabant-en-geraardsbergen-oost-vlaanderen'),
-        ('110824-uitbreiding-erkend-natuurreservaat-e-161-duivenbos-te-'
-         'herzele'),
-        '20110930-milieuhandhavingsprogramma-2011',
-        ('uitbreiding-van-een-erkend-natuurreservaat-e-016-'
-         '201ctikkebroeken201d-te-kasterlee-en-oud-turnhout-antwerpen'),
-    ]
-    for advisory_id in hardcoded_id_list:
-        try:
-            advisory = advisory_folder[advisory_id]
-        except KeyError:
-            logger.warn("Advisory id %s not found.", advisory_id)
-            continue
-        logger.info("Migrating %s", advisory_id)
-
-        # Determine fields for the Project.
-        title_parts = advisory.Title().split(' ')
-        date_part = title_parts[0]
-        title_part = ' '.join(title_parts[1:]).strip('-').strip()
-        try:
-            day = int(date_part[-2:])
-            month = int(date_part[-4:-2])
-            year = 2011
-            advisory_date = DateTime(year, month, day)
-        except:
-            # the field is mandatory
-            advisory_date = DateTime()
-
-        # Create a Project.
-        project_id = target.generateUniqueId('Project')
-        target.invokeFactory('Project', id=project_id)
-        project = target[project_id]
-
-        # First we must set the date and we cannot do that in the
-        # later processForm call.
-        project.setAdvisory_date(advisory_date)
-        fields = dict(
-            title=title_part,
-        )
-        # Process the form:
-        project.processForm(values=fields)
-        # processForm may have caused a rename
-        project_id = project.getId()
-        # The project_id will actually not be nice because it
-        # depends on the internal project id field and we
-        # cannot determine that; so we should enable an
-        # automatic rename when the object gets edited:
-        project.markCreationFlag()
-        logger.info("Created a project with id %s.", project_id)
-
-        for doc in advisory.contentValues():
-            if (is_advisory_request(doc) and
-                    project.getAdvisory_request().getSize() == 0):
-                project.setAdvisory_request(doc.getFile())
-                logger.info("Saved advisory request.")
-            else:
-                create_attachment(project, doc, published=False)
-    logger.info("Done migrating/copying advisories to projects.")
 
 
 def fix_double_invitees(context):
