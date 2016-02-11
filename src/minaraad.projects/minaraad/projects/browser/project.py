@@ -25,10 +25,10 @@ class CanCreateAdvisory(BrowserView):
     @property
     def base_target(self):
         portal = getToolByName(self.context, 'portal_url').getPortalObject()
-        if not base_hasattr(portal, 'adviezen'):
-            logger.warn("Target folder 'adviezen' not found.")
+        if not base_hasattr(portal, 'themas'):
+            logger.warn("Target folder 'themas' not found.")
             return None
-        return portal.adviezen
+        return portal.themas
 
     def available(self):
         """Is the action available?
