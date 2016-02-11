@@ -422,6 +422,10 @@
         title="Initialize rich text fields for Advisories"
         description="This adds the popular_summary field."
         handler="Products.minaraad.migration.initialize_rich_text_fields_all_advisories" />
+    <gs:upgradeStep
+        title="Migrate project themes"
+        description="Migrate projects from old-style theme integers to new-style Theme objects."
+        handler="Products.minaraad.migration.migrate_project_themes" />
   </gs:upgradeSteps>
 
 </configure>

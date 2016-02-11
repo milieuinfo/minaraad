@@ -15,6 +15,7 @@ from Products.CMFPlone.utils import _createObjectByType
 from Products.SimpleAttachment.setuphandlers import \
     registerImagesFormControllerActions
 from Products.minaraad.content.interfaces import IUseContact
+from Products.minaraad.events import save_theme_name
 from Products.minaraad.interfaces import IAttendeeManager
 from Products.ZCatalog.ProgressHandler import ZLogHandler
 from random import choice
@@ -29,6 +30,16 @@ import transaction
 logger = logging.getLogger('Products.minaraad.migrations')
 # The default profile id of your package:
 PROFILE_ID = 'profile-Products.minaraad:default'
+# Mapping from old theme integer to new Theme object id.
+OLD_THEMES = {
+    21: "vergroening-van-de-economie",
+    22: "bestuurskwaliteit",
+    27: "bestuurskwaliteit",
+    23: "klimaat",
+    24: "hinder",
+    25: "biodiversiteit",
+    26: "temp-ruimtelijke-ordening-en-mobiliteit",
+}
 
 
 def migrate_contacts(context):
@@ -584,15 +595,6 @@ def move_content(context):
     :param context:
     :return:
     """
-    themes = {
-        21: "vergroening-van-de-economie",
-        22: "bestuurskwaliteit",
-        27: "bestuurskwaliteit",
-        23: "klimaat",
-        24: "hinder",
-        25: "biodiversiteit",
-        26: "temp-ruimtelijke-ordening-en-mobiliteit",
-    }
 
     types = [
         'Advisory',
@@ -615,7 +617,7 @@ def move_content(context):
             logger.info("Unlock %s", obj.title)
 
         try:
-            theme = themes[obj.theme]
+            theme = OLD_THEMES[obj.theme]
         except KeyError:
             theme = 'andere-themas'
 
@@ -669,6 +671,54 @@ def create_theme_folders(context):
         )
         api.content.transition(obj=theme, transition='publish')
         logger.info("%s created", title)
+
+
+def migrate_project_themes(context):
+    """Migrate project themes.
+
+    Migrate projects from old-style theme integers to new-style Theme objects.
+
+    In move_content we moved Studies, etc, to the Theme object folders
+    based on their theme integers.
+
+    Now we edit Projects.  They also had their theme stored as integer
+    in the theme field, from the OldThemeMixin.
+
+    Now we link them to the appropriate theme folders.  The theme_path
+    field will contain the path to the theme.  That is also what we get
+    from the minaraad.theme_path vocabulary.
+
+    And just like before, we use getThemeName and setThemeName in
+    events.save_theme_name to save the theme name.
+    """
+    portal = api.portal.get()
+    portal_path = '/'.join(portal.getPhysicalPath())
+    print 'portal_path', portal_path
+    brains = api.content.find(
+        context=portal,
+        portal_type='Project',
+    )
+    for brain in brains:
+        obj = brain.getObject()
+        old_theme_name = obj.getThemeName()
+        # Note: theme might be None, but that is fine.
+        old_theme_id = obj.theme
+        lockable = ILockable(obj)
+        if lockable.locked():
+            lockable.unlock()
+            logger.info("Unlock %s", obj.title)
+
+        try:
+            theme = OLD_THEMES[old_theme_id]
+        except KeyError:
+            theme = 'andere-themas'
+
+        theme_path = '/'.join([portal_path, 'themas', theme])
+        obj.setTheme_path(theme_path)
+        save_theme_name(obj)
+        logger.info("Moved Project %s theme from %r (%r) to %r",
+                    brain.getPath(), old_theme_name, old_theme_id,
+                    obj.getThemeName())
 
 
 def apply_extra_product_profiles(context):

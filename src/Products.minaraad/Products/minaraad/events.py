@@ -6,7 +6,7 @@ import logging
 logger = logging.getLogger('minaraad')
 
 
-def save_theme_name(obj, event):
+def save_theme_name(obj, event=None):
     """This event is called everytime an object with a theme is updated.
 
     We store the theme name, so if the theme is deleted in the
