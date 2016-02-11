@@ -117,6 +117,14 @@
       permission="zope2.View"
       />
 
+  <!-- Helpers for use in items.pt -->
+  <browser:page
+      for="*"
+      name="helpers"
+      permission="zope2.View"
+      class=".helpers.HelpersView"
+      />
+
   <browser:page
       name="homepage"
       for="Products.ATContentTypes.interfaces.IATDocument"
@@ -340,7 +348,6 @@
       template="contactperson_view.pt"
       />
 
-
   <browser:page
       for="Products.ATContentTypes.interfaces.file.IATFile"
       permission="zope2.View"
@@ -373,13 +380,5 @@
     <browser:page name="login_form" />
     <browser:page name="logout" />
   </browser:pages>
-
-
-  <browser:page
-      for="*"
-      name="helpers"
-      permission="zope2.View"
-      class=".helpers.HelpersView"
-      />
 
 </configure>
