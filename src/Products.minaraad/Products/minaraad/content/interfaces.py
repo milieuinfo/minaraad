@@ -1,13 +1,12 @@
 from zope.interface import Interface
 
+
 class IThemes(Interface):
-    """Lists applicable themes and provides theme displaylist."""
+    """Lists applicable themes and provides theme displaylist.
 
-    def getThemesList():
-        """Return displaylist with theme id/name"""
-
-    def getTheme():
-        """Return ID of selected theme"""
+    This was used by the OldThemeMixin (with a few more methods) and
+    will from now on be used by the ThemeReferenceMixin.
+    """
 
     def getThemeName():
         """Return name of selected theme"""

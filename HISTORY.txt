@@ -4,6 +4,8 @@ History of this buildout
 6.0.0 (unreleased)
 ------------------
 
+- Added ThemeReferenceMixin for projects.  MINA-92.  [maurits]
+
 - Cleanup skins folder, removed old listing views and remove an
   adapter which selected the correct listing view on a folder based
   on it's parent. [jladage]

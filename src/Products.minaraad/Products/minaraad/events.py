@@ -9,10 +9,13 @@ logger = logging.getLogger('minaraad')
 
 
 def save_theme_name(obj, event):
-    """ This event is called everytime an object
-    with a theme is updated.
+    """This event is called everytime an object with a theme is updated.
+
     We store the theme name, so if the theme is deleted in the
     future, we can still display it.
+
+    This was used by the OldThemeMixin and will from now on be used by
+    the ThemeReferenceMixin.
     """
     obj.setThemeName(obj.getThemeName())
 

@@ -32,7 +32,9 @@ from Products.Archetypes import atapi
 from Products.minaraad.content.Theme import Theme
 from Products.minaraad.content.interfaces import IThemes
 from Products.minaraad.themes import ThemeManager
+from zope.component import getUtility
 from zope.interface import implements
+from zope.schema.interfaces import IVocabularyFactory
 
 
 class ThemeParentMixin(object):
@@ -67,6 +69,52 @@ class ThemeParentMixin(object):
         return theme.Title()
 
 
+theme_reference_schema = atapi.Schema((
+    atapi.StringField(
+        name='theme_path',
+        widget=atapi.SelectionWidget(
+            label='Theme',
+            label_msgid='minaraad_label_theme',
+            i18n_domain='minaraad',
+        ),
+        vocabulary_factory='minaraad.theme_path'
+    ),
+
+))
+
+
+class ThemeReferenceMixin(object):
+    implements(IThemes)
+
+    security = ClassSecurityInfo()
+
+    @security.public
+    def getThemeName(self):
+        """Get the theme name when it is set."""
+        theme_path = self.getTheme_path()
+        if theme_path:
+            voc = getUtility(IVocabularyFactory, 'minaraad.theme_path')
+            terms = voc(self)
+            # Note: when a theme is private, it will not be in the vocabulary
+            # for anonymous users or digibib users that are not authorized to
+            # view the theme.  They will get a LookupError, which we catch.
+            try:
+                return terms.getTerm(theme_path).title
+            except LookupError:
+                pass
+        # Theme path is not yet set or the theme object has been deleted since.
+        # We use the one saved previously while saving the object.  This may
+        # have been done by us or by the old theme mixin, but that is fine.
+        try:
+            return self._theme_name
+        except AttributeError:
+            return
+
+    @security.private
+    def setThemeName(self, theme_name):
+        self._theme_name = theme_name
+
+
 old_theme_schema = atapi.Schema((
     atapi.IntegerField(
         name='theme',
@@ -74,6 +122,8 @@ old_theme_schema = atapi.Schema((
             label='Theme',
             label_msgid='minaraad_label_theme',
             i18n_domain='minaraad',
+            # We do not want to edit or view this anymore.
+            visible={'edit': 'invisible', 'view': 'invisible'}
         ),
         vocabulary='getThemesList'
     ),
@@ -139,9 +189,10 @@ class OldThemeMixin(object):
 
         return titles[0]
 
-    @security.private
-    def setThemeName(self, theme_name):
-        self._theme_name = theme_name
+    # Using this setter is no longer supported.
+    # @security.private
+    # def setThemeName(self, theme_name):
+    #     self._theme_name = theme_name
 
     @security.private
     def get_all_themes(self):

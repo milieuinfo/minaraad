@@ -23,7 +23,6 @@
     <implements interface=".interfaces.IPortalPropertyContainer" />
   </class>
 
-  <!-- TODO: REMOVE AFTER MIGRATION. I-->
   <subscriber
       for="Products.minaraad.content.interfaces.IThemes
            zope.lifecycleevent.interfaces.IObjectModifiedEvent"
