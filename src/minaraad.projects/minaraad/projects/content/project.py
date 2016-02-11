@@ -13,15 +13,9 @@ from zope.annotation.interfaces import IAnnotations
 from zope.interface import implements
 import transaction
 
-try:
-    from Products.minaraad.content.contacts import contacts_schema
-    from Products.minaraad.content.themes import theme_schema
-    from Products.minaraad.content.themes import ThemeMixin
-    contacts_schema, theme_schema, ThemeMixin  # pyflakes
-except ImportError:
-    contacts_schema = atapi.Schema(())
-    theme_schema = atapi.Schema(())
-    ThemeMixin = object
+from Products.minaraad.content.contacts import contacts_schema
+from Products.minaraad.content.themes import old_theme_schema
+from Products.minaraad.content.themes import OldThemeMixin
 
 project_schema = atapi.OrderedBaseFolderSchema.copy() + atapi.Schema((
 
@@ -179,7 +173,7 @@ project_schema = atapi.OrderedBaseFolderSchema.copy() + atapi.Schema((
         )
     ),
 )) + \
-    theme_schema.copy() + \
+    old_theme_schema.copy() + \
     contacts_schema.copy()
 
 project_schema['title'].widget.label = _(
@@ -234,7 +228,7 @@ for schema_key in project_schema.keys():
                                                      'view': 'invisible'}
 
 
-class Project(atapi.OrderedBaseFolder, ThemeMixin):
+class Project(atapi.OrderedBaseFolder, OldThemeMixin):
     """
     """
     security = ClassSecurityInfo()

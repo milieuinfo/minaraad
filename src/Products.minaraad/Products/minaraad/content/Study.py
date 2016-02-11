@@ -10,7 +10,7 @@ from plone.app.blob.field import ImageField
 from Products.minaraad.Attachmentsmixin import Attachmentsmixin
 from Products.minaraad.ImageAttachmentsmixin import ImageAttachmentsmixin
 from Products.minaraad.config import PROJECTNAME
-from Products.minaraad.ThemeMixin import ThemeMixin
+from Products.minaraad.ThemeMixin import ThemeParentMixin
 
 from Products.minaraad.interfaces import IStudy
 from Products.minaraad.content.interfaces import IUseContact
@@ -87,7 +87,7 @@ Study_schema = (
     contacts_schema.copy())
 
 
-class Study(Attachmentsmixin, ThemeMixin):
+class Study(Attachmentsmixin, ThemeParentMixin):
     """
     A study
     """

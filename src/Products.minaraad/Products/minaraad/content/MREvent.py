@@ -5,7 +5,7 @@ from Products.OrderableReferenceField import OrderableReferenceWidget
 from Products.minaraad.config import PROJECTNAME
 from Products.minaraad.content.contacts import contacts_schema
 from Products.minaraad.content.interfaces import IUseContact
-from Products.minaraad.ThemeMixin import ThemeMixin
+from Products.minaraad.ThemeMixin import ThemeParentMixin
 from Products.minaraad.interfaces import IMREvent
 from Products.minaraad.Attachmentsmixin import Attachmentsmixin
 from Products.minaraad.ImageAttachmentsmixin import ImageAttachmentsmixin
@@ -144,7 +144,7 @@ MREvent_schema.moveField('coordinator', after="subscriptionAllowed")
 MREvent_schema.moveField('authors', after="coordinator")
 
 
-class MREvent(Attachmentsmixin, BaseMeeting, ThemeMixin):
+class MREvent(Attachmentsmixin, BaseMeeting, ThemeParentMixin):
     """
     """
     implements(IMREvent, IUseContact)

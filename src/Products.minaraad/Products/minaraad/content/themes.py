@@ -8,9 +8,11 @@ New theme logic is handled by putting a theme in a theme container
 
     `Products.minaraad/Products/minaraad/content/Theme.py`
 
-The new way for objects to lookup their theme is the LabelMixin:
+The new way for objects to lookup their theme is the ThemeMixin:
 
-    `Products.minaraad/Products/minaraad/LabelMixin.py`
+    `Products.minaraad/Products/minaraad/ThemeMixin.py`
+
+And then the ThemeParentMixin.
 
 """
 
@@ -21,7 +23,7 @@ from Products.minaraad.themes import ThemeManager
 from zope.interface import implements
 
 
-theme_schema = atapi.Schema((
+old_theme_schema = atapi.Schema((
     atapi.IntegerField(
         name='theme',
         widget=atapi.SelectionWidget(
@@ -46,7 +48,7 @@ theme_schema = atapi.Schema((
 ))
 
 
-class ThemeMixin(object):
+class OldThemeMixin(object):
     implements(IThemes)
 
     security = ClassSecurityInfo()
@@ -71,7 +73,7 @@ class ThemeMixin(object):
                    for thId, thName in themeManager.themes]))
 
     # getTheme is provided as archetype's default accessor if you use
-    # theme_schema.
+    # old_theme_schema.
     security.declarePublic('getThemeName')
 
     def getThemeName(self):

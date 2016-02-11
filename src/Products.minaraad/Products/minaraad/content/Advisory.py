@@ -13,7 +13,7 @@ from Products.minaraad import MinaraadMessageFactory as _
 from Products.minaraad.interfaces import IAdvisory
 from Products.minaraad.Attachmentsmixin import Attachmentsmixin
 from Products.minaraad.ImageAttachmentsmixin import ImageAttachmentsmixin
-from Products.minaraad.ThemeMixin import ThemeMixin
+from Products.minaraad.ThemeMixin import ThemeParentMixin
 from Products.minaraad.config import PROJECTNAME
 from Products.minaraad.content.interfaces import IUseContact
 from Products.minaraad.content.contacts import contacts_schema
@@ -157,7 +157,7 @@ Advisory_schema.moveField('displayImages', after='displayAttachments')
 Advisory_schema.moveField('coordinator', after="displayImages")
 Advisory_schema.moveField('authors', after="coordinator")
 
-class Advisory(Attachmentsmixin, ThemeMixin):
+class Advisory(Attachmentsmixin, ThemeParentMixin):
     """An advisory
     """
     implements(IAdvisory, IUseContact)
