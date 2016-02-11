@@ -30,24 +30,6 @@
       for="Products.CMFPlone.interfaces.IMigratingPloneSiteRoot"
       />
 
-  <!--<gs:upgradeStep-->
-      <!--title="Migrate themes"-->
-      <!--description=""-->
-      <!--source="1001"-->
-      <!--destination="1002"-->
-      <!--handler="Products.minaraad.migration.migrate_themes"-->
-      <!--sortkey="1"-->
-      <!--profile="Products.minaraad:default" />-->
-
-  <gs:upgradeStep
-      title="Save themes"
-      description=""
-      source="1002"
-      destination="1003"
-      handler="Products.minaraad.migration.save_object_themes"
-      sortkey="1"
-      profile="Products.minaraad:default" />
-
   <gs:upgradeStep
       title="Migrate contacts"
       description=""

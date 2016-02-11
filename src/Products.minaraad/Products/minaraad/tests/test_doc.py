@@ -15,12 +15,6 @@ def test_suite():
                          doctest.NORMALIZE_WHITESPACE |
                          doctest.REPORT_UDIFF)),
         ztc.FunctionalDocFileSuite(
-            'migration.txt',
-            test_class=MinaraadFunctionalTestCase,
-            optionflags=(doctest.ELLIPSIS |
-                         doctest.NORMALIZE_WHITESPACE |
-                         doctest.REPORT_UDIFF)),
-        ztc.FunctionalDocFileSuite(
             'themes.txt',
             test_class=MinaraadFunctionalTestCase,
             optionflags=(doctest.ELLIPSIS |
