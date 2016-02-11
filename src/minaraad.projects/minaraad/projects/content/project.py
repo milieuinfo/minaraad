@@ -14,8 +14,6 @@ from zope.interface import implements
 import transaction
 
 from Products.minaraad.content.contacts import contacts_schema
-from Products.minaraad.ThemeMixin import old_theme_schema
-from Products.minaraad.ThemeMixin import OldThemeMixin
 from Products.minaraad.ThemeMixin import theme_reference_schema
 from Products.minaraad.ThemeMixin import ThemeReferenceMixin
 
@@ -175,7 +173,6 @@ project_schema = atapi.OrderedBaseFolderSchema.copy() + atapi.Schema((
         )
     ),
 )) + \
-    old_theme_schema.copy() + \
     theme_reference_schema.copy() + \
     contacts_schema.copy()
 
@@ -208,7 +205,6 @@ permission_mapping = {
         'organisations',
         'responsible_group',
         'assigned_groups',
-        'theme',
         'theme_path',
         'coordinator',
         'authors'],
@@ -232,7 +228,7 @@ for schema_key in project_schema.keys():
                                                      'view': 'invisible'}
 
 
-class Project(atapi.OrderedBaseFolder, OldThemeMixin, ThemeReferenceMixin):
+class Project(atapi.OrderedBaseFolder, ThemeReferenceMixin):
     """
     """
     security = ClassSecurityInfo()
@@ -242,14 +238,6 @@ class Project(atapi.OrderedBaseFolder, OldThemeMixin, ThemeReferenceMixin):
     schema = project_schema
 
     security.declarePrivate('_renameAfterCreation')
-
-    @security.public
-    def getThemeName(self):
-        """Get the theme name when it is set."""
-        name = ThemeReferenceMixin.getThemeName(self)
-        if name is not None:
-            return name
-        return OldThemeMixin.getThemeName(self)
 
     def _renameAfterCreation(self, check_auto_id=False):
         """ Use the project number and year to generate the ID.
