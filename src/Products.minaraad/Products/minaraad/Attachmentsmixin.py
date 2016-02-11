@@ -6,8 +6,6 @@ from Products.CMFPlone.interfaces import INonStructuralFolder
 from zope.interface import implements
 from Products.SimpleAttachment.widget import AttachmentsManagerWidget
 
-from Products.minaraad.config import PROJECTNAME
-
 schema = atapi.Schema((
     atapi.BooleanField(
         name='displayAttachments',
@@ -91,6 +89,3 @@ class Attachmentsmixin(atapi.OrderedBaseFolder):
         for attachment in self.get_attachments():
             result += attachment.SearchableText()
         return result
-
-
-atapi.registerType(Attachmentsmixin, PROJECTNAME)

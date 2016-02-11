@@ -1,12 +1,9 @@
 # -*- coding: utf-8 -*-
 from AccessControl import ClassSecurityInfo
-from Products.CMFCore.utils import getToolByName
 from Products.Archetypes import atapi
 from Products.CMFPlone.interfaces import INonStructuralFolder
 from zope.interface import implements
 from Products.SimpleAttachment.widget import ImagesManagerWidget
-
-from Products.minaraad.config import PROJECTNAME
 
 schema = atapi.Schema((
     atapi.BooleanField(
@@ -47,6 +44,3 @@ class ImageAttachmentsmixin(atapi.OrderedBaseFolder):
     _at_rename_after_creation = True
 
     schema = ImageAttachmentsmixin_schema
-
-
-atapi.registerType(ImageAttachmentsmixin, PROJECTNAME)
