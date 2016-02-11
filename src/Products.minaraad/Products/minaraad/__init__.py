@@ -24,8 +24,6 @@
 # 02110-1301, USA.
 #
 
-__author__ = """Rocky Burt <r.burt@zestsoftware.nl>"""
-__docformat__ = 'plaintext'
 
 import patches
 patches.patch_all()
