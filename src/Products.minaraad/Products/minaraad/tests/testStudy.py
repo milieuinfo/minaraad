@@ -69,8 +69,8 @@ class testStudy(MainTestCase):
 
         self.failUnless(self.teststudy.Title() == TITLE,
                         'Value is %s' % self.teststudy.Title())
-        self.failUnless(self.teststudy.getDescription() == DESCRIPTION,
-                        'Value is %s' % self.teststudy.getDescription())
+        self.failUnless(self.teststudy.Description() == DESCRIPTION,
+                        'Value is %s' % self.teststudy.Description())
         self.failUnless(self.teststudy.getDate() == DATE,
                         'Value is %s' % self.teststudy.getDate())
         self.failUnless(self.teststudy.getContact() == [self.contactperson],

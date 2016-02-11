@@ -17,6 +17,8 @@ class HelpersView(BrowserView):
         results = []
         ctype = self.context.portal_type
         theme = self.context.getThemeObject()
+        if theme is None:
+            return results
 
         # Sometimes objects are created with a effective date of
         # '1000-01-01 00:00:00'. Resulting in 1000+ values.
@@ -66,7 +68,12 @@ class HelpersView(BrowserView):
         """
         catalog = api.portal.get_tool(name='portal_catalog')
         ctype = self.context.portal_type
-        path = '/'.join(self.context.getThemeObject().getPhysicalPath())
+        theme = self.context.getThemeObject()
+        if theme is None:
+            # At least happens in old tests that add an Advisory outside of a
+            # Theme.
+            return {'next': None, 'previous': None}
+        path = '/'.join(theme.getPhysicalPath())
         items = catalog.searchResults(portal_type=ctype,
                                       path=path,
                                       sort_on='effective',

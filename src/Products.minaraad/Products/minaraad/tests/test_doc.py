@@ -14,10 +14,4 @@ def test_suite():
             optionflags=(doctest.ELLIPSIS |
                          doctest.NORMALIZE_WHITESPACE |
                          doctest.REPORT_UDIFF)),
-        ztc.FunctionalDocFileSuite(
-            'themes.txt',
-            test_class=MinaraadFunctionalTestCase,
-            optionflags=(doctest.ELLIPSIS |
-                         doctest.NORMALIZE_WHITESPACE |
-                         doctest.REPORT_UDIFF)),
     ))

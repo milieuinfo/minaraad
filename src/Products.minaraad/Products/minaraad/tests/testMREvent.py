@@ -51,7 +51,7 @@ class testMREvent(MainTestCase):
         """
 
         self.mrevent.Title()           # Titel
-        self.mrevent.getDescription()  # Omschrijving
+        self.mrevent.Description()  # Omschrijving
         self.mrevent.getGoal()         # Doelstelling
         self.mrevent.getSubheader()    # Subkop
         self.mrevent.getLocation()     # Lokatie

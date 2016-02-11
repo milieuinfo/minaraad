@@ -44,7 +44,6 @@ SUBHEADER = "ondertitel"
 DESCRIPTION = "jaja, een ondertitel"
 GOAL = "<p>Doel</p>"
 LOCATION = "Hoogvliet"
-THEME = 0
 MOT = bool(1)
 STARTDATE = DateTime()
 HTMLBODY = "<p>HTML op zijn best</p>"
@@ -140,13 +139,6 @@ class testHearing(MainTestCase):
         types_ = self.portal.portal_types.objectIds()
         self.failUnless('Hearing' in types_)
 
-    def test_themeslist(self):
-        """ Test the theme list function in the Hearing content type
-        """
-
-        themes = self.hoorzitting.getThemesList()
-        self.failUnless(len(themes) > 0)
-
     def test_AttendeeRegistration(self):
         """We want to know if members are correctly added and removed as
         attendees.
@@ -178,7 +170,6 @@ class testHearing(MainTestCase):
         self.hoorzitting.setSubheader(SUBHEADER)
         self.hoorzitting.setLocation(LOCATION)
         self.hoorzitting.setStart_time(STARTDATE)
-        self.hoorzitting.setTheme(THEME)
         self.hoorzitting.setMot(MOT)
         self.hoorzitting.setContact(self.contactperson.UID())
         self.hoorzitting.setBody(HTMLBODY, text_format="text/html")
@@ -188,16 +179,14 @@ class testHearing(MainTestCase):
                         'Value is %s' % self.hoorzitting.Title())
         self.failUnless(self.hoorzitting.getSubheader() == SUBHEADER,
                         'Value is %s' % self.hoorzitting.getSubheader())
-        self.failUnless(self.hoorzitting.getDescription() == DESCRIPTION,
-                        'Value is %s' % self.hoorzitting.getDescription())
+        self.failUnless(self.hoorzitting.Description() == DESCRIPTION,
+                        'Value is %s' % self.hoorzitting.Description())
         self.failUnless(self.hoorzitting.getGoal() == GOAL,
                         'Value is %s' % self.hoorzitting.getGoal())
         self.failUnless(self.hoorzitting.getLocation() == LOCATION,
                         'Value is %s' % self.hoorzitting.getLocation())
         self.failUnless(self.hoorzitting.getStart_time() == STARTDATE,
                         'Value is %s' % self.hoorzitting.getStart_time())
-        self.failUnless(self.hoorzitting.getTheme() == THEME,
-                        'Value is %s' % self.hoorzitting.getTheme())
         self.failUnless(self.hoorzitting.getMot() == MOT,
                         'Value is %s' % self.hoorzitting.getMot())
         self.failUnless(self.hoorzitting.getBody() == HTMLBODY,
