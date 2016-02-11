@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 # from Products.minaraad.subscriptions import SubscriptionManager

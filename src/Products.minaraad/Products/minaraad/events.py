@@ -1,9 +1,7 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
+from plone import api
 import logging
 
-from plone import api
 
 logger = logging.getLogger('minaraad')
 
