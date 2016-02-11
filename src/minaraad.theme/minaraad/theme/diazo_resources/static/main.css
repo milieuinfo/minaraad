@@ -8019,8 +8019,11 @@ nav section.archive li a:hover:before, nav section.archive li.active a:before, n
     overflow: auto;
     display: block; }
     .article-default > a p, .article-advice > a p, .article-event > a p, .article-next-meeting > a p, .article-vision > a p, .article-theme-other > a p, .article-theme > a p {
+      display: block;
       color: #333333;
       text-decoration: none; }
+    .article-default > a time, .article-advice > a time, .article-event > a time, .article-next-meeting > a time, .article-vision > a time, .article-theme-other > a time, .article-theme > a time {
+      color: #333333; }
     .article-default > a:hover, .article-advice > a:hover, .article-event > a:hover, .article-next-meeting > a:hover, .article-vision > a:hover, .article-theme-other > a:hover, .article-theme > a:hover, .article-default > a:focus, .article-advice > a:focus, .article-event > a:focus, .article-next-meeting > a:focus, .article-vision > a:focus, .article-theme-other > a:focus, .article-theme > a:focus {
       text-decoration: none; }
       .article-default > a:hover p, .article-advice > a:hover p, .article-event > a:hover p, .article-next-meeting > a:hover p, .article-vision > a:hover p, .article-theme-other > a:hover p, .article-theme > a:hover p, .article-default > a:focus p, .article-advice > a:focus p, .article-event > a:focus p, .article-next-meeting > a:focus p, .article-vision > a:focus p, .article-theme-other > a:focus p, .article-theme > a:focus p {

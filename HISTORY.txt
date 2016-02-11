@@ -4,6 +4,9 @@ History of this buildout
 6.0.0 (unreleased)
 ------------------
 
+- Add dates to faceted results of Advisory and Study.
+  [jladage]
+
 - Remove email subscribers code. [jladage]
 
 - Implement Document view.
