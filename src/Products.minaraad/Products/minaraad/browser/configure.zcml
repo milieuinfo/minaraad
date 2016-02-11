@@ -166,6 +166,27 @@
   />
 
   <browser:page
+      for="Products.minaraad.interfaces.IHearing"
+      name="notify_registration"
+      class=".email_notification.SubscriptionNotifyView"
+      permission="cmf.ManagePortal"
+    />
+
+  <browser:page
+      for="Products.minaraad.interfaces.IMREvent"
+      name="notify_registration"
+      class=".email_notification.SubscriptionNotifyView"
+      permission="cmf.ManagePortal"
+    />
+
+  <browser:page
+      for="*"
+      name="send_membership_reminder"
+      class=".email_notification.EmailTestView"
+      permission="cmf.ManagePortal"
+    />
+
+  <browser:page
       for="*"
       name="is_attending"
       class=".attendees.SimpleAttendeesView"
