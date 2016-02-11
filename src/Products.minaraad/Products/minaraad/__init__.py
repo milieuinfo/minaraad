@@ -42,15 +42,15 @@ from Products.minaraad.utils import email_logger
 
 MinaraadMessageFactory = MessageFactory(u'minaraad')
 
-# Maurits: Is this still necessary. I added ImageAttachementMixin without
-# mentioning it here and works fine. Could it be GenericSetup now
-# takes care of this?
 
 def initialize(context):
-    # imports packages and types for registration
-    import content
-    import Attachmentsmixin
-    content, Attachmentsmixin  # pyflakes
+    # Import content types for registration.  When they have been imported,
+    # they are processed by the process_types call.
+    import content  # noqa
+    # We expect that these two are already imported in the content, but let's
+    # import them explicitly to be sure:
+    import Attachmentsmixin  # noqa
+    import ImageAttachmentsmixin  # noqa
 
     # Initialize portal content
     content_types, constructors, ftis = atapi.process_types(
