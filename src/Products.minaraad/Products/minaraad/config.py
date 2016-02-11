@@ -25,53 +25,6 @@ PRODUCT_DEPENDENCIES = ['OrderableReferenceField',
 # Other dependency packages:
 PACKAGE_DEPENDENCIES = ['minaraad.projects']
 
-ADD_LIST = ['Folder',
-            'File',
-            'Document',
-            'Link',
-            'Image',
-            'Topic',
-            ]
-
-# In 'folder', restrict addable types to 'restriction'
-LOCAL_ADDITIONS = {
-    'hoorzittingen': ['Hearing'],
-    'adviezen': ['Advisory'],
-    'nieuwsbrieven': ['NewsLetter'],
-    'persberichten': ['Pressrelease'],
-    'jaarverslag': ['AnnualReport'],
-    'studies': ['Study'],
-    'contactpersonen': ['ContactPerson'],
-    'voorstelling': ADD_LIST,
-    'evenementen': ['MREvent'],
-}
-
-# SELECT_VIEWS is a dictionary, the keys are folder names. The value
-# is the view to be selected for that folder.
-SELECT_VIEWS = {
-    'jaarverslag': 'annualreport_listing_view',
-    'evenementen': 'mrevent_listing_view',
-    'voorstelling': 'mina_listing',
-    'adviezen': 'mina_listing',
-    'nieuwsbrieven': 'mina_listing',
-    'persberichten': 'mina_listing',
-    'studies': 'mina_listing',
-    'hoorzittingen': 'mina_listing',
-    'contactpersonen': 'list_contact_persons',
-}
-
-
-# INITIAL_CHILD_LAYOUT is a dictionary, the keys are folder names. The
-# value is the view to be selected for the *children* of that folder
-# (as long as those children are folders themselves).
-INITIAL_CHILD_LAYOUT = {
-    'adviezen': 'advisory_listing_view',
-    'nieuwsbrieven': 'newsletter_listing_view',
-    'persberichten': 'pressrelease_listing_view',
-    'studies': 'study_listing_view',
-    'hoorzittingen': 'hearing_listing_view',
-}
-
 
 # This is used for the gender field in portal_memberdata
 TITLE_VOCAB = ['', 'De heer', 'Mevrouw', 'Juffrouw', 'Monsieur', 'Madame',
