@@ -45,12 +45,12 @@
   <!-- Alert message -->
 <!--
   Replace theme met content
-  
+
   #global_statusmessage met .portalMessage
   Add in de .portalMessage de close button
-  
+
    -->
-  
+
   <rules css:if-content="#content .portalMessage">
     <replace css:content=".portalMessage.info" css:theme=".alert-info .portalMessage_wrapper" method="raw"/>
     <replace css:content=".portalMessage.succes" css:theme=".alert-success .portalMessage_wrapper" method="raw"/>
@@ -61,7 +61,7 @@
   <rules css:if-not-content="#content .portalMessage">
     <drop css:theme="#global_statusmessage" />
   </rules>
-  
+
   <rules css:if-not-content=".portalMessage.info">
     <drop css:theme=".alert-info" />
   </rules>
@@ -82,10 +82,6 @@
 
   <!-- Copy href from plone logo -->
   <copy attributes="href" css:content='#portal-logo' css:theme=".navbar-brand" />
-
-  <!-- Drop some theme items for anonymous or authenticated. -->
-  <drop css:theme=".drop_anon" if="$anonymous" />
-  <drop css:theme=".drop_auth" if-not="$anonymous" />
 
   <!-- Main content block. Jumbotron, breadcrumbs, main-container (in that order)  -->
   <rules css:if-content=".jumbotronbar">

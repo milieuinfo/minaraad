@@ -1,4 +1,5 @@
-<footer tal:define="portal_url view/portal/absolute_url">
+<footer tal:define="portal_url view/portal/absolute_url;
+                    anonymous context/@@plone_portal_state/anonymous">
 <section class="footer-doormat">
 
   <div class="container">
@@ -49,10 +50,10 @@
                  tal:attributes="href string:${portal_url}/digibib">Digibib</a></h3>
           <p>Medewerkers en samenwerkende instanties dienen in te loggen voor
              toegang tot de Digibib.</p>
-          <p class="drop_auth" id="login_link">
+          <p tal:condition="anonymous" id="login_link">
             <a href="/login_form"
                class="btn btn-primary btn-sm"><i class="fa fa-sign-in"></i> Login</a></p>
-          <p class="drop_anon" id="logout_link">
+          <p tal:condition="not:anonymous" id="logout_link">
             <a href="/logout"
                class="btn btn-primary btn-sm"><i class="fa fa-sign-out"></i> Logout</a></p>
       </div>
