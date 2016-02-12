@@ -938,22 +938,22 @@ address {
   .container-fluid:after {
     clear: both; }
 
-.row, .masonry-documents, .sec-advice-detail article, .sec-event-detail article, .images .thumbnails, #digibib_view {
+.row, .masonry-documents, #digibib_view, .sec-advice-detail article, .sec-event-detail article, .images .thumbnails {
   margin-left: -7px;
   margin-right: -7px; }
-  .row:before, .masonry-documents:before, .sec-advice-detail article:before, .sec-event-detail article:before, .images .thumbnails:before, #digibib_view:before, .row:after, .masonry-documents:after, .sec-advice-detail article:after, .sec-event-detail article:after, .images .thumbnails:after, #digibib_view:after {
+  .row:before, .masonry-documents:before, #digibib_view:before, .sec-advice-detail article:before, .sec-event-detail article:before, .images .thumbnails:before, .row:after, .masonry-documents:after, #digibib_view:after, .sec-advice-detail article:after, .sec-event-detail article:after, .images .thumbnails:after {
     content: " ";
     display: table; }
-  .row:after, .masonry-documents:after, .sec-advice-detail article:after, .sec-event-detail article:after, .images .thumbnails:after, #digibib_view:after {
+  .row:after, .masonry-documents:after, #digibib_view:after, .sec-advice-detail article:after, .sec-event-detail article:after, .images .thumbnails:after {
     clear: both; }
 
-.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .list-group-downloads .list-group-item .icon, .col-sm-2, .col-md-2, .footer-doormat .column, .col-lg-2, .col-xs-3, .images .thumbnails a, .col-sm-3, .col-md-3, .sec-home .column, .sec-related .column, .sec-themes .right, .sec-advice-detail nav, .sec-event-detail nav, .sec-page-detail .toc, .sec-page-detail .sub-nav, .col-lg-3, .masonry-documents .grid-item, .sec-page-detail .toc, .sec-page-detail .sub-nav, .col-xs-4, .col-sm-4, .footer-doormat .column, .sec-advice-detail nav, .sec-event-detail nav, .sec-contact-detail article aside, .sec-page-detail .toc, .col-md-4, .masonry .grid-item, .masonry-documents .grid-item, .jumbotronbar .column-left, .sec-themes .left .column, .sec-contact-detail article aside, .col-lg-4, .sec-contact-detail article aside, .col-xs-5, .col-sm-5, .jumbotronbar .column-left, .col-md-5, .sec-advice-detail article aside, .sec-event-detail article aside, .col-lg-5, .sec-contact-detail article .body, .sec-page-detail .article-page-detail, .col-xs-6, .footer-doormat .column, .col-sm-6, .masonry .grid-item, .masonry-documents .grid-item, .sec-home .wrapper-column, .sec-home .column, .sec-related .column, .sec-themes .left .column, .sec-themes .right, .sec-page-detail .sub-nav, #digibib_view .digibib_widget, .col-md-6, .sec-home .wrapper-column .column, .sec-contact-detail article .body, .sec-page-detail .article-page-detail, .col-lg-6, .col-xs-7, .col-sm-7, .jumbotron, .col-md-7, .jumbotron, .sec-advice-detail article .body, .sec-event-detail article .body, .col-lg-7, .jumbotron, .col-xs-8, .col-sm-8, .sec-advice-detail article, .sec-event-detail article, .sec-contact-detail article .body, .sec-page-detail .article-page-detail, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .sec-themes .left, .sec-advice-detail article, .sec-event-detail article, .col-lg-9, .col-xs-10, .jumbotronbar .column-left, .jumbotron, .list-group-downloads .list-group-item .body, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .masonry .grid-item, .masonry-documents .grid-item, .sec-home .wrapper-column, .sec-home .wrapper-column .column, .sec-home .column, .sec-related .column, .sec-themes .left, .sec-themes .right, .sec-advice-detail article aside, .sec-event-detail article aside, .sec-advice-detail article .body, .sec-event-detail article .body, .sec-advice-detail nav, .sec-event-detail nav, .sec-contact-detail article .body, .sec-contact-detail article aside, #digibib_view .digibib_widget, .col-sm-12, .footer-flanders #owner, .footer-flanders #drawer, .sec-home .wrapper-column .column, .sec-themes .left, .col-md-12, .col-lg-12 {
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .list-group-downloads .list-group-item .icon, .col-sm-2, .col-md-2, .footer-doormat .column, .col-lg-2, .col-xs-3, .images .thumbnails a, .col-sm-3, .col-md-3, .sec-home .column, .sec-related .column, .sec-themes .right, .sec-advice-detail nav, .sec-event-detail nav, .sec-page-detail .toc, .sec-page-detail .sub-nav, .col-lg-3, .masonry-documents .grid-item, .sec-page-detail .toc, .sec-page-detail .sub-nav, .col-xs-4, .col-sm-4, .footer-doormat .column, .sec-advice-detail nav, .sec-event-detail nav, .sec-contact-detail article aside, .sec-page-detail .toc, .col-md-4, .masonry .grid-item, .masonry-documents .grid-item, .jumbotronbar .column-left, .sec-themes .left .column, .sec-contact-detail article aside, .col-lg-4, .sec-contact-detail article aside, .col-xs-5, .col-sm-5, .jumbotronbar .column-left, .col-md-5, .sec-advice-detail article aside, .sec-event-detail article aside, .col-lg-5, .sec-contact-detail article .body, .sec-page-detail .article-page-detail, .col-xs-6, .footer-doormat .column, .col-sm-6, .masonry .grid-item, .masonry-documents .grid-item, #digibib_view .digibib_widget, .sec-home .wrapper-column, .sec-home .column, .sec-related .column, .sec-themes .left .column, .sec-themes .right, .sec-page-detail .sub-nav, .col-md-6, .sec-home .wrapper-column .column, .sec-contact-detail article .body, .sec-page-detail .article-page-detail, .col-lg-6, .col-xs-7, .col-sm-7, .jumbotron, .col-md-7, .jumbotron, .sec-advice-detail article .body, .sec-event-detail article .body, .col-lg-7, .jumbotron, .col-xs-8, .col-sm-8, .sec-advice-detail article, .sec-event-detail article, .sec-contact-detail article .body, .sec-page-detail .article-page-detail, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .sec-themes .left, .sec-advice-detail article, .sec-event-detail article, .col-lg-9, .col-xs-10, .jumbotronbar .column-left, .jumbotron, .list-group-downloads .list-group-item .body, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .masonry .grid-item, .masonry-documents .grid-item, #digibib_view .digibib_widget, .sec-home .wrapper-column, .sec-home .wrapper-column .column, .sec-home .column, .sec-related .column, .sec-themes .left, .sec-themes .right, .sec-advice-detail article aside, .sec-event-detail article aside, .sec-advice-detail article .body, .sec-event-detail article .body, .sec-advice-detail nav, .sec-event-detail nav, .sec-contact-detail article .body, .sec-contact-detail article aside, .col-sm-12, .footer-flanders #owner, .footer-flanders #drawer, .sec-home .wrapper-column .column, .sec-themes .left, .col-md-12, .col-lg-12 {
   position: relative;
   min-height: 1px;
   padding-left: 7px;
   padding-right: 7px; }
 
-.col-xs-1, .col-xs-2, .list-group-downloads .list-group-item .icon, .col-xs-3, .images .thumbnails a, .col-xs-4, .col-xs-5, .col-xs-6, .footer-doormat .column, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .jumbotronbar .column-left, .jumbotron, .list-group-downloads .list-group-item .body, .col-xs-11, .col-xs-12, .masonry .grid-item, .masonry-documents .grid-item, .sec-home .wrapper-column, .sec-home .wrapper-column .column, .sec-home .column, .sec-related .column, .sec-themes .left, .sec-themes .right, .sec-advice-detail article aside, .sec-event-detail article aside, .sec-advice-detail article .body, .sec-event-detail article .body, .sec-advice-detail nav, .sec-event-detail nav, .sec-contact-detail article .body, .sec-contact-detail article aside, #digibib_view .digibib_widget {
+.col-xs-1, .col-xs-2, .list-group-downloads .list-group-item .icon, .col-xs-3, .images .thumbnails a, .col-xs-4, .col-xs-5, .col-xs-6, .footer-doormat .column, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .jumbotronbar .column-left, .jumbotron, .list-group-downloads .list-group-item .body, .col-xs-11, .col-xs-12, .masonry .grid-item, .masonry-documents .grid-item, #digibib_view .digibib_widget, .sec-home .wrapper-column, .sec-home .wrapper-column .column, .sec-home .column, .sec-related .column, .sec-themes .left, .sec-themes .right, .sec-advice-detail article aside, .sec-event-detail article aside, .sec-advice-detail article .body, .sec-event-detail article .body, .sec-advice-detail nav, .sec-event-detail nav, .sec-contact-detail article .body, .sec-contact-detail article aside {
   float: left; }
 
 .col-xs-1 {
@@ -989,7 +989,7 @@ address {
 .col-xs-11 {
   width: 91.6666666667%; }
 
-.col-xs-12, .masonry .grid-item, .masonry-documents .grid-item, .sec-home .wrapper-column, .sec-home .wrapper-column .column, .sec-home .column, .sec-related .column, .sec-themes .left, .sec-themes .right, .sec-advice-detail article aside, .sec-event-detail article aside, .sec-advice-detail article .body, .sec-event-detail article .body, .sec-advice-detail nav, .sec-event-detail nav, .sec-contact-detail article .body, .sec-contact-detail article aside, #digibib_view .digibib_widget {
+.col-xs-12, .masonry .grid-item, .masonry-documents .grid-item, #digibib_view .digibib_widget, .sec-home .wrapper-column, .sec-home .wrapper-column .column, .sec-home .column, .sec-related .column, .sec-themes .left, .sec-themes .right, .sec-advice-detail article aside, .sec-event-detail article aside, .sec-advice-detail article .body, .sec-event-detail article .body, .sec-advice-detail nav, .sec-event-detail nav, .sec-contact-detail article .body, .sec-contact-detail article aside {
   width: 100%; }
 
 .col-xs-pull-0 {
@@ -1110,7 +1110,7 @@ address {
   margin-left: 100%; }
 
 @media (min-width: 768px) {
-  .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .footer-doormat .column, .sec-advice-detail nav, .sec-event-detail nav, .sec-contact-detail article aside, .sec-page-detail .toc, .col-sm-5, .jumbotronbar .column-left, .col-sm-6, .masonry .grid-item, .masonry-documents .grid-item, .sec-home .wrapper-column, .sec-home .column, .sec-related .column, .sec-themes .left .column, .sec-themes .right, .sec-page-detail .sub-nav, #digibib_view .digibib_widget, .col-sm-7, .jumbotron, .col-sm-8, .sec-advice-detail article, .sec-event-detail article, .sec-contact-detail article .body, .sec-page-detail .article-page-detail, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12, .footer-flanders #owner, .footer-flanders #drawer, .sec-home .wrapper-column .column, .sec-themes .left {
+  .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .footer-doormat .column, .sec-advice-detail nav, .sec-event-detail nav, .sec-contact-detail article aside, .sec-page-detail .toc, .col-sm-5, .jumbotronbar .column-left, .col-sm-6, .masonry .grid-item, .masonry-documents .grid-item, #digibib_view .digibib_widget, .sec-home .wrapper-column, .sec-home .column, .sec-related .column, .sec-themes .left .column, .sec-themes .right, .sec-page-detail .sub-nav, .col-sm-7, .jumbotron, .col-sm-8, .sec-advice-detail article, .sec-event-detail article, .sec-contact-detail article .body, .sec-page-detail .article-page-detail, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12, .footer-flanders #owner, .footer-flanders #drawer, .sec-home .wrapper-column .column, .sec-themes .left {
     float: left; }
   .col-sm-1 {
     width: 8.3333333333%; }
@@ -1122,7 +1122,7 @@ address {
     width: 33.3333333333%; }
   .col-sm-5, .jumbotronbar .column-left {
     width: 41.6666666667%; }
-  .col-sm-6, .masonry .grid-item, .masonry-documents .grid-item, .sec-home .wrapper-column, .sec-home .column, .sec-related .column, .sec-themes .left .column, .sec-themes .right, .sec-page-detail .sub-nav, #digibib_view .digibib_widget {
+  .col-sm-6, .masonry .grid-item, .masonry-documents .grid-item, #digibib_view .digibib_widget, .sec-home .wrapper-column, .sec-home .column, .sec-related .column, .sec-themes .left .column, .sec-themes .right, .sec-page-detail .sub-nav {
     width: 50%; }
   .col-sm-7, .jumbotron {
     width: 58.3333333333%; }
@@ -7985,6 +7985,38 @@ nav section.archive li a:hover:before, nav section.archive li.active a:before, n
       padding-left: 0.5em;
       width: 90%; }
 
+#digibib_view .digibib_widget {
+  margin: 0;
+  border: 0; }
+  #digibib_view .digibib_widget .title {
+    border-top: 5px solid #2e94bd;
+    background: #7db2c9; }
+    #digibib_view .digibib_widget .title a:link, #digibib_view .digibib_widget .title a:visited {
+      color: white; }
+  #digibib_view .digibib_widget .body .odd {
+    background: #edf5f7 !important; }
+  #digibib_view .digibib_widget .body .even {
+    background: #deedf2 !important; }
+
+#portal-sitemap li {
+  padding: 0; }
+  #portal-sitemap li img {
+    display: none; }
+  #portal-sitemap li a:link, #portal-sitemap li a:visited {
+    color: #b2324d !important;
+    font-size: 16px;
+    text-transform: uppercase;
+    margin-top: 25px;
+    border: 0;
+    background: none;
+    padding: 0 !important; }
+  #portal-sitemap li li {
+    padding: 0 1em; }
+    #portal-sitemap li li a:link, #portal-sitemap li li a:visited {
+      color: #333333 !important;
+      margin-top: 0;
+      text-transform: none; }
+
 .sec-header h2 {
   font-size: 24px;
   margin-top: 0;
@@ -8205,19 +8237,6 @@ nav section.archive li a:hover:before, nav section.archive li.active a:before, n
       display: block;
       content: "";
       clear: both; }
-
-#digibib_view .digibib_widget {
-  margin: 0;
-  border: 0; }
-  #digibib_view .digibib_widget .title {
-    border-top: 5px solid #2e94bd;
-    background: #7db2c9; }
-    #digibib_view .digibib_widget .title a:link, #digibib_view .digibib_widget .title a:visited {
-      color: white; }
-  #digibib_view .digibib_widget .body .odd {
-    background: #edf5f7 !important; }
-  #digibib_view .digibib_widget .body .even {
-    background: #deedf2 !important; }
 
 #editbar-wrapper {
   padding-top: 15px;
