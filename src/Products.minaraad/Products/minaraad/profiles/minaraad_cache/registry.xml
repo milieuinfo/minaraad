@@ -51,9 +51,63 @@
       </value_type>
     </field>
     <value>
+      <element>Advisory</element>
+      <element>AgendaItemProject</element>
+      <element>AgendaItem</element>
+      <element>AnnualReport</element>
+      <element>FileAttachment</element>
+      <element>ImageAttachment</element>
+      <element>AttachmentsFolder</element>
+      <element>ATBooleanCriterion</element>
+      <element>CMF Document</element>
+      <element>CMF Event</element>
+      <element>CMF Favorite</element>
+      <element>CMF File</element>
+      <element>CMF Folder</element>
+      <element>CMF Image</element>
+      <element>CMF Large Plone Folder</element>
+      <element>CMF Link</element>
+      <element>CMF News Item</element>
+      <element>CMF Topic</element>
+      <element>ChangeSet</element>
+      <element>Topic</element>
+      <element>Discussion Item</element>
+      <element>ContactPerson</element>
+      <element>ATCurrentAuthorCriterion</element>
+      <element>ATDateRangeCriterion</element>
+      <element>DigiBib</element>
+      <element>Event</element>
+      <element>Favorite</element>
       <element>File</element>
+      <element>Folder</element>
+      <element>ATDateCriteria</element>
+      <element>Hearing</element>
       <element>Image</element>
+      <element>Link</element>
+      <element>ATListCriterion</element>
+      <element>MREvent</element>
+      <element>Meeting</element>
+      <element>MeetingContainer</element>
       <element>News Item</element>
+      <element>NewsItem</element>
+      <element>NewsLetter</element>
+      <element>Organisation</element>
+      <element>OrganisationContainer</element>
+      <element>Document</element>
+      <element>ATPathCriterion</element>
+      <element>Plone Site</element>
+      <element>ATPortalTypeCriterion</element>
+      <element>Pressrelease</element>
+      <element>Project</element>
+      <element>ProjectContainer</element>
+      <element>ATReferenceCriterion</element>
+      <element>ATRelativePathCriterion</element>
+      <element>ATSelectionCriterion</element>
+      <element>ATSimpleIntCriterion</element>
+      <element>ATSimpleStringCriterion</element>
+      <element>ATSortCriterion</element>
+      <element>Study</element>
+      <element>TempFolder</element>
     </value>
   </record>
   <record name="plone.app.caching.interfaces.IPloneCacheSettings.templateRulesetMapping" interface="plone.app.caching.interfaces.IPloneCacheSettings" field="templateRulesetMapping">
@@ -308,7 +362,10 @@
       <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone.cachepurging" ns0:translate="">Caching proxies</title>
       <value_type type="plone.registry.field.URI"/>
     </field>
-    <value/>
+    <value>
+      <element>http://plone-minaraad-pr-1.mmis.be:12080</element>
+      <element>http://plone-minaraad-pr-2.mmis.be:12080</element>
+    </value>
   </record>
   <record name="plone.cachepurging.interfaces.ICachePurgingSettings.domains" interface="plone.cachepurging.interfaces.ICachePurgingSettings" field="domains">
     <field type="plone.registry.field.Tuple">
@@ -335,7 +392,7 @@
       <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone.cachepurging" ns0:translate="">This option is only relevant if you are using virtual hosting with Zope's VirtualHostMonster. This relies on special tokens (VirtualHostBase and VirtualHostRoot) in the URL to instruct Zope about the types of URLs that the user sees. If virtual host URLs are in use and this option is set, PURGE requests will be sent to the caching proxy with the virtual hosting tokens in place. This makes sense if there is a web server in front of your caching proxy performing the rewrites necessary to translate a user-facing URL into a virtual hosting URL, so that the requests the caching proxy sees have the rewrite information in them. Conversely, if the rewrite is done in or behind the caching proxy, you want to disable this option, so that the PURGE requests use URLs that match those seen by the caching proxy as they come from the client.</description>
       <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone.cachepurging" ns0:translate="">Send PURGE requests with virtual hosting paths</title>
     </field>
-    <value>False</value>
+    <value>True</value>
   </record>
   <record name="plone.caching.interfaces.ICacheSettings.enabled" interface="plone.caching.interfaces.ICacheSettings" field="enabled">
     <field type="plone.registry.field.Bool">
