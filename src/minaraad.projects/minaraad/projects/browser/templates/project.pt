@@ -15,206 +15,207 @@
        To Digibib DashBoard
      </a>
      <p class="discreet" tal:content="structure python: context.Description().replace('\n', '<br />')" />
+     
+     <div class="row">
+       
+       <div class="digibib_left">
+         <table class="strong">
+           <tr tal:condition="view/can_see_project_number">
+             <td>
+               Intern projectnummer
+             </td>
+             <td tal:content="python:'%d-%s' % (context.getAdvisory_date().year(), context.getProject_number())"
+                 tal:on-error="context/getId" />
+           </tr>
+           <tr tal:define="product_number context/getProduct_number"
+               tal:condition="product_number">
+             <td>
+               Productnummer
+             </td>
+             <td tal:content="python:'%d-%s' % (context.getAdvisory_date().year(), product_number)"
+                 tal:on-error="product_number" />
+           </tr>
+           <tr tal:define="d context/getAdvisory_date"
+               tal:condition="d">
+             <td>
+               Datum
+             </td>
+             <td>
+               <metal:block use-macro="context/display_macros/macros/date" />
+             </td>
+           </tr>
+           <tr tal:define="theme context/getThemeName"
+                tal:condition="theme">
+             <td>
+               Thema
+             </td>
+             <td tal:content="theme" />
+           </tr>
+           <tr tal:define="resp_grp context/getResponsible_group"
+               tal:condition="resp_grp">
+             <td>
+               In behandeling door
+             </td>
+             <td tal:content="resp_grp" />
+           </tr>
+           <tr tal:define="item python: context.getAdvisory_request();
+                           size item/get_size | python:item and len(item) or 0">
+             <td>
+               Adviesvraag
+             </td>
+             <td>
+               <a tal:condition="python:size &gt; 0"
+                  tal:attributes="href string:${context/absolute_url}/at_download/advisory_request">
+                  Download
+               </a>
+               <span tal:condition="python:size == 0"
+                     tal:omit-tag="">Eigen initiatief</span>
+             </td>
+           </tr>
+           <tr tal:define="requester context/getAdvisory_requester"
+               tal:condition="requester">
+             <td>
+               Opdrachtgever
+             </td>
+             <td tal:content="requester" />
+           </tr>
+           <tr tal:define="d context/get_deadline"
+               tal:condition="d">
+             <td>
+               Deadline
+             </td>
+             <td>
+               <metal:block use-macro="context/display_macros/macros/date" />
+             </td>
+           </tr>
+           <tr tal:define="status context/getAdvisory_type;
+                           shown_status context/get_advisory_type"
+               tal:condition="status">
+             <td>
+               Status
+             </td>
+             <td>
+               <span i18n:translate="" tal:content="shown_status" />
 
-     <div class="right">
-       <div class="digibib_widget meetingWidget"
-            tal:define="meetings context/get_meetings"
-            tal:condition="meetings">
-         <div class="title">Vergaderingen</div>
-         <div class="body">
-           <ul tal:condition="meetings">
-             <li tal:repeat="meeting meetings">
-               <metal:block use-macro="context/display_macros/macros/meetingTimes" />
-               <p>
-                 <a class="meeting_title"
-                    tal:attributes="href meeting/absolute_url"
-                    tal:content="meeting/getResponsible_group" />
-               </p>
-             </li>
-           </ul>
+               <ul tal:define="disagreeing context/getDisagreeing_members"
+                   tal:condition="python: disagreeing and status == 'abstention'">
+                 <li tal:repeat="org disagreeing">
+                   <span tal:replace="org" />
+                 </li>
+               </ul>
 
-           <a class="attachment"
-              tal:attributes="href python: '%s/project_documents' % context.absolute_url()">
-             <img src="pdf_icon.png" alt="PDF document"
-                  tal:attributes="src string:${portal_url}/pdf_icon.png" />
-             Toon alle ontwerpdocumenten
-           </a>
+               <ul tal:define="reasons context/getReject_reasons"
+                   tal:condition="python: reasons and status == 'reject_points'">
+                 <li tal:repeat="reason reasons">
+                   <span tal:replace="reason" />
+                 </li>
+               </ul>
+
+             </td>
+           </tr>
+           <tr tal:define="invited context/getOrganisations"
+               tal:condition="invited">
+             <td>
+               Samenwerking
+             </td>
+             <td tal:define="vocab python:context.getField('organisations').Vocabulary(context);">
+               <ul>
+                 <li tal:repeat="value invited">
+                   <span tal:replace="structure python:context.displayValue(vocab, value)" />
+                 </li>
+               </ul>
+             </td>
+           </tr>
+           <tr tal:define="advisory context/get_public_advisory"
+               tal:condition="nocall:advisory">
+             <td i18n:translate="">Public advisory</td>
+             <td><a tal:attributes="href advisory/absolute_url"
+                    i18n:translate="">Go to advisory</a>
+                    </td>
+           </tr>
+         </table>
+
+         <div class="body" tal:content="structure context/getBody" />
+
+         <tal:block tal:define="obj nocall: context">
+           <div metal:use-macro="context/contactperson_macros/macros/show_coord_authors"
+                tal:omit-tag="" />
+         </tal:block>
+
+       </div>
+       
+       <div class="digibib_right">
+         <div class="digibib_widget meetingWidget"
+              tal:define="meetings context/get_meetings"
+              tal:condition="meetings">
+           <div class="title">Vergaderingen</div>
+           <div class="body">
+             <ul tal:condition="meetings">
+               <li tal:repeat="meeting meetings">
+                 <metal:block use-macro="context/display_macros/macros/meetingTimes" />
+                 <p>
+                   <a class="meeting_title"
+                      tal:attributes="href meeting/absolute_url"
+                      tal:content="meeting/getResponsible_group" />
+                 </p>
+               </li>
+             </ul>
+
+             <a class="attachment"
+                tal:attributes="href python: '%s/project_documents' % context.absolute_url()">
+               <img src="pdf_icon.png" alt="PDF document"
+                    tal:attributes="src string:${portal_url}/pdf_icon.png" />
+               Toon alle ontwerpdocumenten
+             </a>
+           </div>
+         </div>
+
+         <div class="digibib_widget"
+              tal:define="documents view/get_attachments"
+              tal:condition="documents">
+           <div class="title">Documenten</div>
+           <div class="body"
+                tal:define="obj python: context;
+                            catalog nocall: here/portal_catalog">
+             <tal:block tal:repeat="item documents">
+               <div class="list-attachments"
+                    tal:define="oddrow repeat/item/odd;
+                                ptype item/portal_type;
+                                is_attachment python: ptype == 'FileAttachment'">
+                 <tal:block tal:condition="is_attachment"
+                            tal:define="attachment item">
+                   <!-- TODO: possibly switch to use-macro="context/@@items/macros/attachment_view" /-->
+                   <metal:block use-macro="context/filemacro/macros/attachment_view" />
+                   <metal:block use-macro="context/display_macros/macros/attachments_buttons" />
+                 </tal:block>
+                 <dl tal:condition="not: is_attachment"
+                      class="collapsible collapsedOnLoad">
+                   <dt class="collapsibleHeader">
+                     <img src="folder_icon.png" /> <span tal:replace="item/Title" />
+                   </dt>
+                   <dd class="collapsibleContent attachment_subfolder"
+                        tal:define="sub_attachments python: catalog.searchResults(path=item.getPath(), portal_type='FileAttachment', sort_on='getObjPositionInParent')">
+                     <div class="add_attachment_link">
+                     <a tal:attributes="href python: '%s/createObject?type_name=FileAttachment' % item.getURL()">
+                       <img src="add_icon.png" alt="" /> <span i18n:translate="label_add_attachment">Add attachment</span>
+                     </a>
+
+                     </div>
+                     <div tal:repeat="attachment sub_attachments">
+                       <metal:block use-macro="context/filemacro/macros/attachment_view" />
+                       <metal:block use-macro="context/display_macros/macros/attachments_buttons" />
+                     </div>
+                   </dd>
+                 </dl>
+               </div>
+             </tal:block>
+           </div>
          </div>
        </div>
-
-       <div class="digibib_widget"
-            tal:define="documents view/get_attachments"
-            tal:condition="documents">
-         <div class="title">Documenten</div>
-         <div class="body"
-              tal:define="obj python: context;
-                          catalog nocall: here/portal_catalog">
-           <tal:block tal:repeat="item documents">
-             <div class="list-attachments"
-                  tal:define="oddrow repeat/item/odd;
-                              ptype item/portal_type;
-                              is_attachment python: ptype == 'FileAttachment'">
-               <tal:block tal:condition="is_attachment"
-                          tal:define="attachment item">
-                 <!-- TODO: possibly switch to use-macro="context/@@items/macros/attachment_view" /-->
-                 <metal:block use-macro="context/filemacro/macros/attachment_view" />
-                 <metal:block use-macro="context/display_macros/macros/attachments_buttons" />
-               </tal:block>
-               <dl tal:condition="not: is_attachment"
-                    class="collapsible collapsedOnLoad">
-                 <dt class="collapsibleHeader">
-                   <img src="folder_icon.png" /> <span tal:replace="item/Title" />
-                 </dt>
-                 <dd class="collapsibleContent attachment_subfolder"
-                      tal:define="sub_attachments python: catalog.searchResults(path=item.getPath(), portal_type='FileAttachment', sort_on='getObjPositionInParent')">
-                   <div class="add_attachment_link">
-                   <a tal:attributes="href python: '%s/createObject?type_name=FileAttachment' % item.getURL()">
-                     <img src="add_icon.png" alt="" /> <span i18n:translate="label_add_attachment">Add attachment</span>
-                   </a>
-
-                   </div>
-                   <div tal:repeat="attachment sub_attachments">
-                     <metal:block use-macro="context/filemacro/macros/attachment_view" />
-                     <metal:block use-macro="context/display_macros/macros/attachments_buttons" />
-                   </div>
-                 </dd>
-               </dl>
-             </div>
-           </tal:block>
-         </div>
-       </div>
+       
      </div>
 
-     <table class="strong">
-       <tr tal:condition="view/can_see_project_number">
-         <td>
-           Intern projectnummer
-         </td>
-         <td tal:content="python:'%d-%s' % (context.getAdvisory_date().year(), context.getProject_number())"
-             tal:on-error="context/getId" />
-       </tr>
-       <tr tal:define="product_number context/getProduct_number"
-           tal:condition="product_number">
-         <td>
-           Productnummer
-         </td>
-         <td tal:content="python:'%d-%s' % (context.getAdvisory_date().year(), product_number)"
-             tal:on-error="product_number" />
-       </tr>
-       <tr tal:define="d context/getAdvisory_date"
-           tal:condition="d">
-         <td>
-           Datum
-         </td>
-         <td>
-           <metal:block use-macro="context/display_macros/macros/date" />
-         </td>
-       </tr>
-       <tr tal:define="theme context/getThemeName"
-            tal:condition="theme">
-         <td>
-           Thema
-         </td>
-         <td tal:content="theme" />
-       </tr>
-       <tr tal:define="resp_grp context/getResponsible_group"
-           tal:condition="resp_grp">
-         <td>
-           In behandeling door
-         </td>
-         <td tal:content="resp_grp" />
-       </tr>
-       <tr tal:define="item python: context.getAdvisory_request();
-                       size item/get_size | python:item and len(item) or 0">
-         <td>
-           Adviesvraag
-         </td>
-         <td>
-           <a tal:condition="python:size &gt; 0"
-              tal:attributes="href string:${context/absolute_url}/at_download/advisory_request">
-              Download
-           </a>
-           <span tal:condition="python:size == 0"
-                 tal:omit-tag="">Eigen initiatief</span>
-         </td>
-       </tr>
-       <tr tal:define="requester context/getAdvisory_requester"
-           tal:condition="requester">
-         <td>
-           Opdrachtgever
-         </td>
-         <td tal:content="requester" />
-       </tr>
-       <tr tal:define="d context/get_deadline"
-           tal:condition="d">
-         <td>
-           Deadline
-         </td>
-         <td>
-           <metal:block use-macro="context/display_macros/macros/date" />
-         </td>
-       </tr>
-       <tr tal:define="status context/getAdvisory_type;
-                       shown_status context/get_advisory_type"
-           tal:condition="status">
-         <td>
-           Status
-         </td>
-         <td>
-           <span i18n:translate="" tal:content="shown_status" />
 
-           <ul tal:define="disagreeing context/getDisagreeing_members"
-               tal:condition="python: disagreeing and status == 'abstention'">
-             <li tal:repeat="org disagreeing">
-               <span tal:replace="org" />
-             </li>
-           </ul>
-
-           <ul tal:define="reasons context/getReject_reasons"
-               tal:condition="python: reasons and status == 'reject_points'">
-             <li tal:repeat="reason reasons">
-               <span tal:replace="reason" />
-             </li>
-           </ul>
-
-         </td>
-       </tr>
-       <tr tal:define="invited context/getOrganisations"
-           tal:condition="invited">
-         <td>
-           Samenwerking
-         </td>
-         <td tal:define="vocab python:context.getField('organisations').Vocabulary(context);">
-           <ul>
-             <li tal:repeat="value invited">
-               <span tal:replace="structure python:context.displayValue(vocab, value)" />
-             </li>
-           </ul>
-         </td>
-       </tr>
-       <tr tal:define="advisory context/get_public_advisory"
-           tal:condition="nocall:advisory">
-         <td i18n:translate="">Public advisory</td>
-         <td><a tal:attributes="href advisory/absolute_url"
-                i18n:translate="">Go to advisory</a>
-                </td>
-       </tr>
-     </table>
-
-     <div class="body" tal:content="structure context/getBody" />
-
-     <div style="clear: both;">
-       &nbsp;
-     </div>
-
-     <tal:block tal:define="obj nocall: context">
-       <div metal:use-macro="context/contactperson_macros/macros/show_coord_authors"
-            tal:omit-tag="" />
-     </tal:block>
-
-     <div style="clear: both;">
-       &nbsp;
-     </div>
     </div>
   </body>
 </html>

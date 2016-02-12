@@ -395,11 +395,14 @@ nav section {
     margin: 0;
     border: 0;
     .title{
-        border-top: 5px solid $mina-blue;
-        background: $mina-blue-light-1;
-        a:link, a:visited{
-          color: white;
-        }
+      border-top: 5px solid $mina-blue;
+      background: $mina-blue-light-1;
+      a:link, a:visited{
+        color: white;
+      }
+      img{
+        padding-left: 5px;
+      }
     }
     .body{
       .odd{
@@ -408,6 +411,45 @@ nav section {
       .even{
         background: $mina-blue-light-3 !important;
       }
+    }
+  }
+}
+
+.digibib_left{
+  @extend .col-xs-12;
+  @extend .col-md-9;
+  border: 1px solid darken(white, 15);
+  @include article-block-line-top($mina-blue);
+  padding-top: 20px;
+  table{
+    border-collapse: separate;
+    border-spacing: 10px 3px;
+    margin-left: -10px;
+  }
+  .body{
+    padding: 20px 0 10px 0;
+  }
+}
+.digibib_right{
+  @extend .col-xs-12;
+  @extend .col-md-3;
+  .digibib_widget{
+    background: white;
+    width: 100%;
+    border: 0;
+    border-top: 5px solid #86263a;
+    padding: 0 15px 1px 15px;
+    .title{
+      color: #b2324d;
+      font-size: 16px;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-top: .75em;
+      background: transparent;
+      padding: 0;
+    }
+    .body{
+      margin-bottom: .75em;
     }
   }
 }
