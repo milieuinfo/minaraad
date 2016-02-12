@@ -444,6 +444,49 @@ nav section {
 }
 
 
+.pfg-form {
+  input[type="text"], input[type="password"]{
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.428571429;
+    color: #555555;
+  }
+  textarea{
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 6px 12px;
+    color: #555555;
+  }
+  label{
+    margin-bottom: 0;
+  }
+  .required {
+      margin-left: -7px;
+  }
+  .ArchetypesSelectionWidget, .ArchetypesBooleanWidget{
+    label{
+      margin-left: 5px;
+      font-weight: normal;
+    }
+  }
+  .ArchetypesMultiSelectionWidget{
+    label{
+      clear: both;
+      width: 100%;
+    }
+  }
+  .formControls{
+    margin: 1em 0;
+    input[type="submit"]{
+      @extend .btn;
+      @extend .btn-primary;
+    }
+  }
+}
+
 // -----------------------------------------------------------------------------
 // Small screen / tablet
 // -----------------------------------------------------------------------------
