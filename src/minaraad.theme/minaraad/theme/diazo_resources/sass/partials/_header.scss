@@ -184,6 +184,29 @@ nav.navbar {
   }
 }
 
+
+// Alert message's
+.alert{
+  @extend .alert;
+  font-size: 14px !important;
+  .strong{
+    font-weight: 700;
+  }
+  &.success{
+    @extend .alert-success;
+  }
+  &.info{
+    @extend .alert-info;
+  }
+  &.error{
+    @extend .alert-danger;
+  }
+  &.warning{
+    @extend .alert-warning;
+  }
+}
+
+
 // Alert message's
 #global_statusmessage{
   position: absolute;
