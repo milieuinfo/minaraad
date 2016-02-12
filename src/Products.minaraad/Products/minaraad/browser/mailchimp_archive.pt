@@ -1,0 +1,28 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="minaraad">
+  <body>
+
+    <hidden metal:fill-slot="content-title">
+    </hidden>
+
+    <hidden metal:fill-slot="content-description">
+    </hidden>
+
+    <metal:block fill-slot="content-core">
+
+      <style type="text/css">
+      <!--
+      .display_archive {font-family: arial,verdana; font-size: 12px;}
+      .campaign {line-height: 125%; margin: 5px;}
+      //-->
+      </style>
+      <script language="javascript" src="http://us2.campaign-archive1.com/generate-js/?u=b31a6110c23bc7183b954cda2&fid=34337&show=10" type="text/javascript"></script>
+
+    </metal:block>
+  </body>
+</html>
