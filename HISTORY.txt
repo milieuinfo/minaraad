@@ -4,6 +4,9 @@ History of this buildout
 6.0.0 (unreleased)
 ------------------
 
+- Create a viewlet for related documents in below-content.
+  [jladage]
+
 - Added ThemeReferenceMixin for projects.  MINA-92.  [maurits]
 
 - Cleanup skins folder, removed old listing views and remove an

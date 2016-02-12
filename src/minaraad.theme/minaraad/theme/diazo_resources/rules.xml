@@ -45,12 +45,12 @@
   <!-- Alert message -->
 <!--
   Replace theme met content
-  
+
   #global_statusmessage met .portalMessage
   Add in de .portalMessage de close button
-  
+
    -->
-  
+
   <rules css:if-content="#content .portalMessage">
     <replace css:content=".portalMessage.info" css:theme=".alert-info .portalMessage_wrapper" method="raw"/>
     <replace css:content=".portalMessage.succes" css:theme=".alert-success .portalMessage_wrapper" method="raw"/>
@@ -61,7 +61,7 @@
   <rules css:if-not-content="#content .portalMessage">
     <drop css:theme="#global_statusmessage" />
   </rules>
-  
+
   <rules css:if-not-content=".portalMessage.info">
     <drop css:theme=".alert-info" />
   </rules>
@@ -75,16 +75,13 @@
     <drop css:theme=".alert-warning" />
   </rules>
 
+
   <!-- Toolbar -->
   <replace css:theme="#editbar" css:content="#edit-bar" css:if-content=".userrole-authenticated"/>
   <replace css:theme="#anonymous-actions" css:content="#portal-personaltools-wrapper" css:if-content=".userrole-anonymous"/>
 
   <!-- Copy href from plone logo -->
   <copy attributes="href" css:content='#portal-logo' css:theme=".navbar-brand" />
-
-  <!-- Drop some theme items for anonymous or authenticated. -->
-  <drop css:theme=".drop_anon" if="$anonymous" />
-  <drop css:theme=".drop_auth" if-not="$anonymous" />
 
   <!-- Main content block. Jumbotron, breadcrumbs, main-container (in that order)  -->
   <rules css:if-content=".jumbotronbar">
@@ -97,10 +94,10 @@
     <drop css:content-children="#portal-breadcrumbs" />
   </rules>
 
-  <replace css:theme-children="#main-container .container" css:content="#content" />
+  <replace css:theme-children="#main-container .container" css:content-children="#content" />
 
   <!-- Edit views -->
-  <rules css:if-content="body.template-atct_edit, body.template-base_edit, body.template-folder_contents, body.template-sharing, body.template-login_form, body.template-login_success, body.template-versions_history_form">
+  <rules css:if-content="body.template-subscribers_config-html, body.template-minaraad_service, body.template-export_statistics, body.template-atct_edit, body.template-base_edit, body.template-folder_contents, body.template-sharing, body.template-login_form, body.template-login_success, body.template-versions_history_form">
 
     <replace css:theme="#main-container">
         <div id="plone_edit_form" class="container">
@@ -112,8 +109,7 @@
 
   </rules>
 
-  <after css:theme="#main-container" css:content=".sec-related" method="raw" />
-  <drop css:content="#content-core .sec-related" />
+  <after css:theme="#main-container" css:content=".sec-related"/>
   <!-- <drop css:content="#portal-content .about-box" /> -->
 
 

@@ -1,7 +1,7 @@
 from Acquisition import aq_inner
 from Products.CMFCore.utils import getToolByName
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-from plone.app.layout.viewlets.common import GlobalSectionsViewlet
+from plone.app.layout.viewlets.common import ViewletBase, GlobalSectionsViewlet
 from zope.component import getMultiAdapter
 
 
@@ -28,3 +28,14 @@ class MinaGlobalSectionsViewlet(GlobalSectionsViewlet):
         portal = self._get_portal()
         plone_utils = getToolByName(portal, 'plone_utils')
         return plone_utils.createSitemap(portal)
+
+
+class RelatedDocumentsViewlet(ViewletBase):
+    """docstring for RelatedDocumentsViewlet(ViewletBase)"""
+    index = ViewPageTemplateFile('related_documents.pt')
+
+    def get_related_documents(self):
+        context = aq_inner(self.context)
+        if context.portal_type == "Advisory":
+            return context.getRelatedDocuments()
+     

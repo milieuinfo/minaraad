@@ -1,0 +1,15 @@
+<section class="sec-related"
+         tal:define="docs view/get_related_documents;
+                     show_theme_title python:True"
+             tal:condition="docs">
+    <div  class="container">
+      <div class="sec-header">
+        <h2>Gerelateerde documenten</h2>
+      </div>
+      <div class="row masonry">
+        <div class="column grid-item"  tal:repeat="item docs">
+          <tal:block metal:use-macro="context/@@items/macros/related_item" />
+        </div>
+      </div>
+    </div>
+  </section>
