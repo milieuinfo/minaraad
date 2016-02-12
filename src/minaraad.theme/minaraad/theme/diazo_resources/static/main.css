@@ -7216,7 +7216,7 @@ span.featherlight-close-icon.featherlight-close {
     margin-left: -10px; }
   .topbar .contact .dropdown-menu {
     width: 260px;
-    margin-top: 12px;
+    margin-top: 0;
     border: 10px solid #2d2d2d;
     border-top: 0;
     -webkit-border-radius: 0;
@@ -7225,8 +7225,10 @@ span.featherlight-close-icon.featherlight-close {
     margin-left: -125px; }
     .topbar .contact .dropdown-menu li {
       border-bottom: 1px solid whitesmoke; }
-    .topbar .contact .dropdown-menu a:hover h3, .topbar .contact .dropdown-menu a:focus h3 {
-      color: #2e94bd; }
+    .topbar .contact .dropdown-menu a {
+      width: 100%; }
+      .topbar .contact .dropdown-menu a:hover h3, .topbar .contact .dropdown-menu a:focus h3 {
+        color: #2e94bd; }
     .topbar .contact .dropdown-menu h3 {
       font-size: 16px;
       color: #246e8c;
