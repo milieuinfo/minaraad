@@ -1,0 +1,69 @@
+<div class="faceted-widget faceted-minaraad-types-widget" style="display: none"
+     i18n:domain="eea" tal:define="
+  error_view nocall:context/@@faceted.widget.error;
+  wid python:view.data.getId();
+  hidden python:view.hidden;
+  hidezerocount python:view.hidezerocount;
+  sortcountable python:view.sortcountable;
+  css string:faceted-widget ${view/css_class};
+  css python:hidden and css + ' faceted-widget-hidden' or css;
+  css python:view.countable and css + ' faceted-count' or css;
+  css python:hidezerocount and css + ' faceted-zero-count-hidden' or css;
+  css python:sortcountable and css + ' faceted-sortcountable' or css;
+  maxitems python:view.data.get('maxitems', 0) or 0;
+  operator python:view.operator;
+  vocabulary view/vocabulary;"
+  tal:condition="vocabulary"
+  tal:attributes="id string:${wid}_widget; class css; data-operator python:operator;">
+
+<fieldset class="widget-fieldset">
+  <legend tal:define="title python:view.data.get('title', '')" tal:content="
+    python:view.translate(title)" i18n:translate="">HTML Widget</legend>
+
+  <tal:facet on-error="structure python:error_view(error=error, cid=wid)">
+
+  <form action="." method="get">
+
+  <ul>
+    <li tal:define="chbox_id string:select_all_${wid};
+                    checked python:view.selected('select_all');">
+        <input type="checkbox" class="faceted-noborder"
+               value="select_all"
+               tal:attributes="name chbox_id;
+                               checked checked;
+                               id chbox_id;" />
+        <label class="select_all_label" tal:attributes="for chbox_id">
+          <tal:block condition="not:checked">Selecteer alles</tal:block>
+          <tal:block condition="checked">Maak selectie ongedaan</tal:block>
+        </label>
+    </li>
+    <tal:items repeat="term vocabulary">
+      <li tal:define="
+        term_id python:term[0];
+        term_label python:term[1];
+        term_label python:view.translate(term_label);
+        wbr_term_label python:view.word_break(term_label);
+        chbox_id string:${wid}_${term_id};
+        chbox_id python:view.cleanup(chbox_id);
+        option_id string:${wid}_option_${chbox_id};"
+        tal:attributes="id option_id"
+        >
+        <input type="checkbox" class="faceted-noborder" tal:attributes="
+          checked python:view.selected(term_id);
+          name string:${wid};
+          id chbox_id;
+          title term_label;
+          value term_id;" />
+        <label tal:attributes="for chbox_id; title term_label"
+          tal:content="structure wbr_term_label">term label</label>
+      </li>
+    </tal:items>
+  </ul>
+  </form>
+
+  <span style="display:none" tal:content="maxitems" />
+
+  </tal:facet>
+
+</fieldset>
+</div>

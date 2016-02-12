@@ -1,12 +1,8 @@
-from zope.interface import implements
-
 from AccessControl import ClassSecurityInfo
 from Products.Archetypes import atapi
-
 from Products.minaraad.interfaces import INewsLetter
-from Products.minaraad.EmailMixin import EmailMixin
 from Products.minaraad.config import PROJECTNAME
-
+from zope.interface import implements
 
 schema = atapi.Schema((
 
@@ -46,12 +42,10 @@ schema = atapi.Schema((
 )
 
 
-NewsLetter_schema = atapi.OrderedBaseFolderSchema.copy() + \
-    getattr(EmailMixin, 'schema', atapi.Schema(())).copy() + \
-    schema.copy()
+NewsLetter_schema = atapi.OrderedBaseFolderSchema.copy() + schema.copy()
 
 
-class NewsLetter(EmailMixin, atapi.OrderedBaseFolder):
+class NewsLetter(atapi.OrderedBaseFolder):
     """
     A newsletter
     """

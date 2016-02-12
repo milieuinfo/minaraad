@@ -1,16 +1,10 @@
 <?xml version="1.0"?>
-<object name="Hearing" meta_type="Factory-based Type Information"
+<object name="Pressrelease" meta_type="Factory-based Type Information"
    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
    i18n:domain="minaraad">
-
+ <property i18n:translate="" name="title">Pressrelease</property>
  <property i18n:translate="" name="description"></property>
- <property name="allowed_content_types">
-  <element value="AgendaItem"/>
-  <element value="File"/>
-  <element value="Image"/>
-  <element value="ImageAttachment"/>
- </property>
-
+ <property name="global_allow">False</property>
  <action title="E-mail" action_id="email_out" category="object"
     condition_expr="python:1" url_expr="string:${object_url}/email_out"
     visible="False">
@@ -21,5 +15,4 @@
     url_expr="string:${object_url}/export_subscribers" visible="False">
   <permission value="Modify portal content"/>
  </action>
-
 </object>

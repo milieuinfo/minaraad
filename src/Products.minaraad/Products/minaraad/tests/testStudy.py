@@ -24,8 +24,6 @@
 # 02110-1301, USA.
 #
 
-__author__ = """Rocky Burt <r.burt@zestsoftware.nl>"""
-__docformat__ = 'plaintext'
 
 from Products.minaraad.tests.MainTestCase import MainTestCase
 
@@ -71,8 +69,8 @@ class testStudy(MainTestCase):
 
         self.failUnless(self.teststudy.Title() == TITLE,
                         'Value is %s' % self.teststudy.Title())
-        self.failUnless(self.teststudy.getDescription() == DESCRIPTION,
-                        'Value is %s' % self.teststudy.getDescription())
+        self.failUnless(self.teststudy.Description() == DESCRIPTION,
+                        'Value is %s' % self.teststudy.Description())
         self.failUnless(self.teststudy.getDate() == DATE,
                         'Value is %s' % self.teststudy.getDate())
         self.failUnless(self.teststudy.getContact() == [self.contactperson],

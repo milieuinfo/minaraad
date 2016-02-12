@@ -5,6 +5,7 @@
     xmlns:plone="http://namespaces.plone.org/plone">
 
   <include package=".faceted_section_widget" />
+  <include package=".faceted_minaraad_type_widget" />
   <include package=".faceted_year_select_widget" />
 
   <!-- Faceted navigation -->
@@ -116,6 +117,14 @@
       permission="zope2.View"
       />
 
+  <!-- Helpers for use in items.pt -->
+  <browser:page
+      for="*"
+      name="helpers"
+      permission="zope2.View"
+      class=".helpers.HelpersView"
+      />
+
   <browser:page
       name="homepage"
       for="Products.ATContentTypes.interfaces.IATDocument"
@@ -157,6 +166,20 @@
   />
 
   <browser:page
+      for="Products.minaraad.interfaces.IHearing"
+      name="notify_registration"
+      class=".email_notifications.SubscriptionNotifyView"
+      permission="cmf.ManagePortal"
+    />
+
+  <browser:page
+      for="Products.minaraad.interfaces.IMREvent"
+      name="notify_registration"
+      class=".email_notifications.SubscriptionNotifyView"
+      permission="cmf.ManagePortal"
+    />
+
+  <browser:page
       for="*"
       name="is_attending"
       class=".attendees.SimpleAttendeesView"
@@ -187,50 +210,6 @@
       permission="zope2.View"
       template="subscriptions_config.pt"
     />
-
-  <browser:page
-      for="*"
-      name="email_out"
-      class=".email_notification.EmailOutView"
-      permission="cmf.ManagePortal"
-      template="email_out.pt"
-    />
-
-  <browser:page
-      for="*"
-      name="reset_email_sent"
-      class=".email_notification.ResetEmailSent"
-      permission="cmf.ManagePortal"
-    />
-
-  <browser:page
-      for="Products.minaraad.interfaces.IHearing"
-      name="notify_registration"
-      class=".email_notification.SubscriptionNotifyView"
-      permission="cmf.ManagePortal"
-    />
-
-  <browser:page
-      for="Products.minaraad.interfaces.IMREvent"
-      name="notify_registration"
-      class=".email_notification.SubscriptionNotifyView"
-      permission="cmf.ManagePortal"
-    />
-
-  <browser:page
-      for="*"
-      name="send_membership_reminder"
-      class=".email_notification.EmailTestView"
-      permission="cmf.ManagePortal"
-    />
-
-  <browser:page
-      for="*"
-      name="export_subscribers"
-      class=".subscribers.ExportSubscribersView"
-      permission="cmf.ManagePortal"
-      template="export-subscribers.pt"
-  />
 
   <!-- Service view for admin use only -->
 
@@ -383,7 +362,6 @@
       template="contactperson_view.pt"
       />
 
-
   <browser:page
       for="Products.ATContentTypes.interfaces.file.IATFile"
       permission="zope2.View"
@@ -416,13 +394,5 @@
     <browser:page name="login_form" />
     <browser:page name="logout" />
   </browser:pages>
-
-
-  <browser:page
-      for="*"
-      name="helpers"
-      permission="zope2.View"
-      class=".helpers.HelpersView"
-      />
 
 </configure>

@@ -24,8 +24,6 @@
 # 02110-1301, USA.
 #
 
-__author__ = """Rocky Burt <r.burt@zestsoftware.nl>"""
-__docformat__ = 'plaintext'
 
 import patches
 patches.patch_all()
@@ -46,12 +44,9 @@ MinaraadMessageFactory = MessageFactory(u'minaraad')
 
 
 def initialize(context):
-    # imports packages and types for registration
-    import content
-    import EmailMixin
-    import PostMixin
-    import Attachmentsmixin
-    content, EmailMixin, PostMixin, Attachmentsmixin  # pyflakes
+    # Import content types for registration.  When they have been imported,
+    # they are processed by the process_types call.
+    import content  # noqa
 
     # Initialize portal content
     content_types, constructors, ftis = atapi.process_types(

@@ -20,13 +20,7 @@
   <element value="folder_tabular_view"/>
   <element value="atct_album_view"/>
   <element value="folder_listing"/>
-  <element value="hearing_listing_view"/>
-  <element value="advisory_listing_view"/>
-  <element value="newsletter_listing_view"/>
-  <element value="pressrelease_listing_view"/>
-  <element value="study_listing_view"/>
   <element value="annualreport_listing_view"/>
-  <element value="mrevent_listing_view"/>
   <element value="mina_listing"/>
   <element value="list_contact_persons"/>
  </property>

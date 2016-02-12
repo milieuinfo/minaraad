@@ -13,12 +13,8 @@ from Products.minaraad import MinaraadMessageFactory as _
 from Products.minaraad.interfaces import IAdvisory
 from Products.minaraad.Attachmentsmixin import Attachmentsmixin
 from Products.minaraad.ImageAttachmentsmixin import ImageAttachmentsmixin
-from Products.minaraad.PostMixin import PostMixin
-from Products.minaraad.EmailMixin import EmailMixin
-from Products.minaraad.ThemeMixin import ThemeMixin
+from Products.minaraad.ThemeMixin import ThemeParentMixin
 from Products.minaraad.config import PROJECTNAME
-from Products.minaraad.content.themes import ThemeMixin as OldThemeMixin
-from Products.minaraad.content.themes import theme_schema
 from Products.minaraad.content.interfaces import IUseContact
 from Products.minaraad.content.contacts import contacts_schema
 
@@ -82,16 +78,18 @@ schema = atapi.Schema((
         default_content_type='text/html',
         default_output_type='text/html',
     ),
-
+    # Deprecated, can be removed after the final release
     ImageField(
         name='foto',
         widget=atapi.ImageWidget(
             label="Photo",
             label_msgid='minaraad_label_foto',
             i18n_domain='minaraad',
+            visible=False
         ),
         storage=atapi.AttributeStorage(),
-        sizes={'foto': (300, 300)}
+        sizes={'foto': (300, 300)},
+
     ),
 
     OrderableReferenceField(
@@ -142,13 +140,11 @@ schema = atapi.Schema((
 )
 
 Advisory_schema = (
-    getattr(PostMixin, 'schema', atapi.Schema(())).copy() +
-    getattr(EmailMixin, 'schema', atapi.Schema(())).copy() +
-    theme_schema.copy() +
     getattr(Attachmentsmixin, 'schema', atapi.Schema(())).copy() +
     getattr(ImageAttachmentsmixin, 'schema', atapi.Schema(())).copy() +
-    contacts_schema.copy() +
-    schema.copy())
+    schema.copy() + \
+    contacts_schema.copy()
+)
 Advisory_schema['description'].isMetadata = False
 # Hide the description field.
 Advisory_schema['description'].widget.visible = {
@@ -156,11 +152,12 @@ Advisory_schema['description'].widget.visible = {
 Advisory_schema['project'].widget.visible = {
     'edit': 'invisible', 'view': 'invisible'}
 
-Advisory_schema.moveField('coordinator', after="foto")
+Advisory_schema.moveField('displayAttachments', after="body")
+Advisory_schema.moveField('displayImages', after='displayAttachments')
+Advisory_schema.moveField('coordinator', after="displayImages")
 Advisory_schema.moveField('authors', after="coordinator")
 
-
-class Advisory(Attachmentsmixin, PostMixin, OldThemeMixin, ThemeMixin, EmailMixin):
+class Advisory(Attachmentsmixin, ThemeParentMixin):
     """An advisory
     """
     implements(IAdvisory, IUseContact)

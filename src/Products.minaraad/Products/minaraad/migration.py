@@ -1,8 +1,5 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-# from Products.minaraad.subscriptions import SubscriptionManager
-# from Products.minaraad.themes import ThemeManager
 from Acquisition import aq_parent
 from persistent.list import PersistentList
 from PIL import Image, ImageDraw, ImageColor
@@ -17,7 +14,7 @@ from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.utils import _createObjectByType
 from Products.SimpleAttachment.setuphandlers import \
     registerImagesFormControllerActions
-from Products.minaraad.content.interfaces import IThemes, IUseContact
+from Products.minaraad.content.interfaces import IUseContact
 from Products.minaraad.events import save_theme_name
 from Products.minaraad.interfaces import IAttendeeManager
 from Products.ZCatalog.ProgressHandler import ZLogHandler
@@ -33,116 +30,16 @@ import transaction
 logger = logging.getLogger('Products.minaraad.migrations')
 # The default profile id of your package:
 PROFILE_ID = 'profile-Products.minaraad:default'
-
-
-# def _migrate_themes(context, new_themes, mapping):
-#     manager = ThemeManager(context)
-#     theme_ids = [x[0] for x in manager.themes]
-#     # The first step is to create the new themes.
-#     for theme_id, value in new_themes.items():
-#         if theme_id in theme_ids:
-#             continue
-#
-#         manager.addTheme(value, theme_id)
-#
-#     # Now we update all objects having themes.
-#     catalog = getToolByName(context, 'portal_catalog')
-#     brains = catalog.searchResults()
-#
-#     obj_count = 0
-#     updated_obj_count = 0
-#     unmapped_obj_count = 0
-#
-#     for brain in brains:
-#         try:
-#             obj = brain.getObject()
-#         except:
-#             logger.info('Could not wake brain at %s' % brain.getURL())
-#             continue
-#
-#         if not IThemes.providedBy(obj):
-#             continue
-#
-#         obj_count += 1
-#         theme_id = obj.getTheme()
-#
-#         if theme_id is None:
-#             continue
-#
-#         new_id = mapping.get(theme_id, None)
-#         if new_id:
-#             obj.setTheme(new_id)
-#             updated_obj_count += 1
-#         else:
-#             unmapped_obj_count += 1
-#
-#     # We update member's subscriptions
-#     mtool = getToolByName(context, 'portal_membership')
-#     smanager = SubscriptionManager(context)
-#
-#     for user_id in mtool.listMemberIds():
-#         user = mtool.getMemberById(user_id)
-#
-#         user_themes = []
-#         for th_id in smanager._getThemes(user):
-#             try:
-#                 th_id = int(th_id)
-#             except ValueError:
-#                 continue
-#
-#             if th_id in new_themes.keys():
-#                 # This one was already migrated.
-#                 user_themes.append(str(th_id))
-#                 continue
-#
-#             user_themes.append(str(mapping.get(th_id, th_id)))
-#
-#         smanager._setThemes(user_themes, user)
-#
-#     # Then we remove the old themes.
-#     manager.deleteThemes(mapping.keys())
-#
-#     logger.info('Found %s objects to update: %s updated and %s without '
-#                 'mapping' % (obj_count, updated_obj_count, unmapped_obj_count))
-
-
-# def migrate_themes(context):
-#     """ Updates themes.
-#     """
-#     new_themes = {40: 'Biodiversiteit',
-#                   41: 'Deugdelijk bestuur',
-#                   42: 'Omgevingskwaliteit'}
-#
-#     mapping = {25: 40, 22: 41, 21: 41, 27: 41,
-#                32: 42, 26: 42, 24: 42}
-#
-#     _migrate_themes(context, new_themes, mapping)
-
-
-def save_object_themes(context):
-    """ Manually triggers the 'save_theme_name' event
-    for all concerned objects.
-    """
-    catalog = getToolByName(context, 'portal_catalog')
-    brains = catalog.searchResults()
-
-    obj_count = 0
-
-    logger.info('Found %s objects' % len(brains))
-    for brain in brains:
-        try:
-            obj = brain.getObject()
-        except:
-            logger.info('Could not wake brain at %s' % brain.getURL())
-            continue
-
-        if not IThemes.providedBy(obj):
-            continue
-
-        save_theme_name(obj, None)
-        obj_count += 1
-
-    logger.info('Migrated %s objects' % obj_count)
+# Mapping from old theme integer to new Theme object id.
+OLD_THEMES = {
+    21: "vergroening-van-de-economie",
+    22: "bestuurskwaliteit",
+    27: "bestuurskwaliteit",
+    23: "klimaat",
+    24: "hinder",
+    25: "biodiversiteit",
+    26: "temp-ruimtelijke-ordening-en-mobiliteit",
+}
 
 
 def migrate_contacts(context):
@@ -698,15 +595,6 @@ def move_content(context):
     :param context:
     :return:
     """
-    themes = {
-        21: "vergroening-van-de-economie",
-        22: "bestuurskwaliteit",
-        27: "bestuurskwaliteit",
-        23: "klimaat",
-        24: "hinder",
-        25: "biodiversiteit",
-        26: "temp-ruimtelijke-ordening-en-mobiliteit",
-    }
 
     types = [
         'Advisory',
@@ -729,7 +617,7 @@ def move_content(context):
             logger.info("Unlock %s", obj.title)
 
         try:
-            theme = themes[obj.theme]
+            theme = OLD_THEMES[obj.theme]
         except KeyError:
             theme = 'andere-themas'
 
@@ -783,6 +671,54 @@ def create_theme_folders(context):
         )
         api.content.transition(obj=theme, transition='publish')
         logger.info("%s created", title)
+
+
+def migrate_project_themes(context):
+    """Migrate project themes.
+
+    Migrate projects from old-style theme integers to new-style Theme objects.
+
+    In move_content we moved Studies, etc, to the Theme object folders
+    based on their theme integers.
+
+    Now we edit Projects.  They also had their theme stored as integer
+    in the theme field, from the OldThemeMixin.
+
+    Now we link them to the appropriate theme folders.  The theme_path
+    field will contain the path to the theme.  That is also what we get
+    from the minaraad.theme_path vocabulary.
+
+    And just like before, we use getThemeName and setThemeName in
+    events.save_theme_name to save the theme name.
+    """
+    portal = api.portal.get()
+    portal_path = '/'.join(portal.getPhysicalPath())
+    print 'portal_path', portal_path
+    brains = api.content.find(
+        context=portal,
+        portal_type='Project',
+    )
+    for brain in brains:
+        obj = brain.getObject()
+        old_theme_name = obj.getThemeName()
+        # Note: theme might be None, but that is fine.
+        old_theme_id = obj.theme
+        lockable = ILockable(obj)
+        if lockable.locked():
+            lockable.unlock()
+            logger.info("Unlock %s", obj.title)
+
+        try:
+            theme = OLD_THEMES[old_theme_id]
+        except KeyError:
+            theme = 'andere-themas'
+
+        theme_path = '/'.join([portal_path, 'themas', theme])
+        obj.setTheme_path(theme_path)
+        save_theme_name(obj)
+        logger.info("Moved Project %s theme from %r (%r) to %r",
+                    brain.getPath(), old_theme_name, old_theme_id,
+                    obj.getThemeName())
 
 
 def apply_extra_product_profiles(context):

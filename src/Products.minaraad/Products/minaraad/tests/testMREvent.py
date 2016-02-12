@@ -24,8 +24,6 @@
 # 02110-1301, USA.
 #
 
-__author__ = """Rocky Burt <r.burt@zestsoftware.nl>"""
-__docformat__ = 'plaintext'
 
 from Products.minaraad.tests.MainTestCase import MainTestCase
 
@@ -53,7 +51,7 @@ class testMREvent(MainTestCase):
         """
 
         self.mrevent.Title()           # Titel
-        self.mrevent.getDescription()  # Omschrijving
+        self.mrevent.Description()  # Omschrijving
         self.mrevent.getGoal()         # Doelstelling
         self.mrevent.getSubheader()    # Subkop
         self.mrevent.getLocation()     # Lokatie

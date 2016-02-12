@@ -22,8 +22,12 @@
     overflow: auto;
     display: block;
     p {
+      display: block;
       color: $text-color;
       text-decoration: none;
+    }
+    time {
+      color: $text-color;
     }
     &:hover, &:focus {
       text-decoration: none;

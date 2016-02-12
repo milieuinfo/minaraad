@@ -30,24 +30,6 @@
       for="Products.CMFPlone.interfaces.IMigratingPloneSiteRoot"
       />
 
-  <!--<gs:upgradeStep-->
-      <!--title="Migrate themes"-->
-      <!--description=""-->
-      <!--source="1001"-->
-      <!--destination="1002"-->
-      <!--handler="Products.minaraad.migration.migrate_themes"-->
-      <!--sortkey="1"-->
-      <!--profile="Products.minaraad:default" />-->
-
-  <gs:upgradeStep
-      title="Save themes"
-      description=""
-      source="1002"
-      destination="1003"
-      handler="Products.minaraad.migration.save_object_themes"
-      sortkey="1"
-      profile="Products.minaraad:default" />
-
   <gs:upgradeStep
       title="Migrate contacts"
       description=""
@@ -440,6 +422,10 @@
         title="Initialize rich text fields for Advisories"
         description="This adds the popular_summary field."
         handler="Products.minaraad.migration.initialize_rich_text_fields_all_advisories" />
+    <gs:upgradeStep
+        title="Migrate project themes"
+        description="Migrate projects from old-style theme integers to new-style Theme objects."
+        handler="Products.minaraad.migration.migrate_project_themes" />
   </gs:upgradeSteps>
 
 </configure>

@@ -24,12 +24,6 @@
   </class>
 
   <subscriber
-      for="Products.ATContentTypes.interface.IATFolder
-           Products.Archetypes.interfaces.IObjectInitializedEvent"
-      handler=".events.folder_views" />
-
-  <!-- TODO: REMOVE AFTER MIGRATION. I-->
-  <subscriber
       for="Products.minaraad.content.interfaces.IThemes
            zope.lifecycleevent.interfaces.IObjectModifiedEvent"
       handler=".events.save_theme_name" />

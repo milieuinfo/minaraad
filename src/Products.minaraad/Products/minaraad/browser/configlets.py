@@ -1,21 +1,12 @@
-import logging
 from Acquisition import aq_inner
+from Products.CMFCore.utils import getToolByName
 from Products.Five import BrowserView
-from Products.statusmessages.interfaces import IStatusMessage
-
 from Products.minaraad.browser.utils import buildCSV
 from Products.minaraad.subscriptions import SUBSCRIPTIONS_EMAIL
 from Products.minaraad.subscriptions import SubscriptionManager
 from Products.minaraad.themes import ThemeManager
-
-
 from Products.statusmessages.interfaces import IStatusMessage
-
-from Products.minaraad.browser.utils import buildCSV
-from Products.minaraad.subscriptions import SUBSCRIPTIONS_EMAIL
-from Products.minaraad.subscriptions import SubscriptionManager
-from Products.minaraad.themes import ThemeManager
-
+import logging
 
 logger = logging.getLogger('configlets')
 
@@ -47,6 +38,7 @@ class AbstractView(BrowserView):
         pos = self.referring_url.find('?')
         if pos > -1:
             self.referring_url = self.referring_url[:pos]
+
 
 class MinaraadConfigletView(AbstractView):
     """Configlet for a manager to manage themes.

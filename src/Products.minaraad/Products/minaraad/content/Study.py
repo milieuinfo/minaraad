@@ -7,14 +7,10 @@ from Products.OrderableReferenceField import OrderableReferenceField
 from Products.OrderableReferenceField import OrderableReferenceWidget
 from plone.app.blob.field import ImageField
 
-from Products.minaraad.PostMixin import PostMixin
-from Products.minaraad.EmailMixin import EmailMixin
 from Products.minaraad.Attachmentsmixin import Attachmentsmixin
 from Products.minaraad.ImageAttachmentsmixin import ImageAttachmentsmixin
 from Products.minaraad.config import PROJECTNAME
-from Products.minaraad.content.themes import ThemeMixin as OldThemeMixin
-from Products.minaraad.content.themes import theme_schema
-from Products.minaraad.ThemeMixin import ThemeMixin
+from Products.minaraad.ThemeMixin import ThemeParentMixin
 
 from Products.minaraad.interfaces import IStudy
 from Products.minaraad.content.interfaces import IUseContact
@@ -85,16 +81,13 @@ schema = atapi.Schema((
 
 
 Study_schema = (
-    getattr(PostMixin, 'schema', atapi.Schema(())).copy() +
-    getattr(EmailMixin, 'schema', atapi.Schema(())).copy() +
+    schema.copy() +
     getattr(Attachmentsmixin, 'schema', atapi.Schema(())).copy() +
     getattr(ImageAttachmentsmixin, 'schema', atapi.Schema(())).copy() +
-    theme_schema.copy() +
-    schema.copy() +
     contacts_schema.copy())
 
 
-class Study(Attachmentsmixin, PostMixin, EmailMixin, OldThemeMixin, ThemeMixin):
+class Study(Attachmentsmixin, ThemeParentMixin):
     """
     A study
     """

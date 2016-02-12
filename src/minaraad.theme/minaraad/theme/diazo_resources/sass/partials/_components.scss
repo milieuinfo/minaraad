@@ -288,7 +288,7 @@ nav section {
       color: $vlaanderen-dark-gray;
       padding: 3px;
       display: block;
-      &:hover, &:active {
+      &:hover, &:active, &.active {
         background: $mina-red-light-bg;
       }
     }

@@ -22,8 +22,6 @@
 # 02110-1301, USA.
 #
 
-__author__ = """Rocky Burt <r.burt@zestsoftware.nl>"""
-__docformat__ = 'plaintext'
 
 from Products.minaraad.tests.MainTestCase import MainTestCase
 from Products.minaraad.themes import ThemeManager

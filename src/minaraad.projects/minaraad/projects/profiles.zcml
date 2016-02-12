@@ -99,14 +99,6 @@
       profile="minaraad.projects:default" />
 
   <genericsetup:upgradeStep
-      title="Migrate some advisories from old digibib to projects"
-      description=""
-      source="1011"
-      destination="1012"
-      handler="minaraad.projects.migration.migrate_advisories_to_projects"
-      profile="minaraad.projects:default" />
-
-  <genericsetup:upgradeStep
       title="Update attachment counts"
       description=""
       source="1012"

@@ -88,19 +88,11 @@
                       </span>
                     </div>
 
-                    <span class="hearingsubheader"
-                          i18n:translate="label_theme_name">Theme:</span>
-                    <span tal:replace="python:context.getThemeName()" />
-
-                   <img tal:condition="context/getFoto"
-                         tal:attributes="src string:${context/absolute_url}/foto_foto;"
-                          alt=""
-                          class="hearingphoto" />
-                    <div class="hearingsubheader2"
+                    <h3 class="hearingsubheader2"
                          i18n:translate="Goal:"
                          tal:condition="context/getGoal">
-                      Goal:
-                    </div>
+                      Goal
+                    </h3>
 
                     <div tal:replace="structure context/getGoal" />
 
@@ -131,9 +123,9 @@
                     <!-- Hearing Files -->
 
                     <!-- Speakers -->
-                    <div tal:condition ="agendaItems"
+                    <h3 tal:condition ="agendaItems"
                          class="hearingsubheader2"
-                         i18n:translate="label_agendaitems">Agenda items</div>
+                         i18n:translate="label_agendaitems">Agenda items</h3>
 
                     <table id="meeting_view"
                            tal:condition="agendaItems">

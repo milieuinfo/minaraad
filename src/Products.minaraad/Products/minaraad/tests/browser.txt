@@ -60,7 +60,6 @@ Advisories
 
   >>> browser.open(portal.absolute_url() + '/adviezen')
   >>> browser.getLink(url='createObject?type_name=Advisory').click()
-  >>> browser.getControl(name='theme').value = ['23']
   >>> browser.getControl(name='title').value = 'My Advisory'
   >>> browser.getControl(name='date_year').value = ['2010']
   >>> browser.getControl(name='date_month').value = ['02']
@@ -77,27 +76,10 @@ is loading ...'.
   >>> browser.url
   'http://nohost/plone/adviezen/my-advisory'
 
-Check that the contact person is listed:
+The contact person is no longer listed:
 
   >>> 'Captain Planet' in browser.contents
-  True
-
-Check that editing and immediately saving works, especially for the
-theme as there was an Archetypes bug at some point; this does not seem
-to trigger the error though:
-
-  >>> browser.contents
-  '\n...Milieuhygi...ne en klimaat...'
-
-  >>> browser.open('http://nohost/plone/adviezen/my-advisory/edit')
-  >>> browser.getControl(name='theme').value
-  ['23']
-  >>> browser.getForm(name='edit_form').submit()
-  >>> browser.url
-  'http://nohost/plone/adviezen/my-advisory'
-
-  >>> browser.contents
-  '\n...Milieuhygi...ne en klimaat...'
+  False
 
 
 AnnualReport
@@ -131,7 +113,6 @@ Hearing
   >>> browser.open(portal.absolute_url() + '/hoorzittingen')
   >>> browser.getLink(url='createObject?type_name=Hearing').click()
   >>> browser.getControl(name='title').value = 'My Hearing'
-  >>> browser.getControl(name='theme').value = ['24']
   >>> browser.getControl(name='mot:boolean').value = 'on'  # Does this work?
   >>> browser.getControl(name='start_time_year').value = ['2010']
   >>> browser.getControl(name='start_time_month').value = ['02']
@@ -144,8 +125,6 @@ Hearing
   False
   >>> browser.url
   'http://nohost/plone/hoorzittingen/my-hearing'
-  >>> 'Water en zee' in browser.contents  # theme
-  True
   >>> 'Captain Planet' in browser.contents  # contact
   True
 

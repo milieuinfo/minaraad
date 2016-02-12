@@ -3,7 +3,9 @@
       title context/pretty_title_or_id|string:;
       url context/absolute_url|string:#;
       first_image context/get_first_image;
-      has_image context/has_image"
+      has_image context/has_image;
+      time context/getDate;
+      toLocalizedTime nocall:context/@@plone/toLocalizedTime;"
      tal:attributes="href url">
 
     <img style="width:100%"
@@ -21,6 +23,10 @@
          tal:content="structure context/getPopular_summary|nothing">
         Description of this item.
       </div>
+      <time datetime="2015-11-25 9:30"
+            tal:condition="python:time is not None"
+            tal:attributes="datetime python:time.strftime('%Y-%m-%d')"
+            tal:content="python:toLocalizedTime(time, long_format=0)">26 11 2015 9:30</time>
     </div>
   </a>
 </article>
