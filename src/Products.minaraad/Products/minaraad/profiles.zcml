@@ -426,6 +426,9 @@
         title="Migrate project themes"
         description="Migrate projects from old-style theme integers to new-style Theme objects."
         handler="Products.minaraad.migration.migrate_project_themes" />
+    <gs:upgradeStep
+        title="Remove broken CacheFu"
+        handler="Products.minaraad.migration.remove_broken_cachefu" />
   </gs:upgradeSteps>
 
 </configure>

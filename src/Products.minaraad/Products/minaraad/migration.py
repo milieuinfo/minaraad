@@ -20,6 +20,7 @@ from Products.minaraad.interfaces import IAttendeeManager
 from Products.ZCatalog.ProgressHandler import ZLogHandler
 from random import choice
 from zope.component import getMultiAdapter
+from zope.component import getSiteManager
 from zope.component import getUtility
 from zope.container import contained
 import cStringIO
@@ -876,3 +877,37 @@ def initialize_rich_text_fields_all_advisories(context):
             fixed += 1
     logger.info('Initialized fields in %d out of %d Advisories.',
                 fixed, len(brains))
+
+
+def remove_broken_cachefu(context):
+    """Cleanup old CacheFu.
+
+    This is a part of what is done in plone.app.upgrade/v40/alphas.py in
+    function removeBrokenCacheFu.  For some reason it was still needed.
+    I guess we manually uninstalled CacheFu in Plone 3 but this left a
+    utility behind.  And because the portal tools were gone, the
+    p.a.upgrade step was not fully executed.
+    """
+    from Products.CMFCore.interfaces import ICachingPolicyManager
+    # portal = api.portal.get()
+    # sm = getSiteManager(context=portal)
+    sm = getSiteManager()
+    for util in sm.getAllUtilitiesRegisteredFor(ICachingPolicyManager):
+        if util.id == 'broken':
+            # The official way does not work...
+            # sm.unregisterUtility(
+            #    component=util, provided=ICachingPolicyManager)
+            try:
+                del sm.utilities._subscribers[0][ICachingPolicyManager]
+            except (IndexError, KeyError):
+                # This happens when you run the upgrade step a second time.
+                # But after
+                logger.warn('Failed to unregister Caching Policy Manager.')
+            else:
+                # _subscribers is a standard non peristent list, so mark its
+                # parent as changed.
+                sm.utilities._p_changed = True
+                logger.info('Unregistered the CacheFu Caching Policy Manager.')
+            break
+    else:
+        logger.info('Caching Policy Manager was already unregistered.')
