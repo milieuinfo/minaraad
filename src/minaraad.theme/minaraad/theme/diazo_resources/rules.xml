@@ -97,11 +97,7 @@
     <drop css:content-children="#portal-breadcrumbs" />
   </rules>
 
-  <replace css:theme="#main-container">
-    <div class="container">
-      <xsl:copy-of select="//*[@id='content']/*"/>
-    </div>
-  </replace>
+  <replace css:theme-children="#main-container .container" css:content="#content" />
 
   <!-- Edit views -->
   <rules css:if-content="body.template-atct_edit, body.template-base_edit, body.template-folder_contents, body.template-sharing, body.template-login_form, body.template-login_success, body.template-versions_history_form">
@@ -115,6 +111,11 @@
     </replace>
 
   </rules>
+
+  <after css:theme="#main-container" css:content=".sec-related" method="raw" />
+  <drop css:content="#content-core .sec-related" />
+  <!-- <drop css:content="#portal-content .about-box" /> -->
+
 
   <!-- Custum views just to have the content-core -->
   <replace css:content="#content-core " css:theme="#main-container" css:if-content="body.template-homepage, body.template-themes, body.template-theme"/>

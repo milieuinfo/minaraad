@@ -240,8 +240,8 @@
           <div class="sec-header">
             <h2><a href="#">Actuele documenten</a></h2>
           </div>
-          <div class="row">
-            <div class="column" tal:repeat="item docs">
+          <div class="row masonry">
+            <div class="column grid-item" tal:repeat="item docs">
               <tal:block metal:use-macro="context/@@items/macros/related_item" />
             </div>
           </div>

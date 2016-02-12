@@ -95,10 +95,11 @@
               </div>
             </div>
 
-            <tal:block metal:use-macro="context/@@items/macros/related_documents" />
-
           </main>
+
         </div>
+
+        <tal:block metal:use-macro="context/@@items/macros/related_documents" />
 
    </metal:block>
    </body>
