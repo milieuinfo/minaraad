@@ -344,3 +344,28 @@
     }
   }
 }
+
+#digibib_view{
+  @extend .row;
+  .digibib_widget{
+    @extend .col-xs-12;
+    @extend .col-sm-6;
+    margin: 0;
+    border: 0;
+    .title{
+        border-top: 5px solid $mina-blue;
+        background: $mina-blue-light-1;
+        a:link, a:visited{
+          color: white;
+        }
+    }
+    .body{
+      .odd{
+        background: $mina-blue-light-4 !important;
+      }
+      .even{
+        background: $mina-blue-light-3 !important;
+      }
+    }
+  }
+}
