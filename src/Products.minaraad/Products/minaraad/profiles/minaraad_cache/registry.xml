@@ -44,10 +44,10 @@
         <element>Image</element>
         <element>News Item</element>
       </default>
-      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone.app.caching" ns0:translate="">List content types which should be purged when modified</description>
-      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone.app.caching" ns0:translate="">Content types to purge</title>
+      <description>List content types which should be purged when modified</description>
+      <title>Content types to purge</title>
       <value_type type="plone.registry.field.ASCIILine">
-        <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="plone.app.caching" ns0:translate="">Content type name</title>
+        <title>Content type name</title>
       </value_type>
     </field>
     <value>
@@ -69,45 +69,70 @@
       <element>CMF Link</element>
       <element>CMF News Item</element>
       <element>CMF Topic</element>
+      <element>FormCaptchaField</element>
       <element>ChangeSet</element>
+      <element>FormBooleanField</element>
       <element>Topic</element>
       <element>Discussion Item</element>
       <element>ContactPerson</element>
       <element>ATCurrentAuthorCriterion</element>
+      <element>FormCustomScriptAdapter</element>
       <element>ATDateRangeCriterion</element>
+      <element>FormDateField</element>
+      <element>FormFixedPointField</element>
       <element>DigiBib</element>
       <element>Event</element>
       <element>Favorite</element>
+      <element>FieldsetStart</element>
+      <element>FieldsetEnd</element>
+      <element>FieldsetFolder</element>
       <element>File</element>
+      <element>FormFileField</element>
       <element>Folder</element>
+      <element>FormFolder</element>
       <element>ATDateCriteria</element>
       <element>Hearing</element>
       <element>Image</element>
+      <element>FormLabelField</element>
+      <element>FormLinesField</element>
       <element>Link</element>
       <element>ATListCriterion</element>
       <element>MREvent</element>
+      <element>FormMailerAdapter</element>
       <element>Meeting</element>
       <element>MeetingContainer</element>
+      <element>FormMultiSelectionField</element>
       <element>News Item</element>
       <element>NewsItem</element>
       <element>NewsLetter</element>
       <element>Organisation</element>
       <element>OrganisationContainer</element>
       <element>Document</element>
+      <element>FormPasswordField</element>
       <element>ATPathCriterion</element>
       <element>Plone Site</element>
       <element>ATPortalTypeCriterion</element>
       <element>Pressrelease</element>
       <element>Project</element>
       <element>ProjectContainer</element>
+      <element>FormLikertField</element>
       <element>ATReferenceCriterion</element>
       <element>ATRelativePathCriterion</element>
+      <element>FormRichLabelField</element>
+      <element>FormRichTextField</element>
+      <element>FormSaveDataAdapter</element>
       <element>ATSelectionCriterion</element>
+      <element>FormSelectionField</element>
       <element>ATSimpleIntCriterion</element>
       <element>ATSimpleStringCriterion</element>
       <element>ATSortCriterion</element>
+      <element>FormStringField</element>
       <element>Study</element>
       <element>TempFolder</element>
+      <element>FormTextField</element>
+      <element>FormThanksPage</element>
+      <element>Theme</element>
+      <element>FormIntegerField</element>
     </value>
   </record>
   <record name="plone.app.caching.interfaces.IPloneCacheSettings.templateRulesetMapping" interface="plone.app.caching.interfaces.IPloneCacheSettings" field="templateRulesetMapping">
