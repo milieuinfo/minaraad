@@ -414,22 +414,24 @@ nav section {
 
 
 #portal-sitemap{
+  > li{
+    border: 1px solid darken(white, 15);
+    @include article-block-line-top($mina-blue);
+  }
   li {
-    padding: 0;
     img{
       display: none;
     }
     a:link, a:visited{
-      color: #b2324d !important;
+      color: #333333 !important;
       font-size: 16px;
       text-transform: uppercase;
-      margin-top: 25px;
+      margin-top: 15px;
       border: 0;
       background: none;
       padding: 0 !important;
     }
     li {
-      padding: 0 1em;
       a:link, a:visited{
         color: #333333 !important;
         margin-top: 0;

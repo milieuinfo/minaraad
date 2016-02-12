@@ -8051,24 +8051,29 @@ nav section.archive li a:hover:before, nav section.archive li.active a:before, n
   #digibib_view .digibib_widget .body .even {
     background: #deedf2 !important; }
 
-#portal-sitemap li {
-  padding: 0; }
-  #portal-sitemap li img {
-    display: none; }
-  #portal-sitemap li a:link, #portal-sitemap li a:visited {
-    color: #b2324d !important;
-    font-size: 16px;
-    text-transform: uppercase;
-    margin-top: 25px;
-    border: 0;
-    background: none;
-    padding: 0 !important; }
-  #portal-sitemap li li {
-    padding: 0 1em; }
-    #portal-sitemap li li a:link, #portal-sitemap li li a:visited {
-      color: #333333 !important;
-      margin-top: 0;
-      text-transform: none; }
+#portal-sitemap > li {
+  border: 1px solid #d9d9d9;
+  border-top: 5px solid #2e94bd;
+  padding: 0 15px 1px 15px;
+  background-color: white;
+  margin-bottom: 15px; }
+
+#portal-sitemap li img {
+  display: none; }
+
+#portal-sitemap li a:link, #portal-sitemap li a:visited {
+  color: #333333 !important;
+  font-size: 16px;
+  text-transform: uppercase;
+  margin-top: 15px;
+  border: 0;
+  background: none;
+  padding: 0 !important; }
+
+#portal-sitemap li li a:link, #portal-sitemap li li a:visited {
+  color: #333333 !important;
+  margin-top: 0;
+  text-transform: none; }
 
 .pfg-form input[type="text"], .pfg-form input[type="password"] {
   border-radius: 3px;
