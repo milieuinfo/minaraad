@@ -75,6 +75,7 @@
     <drop css:theme=".alert-warning" />
   </rules>
 
+
   <!-- Toolbar -->
   <replace css:theme="#editbar" css:content="#edit-bar" css:if-content=".userrole-authenticated"/>
   <replace css:theme="#anonymous-actions" css:content="#portal-personaltools-wrapper" css:if-content=".userrole-anonymous"/>
@@ -97,10 +98,10 @@
     <drop css:content-children="#portal-breadcrumbs" />
   </rules>
 
-  <replace css:theme-children="#main-container .container" css:content="#content" />
+  <replace css:theme-children="#main-container .container" css:content-children="#content" />
 
   <!-- Edit views -->
-  <rules css:if-content="body.template-atct_edit, body.template-base_edit, body.template-folder_contents, body.template-sharing, body.template-login_form, body.template-login_success, body.template-versions_history_form">
+  <rules css:if-content="body.template-subscribers_config-html, body.template-minaraad_service, body.template-export_statistics, body.template-atct_edit, body.template-base_edit, body.template-folder_contents, body.template-sharing, body.template-login_form, body.template-login_success, body.template-versions_history_form">
 
     <replace css:theme="#main-container">
         <div id="plone_edit_form" class="container">
@@ -112,8 +113,7 @@
 
   </rules>
 
-  <after css:theme="#main-container" css:content=".sec-related" method="raw" />
-  <drop css:content="#content-core .sec-related" />
+  <after css:theme="#main-container" css:content=".sec-related"/>
   <!-- <drop css:content="#portal-content .about-box" /> -->
 
 

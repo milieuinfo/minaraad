@@ -59,6 +59,14 @@
        />
 
   <browser:viewlet
+      name="minaraad.related_documents"
+      manager="plone.app.layout.viewlets.interfaces.IBelowContent"
+      class=".viewlets.RelatedDocumentsViewlet"
+      permission="zope2.View"
+      />
+
+
+  <browser:viewlet
        name="minaraad.footer"
        for="*"
        manager="plone.app.layout.viewlets.interfaces.IPortalFooter"

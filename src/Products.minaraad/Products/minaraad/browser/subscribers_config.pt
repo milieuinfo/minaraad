@@ -23,7 +23,7 @@
 
           <fieldset>
 
-            <legend>Thema's</legend>
+            <legend><h3>Thema's</h3></legend>
             <div tal:repeat="theme view/themes">
               <input type="checkbox"
                      class="noborder"
@@ -36,7 +36,7 @@
           </fieldset>
 
           <fieldset tal:repeat="subscription subscriptions">
-            <legend i18n:translate="" tal:content="subscription/id" />
+            <legend><h3 i18n:translate="" tal:content="subscription/id"> Subscription </h3></legend>
 
               <input class="context"
                      type="submit"
@@ -47,7 +47,7 @@
           </fieldset>
 
           <fieldset>
-            <legend>Leden</legend>
+            <legend><h3>Leden</h3></legend>
 
             <input class="context"
                    type="submit"

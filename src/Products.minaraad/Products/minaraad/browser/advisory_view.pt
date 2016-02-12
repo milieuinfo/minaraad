@@ -15,7 +15,6 @@
 
    <metal:block fill-slot="content-core">
 
-        <div class="content-wrapper">
 
           <main role="main" id="main-container">
 
@@ -96,10 +95,6 @@
             </div>
 
           </main>
-
-        </div>
-
-        <tal:block metal:use-macro="context/@@items/macros/related_documents" />
 
    </metal:block>
    </body>
