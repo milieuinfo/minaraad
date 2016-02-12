@@ -7312,9 +7312,8 @@ nav.navbar {
 #global_statusmessage {
   position: absolute;
   top: 20px;
-  left: 50%;
-  margin-left: -477px;
-  z-index: 999; }
+  z-index: 999;
+  width: 100%; }
   #global_statusmessage .portalMessage {
     font-size: 14px;
     border: 0;
