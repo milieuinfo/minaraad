@@ -4,7 +4,7 @@
              tal:condition="docs">
     <div  class="container">
       <div class="sec-header">
-        <h2>Gerelateerde documenten</h2>
+        <h2 tal:content="view/title">Gerelateerde documenten</h2>
       </div>
       <div class="row masonry">
         <div class="column grid-item"  tal:repeat="item docs">

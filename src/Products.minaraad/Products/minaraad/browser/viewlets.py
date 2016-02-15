@@ -34,8 +34,17 @@ class RelatedDocumentsViewlet(ViewletBase):
     """docstring for RelatedDocumentsViewlet(ViewletBase)"""
     index = ViewPageTemplateFile('related_documents.pt')
 
+    def title(self):
+        context = aq_inner(self.context)
+        if context.portal_type == "Advisory":
+            return u"Gerelateerde documenten"
+        else:
+            return u"Actuele documenten"
+
     def get_related_documents(self):
         context = aq_inner(self.context)
         if context.portal_type == "Advisory":
             return context.getRelatedDocuments()
+        elif context.getId() == 'thema-lijst':
+            return context.getRelatedItems()
      

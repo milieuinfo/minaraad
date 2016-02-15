@@ -56,7 +56,6 @@
                       </div>
                     </div>
 
-
                     <div class="right">
 
                       <tal:secondaryThemes tal:repeat="item view/secondary_themes">
@@ -82,43 +81,6 @@
 
                 </div>
 
-              </div>
-            </section>
-
-            <section class="sec-related">
-              <div  class="container">
-                <div class="sec-header">
-                  <h2><a href="#">Actuele documenten</a></h2>
-                </div>
-
-                <div class="row masonry">
-
-                      <tal:relatedItems
-                          tal:define="related_items python:context.getRelatedItems();"
-                          tal:repeat="item related_items">
-                        <div class="column grid-item">
-                          <article class="article-advice">
-                            <a tal:attributes="href item/absolute_url">
-                              <tal:image
-                                  tal:define="image item/get_first_image;"
-                                  tal:condition="python: image is not None">
-                                <img tal:attributes="src string:${image/absolute_url}/image_preview;
-                                                     alt item/title" />
-                              </tal:image>
-                              <div class="body">
-                                <h3 tal:content="item/Title"></h3>
-                                <p class="label">
-                                   <span tal:content="item/portal_type"
-                                         tal:omit-tag=""
-                                   i18n:translate="">Advies</span> <span tal:content="item/getThemeTitle">biodiversiteit</span></p>
-                                <div class="truncate" tal:content="structure item/getPopular_summary|item/Description|nothing"></div>
-                              </div>
-                            </a>
-                          </article>
-                      </div>
-                      </tal:relatedItems>
-
-                </div>
               </div>
             </section>
 
