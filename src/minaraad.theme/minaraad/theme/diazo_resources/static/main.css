@@ -8525,4 +8525,7 @@ dl.actionMenu.activated dd {
   .photoAlbumEntry a {
     height: auto; }
 
+.template-homepage div.row, .template-homepage div.masonry-documents, .template-homepage div#digibib_view, .template-homepage .images div.thumbnails, .images .template-homepage div.thumbnails {
+  width: initial; }
+
 /*# sourceMappingURL=main.css.map */
