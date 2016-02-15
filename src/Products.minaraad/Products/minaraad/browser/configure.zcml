@@ -316,6 +316,15 @@
       />
 
   <!-- Old views in skins folder -->
+
+  <browser:page
+      for="Products.ATContentTypes.interfaces.document.IATDocument"
+      permission="zope2.View"
+      name="document_view"
+      template="document_view.pt"
+      />
+  
+  
   <browser:page
       for="Products.minaraad.interfaces.IPressRelease"
       permission="zope2.View"
