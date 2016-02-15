@@ -386,6 +386,22 @@ nav section {
   }
 }
 
+div.digibib_widget{
+  font-size: 100%;
+  border: 0;
+  .title{
+    border-top: 5px solid #2e94bd;
+    background-color: #7db2c9;
+  }
+  .body{
+    .odd{
+      background: $mina-blue-light-4 !important;
+    }
+    .even{
+      background: $mina-blue-light-3 !important;
+    }
+  }
+}
 
 #digibib_view{
   @extend .row;
