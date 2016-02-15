@@ -718,7 +718,8 @@ def migrate_project_themes(context):
         obj = brain.getObject()
         old_theme_name = obj.getThemeName()
         # Note: theme might be None, but that is fine.
-        old_theme_id = obj.theme
+
+        old_theme_id = getattr(obj, 'theme', None)
         lockable = ILockable(obj)
         if lockable.locked():
             lockable.unlock()
