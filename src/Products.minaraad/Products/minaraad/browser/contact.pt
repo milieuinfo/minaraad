@@ -9,7 +9,7 @@
     <body>
     <metal:block metal:fill-slot="content-core">
         <div class="row">
-            <article class="article-contact-detail">
+            <article class="contact-content">
                 <div class="contact-info col-lg-7 col-md-7 col-sm-12 col-md-push-5">
                     <div class="body" tal:content="structure context/getText | nothing"></div>
                 </div>
