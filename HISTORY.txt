@@ -4,6 +4,9 @@ History of this buildout
 6.0.0 (unreleased)
 ------------------
 
+- Added upgrade step to update the catalog metadata, meant for the
+  getIcon column.  [maurits]
+
 - Create a viewlet for related documents in below-content.
   [jladage]
 

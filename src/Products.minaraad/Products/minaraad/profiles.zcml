@@ -441,6 +441,10 @@
     <gs:upgradeDepends
         title="Install our cache profile"
         import_profile="Products.minaraad:minaraad_cache" />
+    <gs:upgradeStep
+        title="Update catalog metadata"
+        description="Updates getIcon from .gif to .png for a few types. You must apply the plone436 profile first."
+        handler="Products.minaraad.migration.update_catalog_metadata" />
   </gs:upgradeSteps>
 
 </configure>
