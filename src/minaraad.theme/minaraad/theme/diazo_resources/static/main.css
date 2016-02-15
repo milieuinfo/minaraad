@@ -7193,7 +7193,8 @@ button.close {
   border-bottom: 0;
   margin-left: 20px;
   margin-right: 20px;
-  background: none; }
+  background: none;
+  overflow: hidden; }
 
 span.featherlight-close-icon.featherlight-close {
   line-height: 20px;
@@ -7940,14 +7941,21 @@ body {
       font-size: 16px;
       color: #2e94bd; }
 
-.article-contact-detail {
+.contact-content {
+  font-size: 1.7rem;
   margin-bottom: 15px; }
-  .article-contact-detail .contact-info {
+  .contact-content .contact-info {
     padding: 25px; }
-    .article-contact-detail .contact-info .body {
+    .contact-content .contact-info .body {
       background: white;
       border-top: 6px solid #2e94bd;
       padding: 15px; }
+      .contact-content .contact-info .body tr p {
+        margin: 0; }
+      .contact-content .contact-info .body strong {
+        font-size: 2rem; }
+    .contact-content .contact-info figure {
+      margin-bottom: 15px; }
 
 .userrole-anonymous #editbar-wrapper {
   display: none; }

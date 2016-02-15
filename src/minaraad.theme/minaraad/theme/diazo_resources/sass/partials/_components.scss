@@ -227,7 +227,8 @@ body {
   }
 }
 
-.article-contact-detail {
+.contact-content {
+    font-size: 1.7rem;
     margin-bottom: 15px;
     .contact-info {
         padding: 25px;
@@ -235,6 +236,15 @@ body {
             background: white;
             border-top: 6px solid #2e94bd;
             padding: 15px;
+            tr p {
+                margin: 0;
+            }
+            strong {
+                font-size: 2rem;
+            }
+        }
+        figure {
+            margin-bottom: 15px;
         }
     }
 }

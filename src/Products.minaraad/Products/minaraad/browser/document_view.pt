@@ -46,11 +46,12 @@
                   <header>
                     <h1 tal:content="context/Title">Over de Minaraad</h1>
                   </header>
-                  <div class="lead">
-                    <metal:field use-macro="python:context.widget('text', mode='view')">
-                        Body text
-                    </metal:field>
+                  <div class="lead" tal:content="context/Description">
+                    Here comes the description
                   </div>
+                  <metal:field use-macro="python:context.widget('text', mode='view')">
+                      Body text
+                  </metal:field>
                 </section>
               </div>
 
