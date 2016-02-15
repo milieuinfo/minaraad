@@ -15,7 +15,7 @@
     padding: 15px 20px 7px;
   }
   h3 {
-    font-size: 18px;
+    font-size: 15px;
     margin-top: 0;
   }
   > a {
@@ -25,6 +25,11 @@
       display: block;
       color: $text-color;
       text-decoration: none;
+    }
+    div.icon {
+      width:100%;
+      text-align: center;
+      padding-top:0.8em;
     }
     time {
       color: $text-color;
@@ -43,17 +48,17 @@
 
 .article-advice {
   @extend .article-default;
-  .body {
-    border: 1px solid darken(white, 15);
-    border-top: 0;
-  }
-  a {
-    &:hover, &:focus {
-      h3 {
-        text-decoration: underline;
-      }
-    }
-  }
+//  .body {
+////    border: 1px solid darken(white, 15);
+//    border-top: 0;
+//  }
+//  a {
+//    &:hover, &:focus {
+//      h3 {
+//        text-decoration: underline;
+//      }
+//    }
+//  }
 }
 
 .article-event {
@@ -345,3 +350,31 @@
   }
 }
 
+
+// -----------------------------------------------------------------------------
+// Medium screen / desktop
+// -----------------------------------------------------------------------------
+
+@media (min-width: $screen-md-min) {
+  .article-advice {
+    .body {
+      h3 {
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Large screen / wide desktop
+// -----------------------------------------------------------------------------
+
+@media (min-width: $screen-lg-min) {
+  .article-advice {
+    .body {
+      h3 {
+        font-size: 18px;
+      }
+    }
+  }
+}

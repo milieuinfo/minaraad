@@ -8226,7 +8226,7 @@ div.digibib_widget {
   .article-default .body, .article-advice .body, .article-event .body, .article-next-meeting .body, .article-vision .body, .article-theme-other .body, .article-theme .body {
     padding: 15px 20px 7px; }
   .article-default h3, .article-advice h3, .article-event h3, .article-next-meeting h3, .article-vision h3, .article-theme-other h3, .article-theme h3 {
-    font-size: 18px;
+    font-size: 15px;
     margin-top: 0; }
   .article-default > a, .article-advice > a, .article-event > a, .article-next-meeting > a, .article-vision > a, .article-theme-other > a, .article-theme > a {
     overflow: auto;
@@ -8235,19 +8235,16 @@ div.digibib_widget {
       display: block;
       color: #333333;
       text-decoration: none; }
+    .article-default > a div.icon, .article-advice > a div.icon, .article-event > a div.icon, .article-next-meeting > a div.icon, .article-vision > a div.icon, .article-theme-other > a div.icon, .article-theme > a div.icon {
+      width: 100%;
+      text-align: center;
+      padding-top: 0.8em; }
     .article-default > a time, .article-advice > a time, .article-event > a time, .article-next-meeting > a time, .article-vision > a time, .article-theme-other > a time, .article-theme > a time {
       color: #333333; }
     .article-default > a:hover, .article-advice > a:hover, .article-event > a:hover, .article-next-meeting > a:hover, .article-vision > a:hover, .article-theme-other > a:hover, .article-theme > a:hover, .article-default > a:focus, .article-advice > a:focus, .article-event > a:focus, .article-next-meeting > a:focus, .article-vision > a:focus, .article-theme-other > a:focus, .article-theme > a:focus {
       text-decoration: none; }
       .article-default > a:hover p, .article-advice > a:hover p, .article-event > a:hover p, .article-next-meeting > a:hover p, .article-vision > a:hover p, .article-theme-other > a:hover p, .article-theme > a:hover p, .article-default > a:focus p, .article-advice > a:focus p, .article-event > a:focus p, .article-next-meeting > a:focus p, .article-vision > a:focus p, .article-theme-other > a:focus p, .article-theme > a:focus p {
         color: #1f647f; }
-
-.article-advice .body {
-  border: 1px solid #d9d9d9;
-  border-top: 0; }
-
-.article-advice a:hover h3, .article-advice a:focus h3 {
-  text-decoration: underline; }
 
 .article-event, .article-next-meeting, .article-vision, .article-theme-other {
   background: #e3f2ed; }
@@ -8413,6 +8410,14 @@ div.digibib_widget {
       display: block;
       content: "";
       clear: both; }
+
+@media (min-width: 992px) {
+  .article-advice .body h3 {
+    font-size: 16px; } }
+
+@media (min-width: 1200px) {
+  .article-advice .body h3 {
+    font-size: 18px; } }
 
 #editbar-wrapper {
   padding-top: 15px;

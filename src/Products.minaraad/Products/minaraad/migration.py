@@ -510,7 +510,6 @@ def setup_various(context):
             type='Folder',
             title="Documenten",
             container=portal,
-            description="Facetted navigation here.",
         )
         api.content.transition(obj=documents, transition='publish')
         logger.info("%s created", documents)
