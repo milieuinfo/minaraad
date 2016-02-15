@@ -4,6 +4,9 @@ History of this buildout
 6.0.0 (unreleased)
 ------------------
 
+- Made reference browser widget results less high.  They were flowing
+  below the page.  MINA-96.  [maurits]
+
 - Added upgrade step to update the catalog metadata, meant for the
   getIcon column.  [maurits]
 
