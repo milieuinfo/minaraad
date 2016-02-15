@@ -2,5 +2,6 @@
 <object name="NewsItem" meta_type="Factory-based Type Information"
    xmlns:i18n="http://xml.zope.org/namespaces/i18n">
  <property name="title">NewsItem</property>
+ <property name="content_icon">document_icon.png</property>
  <property name="global_allow">False</property>
 </object>

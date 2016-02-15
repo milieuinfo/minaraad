@@ -48,52 +48,54 @@
 
       <p tal:replace="structure context/getBody" />
 
-      <div tal:define="items context/find_items_and_times">
-        <strong>Agendapunten</strong>
+      <div class="row">
+        
+        <div class="meeting_left" tal:define="items context/find_items_and_times">
+          <strong>Agendapunten</strong>
 
-        <table id="meeting_view" tal:condition="items">
-          <tbody>
-            <tal:block tal:repeat="item items">
-              <tr tal:attributes="id python: item[0].UID">
-                <td>
-                  <ul class="AgendaItems">
-                    <metal:block use-macro="context/display_macros/macros/agendaItem" />
-                  </ul>
-                </td>
-                <td tal:define="obj python: item[0].getObject()"
-                    tal:condition="obj/can_be_edited|nothing"
-                    class="draggable">
-                </td>
-              </tr>
-            </tal:block>
-          </tbody>
-        </table>
+          <table id="meeting_view" tal:condition="items">
+            <tbody>
+              <tal:block tal:repeat="item items">
+                <tr tal:attributes="id python: item[0].UID">
+                  <td>
+                    <ul class="AgendaItems">
+                      <metal:block use-macro="context/display_macros/macros/agendaItem" />
+                    </ul>
+                  </td>
+                  <td tal:define="obj python: item[0].getObject()"
+                      tal:condition="obj/can_be_edited|nothing"
+                      class="draggable">
+                  </td>
+                </tr>
+              </tal:block>
+            </tbody>
+          </table>
 
-        <p tal:condition="not: items"
-           i18n:translate="label_no_agenda_items">
-          There is no agenda item yet for this meeting.
-        </p>
+          <p tal:condition="not: items"
+             i18n:translate="label_no_agenda_items">
+            There is no agenda item yet for this meeting.
+          </p>
+        </div>
+        
+        <div class="meeting_right">
+          <p class="right"
+             tal:define="pdf context/get_pdf|nothing"
+             tal:condition="python: pdf">
+            <a href="get_all_pdf"><strong i18n:translate="label_download_full_dossier"
+                                          >Download full dossier</strong></a>
+          </p>
+        </div>
+        
+        <div class="meeting_full">
+          <tal:block tal:define="field python: context.schema['participants'];
+                                 accessor python: field.getAccessor(context);
+                                 widget nocall: field/widget;">
+            <metal:block use-macro="here/participants_widget/macros/view" />
+          </tal:block>
+        </div>
+        
       </div>
 
-      <p class="right"
-         tal:define="pdf context/get_pdf|nothing"
-         tal:condition="python: pdf">
-        <a href="get_all_pdf"><strong i18n:translate="label_download_full_dossier"
-                                      >Download full dossier</strong></a>
-      </p>
-      <div style="clear: both;">
-        &nbsp;
-      </div>
-
-      <tal:block tal:define="field python: context.schema['participants'];
-                             accessor python: field.getAccessor(context);
-                             widget nocall: field/widget;">
-        <metal:block use-macro="here/participants_widget/macros/view" />
-      </tal:block>
-
-      <div style="clear: both;">
-        &nbsp;
-      </div>
     </div>
   </body>
 </html>

@@ -911,3 +911,24 @@ def remove_broken_cachefu(context):
             break
     else:
         logger.info('Caching Policy Manager was already unregistered.')
+
+
+def update_catalog_metadata(context):
+    """Update catalog metadata.
+
+    In this case we want to update the getIcon column because it
+    references no longer available .gif files.
+    """
+    catalog = getToolByName(context, 'portal_catalog')
+    brains = catalog(portal_type=[
+        'NewsItem',
+        'AnnualReport',
+        'ContactPerson',
+        ])
+    for brain in brains:
+        obj = brain.getObject()
+        path = brain.getPath()
+        # Passing in a valid but inexpensive index, makes sure we
+        # don't reindex expensive indexes like SearchableText.
+        catalog.catalog_object(obj, path, ['id'], update_metadata=True)
+    logger.info('Updated catalog metadata for %d items.', len(brains))
