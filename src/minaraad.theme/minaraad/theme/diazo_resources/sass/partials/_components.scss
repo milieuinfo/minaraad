@@ -598,8 +598,11 @@ div.digibib_list{
 // For archetypes/referencebrowserwidget/browser/popup.pt.
 // Referencebrowserwidget results should not reach the bottom.
 // We can display the div with the review state inline.
-#atrbResultsTable td div {
-    display: inline;
+#atrbResultsTable {
+    label,
+    td div {
+        display: inline;
+    }
 }
 
 // -----------------------------------------------------------------------------

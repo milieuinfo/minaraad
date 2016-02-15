@@ -8181,6 +8181,7 @@ div.digibib_list {
 .pfg-form .formControls {
   margin: 1em 0; }
 
+#atrbResultsTable label,
 #atrbResultsTable td div {
   display: inline; }
 
