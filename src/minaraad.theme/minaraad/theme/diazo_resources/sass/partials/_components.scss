@@ -454,6 +454,53 @@ nav section {
   }
 }
 
+.meeting_left{
+  @extend .col-xs-12;
+  @extend .col-md-9;
+  border: 1px solid darken(white, 15);
+  @include article-block-line-top($mina-blue);
+  padding-top: 20px;
+  table{
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 25px;
+    tbody{
+      tr{
+        td{
+          border-bottom: 1px solid #ddd;
+        }
+        &:last-child td{
+          border-bottom: 0;
+        }
+      }
+    }
+  }
+}
+.meeting_right{
+  @extend .col-xs-12;
+  @extend .col-md-3;
+}
+.meeting_full{
+  @extend .col-xs-12;
+  table{
+    width: 100%;
+    thead tr{
+      border-top: 5px solid $mina-blue;
+      th{
+        background: $mina-blue-light-1;
+        color: white;
+      }
+    }
+    tbody{
+      tr.even{
+        background: $mina-blue-light-3 !important;
+      }
+      tr.odd td{
+        background: $mina-blue-light-4 !important;
+      }
+    }
+  }
+}
 
 #portal-sitemap{
   > li{
