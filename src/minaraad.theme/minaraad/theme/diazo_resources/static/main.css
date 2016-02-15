@@ -8168,6 +8168,9 @@ nav section.archive li a:hover:before, nav section.archive li.active a:before, n
 .pfg-form .formControls {
   margin: 1em 0; }
 
+#atrbResultsTable td div {
+  display: inline; }
+
 .sec-header h2 {
   font-size: 24px;
   margin-top: 0;

@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<object name="ContactPerson" meta_type="Factory-based Type Information"
+   xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+   i18n:domain="minaraad">
+ <property i18n:translate="" name="title">ContactPerson</property>
+ <property name="content_icon">document_icon.png</property>
+</object>

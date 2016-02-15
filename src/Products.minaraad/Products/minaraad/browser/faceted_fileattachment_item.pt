@@ -6,36 +6,35 @@
       url context/absolute_url|string:#;
       attachment nocall:context;
       size attachment/getObjSize;
-      icon attachment/getIcon;
       title attachment/Title|attachment/getId;
+      time attachment/effective;
+      toLocalizedTime nocall:context/@@plone/toLocalizedTime;
       mimetype attachment/content_type|nothing;
       uid attachment/UID;
       contenttype python:context.lookupMime(mimetype) or 'Onbekend';"
      tal:attributes="href string:${url}/download;
                      id python: 'att_%s' % uid;
                      title description">
-
-      <img tal:condition="icon"
-           src=""
-           alt=""
-           tal:attributes="src string:${context/portal_url}/${icon};
-                           alt contenttype"/>
-
+      <i class="flaticon-pdf17"></i><br/>
       <span tal:condition="position|nothing">
         Bijlage <span tal:replace="position" />:
       </span>
-      <tal:filename tal:replace="title"/>
-      <span class="discreet">
-        <span tal:replace="contenttype">ContentType</span>,
-        <tal:size content="size">0Kb</tal:size>
-      </span>
 
-    <span class="photoAlbumEntryTitle" tal:content="context/pretty_title_or_id|string:">Title</span>
+    <h4 tal:content="context/pretty_title_or_id|string:">Title</h4>
+    <span class="discreet">
+      <span tal:replace="contenttype">ContentType</span>,
+      <tal:size content="size">0Kb</tal:size>
+    </span>
     <p class="label">
       Bestand
       <span tal:content="context/getThemeTitle|nothing"></span>
     </p>
     <span class="photoAlbumEntryDescription" tal:content="description">Description</span>
+
+    <time datetime="2015-11-25 9:30"
+          tal:condition="python:time is not None"
+          tal:attributes="datetime python:time.strftime('%Y-%m-%d')"
+          tal:content="python:toLocalizedTime(time, long_format=0)">26 11 2015 9:30</time>
 
   </a>
 </div>

@@ -30,6 +30,15 @@
       for="Products.CMFPlone.interfaces.IMigratingPloneSiteRoot"
       />
 
+  <gs:registerProfile
+      name="minaraad_cache"
+      title="Minaraad cache settings (based on 'with caching proxy')"
+      description="Settings for minaraad"
+      directory="profiles/minaraad_cache"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      for="plone.app.caching.interfaces.ICacheProfiles"
+      />
+
   <gs:upgradeStep
       title="Migrate contacts"
       description=""
@@ -426,6 +435,16 @@
         title="Migrate project themes"
         description="Migrate projects from old-style theme integers to new-style Theme objects."
         handler="Products.minaraad.migration.migrate_project_themes" />
+    <gs:upgradeStep
+        title="Remove broken CacheFu"
+        handler="Products.minaraad.migration.remove_broken_cachefu" />
+    <gs:upgradeDepends
+        title="Install our cache profile"
+        import_profile="Products.minaraad:minaraad_cache" />
+    <gs:upgradeStep
+        title="Update catalog metadata"
+        description="Updates getIcon from .gif to .png for a few types. You must apply the plone436 profile first."
+        handler="Products.minaraad.migration.update_catalog_metadata" />
   </gs:upgradeSteps>
 
 </configure>

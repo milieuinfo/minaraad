@@ -4,6 +4,7 @@
    i18n:domain="minaraad">
 
  <property i18n:translate="" name="description"></property>
+ <property name="icon_expr"></property>
  <property name="allowed_content_types">
   <element value="AgendaItem"/>
   <element value="File"/>

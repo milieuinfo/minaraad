@@ -17,10 +17,6 @@
   <element value="File"/>
   <element value="Folder"/>
   <element value="Image"/>
-  <element value="Link"/>
-  <element value="Topic"/>
-  <element value="DigiBib"/>
-  <element value="Theme"/>
  </property>
  <property name="allow_discussion">False</property>
  <property name="default_view">folder_listing</property>
