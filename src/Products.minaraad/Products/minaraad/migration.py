@@ -534,12 +534,19 @@ def setup_various(context):
         logger.info("Renamed Algemeen > Over de Minaraad")
 
     # set contact view on contact
-    contact = portal.get('Contact')
-    contact_layout = contact.getProperty('layout', None)
-    if contact_layout:
-        contact._updateProperty('layout', 'contact_view')
+    contact_folder = portal.get('Contact')
+    plattegrond = contact_folder.get('plattegrond')
+
+    contact_folder_default = contact_folder.getProperty('default_page', None)
+    if contact_folder_default:
+        contact_folder._updateProperty('default_page', 'plattegrond')
     else:
-        contact._setProperty('layout', 'contact_view')
+        contact_folder._setProperty('default_page', 'plattegrond')
+    contact_layout = plattegrond.getProperty('layout', None)
+    if contact_layout:
+        plattegrond._updateProperty('layout', 'contact_view')
+    else:
+        plattegrond._setProperty('layout', 'contact_view')
 
     # rename image
     image_orig = portal.get('Contact').get('Gebouw SAR Minaraad.JPG')
