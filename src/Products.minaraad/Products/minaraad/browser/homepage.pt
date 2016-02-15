@@ -129,7 +129,7 @@
                           </h3>
                         </header>
                         <div class="body">
-                          <p>
+                          <p tal:content="context/over-de-minaraad/jaarwerking/Description|nothing">
                             Quisque ut dolor gravida, placerat libero vel,
                             euismod. Excepteur sint obcaecat cupiditat non
                             proident culpa.
@@ -140,7 +140,8 @@
 
                     <article class="article-vision">
                       <!--? TODO: Add newsletter action -->
-                      <a href="#">
+                      <a href="#"
+                         tal:attributes="href string:${portal_url}/nieuwsbrieven">
                         <header>
                           <h3>
                             <i class="fa fa-envelope"></i>
@@ -149,16 +150,21 @@
                         </header>
                         <div class="body">
                           <p>
-                            Quisque ut dolor gravida, placerat libero vel,
-                            euismod. Excepteur sint obcaecat cupiditat non
-                            proident culpa.
+                            Wenst u regelmatig op de hoogte te blijven van onze adviezen en
+                            evenementen. Abonneer u dan op onze nieuwsbrief via de button in
+                            de footer van deze website.
+                          </p>
+                          <p>
+                            Klik om het archief van nieuwsbrieven te bekijken.
                           </p>
                         </div>
                       </a>
                     </article>
 
                     <!-- TODO: Set correct twitter id's etc -->
-                    <a class="twitter-timeline" href="https://twitter.com/lennar_h" data-widget-id="600720083413962752">Tweets door @lennar_h</a>
+                    <a class="twitter-timeline"
+                       href="https://twitter.com/lennar_h"
+                      data-widget-id="600720083413962752">Tweets door @lennar_h</a>
                     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 
                   </div>

@@ -6,6 +6,19 @@
       metal:use-macro="context/main_template/macros/master"
       i18n:domain="minaraad">
   <body>
+    
+    <metal:block fill-slot="top_slot"
+        tal:define="dummy python:request.set('disable_border',1);"/>
+
+    <metal:headslot metal:fill-slot="head_slot">
+    
+      <style type="text/css">
+      <!--
+      .display_archive {font-family: arial,verdana; font-size: 12px;}
+      .campaign {line-height: 125%; margin: 5px;}
+      //-->
+      </style>
+    </metal:headslot>
 
     <hidden metal:fill-slot="content-title">
     </hidden>
@@ -13,15 +26,37 @@
     <hidden metal:fill-slot="content-description">
     </hidden>
 
-    <metal:block fill-slot="content-core">
+    <hidden metal:fill-slot="edit-bar">
+    </hidden>
 
-      <style type="text/css">
-      <!--
-      .display_archive {font-family: arial,verdana; font-size: 12px;}
-      .campaign {line-height: 125%; margin: 5px;}
-      //-->
-      </style>
-      <script language="javascript" src="http://us2.campaign-archive1.com/generate-js/?u=b31a6110c23bc7183b954cda2&fid=34337&show=10" type="text/javascript"></script>
+    <metal:block fill-slot="content-core">
+    
+          <main role="main" id="main-container">
+
+            <div class="sec-advice-detail">
+              <div class="container">
+                <div class="row">
+                  <div class="article-advice-detail">
+
+                    <article>
+                      <div class="body">
+                        <section>
+                          <header>
+                            <h1>Nieuwbrieven</h1>
+                          </header>
+                          <p class="lead">
+                        </section>
+                        <section>
+                          <script language="javascript" src="http://us2.campaign-archive1.com/generate-js/?u=b31a6110c23bc7183b954cda2&fid=34337&show=10" type="text/javascript"></script>
+                        </section>
+                      </div>
+                    </article>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </main>
 
     </metal:block>
   </body>
