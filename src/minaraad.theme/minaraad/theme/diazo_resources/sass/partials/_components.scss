@@ -227,6 +227,17 @@ body {
   }
 }
 
+.article-contact-detail {
+    margin-bottom: 15px;
+    .contact-info {
+        padding: 25px;
+        .body {
+            background: white;
+            border-top: 6px solid #2e94bd;
+            padding: 15px;
+        }
+    }
+}
 
 //
 // editbar

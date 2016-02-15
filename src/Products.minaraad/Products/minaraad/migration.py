@@ -492,6 +492,8 @@ def setup_various(context):
         - Create documents folder
         - Move `Jaarverslagen` into `Algemeen`
         - Move `Contact` to portal root
+        - Set contact page view to contact_view
+        - Rename "Gebouw SAR Minaraad.jpg" to "gebouw-sar-minaraad.jpg"
         - Rename `algemeen` > `Over de Minaraad`
         - Sort items.
 
@@ -508,7 +510,6 @@ def setup_various(context):
             type='Folder',
             title="Documenten",
             container=portal,
-            description="Facetted navigation here.",
         )
         api.content.transition(obj=documents, transition='publish')
         logger.info("%s created", documents)
@@ -531,6 +532,20 @@ def setup_various(context):
         about.title = 'Over de Minaraad'
         api.content.rename(obj=about, new_id="over-de-minaraad")
         logger.info("Renamed Algemeen > Over de Minaraad")
+
+    # set contact view on contact
+    contact = portal.get('Contact')
+    contact_layout = contact.getProperty('layout', None)
+    if contact_layout:
+        contact._updateProperty('layout', 'contact_view')
+    else:
+        contact._setProperty('layout', 'contact_view')
+
+    # rename image
+    image_orig = portal.get('Contact').get('Gebouw SAR Minaraad.JPG')
+    image_dest = portal.get('Contact').get('gebouw-sar-minaraad.jpg')
+    if image_orig and not image_dest:
+        api.content.rename(obj=image_orig, new_id='gebouw-sar-minaraad.jpg')
 
     # Sort items.
     items = [

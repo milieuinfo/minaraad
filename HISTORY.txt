@@ -4,6 +4,9 @@ History of this buildout
 6.0.0 (unreleased)
 ------------------
 
+- Improve fileattachment tile in faceted navigation.
+  [jladage]
+
 - Made reference browser widget results less high.  They were flowing
   below the page.  MINA-96.  [maurits]
 
