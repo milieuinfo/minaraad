@@ -23,7 +23,6 @@ schema = atapi.Schema((
 )
 
 Hearing_schema = (
-    atapi.BaseFolderSchema.copy() +
     getattr(MREvent, 'schema', atapi.Schema(())).copy() +
     schema.copy())
 
