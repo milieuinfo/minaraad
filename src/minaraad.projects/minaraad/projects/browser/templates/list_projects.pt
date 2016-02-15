@@ -18,7 +18,7 @@
          i18n:translate="to_digibib_dashboard">
         To Digibib DashBoard
       </a>
-      <div class="digibib_widget wide">
+      <div class="digibib_widget wide digibib_list">
         <div class="title">
           <tal:title i18n:translate="label_heading_projects_year">
             Projects <tal:year i18n:name="year" content="year_and_projects/year" />
