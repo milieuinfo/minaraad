@@ -9,5 +9,6 @@
      <element value="homepage"/>
      <element value="themes"/>
      <element value="contact"/>
+     <element value="contact_view"/>
  </property>
 </object>

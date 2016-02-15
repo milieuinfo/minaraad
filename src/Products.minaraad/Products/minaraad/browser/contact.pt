@@ -1,0 +1,26 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="minaraad">
+
+    <body>
+    <metal:block metal:fill-slot="content-core">
+        <div class="row">
+            <article class="article-contact-detail">
+                <div class="contact-info col-lg-7 col-md-7 col-sm-12 col-md-push-5">
+                    <div class="body" tal:content="structure context/getText | nothing"></div>
+                </div>
+                <div class="contact-info col-lg-5 col-md-5 col-sm-12 col-md-pull-7">
+                    <aside class="location">
+                        <figure><a href="gebouw-sar-minaraad.jpg"><img src="gebouw-sar-minaraad.jpg/image_large" class="img-responsive" alt=""/></a></figure>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2519.40773471868!2d4.331996415971197!3d50.84213346694507!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c3c47340630393%3A0x7235068999fa19bb!2sMilieu-+en+Natuurraad+Vlaanderen+MiNa-Raad!5e0!3m2!1snl!2snl!4v1451913473474" width="100%" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>
+                    </aside>
+                </div>
+            </article>
+        </div>
+    </metal:block>
+    </body>
+</html>
