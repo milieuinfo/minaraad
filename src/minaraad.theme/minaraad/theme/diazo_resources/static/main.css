@@ -8038,14 +8038,14 @@ nav section.archive li a:hover:before, nav section.archive li.active a:before, n
       padding-left: 0.5em;
       width: 90%; }
 
-div.digibib_widget {
+div.digibib_list {
   border: 0; }
-  div.digibib_widget .title {
+  div.digibib_list .title {
     border-top: 5px solid #2e94bd;
     background-color: #7db2c9; }
-  div.digibib_widget .body .odd {
+  div.digibib_list .body .odd {
     background: #edf5f7 !important; }
-  div.digibib_widget .body .even {
+  div.digibib_list .body .even {
     background: #deedf2 !important; }
 
 #digibib_view .digibib_widget {
@@ -8510,5 +8510,8 @@ dl.actionMenu.activated dd {
     height: auto; }
   .photoAlbumEntry a {
     height: auto; }
+
+.template-homepage .row, .template-homepage .masonry-documents, .template-homepage #digibib_view, .template-homepage .sec-advice-detail article, .sec-advice-detail .template-homepage article, .template-homepage .sec-event-detail article, .sec-event-detail .template-homepage article, .template-homepage .images .thumbnails, .images .template-homepage .thumbnails {
+  width: initial; }
 
 /*# sourceMappingURL=main.css.map */

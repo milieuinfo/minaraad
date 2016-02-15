@@ -18,7 +18,7 @@
          i18n:translate="to_digibib_dashboard">
         To Digibib DashBoard
       </a>
-      <div class="digibib_widget wide"
+      <div class="digibib_widget wide digibib_list"
            tal:condition="view/show_future_meetings">
         <div class="title">
           <span i18n:translate="label_incoming_meetings">
@@ -50,7 +50,7 @@
         </div>
       </div>
 
-      <div class="digibib_widget wide">
+      <div class="digibib_widget wide digibib_list">
         <div class="title">
           <span i18n:translate="label_heading_past_meetings_year">
             Past meetings <tal:year i18n:name="year" content="year_and_meetings/year" />
