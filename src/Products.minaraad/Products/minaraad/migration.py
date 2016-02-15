@@ -41,6 +41,31 @@ OLD_THEMES = {
     25: "biodiversiteit",
     26: "temp-ruimtelijke-ordening-en-mobiliteit",
 }
+CONTACT_TEXT = """
+<p class="lead">Strategische adviesraad Minaraad Kliniekstraat 25<br />
+B-1070 Brussel (Anderlecht)<br />
+Tel. 02 558 01 30<br />
+E-mail: <a href="mailto:info@minaraad.be">info@minaraad.be</a></p>
+<p>Het secretariaat en de vergaderzalen bevinden zich op de 4de verdieping.</p>
+<h2>Routebeschrijving</h2>
+<p>De Minaraad ligt op wandelafstand van het NMBS-station Brussel-Zuid
+(800m) en vlakbij het metrostation Clemenceau (200m).</p>
+<p>Vanaf NMBS-station Brussel-Zuid (te voet 10 min.):</p>
+<ul>
+  <li>uitgang Zuidertoren nemen;</li>
+  <li>Paul-Henri Spaaklaan volgen tot Baraplein;</li>
+  <li>Baraplein oversteken en Clemenceaustraat ingaan;</li>
+  <li>2de straat rechts is de Kliniekstraat.</li>
+</ul>
+<p>Vanaf NMBS-station Brussel-Zuid (metro 5 min.):</p>
+<ul>
+  <li>metrolijn 2 of 6 nemen;</li>
+  <li>afstappen halte Clemenceau;</li>
+  <li>uitgang Kliniekstraat nemen;</li>
+  <li>linksaf de Kliniekstraat inwandelen;</li>
+  <li>Clemenceaustraat en Bissestraat dwarsen.</li>
+</ul>
+"""
 
 
 def migrate_contacts(context):
@@ -547,6 +572,7 @@ def setup_various(context):
         plattegrond._updateProperty('layout', 'contact_view')
     else:
         plattegrond._setProperty('layout', 'contact_view')
+    plattegrond.setText(CONTACT_TEXT)
 
     # rename image
     image_orig = portal.get('Contact').get('Gebouw SAR Minaraad.JPG')
