@@ -8100,17 +8100,19 @@ nav section.archive li a:hover:before, nav section.archive li.active a:before, n
     .meeting_left table tbody tr:last-child td {
       border-bottom: 0; }
 
-.meeting_full table {
-  width: 100%; }
-  .meeting_full table thead tr {
-    border-top: 5px solid #2e94bd; }
-    .meeting_full table thead tr th {
-      background: #7db2c9;
-      color: white; }
-  .meeting_full table tbody tr.even {
-    background: #deedf2 !important; }
-  .meeting_full table tbody tr.odd td {
-    background: #edf5f7 !important; }
+.meeting_full {
+  margin-bottom: 20px; }
+  .meeting_full table {
+    width: 100%; }
+    .meeting_full table thead tr {
+      border-top: 5px solid #2e94bd; }
+      .meeting_full table thead tr th {
+        background: #7db2c9;
+        color: white; }
+    .meeting_full table tbody tr.even {
+      background: #deedf2 !important; }
+    .meeting_full table tbody tr.odd td {
+      background: #edf5f7 !important; }
 
 #portal-sitemap > li {
   border: 1px solid #d9d9d9;
