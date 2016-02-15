@@ -4,6 +4,9 @@ History of this buildout
 6.0.0 (unreleased)
 ------------------
 
+- Integrating contact page including migration of image.
+  [diederik]
+
 - Improve styling of document_view and move it to the browser folder.
   [jladage]
 
