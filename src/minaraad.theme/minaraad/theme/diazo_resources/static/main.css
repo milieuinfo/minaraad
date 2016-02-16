@@ -415,7 +415,7 @@ figure {
 img {
   vertical-align: middle; }
 
-.img-responsive, .jumbotronbar .column-left .theme-image, .article-default img, .article-advice img, .article-event img, .article-next-meeting img, .article-vision img, .article-theme-other img, .article-theme img, .images img {
+.img-responsive, .jumbotronbar .column-left .theme-image, .article-default img, .article-advice img, .article-event img, .article-next-meeting img, .article-vision img, .article-theme-other img, .article-theme img, .article-theme-bodytext img, .images img {
   display: block;
   max-width: 100%;
   height: auto; }
@@ -8210,32 +8210,32 @@ div.digibib_list {
   .sec-header h2 {
     font-size: 18px; } }
 
-.article-default, .article-advice, .article-event, .article-next-meeting, .article-vision, .article-theme-other, .article-theme {
+.article-default, .article-advice, .article-event, .article-next-meeting, .article-vision, .article-theme-other, .article-theme, .article-theme-bodytext {
   background: white;
   margin-bottom: 15px; }
-  .article-default img, .article-advice img, .article-event img, .article-next-meeting img, .article-vision img, .article-theme-other img, .article-theme img {
+  .article-default img, .article-advice img, .article-event img, .article-next-meeting img, .article-vision img, .article-theme-other img, .article-theme img, .article-theme-bodytext img {
     width: 100%; }
-  .article-default .body, .article-advice .body, .article-event .body, .article-next-meeting .body, .article-vision .body, .article-theme-other .body, .article-theme .body {
+  .article-default .body, .article-advice .body, .article-event .body, .article-next-meeting .body, .article-vision .body, .article-theme-other .body, .article-theme .body, .article-theme-bodytext .body {
     padding: 15px 20px 7px; }
-  .article-default h3, .article-advice h3, .article-event h3, .article-next-meeting h3, .article-vision h3, .article-theme-other h3, .article-theme h3 {
+  .article-default h3, .article-advice h3, .article-event h3, .article-next-meeting h3, .article-vision h3, .article-theme-other h3, .article-theme h3, .article-theme-bodytext h3 {
     font-size: 15px;
     margin-top: 0; }
-  .article-default > a, .article-advice > a, .article-event > a, .article-next-meeting > a, .article-vision > a, .article-theme-other > a, .article-theme > a {
+  .article-default > a, .article-advice > a, .article-event > a, .article-next-meeting > a, .article-vision > a, .article-theme-other > a, .article-theme > a, .article-theme-bodytext > a {
     overflow: auto;
     display: block; }
-    .article-default > a p, .article-advice > a p, .article-event > a p, .article-next-meeting > a p, .article-vision > a p, .article-theme-other > a p, .article-theme > a p {
+    .article-default > a p, .article-advice > a p, .article-event > a p, .article-next-meeting > a p, .article-vision > a p, .article-theme-other > a p, .article-theme > a p, .article-theme-bodytext > a p {
       display: block;
       color: #333333;
       text-decoration: none; }
-    .article-default > a div.icon, .article-advice > a div.icon, .article-event > a div.icon, .article-next-meeting > a div.icon, .article-vision > a div.icon, .article-theme-other > a div.icon, .article-theme > a div.icon {
+    .article-default > a div.icon, .article-advice > a div.icon, .article-event > a div.icon, .article-next-meeting > a div.icon, .article-vision > a div.icon, .article-theme-other > a div.icon, .article-theme > a div.icon, .article-theme-bodytext > a div.icon {
       width: 100%;
       text-align: center;
       padding-top: 0.8em; }
-    .article-default > a time, .article-advice > a time, .article-event > a time, .article-next-meeting > a time, .article-vision > a time, .article-theme-other > a time, .article-theme > a time {
+    .article-default > a time, .article-advice > a time, .article-event > a time, .article-next-meeting > a time, .article-vision > a time, .article-theme-other > a time, .article-theme > a time, .article-theme-bodytext > a time {
       color: #333333; }
-    .article-default > a:hover, .article-advice > a:hover, .article-event > a:hover, .article-next-meeting > a:hover, .article-vision > a:hover, .article-theme-other > a:hover, .article-theme > a:hover, .article-default > a:focus, .article-advice > a:focus, .article-event > a:focus, .article-next-meeting > a:focus, .article-vision > a:focus, .article-theme-other > a:focus, .article-theme > a:focus {
+    .article-default > a:hover, .article-advice > a:hover, .article-event > a:hover, .article-next-meeting > a:hover, .article-vision > a:hover, .article-theme-other > a:hover, .article-theme > a:hover, .article-theme-bodytext > a:hover, .article-default > a:focus, .article-advice > a:focus, .article-event > a:focus, .article-next-meeting > a:focus, .article-vision > a:focus, .article-theme-other > a:focus, .article-theme > a:focus, .article-theme-bodytext > a:focus {
       text-decoration: none; }
-      .article-default > a:hover p, .article-advice > a:hover p, .article-event > a:hover p, .article-next-meeting > a:hover p, .article-vision > a:hover p, .article-theme-other > a:hover p, .article-theme > a:hover p, .article-default > a:focus p, .article-advice > a:focus p, .article-event > a:focus p, .article-next-meeting > a:focus p, .article-vision > a:focus p, .article-theme-other > a:focus p, .article-theme > a:focus p {
+      .article-default > a:hover p, .article-advice > a:hover p, .article-event > a:hover p, .article-next-meeting > a:hover p, .article-vision > a:hover p, .article-theme-other > a:hover p, .article-theme > a:hover p, .article-theme-bodytext > a:hover p, .article-default > a:focus p, .article-advice > a:focus p, .article-event > a:focus p, .article-next-meeting > a:focus p, .article-vision > a:focus p, .article-theme-other > a:focus p, .article-theme > a:focus p, .article-theme-bodytext > a:focus p {
         color: #1f647f; }
 
 .article-event, .article-next-meeting, .article-vision, .article-theme-other {
@@ -8405,6 +8405,20 @@ div.digibib_list {
       display: block;
       content: "";
       clear: both; }
+
+.article-theme-bodytext header {
+  text-transform: uppercase;
+  background: #2e94bd;
+  color: white;
+  padding: 11px 10px 10px 13px; }
+  .article-theme-bodytext header h3, .article-theme-bodytext header time {
+    margin: 0;
+    font-size: 16px; }
+    .article-theme-bodytext header h3 i, .article-theme-bodytext header time i {
+      display: block;
+      float: left;
+      height: 1.1em;
+      margin-right: 0.6em; }
 
 @media (min-width: 992px) {
   .article-advice .body h3 {

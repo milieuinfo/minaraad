@@ -10,6 +10,19 @@ from zope.interface import implements
 
 ThemeSchema = folder.ATFolderSchema.copy() + atapi.Schema((
 
+    atapi.TextField(
+        name='body',
+        allowable_content_types=('text/plain', 'text/structured', 'text/html',
+                                 'application/msword'),
+        widget=atapi.RichWidget(
+            label='Body',
+            label_msgid='minaraad_label_body',
+            i18n_domain='minaraad',
+        ),
+        default_content_type='text/html',
+        default_output_type='text/html',
+    ),
+
     atapi.ImageField(
         "image",
         original_size=(600, 600),

@@ -927,6 +927,19 @@ def initialize_rich_text_fields_all_advisories(context):
     logger.info('Initialized fields in %d out of %d Advisories.',
                 fixed, len(brains))
 
+def initialize_rich_text_fields_all_themes(context):
+    """Initialize new rich text fields for all Advisories.
+    """
+    catalog = getToolByName(context, 'portal_catalog')
+    brains = catalog({'portal_type': 'Theme'})
+    fixed = 0
+    for brain in brains:
+        obj = brain.getObject()
+        if initialize_rich_text_fields_object(obj):
+            fixed += 1
+    logger.info('Initialized fields in %d out of %d Themes.',
+                fixed, len(brains))
+
 
 def remove_broken_cachefu(context):
     """Cleanup old CacheFu.
