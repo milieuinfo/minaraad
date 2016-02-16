@@ -3,6 +3,9 @@ History of this buildout
 
 6.0.0 (unreleased)
 ------------------
+- Body text on the homepage will now be displayed as a hearing event
+  on the front page.
+  [diederik]
 
 - Hidden the option in faceted search to restrict the text search to
   the current search results.  You need to import the faceted settings

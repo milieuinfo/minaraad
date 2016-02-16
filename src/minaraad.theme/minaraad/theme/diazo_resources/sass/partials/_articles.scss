@@ -105,10 +105,11 @@
     background: $mina-red;
   }
   .body {
-    time {
-      color: $mina-red;
-      display: block;
-    }
+    color: $mina-red;
+    display: block;
+    font-size: 15px;
+    font-weight: 400;
+    margin-bottom: 10px;
   }
   a {
     &:hover, &:focus {

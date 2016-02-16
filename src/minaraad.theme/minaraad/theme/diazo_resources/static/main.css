@@ -8267,9 +8267,12 @@ div.digibib_list {
   background: #fbeaed; }
   .article-next-meeting header {
     background: #b2324d; }
-  .article-next-meeting .body time {
+  .article-next-meeting .body {
     color: #b2324d;
-    display: block; }
+    display: block;
+    font-size: 15px;
+    font-weight: 400;
+    margin-bottom: 10px; }
   .article-next-meeting a:hover, .article-next-meeting a:focus {
     background: #f7d5db; }
     .article-next-meeting a:hover header, .article-next-meeting a:focus header {
