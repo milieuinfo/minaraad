@@ -78,7 +78,7 @@
                     </h3>
                   </header>
                   <div class="body">
-                    <p>
+                    <p tal:content="context/over-de-minaraad/jaarwerking/Description|nothing">
                       Quisque ut dolor gravida, placerat libero vel,
                       euismod. Excepteur sint obcaecat cupiditat non
                       proident culpa.
@@ -99,4 +99,3 @@
 
 </body>
 </html>
-
