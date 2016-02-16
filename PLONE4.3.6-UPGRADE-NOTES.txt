@@ -66,6 +66,14 @@ Just cleanup. We do not need classic theme anymore.
  3. Click uninstall.
 
 
+Install and configure embedly
+-----------------------------
+
+ 1. Go to http://localhost:8080/minaraad/prefs_install_products_form and install embedly.
+ 2. Get an API key from embedly. Register an account with them as needed.
+ 3. Go to http://localhost:8080/minaraad/@@embedly-controlpanel and supply API key.
+
+
 Errors
 ======
 
