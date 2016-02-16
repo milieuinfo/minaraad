@@ -85,8 +85,9 @@
   <!-- Custum views just to have the content-core -->
   <replace css:content="#content-core " css:theme="#main-container" css:if-content="body.template-homepage, body.template-themes, body.template-theme"/>
 
-<!-- Copy all search items and attributes (we do this with many rules so we can use the theme search styling) -->
-  <copy attributes="action" css:content='#portal-searchbox form' css:theme=".search form" />
+<!-- Copy all search items and attributes (we do this with many rules so we can use the theme search styling).
+     We do not copy the action, because we use our theme to override this to point to the faceted navigation in /documenten instead. -->
+  <!--copy attributes="action" css:content='#portal-searchbox form' css:theme=".search form" /-->
   <copy attributes="name" css:content="#searchGadget" css:theme=".search .form-control"/>
   <copy attributes="type" css:content=".searchButton" css:theme=".search button" />
   <copy attributes="value" css:content=".searchButton" css:theme=".search button" />

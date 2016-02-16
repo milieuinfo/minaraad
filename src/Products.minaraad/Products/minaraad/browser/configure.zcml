@@ -323,8 +323,7 @@
       name="document_view"
       template="document_view.pt"
       />
-  
-  
+
   <browser:page
       for="Products.minaraad.interfaces.IPressRelease"
       permission="zope2.View"
@@ -423,9 +422,10 @@
       for="OFS.interfaces.IApplication"
       class=".helpers.RedirectPlone"
       permission="zope2.View">
-    <browser:page name="newsletter" />
+    <browser:page name="documenten" />
     <browser:page name="login_form" />
     <browser:page name="logout" />
+    <browser:page name="newsletter" />
   </browser:pages>
 
 </configure>
