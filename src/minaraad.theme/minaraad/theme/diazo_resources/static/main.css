@@ -8521,4 +8521,7 @@ dl.actionMenu.activated dd {
 .template-homepage div.row, .template-homepage div.masonry-documents, .template-homepage div#digibib_view, .template-homepage .images div.thumbnails, .images .template-homepage div.thumbnails {
   width: initial; }
 
+#atrb_relatedItems {
+  position: absolute !important; }
+
 /*# sourceMappingURL=main.css.map */
