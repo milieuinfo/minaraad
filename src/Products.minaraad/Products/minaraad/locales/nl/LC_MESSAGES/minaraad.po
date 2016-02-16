@@ -121,7 +121,7 @@ msgstr "Locatie:"
 
 #: ./profiles/default/types/MREvent.xml
 msgid "MREvent"
-msgstr "Evenement"
+msgstr "Orientatiemoment"
 
 #: ./profiles.zcml:13
 msgid "Minaraad"
@@ -568,7 +568,7 @@ msgstr ""
 
 #. Default "By default, subscription is allowed till one day before start of the event. Uncheck this field to disallow subscription immediately."
 msgid "minaraad_description_subscription_allowed"
-msgstr "Standaard is inschrijving toegestaan tot één dag voor de start van het evenement. Vink dit veld uit om inschrijving onmiddellijk te staken."
+msgstr "Standaard is inschrijving toegestaan tot één dag voor de start van het orientatiemoment. Vink dit veld uit om inschrijving onmiddellijk te staken."
 
 #. Default: "date"
 #: content/Advisory.py

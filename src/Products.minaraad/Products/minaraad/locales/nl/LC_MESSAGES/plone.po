@@ -149,7 +149,7 @@ msgid "Login"
 msgstr ""
 
 msgid "MREvent"
-msgstr "Evenement"
+msgstr "Orientatiemoment"
 
 #: profiles/plone41/portlets.xml
 msgid "Navigation"
@@ -294,7 +294,7 @@ msgid "minaraad_workflow"
 msgstr ""
 
 msgid "mrevent_listing_view"
-msgstr "Evenementen overzicht"
+msgstr "Orientatiemomenten overzicht"
 
 msgid "newsletter_listing_view"
 msgstr "Nieuwsbrieven overzicht"
