@@ -553,6 +553,9 @@ div.digibib_list{
 
 
 .pfg-form {
+  border: 1px solid darken(white, 15);
+  @include article-block-line-top($mina-blue);
+  padding-top: 20px;
   input[type="text"], input[type="password"]{
     border-radius: 3px;
     border: 1px solid #ccc;
@@ -573,6 +576,11 @@ div.digibib_list{
   }
   .required {
       margin-left: -7px;
+  }
+  .ArchetypesMultiSelectionWidget{
+    option{
+      padding: 5px 10px;
+    }
   }
   .ArchetypesSelectionWidget, .ArchetypesBooleanWidget{
     label{
