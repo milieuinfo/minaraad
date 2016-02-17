@@ -372,6 +372,44 @@
 }
 
 
+.newsletter-detail{
+  @extend .col-xs-12;
+  @extend .col-md-9;
+  border: 1px solid darken(white, 15);
+  @include article-block-line-top($mina-blue);
+  padding-top: 20px;
+  padding-bottom: 20px;
+  .campaign{
+    margin: 10px 0;
+  }
+}
+
+.newsletter-mailchimp{
+  @extend .col-xs-12;
+  @extend .col-md-3;
+  .newsletter-widget{
+    background: white;
+    border: 0;
+    border-top: 5px solid #86263a;
+    padding: 0 15px 15px 15px;
+  }
+  .title{
+    color: #b2324d;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-top: .75em;
+    background: transparent;
+    padding: 0;
+  }
+  .body{
+    padding-top: 15px;
+    a:link, a:visited{
+      color: white;
+    }
+  }
+}
+
 // -----------------------------------------------------------------------------
 // Medium screen / desktop
 // -----------------------------------------------------------------------------

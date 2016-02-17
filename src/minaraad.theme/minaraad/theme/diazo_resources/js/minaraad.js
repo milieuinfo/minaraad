@@ -56,8 +56,26 @@
       // common_content_filter copied from Products/CMFPlone/skins/plone_ecmascript/popupforms.js
       var common_content_filter = '#content>*:not(div.configlet),dl.portalMessage.error,dl.portalMessage.info';
 
-      // Activate the overlay on the newsletter link.
+      // Activate the overlay on the newsletter footer link.
       $('#mailchimp_link a').prepOverlay(
+        {
+          subtype: 'ajax',
+          filter: common_content_filter,
+          // optional css class if needed:
+          // cssclass: 'overlay-newsletter',
+          //
+          // Without matching formselector, the popup shows up fine.
+          // But when you submit the loaded form, you end up on the
+          // form page, instead of doing a submit inline.  Both have
+          // valid use cases, but probably you want to stay on the
+          // page.
+          formselector: 'form#newsletter-subscriber-form',
+          noform: function(el) {return $.plonepopups.noformerrorshow(el, 'close');}
+        }
+      );
+
+      // Activate the overlay on the newsletter detail link.
+      $('#newsletter-mailchimp_link a').prepOverlay(
         {
           subtype: 'ajax',
           filter: common_content_filter,

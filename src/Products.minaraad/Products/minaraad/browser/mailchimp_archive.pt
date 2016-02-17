@@ -33,29 +33,27 @@
     
           <main role="main" id="main-container">
 
-            <div class="sec-advice-detail">
-              <div class="container">
-                <div class="row">
-                  <div class="article-advice-detail">
+            <div class="container">
+              <div class="row">
+                <h1>Nieuwbrieven</h1>
 
-                    <article>
-                      <div class="body">
-                        <section>
-                          <header>
-                            <h1>Nieuwbrieven</h1>
-                          </header>
-                          <p class="lead">
-                        </section>
-                        <section>
-                          <script language="javascript" src="http://us2.campaign-archive1.com/generate-js/?u=b31a6110c23bc7183b954cda2&fid=34337&show=10" type="text/javascript"></script>
-                        </section>
-                      </div>
-                    </article>
-
+                <div class="newsletter-detail">
+                  <script language="javascript" src="http://us2.campaign-archive1.com/generate-js/?u=b31a6110c23bc7183b954cda2&fid=34337&show=10" type="text/javascript"></script>
+                </div>
+                <div class="newsletter-mailchimp">
+                  <div class="newsletter-widget">
+                    <div class="title">Aanmelden</div>
+                    <div class="body" id="newsletter-mailchimp_link">
+                      <a href="/@@newsletter" class="btn btn-primary link-overlay" style="cursor: pointer;">
+                        <i class="fa fa-envelope"></i> Abonneren
+                      </a>
+                    </div>
                   </div>
                 </div>
+                
               </div>
             </div>
+
           </main>
 
     </metal:block>
