@@ -8172,6 +8172,11 @@ dl.actionMenu.activated dd {
       background-color: #fff;
       border-color: #ccc; }
 
+#content ul {
+  margin: 0; }
+  #content ul li {
+    list-style: none; }
+
 * li {
   display: list-item; }
 

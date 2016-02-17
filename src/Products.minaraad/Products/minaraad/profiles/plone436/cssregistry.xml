@@ -3,4 +3,5 @@
  <stylesheet id="++theme++minaraad/css/style.css" remove="True" />
  <stylesheet id="++theme++minaraad/css/print.css" remove="True" />
  <stylesheet id="++theme++minaraad/css/mobile.css" remove="True" />
+ <stylesheet id="public.css" remove="True" />
 </object>

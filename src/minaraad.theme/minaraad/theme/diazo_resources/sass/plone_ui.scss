@@ -148,6 +148,13 @@ dl.actionMenu.activated dd {
   }
 }
 
+#content ul{
+  margin: 0;
+  li{
+    list-style: none;
+  }
+}
+
 * li{
   display: list-item;
 }
