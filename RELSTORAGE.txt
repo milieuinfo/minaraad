@@ -165,6 +165,15 @@ version.  Probably a small version difference is fine.
 Postgres restore
 ----------------
 
+For a database dump created by Joost on 17 February 2016, this should do the trick:
+
+createuser pgplone
+createuser minaraad_ro
+createdb minaraad
+psql minaraad < ~/Downloads/minaraad_productie_2016-02-17.dump
+
+Older info:
+
 I (Maurits) don't know if Guy Wauters from Milieuinfo
 (guy@milieuinfo.be) did the dump in the same way as above.  But I
 recently got a dump from him.  Restoring it was troublesome.  Maybe in
