@@ -105,10 +105,11 @@
     background: $mina-red;
   }
   .body {
-    time {
-      color: $mina-red;
-      display: block;
-    }
+    color: $mina-red;
+    display: block;
+    font-size: 15px;
+    font-weight: 400;
+    margin-bottom: 10px;
   }
   a {
     &:hover, &:focus {
@@ -347,6 +348,26 @@
       content: "";
       clear: both;
     }
+  }
+}
+
+.article-theme-bodytext {
+    @extend .article-default;
+    header {
+      text-transform: uppercase;
+      background: $mina-blue;
+      color: white;
+      padding: 11px 10px 10px 13px;
+      h3, time {
+        margin: 0;
+        font-size: 16px;
+        i {
+          display: block;
+          float: left;
+          height: 1.1em;
+          margin-right: 0.6em;
+        }
+      }
   }
 }
 

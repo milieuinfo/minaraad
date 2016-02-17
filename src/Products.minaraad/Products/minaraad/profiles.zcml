@@ -445,6 +445,10 @@
         title="Update catalog metadata"
         description="Updates getIcon from .gif to .png for a few types. You must apply the plone436 profile first."
         handler="Products.minaraad.migration.update_catalog_metadata" />
+    <gs:upgradeStep
+        title="Initialize rich text fields for Themes"
+        description="This adds a rich text field to themes"
+        handler="Products.minaraad.migration.initialize_rich_text_fields_all_themes" />
   </gs:upgradeSteps>
 
 </configure>

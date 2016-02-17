@@ -35,7 +35,7 @@
       <span class="photoAlbumEntryDescription" tal:content="description">Description</span>
 
       <time datetime="2015-11-25 9:30"
-            tal:condition="python:time is not None"
+            tal:condition="python:time is not None and time.year() >= 1900"
             tal:attributes="datetime python:time.strftime('%Y-%m-%d')"
             tal:content="python:toLocalizedTime(time, long_format=0)">26 11 2015 9:30</time>
     </div>

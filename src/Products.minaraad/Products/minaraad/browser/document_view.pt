@@ -70,7 +70,7 @@
               </section>
 
               <article class="article-vision">
-                <a href="#">
+                <a tal:attributes="href string:${portal_url}/over-de-minaraad/jaarwerking">
                   <header>
                     <h3>
                       <i class="fa fa-bullseye"></i>
@@ -78,7 +78,7 @@
                     </h3>
                   </header>
                   <div class="body">
-                    <p>
+                    <p tal:content="context/over-de-minaraad/jaarwerking/Description|nothing">
                       Quisque ut dolor gravida, placerat libero vel,
                       euismod. Excepteur sint obcaecat cupiditat non
                       proident culpa.
@@ -99,4 +99,3 @@
 
 </body>
 </html>
-

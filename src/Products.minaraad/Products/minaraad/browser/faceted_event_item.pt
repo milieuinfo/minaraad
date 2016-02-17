@@ -1,15 +1,23 @@
   <article class="article-event">
     <a tal:attributes="href context/absolute_url|string:#;
-                       title context/Title">
+                       title context/Title"
+       tal:define="
+                title context/pretty_title_or_id|string:;
+                has_image context/has_image;
+                first_image context/get_first_image;">
       <header>
         <h3 tal:define="d context/getStart_time|nothing">
           <i class="fa fa-comments"></i>
           <metal:block use-macro="context/display_macros/macros/date" />
         </h3>
       </header>
+      <img style="width:100%"
+          tal:condition="has_image"
+          tal:attributes="alt title;
+                          src first_image/absolute_url"/>
       <div class="body">
         <p class="label">
-          Evenement&emsp;
+          Orientatiemoment&emsp;
           <span tal:content="context/getThemeTitle|nothing"></span>
         </p>
         <h3 tal:content="context/Title"></h3>

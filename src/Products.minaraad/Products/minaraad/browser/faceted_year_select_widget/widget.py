@@ -37,7 +37,7 @@ class Widget(CountableWidget):
 
         # Sometimes objects are created with a effective date of
         # '1000-01-01 00:00:00'. Resulting in 1000+ values.
-        # Therefore we limit `fist` to a reasonable effective date.
+        # Therefore we limit `first` to a reasonable effective date.
         first = catalog.searchResults(
                 sort_on='effective',
                 sort_order='ascending',

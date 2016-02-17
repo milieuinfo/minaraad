@@ -49,6 +49,15 @@
               <div  class="container">
                 <div class="row masonry">
 
+                  <div class="grid-item" tal:condition="context/body|nothing">
+                      <article class="article-theme-bodytext">
+                          <header>
+                              <h3>Over <span tal:content="context/title"></span></h3>
+                          </header>
+                          <div class="body" tal:content="structure context/body"></div>
+                      </article>
+                  </div>
+
                   <tal:relatedItems
                     tal:define="related_items python:context.getRelatedItems();"
                     tal:repeat="item related_items">
