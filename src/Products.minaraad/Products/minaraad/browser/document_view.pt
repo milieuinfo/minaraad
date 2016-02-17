@@ -70,7 +70,7 @@
               </section>
 
               <article class="article-vision">
-                <a href="#">
+                <a tal:attributes="href string:${portal_url}/over-de-minaraad/jaarwerking">
                   <header>
                     <h3>
                       <i class="fa fa-bullseye"></i>
