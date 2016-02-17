@@ -126,11 +126,17 @@ class MinaraadTestCase(ptc.PloneTestCase):
         logging.getLogger = fake_getLogger
 
     def add_digibib(self):
-        self.portal.invokeFactory('DigiBib', id='digibib')
-        self.portal.digibib.invokeFactory('ProjectContainer', id='projects')
-        self.portal.digibib.invokeFactory('MeetingContainer', id='meetings')
-        self.portal.digibib.invokeFactory(
-            'OrganisationContainer', id='organisations')
+        # invokeFactory no longer works, because we are not allowed to add a
+        # Digibib and its Containers anywhere.
+        # self.portal.invokeFactory('DigiBib', id='digibib')
+        typetool = self.portal.portal_types
+        typetool.constructContent('DigiBib', self.portal, 'digibib')
+        typetool.constructContent(
+            'ProjectContainer', self.portal.digibib, 'projects')
+        typetool.constructContent(
+            'MeetingContainer', self.portal.digibib, 'meetings')
+        typetool.constructContent(
+            'OrganisationContainer', self.portal.digibib, 'organisations')
 
     def add_group(self, g_id):
         self.portal.portal_groups.addGroup(g_id)
