@@ -103,44 +103,49 @@ dl.actionMenu.activated dd {
     background-clip: padding-box;
 }
 
-#plone_edit_form {
-  //
-  // Basics
-  //
+.template-subscribers_config-html,
+.template-minaraad_service,
+.template-export_statistics,
+.template-atct_edit,
+.template-base_edit, 
+.template-folder_contents,
+.template-sharing,
+.template-login_form,
+.template-login_success,
+.template-versions_history_form{
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 16px;
   #content {
     background:white;
     padding: 30px;
-  }
-  //
-  // Form tabs
-  //
-  #content ul.formTabs,
-  #content-core ul.formTabs {
-    border-top-right-radius: 0;
-    border-top-left-radius: 0;
-    -webkit-border-top-right-radius: 0;
-    -webkit-border-top-left-radius: 0;
-    -moz-border-radius-topleft: 0;
-    -moz-border-radius-topright: 0;
-  }
+    //
+    // Form tabs
+    //
+    ul.formTabs,
+    ul.formTabs {
+      border-top-right-radius: 0;
+      border-top-left-radius: 0;
+      -webkit-border-top-right-radius: 0;
+      -webkit-border-top-left-radius: 0;
+      -moz-border-radius-topleft: 0;
+      -moz-border-radius-topright: 0;
+    }
 
-  //
-  // Buttons
-  //
-  [type='submit'], [type='button'] {
-    @extend .btn;
-    @extend .btn-primary;
-    margin-right: 5px;
+    //
+    // Buttons
+    //
+    [type='submit'], [type='button'] {
+      color: #fff;
+      background-color: #2e94bd;
+      border-color: #2984a8;
+      margin-right: 5px;
+    }
+
+    input[value='Annuleren'], input[type='file'] {
+      color: #333;
+      background-color: #fff;
+      border-color: #ccc;
+    }
   }
-
-  input[value='Annuleren'], input[type='file'] {
-    @extend .btn;
-    @extend .btn-default;
-
-  }
-
 }
 
 * li{
