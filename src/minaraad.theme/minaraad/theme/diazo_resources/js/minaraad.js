@@ -9,10 +9,19 @@
     // Is everybody ready?
     $(function() {
 
+        /* Update masonry twice.  The first one after 200 milliseconds
+         * may be too soon.  In that case the second one after a full
+         * second should be fine.  If nothing needs to change between
+         * these two calls, the user does not notice anything. */
         $(Faceted.Events).bind(Faceted.Events.AJAX_QUERY_SUCCESS, function(evt){
           setTimeout(function(){
             $('.masonry').masonry();
           }, 200);
+        });
+        $(Faceted.Events).bind(Faceted.Events.AJAX_QUERY_SUCCESS, function(evt){
+          setTimeout(function(){
+            $('.masonry').masonry();
+          }, 1000);
         });
 
         // Toggle the drawer.
@@ -190,4 +199,3 @@
   });
 
 })(); // end scope.
-

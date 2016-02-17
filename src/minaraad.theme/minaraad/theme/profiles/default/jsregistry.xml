@@ -24,7 +24,9 @@
      id="modernizr.js"
      enabled="True" />
    <javascript
-      id="++theme++minaraad/js/main.js"
+      id="++theme++minaraad/js/main.js" remove="true" />
+   <javascript
+      id="++theme++minaraad/static/main.js"
       cacheable="True" compression="safe" cookable="True"
       enabled="True" expression=""  inline="False" />
 

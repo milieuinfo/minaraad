@@ -4,6 +4,12 @@ History of this buildout
 6.0.0 (unreleased)
 ------------------
 
+- Call Masonry twice to be sure it succeeds.  Made sure the js/main.js
+  is only used in the click model and the static/main.js, which
+  contains all 'grunted' javascript, is loaded via the javascript
+  registry.  Note: you must run the 'Apply extra product profiles'
+  upgrade step again.  [lennard, maurits]
+
 - Show agenda and attendees only for future meetings, which includes
   meetings of today.  Show heading of agenda items only when they are
   there or can be added.  MINA-104.  [maurits]

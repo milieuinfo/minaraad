@@ -1,5 +1,6 @@
 /*! */
 /*! Minaraad */
+/*! Note that this file is only used in the click model. */
 
 // Self wrapping closure
 // Set strict on our scope.
