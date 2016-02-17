@@ -34,19 +34,10 @@ class AttendeesManagerView(AbstractView):
 
     def __call__(self):
         context = aq_inner(self.context)
-        memberTool = getToolByName(context, 'portal_membership')
-        isAnonymous = memberTool.isAnonymousUser()
         portal = getToolByName(context, 'portal_url').getPortalObject()
         response = self.request.response
 
-        if isAnonymous:
-            return response.redirect(
-                portal.absolute_url() +
-                "/login_form?came_from=" +
-                urllib.quote(self.referring_url))
-
         action = self.request.get('form.submitted', None)
-        memberId = memberTool.getAuthenticatedMember().getId()
         if action == 'register':
             self.manager.addMember(memberId)
             if self.notifyRegistration(memberId, True):
