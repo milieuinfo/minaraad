@@ -4,6 +4,10 @@ History of this buildout
 6.0.0 (unreleased)
 ------------------
 
+- Show agenda and attendees only for future meetings, which includes
+  meetings of today.  Show heading of agenda items only when they are
+  there or can be added.  MINA-104.  [maurits]
+
 - Let the search box point to /documenten in the theme.  Fixes MINA-98.
   Doing a checkout of the zest-default-from-request branch from eea.facetednavigation.
   See pull request https://github.com/eea/eea.facetednavigation/pull/81
