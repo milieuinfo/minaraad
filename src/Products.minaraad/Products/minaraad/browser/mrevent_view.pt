@@ -16,12 +16,15 @@
   <metal:block fill-slot="content-core"
                tal:define="view nocall:context/@@attendees_view;
                            current_path python:'/'.join(context.getPhysicalPath());
-                           agendaItems context/find_items_and_times;
+                           start python:context.getStart_time();
+                           is_past python:(start + 1).isPast();
+                           is_future python:(start - 1).isFuture();
+                           agendaItems python:[] if is_past else context.find_items_and_times();
                            toLocalizedTime nocall:context/@@plone/toLocalizedTime;
-                           start python:context.getStart_time()-1;
                            anonymous context/@@plone_portal_state/anonymous;
+                           can_add python:context.portal_membership.checkPermission('Add portal content', context);
                            is_subscribed view/isRegistered;
-                           subscription_allowed python:context.getSubscriptionAllowed() and start.isFuture();
+                           subscription_allowed python:is_future and context.getSubscriptionAllowed();
                            can_subscribe python:subscription_allowed and not is_subscribed;
                            freshly_submitted request/submitted|nothing">
 
@@ -40,7 +43,7 @@
                     <header>
                       <h3>
                         <i class="fa fa-comments"></i>
-                        <span tal:replace="python:toLocalizedTime(context.getStart_time())">2 april 2016</span>
+                        <span tal:replace="python:toLocalizedTime(start)">2 april 2016</span>
                       </h3>
                       <tal:block condition="python:(not freshly_submitted) and (not anonymous) and (can_subscribe or is_subscribed)">
                           <form tal:condition="is_subscribed"
@@ -110,10 +113,14 @@
                     <div class="visualClear"></div>
                     <!-- End text -->
 
+                    <tal:future condition="is_future">
                     <!-- Speakers -->
-                    <h2 i18n:translate="label_agendaitems">Agenda items</h2>
-                    <a class="discreet" href="#"
-                       tal:attributes="href string:${context/absolute_url}/createObject?type_name=AgendaItem">Nieuw agenda item toevoegen</a>
+                    <tal:agenda_heading condition="python:is_future and (agendaItems or can_add)">
+                      <h2 i18n:translate="label_agendaitems">Agenda items</h2>
+                      <a class="discreet" href="#"
+                         tal:condition="can_add"
+                         tal:attributes="href string:${context/absolute_url}/createObject?type_name=AgendaItem">Nieuw agenda item toevoegen</a>
+                    </tal:agenda_heading>
 
                     <table id="meeting_view"
                            tal:condition="agendaItems" width="100%">
@@ -181,6 +188,7 @@
                       </form>
                     </fieldset>
                     </tal:block>
+                    </tal:future>
                   </section>
 
                   <section class="event-form" name="inschrijven" id="inschrijven"
