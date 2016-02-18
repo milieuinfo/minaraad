@@ -142,8 +142,11 @@
                         <legend i18n:translate="title_attendees">Attendees</legend>
                         <dl class="Attendees">
                             <dd tal:repeat="attendee attendees">
+                              <a tal:attributes="href string:mailto:${attendee/email|nothing}">
                                 <span tal:replace="attendee/firstname|nothing" />
                                 <span tal:replace="attendee/lastname|nothing" />
+                              </a> &mdash;
+                              <span tal:replace="attendee/work|nothing" />
                             </dd>
                         </dl>
                         <form tal:attributes="action string:${context/absolute_url}/@@attendees_view">
