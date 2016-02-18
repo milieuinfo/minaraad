@@ -27,8 +27,7 @@
                            is_subscribed view/isRegistered;
                            subscription_allowed python:is_future and context.getSubscriptionAllowed();
                            can_subscribe python:subscription_allowed and not is_subscribed;
-                           can_unsubscribe python:subscription_allowed and is_subscribed;
-                           freshly_submitted request/submitted|nothing">
+                           can_unsubscribe python:subscription_allowed and is_subscribed;">
 
   <div class="content-wrapper">
     <main role="main" id="main-container">
@@ -47,7 +46,7 @@
                         <i class="fa fa-comments"></i>
                         <span tal:replace="python:toLocalizedTime(start)">2 april 2016</span>
                       </h3>
-                      <tal:block condition="python:(not freshly_submitted) and (can_subscribe or is_subscribed)">
+                      <tal:block condition="python:can_subscribe or is_subscribed">
                         <form tal:condition="is_subscribed"
                               method="post"
                               tal:attributes="action string:${context/absolute_url}/@@attendees_view">
@@ -166,7 +165,7 @@
                   </section>
 
                   <section class="event-form" name="inschrijven" id="inschrijven"
-                          tal:condition="python:(not freshly_submitted) and can_subscribe">
+                          tal:condition="can_subscribe">
                     <header>
                       <h3>Inschrijven</h3>
                     </header>
