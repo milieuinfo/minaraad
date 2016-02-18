@@ -40,21 +40,23 @@ class AttendeesManagerView(AbstractView):
         action = self.request.get('form.submitted', None)
         if action == 'register':
             submitted = True
-            attendee = self.manager.add_from_form(self.request)
+            attendee = self.attendee
             if not attendee:
-                message = ('Volledige naam en emailadres zijn verplicht.')
+                message = ('Achternaamnaam en emailadres zijn verplicht.')
                 status = 'error'
                 submitted = False
-            elif self.notifyRegistration(attendee, True):
-                # notifyRegistration returns a list of failures, so a match
-                # means that there is some error.
-                message = ('Uw inschrijving is gelukt, maar het verzenden '
-                           'van de bevestigingse-mail is niet gelukt.')
-                status = 'warning'
             else:
-                message = ('Uw inschrijving is gelukt. U ontvangt hiervan '
-                           'nog een bevestiging per e-mail.')
-                status = 'info'
+                self.manager.add_attendee(attendee)
+                if self.notifyRegistration(attendee, True):
+                    # notifyRegistration returns a list of failures, so a match
+                    # means that there is some error.
+                    message = ('Uw inschrijving is gelukt, maar het verzenden '
+                               'van de bevestigingse-mail is niet gelukt.')
+                    status = 'warning'
+                else:
+                    message = ('Uw inschrijving is gelukt. U ontvangt hiervan '
+                               'nog een bevestiging per e-mail.')
+                    status = 'info'
             IStatusMessage(self.request).addStatusMessage(message, type=status)
             url = self.referring_url
             if submitted:
@@ -62,19 +64,21 @@ class AttendeesManagerView(AbstractView):
             return response.redirect(url)
         elif action == 'unregister':
             submitted = True
-            attendee = self.manager.remove_from_form(self.request)
+            attendee = self.attendee
             if not attendee:
-                message = ('Volledige naam en emailadres zijn verplicht.')
+                message = ('Achternaamnaam en emailadres zijn verplicht.')
                 status = 'error'
                 submitted = False
-            elif self.notifyRegistration(attendee, False):
-                message = ('Het afmelden is gelukt, maar het verzenden '
-                           'van de bevestigingse-mail is niet gelukt.')
-                status = 'warning'
             else:
-                message = ('Het afmelden is gelukt. U ontvangt hiervan '
-                           'nog een bevestiging per e-mail.')
-                status = 'info'
+                self.manager.remove_attendee(attendee)
+                if self.notifyRegistration(attendee, False):
+                    message = ('Het afmelden is gelukt, maar het verzenden '
+                               'van de bevestigingse-mail is niet gelukt.')
+                    status = 'warning'
+                else:
+                    message = ('Het afmelden is gelukt. U ontvangt hiervan '
+                               'nog een bevestiging per e-mail.')
+                    status = 'info'
             IStatusMessage(self.request).addStatusMessage(message, type=status)
             url = self.referring_url
             if submitted:
@@ -107,23 +111,7 @@ class AttendeesManagerView(AbstractView):
         # Get an attendee object for the visitor.
         if self.manager is None:
             return
-        # First check the submitted form, if any.
-        attendee = self.manager.get_from_form(self.request)
-        if attendee is not None:
-            return attendee
-        # Then check the cookie, if any.
-        attendee = self.manager.get_from_cookie(self.request)
-        if attendee is not None:
-            return attendee
-        # Then check the authenticated member, if any.
-        context = aq_inner(self.context)
-        memberTool = getToolByName(context, 'portal_membership')
-        if memberTool.isAnonymousUser():
-            return
-        member = memberTool.getAuthenticatedMember()
-        attendee = self.manager.get_from_member(member)
-        if attendee is not None:
-            return attendee
+        return self.manager.get_attendee(self.request)
 
     @security.protected(ManagePortal)
     def attendees(self):

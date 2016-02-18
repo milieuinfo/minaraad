@@ -1,6 +1,8 @@
+from Acquisition import aq_inner
 from email.utils import formatdate
 from persistent import Persistent
 from persistent.list import PersistentList
+from Products.CMFCore.utils import getToolByName
 from Products.minaraad.interfaces import IAttendeeManager
 from zope.event import notify
 from zope.interface import implements
@@ -103,27 +105,25 @@ class AttendeeManager(object):
         if not attendee.is_blank():
             return attendee
 
-    def add_from_form(self, request):
-        # Add an attendee based on a form.
-        # Return the attendee object.
-        attendee = Attendee()
-        attendee.from_form(request)
-        if attendee.is_blank():
+    def get_attendee(self, request):
+        # Get an attendee object for the visitor.
+        # First check the submitted form, if any.
+        attendee = self.get_from_form(request)
+        if attendee is not None:
+            return attendee
+        # Then check the cookie, if any.
+        attendee = self.get_from_cookie(request)
+        if attendee is not None:
+            return attendee
+        # Then check the authenticated member, if any.
+        context = aq_inner(self.context)
+        memberTool = getToolByName(context, 'portal_membership')
+        if memberTool.isAnonymousUser():
             return
-        self.add_attendee(attendee)
-        if request.form.get('remember'):
-            attendee.set_cookie(request)
-        return attendee
-
-    def remove_from_form(self, request):
-        # Remove an attendee based on a form.
-        # Return the attendee object.
-        attendee = Attendee()
-        attendee.from_form(request)
-        if attendee.is_blank():
-            return
-        self.remove_attendee(attendee)
-        return attendee
+        member = memberTool.getAuthenticatedMember()
+        attendee = self.get_from_member(member)
+        if attendee is not None:
+            return attendee
 
     def update(self):
         # Update the modification date, so some caches can be purged
