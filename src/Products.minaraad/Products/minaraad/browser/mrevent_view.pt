@@ -136,35 +136,13 @@
                     <!-- End speakers -->
 
 
-                    <tal:block tal:define="attendees view/groupedAttendees;
-                                           attended_members attendees/members;
-                                           attended_c_members attendees/council_members"
-                               tal:condition="python:attended_members != [] or attended_c_members != []">
-
-                    <fieldset tal:condition="python:checkPermission('Manage portal', here)">
+                    <tal:block condition="python:checkPermission('Manage portal', here)">
+                    <fieldset tal:define="attendees view/attendees"
+                              tal:condition="attendees">
                         <legend i18n:translate="title_attendees">Attendees</legend>
                         <dl class="Attendees">
-                            <dt i18n:translate="title_counsilmembers">
-                                Council Members
-                            </dt>
-                            <dd tal:repeat="attendee attended_c_members">
-                                <span tal:replace="attendee/niceName" />
-                            </dd>
-                            <dd tal:condition="not:attended_c_members"
-                                class="discreet"
-                                i18n:translate="no_attendees">
-                            (none currently)
-                            </dd>
-                            <dt i18n:translate="title_members">
-                                Members
-                            </dt>
-                            <dd tal:repeat="attendee attended_members">
-                                <span tal:replace="attendee/niceName" />
-                            </dd>
-                            <dd tal:condition="not:attended_members"
-                                class="discreet"
-                                i18n:translate="no_attendees">
-                            (none currently)
+                            <dd tal:repeat="attendee attendees">
+                                <span tal:replace="attendee/fullname|nothing" />
                             </dd>
                         </dl>
                         <form tal:attributes="action string:${context/absolute_url}/@@attendees_view">

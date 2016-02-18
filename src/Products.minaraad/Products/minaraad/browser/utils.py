@@ -70,6 +70,58 @@ def buildCSV(context, members, filename='members.csv'):
     return out.getvalue().encode(export_charset, 'replace')
 
 
+def buildAttendeeCSV(context, attendees, filename='attendees.csv'):
+    charset = 'utf-8'
+    out = StringIO()
+
+    fields = (('firstname', 'Voornaam'),
+              ('fullname', 'Achternaam'),
+              ('work', 'Functie / Organisatie'),
+              ('email', 'E-mail'))
+
+    for pos, field in enumerate(fields):
+        id, title = field
+
+        out.write(u'"%s"' % title)
+        if pos < len(fields) - 1:
+            out.write(u',')
+
+    out.write(u'\n')
+
+    for attendee in attendees:
+        for pos, field in enumerate(fields):
+            id, title = field
+            try:
+                value = unicode(getattr(attendee, id, ''), charset)
+            except UnicodeDecodeError:
+                email_logger.warn("UnicodeDecodeError for %s", attendee.email)
+                value = unicode(getattr(attendee, id, ''), charset,
+                                errors='replace')
+            value = value.replace(u'"', u'""')
+            out.write(u'"%s"' % value)
+
+            if pos < len(fields) - 1:
+                out.write(u',')
+
+        out.write(u'\n')
+
+    # Excel likes iso-8859-1: when you use 'utf-8' as export charset
+    # excel will show wrong characters for names with c-cedille or
+    # other such characters.  So we want to send iso-8859-1 here.
+    export_charset = 'iso-8859-1'
+
+    response = context.REQUEST.RESPONSE
+    response.setHeader('content-type',
+                       'application/vnd.ms-excel; charset=%s' % export_charset)
+    response.setHeader('content-disposition',
+                       'attachment; filename=%s' % filename)
+
+    # Some members have characters that cannot be translated into that
+    # charset, like \u2018 which Microsoft is so fond of...  So
+    # replace faulty characters with a question mark.
+    return out.getvalue().encode(export_charset, 'replace')
+
+
 def tail(f, n, offset=None):
     """Reads n lines from f with an offset of offset lines.
 

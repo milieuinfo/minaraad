@@ -3,7 +3,7 @@ from Acquisition import aq_inner
 from Products.CMFCore.permissions import ManagePortal
 from Products.CMFCore.utils import getToolByName
 from Products.minaraad.browser.configlets import AbstractView
-from Products.minaraad.browser.utils import buildCSV
+from Products.minaraad.browser.utils import buildAttendeeCSV
 from Products.minaraad.interfaces import IAttendeeManager
 from Products.statusmessages.interfaces import IStatusMessage
 from zope.cachedescriptors.property import Lazy
@@ -125,56 +125,19 @@ class AttendeesManagerView(AbstractView):
         if attendee is not None:
             return attendee
 
-    security.declareProtected(ManagePortal, 'groupedAttendees')
+    @security.protected(ManagePortal)
+    def attendees(self):
+        if self.manager is None:
+            return []
+        return self.manager.attendees()
 
-    def groupedAttendees(self):
-        context = aq_inner(self.context)
-        attendees = {'council_members': [],
-                     'members': []}
-
-        memTool = getToolByName(context, 'portal_membership')
-        for memberId in self.manager.attendees():
-            logger.debug('%s is attending', memberId)
-            member = memTool.getMemberById(memberId)
-
-            # In case a memberId is None (this happens when a user is deleted)
-            # we remove the member as attendee on this hearing.
-            #
-            # Note: this means we will change history in case the member has
-            # participated in a hearing. But that's the way they want it.
-            if member is None:
-                logger.info("Removing non-member %s from attendees of %s",
-                            memberId, context.absolute_url())
-                self.manager.removeMember(memberId)
-                continue
-
-            nice = member.getProperty('firstname', '') + ' ' + \
-                member.getProperty('fullname', '')
-            nice = nice.strip()
-            if not nice:
-                nice = memberId
-
-            roles = member.getRolesInContext(context)
-            if 'Council Member' in roles:
-                group = attendees['council_members']
-            else:
-                group = attendees['members']
-
-            group.append({'memberId': memberId,
-                          'niceName': nice})
-
-        return attendees
-
-    security.declareProtected(ManagePortal, 'buildAttendeesCSV')
-
+    @security.protected(ManagePortal)
     def buildAttendeesCSV(self):
         context = aq_inner(self.context)
-        memTool = getToolByName(context, 'portal_membership')
-        attendees = [memTool.getMemberById(memid)
-                     for memid in self.manager.attendees()]
-        return buildCSV(context,
-                        attendees,
-                        filename='%s-attendees.csv' % self.context.getId())
+        return buildAttendeeCSV(
+            context,
+            self.attendees(),
+            filename='%s-attendees.csv' % self.context.getId())
 
 
 class SimpleAttendeesView(AttendeesManagerView):
