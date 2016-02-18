@@ -13,19 +13,19 @@ COOKIE_ID = 'minaraad_attendee'
 
 
 class Attendee(Persistent):
-    # XXX Maybe just object instead of Persistent.
 
-    def __init__(self, fullname='', email='', work=''):
-        self.fullname = fullname
+    def __init__(self, firstname='', lastname='', email='', work=''):
+        self.firstname = firstname
+        self.lastname = lastname
         self.email = email
         self.work = work
-        # self.id = None
 
     def is_blank(self):
-        return not (self.email and self.fullname)
+        return not (self.email and self.lastname)
 
     def from_member(self, member):
-        self.fullname = member.getProperty('fullname')
+        self.firstname = member.getProperty('firstname')
+        self.lastname = member.getProperty('lastname')
         self.email = member.getProperty('email')
         work_parts = [
             member.getProperty('jobtitle', '').strip(),
@@ -34,7 +34,8 @@ class Attendee(Persistent):
 
     def from_form(self, request):
         form = request.form
-        self.fullname = form.get('fullname', '')
+        self.firstname = form.get('firstname', '')
+        self.lastname = form.get('lastname', '')
         self.email = form.get('email', '')
         self.work = form.get('work', '')
 
@@ -43,9 +44,9 @@ class Attendee(Persistent):
         if not cookie:
             return
         parts = cookie.split('#')
-        if len(parts) != 3:
+        if len(parts) != 4:
             return
-        self.fullname, self.email, self.work = parts
+        self.firstname, self.lastname, self.email, self.work = parts
 
     def set_cookie(self, request):
         # Expire in two years
@@ -56,7 +57,7 @@ class Attendee(Persistent):
 
     @property
     def hash_base(self):
-        return '#'.join([self.fullname, self.email, self.work])
+        return '#'.join([self.firstname, self.lastname, self.email, self.work])
 
     # def calc_uid(self):
     #     from hashlib import md5

@@ -75,7 +75,7 @@ def buildAttendeeCSV(context, attendees, filename='attendees.csv'):
     out = StringIO()
 
     fields = (('firstname', 'Voornaam'),
-              ('fullname', 'Achternaam'),
+              ('lastname', 'Achternaam'),
               ('work', 'Functie / Organisatie'),
               ('email', 'E-mail'))
 

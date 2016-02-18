@@ -142,7 +142,8 @@
                         <legend i18n:translate="title_attendees">Attendees</legend>
                         <dl class="Attendees">
                             <dd tal:repeat="attendee attendees">
-                                <span tal:replace="attendee/fullname|nothing" />
+                                <span tal:replace="attendee/firstname|nothing" />
+                                <span tal:replace="attendee/lastname|nothing" />
                             </dd>
                         </dl>
                         <form tal:attributes="action string:${context/absolute_url}/@@attendees_view">
@@ -175,11 +176,18 @@
                     <form method="post"
                           tal:attributes="action string:${context/absolute_url}/@@attendees_view">
                       <div class="field form-group">
-                        <label for="fullname">Volledige naam
+                        <label for="firstname">Voornaam
+                        <input type="text" class="form-control" name="firstname"
+                               tal:attributes="value attendee/firstname|nothing"
+                               id="firstname" placeholder="Voornaam" />
+                        </label>
+                      </div>
+                      <div class="field form-group">
+                        <label for="lastname">Achternaam
                         <span class="required" title="Verplicht">&nbsp;</span>
-                        <input type="text" class="form-control" name="fullname"
-                               tal:attributes="value attendee/fullname|nothing"
-                               id="fullname" placeholder="Voornaam" />
+                        <input type="text" class="form-control" name="lastname"
+                               tal:attributes="value attendee/lastname|nothing"
+                               id="lastname" placeholder="Achternaam" />
                         </label>
                       </div>
                       <div class="field form-group">
