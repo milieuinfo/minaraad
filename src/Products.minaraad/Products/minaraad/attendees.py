@@ -59,9 +59,24 @@ class Attendee(Persistent):
     def hash_base(self):
         return '#'.join([self.firstname, self.lastname, self.email, self.work])
 
-    # def calc_uid(self):
-    #     from hashlib import md5
-    #     return md5(self.hash_base).hexdigest()
+    def __repr__(self):
+        return '<Products.minaraad.attendees.Attendee object {} {}>'.format(
+            self.firstname, self.lastname)
+
+    def __str__(self):
+        return '{} {}'.format(self.firstname, self.lastname)
+
+    def __eq__(self, other):
+        # The == operator.  Used when checking if an attendee is in the list of
+        # attendees.
+        for prop in ('email', 'lastname', 'firstname', 'work'):
+            if getattr(self, prop, '') != getattr(other, prop, ''):
+                return False
+        return True
+
+    def __ne__(self, other):
+        # The != operator.
+        return not self.__eq__(other)
 
 
 class AttendeeManager(object):
