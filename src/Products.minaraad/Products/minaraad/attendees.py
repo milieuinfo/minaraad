@@ -134,6 +134,8 @@ class AttendeeManager(object):
 
     def add_attendee(self, attendee):
         attendees = self.attendees()
+        if attendee in attendees:
+            return
         attendees.append(attendee)
         # Yes, it is a persistent list, but it might not have been saved on the
         # context yet.  So we simply always save it explicitly.
