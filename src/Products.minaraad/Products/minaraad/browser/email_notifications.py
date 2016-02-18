@@ -43,7 +43,7 @@ class EmailRenderer(object):
     def __init__(self, context):
         self.context = context
 
-    def render(self, member):
+    def render(self, attendee):
         'Implement rendering the email.'
         raise 'Unimplemented'
 
@@ -106,12 +106,17 @@ class EmailNotify(BrowserView):
 
     EmailRenderer = EmailRenderer
 
-    def email(self, renderer, members=()):
-        """Email to members, using renderer.
+    def email(self, renderer, attendees=None):
+        """Send email to attendees, using renderer.
         """
+        if attendees is None:
+            # A non mutable tuple should be fine as default argument, and it
+            # has worked fine for years, but I do not trust it.  So we use None
+            # as default.
+            attendees = ()
         context = aq_inner(self.context)
-        logger.info("Starting the EmailNotify.email() method with %r members.",
-                    len(members))
+        logger.info("Starting the EmailNotify.email() method with %r "
+                    "attendees.", len(attendees))
         portal = getToolByName(context, 'portal_url').getPortalObject()
         plone_utils = getToolByName(portal, 'plone_utils')
         charset = plone_utils.getSiteEncoding()
@@ -126,9 +131,9 @@ class EmailNotify(BrowserView):
 
         failed_postings = []
 
-        for member in members:
-            emailBody = renderer.render(member)
-            toAddress = member.getProperty('email', '')
+        for attendee in attendees:
+            emailBody = renderer.render(attendee)
+            toAddress = attendee.email
             message = MIMEMultipart('alternative')
             html = emailBody['text/html']
             if isinstance(html, unicode):
@@ -147,8 +152,8 @@ class EmailNotify(BrowserView):
                 message=emailBody,
                 subject=subject,
                 fromAddress=fromAddress,
-                member=member,
-                toAddress=toAddress or 'N/A (%s)' % member.getProperty('id'),
+                attendee=attendee,
+                toAddress=toAddress,
             )
 
             try:
@@ -195,7 +200,7 @@ class EmailNotify(BrowserView):
                 ['EmailSendError',
                  'This is not a real exception. See information below.',
                  '\n'.join(info)])
-        # return failed members
+        # Return failures, a list of dictionaries with details on the emails.
         return failed_postings
 
 
@@ -208,17 +213,17 @@ class SubscriptionNotifyView(EmailNotify):
             self.subscribe = subscribe
             self.template = context.emailtemplate_subscribe_notification
 
-        def render(self, member):
+        def render(self, attendee):
             template = self.template
-            rendered = self.renderFromTemplate(template, member=member,
+            rendered = self.renderFromTemplate(template, attendee=attendee,
                                                subscribe=self.subscribe)
             return rendered
 
-    def __call__(self, member, subscribe):
+    def __call__(self, attendee, subscribe):
         context = aq_inner(self.context)
-        members = [member]
+        attendees = [attendee]
 
         renderer = self.EmailRenderer(context, subscribe)
-        failed_postings = self.email(renderer, members)
+        failed_postings = self.email(renderer, attendees)
 
         return failed_postings

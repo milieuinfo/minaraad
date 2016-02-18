@@ -23,9 +23,11 @@
                            toLocalizedTime nocall:context/@@plone/toLocalizedTime;
                            anonymous context/@@plone_portal_state/anonymous;
                            can_add python:context.portal_membership.checkPermission('Add portal content', context);
+                           attendee view/attendee;
                            is_subscribed view/isRegistered;
                            subscription_allowed python:is_future and context.getSubscriptionAllowed();
                            can_subscribe python:subscription_allowed and not is_subscribed;
+                           can_unsubscribe python:subscription_allowed and is_subscribed;
                            freshly_submitted request/submitted|nothing">
 
   <div class="content-wrapper">
@@ -45,33 +47,23 @@
                         <i class="fa fa-comments"></i>
                         <span tal:replace="python:toLocalizedTime(start)">2 april 2016</span>
                       </h3>
-                      <tal:block condition="python:(not freshly_submitted) and (not anonymous) and (can_subscribe or is_subscribed)">
-                          <form tal:condition="is_subscribed"
-                                method="post"
-                                tal:attributes="action string:${context/absolute_url}/@@attendees_view">
-                            <button class="context btn btn-warning"
-                                   type="submit"
-                                   name="form.button.Submit"
-                                   i18n:translate="label_unsubscribe"> Unsubscribe </button>
-                            <input type="hidden"
-                                   name="form.submitted"
-                                   value="unregister" />
-                          </form>
+                      <tal:block condition="python:(not freshly_submitted) and (can_subscribe or is_subscribed)">
+                        <form tal:condition="is_subscribed"
+                              method="post"
+                              tal:attributes="action string:${context/absolute_url}/@@attendees_view">
+                          <button class="context btn btn-warning"
+                                  type="submit"
+                                  name="form.button.Submit"
+                                  i18n:translate="label_unsubscribe"> Unsubscribe </button>
+                          <input type="hidden"
+                                 name="form.submitted"
+                                 value="unregister" />
+                        </form>
 
-                          <form tal:condition="can_subscribe"
-                                method="post"
-                                tal:attributes="action string:${context/absolute_url}/@@attendees_view">
-                            <button class="btn btn-default"
-                                   type="submit"
-                                   name="form.button.Submit"
-                                   i18n:translate="label_subscribe"> Subscribe </button>
-                            <input type="hidden"
-                                   name="form.submitted"
-                                   value="register" />
-                          </form>
-                      </tal:block>
-                      <tal:block condition="anonymous">
-                        <button type="button" class="btn btn-default" onclick="location.href='#inschrijven'">Inschrijven</button>
+                        <button tal:condition="can_subscribe"
+                                type="button" class="btn btn-default"
+                                onclick="location.href='#inschrijven'">Inschrijven</button>
+
                       </tal:block>
                     </header>
                     <h1 tal:content="context/Title">Groenboek Beleidsplan Ruimte Vlaanderen</h1>
@@ -192,37 +184,49 @@
                   </section>
 
                   <section class="event-form" name="inschrijven" id="inschrijven"
-                          tal:condition="python: anonymous and subscription_allowed">
+                          tal:condition="python:(not freshly_submitted) and can_subscribe">
                     <header>
                       <h3>Inschrijven</h3>
                     </header>
                     <p>Indien u wilt deelnemen aan dit evenement, vul dan het onderstaande
                        formulier in. Heeft u een account, log dan in en klik bovenaan op de
-                       button "Inschrijven".</p>
+                       button "Inschrijven" dan wordt dit formulier automatisch ingevuld.</p>
                     <p>Nieuwe accounts worden niet meer verstrekt en de optie om in te
                        loggen vervalt binnenkort voor geïnteresseerden.</p>
 
-                    <form>
-                      <div class="form-group">
-                        <label for="fullname">Volledige naam</label>
+                    <form method="post"
+                          tal:attributes="action string:${context/absolute_url}/@@attendees_view">
+                      <div class="field form-group">
+                        <label for="fullname">Volledige naam
+                        <span class="required" title="Verplicht">&nbsp;</span>
                         <input type="text" class="form-control" name="fullname"
-                               id="fullname" placeholder="Voornaam">
+                               tal:attributes="value attendee/fullname|nothing"
+                               id="fullname" placeholder="Voornaam" />
+                        </label>
                       </div>
-                      <div class="form-group">
-                        <label for="exampleInputEmail1">Emailadres</label>
+                      <div class="field form-group">
+                        <label for="exampleInputEmail1">Emailadres
+                        <span class="required" title="Verplicht">&nbsp;</span>
                         <input type="email" class="form-control" name="email"
-                               id="exampleInputEmail1" placeholder="Email">
+                               tal:attributes="value attendee/email|nothing"
+                               id="exampleInputEmail1" placeholder="Email" />
+                        </label>
                       </div>
-                      <div class="form-group">
-                        <label for="functie">Functie en/of organisatie (optioneel)</label>
+                      <div class="field form-group">
+                        <label for="functie">Functie en/of organisatie (optioneel)
                         <input type="text" class="form-control" name="work"
-                               id="functie" placeholder="Functie / organisatie">
+                               tal:attributes="value attendee/work|nothing"
+                               id="functie" placeholder="Functie / organisatie" />
+                        </label>
                       </div>
                       <div class="checkbox">
                         <label>
-                          <input type="checkbox"> Gegevens onthouden
+                          <input type="checkbox" name="remember" checked="checked" /> Gegevens onthouden
                         </label>
                       </div>
+                      <input type="hidden"
+                             name="form.submitted"
+                             value="register" />
                       <button type="submit" class="btn btn-default">Inschrijven</button>
                     </form>
                   </section>

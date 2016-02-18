@@ -4,7 +4,7 @@
 
 <body style="font-size:13px">
 
-<span>Beste</span> <span tal:replace="python: member.getProperty('firstname')" />,
+<span>Beste</span> <span tal:replace="attendee/fullname|nothing" />,
 <br />
 <p>
   <span>Hierbij bevestigen wij uw</span>
