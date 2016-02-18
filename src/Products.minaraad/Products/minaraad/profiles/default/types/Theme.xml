@@ -10,8 +10,13 @@
  <property name="factory">addTheme</property>
  <property name="immediate_view">folder_listing</property>
  <property name="global_allow">True</property>
- <property name="filter_content_types">False</property>
- <property name="allowed_content_types"/>
+ <property name="filter_content_types">True</property>
+ <property name="allowed_content_types">
+ <element value="Advisory"/>
+ <element value="Hearing"/>
+ <element value="MREvent"/>
+ <element value="Study"/>
+ </property>
  <property name="allow_discussion">False</property>
  <property name="default_view">theme</property>
  <property name="view_methods">
@@ -30,8 +35,7 @@
     i18n:attributes="title">
   <permission value="View"/>
  </action>
- <action title="Edit" action_id="edit" category="object"
-    condition_expr="not:object/@@plone_lock_info/is_locked_for_current_user|python:True"
+ <action title="Edit" action_id="edit" category="object" condition_expr="not:object/@@plone_lock_info/is_locked_for_current_user|python:True"
     url_expr="string:${object_url}/edit" visible="True"
     i18n:attributes="title">
   <permission value="Modify portal content"/>
