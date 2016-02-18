@@ -4,6 +4,8 @@ History of this buildout
 6.0.0 (unreleased)
 ------------------
 
+- Set correct twitter id's.  [lhuiskes]
+
 - Call Masonry twice to be sure it succeeds.  Made sure the js/main.js
   is only used in the click model and the static/main.js, which
   contains all 'grunted' javascript, is loaded via the javascript
