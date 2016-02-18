@@ -47,6 +47,8 @@ class AttendeesManagerView(AbstractView):
                 submitted = False
             else:
                 self.manager.add_attendee(attendee)
+                if self.request.form.get('remember'):
+                    attendee.set_cookie(self.request)
                 if self.notifyRegistration(attendee, True):
                     # notifyRegistration returns a list of failures, so a match
                     # means that there is some error.
