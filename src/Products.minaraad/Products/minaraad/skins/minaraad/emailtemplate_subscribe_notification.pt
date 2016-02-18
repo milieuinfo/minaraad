@@ -4,7 +4,7 @@
 
 <body style="font-size:13px">
 
-<span>Beste</span> <span tal:replace="attendee/fullname|nothing" />,
+<span>Beste</span> <span tal:replace="attendee/name|nothing" />,
 <br />
 <p>
   <span>Hierbij bevestigen wij uw</span>

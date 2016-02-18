@@ -25,6 +25,11 @@ class Attendee(Persistent):
     def is_blank(self):
         return not (self.email and self.lastname)
 
+    @property
+    def name(self):
+        # For the mail we prefer the first name, but it is not required.
+        return self.firstname or self.lastname
+
     def from_member(self, member):
         self.firstname = member.getProperty('firstname')
         self.lastname = member.getProperty('lastname')
