@@ -34,8 +34,9 @@
       <div class="column social-media">
           <h3>Sociale Media</h3>
           <ul class="social">
-            <li><a href="#"><i class="fa fa-linkedin"></i> LinkedIn</a></li>
-            <li><a href="#"><i class="fa fa-youtube"></i> YouTube</a></li>
+            <li><a href="https://www.linkedin.com/company/minaraad"><i class="fa fa-linkedin"></i> LinkedIn</a></li>
+            <li><a href="https://www.youtube.com/playlist?list=PL4wFt5HPCxTkNUJH9Z4KYsFBQZwe8K5Bx"><i class="fa fa-youtube"></i> YouTube</a></li>
+            <li><a href="https://twitter.com/Minaraad_Vlaand"><i class="fa fa-twitter"></i> Twitter</a></li>
           </ul>
       </div>
 
