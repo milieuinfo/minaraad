@@ -1,7 +1,6 @@
 from AccessControl import ClassSecurityInfo
 from Acquisition import aq_inner
 from Products.CMFCore.permissions import ManagePortal
-from Products.CMFCore.utils import getToolByName
 from Products.minaraad.browser.configlets import AbstractView
 from Products.minaraad.browser.utils import buildAttendeeCSV
 from Products.minaraad.interfaces import IAttendeeManager
@@ -36,6 +35,8 @@ class AttendeesManagerView(AbstractView):
         self.manager = IAttendeeManager(args[0], None)
 
     def __call__(self):
+        if self.request.get('REQUEST_METHOD', 'GET').upper() != 'POST':
+            return 'ERROR: must be POST request.'
         response = self.request.response
         action = self.request.get('form.submitted', None)
         if action == 'register':

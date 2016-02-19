@@ -54,6 +54,10 @@ class Attendee(Persistent):
 
     def from_form(self, request):
         self._make_blank()
+        if request.get('REQUEST_METHOD', 'GET').upper() != 'POST':
+            # We only accept POST requests, otherwise we may cache information
+            # from one user and show it to another.
+            return
         form = request.form
         self.firstname = form.get('firstname', '')
         self.lastname = form.get('lastname', '')
@@ -63,6 +67,10 @@ class Attendee(Persistent):
 
     def from_cookie(self, request):
         self._make_blank()
+        if request.get('REQUEST_METHOD', 'GET').upper() != 'POST':
+            # We only accept POST requests, otherwise we may cache information
+            # from one user and show it to another.
+            return
         cookie = request.cookies.get(COOKIE_ID, '')
         if not cookie:
             return
