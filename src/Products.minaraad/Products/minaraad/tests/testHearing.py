@@ -44,7 +44,6 @@ SUBHEADER = "ondertitel"
 DESCRIPTION = "jaja, een ondertitel"
 GOAL = "<p>Doel</p>"
 LOCATION = "Hoogvliet"
-MOT = bool(1)
 STARTDATE = DateTime()
 HTMLBODY = "<p>HTML op zijn best</p>"
 TESTIMAGE = load_file('test.gif')
@@ -135,12 +134,6 @@ class testHearing(MainTestCase):
             request.RESPONSE.getHeader('content-disposition'),
             'attachment; filename=hearing-attendees.csv')
 
-    def test_Existance(self):
-        """ Test if the Hearing exists within portal_types
-        """
-        types_ = self.portal.portal_types.objectIds()
-        self.failUnless('Hearing' in types_)
-
     def test_AttendeeRegistration(self):
         """We want to know if members are correctly added and removed as
         attendees.
@@ -167,7 +160,6 @@ class testHearing(MainTestCase):
         self.hoorzitting.setSubheader(SUBHEADER)
         self.hoorzitting.setLocation(LOCATION)
         self.hoorzitting.setStart_time(STARTDATE)
-        self.hoorzitting.setMot(MOT)
         self.hoorzitting.setContact(self.contactperson.UID())
         self.hoorzitting.setBody(HTMLBODY, text_format="text/html")
         self.hoorzitting.setFoto(TESTIMAGE, content_type="image/gif")
@@ -184,8 +176,6 @@ class testHearing(MainTestCase):
                         'Value is %s' % self.hoorzitting.getLocation())
         self.failUnless(self.hoorzitting.getStart_time() == STARTDATE,
                         'Value is %s' % self.hoorzitting.getStart_time())
-        self.failUnless(self.hoorzitting.getMot() == MOT,
-                        'Value is %s' % self.hoorzitting.getMot())
         self.failUnless(self.hoorzitting.getBody() == HTMLBODY,
                         'Value is %s' % self.hoorzitting.getBody())
         self.failUnless(self.hoorzitting.getContact() == [self.contactperson],
