@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# File: testHearing.py
+# File: testMREvent.py
 #
 # Copyright (c) 2006 by Zest Software
 # Generator: ArchGenXML Version 1.5.0 svn/devel
@@ -49,22 +49,22 @@ HTMLBODY = "<p>HTML op zijn best</p>"
 TESTIMAGE = load_file('test.gif')
 
 
-class testHearing(MainTestCase):
-    """ test-cases for class(es) Hearing
+class testMREvent(MainTestCase):
+    """ test-cases for class(es) MREvent
     """
 
     def afterSetUp(self):
-        """ Initialization of user and Hearing
+        """ Initialization of user and MREvent
         """
         self.portal.portal_membership.addMember(
             'manager', 'secret', ['Manager'], [])
         self.login('manager')
 
-        self.portal.hoorzittingen.invokeFactory('Hearing', 'myhoorzitting')
-        self.hoorzitting = self.portal.hoorzittingen.myhoorzitting
+        self.portal.evenementen.invokeFactory('MREvent', 'mymrevent')
+        self.mrevent = self.portal.evenementen.mymrevent
 
         testrequest = TestRequest()
-        self.view = AttendeesManagerView(self.hoorzitting, testrequest)
+        self.view = AttendeesManagerView(self.mrevent, testrequest)
 
         self.portal.contactpersonen.invokeFactory('ContactPerson', id='Jslob')
         self.contactperson = self.portal.contactpersonen.Jslob
@@ -77,8 +77,8 @@ class testHearing(MainTestCase):
         # This is actually a test for the
         # browser.attendees.AttendeesManagerView class
         self.loginAsPortalOwner()
-        self.portal.hoorzittingen.hrz_2006.invokeFactory('Hearing', 'hearing')
-        hearing = self.portal.hoorzittingen.hrz_2006.hearing
+        self.portal.evenementen.invokeFactory('MREvent', 'mrevent')
+        mrevent = self.portal.evenementen.mrevent
 
         self.login('member')
         member = self.portal.portal_membership.getAuthenticatedMember()
@@ -98,13 +98,13 @@ class testHearing(MainTestCase):
 
         member.setProperties(**props)
 
-        am = AttendeeManager(hearing)
+        am = AttendeeManager(mrevent)
         request = self.portal.REQUEST
 
         request['form.submitted'] = 'exportCSV'
         request['REQUEST_METHOD'] = 'POST'
 
-        view = getMultiAdapter((hearing, request),
+        view = getMultiAdapter((mrevent, request),
                                name='attendees_view')
 
         HEADER_FIELDS = (
@@ -132,7 +132,7 @@ class testHearing(MainTestCase):
 
         self.assertEquals(
             request.RESPONSE.getHeader('content-disposition'),
-            'attachment; filename=hearing-attendees.csv')
+            'attachment; filename=mrevent-attendees.csv')
 
     def test_AttendeeRegistration(self):
         """We want to know if members are correctly added and removed as
@@ -151,36 +151,36 @@ class testHearing(MainTestCase):
         self.assertEqual([attendee1, attendee2], self.view.manager.attendees())
 
     def test_Fields(self):
-        """ Test if the Hearing has all the required fields
+        """ Test if the MREvent has all the required fields
         """
 
-        self.hoorzitting.setTitle(TITLE)
-        self.hoorzitting.setDescription(DESCRIPTION)
-        self.hoorzitting.setGoal(GOAL)
-        self.hoorzitting.setSubheader(SUBHEADER)
-        self.hoorzitting.setLocation(LOCATION)
-        self.hoorzitting.setStart_time(STARTDATE)
-        self.hoorzitting.setContact(self.contactperson.UID())
-        self.hoorzitting.setBody(HTMLBODY, text_format="text/html")
-        self.hoorzitting.setFoto(TESTIMAGE, content_type="image/gif")
+        self.mrevent.setTitle(TITLE)
+        self.mrevent.setDescription(DESCRIPTION)
+        self.mrevent.setGoal(GOAL)
+        self.mrevent.setSubheader(SUBHEADER)
+        self.mrevent.setLocation(LOCATION)
+        self.mrevent.setStart_time(STARTDATE)
+        self.mrevent.setContact(self.contactperson.UID())
+        self.mrevent.setBody(HTMLBODY, text_format="text/html")
+        self.mrevent.setFoto(TESTIMAGE, content_type="image/gif")
 
-        self.failUnless(self.hoorzitting.Title() == TITLE,
-                        'Value is %s' % self.hoorzitting.Title())
-        self.failUnless(self.hoorzitting.getSubheader() == SUBHEADER,
-                        'Value is %s' % self.hoorzitting.getSubheader())
-        self.failUnless(self.hoorzitting.Description() == DESCRIPTION,
-                        'Value is %s' % self.hoorzitting.Description())
-        self.failUnless(self.hoorzitting.getGoal() == GOAL,
-                        'Value is %s' % self.hoorzitting.getGoal())
-        self.failUnless(self.hoorzitting.getLocation() == LOCATION,
-                        'Value is %s' % self.hoorzitting.getLocation())
-        self.failUnless(self.hoorzitting.getStart_time() == STARTDATE,
-                        'Value is %s' % self.hoorzitting.getStart_time())
-        self.failUnless(self.hoorzitting.getBody() == HTMLBODY,
-                        'Value is %s' % self.hoorzitting.getBody())
-        self.failUnless(self.hoorzitting.getContact() == [self.contactperson],
-                        'Value is %s' % self.hoorzitting.getContact())
-        myclass = str(self.hoorzitting.getFoto().__class__)
+        self.failUnless(self.mrevent.Title() == TITLE,
+                        'Value is %s' % self.mrevent.Title())
+        self.failUnless(self.mrevent.getSubheader() == SUBHEADER,
+                        'Value is %s' % self.mrevent.getSubheader())
+        self.failUnless(self.mrevent.Description() == DESCRIPTION,
+                        'Value is %s' % self.mrevent.Description())
+        self.failUnless(self.mrevent.getGoal() == GOAL,
+                        'Value is %s' % self.mrevent.getGoal())
+        self.failUnless(self.mrevent.getLocation() == LOCATION,
+                        'Value is %s' % self.mrevent.getLocation())
+        self.failUnless(self.mrevent.getStart_time() == STARTDATE,
+                        'Value is %s' % self.mrevent.getStart_time())
+        self.failUnless(self.mrevent.getBody() == HTMLBODY,
+                        'Value is %s' % self.mrevent.getBody())
+        self.failUnless(self.mrevent.getContact() == [self.contactperson],
+                        'Value is %s' % self.mrevent.getContact())
+        myclass = str(self.mrevent.getFoto().__class__)
         correct = "<class 'plone.app.blob.field.BlobWrapper'>"
         self.failUnless(myclass == correct, 'Value is %s and not %s' %
                         (myclass, correct))
@@ -189,5 +189,5 @@ class testHearing(MainTestCase):
 def test_suite():
     from unittest import TestSuite, makeSuite
     suite = TestSuite()
-    suite.addTest(makeSuite(testHearing))
+    suite.addTest(makeSuite(testMREvent))
     return suite
