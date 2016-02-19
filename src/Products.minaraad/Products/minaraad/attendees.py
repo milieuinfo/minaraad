@@ -1,5 +1,6 @@
 from Acquisition import aq_inner
 from email.utils import formatdate
+from hashlib import md5
 from persistent import Persistent
 from persistent.list import PersistentList
 from Products.CMFCore.utils import getToolByName
@@ -21,7 +22,14 @@ class Attendee(Persistent):
         self.lastname = lastname
         self.email = email
         self.work = work
-        self.cleanup()
+        self._cleanup()
+
+    def _make_blank(self):
+        # Unset our properties in case of problems.
+        self.firstname = ''
+        self.lastname = ''
+        self.email = ''
+        self.work = ''
 
     def is_blank(self):
         return not (self.email and self.lastname)
@@ -32,6 +40,7 @@ class Attendee(Persistent):
         return self.firstname or self.lastname
 
     def from_member(self, member):
+        self._make_blank()
         self.firstname = member.getProperty('firstname', '')
         # Note: in this site, the fullname property of a member contains only
         # the last name.
@@ -41,34 +50,50 @@ class Attendee(Persistent):
             member.getProperty('jobtitle', '').strip(),
             member.getProperty('company', '').strip()]
         self.work = ' / '.join([p for p in work_parts if p])
-        self.cleanup()
+        self._cleanup()
 
     def from_form(self, request):
+        self._make_blank()
         form = request.form
         self.firstname = form.get('firstname', '')
         self.lastname = form.get('lastname', '')
         self.email = form.get('email', '')
         self.work = form.get('work', '')
-        self.cleanup()
+        self._cleanup()
 
     def from_cookie(self, request):
+        self._make_blank()
         cookie = request.cookies.get(COOKIE_ID, '')
         if not cookie:
             return
         parts = cookie.split('#')
-        if len(parts) != 4:
+        if len(parts) != 5:
+            self.unset_cookie(request)
             return
-        self.firstname, self.lastname, self.email, self.work = parts
-        self.cleanup()
+        self.firstname, self.lastname, self.email, self.work, hexdigest = parts
+        self._cleanup()
+        # Compare received hexdigest with calculated hexdigest of the values we
+        # have just set on self.
+        if hexdigest != self.hexdigest:
+            # Cookie has been tampered with.
+            self.unset_cookie(request)
+            self._make_blank()
 
     def set_cookie(self, request):
         # Expire in two years
         expires = time.time() + (2 * 365 * 24 * 60 * 60)
         expires = formatdate(expires, usegmt=True)
+        # Cookie is a list of our property values, and an md5 hexdigest, joined
+        # by hash marks.
+        value = self.hash_base
+        value = '#'.join([value, md5(value).hexdigest()])
         request.response.setCookie(
-            COOKIE_ID, self.hash_base, path='/', expires=expires)
+            COOKIE_ID, value, path='/', expires=expires)
 
-    def cleanup(self):
+    def unset_cookie(self, request):
+        request.response.expireCookie(COOKIE_ID, path='/')
+
+    def _cleanup(self):
         # Remove trailing spaces, and remove hashes because they interfere with
         # how we create and read the cookie.
         for prop in ('email', 'lastname', 'firstname', 'work'):
@@ -78,9 +103,13 @@ class Attendee(Persistent):
 
     @property
     def hash_base(self):
-        # Calling cleanup should be superfluous, but let's be sure.
-        self.cleanup()
+        # Calling _cleanup should be superfluous, but let's be sure.
+        self._cleanup()
         return '#'.join([self.firstname, self.lastname, self.email, self.work])
+
+    @property
+    def hexdigest(self):
+        return md5(self.hash_base).hexdigest()
 
     def __repr__(self):
         return '<Products.minaraad.attendees.Attendee object {} {}>'.format(
