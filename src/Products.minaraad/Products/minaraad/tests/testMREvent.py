@@ -178,33 +178,24 @@ class testMREvent(MainTestCase):
         self.mrevent.setBody(HTMLBODY, text_format="text/html")
         self.mrevent.setFoto(TESTIMAGE, content_type="image/gif")
 
-        self.failUnless(self.mrevent.Title() == TITLE,
-                        'Value is %s' % self.mrevent.Title())
-        self.failUnless(self.mrevent.getSubheader() == SUBHEADER,
-                        'Value is %s' % self.mrevent.getSubheader())
-        self.failUnless(self.mrevent.Description() == DESCRIPTION,
-                        'Value is %s' % self.mrevent.Description())
-        self.failUnless(self.mrevent.getGoal() == GOAL,
-                        'Value is %s' % self.mrevent.getGoal())
-        self.failUnless(self.mrevent.getLocation() == LOCATION,
-                        'Value is %s' % self.mrevent.getLocation())
-        self.failUnless(self.mrevent.getStart_time() == STARTDATE,
-                        'Value is %s' % self.mrevent.getStart_time())
-        self.failUnless(self.mrevent.getBody() == HTMLBODY,
-                        'Value is %s' % self.mrevent.getBody())
-        self.failUnless(self.mrevent.getContact() == [self.contactperson],
-                        'Value is %s' % self.mrevent.getContact())
+        self.assertEqual(self.mrevent.Title(), TITLE)
+        self.assertEqual(self.mrevent.getSubheader(), SUBHEADER)
+        self.assertEqual(self.mrevent.Description(), DESCRIPTION)
+        self.assertEqual(self.mrevent.getGoal(), GOAL)
+        self.assertEqual(self.mrevent.getLocation(), LOCATION)
+        self.assertEqual(self.mrevent.getStart_time(), STARTDATE)
+        self.assertEqual(self.mrevent.getBody(), HTMLBODY)
+        self.assertEqual(self.mrevent.getContact(), [self.contactperson])
         myclass = str(self.mrevent.getFoto().__class__)
         correct = "<class 'plone.app.blob.field.BlobWrapper'>"
-        self.failUnless(myclass == correct, 'Value is %s and not %s' %
-                        (myclass, correct))
+        self.assertEqual(myclass, correct)
 
     def test_Existance(self):
         """ Test if the MREvent exists within portal_types
         """
 
         types_ = self.portal.portal_types.objectIds()
-        self.failUnless('MREvent' in types_)
+        self.assertIn('MREvent', types_)
 
 
 def test_suite():
