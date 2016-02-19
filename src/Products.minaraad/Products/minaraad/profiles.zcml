@@ -453,6 +453,13 @@
         title="Update attendees to anonymous"
         description="MREvents and Hearings stored only member ids, now they store attendee objects, also valid for anonymous."
         handler="Products.minaraad.migration.update_attendees_to_anonymous" />
+    <gs:upgradeStep
+        title="Remove lots of users"
+        description="Remove users who are only Members and do not have access to the DigiBib."
+        handler="Products.minaraad.migration.remove_lots_of_users" />
+    <gs:upgradeStep
+        title="Cleanup PAS.mutable_properties"
+        handler="Products.minaraad.migration.cleanup_mutable_properties" />
   </gs:upgradeSteps>
 
 </configure>

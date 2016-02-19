@@ -1058,3 +1058,71 @@ def update_attendees_to_anonymous(context):
         logger.info('Non attendees:')
         for memberid in non_attendees:
             logger.info(memberid)
+
+
+def remove_lots_of_users(context):
+    """Remove lots of users.
+
+    We only keep Managers and Editors, etcetera, and users with access
+    to the Digibib.
+
+    So basically: users that only have the Member role, can be removed.
+
+    Code is adapted from plone.app.controlpanel usergroups.py, method
+    deleteMembers.
+    """
+    portal = getToolByName(context, 'portal_url').getPortalObject()
+    digibib = portal.digibib
+    mtool = getToolByName(context, 'portal_membership')
+    member_ids = mtool.listMemberIds()
+    to_remove = []
+    to_keep = []
+    for member_id in member_ids:
+        member = mtool.getMemberById(member_id)
+        if member is None:
+            logger.warn('Member with id %r does not exist.', member_id)
+            continue
+        # Members can get roles from groups, but that is covered in the
+        # getRolesInContext call.  Well, let's be safe.
+        # We expect these groups: ['AuthenticatedUsers']
+        groups = member.getGroups()
+        # We expect these global roles: ['Member', 'Authenticated']
+        global_roles = member.getRoles()
+        # We expect these roles in the context of the digibib:
+        # ['Member', 'Authenticated']
+        digibib_roles = member.getRolesInContext(digibib)
+        # Remove uninteresting roles and groups:
+        for group in ('AuthenticatedUsers', ):
+            if group in groups:
+                groups.remove(group)
+        for role in ('Member', 'Authenticated'):
+            if role in global_roles:
+                global_roles.remove(role)
+            if role in digibib_roles:
+                digibib_roles.remove(role)
+        if digibib_roles or global_roles or groups:
+            to_keep.append(member_id)
+        else:
+            to_remove.append(member_id)
+
+    logger.info('To remove: %d', len(to_remove))
+    logger.info('To keep: %d', len(to_keep))
+
+    # Delete members in acl_users.
+    acl_users = getToolByName(context, 'acl_users')
+    acl_users.userFolderDelUsers(to_remove)
+    logger.info('Deleted users from acl_users.')
+
+    # Delete member data in portal_memberdata.
+    mdtool = getToolByName(context, 'portal_memberdata', None)
+    if mdtool is not None:
+        for member_id in to_remove:
+            mdtool.deleteMemberData(member_id)
+    logger.info('Deleted users from portal_memberdata.')
+
+    # Delete members' local roles.
+    # Note that we have a patch in place in patches.py,
+    # which makes this not load the entire site.
+    logger.info('About to delete local roles. This can take a while...')
+    mtool.deleteLocalRoles(portal, to_remove, reindex=1, recursive=1)
+    logger.info('Done.')
