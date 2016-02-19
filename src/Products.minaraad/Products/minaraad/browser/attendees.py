@@ -39,12 +39,10 @@ class AttendeesManagerView(AbstractView):
         response = self.request.response
         action = self.request.get('form.submitted', None)
         if action == 'register':
-            submitted = True
             attendee = self.attendee
             if not attendee:
                 message = ('Achternaamnaam en emailadres zijn verplicht.')
                 status = 'error'
-                submitted = False
             else:
                 self.manager.add_attendee(attendee)
                 if self.request.form.get('remember'):
@@ -59,18 +57,15 @@ class AttendeesManagerView(AbstractView):
                     message = ('Uw inschrijving is gelukt. U ontvangt hiervan '
                                'nog een bevestiging per e-mail.')
                     status = 'info'
+            # Note that adding a statusmessage cookie has the side effect of
+            # preventing caching, which is good.
             IStatusMessage(self.request).addStatusMessage(message, type=status)
-            url = self.referring_url
-            if submitted:
-                url += '?submitted=1'
-            return response.redirect(url)
+            return response.redirect(self.referring_url)
         elif action == 'unregister':
-            submitted = True
             attendee = self.attendee
             if not attendee:
                 message = ('Achternaamnaam en emailadres zijn verplicht.')
                 status = 'error'
-                submitted = False
             else:
                 self.manager.remove_attendee(attendee)
                 if self.notifyRegistration(attendee, False):
@@ -82,10 +77,7 @@ class AttendeesManagerView(AbstractView):
                                'nog een bevestiging per e-mail.')
                     status = 'info'
             IStatusMessage(self.request).addStatusMessage(message, type=status)
-            url = self.referring_url
-            if submitted:
-                url += '?submitted=1'
-            return response.redirect(url)
+            return response.redirect(self.referring_url)
         elif action == 'exportCSV':
             return self.buildAttendeesCSV()
 
