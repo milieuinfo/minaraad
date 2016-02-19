@@ -46,9 +46,10 @@
                         <i class="fa fa-comments"></i>
                         <span tal:replace="python:toLocalizedTime(start)">2 april 2016</span>
                       </h3>
-                      <tal:block condition="python:can_subscribe or is_subscribed">
-                        <form tal:condition="is_subscribed"
+                      <tal:block condition="subscription_allowed">
+                        <form style="display: none"
                               method="post"
+                              id="unsubscribe_button"
                               tal:attributes="action string:${context/absolute_url}/@@attendees_view">
                           <button class="context btn btn-warning"
                                   type="submit"
@@ -59,8 +60,8 @@
                                  value="unregister" />
                         </form>
 
-                        <button tal:condition="can_subscribe"
-                                type="button" class="btn btn-default"
+                        <button type="button" class="btn btn-default"
+                                id="subscribe_button"
                                 onclick="location.href='#inschrijven'">Inschrijven</button>
 
                       </tal:block>
@@ -164,8 +165,9 @@
                     </tal:future>
                   </section>
 
+                  <script type="text/javascript" tal:content="view/js_attendees" />
                   <section class="event-form" name="inschrijven" id="inschrijven"
-                          tal:condition="can_subscribe">
+                          tal:condition="subscription_allowed">
                     <header>
                       <h3>Inschrijven</h3>
                     </header>
@@ -197,14 +199,14 @@
                         <span class="required" title="Verplicht">&nbsp;</span>
                         <input type="email" class="form-control" name="email"
                                tal:attributes="value attendee/email|nothing"
-                               id="exampleInputEmail1" placeholder="Email" />
+                               id="email" placeholder="Email" />
                         </label>
                       </div>
                       <div class="field form-group">
                         <label for="functie">Functie en/of organisatie (optioneel)
                         <input type="text" class="form-control" name="work"
                                tal:attributes="value attendee/work|nothing"
-                               id="functie" placeholder="Functie / organisatie" />
+                               id="work" placeholder="Functie / organisatie" />
                         </label>
                       </div>
                       <div class="checkbox">

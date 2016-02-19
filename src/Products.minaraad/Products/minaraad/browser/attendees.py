@@ -10,6 +10,7 @@ from zope.component import getMultiAdapter
 from zope.interface import implements
 from zope.interface import Interface
 
+import json
 import logging
 
 
@@ -113,6 +114,17 @@ class AttendeesManagerView(AbstractView):
         if self.manager is None:
             return []
         return self.manager.attendees()
+
+    @Lazy
+    def js_attendees(self):
+        if self.manager is None:
+            attendees = []
+        else:
+            attendees = self.manager.attendees()
+        # Let json worry about correctly formatting and quoting this list.
+        javascript_list = json.dumps(
+            [attendee.hexdigest for attendee in attendees])
+        return "event_attendees = {}".format(javascript_list)
 
     @security.protected(ManagePortal)
     def buildAttendeesCSV(self):

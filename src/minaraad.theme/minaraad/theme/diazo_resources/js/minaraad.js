@@ -110,8 +110,64 @@
           noform: function(el) {return $.plonepopups.noformerrorshow(el, 'close');}
         }
       );
+
     });
 
+  // Event attendees can be defined in a script tag on the MREvent pages.
+  $(function($) {
+    if (typeof event_attendees === 'undefined') {
+      return;
+    }
+    var cookie = $.cookie('minaraad_attendee');
+    if (!cookie) {
+      return;
+    }
+    // Remove double quote at beginning and end.  Strange that they are there.
+    if (cookie[0] === '"') {
+      cookie = cookie.slice(1);
+    }
+    if (cookie[cookie.length - 1] === '"') {
+      cookie = cookie.slice(0, cookie.length - 1);
+    }
+    var cookie_parts = cookie.split('#');
+    if (cookie_parts.length !== 5) {
+      return;
+    }
+    var hexdigest = cookie_parts[0];
+    if (hexdigest.length !== 32) {
+      // Not a proper hexdigest
+      return;
+    }
+    var subscribed = false;
+    for (var index = 0; index < event_attendees.length; index++) {
+      if (event_attendees[index] === hexdigest) {
+        subscribed = true;
+        break;
+      }
+    }
+    // By default, the subscribe button and form are shown.
+    if (subscribed) {
+      // Hide subscribe button and form, show unsubscribe button.
+      $('#inschrijven').hide();
+      $('#subscribe_button').hide();
+      $('#unsubscribe_button').show();
+    } else {
+      // Fill in the values of the cookie, if nothing has been set yet.
+      if (!$('#firstname').attr('value')) {
+        $('#firstname').attr('value', cookie_parts[1]);
+      }
+      if (!$('#lastname').attr('value')) {
+        $('#lastname').attr('value', cookie_parts[2]);
+      }
+      if (!$('#email').attr('value')) {
+        $('#email').attr('value', cookie_parts[3]);
+      }
+      if (!$('#work').attr('value')) {
+        $('#work').attr('value', cookie_parts[4]);
+      }
+    }
+
+  });
 
   /* - toc.js - */
   /* Creates table of contents for pages for h[1234] */

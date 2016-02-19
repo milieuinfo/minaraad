@@ -78,7 +78,7 @@ class Attendee(Persistent):
         if len(parts) != 5:
             self.unset_cookie(request)
             return
-        self.firstname, self.lastname, self.email, self.work, hexdigest = parts
+        hexdigest, self.firstname, self.lastname, self.email, self.work = parts
         self._cleanup()
         # Compare received hexdigest with calculated hexdigest of the values we
         # have just set on self.
@@ -94,7 +94,7 @@ class Attendee(Persistent):
         # Cookie is a list of our property values, and an md5 hexdigest, joined
         # by hash marks.
         value = self.hash_base
-        value = '#'.join([value, md5(value).hexdigest()])
+        value = '#'.join([md5(value).hexdigest(), value])
         request.response.setCookie(
             COOKIE_ID, value, path='/', expires=expires)
 
