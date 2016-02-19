@@ -21,6 +21,7 @@ class Attendee(Persistent):
         self.lastname = lastname
         self.email = email
         self.work = work
+        self.cleanup()
 
     def is_blank(self):
         return not (self.email and self.lastname)
@@ -40,6 +41,7 @@ class Attendee(Persistent):
             member.getProperty('jobtitle', '').strip(),
             member.getProperty('company', '').strip()]
         self.work = ' / '.join([p for p in work_parts if p])
+        self.cleanup()
 
     def from_form(self, request):
         form = request.form
@@ -47,6 +49,7 @@ class Attendee(Persistent):
         self.lastname = form.get('lastname', '')
         self.email = form.get('email', '')
         self.work = form.get('work', '')
+        self.cleanup()
 
     def from_cookie(self, request):
         cookie = request.cookies.get(COOKIE_ID, '')
@@ -56,6 +59,7 @@ class Attendee(Persistent):
         if len(parts) != 4:
             return
         self.firstname, self.lastname, self.email, self.work = parts
+        self.cleanup()
 
     def set_cookie(self, request):
         # Expire in two years
@@ -64,8 +68,18 @@ class Attendee(Persistent):
         request.response.setCookie(
             COOKIE_ID, self.hash_base, path='/', expires=expires)
 
+    def cleanup(self):
+        # Remove trailing spaces, and remove hashes because they interfere with
+        # how we create and read the cookie.
+        for prop in ('email', 'lastname', 'firstname', 'work'):
+            value = getattr(self, prop, '')
+            new_value = value.strip().replace('#', ' ')
+            setattr(self, prop, new_value)
+
     @property
     def hash_base(self):
+        # Calling cleanup should be superfluous, but let's be sure.
+        self.cleanup()
         return '#'.join([self.firstname, self.lastname, self.email, self.work])
 
     def __repr__(self):
