@@ -31,12 +31,14 @@ class Attendee(Persistent):
         return self.firstname or self.lastname
 
     def from_member(self, member):
-        self.firstname = member.getProperty('firstname')
-        self.lastname = member.getProperty('lastname')
-        self.email = member.getProperty('email')
+        self.firstname = member.getProperty('firstname', '')
+        # Note: in this site, the fullname property of a member contains only
+        # the last name.
+        self.lastname = member.getProperty('fullname', '')
+        self.email = member.getProperty('email', '')
         work_parts = [
             member.getProperty('jobtitle', '').strip(),
-            member.getProperty('company').strip()]
+            member.getProperty('company', '').strip()]
         self.work = ' / '.join([p for p in work_parts if p])
 
     def from_form(self, request):
