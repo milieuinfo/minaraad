@@ -94,6 +94,7 @@ class testHearing(MainTestCase):
             zipcode="007",
             city="Rotterdam",
             country="The Netherlands",
+            email='johndoe@example.org'
         )
 
         member.setProperties(**props)
@@ -102,14 +103,13 @@ class testHearing(MainTestCase):
         request = self.portal.REQUEST
 
         request['form.submitted'] = 'exportCSV'
+        request['REQUEST_METHOD'] = 'POST'
 
         view = getMultiAdapter((hearing, request),
                                name='attendees_view')
 
-        HEADER_FIELDS = ("Aanhef", "Voornaam", "Achternaam", "Organisatie",
-                         "Functie", "Straat", "Huisnummer", "Bus", "Postcode",
-                         "Woonplaats", "Land", "Ander land", "Telefoonnummer",
-                         "E-mail")
+        HEADER_FIELDS = (
+            "Voornaam", "Achternaam", "Functie / Organisatie", "E-mail")
         headingLine = ''
         for x in HEADER_FIELDS:
             headingLine += '"%s",' % x
@@ -117,12 +117,14 @@ class testHearing(MainTestCase):
         self.assertEquals(view(), headingLine)
 
         # let's do the actual subscription of our member
-        am.addMember(member)
+        attendee = am.get_from_member(member)
+        self.assertTrue(attendee is not None)
+        self.assertEqual(attendee.lastname, 'Doe')
+        am.add_attendee(attendee)
 
         lines = view().split('\n')
-        self.assertEquals(lines[1], '"Yes","John","Doe","Doe Enterprises",'
-                          '"","Doe Street","23","Bus C","007",'
-                          '"Rotterdam","The Netherlands","","",""')
+        self.assertEquals(
+            lines[1], '"John","Doe","Doe Enterprises","johndoe@example.org"')
 
         # let's make some assertions about the response
         self.assertEquals(
@@ -143,22 +145,17 @@ class testHearing(MainTestCase):
         """We want to know if members are correctly added and removed as
         attendees.
         """
-        self.view.manager.addMember('member')
-        self.assertEqual(['member'], self.view.manager.attendees())
-        self.view.manager.addMember('member2')
-        self.assertEqual(['member', 'member2'], self.view.manager.attendees())
+        attendee1 = self.view.manager.add_attendee(
+            lastname='Doe', email='johndoe@example.org')
+        self.assertEqual(attendee1.lastname, 'Doe')
+        self.assertEqual([attendee1], self.view.manager.attendees())
+        attendee2 = self.view.manager.add_attendee(
+            lastname='Two', email='johntwo@example.org')
+        self.assertEqual([attendee1, attendee2], self.view.manager.attendees())
 
         self.portal.portal_membership.deleteMembers(
             ['member2'], delete_memberareas=0, delete_localroles=1)
-        self.assertEqual(['member', 'member2'], self.view.manager.attendees())
-        res = self.view.groupedAttendees()
-        self.assertEqual(
-            {'council_members': [],
-             'members': [{'memberId': 'member', 'niceName': 'member'}]},
-            res)
-        self.assertEqual(len(res['members']), 1)
-
-        self.assertEqual(['member'], self.view.manager.attendees())
+        self.assertEqual([attendee1, attendee2], self.view.manager.attendees())
 
     def test_Fields(self):
         """ Test if the Hearing has all the required fields

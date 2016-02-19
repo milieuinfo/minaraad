@@ -195,7 +195,12 @@ class AttendeeManager(object):
         self.context.reindexObject()
         notify(ObjectModifiedEvent(self.context))
 
-    def add_attendee(self, attendee):
+    def add_attendee(self, attendee=None, firstname='', lastname='',
+                     email='', work=''):
+        # Add attendee.  If attendee is None, we create an attendee based on
+        # the other data.
+        if attendee is None:
+            attendee = Attendee(firstname, lastname, email, work)
         attendees = self.attendees()
         if attendee in attendees:
             return
@@ -204,6 +209,7 @@ class AttendeeManager(object):
         # context yet.  So we simply always save it explicitly.
         self.context._attendees = attendees
         self.update()
+        return attendee
 
     def is_attendee(self, attendee):
         return attendee in self.attendees()
