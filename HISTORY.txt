@@ -4,6 +4,12 @@ History of this buildout
 6.0.0 (unreleased)
 ------------------
 
+- Made Hearing use the views and macros from MREvent.  Moved the
+  Hearing tests to the MREvent tests.  Part of MINA-99.  [maurits]
+
+- Event registration is now anonymous.  Added migration.  MINA-103.
+  [maurits]
+
 - Set correct twitter id's.  [lhuiskes]
 
 - Call Masonry twice to be sure it succeeds.  Made sure the js/main.js
