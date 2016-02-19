@@ -41,7 +41,7 @@ class AttendeesManagerView(AbstractView):
         if action == 'register':
             attendee = self.attendee
             if not attendee:
-                message = ('Achternaamnaam en emailadres zijn verplicht.')
+                message = ('Achternaam en emailadres zijn verplicht.')
                 status = 'error'
             else:
                 self.manager.add_attendee(attendee)
@@ -64,7 +64,7 @@ class AttendeesManagerView(AbstractView):
         elif action == 'unregister':
             attendee = self.attendee
             if not attendee:
-                message = ('Achternaamnaam en emailadres zijn verplicht.')
+                message = ('Achternaam en emailadres zijn verplicht.')
                 status = 'error'
             else:
                 self.manager.remove_attendee(attendee)
