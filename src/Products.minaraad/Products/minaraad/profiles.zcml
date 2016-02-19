@@ -449,6 +449,10 @@
         title="Initialize rich text fields for Themes"
         description="This adds a rich text field to themes"
         handler="Products.minaraad.migration.initialize_rich_text_fields_all_themes" />
+    <gs:upgradeStep
+        title="Update attendees to anonymous"
+        description="MREvents and Hearings stored only member ids, now they store attendee objects, also valid for anonymous."
+        handler="Products.minaraad.migration.update_attendees_to_anonymous" />
   </gs:upgradeSteps>
 
 </configure>

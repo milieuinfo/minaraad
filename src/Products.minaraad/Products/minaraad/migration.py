@@ -927,6 +927,7 @@ def initialize_rich_text_fields_all_advisories(context):
     logger.info('Initialized fields in %d out of %d Advisories.',
                 fixed, len(brains))
 
+
 def initialize_rich_text_fields_all_themes(context):
     """Initialize new rich text fields for all Advisories.
     """
@@ -994,3 +995,60 @@ def update_catalog_metadata(context):
         # don't reindex expensive indexes like SearchableText.
         catalog.catalog_object(obj, path, ['id'], update_metadata=True)
     logger.info('Updated catalog metadata for %d items.', len(brains))
+
+
+def update_attendees_to_anonymous(context):
+    """Update _attendees object to store unauthenticated info.
+
+    See MINA-103.  We no longer require people to login.  So we no
+    longer store just the member id, but an Attendee object.
+    """
+    catalog = getToolByName(context, 'portal_catalog')
+    member_tool = getToolByName(context, 'portal_membership')
+    brains = catalog.unrestrictedSearchResults(
+        portal_type=[
+            # TODO  We have not adapted Hearing yet.  Also, Hearing should be
+            # migrated to MREvents.
+            'Hearing',
+            'MREvent',
+            ])
+
+    obj_count = 0
+    non_members = []
+    non_attendees = []
+    for brain in brains:
+        try:
+            obj = brain.getObject()
+        except (AttributeError, ValueError):
+            logger.warning('Could not wake object at: %s' % brain.getURL())
+            continue
+
+        adapter = IAttendeeManager(obj)
+        attendees = adapter.attendees()
+        new_attendees = PersistentList()
+        for memberid in attendees:
+            member = member_tool.getMemberById(memberid)
+            if member is None:
+                non_members.append(memberid)
+                continue
+            attendee = adapter.get_from_member(member)
+            if attendee is None:
+                non_attendees.append(member.getId())
+                continue
+            new_attendees.append(attendee)
+
+        obj._attendees = new_attendees
+        obj_count += 1
+
+    logger.info('Updated %s objects with unauthenticated attendees. '
+                'Found %s non members. '
+                'Found %s members who could not be turned into attendees. ',
+                obj_count, len(non_members), len(non_attendees))
+    if non_members:
+        logger.info('Non members:')
+        for memberid in non_members:
+            logger.info(memberid)
+    if non_attendees:
+        logger.info('Non attendees:')
+        for memberid in non_attendees:
+            logger.info(memberid)
