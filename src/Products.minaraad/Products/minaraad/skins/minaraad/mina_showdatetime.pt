@@ -60,8 +60,7 @@
                     </tal:block>
                 </tal:block>
             </div>
-            <span tal:condition="python:item_type=='Hearing'"
-                  tal:omit-tag="">
+            <span>
             <br />
             <br />
             </span>

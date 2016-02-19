@@ -26,7 +26,7 @@
   <browser:page
     name="faceted-preview-item"
     for="Products.minaraad.interfaces.IHearing"
-    template="faceted_hearing_item.pt"
+    template="faceted_event_item.pt"
     permission="zope2.View"
     />
 
@@ -349,7 +349,7 @@
       for="Products.minaraad.interfaces.IHearing"
       permission="zope2.View"
       name="hearing_view"
-      template="hearing_view.pt"
+      template="mrevent_view.pt"
       />
 
   <browser:page

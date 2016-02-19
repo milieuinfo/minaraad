@@ -10,13 +10,9 @@
   <span>Hierbij bevestigen wij uw</span>
   <tal:block condition="subscribe">inschrijving</tal:block>
   <tal:block condition="not: subscribe">afmelding</tal:block>
-  <span>voor</span>
-  <span tal:condition="python:context.portal_type == 'Hearing'">de hoorzitting</span>
-  <span tal:condition="python:context.portal_type == 'MREvent'">het evenement</span>
+  <span>voor het oriëntatiemoment</span>
   <span style="font-weight:bold" tal:content="context/Title" />
-  <span tal:condition="python:context.portal_type == 'Hearing'">die</span>
-  <span tal:condition="python:context.portal_type == 'MREvent'">dat</span>
-  <span>plaats vindt in</span>
+  <span>dat plaats vindt in</span>
   <span style="font-weight:bold" tal:content="context/getLocation" />
   <span>op</span>
   <span style="font-weight:bold">
