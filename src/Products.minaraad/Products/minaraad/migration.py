@@ -14,6 +14,7 @@ from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.utils import _createObjectByType
 from Products.SimpleAttachment.setuphandlers import \
     registerImagesFormControllerActions
+from Products.minaraad.attendees import Attendee
 from Products.minaraad.content.interfaces import IUseContact
 from Products.minaraad.events import save_theme_name
 from Products.minaraad.interfaces import IAttendeeManager
@@ -1025,6 +1026,11 @@ def update_attendees_to_anonymous(context):
 
         adapter = IAttendeeManager(obj)
         attendees = adapter.attendees()
+        if not attendees:
+            continue
+        if isinstance(attendees[0], Attendee):
+            # Already the new storage format.
+            continue
         new_attendees = PersistentList()
         for memberid in attendees:
             member = member_tool.getMemberById(memberid)
@@ -1040,7 +1046,7 @@ def update_attendees_to_anonymous(context):
         obj._attendees = new_attendees
         obj_count += 1
 
-    logger.info('Updated %s objects with unauthenticated attendees. '
+    logger.info('Updated %s objects to unauthenticated attendees. '
                 'Found %s non members. '
                 'Found %s members who could not be turned into attendees. ',
                 obj_count, len(non_members), len(non_attendees))
