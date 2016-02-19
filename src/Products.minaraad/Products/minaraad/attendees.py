@@ -22,7 +22,8 @@ class Attendee(Persistent):
         self.lastname = lastname
         self.email = email
         self.work = work
-        self._cleanup()
+        self.hexdigest = ''
+        self._update()
 
     def _make_blank(self):
         # Unset our properties in case of problems.
@@ -30,6 +31,7 @@ class Attendee(Persistent):
         self.lastname = ''
         self.email = ''
         self.work = ''
+        self.hexdigest = ''
 
     def is_blank(self):
         return not (self.email and self.lastname)
@@ -50,7 +52,7 @@ class Attendee(Persistent):
             member.getProperty('jobtitle', '').strip(),
             member.getProperty('company', '').strip()]
         self.work = ' / '.join([p for p in work_parts if p])
-        self._cleanup()
+        self._update()
 
     def from_form(self, request):
         self._make_blank()
@@ -63,7 +65,7 @@ class Attendee(Persistent):
         self.lastname = form.get('lastname', '')
         self.email = form.get('email', '')
         self.work = form.get('work', '')
-        self._cleanup()
+        self._update()
 
     def from_cookie(self, request):
         self._make_blank()
@@ -79,7 +81,7 @@ class Attendee(Persistent):
             self.unset_cookie(request)
             return
         hexdigest, self.firstname, self.lastname, self.email, self.work = parts
-        self._cleanup()
+        self._update()
         # Compare received hexdigest with calculated hexdigest of the values we
         # have just set on self.
         if hexdigest != self.hexdigest:
@@ -101,23 +103,26 @@ class Attendee(Persistent):
     def unset_cookie(self, request):
         request.response.expireCookie(COOKIE_ID, path='/')
 
-    def _cleanup(self):
+    def _update(self):
         # Remove trailing spaces, and remove hashes because they interfere with
         # how we create and read the cookie.
         for prop in ('email', 'lastname', 'firstname', 'work'):
             value = getattr(self, prop, '')
             new_value = value.strip().replace('#', ' ')
-            setattr(self, prop, new_value)
+            # Only set when changed.
+            if value != new_value:
+                setattr(self, prop, new_value)
+        self.set_hexdigest()
 
     @property
     def hash_base(self):
-        # Calling _cleanup should be superfluous, but let's be sure.
-        self._cleanup()
         return '#'.join([self.firstname, self.lastname, self.email, self.work])
 
-    @property
-    def hexdigest(self):
-        return md5(self.hash_base).hexdigest()
+    def set_hexdigest(self):
+        hexdigest = md5(self.hash_base).hexdigest()
+        # Only set when changed.
+        if self.hexdigest != hexdigest:
+            self.hexdigest = hexdigest
 
     def __repr__(self):
         return '<Products.minaraad.attendees.Attendee object {} {}>'.format(
