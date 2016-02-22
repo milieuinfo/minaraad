@@ -4,6 +4,9 @@ History of this buildout
 6.0.0 (unreleased)
 ------------------
 
+- Set text/html as first option in body richwidget of theme.
+  [jladage]
+
 - Less padding on editbar. [jladage]
 
 - Made Hearing use the views and macros from MREvent.  Moved the
