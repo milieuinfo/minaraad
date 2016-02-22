@@ -269,6 +269,11 @@
   @extend .article-advice-detail;
 }
 
+.plone-page-detail{
+  @extend .article-advice-detail;
+  h2, .h2 { font-size: $font-size-h2; }
+}
+
 
 .event-detail-lead {
   border: 1px solid darken(white, 15);
