@@ -7693,8 +7693,7 @@ div.digibib_list {
   padding: 0 15px 1px 15px;
   background-color: white;
   margin-bottom: 15px;
-  padding-top: 20px;
-  margin-top: 10px; }
+  padding-top: 20px; }
   .meeting_left h1 {
     font-size: 24px;
     margin-top: 0; }
@@ -7706,6 +7705,18 @@ div.digibib_list {
       border-bottom: 1px solid #ddd; }
     .meeting_left table tbody tr:last-child td {
       border-bottom: 0; }
+
+.meeting_right .right {
+  background: white;
+  border: 0;
+  border-top: 5px solid #86263a;
+  padding: 0 15px 1px 15px;
+  width: 100%; }
+  .meeting_right .right a {
+    margin: .75em 0;
+    display: block;
+    color: #A13826 !important;
+    text-decoration: underline; }
 
 .meeting_full {
   margin-bottom: 20px; }

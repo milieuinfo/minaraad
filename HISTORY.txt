@@ -5,6 +5,7 @@ History of this buildout
 ------------------
 
 - Set digibib title inside the white background.  MINA-113.
+- Digibib Download link to red inside red framework. MINA-114.
   [lhuiskes]
 
 - Less padding on editbar. [jladage]
