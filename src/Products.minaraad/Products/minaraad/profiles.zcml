@@ -460,6 +460,9 @@
     <gs:upgradeStep
         title="Cleanup PAS.mutable_properties"
         handler="Products.minaraad.migration.cleanup_mutable_properties" />
+    <gs:upgradeStep
+        title="Setup api-keys (mailchimp, embedly)"
+        handler="Products.minaraad.migration.setup_api_keys" />
   </gs:upgradeSteps>
 
 </configure>
