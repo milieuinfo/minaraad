@@ -5,7 +5,7 @@
   <body>
     <div metal:fill-slot="main">
      <h1 class="documentFirstHeading">
-       Project: <span tal:replace="context/getPID" /> - <span tal:replace="context/Title" />
+       Projecten
      </h1>
      <a href=""
         class="link-parent"
@@ -19,6 +19,9 @@
      <div class="row">
        
        <div class="digibib_left">
+         <h1 class="documentFirstHeading">
+           <span tal:replace="context/getPID" /> - <span tal:replace="context/Title" />
+         </h1>
          <table class="strong">
            <tr tal:condition="view/can_see_project_number">
              <td>

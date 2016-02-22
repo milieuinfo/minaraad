@@ -4,53 +4,58 @@
       i18n:domain="minaraad.projects">
   <body>
     <div metal:fill-slot="main">
-     <h1 class="documentFirstHeading">
-       <span tal:replace="context/getResponsible_group" />
-       <tal:block tal:define="d context/getStart_time">
-          <metal:block use-macro="context/display_macros/macros/date" />
-        </tal:block>
-      </h1>
-     <a href=""
-        class="link-parent"
-        tal:define="digibib_url string:${portal_url}/digibib"
-        tal:attributes="href digibib_url"
-        i18n:translate="to_digibib_dashboard">
-       To Digibib DashBoard
-     </a>
-      <div class="rightWidget digibib_widget"
-           tal:define="files context/get_file_brains|nothing"
-           tal:condition="files">
-        <div class="title" i18n:translate="label_documents">Documents</div>
-        <div class="body">
-          <div tal:repeat="attachment files"
-               class="list-attachments">
-            <!-- TODO: possibly switch to use-macro="context/@@items/macros/attachment_view" /-->
-            <metal:block use-macro="context/filemacro/macros/attachment_view" />
-          </div>
-        </div>
-      </div>
 
-      <tal:block tal:define="location context/get_saved_location|nothing"
-                 tal:condition="python: location.get('UID', 0)">
-        <strong i18n:translate="label_location">
-          Location
-        </strong>
-        <p>
-          <span tal:replace="location/address" />
-          <span tal:replace="location/postalCode" />
-          <span tal:replace="location/city" />
-          <tal:block tal:define="room_number context/getRoomNumber|nothing"
-             tal:condition="room_number">
-            <br />Lokaal: <span tal:replace="room_number" />
-          </tal:block>
-        </p>
-      </tal:block>
-
-      <p tal:replace="structure context/getBody" />
+      <h1>Vergaderingen</h1>
+      <a href=""
+         class="link-parent"
+         tal:define="digibib_url string:${portal_url}/digibib"
+         tal:attributes="href digibib_url"
+         i18n:translate="to_digibib_dashboard">
+        To Digibib DashBoard
+      </a>
 
       <div class="row">
         
         <div class="meeting_left" tal:define="items context/find_items_and_times">
+          
+          <h1 class="documentFirstHeading">
+            <span tal:replace="context/getResponsible_group" />
+            <tal:block tal:define="d context/getStart_time">
+               <metal:block use-macro="context/display_macros/macros/date" />
+             </tal:block>
+           </h1>
+
+           <div class="rightWidget digibib_widget"
+                tal:define="files context/get_file_brains|nothing"
+                tal:condition="files">
+             <div class="title" i18n:translate="label_documents">Documents</div>
+             <div class="body">
+               <div tal:repeat="attachment files"
+                    class="list-attachments">
+                 <!-- TODO: possibly switch to use-macro="context/@@items/macros/attachment_view" /-->
+                 <metal:block use-macro="context/filemacro/macros/attachment_view" />
+               </div>
+             </div>
+           </div>
+
+           <tal:block tal:define="location context/get_saved_location|nothing"
+                      tal:condition="python: location.get('UID', 0)">
+             <strong i18n:translate="label_location">
+               Location
+             </strong>
+             <p>
+               <span tal:replace="location/address" />
+               <span tal:replace="location/postalCode" />
+               <span tal:replace="location/city" />
+               <tal:block tal:define="room_number context/getRoomNumber|nothing"
+                  tal:condition="room_number">
+                 <br />Lokaal: <span tal:replace="room_number" />
+               </tal:block>
+             </p>
+           </tal:block>
+
+           <p tal:replace="structure context/getBody" />
+          
           <strong>Agendapunten</strong>
 
           <table id="meeting_view" tal:condition="items">
