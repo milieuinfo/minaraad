@@ -4,7 +4,7 @@ Notes on Minaraad migration Plone 4.3.6 (january 2016)
 Pre upgrade
 ===========
 
-Download subsribers to newsletter
+Download subscribers to newsletter
 ---------------------------------
 
 Go to the minaraad controlpanel/subscribers_config and export all
@@ -15,7 +15,7 @@ Newsletter migration
 
   1. Setup a mailchimp account for minaraad.
   2. Import the subscribers to mailchimp. Go to the lists tab in mailchimp.
-     Chose import from dropdown.
+     Choose import from dropdown.
   3. Supply products.minaraad.migration with the correct MAILCHIMP_API_KEY.
 
 Embedly
