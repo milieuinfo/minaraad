@@ -1135,6 +1135,12 @@ def remove_lots_of_users(context):
     logger.info('Done.')
 
 def setup_api_keys(context):
+    """ setup api keys
+
+    Add mailchimp and embedly api_key settings.
+    Specify the keys EMBEDLY_API_KEY and MAILCHIMP_API_KEY at the top of this
+    document.
+    """
     registry = getUtility(IRegistry)
 
     if EMBEDLY_API_KEY:
