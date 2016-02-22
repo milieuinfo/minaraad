@@ -347,10 +347,10 @@ th {
     page-break-after: avoid; }
   .navbar {
     display: none; }
-  .btn > .caret, .button-field > .caret, input[type="submit"] > .caret, .pfg-form .formControls input[type="submit"] > .caret,
+  .btn > .caret, .button-field > .caret, input[type="submit"] > .caret, .pfg-minaraad_form .formControls input[type="submit"] > .caret,
   .dropup > .btn > .caret,
   .dropup > .button-field > .caret,
-  .dropup > input[type="submit"] > .caret, .pfg-form .formControls
+  .dropup > input[type="submit"] > .caret, .pfg-minaraad_form .formControls
   .dropup > input[type="submit"] > .caret {
     border-top-color: #000 !important; }
   .label {
@@ -1757,7 +1757,7 @@ input[type="search"] {
   .input-group-sm > input[type="date"].input-group-addon,
   .input-group-sm > .input-group-btn > input[type="date"].btn,
   .input-group-sm > .input-group-btn > input[type="date"].button-field,
-  .input-group-sm > .input-group-btn > input[type="date"][type="submit"], .pfg-form .formControls
+  .input-group-sm > .input-group-btn > input[type="date"][type="submit"], .pfg-minaraad_form .formControls
   .input-group-sm > .input-group-btn > input[type="date"][type="submit"],
   .input-group-sm input[type="date"],
   input[type="time"].input-sm,
@@ -1766,7 +1766,7 @@ input[type="search"] {
   .input-group-sm > .input-group-btn > input[type="time"].btn,
   .input-group-sm > .input-group-btn > input[type="time"].button-field,
   .input-group-sm > .input-group-btn > input[type="time"][type="submit"],
-  .pfg-form .formControls
+  .pfg-minaraad_form .formControls
   .input-group-sm > .input-group-btn > input[type="time"][type="submit"],
   .input-group-sm
   input[type="time"],
@@ -1776,7 +1776,7 @@ input[type="search"] {
   .input-group-sm > .input-group-btn > input[type="datetime-local"].btn,
   .input-group-sm > .input-group-btn > input[type="datetime-local"].button-field,
   .input-group-sm > .input-group-btn > input[type="datetime-local"][type="submit"],
-  .pfg-form .formControls
+  .pfg-minaraad_form .formControls
   .input-group-sm > .input-group-btn > input[type="datetime-local"][type="submit"],
   .input-group-sm
   input[type="datetime-local"],
@@ -1786,7 +1786,7 @@ input[type="search"] {
   .input-group-sm > .input-group-btn > input[type="month"].btn,
   .input-group-sm > .input-group-btn > input[type="month"].button-field,
   .input-group-sm > .input-group-btn > input[type="month"][type="submit"],
-  .pfg-form .formControls
+  .pfg-minaraad_form .formControls
   .input-group-sm > .input-group-btn > input[type="month"][type="submit"],
   .input-group-sm
   input[type="month"] {
@@ -1795,7 +1795,7 @@ input[type="search"] {
   .input-group-lg > input[type="date"].input-group-addon,
   .input-group-lg > .input-group-btn > input[type="date"].btn,
   .input-group-lg > .input-group-btn > input[type="date"].button-field,
-  .input-group-lg > .input-group-btn > input[type="date"][type="submit"], .pfg-form .formControls
+  .input-group-lg > .input-group-btn > input[type="date"][type="submit"], .pfg-minaraad_form .formControls
   .input-group-lg > .input-group-btn > input[type="date"][type="submit"],
   .input-group-lg input[type="date"],
   input[type="time"].input-lg,
@@ -1804,7 +1804,7 @@ input[type="search"] {
   .input-group-lg > .input-group-btn > input[type="time"].btn,
   .input-group-lg > .input-group-btn > input[type="time"].button-field,
   .input-group-lg > .input-group-btn > input[type="time"][type="submit"],
-  .pfg-form .formControls
+  .pfg-minaraad_form .formControls
   .input-group-lg > .input-group-btn > input[type="time"][type="submit"],
   .input-group-lg
   input[type="time"],
@@ -1814,7 +1814,7 @@ input[type="search"] {
   .input-group-lg > .input-group-btn > input[type="datetime-local"].btn,
   .input-group-lg > .input-group-btn > input[type="datetime-local"].button-field,
   .input-group-lg > .input-group-btn > input[type="datetime-local"][type="submit"],
-  .pfg-form .formControls
+  .pfg-minaraad_form .formControls
   .input-group-lg > .input-group-btn > input[type="datetime-local"][type="submit"],
   .input-group-lg
   input[type="datetime-local"],
@@ -1824,7 +1824,7 @@ input[type="search"] {
   .input-group-lg > .input-group-btn > input[type="month"].btn,
   .input-group-lg > .input-group-btn > input[type="month"].button-field,
   .input-group-lg > .input-group-btn > input[type="month"][type="submit"],
-  .pfg-form .formControls
+  .pfg-minaraad_form .formControls
   .input-group-lg > .input-group-btn > input[type="month"][type="submit"],
   .input-group-lg
   input[type="month"] {
@@ -1905,12 +1905,12 @@ fieldset[disabled]
   .input-group-lg > .form-control-static.input-group-addon,
   .input-group-lg > .input-group-btn > .form-control-static.btn,
   .input-group-lg > .input-group-btn > .form-control-static.button-field,
-  .input-group-lg > .input-group-btn > input.form-control-static[type="submit"], .pfg-form .formControls
+  .input-group-lg > .input-group-btn > input.form-control-static[type="submit"], .pfg-minaraad_form .formControls
   .input-group-lg > .input-group-btn > input.form-control-static[type="submit"], .form-control-static.input-sm, .input-group-sm > .form-control-static.form-control,
   .input-group-sm > .form-control-static.input-group-addon,
   .input-group-sm > .input-group-btn > .form-control-static.btn,
   .input-group-sm > .input-group-btn > .form-control-static.button-field,
-  .input-group-sm > .input-group-btn > input.form-control-static[type="submit"], .pfg-form .formControls
+  .input-group-sm > .input-group-btn > input.form-control-static[type="submit"], .pfg-minaraad_form .formControls
   .input-group-sm > .input-group-btn > input.form-control-static[type="submit"] {
     padding-left: 0;
     padding-right: 0; }
@@ -1919,7 +1919,7 @@ fieldset[disabled]
 .input-group-sm > .input-group-addon,
 .input-group-sm > .input-group-btn > .btn,
 .input-group-sm > .input-group-btn > .button-field,
-.input-group-sm > .input-group-btn > input[type="submit"], .pfg-form .formControls
+.input-group-sm > .input-group-btn > input[type="submit"], .pfg-minaraad_form .formControls
 .input-group-sm > .input-group-btn > input[type="submit"] {
   height: 30px;
   padding: 5px 10px;
@@ -1971,7 +1971,7 @@ select[multiple].input-sm,
 .input-group-lg > .input-group-addon,
 .input-group-lg > .input-group-btn > .btn,
 .input-group-lg > .input-group-btn > .button-field,
-.input-group-lg > .input-group-btn > input[type="submit"], .pfg-form .formControls
+.input-group-lg > .input-group-btn > input[type="submit"], .pfg-minaraad_form .formControls
 .input-group-lg > .input-group-btn > input[type="submit"] {
   height: 46px;
   padding: 10px 16px;
@@ -2040,7 +2040,7 @@ select[multiple].input-lg,
 .input-group-lg > .input-group-addon + .form-control-feedback,
 .input-group-lg > .input-group-btn > .btn + .form-control-feedback,
 .input-group-lg > .input-group-btn > .button-field + .form-control-feedback,
-.input-group-lg > .input-group-btn > input[type="submit"] + .form-control-feedback, .pfg-form .formControls
+.input-group-lg > .input-group-btn > input[type="submit"] + .form-control-feedback, .pfg-minaraad_form .formControls
 .input-group-lg > .input-group-btn > input[type="submit"] + .form-control-feedback,
 .input-group-lg + .form-control-feedback,
 .form-group-lg .form-control + .form-control-feedback {
@@ -2052,7 +2052,7 @@ select[multiple].input-lg,
 .input-group-sm > .input-group-addon + .form-control-feedback,
 .input-group-sm > .input-group-btn > .btn + .form-control-feedback,
 .input-group-sm > .input-group-btn > .button-field + .form-control-feedback,
-.input-group-sm > .input-group-btn > input[type="submit"] + .form-control-feedback, .pfg-form .formControls
+.input-group-sm > .input-group-btn > input[type="submit"] + .form-control-feedback, .pfg-minaraad_form .formControls
 .input-group-sm > .input-group-btn > input[type="submit"] + .form-control-feedback,
 .input-group-sm + .form-control-feedback,
 .form-group-sm .form-control + .form-control-feedback {
@@ -2238,7 +2238,7 @@ select[multiple].input-lg,
     padding-top: 6px;
     font-size: 12px; } }
 
-.btn, .button-field, input[type="submit"], .pfg-form .formControls input[type="submit"] {
+.btn, .button-field, input[type="submit"], .pfg-minaraad_form .formControls input[type="submit"] {
   display: inline-block;
   margin-bottom: 0;
   font-weight: normal;
@@ -2257,23 +2257,23 @@ select[multiple].input-lg,
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none; }
-  .btn:focus, .button-field:focus, input[type="submit"]:focus, .pfg-form .formControls input[type="submit"]:focus, .btn.focus, .focus.button-field, input.focus[type="submit"], .pfg-form .formControls input.focus[type="submit"], .btn:active:focus, .button-field:active:focus, input[type="submit"]:active:focus, .btn:active.focus, .button-field:active.focus, input[type="submit"]:active.focus, .btn.active:focus, .active.button-field:focus, input.active[type="submit"]:focus, .btn.active.focus, .active.focus.button-field, input.active.focus[type="submit"] {
+  .btn:focus, .button-field:focus, input[type="submit"]:focus, .pfg-minaraad_form .formControls input[type="submit"]:focus, .btn.focus, .focus.button-field, input.focus[type="submit"], .pfg-minaraad_form .formControls input.focus[type="submit"], .btn:active:focus, .button-field:active:focus, input[type="submit"]:active:focus, .btn:active.focus, .button-field:active.focus, input[type="submit"]:active.focus, .btn.active:focus, .active.button-field:focus, input.active[type="submit"]:focus, .btn.active.focus, .active.focus.button-field, input.active.focus[type="submit"] {
     outline: thin dotted;
     outline: 5px auto -webkit-focus-ring-color;
     outline-offset: -2px; }
-  .btn:hover, .button-field:hover, input[type="submit"]:hover, .pfg-form .formControls input[type="submit"]:hover, .btn:focus, .button-field:focus, input[type="submit"]:focus, .pfg-form .formControls input[type="submit"]:focus, .btn.focus, .focus.button-field, input.focus[type="submit"], .pfg-form .formControls input.focus[type="submit"] {
+  .btn:hover, .button-field:hover, input[type="submit"]:hover, .pfg-minaraad_form .formControls input[type="submit"]:hover, .btn:focus, .button-field:focus, input[type="submit"]:focus, .pfg-minaraad_form .formControls input[type="submit"]:focus, .btn.focus, .focus.button-field, input.focus[type="submit"], .pfg-minaraad_form .formControls input.focus[type="submit"] {
     color: #333;
     text-decoration: none; }
-  .btn:active, .button-field:active, input[type="submit"]:active, .pfg-form .formControls input[type="submit"]:active, .btn.active, .active.button-field, input.active[type="submit"], .pfg-form .formControls input.active[type="submit"] {
+  .btn:active, .button-field:active, input[type="submit"]:active, .pfg-minaraad_form .formControls input[type="submit"]:active, .btn.active, .active.button-field, input.active[type="submit"], .pfg-minaraad_form .formControls input.active[type="submit"] {
     outline: 0;
     background-image: none;
     -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
     box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125); }
-  .btn.disabled, .disabled.button-field, input.disabled[type="submit"], .pfg-form .formControls input.disabled[type="submit"], .btn[disabled], [disabled].button-field, input[disabled][type="submit"], .pfg-form .formControls input[disabled][type="submit"],
+  .btn.disabled, .disabled.button-field, input.disabled[type="submit"], .pfg-minaraad_form .formControls input.disabled[type="submit"], .btn[disabled], [disabled].button-field, input[disabled][type="submit"], .pfg-minaraad_form .formControls input[disabled][type="submit"],
   fieldset[disabled] .btn,
   fieldset[disabled] .button-field,
   fieldset[disabled] input[type="submit"],
-  fieldset[disabled] .pfg-form .formControls input[type="submit"], .pfg-form .formControls
+  fieldset[disabled] .pfg-minaraad_form .formControls input[type="submit"], .pfg-minaraad_form .formControls
   fieldset[disabled] input[type="submit"] {
     cursor: not-allowed;
     opacity: 0.65;
@@ -2326,23 +2326,23 @@ fieldset[disabled] a.button-field {
     color: #fff;
     background-color: #333; }
 
-.btn-primary, .logobar .search button, .button-field, input[type="submit"], .pfg-form .formControls input[type="submit"], .event-detail-lead header button, .event-form form button {
+.btn-primary, .logobar .search button, .button-field, input[type="submit"], .pfg-minaraad_form .formControls input[type="submit"], .event-detail-lead header button, .event-form form button {
   color: #fff;
   background-color: #2e94bd;
   border-color: #2984a8; }
-  .btn-primary:focus, .logobar .search button:focus, .button-field:focus, input[type="submit"]:focus, .pfg-form .formControls input[type="submit"]:focus, .event-detail-lead header button:focus, .event-form form button:focus, .btn-primary.focus, .logobar .search button.focus, .focus.button-field, input.focus[type="submit"], .pfg-form .formControls input.focus[type="submit"], .event-detail-lead header button.focus, .event-form form button.focus {
+  .btn-primary:focus, .logobar .search button:focus, .button-field:focus, input[type="submit"]:focus, .pfg-minaraad_form .formControls input[type="submit"]:focus, .event-detail-lead header button:focus, .event-form form button:focus, .btn-primary.focus, .logobar .search button.focus, .focus.button-field, input.focus[type="submit"], .pfg-minaraad_form .formControls input.focus[type="submit"], .event-detail-lead header button.focus, .event-form form button.focus {
     color: #fff;
     background-color: #247494;
     border-color: #103442; }
-  .btn-primary:hover, .logobar .search button:hover, .button-field:hover, input[type="submit"]:hover, .pfg-form .formControls input[type="submit"]:hover, .event-detail-lead header button:hover, .event-form form button:hover {
+  .btn-primary:hover, .logobar .search button:hover, .button-field:hover, input[type="submit"]:hover, .pfg-minaraad_form .formControls input[type="submit"]:hover, .event-detail-lead header button:hover, .event-form form button:hover {
     color: #fff;
     background-color: #247494;
     border-color: #1d5d77; }
-  .btn-primary:active, .logobar .search button:active, .button-field:active, input[type="submit"]:active, .pfg-form .formControls input[type="submit"]:active, .event-detail-lead header button:active, .event-form form button:active, .btn-primary.active, .logobar .search button.active, .active.button-field, input.active[type="submit"], .pfg-form .formControls input.active[type="submit"], .event-detail-lead header button.active, .event-form form button.active,
+  .btn-primary:active, .logobar .search button:active, .button-field:active, input[type="submit"]:active, .pfg-minaraad_form .formControls input[type="submit"]:active, .event-detail-lead header button:active, .event-form form button:active, .btn-primary.active, .logobar .search button.active, .active.button-field, input.active[type="submit"], .pfg-minaraad_form .formControls input.active[type="submit"], .event-detail-lead header button.active, .event-form form button.active,
   .open > .btn-primary.dropdown-toggle, .logobar .search
   .open > button.dropdown-toggle,
   .open > .dropdown-toggle.button-field,
-  .open > input.dropdown-toggle[type="submit"], .pfg-form .formControls
+  .open > input.dropdown-toggle[type="submit"], .pfg-minaraad_form .formControls
   .open > input.dropdown-toggle[type="submit"], .event-detail-lead header
   .open > button.dropdown-toggle, .event-form form
   .open > button.dropdown-toggle {
@@ -2353,43 +2353,43 @@ fieldset[disabled] a.button-field {
     .open > .btn-primary.dropdown-toggle:hover, .logobar .search
     .open > button.dropdown-toggle:hover,
     .open > .dropdown-toggle.button-field:hover,
-    .open > input.dropdown-toggle[type="submit"]:hover, .pfg-form .formControls
+    .open > input.dropdown-toggle[type="submit"]:hover, .pfg-minaraad_form .formControls
     .open > input.dropdown-toggle[type="submit"]:hover, .event-detail-lead header
     .open > button.dropdown-toggle:hover, .event-form form
     .open > button.dropdown-toggle:hover,
     .open > .btn-primary.dropdown-toggle:focus, .logobar .search
     .open > button.dropdown-toggle:focus,
     .open > .dropdown-toggle.button-field:focus,
-    .open > input.dropdown-toggle[type="submit"]:focus, .pfg-form .formControls
+    .open > input.dropdown-toggle[type="submit"]:focus, .pfg-minaraad_form .formControls
     .open > input.dropdown-toggle[type="submit"]:focus, .event-detail-lead header
     .open > button.dropdown-toggle:focus, .event-form form
     .open > button.dropdown-toggle:focus,
     .open > .btn-primary.dropdown-toggle.focus, .logobar .search
     .open > button.dropdown-toggle.focus,
     .open > .dropdown-toggle.focus.button-field,
-    .open > input.dropdown-toggle.focus[type="submit"], .pfg-form .formControls
+    .open > input.dropdown-toggle.focus[type="submit"], .pfg-minaraad_form .formControls
     .open > input.dropdown-toggle.focus[type="submit"], .event-detail-lead header
     .open > button.dropdown-toggle.focus, .event-form form
     .open > button.dropdown-toggle.focus {
       color: #fff;
       background-color: #1d5d77;
       border-color: #103442; }
-  .btn-primary:active, .logobar .search button:active, .button-field:active, input[type="submit"]:active, .pfg-form .formControls input[type="submit"]:active, .event-detail-lead header button:active, .event-form form button:active, .btn-primary.active, .logobar .search button.active, .active.button-field, input.active[type="submit"], .pfg-form .formControls input.active[type="submit"], .event-detail-lead header button.active, .event-form form button.active,
+  .btn-primary:active, .logobar .search button:active, .button-field:active, input[type="submit"]:active, .pfg-minaraad_form .formControls input[type="submit"]:active, .event-detail-lead header button:active, .event-form form button:active, .btn-primary.active, .logobar .search button.active, .active.button-field, input.active[type="submit"], .pfg-minaraad_form .formControls input.active[type="submit"], .event-detail-lead header button.active, .event-form form button.active,
   .open > .btn-primary.dropdown-toggle, .logobar .search
   .open > button.dropdown-toggle,
   .open > .dropdown-toggle.button-field,
-  .open > input.dropdown-toggle[type="submit"], .pfg-form .formControls
+  .open > input.dropdown-toggle[type="submit"], .pfg-minaraad_form .formControls
   .open > input.dropdown-toggle[type="submit"], .event-detail-lead header
   .open > button.dropdown-toggle, .event-form form
   .open > button.dropdown-toggle {
     background-image: none; }
-  .btn-primary.disabled, .logobar .search button.disabled, .disabled.button-field, input.disabled[type="submit"], .pfg-form .formControls input.disabled[type="submit"], .event-detail-lead header button.disabled, .event-form form button.disabled, .btn-primary.disabled:hover, .logobar .search button.disabled:hover, .disabled.button-field:hover, input.disabled[type="submit"]:hover, .event-detail-lead header button.disabled:hover, .event-form form button.disabled:hover, .btn-primary.disabled:focus, .logobar .search button.disabled:focus, .disabled.button-field:focus, input.disabled[type="submit"]:focus, .event-detail-lead header button.disabled:focus, .event-form form button.disabled:focus, .btn-primary.disabled.focus, .logobar .search button.disabled.focus, .disabled.focus.button-field, input.disabled.focus[type="submit"], .event-detail-lead header button.disabled.focus, .event-form form button.disabled.focus, .btn-primary.disabled:active, .logobar .search button.disabled:active, .disabled.button-field:active, input.disabled[type="submit"]:active, .event-detail-lead header button.disabled:active, .event-form form button.disabled:active, .btn-primary.disabled.active, .logobar .search button.disabled.active, .disabled.active.button-field, input.disabled.active[type="submit"], .event-detail-lead header button.disabled.active, .event-form form button.disabled.active, .btn-primary[disabled], .logobar .search button[disabled], [disabled].button-field, input[disabled][type="submit"], .pfg-form .formControls input[disabled][type="submit"], .event-detail-lead header button[disabled], .event-form form button[disabled], .btn-primary[disabled]:hover, .logobar .search button[disabled]:hover, [disabled].button-field:hover, input[disabled][type="submit"]:hover, .event-detail-lead header button[disabled]:hover, .event-form form button[disabled]:hover, .btn-primary[disabled]:focus, .logobar .search button[disabled]:focus, [disabled].button-field:focus, input[disabled][type="submit"]:focus, .event-detail-lead header button[disabled]:focus, .event-form form button[disabled]:focus, .btn-primary[disabled].focus, .logobar .search button[disabled].focus, [disabled].focus.button-field, input[disabled].focus[type="submit"], .event-detail-lead header button[disabled].focus, .event-form form button[disabled].focus, .btn-primary[disabled]:active, .logobar .search button[disabled]:active, [disabled].button-field:active, input[disabled][type="submit"]:active, .event-detail-lead header button[disabled]:active, .event-form form button[disabled]:active, .btn-primary[disabled].active, .logobar .search button[disabled].active, [disabled].active.button-field, input[disabled].active[type="submit"], .event-detail-lead header button[disabled].active, .event-form form button[disabled].active,
+  .btn-primary.disabled, .logobar .search button.disabled, .disabled.button-field, input.disabled[type="submit"], .pfg-minaraad_form .formControls input.disabled[type="submit"], .event-detail-lead header button.disabled, .event-form form button.disabled, .btn-primary.disabled:hover, .logobar .search button.disabled:hover, .disabled.button-field:hover, input.disabled[type="submit"]:hover, .event-detail-lead header button.disabled:hover, .event-form form button.disabled:hover, .btn-primary.disabled:focus, .logobar .search button.disabled:focus, .disabled.button-field:focus, input.disabled[type="submit"]:focus, .event-detail-lead header button.disabled:focus, .event-form form button.disabled:focus, .btn-primary.disabled.focus, .logobar .search button.disabled.focus, .disabled.focus.button-field, input.disabled.focus[type="submit"], .event-detail-lead header button.disabled.focus, .event-form form button.disabled.focus, .btn-primary.disabled:active, .logobar .search button.disabled:active, .disabled.button-field:active, input.disabled[type="submit"]:active, .event-detail-lead header button.disabled:active, .event-form form button.disabled:active, .btn-primary.disabled.active, .logobar .search button.disabled.active, .disabled.active.button-field, input.disabled.active[type="submit"], .event-detail-lead header button.disabled.active, .event-form form button.disabled.active, .btn-primary[disabled], .logobar .search button[disabled], [disabled].button-field, input[disabled][type="submit"], .pfg-minaraad_form .formControls input[disabled][type="submit"], .event-detail-lead header button[disabled], .event-form form button[disabled], .btn-primary[disabled]:hover, .logobar .search button[disabled]:hover, [disabled].button-field:hover, input[disabled][type="submit"]:hover, .event-detail-lead header button[disabled]:hover, .event-form form button[disabled]:hover, .btn-primary[disabled]:focus, .logobar .search button[disabled]:focus, [disabled].button-field:focus, input[disabled][type="submit"]:focus, .event-detail-lead header button[disabled]:focus, .event-form form button[disabled]:focus, .btn-primary[disabled].focus, .logobar .search button[disabled].focus, [disabled].focus.button-field, input[disabled].focus[type="submit"], .event-detail-lead header button[disabled].focus, .event-form form button[disabled].focus, .btn-primary[disabled]:active, .logobar .search button[disabled]:active, [disabled].button-field:active, input[disabled][type="submit"]:active, .event-detail-lead header button[disabled]:active, .event-form form button[disabled]:active, .btn-primary[disabled].active, .logobar .search button[disabled].active, [disabled].active.button-field, input[disabled].active[type="submit"], .event-detail-lead header button[disabled].active, .event-form form button[disabled].active,
   fieldset[disabled] .btn-primary,
   fieldset[disabled] .logobar .search button, .logobar .search
   fieldset[disabled] button,
   fieldset[disabled] .button-field,
   fieldset[disabled] input[type="submit"],
-  fieldset[disabled] .pfg-form .formControls input[type="submit"], .pfg-form .formControls
+  fieldset[disabled] .pfg-minaraad_form .formControls input[type="submit"], .pfg-minaraad_form .formControls
   fieldset[disabled] input[type="submit"],
   fieldset[disabled] .event-detail-lead header button, .event-detail-lead header
   fieldset[disabled] button,
@@ -2442,7 +2442,7 @@ fieldset[disabled] a.button-field {
   fieldset[disabled] button.active {
     background-color: #2e94bd;
     border-color: #2984a8; }
-  .btn-primary .badge, .logobar .search button .badge, .button-field .badge, input[type="submit"] .badge, .pfg-form .formControls input[type="submit"] .badge, .event-detail-lead header button .badge, .event-form form button .badge {
+  .btn-primary .badge, .logobar .search button .badge, .button-field .badge, input[type="submit"] .badge, .pfg-minaraad_form .formControls input[type="submit"] .badge, .event-detail-lead header button .badge, .event-form form button .badge {
     color: #2e94bd;
     background-color: #fff; }
 
@@ -2627,19 +2627,19 @@ fieldset[disabled] a.button-field {
     color: #777777;
     text-decoration: none; }
 
-.btn-lg, .btn-group-lg > .btn, .btn-group-lg > .button-field, .btn-group-lg > input[type="submit"], .pfg-form .formControls .btn-group-lg > input[type="submit"] {
+.btn-lg, .btn-group-lg > .btn, .btn-group-lg > .button-field, .btn-group-lg > input[type="submit"], .pfg-minaraad_form .formControls .btn-group-lg > input[type="submit"] {
   padding: 10px 16px;
   font-size: 18px;
   line-height: 1.3333333;
   border-radius: 6px; }
 
-.btn-sm, .btn-group-sm > .btn, .btn-group-sm > .button-field, .btn-group-sm > input[type="submit"], .pfg-form .formControls .btn-group-sm > input[type="submit"] {
+.btn-sm, .btn-group-sm > .btn, .btn-group-sm > .button-field, .btn-group-sm > input[type="submit"], .pfg-minaraad_form .formControls .btn-group-sm > input[type="submit"] {
   padding: 5px 10px;
   font-size: 12px;
   line-height: 1.5;
   border-radius: 3px; }
 
-.btn-xs, .btn-group-xs > .btn, .btn-group-xs > .button-field, .btn-group-xs > input[type="submit"], .pfg-form .formControls .btn-group-xs > input[type="submit"], #sharing-search-button {
+.btn-xs, .btn-group-xs > .btn, .btn-group-xs > .button-field, .btn-group-xs > input[type="submit"], .pfg-minaraad_form .formControls .btn-group-xs > input[type="submit"], #sharing-search-button {
   padding: 1px 5px;
   font-size: 12px;
   line-height: 1.5;
@@ -2823,41 +2823,41 @@ tbody.collapse.in {
   position: relative;
   display: inline-block;
   vertical-align: middle; }
-  .btn-group > .btn, .btn-group > .button-field, .btn-group > input[type="submit"], .pfg-form .formControls .btn-group > input[type="submit"],
+  .btn-group > .btn, .btn-group > .button-field, .btn-group > input[type="submit"], .pfg-minaraad_form .formControls .btn-group > input[type="submit"],
   .btn-group-vertical > .btn,
   .btn-group-vertical > .button-field,
-  .btn-group-vertical > input[type="submit"], .pfg-form .formControls
+  .btn-group-vertical > input[type="submit"], .pfg-minaraad_form .formControls
   .btn-group-vertical > input[type="submit"] {
     position: relative;
     float: left; }
-    .btn-group > .btn:hover, .btn-group > .button-field:hover, .btn-group > input[type="submit"]:hover, .pfg-form .formControls .btn-group > input[type="submit"]:hover, .btn-group > .btn:focus, .btn-group > .button-field:focus, .btn-group > input[type="submit"]:focus, .pfg-form .formControls .btn-group > input[type="submit"]:focus, .btn-group > .btn:active, .btn-group > .button-field:active, .btn-group > input[type="submit"]:active, .pfg-form .formControls .btn-group > input[type="submit"]:active, .btn-group > .btn.active, .btn-group > .active.button-field, .btn-group > input.active[type="submit"], .pfg-form .formControls .btn-group > input.active[type="submit"],
+    .btn-group > .btn:hover, .btn-group > .button-field:hover, .btn-group > input[type="submit"]:hover, .pfg-minaraad_form .formControls .btn-group > input[type="submit"]:hover, .btn-group > .btn:focus, .btn-group > .button-field:focus, .btn-group > input[type="submit"]:focus, .pfg-minaraad_form .formControls .btn-group > input[type="submit"]:focus, .btn-group > .btn:active, .btn-group > .button-field:active, .btn-group > input[type="submit"]:active, .pfg-minaraad_form .formControls .btn-group > input[type="submit"]:active, .btn-group > .btn.active, .btn-group > .active.button-field, .btn-group > input.active[type="submit"], .pfg-minaraad_form .formControls .btn-group > input.active[type="submit"],
     .btn-group-vertical > .btn:hover,
     .btn-group-vertical > .button-field:hover,
-    .btn-group-vertical > input[type="submit"]:hover, .pfg-form .formControls
+    .btn-group-vertical > input[type="submit"]:hover, .pfg-minaraad_form .formControls
     .btn-group-vertical > input[type="submit"]:hover,
     .btn-group-vertical > .btn:focus,
     .btn-group-vertical > .button-field:focus,
-    .btn-group-vertical > input[type="submit"]:focus, .pfg-form .formControls
+    .btn-group-vertical > input[type="submit"]:focus, .pfg-minaraad_form .formControls
     .btn-group-vertical > input[type="submit"]:focus,
     .btn-group-vertical > .btn:active,
     .btn-group-vertical > .button-field:active,
-    .btn-group-vertical > input[type="submit"]:active, .pfg-form .formControls
+    .btn-group-vertical > input[type="submit"]:active, .pfg-minaraad_form .formControls
     .btn-group-vertical > input[type="submit"]:active,
     .btn-group-vertical > .btn.active,
     .btn-group-vertical > .active.button-field,
-    .btn-group-vertical > input.active[type="submit"], .pfg-form .formControls
+    .btn-group-vertical > input.active[type="submit"], .pfg-minaraad_form .formControls
     .btn-group-vertical > input.active[type="submit"] {
       z-index: 2; }
 
-.btn-group .btn + .btn, .btn-group .button-field + .btn, .btn-group input[type="submit"] + .btn, .btn-group .pfg-form .formControls input[type="submit"] + .btn, .btn-group .btn + .button-field, .btn-group .button-field + .button-field, .btn-group input[type="submit"] + .button-field, .btn-group .pfg-form .formControls input[type="submit"] + .button-field, .btn-group .btn + input[type="submit"], .btn-group .button-field + input[type="submit"], .btn-group input[type="submit"] + input[type="submit"], .btn-group .pfg-form .formControls .btn + input[type="submit"], .btn-group .pfg-form .formControls .button-field + input[type="submit"], .btn-group .pfg-form .formControls input[type="submit"] + input[type="submit"],
+.btn-group .btn + .btn, .btn-group .button-field + .btn, .btn-group input[type="submit"] + .btn, .btn-group .pfg-minaraad_form .formControls input[type="submit"] + .btn, .btn-group .btn + .button-field, .btn-group .button-field + .button-field, .btn-group input[type="submit"] + .button-field, .btn-group .pfg-minaraad_form .formControls input[type="submit"] + .button-field, .btn-group .btn + input[type="submit"], .btn-group .button-field + input[type="submit"], .btn-group input[type="submit"] + input[type="submit"], .btn-group .pfg-minaraad_form .formControls .btn + input[type="submit"], .btn-group .pfg-minaraad_form .formControls .button-field + input[type="submit"], .btn-group .pfg-minaraad_form .formControls input[type="submit"] + input[type="submit"],
 .btn-group .btn + .btn-group,
 .btn-group .button-field + .btn-group,
 .btn-group input[type="submit"] + .btn-group,
-.btn-group .pfg-form .formControls input[type="submit"] + .btn-group,
+.btn-group .pfg-minaraad_form .formControls input[type="submit"] + .btn-group,
 .btn-group .btn-group + .btn,
 .btn-group .btn-group + .button-field,
 .btn-group .btn-group + input[type="submit"],
-.btn-group .pfg-form .formControls .btn-group + input[type="submit"],
+.btn-group .pfg-minaraad_form .formControls .btn-group + input[type="submit"],
 .btn-group .btn-group + .btn-group {
   margin-left: -1px; }
 
@@ -2868,25 +2868,25 @@ tbody.collapse.in {
     display: table; }
   .btn-toolbar:after {
     clear: both; }
-  .btn-toolbar .btn, .btn-toolbar .button-field, .btn-toolbar input[type="submit"], .btn-toolbar .pfg-form .formControls input[type="submit"], .pfg-form .formControls .btn-toolbar input[type="submit"],
+  .btn-toolbar .btn, .btn-toolbar .button-field, .btn-toolbar input[type="submit"], .btn-toolbar .pfg-minaraad_form .formControls input[type="submit"], .pfg-minaraad_form .formControls .btn-toolbar input[type="submit"],
   .btn-toolbar .btn-group,
   .btn-toolbar .input-group {
     float: left; }
-  .btn-toolbar > .btn, .btn-toolbar > .button-field, .btn-toolbar > input[type="submit"], .pfg-form .formControls .btn-toolbar > input[type="submit"],
+  .btn-toolbar > .btn, .btn-toolbar > .button-field, .btn-toolbar > input[type="submit"], .pfg-minaraad_form .formControls .btn-toolbar > input[type="submit"],
   .btn-toolbar > .btn-group,
   .btn-toolbar > .input-group {
     margin-left: 5px; }
 
-.btn-group > .btn:not(:first-child):not(:last-child):not(.dropdown-toggle), .btn-group > .button-field:not(:first-child):not(:last-child):not(.dropdown-toggle), .btn-group > input[type="submit"]:not(:first-child):not(:last-child):not(.dropdown-toggle), .pfg-form .formControls .btn-group > input[type="submit"]:not(:first-child):not(:last-child):not(.dropdown-toggle) {
+.btn-group > .btn:not(:first-child):not(:last-child):not(.dropdown-toggle), .btn-group > .button-field:not(:first-child):not(:last-child):not(.dropdown-toggle), .btn-group > input[type="submit"]:not(:first-child):not(:last-child):not(.dropdown-toggle), .pfg-minaraad_form .formControls .btn-group > input[type="submit"]:not(:first-child):not(:last-child):not(.dropdown-toggle) {
   border-radius: 0; }
 
-.btn-group > .btn:first-child, .btn-group > .button-field:first-child, .btn-group > input[type="submit"]:first-child, .pfg-form .formControls .btn-group > input[type="submit"]:first-child {
+.btn-group > .btn:first-child, .btn-group > .button-field:first-child, .btn-group > input[type="submit"]:first-child, .pfg-minaraad_form .formControls .btn-group > input[type="submit"]:first-child {
   margin-left: 0; }
-  .btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle), .btn-group > .button-field:first-child:not(:last-child):not(.dropdown-toggle), .btn-group > input[type="submit"]:first-child:not(:last-child):not(.dropdown-toggle), .pfg-form .formControls .btn-group > input[type="submit"]:first-child:not(:last-child):not(.dropdown-toggle) {
+  .btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle), .btn-group > .button-field:first-child:not(:last-child):not(.dropdown-toggle), .btn-group > input[type="submit"]:first-child:not(:last-child):not(.dropdown-toggle), .pfg-minaraad_form .formControls .btn-group > input[type="submit"]:first-child:not(:last-child):not(.dropdown-toggle) {
     border-bottom-right-radius: 0;
     border-top-right-radius: 0; }
 
-.btn-group > .btn:last-child:not(:first-child), .btn-group > .button-field:last-child:not(:first-child), .btn-group > input[type="submit"]:last-child:not(:first-child), .pfg-form .formControls .btn-group > input[type="submit"]:last-child:not(:first-child),
+.btn-group > .btn:last-child:not(:first-child), .btn-group > .button-field:last-child:not(:first-child), .btn-group > input[type="submit"]:last-child:not(:first-child), .pfg-minaraad_form .formControls .btn-group > input[type="submit"]:last-child:not(:first-child),
 .btn-group > .dropdown-toggle:not(:first-child) {
   border-bottom-left-radius: 0;
   border-top-left-radius: 0; }
@@ -2894,15 +2894,15 @@ tbody.collapse.in {
 .btn-group > .btn-group {
   float: left; }
 
-.btn-group > .btn-group:not(:first-child):not(:last-child) > .btn, .btn-group > .btn-group:not(:first-child):not(:last-child) > .button-field, .btn-group > .btn-group:not(:first-child):not(:last-child) > input[type="submit"], .pfg-form .formControls .btn-group > .btn-group:not(:first-child):not(:last-child) > input[type="submit"] {
+.btn-group > .btn-group:not(:first-child):not(:last-child) > .btn, .btn-group > .btn-group:not(:first-child):not(:last-child) > .button-field, .btn-group > .btn-group:not(:first-child):not(:last-child) > input[type="submit"], .pfg-minaraad_form .formControls .btn-group > .btn-group:not(:first-child):not(:last-child) > input[type="submit"] {
   border-radius: 0; }
 
-.btn-group > .btn-group:first-child:not(:last-child) > .btn:last-child, .btn-group > .btn-group:first-child:not(:last-child) > .button-field:last-child, .btn-group > .btn-group:first-child:not(:last-child) > input[type="submit"]:last-child, .pfg-form .formControls .btn-group > .btn-group:first-child:not(:last-child) > input[type="submit"]:last-child,
+.btn-group > .btn-group:first-child:not(:last-child) > .btn:last-child, .btn-group > .btn-group:first-child:not(:last-child) > .button-field:last-child, .btn-group > .btn-group:first-child:not(:last-child) > input[type="submit"]:last-child, .pfg-minaraad_form .formControls .btn-group > .btn-group:first-child:not(:last-child) > input[type="submit"]:last-child,
 .btn-group > .btn-group:first-child:not(:last-child) > .dropdown-toggle {
   border-bottom-right-radius: 0;
   border-top-right-radius: 0; }
 
-.btn-group > .btn-group:last-child:not(:first-child) > .btn:first-child, .btn-group > .btn-group:last-child:not(:first-child) > .button-field:first-child, .btn-group > .btn-group:last-child:not(:first-child) > input[type="submit"]:first-child, .pfg-form .formControls .btn-group > .btn-group:last-child:not(:first-child) > input[type="submit"]:first-child {
+.btn-group > .btn-group:last-child:not(:first-child) > .btn:first-child, .btn-group > .btn-group:last-child:not(:first-child) > .button-field:first-child, .btn-group > .btn-group:last-child:not(:first-child) > input[type="submit"]:first-child, .pfg-minaraad_form .formControls .btn-group > .btn-group:last-child:not(:first-child) > input[type="submit"]:first-child {
   border-bottom-left-radius: 0;
   border-top-left-radius: 0; }
 
@@ -2910,11 +2910,11 @@ tbody.collapse.in {
 .btn-group.open .dropdown-toggle {
   outline: 0; }
 
-.btn-group > .btn + .dropdown-toggle, .btn-group > .button-field + .dropdown-toggle, .btn-group > input[type="submit"] + .dropdown-toggle, .pfg-form .formControls .btn-group > input[type="submit"] + .dropdown-toggle {
+.btn-group > .btn + .dropdown-toggle, .btn-group > .button-field + .dropdown-toggle, .btn-group > input[type="submit"] + .dropdown-toggle, .pfg-minaraad_form .formControls .btn-group > input[type="submit"] + .dropdown-toggle {
   padding-left: 8px;
   padding-right: 8px; }
 
-.btn-group > .btn-lg + .dropdown-toggle, .btn-group-lg.btn-group > .btn + .dropdown-toggle, .btn-group-lg.btn-group > .button-field + .dropdown-toggle, .btn-group-lg.btn-group > input[type="submit"] + .dropdown-toggle, .pfg-form .formControls .btn-group-lg.btn-group > input[type="submit"] + .dropdown-toggle {
+.btn-group > .btn-lg + .dropdown-toggle, .btn-group-lg.btn-group > .btn + .dropdown-toggle, .btn-group-lg.btn-group > .button-field + .dropdown-toggle, .btn-group-lg.btn-group > input[type="submit"] + .dropdown-toggle, .pfg-minaraad_form .formControls .btn-group-lg.btn-group > input[type="submit"] + .dropdown-toggle {
   padding-left: 12px;
   padding-right: 12px; }
 
@@ -2925,21 +2925,21 @@ tbody.collapse.in {
     -webkit-box-shadow: none;
     box-shadow: none; }
 
-.btn .caret, .button-field .caret, input[type="submit"] .caret, .pfg-form .formControls input[type="submit"] .caret {
+.btn .caret, .button-field .caret, input[type="submit"] .caret, .pfg-minaraad_form .formControls input[type="submit"] .caret {
   margin-left: 0; }
 
-.btn-lg .caret, .btn-group-lg > .btn .caret, .btn-group-lg > .button-field .caret, .btn-group-lg > input[type="submit"] .caret, .pfg-form .formControls .btn-group-lg > input[type="submit"] .caret {
+.btn-lg .caret, .btn-group-lg > .btn .caret, .btn-group-lg > .button-field .caret, .btn-group-lg > input[type="submit"] .caret, .pfg-minaraad_form .formControls .btn-group-lg > input[type="submit"] .caret {
   border-width: 5px 5px 0;
   border-bottom-width: 0; }
 
-.dropup .btn-lg .caret, .dropup .btn-group-lg > .btn .caret, .dropup .btn-group-lg > .button-field .caret, .dropup .btn-group-lg > input[type="submit"] .caret, .dropup .pfg-form .formControls .btn-group-lg > input[type="submit"] .caret {
+.dropup .btn-lg .caret, .dropup .btn-group-lg > .btn .caret, .dropup .btn-group-lg > .button-field .caret, .dropup .btn-group-lg > input[type="submit"] .caret, .dropup .pfg-minaraad_form .formControls .btn-group-lg > input[type="submit"] .caret {
   border-width: 0 5px 5px; }
 
-.btn-group-vertical > .btn, .btn-group-vertical > .button-field, .btn-group-vertical > input[type="submit"], .pfg-form .formControls .btn-group-vertical > input[type="submit"],
+.btn-group-vertical > .btn, .btn-group-vertical > .button-field, .btn-group-vertical > input[type="submit"], .pfg-minaraad_form .formControls .btn-group-vertical > input[type="submit"],
 .btn-group-vertical > .btn-group,
 .btn-group-vertical > .btn-group > .btn,
 .btn-group-vertical > .btn-group > .button-field,
-.btn-group-vertical > .btn-group > input[type="submit"], .pfg-form .formControls
+.btn-group-vertical > .btn-group > input[type="submit"], .pfg-minaraad_form .formControls
 .btn-group-vertical > .btn-group > input[type="submit"] {
   display: block;
   float: none;
@@ -2953,44 +2953,44 @@ tbody.collapse.in {
 .btn-group-vertical > .btn-group:after {
   clear: both; }
 
-.btn-group-vertical > .btn-group > .btn, .btn-group-vertical > .btn-group > .button-field, .btn-group-vertical > .btn-group > input[type="submit"], .pfg-form .formControls .btn-group-vertical > .btn-group > input[type="submit"] {
+.btn-group-vertical > .btn-group > .btn, .btn-group-vertical > .btn-group > .button-field, .btn-group-vertical > .btn-group > input[type="submit"], .pfg-minaraad_form .formControls .btn-group-vertical > .btn-group > input[type="submit"] {
   float: none; }
 
-.btn-group-vertical > .btn + .btn, .btn-group-vertical > .button-field + .btn, .btn-group-vertical > input[type="submit"] + .btn, .pfg-form .formControls .btn-group-vertical > input[type="submit"] + .btn, .btn-group-vertical > .btn + .button-field, .btn-group-vertical > .button-field + .button-field, .btn-group-vertical > input[type="submit"] + .button-field, .pfg-form .formControls .btn-group-vertical > input[type="submit"] + .button-field, .btn-group-vertical > .btn + input[type="submit"], .btn-group-vertical > .button-field + input[type="submit"], .btn-group-vertical > input[type="submit"] + input[type="submit"], .pfg-form .formControls .btn-group-vertical > .btn + input[type="submit"], .pfg-form .formControls .btn-group-vertical > .button-field + input[type="submit"], .pfg-form .formControls .btn-group-vertical > input[type="submit"] + input[type="submit"],
+.btn-group-vertical > .btn + .btn, .btn-group-vertical > .button-field + .btn, .btn-group-vertical > input[type="submit"] + .btn, .pfg-minaraad_form .formControls .btn-group-vertical > input[type="submit"] + .btn, .btn-group-vertical > .btn + .button-field, .btn-group-vertical > .button-field + .button-field, .btn-group-vertical > input[type="submit"] + .button-field, .pfg-minaraad_form .formControls .btn-group-vertical > input[type="submit"] + .button-field, .btn-group-vertical > .btn + input[type="submit"], .btn-group-vertical > .button-field + input[type="submit"], .btn-group-vertical > input[type="submit"] + input[type="submit"], .pfg-minaraad_form .formControls .btn-group-vertical > .btn + input[type="submit"], .pfg-minaraad_form .formControls .btn-group-vertical > .button-field + input[type="submit"], .pfg-minaraad_form .formControls .btn-group-vertical > input[type="submit"] + input[type="submit"],
 .btn-group-vertical > .btn + .btn-group,
 .btn-group-vertical > .button-field + .btn-group,
-.btn-group-vertical > input[type="submit"] + .btn-group, .pfg-form .formControls
+.btn-group-vertical > input[type="submit"] + .btn-group, .pfg-minaraad_form .formControls
 .btn-group-vertical > input[type="submit"] + .btn-group,
 .btn-group-vertical > .btn-group + .btn,
 .btn-group-vertical > .btn-group + .button-field,
-.btn-group-vertical > .btn-group + input[type="submit"], .pfg-form .formControls
+.btn-group-vertical > .btn-group + input[type="submit"], .pfg-minaraad_form .formControls
 .btn-group-vertical > .btn-group + input[type="submit"],
 .btn-group-vertical > .btn-group + .btn-group {
   margin-top: -1px;
   margin-left: 0; }
 
-.btn-group-vertical > .btn:not(:first-child):not(:last-child), .btn-group-vertical > .button-field:not(:first-child):not(:last-child), .btn-group-vertical > input[type="submit"]:not(:first-child):not(:last-child), .pfg-form .formControls .btn-group-vertical > input[type="submit"]:not(:first-child):not(:last-child) {
+.btn-group-vertical > .btn:not(:first-child):not(:last-child), .btn-group-vertical > .button-field:not(:first-child):not(:last-child), .btn-group-vertical > input[type="submit"]:not(:first-child):not(:last-child), .pfg-minaraad_form .formControls .btn-group-vertical > input[type="submit"]:not(:first-child):not(:last-child) {
   border-radius: 0; }
 
-.btn-group-vertical > .btn:first-child:not(:last-child), .btn-group-vertical > .button-field:first-child:not(:last-child), .btn-group-vertical > input[type="submit"]:first-child:not(:last-child), .pfg-form .formControls .btn-group-vertical > input[type="submit"]:first-child:not(:last-child) {
+.btn-group-vertical > .btn:first-child:not(:last-child), .btn-group-vertical > .button-field:first-child:not(:last-child), .btn-group-vertical > input[type="submit"]:first-child:not(:last-child), .pfg-minaraad_form .formControls .btn-group-vertical > input[type="submit"]:first-child:not(:last-child) {
   border-top-right-radius: 4px;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0; }
 
-.btn-group-vertical > .btn:last-child:not(:first-child), .btn-group-vertical > .button-field:last-child:not(:first-child), .btn-group-vertical > input[type="submit"]:last-child:not(:first-child), .pfg-form .formControls .btn-group-vertical > input[type="submit"]:last-child:not(:first-child) {
+.btn-group-vertical > .btn:last-child:not(:first-child), .btn-group-vertical > .button-field:last-child:not(:first-child), .btn-group-vertical > input[type="submit"]:last-child:not(:first-child), .pfg-minaraad_form .formControls .btn-group-vertical > input[type="submit"]:last-child:not(:first-child) {
   border-bottom-left-radius: 4px;
   border-top-right-radius: 0;
   border-top-left-radius: 0; }
 
-.btn-group-vertical > .btn-group:not(:first-child):not(:last-child) > .btn, .btn-group-vertical > .btn-group:not(:first-child):not(:last-child) > .button-field, .btn-group-vertical > .btn-group:not(:first-child):not(:last-child) > input[type="submit"], .pfg-form .formControls .btn-group-vertical > .btn-group:not(:first-child):not(:last-child) > input[type="submit"] {
+.btn-group-vertical > .btn-group:not(:first-child):not(:last-child) > .btn, .btn-group-vertical > .btn-group:not(:first-child):not(:last-child) > .button-field, .btn-group-vertical > .btn-group:not(:first-child):not(:last-child) > input[type="submit"], .pfg-minaraad_form .formControls .btn-group-vertical > .btn-group:not(:first-child):not(:last-child) > input[type="submit"] {
   border-radius: 0; }
 
-.btn-group-vertical > .btn-group:first-child:not(:last-child) > .btn:last-child, .btn-group-vertical > .btn-group:first-child:not(:last-child) > .button-field:last-child, .btn-group-vertical > .btn-group:first-child:not(:last-child) > input[type="submit"]:last-child, .pfg-form .formControls .btn-group-vertical > .btn-group:first-child:not(:last-child) > input[type="submit"]:last-child,
+.btn-group-vertical > .btn-group:first-child:not(:last-child) > .btn:last-child, .btn-group-vertical > .btn-group:first-child:not(:last-child) > .button-field:last-child, .btn-group-vertical > .btn-group:first-child:not(:last-child) > input[type="submit"]:last-child, .pfg-minaraad_form .formControls .btn-group-vertical > .btn-group:first-child:not(:last-child) > input[type="submit"]:last-child,
 .btn-group-vertical > .btn-group:first-child:not(:last-child) > .dropdown-toggle {
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0; }
 
-.btn-group-vertical > .btn-group:last-child:not(:first-child) > .btn:first-child, .btn-group-vertical > .btn-group:last-child:not(:first-child) > .button-field:first-child, .btn-group-vertical > .btn-group:last-child:not(:first-child) > input[type="submit"]:first-child, .pfg-form .formControls .btn-group-vertical > .btn-group:last-child:not(:first-child) > input[type="submit"]:first-child {
+.btn-group-vertical > .btn-group:last-child:not(:first-child) > .btn:first-child, .btn-group-vertical > .btn-group:last-child:not(:first-child) > .button-field:first-child, .btn-group-vertical > .btn-group:last-child:not(:first-child) > input[type="submit"]:first-child, .pfg-minaraad_form .formControls .btn-group-vertical > .btn-group:last-child:not(:first-child) > input[type="submit"]:first-child {
   border-top-right-radius: 0;
   border-top-left-radius: 0; }
 
@@ -2999,28 +2999,28 @@ tbody.collapse.in {
   width: 100%;
   table-layout: fixed;
   border-collapse: separate; }
-  .btn-group-justified > .btn, .btn-group-justified > .button-field, .btn-group-justified > input[type="submit"], .pfg-form .formControls .btn-group-justified > input[type="submit"],
+  .btn-group-justified > .btn, .btn-group-justified > .button-field, .btn-group-justified > input[type="submit"], .pfg-minaraad_form .formControls .btn-group-justified > input[type="submit"],
   .btn-group-justified > .btn-group {
     float: none;
     display: table-cell;
     width: 1%; }
-  .btn-group-justified > .btn-group .btn, .btn-group-justified > .btn-group .button-field, .btn-group-justified > .btn-group input[type="submit"], .pfg-form .formControls .btn-group-justified > .btn-group input[type="submit"] {
+  .btn-group-justified > .btn-group .btn, .btn-group-justified > .btn-group .button-field, .btn-group-justified > .btn-group input[type="submit"], .pfg-minaraad_form .formControls .btn-group-justified > .btn-group input[type="submit"] {
     width: 100%; }
   .btn-group-justified > .btn-group .dropdown-menu {
     left: auto; }
 
-[data-toggle="buttons"] > .btn input[type="radio"], [data-toggle="buttons"] > .button-field input[type="radio"], [data-toggle="buttons"] > input[type="submit"] input[type="radio"], .pfg-form .formControls [data-toggle="buttons"] > input[type="submit"] input[type="radio"],
+[data-toggle="buttons"] > .btn input[type="radio"], [data-toggle="buttons"] > .button-field input[type="radio"], [data-toggle="buttons"] > input[type="submit"] input[type="radio"], .pfg-minaraad_form .formControls [data-toggle="buttons"] > input[type="submit"] input[type="radio"],
 [data-toggle="buttons"] > .btn input[type="checkbox"],
 [data-toggle="buttons"] > .button-field input[type="checkbox"],
-[data-toggle="buttons"] > input[type="submit"] input[type="checkbox"], .pfg-form .formControls
+[data-toggle="buttons"] > input[type="submit"] input[type="checkbox"], .pfg-minaraad_form .formControls
 [data-toggle="buttons"] > input[type="submit"] input[type="checkbox"],
 [data-toggle="buttons"] > .btn-group > .btn input[type="radio"],
 [data-toggle="buttons"] > .btn-group > .button-field input[type="radio"],
-[data-toggle="buttons"] > .btn-group > input[type="submit"] input[type="radio"], .pfg-form .formControls
+[data-toggle="buttons"] > .btn-group > input[type="submit"] input[type="radio"], .pfg-minaraad_form .formControls
 [data-toggle="buttons"] > .btn-group > input[type="submit"] input[type="radio"],
 [data-toggle="buttons"] > .btn-group > .btn input[type="checkbox"],
 [data-toggle="buttons"] > .btn-group > .button-field input[type="checkbox"],
-[data-toggle="buttons"] > .btn-group > input[type="submit"] input[type="checkbox"], .pfg-form .formControls
+[data-toggle="buttons"] > .btn-group > input[type="submit"] input[type="checkbox"], .pfg-minaraad_form .formControls
 [data-toggle="buttons"] > .btn-group > input[type="submit"] input[type="checkbox"] {
   position: absolute;
   clip: rect(0, 0, 0, 0);
@@ -3070,7 +3070,7 @@ tbody.collapse.in {
   .input-group-sm > .input-group-addon,
   .input-group-sm > .input-group-btn > .input-group-addon.btn,
   .input-group-sm > .input-group-btn > .input-group-addon.button-field,
-  .input-group-sm > .input-group-btn > input.input-group-addon[type="submit"], .pfg-form .formControls
+  .input-group-sm > .input-group-btn > input.input-group-addon[type="submit"], .pfg-minaraad_form .formControls
   .input-group-sm > .input-group-btn > input.input-group-addon[type="submit"] {
     padding: 5px 10px;
     font-size: 12px;
@@ -3079,7 +3079,7 @@ tbody.collapse.in {
   .input-group-lg > .input-group-addon,
   .input-group-lg > .input-group-btn > .input-group-addon.btn,
   .input-group-lg > .input-group-btn > .input-group-addon.button-field,
-  .input-group-lg > .input-group-btn > input.input-group-addon[type="submit"], .pfg-form .formControls
+  .input-group-lg > .input-group-btn > input.input-group-addon[type="submit"], .pfg-minaraad_form .formControls
   .input-group-lg > .input-group-btn > input.input-group-addon[type="submit"] {
     padding: 10px 16px;
     font-size: 18px;
@@ -3092,20 +3092,20 @@ tbody.collapse.in {
 .input-group-addon:first-child,
 .input-group-btn:first-child > .btn,
 .input-group-btn:first-child > .button-field,
-.input-group-btn:first-child > input[type="submit"], .pfg-form .formControls
+.input-group-btn:first-child > input[type="submit"], .pfg-minaraad_form .formControls
 .input-group-btn:first-child > input[type="submit"],
 .input-group-btn:first-child > .btn-group > .btn,
 .input-group-btn:first-child > .btn-group > .button-field,
-.input-group-btn:first-child > .btn-group > input[type="submit"], .pfg-form .formControls
+.input-group-btn:first-child > .btn-group > input[type="submit"], .pfg-minaraad_form .formControls
 .input-group-btn:first-child > .btn-group > input[type="submit"],
 .input-group-btn:first-child > .dropdown-toggle,
 .input-group-btn:last-child > .btn:not(:last-child):not(.dropdown-toggle),
 .input-group-btn:last-child > .button-field:not(:last-child):not(.dropdown-toggle),
-.input-group-btn:last-child > input[type="submit"]:not(:last-child):not(.dropdown-toggle), .pfg-form .formControls
+.input-group-btn:last-child > input[type="submit"]:not(:last-child):not(.dropdown-toggle), .pfg-minaraad_form .formControls
 .input-group-btn:last-child > input[type="submit"]:not(:last-child):not(.dropdown-toggle),
 .input-group-btn:last-child > .btn-group:not(:last-child) > .btn,
 .input-group-btn:last-child > .btn-group:not(:last-child) > .button-field,
-.input-group-btn:last-child > .btn-group:not(:last-child) > input[type="submit"], .pfg-form .formControls
+.input-group-btn:last-child > .btn-group:not(:last-child) > input[type="submit"], .pfg-minaraad_form .formControls
 .input-group-btn:last-child > .btn-group:not(:last-child) > input[type="submit"] {
   border-bottom-right-radius: 0;
   border-top-right-radius: 0; }
@@ -3117,20 +3117,20 @@ tbody.collapse.in {
 .input-group-addon:last-child,
 .input-group-btn:last-child > .btn,
 .input-group-btn:last-child > .button-field,
-.input-group-btn:last-child > input[type="submit"], .pfg-form .formControls
+.input-group-btn:last-child > input[type="submit"], .pfg-minaraad_form .formControls
 .input-group-btn:last-child > input[type="submit"],
 .input-group-btn:last-child > .btn-group > .btn,
 .input-group-btn:last-child > .btn-group > .button-field,
-.input-group-btn:last-child > .btn-group > input[type="submit"], .pfg-form .formControls
+.input-group-btn:last-child > .btn-group > input[type="submit"], .pfg-minaraad_form .formControls
 .input-group-btn:last-child > .btn-group > input[type="submit"],
 .input-group-btn:last-child > .dropdown-toggle,
 .input-group-btn:first-child > .btn:not(:first-child),
 .input-group-btn:first-child > .button-field:not(:first-child),
-.input-group-btn:first-child > input[type="submit"]:not(:first-child), .pfg-form .formControls
+.input-group-btn:first-child > input[type="submit"]:not(:first-child), .pfg-minaraad_form .formControls
 .input-group-btn:first-child > input[type="submit"]:not(:first-child),
 .input-group-btn:first-child > .btn-group:not(:first-child) > .btn,
 .input-group-btn:first-child > .btn-group:not(:first-child) > .button-field,
-.input-group-btn:first-child > .btn-group:not(:first-child) > input[type="submit"], .pfg-form .formControls
+.input-group-btn:first-child > .btn-group:not(:first-child) > input[type="submit"], .pfg-minaraad_form .formControls
 .input-group-btn:first-child > .btn-group:not(:first-child) > input[type="submit"] {
   border-bottom-left-radius: 0;
   border-top-left-radius: 0; }
@@ -3142,16 +3142,16 @@ tbody.collapse.in {
   position: relative;
   font-size: 0;
   white-space: nowrap; }
-  .input-group-btn > .btn, .input-group-btn > .button-field, .input-group-btn > input[type="submit"], .pfg-form .formControls .input-group-btn > input[type="submit"] {
+  .input-group-btn > .btn, .input-group-btn > .button-field, .input-group-btn > input[type="submit"], .pfg-minaraad_form .formControls .input-group-btn > input[type="submit"] {
     position: relative; }
-    .input-group-btn > .btn + .btn, .input-group-btn > .button-field + .btn, .input-group-btn > input[type="submit"] + .btn, .pfg-form .formControls .input-group-btn > input[type="submit"] + .btn, .input-group-btn > .btn + .button-field, .input-group-btn > .button-field + .button-field, .input-group-btn > input[type="submit"] + .button-field, .pfg-form .formControls .input-group-btn > input[type="submit"] + .button-field, .input-group-btn > .btn + input[type="submit"], .input-group-btn > .button-field + input[type="submit"], .input-group-btn > input[type="submit"] + input[type="submit"], .pfg-form .formControls .input-group-btn > .btn + input[type="submit"], .pfg-form .formControls .input-group-btn > .button-field + input[type="submit"], .pfg-form .formControls .input-group-btn > input[type="submit"] + input[type="submit"] {
+    .input-group-btn > .btn + .btn, .input-group-btn > .button-field + .btn, .input-group-btn > input[type="submit"] + .btn, .pfg-minaraad_form .formControls .input-group-btn > input[type="submit"] + .btn, .input-group-btn > .btn + .button-field, .input-group-btn > .button-field + .button-field, .input-group-btn > input[type="submit"] + .button-field, .pfg-minaraad_form .formControls .input-group-btn > input[type="submit"] + .button-field, .input-group-btn > .btn + input[type="submit"], .input-group-btn > .button-field + input[type="submit"], .input-group-btn > input[type="submit"] + input[type="submit"], .pfg-minaraad_form .formControls .input-group-btn > .btn + input[type="submit"], .pfg-minaraad_form .formControls .input-group-btn > .button-field + input[type="submit"], .pfg-minaraad_form .formControls .input-group-btn > input[type="submit"] + input[type="submit"] {
       margin-left: -1px; }
-    .input-group-btn > .btn:hover, .input-group-btn > .button-field:hover, .input-group-btn > input[type="submit"]:hover, .pfg-form .formControls .input-group-btn > input[type="submit"]:hover, .input-group-btn > .btn:focus, .input-group-btn > .button-field:focus, .input-group-btn > input[type="submit"]:focus, .pfg-form .formControls .input-group-btn > input[type="submit"]:focus, .input-group-btn > .btn:active, .input-group-btn > .button-field:active, .input-group-btn > input[type="submit"]:active, .pfg-form .formControls .input-group-btn > input[type="submit"]:active {
+    .input-group-btn > .btn:hover, .input-group-btn > .button-field:hover, .input-group-btn > input[type="submit"]:hover, .pfg-minaraad_form .formControls .input-group-btn > input[type="submit"]:hover, .input-group-btn > .btn:focus, .input-group-btn > .button-field:focus, .input-group-btn > input[type="submit"]:focus, .pfg-minaraad_form .formControls .input-group-btn > input[type="submit"]:focus, .input-group-btn > .btn:active, .input-group-btn > .button-field:active, .input-group-btn > input[type="submit"]:active, .pfg-minaraad_form .formControls .input-group-btn > input[type="submit"]:active {
       z-index: 2; }
-  .input-group-btn:first-child > .btn, .input-group-btn:first-child > .button-field, .input-group-btn:first-child > input[type="submit"], .pfg-form .formControls .input-group-btn:first-child > input[type="submit"],
+  .input-group-btn:first-child > .btn, .input-group-btn:first-child > .button-field, .input-group-btn:first-child > input[type="submit"], .pfg-minaraad_form .formControls .input-group-btn:first-child > input[type="submit"],
   .input-group-btn:first-child > .btn-group {
     margin-right: -1px; }
-  .input-group-btn:last-child > .btn, .input-group-btn:last-child > .button-field, .input-group-btn:last-child > input[type="submit"], .pfg-form .formControls .input-group-btn:last-child > input[type="submit"],
+  .input-group-btn:last-child > .btn, .input-group-btn:last-child > .button-field, .input-group-btn:last-child > input[type="submit"], .pfg-minaraad_form .formControls .input-group-btn:last-child > input[type="submit"],
   .input-group-btn:last-child > .btn-group {
     z-index: 2;
     margin-left: -1px; }
@@ -3530,10 +3530,10 @@ tbody.collapse.in {
 .navbar-btn {
   margin-top: 3px;
   margin-bottom: 3px; }
-  .navbar-btn.btn-sm, .btn-group-sm > .navbar-btn.btn, .btn-group-sm > .navbar-btn.button-field, .btn-group-sm > input.navbar-btn[type="submit"], .pfg-form .formControls .btn-group-sm > input.navbar-btn[type="submit"] {
+  .navbar-btn.btn-sm, .btn-group-sm > .navbar-btn.btn, .btn-group-sm > .navbar-btn.button-field, .btn-group-sm > input.navbar-btn[type="submit"], .pfg-minaraad_form .formControls .btn-group-sm > input.navbar-btn[type="submit"] {
     margin-top: 5px;
     margin-bottom: 5px; }
-  .navbar-btn.btn-xs, .btn-group-xs > .navbar-btn.btn, .btn-group-xs > .navbar-btn.button-field, .btn-group-xs > input.navbar-btn[type="submit"], .pfg-form .formControls .btn-group-xs > input.navbar-btn[type="submit"], .navbar-btn#sharing-search-button {
+  .navbar-btn.btn-xs, .btn-group-xs > .navbar-btn.btn, .btn-group-xs > .navbar-btn.button-field, .btn-group-xs > input.navbar-btn[type="submit"], .pfg-minaraad_form .formControls .btn-group-xs > input.navbar-btn[type="submit"], .navbar-btn#sharing-search-button {
     margin-top: 9px;
     margin-bottom: 9px; }
 
@@ -4459,10 +4459,10 @@ button.close {
     display: table; }
   .modal-footer:after {
     clear: both; }
-  .modal-footer .btn + .btn, .modal-footer .button-field + .btn, .modal-footer input[type="submit"] + .btn, .modal-footer .pfg-form .formControls input[type="submit"] + .btn, .modal-footer .btn + .button-field, .modal-footer .button-field + .button-field, .modal-footer input[type="submit"] + .button-field, .modal-footer .pfg-form .formControls input[type="submit"] + .button-field, .modal-footer .btn + input[type="submit"], .modal-footer .button-field + input[type="submit"], .modal-footer input[type="submit"] + input[type="submit"], .modal-footer .pfg-form .formControls .btn + input[type="submit"], .modal-footer .pfg-form .formControls .button-field + input[type="submit"], .modal-footer .pfg-form .formControls input[type="submit"] + input[type="submit"] {
+  .modal-footer .btn + .btn, .modal-footer .button-field + .btn, .modal-footer input[type="submit"] + .btn, .modal-footer .pfg-minaraad_form .formControls input[type="submit"] + .btn, .modal-footer .btn + .button-field, .modal-footer .button-field + .button-field, .modal-footer input[type="submit"] + .button-field, .modal-footer .pfg-minaraad_form .formControls input[type="submit"] + .button-field, .modal-footer .btn + input[type="submit"], .modal-footer .button-field + input[type="submit"], .modal-footer input[type="submit"] + input[type="submit"], .modal-footer .pfg-minaraad_form .formControls .btn + input[type="submit"], .modal-footer .pfg-minaraad_form .formControls .button-field + input[type="submit"], .modal-footer .pfg-minaraad_form .formControls input[type="submit"] + input[type="submit"] {
     margin-left: 5px;
     margin-bottom: 0; }
-  .modal-footer .btn-group .btn + .btn, .modal-footer .btn-group .button-field + .btn, .modal-footer .btn-group input[type="submit"] + .btn, .modal-footer .btn-group .pfg-form .formControls input[type="submit"] + .btn, .modal-footer .btn-group .btn + .button-field, .modal-footer .btn-group .button-field + .button-field, .modal-footer .btn-group input[type="submit"] + .button-field, .modal-footer .btn-group .pfg-form .formControls input[type="submit"] + .button-field, .modal-footer .btn-group .btn + input[type="submit"], .modal-footer .btn-group .button-field + input[type="submit"], .modal-footer .btn-group input[type="submit"] + input[type="submit"], .modal-footer .btn-group .pfg-form .formControls .btn + input[type="submit"], .modal-footer .btn-group .pfg-form .formControls .button-field + input[type="submit"], .modal-footer .btn-group .pfg-form .formControls input[type="submit"] + input[type="submit"] {
+  .modal-footer .btn-group .btn + .btn, .modal-footer .btn-group .button-field + .btn, .modal-footer .btn-group input[type="submit"] + .btn, .modal-footer .btn-group .pfg-minaraad_form .formControls input[type="submit"] + .btn, .modal-footer .btn-group .btn + .button-field, .modal-footer .btn-group .button-field + .button-field, .modal-footer .btn-group input[type="submit"] + .button-field, .modal-footer .btn-group .pfg-minaraad_form .formControls input[type="submit"] + .button-field, .modal-footer .btn-group .btn + input[type="submit"], .modal-footer .btn-group .button-field + input[type="submit"], .modal-footer .btn-group input[type="submit"] + input[type="submit"], .modal-footer .btn-group .pfg-minaraad_form .formControls .btn + input[type="submit"], .modal-footer .btn-group .pfg-minaraad_form .formControls .button-field + input[type="submit"], .modal-footer .btn-group .pfg-minaraad_form .formControls input[type="submit"] + input[type="submit"] {
     margin-left: -1px; }
   .modal-footer .btn-block + .btn-block {
     margin-left: 0; }
@@ -7245,7 +7245,7 @@ footer {
     color: #bfd9e3; }
   .footer-doormat a:hover, .footer-doormat a:active {
     color: white; }
-  .footer-doormat .btn, .footer-doormat .button-field, .footer-doormat input[type="submit"], .footer-doormat .pfg-form .formControls input[type="submit"], .pfg-form .formControls .footer-doormat input[type="submit"] {
+  .footer-doormat .btn, .footer-doormat .button-field, .footer-doormat input[type="submit"], .footer-doormat .pfg-minaraad_form .formControls input[type="submit"], .pfg-minaraad_form .formControls .footer-doormat input[type="submit"] {
     color: white; }
   .footer-doormat .logo img {
     width: 100%; }
@@ -7346,9 +7346,9 @@ a {
     outline: 5px auto -webkit-focus-ring-color;
     outline-offset: -2px; }
 
-.btn, .button-field, input[type="submit"], .pfg-form .formControls input[type="submit"] {
+.btn, .button-field, input[type="submit"], .pfg-minaraad_form .formControls input[type="submit"] {
   font-weight: 500; }
-  .btn i, .button-field i, input[type="submit"] i, .pfg-form .formControls input[type="submit"] i {
+  .btn i, .button-field i, input[type="submit"] i, .pfg-minaraad_form .formControls input[type="submit"] i {
     margin-right: .4em; }
 
 .btn-mina-green, .list-group-downloads .list-group-item .body .btn, .list-group-downloads .list-group-item .body .button-field, .list-group-downloads .list-group-item .body input[type="submit"] {
@@ -7756,14 +7756,14 @@ div.digibib_list {
   margin-top: 0;
   text-transform: none; }
 
-.pfg-form {
+.pfg-minaraad_form {
   border: 1px solid #d9d9d9;
   border-top: 5px solid #2e94bd;
   padding: 0 15px 1px 15px;
   background-color: white;
   margin-bottom: 15px;
-  padding-top: 20px; }
-  .pfg-form input[type="text"], .pfg-form input[type="password"] {
+  margin-top: 20px; }
+  .pfg-minaraad_form input[type="text"], .pfg-minaraad_form input[type="password"] {
     border-radius: 3px;
     border: 1px solid #ccc;
     height: 34px;
@@ -7771,24 +7771,24 @@ div.digibib_list {
     font-size: 14px;
     line-height: 1.428571429;
     color: #555555; }
-  .pfg-form textarea {
+  .pfg-minaraad_form textarea {
     border: 1px solid #ccc;
     border-radius: 3px;
     padding: 6px 12px;
     color: #555555; }
-  .pfg-form label {
+  .pfg-minaraad_form label {
     margin-bottom: 0; }
-  .pfg-form .required {
+  .pfg-minaraad_form .required {
     margin-left: -7px; }
-  .pfg-form .ArchetypesMultiSelectionWidget option {
+  .pfg-minaraad_form .ArchetypesMultiSelectionWidget option {
     padding: 5px 10px; }
-  .pfg-form .ArchetypesSelectionWidget label, .pfg-form .ArchetypesBooleanWidget label {
+  .pfg-minaraad_form .ArchetypesSelectionWidget label, .pfg-minaraad_form .ArchetypesBooleanWidget label {
     margin-left: 5px;
     font-weight: normal; }
-  .pfg-form .ArchetypesMultiSelectionWidget label {
+  .pfg-minaraad_form .ArchetypesMultiSelectionWidget label {
     clear: both;
     width: 100%; }
-  .pfg-form .formControls {
+  .pfg-minaraad_form .formControls {
     margin: 1em 0; }
 
 #atrbResultsTable label,

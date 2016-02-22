@@ -573,10 +573,10 @@ div.digibib_list{
 }
 
 
-.pfg-form {
+.pfg-minaraad_form {
   border: 1px solid darken(white, 15);
   @include article-block-line-top($mina-blue);
-  padding-top: 20px;
+  margin-top: 20px;
   input[type="text"], input[type="password"]{
     border-radius: 3px;
     border: 1px solid #ccc;
