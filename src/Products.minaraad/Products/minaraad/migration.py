@@ -1182,3 +1182,38 @@ def migrate_hearings_to_events(context):
     events = catalog.unrestrictedSearchResults(portal_type='MREvent')
     hearings = catalog.unrestrictedSearchResults(portal_type='Hearing')
     logger.info('Found %d hearings and %d events.', len(hearings), len(events))
+
+
+def delete_duplicate_references(context):
+    # Migrated Hearings have duplicate coordinators and authors.  These are
+    # easiest to find and fix by going through the whole catalog.
+    from Products.Archetypes.config import REFERENCE_CATALOG
+    tool = getToolByName(context, REFERENCE_CATALOG)
+    # Strangely, we need to run this multiple times.  Let's set a maximum of 10
+    # for safety.
+    for i in range(1, 11):
+        logger.info('Deleting duplicate references, run %d.', i)
+        refs = []
+        duplicates = []
+        for brain in tool.searchResults():
+            # We explicitly do NOT add brain.UID, because that is the only
+            # property that will be different on a duplicate.
+            info = (brain.targetUID, brain.sourceUID, brain.targetId,
+                    brain.relationship)
+            if info not in refs:
+                refs.append(info)
+                continue
+            logger.info('Duplicate: %r', info)
+            duplicates.append(info)
+            # tool.deleteReference(source, target, relationship)
+            # Use low level function.
+            ref = brain.getObject()
+            if ref is None:
+                logger.warn('Ref is None. %r', info)
+                continue
+            tool._deleteReference(ref)
+
+        logger.info('%d duplicates found and fixed.', len(duplicates))
+        if not duplicates:
+            logger.info('Done after %d runs.', i)
+            break
