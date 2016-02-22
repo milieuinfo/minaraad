@@ -73,9 +73,10 @@ E-mail: <a href="mailto:info@minaraad.be">info@minaraad.be</a></p>
 </ul>
 """
 
-### API keys
+# API keys
 EMBEDLY_API_KEY = "6516fa92558c4e57a29e71622263bfc5"
-#MAILCHIMP_API_KEY = "your_api_key"
+MAILCHIMP_API_KEY = ""
+
 
 def migrate_contacts(context):
     """ Split the contact field into Coordinator and Authors field.
@@ -1149,12 +1150,18 @@ def setup_api_keys(context):
         if embedly_settings:
             embedly_settings.api_key = unicode(EMBEDLY_API_KEY)
             logger.info("Set the embedly api-key")
+    else:
+        raise ValueError(
+            'Missing EMBEDLY_API_KEY in Products/minaraad/migration.py.')
 
     if MAILCHIMP_API_KEY:
         mailchimp_settings = registry.forInterface(IMailchimpSettings, False)
         if mailchimp_settings:
             mailchimp_settings.api_key = unicode(MAILCHIMP_API_KEY)
             logger.info("Set te mailchimp api-key")
+    else:
+        raise ValueError(
+            'Missing MAILCHIMP_API_KEY in Products/minaraad/migration.py.')
 
 
 def migrate_hearings_to_events(context):
