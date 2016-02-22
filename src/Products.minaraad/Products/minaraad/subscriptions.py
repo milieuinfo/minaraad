@@ -8,13 +8,11 @@ SUBSCRIPTIONS_EMAIL = (
     'Study',
     'NewsLetter',
     'Pressrelease',
-    'Hearing',
     'Advisory',
     'MREvent',
     )
 THEME_FILTERED = [
     'Advisory',
-    'Hearing',
     'Study',
     ]
 

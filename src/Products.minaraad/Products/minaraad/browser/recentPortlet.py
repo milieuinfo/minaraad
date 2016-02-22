@@ -22,7 +22,7 @@ class Renderer(p_recent.Renderer):
         catalog = getToolByName(self.context,
                                 'portal_catalog')
 
-        searchable_types = ['Hearing', 'Advisory',
+        searchable_types = ['Advisory',
                             'Study', 'AnnualReport',
                             'Pressrelease', 'NewsLetter',
                             'Event', 'MREvent', 'Document']

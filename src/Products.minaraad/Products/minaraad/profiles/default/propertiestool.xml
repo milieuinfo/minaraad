@@ -70,7 +70,6 @@
    <element value="FileAttachment"/>
    <element value="HeaderSet"/>
    <element value="HeaderSetFolder"/>
-   <element value="Hearing"/>
    <element value="Image"/>
    <element value="ImageAttachment"/>
    <element value="Large Plone Folder"/>
@@ -127,7 +126,6 @@
    <element value="MREvent"/>
    <element value="Study"/>
    <element value="MacroFolder"/>
-   <element value="Hearing"/>
    <element value="AgendaItem"/>
    <element value="HeaderSetFolder"/>
    <element value="Attachmentsmixin"/>
@@ -166,7 +164,6 @@
    <element value="MREvent"/>
    <element value="Study"/>
    <element value="MacroFolder"/>
-   <element value="Hearing"/>
    <element value="AgendaItem"/>
    <element value="HeaderSetFolder"/>
    <element value="CacheTool"/>

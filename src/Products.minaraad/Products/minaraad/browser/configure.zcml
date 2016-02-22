@@ -25,13 +25,6 @@
 
   <browser:page
     name="faceted-preview-item"
-    for="Products.minaraad.interfaces.IHearing"
-    template="faceted_event_item.pt"
-    permission="zope2.View"
-    />
-
-  <browser:page
-    name="faceted-preview-item"
     for="Products.minaraad.interfaces.IStudy"
     template="faceted_study_item.pt"
     permission="zope2.View"
@@ -158,27 +151,12 @@
   />
 
   <browser:page
-      for="Products.minaraad.interfaces.IHearing"
-      name="attendees_view"
-      class=".attendees.AttendeesManagerView"
-      permission="zope2.View"
-      allowed_interface=".attendees.IAttendeesManagerView"
-  />
-
-  <browser:page
       for="Products.minaraad.interfaces.IMREvent"
       name="attendees_view"
       class=".attendees.AttendeesManagerView"
       permission="zope2.View"
       allowed_interface=".attendees.IAttendeesManagerView"
   />
-
-  <browser:page
-      for="Products.minaraad.interfaces.IHearing"
-      name="notify_registration"
-      class=".email_notifications.SubscriptionNotifyView"
-      permission="cmf.ManagePortal"
-    />
 
   <browser:page
       for="Products.minaraad.interfaces.IMREvent"
@@ -343,13 +321,6 @@
       permission="zope2.View"
       name="annualreport_view"
       template="annualreport_view.pt"
-      />
-
-  <browser:page
-      for="Products.minaraad.interfaces.IHearing"
-      permission="zope2.View"
-      name="hearing_view"
-      template="mrevent_view.pt"
       />
 
   <browser:page

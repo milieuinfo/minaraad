@@ -1017,8 +1017,6 @@ def update_attendees_to_anonymous(context):
     member_tool = getToolByName(context, 'portal_membership')
     brains = catalog.unrestrictedSearchResults(
         portal_type=[
-            # TODO  We have not adapted Hearing yet.  Also, Hearing should be
-            # migrated to MREvents.
             'Hearing',
             'MREvent',
             ])

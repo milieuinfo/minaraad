@@ -49,9 +49,5 @@
       <role name="Manager"/>
       <role name="Anonymous"/>
     </permission>
-    <permission name="minaraad: View Hearing Attendees" acquire="True">
-      <role name="Author"/>
-      <role name="Manager"/>
-    </permission>
   </permissions>
 </rolemap>

@@ -39,7 +39,6 @@ We'll try out the subscription process as the test user.
     >>> pprint(sm._getSubscriptions())
     [<Subscription: id=Advisory; False>,
      <Subscription: id=AnnualReport; False>,
-     <Subscription: id=Hearing; False>,
      <Subscription: id=MREvent; False>,
      <Subscription: id=NewsLetter; False>,
      <Subscription: id=Pressrelease; False>,
@@ -53,7 +52,6 @@ We subscribe to the annual reports by email.
     >>> pprint(sm._getSubscriptions())
     [<Subscription: id=Advisory; False>,
      <Subscription: id=AnnualReport; True>,
-     <Subscription: id=Hearing; False>,
      <Subscription: id=MREvent; False>,
      <Subscription: id=NewsLetter; False>,
      <Subscription: id=Pressrelease; False>,
@@ -61,7 +59,6 @@ We subscribe to the annual reports by email.
     >>> pprint(member.getProperty('subscriptions'))
     ('Advisory/0',
      'AnnualReport/1',
-     'Hearing/0',
      'MREvent/0',
      'NewsLetter/0',
      'Pressrelease/0',
@@ -82,7 +79,6 @@ the theme of the item that is requested::
     >>> pprint(sm._getSubscriptions())
     [<Subscription: id=Advisory; False>,
      <Subscription: id=AnnualReport; True>,
-     <Subscription: id=Hearing; False>,
      <Subscription: id=MREvent; False>,
      <Subscription: id=NewsLetter; False>,
      <Subscription: id=Pressrelease; False>,
@@ -90,7 +86,6 @@ the theme of the item that is requested::
     >>> pprint(member.getProperty('subscriptions'))
     ('Advisory/0',
      'AnnualReport/1',
-     'Hearing/0',
      'MREvent/0',
      'NewsLetter/0',
      'Pressrelease/0',

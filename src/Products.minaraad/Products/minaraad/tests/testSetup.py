@@ -60,7 +60,7 @@ class testSetup(MainTestCase):
         """
         """
         getChain = self.portal.portal_workflow.getChainForPortalType
-        self.failUnless('minaraad_workflow' in getChain('Hearing'))
+        self.failUnless('minaraad_workflow' in getChain('MREvent'))
 
     def test_reinstall(self):
         qi = self.portal.portal_quickinstaller

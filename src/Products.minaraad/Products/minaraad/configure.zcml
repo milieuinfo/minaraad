@@ -6,12 +6,8 @@
     xmlns:i18n="http://namespaces.zope.org/i18n"
     i18n_domain="minaraad">
 
+  <include package="Products.CMFCore" file="permissions.zcml" />
 
-  <include package="Products.CMFCore" file="permissions.zcml"
-           xmlns:zcml="http://namespaces.zope.org/zcml"
-           zcml:condition="have plone-41" />
-
-  <include file="permissions.zcml" />
   <include package=".browser" />
   <include package=".content" />
   <include package=".adapters" />

@@ -37,9 +37,6 @@
   </type>
   <type type_id="HeaderSet"/>
   <type type_id="HeaderSetFolder"/>
-  <type type_id="Hearing">
-   <bound-workflow workflow_id="minaraad_workflow"/>
-  </type>
   <type type_id="Image">
    <bound-workflow workflow_id="minaraad_workflow"/>
   </type>

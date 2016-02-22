@@ -30,7 +30,7 @@ base_meeting_schema = atapi.BaseFolderSchema.copy() + atapi.Schema((
 
 class BaseMeeting(atapi.BaseFolder):
     """ This class will be used by all meeting-like
-    objects (Meeting, Hearing, Event).
+    objects (Meeting, Event).
     It provides utilities some utilities:
     - finding agenda items
     - find the end time of the meeting by counting agenda item durations.

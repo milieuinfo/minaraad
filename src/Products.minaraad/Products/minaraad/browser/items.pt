@@ -13,7 +13,7 @@
         </tal:block>
       </tal:block>
 
-      <tal:block tal:condition="python:item.portal_type in ('MREvent', 'Hearing')">
+      <tal:block tal:condition="python:item.portal_type == 'MREvent'">
         <tal:block metal:use-macro="context/@@items/macros/event">
         </tal:block>
       </tal:block>
@@ -23,7 +23,7 @@
         </tal:block>
       </tal:block>
 
-      <tal:block tal:condition="python:item.portal_type not in ['Advisory', 'MREvent', 'Hearing', 'File', 'FileAttachment']">
+      <tal:block tal:condition="python:item.portal_type not in ['Advisory', 'MREvent', 'File', 'FileAttachment']">
         <tal:block metal:use-macro="context/@@items/macros/general_link" />
       </tal:block>
     </metal:items>

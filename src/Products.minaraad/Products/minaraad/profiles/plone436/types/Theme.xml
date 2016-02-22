@@ -13,7 +13,6 @@
  <property name="filter_content_types">True</property>
  <property name="allowed_content_types">
  <element value="Advisory"/>
- <element value="Hearing"/>
  <element value="MREvent"/>
  <element value="Study"/>
  </property>

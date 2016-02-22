@@ -95,7 +95,7 @@
 
                     <div class="sec-header">
                       <h2>
-                        <a tal:attributes="href string:${portal_url}/documenten#c1=&b_start=0&c2=Hearing&c2=MREvent">
+                        <a tal:attributes="href string:${portal_url}/documenten#c1=&b_start=0&c2=MREvent">
                           Agenda
                         </a>
                       </h2>
