@@ -61,7 +61,6 @@ class FacetedPortalTypesVocabulary(object):
             'MREvent': u'MREvent',
             'Study': u'Study',
             # 'DigiBib': u'DigiBib',
-            'Hearing': u'Hearing',
             # 'Project': u'Project',
             # 'Theme': u'Theme',
             # 'Pressrelease': u'Pressrelease',

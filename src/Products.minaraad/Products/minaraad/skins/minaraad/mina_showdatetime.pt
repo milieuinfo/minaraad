@@ -19,7 +19,7 @@
                 tal:omit-tag="">
                 <span class="hearingsubheader2"
                       i18n:translate="Date:"
-                      tal:condition="python:item_type in ('Hearing', 'MREvent')">Date:</span>
+                      tal:condition="python:item_type == 'MREvent'">Date:</span>
 
                 <tal:block tal:condition="python:start_day == end_day">
                     <span tal:replace="python:toLocalizedTime(start_day)" />

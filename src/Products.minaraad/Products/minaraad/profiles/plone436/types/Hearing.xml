@@ -5,6 +5,7 @@
 
  <property i18n:translate="" name="description"></property>
  <property name="icon_expr"></property>
+ <property name="global_allow">False</property>
  <property name="allowed_content_types">
   <element value="AgendaItem"/>
   <element value="File"/>

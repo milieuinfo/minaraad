@@ -13,6 +13,8 @@ from Products.Archetypes.utils import mapply
 from Products.Archetypes.utils import shasattr
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.utils import _createObjectByType
+from Products.contentmigration.archetypes import InplaceATFolderMigrator
+from Products.contentmigration.basemigrator.walker import CatalogWalker
 from Products.SimpleAttachment.setuphandlers import \
     registerImagesFormControllerActions
 from Products.minaraad.attendees import Attendee
@@ -71,9 +73,10 @@ E-mail: <a href="mailto:info@minaraad.be">info@minaraad.be</a></p>
 </ul>
 """
 
-### API keys
+# API keys
 EMBEDLY_API_KEY = "6516fa92558c4e57a29e71622263bfc5"
-#MAILCHIMP_API_KEY = "your_api_key"
+MAILCHIMP_API_KEY = ""
+
 
 def migrate_contacts(context):
     """ Split the contact field into Coordinator and Authors field.
@@ -1015,8 +1018,6 @@ def update_attendees_to_anonymous(context):
     member_tool = getToolByName(context, 'portal_membership')
     brains = catalog.unrestrictedSearchResults(
         portal_type=[
-            # TODO  We have not adapted Hearing yet.  Also, Hearing should be
-            # migrated to MREvents.
             'Hearing',
             'MREvent',
             ])
@@ -1134,6 +1135,7 @@ def remove_lots_of_users(context):
     mtool.deleteLocalRoles(portal, to_remove, reindex=1, recursive=1)
     logger.info('Done.')
 
+
 def setup_api_keys(context):
     """ setup api keys
 
@@ -1148,9 +1150,52 @@ def setup_api_keys(context):
         if embedly_settings:
             embedly_settings.api_key = unicode(EMBEDLY_API_KEY)
             logger.info("Set the embedly api-key")
+    else:
+        raise ValueError(
+            'Missing EMBEDLY_API_KEY in Products/minaraad/migration.py.')
 
     if MAILCHIMP_API_KEY:
         mailchimp_settings = registry.forInterface(IMailchimpSettings, False)
         if mailchimp_settings:
             mailchimp_settings.api_key = unicode(MAILCHIMP_API_KEY)
             logger.info("Set te mailchimp api-key")
+    else:
+        raise ValueError(
+            'Missing MAILCHIMP_API_KEY in Products/minaraad/migration.py.')
+
+
+def migrate_hearings_to_events(context):
+    portal = getToolByName(context, 'portal_url').getPortalObject()
+    catalog = getToolByName(portal, 'portal_catalog')
+    hearings = catalog.unrestrictedSearchResults(portal_type='Hearing')
+    if len(hearings) == 0:
+        logger.info('No hearings found, so no migration needed.')
+        return
+    events = catalog.unrestrictedSearchResults(portal_type='MREvent')
+    logger.info('Found %d hearings and %d events.', len(hearings), len(events))
+    logger.info('Migrating Hearing to MREvent. This can take a while...')
+
+    class HearingMigrator(InplaceATFolderMigrator):
+        src_portal_type = 'Hearing'
+        src_meta_type = 'Hearing'
+        dst_portal_type = 'MREvent'
+        dst_meta_type = 'MREvent'
+
+    walker = CatalogWalker(portal, HearingMigrator)
+    walker()
+    logger.info('Done migrating Hearing to MREvent.')
+    events = catalog.unrestrictedSearchResults(portal_type='MREvent')
+    hearings = catalog.unrestrictedSearchResults(portal_type='Hearing')
+    logger.info('Found %d hearings and %d events.', len(hearings), len(events))
+
+
+def update_reference_catalog(context):
+    # Migrated Hearings have duplicate coordinators and authors.  Best way to
+    # fix this is by updating the reference catalog.  This loses several dozen
+    # references more than I expect, but those were probably pointing to no
+    # longer existing content.
+    from Products.Archetypes.config import REFERENCE_CATALOG
+    from Products.ZCatalog.ProgressHandler import ZLogHandler
+    tool = getToolByName(context, REFERENCE_CATALOG)
+    handler = ZLogHandler(100)
+    tool.refreshCatalog(clear=1, pghandler=handler)

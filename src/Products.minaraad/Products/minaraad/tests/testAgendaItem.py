@@ -39,14 +39,14 @@ class testAgendaItem(MainTestCase):
             'manager', 'secret', ['Manager'], [])
         self.login('manager')
 
-        self.portal.hoorzittingen.invokeFactory('Hearing', 'myhoorzitting')
-        self.portal.hoorzittingen.myhoorzitting.invokeFactory(
+        self.portal.evenementen.invokeFactory('MREvent', 'mymrevent')
+        self.portal.evenementen.mymrevent.invokeFactory(
             'AgendaItem', 'myagendaitem')
-        self.agendaitem = self.portal.hoorzittingen.myhoorzitting.myagendaitem
+        self.agendaitem = self.portal.evenementen.mymrevent.myagendaitem
 
     def test_IllegalCreation(self):
         """ Test if you are not allowed to create this content type
-            if you are not inside a Hearing type
+            if you are not inside an MREvent type.
         """
 
         self.assertRaises(ValueError,

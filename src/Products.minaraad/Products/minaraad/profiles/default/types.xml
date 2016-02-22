@@ -4,7 +4,6 @@
  <object name="AgendaItem" meta_type="Factory-based Type Information"/>
  <object name="AnnualReport" meta_type="Factory-based Type Information"/>
  <object name="ContactPerson" meta_type="Factory-based Type Information"/>
- <object name="Hearing" meta_type="Factory-based Type Information"/>
  <object name="MREvent" meta_type="Factory-based Type Information"/>
  <object name="NewsItem" meta_type="Factory-based Type Information"/>
  <object name="NewsLetter" meta_type="Factory-based Type Information"/>

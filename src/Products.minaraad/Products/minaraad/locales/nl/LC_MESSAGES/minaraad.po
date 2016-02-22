@@ -121,7 +121,7 @@ msgstr "Locatie:"
 
 #: ./profiles/default/types/MREvent.xml
 msgid "MREvent"
-msgstr "Orientatiemoment"
+msgstr "Oriëntatiemoment"
 
 #: ./profiles.zcml:13
 msgid "Minaraad"

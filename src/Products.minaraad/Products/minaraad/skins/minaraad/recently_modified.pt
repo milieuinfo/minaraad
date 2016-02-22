@@ -9,7 +9,7 @@
   <body>
 
     <div metal:fill-slot="main"
-         tal:define="results python:container.portal_catalog.searchResults(portal_type=['Hearing', 'Advisory',
+         tal:define="results python:container.portal_catalog.searchResults(portal_type=['Advisory',
                          'Study', 'AnnualReport', 'Pressrelease', 'NewsLetter', 'Event', 'MREvent', 'Document'],
                          sort_on='effective', sort_order='reverse');
                      Batch python:modules['Products.CMFPlone'].Batch;

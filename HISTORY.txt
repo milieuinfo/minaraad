@@ -4,6 +4,12 @@ History of this buildout
 6.0.0 (unreleased)
 ------------------
 
+- Removed Hearings from most code: view registrations, conditions,
+  properties, permissions, tests.  We do keep the class, but you can
+  no longer add a Hearing.  MINA-99.  [maurits]
+
+- Added upgrade step to migrate Hearings to MREvents.  MINA-99.  [maurits]
+
 - Set digibib title inside the white background.  MINA-113.
 - Digibib Download link to red inside red framework. MINA-114.
   [lhuiskes]

@@ -17,7 +17,7 @@
                           src first_image/absolute_url"/>
       <div class="body">
         <p class="label">
-          Orientatiemoment&emsp;
+          Oriëntatiemoment&emsp;
           <span tal:content="context/getThemeTitle|nothing"></span>
         </p>
         <h3 tal:content="context/Title"></h3>

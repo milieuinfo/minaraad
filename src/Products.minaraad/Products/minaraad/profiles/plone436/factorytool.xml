@@ -5,7 +5,6 @@
   <type portal_type="AgendaItem"/>
   <type portal_type="AnnualReport"/>
   <type portal_type="ContactPerson"/>
-  <type portal_type="Hearing"/>
   <type portal_type="MREvent"/>
   <type portal_type="NewsItem"/>
   <type portal_type="NewsLetter"/>
