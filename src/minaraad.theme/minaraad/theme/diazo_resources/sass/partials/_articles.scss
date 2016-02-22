@@ -248,6 +248,11 @@
     section {
       border: 1px solid darken(white, 15);
       @include article-block-line-top($mina-blue);
+      &:after{
+        clear: both;
+        display: block;
+        content: "";
+      }
     }
     h3:first-child {
       padding-top: 0;

@@ -7951,6 +7951,10 @@ div.digibib_list {
   padding: 0 15px 1px 15px;
   background-color: white;
   margin-bottom: 15px; }
+  .article-advice-detail .body section:after, .article-event-detail .body section:after, .article-contact-detail .body section:after, .article-page-detail .body section:after, .plone-page-detail .body section:after {
+    clear: both;
+    display: block;
+    content: ""; }
 
 .article-advice-detail .body h3:first-child, .article-event-detail .body h3:first-child, .article-contact-detail .body h3:first-child, .article-page-detail .body h3:first-child, .plone-page-detail .body h3:first-child {
   padding-top: 0; }
