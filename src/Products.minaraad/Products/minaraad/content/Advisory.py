@@ -56,27 +56,26 @@ schema = atapi.Schema((
 
     atapi.TextField(
         name='popular_summary',
-        allowable_content_types=('text/html', ),
+        allowable_content_types=('text/html', 'text/plain'),
         widget=atapi.RichWidget(
             label=_('Popular summary'),
         ),
         default_content_type='text/html',
-        default_output_type='text/html',
+        default_output_type='text/x-html-safe',
     ),
 
     # Body (which already existed) serves as the summary (of the attachment,
     # summary is shown in the listings).
     atapi.TextField(
         name='body',
-        allowable_content_types=('text/html', 'text/plain', 'text/structured',
-                                 'application/msword', ),
+        allowable_content_types=('text/html', 'text/plain'),
         widget=atapi.RichWidget(
             label='Summary',
             label_msgid='minaraad_label_summary',
             i18n_domain='minaraad',
         ),
         default_content_type='text/html',
-        default_output_type='text/html',
+        default_output_type='text/x-html-safe',
     ),
     # Deprecated, can be removed after the final release
     ImageField(

@@ -8,6 +8,7 @@ from plone.i18n.normalizer import idnormalizer
 from plone.locking.interfaces import ILockable
 from plone.portlets.interfaces import IPortletAssignmentMapping
 from plone.portlets.interfaces import IPortletManager
+from plone.registry.interfaces import IRegistry
 from Products.Archetypes.utils import mapply
 from Products.Archetypes.utils import shasattr
 from Products.CMFCore.utils import getToolByName
@@ -24,6 +25,8 @@ from zope.component import getMultiAdapter
 from zope.component import getSiteManager
 from zope.component import getUtility
 from zope.container import contained
+from collective.embedly.interfaces import IEmbedlySettings
+from collective.mailchimp.interfaces import IMailchimpSettings
 import cStringIO
 import logging
 import transaction
@@ -68,6 +71,9 @@ E-mail: <a href="mailto:info@minaraad.be">info@minaraad.be</a></p>
 </ul>
 """
 
+### API keys
+EMBEDLY_API_KEY = "6516fa92558c4e57a29e71622263bfc5"
+#MAILCHIMP_API_KEY = "your_api_key"
 
 def migrate_contacts(context):
     """ Split the contact field into Coordinator and Authors field.
@@ -782,6 +788,7 @@ def apply_extra_product_profiles(context):
     profiles = [
         "profile-eea.facetednavigation:default",
         "profile-collective.mailchimp:default",
+        "profile-collective.embedly:default",
         "profile-minaraad.theme:default"]
 
     for profile_id in profiles:
@@ -1126,3 +1133,24 @@ def remove_lots_of_users(context):
     logger.info('About to delete local roles. This can take a while...')
     mtool.deleteLocalRoles(portal, to_remove, reindex=1, recursive=1)
     logger.info('Done.')
+
+def setup_api_keys(context):
+    """ setup api keys
+
+    Add mailchimp and embedly api_key settings.
+    Specify the keys EMBEDLY_API_KEY and MAILCHIMP_API_KEY at the top of this
+    document.
+    """
+    registry = getUtility(IRegistry)
+
+    if EMBEDLY_API_KEY:
+        embedly_settings = registry.forInterface(IEmbedlySettings, False)
+        if embedly_settings:
+            embedly_settings.api_key = unicode(EMBEDLY_API_KEY)
+            logger.info("Set the embedly api-key")
+
+    if MAILCHIMP_API_KEY:
+        mailchimp_settings = registry.forInterface(IMailchimpSettings, False)
+        if mailchimp_settings:
+            mailchimp_settings.api_key = unicode(MAILCHIMP_API_KEY)
+            logger.info("Set te mailchimp api-key")

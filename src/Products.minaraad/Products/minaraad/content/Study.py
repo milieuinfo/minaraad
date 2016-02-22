@@ -30,15 +30,14 @@ schema = atapi.Schema((
     # The summary field is called 'body' to be consistent with Advisory.
     atapi.TextField(
         name='body',
-        allowable_content_types=('text/html', 'text/plain', 'text/structured',
-                                 'application/msword', ),
+        allowable_content_types=('text/html', 'text/plain'),
         widget=atapi.RichWidget(
             label='Summary',
             label_msgid='minaraad_label_summary',
             i18n_domain='minaraad',
         ),
         default_content_type='text/html',
-        default_output_type='text/html',
+        default_output_type='text/x-html-safe',
     ),
 
     ImageField(

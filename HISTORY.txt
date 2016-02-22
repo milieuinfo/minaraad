@@ -8,6 +8,9 @@ History of this buildout
 - Digibib Download link to red inside red framework. MINA-114.
   [lhuiskes]
 
+- Set text/html as first option in body richwidget of theme.
+  [jladage]
+
 - Less padding on editbar. [jladage]
 
 - Made Hearing use the views and macros from MREvent.  Moved the
