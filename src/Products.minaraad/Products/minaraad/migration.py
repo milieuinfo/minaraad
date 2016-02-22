@@ -13,6 +13,8 @@ from Products.Archetypes.utils import mapply
 from Products.Archetypes.utils import shasattr
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.utils import _createObjectByType
+from Products.contentmigration.archetypes import InplaceATFolderMigrator
+from Products.contentmigration.basemigrator.walker import CatalogWalker
 from Products.SimpleAttachment.setuphandlers import \
     registerImagesFormControllerActions
 from Products.minaraad.attendees import Attendee
@@ -1134,6 +1136,7 @@ def remove_lots_of_users(context):
     mtool.deleteLocalRoles(portal, to_remove, reindex=1, recursive=1)
     logger.info('Done.')
 
+
 def setup_api_keys(context):
     """ setup api keys
 
@@ -1154,3 +1157,28 @@ def setup_api_keys(context):
         if mailchimp_settings:
             mailchimp_settings.api_key = unicode(MAILCHIMP_API_KEY)
             logger.info("Set te mailchimp api-key")
+
+
+def migrate_hearings_to_events(context):
+    portal = getToolByName(context, 'portal_url').getPortalObject()
+    catalog = getToolByName(portal, 'portal_catalog')
+    hearings = catalog.unrestrictedSearchResults(portal_type='Hearing')
+    if len(hearings) == 0:
+        logger.info('No hearings found, so no migration needed.')
+        return
+    events = catalog.unrestrictedSearchResults(portal_type='MREvent')
+    logger.info('Found %d hearings and %d events.', len(hearings), len(events))
+    logger.info('Migrating Hearing to MREvent. This can take a while...')
+
+    class HearingMigrator(InplaceATFolderMigrator):
+        src_portal_type = 'Hearing'
+        src_meta_type = 'Hearing'
+        dst_portal_type = 'MREvent'
+        dst_meta_type = 'MREvent'
+
+    walker = CatalogWalker(portal, HearingMigrator)
+    walker()
+    logger.info('Done migrating Hearing to MREvent.')
+    events = catalog.unrestrictedSearchResults(portal_type='MREvent')
+    hearings = catalog.unrestrictedSearchResults(portal_type='Hearing')
+    logger.info('Found %d hearings and %d events.', len(hearings), len(events))
