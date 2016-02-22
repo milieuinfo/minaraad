@@ -5,5 +5,6 @@
     <dependency>profile-eea.facetednavigation:default</dependency>
     <dependency>profile-collective.mailchimp:default</dependency>
     <dependency>profile-minaraad.theme:default</dependency>
+    <dependency>profile-plone.app.imagecropping:default</dependency>
   </dependencies>
 </metadata>
