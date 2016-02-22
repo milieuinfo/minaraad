@@ -78,7 +78,7 @@
           </header>
           <div class="body">
             <p class="label" tal:condition="show_theme_title|nothing">
-              Orientatiemoment&emsp;
+              Oriëntatiemoment&emsp;
               <span tal:content="item/getThemeTitle|nothing"></span>
             </p>
             <h3 tal:content="item/Title"></h3>
