@@ -53,7 +53,7 @@ schema = atapi.Schema((
             i18n_domain='minaraad',
         ),
         default_content_type='text/html',
-        default_output_type='text/html',
+        default_output_type='text/x-html-safe',
     ),
 
     ImageField(

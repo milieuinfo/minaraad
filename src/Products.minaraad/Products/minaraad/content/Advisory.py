@@ -61,7 +61,7 @@ schema = atapi.Schema((
             label=_('Popular summary'),
         ),
         default_content_type='text/html',
-        default_output_type='text/html',
+        default_output_type='text/x-html-safe',
     ),
 
     # Body (which already existed) serves as the summary (of the attachment,
@@ -76,7 +76,7 @@ schema = atapi.Schema((
             i18n_domain='minaraad',
         ),
         default_content_type='text/html',
-        default_output_type='text/html',
+        default_output_type='text/x-html-safe',
     ),
     # Deprecated, can be removed after the final release
     ImageField(
