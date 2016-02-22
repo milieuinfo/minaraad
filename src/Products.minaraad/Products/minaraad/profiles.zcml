@@ -466,6 +466,10 @@
     <gs:upgradeStep
         title="Migrate Hearings to MREvents."
         handler="Products.minaraad.migration.migrate_hearings_to_events" />
+    <gs:upgradeStep
+        title="Update reference catalog."
+        description="This deletes duplicates from the reference_catalog, introduced when migrating Hearings."
+        handler="Products.minaraad.migration.update_reference_catalog" />
   </gs:upgradeSteps>
 
 </configure>

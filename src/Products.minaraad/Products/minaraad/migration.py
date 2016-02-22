@@ -1182,3 +1182,15 @@ def migrate_hearings_to_events(context):
     events = catalog.unrestrictedSearchResults(portal_type='MREvent')
     hearings = catalog.unrestrictedSearchResults(portal_type='Hearing')
     logger.info('Found %d hearings and %d events.', len(hearings), len(events))
+
+
+def update_reference_catalog(context):
+    # Migrated Hearings have duplicate coordinators and authors.  Best way to
+    # fix this is by updating the reference catalog.  This loses several dozen
+    # references more than I expect, but those were probably pointing to no
+    # longer existing content.
+    from Products.Archetypes.config import REFERENCE_CATALOG
+    from Products.ZCatalog.ProgressHandler import ZLogHandler
+    tool = getToolByName(context, REFERENCE_CATALOG)
+    handler = ZLogHandler(100)
+    tool.refreshCatalog(clear=1, pghandler=handler)
