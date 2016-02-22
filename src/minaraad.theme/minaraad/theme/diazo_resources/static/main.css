@@ -7105,6 +7105,15 @@ nav.navbar {
     #global_statusmessage .portalMessage dd {
       background-color: transparent; }
 
+div#editbar-wrapper {
+  padding-top: 5px !important; }
+
+#edit-bar, #content-views {
+  margin-bottom: 7px !important; }
+
+dl.actionMenu {
+  margin-bottom: 10px !important; }
+
 @media (min-width: 480px) {
   .logobar button.navbar-toggle {
     position: relative;

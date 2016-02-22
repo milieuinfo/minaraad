@@ -4,6 +4,8 @@ History of this buildout
 6.0.0 (unreleased)
 ------------------
 
+- Less padding on editbar. [jladage]
+
 - Made Hearing use the views and macros from MREvent.  Moved the
   Hearing tests to the MREvent tests.  Part of MINA-99.  [maurits]
 
