@@ -56,7 +56,7 @@ schema = atapi.Schema((
 
     atapi.TextField(
         name='popular_summary',
-        allowable_content_types=('text/html', ),
+        allowable_content_types=('text/html', 'text/plain'),
         widget=atapi.RichWidget(
             label=_('Popular summary'),
         ),
@@ -68,8 +68,7 @@ schema = atapi.Schema((
     # summary is shown in the listings).
     atapi.TextField(
         name='body',
-        allowable_content_types=('text/html', 'text/plain', 'text/structured',
-                                 'application/msword', ),
+        allowable_content_types=('text/html', 'text/plain'),
         widget=atapi.RichWidget(
             label='Summary',
             label_msgid='minaraad_label_summary',

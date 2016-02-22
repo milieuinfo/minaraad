@@ -45,8 +45,7 @@ schema = atapi.Schema((
 
     atapi.TextField(
         name='body',
-        allowable_content_types=('text/plain', 'text/structured', 'text/html',
-                                 'application/msword'),
+        allowable_content_types=('text/html', 'text/plain'),
         widget=atapi.RichWidget(
             label='Body',
             label_msgid='minaraad_label_body',
