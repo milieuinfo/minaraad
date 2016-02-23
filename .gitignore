@@ -22,4 +22,5 @@ scripts/passwords.py
 var
 src/collective.mailchimp
 src/eea.facetednavigation
+src/plone.app.imagecropping
 src/Products.SimpleAttachment
