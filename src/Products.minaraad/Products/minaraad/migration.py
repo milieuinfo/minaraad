@@ -7,6 +7,7 @@ from persistent.list import PersistentList
 from PIL import Image
 from PIL import ImageColor
 from PIL import ImageDraw
+from PIL import ImageChops 
 from plone import api
 from plone.i18n.normalizer import idnormalizer
 from plone.locking.interfaces import ILockable
@@ -1226,3 +1227,77 @@ def update_reference_catalog(context):
     tool = getToolByName(context, REFERENCE_CATALOG)
     handler = ZLogHandler(100)
     tool.refreshCatalog(clear=1, pghandler=handler)
+
+
+def trim_image_whitespace(context):
+    """ trim_image_whitespace
+    the the whitespace of images.
+    """
+
+    def whitespace_trim(im, color_cutoff=20, max_border_width=10):
+        """ whitespace_trim
+        trim the white border from an image
+        color_cutoff parameter specifies how far off-white the border
+        can be.
+        if no white border is detected this function returns zero
+        """
+
+        # check if border is white(ish)
+        border_color = im.getpixel((0, 0))
+        if type(border_color) == int:
+            border_color = [border_color]
+        for color in border_color:
+            if color < 255 - color_cutoff:
+                return
+
+        # create blank image for comparing
+        def bbox_size(bbox):
+            if not bbox:
+                return
+            ret_value = (bbox[2]-bbox[0]) * (bbox[3]-bbox[1])
+            return ret_value
+        bbox = []
+        for corner in [(0,0), (im.size[0] - 1, im.size[1] - 1)]:
+            bg = Image.new(im.mode, im.size, im.getpixel(corner))
+            diff = ImageChops.difference(im, bg)
+            diff = ImageChops.add(diff, diff, 2.0, -40)
+            potential_bbox = diff.getbbox()
+            if bbox_size(potential_bbox) < bbox_size(bbox) or not bbox:
+                bbox = potential_bbox
+        if not bbox:
+            return
+
+        # get the width of the border
+        border_width = max(bbox[0], bbox[1],
+                bbox[2] - im.size[0], bbox[3] - im.size[1])
+
+        if bbox[:2] == (0,0) and bbox[2:] == im.size:
+            return
+
+        # return cropped image if border is smaller than max_border_width
+        if border_width <= max_border_width:
+            return im.crop(bbox)
+
+    catalog = getToolByName(context, 'portal_catalog')
+    brains = catalog.searchResults(portal_type=['Image', 'ImageAttachment'])
+
+    for image in brains:
+        img = cStringIO.StringIO(str(image.getObject().getImage().data))
+        img = Image.open(img)
+        img_orig = img
+        if not img:
+            continue
+        trimmed = False
+        for depth in range(3):
+            tmp = whitespace_trim(img)
+            if not tmp:
+                break
+            trimmed = True
+            img = tmp
+        if trimmed:
+            logger.info("trimming %s" % image.getObject().Title())
+            output = cStringIO.StringIO()
+            img.save(output, img_orig.format)
+            image.getObject().setImage(output.getvalue())
+            output.close()
+        img.close()
