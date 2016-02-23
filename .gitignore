@@ -22,3 +22,4 @@ scripts/passwords.py
 var
 src/collective.mailchimp
 src/eea.facetednavigation
+src/Products.SimpleAttachment

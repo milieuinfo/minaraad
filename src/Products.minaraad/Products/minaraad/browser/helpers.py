@@ -121,7 +121,12 @@ class HelpersView(BrowserView):
     def submenu_items(self):
         """ Return a set of sub folders for a given context
         """
-        over = api.portal.get()['over-de-minaraad']
+        portal = api.portal.get()
+        try:
+            over = portal['over-de-minaraad']
+        except KeyError:
+            # Probably creating a separate Plone Site as test.
+            return []
         objPhysicalPath = self.context.getPhysicalPath()
         objPath = '/'.join(objPhysicalPath)
         brains = api.content.find(

@@ -792,6 +792,7 @@ def apply_extra_product_profiles(context):
         "profile-eea.facetednavigation:default",
         "profile-collective.mailchimp:default",
         "profile-collective.embedly:default",
+        "profile-plone.app.imagecropping:default",
         "profile-minaraad.theme:default"]
 
     for profile_id in profiles:
