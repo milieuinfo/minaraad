@@ -639,7 +639,7 @@ msgstr "Bijlagen tonen"
 #. Default: "Display images"
 #: ./ImageAttachmentsmixin.py:14
 msgid "minaraad_label_displayImages"
-msgstr ""
+msgstr "Afbeeldingen tonen"
 
 #. Default: "Email"
 #: content/ContactPerson.py
