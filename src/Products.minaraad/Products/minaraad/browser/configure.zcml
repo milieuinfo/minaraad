@@ -338,13 +338,6 @@
       />
 
   <browser:page
-      for="Products.SimpleAttachment.interfaces.IFileAttachment"
-      permission="zope2.View"
-      name="fileattachment_view"
-      template="fileattachment_view.pt"
-      />
-
-  <browser:page
       for="*"
       permission="zope.Public"
       name="header-image-css"
