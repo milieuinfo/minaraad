@@ -470,6 +470,10 @@
         title="Update reference catalog."
         description="This deletes duplicates from the reference_catalog, introduced when migrating Hearings."
         handler="Products.minaraad.migration.update_reference_catalog" />
+    <gs:upgradeDepends
+        title="Update typeinfo of SimpleAttachment"
+        import_profile="Products.SimpleAttachment:default"
+        import_steps="typeinfo" />
   </gs:upgradeSteps>
 
 </configure>
