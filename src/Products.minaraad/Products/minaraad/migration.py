@@ -1,8 +1,12 @@
 # -*- coding: utf-8 -*-
 
 from Acquisition import aq_parent
+from collective.embedly.interfaces import IEmbedlySettings
+from collective.mailchimp.interfaces import IMailchimpSettings
 from persistent.list import PersistentList
-from PIL import Image, ImageDraw, ImageColor
+from PIL import Image
+from PIL import ImageColor
+from PIL import ImageDraw
 from plone import api
 from plone.i18n.normalizer import idnormalizer
 from plone.locking.interfaces import ILockable
@@ -11,24 +15,24 @@ from plone.portlets.interfaces import IPortletManager
 from plone.registry.interfaces import IRegistry
 from Products.Archetypes.utils import mapply
 from Products.Archetypes.utils import shasattr
+from Products.CMFCore.interfaces import IPropertiesTool
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.utils import _createObjectByType
 from Products.contentmigration.archetypes import InplaceATFolderMigrator
 from Products.contentmigration.basemigrator.walker import CatalogWalker
-from Products.SimpleAttachment.setuphandlers import \
-    registerImagesFormControllerActions
 from Products.minaraad.attendees import Attendee
 from Products.minaraad.content.interfaces import IUseContact
 from Products.minaraad.events import save_theme_name
 from Products.minaraad.interfaces import IAttendeeManager
+from Products.SimpleAttachment.setuphandlers import registerImagesFormControllerActions  # noqa
 from Products.ZCatalog.ProgressHandler import ZLogHandler
 from random import choice
 from zope.component import getMultiAdapter
 from zope.component import getSiteManager
 from zope.component import getUtility
+from zope.component import queryUtility
 from zope.container import contained
-from collective.embedly.interfaces import IEmbedlySettings
-from collective.mailchimp.interfaces import IMailchimpSettings
+
 import cStringIO
 import logging
 import transaction
@@ -76,6 +80,28 @@ E-mail: <a href="mailto:info@minaraad.be">info@minaraad.be</a></p>
 # API keys
 EMBEDLY_API_KEY = "6516fa92558c4e57a29e71622263bfc5"
 MAILCHIMP_API_KEY = "3da524051a2e46d5408de7c53d61e1e3-us12"
+
+
+def set_link_integrity_checking(context, value):
+    ptool = getToolByName(context, 'portal_properties')
+    props = getattr(ptool, 'site_properties', None)
+    if props is not None:
+        props._updateProperty('enable_link_integrity_checks', value)
+
+
+def enable_link_integrity_checking(context):
+    # This is the default on the live site.
+    set_link_integrity_checking(context, True)
+    logger.info('Enabled link integrity checking.')
+
+
+def disable_link_integrity_checking(context):
+    # During migrations, link integrity checking is just in the way, especially
+    # when you are migrating content in place: the content will be gone for a
+    # millisecond and then return, so you don't want link interity checking to
+    # come in and spoil the party.
+    set_link_integrity_checking(context, False)
+    logger.info('Disabled link integrity checking.')
 
 
 def migrate_contacts(context):

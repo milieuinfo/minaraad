@@ -372,6 +372,10 @@
       destination="5025"
       profile="Products.minaraad:default">
     <gs:upgradeStep
+        title="Disable link integrity checking."
+        description="This is temporarily for the migration"
+        handler="Products.minaraad.migration.disable_link_integrity_checking" />
+    <gs:upgradeStep
         title="Apply extra product profiles"
         description="Apply extra product profiles."
         handler="Products.minaraad.migration.apply_extra_product_profiles" />
@@ -474,6 +478,12 @@
         title="Update typeinfo of SimpleAttachment"
         import_profile="Products.SimpleAttachment:default"
         import_steps="typeinfo" />
+
+    <!-- KEEP THIS AS LAST ONE! -->
+    <gs:upgradeStep
+        title="Re-enable link integrity checking."
+        description="This was temporarily disabled for the migration, but we re-enable it at the very end."
+        handler="Products.minaraad.migration.enable_link_integrity_checking" />
   </gs:upgradeSteps>
 
 </configure>

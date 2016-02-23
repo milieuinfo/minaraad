@@ -4,7 +4,10 @@ History of this buildout
 6.0.0 (unreleased)
 ------------------
 
-- Readd Hearing to Theme allowed_content_types, otherwise migration 
+- Disabled link integrity checking at the beginning of the migration.
+  Re-enabled it at the end.  [maurits]
+
+- Readd Hearing to Theme allowed_content_types, otherwise migration
   fails. [jladage]
 
 - Add MAILCHIMP_API_KEY. [jladage]
