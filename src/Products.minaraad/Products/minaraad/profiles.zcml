@@ -486,7 +486,6 @@
         title="Re-enable link integrity checking."
         description="This was temporarily disabled for the migration, but we re-enable it at the very end."
         handler="Products.minaraad.migration.enable_link_integrity_checking" />
-
   </gs:upgradeSteps>
 
 </configure>
