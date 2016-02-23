@@ -2,16 +2,17 @@
 from AccessControl import ClassSecurityInfo
 from Products.Archetypes import atapi
 from Products.CMFPlone.interfaces import INonStructuralFolder
-from zope.interface import implements
+from Products.minaraad import MinaraadMessageFactory as _
 from Products.SimpleAttachment.widget import ImagesManagerWidget
+from zope.interface import implements
+
 
 schema = atapi.Schema((
     atapi.BooleanField(
         name='displayImages',
         widget=ImagesManagerWidget(
-            label='Displayimages',
-            label_msgid='minaraad_label_displayImages',
-            i18n_domain='minaraad',
+            label=_(u'minaraad_label_displayImages',
+                    default=u'Display images'),
         )
     ),
 ),
