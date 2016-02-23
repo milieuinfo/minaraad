@@ -227,34 +227,6 @@
       template="duplicates.pt"
       />
 
-  <!-- html view for regular files -->
-  <browser:page
-      for="Products.ATContentTypes.content.file.ATFile"
-      name="attachment_as_html"
-      class=".attachmenthtml.AttachmentHtmlView"
-      allowed_attributes="extract_html"
-      permission="zope2.View"
-      template="attachmenthtml.pt"
-      />
-  <!-- html view for attachments -->
-  <browser:page
-      for="Products.SimpleAttachment.content.file.FileAttachment"
-      name="attachment_as_html"
-      class=".attachmenthtml.AttachmentHtmlView"
-      allowed_attributes="extract_html"
-      permission="zope2.View"
-      template="attachmenthtml.pt"
-      />
-  <!-- html view for attachment fields -->
-  <browser:page
-      for="Products.minaraad.content.AnnualReport.AnnualReport"
-      name="attachment_as_html"
-      class=".attachmenthtml.AttachmentFieldHtmlView"
-      allowed_attributes="extract_html"
-      permission="zope2.View"
-      template="attachmenthtml.pt"
-      />
-
   <browser:page
       name="list_contact_persons"
       for="*"
