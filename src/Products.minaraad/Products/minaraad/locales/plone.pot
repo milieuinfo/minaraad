@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minaraad\n"
-"POT-Creation-Date: 2016-02-08 15:23+0000\n"
+"POT-Creation-Date: 2016-02-23 17:17+0000\n"
 "PO-Revision-Date: 2008-12-03 17:07+0100\n"
 "Last-Translator: Maurits van Rees <m.van.rees@zestsoftware.nl>\n"
 "Language-Team: Zest Software <info@zestsoftware.nl>\n"
@@ -64,10 +64,6 @@ msgstr ""
 msgid "AgendaItem"
 msgstr ""
 
-#: profiles/default/types/News_Item.xml
-msgid "An announcement that will show up on the news portlet and in the news listing."
-msgstr ""
-
 msgid "AnnualReport"
 msgstr ""
 
@@ -121,6 +117,7 @@ msgid "File Attachment workflow"
 msgstr ""
 
 #: profiles/default/types/Folder.xml
+#: profiles/plone436/types/Folder.xml
 msgid "Folder"
 msgstr ""
 
@@ -138,10 +135,6 @@ msgstr ""
 
 #: profiles/default/types/News_Item.xml
 msgid "History"
-msgstr ""
-
-#: profiles/default/types/File.xml
-msgid "Lets you upload a file to the site."
 msgstr ""
 
 #: profiles/plone41/portlets.xml
