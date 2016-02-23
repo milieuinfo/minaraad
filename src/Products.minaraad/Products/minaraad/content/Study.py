@@ -80,10 +80,15 @@ schema = atapi.Schema((
 
 
 Study_schema = (
-    schema.copy() +
     getattr(Attachmentsmixin, 'schema', atapi.Schema(())).copy() +
     getattr(ImageAttachmentsmixin, 'schema', atapi.Schema(())).copy() +
+    schema.copy() +
     contacts_schema.copy())
+
+Study_schema.moveField('displayAttachments', after="body")
+Study_schema.moveField('displayImages', after='displayAttachments')
+Study_schema.moveField('coordinator', after="displayImages")
+Study_schema.moveField('authors', after="coordinator")
 
 
 class Study(Attachmentsmixin, ThemeParentMixin):
