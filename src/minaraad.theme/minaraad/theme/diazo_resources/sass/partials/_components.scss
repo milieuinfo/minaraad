@@ -572,6 +572,44 @@ div.digibib_list{
 //  }
 }
 
+.template-quickedit{
+  #content{
+    background: white;
+    padding: 20px;
+  }
+  .pfg-form{
+    float: none;
+    width: 100%;
+    border-top: 5px solid $mina-blue;
+    background: $mina-blue-light-1;
+    .theader{
+      div, th{
+        background: $mina-blue-light-1;
+        border: none;
+        color: white;
+      }
+    }
+    input[type="radio"], input[type="checkbox"]{
+      margin-right: 5px;
+    }
+    .field{
+      clear: none;
+    }
+    #pfg-qetable, #pfgActionEdit{
+      .qefield{
+        margin: 0;
+        width: 100% !important;
+        &:nth-child(even) {background: $mina-blue-light-3 !important;}
+        &:nth-child(odd) {background: $mina-blue-light-4 !important;}
+      }
+    }
+    #pfgThanksEdit{
+      .even{background: $mina-blue-light-3 !important;}
+      .odd{background: $mina-blue-light-4 !important;}
+    }
+  }
+}
+
 
 .pfg-minaraad_form {
   border: 1px solid darken(white, 15);

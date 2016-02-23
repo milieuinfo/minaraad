@@ -4,6 +4,8 @@ History of this buildout
 6.0.0 (unreleased)
 ------------------
 
+- Forms quickedit styling.  MINA-106  [lhuiskes]
+
 - Removed Hearings from most code: view registrations, conditions,
   properties, permissions, tests.  We do keep the class, but you can
   no longer add a Hearing.  MINA-99.  [maurits]
