@@ -24,8 +24,9 @@
 // Uncomment *only* the required style imports.
 
 // Core variables and mixins
-//@import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/variables";
-//@import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins";
+@import "custom_bootstrap/variables"; 
+@import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/variables";
+@import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins";
 
 // Reset and dependencies
 //@import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/normalize";
@@ -34,7 +35,7 @@
 
 // Core CSS
 //@import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/scaffolding";
-//@import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/type";
+@import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/type";
 //@import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/code";
 //@import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/grid";
 //@import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/tables";

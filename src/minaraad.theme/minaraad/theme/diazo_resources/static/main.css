@@ -7988,6 +7988,9 @@ div.digibib_list {
 .article-advice-detail .body h3:first-child, .article-event-detail .body h3:first-child, .article-contact-detail .body h3:first-child, .article-page-detail .body h3:first-child, .plone-page-detail .body h3:first-child {
   padding-top: 0; }
 
+.plone-page-detail h1, .plone-page-detail .h1 {
+  font-size: 36px; }
+
 .plone-page-detail h2, .plone-page-detail .h2 {
   font-size: 30px; }
 
