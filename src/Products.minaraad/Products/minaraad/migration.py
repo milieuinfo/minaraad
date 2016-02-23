@@ -7,7 +7,7 @@ from persistent.list import PersistentList
 from PIL import Image
 from PIL import ImageColor
 from PIL import ImageDraw
-from PIL import ImageChops 
+from PIL import ImageChops
 from plone import api
 from plone.i18n.normalizer import idnormalizer
 from plone.locking.interfaces import ILockable
@@ -1301,3 +1301,9 @@ def trim_image_whitespace(context):
             image.getObject().setImage(output.getvalue())
             output.close()
         img.close()
+
+
+def upgrade_simple_attachment(context):
+    installer = getToolByName(context, 'portal_quickinstaller')
+    installer.upgradeProduct('Products.SimpleAttachment')
+    logger.info("Upgraded Products.SimpleAttachment.")
