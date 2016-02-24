@@ -4,6 +4,8 @@ History of this buildout
 6.0.0 (unreleased)
 ------------------
 
+- Changed the path at which we load fonts.  [maurits]
+
 - Use much newer zc.buildout, setuptools and bootstrap.py versions.
   You need to run python2.7 bootstrap.py.  [maurits]
 
