@@ -31,7 +31,7 @@
 // Reset and dependencies
 //@import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/normalize";
 //@import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/print";
-//@import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/glyphicons";
+@import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/glyphicons";
 
 // Core CSS
 //@import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/scaffolding";
@@ -80,12 +80,23 @@
 //
 //  The body copy styles as defined in the main.scss. Eg:
 //
-//  * { ... }
-//  body { ... }
-//  p { ... }
-//  a { ... }
-//  .lead { ... }
+.image-left{
+  float: left;
+  margin: 0.5em 1em 0.5em 0;
+}
+.image-right{
+  float: right;
+  margin: 0.5em;
+}
 
+#content .visualHighlight, .portletStaticText .visualHighlight {
+    background-color: #ffb;
+}
+#content .discreet, #sidebar .discreet, .portletStaticText .discreet {
+    color: #666;
+    font-size: 85%;
+    font-weight: normal;
+}
 
 //
 // Load main css into Tiny

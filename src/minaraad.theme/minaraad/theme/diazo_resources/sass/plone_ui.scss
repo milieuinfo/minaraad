@@ -183,6 +183,11 @@ nav ul{
   }
 }
 
+#content .pullquote, .portletStaticText .pullquote{
+  width: auto;
+}
+
+
 // Homepage fix columns width, this doesnt work really nice with the @extend .row since all the @extend classes with .row also triggers this
 // .template-homepage div.row, .template-homepage div.masonry-documents, .template-homepage div#digibib_view, .template-homepage .images div.thumbnails, .images .template-homepage div.thumbnails
 // It doesnt break anything it just doesnt look correct...

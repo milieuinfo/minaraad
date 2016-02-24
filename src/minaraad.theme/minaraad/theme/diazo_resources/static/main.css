@@ -8301,6 +8301,9 @@ nav ul {
   .photoAlbumEntry a {
     height: auto; }
 
+#content .pullquote, .portletStaticText .pullquote {
+  width: auto; }
+
 .template-homepage div.row, .template-homepage div.masonry-documents, .template-homepage div#digibib_view, .template-homepage .images div.thumbnails, .images .template-homepage div.thumbnails {
   width: initial; }
 
