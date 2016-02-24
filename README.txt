@@ -2,11 +2,11 @@
 Using this buildout
 ===================
 
-For general comments about using buildout see the file
-``buildout.txt`` and http://plone.org/documentation/tutorial/buildout
+For general comments about using buildout see
+http://plone.org/documentation/tutorial/buildout
 
 
-Note on cronjob for production
+Note on passwords for cronjobs
 ------------------------------
 
 Copy scripts/passwords.py.in to scripts/passwords.py and adapt.
@@ -30,8 +30,9 @@ should copy the sample buildout.cfg.in file to buildout.cfg::
  $ cp buildout.cfg.in buildout.cfg
 
 Then edit the buildout.cfg file and follow the inline instructions in
-that file.  You should at least make sure you extend devel.cfg,
-ontwikkel.cfg, oefen.cfg or productie.cfg.
+that file.  You should at least make sure you extend either devel.cfg,
+ontwikkel.cfg, oefen.cfg or productie.cfg and probably set a password
+for the database.
 
 Any other .cfg files you see are used by devel/ontwikkel/oefen/productie.cfg
 and should not be used directly.
@@ -47,7 +48,7 @@ Now, you need to run:
 
 This will install the bin/buildout script for you.
 
-To create an instance you now run:
+To create a Zope instance you now run:
 
  $ bin/buildout
 
@@ -70,6 +71,23 @@ on oefen/productie this is available)::
  $ bin/supervisord
 
 
+Problem: the site keeps restarting
+----------------------------------
+
+If you run ``bin/supervisord`` and the site keeps on restarting, then
+there is probably some error that is hard to find with supervisor.  So
+shut it down and start the instance on the foreground:
+
+  $ bin/supervisorctl shutdown
+  $ bin/instance fg
+
+This will start the site in debug mode and we expect that this will
+print an error after a while.  That should give you an idea of what is
+actually wrong.  If you do not know what to do with this, copy the
+output of the 'bin/instance fg' command and send an email to
+support@zestsoftware.nl.
+
+
 Upgrading an oefen/productie buildout
 -------------------------------------
 
@@ -84,10 +102,13 @@ Anyway, now we stop the instance with supervisor::
 
  $ bin/supervisorctl shutdown
 
-Now switch the buildout to the tag given by Zest, e.g.::
+Fetch the code changes from version control::
 
  $ git fetch
- $ git checkout 5.1.13
+
+Now switch the buildout to the tag given by Zest, e.g.::
+
+ $ git checkout 6.0.0
 
 Run bin/buildout::
 
@@ -103,9 +124,6 @@ Watch for any errors in the instance logfile::
 
  $ tail -f var/log/instance.log
 
-Now you may need to (re)install some products in the Plone Site
-control panel.  If unsure, ask Zest Software.
-
-
-For general comments about using buildout see the file
-``buildout.txt`` and http://plone.org/documentation/tutorial/buildout
+Now you may need to run some upgrade steps or install some products in
+the Plone Site control panel.  See the ZEST_RELEASE_NOTES.txt file.
+If unsure, ask Zest Software.
