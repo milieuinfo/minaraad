@@ -4,6 +4,8 @@ History of this buildout
 6.0.0 (unreleased)
 ------------------
 
+- Also recatalog FileAttachment to fix getIcon metadata. [jladage]
+
 - Use fresh Products.SimpleAttachment 5.0.0.  [maurits]
 
 - Add class lead to tinymce styles menu. MINA-116  [jladage]
