@@ -1026,6 +1026,8 @@ def update_catalog_metadata(context):
         'NewsItem',
         'AnnualReport',
         'ContactPerson',
+        'FileAttachment',
+        'File',
         ])
     for brain in brains:
         obj = brain.getObject()
