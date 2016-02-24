@@ -18,9 +18,16 @@ $ chmod 600 passwords.py
 Getting started
 ---------------
 
-Get the code, currently from here:
+Get the code.  On the server:
+
+ $ git clone https://git.milieuinfo.be/scm/mina/minaraad.git
+
+On your laptop for development:
 
  $ git clone git@bitbucket.org:zestsoftware/minaraad.git
+
+Go the the new directory:
+
  $ cd minaraad
 
 The first thing you need to do is decide if you are going to use this

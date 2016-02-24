@@ -1,8 +1,8 @@
-Notes on Minaraad migration Plone 4.3.6 (january 2016)
-======================================================
+Notes on Minaraad migration Plone 4.3.6 (February 2016)
+=======================================================
 
-Pre upgrade
-===========
+Pre upgrade TODO for Minaraad itself (Jurgen)
+=============================================
 
 Download subscribers to newsletter
 ---------------------------------
@@ -26,6 +26,128 @@ Embedly
 
 Upgrade
 =======
+
+Stop the site
+-------------
+
+ $ cd buildout
+ $ bin/supervisorctl shutdown
+
+subversion to git
+-----------------
+
+The code used to be in subversion, but it is moved to git.  So we need
+to switch the current checkout.  Best is to clone git in a separate
+directory first.
+
+ $ cd
+ $ git clone https://git.milieuinfo.be/scm/mina/minaraad.git
+ $ cd minaraad
+ $ git checkout 6.0.0  # Or whatever the latest tag is.
+
+Go back to the old subversion checkout and check if there are local
+changes, which would be unexpected and will be lost::
+
+ $ cd ~/buildout
+ $ svn info
+ $ svn status
+
+Now replace it with the git checkout::
+
+ $ cp -a ~/minaraad/.git .
+ $ rm -rf .svn
+ $ git checkout -- .
+
+There will be various files that were previously in subversion and are
+no longer needed in the new git tag.  You must remove them.  This is
+easiest done interactively::
+
+ $ git clean -i
+
+This will show you what would be removed.  Press c or 1 to remove the indicated files.
+Check again.  You probably need to remove the resources directory manually::
+
+ $ git status
+ $ rm -rf resources
+ $ git status  # Should now really not complain anymore.
+
+
+Buildout
+--------
+
+Double check that the buildout.cfg file (which is not version
+controlled) is still correct.  Read the inline instructions and
+compare it with the sample buildout.cfg.in file.  You need to choose
+an 'extends' file, possibly enable some parts, and set the postgres
+database password.  But likely this is fine: the sample
+buildout.cfg.in has not changed since September 2015.
+
+You need to run a fresh bootstrap and buildout::
+
+ $ python2.7 bootstrap.py
+ $ bin/buildout
+
+This can take a while...  When this exits without errors, first try if
+the instance start without problem on the foreground:
+
+ $ bin/instance fg
+
+When this gives no problems, and you can visit the root of the site at
+http://server:8080, the buildout part has worked on this machine.
+
+You could stop the instance with CTRL-C and start bin/supervisord now,
+but let's continue with the instance in foreground, mostly so that no
+traffic can come in via the varnish cache server.
+
+
+Second server
+-------------
+
+Now do the same steps on the second server:
+- stop the site
+- switch to git
+- run the buildout
+- start the instance on the foreground.
+
+While the buildout on the second server is busy installing stuff, you
+can return to the first server to do some actions in your browser.
+
+Update Plone in the browser
+---------------------------
+
+Rules:
+
+1. You must be the only person accessing the site at this point.  So
+   only one of the two instances should be running.  And visitors to
+   www.minaraad.be should not end up at the site, but get a warning
+   page or 404 or whatever.
+
+2. Access the site directly via port 8080.  Do not go through the
+   varnish cache server.  Do no go through Apache, nginx, or any other
+   web server: you will just get timeouts as some of the actions are
+   just a push on a button in the browser, but the Zope instance will
+   be very busy for several minutes.
+
+Upgrade steps:
+
+- Login at http://localhost:8080/manage_main
+
+- Go to the minaraad Plone Site and click the Plone Upgrade link near
+  the top: http://localhost:8080/minaraad/@@plone-upgrade
+
+- Go to portal_setup, Upgrades tab:
+  http://localhost:8080/minaraad/portal_setup/manage_upgrades
+
+- Select the Products.minaraad:default profile.
+
+- Run the upgrades.  This takes long.  You can keep an eye on
+  ~/buildout/var/log/instance.log, or simply on the terminal if the
+  instance is running in the foreground.
+
+- Visit the homepage to check if this shows up fine.
+
+- If the instance is running in the foreground, you can stop it now
+  and start bin/supervisord instead.
 
 
 Post upgrade
