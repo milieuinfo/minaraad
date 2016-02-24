@@ -56,7 +56,14 @@
                class="btn btn-primary btn-sm"><i class="fa fa-sign-in"></i> Login</a></p>
           <p tal:condition="not:anonymous" id="logout_link">
             <a href="/logout"
-               class="btn btn-primary btn-sm"><i class="fa fa-sign-out"></i> Logout</a></p>
+               tal:attributes="href string:${portal_url}"
+               class="btn btn-primary btn-sm"><i class="fa fa-sign-out"></i> Uitloggen</a>
+          </p>
+          <p tal:condition="python:context.portal_membership.getAuthenticatedMember().has_role('Manager')">
+            <a href="#"
+               tal:attributes="href string:${portal_url}/plone_control_panel">
+               <i class="fa fa-gear"></i> Website instelling</a>
+          </p>
       </div>
 
       <div class="column contact">
