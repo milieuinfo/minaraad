@@ -7759,10 +7759,11 @@ div.digibib_list {
 .template-quickedit #content {
   background: white;
   padding: 20px; }
+  .template-quickedit #content p {
+    width: 100%;
+    clear: both; }
 
 .template-quickedit .pfg-form {
-  float: none;
-  width: 100%;
   border-top: 5px solid #2e94bd;
   background: #7db2c9; }
   .template-quickedit .pfg-form .theader div, .template-quickedit .pfg-form .theader th {
@@ -7780,10 +7781,12 @@ div.digibib_list {
       background: #deedf2 !important; }
     .template-quickedit .pfg-form #pfg-qetable .qefield:nth-child(odd), .template-quickedit .pfg-form #pfgActionEdit .qefield:nth-child(odd) {
       background: #edf5f7 !important; }
-  .template-quickedit .pfg-form #pfgThanksEdit .even {
-    background: #deedf2 !important; }
-  .template-quickedit .pfg-form #pfgThanksEdit .odd {
-    background: #edf5f7 !important; }
+  .template-quickedit .pfg-form #pfgThanksEdit {
+    width: 100%; }
+    .template-quickedit .pfg-form #pfgThanksEdit .even {
+      background: #deedf2 !important; }
+    .template-quickedit .pfg-form #pfgThanksEdit .odd {
+      background: #edf5f7 !important; }
 
 .pfg-minaraad_form {
   border: 1px solid #d9d9d9;

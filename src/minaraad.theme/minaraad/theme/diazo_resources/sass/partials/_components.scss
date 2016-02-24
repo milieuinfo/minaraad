@@ -576,10 +576,12 @@ div.digibib_list{
   #content{
     background: white;
     padding: 20px;
+    p{
+      width: 100%;
+      clear: both;
+    }
   }
   .pfg-form{
-    float: none;
-    width: 100%;
     border-top: 5px solid $mina-blue;
     background: $mina-blue-light-1;
     .theader{
@@ -604,6 +606,7 @@ div.digibib_list{
       }
     }
     #pfgThanksEdit{
+      width: 100%;
       .even{background: $mina-blue-light-3 !important;}
       .odd{background: $mina-blue-light-4 !important;}
     }
