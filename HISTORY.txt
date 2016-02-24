@@ -4,6 +4,11 @@ History of this buildout
 6.0.0 (unreleased)
 ------------------
 
+- Let ontwikkel.cfg extend productie.cfg.  We used to extend
+  devel.cfg, but we do not want to do development there, and do not
+  want to extend nodejs.cfg as this does not work on the servers.
+  [maurits]
+
 - Also recatalog FileAttachment to fix getIcon metadata. [jladage]
 
 - Use fresh Products.SimpleAttachment 5.0.0.  [maurits]
