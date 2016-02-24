@@ -14,4 +14,92 @@
    <element value="Hearing" remove="True"/>
   </property>
  </object>
+ <object name="seo_properties" meta_type="Plone Property Sheet">
+  <property name="stop_words" type="lines">
+   <element value="een"/>
+   <element value="en"/>
+   <element value="als"/>
+   <element value="op"/>
+   <element value="is"/>
+   <element value="zijn"/>
+   <element value="zo"/>
+   <element value="om"/>
+   <element value="ben"/>
+   <element value="maar"/>
+   <element value="door"/>
+   <element value="kan"/>
+   <element value="kom"/>
+   <element value="doe"/>
+   <element value="font"/>
+   <element value="voor"/>
+   <element value="van"/>
+   <element value="gif"/>
+   <element value="had"/>
+   <element value="hadden"/>
+   <element value="heeft"/>
+   <element value="hebben"/>
+   <element value="hij"/>
+   <element value="helvetica"/>
+   <element value="haar"/>
+   <element value="hoe"/>
+   <element value="dan"/>
+   <element value="a"/>
+   <element value="p"/>
+   <element value="png"/>
+   <element value="pdf"/>
+   <element value="li"/>
+   <element value="ul"/>
+   <element value="ol"/>
+   <element value="div"/>
+   <element value="href"/>
+   <element value="i"/>
+   <element value="in"/>
+   <element value="over"/>
+   <element value="is"/>
+   <element value="het"/>
+   <element value="de"/>
+   <element value="javascript"/>
+   <element value="jpg"/>
+   <element value="made"/>
+   <element value="net"/>
+   <element value="of"/>
+   <element value="er"/>
+   <element value="waar"/>
+   <element value="daar"/>
+   <element value="boven"/>
+   <element value="onder"/>
+   <element value="achter"/>
+   <element value="tegen"/>
+   <element value="het"/>
+   <element value="ons"/>
+   <element value="org"/>
+   <element value="onze"/>
+   <element value="sans"/>
+   <element value="zien"/>
+   <element value="serif"/>
+   <element value="zij"/>
+   <element value="ze"/>
+   <element value="dat"/>
+   <element value="die"/>
+   <element value="deze"/>
+   <element value="naar"/>
+   <element value="wij"/>
+   <element value="we"/>
+   <element value="met"/>
+   <element value="jou"/>
+   <element value="jouw"/>
+   <element value="jullie"/>
+  </property>
+  <property name="content_types_with_seoproperties" type="lines">
+   <element value="Collection"/>
+   <element value="Document"/>
+   <element value="File"/>
+   <element value="Advice"/>
+   <element value="Hearing"/>
+   <element value="Digibib"/>
+   <element value="Folder"/>
+   <element value="Study"/>
+   <element value="MREvent"/>
+  </property>
+ </object>
 </object>
