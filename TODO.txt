@@ -10,6 +10,5 @@ Cleanup
 
 - Remove old theme field from all CT's and Vocabulary/control_panel.
 
-
-
+- Remove Hearing, PressRelease, Newsletter and AnnualReport CT's.
 
