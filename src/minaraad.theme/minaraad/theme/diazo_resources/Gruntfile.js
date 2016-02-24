@@ -107,9 +107,9 @@ module.exports = function(grunt) {
 
               {
                   expand: true,
-                  cwd: 'bower_components/',
-                  src: ['fontawesome/fonts/*'],
-                  dest: 'static/',
+                  cwd: 'bower_components/fontawesome/fonts',
+                  src: ['*.eot', '*.svg', '*.ttf', '*.woff'],
+                  dest: 'static/fontawesome/',
                   filter: 'isFile'
               },
 
