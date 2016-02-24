@@ -194,30 +194,6 @@ Go to: http://localhost:8080/minaraad/@@manage-viewlets
 Hide plone.belowcontentbody.relateditems
 
 
-Rebuild the date indexes
-------------------------
-
-During development we got `POSKeyError: 0x68b743` erros.
-
-Go to: http://localhost:8080/minaraad/portal_catalog/manage_catalogIndexes?skey=meta_type&rkey=meta_type
-Select all date related. Choose `Clear index`
-Select all date related. Choose `Reindex`
-
-
 Newsletter migration
 --------------------
 TODO: Add mailchimp portlets to the site at preferred locations. (in a upgradestep)
-
-
-Errors
-======
-
-WARNING OFS.Uninstalled Could not import class 'CSCachingPolicyManager'
-from module 'Products.CacheSetup.content.caching_policy_manager'
-
- - Tried to install `Products.CacheSetup` but got me other errors.
- - Tried to run `Products.CacheSetup` uninstall handler.
-   That didn't resolve the issue.
- - Tried to delete `caching_policy_manager` from ZMI.
-
-Status: open. I'll leave it. It doesn't seem to harm.
