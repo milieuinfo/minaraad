@@ -3,10 +3,10 @@
 //
 // Combining custom bootstrap and partials into one file.
 
-$flanders-font-path: 'flanders' !default;
+$flanders-font-path: '/++theme++minaraad/static/flanders' !default;
 @import "../fonts/flanders/flanders.scss";
 
-$flaticon-font-path: 'flaticon' !default;
+$flaticon-font-path: '/++theme++minaraad/static/flaticon' !default;
 @import "../fonts/flaticon/flaticon.scss";
 
 // Set asset path
@@ -17,7 +17,7 @@ $bootstrap-sass-asset-helper: "bootstrap-sass-official/assets/";
 @import "custom_bootstrap/bootstrap";
 
 // Fontawesome.
-$fa-font-path:        "fontawesome/fonts" !default;
+$fa-font-path:        "/++theme++minaraad/static/fontawesome" !default;
 @import "../bower_components/fontawesome/scss/font-awesome.scss";
 
 // Masonary (stacked content)
