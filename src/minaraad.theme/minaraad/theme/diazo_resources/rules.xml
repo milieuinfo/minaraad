@@ -23,6 +23,7 @@
     <!-- dont use Plone icons, use the theme -->
     <drop css:content="head link[rel='apple-touch-icon']" />
     <drop css:content="head link[rel='shortcut icon']" />
+    <drop css:theme="head link[rel='stylesheet']" />
     <!-- Script -->
     <before theme-children="/html/head" content="/html/head/script" />
     <!-- CSS -->
