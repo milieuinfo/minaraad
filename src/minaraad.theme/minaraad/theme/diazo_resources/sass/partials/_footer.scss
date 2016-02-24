@@ -28,7 +28,6 @@ footer {
 .footer-image {
   height: 260px;
   border-top: 6px solid $mina-green;
-  //background: url(images/bg.jpg) no-repeat center center fixed;
   background-position: center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -40,12 +39,12 @@ footer {
 .footer-doormat {
   @extend .sec-full-width;
   .column {
-    @extend .col-xs-6, .col-sm-4, .col-md-2;
+    @extend .col-xs-6, .col-sm-3, .col-md-2;
   }
   .logo, .sitemap, .newsletter, .digibib, .social-media {
     @extend .hidden-xs;
   }
- .newsletter, .digibib, .social-media {
+ .newsletter, .digibib {
     @extend .hidden-sm;
   }
 

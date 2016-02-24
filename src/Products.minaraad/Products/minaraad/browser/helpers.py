@@ -48,7 +48,7 @@ class HelpersView(BrowserView):
         years = range(first, last, 1)
         years.reverse()
         portal_url = api.portal.get().absolute_url()
-        url = portal_url + '/documenten/'
+        url = portal_url + '/zoeken/'
         tkey = '&c7=%2Fminaraad%2Fthemas%2F'
         for yr in years:
             search_url = url + '#c2=' + ctype + \

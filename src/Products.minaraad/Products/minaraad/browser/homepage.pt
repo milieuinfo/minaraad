@@ -72,7 +72,7 @@
 
                         <div class="sec-header">
                           <h2>
-                            <a tal:attributes="href string:${portal_url}/documenten">
+                            <a tal:attributes="href string:${portal_url}/zoeken">
                               Actuele documenten
                             </a>
                           </h2>
@@ -95,7 +95,7 @@
 
                     <div class="sec-header">
                       <h2>
-                        <a tal:attributes="href string:${portal_url}/documenten#c1=&b_start=0&c2=MREvent">
+                        <a tal:attributes="href string:${portal_url}/zoeken#c1=&b_start=0&c2=MREvent">
                           Agenda
                         </a>
                       </h2>
@@ -120,7 +120,8 @@
                   <div class="column">
 
                     <div class="sec-header">
-                      <h2><a href="about.html">Over de Minaraad</a></h2>
+                      <h2><a href="about.html"
+                             tal:attributes="href string:${portal_url}/over-de-minaraad">Over de Minaraad</a></h2>
                     </div>
 
                     <article class="article-vision">
@@ -142,7 +143,6 @@
                     </article>
 
                     <article class="article-vision">
-                      <!--? TODO: Add newsletter action -->
                       <a href="#"
                          tal:attributes="href string:${portal_url}/nieuwsbrieven">
                         <header>
