@@ -2,8 +2,8 @@
 Using this buildout
 ===================
 
-For general comments about using buildout see
-http://plone.org/documentation/tutorial/buildout
+For trouble shooting buildout see
+http://docs.plone.org/manage/troubleshooting/buildout.html
 
 
 Note on passwords for cronjobs

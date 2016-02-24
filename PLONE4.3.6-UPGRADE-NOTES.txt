@@ -24,14 +24,44 @@ Embedly
   1. Create an embedly account
   2. Supply products.minaraad.migration with the correct EMBEDLY_API_KEY.
 
+
 Upgrade
 =======
+
+
+New dependencies
+----------------
+
+We need extra package for varnish::
+
+ $ sudo apt-get install automake autotools-dev libedit-dev \
+   libjemalloc-dev libncurses-dev libpcre3-dev libtool pkg-config \
+   python-docutils python-sphinx
+
+Python virtualenv
+-----------------
+
+We need a virtualenv, because the system Python has an older Jinja
+package installed, which somehow means we cannot install the newer one
+that we need.
+
+ $ cd
+ $ virtualenv venv
+ $ cd venv
+ $ bin/pip install -U pip
+ $ bin/pip install -U setuptools
+
+Check that the virtualenv uses Python 2.7::
+
+ $ bin/python
+
 
 Stop the site
 -------------
 
  $ cd buildout
  $ bin/supervisorctl shutdown
+
 
 subversion to git
 -----------------
@@ -82,9 +112,9 @@ an 'extends' file, possibly enable some parts, and set the postgres
 database password.  But likely this is fine: the sample
 buildout.cfg.in has not changed since September 2015.
 
-You need to run a fresh bootstrap and buildout::
+You need to run a fresh bootstrap and buildout with the virtualenv::
 
- $ python2.7 bootstrap.py
+ $ ~/bin/venv/bin/python bootstrap.py
  $ bin/buildout
 
 This can take a while...  When this exits without errors, first try if
@@ -104,6 +134,8 @@ Second server
 -------------
 
 Now do the same steps on the second server:
+
+- new dependencies
 - stop the site
 - switch to git
 - run the buildout
@@ -111,6 +143,7 @@ Now do the same steps on the second server:
 
 While the buildout on the second server is busy installing stuff, you
 can return to the first server to do some actions in your browser.
+
 
 Update Plone in the browser
 ---------------------------
