@@ -8117,7 +8117,7 @@ div.digibib_list {
 
 #edit-bar {
   line-height: 26px;
-  font-size: 100%;
+  font-size: 100% !important;
   font-family: Arial, FreeSans, sans-serif; }
   #edit-bar a {
     transition-duration: 0s;
@@ -8146,8 +8146,8 @@ div.digibib_list {
 .actionMenuContent,
 #contentActionMenus dl.actionMenu a,
 #contentActionMenus dl.actionMenu.activated dd {
-  background: #0F475C;
-  border-color: #0F475C; }
+  background: #0F475C !important;
+  border-color: #0F475C !important; }
 
 ul#contentActionMenus ul li a {
   padding: 4px; }
@@ -8309,5 +8309,22 @@ nav ul {
 
 #atrb_relatedItems {
   position: absolute !important; }
+
+/* Fix TinyMCE overlay */
+body#plonebrowser #content .row, body#plonebrowser #content .masonry-documents, body#plonebrowser #content #digibib_view, body#plonebrowser #content .sec-advice-detail article, .sec-advice-detail body#plonebrowser #content article, body#plonebrowser #content .sec-event-detail article, .sec-event-detail body#plonebrowser #content article, body#plonebrowser #content .images .thumbnails, .images body#plonebrowser #content .thumbnails {
+  margin: 0; }
+
+body#plonebrowser #content.dialog-wrapper {
+  font-size: 100%; }
+
+body#plonebrowser #content #internallinkcontainer {
+  padding-bottom: 60px; }
+
+body#plonebrowser #content .formHelp {
+  font-size: 12px;
+  padding: 5px; }
+
+body#plonebrowser #content #footer {
+  background: white; }
 
 /*# sourceMappingURL=main.css.map */

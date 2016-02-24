@@ -13,7 +13,7 @@
 
 #edit-bar {
   line-height: 26px;
-  font-size: 100%;
+  font-size: 100% !important;
   font-family: Arial, FreeSans, sans-serif;
   a {
     transition-duration: 0s;
@@ -52,8 +52,8 @@
 .actionMenuContent,
 #contentActionMenus dl.actionMenu a,
 #contentActionMenus dl.actionMenu.activated dd {
-  background: #0F475C;
-  border-color: #0F475C;
+  background: #0F475C !important;
+  border-color: #0F475C !important;
 }
 
 
@@ -197,4 +197,27 @@ nav ul{
 
 #atrb_relatedItems {
   position: absolute !important;
+}
+
+
+/* Fix TinyMCE overlay */
+body#plonebrowser{
+  #content{
+    .row{
+      margin: 0;
+    }
+    &.dialog-wrapper{
+      font-size: 100%;
+    }
+    #internallinkcontainer{
+      padding-bottom:60px;
+    }
+    .formHelp{
+      font-size: 12px;
+      padding: 5px;
+    }
+    #footer{
+      background: white;
+    }
+  }
 }
