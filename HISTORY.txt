@@ -4,6 +4,12 @@ History of this buildout
 6.0.0 (unreleased)
 ------------------
 
+- Add quintagroup.seoptimizer.  [jladage]
+
+- Fix image paths after moving to cssregistry.  [jladage]
+
+- Fix links after moving /documenten to /zoeken.  [jladage]
+
 - Changed the path at which we load fonts.  [maurits]
 
 - Use much newer zc.buildout, setuptools and bootstrap.py versions.

@@ -16,7 +16,6 @@ from plone.portlets.interfaces import IPortletManager
 from plone.registry.interfaces import IRegistry
 from Products.Archetypes.utils import mapply
 from Products.Archetypes.utils import shasattr
-from Products.CMFCore.interfaces import IPropertiesTool
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.utils import _createObjectByType
 from Products.contentmigration.archetypes import InplaceATFolderMigrator
@@ -31,7 +30,6 @@ from random import choice
 from zope.component import getMultiAdapter
 from zope.component import getSiteManager
 from zope.component import getUtility
-from zope.component import queryUtility
 from zope.container import contained
 
 import cStringIO
@@ -820,6 +818,7 @@ def apply_extra_product_profiles(context):
         "profile-collective.mailchimp:default",
         "profile-collective.embedly:default",
         "profile-plone.app.imagecropping:default",
+        "profile-quintagroup.seoptimizer:default",
         "profile-minaraad.theme:default"]
 
     for profile_id in profiles:
