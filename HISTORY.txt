@@ -4,6 +4,9 @@ History of this buildout
 6.0.0 (unreleased)
 ------------------
 
+- Use much newer zc.buildout, setuptools and bootstrap.py versions.
+  You need to run python2.7 bootstrap.py.  [maurits]
+
 - Updated to plone.recipe.varnish 4.  MINA-117.  [maurits]
 
 - Fixed caching configs to point to pr-3/4 instead of pr-1/2.  [maurits]
