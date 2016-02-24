@@ -42,6 +42,7 @@
    <element value="Heading|h2"/>
    <element value="Subheading|h3"/>
    <element value="Literal|pre"/>
+   <element value="Lead tekst|p|lead"/>
    <element value="Discreet|span|discreet"/>
    <element value="Pull-quote|blockquote|pullquote"/>
    <element value="Call-out|p|callout"/>

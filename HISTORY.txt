@@ -4,6 +4,8 @@ History of this buildout
 6.0.0 (unreleased)
 ------------------
 
+- Add class lead to tinymce styles menu. MINA-116  [jladage]
+
 - Disabled link integrity checking at the beginning of the migration.
   Re-enabled it at the end.  [maurits]
 
