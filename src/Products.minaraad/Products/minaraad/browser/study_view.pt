@@ -43,12 +43,14 @@
                           </h2>
                           <div tal:condition="context/getBody"
                                tal:content="structure context/getBody" />
-                          <!-- Contactperson -->
+
+                          <!-- Start contactperson -->
                           <tal:block tal:define="obj nocall: context">
-                            <div metal:use-macro="context/contactperson_macros/macros/show_coord_authors"
+                            <div metal:use-macro="context/@@items/macros/show_coord_authors"
                                  tal:omit-tag="" />
                           </tal:block>
-                          <!-- end contactpersoon -->
+                          <!-- End contactpersoon -->
+
                         </section>
 
                         <section>

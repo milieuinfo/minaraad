@@ -13,7 +13,7 @@
        tal:condition="context/getBody" />
 
   <tal:block tal:define="obj nocall: context">
-    <div metal:use-macro="context/contactperson_macros/macros/show_coord_authors"
+    <div metal:use-macro="context/@@items/macros/show_coord_authors"
          tal:omit-tag="" />
   </tal:block>
 </metal:content-core>

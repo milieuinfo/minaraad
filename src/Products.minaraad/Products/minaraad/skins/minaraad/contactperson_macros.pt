@@ -18,7 +18,7 @@
         <div tal:condition="authors">
           <h5 i18n:translate="minaraad_label_authors">Co-authors</h5>
           <tal:block repeat="contact authors">
-            <div metal:use-macro="context/contactperson_macros/macros/contactdetails"
+            <div metal:use-macro="context/@@items/macros/contactdetails"
                  tal:omit-tag="" />
           </tal:block>
           <br />

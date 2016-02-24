@@ -53,10 +53,11 @@
              toegang tot de Digibib.</p>
           <p tal:condition="anonymous" id="login_link">
             <a href="/login_form"
+               tal:attributes="href string:${portal_url}/login_form"
                class="btn btn-primary btn-sm"><i class="fa fa-sign-in"></i> Login</a></p>
           <p tal:condition="not:anonymous" id="logout_link">
             <a href="/logout"
-               tal:attributes="href string:${portal_url}"
+               tal:attributes="href string:${portal_url}/logout"
                class="btn btn-primary btn-sm"><i class="fa fa-sign-out"></i> Uitloggen</a>
           </p>
           <p tal:condition="python:context.portal_membership.getAuthenticatedMember().has_role('Manager')">

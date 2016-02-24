@@ -68,6 +68,13 @@
                             </tal:project>
                           </dl>
                           <div tal:content="structure context/getBody|nothing" />
+
+                          <!-- Start contactperson -->
+                          <tal:block tal:define="obj nocall: context">
+                            <div metal:use-macro="context/@@items/macros/show_coord_authors"
+                                 tal:omit-tag="" />
+                          </tal:block>
+                          <!-- End contactpersoon -->
                         </section>
 
                         <section>
