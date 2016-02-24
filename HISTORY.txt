@@ -4,6 +4,8 @@ History of this buildout
 6.0.0 (unreleased)
 ------------------
 
+- Updated to plone.recipe.varnish 4.  MINA-117.  [maurits]
+
 - Fixed caching configs to point to pr-3/4 instead of pr-1/2.  [maurits]
 
 - Let ontwikkel.cfg extend productie.cfg.  We used to extend
