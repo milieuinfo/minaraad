@@ -3,69 +3,13 @@ Release notes from Zest
 
 Manual fixes to do on the site.
 
+For general notes on using this buildout, see the file README.txt.
 
-Upgrade to 5.1.0 (2015-04-01)
+
+Upgrade to 6.0.0 (2016-02-24)
 -----------------------------
 
-We have an NFS now and we want to use it as shared blob directory.
-Also, our custom content types now use blobs.  And performance in the
-digibib has been increased by adding more information to the
-portal_catalog.  And we have updated from Plone 4.2.4 to 4.2.7.  Also,
-we use Python 2.7 now.  This needs some actions.
-
-- Check that an NFS is mounted on /home/zope/minaraad-blobs.
-
-- sudo apt-get install python2.7 python2.7-dev
-
-- Shutdown supervisor on both zeoclient machines.
-
-- Checkout the new buildout tag.
-
-- On ONE instance each of oefen/productie you want the cronjob to cleanup
-  PAS (Pluggable Authentication Service).  Edit the parts in
-  buildout.cfg and make sure crontab-cleanup-pas is in there.  See
-  also buildout.cfg.in.
-
-- run python2.7 bootstrap.py, and bin/buildout.
-
-- Do 'svn status'.  I expect that it will state an unknown
-  src/minaraad.projects/minaraad/projects/adapters directory.  This
-  was removed from subversion, but it cannot be removed automatically,
-  because it will contain two .pyc files.  Please remove the directory
-  manually.
-
-- On one zeoclient, run this command to cleanup left-overs from
-  already removed members:
-
-  bin/instance run scripts/cleanup_pas.py
-
-- On one zeoclient, migrate the blobs to NFS:
-  bin/blobchunkdownload --dry-run --delete-blobs parts/conf/blobmigrate.cfg /home/zope/minaraad-blobs/
-  bin/blobchunkdownload --delete-blobs parts/conf/blobmigrate.cfg /home/zope/minaraad-blobs/
-
-  On the 'ontwikkel-1' machine this update takes about 20 minutes.
-
-- Start supervisor on both zeoclient machines.
-
-- The memory monitor kills the zope instance a bit too soon during
-  upgrades, so stop it for now: bin/supervisorctl stop memmon
-
-- Login to the Plone Site.
-
-- Go to the Zope Management Interface.
-
-- You will see a link to update Plone from 4.2.4 to 4.2.7.  Follow
-  this link and follow the instructions.
-
-- Go to the Plone Site, then Site Setup, then Extra Products.
-
-- Run the upgrade steps for the Minaraad product.
-
-- Run the upgrade steps for minaraad.projects.  Please keep this
-  order, as the Products.minaraad upgrade does a reindex to prevent
-  lots of errors from being reported.
-
-- You can start the memory monitor now: bin/supervisorctl start memmon
+See the file PLONE4.3.6-UPGRADE-NOTES.txt.
 
 
 Things to do after copying a production database to oefen/ontwikkel
@@ -77,10 +21,10 @@ Things to do after copying a production database to oefen/ontwikkel
 
 - Edit the Caching proxies on the Caching proxies tab.
   For ontwikkel:
-    http://plone-minaraad-on-1.mmis.be:12080
-    http://plone-minaraad-on-2.mmis.be:12080
+    http://plone-minaraad-on-3.mmis.be:12080
+    http://plone-minaraad-on-4.mmis.be:12080
   For oefen:
-    http://plone-minaraad-oe-1.mmis.be:12080
-    http://plone-minaraad-oe-2.mmis.be:12080
+    http://plone-minaraad-oe-3.mmis.be:12080
+    http://plone-minaraad-oe-4.mmis.be:12080
 
 - Save the form.
