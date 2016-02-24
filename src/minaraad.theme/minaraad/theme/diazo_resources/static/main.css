@@ -7112,7 +7112,8 @@ div#editbar-wrapper {
   margin-bottom: 7px !important; }
 
 dl.actionMenu {
-  margin-bottom: 10px !important; }
+  margin-bottom: 5px !important;
+  margin-top: 5px; }
 
 @media (min-width: 480px) {
   .logobar button.navbar-toggle {
