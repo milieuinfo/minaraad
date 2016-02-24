@@ -387,8 +387,8 @@
       <value_type type="plone.registry.field.URI"/>
     </field>
     <value>
-      <element>http://plone-minaraad-pr-1.mmis.be:12080</element>
-      <element>http://plone-minaraad-pr-2.mmis.be:12080</element>
+      <element>http://plone-minaraad-pr-3.mmis.be:12080</element>
+      <element>http://plone-minaraad-pr-4.mmis.be:12080</element>
     </value>
   </record>
   <record name="plone.cachepurging.interfaces.ICachePurgingSettings.domains" interface="plone.cachepurging.interfaces.ICachePurgingSettings" field="domains">

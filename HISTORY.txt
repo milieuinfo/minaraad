@@ -4,6 +4,8 @@ History of this buildout
 6.0.0 (unreleased)
 ------------------
 
+- Fixed caching configs to point to pr-3/4 instead of pr-1/2.  [maurits]
+
 - Let ontwikkel.cfg extend productie.cfg.  We used to extend
   devel.cfg, but we do not want to do development there, and do not
   want to extend nodejs.cfg as this does not work on the servers.
