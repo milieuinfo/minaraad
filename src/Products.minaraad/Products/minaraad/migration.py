@@ -551,7 +551,7 @@ def setup_various(context):
     """
     Setup about page:
 
-        - Create documents folder
+        - Create zoeken folder
         - Move `Jaarverslagen` into `Algemeen`
         - Move `Contact` to portal root
         - Set contact page view to contact_view
@@ -565,16 +565,16 @@ def setup_various(context):
 
     portal = api.portal.get()
 
-    # Create documents folder
-    documents = portal.get('documenten')
-    if not documents:
-        documents = api.content.create(
+    # Create zoeken folder
+    zoeken = portal.get('zoeken')
+    if not zoeken:
+        zoeken = api.content.create(
             type='Folder',
-            title="Documenten",
+            title="Zoeken",
             container=portal,
         )
-        api.content.transition(obj=documents, transition='publish')
-        logger.info("%s created", documents)
+        api.content.transition(obj=zoeken, transition='publish')
+        logger.info("%s created", zoeken)
 
     # Move `Jaarverslagen` into `Algemeen`
     report = portal.get('jaarverslag')
@@ -620,10 +620,10 @@ def setup_various(context):
     # Sort items.
     items = [
         'themas',
-        'documenten',
         'over-de-minaraad',
         'digibib',
         'Contact',
+        'zoeken',
     ]
     items.reverse()
     for uid in items:
@@ -848,13 +848,13 @@ def activate_theme(context):
 
 def setup_faceted_navigation(context):
     portal = getToolByName(context, 'portal_url').getPortalObject()
-    docs = portal['documenten']
+    docs = portal['zoeken']
     subtyper = docs.restrictedTraverse('@@faceted_subtyper')
     subtyper.enable()
     importer = docs.restrictedTraverse('@@faceted_exportimport')
     criteria_file = open('faceted_criteria.xml')
     importer.import_xml(import_file=criteria_file)
-    logger.info("Configured faceted navigation for /documenten")
+    logger.info("Configured faceted navigation for /zoeken")
 
 
 def rebuild_date_indexes(context):
