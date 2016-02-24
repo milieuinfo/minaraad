@@ -1113,6 +1113,13 @@ address {
   font-style: normal;
   line-height: 1.428571429; }
 
+body {
+  font-family: "Flanders Art Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.428571429;
+  color: #333333;
+  background-color: #fff; }
+
 .image-left {
   float: left;
   margin: 0.5em 1em 0.5em 0; }
