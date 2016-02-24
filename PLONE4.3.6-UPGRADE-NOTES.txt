@@ -163,9 +163,3 @@ Upgrade steps:
 Post upgrade
 ============
 
-Hide Viewlet: plone.belowcontentbody.relateditems
--------------------------------------------------
-
-TODO: Handle this in upgrade step.
-Go to: http://localhost:8080/minaraad/@@manage-viewlets
-Hide plone.belowcontentbody.relateditems
