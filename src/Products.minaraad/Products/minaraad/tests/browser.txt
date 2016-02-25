@@ -64,10 +64,6 @@ Advisories
   >>> browser.getControl(name='date_year').value = ['2010']
   >>> browser.getControl(name='date_month').value = ['02']
   >>> browser.getControl(name='date_day').value = ['15']
-
-TODO: Not sure how to get the summary field.  You just see 'FCKeditor
-is loading ...'.
-
   >>> browser.getControl(name='coordinator').value = batman_uid
   >>> browser.getControl(name='authors:default:list').value = captainplanet_uid
   >>> browser.getForm(name='edit_form').submit()
@@ -76,10 +72,8 @@ is loading ...'.
   >>> browser.url
   'http://nohost/plone/adviezen/my-advisory'
 
-The contact person is no longer listed:
-
-  >>> 'Captain Planet' in browser.contents
-  False
+The contact person or the authors are listed in Plone, but not in our
+Diazo theme, so let's no longer test for this.
 
 
 AnnualReport
