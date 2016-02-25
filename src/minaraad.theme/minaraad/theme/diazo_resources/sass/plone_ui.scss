@@ -210,7 +210,9 @@ body#plonebrowser{
       font-size: 100%;
     }
     #internallinkcontainer{
-      padding-bottom:60px;
+      padding-bottom: 10px;
+      height: auto;
+      min-height: 310px;
     }
     .formHelp{
       font-size: 12px;
@@ -218,6 +220,7 @@ body#plonebrowser{
     }
     #footer{
       background: white;
+      position: relative;
     }
   }
 }

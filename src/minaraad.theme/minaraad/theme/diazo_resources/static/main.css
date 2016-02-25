@@ -8319,13 +8319,16 @@ body#plonebrowser #content.dialog-wrapper {
   font-size: 100%; }
 
 body#plonebrowser #content #internallinkcontainer {
-  padding-bottom: 60px; }
+  padding-bottom: 10px;
+  height: auto;
+  min-height: 310px; }
 
 body#plonebrowser #content .formHelp {
   font-size: 12px;
   padding: 5px; }
 
 body#plonebrowser #content #footer {
-  background: white; }
+  background: white;
+  position: relative; }
 
 /*# sourceMappingURL=main.css.map */
