@@ -148,6 +148,8 @@ Upgrade steps:
 - Run the upgrades.  This takes long.  You can keep an eye on
   ~/buildout/var/log/instance.log, or simply on the terminal if the
   instance is running in the foreground.
+  The final log line will be:
+  INFO GenericSetup Ran upgrade step Re-enable link integrity checking. for profile Products.minaraad:default
 
 - Visit the homepage to check if this shows up fine.
 
