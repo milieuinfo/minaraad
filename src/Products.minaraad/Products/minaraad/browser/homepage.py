@@ -29,7 +29,7 @@ class HomepageView(BrowserView):
 
     def future_events(self):
         now = DateTime().earliestTime()
-        future = DateTime(now.year() + 1, now.month(), now.day()).latestTime()
+        future = (now + 365).latestTime()
         brains = api.content.find(
             sort_order='ascending',
             sort_on='getStart_time',
