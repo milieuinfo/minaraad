@@ -4,6 +4,11 @@ History of this buildout
 6.0.1 (unreleased)
 ------------------
 
+- Use Products.GenericSetup 1.8.2.  I wanted it for the nicer UI, but
+  there is a more important feature: we need 1.7.6 or higher because
+  we are using a recent setuptools.  That could give a wrong sort
+  order in upgrade steps.  [maurits]
+
 - Fixed DateTime error calculating 29 February plus 1 year.  [maurits]
 
 - Make internal releases:
