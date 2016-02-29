@@ -153,5 +153,19 @@ Upgrade steps:
 
 - Visit the homepage to check if this shows up fine.
 
+- If you are on ontwikkel or oefen, go to the cache settings:
+  http://localhost:8080/@@caching-controlpanel
+  Go to the Caching proxies tab and set the Caching proxies correctly.
+  These should not point to the production varnish servers, but to the
+  ones on ontwikkel:
+
+    http://plone-minaraad-on-3.mmis.be:12080
+    http://plone-minaraad-on-4.mmis.be:12080
+
+  or oefen:
+
+    http://plone-minaraad-oe-3.mmis.be:12080
+    http://plone-minaraad-oe-4.mmis.be:12080
+
 - If the instance is running in the foreground, you can stop it now
   and start bin/supervisord instead.
