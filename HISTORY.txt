@@ -1,7 +1,7 @@
 History of this buildout
 ========================
 
-6.0.0 (unreleased)
+6.0.0 (2016-02-29)
 ------------------
 
 - Add quintagroup.seoptimizer.  [jladage]
