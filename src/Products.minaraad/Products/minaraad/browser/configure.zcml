@@ -358,10 +358,10 @@
       for="OFS.interfaces.IApplication"
       class=".helpers.RedirectPlone"
       permission="zope2.View">
-    <browser:page name="documenten" />
     <browser:page name="login_form" />
     <browser:page name="logout" />
     <browser:page name="newsletter" />
+    <browser:page name="zoeken" />
   </browser:pages>
 
 </configure>
