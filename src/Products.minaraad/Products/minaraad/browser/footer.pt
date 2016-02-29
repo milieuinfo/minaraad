@@ -63,7 +63,7 @@
           <p tal:condition="python:context.portal_membership.getAuthenticatedMember().has_role('Manager')">
             <a href="#"
                tal:attributes="href string:${portal_url}/plone_control_panel">
-               <i class="fa fa-gear"></i> Website instelling</a>
+               <i class="fa fa-gear"></i> Website instellingen</a>
           </p>
       </div>
 
