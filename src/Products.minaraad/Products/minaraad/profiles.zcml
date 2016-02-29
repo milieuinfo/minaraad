@@ -376,6 +376,10 @@
         description="This is temporarily for the migration"
         handler="Products.minaraad.migration.disable_link_integrity_checking" />
     <gs:upgradeStep
+        title="Upgrade plone.app.jquery and jquerytools"
+        description="Apply their upgrade steps."
+        handler="Products.minaraad.migration.upgrade_jquery_packages" />
+    <gs:upgradeStep
         title="Apply extra product profiles"
         description="Apply extra product profiles."
         handler="Products.minaraad.migration.apply_extra_product_profiles" />

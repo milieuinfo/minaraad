@@ -4,7 +4,8 @@ History of this buildout
 6.0.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Upgrade plone.app.jquery and jquerytools in beginning of migration.
+  [maurits]
 
 
 6.0.0 (2016-02-29)

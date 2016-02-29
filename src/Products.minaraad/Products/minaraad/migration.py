@@ -1304,6 +1304,14 @@ def trim_image_whitespace(context):
         img.close()
 
 
+def upgrade_jquery_packages(context):
+    # These packagges are marked as outdated in the add-ons control panel.
+    installer = getToolByName(context, 'portal_quickinstaller')
+    installer.upgradeProduct('plone.app.jquery')
+    installer.upgradeProduct('plone.app.jquerytools')
+    logger.info("Upgraded plone.app.jquery/tools.")
+
+
 def upgrade_simple_attachment(context):
     installer = getToolByName(context, 'portal_quickinstaller')
     installer.upgradeProduct('Products.SimpleAttachment')
