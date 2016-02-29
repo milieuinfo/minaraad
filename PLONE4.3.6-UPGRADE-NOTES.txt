@@ -45,7 +45,7 @@ directory first.
  $ cd
  $ git clone https://git.milieuinfo.be/scm/mina/minaraad.git
  $ cd minaraad
- $ git checkout 6.0.0  # Or whatever the latest tag is.
+ $ git checkout 6.0.2  # Or whatever the latest tag is.
 
 Go back to the old subversion checkout and check if there are local
 changes, which would be unexpected and will be lost::
