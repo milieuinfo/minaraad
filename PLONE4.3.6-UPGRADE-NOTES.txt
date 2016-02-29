@@ -1,11 +1,6 @@
 Notes on Minaraad migration Plone 4.3.6 (February 2016)
 =======================================================
 
-
-Upgrade
-=======
-
-
 New dependencies
 ----------------
 
@@ -158,8 +153,3 @@ Upgrade steps:
 
 - If the instance is running in the foreground, you can stop it now
   and start bin/supervisord instead.
-
-
-Post upgrade
-============
-
