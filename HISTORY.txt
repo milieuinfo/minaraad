@@ -1,7 +1,7 @@
 History of this buildout
 ========================
 
-6.0.1 (unreleased)
+6.0.1 (2016-02-29)
 ------------------
 
 - Use Products.GenericSetup 1.8.2.  I wanted it for the nicer UI, but
