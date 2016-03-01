@@ -491,5 +491,13 @@
         description="This was temporarily disabled for the migration, but we re-enable it at the very end."
         handler="Products.minaraad.migration.enable_link_integrity_checking" />
   </gs:upgradeSteps>
+  <gs:upgradeSteps
+      source="5025"
+      destination="5026"
+      profile="Products.minaraad:default">
+    <gs:upgradeStep
+        title="Upgrade eea.facetednavigation"
+        handler="Products.minaraad.migration.upgrade_eea_facetednavigation" />
+  </gs:upgradeSteps>
 
 </configure>

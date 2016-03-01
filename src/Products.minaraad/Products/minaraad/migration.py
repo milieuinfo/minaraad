@@ -1316,3 +1316,9 @@ def upgrade_simple_attachment(context):
     installer = getToolByName(context, 'portal_quickinstaller')
     installer.upgradeProduct('Products.SimpleAttachment')
     logger.info("Upgraded Products.SimpleAttachment.")
+
+
+def upgrade_eea_facetednavigation(context):
+    installer = getToolByName(context, 'portal_quickinstaller')
+    installer.upgradeProduct('eea.facetednavigation')
+    logger.info("Upgraded eea.facetednavigation.")

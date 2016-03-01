@@ -4,7 +4,8 @@ History of this buildout
 6.0.3 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Use latest eea.facetednavigation 8.8 and eea.jquery 8.7.  Added
+  upgrade step for this.  [maurits]
 
 
 6.0.2 (2016-02-29)

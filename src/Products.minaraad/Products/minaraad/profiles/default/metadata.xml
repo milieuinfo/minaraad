@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <metadata>
-  <version>5025</version>
+  <version>5026</version>
   <dependencies>
     <dependency>profile-eea.facetednavigation:default</dependency>
     <dependency>profile-collective.mailchimp:default</dependency>
