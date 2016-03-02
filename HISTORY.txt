@@ -4,6 +4,9 @@ History of this buildout
 6.0.5 (unreleased)
 ------------------
 
+- Use collective.js.jqueryui 1.10.4 which has better cache settings.
+  [maurits]
+
 - Fixed cssregistry for production use.  Our main.css breaks on IE11
   and lower when it is registered with a media setting.  Also,
   reordered the css files so we get less combined files.  And include

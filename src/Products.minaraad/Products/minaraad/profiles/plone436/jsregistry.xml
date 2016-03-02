@@ -210,7 +210,7 @@
     expression="" id="jquery.global.js" inline="False"
     insert-after="hideShow.js"/>
  <javascript authenticated="False" bundle="default" cacheable="True"
-    compression="safe" conditionalcomment="" cookable="False" enabled="True"
+    compression="none" conditionalcomment="" cookable="False" enabled="True"
     expression="" id="collective.js.jqueryui.custom.min.js" inline="False"
     insert-after="jquery.global.js"/>
  <javascript authenticated="False" bundle="default" cacheable="True"

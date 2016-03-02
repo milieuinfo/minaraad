@@ -509,6 +509,9 @@
       source="5026"
       destination="5027"
       profile="Products.minaraad:default">
+    <gs:upgradeStep
+        title="Upgrade collective.js.jqueryui"
+        handler="Products.minaraad.migration.upgrade_collective_js_jqueryui" />
     <gs:upgradeDepends
         title="Apply CSS registry from our plone436 profile"
         import_profile="Products.minaraad:plone436"
