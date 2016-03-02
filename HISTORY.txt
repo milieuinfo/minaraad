@@ -4,6 +4,9 @@ History of this buildout
 6.0.3 (unreleased)
 ------------------
 
+- IE11 Flex fix, for all big browsers.
+  [lhuiskes]
+
 - Use latest eea.facetednavigation 8.8 and eea.jquery 8.7.  Added
   upgrade step for this.  [maurits]
 
