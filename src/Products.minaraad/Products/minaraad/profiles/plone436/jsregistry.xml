@@ -161,42 +161,10 @@
  <javascript authenticated="False" bundle="default" cacheable="True"
     compression="safe" conditionalcomment="" cookable="True" enabled="True"
     expression="" id="toc.js" inline="False" insert-after="styleswitcher.js"/>
- <javascript authenticated="True" bundle="default" cacheable="True"
-    compression="safe" conditionalcomment="" cookable="True" enabled="True"
-    expression="" id="dropdown.js" inline="False" insert-after="toc.js"/>
- <javascript authenticated="True" bundle="default" cacheable="True"
-    compression="safe" conditionalcomment="" cookable="True" enabled="True"
-    expression="" id="table_sorter.js" inline="False"
-    insert-after="dropdown.js"/>
- <javascript authenticated="True" bundle="default" cacheable="True"
-    compression="safe" conditionalcomment="" cookable="True" enabled="True"
-    expression="" id="calendar_formfield.js" inline="False"
-    insert-after="table_sorter.js"/>
- <javascript authenticated="True" bundle="default" cacheable="True"
-    compression="safe" conditionalcomment="" cookable="True" enabled="True"
-    expression="" id="formUnload.js" inline="False"
-    insert-after="calendar_formfield.js"/>
- <javascript authenticated="True" bundle="default" cacheable="True"
-    compression="safe" conditionalcomment="" cookable="True" enabled="True"
-    expression="" id="formsubmithelpers.js" inline="False"
-    insert-after="formUnload.js"/>
- <javascript authenticated="True" bundle="default" cacheable="True"
-    compression="safe" conditionalcomment="" cookable="True" enabled="True"
-    expression="" id="unlockOnFormUnload.js" inline="False"
-    insert-after="formsubmithelpers.js"/>
- <javascript authenticated="True" bundle="default" cacheable="True"
-    compression="safe" conditionalcomment="" cookable="True" enabled="True"
-    expression="not: portal/portal_membership/isAnonymousUser"
-    id="jquery.tinymce.js" inline="False"
-    insert-after="unlockOnFormUnload.js"/>
- <javascript authenticated="True" bundle="default" cacheable="True"
-    compression="safe" conditionalcomment="" cookable="True" enabled="True"
-    expression="" id="tiny_mce_gzip.js" inline="False"
-    insert-after="jquery.tinymce.js"/>
  <javascript authenticated="False" bundle="default" cacheable="True"
     compression="safe" conditionalcomment="" cookable="True" enabled="True"
     expression="" id="orderablereference.js" inline="False"
-    insert-after="tiny_mce_gzip.js"/>
+    insert-after="toc.js"/>
  <javascript authenticated="False" bundle="default" cacheable="True"
     compression="safe" conditionalcomment="" cookable="True" enabled="True"
     expression="" id="jquery.highlightsearchterms.js" inline="False"
@@ -247,18 +215,56 @@
     insert-after="++resource++jquery.select2uislider.js"/>
  <javascript authenticated="False" bundle="default" cacheable="True"
     compression="safe" conditionalcomment="" cookable="True" enabled="True"
-    expression="" id="faceted_view.js" inline="False"
-    insert-after="++resource++jquery.tagcloud.js"/>
- <javascript authenticated="False" bundle="default" cacheable="True"
-    compression="safe" conditionalcomment="" cookable="True" enabled="True"
-    expression="python:'configure_faceted.html' in request.URL0"
-    id="faceted_edit.js" inline="False" insert-after="faceted_view.js"/>
- <javascript authenticated="False" bundle="default" cacheable="True"
-    compression="safe" conditionalcomment="" cookable="True" enabled="True"
     expression="" id="++theme++minaraad/static/main.js" inline="False"
-    insert-after="faceted_edit.js"/>
+    insert-after="++resource++jquery.tagcloud.js"/>
+
+ <!-- Authenticated -->
+ <javascript authenticated="True" bundle="default" cacheable="True"
+    compression="safe" conditionalcomment="" cookable="True" enabled="True"
+    expression="" id="dropdown.js" inline="False" insert-after="++theme++minaraad/static/main.js"/>
+ <javascript authenticated="True" bundle="default" cacheable="True"
+    compression="safe" conditionalcomment="" cookable="True" enabled="True"
+    expression="" id="table_sorter.js" inline="False"
+    insert-after="dropdown.js"/>
+ <javascript authenticated="True" bundle="default" cacheable="True"
+    compression="safe" conditionalcomment="" cookable="True" enabled="True"
+    expression="" id="calendar_formfield.js" inline="False"
+    insert-after="table_sorter.js"/>
+ <javascript authenticated="True" bundle="default" cacheable="True"
+    compression="safe" conditionalcomment="" cookable="True" enabled="True"
+    expression="" id="formUnload.js" inline="False"
+    insert-after="calendar_formfield.js"/>
+ <javascript authenticated="True" bundle="default" cacheable="True"
+    compression="safe" conditionalcomment="" cookable="True" enabled="True"
+    expression="" id="formsubmithelpers.js" inline="False"
+    insert-after="formUnload.js"/>
+ <javascript authenticated="True" bundle="default" cacheable="True"
+    compression="safe" conditionalcomment="" cookable="True" enabled="True"
+    expression="" id="unlockOnFormUnload.js" inline="False"
+    insert-after="formsubmithelpers.js"/>
+ <javascript authenticated="True" bundle="default" cacheable="True"
+    compression="safe" conditionalcomment="" cookable="True" enabled="True"
+    expression=""
+    id="jquery.tinymce.js" inline="False"
+    insert-after="unlockOnFormUnload.js"/>
+ <javascript authenticated="True" bundle="default" cacheable="True"
+    compression="safe" conditionalcomment="" cookable="True" enabled="True"
+    expression="" id="tiny_mce_gzip.js" inline="False"
+    insert-after="jquery.tinymce.js"/>
  <javascript authenticated="True" bundle="default" cacheable="True"
     compression="none" conditionalcomment="" cookable="True" enabled="True"
     expression="" id="++resource++select2/select2.min.js" inline="False"
-    insert-after="++theme++minaraad/static/main.js"/>
+    insert-after="tiny_mce_gzip.js"/>
+
+ <!-- Special conditions -->
+ <javascript authenticated="False" bundle="default" cacheable="True"
+    compression="safe" conditionalcomment="" cookable="False" enabled="True"
+    expression="" id="faceted_view.js" inline="False"
+    insert-after="++resource++select2/select2.min.js"/>
+ <javascript authenticated="False" bundle="default" cacheable="True"
+    compression="safe" conditionalcomment="" cookable="True" enabled="True"
+    expression="python:'configure_faceted.html' in request.URL0"
+    id="faceted_edit.js" inline="False"
+    insert-after="faceted_view.js"/>
+
 </object>
