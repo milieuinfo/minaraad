@@ -4,6 +4,8 @@ History of this buildout
 6.0.4 (unreleased)
 ------------------
 
+- Cook css/javascript resources in an upgrade step.  [maurits]
+
 - Added varnish-clearcache part on deployment.  [maurits]
 
 

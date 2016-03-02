@@ -498,6 +498,12 @@
     <gs:upgradeStep
         title="Upgrade eea.facetednavigation"
         handler="Products.minaraad.migration.upgrade_eea_facetednavigation" />
+    <!-- Cook resources must happen at the end of every upgrade!
+         Surely we have a css or javascript fix in every release. -->
+    <gs:upgradeStep
+        title="Cook resources"
+        description="Refresh portal_css and portal_javascript"
+        handler="Products.minaraad.migration.cook_resources" />
   </gs:upgradeSteps>
 
 </configure>
