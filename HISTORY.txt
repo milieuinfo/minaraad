@@ -1,7 +1,7 @@
 History of this buildout
 ========================
 
-6.0.3 (unreleased)
+6.0.3 (2016-03-02)
 ------------------
 
 - IE11 Flex fix, for all big browsers.
