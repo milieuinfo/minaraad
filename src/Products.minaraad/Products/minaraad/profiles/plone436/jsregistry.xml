@@ -8,31 +8,31 @@
     expression="" id="jquery-integration.js" inline="False"
     insert-after="++resource++plone.app.jquery.js"/>
  <javascript authenticated="False" bundle="default" cacheable="True"
-    compression="none" conditionalcomment="" cookable="False" enabled="True"
+    compression="none" conditionalcomment="" cookable="True" enabled="True"
     expression="" id="projects_interface.js" inline="False"
     insert-after="jquery-integration.js"/>
  <javascript authenticated="False" bundle="default" cacheable="True"
-    compression="none" conditionalcomment="" cookable="False" enabled="True"
+    compression="none" conditionalcomment="" cookable="True" enabled="True"
     expression="" id="jquery.tablednd_0_5.js" inline="False"
     insert-after="projects_interface.js"/>
  <javascript authenticated="False" bundle="default" cacheable="True"
-    compression="none" conditionalcomment="" cookable="False" enabled="True"
+    compression="none" conditionalcomment="" cookable="True" enabled="True"
     expression="" id="meeting_sort.js" inline="False"
     insert-after="jquery.tablednd_0_5.js"/>
  <javascript authenticated="False" bundle="default" cacheable="True"
-    compression="none" conditionalcomment="" cookable="False" enabled="True"
+    compression="none" conditionalcomment="" cookable="True" enabled="True"
     expression="" id="++resource++jquery.pyproxy.spinner.min.js"
     inline="False" insert-after="meeting_sort.js"/>
  <javascript authenticated="False" bundle="default" cacheable="True"
-    compression="none" conditionalcomment="" cookable="False" enabled="False"
+    compression="none" conditionalcomment="" cookable="True" enabled="False"
     expression="" id="++resource++jquery.pyproxy.spinner.js" inline="False"
     insert-after="++resource++jquery.pyproxy.spinner.min.js"/>
  <javascript authenticated="False" bundle="default" cacheable="True"
-    compression="none" conditionalcomment="" cookable="False" enabled="False"
+    compression="none" conditionalcomment="" cookable="True" enabled="False"
     expression="" id="++resource++jquery.pyproxy.js" inline="False"
     insert-after="++resource++jquery.pyproxy.spinner.js"/>
  <javascript authenticated="False" bundle="default" cacheable="True"
-    compression="none" conditionalcomment="" cookable="False" enabled="True"
+    compression="none" conditionalcomment="" cookable="True" enabled="True"
     expression="" id="++resource++jquery.pyproxy.min.js" inline="False"
     insert-after="++resource++jquery.pyproxy.js"/>
  <javascript authenticated="False" bundle="default" cacheable="True"
@@ -185,7 +185,7 @@
     expression="" id="unlockOnFormUnload.js" inline="False"
     insert-after="formsubmithelpers.js"/>
  <javascript authenticated="True" bundle="default" cacheable="True"
-    compression="safe" conditionalcomment="" cookable="False" enabled="True"
+    compression="safe" conditionalcomment="" cookable="True" enabled="True"
     expression="not: portal/portal_membership/isAnonymousUser"
     id="jquery.tinymce.js" inline="False"
     insert-after="unlockOnFormUnload.js"/>
@@ -210,7 +210,7 @@
     expression="" id="jquery.global.js" inline="False"
     insert-after="hideShow.js"/>
  <javascript authenticated="False" bundle="default" cacheable="True"
-    compression="none" conditionalcomment="" cookable="False" enabled="True"
+    compression="none" conditionalcomment="" cookable="True" enabled="True"
     expression="" id="collective.js.jqueryui.custom.min.js" inline="False"
     insert-after="jquery.global.js"/>
  <javascript authenticated="False" bundle="default" cacheable="True"
