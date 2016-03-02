@@ -4,7 +4,9 @@ History of this buildout
 6.0.5 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- varnish-clearcache: print if there is a failure.  [maurits]
+
+- varnishd: listen on telnet.  [maurits]
 
 
 6.0.4 (2016-03-02)
