@@ -1,7 +1,7 @@
 History of this buildout
 ========================
 
-6.0.4 (unreleased)
+6.0.4 (2016-03-02)
 ------------------
 
 - Cook css/javascript resources in an upgrade step.  [maurits]
