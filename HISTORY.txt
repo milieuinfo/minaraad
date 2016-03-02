@@ -4,7 +4,7 @@ History of this buildout
 6.0.4 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Added varnish-clearcache part on deployment.  [maurits]
 
 
 6.0.3 (2016-03-02)
