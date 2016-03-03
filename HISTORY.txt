@@ -4,6 +4,8 @@ History of this buildout
 6.0.5 (unreleased)
 ------------------
 
+- Fixed varnish_purge_hosts on ontwikkel.  [maurits]
+
 - varnishd: specify the secret-file.  [maurits]
 
 - Use collective.js.jqueryui 1.10.4 which has better cache settings.
