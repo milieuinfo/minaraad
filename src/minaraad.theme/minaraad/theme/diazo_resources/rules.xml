@@ -81,6 +81,11 @@
   <copy attributes="value" css:content=".searchButton" css:theme=".search button" />
   <replace css:content=".searchSection" css:theme=".search p"/>
 
+  <!-- Replace contact href from the dropdown so it keeps working in our static file
+       This wil break if they remove the contact href from main menu
+   -->
+  <copy attributes="href" css:content='#portaltab-Contact a' css:theme=".dropdown-contact" />
+
   <!-- footer -->
   <replace css:content="footer" css:theme="footer" />
 

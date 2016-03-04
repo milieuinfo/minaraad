@@ -4,6 +4,9 @@ History of this buildout
 6.0.5 (unreleased)
 ------------------
 
+- Diazo rule for contact href in the dropdown.
+  [lhuiskes]
+
 - varnish-clearcache: print if there is a failure.  [maurits]
 
 - varnishd: listen on telnet.  [maurits]
