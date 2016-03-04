@@ -5,10 +5,4 @@
  <javascript cacheable="True" compression="safe" cookable="True"
     enabled="True" expression="" id="jquery.global.js" inline="False"/>
 
- <!-- Normalize the kss resources to what default Plone has. -->
- <javascript id="++resource++kukit.js" compression="none" authenticated="True"
-    enabled="True" expression="" />
- <javascript id="++resource++kukit-devel.js" compression="none" enabled="False"
-    expression="" />
-
 </object>

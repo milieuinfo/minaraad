@@ -1,19 +1,185 @@
 <?xml version="1.0"?>
-<object>
+<object name="portal_css" meta_type="Stylesheets Registry">
  <stylesheet id="++theme++minaraad/css/style.css" remove="True" />
  <stylesheet id="++theme++minaraad/css/print.css" remove="True" />
  <stylesheet id="++theme++minaraad/css/mobile.css" remove="True" />
+ <stylesheet id="++theme++minaraad/css/normalize.css" remove="True" />
  <stylesheet id="public.css" remove="True" />
- <stylesheet title=""
-   id="++theme++minaraad/css/normalize.css"
-   media="screen" rel="stylesheet" rendering="link"
-   cacheable="True" compression="safe" cookable="True"
-   enabled="0" expression="" />
 
- <stylesheet title=""
-   id="++theme++minaraad/static/main.css"
-   media="screen" rel="stylesheet" rendering="link"
-   cacheable="True" compression="safe" cookable="True"
-   enabled="True" expression="" />
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on" expression="" id="++resource++jquery.css"
+    media="all" rel="stylesheet" rendering="link"/>
+ <stylesheet title="" applyPrefix="False"
+    authenticated="False" bundle="default" cacheable="True" compression="safe"
+    conditionalcomment="" cookable="True" enabled="on" expression=""
+    id="++resource++jquery.select2uislider.css"
+    insert-after="++resource++jquery.css" media="all" rel="stylesheet"
+    rendering="link"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on" expression="" id="reset.css"
+    insert-after="++resource++jquery.select2uislider.css" media="screen"
+    rel="stylesheet" rendering="link"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="False"
+    expression="python:portal.restrictedTraverse('@@plone_portal_state').is_rtl()"
+    id="RTL.css"
+    insert-after="++resource++plone.app.imagecropping.static/cropping.css"
+    media="screen" rel="stylesheet" rendering="link"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on" expression="" id="base.css"
+    insert-after="RTL.css" media="screen" rel="stylesheet"
+    rendering="link"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on" expression=""
+    id="collective.js.jqueryui.custom.min.css" insert-after="base.css"
+    media="screen" rel="stylesheet" rendering="link"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on" expression="" id="columns.css"
+    insert-after="collective.js.jqueryui.custom.min.css" media="screen"
+    rel="stylesheet" rendering="link"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on" expression="" id="authoring.css"
+    insert-after="columns.css" media="screen" rel="stylesheet"
+    rendering="link"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on" expression="" id="portlets.css"
+    insert-after="authoring.css" media="screen" rel="stylesheet"
+    rendering="link"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on" expression="" id="controlpanel.css"
+    insert-after="portlets.css" media="screen" rel="stylesheet"
+    rendering="link"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on" expression=""
+    id="++resource++tinymce.stylesheets/tinymce.css"
+    insert-after="controlpanel.css" media="all" rel="stylesheet"
+    rendering="link"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on" expression="" id="deprecated.css"
+    insert-after="++resource++tinymce.stylesheets/tinymce.css" media="screen"
+    rel="stylesheet" rendering="link"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on" expression="" id="navtree.css"
+    insert-after="deprecated.css" media="screen" rel="stylesheet"
+    rendering="link"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on" expression="" id="invisibles.css"
+    insert-after="navtree.css" media="screen" rel="stylesheet"
+    rendering="link"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on" expression="" id="forms.css"
+    insert-after="invisibles.css" media="screen" rel="stylesheet"
+    rendering="link"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on" expression=""
+    id="++resource++plone.app.discussion.stylesheets/discussion.css"
+    insert-after="forms.css" media="screen" rel="stylesheet"
+    rendering="link"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on" expression="" id="ploneCustom.css"
+    insert-after="++resource++plone.app.discussion.stylesheets/discussion.css"
+    media="" rel="stylesheet" rendering="link"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on" expression="" id="orderablereference.css"
+    insert-after="ploneCustom.css" media="screen" rel="stylesheet"
+    rendering="link"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on" expression=""
+    id="++resource++jquery.pyproxy.spinner.css"
+    insert-after="orderablereference.css" media="screen" rel="stylesheet"
+    rendering="link"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on" expression="" id="minaprojects.css"
+    insert-after="++resource++jquery.pyproxy.spinner.css" media="screen"
+    rel="stylesheet" rendering="link"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    bundle="default" cacheable="False" compression="safe"
+    conditionalcomment="" cookable="True" enabled="False" expression=""
+    id="++resource++plone.app.jquerytools.overlays.css"
+    insert-after="minaprojects.css" media="screen" rel="stylesheet"
+    rendering="link"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    bundle="default" cacheable="False" compression="safe"
+    conditionalcomment="" cookable="True" enabled="False" expression=""
+    id="++resource++plone.app.jquerytools.dateinput.css"
+    insert-after="++resource++plone.app.jquerytools.overlays.css"
+    media="screen" rel="stylesheet" rendering="link"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on" expression="" id="faceted_view.css"
+    insert-after="++resource++plone.app.jquerytools.dateinput.css"
+    media="screen" rel="stylesheet" rendering="link"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on" expression=""
+    id="++resource++collective.mailchimp.stylesheets/mailchimp.css"
+    insert-after="faceted_edit.css" media="screen" rel="stylesheet"
+    rendering="link"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on" expression="" id="++resource++embedly.css"
+    insert-after="++resource++collective.mailchimp.stylesheets/mailchimp.css"
+    media="screen" rel="stylesheet" rendering="link"/>
 
+  <!-- The main.css from the theme.
+       The media query MUST BE EMPTY.
+       Otherwise it will fail on IE11 (and possibly lower). -->
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    bundle="default" cacheable="True" compression="none" conditionalcomment=""
+    cookable="True" enabled="on" expression=""
+    id="++theme++minaraad/static/main.css"
+    insert-after="++resource++embedly.css" media=""
+    rel="stylesheet" rendering="link"/>
+
+ <!-- Authenticated -->
+ <stylesheet title="" applyPrefix="False" authenticated="True"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on" expression="" id="member.css"
+    insert-after="++theme++minaraad/static/main.css" media="screen" rel="stylesheet"
+    rendering="link"/>
+ <stylesheet title="" applyPrefix="False" authenticated="True"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on" expression=""
+    id="++resource++plone.app.imagecropping.static/jquery.Jcrop.css"
+    insert-after="member.css" media="screen" rel="stylesheet"
+    rendering="link"/>
+ <stylesheet title="" applyPrefix="False" authenticated="True"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on" expression=""
+    id="++resource++plone.app.imagecropping.static/cropping.css"
+    insert-after="++resource++plone.app.imagecropping.static/jquery.Jcrop.css"
+    media="screen" rel="stylesheet" rendering="link"/>
+ <stylesheet title="" applyPrefix="False" authenticated="True"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on" expression=""
+    id="++resource++select2/select2.css"
+    insert-after="++resource++plone.app.imagecropping.static/cropping.css" media="screen"
+    rel="stylesheet" rendering="link"/>
+
+ <!-- Special condition -->
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    bundle="default" cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on"
+    expression="python:'configure_faceted.html' in request.URL0"
+    id="faceted_edit.css" insert-after="++resource++select2/select2.css" media="screen"
+    rel="stylesheet" rendering="link"/>
 </object>

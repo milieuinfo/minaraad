@@ -1304,21 +1304,25 @@ def trim_image_whitespace(context):
         img.close()
 
 
+def upgrade_product(context, product):
+    installer = getToolByName(context, 'portal_quickinstaller')
+    installer.upgradeProduct(product)
+    logger.info("Upgraded %s.", product)
+
+
 def upgrade_jquery_packages(context):
     # These packagges are marked as outdated in the add-ons control panel.
-    installer = getToolByName(context, 'portal_quickinstaller')
-    installer.upgradeProduct('plone.app.jquery')
-    installer.upgradeProduct('plone.app.jquerytools')
-    logger.info("Upgraded plone.app.jquery/tools.")
+    upgrade_product(context, 'plone.app.jquery')
+    upgrade_product(context, 'plone.app.jquerytools')
 
 
 def upgrade_simple_attachment(context):
-    installer = getToolByName(context, 'portal_quickinstaller')
-    installer.upgradeProduct('Products.SimpleAttachment')
-    logger.info("Upgraded Products.SimpleAttachment.")
+    upgrade_product(context, 'Products.SimpleAttachment')
 
 
 def upgrade_eea_facetednavigation(context):
-    installer = getToolByName(context, 'portal_quickinstaller')
-    installer.upgradeProduct('eea.facetednavigation')
-    logger.info("Upgraded eea.facetednavigation.")
+    upgrade_product(context, 'eea.facetednavigation')
+
+
+def upgrade_collective_js_jqueryui(context):
+    upgrade_product(context, 'collective.js.jqueryui')
