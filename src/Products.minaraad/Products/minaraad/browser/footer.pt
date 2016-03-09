@@ -69,7 +69,7 @@
 
       <div class="column contact">
         <h3><a href="#"
-               tal:attributes="href string:${portal_url}/contact">Contact</a></h3>
+               tal:attributes="href string:${portal_url}/Contact">Contact</a></h3>
         <p>SAR Minaraad<br/>
            Kliniekstraat 25<br/>
            1070 Brussel

@@ -18,7 +18,6 @@ History of this buildout
   and lower when it is registered with a media setting.  Also,
   reordered the css files so we get less combined files.  And include
   them all with ``link`` instead of ``@import``.  [maurits]
->>>>>>> b84488a075e8534c48c500d2db3d7ee33f4137a2
 
 - varnish-clearcache: print if there is a failure.  [maurits]
 
