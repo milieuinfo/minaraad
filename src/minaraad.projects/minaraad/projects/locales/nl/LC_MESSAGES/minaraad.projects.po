@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: minaraad.projecrts 1.0\n"
 "POT-Creation-Date: 2016-03-09 19:10+0000\n"
-"PO-Revision-Date: 2013-03-08 14:17+0100\n"
+"PO-Revision-Date: 2016-03-09 20:13+0100\n"
 "Last-Translator: Maurits van Rees <m.van.rees@zestsoftware.nl>\n"
 "Language-Team: Zest Software <info@zestsoftware.nl>\n"
 "MIME-Version: 1.0\n"
@@ -37,7 +37,7 @@ msgstr "Samenvatting aanwezigheid"
 
 #: ./browser/project.py:83
 msgid "Cannot find theme that is set on project."
-msgstr ""
+msgstr "Kan het thema niet vinden waaraan het project gekoppeld is."
 
 #: ./browser/templates/statistics.pt:61
 msgid "Choose a statistic:"
@@ -66,11 +66,11 @@ msgstr "Digibib"
 
 #: ./profiles/default/types/AttachmentsFolder.xml
 msgid "Edit"
-msgstr ""
+msgstr "Bewerken"
 
 #: ./profiles/default/types/AttachmentsFolder.xml
 msgid "Folder Listing"
-msgstr ""
+msgstr "Inhoud"
 
 #: ./browser/templates/project.pt:135
 msgid "Go to advisory"
@@ -90,7 +90,7 @@ msgstr "Naam"
 
 #: ./browser/project.py:78
 msgid "No theme set on project."
-msgstr ""
+msgstr "Er is geen thema gekoppeld aan het project."
 
 #: ./validators.py:73
 msgid "Number must be 3-digits"
@@ -142,7 +142,7 @@ msgstr "Selecteer een kwartaal of maand of laat beide leeg voor een volledig jaa
 
 #: ./profiles/default/types/AttachmentsFolder.xml
 msgid "View"
-msgstr ""
+msgstr "Bekijken"
 
 #. Default: "A short description of the contents and the legal background of the advisory request."
 #: ./content/project.py:50
@@ -192,7 +192,7 @@ msgstr "Onthoudingen en/of standpunten"
 #. Default: "Add attachment"
 #: ./browser/templates/project.pt:203
 msgid "label_add_attachment"
-msgstr ""
+msgstr "Voeg bijlage toe"
 
 #. Default: "Add a new meeting"
 #: ./browser/templates/digibib.pt:64
@@ -563,15 +563,15 @@ msgstr "Unaniem"
 #. Default: "Up to Site Setup"
 #: ./browser/templates/statistics.pt:18
 msgid "label_up_to_plone_setup"
-msgstr ""
+msgstr "Naar website instellingen"
 
 #: ./profiles.zcml:13
 msgid "minaraad.projects"
-msgstr ""
+msgstr "minaraad.projects"
 
 #: ./profiles.zcml:24
 msgid "minaraad.projects small fixes"
-msgstr ""
+msgstr "minaraad.projects kleine fixes"
 
 #. Default: "Quarter ${number}"
 #: ./browser/export.py:150
