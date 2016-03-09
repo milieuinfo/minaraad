@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minaraad.projects plone domain 1.0\n"
-"POT-Creation-Date: 2013-03-08 13:17+0000\n"
+"POT-Creation-Date: 2016-03-09 19:11+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: Zest Software <info@zestsoftware.nl>\n"
 "Language-Team: Zest Software <info@zestsoftware.nl>\n"
@@ -172,4 +172,3 @@ msgstr ""
 #: profiles/default/controlpanel.xml
 msgid "Statistics"
 msgstr ""
-

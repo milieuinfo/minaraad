@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minaraad.projecrts 1.0\n"
-"POT-Creation-Date: 2013-03-08 13:17+0000\n"
+"POT-Creation-Date: 2016-03-09 19:10+0000\n"
 "PO-Revision-Date: 2013-03-08 14:17+0100\n"
 "Last-Translator: Maurits van Rees <m.van.rees@zestsoftware.nl>\n"
 "Language-Team: Zest Software <info@zestsoftware.nl>\n"
@@ -31,11 +31,15 @@ msgstr "Archief"
 msgid "AttachmentsFolder"
 msgstr "Deelproject"
 
-#: ./browser/export.py:36
+#: ./browser/export.py:35
 msgid "Attendance Summary"
 msgstr "Samenvatting aanwezigheid"
 
-#: ./browser/templates/statistics.pt:55
+#: ./browser/project.py:83
+msgid "Cannot find theme that is set on project."
+msgstr ""
+
+#: ./browser/templates/statistics.pt:61
 msgid "Choose a statistic:"
 msgstr "Kies een statistiek:"
 
@@ -51,15 +55,12 @@ msgstr "Maak advies"
 msgid "Create advisory from information in project"
 msgstr "Maak een advies aan de hand van informatie in het project"
 
-#: ./browser/project.py:140
+#: ./browser/project.py:118
 msgid "Created Advisory"
 msgstr "Advies aangemaakt"
 
-#: ./browser/project.py:93
-msgid "Created folder for this year."
-msgstr "Map aangemaakt voor dit jaar."
-
 #: ./profiles/default/types/DigiBib.xml
+#: ./profiles/fixes/types/DigiBib.xml
 msgid "DigiBib"
 msgstr "Digibib"
 
@@ -71,7 +72,7 @@ msgstr ""
 msgid "Folder Listing"
 msgstr ""
 
-#: ./browser/templates/project.pt:197
+#: ./browser/templates/project.pt:135
 msgid "Go to advisory"
 msgstr "Ga naar advies"
 
@@ -87,6 +88,10 @@ msgstr "Vergaderingenmap"
 msgid "Name"
 msgstr "Naam"
 
+#: ./browser/project.py:78
+msgid "No theme set on project."
+msgstr ""
+
 #: ./validators.py:73
 msgid "Number must be 3-digits"
 msgstr "Nummer moet uit 3 cijfers bestaan"
@@ -98,6 +103,14 @@ msgstr "Adviesraad"
 #: ./profiles/default/types/OrganisationContainer.xml
 msgid "Organisation container"
 msgstr "Samenwerkingenmap"
+
+#: ./profiles.zcml:24
+msgid "Profile for fixing a few settings on the live site.                    For example, we should not allow adding more folders                    to the live Digibib."
+msgstr ""
+
+#: ./profiles.zcml:13
+msgid "Profile for the minaraad projects site."
+msgstr ""
 
 #: ./profiles/default/types/Project.xml
 msgid "Project"
@@ -111,7 +124,7 @@ msgstr "Projectenmap"
 msgid "Project id must be of the form YYYYMMDD"
 msgstr "Het ID van een project dient van het formaat YYYYMMDD te zijn"
 
-#: ./browser/templates/project.pt:196
+#: ./browser/templates/project.pt:134
 msgid "Public advisory"
 msgstr "Publiek advies"
 
@@ -119,11 +132,11 @@ msgstr "Publiek advies"
 msgid "Regenerate PDF"
 msgstr "PDF regenereren"
 
-#: ./browser/templates/statistics.pt:26
+#: ./browser/templates/statistics.pt:32
 msgid "Select a period:"
 msgstr "Selecteer een periode:"
 
-#: ./browser/templates/statistics.pt:27
+#: ./browser/templates/statistics.pt:33
 msgid "Select either quarter or month or leave both empty for the full year."
 msgstr "Selecteer een kwartaal of maand of laat beide leeg voor een volledig jaar."
 
@@ -132,7 +145,7 @@ msgid "View"
 msgstr ""
 
 #. Default: "A short description of the contents and the legal background of the advisory request."
-#: ./content/project.py:59
+#: ./content/project.py:50
 msgid "desc_description"
 msgstr "Een korte omschrijving van de inhoud en de rechtsgrond van de adviesvraag."
 
@@ -142,12 +155,12 @@ msgid "desc_duration"
 msgstr "Geef de duur op in minuten."
 
 #. Default: "This is the official legal title from the advisory request"
-#: ./content/project.py:197
+#: ./content/project.py:188
 msgid "desc_full_title"
 msgstr "Dit is de officiële juridische titel uit de adviesvraag"
 
 #. Default: "Internal working title"
-#: ./content/project.py:191
+#: ./content/project.py:182
 msgid "desc_short_title"
 msgstr "Korte interne werktitel"
 
@@ -172,17 +185,17 @@ msgid "help_other_invitees"
 msgstr "Voeg genodigden toe die niet in de geselecteerde commissies zitten."
 
 #. Default: "Abstention and/or reject points"
-#: ./content/project.py:288
+#: ./content/project.py:280
 msgid "label_abstention_rejection"
 msgstr "Onthoudingen en/of standpunten"
 
 #. Default: "Add attachment"
-#: ./browser/templates/project.pt:71
+#: ./browser/templates/project.pt:203
 msgid "label_add_attachment"
 msgstr ""
 
 #. Default: "Add a new meeting"
-#: ./browser/templates/digibib.pt:63
+#: ./browser/templates/digibib.pt:64
 msgid "label_add_meeting"
 msgstr "Nieuwe vergadering toevoegen"
 
@@ -197,27 +210,27 @@ msgid "label_address"
 msgstr "Adres"
 
 #. Default: "Advisory date"
-#: ./content/project.py:71
+#: ./content/project.py:62
 msgid "label_adv_date"
 msgstr "Datum Adviesvraag"
 
 #. Default: "Advisory request"
-#: ./content/project.py:99
+#: ./content/project.py:90
 msgid "label_adv_request"
 msgstr "Adviesvraag document"
 
 #. Default: "Advisory requester"
-#: ./content/project.py:81
+#: ./content/project.py:72
 msgid "label_adv_requester"
 msgstr "Opdrachtgever"
 
 #. Default: "Advisory term"
-#: ./content/project.py:91
+#: ./content/project.py:82
 msgid "label_adv_term"
 msgstr "Adviestermijn"
 
 #. Default: "Advisory type"
-#: ./content/project.py:152
+#: ./content/project.py:143
 msgid "label_adv_type"
 msgstr "Advies conclusie"
 
@@ -228,7 +241,7 @@ msgstr "Opdrachtgevers"
 
 #. Default: "Assigned groups"
 #: ./content/meeting.py:83
-#: ./content/project.py:180
+#: ./content/project.py:171
 msgid "label_assigned_groups"
 msgstr "Betrokken commissies"
 
@@ -243,12 +256,12 @@ msgid "label_board_empty_error"
 msgstr "U dient hier de groep voor het dagelijksbestuur in te voeren."
 
 #. Default: "Weekly list of proposed projects"
-#: ./browser/cron.py:83
+#: ./browser/cron.py:84
 msgid "label_boardmember_digest_mail_title"
 msgstr "Weekoverzicht van voorgestelde projecten"
 
 #. Default: "Dear ${fullname}, \n\nHere is the list of the projects that have been proposed this week:\n${project_list} \n\nBest regards."
-#: ./browser/cron.py:88
+#: ./browser/cron.py:90
 msgid "label_boardmember_digestmail_content"
 msgstr ""
 "Geachte heer/mevrouw ${fullname}, \n"
@@ -259,7 +272,7 @@ msgstr ""
 "Met vriendelijke groeten."
 
 #. Default: "Dear ${fullname}, \n\nThe project ${project_name} has been proposed to the board. Here is the description of the project: \n\n${project_desc}\n\nMore information can be found here: \n\n${project_url}"
-#: ./events.py:275
+#: ./events.py:298
 msgid "label_boardmember_mail_content"
 msgstr ""
 "Geachte heer/mevrouw ${fullname},\n"
@@ -279,7 +292,7 @@ msgstr ""
 "De secretaris"
 
 #. Default: "Project ${project_name} has been proposed"
-#: ./events.py:269
+#: ./events.py:292
 msgid "label_boardmember_mail_title"
 msgstr "Het project ${project_name} is voorgesteld"
 
@@ -294,29 +307,29 @@ msgid "label_city"
 msgstr "Gemeente"
 
 #. Default: "Delivery date (actual)"
-#: ./content/project.py:141
+#: ./content/project.py:132
 msgid "label_delivery_date"
 msgstr "Opleveringsdatum"
 
 #. Default: "Description"
-#: ./content/agendaitem.py:22
+#: ./content/agendaitem.py:24
 #: ./content/meeting.py:47
-#: ./content/project.py:57
+#: ./content/project.py:48
 msgid "label_description"
 msgstr "Omschrijving"
 
 #. Default: "Disagreeing members"
-#: ./content/project.py:161
+#: ./content/project.py:152
 msgid "label_disagreeing_members"
 msgstr "Onthouden organisaties"
 
 #. Default: "Documents"
-#: ./browser/templates/meeting.pt:23
+#: ./browser/templates/meeting.pt:31
 msgid "label_documents"
 msgstr "Documenten"
 
 #. Default: "Download full dossier"
-#: ./browser/templates/meeting.pt:80
+#: ./browser/templates/meeting.pt:89
 msgid "label_download_full_dossier"
 msgstr "Download complete dossier"
 
@@ -331,12 +344,12 @@ msgid "label_email_empty_error"
 msgstr "U kunt hier het e-mail adres van de secretaris opgeven. Meerdere e-mailadressen worden met een komma gescheiden."
 
 #. Default: "Export"
-#: ./browser/templates/statistics.pt:68
+#: ./browser/templates/statistics.pt:74
 msgid "label_export"
 msgstr "Exporteer"
 
 #. Default: "Full title"
-#: ./content/project.py:194
+#: ./content/project.py:185
 msgid "label_full_title"
 msgstr "Lange titel"
 
@@ -377,7 +390,7 @@ msgid "label_incoming_meetings"
 msgstr "Geplande vergaderingen"
 
 #. Default: "Location"
-#: ./browser/templates/meeting.pt:34
+#: ./browser/templates/meeting.pt:43
 #: ./content/meeting.py:59
 msgid "label_location"
 msgstr "Locatie"
@@ -393,17 +406,17 @@ msgid "label_membership_organizations"
 msgstr "Ledenorganisaties"
 
 #. Default: "There is no agenda item yet for this meeting."
-#: ./browser/templates/meeting.pt:71
+#: ./browser/templates/meeting.pt:79
 msgid "label_no_agenda_items"
 msgstr "Er zijn nog geen agendapunten voor deze vergadering."
 
 #. Default: "There is no planned meetings."
-#: ./browser/templates/digibib.pt:99
+#: ./browser/templates/digibib.pt:100
 msgid "label_no_planned_meetings"
 msgstr "Er zijn nog geen vergaderingen gepland."
 
 #. Default: "There is no incoming projects"
-#: ./browser/templates/digibib.pt:52
+#: ./browser/templates/digibib.pt:53
 msgid "label_no_projects"
 msgstr "Er zijn geen actieve projecten"
 
@@ -413,7 +426,7 @@ msgid "label_organisation_name"
 msgstr "Naam adviesraad"
 
 #. Default: "Participating organisations"
-#: ./content/project.py:110
+#: ./content/project.py:101
 msgid "label_organisations"
 msgstr "Samenwerking"
 
@@ -433,52 +446,52 @@ msgid "label_postalCode"
 msgstr "Postcode"
 
 #. Default: "Dealine (postponed)"
-#: ./content/project.py:131
+#: ./content/project.py:122
 msgid "label_postpone_date"
 msgstr "Deadline (bij uitstel)"
 
 #. Default: "Preview"
-#: ./browser/templates/statistics.pt:72
+#: ./browser/templates/statistics.pt:78
 msgid "label_preview"
 msgstr "Voorvertoning"
 
 #. Default: "Product number"
-#: ./content/project.py:46
+#: ./content/project.py:37
 msgid "label_product_number"
 msgstr "Productnummer"
 
 #. Default: "Project"
-#: ./content/agendaitem.py:34
+#: ./content/agendaitem.py:36
 msgid "label_project"
 msgstr "Project"
 
 #. Default: "Project number"
-#: ./content/project.py:36
+#: ./content/project.py:27
 msgid "label_project_number"
 msgstr "Intern projectnummer (bijvoorbeeld: 014)"
 
 #. Default: "Changes have been cancelled"
-#: ./browser/project_properties.py:57
+#: ./browser/project_properties.py:56
 msgid "label_project_props_canceled"
 msgstr "Wijzigingen zijn geannuleerd"
 
 #. Default: "Errors have been found while processing the form, please correct them"
-#: ./browser/project_properties.py:82
+#: ./browser/project_properties.py:81
 msgid "label_project_props_error"
 msgstr "Er zijn fouten gevonden bij het verwerken van het formulier, corrigeer de onderstaande fouten"
 
 #. Default: "Project properties have been saved"
-#: ./browser/project_properties.py:78
+#: ./browser/project_properties.py:77
 msgid "label_project_props_saved"
 msgstr "Projectinstellingen opgeslagen"
 
 #. Default: "Reject reasons"
-#: ./content/project.py:170
+#: ./content/project.py:161
 msgid "label_reject_reasons"
 msgstr "Standpunt van samenwerkende organisatie"
 
 #. Default: "Responsible group"
-#: ./content/project.py:120
+#: ./content/project.py:111
 msgid "label_responsible_group"
 msgstr "Verantwoordelijke commissie"
 
@@ -498,7 +511,7 @@ msgid "label_secretary_email"
 msgstr "E-mail adres van de secretaris"
 
 #. Default: "The project ${project_name} has to be verified.\nThe project can be found here: ${project_url}"
-#: ./events.py:220
+#: ./events.py:243
 msgid "label_secretary_mail_content"
 msgstr ""
 "Het project ${project_name} dient gecontroleerd te worden.\n"
@@ -513,12 +526,12 @@ msgstr ""
 "Met vriendelijke groet"
 
 #. Default: "Project ${project_name} has been proposed"
-#: ./events.py:214
+#: ./events.py:237
 msgid "label_secretary_mail_title"
 msgstr "Het project ${project_name} wordt voorgesteld aan het dagelijks bestuur"
 
 #. Default: "Short title"
-#: ./content/project.py:188
+#: ./content/project.py:179
 msgid "label_short_title"
 msgstr "Korte titel"
 
@@ -533,7 +546,7 @@ msgid "label_statistics"
 msgstr "Statistieken"
 
 #. Default: "You must specify a title if you do not select a project"
-#: ./content/agendaitem.py:81
+#: ./content/agendaitem.py:83
 msgid "label_title_needed"
 msgstr "U heeft geen project geselecteerd, u dient een titel op te geven."
 
@@ -543,12 +556,25 @@ msgid "label_type"
 msgstr "Type"
 
 #. Default: "Unanimous"
-#: ./content/project.py:285
+#: ./content/project.py:277
 msgid "label_unanimous"
 msgstr "Unaniem"
 
+#. Default: "Up to Site Setup"
+#: ./browser/templates/statistics.pt:18
+msgid "label_up_to_plone_setup"
+msgstr ""
+
+#: ./profiles.zcml:13
+msgid "minaraad.projects"
+msgstr ""
+
+#: ./profiles.zcml:24
+msgid "minaraad.projects small fixes"
+msgstr ""
+
 #. Default: "Quarter ${number}"
-#: ./browser/export.py:151
+#: ./browser/export.py:150
 msgid "quarter_name"
 msgstr "Kwartaal ${number}"
 
@@ -558,4 +584,3 @@ msgstr "Kwartaal ${number}"
 #: ./browser/templates/list_projects.pt:14
 msgid "to_digibib_dashboard"
 msgstr "Naar Digibib Overzicht"
-
