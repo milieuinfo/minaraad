@@ -4,6 +4,8 @@ History of this buildout
 6.0.5 (unreleased)
 ------------------
 
+- Fixed creating an advisory from a project.  MINA-123.  [maurits]
+
 - Diazo rule for contact href in the dropdown.
   [lhuiskes]
 

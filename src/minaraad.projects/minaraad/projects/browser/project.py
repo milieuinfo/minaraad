@@ -1,15 +1,13 @@
-from datetime import date
-import logging
-
 from Acquisition import aq_inner
+from minaraad.projects import MinaraadProjectMessageFactory as _
+from minaraad.projects.utils import link_project_and_advisory
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.utils import base_hasattr
-from Products.DCWorkflow.DCWorkflow import WorkflowException
 from Products.Five import BrowserView
 from Products.statusmessages.interfaces import IStatusMessage
 
-from minaraad.projects import MinaraadProjectMessageFactory as _
-from minaraad.projects.utils import link_project_and_advisory
+import logging
+
 
 logger = logging.getLogger(__name__)
 
@@ -72,28 +70,19 @@ class CreateAdvisory(CanCreateAdvisory):
         # Some definitions
         context = aq_inner(self.context)
         add_message = IStatusMessage(self.request).addStatusMessage
-        wf_tool = getToolByName(context, 'portal_workflow')
         catalog = getToolByName(context, 'portal_catalog')
 
-        # Make sure a Folder for the current year exists.
-        year = str(date.today().year)
-        base_target = aq_inner(self.base_target)
-        if base_hasattr(base_target, year):
-            target = base_target[year]
-        else:
-            base_target.invokeFactory('Folder', id=year)
-            target = base_target[year]
-            fields = dict(title=year)
-            target.processForm(values=fields)
-            try:
-                wf_tool.doActionFor(target, 'publish')
-            except WorkflowException:
-                pass
-            add_message(_(u"Created folder for this year."), type='info')
-            # Move the folder to the top.
-            base_target.moveObjectsToTop(year)
-            plone_utils = getToolByName(context, 'plone_utils')
-            plone_utils.reindexOnReorder(base_target)
+        # We add the advisory in a theme.
+        path = context.getTheme_path()
+        if not path:
+            add_message(_(u"No theme set on project."), type='error')
+            return self.request.RESPONSE.redirect(context.absolute_url())
+        try:
+            target = context.restrictedTraverse(path)
+        except AttributeError:
+            add_message(_(u"Cannot find theme that is set on project."),
+                        type='error')
+            return self.request.RESPONSE.redirect(context.absolute_url())
 
         # Create an Advisory in there.
         advisory_id = target.generateUniqueId('Advisory')
@@ -112,21 +101,11 @@ class CreateAdvisory(CanCreateAdvisory):
             authors=context.getAuthors(),
             product_number=context.getProduct_number(),
             relatedDocuments=public_uids,
-            theme=context.getTheme(),
-            email_themes=context.getEmail_themes(),  # Not shown in projecs
         )
 
         # For some reason the date field needs to be handled separately.
         advisory.setDate(context.getDelivery_date())
-
-        # For some reason the next processForm call may trigger an
-        # exception but it gets ignored and is not harmful:
-        #
-        # ERROR CMFSquidTool Exception computing urls to purge.
-        # Traceback (most recent call last):
-        #   File ".../CMFSquidTool/SquidTool.py", line 136, in getUrlsToPurge
-        # ...
-        # AttributeError: portal_cache_settings
+        # Process the form.
         advisory.processForm(values=fields)
 
         # processForm may have caused a rename
