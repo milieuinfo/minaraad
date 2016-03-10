@@ -8088,25 +8088,26 @@ div.digibib_list {
   .newsletter-detail .campaign {
     margin: 10px 0; }
 
-.newsletter-mailchimp .newsletter-widget {
-  background: white;
-  border: 0;
-  border-top: 5px solid #86263a;
-  padding: 0 15px 15px 15px; }
-
-.newsletter-mailchimp .title {
-  color: #b2324d;
-  font-size: 16px;
-  font-weight: 600;
-  text-transform: uppercase;
-  margin-top: .75em;
-  background: transparent;
-  padding: 0; }
-
-.newsletter-mailchimp .body {
-  padding-top: 15px; }
-  .newsletter-mailchimp .body a:link, .newsletter-mailchimp .body a:visited {
-    color: white; }
+.newsletter-mailchimp {
+  padding: 0 15px 1px 15px;
+  margin-bottom: 20px; }
+  .newsletter-mailchimp .newsletter-widget {
+    background: white;
+    border: 0;
+    border-top: 5px solid #86263a;
+    padding: 0 15px 15px 15px; }
+  .newsletter-mailchimp .title {
+    color: #b2324d;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-top: .75em;
+    background: transparent;
+    padding: 0; }
+  .newsletter-mailchimp .body {
+    padding-top: 15px; }
+    .newsletter-mailchimp .body a:link, .newsletter-mailchimp .body a:visited {
+      color: white; }
 
 @media (min-width: 992px) {
   .article-advice .body h3 {

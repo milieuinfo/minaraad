@@ -398,6 +398,8 @@
 .newsletter-mailchimp{
   @extend .col-xs-12;
   @extend .col-md-3;
+  padding: 0 15px 1px 15px;
+  margin-bottom: 20px;
   .newsletter-widget{
     background: white;
     border: 0;
