@@ -68,14 +68,23 @@
 
     <!--? MREvent -->
     <metal:block metal:define-macro="event">
-      <article class="article-event">
-        <a tal:attributes="href item/absolute_url; title item/Title">
+      <article class="article-event"
+               tal:define="title item/Title;
+                           has_image item/has_image;
+                           first_image item/get_first_image;">
+
+        <a tal:attributes="href item/absolute_url; title title">
           <header>
             <h3 tal:define="d item/getStart_time|nothing">
               <i class="fa fa-comments"></i>
               <metal:block use-macro="context/display_macros/macros/date" />
             </h3>
           </header>
+          <img style="width:100%"
+              tal:condition="has_image"
+              tal:attributes="alt title;
+                              src first_image/absolute_url"/>
+
           <div class="body">
             <p class="label" tal:condition="show_theme_title|nothing">
               Oriëntatiemoment&emsp;
