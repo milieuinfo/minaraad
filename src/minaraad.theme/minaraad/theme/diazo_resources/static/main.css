@@ -8291,6 +8291,10 @@ nav ul {
 #edit-bar li {
   display: inline; }
 
+.article-theme-bodytext ul {
+  list-style: inherit;
+  padding-left: 2em; }
+
 .photoAlbumEntry {
   background-image: none;
   background: white;

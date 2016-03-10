@@ -4,6 +4,9 @@ History of this buildout
 6.0.5 (unreleased)
 ------------------
 
+- Add styling for list-items inside article-theme-bodytext.  MINA-127.
+  [lhuiskes]
+
 - Fixed creating an advisory from a project.  MINA-123.  [maurits]
 
 - Diazo rule for contact href in the dropdown.
