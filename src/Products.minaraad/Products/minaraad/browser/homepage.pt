@@ -154,11 +154,12 @@
                         <div class="body">
                           <p>
                             Wenst u regelmatig op de hoogte te blijven van onze adviezen en
-                            evenementen. Abonneer u dan op onze nieuwsbrief via de button in
-                            de footer van deze website.
+                            evenementen. Abonneer u dan op onze nieuwsbrief.
                           </p>
-                          <p>
-                            Klik om het archief van nieuwsbrieven te bekijken.
+                          <p id="mailchimp_link">
+                            <a href="/@@newsletter" class="btn btn-primary">
+                              <i class="fa fa-envelope"></i> Abonneren
+                            </a>
                           </p>
                         </div>
                       </a>
