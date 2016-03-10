@@ -159,7 +159,7 @@ msgstr ""
 #. Default: "Study"
 #: ./profiles/default/types/Study.xml
 msgid "Study"
-msgstr "Nota"
+msgstr "Oriëntatienota"
 
 #: ./profiles/default/types/Theme.xml
 #: ./profiles/plone436/types/Theme.xml
