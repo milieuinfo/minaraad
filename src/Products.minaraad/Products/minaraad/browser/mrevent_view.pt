@@ -176,8 +176,8 @@
                     <p>Indien u wilt deelnemen aan dit evenement, vul dan het onderstaande
                        formulier in. Heeft u een account, log dan in en klik bovenaan op de
                        button "Inschrijven" dan wordt dit formulier automatisch ingevuld.</p>
-                    <p>Nieuwe accounts worden niet meer verstrekt en de optie om in te
-                       loggen vervalt binnenkort voor geïnteresseerden.</p>
+                    <p>Heeft u geen account, vul dan hieronder uw gegevens in de voorziene
+                       velden in</p>
 
                     <form method="post"
                           tal:attributes="action string:${context/absolute_url}/@@attendees_view">

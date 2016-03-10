@@ -36,15 +36,14 @@ class RelatedDocumentsViewlet(ViewletBase):
 
     def title(self):
         context = aq_inner(self.context)
-        if context.portal_type == "Advisory":
+        if context.portal_type in ("Advisory", "MREvent", "Study"):
             return u"Gerelateerde documenten"
         else:
             return u"Actuele documenten"
 
     def get_related_documents(self):
         context = aq_inner(self.context)
-        if context.portal_type == "Advisory":
+        if context.portal_type in ("Advisory", "MREvent", "Study"):
             return context.getRelatedDocuments()
         elif context.getId() == 'thema-lijst':
             return context.getRelatedItems()
-     

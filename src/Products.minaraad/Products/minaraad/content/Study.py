@@ -2,6 +2,7 @@
 from zope.interface import implements
 from AccessControl import ClassSecurityInfo
 
+from archetypes.referencebrowserwidget.widget import ReferenceBrowserWidget
 from Products.Archetypes import atapi
 from Products.OrderableReferenceField import OrderableReferenceField
 from Products.OrderableReferenceField import OrderableReferenceWidget
@@ -75,6 +76,32 @@ schema = atapi.Schema((
         multiValued=1,
         relationship='study_contact'
     ),
+
+    atapi.ReferenceField(
+        name='relatedDocuments',
+        vocabulary_display_path_bound="-1",
+        widget=ReferenceBrowserWidget(
+            label='Related Documents',
+            label_msgid='minaraad_label_related_documents',
+            description="Related and published digibib documents and files",
+            description_msgid="minaraad_help_related_documents",
+            i18n_domain='minaraad',
+            # ATReferenceBrowser specific additions:
+            startup_directory='/',
+            restrict_browsing_to_startup_directory=0,
+            only_for_review_states=('published', ),
+            show_review_state=1,
+            allow_search=1,
+            allow_browse=1,
+            show_indexes=0,
+            force_close_on_insert=0,
+        ),
+        allowed_types=('Document', 'File', 'FileAttachment',
+                       'Advisory', 'Study', 'MREvent'),
+        multiValued=True,
+        relationship='related_documents'
+    ),
+
 ),
 )
 
