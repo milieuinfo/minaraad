@@ -4,6 +4,13 @@ History of this buildout
 6.0.5 (unreleased)
 ------------------
 
+- Add image to Study on homepage. MINA-130.  [jladage]
+
+- Related Documents to limitted, allow all types, also for study
+  and event. MINA-124  [jladage]
+
+- Rename label Nota to Oriëntatienota. MINA-129  [jladage]
+
 - Fixed creating an advisory from a project.  MINA-123.  [maurits]
 
 - Diazo rule for contact href in the dropdown.
