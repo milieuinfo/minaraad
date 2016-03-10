@@ -92,4 +92,11 @@
   <!-- Google analytics script -->
   <after theme-children="/html/body" content="//*[@id='portal-footer-wrapper']/script" />
 
+  <replace css:content="#nav-index">
+      <xsl:copy-of select="//dl[@id='document-toc']" />
+      <xsl:apply-templates mode="raw" />
+  </replace>
+
+  <drop content="//dl[@id='document-toc']" />
+
 </rules>
