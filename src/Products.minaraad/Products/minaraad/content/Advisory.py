@@ -115,7 +115,7 @@ schema = atapi.Schema((
             description_msgid="minaraad_help_related_documents",
             i18n_domain='minaraad',
             # ATReferenceBrowser specific additions:
-            startup_directory='digibib/projects',
+            startup_directory='/',
             restrict_browsing_to_startup_directory=0,
             only_for_review_states=('published', ),
             show_review_state=1,
@@ -124,14 +124,15 @@ schema = atapi.Schema((
             show_indexes=0,
             force_close_on_insert=0,
         ),
-        allowed_types=('Document', 'File', 'FileAttachment'),
+        allowed_types=('Document', 'File', 'FileAttachment',
+                       'Advisory', 'Study', 'MREvent'),
         multiValued=True,
         relationship='related_documents'
     ),
 
     atapi.ReferenceField(
         name='project',
-        allowed_types=('Project'),
+        allowed_types=('Project',),
         multiValued=False,
         relationship='related_project',
     ),
