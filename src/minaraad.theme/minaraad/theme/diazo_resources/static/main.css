@@ -7934,9 +7934,11 @@ div.digibib_list {
     .article-vision .body time {
       color: #2e94bd;
       display: block; }
+  .article-vision a.btn, .article-vision a.button-field {
+    color: white; }
   .article-vision a:hover, .article-vision a:focus {
     background: #deedf2; }
-    .article-vision a:hover .btn, .article-vision a:hover .button-field, .article-vision a:hover input[type="submit"], .article-vision a:focus .btn, .article-vision a:focus .button-field, .article-vision a:focus input[type="submit"] {
+    .article-vision a:hover.btn, .article-vision a.button-field:hover, .article-vision a:focus.btn, .article-vision a.button-field:focus {
       background: #247494;
       border-color: #1f647f; }
     .article-vision a:hover header, .article-vision a:focus header {

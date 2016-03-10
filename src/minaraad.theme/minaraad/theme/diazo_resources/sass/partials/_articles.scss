@@ -138,8 +138,11 @@
     }
   }
   a {
+    &.btn{
+      color: white;
+    }
     &:hover, &:focus {
-      .btn {
+      &.btn {
         background: darken($btn-primary-bg, 10);
         border-color: darken($btn-primary-border, 10);
       }

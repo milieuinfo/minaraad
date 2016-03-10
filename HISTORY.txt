@@ -6,6 +6,7 @@ History of this buildout
 
 - Add styling for list-items inside article-theme-bodytext.  MINA-127.
   newsletter-mailchimp footer padding fix.
+  article-vision a btn styling fix.  MINA-131
   [lhuiskes]
 
 - Add image to Study on homepage. MINA-130.  [jladage]
