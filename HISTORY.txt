@@ -4,6 +4,8 @@ History of this buildout
 6.0.5 (unreleased)
 ------------------
 
+- MINA-126, Index nav-list diazo rules and styling. [lhuiskes]
+
 - Migrate "Ruimtelijke Ordening" theme. MINA-125.  [jladage]
 
 - Remove Hearing from addable type in a theme.  [jladage]
