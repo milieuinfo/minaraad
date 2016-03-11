@@ -94,8 +94,7 @@
    <element value="Collection"/>
    <element value="Document"/>
    <element value="File"/>
-   <element value="Advice"/>
-   <element value="Hearing"/>
+   <element value="Advisory"/>
    <element value="Digibib"/>
    <element value="Folder"/>
    <element value="Study"/>
