@@ -48,7 +48,7 @@ OLD_THEMES = {
     23: "klimaat",
     24: "hinder",
     25: "biodiversiteit",
-    26: "temp-ruimtelijke-ordening-en-mobiliteit",
+    26: "ruimtelijke-ordening",
 }
 CONTACT_TEXT = """
 <p class="lead">Strategische adviesraad Minaraad Kliniekstraat 25<br />
@@ -673,7 +673,7 @@ def move_content(context):
         23 / Milieuhygiëne en klimaat,   "Klimaat"
         24 / Water en zee,               "Hinder"
         25 / Open Ruimte                 "Biodiversiteit"
-        26 / Ruimtelijke ordening en mobiliteit, ""
+        26 / Ruimtelijke ordening en mobiliteit, "Ruimtelijke ordening"
         27 / Participatie en lokale besturen,  "Bestuur"
 
     :param context:
