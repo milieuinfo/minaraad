@@ -14,7 +14,6 @@
  <property name="allowed_content_types">
  <element value="Advisory"/>
  <element value="MREvent"/>
- <element value="Hearing"/>
  <element value="Study"/>
  </property>
  <property name="allow_discussion">False</property>
