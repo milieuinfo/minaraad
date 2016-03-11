@@ -99,6 +99,7 @@
    <element value="Folder"/>
    <element value="Study"/>
    <element value="MREvent"/>
+   <element value="Theme"/>
   </property>
  </object>
 </object>
