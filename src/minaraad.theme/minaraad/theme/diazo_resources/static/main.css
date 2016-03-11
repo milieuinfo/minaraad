@@ -8342,4 +8342,35 @@ body#plonebrowser #content #footer {
   background: white;
   position: relative; }
 
+.toc h2 {
+  display: none; }
+
+.toc #document-toc {
+  width: 100%;
+  left: 0;
+  float: none; }
+  .toc #document-toc dt {
+    color: #b2324d;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin: 0;
+    padding: 0;
+    margin-top: .75em;
+    margin-bottom: 10px;
+    background: transparent; }
+  .toc #document-toc dd {
+    padding: 0; }
+    .toc #document-toc dd ol {
+      margin: 0;
+      list-style: none; }
+      .toc #document-toc dd ol li a {
+        padding: 3px;
+        font-size: 14px;
+        display: block; }
+        .toc #document-toc dd ol li a:hover {
+          background: #fbeaed; }
+        .toc #document-toc dd ol li a:before {
+          float: none; }
+
 /*# sourceMappingURL=main.css.map */
