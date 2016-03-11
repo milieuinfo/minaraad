@@ -8342,7 +8342,7 @@ body#plonebrowser #content #footer {
   background: white;
   position: relative; }
 
-.toc h2, .toc ul {
+.toc h2 {
   display: none; }
 
 .toc #document-toc {
