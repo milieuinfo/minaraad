@@ -4,6 +4,13 @@ History of this buildout
 6.0.5 (unreleased)
 ------------------
 
+- Migrate "Ruimtelijke Ordening" theme. MINA-125.  [jladage]
+
+- Remove Hearing from addable type in a theme.  [jladage]
+
+- SEO Properties should be enabled for Advisory, MREvent and Study.
+  Fixed typos. MINA-128.  [jladage]
+
 - Add styling for list-items inside article-theme-bodytext.  MINA-127.
   newsletter-mailchimp footer padding fix.
   article-vision a btn styling fix.  MINA-131
