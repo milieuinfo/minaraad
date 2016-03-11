@@ -25,8 +25,7 @@
 
             <nav class="toc">
 
-              <section class="nav-list"
-                       tal:condition="context/getTableContents">
+              <section class="nav-list">
                 <h2>Inhoudsopgave</h2>
                 <div class="nav-items" id="nav-index">
                 <ul>
