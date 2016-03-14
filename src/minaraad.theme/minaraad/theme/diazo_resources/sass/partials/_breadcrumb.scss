@@ -3,18 +3,32 @@
 // --------------------------------------------------
 //
 
-.breadcrumbbar {
-  background: $mina-bg-gray;
-  .breadcrumb {
-    margin-bottom: 0;
-    font-family: $headings-font-family;
-    font-weight: 500;
-    font-size: 13.5px;
-    > li + li:before {
-      content: $fa-var-angle-right;
-      font-family: FontAwesome;
-      padding: 0 10px 0 8px;
-      color: gray;
+.breadcrumbbar{
+  display: none;
+}
+
+
+// -----------------------------------------------------------------------------
+// Small screen / tablet
+// -----------------------------------------------------------------------------
+
+@media (min-width: $screen-sm-min) {
+
+  .breadcrumbbar {
+    display: block;
+    background: $mina-bg-gray;
+    .breadcrumb {
+      margin-bottom: 0;
+      font-family: $headings-font-family;
+      font-weight: 500;
+      font-size: 13.5px;
+      > li + li:before {
+        content: $fa-var-angle-right;
+        font-family: FontAwesome;
+        padding: 0 10px 0 8px;
+        color: gray;
+      }
     }
   }
+
 }

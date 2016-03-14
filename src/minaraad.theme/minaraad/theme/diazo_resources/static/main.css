@@ -7142,17 +7142,22 @@ dl.actionMenu {
       padding: 0; } }
 
 .breadcrumbbar {
-  background: rgba(0, 0, 0, 0.05); }
-  .breadcrumbbar .breadcrumb {
-    margin-bottom: 0;
-    font-family: "Flanders Art Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-weight: 500;
-    font-size: 13.5px; }
-    .breadcrumbbar .breadcrumb > li + li:before {
-      content: "";
-      font-family: FontAwesome;
-      padding: 0 10px 0 8px;
-      color: gray; }
+  display: none; }
+
+@media (min-width: 768px) {
+  .breadcrumbbar {
+    display: block;
+    background: rgba(0, 0, 0, 0.05); }
+    .breadcrumbbar .breadcrumb {
+      margin-bottom: 0;
+      font-family: "Flanders Art Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-weight: 500;
+      font-size: 13.5px; }
+      .breadcrumbbar .breadcrumb > li + li:before {
+        content: "";
+        font-family: FontAwesome;
+        padding: 0 10px 0 8px;
+        color: gray; } }
 
 .jumbotronbar {
   background-color: #2e94bd; }
