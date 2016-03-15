@@ -92,12 +92,4 @@
   <!-- Google analytics script -->
   <after theme-children="/html/body" content="//*[@id='portal-footer-wrapper']/script" />
 
-
-  <!-- Index nav-list diazo rules -->
-  <replace css:content="#nav-index">
-      <xsl:copy-of select="//dl[@id='document-toc']" />
-  </replace>
-
-  <drop content="//dl[@id='document-toc']" />
-
 </rules>

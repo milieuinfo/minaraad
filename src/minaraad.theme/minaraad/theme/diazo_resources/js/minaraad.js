@@ -193,7 +193,7 @@
       $(content).find('*').not('.comment > h3').filter(function() {
           return (/^h[1234]$/).test(this.tagName.toLowerCase());
       })
-          .not('.documentFirstHeading').each(function(i) {
+      .not('.documentFirstHeading').each(function(i) {
           var level, ol, li;
 
           level = this.nodeName.charAt(1);
@@ -221,14 +221,10 @@
               .appendTo($(stack[stack.length - 1]));
       });
 
+
       if (stack.length) {
           var oltoc = $(stack[0]);
-          // first level is a level with at least two entries #11160
           var i = 1;
-          while (oltoc.children('li').length == 1) {
-              oltoc = $(stack[i]);
-              i += 1;
-          }
 
           if (i <= stack.length) {
               $('nav.toc').show();
