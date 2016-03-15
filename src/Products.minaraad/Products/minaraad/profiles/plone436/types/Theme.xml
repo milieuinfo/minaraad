@@ -15,6 +15,7 @@
  <element value="Advisory"/>
  <element value="MREvent"/>
  <element value="Study"/>
+ <element value="Hearing"/>
  </property>
  <property name="allow_discussion">False</property>
  <property name="default_view">theme</property>

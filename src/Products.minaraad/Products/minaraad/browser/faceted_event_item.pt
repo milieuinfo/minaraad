@@ -14,7 +14,7 @@
       <img style="width:100%"
           tal:condition="has_image"
           tal:attributes="alt title;
-                          src first_image/absolute_url"/>
+                          src string:${first_image/absolute_url}/image_preview"/>
       <div class="body">
         <p class="label">
           Oriëntatiemoment&emsp;

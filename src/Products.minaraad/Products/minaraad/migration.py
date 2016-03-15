@@ -728,9 +728,8 @@ def create_theme_folders(context):
         "Klimaat",
         "Hinder",
         "Biodiversiteit",
+        "Ruimtelijke Ordening",
         "Andere thema's",
-        # Temp folders.
-        "Temp Ruimtelijke ordening en mobiliteit"
     ]
 
     portal = getToolByName(context, 'portal_url').getPortalObject()
