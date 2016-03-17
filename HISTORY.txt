@@ -4,6 +4,9 @@ History of this buildout
 6.0.5 (unreleased)
 ------------------
 
+- Update nodejs.cfg to our common work style.
+  [lhuiskes]
+
 - MINA-133, Add HTTPS_PROXY environment variabele, since this is
   required by the requests module when doing https requests.
 
