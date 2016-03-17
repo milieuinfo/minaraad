@@ -4,6 +4,9 @@ History of this buildout
 6.0.5 (unreleased)
 ------------------
 
+- MINA-133, Add HTTPS_PROXY environment variabele, since this is
+  required by the requests module when doing https requests.
+
 - MINA-126, Remove diazo rules/css for the toc.js
   and removed the lines from the minaraad.js if we only got 1 heading.
   [lhuiskes]
