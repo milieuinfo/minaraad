@@ -1,7 +1,7 @@
 History of this buildout
 ========================
 
-6.0.5 (unreleased)
+6.0.5 (2016-03-18)
 ------------------
 
 - Update nodejs.cfg to our common work style.
