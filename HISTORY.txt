@@ -1,7 +1,7 @@
 History of this buildout
 ========================
 
-6.0.6 (unreleased)
+6.0.6 (2016-03-24)
 ------------------
 
 - Move faceted_criteria.xml to Products.minaraad.  [jladage]
