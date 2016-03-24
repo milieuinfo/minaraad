@@ -851,7 +851,7 @@ def setup_faceted_navigation(context):
     subtyper = docs.restrictedTraverse('@@faceted_subtyper')
     subtyper.enable()
     importer = docs.restrictedTraverse('@@faceted_exportimport')
-    criteria_file = open(os.path.dirname(migration.__file__) + \
+    criteria_file = open(os.path.dirname(__file__) + \
                          '/faceted_criteria.xml')
     importer.import_xml(import_file=criteria_file)
     logger.info("Configured faceted navigation for /zoeken")
