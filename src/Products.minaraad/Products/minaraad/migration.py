@@ -32,6 +32,7 @@ from zope.component import getSiteManager
 from zope.component import getUtility
 from zope.container import contained
 
+import os
 import cStringIO
 import logging
 import transaction
@@ -850,7 +851,8 @@ def setup_faceted_navigation(context):
     subtyper = docs.restrictedTraverse('@@faceted_subtyper')
     subtyper.enable()
     importer = docs.restrictedTraverse('@@faceted_exportimport')
-    criteria_file = open('faceted_criteria.xml')
+    criteria_file = open(os.path.dirname(migration.__file__) + \
+                         '/faceted_criteria.xml')
     importer.import_xml(import_file=criteria_file)
     logger.info("Configured faceted navigation for /zoeken")
 
