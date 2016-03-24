@@ -6,6 +6,7 @@
 *.eggs
 .installed.cfg
 .mr.developer.cfg
+.idea/
 bin
 lib
 include
