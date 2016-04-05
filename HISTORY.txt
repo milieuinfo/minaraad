@@ -4,7 +4,9 @@ History of this buildout
 6.0.9 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Use PyPDF2 to generate PDF files for meetings.  Replace existing PDF
+  if it is not from this new version.  This fixes a possible eternal
+  loop for weird PDF files.  Fixes issue MINA-134.  [maurits]
 
 
 6.0.8 (2016-04-05)

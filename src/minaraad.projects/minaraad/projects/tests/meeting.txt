@@ -335,7 +335,7 @@ three PDf files: onepage.pdf, multipage.pdf and restricted.pdf.
 Creating one attachment file will automatically update the pdf file of
 the meeting:
 
-    >>> from pyPdf import PdfFileReader
+    >>> from PyPDF2 import PdfFileReader
     >>> pdf = PdfFileReader(meeting.get_pdf())
     >>> pdf.numPages
     1

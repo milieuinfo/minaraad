@@ -3,7 +3,7 @@ from StringIO import StringIO
 
 from zope.interface import implements
 from Products.Archetypes import atapi
-from pyPdf import PdfFileWriter, PdfFileReader
+from PyPDF2 import PdfFileWriter, PdfFileReader
 from reportlab.pdfgen import canvas
 from reportlab.lib.units import inch
 from Products.CMFCore.utils import getToolByName
@@ -198,6 +198,12 @@ class BaseMeeting(atapi.BaseFolder):
         except AttributeError:
             # Ok, no PDF has been generated yet.
             return None
+        if self.pdf is not None and not isinstance(self.pdf, PdfFileWriter):
+            # old pyPdf writer instead of new PyPDF2 writer.
+            # This can give eternal loops, so refresh it.
+            logger.info('Regenerating PDF for %s', self.absolute_url())
+            self.generate_pdf()
+            logger.info('Done regenerating PDF for %s', self.absolute_url())
         if not self.pdf:
             # Previously generated pdf is now empty
             return None

@@ -32,7 +32,8 @@ setup(name='minaraad.projects',
       install_requires=[
           'setuptools',
           'borg.localrole',
-          'pyPDF',
+          'pyPDF',  # needed for old stored content
+          'pyPDF2',  # needed for new content
           'reportlab'
       ],
       entry_points="""
