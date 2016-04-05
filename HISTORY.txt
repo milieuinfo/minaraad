@@ -1,8 +1,8 @@
 History of this buildout
 ========================
 
-6.0.7.4 (unreleased)
---------------------
+6.0.8 (2016-04-05)
+------------------
 
 - We're good with __file__, so removing log entry again.  [jladage]
 
