@@ -852,7 +852,6 @@ def setup_faceted_navigation(context):
     importer = docs.restrictedTraverse('@@faceted_exportimport')
     criteria_file = open(os.path.dirname(__file__) + \
                          '/faceted_criteria.xml')
-    logger.info("Path where I expect to find faceted_criteria.xml: %s var criteria_file: %s \n") % (os.path.dirname(__file__), criteria_file)
     importer.import_xml(import_file=criteria_file)
     logger.info("Configured faceted navigation for /zoeken")
 
