@@ -4,7 +4,8 @@ History of this buildout
 6.0.7.3 (unreleased)
 --------------------
 
-- Nothing changed yet.
+- Add log entry to see why the server can't find it, but locally it works fine.
+  [jladage]
 
 
 6.0.7.2 (2016-03-30)
