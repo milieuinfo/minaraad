@@ -1,7 +1,7 @@
 History of this buildout
 ========================
 
-6.0.7.3 (unreleased)
+6.0.7.3 (2016-04-05)
 --------------------
 
 - Add log entry to see why the server can't find it, but locally it works fine.
@@ -11,7 +11,7 @@ History of this buildout
 6.0.7.2 (2016-03-30)
 --------------------
 
-- Renamed old svg and placed new one with the baseline “Vlaanderen is omgevingsbewust".
+- Renamed old svg and placed new one with the baseline âVlaanderen is omgevingsbewust".
   [lhuiskes]
 
 
@@ -67,7 +67,7 @@ History of this buildout
 - Related Documents to limitted, allow all types, also for study
   and event. MINA-124  [jladage]
 
-- Rename label Nota to Oriëntatienota. MINA-129  [jladage]
+- Rename label Nota to OriĂŤntatienota. MINA-129  [jladage]
 
 - Fixed creating an advisory from a project.  MINA-123.  [maurits]
 
