@@ -4,6 +4,10 @@ History of this buildout
 6.0.10 (unreleased)
 -------------------
 
+- Treat mailchimp as a one-time popup.  Do not look for a form in it
+  to submit inline with ajax, as this has the side effect of
+  swallowing the statusmessage cookie.  MINA-135.  [maurits]
+
 - Enabled plonepopupforms.js in an upgrade step.  Needed to close the
   mailchimp popup after a success.  MINA-135.  [maurits]
 

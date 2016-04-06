@@ -72,13 +72,22 @@
           // optional css class if needed:
           // cssclass: 'overlay-newsletter',
           //
-          // Without matching formselector, the popup shows up fine.
-          // But when you submit the loaded form, you end up on the
-          // form page, instead of doing a submit inline.  Both have
-          // valid use cases, but probably you want to stay on the
-          // page.
-          formselector: 'form#newsletter-subscriber-form',
-          noform: function(el) {return $.plonepopups.noformerrorshow(el, 'close');}
+          // We do not specify a formselector.  This means the popup
+          // shows up fine, but there is no inline submit: submitting
+          // the form will not use ajax but a standard request.  The
+          // problem with a successful inline submit, is that a
+          // statusmessage cookie is set, and the ajax request gets
+          // redirected, which your browser does in the background
+          // without ever showing it, and this never shown page
+          // contains the statusmessage and the instruction for your
+          // browser to delete the cookie.  When you now reload the
+          // page, or let the overlay do this automatically, there is
+          // no status message anymore because the cookie has already
+          // been deleted.  So: no 'formselector'.  And this means
+          // 'noform' is not needed either.
+          //
+          // formselector: 'form#newsletter-subscriber-form',
+          // noform: function(el) {return $.plonepopups.noformerrorshow(el, 'close');}
         }
       );
 
@@ -87,16 +96,7 @@
         {
           subtype: 'ajax',
           filter: common_content_filter,
-          // optional css class if needed:
-          // cssclass: 'overlay-newsletter',
-          //
-          // Without matching formselector, the popup shows up fine.
-          // But when you submit the loaded form, you end up on the
-          // form page, instead of doing a submit inline.  Both have
-          // valid use cases, but probably you want to stay on the
-          // page.
-          formselector: 'form#newsletter-subscriber-form',
-          noform: function(el) {return $.plonepopups.noformerrorshow(el, 'close');}
+          // formselector: 'form#newsletter-subscriber-form',
         }
       );
 
@@ -106,7 +106,6 @@
           subtype: 'ajax',
           filter: common_content_filter,
           // formselector: 'form#login_form',
-          noform: function(el) {return $.plonepopups.noformerrorshow(el, 'close');}
         }
       );
 
