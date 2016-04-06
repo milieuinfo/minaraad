@@ -523,5 +523,20 @@
         description="Refresh portal_css and portal_javascript"
         handler="Products.minaraad.migration.cook_resources" />
   </gs:upgradeSteps>
+  <gs:upgradeSteps
+      source="5027"
+      destination="5028"
+      profile="Products.minaraad:default">
+    <gs:upgradeDepends
+        title="Apply JS registry from our plone436 profile"
+        import_profile="Products.minaraad:plone436"
+        import_steps="jsregistry"/>
+    <!-- Cook resources must happen at the end of every upgrade!
+         Surely we have a css or javascript fix in every release. -->
+    <gs:upgradeStep
+        title="Cook resources"
+        description="Refresh portal_css and portal_javascript"
+        handler="Products.minaraad.migration.cook_resources" />
+  </gs:upgradeSteps>
 
 </configure>

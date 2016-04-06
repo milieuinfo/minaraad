@@ -4,7 +4,8 @@ History of this buildout
 6.0.10 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- Enabled plonepopupforms.js in an upgrade step.  Needed to close the
+  mailchimp popup after a success.  MINA-135.  [maurits]
 
 
 6.0.9 (2016-04-06)

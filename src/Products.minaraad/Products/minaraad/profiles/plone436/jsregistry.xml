@@ -143,7 +143,7 @@
     expression="" id="form_tabbing.js" inline="False"
     insert-after="++resource++plone.app.discussion.javascripts/comments.js"/>
  <javascript authenticated="False" bundle="default" cacheable="True"
-    compression="safe" conditionalcomment="" cookable="True" enabled="False"
+    compression="safe" conditionalcomment="" cookable="True" enabled="True"
     expression="" id="popupforms.js" inline="False"
     insert-after="form_tabbing.js"/>
  <javascript authenticated="False" bundle="default" cacheable="True"

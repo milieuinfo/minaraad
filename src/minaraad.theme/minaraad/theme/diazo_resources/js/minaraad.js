@@ -62,8 +62,7 @@
         });
       }, 200);
 
-      // common_content_filter copied from Products/CMFPlone/skins/plone_ecmascript/popupforms.js
-      var common_content_filter = '#content>*:not(div.configlet),dl.portalMessage.error,dl.portalMessage.info';
+      var common_content_filter = $.plonepopups.common_content_filter;
 
       // Activate the overlay on the newsletter footer link.
       $('#mailchimp_link a').prepOverlay(
