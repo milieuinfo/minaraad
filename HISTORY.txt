@@ -42,7 +42,7 @@ History of this buildout
 6.0.7.2 (2016-03-30)
 --------------------
 
-- Renamed old svg and placed new one with the baseline âVlaanderen is omgevingsbewust".
+- Renamed old svg and placed new one with the baseline "Vlaanderen is omgevingsbewust".
   [lhuiskes]
 
 
