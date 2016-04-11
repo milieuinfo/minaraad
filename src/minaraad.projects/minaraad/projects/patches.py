@@ -17,8 +17,21 @@ def getProjectResult(self):
 
 
 def getResult(self):
+    if self.widget.allow_browse:
+        # Order reversed if we are ordering by position in parent.  So
+        # basically: make sure the most recently added item is shown first.
+        base_query = self.widget.base_query
+        print(base_query)
+        if isinstance(base_query, dict):
+            default_sort = 'getObjPositionInParent'
+            if base_query.get('sort_on', default_sort) == default_sort:
+                self.request.form['sort_order'] = 'reverse'
+        else:
+            self.request.form['sort_order'] = 'reverse'
     if getattr(self, 'fieldName', '') == 'project':
+        # Special handling for projects.
         return self.getProjectResult()
+    # Standard handling for others.
     return self._getResult()
 
 

@@ -4,7 +4,10 @@ History of this buildout
 6.0.11 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- Sort the references in the referencesbrowserwidget reversed.  So
+  make sure the most recently added item is shown first.  Issue
+  MINA-136.  [maurits]
+
 
 
 6.0.10 (2016-04-06)
