@@ -1,7 +1,7 @@
 History of this buildout
 ========================
 
-6.0.11 (unreleased)
+6.0.11 (2016-04-12)
 -------------------
 
 - MINA-137 various improvements, typo's and minor changes in displaying
