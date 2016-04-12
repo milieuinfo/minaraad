@@ -105,7 +105,7 @@ History of this buildout
 - Related Documents to limitted, allow all types, also for study
   and event. MINA-124  [jladage]
 
-- Rename label Nota to OriĂŤntatienota. MINA-129  [jladage]
+- Rename label Nota to Orientatienota. MINA-129  [jladage]
 
 - Fixed creating an advisory from a project.  MINA-123.  [maurits]
 
