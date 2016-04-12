@@ -218,11 +218,11 @@ msgid "Search"
 msgstr ""
 
 msgid "Study"
-msgstr "Nota"
+msgstr "Oriëntatinota"
 
 #: profiles/default/workflows/minaraad_workflow/definition.xml
 msgid "Submit"
-msgstr ""
+msgstr "Verzenden"
 
 msgid "Subscriptions"
 msgstr "Abonnementen"

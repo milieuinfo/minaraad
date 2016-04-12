@@ -5,7 +5,6 @@
 
     <!--? Items -->
     <!--? Serie of conditions to render the right macro -->
-    <!-- TODO: add more items? -->
     <metal:items metal:define-macro="related_item">
 
       <tal:block tal:condition="python:item.portal_type == 'Advisory'">
@@ -18,12 +17,17 @@
         </tal:block>
       </tal:block>
 
+      <tal:block tal:condition="python:item.portal_type == 'Study'">
+        <tal:block metal:use-macro="context/@@items/macros/study">
+        </tal:block>
+      </tal:block>
+
       <tal:block tal:condition="python:item.portal_type in ['File', 'FileAttachment']">
         <tal:block metal:use-macro="context/@@items/macros/attachment_view">
         </tal:block>
       </tal:block>
 
-      <tal:block tal:condition="python:item.portal_type not in ['Advisory', 'MREvent', 'File', 'FileAttachment']">
+      <tal:block tal:condition="python:item.portal_type not in ['Advisory', 'MREvent', 'Study', 'File', 'FileAttachment']">
         <tal:block metal:use-macro="context/@@items/macros/general_link" />
       </tal:block>
     </metal:items>
@@ -52,15 +56,21 @@
               tal:condition="python:first_image is not None">
             <img tal:define="images first_image/@@images;
               thumbnail python:images.scale('image', width=648, height=365, direction='down')"
- tal:attributes="src thumbnail/url; alt item/title" />
+              tal:attributes="src thumbnail/url; alt item/title" />
           </tal:image>
           <div class="body">
             <h3 tal:content="item/Title"></h3>
-            <p class="label" tal:condition="show_theme_title|nothing">
-              Advies
-              <span tal:content="item/getThemeTitle|nothing"></span>
+            <p class="label">
+              Advies <span tal:condition="show_theme_title|nothing"
+                           tal:content="item/getThemeTitle|nothing"> Theme title </span>
             </p>
-            <div class="truncate" tal:content="structure context/getPopular_summary|nothing" />
+            <div class="truncate" tal:content="structure item/getPopular_summary|nothing" />
+            <time datetime="2015-11-25"
+                  tal:define="time item/getDate|nothing;
+                              toLocalizedTime nocall:context/@@plone/toLocalizedTime;"
+                  tal:condition="python:time is not None"
+                  tal:attributes="datetime python:time.strftime('%Y-%m-%d')"
+                  tal:content="python:toLocalizedTime(time, long_format=0)">26 11 2015 9:30</time>
           </div>
         </a>
       </article>
@@ -72,7 +82,6 @@
                tal:define="title item/Title;
                            has_image item/has_image;
                            first_image item/get_first_image;">
-
         <a tal:attributes="href item/absolute_url; title title">
           <header>
             <h3 tal:define="d item/getStart_time|nothing">
@@ -84,14 +93,12 @@
               tal:condition="has_image"
               tal:attributes="alt title;
                               src string:${first_image/absolute_url}/image_preview"/>
-
           <div class="body">
-            <p class="label" tal:condition="show_theme_title|nothing">
-              Oriëntatiemoment&emsp;
-              <span tal:content="item/getThemeTitle|nothing"></span>
+            <p class="label">Oriëntatiemoment <span tal:condition="show_theme_title|nothing"
+                               tal:content="item/getThemeTitle|nothing"> Theme title </span>
             </p>
             <h3 tal:content="item/Title"></h3>
-            <p class="truncate" tal:content="context/Description|nothing" />
+            <p class="truncate" tal:content="structure item/getGoal|nothing" />
           </div>
         </a>
       </article>
@@ -99,7 +106,30 @@
 
     <!--? Study link -->
     <metal:block metal:define-macro="study">
-      <h1>TODO: Study</h1>
+      <article class="article-advice"
+               tal:define="title item/Title;
+                           has_image item/has_image;
+                           first_image item/get_first_image;">
+        <a tal:attributes="href item/absolute_url; title title">
+          <img style="width:100%"
+              tal:condition="has_image"
+              tal:attributes="alt title;
+                              src string:${first_image/absolute_url}/image_preview"/>
+          <div class="body">
+            <h3 tal:content="item/Title"></h3>
+            <p class="label">Oriëntatienota <span tal:condition="show_theme_title|nothing"
+                           tal:content="item/getThemeTitle|nothing"> Theme title </span>
+            </p>
+            <p class="truncate" tal:content="item/Description|nothing" />
+            <time datetime="2015-11-25"
+               tal:define="time item/getDate|nothing;
+                           toLocalizedTime nocall:context/@@plone/toLocalizedTime;"
+               tal:condition="python:time is not None"
+               tal:attributes="datetime python:time.strftime('%Y-%m-%d')"
+               tal:content="python:toLocalizedTime(time, long_format=0)">26 11 2015 9:30</time>
+            </div>
+        </a>
+      </article>
     </metal:block>
 
     <metal:block metal:define-macro="listimageattachments"

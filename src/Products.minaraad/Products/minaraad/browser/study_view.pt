@@ -32,7 +32,7 @@
                         <section>
                           <header>
                             <h1 tal:content="context/Title">Groenboek Beleidsplan Ruimte Vlaanderen</h1>
-                            <p class="label">Nota <span tal:content="context/getThemeTitle|nothing">Biodiversiteit</span></p>
+                            <p class="label">Oriëntatienota <span tal:content="context/getThemeTitle|nothing">Biodiversiteit</span></p>
                           </header>
                           <p class="lead" tal:content="structure context/Description|nothing" />
                         </section>
