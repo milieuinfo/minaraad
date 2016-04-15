@@ -1,0 +1,421 @@
+<?xml version="1.0"?>
+<dc-workflow workflow_id="project_workflow" title="DC Workflow Definition" description="Workflow for the Project content type." state_variable="review_state" initial_state="new" manager_bypass="False">
+ <permission>Add Attachment</permission>
+ <permission>Modify portal content</permission>
+ <permission>View</permission>
+ <permission>minaraad.projects: manage active project fields</permission>
+ <permission>minaraad.projects: manage cancelled project fields</permission>
+ <permission>minaraad.projects: manage completed project fields</permission>
+ <permission>minaraad.projects: manage finished project fields</permission>
+ <permission>minaraad.projects: manage in consideration project fields</permission>
+ <permission>minaraad.projects: manage in verification project fields</permission>
+ <permission>minaraad.projects: manage new project fields</permission>
+ <permission>minaraad.projects: manage rejected project fields</permission>
+ <state state_id="active" title="Active">
+  <exit-transition transition_id="TEMP_finish"/>
+  <exit-transition transition_id="back_to_in_consideration"/>
+  <exit-transition transition_id="cancel"/>
+  <exit-transition transition_id="roundup"/>
+  <permission-map name="Add Attachment" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="Modify portal content" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>DigiBibViewer</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="minaraad.projects: manage active project fields" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="minaraad.projects: manage cancelled project fields" acquired="False">
+  </permission-map>
+  <permission-map name="minaraad.projects: manage completed project fields" acquired="False">
+  </permission-map>
+  <permission-map name="minaraad.projects: manage finished project fields" acquired="False">
+  </permission-map>
+  <permission-map name="minaraad.projects: manage in consideration project fields" acquired="False">
+  </permission-map>
+  <permission-map name="minaraad.projects: manage in verification project fields" acquired="False">
+  </permission-map>
+  <permission-map name="minaraad.projects: manage new project fields" acquired="False">
+  </permission-map>
+  <permission-map name="minaraad.projects: manage rejected project fields" acquired="False">
+  </permission-map>
+ </state>
+ <state state_id="cancelled" title="Cancelled">
+  <exit-transition transition_id="back_to_active"/>
+  <permission-map name="Add Attachment" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="Modify portal content" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>DigiBibViewer</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="minaraad.projects: manage active project fields" acquired="False">
+  </permission-map>
+  <permission-map name="minaraad.projects: manage cancelled project fields" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="minaraad.projects: manage completed project fields" acquired="False">
+  </permission-map>
+  <permission-map name="minaraad.projects: manage finished project fields" acquired="False">
+  </permission-map>
+  <permission-map name="minaraad.projects: manage in consideration project fields" acquired="False">
+  </permission-map>
+  <permission-map name="minaraad.projects: manage in verification project fields" acquired="False">
+  </permission-map>
+  <permission-map name="minaraad.projects: manage new project fields" acquired="False">
+  </permission-map>
+  <permission-map name="minaraad.projects: manage rejected project fields" acquired="False">
+  </permission-map>
+ </state>
+ <state state_id="completed" title="Completed">
+  <exit-transition transition_id="TEMP_edit"/>
+  <exit-transition transition_id="back_to_finish"/>
+  <permission-map name="Add Attachment" acquired="False">
+  </permission-map>
+  <permission-map name="Modify portal content" acquired="False">
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>DigiBibViewer</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="minaraad.projects: manage active project fields" acquired="False">
+  </permission-map>
+  <permission-map name="minaraad.projects: manage cancelled project fields" acquired="False">
+  </permission-map>
+  <permission-map name="minaraad.projects: manage completed project fields" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="minaraad.projects: manage finished project fields" acquired="False">
+  </permission-map>
+  <permission-map name="minaraad.projects: manage in consideration project fields" acquired="False">
+  </permission-map>
+  <permission-map name="minaraad.projects: manage in verification project fields" acquired="False">
+  </permission-map>
+  <permission-map name="minaraad.projects: manage new project fields" acquired="False">
+  </permission-map>
+  <permission-map name="minaraad.projects: manage rejected project fields" acquired="False">
+  </permission-map>
+ </state>
+ <state state_id="finished" title="Finished">
+  <exit-transition transition_id="TEMP_edit"/>
+  <exit-transition transition_id="back_to_active"/>
+  <exit-transition transition_id="complete"/>
+  <permission-map name="Add Attachment" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="Modify portal content" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>DigiBibViewer</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="minaraad.projects: manage active project fields" acquired="False">
+  </permission-map>
+  <permission-map name="minaraad.projects: manage cancelled project fields" acquired="False">
+  </permission-map>
+  <permission-map name="minaraad.projects: manage completed project fields" acquired="False">
+  </permission-map>
+  <permission-map name="minaraad.projects: manage finished project fields" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="minaraad.projects: manage in consideration project fields" acquired="False">
+  </permission-map>
+  <permission-map name="minaraad.projects: manage in verification project fields" acquired="False">
+  </permission-map>
+  <permission-map name="minaraad.projects: manage new project fields" acquired="False">
+  </permission-map>
+  <permission-map name="minaraad.projects: manage rejected project fields" acquired="False">
+  </permission-map>
+ </state>
+ <state state_id="in_consideration" title="In consideration">
+  <exit-transition transition_id="TEMP_complete"/>
+  <exit-transition transition_id="back_to_in_verification"/>
+  <exit-transition transition_id="reject"/>
+  <exit-transition transition_id="start"/>
+  <permission-map name="Add Attachment" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="Modify portal content" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>DigiBibViewer</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="minaraad.projects: manage active project fields" acquired="False">
+  </permission-map>
+  <permission-map name="minaraad.projects: manage cancelled project fields" acquired="False">
+  </permission-map>
+  <permission-map name="minaraad.projects: manage completed project fields" acquired="False">
+  </permission-map>
+  <permission-map name="minaraad.projects: manage finished project fields" acquired="False">
+  </permission-map>
+  <permission-map name="minaraad.projects: manage in consideration project fields" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="minaraad.projects: manage in verification project fields" acquired="False">
+  </permission-map>
+  <permission-map name="minaraad.projects: manage new project fields" acquired="False">
+  </permission-map>
+  <permission-map name="minaraad.projects: manage rejected project fields" acquired="False">
+  </permission-map>
+ </state>
+ <state state_id="in_verification" title="In verification">
+  <exit-transition transition_id="TEMP_complete"/>
+  <exit-transition transition_id="back_to_new"/>
+  <exit-transition transition_id="propose"/>
+  <permission-map name="Add Attachment" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="Modify portal content" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="minaraad.projects: manage active project fields" acquired="False">
+  </permission-map>
+  <permission-map name="minaraad.projects: manage cancelled project fields" acquired="False">
+  </permission-map>
+  <permission-map name="minaraad.projects: manage completed project fields" acquired="False">
+  </permission-map>
+  <permission-map name="minaraad.projects: manage finished project fields" acquired="False">
+  </permission-map>
+  <permission-map name="minaraad.projects: manage in consideration project fields" acquired="False">
+  </permission-map>
+  <permission-map name="minaraad.projects: manage in verification project fields" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="minaraad.projects: manage new project fields" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="minaraad.projects: manage rejected project fields" acquired="False">
+  </permission-map>
+ </state>
+ <state state_id="new" title="New">
+  <exit-transition transition_id="TEMP_complete"/>
+  <exit-transition transition_id="check"/>
+  <permission-map name="Add Attachment" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="Modify portal content" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="minaraad.projects: manage active project fields" acquired="False">
+  </permission-map>
+  <permission-map name="minaraad.projects: manage cancelled project fields" acquired="False">
+  </permission-map>
+  <permission-map name="minaraad.projects: manage completed project fields" acquired="False">
+  </permission-map>
+  <permission-map name="minaraad.projects: manage finished project fields" acquired="False">
+  </permission-map>
+  <permission-map name="minaraad.projects: manage in consideration project fields" acquired="False">
+  </permission-map>
+  <permission-map name="minaraad.projects: manage in verification project fields" acquired="False">
+  </permission-map>
+  <permission-map name="minaraad.projects: manage new project fields" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="minaraad.projects: manage rejected project fields" acquired="False">
+  </permission-map>
+ </state>
+ <state state_id="rejected" title="Rejected">
+  <exit-transition transition_id="back_to_in_consideration"/>
+  <permission-map name="Add Attachment" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="Modify portal content" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>DigiBibViewer</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="minaraad.projects: manage active project fields" acquired="False">
+  </permission-map>
+  <permission-map name="minaraad.projects: manage cancelled project fields" acquired="False">
+  </permission-map>
+  <permission-map name="minaraad.projects: manage completed project fields" acquired="False">
+  </permission-map>
+  <permission-map name="minaraad.projects: manage finished project fields" acquired="False">
+  </permission-map>
+  <permission-map name="minaraad.projects: manage in consideration project fields" acquired="False">
+  </permission-map>
+  <permission-map name="minaraad.projects: manage in verification project fields" acquired="False">
+  </permission-map>
+  <permission-map name="minaraad.projects: manage new project fields" acquired="False">
+  </permission-map>
+  <permission-map name="minaraad.projects: manage rejected project fields" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+ </state>
+ <transition transition_id="TEMP_complete" title="" new_state="completed" trigger="USER" before_script="" after_script="">
+  <action url="" category="workflow" icon="">	TEMP_complete</action>
+  <guard>
+   <guard-permission>Request review or Review portal content</guard-permission>
+  </guard>
+ </transition>
+ <transition transition_id="TEMP_edit" title="" new_state="new" trigger="USER" before_script="" after_script="">
+  <action url="" category="workflow" icon="">TEMP_edit </action>
+  <guard>
+   <guard-permission>Request review or Review portal content</guard-permission>
+  </guard>
+ </transition>
+ <transition transition_id="back_to_active" title="Cancel (back to active state)" new_state="active" trigger="USER" before_script="" after_script="">
+  <action url="" category="workflow" icon="">Cancel (back to Active state)</action>
+  <guard>
+   <guard-permission>Request review</guard-permission>
+   <guard-permission>Review portal content</guard-permission>
+  </guard>
+ </transition>
+ <transition transition_id="back_to_finish" title="Cancel (back to Finished state)" new_state="finished" trigger="USER" before_script="" after_script="">
+  <action url="" category="workflow" icon="">Cancel (back to Finished state)</action>
+  <guard>
+   <guard-permission>Request review</guard-permission>
+   <guard-permission>Review portal content</guard-permission>
+  </guard>
+ </transition>
+ <transition transition_id="back_to_in_consideration" title="Cancel (back to In consideration state)" new_state="in_consideration" trigger="USER" before_script="" after_script="">
+  <action url="" category="workflow" icon="">Cancel (back to In consideration state)</action>
+  <guard>
+   <guard-permission>Request review</guard-permission>
+   <guard-permission>Review portal content</guard-permission>
+  </guard>
+ </transition>
+ <transition transition_id="back_to_in_verification" title="Cancel (back to In verification state)" new_state="in_verification" trigger="USER" before_script="" after_script="">
+  <action url="" category="workflow" icon="">Cancel (back to In verification state)</action>
+  <guard>
+   <guard-permission>Request review</guard-permission>
+   <guard-permission>Review portal content</guard-permission>
+  </guard>
+ </transition>
+ <transition transition_id="back_to_new" title="Cancel (back to New state)" new_state="new" trigger="USER" before_script="" after_script="">
+  <action url="" category="workflow" icon="">Cancel (back to New state)</action>
+  <guard>
+   <guard-permission>Request review</guard-permission>
+   <guard-permission>Review portal content</guard-permission>
+  </guard>
+ </transition>
+ <transition transition_id="cancel" title="Cancel project" new_state="cancelled" trigger="USER" before_script="" after_script="">
+  <action url="" category="workflow" icon="">Cancel project</action>
+  <guard>
+   <guard-permission>Request review</guard-permission>
+   <guard-permission>Review portal content</guard-permission>
+  </guard>
+ </transition>
+ <transition transition_id="check" title="Check" new_state="in_verification" trigger="USER" before_script="" after_script="">
+  <action url="" category="workflow" icon="">Check</action>
+  <guard>
+   <guard-permission>Request review</guard-permission>
+   <guard-permission>Review portal content</guard-permission>
+  </guard>
+ </transition>
+ <transition transition_id="complete" title="Complete" new_state="completed" trigger="USER" before_script="" after_script="">
+  <action url="" category="workflow" icon="">Complete</action>
+  <guard>
+   <guard-permission>Request review</guard-permission>
+   <guard-permission>Review portal content</guard-permission>
+  </guard>
+ </transition>
+ <transition transition_id="propose" title="Propose" new_state="in_consideration" trigger="USER" before_script="" after_script="">
+  <action url="" category="workflow" icon="">Propose</action>
+  <guard>
+   <guard-permission>Request review</guard-permission>
+   <guard-permission>Review portal content</guard-permission>
+  </guard>
+ </transition>
+ <transition transition_id="reject" title="Reject" new_state="rejected" trigger="USER" before_script="" after_script="">
+  <action url="" category="workflow" icon="">Reject</action>
+  <guard>
+   <guard-permission>Request review</guard-permission>
+   <guard-permission>Review portal content</guard-permission>
+  </guard>
+ </transition>
+ <transition transition_id="roundup" title="Roundup" new_state="finished" trigger="USER" before_script="" after_script="">
+  <action url="" category="workflow" icon="">Roundup</action>
+  <guard>
+   <guard-permission>Request review</guard-permission>
+   <guard-permission>Review portal content</guard-permission>
+  </guard>
+ </transition>
+ <transition transition_id="start" title="Start" new_state="active" trigger="USER" before_script="" after_script="">
+  <action url="" category="workflow" icon="">Start</action>
+  <guard>
+   <guard-permission>Request review</guard-permission>
+   <guard-permission>Review portal content</guard-permission>
+  </guard>
+ </transition>
+</dc-workflow>

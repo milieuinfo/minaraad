@@ -834,6 +834,9 @@ def to_plone436(context):
     profile_id = 'profile-Products.minaraad:plone436'
     context.runAllImportStepsFromProfile(profile_id, purge_old=False)
 
+def to_speedy_project_workflow(context):
+    profile_id = 'profile-Products.minaraad:speedy_project_workflow'
+    context.runAllImportStepsFromProfile(profile_id, purge_old=False)
 
 def activate_theme(context):
     """Activate diazo theme."""

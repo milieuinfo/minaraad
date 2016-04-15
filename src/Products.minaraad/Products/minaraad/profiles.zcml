@@ -39,6 +39,15 @@
       for="plone.app.caching.interfaces.ICacheProfiles"
       />
 
+  <gs:registerProfile
+      name="speedy_project_workflow"
+      title="Temporary transitions for project workflow"
+      directory="profiles/speedy_project_workflow"
+      description="Temporary transitions for project workflow"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      for="Products.CMFPlone.interfaces.IMigratingPloneSiteRoot"
+      />
+
   <gs:upgradeStep
       title="Migrate contacts"
       description=""
@@ -538,5 +547,13 @@
         description="Refresh portal_css and portal_javascript"
         handler="Products.minaraad.migration.cook_resources" />
   </gs:upgradeSteps>
+
+  <gs:upgradeStep
+      title="Temporary workflow transitions for projects"
+      description=""
+      source="5028"
+      destination="5029"
+      handler='Products.minaraad.migration.to_speedy_project_workflow'
+      profile="Products.minaraad:default" />
 
 </configure>

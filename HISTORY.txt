@@ -4,6 +4,9 @@ History of this buildout
 6.0.12 (unreleased)
 -------------------
 
+- Add temporary transitions to the project workflow
+  [diederik]
+
 - Sort related items by reverse chronological order
   [diederik]
 
