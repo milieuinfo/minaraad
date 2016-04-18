@@ -1,7 +1,7 @@
 History of this buildout
 ========================
 
-6.0.12 (unreleased)
+6.0.12 (2016-04-18)
 -------------------
 
 - Add temporary transitions to the project workflow
