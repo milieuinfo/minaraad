@@ -4,6 +4,8 @@ History of this buildout
 6.0.13 (unreleased)
 -------------------
 
+- Products.PloneHotfix20160419 1.0.  [maurits]
+
 - Set white background on @@register page.
   [lhuiskes]
 
