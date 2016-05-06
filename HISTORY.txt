@@ -4,7 +4,9 @@ History of this buildout
 6.0.14 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- MINA-138 since flexbox only works on chrome android 49+ we remove flexbox css on touch device
+  smaller then 768px.
+  [lhuiskes]
 
 
 6.0.13 (2016-04-19)
