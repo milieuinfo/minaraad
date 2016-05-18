@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minaraad.projects plone domain 1.0\n"
-"POT-Creation-Date: 2016-05-18 19:40+0000\n"
+"POT-Creation-Date: 2016-05-18 19:43+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: Zest Software <info@zestsoftware.nl>\n"
 "Language-Team: Zest Software <info@zestsoftware.nl>\n"
@@ -16,16 +16,6 @@ msgstr ""
 
 #: profiles/default/workflows/project_workflow/definition.xml
 msgid "Active"
-msgstr ""
-
-#: ../skins/DataGridWidget/datagridwidget.pt:76
-msgid "Add new row"
-msgstr ""
-
-msgid "AgendaItem"
-msgstr ""
-
-msgid "Attached file"
 msgstr ""
 
 #: profiles/default/workflows/project_workflow/definition.xml
@@ -85,9 +75,6 @@ msgstr ""
 msgid "Created"
 msgstr ""
 
-msgid "DigiBib"
-msgstr ""
-
 msgid "DigiBibViewer"
 msgstr ""
 
@@ -107,21 +94,9 @@ msgstr ""
 msgid "Mark as past"
 msgstr ""
 
-msgid "Meeting"
-msgstr ""
-
-msgid "Meeting container"
-msgstr ""
-
 #: profiles/default/workflows/meeting_workflow/definition.xml
 #: profiles/default/workflows/project_workflow/definition.xml
 msgid "New"
-msgstr ""
-
-msgid "Organisation"
-msgstr ""
-
-msgid "Organisation container"
 msgstr ""
 
 #: profiles/default/workflows/meeting_workflow/definition.xml
@@ -134,12 +109,6 @@ msgstr ""
 
 #: profiles/default/workflows/meeting_workflow/definition.xml
 msgid "Planned"
-msgstr ""
-
-msgid "Project"
-msgstr ""
-
-msgid "Project container"
 msgstr ""
 
 #: profiles/default/controlpanel.xml

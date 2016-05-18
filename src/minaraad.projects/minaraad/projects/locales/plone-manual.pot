@@ -14,39 +14,8 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: plone\n"
 
-msgid "Organisation"
-msgstr ""
-
-msgid "Project"
-msgstr ""
-
-msgid "Meeting"
-msgstr ""
-
-msgid "Attached file"
-msgstr ""
-
-msgid "AgendaItem"
-msgstr ""
-
-msgid "DigiBib"
-msgstr ""
-
-msgid "Meeting container"
-msgstr ""
-
-msgid "Organisation container"
-msgstr ""
-
-msgid "Project container"
-msgstr ""
-
 msgid "DigiBibViewer"
 msgstr ""
 
 msgid "ProjectMember"
-msgstr ""
-
-#: ../skins/DataGridWidget/datagridwidget.pt:76
-msgid "Add new row"
 msgstr ""

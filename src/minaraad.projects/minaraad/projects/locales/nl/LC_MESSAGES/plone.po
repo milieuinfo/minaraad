@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minaraad.projects plone domain 1.0\n"
-"POT-Creation-Date: 2016-05-18 19:40+0000\n"
+"POT-Creation-Date: 2016-05-18 19:43+0000\n"
 "PO-Revision-Date: 2011-10-04 10:00+0200\n"
 "Last-Translator: Maurits van Rees <m.van.rees@zestsoftware.nl>\n"
 "Language-Team: Zest Software <info@zestsoftware.nl>\n"
@@ -20,17 +20,6 @@ msgstr ""
 #: profiles/default/workflows/project_workflow/definition.xml
 msgid "Active"
 msgstr "Lopend"
-
-#: ../skins/DataGridWidget/datagridwidget.pt:76
-msgid "Add new row"
-msgstr "Voeg nieuwe rij toe"
-
-msgid "AgendaItem"
-msgstr "Agendapunt"
-
-#. Default: "Bijlage"
-msgid "Attached file"
-msgstr "Bijlage"
 
 #: profiles/default/workflows/project_workflow/definition.xml
 msgid "Cancel (back to Active state)"
@@ -89,9 +78,6 @@ msgstr "Afgelopen"
 msgid "Created"
 msgstr "Aangemaakt"
 
-msgid "DigiBib"
-msgstr "Digibib"
-
 msgid "DigiBibViewer"
 msgstr "Digibib"
 
@@ -111,22 +97,10 @@ msgstr "Ter controle"
 msgid "Mark as past"
 msgstr "Afronden"
 
-msgid "Meeting"
-msgstr "Vergadering"
-
-msgid "Meeting container"
-msgstr "Vergaderingenmap"
-
 #: profiles/default/workflows/meeting_workflow/definition.xml
 #: profiles/default/workflows/project_workflow/definition.xml
 msgid "New"
 msgstr "Nieuw"
-
-msgid "Organisation"
-msgstr "Adviesraad"
-
-msgid "Organisation container"
-msgstr "Samenwerkingenmap"
 
 #: profiles/default/workflows/meeting_workflow/definition.xml
 msgid "Past"
@@ -139,12 +113,6 @@ msgstr "Inplannen"
 #: profiles/default/workflows/meeting_workflow/definition.xml
 msgid "Planned"
 msgstr "Gepland"
-
-msgid "Project"
-msgstr "Project"
-
-msgid "Project container"
-msgstr "Projectenmap"
 
 #: profiles/default/controlpanel.xml
 msgid "Project settings"
