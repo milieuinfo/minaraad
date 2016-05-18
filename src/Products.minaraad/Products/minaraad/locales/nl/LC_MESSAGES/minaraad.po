@@ -62,7 +62,7 @@ msgstr "Datum:"
 
 #: ./browser/faceted_minaraad_type_widget/widget.py:35
 msgid "Default items (one per line)"
-msgstr ""
+msgstr "Default items (een per regel)"
 
 #: ./browser/faceted_section_widget/widget.py:39
 msgid "Default selected item"
@@ -107,7 +107,7 @@ msgstr "Oriëntatiemoment"
 
 #: ./browser/faceted_minaraad_type_widget/widget.py:26
 msgid "Maximum items"
-msgstr ""
+msgstr "Maximum aantal items"
 
 #: ./profiles.zcml:13
 msgid "Minaraad"
@@ -129,7 +129,7 @@ msgstr "Nieuwsbrief"
 
 #: ./browser/faceted_minaraad_type_widget/widget.py:27
 msgid "Number of items visible in widget"
-msgstr ""
+msgstr "Aantal items zichtbaar in widget"
 
 #: ./browser/personalPreferencesPortlet.py:23
 msgid "Personal Preferences"
@@ -154,7 +154,7 @@ msgstr "Sectie"
 
 #: ./profiles.zcml:40
 msgid "Settings for minaraad"
-msgstr ""
+msgstr "Instellingen voor minaraad"
 
 #. Default: "Study"
 #: ./profiles/default/types/Study.xml
@@ -163,7 +163,7 @@ msgstr "Oriëntatienota"
 
 #: ./profiles.zcml:49
 msgid "Temporary transitions for project workflow"
-msgstr ""
+msgstr "Tijdelijke transities voor project workflow"
 
 #: ./profiles/default/types/Theme.xml
 #: ./profiles/plone436/types/Theme.xml
@@ -181,7 +181,7 @@ msgstr "Tijd:"
 
 #: ./browser/faceted_minaraad_type_widget/widget.py:47
 msgid "Types"
-msgstr ""
+msgstr "Types"
 
 #: ./profiles.zcml:22
 msgid "Upgrade Minaraad to Plone 4.1"

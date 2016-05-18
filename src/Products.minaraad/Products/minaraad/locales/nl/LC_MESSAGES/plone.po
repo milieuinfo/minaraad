@@ -45,7 +45,7 @@ msgstr "Raadslid"
 #: profiles/default/types/News_Item.xml
 #: profiles/default/types/Plone_Site.xml
 msgid "Edit"
-msgstr ""
+msgstr "Bewerken"
 
 msgid "Export Subscribers"
 msgstr "Exporteer naar Excel"
@@ -53,11 +53,11 @@ msgstr "Exporteer naar Excel"
 #: profiles/default/types/News_Item.xml
 #: profiles/default/types/Plone_Site.xml
 msgid "External Edit"
-msgstr ""
+msgstr "Extern Bewerken"
 
 #: profiles/default/types/File.xml
 msgid "File"
-msgstr ""
+msgstr "Bestand"
 
 #: profiles/default/workflows/file_attachment_workflow/definition.xml
 msgid "File Attachment workflow"
@@ -65,7 +65,7 @@ msgstr ""
 
 #: profiles/default/types/Folder.xml
 msgid "Folder"
-msgstr ""
+msgstr "Map"
 
 #: profiles/default/types/Folder.xml
 msgid "Folder Listing"
@@ -80,21 +80,21 @@ msgstr "Hoorzitting"
 
 #: profiles/default/types/News_Item.xml
 msgid "History"
-msgstr ""
+msgstr "Geschiedenis"
 
 msgid "MREvent"
 msgstr "Oriëntatiemoment"
 
 #: profiles/default/types/News_Item.xml
 msgid "News Item"
-msgstr ""
+msgstr "Nieuwsbericht"
 
 msgid "NewsLetter"
 msgstr "Nieuwsbrief"
 
 #: profiles/default/types/Document.xml
 msgid "Page"
-msgstr ""
+msgstr "Pagina"
 
 msgid "Pending"
 msgstr "In behandeling"
@@ -117,16 +117,16 @@ msgstr ""
 
 #: profiles/default/types/News_Item.xml
 msgid "References"
-msgstr ""
+msgstr "Referenties"
 
 #: profiles/default/workflows/minaraad_workflow/definition.xml
 msgid "Reject"
-msgstr ""
+msgstr "Weigeren"
 
 #: profiles/default/workflows/minaraad_folder_workflow/definition.xml
 #: profiles/default/workflows/minaraad_workflow/definition.xml
 msgid "Retract"
-msgstr ""
+msgstr "Terugtrekken"
 
 #: profiles/default/workflows/minaraad_folder_workflow/definition.xml
 #: profiles/default/workflows/minaraad_workflow/definition.xml
@@ -167,13 +167,13 @@ msgstr ""
 
 #: profiles/default/workflows/file_attachment_workflow/definition.xml
 msgid "Unpublish"
-msgstr ""
+msgstr "Niet meer publiceren"
 
 #: profiles/default/types/Folder.xml
 #: profiles/default/types/News_Item.xml
 #: profiles/default/types/Plone_Site.xml
 msgid "View"
-msgstr ""
+msgstr "Bekijken"
 
 msgid "advisory_listing_view"
 msgstr "Adviezen overzicht"
@@ -209,7 +209,7 @@ msgstr "Nieuwsbrieven overzicht"
 
 #: profiles/default/workflows/minaraad_folder_workflow/definition.xml
 msgid "pending"
-msgstr ""
+msgstr "In behandeling"
 
 msgid "pressrelease_listing_view"
 msgstr "Persberichten overzicht"
@@ -217,22 +217,22 @@ msgstr "Persberichten overzicht"
 #: profiles/default/workflows/minaraad_folder_workflow/definition.xml
 #: profiles/default/workflows/minaraad_workflow/definition.xml
 msgid "private"
-msgstr ""
+msgstr "Privé"
 
 #: profiles/default/workflows/minaraad_folder_workflow/definition.xml
 #: profiles/default/workflows/minaraad_workflow/definition.xml
 msgid "publish"
-msgstr ""
+msgstr "Publiceren"
 
 #: profiles/default/workflows/minaraad_folder_workflow/definition.xml
 #: profiles/default/workflows/minaraad_workflow/definition.xml
 msgid "published"
-msgstr ""
+msgstr "Gepubliceerd"
 
 #: profiles/default/workflows/minaraad_folder_workflow/definition.xml
 #: profiles/default/workflows/minaraad_workflow/definition.xml
 msgid "reject"
-msgstr ""
+msgstr "Weigeren"
 
 #: profiles/default/workflows/minaraad_folder_workflow/definition.xml
 #: profiles/default/workflows/minaraad_workflow/definition.xml
@@ -249,7 +249,7 @@ msgstr "Besloten publiceren"
 #: profiles/default/workflows/minaraad_folder_workflow/definition.xml
 #: profiles/default/workflows/minaraad_workflow/definition.xml
 msgid "retract"
-msgstr ""
+msgstr "Terugtrekken"
 
 #: profiles/default/workflows/minaraad_workflow/definition.xml
 msgid "revise"
@@ -257,7 +257,7 @@ msgstr "Reviseren"
 
 #: profiles/default/workflows/minaraad_workflow/definition.xml
 msgid "revisioning"
-msgstr ""
+msgstr "In revisie"
 
 msgid "study_listing_view"
 msgstr "Nota overzicht"
@@ -265,7 +265,7 @@ msgstr "Nota overzicht"
 #: profiles/default/workflows/minaraad_folder_workflow/definition.xml
 #: profiles/default/workflows/minaraad_workflow/definition.xml
 msgid "submit"
-msgstr ""
+msgstr "Verzenden"
 
 msgid "subscribers overview"
 msgstr "Abonnee overzicht"
