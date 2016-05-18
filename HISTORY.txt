@@ -4,6 +4,9 @@ History of this buildout
 6.0.14 (unreleased)
 -------------------
 
+- Updated icons in catalog metadata.  Old brains were still pointing
+  to .gif files instead of .png files.  [maurits]
+
 - MINA-136: Reverse sort referencebrowserwidget on effective date.
   This is our new default.  Set the sort order explicitly in some
   fields, especially sorting on sortable title for contact persons.

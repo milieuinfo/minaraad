@@ -8,6 +8,7 @@ from PIL import ImageColor
 from PIL import ImageDraw
 from PIL import ImageChops
 from plone import api
+from plone.app.upgrade.utils import updateIconsInBrains
 from plone.i18n.normalizer import idnormalizer
 from plone.locking.interfaces import ILockable
 from plone.portlets.interfaces import IPortletAssignmentMapping
@@ -1025,11 +1026,27 @@ def update_catalog_metadata(context):
     """
     catalog = getToolByName(context, 'portal_catalog')
     brains = catalog(portal_type=[
-        'NewsItem',
+        'Advisory',
+        'AgendaItem',
+        'AgendaItemProject',
         'AnnualReport',
         'ContactPerson',
-        'FileAttachment',
+        'DigiBib',
         'File',
+        'FileAttachment',
+        'Hearing',
+        'Meeting',
+        'MeetingContainer',
+        'MREvent',
+        'News_Item',
+        'NewsItem',
+        'NewsLetter',
+        'Organisation',
+        'OrganisationContainer',
+        'Pressrelease',
+        'Project',
+        'ProjectContainer',
+        'Study',
         ])
     for brain in brains:
         obj = brain.getObject()
