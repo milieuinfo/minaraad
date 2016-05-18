@@ -6,9 +6,9 @@
              description="Workflow for the Project content type."
              state_variable="review_state"
              initial_state="new">
- <permission>View</permission>
- <permission>Modify portal content</permission>
  <permission>Add Attachment</permission>
+ <permission>Modify portal content</permission>
+ <permission>View</permission>
  <permission>minaraad.projects: manage active project fields</permission>
  <permission>minaraad.projects: manage cancelled project fields</permission>
  <permission>minaraad.projects: manage completed project fields</permission>
@@ -21,8 +21,7 @@
   <exit-transition transition_id="back_to_in_consideration"/>
   <exit-transition transition_id="cancel"/>
   <exit-transition transition_id="roundup"/>
-  <permission-map name="View" acquired="False">
-   <permission-role>DigiBibViewer</permission-role>
+  <permission-map name="Add Attachment" acquired="False">
    <permission-role>Manager</permission-role>
    <permission-role>Owner</permission-role>
   </permission-map>
@@ -30,41 +29,33 @@
    <permission-role>Manager</permission-role>
    <permission-role>Owner</permission-role>
   </permission-map>
-  <permission-map name="Add Attachment" acquired="False">
+  <permission-map name="View" acquired="False">
+   <permission-role>DigiBibViewer</permission-role>
    <permission-role>Manager</permission-role>
    <permission-role>Owner</permission-role>
   </permission-map>
-  <permission-map name="minaraad.projects: manage active project fields"
-                  acquired="False">
+  <permission-map name="minaraad.projects: manage active project fields" acquired="False">
    <permission-role>Manager</permission-role>
    <permission-role>Owner</permission-role>
   </permission-map>
-  <permission-map name="minaraad.projects: manage cancelled project fields"
-                  acquired="False">
+  <permission-map name="minaraad.projects: manage cancelled project fields" acquired="False">
   </permission-map>
-  <permission-map name="minaraad.projects: manage completed project fields"
-                  acquired="False">
+  <permission-map name="minaraad.projects: manage completed project fields" acquired="False">
   </permission-map>
-  <permission-map name="minaraad.projects: manage finished project fields"
-                  acquired="False">
+  <permission-map name="minaraad.projects: manage finished project fields" acquired="False">
   </permission-map>
-  <permission-map name="minaraad.projects: manage in consideration project fields"
-                  acquired="False">
+  <permission-map name="minaraad.projects: manage in consideration project fields" acquired="False">
   </permission-map>
-  <permission-map name="minaraad.projects: manage in verification project fields"
-                  acquired="False">
+  <permission-map name="minaraad.projects: manage in verification project fields" acquired="False">
   </permission-map>
-  <permission-map name="minaraad.projects: manage new project fields"
-                  acquired="False">
+  <permission-map name="minaraad.projects: manage new project fields" acquired="False">
   </permission-map>
-  <permission-map name="minaraad.projects: manage rejected project fields"
-                  acquired="False">
+  <permission-map name="minaraad.projects: manage rejected project fields" acquired="False">
   </permission-map>
  </state>
  <state state_id="cancelled" title="Cancelled" i18n:attributes="title">
   <exit-transition transition_id="back_to_active"/>
-  <permission-map name="View" acquired="False">
-   <permission-role>DigiBibViewer</permission-role>
+  <permission-map name="Add Attachment" acquired="False">
    <permission-role>Manager</permission-role>
    <permission-role>Owner</permission-role>
   </permission-map>
@@ -72,80 +63,64 @@
    <permission-role>Manager</permission-role>
    <permission-role>Owner</permission-role>
   </permission-map>
-  <permission-map name="Add Attachment" acquired="False">
+  <permission-map name="View" acquired="False">
+   <permission-role>DigiBibViewer</permission-role>
    <permission-role>Manager</permission-role>
    <permission-role>Owner</permission-role>
   </permission-map>
-  <permission-map name="minaraad.projects: manage active project fields"
-                  acquired="False">
+  <permission-map name="minaraad.projects: manage active project fields" acquired="False">
   </permission-map>
-  <permission-map name="minaraad.projects: manage cancelled project fields"
-                  acquired="False">
+  <permission-map name="minaraad.projects: manage cancelled project fields" acquired="False">
    <permission-role>Manager</permission-role>
    <permission-role>Owner</permission-role>
   </permission-map>
-  <permission-map name="minaraad.projects: manage completed project fields"
-                  acquired="False">
+  <permission-map name="minaraad.projects: manage completed project fields" acquired="False">
   </permission-map>
-  <permission-map name="minaraad.projects: manage finished project fields"
-                  acquired="False">
+  <permission-map name="minaraad.projects: manage finished project fields" acquired="False">
   </permission-map>
-  <permission-map name="minaraad.projects: manage in consideration project fields"
-                  acquired="False">
+  <permission-map name="minaraad.projects: manage in consideration project fields" acquired="False">
   </permission-map>
-  <permission-map name="minaraad.projects: manage in verification project fields"
-                  acquired="False">
+  <permission-map name="minaraad.projects: manage in verification project fields" acquired="False">
   </permission-map>
-  <permission-map name="minaraad.projects: manage new project fields"
-                  acquired="False">
+  <permission-map name="minaraad.projects: manage new project fields" acquired="False">
   </permission-map>
-  <permission-map name="minaraad.projects: manage rejected project fields"
-                  acquired="False">
+  <permission-map name="minaraad.projects: manage rejected project fields" acquired="False">
   </permission-map>
  </state>
  <state state_id="completed" title="Completed" i18n:attributes="title">
   <exit-transition transition_id="back_to_finish"/>
-  <permission-map name="View" acquired="False">
+  <permission-map name="Add Attachment" acquired="False">
+  </permission-map>
+  <permission-map name="Modify portal content" acquired="False">
+  </permission-map>
+    <permission-map name="View" acquired="False">
    <permission-role>DigiBibViewer</permission-role>
    <permission-role>Manager</permission-role>
    <permission-role>Owner</permission-role>
   </permission-map>
-  <permission-map name="Modify portal content" acquired="False">
+  <permission-map name="minaraad.projects: manage active project fields" acquired="False">
   </permission-map>
-  <permission-map name="Add Attachment" acquired="False">
+  <permission-map name="minaraad.projects: manage cancelled project fields" acquired="False">
   </permission-map>
-  <permission-map name="minaraad.projects: manage active project fields"
-                  acquired="False">
-  </permission-map>
-  <permission-map name="minaraad.projects: manage cancelled project fields"
-                  acquired="False">
-  </permission-map>
-  <permission-map name="minaraad.projects: manage completed project fields"
-                  acquired="False">
+  <permission-map name="minaraad.projects: manage completed project fields" acquired="False">
    <permission-role>Manager</permission-role>
    <permission-role>Owner</permission-role>
   </permission-map>
-  <permission-map name="minaraad.projects: manage finished project fields"
-                  acquired="False">
+  <permission-map name="minaraad.projects: manage finished project fields" acquired="False">
   </permission-map>
-  <permission-map name="minaraad.projects: manage in consideration project fields"
-                  acquired="False">
+  <permission-map name="minaraad.projects: manage in consideration project fields" acquired="False">
   </permission-map>
-  <permission-map name="minaraad.projects: manage in verification project fields"
-                  acquired="False">
+  <permission-map name="minaraad.projects: manage in verification project fields" acquired="False">
   </permission-map>
-  <permission-map name="minaraad.projects: manage new project fields"
-                  acquired="False">
+  <permission-map name="minaraad.projects: manage new project fields" acquired="False">
   </permission-map>
-  <permission-map name="minaraad.projects: manage rejected project fields"
-                  acquired="False">
+  <permission-map name="minaraad.projects: manage rejected project fields" acquired="False">
   </permission-map>
  </state>
  <state state_id="finished" title="Finished" i18n:attributes="title">
   <exit-transition transition_id="back_to_active"/>
   <exit-transition transition_id="complete"/>
-  <permission-map name="View" acquired="False">
-   <permission-role>DigiBibViewer</permission-role>
+  <permission-map name="Add Attachment" acquired="False">
    <permission-role>Manager</permission-role>
    <permission-role>Owner</permission-role>
   </permission-map>
@@ -153,43 +128,35 @@
    <permission-role>Manager</permission-role>
    <permission-role>Owner</permission-role>
   </permission-map>
-  <permission-map name="Add Attachment" acquired="False">
+  <permission-map name="View" acquired="False">
+   <permission-role>DigiBibViewer</permission-role>
    <permission-role>Manager</permission-role>
    <permission-role>Owner</permission-role>
   </permission-map>
-  <permission-map name="minaraad.projects: manage active project fields"
-                  acquired="False">
+  <permission-map name="minaraad.projects: manage active project fields" acquired="False">
   </permission-map>
-  <permission-map name="minaraad.projects: manage cancelled project fields"
-                  acquired="False">
+  <permission-map name="minaraad.projects: manage cancelled project fields" acquired="False">
   </permission-map>
-  <permission-map name="minaraad.projects: manage completed project fields"
-                  acquired="False">
+  <permission-map name="minaraad.projects: manage completed project fields" acquired="False">
   </permission-map>
-  <permission-map name="minaraad.projects: manage finished project fields"
-                  acquired="False">
+  <permission-map name="minaraad.projects: manage finished project fields" acquired="False">
    <permission-role>Manager</permission-role>
    <permission-role>Owner</permission-role>
   </permission-map>
-  <permission-map name="minaraad.projects: manage in consideration project fields"
-                  acquired="False">
+  <permission-map name="minaraad.projects: manage in consideration project fields" acquired="False">
   </permission-map>
-  <permission-map name="minaraad.projects: manage in verification project fields"
-                  acquired="False">
+  <permission-map name="minaraad.projects: manage in verification project fields" acquired="False">
   </permission-map>
-  <permission-map name="minaraad.projects: manage new project fields"
-                  acquired="False">
+  <permission-map name="minaraad.projects: manage new project fields" acquired="False">
   </permission-map>
-  <permission-map name="minaraad.projects: manage rejected project fields"
-                  acquired="False">
+  <permission-map name="minaraad.projects: manage rejected project fields" acquired="False">
   </permission-map>
  </state>
  <state state_id="in_consideration" title="In consideration" i18n:attributes="title">
   <exit-transition transition_id="back_to_in_verification"/>
   <exit-transition transition_id="reject"/>
   <exit-transition transition_id="start"/>
-  <permission-map name="View" acquired="False">
-   <permission-role>DigiBibViewer</permission-role>
+  <permission-map name="Add Attachment" acquired="False">
    <permission-role>Manager</permission-role>
    <permission-role>Owner</permission-role>
   </permission-map>
@@ -197,41 +164,34 @@
    <permission-role>Manager</permission-role>
    <permission-role>Owner</permission-role>
   </permission-map>
-  <permission-map name="Add Attachment" acquired="False">
+  <permission-map name="View" acquired="False">
+   <permission-role>DigiBibViewer</permission-role>
    <permission-role>Manager</permission-role>
    <permission-role>Owner</permission-role>
   </permission-map>
-  <permission-map name="minaraad.projects: manage active project fields"
-                  acquired="False">
+  <permission-map name="minaraad.projects: manage active project fields" acquired="False">
   </permission-map>
-  <permission-map name="minaraad.projects: manage cancelled project fields"
-                  acquired="False">
+  <permission-map name="minaraad.projects: manage cancelled project fields" acquired="False">
   </permission-map>
-  <permission-map name="minaraad.projects: manage completed project fields"
-                  acquired="False">
+  <permission-map name="minaraad.projects: manage completed project fields" acquired="False">
   </permission-map>
-  <permission-map name="minaraad.projects: manage finished project fields"
-                  acquired="False">
+  <permission-map name="minaraad.projects: manage finished project fields" acquired="False">
   </permission-map>
-  <permission-map name="minaraad.projects: manage in consideration project fields"
-                  acquired="False">
+  <permission-map name="minaraad.projects: manage in consideration project fields" acquired="False">
    <permission-role>Manager</permission-role>
    <permission-role>Owner</permission-role>
   </permission-map>
-  <permission-map name="minaraad.projects: manage in verification project fields"
-                  acquired="False">
+  <permission-map name="minaraad.projects: manage in verification project fields" acquired="False">
   </permission-map>
-  <permission-map name="minaraad.projects: manage new project fields"
-                  acquired="False">
+  <permission-map name="minaraad.projects: manage new project fields" acquired="False">
   </permission-map>
-  <permission-map name="minaraad.projects: manage rejected project fields"
-                  acquired="False">
+  <permission-map name="minaraad.projects: manage rejected project fields" acquired="False">
   </permission-map>
  </state>
  <state state_id="in_verification" title="In verification" i18n:attributes="title">
   <exit-transition transition_id="back_to_new"/>
   <exit-transition transition_id="propose"/>
-  <permission-map name="View" acquired="False">
+  <permission-map name="Add Attachment" acquired="False">
    <permission-role>Manager</permission-role>
    <permission-role>Owner</permission-role>
   </permission-map>
@@ -239,42 +199,34 @@
    <permission-role>Manager</permission-role>
    <permission-role>Owner</permission-role>
   </permission-map>
-  <permission-map name="Add Attachment" acquired="False">
+  <permission-map name="View" acquired="False">
    <permission-role>Manager</permission-role>
    <permission-role>Owner</permission-role>
   </permission-map>
-  <permission-map name="minaraad.projects: manage active project fields"
-                  acquired="False">
+  <permission-map name="minaraad.projects: manage active project fields" acquired="False">
   </permission-map>
-  <permission-map name="minaraad.projects: manage cancelled project fields"
-                  acquired="False">
+  <permission-map name="minaraad.projects: manage cancelled project fields" acquired="False">
   </permission-map>
-  <permission-map name="minaraad.projects: manage completed project fields"
-                  acquired="False">
+  <permission-map name="minaraad.projects: manage completed project fields" acquired="False">
   </permission-map>
-  <permission-map name="minaraad.projects: manage finished project fields"
-                  acquired="False">
+  <permission-map name="minaraad.projects: manage finished project fields" acquired="False">
   </permission-map>
-  <permission-map name="minaraad.projects: manage in consideration project fields"
-                  acquired="False">
+  <permission-map name="minaraad.projects: manage in consideration project fields" acquired="False">
   </permission-map>
-  <permission-map name="minaraad.projects: manage in verification project fields"
-                  acquired="False">
+  <permission-map name="minaraad.projects: manage in verification project fields" acquired="False">
    <permission-role>Manager</permission-role>
    <permission-role>Owner</permission-role>
   </permission-map>
-  <permission-map name="minaraad.projects: manage new project fields"
-                  acquired="False">
+  <permission-map name="minaraad.projects: manage new project fields" acquired="False">
    <permission-role>Manager</permission-role>
    <permission-role>Owner</permission-role>
   </permission-map>
-  <permission-map name="minaraad.projects: manage rejected project fields"
-                  acquired="False">
+  <permission-map name="minaraad.projects: manage rejected project fields" acquired="False">
   </permission-map>
  </state>
  <state state_id="new" title="New" i18n:attributes="title">
   <exit-transition transition_id="check"/>
-  <permission-map name="View" acquired="False">
+  <permission-map name="Add Attachment" acquired="False">
    <permission-role>Manager</permission-role>
    <permission-role>Owner</permission-role>
   </permission-map>
@@ -282,75 +234,59 @@
    <permission-role>Manager</permission-role>
    <permission-role>Owner</permission-role>
   </permission-map>
-  <permission-map name="Add Attachment" acquired="False">
+  <permission-map name="View" acquired="False">
    <permission-role>Manager</permission-role>
    <permission-role>Owner</permission-role>
   </permission-map>
-  <permission-map name="minaraad.projects: manage active project fields"
-                  acquired="False">
+  <permission-map name="minaraad.projects: manage active project fields" acquired="False">
   </permission-map>
-  <permission-map name="minaraad.projects: manage cancelled project fields"
-                  acquired="False">
+  <permission-map name="minaraad.projects: manage cancelled project fields" acquired="False">
   </permission-map>
-  <permission-map name="minaraad.projects: manage completed project fields"
-                  acquired="False">
+  <permission-map name="minaraad.projects: manage completed project fields" acquired="False">
   </permission-map>
-  <permission-map name="minaraad.projects: manage finished project fields"
-                  acquired="False">
+  <permission-map name="minaraad.projects: manage finished project fields" acquired="False">
   </permission-map>
-  <permission-map name="minaraad.projects: manage in consideration project fields"
-                  acquired="False">
+  <permission-map name="minaraad.projects: manage in consideration project fields" acquired="False">
   </permission-map>
-  <permission-map name="minaraad.projects: manage in verification project fields"
-                  acquired="False">
+  <permission-map name="minaraad.projects: manage in verification project fields" acquired="False">
   </permission-map>
-  <permission-map name="minaraad.projects: manage new project fields"
-                  acquired="False">
+  <permission-map name="minaraad.projects: manage new project fields" acquired="False">
    <permission-role>Manager</permission-role>
    <permission-role>Owner</permission-role>
   </permission-map>
-  <permission-map name="minaraad.projects: manage rejected project fields"
-                  acquired="False">
+  <permission-map name="minaraad.projects: manage rejected project fields" acquired="False">
   </permission-map>
  </state>
  <state state_id="rejected" title="Rejected" i18n:attributes="title">
   <exit-transition transition_id="back_to_in_consideration"/>
+  <permission-map name="Add Attachment" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+  </permission-map>
+  <permission-map name="Modify portal content" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+  </permission-map>
   <permission-map name="View" acquired="False">
    <permission-role>DigiBibViewer</permission-role>
    <permission-role>Manager</permission-role>
    <permission-role>Owner</permission-role>
   </permission-map>
-  <permission-map name="Modify portal content" acquired="False">
-   <permission-role>Manager</permission-role>
-   <permission-role>Owner</permission-role>
+  <permission-map name="minaraad.projects: manage active project fields" acquired="False">
   </permission-map>
-  <permission-map name="Add Attachment" acquired="False">
-   <permission-role>Manager</permission-role>
-   <permission-role>Owner</permission-role>
+  <permission-map name="minaraad.projects: manage cancelled project fields" acquired="False">
   </permission-map>
-  <permission-map name="minaraad.projects: manage active project fields"
-                  acquired="False">
+  <permission-map name="minaraad.projects: manage completed project fields" acquired="False">
   </permission-map>
-  <permission-map name="minaraad.projects: manage cancelled project fields"
-                  acquired="False">
+  <permission-map name="minaraad.projects: manage finished project fields" acquired="False">
   </permission-map>
-  <permission-map name="minaraad.projects: manage completed project fields"
-                  acquired="False">
+  <permission-map name="minaraad.projects: manage in consideration project fields" acquired="False">
   </permission-map>
-  <permission-map name="minaraad.projects: manage finished project fields"
-                  acquired="False">
+  <permission-map name="minaraad.projects: manage in verification project fields" acquired="False">
   </permission-map>
-  <permission-map name="minaraad.projects: manage in consideration project fields"
-                  acquired="False">
+  <permission-map name="minaraad.projects: manage new project fields" acquired="False">
   </permission-map>
-  <permission-map name="minaraad.projects: manage in verification project fields"
-                  acquired="False">
-  </permission-map>
-  <permission-map name="minaraad.projects: manage new project fields"
-                  acquired="False">
-  </permission-map>
-  <permission-map name="minaraad.projects: manage rejected project fields"
-                  acquired="False">
+  <permission-map name="minaraad.projects: manage rejected project fields" acquired="False">
    <permission-role>Manager</permission-role>
    <permission-role>Owner</permission-role>
   </permission-map>
