@@ -13,5 +13,5 @@ i18ndude sync --pot locales/${I18NDOMAIN}.pot locales/nl/LC_MESSAGES/${I18NDOMAI
 # rest is probably not needed, or we would get far too much in here
 # that is already translated elsewhere, just because we copied a
 # template for a one line change.
-i18ndude rebuild-pot --pot i18n/plone.pot --merge i18n/manual.pot --create plone profiles/
-i18ndude sync --pot i18n/plone.pot i18n/plone-minaraad.projects-nl.po 
+i18ndude rebuild-pot --pot locales/plone.pot --merge locales/plone-manual.pot --create plone profiles/
+i18ndude sync --pot locales/plone.pot locales/nl/LC_MESSAGES/plone.po
