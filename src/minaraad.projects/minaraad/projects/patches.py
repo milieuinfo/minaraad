@@ -13,7 +13,7 @@ def getProjectResult(self):
     b_size = int(self.request.get('b_size', 20))
     b_start = int(self.request.get('b_start', 0))
 
-    return Batch(result, b_size, b_start, orphan=1)
+    return Batch(self._prepareResults(result), b_size, b_start, orphan=1)
 
 
 def getResult(self):
