@@ -218,7 +218,7 @@ msgid "Search"
 msgstr ""
 
 msgid "Study"
-msgstr "Oriëntatinota"
+msgstr "Oriëntatienota"
 
 #: profiles/default/workflows/minaraad_workflow/definition.xml
 msgid "Submit"
