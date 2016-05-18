@@ -4,6 +4,9 @@ History of this buildout
 6.0.14 (unreleased)
 -------------------
 
+- Removed patch for project reference field and instead configured the
+  widget properly.  [maurits]
+
 - MINA-138 since flexbox only works on chrome android 49+ we remove flexbox css on touch device
   smaller then 768px.
   [lhuiskes]

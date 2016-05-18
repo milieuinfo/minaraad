@@ -39,8 +39,9 @@ agendaitem_schema = base_agendaitem_schema + atapi.Schema((
             show_review_state=0,
             allow_search=0,
             allow_browse=0,
+            show_results_without_query=1,
+            base_query={'review_state': 'active'},
             restrict_browsing_to_startup_directory=0,
-            startup_directory_method='projects_url',
             force_close_on_insert=1,
         ),
     ),
@@ -100,16 +101,6 @@ class AgendaItemProject(BaseAgendaItem):
             self._previous_project = None
         else:
             self._previous_project = project.UID()
-
-    @property
-    def projects_url(self):
-        portal = getSite()
-        catalog = getToolByName(portal, 'portal_catalog')
-        brains = catalog({'portal_type': 'ProjectContainer'})
-        if len(brains) > 0:
-            return brains[0].getURL().split(portal.absolute_url())[1]
-
-        return '/'
 
     def _update_numbering(self):
         meeting = aq_parent(aq_inner(self))
