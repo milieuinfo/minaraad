@@ -1,7 +1,7 @@
 History of this buildout
 ========================
 
-6.0.14 (unreleased)
+6.0.14 (2016-05-18)
 -------------------
 
 - MINA-143: when Event is past, still show the agenda.  [maurits]
