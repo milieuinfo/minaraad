@@ -40,7 +40,11 @@ agendaitem_schema = base_agendaitem_schema + atapi.Schema((
             allow_search=0,
             allow_browse=0,
             show_results_without_query=1,
-            base_query={'review_state': 'active'},
+            base_query={
+                'review_state': 'active',
+                'sort_on': 'effective',
+                'sort_order': 'reverse',
+            },
             restrict_browsing_to_startup_directory=0,
             force_close_on_insert=1,
         ),

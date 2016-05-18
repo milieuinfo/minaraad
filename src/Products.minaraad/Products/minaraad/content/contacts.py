@@ -20,6 +20,9 @@ contacts_schema = atapi.Schema((
             allow_browse=1,
             show_indexes=0,
             force_close_on_insert=1,
+            base_query={
+                'sort_on': 'sortable_title',
+            },
         ),
     ),
 
@@ -37,7 +40,10 @@ contacts_schema = atapi.Schema((
             allow_browse=1,
             show_indexes=0,
             force_close_on_insert=0,
-            multivalued=1
+            multivalued=1,
+            base_query={
+                'sort_on': 'sortable_title',
+            },
         ),
         allowed_types=('ContactPerson', ),
         multiValued=1,

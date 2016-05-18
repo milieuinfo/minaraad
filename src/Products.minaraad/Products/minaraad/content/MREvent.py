@@ -117,6 +117,9 @@ schema = atapi.Schema((
             label='Contact',
             label_msgid='minaraad_label_contact',
             i18n_domain='minaraad',
+            base_query={
+                'sort_on': 'sortable_title',
+            },
         ),
         allowed_types=('ContactPerson', ),
         multiValued=1,

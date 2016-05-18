@@ -82,6 +82,10 @@ ThemeSchema = folder.ATFolderSchema.copy() + atapi.Schema((
             force_close_on_insert=True,
             label=u'Related items',
             description='',
+            base_query={
+                'sort_on': 'effective',
+                'sort_order': 'reverse',
+            },
             visible={'edit': 'visible', 'view': 'invisible'}
         )
     ),

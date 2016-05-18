@@ -61,6 +61,9 @@ meeting_schema = base_meeting_schema.copy() + atapi.Schema((
 
             allow_search=0,
             allow_browse=1,
+            base_query={
+                'sort_on': 'sortable_title',
+            },
             restrict_browsing_to_startup_directory=0,
             startup_directory_method='organisations_url',
             force_close_on_insert=1,
