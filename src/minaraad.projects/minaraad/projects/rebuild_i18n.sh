@@ -6,7 +6,6 @@ I18NDOMAIN='minaraad.projects'
 i18ndude rebuild-pot --pot locales/${I18NDOMAIN}.pot --create ${I18NDOMAIN} .
 
 # Synchronise the resulting .pot with the .po files
-i18ndude sync --pot locales/${I18NDOMAIN}.pot locales/en/LC_MESSAGES/${I18NDOMAIN}.po
 i18ndude sync --pot locales/${I18NDOMAIN}.pot locales/nl/LC_MESSAGES/${I18NDOMAIN}.po
 
 # Do the plone domain as well, at least for stuff in the profiles. The
