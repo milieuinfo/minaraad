@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minaraad.projecrts 1.0\n"
-"POT-Creation-Date: 2016-03-09 19:10+0000\n"
+"POT-Creation-Date: 2016-05-18 19:40+0000\n"
 "PO-Revision-Date: 2016-03-09 20:13+0100\n"
 "Last-Translator: Maurits van Rees <m.van.rees@zestsoftware.nl>\n"
 "Language-Team: Zest Software <info@zestsoftware.nl>\n"
@@ -43,7 +43,7 @@ msgstr "Kan het thema niet vinden waaraan het project gekoppeld is."
 msgid "Choose a statistic:"
 msgstr "Kies een statistiek:"
 
-#: ./content/meeting.py:102
+#: ./content/meeting.py:105
 msgid "Company"
 msgstr "Organisatie"
 
@@ -84,7 +84,7 @@ msgstr "Vergadering"
 msgid "Meeting container"
 msgstr "Vergaderingenmap"
 
-#: ./content/meeting.py:100
+#: ./content/meeting.py:103
 msgid "Name"
 msgstr "Naam"
 
@@ -180,7 +180,7 @@ msgid "heading_digibib_projects"
 msgstr "Digibib - Projecten"
 
 #. Default: "Enter the invitees who are not in the selected committees."
-#: ./content/meeting.py:107
+#: ./content/meeting.py:110
 msgid "help_other_invitees"
 msgstr "Voeg genodigden toe die niet in de geselecteerde commissies zitten."
 
@@ -240,7 +240,7 @@ msgid "label_advisory_requesters"
 msgstr "Opdrachtgevers"
 
 #. Default: "Assigned groups"
-#: ./content/meeting.py:83
+#: ./content/meeting.py:86
 #: ./content/project.py:171
 msgid "label_assigned_groups"
 msgstr "Betrokken commissies"
@@ -431,12 +431,12 @@ msgid "label_organisations"
 msgstr "Samenwerking"
 
 #. Default: "Other invitees"
-#: ./content/meeting.py:105
+#: ./content/meeting.py:108
 msgid "label_other_invitees"
 msgstr "Overige genodigden"
 
 #. Default: "Participants attendance"
-#: ./content/meeting.py:92
+#: ./content/meeting.py:95
 msgid "label_participants_attendance"
 msgstr "Aanwezigheid deelnemers"
 
@@ -496,7 +496,7 @@ msgid "label_responsible_group"
 msgstr "Verantwoordelijke commissie"
 
 #. Default: "Room number"
-#: ./content/meeting.py:74
+#: ./content/meeting.py:77
 msgid "label_room_number"
 msgstr "Lokaal"
 
@@ -546,7 +546,7 @@ msgid "label_statistics"
 msgstr "Statistieken"
 
 #. Default: "You must specify a title if you do not select a project"
-#: ./content/agendaitem.py:83
+#: ./content/agendaitem.py:88
 msgid "label_title_needed"
 msgstr "U heeft geen project geselecteerd, u dient een titel op te geven."
 

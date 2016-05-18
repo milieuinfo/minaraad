@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2016-03-09 19:10+0000\n"
+"POT-Creation-Date: 2016-05-18 19:40+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,7 +45,7 @@ msgstr ""
 msgid "Choose a statistic:"
 msgstr ""
 
-#: ./content/meeting.py:102
+#: ./content/meeting.py:105
 msgid "Company"
 msgstr ""
 
@@ -86,7 +86,7 @@ msgstr ""
 msgid "Meeting container"
 msgstr ""
 
-#: ./content/meeting.py:100
+#: ./content/meeting.py:103
 msgid "Name"
 msgstr ""
 
@@ -182,7 +182,7 @@ msgid "heading_digibib_projects"
 msgstr ""
 
 #. Default: "Enter the invitees who are not in the selected committees."
-#: ./content/meeting.py:107
+#: ./content/meeting.py:110
 msgid "help_other_invitees"
 msgstr ""
 
@@ -242,7 +242,7 @@ msgid "label_advisory_requesters"
 msgstr ""
 
 #. Default: "Assigned groups"
-#: ./content/meeting.py:83
+#: ./content/meeting.py:86
 #: ./content/project.py:171
 msgid "label_assigned_groups"
 msgstr ""
@@ -412,12 +412,12 @@ msgid "label_organisations"
 msgstr ""
 
 #. Default: "Other invitees"
-#: ./content/meeting.py:105
+#: ./content/meeting.py:108
 msgid "label_other_invitees"
 msgstr ""
 
 #. Default: "Participants attendance"
-#: ./content/meeting.py:92
+#: ./content/meeting.py:95
 msgid "label_participants_attendance"
 msgstr ""
 
@@ -477,7 +477,7 @@ msgid "label_responsible_group"
 msgstr ""
 
 #. Default: "Room number"
-#: ./content/meeting.py:74
+#: ./content/meeting.py:77
 msgid "label_room_number"
 msgstr ""
 
@@ -517,7 +517,7 @@ msgid "label_statistics"
 msgstr ""
 
 #. Default: "You must specify a title if you do not select a project"
-#: ./content/agendaitem.py:83
+#: ./content/agendaitem.py:88
 msgid "label_title_needed"
 msgstr ""
 
