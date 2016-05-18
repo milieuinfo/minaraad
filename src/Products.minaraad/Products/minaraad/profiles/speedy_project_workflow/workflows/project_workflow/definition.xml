@@ -1,5 +1,11 @@
 <?xml version="1.0"?>
-<dc-workflow workflow_id="project_workflow" title="DC Workflow Definition" description="Workflow for the Project content type." state_variable="review_state" initial_state="new" manager_bypass="False">
+<dc-workflow xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+             i18n:domain="plone"
+             workflow_id="project_workflow"
+             title="DC Workflow Definition"
+             description="Workflow for the Project content type."
+             state_variable="review_state"
+             initial_state="new">
  <permission>Add Attachment</permission>
  <permission>Modify portal content</permission>
  <permission>View</permission>
@@ -11,7 +17,7 @@
  <permission>minaraad.projects: manage in verification project fields</permission>
  <permission>minaraad.projects: manage new project fields</permission>
  <permission>minaraad.projects: manage rejected project fields</permission>
- <state state_id="active" title="Active">
+ <state state_id="active" title="Active" i18n:attributes="title">
   <exit-transition transition_id="TEMP_finish"/>
   <exit-transition transition_id="back_to_in_consideration"/>
   <exit-transition transition_id="cancel"/>
@@ -52,7 +58,7 @@
   <permission-map name="minaraad.projects: manage rejected project fields" acquired="False">
   </permission-map>
  </state>
- <state state_id="cancelled" title="Cancelled">
+ <state state_id="cancelled" title="Cancelled" i18n:attributes="title">
   <exit-transition transition_id="back_to_active"/>
   <permission-map name="Add Attachment" acquired="False">
    <permission-role>Manager</permission-role>
@@ -90,7 +96,7 @@
   <permission-map name="minaraad.projects: manage rejected project fields" acquired="False">
   </permission-map>
  </state>
- <state state_id="completed" title="Completed">
+ <state state_id="completed" title="Completed" i18n:attributes="title">
   <exit-transition transition_id="TEMP_edit"/>
   <exit-transition transition_id="back_to_finish"/>
   <permission-map name="Add Attachment" acquired="False">
@@ -123,7 +129,7 @@
   <permission-map name="minaraad.projects: manage rejected project fields" acquired="False">
   </permission-map>
  </state>
- <state state_id="finished" title="Finished">
+ <state state_id="finished" title="Finished" i18n:attributes="title">
   <exit-transition transition_id="TEMP_edit"/>
   <exit-transition transition_id="back_to_active"/>
   <exit-transition transition_id="complete"/>
@@ -163,7 +169,7 @@
   <permission-map name="minaraad.projects: manage rejected project fields" acquired="False">
   </permission-map>
  </state>
- <state state_id="in_consideration" title="In consideration">
+ <state state_id="in_consideration" title="In consideration" i18n:attributes="title">
   <exit-transition transition_id="TEMP_complete"/>
   <exit-transition transition_id="back_to_in_verification"/>
   <exit-transition transition_id="reject"/>
@@ -204,7 +210,7 @@
   <permission-map name="minaraad.projects: manage rejected project fields" acquired="False">
   </permission-map>
  </state>
- <state state_id="in_verification" title="In verification">
+ <state state_id="in_verification" title="In verification" i18n:attributes="title">
   <exit-transition transition_id="TEMP_complete"/>
   <exit-transition transition_id="back_to_new"/>
   <exit-transition transition_id="propose"/>
@@ -246,7 +252,7 @@
   <permission-map name="minaraad.projects: manage rejected project fields" acquired="False">
   </permission-map>
  </state>
- <state state_id="new" title="New">
+ <state state_id="new" title="New" i18n:attributes="title">
   <exit-transition transition_id="TEMP_complete"/>
   <exit-transition transition_id="check"/>
   <permission-map name="Add Attachment" acquired="False">
@@ -284,7 +290,7 @@
   <permission-map name="minaraad.projects: manage rejected project fields" acquired="False">
   </permission-map>
  </state>
- <state state_id="rejected" title="Rejected">
+ <state state_id="rejected" title="Rejected" i18n:attributes="title">
   <exit-transition transition_id="back_to_in_consideration"/>
   <permission-map name="Add Attachment" acquired="False">
    <permission-role>Manager</permission-role>
@@ -334,85 +340,126 @@
    <guard-permission>Request review or Review portal content</guard-permission>
   </guard>
  </transition>
- <transition transition_id="back_to_active" title="Cancel (back to active state)" new_state="active" trigger="USER" before_script="" after_script="">
-  <action url="" category="workflow" icon="">Cancel (back to Active state)</action>
+ <transition transition_id="back_to_active"
+             title="Cancel (back to active state)"
+             i18n:attributes="title"
+             new_state="active" trigger="USER"
+             before_script="" after_script="">
+  <action url="" category="workflow" i18n:translate="">Cancel (back to Active state)</action>
   <guard>
    <guard-permission>Request review</guard-permission>
    <guard-permission>Review portal content</guard-permission>
   </guard>
  </transition>
- <transition transition_id="back_to_finish" title="Cancel (back to Finished state)" new_state="finished" trigger="USER" before_script="" after_script="">
-  <action url="" category="workflow" icon="">Cancel (back to Finished state)</action>
+ <transition transition_id="back_to_finish"
+             title="Cancel (back to Finished state)"
+             i18n:attributes="title"
+             new_state="finished" trigger="USER"
+             before_script="" after_script="">
+  <action url="" category="workflow" i18n:translate="">Cancel (back to Finished state)</action>
   <guard>
    <guard-permission>Request review</guard-permission>
    <guard-permission>Review portal content</guard-permission>
   </guard>
  </transition>
- <transition transition_id="back_to_in_consideration" title="Cancel (back to In consideration state)" new_state="in_consideration" trigger="USER" before_script="" after_script="">
-  <action url="" category="workflow" icon="">Cancel (back to In consideration state)</action>
+ <transition transition_id="back_to_in_consideration"
+             title="Cancel (back to In consideration state)"
+             i18n:attributes="title"
+             new_state="in_consideration" trigger="USER"
+             before_script="" after_script="">
+  <action url="" category="workflow" i18n:translate="">Cancel (back to In consideration state)</action>
   <guard>
    <guard-permission>Request review</guard-permission>
    <guard-permission>Review portal content</guard-permission>
   </guard>
  </transition>
- <transition transition_id="back_to_in_verification" title="Cancel (back to In verification state)" new_state="in_verification" trigger="USER" before_script="" after_script="">
-  <action url="" category="workflow" icon="">Cancel (back to In verification state)</action>
+ <transition transition_id="back_to_in_verification"
+             title="Cancel (back to In verification state)"
+             i18n:attributes="title"
+             new_state="in_verification" trigger="USER"
+             before_script="" after_script="">
+  <action url="" category="workflow" i18n:translate="">Cancel (back to In verification state)</action>
   <guard>
    <guard-permission>Request review</guard-permission>
    <guard-permission>Review portal content</guard-permission>
   </guard>
  </transition>
- <transition transition_id="back_to_new" title="Cancel (back to New state)" new_state="new" trigger="USER" before_script="" after_script="">
-  <action url="" category="workflow" icon="">Cancel (back to New state)</action>
+ <transition transition_id="back_to_new"
+             title="Cancel (back to New state)"
+             i18n:attributes="title"
+             new_state="new" trigger="USER" before_script=""
+             after_script="">
+  <action url="" category="workflow" i18n:translate="">Cancel (back to New state)</action>
   <guard>
    <guard-permission>Request review</guard-permission>
    <guard-permission>Review portal content</guard-permission>
   </guard>
  </transition>
- <transition transition_id="cancel" title="Cancel project" new_state="cancelled" trigger="USER" before_script="" after_script="">
-  <action url="" category="workflow" icon="">Cancel project</action>
+ <transition transition_id="cancel" title="Cancel project"
+             i18n:attributes="title"
+             new_state="cancelled" trigger="USER"
+             before_script="" after_script="">
+  <action url="" category="workflow" i18n:translate="">Cancel project</action>
   <guard>
    <guard-permission>Request review</guard-permission>
    <guard-permission>Review portal content</guard-permission>
   </guard>
  </transition>
- <transition transition_id="check" title="Check" new_state="in_verification" trigger="USER" before_script="" after_script="">
-  <action url="" category="workflow" icon="">Check</action>
+ <transition transition_id="check" title="Check"
+             i18n:attributes="title"
+             new_state="in_verification" trigger="USER"
+             before_script="" after_script="">
+  <action url="" category="workflow" i18n:translate="">Check</action>
   <guard>
    <guard-permission>Request review</guard-permission>
    <guard-permission>Review portal content</guard-permission>
   </guard>
  </transition>
- <transition transition_id="complete" title="Complete" new_state="completed" trigger="USER" before_script="" after_script="">
-  <action url="" category="workflow" icon="">Complete</action>
+ <transition transition_id="complete" title="Complete"
+             i18n:attributes="title"
+             new_state="completed" trigger="USER"
+             before_script="" after_script="">
+  <action url="" category="workflow" i18n:translate="">Complete</action>
   <guard>
    <guard-permission>Request review</guard-permission>
    <guard-permission>Review portal content</guard-permission>
   </guard>
  </transition>
- <transition transition_id="propose" title="Propose" new_state="in_consideration" trigger="USER" before_script="" after_script="">
-  <action url="" category="workflow" icon="">Propose</action>
+ <transition transition_id="propose" title="Propose"
+             i18n:attributes="title"
+             new_state="in_consideration" trigger="USER"
+             before_script="" after_script="">
+  <action url="" category="workflow" i18n:translate="">Propose</action>
   <guard>
    <guard-permission>Request review</guard-permission>
    <guard-permission>Review portal content</guard-permission>
   </guard>
  </transition>
- <transition transition_id="reject" title="Reject" new_state="rejected" trigger="USER" before_script="" after_script="">
-  <action url="" category="workflow" icon="">Reject</action>
+ <transition transition_id="reject" title="Reject"
+             i18n:attributes="title"
+             new_state="rejected" trigger="USER"
+             before_script="" after_script="">
+  <action url="" category="workflow" i18n:translate="">Reject</action>
   <guard>
    <guard-permission>Request review</guard-permission>
    <guard-permission>Review portal content</guard-permission>
   </guard>
  </transition>
- <transition transition_id="roundup" title="Roundup" new_state="finished" trigger="USER" before_script="" after_script="">
-  <action url="" category="workflow" icon="">Roundup</action>
+ <transition transition_id="roundup" title="Roundup"
+             i18n:attributes="title"
+             new_state="finished" trigger="USER"
+             before_script="" after_script="">
+  <action url="" category="workflow" i18n:translate="">Roundup</action>
   <guard>
    <guard-permission>Request review</guard-permission>
    <guard-permission>Review portal content</guard-permission>
   </guard>
  </transition>
- <transition transition_id="start" title="Start" new_state="active" trigger="USER" before_script="" after_script="">
-  <action url="" category="workflow" icon="">Start</action>
+ <transition transition_id="start" title="Start"
+             i18n:attributes="title"
+             new_state="active" trigger="USER"
+             before_script="" after_script="">
+  <action url="" category="workflow" i18n:translate="">Start</action>
   <guard>
    <guard-permission>Request review</guard-permission>
    <guard-permission>Review portal content</guard-permission>
