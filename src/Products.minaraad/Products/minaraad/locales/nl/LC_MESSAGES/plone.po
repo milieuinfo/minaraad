@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minaraad\n"
-"POT-Creation-Date: 2016-02-23 17:17+0000\n"
+"POT-Creation-Date: 2016-05-18 19:20+0000\n"
 "PO-Revision-Date: 2008-12-03 17:07+0100\n"
 "Last-Translator: Maurits van Rees <m.van.rees@zestsoftware.nl>\n"
 "Language-Team: Zest Software <info@zestsoftware.nl>\n"
@@ -18,46 +18,6 @@ msgstr ""
 "X-Generator: Emacs PO mode, version 2.01\n"
 "X-Is-Fallback-For: nl-be\n"
 
-#: profiles/plone41/portlets.xml
-msgid "A portlet which can receive and render an RSS feed."
-msgstr ""
-
-#: profiles/plone41/portlets.xml
-msgid "A portlet which can render a calendar."
-msgstr ""
-
-#: profiles/plone41/portlets.xml
-msgid "A portlet which can render a classic template-based portlet"
-msgstr ""
-
-#: profiles/plone41/portlets.xml
-msgid "A portlet which can render a listing of recent events"
-msgstr ""
-
-#: profiles/plone41/portlets.xml
-msgid "A portlet which can render a listing of recent news"
-msgstr ""
-
-#: profiles/plone41/portlets.xml
-msgid "A portlet which can render a listing of recently changed items."
-msgstr ""
-
-#: profiles/plone41/portlets.xml
-msgid "A portlet which can render a listing on the review queue."
-msgstr ""
-
-#: profiles/plone41/portlets.xml
-msgid "A portlet which can render a log-in box"
-msgstr ""
-
-#: profiles/plone41/portlets.xml
-msgid "A portlet which can render a navigation tree"
-msgstr ""
-
-#: profiles/plone41/portlets.xml
-msgid "A portlet which shows a search box."
-msgstr ""
-
 msgid "Advisory"
 msgstr "Advies"
 
@@ -69,14 +29,6 @@ msgstr "Jaarverslag"
 
 msgid "Author"
 msgstr "Auteur"
-
-#: profiles/plone41/portlets.xml
-msgid "Calendar portlet"
-msgstr ""
-
-#: profiles/plone41/portlets.xml
-msgid "Classic portlet"
-msgstr ""
 
 #: profiles/default/workflows/minaraad_folder_workflow/definition.xml
 #: profiles/default/workflows/minaraad_workflow/definition.xml
@@ -95,16 +47,11 @@ msgstr "Raadslid"
 msgid "Edit"
 msgstr ""
 
-#: profiles/plone41/portlets.xml
-msgid "Events"
-msgstr ""
-
 msgid "Export Subscribers"
 msgstr "Exporteer naar Excel"
 
 #: profiles/default/types/News_Item.xml
 #: profiles/default/types/Plone_Site.xml
-#: profiles/plone436/types/Plone_Site.xml
 msgid "External Edit"
 msgstr ""
 
@@ -117,7 +64,6 @@ msgid "File Attachment workflow"
 msgstr ""
 
 #: profiles/default/types/Folder.xml
-#: profiles/plone436/types/Folder.xml
 msgid "Folder"
 msgstr ""
 
@@ -126,7 +72,6 @@ msgid "Folder Listing"
 msgstr ""
 
 #: profiles/default/types/Plone_Site.xml
-#: profiles/plone436/types/Plone_Site.xml
 msgid "Folder view"
 msgstr ""
 
@@ -137,20 +82,8 @@ msgstr "Hoorzitting"
 msgid "History"
 msgstr ""
 
-#: profiles/plone41/portlets.xml
-msgid "Login"
-msgstr ""
-
 msgid "MREvent"
 msgstr "Oriëntatiemoment"
-
-#: profiles/plone41/portlets.xml
-msgid "Navigation"
-msgstr ""
-
-#: profiles/plone41/portlets.xml
-msgid "News"
-msgstr ""
 
 #: profiles/default/types/News_Item.xml
 msgid "News Item"
@@ -160,7 +93,6 @@ msgid "NewsLetter"
 msgstr "Nieuwsbrief"
 
 #: profiles/default/types/Document.xml
-#: profiles/plone436/types/Document.xml
 msgid "Page"
 msgstr ""
 
@@ -183,14 +115,6 @@ msgstr "Persbericht"
 msgid "Provides access to workflow history"
 msgstr ""
 
-#: profiles/plone41/portlets.xml
-msgid "RSS Feed"
-msgstr ""
-
-#: profiles/plone41/portlets.xml
-msgid "Recent items"
-msgstr ""
-
 #: profiles/default/types/News_Item.xml
 msgid "References"
 msgstr ""
@@ -204,17 +128,9 @@ msgstr ""
 msgid "Retract"
 msgstr ""
 
-#: profiles/plone41/portlets.xml
-msgid "Review list"
-msgstr ""
-
 #: profiles/default/workflows/minaraad_folder_workflow/definition.xml
 #: profiles/default/workflows/minaraad_workflow/definition.xml
 msgid "Reviewer tasks"
-msgstr ""
-
-#: profiles/plone41/portlets.xml
-msgid "Search"
 msgstr ""
 
 msgid "Study"
@@ -238,7 +154,6 @@ msgid "The last transition"
 msgstr ""
 
 #: profiles/default/types/Plone_Site.xml
-#: profiles/plone436/types/Plone_Site.xml
 msgid "The portal_type for the root object in a Plone system."
 msgstr ""
 

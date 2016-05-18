@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minaraad\n"
-"POT-Creation-Date: 2016-02-23 17:17+0000\n"
+"POT-Creation-Date: 2016-05-18 19:20+0000\n"
 "PO-Revision-Date: Mon Aug  8 12:16:21 2005\n"
 "Last-Translator: Rocky Burt <r.burt@zestsoftware.nl>\n"
 "Language-Team: Rocky Burt <r.burt@zestsoftware.nl>\n"
@@ -151,6 +151,10 @@ msgstr ""
 msgid "Study"
 msgstr ""
 
+#: ./profiles.zcml:49
+msgid "Temporary transitions for project workflow"
+msgstr ""
+
 #: ./profiles/default/types/Theme.xml
 #: ./profiles/plone436/types/Theme.xml
 msgid "Theme"
@@ -238,7 +242,7 @@ msgid "label_add"
 msgstr ""
 
 #. Default: "Agenda items"
-#: ./browser/mrevent_view.pt:111
+#: ./browser/mrevent_view.pt:113
 msgid "label_agendaitems"
 msgstr ""
 
@@ -284,6 +288,7 @@ msgstr ""
 
 #. Default: "Email address"
 #: ./browser/contactperson_view.pt:40
+#: ./browser/items.pt:377
 #: ./skins/minaraad/contactperson_macros.pt:65
 msgid "label_emailaddress"
 msgstr ""
@@ -300,7 +305,7 @@ msgid "label_export_as_excel"
 msgstr ""
 
 #. Default: "Export CSV"
-#: ./browser/mrevent_view.pt:153
+#: ./browser/mrevent_view.pt:155
 msgid "label_exportcsv"
 msgstr ""
 
@@ -326,8 +331,8 @@ msgstr ""
 
 #. Default: "Job title"
 #: ./browser/contactperson_view.pt:24
+#: ./browser/items.pt:361
 #: ./skins/minaraad/contactperson_macros.pt:49
-#: ./userdataschema.py:69
 msgid "label_jobtitle"
 msgstr ""
 
@@ -338,6 +343,7 @@ msgstr ""
 
 #. Default: "Name"
 #: ./browser/contactperson_view.pt:16
+#: ./browser/items.pt:346
 #: ./skins/minaraad/contactperson_macros.pt:34
 msgid "label_name"
 msgstr ""
@@ -359,8 +365,8 @@ msgstr ""
 
 #. Default: "Phone number"
 #: ./browser/contactperson_view.pt:51
+#: ./browser/items.pt:388
 #: ./skins/minaraad/contactperson_macros.pt:76
-#: ./userdataschema.py:112
 msgid "label_phonenumber"
 msgstr ""
 
@@ -590,6 +596,7 @@ msgstr ""
 
 #. Default: "Department"
 #: ./browser/contactperson_view.pt:32
+#: ./browser/items.pt:369
 #: ./skins/minaraad/contactperson_macros.pt:57
 msgid "minaraad_label_department"
 msgstr ""
@@ -783,7 +790,7 @@ msgid "title_attachments"
 msgstr ""
 
 #. Default: "Attendees"
-#: ./browser/mrevent_view.pt:142
+#: ./browser/mrevent_view.pt:144
 msgid "title_attendees"
 msgstr ""
 
