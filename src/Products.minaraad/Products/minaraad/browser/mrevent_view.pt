@@ -17,12 +17,12 @@
                tal:define="view nocall:context/@@attendees_view;
                            current_path python:'/'.join(context.getPhysicalPath());
                            start python:context.getStart_time();
-                           is_past python:(start + 1).isPast();
                            is_future python:(start - 1).isFuture();
-                           agendaItems python:[] if is_past else context.find_items_and_times();
+                           is_past python:(start + 1).isPast();
+                           agendaItems python:context.find_items_and_times();
                            toLocalizedTime nocall:context/@@plone/toLocalizedTime;
                            anonymous context/@@plone_portal_state/anonymous;
-                           can_add python:context.portal_membership.checkPermission('Add portal content', context);
+                           can_add python:is_future and context.portal_membership.checkPermission('Add portal content', context);
                            attendee view/attendee;
                            is_subscribed view/isRegistered;
                            subscription_allowed python:is_future and context.getSubscriptionAllowed();
@@ -107,9 +107,8 @@
                     <div class="visualClear"></div>
                     <!-- End text -->
 
-                    <tal:future condition="is_future">
                     <!-- Speakers -->
-                    <tal:agenda_heading condition="python:is_future and (agendaItems or can_add)">
+                    <tal:agenda_heading condition="python:agendaItems or can_add">
                       <h2 i18n:translate="label_agendaitems">Agenda items</h2>
                       <a class="discreet" href="#"
                          tal:condition="can_add"
@@ -164,7 +163,6 @@
                       </form>
                     </fieldset>
                     </tal:block>
-                    </tal:future>
                   </section>
 
                   <script type="text/javascript" tal:content="view/js_attendees" />

@@ -4,6 +4,8 @@ History of this buildout
 6.0.14 (unreleased)
 -------------------
 
+- MINA-143: when Event is past, still show the agenda.  [maurits]
+
 - Updated icons in catalog metadata.  Old brains were still pointing
   to .gif files instead of .png files.  [maurits]
 
