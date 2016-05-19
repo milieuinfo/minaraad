@@ -3,7 +3,9 @@ from zope.cachedescriptors.property import Lazy
 from plone import api
 from zope.component import getMultiAdapter
 
+
 class MinaFooter(base.ViewletBase):
+
     def __call__(self):
         return self.index()
 
@@ -21,7 +23,7 @@ class MinaFooter(base.ViewletBase):
     def menu_items(self):
         # Get CatalogNavigationTabs instance
         portal_tabs_view = getMultiAdapter((self.context, self.request),
-                                       name='portal_tabs_view')
+                                           name='portal_tabs_view')
 
         # Action parameter is "portal_tabs" by default, but can be other
         portal_tabs = portal_tabs_view.topLevelTabs(actions=None)

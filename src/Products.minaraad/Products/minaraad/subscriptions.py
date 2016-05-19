@@ -10,11 +10,11 @@ SUBSCRIPTIONS_EMAIL = (
     'Pressrelease',
     'Advisory',
     'MREvent',
-    )
+)
 THEME_FILTERED = [
     'Advisory',
     'Study',
-    ]
+]
 
 
 class NotSubscribableError(Exception):

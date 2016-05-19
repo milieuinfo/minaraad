@@ -45,7 +45,7 @@ class RelatedDocumentsViewlet(ViewletBase):
         context = aq_inner(self.context)
         if context.portal_type in ("Advisory", "MREvent", "Study"):
             related_items = sorted(context.getRelatedDocuments(),
-                key=lambda item: item.effective_date, reverse=True)
+                                   key=lambda item: item.effective_date, reverse=True)
             return related_items
         elif context.getId() == 'thema-lijst':
             return context.getRelatedItems()

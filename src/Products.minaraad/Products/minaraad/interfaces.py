@@ -61,6 +61,7 @@ class IContactPerson(Interface):
     """ Marker interface for contact person.
     """
 
+
 class ITheme(Interface):
     """ A theme folder
     """

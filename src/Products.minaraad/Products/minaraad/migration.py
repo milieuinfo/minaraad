@@ -1048,7 +1048,7 @@ def update_catalog_metadata(context):
         'Project',
         'ProjectContainer',
         'Study',
-        ])
+    ])
     for brain in brains:
         obj = brain.getObject()
         path = brain.getPath()
@@ -1070,7 +1070,7 @@ def update_attendees_to_anonymous(context):
         portal_type=[
             'Hearing',
             'MREvent',
-            ])
+        ])
 
     obj_count = 0
     non_members = []
@@ -1276,7 +1276,7 @@ def trim_image_whitespace(context):
         def bbox_size(bbox):
             if not bbox:
                 return
-            ret_value = (bbox[2]-bbox[0]) * (bbox[3]-bbox[1])
+            ret_value = (bbox[2] - bbox[0]) * (bbox[3] - bbox[1])
             return ret_value
         bbox = []
         for corner in [(0, 0), (im.size[0] - 1, im.size[1] - 1)]:
