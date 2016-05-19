@@ -200,7 +200,6 @@
   <browser:page
       for="*"
       name="contact_view"
-      class=".contact.ContactView"
       permission="zope2.View"
       template="contact.pt"
     />

@@ -8,7 +8,6 @@ from PIL import ImageColor
 from PIL import ImageDraw
 from PIL import ImageChops
 from plone import api
-from plone.app.upgrade.utils import updateIconsInBrains
 from plone.i18n.normalizer import idnormalizer
 from plone.locking.interfaces import ILockable
 from plone.portlets.interfaces import IPortletAssignmentMapping
@@ -835,9 +834,11 @@ def to_plone436(context):
     profile_id = 'profile-Products.minaraad:plone436'
     context.runAllImportStepsFromProfile(profile_id, purge_old=False)
 
+
 def to_speedy_project_workflow(context):
     profile_id = 'profile-Products.minaraad:speedy_project_workflow'
     context.runAllImportStepsFromProfile(profile_id, purge_old=False)
+
 
 def activate_theme(context):
     """Activate diazo theme."""
@@ -854,7 +855,7 @@ def setup_faceted_navigation(context):
     subtyper = docs.restrictedTraverse('@@faceted_subtyper')
     subtyper.enable()
     importer = docs.restrictedTraverse('@@faceted_exportimport')
-    criteria_file = open(os.path.dirname(__file__) + \
+    criteria_file = open(os.path.dirname(__file__) +
                          '/faceted_criteria.xml')
     importer.import_xml(import_file=criteria_file)
     logger.info("Configured faceted navigation for /zoeken")
@@ -1278,7 +1279,7 @@ def trim_image_whitespace(context):
             ret_value = (bbox[2]-bbox[0]) * (bbox[3]-bbox[1])
             return ret_value
         bbox = []
-        for corner in [(0,0), (im.size[0] - 1, im.size[1] - 1)]:
+        for corner in [(0, 0), (im.size[0] - 1, im.size[1] - 1)]:
             bg = Image.new(im.mode, im.size, im.getpixel(corner))
             diff = ImageChops.difference(im, bg)
             diff = ImageChops.add(diff, diff, 2.0, -40)
@@ -1289,10 +1290,13 @@ def trim_image_whitespace(context):
             return
 
         # get the width of the border
-        border_width = max(bbox[0], bbox[1],
-                bbox[2] - im.size[0], bbox[3] - im.size[1])
+        border_width = max(
+            bbox[0],
+            bbox[1],
+            bbox[2] - im.size[0],
+            bbox[3] - im.size[1])
 
-        if bbox[:2] == (0,0) and bbox[2:] == im.size:
+        if bbox[:2] == (0, 0) and bbox[2:] == im.size:
             return
 
         # return cropped image if border is smaller than max_border_width
