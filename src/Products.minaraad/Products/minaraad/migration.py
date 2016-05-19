@@ -21,6 +21,7 @@ from Products.contentmigration.archetypes import InplaceATFolderMigrator
 from Products.contentmigration.basemigrator.walker import CatalogWalker
 from Products.minaraad.attendees import Attendee
 from Products.minaraad.content.interfaces import IUseContact
+from Products.minaraad.events import move_project_advisory
 from Products.minaraad.events import save_theme_name
 from Products.minaraad.interfaces import IAttendeeManager
 from Products.SimpleAttachment.setuphandlers import registerImagesFormControllerActions  # noqa
@@ -800,6 +801,7 @@ def migrate_project_themes(context):
         theme_path = '/'.join([portal_path, 'themas', theme])
         obj.setTheme_path(theme_path)
         save_theme_name(obj)
+        move_project_advisory(obj)
         logger.info("Moved Project %s theme from %r (%r) to %r",
                     brain.getPath(), old_theme_name, old_theme_id,
                     obj.getThemeTitle())
@@ -1350,3 +1352,19 @@ def upgrade_eea_facetednavigation(context):
 
 def upgrade_collective_js_jqueryui(context):
     upgrade_product(context, 'collective.js.jqueryui')
+
+
+def set_theme_for_project_advisories(context):
+    """Set the correct theme for advisories that are linked to projects.
+
+    When a Project for Theme A is linked to an advisory for Theme B, the
+    advisory must be moved to Theme A.
+    """
+    portal = api.portal.get()
+    brains = api.content.find(
+        context=portal,
+        portal_type='Project',
+    )
+    for brain in brains:
+        obj = brain.getObject()
+        move_project_advisory(obj)

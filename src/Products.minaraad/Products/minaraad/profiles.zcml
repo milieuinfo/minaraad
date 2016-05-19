@@ -556,4 +556,14 @@
       handler='Products.minaraad.migration.to_speedy_project_workflow'
       profile="Products.minaraad:default" />
 
+  <gs:upgradeSteps
+      source="5029"
+      destination="5030"
+      profile="Products.minaraad:default">
+    <gs:upgradeStep
+        title="Set correct theme for project advisories"
+        description="This may move advisories to a new theme folder."
+        handler="Products.minaraad.migration.set_theme_for_project_advisories" />
+  </gs:upgradeSteps>
+
 </configure>

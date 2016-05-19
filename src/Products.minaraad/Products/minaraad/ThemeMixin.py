@@ -27,13 +27,20 @@ There will be three mixins in here:
 
 """
 from AccessControl import ClassSecurityInfo
-from Acquisition import aq_chain, aq_inner
+from Acquisition import aq_chain
+from Acquisition import aq_inner
 from Products.Archetypes import atapi
-from Products.minaraad.content.Theme import Theme
+from Products.CMFCore.utils import getToolByName
 from Products.minaraad.content.interfaces import IThemes
+from Products.minaraad.content.Theme import Theme
 from zope.component import getUtility
 from zope.interface import implements
 from zope.schema.interfaces import IVocabularyFactory
+
+import logging
+
+
+logger = logging.getLogger('minaraad')
 
 
 class ThemeParentMixin(object):
@@ -112,3 +119,21 @@ class ThemeReferenceMixin(object):
     @security.private
     def setThemeTitle(self, theme_name):
         self._theme_name = theme_name
+
+    @security.private
+    def getThemeObject(self):
+        """Get the theme object when it is set."""
+        theme_path = self.getTheme_path()
+        if not theme_path:
+            return
+        catalog = getToolByName(self, 'portal_catalog', None)
+        if catalog is None:
+            return
+        brains = catalog(
+            portal_type='Theme',
+            path={'query': theme_path, 'depth': 0})
+        if len(brains) != 1:
+            logger.warn('%d themes found at path %r, ignoring.',
+                        len(brains), theme_path)
+            return
+        return brains[0].getObject()
