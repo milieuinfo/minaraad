@@ -1266,7 +1266,7 @@ def trim_image_whitespace(context):
 
         # check if border is white(ish)
         border_color = im.getpixel((0, 0))
-        if type(border_color) == int:
+        if isinstance(border_color, int):
             border_color = [border_color]
         for color in border_color:
             if color < 255 - color_cutoff:
