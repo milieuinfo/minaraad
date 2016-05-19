@@ -771,7 +771,7 @@ def migrate_project_themes(context):
     field will contain the path to the theme.  That is also what we get
     from the minaraad.theme_path vocabulary.
 
-    And just like before, we use getThemeName and setThemeName in
+    And just like before, we use getThemeTitle and setThemeTitle in
     events.save_theme_name to save the theme name.
     """
     portal = api.portal.get()
@@ -783,7 +783,7 @@ def migrate_project_themes(context):
     )
     for brain in brains:
         obj = brain.getObject()
-        old_theme_name = obj.getThemeName()
+        old_theme_name = obj.getThemeTitle()
         # Note: theme might be None, but that is fine.
 
         old_theme_id = getattr(obj, 'theme', None)
@@ -802,7 +802,7 @@ def migrate_project_themes(context):
         save_theme_name(obj)
         logger.info("Moved Project %s theme from %r (%r) to %r",
                     brain.getPath(), old_theme_name, old_theme_id,
-                    obj.getThemeName())
+                    obj.getThemeTitle())
 
 
 def apply_extra_product_profiles(context):

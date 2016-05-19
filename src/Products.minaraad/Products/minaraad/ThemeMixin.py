@@ -88,7 +88,7 @@ class ThemeReferenceMixin(object):
     security = ClassSecurityInfo()
 
     @security.public
-    def getThemeName(self):
+    def getThemeTitle(self):
         """Get the theme name when it is set."""
         theme_path = self.getTheme_path()
         if theme_path:
@@ -110,5 +110,5 @@ class ThemeReferenceMixin(object):
             return
 
     @security.private
-    def setThemeName(self, theme_name):
+    def setThemeTitle(self, theme_name):
         self._theme_name = theme_name

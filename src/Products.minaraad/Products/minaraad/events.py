@@ -15,7 +15,7 @@ def save_theme_name(obj, event=None):
     This was used by the OldThemeMixin and will from now on be used by
     the ThemeReferenceMixin.
     """
-    obj.setThemeName(obj.getThemeName())
+    obj.setThemeTitle(obj.getThemeTitle())
 
 
 def publish_on_save(obj, event):

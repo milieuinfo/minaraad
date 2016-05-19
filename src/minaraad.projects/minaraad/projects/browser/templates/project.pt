@@ -47,7 +47,7 @@
                <metal:block use-macro="context/display_macros/macros/date" />
              </td>
            </tr>
-           <tr tal:define="theme context/getThemeName"
+           <tr tal:define="theme context/getThemeTitle"
                 tal:condition="theme">
              <td>
                Thema
