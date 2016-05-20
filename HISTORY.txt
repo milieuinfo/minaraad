@@ -1,7 +1,7 @@
 History of this buildout
 ========================
 
-6.0.15 (unreleased)
+6.0.15 (2016-05-20)
 -------------------
 
 - MINA-138 remove height from body and html since it broke flexbox on safari.
