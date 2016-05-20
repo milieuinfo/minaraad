@@ -39,20 +39,20 @@ class Widget(CountableWidget):
         # '1000-01-01 00:00:00'. Resulting in 1000+ values.
         # Therefore we limit `first` to a reasonable effective date.
         first = catalog.searchResults(
-                sort_on='effective',
-                sort_order='ascending',
-                sort_limit=1,
-                effective={
+            sort_on='effective',
+            sort_order='ascending',
+            sort_limit=1,
+            effective={
                     'query': (
                         DateTime('1980-01-01 00:00:00'),
                     ),
-                    'range': 'min',
-                }
+                'range': 'min',
+            }
         )[0].effective.year()
         last = catalog.searchResults(
-                sort_on='effective',
-                sort_order='descending',
-                sort_limit=1
+            sort_on='effective',
+            sort_order='descending',
+            sort_limit=1
         )[0].effective.year()
 
         years = range(first, last + 1, 1)
@@ -97,7 +97,6 @@ class Widget(CountableWidget):
             rset = weightedIntersection(brains, rset)[1]
             res[value] = len(rset)
         return res
-
 
     def query(self, form):
         """ Get value from form and return a catalog dict query

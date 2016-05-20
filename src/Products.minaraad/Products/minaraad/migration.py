@@ -8,7 +8,6 @@ from PIL import ImageColor
 from PIL import ImageDraw
 from PIL import ImageChops
 from plone import api
-from plone.app.upgrade.utils import updateIconsInBrains
 from plone.i18n.normalizer import idnormalizer
 from plone.locking.interfaces import ILockable
 from plone.portlets.interfaces import IPortletAssignmentMapping
@@ -22,6 +21,7 @@ from Products.contentmigration.archetypes import InplaceATFolderMigrator
 from Products.contentmigration.basemigrator.walker import CatalogWalker
 from Products.minaraad.attendees import Attendee
 from Products.minaraad.content.interfaces import IUseContact
+from Products.minaraad.events import move_project_advisory
 from Products.minaraad.events import save_theme_name
 from Products.minaraad.interfaces import IAttendeeManager
 from Products.SimpleAttachment.setuphandlers import registerImagesFormControllerActions  # noqa
@@ -772,7 +772,7 @@ def migrate_project_themes(context):
     field will contain the path to the theme.  That is also what we get
     from the minaraad.theme_path vocabulary.
 
-    And just like before, we use getThemeName and setThemeName in
+    And just like before, we use getThemeTitle and setThemeTitle in
     events.save_theme_name to save the theme name.
     """
     portal = api.portal.get()
@@ -784,7 +784,7 @@ def migrate_project_themes(context):
     )
     for brain in brains:
         obj = brain.getObject()
-        old_theme_name = obj.getThemeName()
+        old_theme_name = obj.getThemeTitle()
         # Note: theme might be None, but that is fine.
 
         old_theme_id = getattr(obj, 'theme', None)
@@ -801,9 +801,10 @@ def migrate_project_themes(context):
         theme_path = '/'.join([portal_path, 'themas', theme])
         obj.setTheme_path(theme_path)
         save_theme_name(obj)
+        move_project_advisory(obj)
         logger.info("Moved Project %s theme from %r (%r) to %r",
                     brain.getPath(), old_theme_name, old_theme_id,
-                    obj.getThemeName())
+                    obj.getThemeTitle())
 
 
 def apply_extra_product_profiles(context):
@@ -835,9 +836,11 @@ def to_plone436(context):
     profile_id = 'profile-Products.minaraad:plone436'
     context.runAllImportStepsFromProfile(profile_id, purge_old=False)
 
+
 def to_speedy_project_workflow(context):
     profile_id = 'profile-Products.minaraad:speedy_project_workflow'
     context.runAllImportStepsFromProfile(profile_id, purge_old=False)
+
 
 def activate_theme(context):
     """Activate diazo theme."""
@@ -854,7 +857,7 @@ def setup_faceted_navigation(context):
     subtyper = docs.restrictedTraverse('@@faceted_subtyper')
     subtyper.enable()
     importer = docs.restrictedTraverse('@@faceted_exportimport')
-    criteria_file = open(os.path.dirname(__file__) + \
+    criteria_file = open(os.path.dirname(__file__) +
                          '/faceted_criteria.xml')
     importer.import_xml(import_file=criteria_file)
     logger.info("Configured faceted navigation for /zoeken")
@@ -1047,7 +1050,7 @@ def update_catalog_metadata(context):
         'Project',
         'ProjectContainer',
         'Study',
-        ])
+    ])
     for brain in brains:
         obj = brain.getObject()
         path = brain.getPath()
@@ -1069,7 +1072,7 @@ def update_attendees_to_anonymous(context):
         portal_type=[
             'Hearing',
             'MREvent',
-            ])
+        ])
 
     obj_count = 0
     non_members = []
@@ -1265,7 +1268,7 @@ def trim_image_whitespace(context):
 
         # check if border is white(ish)
         border_color = im.getpixel((0, 0))
-        if type(border_color) == int:
+        if isinstance(border_color, int):
             border_color = [border_color]
         for color in border_color:
             if color < 255 - color_cutoff:
@@ -1275,10 +1278,10 @@ def trim_image_whitespace(context):
         def bbox_size(bbox):
             if not bbox:
                 return
-            ret_value = (bbox[2]-bbox[0]) * (bbox[3]-bbox[1])
+            ret_value = (bbox[2] - bbox[0]) * (bbox[3] - bbox[1])
             return ret_value
         bbox = []
-        for corner in [(0,0), (im.size[0] - 1, im.size[1] - 1)]:
+        for corner in [(0, 0), (im.size[0] - 1, im.size[1] - 1)]:
             bg = Image.new(im.mode, im.size, im.getpixel(corner))
             diff = ImageChops.difference(im, bg)
             diff = ImageChops.add(diff, diff, 2.0, -40)
@@ -1289,10 +1292,13 @@ def trim_image_whitespace(context):
             return
 
         # get the width of the border
-        border_width = max(bbox[0], bbox[1],
-                bbox[2] - im.size[0], bbox[3] - im.size[1])
+        border_width = max(
+            bbox[0],
+            bbox[1],
+            bbox[2] - im.size[0],
+            bbox[3] - im.size[1])
 
-        if bbox[:2] == (0,0) and bbox[2:] == im.size:
+        if bbox[:2] == (0, 0) and bbox[2:] == im.size:
             return
 
         # return cropped image if border is smaller than max_border_width
@@ -1346,3 +1352,19 @@ def upgrade_eea_facetednavigation(context):
 
 def upgrade_collective_js_jqueryui(context):
     upgrade_product(context, 'collective.js.jqueryui')
+
+
+def set_theme_for_project_advisories(context):
+    """Set the correct theme for advisories that are linked to projects.
+
+    When a Project for Theme A is linked to an advisory for Theme B, the
+    advisory must be moved to Theme A.
+    """
+    portal = api.portal.get()
+    brains = api.content.find(
+        context=portal,
+        portal_type='Project',
+    )
+    for brain in brains:
+        obj = brain.getObject()
+        move_project_advisory(obj)

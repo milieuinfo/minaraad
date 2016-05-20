@@ -24,26 +24,26 @@ class HelpersView(BrowserView):
         # '1000-01-01 00:00:00'. Resulting in 1000+ values.
         # Therefore we limit `fist` to a reasonable effective date.
         brain = catalog.searchResults(
-                portal_type=ctype,
-                path='/'.join(theme.getPhysicalPath()),
-                sort_on='effective',
-                sort_order='ascending',
-                sort_limit=1,
-                effective={
+            portal_type=ctype,
+            path='/'.join(theme.getPhysicalPath()),
+            sort_on='effective',
+            sort_order='ascending',
+            sort_limit=1,
+            effective={
                     'query': (
                         DateTime('1980-01-01 00:00:00'),
                     ),
-                    'range': 'min',
-                }
+                'range': 'min',
+            }
         )
         if brain and brain is not None:
             first = brain[0].effective.year()
         else:
             return results
         last = catalog.searchResults(
-                sort_on='effective',
-                sort_order='descending',
-                sort_limit=1)[0].effective.year()
+            sort_on='effective',
+            sort_order='descending',
+            sort_limit=1)[0].effective.year()
 
         years = range(first, last, 1)
         years.reverse()
@@ -52,7 +52,7 @@ class HelpersView(BrowserView):
         tkey = '&c7=%2Fminaraad%2Fthemas%2F'
         for yr in years:
             search_url = url + '#c2=' + ctype + \
-                         '&c5=' + str(yr) + tkey + theme.getId()
+                '&c5=' + str(yr) + tkey + theme.getId()
             results.append({'year': yr, 'url': search_url})
         if results == []:
             return None
@@ -148,7 +148,7 @@ class HelpersView(BrowserView):
                 css_class = 'active'
             res.append({
                 'url': b.getURL(),
-                'title':b.Title,
+                'title': b.Title,
                 'css_class': css_class,
             })
         return res

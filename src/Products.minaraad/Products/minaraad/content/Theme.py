@@ -93,7 +93,7 @@ ThemeSchema = folder.ATFolderSchema.copy() + atapi.Schema((
     atapi.BooleanField(
         "secondary",
         widget=atapi.BooleanWidget(
-                description="Als aangevinkt zal deze folder uitgesloten worden van primaire lijstjes en alleen voorkomen in de secondaire thema lijsten.",
+            description="Als aangevinkt zal deze folder uitgesloten worden van primaire lijstjes en alleen voorkomen in de secondaire thema lijsten.",
         )
     ),
 
@@ -102,11 +102,12 @@ ThemeSchema = folder.ATFolderSchema.copy() + atapi.Schema((
 ThemeSchema['title'].widget.label = u"Themanaam"
 ThemeSchema['title'].widget.description = u""
 ThemeSchema['description'].widget.label = u"Inleiding"
-ThemeSchema['description'].widget.description = u"Korte uitleg over wat dit thema behelst."
+ThemeSchema[
+    'description'].widget.description = u"Korte uitleg over wat dit thema behelst."
 finalizeATCTSchema(
-        ThemeSchema,
-        folderish=True,
-        moveDiscussion=False
+    ThemeSchema,
+    folderish=True,
+    moveDiscussion=False
 )
 
 

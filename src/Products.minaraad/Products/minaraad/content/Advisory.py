@@ -145,7 +145,7 @@ schema = atapi.Schema((
 Advisory_schema = (
     getattr(Attachmentsmixin, 'schema', atapi.Schema(())).copy() +
     getattr(ImageAttachmentsmixin, 'schema', atapi.Schema(())).copy() +
-    schema.copy() + \
+    schema.copy() +
     contacts_schema.copy()
 )
 Advisory_schema['description'].isMetadata = False
@@ -159,6 +159,7 @@ Advisory_schema.moveField('displayAttachments', after="body")
 Advisory_schema.moveField('displayImages', after='displayAttachments')
 Advisory_schema.moveField('coordinator', after="displayImages")
 Advisory_schema.moveField('authors', after="coordinator")
+
 
 class Advisory(Attachmentsmixin, ThemeParentMixin):
     """An advisory

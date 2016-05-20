@@ -8,7 +8,7 @@ class IThemes(Interface):
     will from now on be used by the ThemeReferenceMixin.
     """
 
-    def getThemeName():
+    def getThemeTitle():
         """Return name of selected theme"""
 
 

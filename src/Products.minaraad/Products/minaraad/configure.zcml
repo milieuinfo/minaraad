@@ -25,6 +25,11 @@
       handler=".events.save_theme_name" />
 
   <subscriber
+      for="Products.minaraad.content.interfaces.IThemes
+           zope.lifecycleevent.interfaces.IObjectModifiedEvent"
+      handler=".events.move_project_advisory" />
+
+  <subscriber
       for="minaraad.projects.interfaces.IAttachment
            zope.lifecycleevent.interfaces.IObjectModifiedEvent"
       handler=".events.publish_on_save"
