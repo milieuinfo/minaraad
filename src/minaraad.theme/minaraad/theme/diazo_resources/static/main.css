@@ -7203,14 +7203,11 @@ dl.actionMenu {
   .jumbotronbar .container {
     background-position: right 767px bottom -1px; } }
 
-html, body {
-  height: 100%; }
-
 body {
+  display: flex;
   min-height: 100vh;
   display: -ms-flexbox;
   display: -webkit-flex;
-  display: flex;
   -ms-flex-direction: column;
   -webkit-flex-direction: column;
   flex-direction: column; }

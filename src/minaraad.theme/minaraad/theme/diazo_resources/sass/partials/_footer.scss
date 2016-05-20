@@ -9,15 +9,11 @@
 // Mobile first
 // -----------------------------------------------------------------------------
 
-html, body{
-  height: 100%;
-}
-
 body {
+  display: flex;
   min-height: 100vh;
   display: -ms-flexbox;
   display: -webkit-flex;
-  display: flex;
   -ms-flex-direction: column;
   -webkit-flex-direction: column;
   flex-direction: column;
@@ -26,7 +22,7 @@ body {
 .content-wrapper {
   -webkit-flex: 1 0 0; /* Safari 6.1+ */
   -ms-flex: 1 0 0; /* IE 10 */ 
-  flex: 1 0 0;
+  flex: 1 0 0
 }
 
 @media (max-width: $screen-sm-min) {
