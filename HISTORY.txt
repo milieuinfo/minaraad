@@ -4,7 +4,7 @@ History of this buildout
 6.0.16 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- Update phone number in header.  [jladage]
 
 
 6.0.15 (2016-05-20)
