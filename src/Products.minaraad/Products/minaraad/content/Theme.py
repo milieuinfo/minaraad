@@ -45,7 +45,7 @@ ThemeSchema = folder.ATFolderSchema.copy() + atapi.Schema((
 
     atapi.ImageField(
         "footerImage",
-        original_size=(1200, 300),
+        original_size=(1500, 500),
         sizes={
             'mini': (80, 80),
             'normal': (200, 200),

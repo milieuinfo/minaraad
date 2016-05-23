@@ -4,6 +4,8 @@ History of this buildout
 6.0.16 (unreleased)
 -------------------
 
+- Increase width of footer image in theme model.  [jladage]
+
 - Update phone number in header.  [jladage]
 
 
