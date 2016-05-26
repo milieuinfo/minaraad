@@ -6,6 +6,9 @@ extends =
 #    oefen.cfg
 #    productie.cfg
 
+# eggs-directory = eggs
+# download-cache = downloads
+
 # Some extra parts *will* be wanted.  You have to uncomment them.
 parts +=
 
