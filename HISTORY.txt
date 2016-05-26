@@ -4,7 +4,7 @@ History of this buildout
 6.0.17 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- Increase width of footer image to 2000.  [jladage] 
 
 
 6.0.16 (2016-05-24)
