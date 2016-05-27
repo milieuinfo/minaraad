@@ -1,7 +1,9 @@
 from Acquisition import aq_inner
+from plone.app.layout.viewlets.common import GlobalSectionsViewlet
+from plone.app.layout.viewlets.common import ViewletBase
 from Products.CMFCore.utils import getToolByName
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-from plone.app.layout.viewlets.common import ViewletBase, GlobalSectionsViewlet
+from Products.minaraad.utils import list_viewable
 from zope.component import getMultiAdapter
 
 
@@ -44,8 +46,9 @@ class RelatedDocumentsViewlet(ViewletBase):
     def get_related_documents(self):
         context = aq_inner(self.context)
         if context.portal_type in ("Advisory", "MREvent", "Study"):
-            related_items = sorted(context.getRelatedDocuments(),
-                                   key=lambda item: item.effective_date, reverse=True)
+            related_items = sorted(
+                context.getRelatedDocuments(),
+                key=lambda item: item.effective_date, reverse=True)
             return related_items
         elif context.getId() == 'thema-lijst':
-            return context.getRelatedItems()
+            return list_viewable(context.getRelatedItems())

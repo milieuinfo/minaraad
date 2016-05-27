@@ -16,6 +16,7 @@ from Products.minaraad.ThemeMixin import ThemeParentMixin
 from Products.minaraad.interfaces import IStudy
 from Products.minaraad.content.interfaces import IUseContact
 from Products.minaraad.content.contacts import contacts_schema
+from Products.minaraad.utils import list_viewable
 
 schema = atapi.Schema((
 
@@ -132,5 +133,15 @@ class Study(Attachmentsmixin, ThemeParentMixin):
     _at_rename_after_creation = True
     schema = Study_schema
 
+    def getRelatedDocuments(self):
+        """Get the documents from the relatedDocuments field.
+
+        Only get those that the user is allowed to access.
+
+        Adapted from
+        Products/CMFPlone/skins/plone_scripts/computeRelatedItems.py
+        """
+        docs = self.getField('relatedDocuments').get(self)
+        return list_viewable(docs)
 
 atapi.registerType(Study, PROJECTNAME)

@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
-import logging
 from DateTime import DateTime
-from Products.Five.browser import BrowserView
-from zope.cachedescriptors.property import Lazy
 from plone import api
+from Products.Five.browser import BrowserView
+from Products.minaraad.utils import list_viewable
+from zope.cachedescriptors.property import Lazy
+
+import logging
+
 
 logger = logging.getLogger('Products.minaraad')
 
@@ -44,3 +47,6 @@ class HomepageView(BrowserView):
             },
         )
         return [brain.getObject() for brain in brains]
+
+    def get_related(self):
+        return list_viewable(self.context.getRelatedItems())

@@ -1,8 +1,11 @@
 # -*- coding: utf-8 -*-
-import logging
-from Products.Five.browser import BrowserView
-from zope.cachedescriptors.property import Lazy
 from plone import api
+from Products.Five.browser import BrowserView
+from Products.minaraad.utils import list_viewable
+from zope.cachedescriptors.property import Lazy
+
+import logging
+
 
 logger = logging.getLogger('Products.minaraad')
 
@@ -39,3 +42,6 @@ class ThemeView(ThemeListView):
     """
     Theme View.
     """
+
+    def get_related(self):
+        return list_viewable(self.context.getRelatedItems())

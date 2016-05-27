@@ -1,10 +1,8 @@
 # -*- coding: utf-8 -*-
 from zope.interface import implements
-from zExceptions import Unauthorized
 from AccessControl import ClassSecurityInfo
 from Products.Archetypes import atapi
 from archetypes.referencebrowserwidget.widget import ReferenceBrowserWidget
-from Products.CMFCore.utils import getToolByName
 from Products.OrderableReferenceField import OrderableReferenceField
 from Products.OrderableReferenceField import OrderableReferenceWidget
 from plone.app.blob.field import ImageField
@@ -17,6 +15,7 @@ from Products.minaraad.ThemeMixin import ThemeParentMixin
 from Products.minaraad.config import PROJECTNAME
 from Products.minaraad.content.interfaces import IUseContact
 from Products.minaraad.content.contacts import contacts_schema
+from Products.minaraad.utils import list_viewable
 
 # Do NOT import this as underscore, as i18ndude will then pick it up
 # for the wrong domain.
@@ -179,20 +178,8 @@ class Advisory(Attachmentsmixin, ThemeParentMixin):
         Adapted from
         Products/CMFPlone/skins/plone_scripts/computeRelatedItems.py
         """
-        res = []
         docs = self.getField('relatedDocuments').get(self)
-        if not docs:
-            return res
-        mtool = getToolByName(self, 'portal_membership')
-        for d in range(len(docs)):
-            try:
-                obj = docs[d]
-            except Unauthorized:
-                continue
-            if obj not in res:
-                if mtool.checkPermission('View', obj):
-                    res.append(obj)
-        return res
+        return list_viewable(docs)
 
 
 atapi.registerType(Advisory, PROJECTNAME)

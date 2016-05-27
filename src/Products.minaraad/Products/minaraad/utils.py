@@ -1,6 +1,9 @@
+from plone import api
+from ZConfig.components.logger.loghandler import FileHandler as ZopeFileHandler
+
 import logging
 import os
-from ZConfig.components.logger.loghandler import FileHandler as ZopeFileHandler
+
 
 # Arrange logging of email info, for use by other modules.
 email_logger = logging.getLogger('minaraad_email')
@@ -47,3 +50,15 @@ def list_match(l1, l2):
         if el in l2:
             return True
     return False
+
+
+def list_viewable(items):
+    # List only items that the user is allowed to view.
+    if not items:
+        return items
+    memship = api.portal.get_tool('portal_membership')
+    viewable = []
+    for item in items:
+        if memship.checkPermission('View', item):
+            viewable.append(item)
+    return viewable

@@ -10,6 +10,7 @@ from Products.minaraad.ThemeMixin import ThemeParentMixin
 from Products.minaraad.interfaces import IMREvent
 from Products.minaraad.Attachmentsmixin import Attachmentsmixin
 from Products.minaraad.ImageAttachmentsmixin import ImageAttachmentsmixin
+from Products.minaraad.utils import list_viewable
 from minaraad.projects.content.base_meeting import BaseMeeting
 from plone.app.blob.field import ImageField
 from zope.interface import implements
@@ -173,5 +174,15 @@ class MREvent(Attachmentsmixin, BaseMeeting, ThemeParentMixin):
     _at_rename_after_creation = True
     schema = MREvent_schema
 
+    def getRelatedDocuments(self):
+        """Get the documents from the relatedDocuments field.
+
+        Only get those that the user is allowed to access.
+
+        Adapted from
+        Products/CMFPlone/skins/plone_scripts/computeRelatedItems.py
+        """
+        docs = self.getField('relatedDocuments').get(self)
+        return list_viewable(docs)
 
 atapi.registerType(MREvent, PROJECTNAME)

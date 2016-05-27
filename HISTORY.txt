@@ -4,13 +4,15 @@ History of this buildout
 6.0.18 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- MINA-150: check View permission when listing related items on theme.
+  Check this in all other locations too, like homepage, Events, Studies.
+  [maurits]
 
 
 6.0.17 (2016-05-26)
 -------------------
 
-- Increase width of footer image to 2000.  [jladage] 
+- Increase width of footer image to 2000.  [jladage]
 
 
 6.0.16 (2016-05-24)
@@ -26,7 +28,7 @@ History of this buildout
 
 - MINA-138 remove height from body and html since it broke flexbox on safari.
   [lhuiskes]
-  
+
 - MINA-147: Move advisory when linked project gets a new theme.  We
   also do this for all projects in an upgrade step.  [maurits]
 

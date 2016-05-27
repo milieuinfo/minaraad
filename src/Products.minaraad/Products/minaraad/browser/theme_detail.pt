@@ -59,7 +59,7 @@
                   </div>
 
                   <tal:relatedItems
-                    tal:define="related_items python:context.getRelatedItems();"
+                    tal:define="related_items view/get_related;"
                     tal:repeat="item related_items">
                       <div class="grid-item">
                           <tal:block metal:use-macro="context/@@items/macros/related_item">
