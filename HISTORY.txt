@@ -1,7 +1,7 @@
 History of this buildout
 ========================
 
-6.0.18 (unreleased)
+6.0.18 (2016-05-27)
 -------------------
 
 - MINA-150: check View permission when listing related items on theme.
