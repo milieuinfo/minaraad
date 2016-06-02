@@ -6,19 +6,9 @@
       metal:use-macro="context/main_template/macros/master"
       i18n:domain="minaraad">
   <body>
-    
+
     <metal:block fill-slot="top_slot"
         tal:define="dummy python:request.set('disable_border',1);"/>
-
-    <metal:headslot metal:fill-slot="head_slot">
-    
-      <style type="text/css">
-      <!--
-      .display_archive {font-family: arial,verdana; font-size: 12px;}
-      .campaign {line-height: 125%; margin: 5px;}
-      //-->
-      </style>
-    </metal:headslot>
 
     <hidden metal:fill-slot="content-title">
     </hidden>
@@ -30,15 +20,15 @@
     </hidden>
 
     <metal:block fill-slot="content-core">
-    
+
           <main role="main" id="main-container">
 
             <div class="container">
               <div class="row">
-                <h1>Nieuwbrieven</h1>
+                <h1>Nieuwsbrieven</h1>
 
                 <div class="newsletter-detail">
-                  <script language="javascript" src="http://us12.campaign-archive2.com/generate-js/?u=c46d1f7027dd967fb58df2d93&fid=1729&show=10" type="text/javascript"></script>
+                  <script language="javascript" src="//us12.campaign-archive2.com/generate-js/?u=c46d1f7027dd967fb58df2d93&fid=1729&show=10" type="text/javascript"></script>
                 </div>
                 <div class="newsletter-mailchimp">
                   <div class="newsletter-widget">
@@ -50,7 +40,7 @@
                     </div>
                   </div>
                 </div>
-                
+
               </div>
             </div>
 

@@ -4,7 +4,10 @@ History of this buildout
 6.0.19 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- MINA-153: Fixed news letters page.  Fixed typo.  Used ``//`` instead
+  of ``http://`` to avoid mixed content.  Removed styling on this
+  page: it was commented out, and enabling it showed no difference.
+  [maurits]
 
 
 6.0.18 (2016-05-27)
