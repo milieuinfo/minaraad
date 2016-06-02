@@ -1,7 +1,7 @@
 History of this buildout
 ========================
 
-6.0.19 (unreleased)
+6.0.19 (2016-06-02)
 -------------------
 
 - MINA-153: Fixed news letters page.  Fixed typo.  Used ``//`` instead
