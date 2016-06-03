@@ -4,7 +4,9 @@ History of this buildout
 6.0.20 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- MINA-151: Move inlog and logout to header underneath the search.
+  and add a tooltip from jquery ui with timeout and custom styling.
+  [lhuiskes]
 
 
 6.0.19 (2016-06-02)

@@ -156,22 +156,30 @@
                 <i class="fa fa-search"></i>
                 <span class="sr-only">Toggle search</span>
               </button>
+              
+              <div class="pull-right">
+                <div class="search">
+                  <form class="form-inline" action="/zoeken">
+                      <div class = "input-group">
+                         <label class="sr-only" for="search">Zoekterm</label>
+                         <input type = "text" class = "form-control">
 
-              <div class="search">
-                <form class="form-inline" action="/zoeken">
-                    <div class = "input-group">
-                       <label class="sr-only" for="search">Zoekterm</label>
-                       <input type = "text" class = "form-control">
+                         <span class = "input-group-btn">
+                            <button class = "btn btn-default" type = "button">
+                               Zoeken
+                            </button>
+                         </span>
+                      </div>
 
-                       <span class = "input-group-btn">
-                          <button class = "btn btn-default" type = "button">
-                             Zoeken
-                          </button>
-                       </span>
-                    </div>
+                  </form>
+                </div>
 
-                </form>
+                <div class="login_form">
+                  <p id="login_link"><a href="/login_form" class="btn btn-primary btn-sm"><i class="fa fa-sign-in"></i> Login</a></p>
+                  <p id="logout_link"><a href="/logout" class="btn btn-primary btn-sm"><i class="fa fa-sign-out"></i> Logout</a></p>
+                </div>
               </div>
+
 
             </div>
           </div>
@@ -347,8 +355,8 @@
                     <p id="mailchimp_link"><a href="/@@newsletter" class="btn btn-primary btn-sm"><i class="fa fa-envelope"></i> Abonneren</a></p>
                     <h3><a href="http://docs.plone.org/develop">Digibib</a></h3>
                     <p>Non equidem invideo, miror magis posuere velit aliquet.</p>
-                    <p id="login_link"><a href="/login_form" class="btn btn-primary btn-sm"><i class="fa fa-sign-in"></i> Login</a></p>
-                    <p id="logout_link"><a href="/logout" class="btn btn-primary btn-sm"><i class="fa fa-sign-out"></i> Logout</a></p>
+                    <!-- <p id="login_link"><a href="/login_form" class="btn btn-primary btn-sm"><i class="fa fa-sign-in"></i> Login</a></p>
+                    <p id="logout_link"><a href="/logout" class="btn btn-primary btn-sm"><i class="fa fa-sign-out"></i> Logout</a></p> -->
                 </div>
 
                 <div class="column contact">

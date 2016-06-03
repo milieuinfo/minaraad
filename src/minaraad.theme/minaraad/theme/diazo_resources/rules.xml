@@ -92,4 +92,7 @@
   <!-- Google analytics script -->
   <after theme-children="/html/body" content="//*[@id='portal-footer-wrapper']/script" />
 
+  <replace css:theme-children=".login_form" css:content-children=".login_form" />
+  <drop css:content=".login_form" />
+
 </rules>

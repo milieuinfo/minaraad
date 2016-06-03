@@ -51,6 +51,24 @@
             });
         });
 
+        setTimeout(function(){
+          $( '#login_link a' ).tooltip({
+            position: {
+              my: "center bottom-20",
+              at: "center top",
+              using: function( position, feedback ) {
+                $( this ).css( position );
+                $( "<div>" )
+                  .addClass( "arrow" )
+                  .addClass( feedback.vertical )
+                  .addClass( feedback.horizontal )
+                  .appendTo( this );
+              }
+            },
+            show: { easing: "easeInExpo", duration: 800 }
+          });
+        }, 400);
+
       // Build the wall
       // Add a tiny delay. Just enough to let grid items get their height.
       // This fixes the bottom margin.

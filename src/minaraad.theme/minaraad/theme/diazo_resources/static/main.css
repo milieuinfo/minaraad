@@ -7070,6 +7070,64 @@ span.featherlight-close-icon.featherlight-close {
     .logobar .search .searchSection label {
       padding-left: 5px;
       color: white; }
+  .logobar .login_form {
+    clear: both;
+    float: right; }
+    .logobar .login_form a {
+      float: right; }
+      .logobar .login_form a:link, .logobar .login_form a:visited {
+        color: #bfd9e3; }
+    .logobar .login_form p {
+      margin: 10px 0; }
+      .logobar .login_form p:after {
+        content: "";
+        clear: both;
+        width: 100%;
+        display: block; }
+
+.ui-tooltip, .arrow:after {
+  background: #4aa894;
+  border: 2px solid white; }
+
+.ui-tooltip {
+  padding: 10px 20px;
+  color: white;
+  border-radius: 0;
+  font: bold 14px "Helvetica Neue", Sans-Serif;
+  text-transform: uppercase;
+  box-shadow: 0 0 7px black; }
+
+.arrow {
+  width: 70px;
+  height: 16px;
+  overflow: hidden;
+  position: absolute;
+  left: 50%;
+  margin-left: -35px;
+  bottom: -16px; }
+
+.arrow.top {
+  top: -16px;
+  bottom: auto; }
+
+.arrow.left {
+  left: 20%; }
+
+.arrow:after {
+  content: "";
+  position: absolute;
+  left: 20px;
+  top: -20px;
+  width: 25px;
+  height: 25px;
+  box-shadow: 6px 5px 9px -9px black;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg); }
+
+.arrow.top:after {
+  bottom: -20px;
+  top: auto; }
 
 nav.navbar {
   border: 0;
