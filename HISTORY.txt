@@ -8,6 +8,8 @@ History of this buildout
   happened in an event handler in some project states where there was
   no committee set.  [maurits]
 
+- MINA-153: Directly link to newsletter archive on mailchimp.com.  [maurits]
+
 - MINA-151: Move inlog and logout to header underneath the search.
   and add a tooltip from jquery ui with timeout and custom styling.
   [lhuiskes]
