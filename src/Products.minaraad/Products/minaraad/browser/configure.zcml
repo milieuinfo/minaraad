@@ -343,13 +343,6 @@
       class=".utils.HeaderImageCSS"
       />
 
-  <browser:page
-      for="*"
-      permission="zope2.View"
-      name="nieuwsbrieven"
-      template="mailchimp_archive.pt"
-      />
-
   <!-- Register @@newsletter for Zope root with a redirect to Plone,
        so we can point to /@@newsletter in the diazo theme and still
        end up in /plonesite/@@newsletter. -->
