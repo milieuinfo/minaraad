@@ -4,6 +4,10 @@ History of this buildout
 6.0.20 (unreleased)
 -------------------
 
+- MINA-154: fixed error when adding a content item to a project.  This
+  happened in an event handler in some project states where there was
+  no committee set.  [maurits]
+
 - MINA-151: Move inlog and logout to header underneath the search.
   and add a tooltip from jquery ui with timeout and custom styling.
   [lhuiskes]

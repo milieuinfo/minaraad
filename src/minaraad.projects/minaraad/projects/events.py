@@ -171,6 +171,8 @@ def save_board_members(project, event):
 
     for group_id in all_groups:
         group = portal_groups.getGroupById(group_id)
+        if group is None:
+            continue
         g_tuple = (group.id, group.title_or_id())
 
         for member in group.getGroupMembers():
