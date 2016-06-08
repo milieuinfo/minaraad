@@ -171,7 +171,7 @@
     a{
       float: right;
       &:link, &:visited{
-        color: #bfd9e3;
+        color: #fff;
       }
     }
     p{
@@ -186,6 +186,9 @@
   }
 }
 
+.ui-tooltip{
+  right: 15px;
+}
 
 .ui-tooltip, .arrow:after {
   background: $mina-green;
@@ -195,9 +198,8 @@
   padding: 10px 20px;
   color: white;
   border-radius: 0;
-  font: bold 14px "Helvetica Neue", Sans-Serif;
-  text-transform: uppercase;
   box-shadow: 0 0 7px black;
+  font-weight: 600;
 }
 .arrow {
   width: 70px;

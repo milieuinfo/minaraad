@@ -4,6 +4,10 @@ History of this buildout
 6.0.20 (unreleased)
 -------------------
 
+- MINA-151: Styling fixes as color to white and the correct font styling,
+  Also remove the tooltip when there is a click.
+  [lhuiskes]
+
 - MINA-154: fixed error when adding a content item to a project.  This
   happened in an event handler in some project states where there was
   no committee set.  [maurits]

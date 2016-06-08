@@ -7076,7 +7076,7 @@ span.featherlight-close-icon.featherlight-close {
     .logobar .login_form a {
       float: right; }
       .logobar .login_form a:link, .logobar .login_form a:visited {
-        color: #bfd9e3; }
+        color: #fff; }
     .logobar .login_form p {
       margin: 10px 0; }
       .logobar .login_form p:after {
@@ -7084,6 +7084,9 @@ span.featherlight-close-icon.featherlight-close {
         clear: both;
         width: 100%;
         display: block; }
+
+.ui-tooltip {
+  right: 15px; }
 
 .ui-tooltip, .arrow:after {
   background: #4aa894;
@@ -7093,9 +7096,8 @@ span.featherlight-close-icon.featherlight-close {
   padding: 10px 20px;
   color: white;
   border-radius: 0;
-  font: bold 14px "Helvetica Neue", Sans-Serif;
-  text-transform: uppercase;
-  box-shadow: 0 0 7px black; }
+  box-shadow: 0 0 7px black;
+  font-weight: 600; }
 
 .arrow {
   width: 70px;

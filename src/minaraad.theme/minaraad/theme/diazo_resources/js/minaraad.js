@@ -52,7 +52,11 @@
         });
 
         setTimeout(function(){
-          $( '#login_link a' ).tooltip({
+          var login_link = $("#login_link a")
+          login_link.click(function() {
+            $(".ui-tooltip").remove();
+          });
+          login_link.tooltip({
             position: {
               my: "center bottom-20",
               at: "center top",
