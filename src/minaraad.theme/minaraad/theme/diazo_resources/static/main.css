@@ -7071,17 +7071,14 @@ span.featherlight-close-icon.featherlight-close {
       padding-left: 5px;
       color: white; }
   .logobar .login_form {
-    float: right;
-    top: 15px;
-    position: relative;
-    margin-top: 7px;
-    margin-right: 10px; }
+    clear: both;
+    float: right; }
     .logobar .login_form a {
       float: right; }
       .logobar .login_form a:link, .logobar .login_form a:visited {
         color: #fff; }
     .logobar .login_form p {
-      margin: 3px 0; }
+      margin: 10px 0; }
       .logobar .login_form p:after {
         content: "";
         clear: both;
@@ -7200,10 +7197,6 @@ dl.actionMenu {
       display: block !important; }
       .logobar .search .searchSection label {
         color: #76797c; }
-    .logobar .login_form {
-      margin-top: 12px;
-      margin-right: 0px;
-      margin-left: 10px; }
     .logobar .navbar-brand {
       margin-top: 15px;
       padding: 0; } }

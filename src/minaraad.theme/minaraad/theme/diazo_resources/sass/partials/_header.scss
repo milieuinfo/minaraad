@@ -166,11 +166,8 @@
     }
   }
   .login_form{
+    clear: both;
     float: right;
-    top: 15px;
-    position: relative;
-    margin-top: 7px;
-    margin-right: 10px;
     a{
       float: right;
       &:link, &:visited{
@@ -178,7 +175,7 @@
       }
     }
     p{
-      margin: 3px 0;
+      margin: 10px 0;
       &:after{
         content: "";
         clear: both;
@@ -363,11 +360,6 @@ dl.actionMenu {
       .searchSection label{
         color: #76797c;
       }
-    }
-    .login_form{
-      margin-top: 12px;
-      margin-right: 0px;
-      margin-left: 10px;
     }
     .navbar-brand {
       margin-top: 15px;
