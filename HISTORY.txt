@@ -1,7 +1,7 @@
 History of this buildout
 ========================
 
-6.0.20 (unreleased)
+6.0.20 (2016-06-10)
 -------------------
 
 - MINA-151: Styling fixes as color to white and the correct font styling,
