@@ -166,23 +166,7 @@
     }
   }
   .login_form{
-    clear: both;
-    float: right;
-    a{
-      float: right;
-      &:link, &:visited{
-        color: #fff;
-      }
-    }
-    p{
-      margin: 10px 0;
-      &:after{
-        content: "";
-        clear: both;
-        width: 100%;
-        display: block;
-      }
-    }
+    display: none;
   }
 }
 
@@ -364,6 +348,26 @@ dl.actionMenu {
     .navbar-brand {
       margin-top: 15px;
        padding: 0;
+    }
+    .login_form{
+      clear: both;
+      float: right;
+      display: block;
+      a{
+        float: right;
+        &:link, &:visited{
+          color: #fff;
+        }
+      }
+      p{
+        margin: 10px 0;
+        &:after{
+          content: "";
+          clear: both;
+          width: 100%;
+          display: block;
+        }
+      }
     }
   }
 
