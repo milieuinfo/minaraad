@@ -4,7 +4,7 @@ History of this buildout
 6.0.21 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- Add Google Analytics code.  [jladage]
 
 
 6.0.20 (2016-06-10)
