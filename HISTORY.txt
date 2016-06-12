@@ -1,7 +1,7 @@
 History of this buildout
 ========================
 
-6.0.21 (unreleased)
+6.0.21 (2016-06-12)
 -------------------
 
 - Add Google Analytics code.  [jladage]
