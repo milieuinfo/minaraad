@@ -1,7 +1,7 @@
 History of this buildout
 ========================
 
-6.0.22 (unreleased)
+6.0.22 (2016-06-13)
 -------------------
 
 - Only load Google Analytics on www.minaraad.be.  [jladage]
