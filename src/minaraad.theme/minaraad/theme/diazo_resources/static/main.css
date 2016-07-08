@@ -7908,6 +7908,15 @@ div.digibib_list {
 #atrbResultsTable td div {
   display: inline; }
 
+span.btn.btn-primary a, span.button-field a {
+  color: #fff;
+  text-decoration: none; }
+
+span.btn.btn-light, span.btn-light.button-field {
+  border: 2px solid #2e94bd; }
+  span.btn.btn-light a, span.btn-light.button-field a {
+    color: #2e94bd; }
+
 .sec-header h2 {
   font-size: 24px;
   margin-top: 0;

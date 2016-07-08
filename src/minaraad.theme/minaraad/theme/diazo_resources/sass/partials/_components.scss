@@ -675,6 +675,19 @@ div.digibib_list{
     }
 }
 
+span.btn.btn-primary{
+  a{
+    color: #fff;
+    text-decoration: none;
+  }
+}
+span.btn.btn-light{
+  border: 2px solid $mina-blue;
+  a{
+    color: $mina-blue;
+  }
+}
+
 // -----------------------------------------------------------------------------
 // Small screen / tablet
 // -----------------------------------------------------------------------------

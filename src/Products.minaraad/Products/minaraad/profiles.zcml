@@ -566,4 +566,14 @@
         handler="Products.minaraad.migration.set_theme_for_project_advisories" />
   </gs:upgradeSteps>
 
+  <gs:upgradeSteps
+      source="5030"
+      destination="5031"
+      profile="Products.minaraad:default">
+    <gs:upgradeDepends
+        title="Apply tinymce profile styling classes"
+        import_profile="Products.minaraad:default"
+        import_steps="tinymce_settings"/>
+  </gs:upgradeSteps>
+
 </configure>
