@@ -36,5 +36,5 @@ TITLE_VOCAB = ['', 'De heer', 'Mevrouw', 'Juffrouw', 'Monsieur', 'Madame',
 # http://pypi.python.org/pypi/collective.recaptcha and
 # http://recaptcha.net/
 # Keys created by Maurits, valid for *.minaraad.be (and *.zestsoftware.nl)
-RECAPTCHA_PUBLIC_KEY = '6LdBxwsAAAAAAIBbpW6qkPKTHxL8FJ8D523A9WE3'
-RECAPTCHA_PRIVATE_KEY = '6LdBxwsAAAAAAK-gNRxTL6XljgfZ183TvR8rpQxw'
+RECAPTCHA_PUBLIC_KEY = ''
+RECAPTCHA_PRIVATE_KEY = ''

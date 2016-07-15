@@ -78,8 +78,8 @@ E-mail: <a href="mailto:info@minaraad.be">info@minaraad.be</a></p>
 """
 
 # API keys
-EMBEDLY_API_KEY = "6516fa92558c4e57a29e71622263bfc5"
-MAILCHIMP_API_KEY = "3da524051a2e46d5408de7c53d61e1e3-us12"
+EMBEDLY_API_KEY = ""
+MAILCHIMP_API_KEY = ""
 
 
 def set_link_integrity_checking(context, value):

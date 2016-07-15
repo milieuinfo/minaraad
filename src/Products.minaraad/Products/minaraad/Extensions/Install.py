@@ -83,8 +83,10 @@ def set_recaptcha_keys(context):
     """
     portal = getToolByName(context, 'portal_url').getPortalObject()
     recaptcha = IRecaptchaSettings(portal)
-    recaptcha.public_key = config.RECAPTCHA_PUBLIC_KEY
-    recaptcha.private_key = config.RECAPTCHA_PRIVATE_KEY
+    if config.RECAPTCHA_PUBLIC_KEY:
+        recaptcha.public_key = config.RECAPTCHA_PUBLIC_KEY
+    if config.RECAPTCHA_PRIVATE_KEY:
+        recaptcha.private_key = config.RECAPTCHA_PRIVATE_KEY
 
 
 def uninstall(self):

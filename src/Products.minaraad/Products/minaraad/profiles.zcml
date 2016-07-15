@@ -479,6 +479,7 @@
         handler="Products.minaraad.migration.cleanup_mutable_properties" />
     <gs:upgradeStep
         title="Setup api-keys (mailchimp, embedly)"
+        description="This no longer works, unless you edit migration.py and set keys there."
         handler="Products.minaraad.migration.setup_api_keys" />
     <gs:upgradeStep
         title="Migrate Hearings to MREvents."
