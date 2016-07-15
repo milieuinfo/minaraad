@@ -1,7 +1,7 @@
 History of this buildout
 ========================
 
-6.0.23 (unreleased)
+6.0.23 (2016-07-15)
 -------------------
 
 - MINA-155 Add button styling for tinymce with upgrade step.  [lhuiskes]
