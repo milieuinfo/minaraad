@@ -9,5 +9,5 @@ Or in the existing one, do:
 
 git remote remove origin
 git remote add origin git@github.com:milieuinfo/minaraad.git
-git fetch
-git push --set-upstream origin master
+git branch --set-upstream-to=origin/master
+git pull
