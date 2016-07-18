@@ -315,7 +315,7 @@
                tal:content="theme/title">Biodiversiteit</a></li>
         </ul>
     </metal:block>
-    
+
     <metal:block metal:define-macro="show_coord_authors">
       <tal:block define="authors python: obj.getAuthors();
                          coordinator python: obj.getCoordinator()">
@@ -336,7 +336,7 @@
         </div>
       </tal:block>
     </metal:block>
-    
+
     <metal:block metal:define-macro="contactdetails"
         i18n:domain="minaraad">
         <table cellspacing="0" class="contactdetails">
