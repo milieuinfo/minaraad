@@ -1,7 +1,7 @@
 History of this buildout
 ========================
 
-6.0.24 (unreleased)
+6.0.24 (2016-08-30)
 -------------------
 
 - Products.PloneHotfix20160830 1.0.  [maurits]
