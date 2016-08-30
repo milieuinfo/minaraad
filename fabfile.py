@@ -1,56 +1,40 @@
 from fabric.api import env, run, cd
+import sys
 
 
-def ontwikkel_oud():
-    env.hosts = [
-        'zope@plone-minaraad-on-1-mgt.mmis.be',
-        'zope@plone-minaraad-on-2-mgt.mmis.be',
-        ]
-
-
-def ontwikkel_nieuw():
+def ontwikkel():
     env.hosts = [
         'zope@plone-minaraad-on-3-mgt.mmis.be',
         'zope@plone-minaraad-on-4-mgt.mmis.be',
         ]
 
 
-def oefen_oud():
-    env.hosts = [
-        'zope@plone-minaraad-oe-1-mgt.mmis.be',
-        'zope@plone-minaraad-oe-2-mgt.mmis.be',
-        ]
-
-
-def oefen_nieuw():
+def oefen():
     env.hosts = [
         'zope@plone-minaraad-oe-3-mgt.mmis.be',
         'zope@plone-minaraad-oe-4-mgt.mmis.be',
         ]
 
 
-def productie_oud():
-    env.hosts = [
-        'zope@plone-minaraad-pr-1-mgt.mmis.be',
-        'zope@plone-minaraad-pr-2-mgt.mmis.be',
-        ]
-
-
-def productie_nieuw():
+def productie():
     env.hosts = [
         'zope@plone-minaraad-pr-3-mgt.mmis.be',
         'zope@plone-minaraad-pr-4-mgt.mmis.be',
         ]
 
 
-def update_ontwikkel():
-    """Update Plone on ontwikkel.
-
-    You should run this with 'fab ontwikkel_nieuw update_ontwikkel'.
+def update(tag=None):
+    """Update Plone.
     """
+    if not tag:
+        print("ERROR You should run this with e.g. "
+              "'fab oefen update:tag=1.2.3' or "
+              "'fab ontwikkel update:tag=master'.")
+        sys.exit(1)
     with cd('~/buildout'):
         run('bin/supervisorctl shutdown')
-        run('git pull')  # TODO
+        run('git fetch')
+        run('git checkout %s' % tag)
         run('bin/buildout')
         run('bin/supervisord')
 
