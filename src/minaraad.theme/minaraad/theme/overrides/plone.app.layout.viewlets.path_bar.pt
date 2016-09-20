@@ -7,9 +7,7 @@
     <ol class="breadcrumb">
       <li id="breadcrumbs-home"><a tal:attributes="href view/navigation_root_url"><i class="fa fa-home"></i></a></li>
 
-      <tal:block tal:repeat="crumb breadcrumbs"
-            tal:attributes="dir python:is_rtl and 'rtl' or 'ltr';
-                            id string:breadcrumbs-${repeat/crumb/number}">
+      <tal:block tal:repeat="crumb breadcrumbs">
         <tal:item tal:define="is_last repeat/crumb/end;
                               url crumb/absolute_url;
                               title crumb/Title">
