@@ -4,6 +4,8 @@ History of this buildout
 6.0.25 (unreleased)
 -------------------
 
+- Updated RelStorage versions.  [maurits]
+
 - Fixed generated zodbconvert.cfg to have a blob-dir in the source.
   Otherwise the conversion crashes on the first record that links to a
   blob file.  Use blobstoragenew as destination blob-dir.  Note that
