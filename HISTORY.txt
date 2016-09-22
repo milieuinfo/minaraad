@@ -4,6 +4,15 @@ History of this buildout
 6.0.25 (unreleased)
 -------------------
 
+- Fixed generated zodbconvert.cfg to have a blob-dir in the source.
+  Otherwise the conversion crashes on the first record that links to a
+  blob file.  Use blobstoragenew as destination blob-dir.  Note that
+  in the destination blob dir you may get less files: especially .lock
+  files and their blob files are not taken over, because they are not
+  needed.  On a fresh copy from the live site 200MB out of 3.2 GB of
+  blobs are lost/cleaned this way.  It seems fine to use either the
+  original or the new blobstorage.  The new one is cleaner.  [maurits]
+
 - Add five.pt/Chameleon.  [maurits]
 
 - Upgrade Plone from 4.3.6 to 4.3.11.  [maurits]

@@ -77,6 +77,14 @@ to first remove the old data.  Note that for this you need to be owner
 of the database, so if you now get permission errors please ask your
 database administrator for more rights.
 
+The conversion also migrates blobs to a blobstoragenew directory.
+Note that in the destination blob dir you may get less files:
+especially .lock files and their blob files are not taken over,
+because they are not needed.  On a fresh copy from the live site 200MB
+out of 3.2 GB of blobs are lost/cleaned this way.  It seems fine to
+use either the original or the new blobstorage.  The new one is
+cleaner.
+
 To migrate back from relstorage to filestorage (read: to create a
 backup of the Postgres production database in filestorage form, in
 backup.fs), do::
