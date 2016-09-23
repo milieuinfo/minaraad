@@ -6,6 +6,44 @@ Manual fixes to do on the site.
 For general notes on using this buildout, see the file README.txt.
 
 
+Upgrade to 6.1 (September 2016)
+-------------------------------
+
+For local development use, Maurits has added live data on the Office
+drive, with a copy of the blobstorage, and a Data.fs migrated from the
+postgres relstorage data.  See RELSTORAGE.txt for hints, otherwise ask
+him to help you set this up locally.
+
+- We update to Plone 4.3.11, so run the Plone upgrade.
+
+- Run any upgrade steps in the Extra Products control panel.
+
+- Go to the Plone Captchas Setup control panel (from Quintagroup).
+  Check that either static or dynamic is chosen.  If this is not the
+  case, then selecting one of them will not help.  Go the the ZMI, to
+  portal_skins, Properties tab, and add captcha_core/static as layer
+  below captcha_core in Sunburst Theme.  Then check the control panel
+  again.  As anonymous you should now be able to go to the register
+  page without error, and see a basic captcha there.  We don't
+  actually want anyone to use this page, but is seems good to have
+  captcha available there.
+
+- PloneFormGen has its own captcha based on recaptcha.net.  We have
+  updated the code to version 2 of the api, so please check that you
+  can add a captcha field to a PloneFormGen form and that you can use
+  it, without getting problems about keys.  Locally you may see errors
+  that localhost is not an allowed domain for the given key.  You can
+  go to recaptcha.net (taken over by Google) to setup a pair of
+  development keys.  Or use the pair made by Maurits for local use
+  only:
+
+    localhost site key:   6LdZgwcUAAAAAI00BxouvuYoIbjkztfhc8XvQYQS
+    localhost secret key: 6LdZgwcUAAAAAFSd_Tl28ZxZ5uIlVQFnGkUsT9lh
+
+  You need to set those in the PloneFormGen control panel on the
+  Captcha tab.
+
+
 Upgrade to 6.0.0 (2016-02-24)
 -----------------------------
 
