@@ -43,6 +43,20 @@ him to help you set this up locally.
   You need to set those in the PloneFormGen control panel on the
   Captcha tab.
 
+  This may need to be done for the actual live codes too.  Someone may
+  need to login with the minaraad account on recaptcha.net and update
+  the account to be valid for some more sites:
+
+  - www.minaraad.be
+  - oefen.minaraad.be
+  - ontwikkel.minaraad.be
+
+  Otherwise after you add a captcha field on a PloneFormGen form, you
+  see an error instead of the captcha:
+
+    FOUT voor site-eigenaar:
+    Invalid domain for site key
+
 
 Upgrade to 6.0.0 (2016-02-24)
 -----------------------------
