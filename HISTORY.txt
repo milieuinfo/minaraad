@@ -4,6 +4,10 @@ History of this buildout
 6.0.25 (unreleased)
 -------------------
 
+- Updated various versions.  Most possible impact: Reportlab from 2.6
+  to 3.3.0, and collective.recaptcha from 1.11.5 to 2.0.0 using
+  recaptcha api version 2.  [maurits]
+
 - Updated RelStorage versions.  [maurits]
 
 - Fixed generated zodbconvert.cfg to have a blob-dir in the source.

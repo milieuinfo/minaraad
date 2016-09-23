@@ -9,7 +9,12 @@ from Products.CMFCore.MembershipTool import MembershipTool
 from Products.CMFCore.permissions import ChangeLocalRoles
 from Products.CMFCore.utils import _checkPermission
 from Products.PlonePAS.interfaces.propertysheets import IMutablePropertySheet
-from recaptcha.client import captcha
+try:
+    # collective.recaptcha = 2.x
+    from norecaptcha import captcha
+except ImportError:
+    # BBB for collective.recaptcha = 1.x
+    from recaptcha.client import captcha
 
 logger = logging.getLogger('Products.minaraad')
 
