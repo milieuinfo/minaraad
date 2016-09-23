@@ -1,7 +1,7 @@
 History of this buildout
 ========================
 
-6.1 (unreleased)
+6.1 (2016-09-23)
 ----------------
 
 - Updated various versions.  Most possible impact: Reportlab from 2.6
