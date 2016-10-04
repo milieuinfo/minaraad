@@ -4,7 +4,7 @@ History of this buildout
 6.1.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Added experimental.publishtraverse in warning mode.  [maurits]
 
 
 6.1 (2016-09-23)
