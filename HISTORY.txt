@@ -4,6 +4,9 @@ History of this buildout
 6.1.1 (unreleased)
 ------------------
 
+- Use internal releases of plone.app.upgrade and plone.scale.
+  This avoids a few problems during upgrade and when viewing scales.  [maurits]
+
 - Added experimental.publishtraverse in warning mode.  [maurits]
 
 

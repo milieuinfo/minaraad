@@ -25,4 +25,6 @@ var
 src/collective.mailchimp
 src/eea.facetednavigation
 src/plone.app.imagecropping
+src/plone.app.upgrade
+src/plone.scale
 src/Products.SimpleAttachment
