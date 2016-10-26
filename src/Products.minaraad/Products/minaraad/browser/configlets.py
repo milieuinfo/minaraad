@@ -32,12 +32,16 @@ class AbstractView(BrowserView):
 
     def _buildReferral(self):
         context = aq_inner(self.context)
-        self.referring_url = (self.request.get('referring_url', None) or
-                              self.request.get('HTTP_REFERER', None) or
-                              context.absolute_url())
-        pos = self.referring_url.find('?')
+        url = (self.request.get('referring_url', None) or
+               self.request.get('HTTP_REFERER', ''))
+        pos = url.find('?')
         if pos > -1:
-            self.referring_url = self.referring_url[:pos]
+            url = url[:pos]
+        if url:
+            url_tool = getToolByName(context, 'portal_url')
+            if not url_tool.isURLInPortal(url):
+                url = ''
+        self.referring_url = url or context.absolute_url()
 
 
 class MinaraadConfigletView(AbstractView):

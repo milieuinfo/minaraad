@@ -21,7 +21,9 @@
                            is_past python:(start + 1).isPast();
                            agendaItems python:context.find_items_and_times();
                            toLocalizedTime nocall:context/@@plone/toLocalizedTime;
-                           anonymous context/@@plone_portal_state/anonymous;
+                           pps context/@@plone_portal_state;
+                           anonymous pps/anonymous;
+                           portal_url pps/portal_url;
                            can_add python:is_future and context.portal_membership.checkPermission('Add portal content', context);
                            attendee view/attendee;
                            is_subscribed view/isRegistered;
@@ -50,7 +52,8 @@
                         <form style="display: none"
                               method="post"
                               id="unsubscribe_button"
-                              tal:attributes="action string:${context/absolute_url}/@@attendees_view">
+                              tal:attributes="action string:${context/absolute_url}/@@attendees_view;
+                                              style python:'display: none' if not is_subscribed else ''">
                           <button class="context btn btn-warning"
                                   type="submit"
                                   name="form.button.Submit"
@@ -61,8 +64,9 @@
                         </form>
 
                         <button type="button" class="btn btn-default"
+                                tal:attributes="style python:'display: none' if is_subscribed else ''"
                                 id="subscribe_button"
-                                onclick="location.href='#inschrijven'">Inschrijven</button>
+                                onclick="location.href=location.href+'#inschrijven'">Inschrijven</button>
 
                       </tal:block>
                     </header>
@@ -167,22 +171,30 @@
 
                   <script type="text/javascript" tal:content="view/js_attendees" />
                   <section class="event-form" name="inschrijven" id="inschrijven"
-                          tal:condition="subscription_allowed">
+                          tal:condition="python: subscription_allowed and not is_subscribed">
                     <header>
                       <h3>Inschrijven</h3>
                     </header>
+                    <tal:anon condition="anonymous">
                     <p>Indien u wilt deelnemen aan dit evenement, vul dan het onderstaande
                        formulier in. Heeft u een account, log dan in en klik bovenaan op de
-                       button "Inschrijven" dan wordt dit formulier automatisch ingevuld.</p>
+                       button "Inschrijven" dan wordt dit formulier automatisch ingevuld.
+                    </p>
                     <p>Heeft u geen account, vul dan hieronder uw gegevens in de voorziene
                        velden in</p>
-
+                    </tal:anon>
+                    <p tal:condition="not:anonymous">
+                      Wilt u deze gegevens permanent wijzigen, ga dan naar
+                      <a tal:attributes="href string:${portal_url}/@@personal-information">uw persoonlijke informatie</a>.
+                    </p>
                     <form method="post"
+                          tal:define="attendee view/attendee"
                           tal:attributes="action string:${context/absolute_url}/@@attendees_view">
                       <div class="field form-group">
                         <label for="firstname">Voornaam
+                        <span class="required" title="Verplicht">&nbsp;</span>
                         <input type="text" class="form-control" name="firstname"
-                               tal:attributes="value attendee/firstname|nothing"
+                               tal:attributes="value request/firstname|attendee/firstname|nothing"
                                id="firstname" placeholder="Voornaam" />
                         </label>
                       </div>
@@ -190,7 +202,7 @@
                         <label for="lastname">Achternaam
                         <span class="required" title="Verplicht">&nbsp;</span>
                         <input type="text" class="form-control" name="lastname"
-                               tal:attributes="value attendee/lastname|nothing"
+                               tal:attributes="value request/lastname|attendee/lastname|nothing"
                                id="lastname" placeholder="Achternaam" />
                         </label>
                       </div>
@@ -198,22 +210,27 @@
                         <label for="exampleInputEmail1">Emailadres
                         <span class="required" title="Verplicht">&nbsp;</span>
                         <input type="email" class="form-control" name="email"
-                               tal:attributes="value attendee/email|nothing"
+                               tal:attributes="value request/email|attendee/email|nothing"
                                id="email" placeholder="Email" />
                         </label>
                       </div>
                       <div class="field form-group">
-                        <label for="functie">Functie en/of organisatie (optioneel)
+                        <label for="functie">Functie en/of organisatie
+                        <span class="required" title="Verplicht">&nbsp;</span>
                         <input type="text" class="form-control" name="work"
-                               tal:attributes="value attendee/work|nothing"
+                               tal:attributes="value request/work|attendee/work|nothing"
                                id="work" placeholder="Functie / organisatie" />
                         </label>
                       </div>
-                      <div class="checkbox">
+                      <div class="checkbox" tal:condition="anonymous">
                         <label>
-                          <input type="checkbox" name="remember" checked="checked" /> Gegevens onthouden
+                          <input type="checkbox" name="remember"
+                                 tal:define="remember request/remember|python:True"
+                                 tal:attributes="checked python:'checked' if remember else ''"
+                                 /> Gegevens onthouden
                         </label>
                       </div>
+                      <input tal:condition="not:anonymous" type="hidden" name="remember" value="checked" />
                       <input type="hidden"
                              name="form.submitted"
                              value="register" />

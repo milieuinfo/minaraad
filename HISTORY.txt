@@ -4,7 +4,10 @@ History of this buildout
 6.1.2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- MINA-159: Made all fields required on event subscription form.  This
+  was tricky, as there was some non intuitive code here that tripped
+  me up.  I clarified the code and made more distinction between
+  authenticated and anonymous users.  [maurits]
 
 
 6.1.1 (2016-10-06)
