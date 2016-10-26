@@ -9,6 +9,7 @@ from zope.cachedescriptors.property import Lazy
 from zope.component import getMultiAdapter
 from zope.interface import implements
 from zope.interface import Interface
+from ZTUtils import make_query
 
 import json
 import logging
@@ -42,13 +43,22 @@ class AttendeesManagerView(AbstractView):
         action = self.request.get('form.submitted', None)
         if action == 'register':
             attendee = self.attendee
+            query = ''
             if not attendee:
-                message = ('Achternaam en emailadres zijn verplicht.')
+                message = ('Alle velden zijn verplicht.')
                 status = 'error'
+                # Redirect including current form variables.
+                new_form = {}
+                for field in ('firstname', 'lastname', 'email', 'work'):
+                    if field in self.request:
+                        new_form[field] = self.request.get(field)
+                query = make_query(new_form)
             else:
                 self.manager.add_attendee(attendee)
                 if self.request.form.get('remember'):
                     attendee.set_cookie(self.request)
+                else:
+                    attendee.unset_cookie(self.request)
                 if self.notifyRegistration(attendee, True):
                     # notifyRegistration returns a list of failures, so a match
                     # means that there is some error.
@@ -62,10 +72,15 @@ class AttendeesManagerView(AbstractView):
             # Note that adding a statusmessage cookie has the side effect of
             # preventing caching, which is good.
             IStatusMessage(self.request).addStatusMessage(message, type=status)
-            return response.redirect(self.referring_url)
+            url = self.referring_url
+            if query:
+                url += '?' + query
+            return response.redirect(url)
         elif action == 'unregister':
             attendee = self.attendee
             if not attendee:
+                # This cannot really happen currently, as we get this from the
+                # cookie.
                 message = ('Achternaam en emailadres zijn verplicht.')
                 status = 'error'
             else:
@@ -105,6 +120,8 @@ class AttendeesManagerView(AbstractView):
     @Lazy
     def attendee(self):
         # Get an attendee object for the visitor.
+        # Note: on GET requests this only returns info for authenticated users.
+        # For anonymous users, all is done client side in javascript.
         if self.manager is None:
             return
         return self.manager.get_attendee(self.request)

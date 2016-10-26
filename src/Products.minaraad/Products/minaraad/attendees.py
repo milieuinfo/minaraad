@@ -34,7 +34,8 @@ class Attendee(Persistent):
         self.hexdigest = ''
 
     def is_blank(self):
-        return not (self.email and self.lastname)
+        return not (self.email and self.lastname
+                    and self.firstname and self.work)
 
     @property
     def name(self):
@@ -72,6 +73,13 @@ class Attendee(Persistent):
         if request.get('REQUEST_METHOD', 'GET').upper() != 'POST':
             # We only accept POST requests, otherwise we may cache information
             # from one user and show it to another.
+            return
+        # If the user does not want to remember the form input in a cookie, we
+        # should not read a previously set cookie either.  But for unregister
+        # we need the cookie.
+        if (request.form.get('form.submitted', '') != 'unregister' and
+                not request.form.get('remember')):
+            self.unset_cookie(request)
             return
         cookie = request.cookies.get(COOKIE_ID, '')
         if not cookie:
@@ -174,7 +182,10 @@ class AttendeeManager(object):
         attendee = self.get_from_form(request)
         if attendee is not None:
             return attendee
-        # Then check the cookie, if any.
+        # Then check the cookie, if any.  Note that get_from_cookie only gives
+        # a result on POST requests.  For GET requests we do this completely in
+        # javascript, without round-trip to the server.  This avoids showing
+        # cached data from a different anonymous user.
         attendee = self.get_from_cookie(request)
         if attendee is not None:
             return attendee
