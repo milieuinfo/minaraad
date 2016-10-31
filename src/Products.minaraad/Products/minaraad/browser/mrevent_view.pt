@@ -154,7 +154,7 @@
                               <span tal:replace="attendee/work|nothing" />
                             </dd>
                         </dl>
-                        <form tal:attributes="action string:${context/absolute_url}/@@attendees_view">
+                        <form tal:attributes="action string:${context/absolute_url}/@@attendees_view" method="post">
                         <input class="context"
                                type="submit"
                                name="form.button.Submit"

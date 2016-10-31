@@ -4,7 +4,8 @@ History of this buildout
 6.0.26 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- Fixed exporting subscribers.  We needed method POST.
+  Looks like this has not been working for a while.  [maurits]
 
 
 6.0.25 (2016-10-27)
