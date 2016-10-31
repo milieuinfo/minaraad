@@ -4,6 +4,9 @@ History of this buildout
 6.1.2 (unreleased)
 ------------------
 
+- Fixed exporting subscribers.  We needed method POST.
+  Looks like this has not been working for a while.  [maurits]
+
 - MINA-159: Made all fields required on event subscription form.  This
   was tricky, as there was some non intuitive code here that tripped
   me up.  I clarified the code and made more distinction between
