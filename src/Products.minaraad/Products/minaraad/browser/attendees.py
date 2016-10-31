@@ -1,6 +1,7 @@
 from AccessControl import ClassSecurityInfo
 from Acquisition import aq_inner
 from Products.CMFCore.permissions import ManagePortal
+from Products.CMFCore.utils import getToolByName
 from Products.minaraad.browser.configlets import AbstractView
 from Products.minaraad.browser.utils import buildAttendeeCSV
 from Products.minaraad.interfaces import IAttendeeManager
@@ -42,10 +43,16 @@ class AttendeesManagerView(AbstractView):
         response = self.request.response
         action = self.request.get('form.submitted', None)
         if action == 'register':
-            attendee = self.attendee
+            message = ''
+            if self.check_email(self.request.get('email')):
+                attendee = self.attendee
+            else:
+                attendee = None
+                message = 'E-mailadres is niet geldig.'
             query = ''
             if not attendee:
-                message = ('Alle velden zijn verplicht.')
+                if not message:
+                    message = ('Alle velden zijn verplicht.')
                 status = 'error'
                 # Redirect including current form variables.
                 new_form = {}
@@ -150,6 +157,12 @@ class AttendeesManagerView(AbstractView):
             context,
             self.attendees(),
             filename='%s-attendees.csv' % self.context.getId())
+
+    def check_email(self, value):
+        reg_tool = getToolByName(self, 'portal_registration')
+        if value and reg_tool.isValidEmail(value):
+            return True
+        return False
 
 
 class SimpleAttendeesView(AttendeesManagerView):

@@ -4,6 +4,10 @@ History of this buildout
 6.1.2 (unreleased)
 ------------------
 
+- Check the email address before registering for an event.
+  I have seen several stuck mails that we were trying to
+  send to an invalid address.  [maurits]
+
 - Fixed exporting subscribers.  We needed method POST.
   Looks like this has not been working for a while.  [maurits]
 
