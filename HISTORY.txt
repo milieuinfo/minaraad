@@ -4,6 +4,8 @@ History of this buildout
 6.1.2 (unreleased)
 ------------------
 
+- Use plone.app.imagecropping 1.4 and plone.scale 1.4.2.  [maurits]
+
 - Check the email address before registering for an event.
   I have seen several stuck mails that we were trying to
   send to an invalid address.  [maurits]
