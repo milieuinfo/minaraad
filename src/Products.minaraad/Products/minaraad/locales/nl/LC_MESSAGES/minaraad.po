@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: minaraad 0.1\n"
-"POT-Creation-Date: 2016-05-18 19:20+0000\n"
+"POT-Creation-Date: 2016-11-17 11:31+0000\n"
 "PO-Revision-Date: 2012-02-07 11:15+0100\n"
 "Last-Translator: Maurits van Rees <m.van.rees@zestsoftware.nl>\n"
 "Language-Team: Nederlands <info@zestsoftware.nl>\n"
@@ -84,7 +84,7 @@ msgid "Folder Listing"
 msgstr "Inhoud"
 
 #. Default: "Goal:"
-#: ./browser/mrevent_view.pt:85
+#: ./browser/mrevent_view.pt:89
 msgid "Goal:"
 msgstr "Doelstelling:"
 
@@ -97,7 +97,7 @@ msgid "If this checkbox is checked, hides the All option"
 msgstr "Als deze checkbox is aangevinkt, wordt de optie 'Alle' verborgen."
 
 #. Default: "Location:"
-#: ./browser/mrevent_view.pt:79
+#: ./browser/mrevent_view.pt:83
 msgid "Location:"
 msgstr "Locatie:"
 
@@ -135,7 +135,7 @@ msgstr "Aantal items zichtbaar in widget"
 msgid "Personal Preferences"
 msgstr "Persoonlijke voorkeuren"
 
-#: ./content/Advisory.py:61
+#: ./content/Advisory.py:60
 msgid "Popular summary"
 msgstr "Duiding"
 
@@ -254,7 +254,7 @@ msgid "label_add"
 msgstr "Toevoegen"
 
 #. Default: "Agenda items"
-#: ./browser/mrevent_view.pt:113
+#: ./browser/mrevent_view.pt:116
 msgid "label_agendaitems"
 msgstr "Agendapunten"
 
@@ -317,7 +317,7 @@ msgid "label_export_as_excel"
 msgstr "Exporteer naar Excel"
 
 #. Default: "Export CSV"
-#: ./browser/mrevent_view.pt:155
+#: ./browser/mrevent_view.pt:158
 msgid "label_exportcsv"
 msgstr "Exporteer naar Excel"
 
@@ -408,7 +408,7 @@ msgid "label_theme_name"
 msgstr "Thema:"
 
 #. Default: "Unsubscribe"
-#: ./browser/mrevent_view.pt:54
+#: ./browser/mrevent_view.pt:57
 msgid "label_unsubscribe"
 msgstr "Uitschrijven"
 
@@ -821,7 +821,7 @@ msgid "title_attachments"
 msgstr "Bijlagen:"
 
 #. Default: "Attendees"
-#: ./browser/mrevent_view.pt:144
+#: ./browser/mrevent_view.pt:147
 msgid "title_attendees"
 msgstr "Deelnemers"
 
