@@ -1,7 +1,7 @@
 History of this buildout
 ========================
 
-6.1.2 (unreleased)
+6.1.2 (2016-11-22)
 ------------------
 
 - Use plone.app.imagecropping 1.4 and plone.scale 1.4.2.  [maurits]
