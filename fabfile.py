@@ -35,6 +35,8 @@ def update(tag=None):
         run('bin/supervisorctl shutdown')
         run('git fetch')
         run('git checkout %s' % tag)
+        if tag == 'master':
+            run('git pull')
         run('bin/buildout')
         run('bin/supervisord')
 
