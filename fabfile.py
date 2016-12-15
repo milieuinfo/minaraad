@@ -1,4 +1,4 @@
-from fabric.api import env, run, cd
+from fabric.api import env, run, cd, local
 import sys
 import time
 
@@ -88,6 +88,13 @@ def start():
     """
     with cd('~/buildout'):
         run('bin/supervisord')
+
+
+def warmup():
+    """Warmup Plone/varnish.
+    """
+    with cd('~/buildout'):
+        run('bin/warmup-all')
 
 
 def info():
