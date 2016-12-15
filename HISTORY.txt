@@ -4,6 +4,8 @@ History of this buildout
 6.1.6 (unreleased)
 ------------------
 
+- Warmup after a start or restart.  [maurits]
+
 - Warmup the homepage too.  [maurits]
 
 
