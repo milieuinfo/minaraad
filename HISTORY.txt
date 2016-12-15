@@ -1,7 +1,7 @@
 History of this buildout
 ========================
 
-6.1.6 (unreleased)
+6.1.6 (2016-12-15)
 ------------------
 
 - Warmup after a start or restart.  [maurits]
