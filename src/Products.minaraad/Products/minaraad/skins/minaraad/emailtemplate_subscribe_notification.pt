@@ -12,8 +12,11 @@
   <tal:block condition="not: subscribe">afmelding</tal:block>
   <span>voor het oriëntatiemoment</span>
   <span style="font-weight:bold" tal:content="context/Title" />
-  <span>dat plaats vindt in</span>
-  <span style="font-weight:bold" tal:content="context/getLocation" />
+  <span>dat plaats vindt</span>
+  <tal:location condition="context/getLocation">
+    <span>in</span>
+    <span style="font-weight:bold" tal:content="context/getLocation" />
+  </tal:location>
   <span>op</span>
   <span style="font-weight:bold">
     <metal:block use-macro="context/mina_showdatetime/macros/subscribe_notification_email" />
