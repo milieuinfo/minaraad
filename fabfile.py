@@ -59,7 +59,8 @@ def update(tag=None, warmup=True):
             run('git pull')
         run('bin/buildout')
         run('bin/supervisord')
-        run('bin/warmup-all')
+        if warmup:
+            run('bin/warmup-all')
 
 
 def status_plone():
