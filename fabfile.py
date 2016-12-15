@@ -2,6 +2,24 @@ from fabric.api import env, run, cd
 import sys
 
 
+def to_bool(value):
+    if isinstance(value, bool):
+        return value
+    if not isinstance(value, basestring):
+        raise ValueError("Must be string: %r" % value)
+    if not value:
+        return False
+    value = value[0].lower()
+    # yes/true/ja/1
+    if value in ('y', 't', 'j', '1'):
+        return True
+    # no/false/nee/0
+    if value in ('n', 'f', '0'):
+        return False
+    raise ValueError("Cannot interpret as boolean, try true/false instead: %r"
+                     % value)
+
+
 def ontwikkel():
     env.hosts = [
         'zope@plone-minaraad-on-3-mgt.mmis.be',
@@ -23,9 +41,10 @@ def productie():
         ]
 
 
-def update(tag=None):
+def update(tag=None, warmup=True):
     """Update Plone.
     """
+    warmup = to_bool(warmup)
     if not tag:
         print("ERROR You should run this with e.g. "
               "'fab oefen update:tag=1.2.3' or "
@@ -35,10 +54,12 @@ def update(tag=None):
         run('bin/supervisorctl shutdown')
         run('git fetch')
         run('git checkout %s' % tag)
-        if tag == 'master':
+        if '.' not in tag:
+            # master or other branch
             run('git pull')
         run('bin/buildout')
         run('bin/supervisord')
+        run('bin/warmup-all')
 
 
 def status_plone():

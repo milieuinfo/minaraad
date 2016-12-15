@@ -4,6 +4,9 @@ History of this buildout
 6.1.5 (unreleased)
 ------------------
 
+- Added warmup and warmup-all scripts.  Included these in the fabfile.
+  [maurits]
+
 - Use collective.recipe.genshi where needed.  We used
   collective.recipe.template[genshi]:genshi so far, but when a
   different buildout part that uses the standard
