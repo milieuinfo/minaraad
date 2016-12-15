@@ -71,6 +71,8 @@ def status_plone():
     """Stop Plone.
     """
     with cd('~/buildout'):
+        run('git status')
+        run('git describe')
         run('bin/supervisorctl status')
 
 
