@@ -4,6 +4,8 @@ History of this buildout
 6.1.5 (unreleased)
 ------------------
 
+- MINA-161: In subscription mail show the agenda items.  [maurits]
+
 - MINA-161: In subscription mail only show location text when it is set.
   Otherwise you would get a strange sentence.
   [maurits]

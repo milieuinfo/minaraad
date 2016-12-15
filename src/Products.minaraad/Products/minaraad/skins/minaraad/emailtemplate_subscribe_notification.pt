@@ -1,5 +1,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
       lang="en-US"
+      tal:define="subscribe subscribe|python:True"
       i18n:domain="minaraad">
 
 <body style="font-size:13px">
@@ -22,6 +23,22 @@
     <metal:block use-macro="context/mina_showdatetime/macros/subscribe_notification_email" />
   </span>
 </p>
+<tal:agenda condition="subscribe">
+<tal:agendaitems define="agendaItems python:context.find_items_and_times();"
+                 condition="python:agendaItems">
+  <span style="font-weight:bold" i18n:translate="label_agendaitems">Agenda items</span>
+
+  <ul>
+    <tal:block tal:repeat="item agendaItems">
+      <tal:row define="obj python:item[0];
+                       obj obj/getObject|nocall:obj;">
+        <metal:block use-macro="context/display_macros/macros/agendaItem" />
+      </tal:row>
+    </tal:block>
+  </ul>
+</tal:agendaitems>
+</tal:agenda>
+
 <span>Dank voor uw interesse.</span>
 <p>
    <span>Met vriendelijke groet</span>
