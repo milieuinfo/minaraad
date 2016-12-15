@@ -1,7 +1,7 @@
 History of this buildout
 ========================
 
-6.1.5 (unreleased)
+6.1.5 (2016-12-15)
 ------------------
 
 - MINA-161: In subscription mail show the agenda items.  [maurits]
