@@ -4,7 +4,7 @@ History of this buildout
 6.1.6 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Warmup the homepage too.  [maurits]
 
 
 6.1.5 (2016-12-15)
