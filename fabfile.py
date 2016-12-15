@@ -42,14 +42,14 @@ def productie():
         ]
 
 
-def update(tag=None, warmup=True):
+def release(tag=None, warmup=True):
     """Update Plone.
     """
     warmup = to_bool(warmup)
     if not tag:
         print("ERROR You should run this with e.g. "
-              "'fab oefen update:tag=1.2.3' or "
-              "'fab ontwikkel update:tag=master'.")
+              "'fab oefen release:tag=1.2.3' or "
+              "'fab ontwikkel release:tag=master'.")
         sys.exit(1)
     with cd('~/buildout'):
         run('bin/supervisorctl shutdown')
@@ -67,7 +67,7 @@ def update(tag=None, warmup=True):
             run('bin/warmup-all')
 
 
-def status_plone():
+def status():
     """Stop Plone.
     """
     with cd('~/buildout'):
@@ -76,14 +76,14 @@ def status_plone():
         run('bin/supervisorctl status')
 
 
-def stop_plone():
+def stop():
     """Stop Plone.
     """
     with cd('~/buildout'):
         run('bin/supervisorctl shutdown')
 
 
-def start_plone():
+def start():
     """Start Plone.
     """
     with cd('~/buildout'):
@@ -96,4 +96,4 @@ def info():
     # This lists the NFS blob storage and tells how much disk space it uses.
     # This should be several Gigabytes.
     run('df -h || echo "error during df"')
-    status_plone()
+    status()
