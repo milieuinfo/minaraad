@@ -4,7 +4,12 @@ History of this buildout
 6.1.5 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Use collective.recipe.genshi where needed.  We used
+  collective.recipe.template[genshi]:genshi so far, but when a
+  different buildout part that uses the standard
+  collective.recipe.template is executed first, the genshi extra is
+  never loaded and buildout quits with an error.
+  [maurits]
 
 
 6.1.4 (2016-11-29)
