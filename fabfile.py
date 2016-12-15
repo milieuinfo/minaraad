@@ -1,5 +1,6 @@
 from fabric.api import env, run, cd
 import sys
+import time
 
 
 def to_bool(value):
@@ -60,6 +61,9 @@ def update(tag=None, warmup=True):
         run('bin/buildout')
         run('bin/supervisord')
         if warmup:
+            seconds = 10
+            print('Sleeping {} seconds before warmup.'.format(seconds))
+            time.sleep(seconds)
             run('bin/warmup-all')
 
 
