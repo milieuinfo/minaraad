@@ -4,7 +4,7 @@ History of this buildout
 6.1.7 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Products.PloneHotfix20170117 1.0.  [maurits]
 
 
 6.1.6 (2016-12-15)
