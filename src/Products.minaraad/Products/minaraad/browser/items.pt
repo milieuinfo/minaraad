@@ -138,13 +138,14 @@
       <tal:images condition="context/has_image">
         <aside class="images" data-featherlight-gallery data-featherlight-filter="a">
           <figure>
-            <a tal:attributes="href string:${first_image/absolute_url}">
+            <a tal:attributes="href string:${first_image/absolute_url}/image_large">
               <img tal:attributes="src string:${first_image/absolute_url}/image_preview;
                                    alt first_image/Title" />
             </a>
           </figure>
           <div class="thumbnails">
-            <a tal:repeat="img python:images[1:]" tal:attributes="href string:${img/absolute_url}">
+            <a tal:repeat="img python:images[1:]"
+               tal:attributes="href string:${img/absolute_url}/image_large">
               <img tal:attributes="src string:${img/absolute_url}/image_thumb;
                                    alt string:img/Title" />
             </a>

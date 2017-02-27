@@ -4,7 +4,8 @@ History of this buildout
 6.1.8 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- MINA-158: Use large scale as big imsage url for featherlight.
+  The original image may be too big.  [maurits]
 
 
 6.1.7 (2017-01-17)
