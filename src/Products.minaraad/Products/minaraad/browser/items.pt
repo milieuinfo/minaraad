@@ -136,7 +136,7 @@
                  tal:define="images context/get_images;
                              first_image context/get_first_image;">
       <tal:images condition="context/has_image">
-        <aside class="images" data-featherlight-gallery data-featherlight-filter="a">
+        <aside class="images" data-featherlight-gallery data-featherlight-filter="a" data-featherlight-type="image">
           <figure>
             <a tal:attributes="href string:${first_image/absolute_url}/image_large">
               <img tal:attributes="src string:${first_image/absolute_url}/image_preview;

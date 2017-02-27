@@ -4,6 +4,10 @@ History of this buildout
 6.1.8 (unreleased)
 ------------------
 
+- MINA-157: Use data-featherlight-type="image".
+  This avoids an almost black screen when loading the full image.
+  [maurits]
+
 - MINA-158: Use large scale as big imsage url for featherlight.
   The original image may be too big.  [maurits]
 
