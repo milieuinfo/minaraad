@@ -1,8 +1,8 @@
 History of this buildout
 ========================
 
-6.1.8 (unreleased)
-------------------
+6.2 (2017-02-27)
+----------------
 
 - MINA-157: Use data-featherlight-type="image".
   This avoids an almost black screen when loading the full image.
