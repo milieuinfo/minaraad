@@ -4,6 +4,8 @@ from Products.PloneTestCase import PloneTestCase as ptc
 from Products.Five import fiveconfigure
 from Zope2.App import zcml
 from Products.PloneTestCase.layer import onsetup
+from Products.PluggableAuthService.interfaces.plugins import \
+    IRoleAssignerPlugin
 from Products.minaraad.config import PRODUCT_DEPENDENCIES
 from Products.minaraad.config import PACKAGE_DEPENDENCIES
 from Products.minaraad.config import ROOT_CHILDREN
@@ -23,9 +25,6 @@ def setup_minaraad():
     zcml.load_config('configure.zcml', Products.minaraad)
     fiveconfigure.debug_mode = False
 
-
-from Products.PluggableAuthService.interfaces.plugins import \
-    IRoleAssignerPlugin
 
 # Call the deferred setup method, create a Plone Site and install minaraad.
 setup_minaraad()

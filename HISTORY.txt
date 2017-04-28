@@ -4,7 +4,7 @@ History of this buildout
 6.2.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Upgrade to Plone 4.3.14.  [maurits]
 
 
 6.2 (2017-02-27)
