@@ -4,7 +4,7 @@ History of this buildout
 6.3.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Updated two eea faceted navigation packages.  [maurits]
 
 
 6.3 (2017-04-28)
