@@ -30,8 +30,8 @@ def ontwikkel():
 
 def oefen():
     env.hosts = [
-        'zope@plone-minaraad-oe-3-mgt.mmis.be',
-        'zope@plone-minaraad-oe-4-mgt.mmis.be',
+        'zope@plone-minaraad-oe-5-mgt.mmis.be',
+        'zope@plone-minaraad-oe-6-mgt.mmis.be',
         ]
 
 

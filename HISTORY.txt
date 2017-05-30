@@ -4,6 +4,8 @@ History of this buildout
 6.3.1 (unreleased)
 ------------------
 
+- Minaraad oefen is moving to oe-5 and oe-6.  [maurits]
+
 - Updated two eea faceted navigation packages.  [maurits]
 
 
