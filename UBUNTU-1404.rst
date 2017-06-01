@@ -130,9 +130,13 @@ The inline documentation in this file should help you.
 
     cp buildout.cfg.in buildout.cfg
 
+Create a virtualenv and install a few requirements::
+
+    virtualenv .
+    bin/pip install -r requirements.txt
+
 Now run the buildout.  This will take a while::
 
-    python2.7 bootstrap.py
     bin/buildout
 
 Start the instance once on the foreground to see if it starts up well::
