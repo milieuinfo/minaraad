@@ -65,7 +65,7 @@ to access a recaptcha service, so we need to setup a proxy.
 If both of these commands work, you can skip this step::
 
     wget https://google.be
-    svn ls https://svn.milieuinfo.be/productie/svn/websites/minaraad/trunk
+    git clone https://github.com/milieuinfo/minaraad buildout
 
 Both are expected to give an error like 'Unable to connect'.
 
@@ -94,31 +94,13 @@ take effect.  Check that the proxy works::
 
     wget https://google.be
 
-Call subversion once, to create a ~/.subversion directory with settings::
-
-    svn --version
-
-Add this to the end of the ~/.subversion/servers file::
-
-    # MMIS Proxy settings for HTTP and HTTPS
-    http-proxy-host=forward-proxy-76.mmis.be
-    http-proxy-port=3128
-
-
-In that same file, you may to switch off storing plaintext
-passwords.  Or switch it on explicitly.
-
-::
-
-    store-plaintext-passwords = no
-
 
 Buildout
 --------
 
 Make a checkout in the /home/zope/buildout directory::
 
-    svn co https://svn.milieuinfo.be/productie/svn/websites/minaraad/trunk buildout
+    git clone https://github.com/milieuinfo/minaraad buildout
     cd buildout
 
 Copy the ``buildout.cfg.in`` template and edit the ``buildout.cfg`` file for
