@@ -26,6 +26,7 @@ def ontwikkel():
         'zope@plone-minaraad-on-3-mgt.mmis.be',
         'zope@plone-minaraad-on-4-mgt.mmis.be',
         ]
+    env.buildout_dir = '~/buildout'
 
 
 def oefen():
@@ -33,6 +34,7 @@ def oefen():
         'zope@plone-minaraad-oe-5-mgt.mmis.be',
         'zope@plone-minaraad-oe-6-mgt.mmis.be',
         ]
+    env.buildout_dir = '~/minaraad'
 
 
 def productie():
@@ -40,6 +42,7 @@ def productie():
         'zope@plone-minaraad-pr-3-mgt.mmis.be',
         'zope@plone-minaraad-pr-4-mgt.mmis.be',
         ]
+    env.buildout_dir = '~/buildout'
 
 
 def release(tag=None, warmup=True):
@@ -51,7 +54,7 @@ def release(tag=None, warmup=True):
               "'fab oefen release:tag=1.2.3' or "
               "'fab ontwikkel release:tag=master'.")
         sys.exit(1)
-    with cd('~/buildout'):
+    with cd(env.buildout_dir):
         run('bin/supervisorctl shutdown')
         run('git fetch')
         run('git checkout %s' % tag)
@@ -70,7 +73,7 @@ def release(tag=None, warmup=True):
 def status():
     """Stop Plone.
     """
-    with cd('~/buildout'):
+    with cd(env.buildout_dir):
         run('git status')
         run('git describe')
         run('bin/supervisorctl status')
@@ -79,21 +82,21 @@ def status():
 def stop():
     """Stop Plone.
     """
-    with cd('~/buildout'):
+    with cd(env.buildout_dir):
         run('bin/supervisorctl shutdown')
 
 
 def start():
     """Start Plone.
     """
-    with cd('~/buildout'):
+    with cd(env.buildout_dir):
         run('bin/supervisord')
 
 
 def warmup():
     """Warmup Plone/varnish.
     """
-    with cd('~/buildout'):
+    with cd(env.buildout_dir):
         run('bin/warmup-all')
 
 
