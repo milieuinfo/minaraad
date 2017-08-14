@@ -4,7 +4,7 @@ History of this buildout
 6.3.3 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Plone 4.3.15 final, only updated plone.app.textfield to 1.2.9.  [maurits]
 
 
 6.3.2 (2017-07-05)
