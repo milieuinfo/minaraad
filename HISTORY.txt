@@ -4,6 +4,8 @@ History of this buildout
 6.3.3 (unreleased)
 ------------------
 
+- Varnish 4.0.5 security release.  [maurits]
+
 - Plone 4.3.15 final, only updated plone.app.textfield to 1.2.9.  [maurits]
 
 
