@@ -7128,6 +7128,12 @@ nav.navbar {
   nav.navbar.navbar-default {
     min-height: 10px; }
 
+.navbar-move {
+  display: block;
+  clear: both;
+  margin: 10px 0 5px 15px;
+  padding: 0; }
+
 .alert {
   font-size: 14px !important; }
   .alert .strong {
@@ -7171,38 +7177,39 @@ dl.actionMenu {
     display: none; } }
 
 @media (min-width: 768px) {
+  .logobar .search {
+    margin: 2em 0 0 0;
+    padding: 0;
+    background: transparent;
+    display: block !important; }
+    .logobar .search .searchSection label {
+      color: #76797c; }
+  .logobar .navbar-move {
+    display: inline-block; }
+  .logobar .login_form {
+    clear: both;
+    float: right;
+    display: block; }
+    .logobar .login_form a {
+      float: right; }
+      .logobar .login_form a:link, .logobar .login_form a:visited {
+        color: #fff; }
+    .logobar .login_form p {
+      margin: 10px 0; }
+      .logobar .login_form p:after {
+        content: "";
+        clear: both;
+        width: 100%;
+        display: block; } }
+
+@media (min-width: 992px) {
   .logobar {
     height: 115px; }
     .logobar .logo a {
       height: 90px; }
       .logobar .logo a img {
         width: 420px;
-        height: 90px; }
-    .logobar .search {
-      margin: 2em 0 0 0;
-      padding: 0;
-      background: transparent;
-      display: block !important; }
-      .logobar .search .searchSection label {
-        color: #76797c; }
-    .logobar .navbar-brand {
-      margin-top: 15px;
-      padding: 0; }
-    .logobar .login_form {
-      clear: both;
-      float: right;
-      display: block; }
-      .logobar .login_form a {
-        float: right; }
-        .logobar .login_form a:link, .logobar .login_form a:visited {
-          color: #fff; }
-      .logobar .login_form p {
-        margin: 10px 0; }
-        .logobar .login_form p:after {
-          content: "";
-          clear: both;
-          width: 100%;
-          display: block; } }
+        height: 90px; } }
 
 .breadcrumbbar {
   display: none; }
