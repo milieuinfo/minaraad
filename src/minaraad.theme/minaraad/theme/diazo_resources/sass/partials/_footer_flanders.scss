@@ -3,7 +3,7 @@
 // -----------------------------------------------------------------------------
 
 .footer-flanders {
-  @extend .sec-full-width;
+  @extend .sec-full-width !optional;
   margin:0;
   color: white; //rgb(223, 230, 236);
   background: $vlaanderen-dark-gray;
@@ -100,5 +100,3 @@
   }
 
 }
-
-

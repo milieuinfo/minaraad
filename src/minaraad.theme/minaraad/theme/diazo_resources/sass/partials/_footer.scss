@@ -21,7 +21,7 @@ body {
 
 .content-wrapper {
   -webkit-flex: 1 0 0; /* Safari 6.1+ */
-  -ms-flex: 1 0 0; /* IE 10 */ 
+  -ms-flex: 1 0 0; /* IE 10 */
   flex: 1 0 0
 }
 
@@ -47,7 +47,7 @@ footer {
 
 
 .footer-doormat {
-  @extend .sec-full-width;
+  @extend .sec-full-width !optional;
   .column {
     @extend .col-xs-6, .col-sm-3, .col-md-2;
   }
@@ -137,7 +137,7 @@ footer {
   //#portal-footer-wrapper {
   //
   //}
-  
+
   .footer-doormat .logo{
     margin-bottom: 30px;
   }
