@@ -8,7 +8,6 @@
 
     // Is everybody ready?
     $(function() {
-
         /* Update masonry twice.  The first one after 200 milliseconds
          * may be too soon.  In that case the second one after a full
          * second should be fine.  If nothing needs to change between
@@ -23,6 +22,18 @@
             $('.masonry').masonry();
           }, 1000);
         });
+
+        // Check if alert has been closed
+        if ($.cookie('alert-move') === 'closed') {
+            $('#alert-move').hide();
+        }
+
+        // Grab your button (based on your posted html)
+        $('#alert-move-close').click(function (event) {
+            event.preventDefault();
+            $.cookie('alert-move', 'closed', {expires: 365, path:'/'});
+        });
+
 
         // Toggle the drawer.
         var owner = $("#owner"),
@@ -87,8 +98,7 @@
       var common_content_filter = $.plonepopups.common_content_filter;
 
       // Activate the overlay on the newsletter footer link.
-      $('#mailchimp_link a').prepOverlay(
-        {
+      $('#mailchimp_link a').prepOverlay({
           subtype: 'ajax',
           filter: common_content_filter,
           // optional css class if needed:
@@ -110,27 +120,21 @@
           //
           // formselector: 'form#newsletter-subscriber-form',
           // noform: function(el) {return $.plonepopups.noformerrorshow(el, 'close');}
-        }
-      );
+      });
 
       // Activate the overlay on the newsletter detail link.
-      $('#newsletter-mailchimp_link a').prepOverlay(
-        {
+      $('#newsletter-mailchimp_link a').prepOverlay({
           subtype: 'ajax',
           filter: common_content_filter,
           // formselector: 'form#newsletter-subscriber-form',
-        }
-      );
+      });
 
       // Activate the overlay on the login link.
-      $('#login_link a').prepOverlay(
-        {
+      $('#login_link a').prepOverlay({
           subtype: 'ajax',
           filter: common_content_filter,
           // formselector: 'form#login_form',
-        }
-      );
-
+        });
     });
 
   // Event attendees can be defined in a script tag on the MREvent pages.
