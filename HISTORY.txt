@@ -1,7 +1,7 @@
 History of this buildout
 ========================
 
-6.3.4 (unreleased)
+6.3.4 (2017-09-15)
 ------------------
 
 - MINA-166: Show message of move in header.  [maurits]
