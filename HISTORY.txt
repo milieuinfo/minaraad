@@ -4,7 +4,7 @@ History of this buildout
 6.3.6 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Small text change in 'move' alert.  [maurits]
 
 
 6.3.5 (2017-09-18)
