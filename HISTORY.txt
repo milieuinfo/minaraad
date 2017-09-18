@@ -1,7 +1,7 @@
 History of this buildout
 ========================
 
-6.3.5 (unreleased)
+6.3.5 (2017-09-18)
 ------------------
 
 - Expire 'move' cookie after three days.  [maurits]
