@@ -31,7 +31,7 @@
         // Grab your button (based on your posted html)
         $('#alert-move-close').click(function (event) {
             event.preventDefault();
-            $.cookie('alert-move', 'closed', {expires: 180, path:'/'});
+            $.cookie('alert-move', 'closed', {expires: 3, path:'/'});
         });
 
 
