@@ -32,9 +32,4 @@ setup(name='Products.minaraad',
           'five.grok',
           'quintagroup.formlib.captcha',
       ],
-      entry_points={
-          'console_scripts': [
-              'blobchunkdownload = Products.minaraad.scripts.blobchunkdownload:main',  # noqa
-          ],
-      },
-      )
+)

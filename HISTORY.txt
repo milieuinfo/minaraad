@@ -1,6 +1,12 @@
 History of this buildout
 ========================
 
+7.0 (unreleased)
+----------------
+
+- Removed RelStorage, because we are moving back to Zest servers.  [maurits]
+
+
 6.3.7 (unreleased)
 ------------------
 

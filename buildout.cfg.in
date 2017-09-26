@@ -34,38 +34,3 @@ parts +=
 # and replace "secret" with the actual password of the munin user you
 # have created in Zope.
 #password = secret
-
-
-[postgresconf]
-# Overrides for relstorage.cfg.  For more info see there.
-# You probably at least need to set a password here.
-#dbname =
-#host =
-#password =
-#port =
-#super-user =
-#user =
-
-# Depending on your operating system you may need to fill in some
-# definitions to make sure psycopg2 (python postgres bindings) can be
-# compiled.  Note that you may need some extra OS packages, e.g. on
-# Ubuntu: $ sudo -E aptitude install postgresql-client libpq-dev
-
-# OS X (Mac ports)
-#basedir = /opt/local/lib/postgresql90
-#bindir = ${:basedir}/bin
-# And possibly this, but for me [maurits] the above is enough.
-#includedir = /opt/local/include/postgresql90
-#libdir = ${:basedir}/postgresql
-#sharedir = /opt/local/share/postgresql90
-#
-# Ubuntu
-#bindir = /usr/bin
-#sharedir = /usr/share/postgresql/9.0/
-#
-# FreeBSD.
-#basedir = /usr/local/lib/postgresql
-#bindir = /usr/local/bin
-#libdir = ${:basedir}
-#includedir = /usr/local/include/postgresql
-#sharedir = /usr/local/share/postgresql
