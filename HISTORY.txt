@@ -1,6 +1,9 @@
 History of this buildout
 ========================
 
+Note: this is the maintenance branch for the milieuinfo servers.
+
+
 6.3.7 (unreleased)
 ------------------
 
