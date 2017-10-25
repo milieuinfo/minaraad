@@ -2,8 +2,8 @@
 extends =
 # Choose your base config:
 #    devel.cfg
-#    oefen.cfg
-#    productie.cfg
+#    preview.cfg
+#    production.cfg
 
 # eggs-directory = eggs
 # download-cache = downloads

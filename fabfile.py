@@ -1,4 +1,6 @@
-from fabric.api import env, run, cd, local
+from fabric.api import cd
+from fabric.api import env
+from fabric.api import run
 import sys
 import time
 
@@ -25,23 +27,23 @@ def ontwikkel():
     env.hosts = [
         'zope@plone-minaraad-on-3-mgt.mmis.be',
         'zope@plone-minaraad-on-4-mgt.mmis.be',
-        ]
+    ]
     env.buildout_dir = '~/buildout'
 
 
-def oefen():
+def preview():
     env.hosts = [
         'zope@plone-minaraad-oe-5-mgt.mmis.be',
         'zope@plone-minaraad-oe-6-mgt.mmis.be',
-        ]
+    ]
     env.buildout_dir = '~/minaraad'
 
 
-def productie():
+def production():
     env.hosts = [
         'zope@plone-minaraad-pr-3-mgt.mmis.be',
         'zope@plone-minaraad-pr-4-mgt.mmis.be',
-        ]
+    ]
     env.buildout_dir = '~/buildout'
 
 
@@ -51,7 +53,7 @@ def release(tag=None, warmup=True):
     warmup = to_bool(warmup)
     if not tag:
         print("ERROR You should run this with e.g. "
-              "'fab oefen release:tag=1.2.3' or "
+              "'fab preview release:tag=1.2.3' or "
               "'fab ontwikkel release:tag=master'.")
         sys.exit(1)
     with cd(env.buildout_dir):
