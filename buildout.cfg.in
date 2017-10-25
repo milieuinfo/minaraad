@@ -2,32 +2,11 @@
 extends =
 # Choose your base config:
 #    devel.cfg
-#    ontwikkel.cfg
 #    oefen.cfg
 #    productie.cfg
 
 # eggs-directory = eggs
 # download-cache = downloads
-
-# Some extra parts *will* be wanted.  You have to uncomment them.
-parts +=
-
-# On ONE instance each of ONTWIKKEL/OEFEN/PRODUCTIE you want the
-# cronjob to pack the database.
-
-#    crontab-pack
-
-# On ONE instance of PRODUCTIE only you want to send e-mails twice a
-# week reminding about projects.  It is best not to do this on oefen
-# or ontwikkel, to avoid confusing users with mails from this system.
-
-#    crontab-projects-reminder
-
-# On ONE instance each of OEFEN/PRODUCTIE you want the cronjob to
-# cleanup PAS (Pluggable Authentication Service).
-
-#    crontab-cleanup-pas
-
 
 [munin]
 # To be able to log in as the user munin, uncomment the following line

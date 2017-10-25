@@ -1,6 +1,4 @@
 import logging
-import os
-import urllib2
 
 from Acquisition import aq_base
 from DateTime import DateTime
@@ -9,25 +7,9 @@ from Products.CMFCore.MembershipTool import MembershipTool
 from Products.CMFCore.permissions import ChangeLocalRoles
 from Products.CMFCore.utils import _checkPermission
 from Products.PlonePAS.interfaces.propertysheets import IMutablePropertySheet
-try:
-    # collective.recaptcha = 2.x
-    from norecaptcha import captcha
-except ImportError:
-    # BBB for collective.recaptcha = 1.x
-    from recaptcha.client import captcha
+
 
 logger = logging.getLogger('Products.minaraad')
-
-
-def submit(*args, **kwargs):
-    """
-    Patch for recaptcha.client.captcha.submit to handle http proxy.
-    """
-    if os.environ.get('HTTP_PROXY'):
-        proxy_support = urllib2.ProxyHandler()
-        opener = urllib2.build_opener(proxy_support)
-        urllib2.install_opener(opener)
-    return captcha.old_submit(*args, **kwargs)
 
 
 def set_last_modification_date(member):
@@ -121,15 +103,6 @@ def notifyModified(self):
     return self._orig_notifyModified()
 
 
-def patch_captcha():
-    captcha.old_submit = captcha.submit
-    captcha.submit = submit
-
-
-def unpatch_captcha():
-    captcha.submit = captcha.old_submit
-
-
 def patch_memberdata():
     MemberData._orig_notifyModified = MemberData.notifyModified
     MemberData.notifyModified = notifyModified
@@ -149,12 +122,10 @@ def unpatch_membershiptool():
 
 
 def patch_all():
-    patch_captcha()
     patch_memberdata()
     patch_membershiptool()
 
 
 def unpatch_all():
-    unpatch_captcha()
     unpatch_memberdata()
     unpatch_membershiptool()

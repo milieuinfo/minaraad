@@ -4,6 +4,9 @@ History of this buildout
 7.0 (unreleased)
 ----------------
 
+- Cleanup buildout configs.  We no longer have two instances or varnishes.
+  [maurits]
+
 - Removed RelStorage, because we are moving back to Zest servers.  [maurits]
 
 
